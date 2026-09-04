@@ -1014,7 +1014,7 @@
         "duration": {
           "target": "com.cloudflare.magic_network_monitoring#RulesCreateRequestDuration",
           "traits": {
-            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]."
+            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]."
           }
         },
         "packet_threshold": {
@@ -1237,7 +1237,7 @@
         "duration": {
           "target": "com.cloudflare.magic_network_monitoring#RulesCreateResponseDuration",
           "traits": {
-            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]."
+            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]."
           }
         },
         "packet_threshold": {
@@ -1501,7 +1501,7 @@
         "duration": {
           "target": "com.cloudflare.magic_network_monitoring#RulesDeleteResponseDuration",
           "traits": {
-            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]."
+            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]."
           }
         },
         "packet_threshold": {
@@ -1751,7 +1751,7 @@
         "duration": {
           "target": "com.cloudflare.magic_network_monitoring#RulesEditRequestDuration",
           "traits": {
-            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]."
+            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]."
           }
         },
         "packet_threshold": {
@@ -1974,7 +1974,7 @@
         "duration": {
           "target": "com.cloudflare.magic_network_monitoring#RulesEditResponseDuration",
           "traits": {
-            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]."
+            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]."
           }
         },
         "packet_threshold": {
@@ -2238,7 +2238,7 @@
         "duration": {
           "target": "com.cloudflare.magic_network_monitoring#RulesGetResponseDuration",
           "traits": {
-            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]."
+            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]."
           }
         },
         "packet_threshold": {
@@ -2495,7 +2495,7 @@
         "duration": {
           "target": "com.cloudflare.magic_network_monitoring#RulesListResultItemDuration",
           "traits": {
-            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]."
+            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]."
           }
         },
         "packet_threshold": {
@@ -2754,7 +2754,7 @@
         "duration": {
           "target": "com.cloudflare.magic_network_monitoring#RulesUpdateRequestDuration",
           "traits": {
-            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]."
+            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]."
           }
         },
         "packet_threshold": {
@@ -2977,7 +2977,7 @@
         "duration": {
           "target": "com.cloudflare.magic_network_monitoring#RulesUpdateResponseDuration",
           "traits": {
-            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]."
+            "smithy.api#documentation": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]."
           }
         },
         "packet_threshold": {

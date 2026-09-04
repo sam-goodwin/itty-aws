@@ -69,7 +69,7 @@
         "requireSignedURLs": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image."
+            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image."
           }
         },
         "uploaded": {
@@ -242,7 +242,7 @@
         "requireSignedURLs": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image."
+            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image."
           }
         },
         "uploaded": {
@@ -277,7 +277,7 @@
           "uri": "/accounts/{account_id}/images/v1/{image_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Update a CF Images image's metadata, creator, or access control. On access control change, all copies of the image are purged from cache."
+        "smithy.api#documentation": "Update a CF Images image’s metadata, creator, or access control. On access control change, all copies of the image are purged from cache."
       }
     },
     "com.cloudflare.images#V1GetRequest": {
@@ -340,7 +340,7 @@
         "requireSignedURLs": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image."
+            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image."
           }
         },
         "uploaded": {
@@ -452,7 +452,7 @@
         "requireSignedURLs": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image."
+            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image."
           }
         },
         "uploaded": {
@@ -561,6 +561,7 @@
         "signing_key_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength20",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -706,6 +707,7 @@
         "signing_key_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength20",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -827,7 +829,7 @@
           "uri": "/accounts/{account_id}/images/v1/stats",
           "code": 200
         },
-        "smithy.api#documentation": "Fetch image statistics details for Cloudflare Images. The returned statistics detail storage usage, including the current image count vs this account's allowance.",
+        "smithy.api#documentation": "Fetch image statistics details for Cloudflare Images. The returned statistics detail storage usage, including the current image count vs this account’s allowance.",
         "smithy.api#readonly": {}
       }
     },
@@ -936,6 +938,7 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength99",
             "smithy.api#required": {}
           }
         },
@@ -1054,6 +1057,7 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength99",
             "smithy.api#required": {}
           }
         },
@@ -1115,6 +1119,7 @@
         "variant_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength99",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1262,6 +1267,7 @@
         "variant_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength99",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1381,6 +1387,7 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength99",
             "smithy.api#required": {}
           }
         },
@@ -1442,6 +1449,7 @@
         "variant_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength99",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1548,6 +1556,7 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength99",
             "smithy.api#required": {}
           }
         },
@@ -1709,6 +1718,7 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength99",
             "smithy.api#required": {}
           }
         },
@@ -1765,18 +1775,6 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.images#V2ListRequestMeta": {
-      "type": "structure",
-      "members": {
-        "_field___operator__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Optional metadata filter(s). Multiple filters can be combined with AND logic.",
-            "smithy.api#jsonName": "<field>[<operator>]"
-          }
-        }
-      }
-    },
     "com.cloudflare.images#V2ListRequestSortOrder": {
       "type": "enum",
       "members": {
@@ -1820,9 +1818,10 @@
           }
         },
         "meta": {
-          "target": "com.cloudflare.images#V2ListRequestMeta",
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#deepQuery": "meta"
+            "smithy.api#documentation": "\"<field>[<operator>]\": optional string",
+            "smithy.api#httpQuery": "meta"
           }
         },
         "per_page": {
@@ -1880,7 +1879,7 @@
         "requireSignedURLs": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image."
+            "smithy.api#documentation": "Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image."
           }
         },
         "uploaded": {
@@ -1935,7 +1934,7 @@
           "uri": "/accounts/{account_id}/images/v2",
           "code": 200
         },
-        "smithy.api#documentation": "List up to 10000 images from CF Images, with up to 1000 results per page. Use the optional parameters below to get a specific range of images. Pagination is supported via continuation_token. **Metadata Filtering (Optional):** You can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax. **Supported Operators:** - `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match - `gt` / `gt:number` - Greater than (number only) - `gte` / `gte:number` - Greater than or equal (number only) - `lt` / `lt:number` - Less than (number only) - `lte` / `lte:number` - Less than or equal (number only) - `in` / `in:string` / `in:number` - Match any value in list (pipe-separated) **Metadata Filter Constraints:** - Maximum 5 metadata filters per request - Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`) - Maximum 10 elements for list operators (`in`) - Supports string, number, and boolean value types - Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values **Filter Consistency:** Filters are combined with AND logic. The system does not validate whether filter combinations are logically consistent. For example, `meta.priority[eq:number]=5&meta.priority[lte:number]=3` will return zero results because no value can satisfy both conditions simultaneously. It is the caller's responsibility to ensure filter combinations make sense. **Examples:** ``` # List all images /images/v2 # Filter by metadata [eq] /images/v2?meta.status[eq:string]=active # Filter by metadata [in] /images/v2?meta.status[in]=pending|deleted|flagged # Filter by metadata [in:number] /images/v2?meta.ratings[in:number]=4|5 # Filter by metadata range [gte:number] /images/v2?meta.priority[gte:number]=1 # Filter by bounded range /images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5 # Filter by nested metadata /images/v2?meta.region.name[eq]=eu-west # Combine metadata filters with creator /images/v2?meta.status[eq]=active&creator=user123 # Multiple metadata filters (AND logic) /images/v2?meta.status[eq]=active&meta.priority[eq:number]=5 ```",
+        "smithy.api#documentation": "List up to 10000 images from CF Images, with up to 1000 results per page. Use the optional parameters below to get a specific range of images. Pagination is supported via continuation_token. You can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax. * `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match * `gt` / `gt:number` - Greater than (number only) * `gte` / `gte:number` - Greater than or equal (number only) * `lt` / `lt:number` - Less than (number only) * `lte` / `lte:number` - Less than or equal (number only) * `in` / `in:string` / `in:number` - Match any value in list (pipe-separated) * Maximum 5 metadata filters per request * Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`) * Maximum 10 elements for list operators (`in`) * Supports string, number, and boolean value types * Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values ```plaintext # List all images /images/v2 # Filter by metadata [eq] /images/v2?meta.status[eq:string]=active # Filter by metadata [in] /images/v2?meta.status[in]=pending|deleted|flagged # Filter by metadata [in:number] /images/v2?meta.ratings[in:number]=4|5 # Filter by metadata range [gte:number] /images/v2?meta.priority[gte:number]=1 # Filter by bounded range /images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5 # Filter by nested metadata /images/v2?meta.region.name[eq]=eu-west # Combine metadata filters with creator /images/v2?meta.status[eq]=active&creator=user123 # Multiple metadata filters (AND logic) /images/v2?meta.status[eq]=active&meta.priority[eq:number]=5 ```",
         "smithy.api#readonly": {}
       }
     },

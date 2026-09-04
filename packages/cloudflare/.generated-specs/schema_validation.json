@@ -89,6 +89,7 @@
         "created_at": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
@@ -146,7 +147,7 @@
           "uri": "/zones/{zone_id}/schema_validation/schemas",
           "code": 200
         },
-        "smithy.api#documentation": "Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints."
+        "smithy.api#documentation": "Uploads an OpenAPI schema that defines expected request formats for API operations."
       }
     },
     "com.cloudflare.schema_validation#SchemasDeleteRequest": {
@@ -176,17 +177,16 @@
     "com.cloudflare.schema_validation#SchemasDeleteResponse": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
+        "result": {
+          "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "The ID of the schema that was just deleted",
-            "smithy.api#required": {}
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.schema_validation#SchemasDelete": {
@@ -203,7 +203,7 @@
           "uri": "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Permanently removes an uploaded OpenAPI schema from API Shield. Operations using this schema will lose their validation rules.",
+        "smithy.api#documentation": "Permanently removes an uploaded OpenAPI schema from API Security. Operations using this schema will lose their validation rules.",
         "smithy.api#idempotent": {}
       }
     },
@@ -254,6 +254,7 @@
         "created_at": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
@@ -311,7 +312,7 @@
           "uri": "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Modifies an existing OpenAPI schema in API Shield, updating the validation rules for associated API operations."
+        "smithy.api#documentation": "Enables or disables validation for an uploaded OpenAPI schema without changing the schema document."
       }
     },
     "com.cloudflare.schema_validation#SchemasGetRequest": {
@@ -362,6 +363,7 @@
         "created_at": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
@@ -419,7 +421,7 @@
           "uri": "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Gets the contents and metadata of a specific OpenAPI schema uploaded to API Shield.",
+        "smithy.api#documentation": "Gets the contents and metadata of a specific OpenAPI schema uploaded to API Security.",
         "smithy.api#readonly": {}
       }
     },
@@ -484,6 +486,7 @@
         "created_at": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
@@ -558,7 +561,7 @@
           "uri": "/zones/{zone_id}/schema_validation/schemas",
           "code": 200
         },
-        "smithy.api#documentation": "Lists all OpenAPI schemas uploaded to API Shield with pagination support.",
+        "smithy.api#documentation": "Lists all OpenAPI schemas uploaded to API Security.",
         "smithy.api#readonly": {}
       }
     },
@@ -610,7 +613,7 @@
         "validation_default_mitigation_action": {
           "target": "com.cloudflare.schema_validation#SettingsEditRequestValidationDefaultMitigationAction",
           "traits": {
-            "smithy.api#documentation": "The default mitigation action used"
+            "smithy.api#documentation": "The default mitigation action used Mitigation actions are as follows:"
           }
         },
         "validation_override_mitigation_action": {
@@ -835,7 +838,7 @@
         "validation_default_mitigation_action": {
           "target": "com.cloudflare.schema_validation#SettingsUpdateRequestValidationDefaultMitigationAction",
           "traits": {
-            "smithy.api#documentation": "The default mitigation action used",
+            "smithy.api#documentation": "The default mitigation action used Mitigation actions are as follows:",
             "smithy.api#required": {}
           }
         },
@@ -1019,15 +1022,7 @@
         "mitigation_action": {
           "target": "com.cloudflare.schema_validation#SettingsOperationsBulkEditResultValueMitigationAction",
           "traits": {
-            "smithy.api#documentation": "When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation",
-            "smithy.api#required": {}
-          }
-        },
-        "operation_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "When set, this applies a mitigation action to this operation"
           }
         }
       }
@@ -1325,7 +1320,7 @@
           "uri": "/zones/{zone_id}/schema_validation/settings/operations",
           "code": 200
         },
-        "smithy.api#documentation": "Lists all per-operation schema validation settings configured for the zone.",
+        "smithy.api#documentation": "Lists per-operation schema validation settings configured for the zone.",
         "smithy.api#readonly": {}
       }
     },

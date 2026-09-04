@@ -491,17 +491,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.smart_shield#CacheReserveClearClearResponseId": {
-      "type": "enum",
-      "members": {
-        "CACHE_RESERVE_CLEAR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cache_reserve_clear"
-          }
-        }
-      }
-    },
     "com.cloudflare.smart_shield#CacheReserveClearClearResponseState": {
       "type": "enum",
       "members": {
@@ -523,7 +512,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "com.cloudflare.smart_shield#CacheReserveClearClearResponseId",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "ID of the zone setting.",
             "smithy.api#required": {}
@@ -594,17 +583,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.smart_shield#CacheReserveClearStatusResponseId": {
-      "type": "enum",
-      "members": {
-        "CACHE_RESERVE_CLEAR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cache_reserve_clear"
-          }
-        }
-      }
-    },
     "com.cloudflare.smart_shield#CacheReserveClearStatusResponseState": {
       "type": "enum",
       "members": {
@@ -626,7 +604,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "com.cloudflare.smart_shield#CacheReserveClearStatusResponseId",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "ID of the zone setting.",
             "smithy.api#required": {}
@@ -815,6 +793,34 @@
         }
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfigTcpConfigMethod": {
+      "type": "enum",
+      "members": {
+        "CONNECTION_ESTABLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connection_established"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfigTcpConfig": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfigTcpConfigMethod",
+          "traits": {
+            "smithy.api#documentation": "The TCP connection method to use for the health check."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+          }
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfig": {
       "type": "structure",
       "members": {
@@ -833,7 +839,7 @@
         "expected_codes": {
           "target": "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfigExpectedCodesList",
           "traits": {
-            "smithy.api#documentation": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check."
+            "smithy.api#documentation": "The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check."
           }
         },
         "follow_redirects": {
@@ -865,33 +871,41 @@
           "traits": {
             "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS."
           }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksCreateRequestTcpConfigMethod": {
-      "type": "enum",
-      "members": {
-        "CONNECTION_ESTABLISHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connection_established"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksCreateRequestTcpConfig": {
-      "type": "structure",
-      "members": {
-        "method": {
-          "target": "com.cloudflare.smart_shield#HealthChecksCreateRequestTcpConfigMethod",
-          "traits": {
-            "smithy.api#documentation": "The TCP connection method to use for the health check."
-          }
         },
-        "port": {
+        "interval": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfigTcpConfig",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’."
           }
         }
       }
@@ -949,42 +963,6 @@
           "target": "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfig",
           "traits": {
             "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
-          }
-        },
-        "interval": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
-          }
-        },
-        "retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
-          }
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
-          }
-        },
-        "tcp_config": {
-          "target": "com.cloudflare.smart_shield#HealthChecksCreateRequestTcpConfig",
-          "traits": {
-            "smithy.api#documentation": "Parameters specific to TCP health check."
-          }
-        },
-        "timeout": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
           }
         }
       },
@@ -1125,6 +1103,63 @@
         }
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "HEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "healthy"
+          }
+        },
+        "UNHEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unhealthy"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigTcpConfigMethod": {
+      "type": "enum",
+      "members": {
+        "CONNECTION_ESTABLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connection_established"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigTcpConfig": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigTcpConfigMethod",
+          "traits": {
+            "smithy.api#documentation": "The TCP connection method to use for the health check."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+          }
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfig": {
       "type": "structure",
       "members": {
@@ -1143,7 +1178,7 @@
         "expected_codes": {
           "target": "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigExpectedCodesList",
           "traits": {
-            "smithy.api#documentation": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check."
+            "smithy.api#documentation": "The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check."
           }
         },
         "follow_redirects": {
@@ -1175,62 +1210,59 @@
           "traits": {
             "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS."
           }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksCreateResponseStatus": {
-      "type": "enum",
-      "members": {
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unknown"
-          }
         },
-        "HEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "healthy"
-          }
-        },
-        "UNHEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unhealthy"
-          }
-        },
-        "SUSPENDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "suspended"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksCreateResponseTcpConfigMethod": {
-      "type": "enum",
-      "members": {
-        "CONNECTION_ESTABLISHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connection_established"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksCreateResponseTcpConfig": {
-      "type": "structure",
-      "members": {
-        "method": {
-          "target": "com.cloudflare.smart_shield#HealthChecksCreateResponseTcpConfigMethod",
-          "traits": {
-            "smithy.api#documentation": "The TCP connection method to use for the health check."
-          }
-        },
-        "port": {
+        "interval": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the origin server according to the health check."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigTcpConfig",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’."
           }
         }
       }
@@ -1269,7 +1301,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -1287,57 +1322,6 @@
           "target": "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfig",
           "traits": {
             "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
-          }
-        },
-        "interval": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String"
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
-          }
-        },
-        "retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.smart_shield#HealthChecksCreateResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "The current status of the origin server according to the health check."
-          }
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
-          }
-        },
-        "tcp_config": {
-          "target": "com.cloudflare.smart_shield#HealthChecksCreateResponseTcpConfig",
-          "traits": {
-            "smithy.api#documentation": "Parameters specific to TCP health check."
-          }
-        },
-        "timeout": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
           }
         }
       },
@@ -1553,6 +1537,34 @@
         }
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfigTcpConfigMethod": {
+      "type": "enum",
+      "members": {
+        "CONNECTION_ESTABLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connection_established"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfigTcpConfig": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfigTcpConfigMethod",
+          "traits": {
+            "smithy.api#documentation": "The TCP connection method to use for the health check."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+          }
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfig": {
       "type": "structure",
       "members": {
@@ -1571,7 +1583,7 @@
         "expected_codes": {
           "target": "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfigExpectedCodesList",
           "traits": {
-            "smithy.api#documentation": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check."
+            "smithy.api#documentation": "The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check."
           }
         },
         "follow_redirects": {
@@ -1603,33 +1615,41 @@
           "traits": {
             "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS."
           }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksEditRequestTcpConfigMethod": {
-      "type": "enum",
-      "members": {
-        "CONNECTION_ESTABLISHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connection_established"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksEditRequestTcpConfig": {
-      "type": "structure",
-      "members": {
-        "method": {
-          "target": "com.cloudflare.smart_shield#HealthChecksEditRequestTcpConfigMethod",
-          "traits": {
-            "smithy.api#documentation": "The TCP connection method to use for the health check."
-          }
         },
-        "port": {
+        "interval": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfigTcpConfig",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’."
           }
         }
       }
@@ -1695,42 +1715,6 @@
           "target": "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfig",
           "traits": {
             "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
-          }
-        },
-        "interval": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
-          }
-        },
-        "retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
-          }
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
-          }
-        },
-        "tcp_config": {
-          "target": "com.cloudflare.smart_shield#HealthChecksEditRequestTcpConfig",
-          "traits": {
-            "smithy.api#documentation": "Parameters specific to TCP health check."
-          }
-        },
-        "timeout": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
           }
         }
       },
@@ -1871,6 +1855,63 @@
         }
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "HEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "healthy"
+          }
+        },
+        "UNHEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unhealthy"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigTcpConfigMethod": {
+      "type": "enum",
+      "members": {
+        "CONNECTION_ESTABLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connection_established"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigTcpConfig": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigTcpConfigMethod",
+          "traits": {
+            "smithy.api#documentation": "The TCP connection method to use for the health check."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+          }
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfig": {
       "type": "structure",
       "members": {
@@ -1889,7 +1930,7 @@
         "expected_codes": {
           "target": "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigExpectedCodesList",
           "traits": {
-            "smithy.api#documentation": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check."
+            "smithy.api#documentation": "The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check."
           }
         },
         "follow_redirects": {
@@ -1921,62 +1962,59 @@
           "traits": {
             "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS."
           }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksEditResponseStatus": {
-      "type": "enum",
-      "members": {
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unknown"
-          }
         },
-        "HEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "healthy"
-          }
-        },
-        "UNHEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unhealthy"
-          }
-        },
-        "SUSPENDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "suspended"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksEditResponseTcpConfigMethod": {
-      "type": "enum",
-      "members": {
-        "CONNECTION_ESTABLISHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connection_established"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksEditResponseTcpConfig": {
-      "type": "structure",
-      "members": {
-        "method": {
-          "target": "com.cloudflare.smart_shield#HealthChecksEditResponseTcpConfigMethod",
-          "traits": {
-            "smithy.api#documentation": "The TCP connection method to use for the health check."
-          }
-        },
-        "port": {
+        "interval": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the origin server according to the health check."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigTcpConfig",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’."
           }
         }
       }
@@ -2015,7 +2053,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -2033,57 +2074,6 @@
           "target": "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfig",
           "traits": {
             "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
-          }
-        },
-        "interval": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String"
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
-          }
-        },
-        "retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.smart_shield#HealthChecksEditResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "The current status of the origin server according to the health check."
-          }
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
-          }
-        },
-        "tcp_config": {
-          "target": "com.cloudflare.smart_shield#HealthChecksEditResponseTcpConfig",
-          "traits": {
-            "smithy.api#documentation": "Parameters specific to TCP health check."
-          }
-        },
-        "timeout": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
           }
         }
       },
@@ -2266,6 +2256,63 @@
         }
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "HEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "healthy"
+          }
+        },
+        "UNHEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unhealthy"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigTcpConfigMethod": {
+      "type": "enum",
+      "members": {
+        "CONNECTION_ESTABLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connection_established"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigTcpConfig": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigTcpConfigMethod",
+          "traits": {
+            "smithy.api#documentation": "The TCP connection method to use for the health check."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+          }
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfig": {
       "type": "structure",
       "members": {
@@ -2284,7 +2331,7 @@
         "expected_codes": {
           "target": "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigExpectedCodesList",
           "traits": {
-            "smithy.api#documentation": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check."
+            "smithy.api#documentation": "The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check."
           }
         },
         "follow_redirects": {
@@ -2316,62 +2363,59 @@
           "traits": {
             "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS."
           }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksGetResponseStatus": {
-      "type": "enum",
-      "members": {
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unknown"
-          }
         },
-        "HEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "healthy"
-          }
-        },
-        "UNHEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unhealthy"
-          }
-        },
-        "SUSPENDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "suspended"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksGetResponseTcpConfigMethod": {
-      "type": "enum",
-      "members": {
-        "CONNECTION_ESTABLISHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connection_established"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksGetResponseTcpConfig": {
-      "type": "structure",
-      "members": {
-        "method": {
-          "target": "com.cloudflare.smart_shield#HealthChecksGetResponseTcpConfigMethod",
-          "traits": {
-            "smithy.api#documentation": "The TCP connection method to use for the health check."
-          }
-        },
-        "port": {
+        "interval": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the origin server according to the health check."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigTcpConfig",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’."
           }
         }
       }
@@ -2410,7 +2454,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -2428,57 +2475,6 @@
           "target": "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfig",
           "traits": {
             "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
-          }
-        },
-        "interval": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String"
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
-          }
-        },
-        "retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.smart_shield#HealthChecksGetResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "The current status of the origin server according to the health check."
-          }
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
-          }
-        },
-        "tcp_config": {
-          "target": "com.cloudflare.smart_shield#HealthChecksGetResponseTcpConfig",
-          "traits": {
-            "smithy.api#documentation": "Parameters specific to TCP health check."
-          }
-        },
-        "timeout": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
           }
         }
       },
@@ -2668,6 +2664,63 @@
         }
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "HEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "healthy"
+          }
+        },
+        "UNHEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unhealthy"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigTcpConfigMethod": {
+      "type": "enum",
+      "members": {
+        "CONNECTION_ESTABLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connection_established"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigTcpConfig": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigTcpConfigMethod",
+          "traits": {
+            "smithy.api#documentation": "The TCP connection method to use for the health check."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+          }
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfig": {
       "type": "structure",
       "members": {
@@ -2686,7 +2739,7 @@
         "expected_codes": {
           "target": "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigExpectedCodesList",
           "traits": {
-            "smithy.api#documentation": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check."
+            "smithy.api#documentation": "The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check."
           }
         },
         "follow_redirects": {
@@ -2718,62 +2771,59 @@
           "traits": {
             "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS."
           }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksListResultItemStatus": {
-      "type": "enum",
-      "members": {
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unknown"
-          }
         },
-        "HEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "healthy"
-          }
-        },
-        "UNHEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unhealthy"
-          }
-        },
-        "SUSPENDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "suspended"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksListResultItemTcpConfigMethod": {
-      "type": "enum",
-      "members": {
-        "CONNECTION_ESTABLISHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connection_established"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksListResultItemTcpConfig": {
-      "type": "structure",
-      "members": {
-        "method": {
-          "target": "com.cloudflare.smart_shield#HealthChecksListResultItemTcpConfigMethod",
-          "traits": {
-            "smithy.api#documentation": "The TCP connection method to use for the health check."
-          }
-        },
-        "port": {
+        "interval": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the origin server according to the health check."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigTcpConfig",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’."
           }
         }
       }
@@ -2812,7 +2862,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -2830,57 +2883,6 @@
           "target": "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfig",
           "traits": {
             "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
-          }
-        },
-        "interval": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String"
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
-          }
-        },
-        "retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.smart_shield#HealthChecksListResultItemStatus",
-          "traits": {
-            "smithy.api#documentation": "The current status of the origin server according to the health check."
-          }
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
-          }
-        },
-        "tcp_config": {
-          "target": "com.cloudflare.smart_shield#HealthChecksListResultItemTcpConfig",
-          "traits": {
-            "smithy.api#documentation": "Parameters specific to TCP health check."
-          }
-        },
-        "timeout": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
           }
         }
       }
@@ -2938,6 +2940,7 @@
         "code": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "minimum1000",
             "smithy.api#required": {}
           }
         },
@@ -2961,12 +2964,21 @@
         "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestErrorsItem"
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksUpdateRequestMessagesItemSource": {
+      "type": "structure",
+      "members": {
+        "pointer": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksUpdateRequestMessagesItem": {
       "type": "structure",
       "members": {
         "code": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "minimum1000",
             "smithy.api#required": {}
           }
         },
@@ -2980,7 +2992,7 @@
           "target": "smithy.api#String"
         },
         "source": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestMessagesItemSource"
         }
       }
     },
@@ -3123,6 +3135,63 @@
         }
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "HEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "healthy"
+          }
+        },
+        "UNHEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unhealthy"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigTcpConfigMethod": {
+      "type": "enum",
+      "members": {
+        "CONNECTION_ESTABLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connection_established"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigTcpConfig": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigTcpConfigMethod",
+          "traits": {
+            "smithy.api#documentation": "The TCP connection method to use for the health check."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+          }
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfig": {
       "type": "structure",
       "members": {
@@ -3141,7 +3210,7 @@
         "expected_codes": {
           "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigExpectedCodesList",
           "traits": {
-            "smithy.api#documentation": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check."
+            "smithy.api#documentation": "The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check."
           }
         },
         "follow_redirects": {
@@ -3173,62 +3242,59 @@
           "traits": {
             "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS."
           }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultStatus": {
-      "type": "enum",
-      "members": {
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unknown"
-          }
         },
-        "HEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "healthy"
-          }
-        },
-        "UNHEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unhealthy"
-          }
-        },
-        "SUSPENDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "suspended"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultTcpConfigMethod": {
-      "type": "enum",
-      "members": {
-        "CONNECTION_ESTABLISHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connection_established"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultTcpConfig": {
-      "type": "structure",
-      "members": {
-        "method": {
-          "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultTcpConfigMethod",
-          "traits": {
-            "smithy.api#documentation": "The TCP connection method to use for the health check."
-          }
-        },
-        "port": {
+        "interval": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the origin server according to the health check."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigTcpConfig",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’."
           }
         }
       }
@@ -3267,7 +3333,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -3285,57 +3354,6 @@
           "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfig",
           "traits": {
             "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
-          }
-        },
-        "interval": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String"
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
-          }
-        },
-        "retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultStatus",
-          "traits": {
-            "smithy.api#documentation": "The current status of the origin server according to the health check."
-          }
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
-          }
-        },
-        "tcp_config": {
-          "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultTcpConfig",
-          "traits": {
-            "smithy.api#documentation": "Parameters specific to TCP health check."
-          }
-        },
-        "timeout": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
           }
         }
       }
@@ -3522,6 +3540,63 @@
         }
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "HEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "healthy"
+          }
+        },
+        "UNHEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unhealthy"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigTcpConfigMethod": {
+      "type": "enum",
+      "members": {
+        "CONNECTION_ESTABLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connection_established"
+          }
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigTcpConfig": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigTcpConfigMethod",
+          "traits": {
+            "smithy.api#documentation": "The TCP connection method to use for the health check."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+          }
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfig": {
       "type": "structure",
       "members": {
@@ -3540,7 +3615,7 @@
         "expected_codes": {
           "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigExpectedCodesList",
           "traits": {
-            "smithy.api#documentation": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check."
+            "smithy.api#documentation": "The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check."
           }
         },
         "follow_redirects": {
@@ -3572,62 +3647,59 @@
           "traits": {
             "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS."
           }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksUpdateResponseStatus": {
-      "type": "enum",
-      "members": {
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unknown"
-          }
         },
-        "HEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "healthy"
-          }
-        },
-        "UNHEALTHY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unhealthy"
-          }
-        },
-        "SUSPENDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "suspended"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksUpdateResponseTcpConfigMethod": {
-      "type": "enum",
-      "members": {
-        "CONNECTION_ESTABLISHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connection_established"
-          }
-        }
-      }
-    },
-    "com.cloudflare.smart_shield#HealthChecksUpdateResponseTcpConfig": {
-      "type": "structure",
-      "members": {
-        "method": {
-          "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponseTcpConfigMethod",
-          "traits": {
-            "smithy.api#documentation": "The TCP connection method to use for the health check."
-          }
-        },
-        "port": {
+        "interval": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Port number to connect to for the health check. Defaults to 80."
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the origin server according to the health check."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigTcpConfig",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’."
           }
         }
       }
@@ -3666,7 +3738,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -3684,57 +3759,6 @@
           "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfig",
           "traits": {
             "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
-          }
-        },
-        "interval": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String"
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed."
-          }
-        },
-        "retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "The current status of the origin server according to the health check."
-          }
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
-          }
-        },
-        "tcp_config": {
-          "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponseTcpConfig",
-          "traits": {
-            "smithy.api#documentation": "Parameters specific to TCP health check."
-          }
-        },
-        "timeout": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
           }
         }
       },

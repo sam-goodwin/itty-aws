@@ -51,7 +51,7 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page."
+            "smithy.api#documentation": "The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust’s block page."
           }
         }
       },
@@ -78,6 +78,17 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "access_managed"
+          }
+        }
+      }
+    },
+    "com.cloudflare.mtls_certificates#CreateResponsePrivateKey": {
+      "type": "enum",
+      "members": {
+        "BEGIN_PRIVATE_KEY_MIIEVQIBADANBGKQHKIG9W0BAQEFAASCBKCWGGSJAGEAAOIBAQDEXDKCICRU3XBV_9HIIPNBWIJGTQYOWMVFXDR11MONGZB_CMYJE_OVQJVNPWNCOASK16MOPAJNBELKR_X2LZIVJALRDCCCQCXXWP_CRDRCHCQGZO7MBNKSMLCIDRERB0LLEBKLFC2QJRMRKQ_B_YOS4TD8WSZU2S667A2FZMJRLAQOXFI1H62EE0P_TLU628UC_NL41JIFST5EVT7_HMDHAKEMDWZBLNYR2P6T3NQJDHJYXTTP4UMOGJBHJ7I7KICG3D3CIGDTMBGGSEGW_QJNDR4LDVND96FN3CVT5UDFSN2CJXTFGDEBWOUNMS4VNUZZPWGF4VSBXC8QV7LS_W46YT7T1AGMBAAECGGEAQZNP_OQCENPOR6L5S2L_1TFX0GWJZ78HJVTEUPZ0IHSK_7F6KKEOXYOIRD7VUXV0KMO_CJQ_0HP0KE4EAM640FCPWKFYOSQ4_R3VGUJGWJNAI_HCN5TV5SMET0XEJPUZ5QE7ALOKCVWI6AXLHS20AAEZIDTQJ9QBGSGNJVZOWN_JDT_IDIGZPN57RPXFSAWNJPTQK_PN8I5Z108HSADODEGGMXYZ7KYQMQZX20KXMTH58LD_FPIXS5JGTS60IIKC_WOCGZKB2_ADTSOJR76OEU77CANP_3ZO25NG_WHUDYLW0T0_D7PGXXIEJE_XGYNAMDQJX3QONVYT4H77HA0OBRAJ9QKBGQDICZR_VTWFMNELP3A_FXGNJEHRIUS1I7MXGKXNWECD_DFLML0FPLSQS8RO2N_D8LU8BBXGX0QM6VXU8RHN_7TAUL6Q_PCGFARZXFIHACB_TZCQFIEIHSMLVBFHV5HCXNK_KIS0TUC_PRARCWTWD_HJUJXKBHVKUSNSWVQZAVDPI7KWKBGQDD_WGLKJ7A3X5FGIHZH_GBDSBIXWZKB_RF_4ZCT2XFGG_OAW7VAPFCX_W_V_5LBLYROCMOAS3PGGAHM5T3HLNUCQFNK4QGPS1LQ_IBKC9TMNSN60LANUJUUMSYV_ZSW70TOZBZHJ0PIOEPWFRXRZBZTO2RR8NTM7H6FK_701EXGNAXWKBGQCD1XSJY2J3SCERIDCZ0U5QXLAPKEUZW_34M4_UCDWTWWC0GEZ9_LHSULFJ9P4G351ZLUIENQ_7MAWLCDJLMIO3MQT6JHILIL9Y0T4PGBMXMWQKKYTAS_JB0EMMY_1BNN44MBRQMXZFTJU1CLDHT_XSTROEOIPQYTKNYNANFTMZLZIWKBGHRL_XE5OQ0XMP8DCMNEECAUWSAU4PR6KQD3L9EMUKL5ZL7J9C_DAXWAEUWZBW_IGUTLX_ZRB_RD_7SZU14WJ29EQXBDGKRZMP_SE5_YFBJM7XEZ1HVPW7PWBSHFQT57X_4KTQ_7LWHNMH6RCGHC_P7WBC5IO_S94YADIP8XOT3PF9JAOGAE0QKQJUY_5MGR_FBO0VN_V72ZOPVEGPW_DE59UHKAONU1ZLJQCUTK59M6_DXFM0TNYKTAWA5N8IN71ZH_S62X_XST3PYI1Y5CCCMV8Y4BHWICPWXKK3ZEVLGSHVTPC0BAYA9ASO4BBZGVXA5W_Z0W_VVFP9DWO1IS3ENQRRZ6WMYA_END_PRIVATE_KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEXDkcICRU3XBv\n9hiiPnBWIjgTQyowmVFxDr11mONgZB/cMYjE/OvQjvnpwNcOaSK16MOpAjNbELKR\nx2lZiVJaLRDCccqCxXwP/CrdRChcqGzo7mbNksMlcidrErb0LlEBKLFC2QjRmRKq\nB+YOs4TD8WsZu2S667A2fZmjRlaqOxFi1h62ee0P+TLU628UC/nl41JifSt5Evt7\nhMDHakemdwZblNYr2p6T3NQjdhjYXTtP4UmOGJBhJ7i7Kicg3d3CIgdTMbggSeGW\nqjndr4ldVnD96FN3cVT5uDFsn2CJXTFgdeBWoUnMS4VnUZzPWGf4vSBXC8qV7Ls+\nw46yT7T1AgMBAAECggEAQZnp/oqCeNPOR6l5S2L+1tfx0gWjZ78hJVteUpZ0iHSK\n7F6kKeOxyOird7vUXV0kmo+cJq+0hp0Ke4eam640FCpwKfYoSQ4/R3vgujGWJnai\nhCN5tv5sMet0XeJPuz5qE7ALoKCvwI6aXLHs20aAeZIDTQJ9QbGSGnJVzOWn+JDT\nidIgZpN57RpXfSAwnJPTQK/PN8i5z108hsaDOdEgGmxYZ7kYqMqzX20KXmth58LD\nfPixs5JGtS60iiKC/wOcGzkB2/AdTSojR76oEU77cANP/3zO25NG//whUdYlW0t0\nd7PgXxIeJe+xgYnamDQJx3qonVyt4H77ha0ObRAj9QKBgQDicZr+VTwFMnELP3a+\nFXGnjehRiuS1i7MXGKxNweCD+dFlML0FplSQS8Ro2n+d8lu8BBXGx0qm6VXu8Rhn\n7TAUL6q+PCgfarzxfIhacb/TZCqfieIHsMlVBfhV5HCXnk+kis0tuC/PRArcWTwD\nHJUJXkBhvkUsNswvQzavDPI7KwKBgQDd/WgLkj7A3X5fgIHZH/GbDSBiXwzKb+rF\n4ZCT2XFgG/OAW7vapfcX/w+v+5lBLyrocmOAS3PGGAhM5T3HLnUCQfnK4qgps1Lq\nibkc9Tmnsn60LanUjuUMsYv/zSw70tozbzhJ0pioEpWfRxRZBztO2Rr8Ntm7h6Fk\n701EXGNAXwKBgQCD1xsjy2J3sCerIdcz0u5qXLAPkeuZW+34m4/ucdwTWwc0gEz9\nlhsULFj9p4G351zLuiEnq+7mAWLcDJlmIO3mQt6JhiLiL9Y0T4pgBmxmWqKKYtAs\nJB0EmMY+1BNN44mBRqMxZFTJu1cLdhT/xstrOeoIPqytknYNanfTMZlzIwKBgHrL\nXe5oq0XMP8dcMneEcAUwsaU4pr6kQd3L9EmUkl5zl7J9C+DaxWAEuwzBw/iGutlx\nzRB+rD/7szu14wJ29EqXbDGKRzMp+se5/yfBjm7xEZ1hVPw7PwBShfqt57X/4Ktq\n7lwHnmH6RcGhc+P7WBc5iO/S94YAdIp8xOT3pf9JAoGAE0QkqJUY+5Mgr+fBO0VN\nV72ZoPveGpW+De59uhKAOnu1zljQCUtk59m6+DXfm0tNYKtawa5n8iN71Zh+s62x\nXSt3pYi1Y5CCCmv8Y4BhwIcPwXKk3zEvLgSHVTpC0bayA9aSO4bbZgVXa5w+Z0w/\nvvfp9DWo1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----"
           }
         }
       }
@@ -150,6 +161,34 @@
           "traits": {
             "smithy.api#documentation": "This is the time the certificate was uploaded."
           }
+        },
+        "ca_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ca"
+          }
+        },
+        "certificates_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "certificates"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "private_key": {
+          "target": "com.cloudflare.mtls_certificates#CreateResponsePrivateKey",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -171,7 +210,7 @@
           "uri": "/accounts/{account_id}/mtls_certificates",
           "code": 200
         },
-        "smithy.api#documentation": "Upload a certificate that you want to use with mTLS-enabled Cloudflare services, such as Bring Your Own CA (BYO-CA) for mTLS. To create certificates issued by the Cloudflare managed CA, use the [Create Client Certificate endpoint](/api/resources/client_certificates/methods/create/)."
+        "smithy.api#documentation": "Upload a certificate that you want to use with mTLS-enabled Cloudflare services, such as Bring Your Own CA (BYO-CA) for mTLS. To create certificates issued by the Cloudflare managed CA, use the [Create Client Certificate endpoint](https://developers.cloudflare.com/api/resources/client%5Fcertificates/methods/create/)."
       }
     },
     "com.cloudflare.mtls_certificates#DeleteRequest": {
@@ -438,7 +477,7 @@
           "uri": "/accounts/{account_id}/mtls_certificates/{mtls_certificate_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Fetches a single mTLS certificate uploaded to your account. To get a certificate issued by the Cloudflare managed CA, use the [Client Certificate Details endpoint](/api/resources/client_certificates/methods/get/).",
+        "smithy.api#documentation": "Fetches a single mTLS certificate uploaded to your account. To get a certificate issued by the Cloudflare managed CA, use the [Client Certificate Details endpoint](https://developers.cloudflare.com/api/resources/client%5Fcertificates/methods/get/).",
         "smithy.api#readonly": {}
       }
     },
@@ -617,7 +656,7 @@
           "uri": "/accounts/{account_id}/mtls_certificates",
           "code": 200
         },
-        "smithy.api#documentation": "Lists all mTLS certificates uploaded to your account, such as Bring Your Own CA (BYO-CA) for mTLS. To list certificates issued by the Cloudflare managed CA, use the [List Client Certificates endpoint](/api/resources/client_certificates/methods/list/).",
+        "smithy.api#documentation": "Lists all mTLS certificates uploaded to your account, such as Bring Your Own CA (BYO-CA) for mTLS. To list certificates issued by the Cloudflare managed CA, use the [List Client Certificates endpoint](https://developers.cloudflare.com/api/resources/client%5Fcertificates/methods/list/).",
         "smithy.api#readonly": {}
       }
     },

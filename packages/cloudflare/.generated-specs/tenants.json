@@ -117,6 +117,9 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "customer_id": {
+          "target": "smithy.api#String"
         }
       }
     },
@@ -132,12 +135,14 @@
         "cdate": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
         "edate": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
@@ -194,9 +199,6 @@
           "traits": {
             "smithy.api#required": {}
           }
-        },
-        "customer_id": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -291,50 +293,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.tenants#AccountsListResultItemSettings": {
-      "type": "structure",
-      "members": {
-        "abuse_contact_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "access_approval_expiry": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "api_access_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "default_nameservers": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated.",
-            "smithy.api#required": {}
-          }
-        },
-        "enforce_twofactor": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "use_account_custom_ns_by_default": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated.",
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.tenants#AccountsListResultItemType": {
+    "com.cloudflare.tenants#AccountsListResultItemSettingsType": {
       "type": "enum",
       "members": {
         "STANDARD": {
@@ -351,6 +310,71 @@
         }
       }
     },
+    "com.cloudflare.tenants#AccountsListResultItemSettingsTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.tenants#AccountsListResultItemSettings": {
+      "type": "structure",
+      "members": {
+        "abuse_contact_email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "access_approval_expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time",
+            "smithy.api#required": {}
+          }
+        },
+        "api_access_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Deprecateddefault_nameservers": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use DNS Settings instead. Deprecated.",
+            "smithy.api#required": {}
+          }
+        },
+        "enforce_twofactor": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Deprecateduse_account_custom_ns_by_default": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Use DNS Settings instead. Deprecated.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.tenants#AccountsListResultItemSettingsType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.tenants#AccountsListResultItemSettingsTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Account tags, present only when `include_tags=true` is requested."
+          }
+        }
+      }
+    },
     "com.cloudflare.tenants#AccountsListResultItem": {
       "type": "structure",
       "members": {
@@ -363,6 +387,7 @@
         "created_on": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
@@ -374,12 +399,6 @@
         },
         "settings": {
           "target": "com.cloudflare.tenants#AccountsListResultItemSettings",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.tenants#AccountsListResultItemType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -524,7 +543,7 @@
         }
       }
     },
-    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType": {
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType": {
       "type": "enum",
       "members": {
         "MAX_COUNT": {
@@ -535,24 +554,7 @@
         }
       }
     },
-    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "value": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType": {
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType2": {
       "type": "enum",
       "members": {
         "BOOL": {
@@ -563,24 +565,7 @@
         }
       }
     },
-    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "value": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType": {
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType3": {
       "type": "enum",
       "members": {
         "VALUE": {
@@ -591,31 +576,49 @@
         }
       }
     },
-    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation": {
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocation": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType",
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "value": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
-    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocation": {
-      "type": "union",
-      "members": {
-        "OrganizationsAPIMaxCountAllocation": {
-          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation"
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "OrganizationsAPIBoolAllocation object { type, value }",
+            "smithy.api#required": {}
+          }
         },
-        "OrganizationsAPIBoolAllocation": {
-          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation"
+        "type_2": {
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType2",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "type"
+          }
         },
-        "OrganizationsAPINullAllocation": {
-          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation"
+        "value_2": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "OrganizationsAPINullAllocation object { type, value }",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType3",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "value_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "value"
+          }
         }
       }
     },
@@ -636,6 +639,7 @@
         "allocation": {
           "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocation",
           "traits": {
+            "smithy.api#documentation": "OrganizationsAPIMaxCountAllocation object { type, value }",
             "smithy.api#required": {}
           }
         },

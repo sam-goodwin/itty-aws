@@ -110,6 +110,12 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.iam#OauthClientsCreateRequestOptionalScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.iam#OauthClientsCreateRequestPostLogoutRedirectUrisList": {
       "type": "list",
       "member": {
@@ -184,7 +190,13 @@
         "logo_uri": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "URL of the client's logo."
+            "smithy.api#documentation": "URL of the client’s logo."
+          }
+        },
+        "optional_scopes": {
+          "target": "com.cloudflare.iam#OauthClientsCreateRequestOptionalScopesList",
+          "traits": {
+            "smithy.api#documentation": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional."
           }
         },
         "policy_uri": {
@@ -302,6 +314,12 @@
         "target": "com.cloudflare.iam#OauthClientsCreateResponseGrantTypesItem"
       }
     },
+    "com.cloudflare.iam#OauthClientsCreateResponseOptionalScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.iam#OauthClientsCreateResponsePostLogoutRedirectUrisList": {
       "type": "list",
       "member": {
@@ -368,6 +386,17 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "client_secret_post"
+          }
+        }
+      }
+    },
+    "com.cloudflare.iam#OauthClientsCreateResponseTosUri": {
+      "type": "enum",
+      "members": {
+        "HTTPS_EXAMPLE_COM_TOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https://example.com/tos"
           }
         }
       }
@@ -440,7 +469,13 @@
         "logo_uri": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "URL of the client's logo."
+            "smithy.api#documentation": "URL of the client’s logo."
+          }
+        },
+        "optional_scopes": {
+          "target": "com.cloudflare.iam#OauthClientsCreateResponseOptionalScopesList",
+          "traits": {
+            "smithy.api#documentation": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional."
           }
         },
         "policy_uri": {
@@ -495,6 +530,105 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Timestamp when the OAuth client was last updated."
+          }
+        },
+        "client_name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "client_name"
+          }
+        },
+        "grant_types_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"authorization_code\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "grant_types"
+          }
+        },
+        "redirect_uris_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"https://example.com/callback\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "redirect_uris"
+          }
+        },
+        "response_types_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"code\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "response_types"
+          }
+        },
+        "scopes_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"account.read\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "scopes"
+          }
+        },
+        "token_endpoint_auth_method_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "token_endpoint_auth_method"
+          }
+        },
+        "allowed_cors_origins_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"https://example.com\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "allowed_cors_origins"
+          }
+        },
+        "client_uri_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "client_uri"
+          }
+        },
+        "logo_uri_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "logo_uri"
+          }
+        },
+        "optional_scopes_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"account.write\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "optional_scopes"
+          }
+        },
+        "policy_uri_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "policy_uri"
+          }
+        },
+        "post_logout_redirect_uris_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"https://example.com/logout\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "post_logout_redirect_uris"
+          }
+        },
+        "tos_uri_2": {
+          "target": "com.cloudflare.iam#OauthClientsCreateResponseTosUri",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "tos_uri"
           }
         }
       },
@@ -752,6 +886,12 @@
         "target": "com.cloudflare.iam#OauthClientsGetResponseGrantTypesItem"
       }
     },
+    "com.cloudflare.iam#OauthClientsGetResponseOptionalScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.iam#OauthClientsGetResponsePostLogoutRedirectUrisList": {
       "type": "list",
       "member": {
@@ -884,7 +1024,13 @@
         "logo_uri": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "URL of the client's logo."
+            "smithy.api#documentation": "URL of the client’s logo."
+          }
+        },
+        "optional_scopes": {
+          "target": "com.cloudflare.iam#OauthClientsGetResponseOptionalScopesList",
+          "traits": {
+            "smithy.api#documentation": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional."
           }
         },
         "policy_uri": {
@@ -1073,6 +1219,12 @@
         "target": "com.cloudflare.iam#OauthClientsListResultItemGrantTypesItem"
       }
     },
+    "com.cloudflare.iam#OauthClientsListResultItemOptionalScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.iam#OauthClientsListResultItemPostLogoutRedirectUrisList": {
       "type": "list",
       "member": {
@@ -1205,7 +1357,13 @@
         "logo_uri": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "URL of the client's logo."
+            "smithy.api#documentation": "URL of the client’s logo."
+          }
+        },
+        "optional_scopes": {
+          "target": "com.cloudflare.iam#OauthClientsListResultItemOptionalScopesList",
+          "traits": {
+            "smithy.api#documentation": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional."
           }
         },
         "policy_uri": {
@@ -1388,6 +1546,12 @@
         "target": "com.cloudflare.iam#OauthClientsUpdateRequestGrantTypesItem"
       }
     },
+    "com.cloudflare.iam#OauthClientsUpdateRequestOptionalScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.iam#OauthClientsUpdateRequestPostLogoutRedirectUrisList": {
       "type": "list",
       "member": {
@@ -1515,7 +1679,13 @@
         "logo_uri": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "URL of the client's logo."
+            "smithy.api#documentation": "URL of the client’s logo."
+          }
+        },
+        "optional_scopes": {
+          "target": "com.cloudflare.iam#OauthClientsUpdateRequestOptionalScopesList",
+          "traits": {
+            "smithy.api#documentation": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional."
           }
         },
         "policy_uri": {
@@ -1663,6 +1833,12 @@
         "target": "com.cloudflare.iam#OauthClientsUpdateResponseGrantTypesItem"
       }
     },
+    "com.cloudflare.iam#OauthClientsUpdateResponseOptionalScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.iam#OauthClientsUpdateResponsePostLogoutRedirectUrisList": {
       "type": "list",
       "member": {
@@ -1733,6 +1909,17 @@
         }
       }
     },
+    "com.cloudflare.iam#OauthClientsUpdateResponseVisibility2": {
+      "type": "enum",
+      "members": {
+        "PUBLIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "public"
+          }
+        }
+      }
+    },
     "com.cloudflare.iam#OauthClientsUpdateResponse": {
       "type": "structure",
       "members": {
@@ -1795,7 +1982,13 @@
         "logo_uri": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "URL of the client's logo."
+            "smithy.api#documentation": "URL of the client’s logo."
+          }
+        },
+        "optional_scopes": {
+          "target": "com.cloudflare.iam#OauthClientsUpdateResponseOptionalScopesList",
+          "traits": {
+            "smithy.api#documentation": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional."
           }
         },
         "policy_uri": {
@@ -1850,6 +2043,112 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Timestamp when the OAuth client was last updated."
+          }
+        },
+        "allowed_cors_origins_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"https://example.com\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "allowed_cors_origins"
+          }
+        },
+        "client_name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "client_name"
+          }
+        },
+        "client_uri_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "client_uri"
+          }
+        },
+        "grant_types_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"authorization_code\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "grant_types"
+          }
+        },
+        "logo_uri_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "logo_uri"
+          }
+        },
+        "optional_scopes_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"account.write\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "optional_scopes"
+          }
+        },
+        "policy_uri_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "policy_uri"
+          }
+        },
+        "post_logout_redirect_uris_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"https://example.com/logout\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "post_logout_redirect_uris"
+          }
+        },
+        "redirect_uris_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"https://example.com/callback\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "redirect_uris"
+          }
+        },
+        "response_types_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"code\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "response_types"
+          }
+        },
+        "scopes_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"account.read\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "scopes"
+          }
+        },
+        "token_endpoint_auth_method_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "token_endpoint_auth_method"
+          }
+        },
+        "tos_uri_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "tos_uri"
+          }
+        },
+        "visibility_2": {
+          "target": "com.cloudflare.iam#OauthClientsUpdateResponseVisibility2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "visibility"
           }
         }
       },
@@ -2224,7 +2523,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.iam#ResourceGroupsCreateResponseScopeItemObjectsItem": {
+    "com.cloudflare.iam#ResourceGroupsCreateResponseScopeObjectsItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -2236,13 +2535,13 @@
         }
       }
     },
-    "com.cloudflare.iam#ResourceGroupsCreateResponseScopeItemObjectsList": {
+    "com.cloudflare.iam#ResourceGroupsCreateResponseScopeObjectsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.iam#ResourceGroupsCreateResponseScopeItemObjectsItem"
+        "target": "com.cloudflare.iam#ResourceGroupsCreateResponseScopeObjectsItem"
       }
     },
-    "com.cloudflare.iam#ResourceGroupsCreateResponseScopeItem": {
+    "com.cloudflare.iam#ResourceGroupsCreateResponseScope": {
       "type": "structure",
       "members": {
         "key": {
@@ -2253,18 +2552,12 @@
           }
         },
         "objects": {
-          "target": "com.cloudflare.iam#ResourceGroupsCreateResponseScopeItemObjectsList",
+          "target": "com.cloudflare.iam#ResourceGroupsCreateResponseScopeObjectsList",
           "traits": {
             "smithy.api#documentation": "A list of scope objects for additional context.",
             "smithy.api#required": {}
           }
         }
-      }
-    },
-    "com.cloudflare.iam#ResourceGroupsCreateResponseScopeList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.iam#ResourceGroupsCreateResponseScopeItem"
       }
     },
     "com.cloudflare.iam#ResourceGroupsCreateResponseMeta": {
@@ -2289,9 +2582,9 @@
           }
         },
         "scope": {
-          "target": "com.cloudflare.iam#ResourceGroupsCreateResponseScopeList",
+          "target": "com.cloudflare.iam#ResourceGroupsCreateResponseScope",
           "traits": {
-            "smithy.api#documentation": "The scope associated to the resource group",
+            "smithy.api#documentation": "A scope is a combination of scope objects which provides additional context.",
             "smithy.api#required": {}
           }
         },
@@ -2305,6 +2598,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Name of the resource group."
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "scope_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "scope"
           }
         }
       },
@@ -2412,7 +2719,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.iam#ResourceGroupsGetResponseScopeItemObjectsItem": {
+    "com.cloudflare.iam#ResourceGroupsGetResponseScopeObjectsItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -2424,13 +2731,13 @@
         }
       }
     },
-    "com.cloudflare.iam#ResourceGroupsGetResponseScopeItemObjectsList": {
+    "com.cloudflare.iam#ResourceGroupsGetResponseScopeObjectsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.iam#ResourceGroupsGetResponseScopeItemObjectsItem"
+        "target": "com.cloudflare.iam#ResourceGroupsGetResponseScopeObjectsItem"
       }
     },
-    "com.cloudflare.iam#ResourceGroupsGetResponseScopeItem": {
+    "com.cloudflare.iam#ResourceGroupsGetResponseScope": {
       "type": "structure",
       "members": {
         "key": {
@@ -2441,18 +2748,12 @@
           }
         },
         "objects": {
-          "target": "com.cloudflare.iam#ResourceGroupsGetResponseScopeItemObjectsList",
+          "target": "com.cloudflare.iam#ResourceGroupsGetResponseScopeObjectsList",
           "traits": {
             "smithy.api#documentation": "A list of scope objects for additional context.",
             "smithy.api#required": {}
           }
         }
-      }
-    },
-    "com.cloudflare.iam#ResourceGroupsGetResponseScopeList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.iam#ResourceGroupsGetResponseScopeItem"
       }
     },
     "com.cloudflare.iam#ResourceGroupsGetResponseMeta": {
@@ -2477,9 +2778,9 @@
           }
         },
         "scope": {
-          "target": "com.cloudflare.iam#ResourceGroupsGetResponseScopeList",
+          "target": "com.cloudflare.iam#ResourceGroupsGetResponseScope",
           "traits": {
-            "smithy.api#documentation": "The scope associated to the resource group",
+            "smithy.api#documentation": "A scope is a combination of scope objects which provides additional context.",
             "smithy.api#required": {}
           }
         },
@@ -2549,7 +2850,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.iam#ResourceGroupsListResultItemScopeItemObjectsItem": {
+    "com.cloudflare.iam#ResourceGroupsListResultItemScopeObjectsItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -2561,13 +2862,13 @@
         }
       }
     },
-    "com.cloudflare.iam#ResourceGroupsListResultItemScopeItemObjectsList": {
+    "com.cloudflare.iam#ResourceGroupsListResultItemScopeObjectsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.iam#ResourceGroupsListResultItemScopeItemObjectsItem"
+        "target": "com.cloudflare.iam#ResourceGroupsListResultItemScopeObjectsItem"
       }
     },
-    "com.cloudflare.iam#ResourceGroupsListResultItemScopeItem": {
+    "com.cloudflare.iam#ResourceGroupsListResultItemScope": {
       "type": "structure",
       "members": {
         "key": {
@@ -2578,18 +2879,12 @@
           }
         },
         "objects": {
-          "target": "com.cloudflare.iam#ResourceGroupsListResultItemScopeItemObjectsList",
+          "target": "com.cloudflare.iam#ResourceGroupsListResultItemScopeObjectsList",
           "traits": {
             "smithy.api#documentation": "A list of scope objects for additional context.",
             "smithy.api#required": {}
           }
         }
-      }
-    },
-    "com.cloudflare.iam#ResourceGroupsListResultItemScopeList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.iam#ResourceGroupsListResultItemScopeItem"
       }
     },
     "com.cloudflare.iam#ResourceGroupsListResultItemMeta": {
@@ -2614,9 +2909,9 @@
           }
         },
         "scope": {
-          "target": "com.cloudflare.iam#ResourceGroupsListResultItemScopeList",
+          "target": "com.cloudflare.iam#ResourceGroupsListResultItemScope",
           "traits": {
-            "smithy.api#documentation": "The scope associated to the resource group",
+            "smithy.api#documentation": "A scope is a combination of scope objects which provides additional context.",
             "smithy.api#required": {}
           }
         },
@@ -2746,7 +3041,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeItemObjectsItem": {
+    "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeObjectsItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -2758,13 +3053,13 @@
         }
       }
     },
-    "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeItemObjectsList": {
+    "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeObjectsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeItemObjectsItem"
+        "target": "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeObjectsItem"
       }
     },
-    "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeItem": {
+    "com.cloudflare.iam#ResourceGroupsUpdateResponseScope": {
       "type": "structure",
       "members": {
         "key": {
@@ -2775,18 +3070,12 @@
           }
         },
         "objects": {
-          "target": "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeItemObjectsList",
+          "target": "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeObjectsList",
           "traits": {
             "smithy.api#documentation": "A list of scope objects for additional context.",
             "smithy.api#required": {}
           }
         }
-      }
-    },
-    "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeItem"
       }
     },
     "com.cloudflare.iam#ResourceGroupsUpdateResponseMeta": {
@@ -2797,6 +3086,17 @@
         },
         "value": {
           "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.iam#ResourceGroupsUpdateResponseName": {
+      "type": "enum",
+      "members": {
+        "UPDATEDRESOURCEGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UpdatedResourceGroup"
+          }
         }
       }
     },
@@ -2811,9 +3111,9 @@
           }
         },
         "scope": {
-          "target": "com.cloudflare.iam#ResourceGroupsUpdateResponseScopeList",
+          "target": "com.cloudflare.iam#ResourceGroupsUpdateResponseScope",
           "traits": {
-            "smithy.api#documentation": "The scope associated to the resource group",
+            "smithy.api#documentation": "A scope is a combination of scope objects which provides additional context.",
             "smithy.api#required": {}
           }
         },
@@ -2827,6 +3127,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Name of the resource group."
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.iam#ResourceGroupsUpdateResponseName",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
           }
         }
       },
@@ -2877,13 +3185,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.iam#SsoBeginVerificationResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.iam#SsoBeginVerificationResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.iam#SsoBeginVerificationResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.iam#SsoBeginVerificationResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.iam#SsoBeginVerificationResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.iam#SsoBeginVerification": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.iam#SsoBeginVerificationRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.iam#SsoBeginVerificationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3010,6 +3416,20 @@
         },
         "verification": {
           "target": "com.cloudflare.iam#SsoCreateResponseVerification"
+        },
+        "email_domain_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "email_domain"
+          }
+        },
+        "begin_verification": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -3674,7 +4094,7 @@
         "target": "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem": {
+    "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -3686,13 +4106,13 @@
         }
       }
     },
-    "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList": {
+    "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeObjectsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem"
+        "target": "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeObjectsItem"
       }
     },
-    "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItem": {
+    "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScope": {
       "type": "structure",
       "members": {
         "key": {
@@ -3703,18 +4123,12 @@
           }
         },
         "objects": {
-          "target": "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList",
+          "target": "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeObjectsList",
           "traits": {
             "smithy.api#documentation": "A list of scope objects for additional context.",
             "smithy.api#required": {}
           }
         }
-      }
-    },
-    "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItem"
       }
     },
     "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta": {
@@ -3725,6 +4139,17 @@
         },
         "value": {
           "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemName": {
+      "type": "enum",
+      "members": {
+        "MY_NEW_USER_GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "My New User Group"
+          }
         }
       }
     },
@@ -3739,9 +4164,9 @@
           }
         },
         "scope": {
-          "target": "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeList",
+          "target": "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemScope",
           "traits": {
-            "smithy.api#documentation": "The scope associated to the resource group",
+            "smithy.api#documentation": "A scope is a combination of scope objects which provides additional context.",
             "smithy.api#required": {}
           }
         },
@@ -3755,6 +4180,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Name of the resource group."
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.iam#UserGroupsCreateResponsePoliciesItemResourceGroupsItemName",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
           }
         }
       }
@@ -4000,7 +4433,7 @@
         "target": "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem": {
+    "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeObjectsItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -4012,13 +4445,13 @@
         }
       }
     },
-    "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList": {
+    "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeObjectsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem"
+        "target": "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeObjectsItem"
       }
     },
-    "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItem": {
+    "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScope": {
       "type": "structure",
       "members": {
         "key": {
@@ -4029,18 +4462,12 @@
           }
         },
         "objects": {
-          "target": "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList",
+          "target": "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeObjectsList",
           "traits": {
             "smithy.api#documentation": "A list of scope objects for additional context.",
             "smithy.api#required": {}
           }
         }
-      }
-    },
-    "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItem"
       }
     },
     "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta": {
@@ -4065,9 +4492,9 @@
           }
         },
         "scope": {
-          "target": "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeList",
+          "target": "com.cloudflare.iam#UserGroupsGetResponsePoliciesItemResourceGroupsItemScope",
           "traits": {
-            "smithy.api#documentation": "The scope associated to the resource group",
+            "smithy.api#documentation": "A scope is a combination of scope objects which provides additional context.",
             "smithy.api#required": {}
           }
         },
@@ -4320,7 +4747,7 @@
         "target": "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem": {
+    "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeObjectsItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -4332,13 +4759,13 @@
         }
       }
     },
-    "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsList": {
+    "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeObjectsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem"
+        "target": "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeObjectsItem"
       }
     },
-    "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItem": {
+    "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScope": {
       "type": "structure",
       "members": {
         "key": {
@@ -4349,18 +4776,12 @@
           }
         },
         "objects": {
-          "target": "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsList",
+          "target": "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeObjectsList",
           "traits": {
             "smithy.api#documentation": "A list of scope objects for additional context.",
             "smithy.api#required": {}
           }
         }
-      }
-    },
-    "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItem"
       }
     },
     "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta": {
@@ -4385,9 +4806,9 @@
           }
         },
         "scope": {
-          "target": "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeList",
+          "target": "com.cloudflare.iam#UserGroupsListResultItemPoliciesItemResourceGroupsItemScope",
           "traits": {
-            "smithy.api#documentation": "The scope associated to the resource group",
+            "smithy.api#documentation": "A scope is a combination of scope objects which provides additional context.",
             "smithy.api#required": {}
           }
         },
@@ -4710,7 +5131,7 @@
         "target": "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem": {
+    "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeObjectsItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -4722,13 +5143,13 @@
         }
       }
     },
-    "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList": {
+    "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem"
+        "target": "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeObjectsItem"
       }
     },
-    "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItem": {
+    "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScope": {
       "type": "structure",
       "members": {
         "key": {
@@ -4739,18 +5160,12 @@
           }
         },
         "objects": {
-          "target": "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList",
+          "target": "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList",
           "traits": {
             "smithy.api#documentation": "A list of scope objects for additional context.",
             "smithy.api#required": {}
           }
         }
-      }
-    },
-    "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItem"
       }
     },
     "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta": {
@@ -4761,6 +5176,17 @@
         },
         "value": {
           "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemName": {
+      "type": "enum",
+      "members": {
+        "MY_NEW_USER_GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "My New User Group"
+          }
         }
       }
     },
@@ -4775,9 +5201,9 @@
           }
         },
         "scope": {
-          "target": "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeList",
+          "target": "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScope",
           "traits": {
-            "smithy.api#documentation": "The scope associated to the resource group",
+            "smithy.api#documentation": "A scope is a combination of scope objects which provides additional context.",
             "smithy.api#required": {}
           }
         },
@@ -4791,6 +5217,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Name of the resource group."
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.iam#UserGroupsUpdateResponsePoliciesItemResourceGroupsItemName",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
           }
         }
       }
@@ -4962,6 +5396,17 @@
         }
       }
     },
+    "com.cloudflare.iam#UserGroupsMembersCreateResultItemId": {
+      "type": "enum",
+      "members": {
+        "_023E105F4ECEF8AD9CA31A8372D0C353": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "023e105f4ecef8ad9ca31a8372d0c353"
+          }
+        }
+      }
+    },
     "com.cloudflare.iam#UserGroupsMembersCreateResultItem": {
       "type": "structure",
       "members": {
@@ -4981,7 +5426,15 @@
         "status": {
           "target": "com.cloudflare.iam#UserGroupsMembersCreateResultItemStatus",
           "traits": {
-            "smithy.api#documentation": "The member's status in the account."
+            "smithy.api#documentation": "The member’s status in the account."
+          }
+        },
+        "id_2": {
+          "target": "com.cloudflare.iam#UserGroupsMembersCreateResultItemId",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "id"
           }
         }
       }
@@ -5092,7 +5545,7 @@
         "status": {
           "target": "com.cloudflare.iam#UserGroupsMembersDeleteResponseStatus",
           "traits": {
-            "smithy.api#documentation": "The member's status in the account."
+            "smithy.api#documentation": "The member’s status in the account."
           }
         }
       },
@@ -5186,13 +5639,13 @@
         "first_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "User's first name."
+            "smithy.api#documentation": "User’s first name."
           }
         },
         "last_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "User's last name."
+            "smithy.api#documentation": "User’s last name."
           }
         }
       }
@@ -5222,7 +5675,7 @@
         "status": {
           "target": "com.cloudflare.iam#UserGroupsMembersGetResponseStatus",
           "traits": {
-            "smithy.api#documentation": "The member's status in the account."
+            "smithy.api#documentation": "The member’s status in the account."
           }
         },
         "user": {
@@ -5360,7 +5813,7 @@
         "status": {
           "target": "com.cloudflare.iam#UserGroupsMembersListResultItemStatus",
           "traits": {
-            "smithy.api#documentation": "The member's status in the account."
+            "smithy.api#documentation": "The member’s status in the account."
           }
         }
       }
@@ -5470,6 +5923,17 @@
         }
       }
     },
+    "com.cloudflare.iam#UserGroupsMembersUpdateResultItemId": {
+      "type": "enum",
+      "members": {
+        "_023E105F4ECEF8AD9CA31A8372D0C353": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "023e105f4ecef8ad9ca31a8372d0c353"
+          }
+        }
+      }
+    },
     "com.cloudflare.iam#UserGroupsMembersUpdateResultItem": {
       "type": "structure",
       "members": {
@@ -5489,7 +5953,15 @@
         "status": {
           "target": "com.cloudflare.iam#UserGroupsMembersUpdateResultItemStatus",
           "traits": {
-            "smithy.api#documentation": "The member's status in the account."
+            "smithy.api#documentation": "The member’s status in the account."
+          }
+        },
+        "id_2": {
+          "target": "com.cloudflare.iam#UserGroupsMembersUpdateResultItemId",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "id"
           }
         }
       }

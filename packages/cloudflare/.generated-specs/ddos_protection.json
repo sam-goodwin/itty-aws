@@ -33,13 +33,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistBulkDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistBulkDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistBulkDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistBulkDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -88,6 +186,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistCreateResponsePrefix": {
+      "type": "enum",
+      "members": {
+        "PREFIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "prefix"
+          }
+        }
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistCreateResponse": {
       "type": "structure",
       "members": {
@@ -132,6 +241,28 @@
             "smithy.api#documentation": "The allowlist prefix in CIDR format.",
             "smithy.api#required": {}
           }
+        },
+        "comment_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "comment"
+          }
+        },
+        "enabled_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "enabled"
+          }
+        },
+        "prefix_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistCreateResponsePrefix",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "prefix"
+          }
         }
       },
       "traits": {
@@ -170,14 +301,14 @@
         "direction": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to 'ASC'.",
+            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to ‘ASC’.",
             "smithy.api#httpQuery": "direction"
           }
         },
         "order": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The field to order by. Defaults to 'prefix'.",
+            "smithy.api#documentation": "The field to order by. Defaults to ‘prefix’.",
             "smithy.api#httpQuery": "order"
           }
         },
@@ -310,13 +441,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistItemsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistItemsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistItemsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionAllowlistItemsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -681,13 +910,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesBulkDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesBulkDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesBulkDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesBulkDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -736,6 +1063,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesCreateResponsePrefix": {
+      "type": "enum",
+      "members": {
+        "_192_0_2_0_24": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "192.0.2.0/24"
+          }
+        }
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesCreateResponse": {
       "type": "structure",
       "members": {
@@ -780,6 +1118,28 @@
             "smithy.api#documentation": "The prefix in CIDR format.",
             "smithy.api#required": {}
           }
+        },
+        "comment_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "comment"
+          }
+        },
+        "excluded_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "excluded"
+          }
+        },
+        "prefix_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesCreateResponsePrefix",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "prefix"
+          }
         }
       },
       "traits": {
@@ -818,14 +1178,14 @@
         "direction": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to 'ASC'.",
+            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to ‘ASC’.",
             "smithy.api#httpQuery": "direction"
           }
         },
         "order": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The field to order by. Defaults to 'prefix'.",
+            "smithy.api#documentation": "The field to order by. Defaults to ‘prefix’.",
             "smithy.api#httpQuery": "order"
           }
         },
@@ -958,13 +1318,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesItemsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesItemsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesItemsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesItemsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1202,7 +1660,16 @@
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "HTTP",
             "smithy.api#required": {}
+          }
+        },
+        "enabled_2": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "enabled"
           }
         }
       },
@@ -1250,6 +1717,7 @@
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "HTTP",
             "smithy.api#required": {}
           }
         }
@@ -1293,13 +1761,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersBulkDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersBulkDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1332,13 +1898,24 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersCreateResponseMode": {
+      "type": "enum",
+      "members": {
+        "MODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mode"
+          }
+        }
       }
     },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersCreateResponse": {
@@ -1368,7 +1945,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -1377,6 +1954,21 @@
           "traits": {
             "smithy.api#documentation": "The last modification timestamp of the expression filter.",
             "smithy.api#required": {}
+          }
+        },
+        "expression_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "expression"
+          }
+        },
+        "mode_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersCreateResponseMode",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "mode"
           }
         }
       },
@@ -1416,21 +2008,21 @@
         "direction": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to 'ASC'.",
+            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to ‘ASC’.",
             "smithy.api#httpQuery": "direction"
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode of the filters to get. Optional. Valid values: 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode of the filters to get. Optional. Valid values: ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#httpQuery": "mode"
           }
         },
         "order": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The field to order by. Defaults to 'prefix'.",
+            "smithy.api#documentation": "The field to order by. Defaults to ‘prefix’.",
             "smithy.api#httpQuery": "order"
           }
         },
@@ -1480,7 +2072,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -1556,13 +2148,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1602,12 +2292,23 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The new mode for the filter. Optional. Must be one of 'enabled', 'disabled', 'monitoring'."
+            "smithy.api#documentation": "The new mode for the filter. Optional. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsEditResponseExpression": {
+      "type": "enum",
+      "members": {
+        "IP_DST_IN_192_0_2_0_24_198_51_100_0_24_AND_TCP_SRCPORT_IN_80_443_10000_65535": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip.dst in { 192.0.2.0/24 198.51.100.0/24 } and tcp.srcport in { 80 443 10000..65535 }"
+          }
+        }
       }
     },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsEditResponse": {
@@ -1637,7 +2338,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -1646,6 +2347,14 @@
           "traits": {
             "smithy.api#documentation": "The last modification timestamp of the expression filter.",
             "smithy.api#required": {}
+          }
+        },
+        "expression_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionFiltersItemsEditResponseExpression",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "expression"
           }
         }
       },
@@ -1722,7 +2431,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -1773,13 +2482,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesBulkDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesBulkDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1805,47 +2612,58 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'.",
+            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’.",
             "smithy.api#required": {}
           }
         },
         "mitigation_type": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The type of mitigation. Must be one of 'challenge' or 'retransmit'. Optional. Defaults to 'challenge'."
+            "smithy.api#documentation": "The type of mitigation. Must be one of ‘challenge’ or ‘retransmit’. Optional. Defaults to ‘challenge’."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesCreateResponseScope": {
+      "type": "enum",
+      "members": {
+        "SCOPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scope"
+          }
+        }
       }
     },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesCreateResponse": {
@@ -1861,7 +2679,7 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
@@ -1875,14 +2693,14 @@
         "mitigation_type": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'.",
+            "smithy.api#documentation": "The type of mitigation for SYN Protection. Must be one of ‘challenge’ or ‘retransmit’.",
             "smithy.api#required": {}
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -1896,22 +2714,58 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'.",
+            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’.",
             "smithy.api#required": {}
+          }
+        },
+        "burst_sensitivity_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "burst_sensitivity"
+          }
+        },
+        "mode_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "mode"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "rate_sensitivity_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "rate_sensitivity"
+          }
+        },
+        "scope_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesCreateResponseScope",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "scope"
           }
         }
       },
@@ -1951,14 +2805,14 @@
         "direction": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to 'ASC'.",
+            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to ‘ASC’.",
             "smithy.api#httpQuery": "direction"
           }
         },
         "order": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The field to order by. Defaults to 'prefix'.",
+            "smithy.api#documentation": "The field to order by. Defaults to ‘prefix’.",
             "smithy.api#httpQuery": "order"
           }
         },
@@ -1994,7 +2848,7 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
@@ -2008,14 +2862,14 @@
         "mitigation_type": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'.",
+            "smithy.api#documentation": "The type of mitigation for SYN Protection. Must be one of ‘challenge’ or ‘retransmit’.",
             "smithy.api#required": {}
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -2029,21 +2883,21 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'.",
+            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’.",
             "smithy.api#required": {}
           }
         }
@@ -2112,13 +2966,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesItemsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesItemsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2152,25 +3104,25 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The new burst sensitivity. Optional. Must be one of 'low', 'medium', 'high'."
+            "smithy.api#documentation": "The new burst sensitivity. Optional. Must be one of ‘low’, ‘medium’, ‘high’."
           }
         },
         "mitigation_type": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The new mitigation type. Optional. Must be one of 'challenge' or 'retransmit'."
+            "smithy.api#documentation": "The new mitigation type. Optional. Must be one of ‘challenge’ or ‘retransmit’."
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The new mode for SYN Protection. Optional. Must be one of 'enabled', 'disabled', 'monitoring'."
+            "smithy.api#documentation": "The new mode for SYN Protection. Optional. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’."
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The new rate sensitivity. Optional. Must be one of 'low', 'medium', 'high'."
+            "smithy.api#documentation": "The new rate sensitivity. Optional. Must be one of ‘low’, ‘medium’, ‘high’."
           }
         }
       },
@@ -2191,7 +3143,7 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
@@ -2205,14 +3157,14 @@
         "mitigation_type": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'.",
+            "smithy.api#documentation": "The type of mitigation for SYN Protection. Must be one of ‘challenge’ or ‘retransmit’.",
             "smithy.api#required": {}
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -2226,21 +3178,21 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'.",
+            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’.",
             "smithy.api#required": {}
           }
         }
@@ -2304,7 +3256,7 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
@@ -2318,14 +3270,14 @@
         "mitigation_type": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'.",
+            "smithy.api#documentation": "The type of mitigation for SYN Protection. Must be one of ‘challenge’ or ‘retransmit’.",
             "smithy.api#required": {}
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -2339,21 +3291,21 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'.",
+            "smithy.api#documentation": "The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’.",
             "smithy.api#required": {}
           }
         }
@@ -2397,13 +3349,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2436,13 +3486,24 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponseMode": {
+      "type": "enum",
+      "members": {
+        "MODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mode"
+          }
+        }
       }
     },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponse": {
@@ -2472,7 +3533,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -2481,6 +3542,21 @@
           "traits": {
             "smithy.api#documentation": "The last modification timestamp of the expression filter.",
             "smithy.api#required": {}
+          }
+        },
+        "expression_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "expression"
+          }
+        },
+        "mode_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponseMode",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "mode"
           }
         }
       },
@@ -2520,21 +3596,21 @@
         "direction": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to 'ASC'.",
+            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to ‘ASC’.",
             "smithy.api#httpQuery": "direction"
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode of the filters to get. Optional. Valid values: 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode of the filters to get. Optional. Valid values: ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#httpQuery": "mode"
           }
         },
         "order": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The field to order by. Defaults to 'prefix'.",
+            "smithy.api#documentation": "The field to order by. Defaults to ‘prefix’.",
             "smithy.api#httpQuery": "order"
           }
         },
@@ -2584,7 +3660,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -2660,13 +3736,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2706,12 +3880,23 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The new mode for the filter. Optional. Must be one of 'enabled', 'disabled', 'monitoring'."
+            "smithy.api#documentation": "The new mode for the filter. Optional. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponseExpression": {
+      "type": "enum",
+      "members": {
+        "IP_DST_IN_192_0_2_0_24_198_51_100_0_24_AND_TCP_SRCPORT_IN_80_443_10000_65535": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip.dst in { 192.0.2.0/24 198.51.100.0/24 } and tcp.srcport in { 80 443 10000..65535 }"
+          }
+        }
       }
     },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponse": {
@@ -2741,7 +3926,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -2750,6 +3935,14 @@
           "traits": {
             "smithy.api#documentation": "The last modification timestamp of the expression filter.",
             "smithy.api#required": {}
+          }
+        },
+        "expression_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponseExpression",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "expression"
           }
         }
       },
@@ -2826,7 +4019,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -2877,13 +4070,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesBulkDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2909,28 +4200,28 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for the TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for the TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
@@ -2946,6 +4237,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponseScope": {
+      "type": "enum",
+      "members": {
+        "SCOPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scope"
+          }
+        }
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponse": {
       "type": "structure",
       "members": {
@@ -2959,7 +4261,7 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
@@ -2973,7 +4275,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -2987,22 +4289,58 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'.",
+            "smithy.api#documentation": "The scope for the TCP Flow Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’.",
             "smithy.api#required": {}
+          }
+        },
+        "burst_sensitivity_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "burst_sensitivity"
+          }
+        },
+        "mode_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "mode"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "rate_sensitivity_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "rate_sensitivity"
+          }
+        },
+        "scope_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponseScope",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "scope"
           }
         }
       },
@@ -3042,14 +4380,14 @@
         "direction": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to 'ASC'.",
+            "smithy.api#documentation": "The direction of ordering (ASC or DESC). Defaults to ‘ASC’.",
             "smithy.api#httpQuery": "direction"
           }
         },
         "order": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The field to order by. Defaults to 'prefix'.",
+            "smithy.api#documentation": "The field to order by. Defaults to ‘prefix’.",
             "smithy.api#httpQuery": "order"
           }
         },
@@ -3085,7 +4423,7 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
@@ -3099,7 +4437,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -3113,21 +4451,21 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'.",
+            "smithy.api#documentation": "The scope for the TCP Flow Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’.",
             "smithy.api#required": {}
           }
         }
@@ -3196,13 +4534,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesItemsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3236,19 +4672,19 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The new burst sensitivity. Optional. Must be one of 'low', 'medium', 'high'."
+            "smithy.api#documentation": "The new burst sensitivity. Optional. Must be one of ‘low’, ‘medium’, ‘high’."
           }
         },
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The new mode for TCP Flow Protection. Optional. Must be one of 'enabled', 'disabled', 'monitoring'."
+            "smithy.api#documentation": "The new mode for TCP Flow Protection. Optional. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’."
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The new rate sensitivity. Optional. Must be one of 'low', 'medium', 'high'."
+            "smithy.api#documentation": "The new rate sensitivity. Optional. Must be one of ‘low’, ‘medium’, ‘high’."
           }
         }
       },
@@ -3269,7 +4705,7 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
@@ -3283,7 +4719,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -3297,21 +4733,21 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'.",
+            "smithy.api#documentation": "The scope for the TCP Flow Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’.",
             "smithy.api#required": {}
           }
         }
@@ -3375,7 +4811,7 @@
         "burst_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
@@ -3389,7 +4825,7 @@
         "mode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'.",
+            "smithy.api#documentation": "The mode for TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’.",
             "smithy.api#required": {}
           }
         },
@@ -3403,21 +4839,21 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'.",
+            "smithy.api#documentation": "The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’.",
             "smithy.api#required": {}
           }
         },
         "rate_sensitivity": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The rate sensitivity. Must be one of 'low', 'medium', 'high'.",
+            "smithy.api#documentation": "The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’.",
             "smithy.api#required": {}
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'.",
+            "smithy.api#documentation": "The scope for the TCP Flow Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’.",
             "smithy.api#required": {}
           }
         }

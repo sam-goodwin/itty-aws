@@ -83,7 +83,7 @@
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled."
+            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare’s DNS will not respond with IP addresses on an Address Map until the map is enabled."
           }
         },
         "ips": {
@@ -104,7 +104,10 @@
       "type": "structure",
       "members": {
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "ip": {
           "target": "smithy.api#String",
@@ -141,7 +144,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "identifier": {
           "target": "smithy.api#String",
@@ -161,6 +167,17 @@
       "type": "list",
       "member": {
         "target": "com.cloudflare.addressing#AddressMapsCreateResponseMembershipsItem"
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsCreateResponseKind": {
+      "type": "enum",
+      "members": {
+        "ZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone"
+          }
+        }
       }
     },
     "com.cloudflare.addressing#AddressMapsCreateResponse": {
@@ -185,7 +202,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "default_sni": {
           "target": "smithy.api#String",
@@ -202,7 +222,7 @@
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled."
+            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare’s DNS will not respond with IP addresses on an Address Map until the map is enabled."
           }
         },
         "ips": {
@@ -218,7 +238,53 @@
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "description_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
+          }
+        },
+        "enabled_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "enabled"
+          }
+        },
+        "ips_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"192.0.2.1\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ips"
+          }
+        },
+        "memberships_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "memberships"
+          }
+        },
+        "identifier": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.addressing#AddressMapsCreateResponseKind",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -267,13 +333,153 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#AddressMapsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsDeleteResponseTotalPages": {
+      "type": "intEnum",
+      "members": {
+        "_100": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 100
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#AddressMapsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#AddressMapsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_pages": {
+          "target": "com.cloudflare.addressing#AddressMapsDeleteResponseTotalPages",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#AddressMapsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#AddressMapsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#AddressMapsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -319,7 +525,7 @@
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled."
+            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare’s DNS will not respond with IP addresses on an Address Map until the map is enabled."
           }
         }
       },
@@ -349,7 +555,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "default_sni": {
           "target": "smithy.api#String",
@@ -366,11 +575,36 @@
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled."
+            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare’s DNS will not respond with IP addresses on an Address Map until the map is enabled."
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "default_sni_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "default_sni"
+          }
+        },
+        "description_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
+          }
+        },
+        "enabled_2": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "enabled"
+          }
         }
       },
       "traits": {
@@ -423,7 +657,10 @@
       "type": "structure",
       "members": {
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "ip": {
           "target": "smithy.api#String",
@@ -460,7 +697,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "identifier": {
           "target": "smithy.api#String",
@@ -504,7 +744,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "default_sni": {
           "target": "smithy.api#String",
@@ -521,7 +764,7 @@
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled."
+            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare’s DNS will not respond with IP addresses on an Address Map until the map is enabled."
           }
         },
         "ips": {
@@ -537,7 +780,10 @@
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         }
       },
       "traits": {
@@ -601,7 +847,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "default_sni": {
           "target": "smithy.api#String",
@@ -618,11 +867,14 @@
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled."
+            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare’s DNS will not respond with IP addresses on an Address Map until the map is enabled."
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         }
       }
     },
@@ -697,13 +949,153 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#AddressMapsAccountsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsAccountsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsAccountsDeleteResponseTotalPages": {
+      "type": "intEnum",
+      "members": {
+        "_100": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 100
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsAccountsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#AddressMapsAccountsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#AddressMapsAccountsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_pages": {
+          "target": "com.cloudflare.addressing#AddressMapsAccountsDeleteResponseTotalPages",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#AddressMapsAccountsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#AddressMapsAccountsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#AddressMapsAccountsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -747,13 +1139,153 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#AddressMapsAccountsUpdateResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsAccountsUpdateResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsAccountsUpdateResponseTotalPages": {
+      "type": "intEnum",
+      "members": {
+        "_100": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 100
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsAccountsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#AddressMapsAccountsUpdateResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#AddressMapsAccountsUpdateResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_pages": {
+          "target": "com.cloudflare.addressing#AddressMapsAccountsUpdateResponseTotalPages",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#AddressMapsAccountsUpdate": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#AddressMapsAccountsUpdateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#AddressMapsAccountsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -797,13 +1329,153 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#AddressMapsIpsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsIpsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsIpsDeleteResponseTotalPages": {
+      "type": "intEnum",
+      "members": {
+        "_100": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 100
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsIpsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#AddressMapsIpsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#AddressMapsIpsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_pages": {
+          "target": "com.cloudflare.addressing#AddressMapsIpsDeleteResponseTotalPages",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#AddressMapsIpsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#AddressMapsIpsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#AddressMapsIpsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -847,13 +1519,153 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#AddressMapsIpsUpdateResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsIpsUpdateResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsIpsUpdateResponseTotalPages": {
+      "type": "intEnum",
+      "members": {
+        "_100": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 100
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsIpsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#AddressMapsIpsUpdateResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#AddressMapsIpsUpdateResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_pages": {
+          "target": "com.cloudflare.addressing#AddressMapsIpsUpdateResponseTotalPages",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#AddressMapsIpsUpdate": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#AddressMapsIpsUpdateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#AddressMapsIpsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -897,13 +1709,153 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#AddressMapsZonesDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsZonesDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsZonesDeleteResponseTotalPages": {
+      "type": "intEnum",
+      "members": {
+        "_100": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 100
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsZonesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#AddressMapsZonesDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#AddressMapsZonesDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_pages": {
+          "target": "com.cloudflare.addressing#AddressMapsZonesDeleteResponseTotalPages",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#AddressMapsZonesDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#AddressMapsZonesDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#AddressMapsZonesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -947,13 +1899,153 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#AddressMapsZonesUpdateResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsZonesUpdateResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsZonesUpdateResponseTotalPages": {
+      "type": "intEnum",
+      "members": {
+        "_100": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 100
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsZonesUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#AddressMapsZonesUpdateResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#AddressMapsZonesUpdateResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_pages": {
+          "target": "com.cloudflare.addressing#AddressMapsZonesUpdateResponseTotalPages",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#AddressMapsZonesUpdate": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#AddressMapsZonesUpdateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#AddressMapsZonesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1003,7 +2095,10 @@
           }
         },
         "created": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "filename": {
           "target": "smithy.api#String",
@@ -1142,6 +2237,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesCreateResponseLoaDocumentId": {
+      "type": "enum",
+      "members": {
+        "D933B1530BC56C9953CF8CE166DA8004": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "d933b1530bc56c9953cf8ce166da8004"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesCreateResponse": {
       "type": "structure",
       "members": {
@@ -1157,16 +2263,16 @@
             "smithy.api#documentation": "Identifier of a Cloudflare account."
           }
         },
-        "advertised": {
+        "Deprecatedadvertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
-        "advertised_modified_at": {
+        "Deprecatedadvertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
         "approved": {
@@ -1188,7 +2294,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "delegate_loa_creation": {
           "target": "smithy.api#Boolean",
@@ -1215,18 +2324,21 @@
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
-        },
-        "on_demand_enabled": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+            "smithy.api#documentation": "formatdate-time"
           }
         },
-        "on_demand_locked": {
+        "Deprecatedon_demand_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether advertisement status of the prefix is locked, meaning it cannot be changed."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
+          }
+        },
+        "Deprecatedon_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
         "ownership_validation_state": {
@@ -1245,6 +2357,42 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "asn_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "asn"
+          }
+        },
+        "cidr_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "cidr"
+          }
+        },
+        "delegate_loa_creation_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "delegate_loa_creation"
+          }
+        },
+        "description_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
+          }
+        },
+        "loa_document_id_2": {
+          "target": "com.cloudflare.addressing#PrefixesCreateResponseLoaDocumentId",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "loa_document_id"
           }
         }
       },
@@ -1294,13 +2442,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#PrefixesDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#PrefixesDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#PrefixesDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#PrefixesDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#PrefixesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1343,6 +2589,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesEditResponseDescription": {
+      "type": "enum",
+      "members": {
+        "INTERNAL_TEST_PREFIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Internal test prefix"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesEditResponse": {
       "type": "structure",
       "members": {
@@ -1358,16 +2615,16 @@
             "smithy.api#documentation": "Identifier of a Cloudflare account."
           }
         },
-        "advertised": {
+        "Deprecatedadvertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
-        "advertised_modified_at": {
+        "Deprecatedadvertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
         "approved": {
@@ -1389,7 +2646,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "delegate_loa_creation": {
           "target": "smithy.api#Boolean",
@@ -1416,18 +2676,21 @@
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
-        },
-        "on_demand_enabled": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+            "smithy.api#documentation": "formatdate-time"
           }
         },
-        "on_demand_locked": {
+        "Deprecatedon_demand_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether advertisement status of the prefix is locked, meaning it cannot be changed."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
+          }
+        },
+        "Deprecatedon_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
         "ownership_validation_state": {
@@ -1446,6 +2709,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "description_2": {
+          "target": "com.cloudflare.addressing#PrefixesEditResponseDescription",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
           }
         }
       },
@@ -1510,16 +2781,16 @@
             "smithy.api#documentation": "Identifier of a Cloudflare account."
           }
         },
-        "advertised": {
+        "Deprecatedadvertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
-        "advertised_modified_at": {
+        "Deprecatedadvertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
         "approved": {
@@ -1541,7 +2812,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "delegate_loa_creation": {
           "target": "smithy.api#Boolean",
@@ -1568,18 +2842,21 @@
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
-        },
-        "on_demand_enabled": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+            "smithy.api#documentation": "formatdate-time"
           }
         },
-        "on_demand_locked": {
+        "Deprecatedon_demand_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether advertisement status of the prefix is locked, meaning it cannot be changed."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
+          }
+        },
+        "Deprecatedon_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
         "ownership_validation_state": {
@@ -1655,16 +2932,16 @@
             "smithy.api#documentation": "Identifier of a Cloudflare account."
           }
         },
-        "advertised": {
+        "Deprecatedadvertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
-        "advertised_modified_at": {
+        "Deprecatedadvertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
         "approved": {
@@ -1686,7 +2963,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "delegate_loa_creation": {
           "target": "smithy.api#Boolean",
@@ -1713,18 +2993,21 @@
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
-        },
-        "on_demand_enabled": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+            "smithy.api#documentation": "formatdate-time"
           }
         },
-        "on_demand_locked": {
+        "Deprecatedon_demand_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether advertisement status of the prefix is locked, meaning it cannot be changed."
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
+          }
+        },
+        "Deprecatedon_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
           }
         },
         "ownership_validation_state": {
@@ -1786,6 +3069,164 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesValidateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Cloudflare account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "prefix_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of an IP Prefix.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.addressing#PrefixesValidateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of an IP Prefix."
+          }
+        },
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Cloudflare account."
+          }
+        },
+        "Deprecatedadvertised": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
+          }
+        },
+        "Deprecatedadvertised_modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
+          }
+        },
+        "approved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Approval state of the prefix (P = pending, V = active)."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Autonomous System Number (ASN) the prefix will be advertised under."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "delegate_loa_creation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the prefix."
+          }
+        },
+        "irr_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "loa_document_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the uploaded LOA document."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "Deprecatedon_demand_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
+          }
+        },
+        "Deprecatedon_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefer the BGP Prefixes API instead, which allows for advertising multiple BGP routes within a single IP Prefix."
+          }
+        },
+        "ownership_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "ownership_validation_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Token provided to demonstrate ownership of the prefix."
+          }
+        },
+        "rpki_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.addressing#PrefixesValidate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.addressing#PrefixesValidateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.addressing#PrefixesValidateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/addressing/prefixes/{prefix_id}/validate",
+          "code": 200
+        },
+        "smithy.api#documentation": "Triggers a new prefix validation. The checks are run asynchronously and include IRR, RPKI, and prefix ownership."
+      }
+    },
     "com.cloudflare.addressing#PrefixesAdvertisementStatusEditRequest": {
       "type": "structure",
       "members": {
@@ -1808,7 +3249,7 @@
         "advertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If",
+            "smithy.api#documentation": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If `false`, the BGP route is withdrawn.",
             "smithy.api#required": {}
           }
         }
@@ -1823,13 +3264,21 @@
         "advertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If"
+            "smithy.api#documentation": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If `false`, the BGP route is withdrawn."
           }
         },
         "advertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not ‘null’ if on demand is enabled."
+          }
+        },
+        "advertised_2": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "advertised"
           }
         }
       },
@@ -1852,7 +3301,7 @@
           "uri": "/accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/status",
           "code": 200
         },
-        "smithy.api#documentation": "Advertise or withdraw the BGP route for a prefix. **Deprecated:** Prefer the BGP Prefixes endpoints, which additionally allow for advertising and withdrawing subnets of an IP prefix."
+        "smithy.api#documentation": "Advertise or withdraw the BGP route for a prefix."
       }
     },
     "com.cloudflare.addressing#PrefixesAdvertisementStatusGetRequest": {
@@ -1885,13 +3334,13 @@
         "advertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If"
+            "smithy.api#documentation": "Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If `false`, the BGP route is withdrawn."
           }
         },
         "advertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not ‘null’ if on demand is enabled."
           }
         }
       },
@@ -1914,7 +3363,7 @@
           "uri": "/accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/status",
           "code": 200
         },
-        "smithy.api#documentation": "View the current advertisement state for a prefix. **Deprecated:** Prefer the BGP Prefixes endpoints, which additionally allow for advertising and withdrawing subnets of an IP prefix.",
+        "smithy.api#documentation": "View the current advertisement state for a prefix.",
         "smithy.api#readonly": {}
       }
     },
@@ -1972,13 +3421,13 @@
         "advertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not ‘null’ if on demand is enabled."
           }
         },
         "advertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not ‘null’ if on demand is enabled."
           }
         },
         "on_demand_enabled": {
@@ -1991,6 +3440,17 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesCreateResponseCidr": {
+      "type": "enum",
+      "members": {
+        "_192_0_2_0_24": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "192.0.2.0/24"
           }
         }
       }
@@ -2032,13 +3492,27 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "on_demand": {
           "target": "com.cloudflare.addressing#PrefixesBgpPrefixesCreateResponseOnDemand"
+        },
+        "cidr_2": {
+          "target": "com.cloudflare.addressing#PrefixesBgpPrefixesCreateResponseCidr",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "cidr"
+          }
         }
       },
       "traits": {
@@ -2141,13 +3615,13 @@
         "advertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not ‘null’ if on demand is enabled."
           }
         },
         "advertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not ‘null’ if on demand is enabled."
           }
         },
         "on_demand_enabled": {
@@ -2201,13 +3675,34 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "on_demand": {
           "target": "com.cloudflare.addressing#PrefixesBgpPrefixesEditResponseOnDemand"
+        },
+        "asn_prepend_count_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "asn_prepend_count"
+          }
+        },
+        "auto_advertise_withdraw_2": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "auto_advertise_withdraw"
+          }
         }
       },
       "traits": {
@@ -2287,13 +3782,13 @@
         "advertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not ‘null’ if on demand is enabled."
           }
         },
         "advertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not ‘null’ if on demand is enabled."
           }
         },
         "on_demand_enabled": {
@@ -2347,10 +3842,16 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "on_demand": {
           "target": "com.cloudflare.addressing#PrefixesBgpPrefixesGetResponseOnDemand"
@@ -2426,13 +3927,13 @@
         "advertised": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not ‘null’ if on demand is enabled."
           }
         },
         "advertised_modified_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not ‘null’ if on demand is enabled."
           }
         },
         "on_demand_enabled": {
@@ -2486,10 +3987,16 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "on_demand": {
           "target": "com.cloudflare.addressing#PrefixesBgpPrefixesListResultItemOnDemand"
@@ -2573,6 +4080,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesDelegationsCreateResponseDelegatedAccountId": {
+      "type": "enum",
+      "members": {
+        "B1946AC92492D2347C6235B4D2611184": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "b1946ac92492d2347c6235b4d2611184"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesDelegationsCreateResponse": {
       "type": "structure",
       "members": {
@@ -2589,7 +4107,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "delegated_account_id": {
           "target": "smithy.api#String",
@@ -2598,12 +4119,30 @@
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "parent_prefix_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Identifier of an IP Prefix."
+          }
+        },
+        "cidr_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "cidr"
+          }
+        },
+        "delegated_account_id_2": {
+          "target": "com.cloudflare.addressing#PrefixesDelegationsCreateResponseDelegatedAccountId",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "delegated_account_id"
           }
         }
       },
@@ -2734,7 +4273,10 @@
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "delegated_account_id": {
           "target": "smithy.api#String",
@@ -2743,7 +4285,10 @@
           }
         },
         "modified_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "parent_prefix_id": {
           "target": "smithy.api#String",
@@ -2821,7 +4366,7 @@
         "service_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the",
+            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the **List Services** endpoint.",
             "smithy.api#required": {}
           }
         }
@@ -2858,6 +4403,17 @@
         }
       }
     },
+    "com.cloudflare.addressing#PrefixesServiceBindingsCreateResponseServiceId": {
+      "type": "enum",
+      "members": {
+        "_2DB684EE7CA04E159946FD05B99E1BCD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2db684ee7ca04e159946fd05b99e1bcd"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesServiceBindingsCreateResponse": {
       "type": "structure",
       "members": {
@@ -2876,19 +4432,34 @@
         "provisioning": {
           "target": "com.cloudflare.addressing#PrefixesServiceBindingsCreateResponseProvisioning",
           "traits": {
-            "smithy.api#documentation": "Status of a Service Binding's deployment to the Cloudflare network"
+            "smithy.api#documentation": "Status of a Service Binding’s deployment to the Cloudflare network"
           }
         },
         "service_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the"
+            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the **List Services** endpoint."
           }
         },
         "service_name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Name of a service running on the Cloudflare network"
+          }
+        },
+        "cidr_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "cidr"
+          }
+        },
+        "service_id_2": {
+          "target": "com.cloudflare.addressing#PrefixesServiceBindingsCreateResponseServiceId",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "service_id"
           }
         }
       },
@@ -2911,7 +4482,7 @@
           "uri": "/accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings",
           "code": 200
         },
-        "smithy.api#documentation": "Creates a new Service Binding, routing traffic to IPs within the given CIDR to a service running on Cloudflare's network. **NOTE:** The first Service Binding created for an IP Prefix must exactly match the IP Prefix's CIDR. Subsequent Service Bindings may be created with a more-specific CIDR. Refer to the  [Service Bindings Documentation](https://developers.cloudflare.com/byoip/service-bindings/) for compatibility details."
+        "smithy.api#documentation": "Creates a new Service Binding, routing traffic to IPs within the given CIDR to a service running on Cloudflare’s network. **NOTE:** The first Service Binding created for an IP Prefix must exactly match the IP Prefix’s CIDR. Subsequent Service Bindings may be created with a more-specific CIDR. Refer to the [Service Bindings Documentation](https://developers.cloudflare.com/byoip/service-bindings/) for compatibility details."
       }
     },
     "com.cloudflare.addressing#PrefixesServiceBindingsDeleteRequest": {
@@ -2946,13 +4517,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesServiceBindingsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesServiceBindingsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesServiceBindingsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#PrefixesServiceBindingsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#PrefixesServiceBindingsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#PrefixesServiceBindingsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#PrefixesServiceBindingsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#PrefixesServiceBindingsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3042,13 +4711,13 @@
         "provisioning": {
           "target": "com.cloudflare.addressing#PrefixesServiceBindingsGetResponseProvisioning",
           "traits": {
-            "smithy.api#documentation": "Status of a Service Binding's deployment to the Cloudflare network"
+            "smithy.api#documentation": "Status of a Service Binding’s deployment to the Cloudflare network"
           }
         },
         "service_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the"
+            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the **List Services** endpoint."
           }
         },
         "service_name": {
@@ -3151,13 +4820,13 @@
         "provisioning": {
           "target": "com.cloudflare.addressing#PrefixesServiceBindingsListResultItemProvisioning",
           "traits": {
-            "smithy.api#documentation": "Status of a Service Binding's deployment to the Cloudflare network"
+            "smithy.api#documentation": "Status of a Service Binding’s deployment to the Cloudflare network"
           }
         },
         "service_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the"
+            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the **List Services** endpoint."
           }
         },
         "service_name": {
@@ -3243,6 +4912,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#RegionalHostnamesCreateResponseRouting": {
+      "type": "enum",
+      "members": {
+        "DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#RegionalHostnamesCreateResponse": {
       "type": "structure",
       "members": {
@@ -3272,6 +4952,28 @@
           "traits": {
             "smithy.api#documentation": "Configure which routing method to use for the regional hostname",
             "smithy.api#required": {}
+          }
+        },
+        "hostname_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "hostname"
+          }
+        },
+        "region_key_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "region_key"
+          }
+        },
+        "routing_2": {
+          "target": "com.cloudflare.addressing#RegionalHostnamesCreateResponseRouting",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "routing"
           }
         }
       },
@@ -3321,13 +5023,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#RegionalHostnamesDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#RegionalHostnamesDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#RegionalHostnamesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.addressing#RegionalHostnamesDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.addressing#RegionalHostnamesDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.addressing#RegionalHostnamesDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.addressing#RegionalHostnamesDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.addressing#RegionalHostnamesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3370,6 +5170,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#RegionalHostnamesEditResponseRegionKey": {
+      "type": "enum",
+      "members": {
+        "CA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ca"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#RegionalHostnamesEditResponse": {
       "type": "structure",
       "members": {
@@ -3399,6 +5210,14 @@
           "traits": {
             "smithy.api#documentation": "Configure which routing method to use for the regional hostname",
             "smithy.api#required": {}
+          }
+        },
+        "region_key_2": {
+          "target": "com.cloudflare.addressing#RegionalHostnamesEditResponseRegionKey",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "region_key"
           }
         }
       },
@@ -3685,7 +5504,7 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the"
+            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the **List Services** endpoint."
           }
         },
         "name": {
@@ -3792,6 +5611,9 @@
         },
         {
           "target": "com.cloudflare.addressing#PrefixesList"
+        },
+        {
+          "target": "com.cloudflare.addressing#PrefixesValidate"
         },
         {
           "target": "com.cloudflare.addressing#PrefixesAdvertisementStatusEdit"

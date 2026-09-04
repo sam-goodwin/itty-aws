@@ -106,14 +106,14 @@
         "hostnames": {
           "target": "com.cloudflare.origin_ca_certificates#CreateRequestHostnamesList",
           "traits": {
-            "smithy.api#documentation": "Array of hostnames or wildcard names bound to the certificate.",
+            "smithy.api#documentation": "Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
             "smithy.api#required": {}
           }
         },
         "request_type": {
           "target": "com.cloudflare.origin_ca_certificates#CreateRequestRequestType",
           "traits": {
-            "smithy.api#documentation": "Signature type desired on certificate (\"origin-rsa\" (rsa), \"origin-ecc\" (ecdsa), or \"keyless-certificate\" (for Keyless SSL servers).",
+            "smithy.api#documentation": "Signature type desired on certificate (“origin-rsa” (rsa), “origin-ecc” (ecdsa), or “keyless-certificate” (for Keyless SSL servers).",
             "smithy.api#required": {}
           }
         },
@@ -204,6 +204,17 @@
         }
       }
     },
+    "com.cloudflare.origin_ca_certificates#CreateResponseRequestedValidity2": {
+      "type": "intEnum",
+      "members": {
+        "_5475": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 5475
+          }
+        }
+      }
+    },
     "com.cloudflare.origin_ca_certificates#CreateResponse": {
       "type": "structure",
       "members": {
@@ -217,14 +228,14 @@
         "hostnames": {
           "target": "com.cloudflare.origin_ca_certificates#CreateResponseHostnamesList",
           "traits": {
-            "smithy.api#documentation": "Array of hostnames or wildcard names bound to the certificate.",
+            "smithy.api#documentation": "Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
             "smithy.api#required": {}
           }
         },
         "request_type": {
           "target": "com.cloudflare.origin_ca_certificates#CreateResponseRequestType",
           "traits": {
-            "smithy.api#documentation": "Signature type desired on certificate (\"origin-rsa\" (rsa), \"origin-ecc\" (ecdsa), or \"keyless-certificate\" (for Keyless SSL servers).",
+            "smithy.api#documentation": "Signature type desired on certificate (“origin-rsa” (rsa), “origin-ecc” (ecdsa), or “keyless-certificate” (for Keyless SSL servers).",
             "smithy.api#required": {}
           }
         },
@@ -251,6 +262,36 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the certificate will expire."
+          }
+        },
+        "csr_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "csr"
+          }
+        },
+        "hostnames_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"example.com\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "hostnames"
+          }
+        },
+        "request_type_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "request_type"
+          }
+        },
+        "requested_validity_2": {
+          "target": "com.cloudflare.origin_ca_certificates#CreateResponseRequestedValidity2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "requested_validity"
           }
         }
       },
@@ -436,14 +477,14 @@
         "hostnames": {
           "target": "com.cloudflare.origin_ca_certificates#GetResponseHostnamesList",
           "traits": {
-            "smithy.api#documentation": "Array of hostnames or wildcard names bound to the certificate.",
+            "smithy.api#documentation": "Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
             "smithy.api#required": {}
           }
         },
         "request_type": {
           "target": "com.cloudflare.origin_ca_certificates#GetResponseRequestType",
           "traits": {
-            "smithy.api#documentation": "Signature type desired on certificate (\"origin-rsa\" (rsa), \"origin-ecc\" (ecdsa), or \"keyless-certificate\" (for Keyless SSL servers).",
+            "smithy.api#documentation": "Signature type desired on certificate (“origin-rsa” (rsa), “origin-ecc” (ecdsa), or “keyless-certificate” (for Keyless SSL servers).",
             "smithy.api#required": {}
           }
         },
@@ -629,14 +670,14 @@
         "hostnames": {
           "target": "com.cloudflare.origin_ca_certificates#ListResultItemHostnamesList",
           "traits": {
-            "smithy.api#documentation": "Array of hostnames or wildcard names bound to the certificate.",
+            "smithy.api#documentation": "Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
             "smithy.api#required": {}
           }
         },
         "request_type": {
           "target": "com.cloudflare.origin_ca_certificates#ListResultItemRequestType",
           "traits": {
-            "smithy.api#documentation": "Signature type desired on certificate (\"origin-rsa\" (rsa), \"origin-ecc\" (ecdsa), or \"keyless-certificate\" (for Keyless SSL servers).",
+            "smithy.api#documentation": "Signature type desired on certificate (“origin-rsa” (rsa), “origin-ecc” (ecdsa), or “keyless-certificate” (for Keyless SSL servers).",
             "smithy.api#required": {}
           }
         },

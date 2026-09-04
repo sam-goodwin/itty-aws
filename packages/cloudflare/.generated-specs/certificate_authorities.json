@@ -43,14 +43,17 @@
     "com.cloudflare.certificate_authorities#HostnameAssociationsGetResponseHostnamesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.certificate_authorities#HostnameAssociationsGetResponse": {
       "type": "structure",
       "members": {
         "hostnames": {
-          "target": "com.cloudflare.certificate_authorities#HostnameAssociationsGetResponseHostnamesList"
+          "target": "com.cloudflare.certificate_authorities#HostnameAssociationsGetResponseHostnamesList",
+          "traits": {
+            "smithy.api#documentation": "HTTP"
+          }
         }
       },
       "traits": {
@@ -79,7 +82,7 @@
     "com.cloudflare.certificate_authorities#HostnameAssociationsUpdateRequestHostnamesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.certificate_authorities#HostnameAssociationsUpdateRequest": {
@@ -110,14 +113,17 @@
     "com.cloudflare.certificate_authorities#HostnameAssociationsUpdateResponseHostnamesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.certificate_authorities#HostnameAssociationsUpdateResponse": {
       "type": "structure",
       "members": {
         "hostnames": {
-          "target": "com.cloudflare.certificate_authorities#HostnameAssociationsUpdateResponseHostnamesList"
+          "target": "com.cloudflare.certificate_authorities#HostnameAssociationsUpdateResponseHostnamesList",
+          "traits": {
+            "smithy.api#documentation": "HTTP"
+          }
         }
       },
       "traits": {

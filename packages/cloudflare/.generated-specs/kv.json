@@ -164,7 +164,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map": {
+    "com.cloudflare.kv#NamespacesBulkGetResultValuesValueCase3Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -173,7 +173,7 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultValues": {
+    "com.cloudflare.kv#NamespacesBulkGetResultValuesValue": {
       "type": "union",
       "members": {
         "String": {
@@ -185,23 +185,21 @@
         "Boolean": {
           "target": "smithy.api#Boolean"
         },
-        "NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map": {
-          "target": "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map"
+        "NamespacesBulkGetResultValuesValueCase3Map": {
+          "target": "com.cloudflare.kv#NamespacesBulkGetResultValuesValueCase3Map"
         }
       }
     },
-    "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResult": {
-      "type": "structure",
-      "members": {
-        "values": {
-          "target": "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultValues",
-          "traits": {
-            "smithy.api#documentation": "Requested keys are paired with their values in an object."
-          }
-        }
+    "com.cloudflare.kv#NamespacesBulkGetResultValuesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.cloudflare.kv#NamespacesBulkGetResultValuesValue"
       }
     },
-    "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue": {
+    "com.cloudflare.kv#NamespacesBulkGetResultValuesValue2": {
       "type": "structure",
       "members": {
         "metadata": {
@@ -226,34 +224,30 @@
         }
       }
     },
-    "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap": {
+    "com.cloudflare.kv#NamespacesBulkGetResultValuesMap2": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue"
-      }
-    },
-    "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata": {
-      "type": "structure",
-      "members": {
-        "values": {
-          "target": "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap",
-          "traits": {
-            "smithy.api#documentation": "Requested keys are paired with their values and metadata in an object."
-          }
-        }
+        "target": "com.cloudflare.kv#NamespacesBulkGetResultValuesValue2"
       }
     },
     "com.cloudflare.kv#NamespacesBulkGetResult": {
-      "type": "union",
+      "type": "structure",
       "members": {
-        "WorkersKVBulkGetResult": {
-          "target": "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResult"
+        "values": {
+          "target": "com.cloudflare.kv#NamespacesBulkGetResultValuesMap",
+          "traits": {
+            "smithy.api#documentation": "Requested keys are paired with their values in an object."
+          }
         },
-        "WorkersKVBulkGetResultWithMetadata": {
-          "target": "com.cloudflare.kv#NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata"
+        "values_2": {
+          "target": "com.cloudflare.kv#NamespacesBulkGetResultValuesMap2",
+          "traits": {
+            "smithy.api#documentation": "Requested keys are paired with their values and metadata in an object.",
+            "smithy.api#jsonName": "values"
+          }
         }
       }
     },
@@ -295,7 +289,7 @@
         "key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.",
+            "smithy.api#documentation": "A key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.",
             "smithy.api#required": {}
           }
         },
@@ -309,7 +303,7 @@
         "base64": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images."
+            "smithy.api#documentation": "Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn’t otherwise be valid JSON strings, such as images."
           }
         },
         "expiration": {
@@ -414,6 +408,29 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.kv#NamespacesCreateRequestJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us"
+          }
+        }
+      }
+    },
     "com.cloudflare.kv#NamespacesCreateRequest": {
       "type": "structure",
       "members": {
@@ -431,10 +448,50 @@
             "smithy.api#documentation": "A human-readable string name for a Namespace.",
             "smithy.api#required": {}
           }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.kv#NamespacesCreateRequestJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.kv#NamespacesCreateResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us"
+          }
+        }
+      }
+    },
+    "com.cloudflare.kv#NamespacesCreateResponseJurisdiction2": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        }
       }
     },
     "com.cloudflare.kv#NamespacesCreateResponse": {
@@ -454,10 +511,31 @@
             "smithy.api#required": {}
           }
         },
+        "jurisdiction": {
+          "target": "com.cloudflare.kv#NamespacesCreateResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time."
+          }
+        },
         "supports_url_encoding": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\"."
+            "smithy.api#documentation": "True if keys written on the URL will be URL-decoded before storing. For example, if set to “true”, a key written on the URL as “%3F” will be stored as ”?”."
+          }
+        },
+        "title_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "title"
+          }
+        },
+        "jurisdiction_2": {
+          "target": "com.cloudflare.kv#NamespacesCreateResponseJurisdiction2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "jurisdiction"
           }
         }
       },
@@ -549,6 +627,29 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.kv#NamespacesGetResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us"
+          }
+        }
+      }
+    },
     "com.cloudflare.kv#NamespacesGetResponse": {
       "type": "structure",
       "members": {
@@ -566,10 +667,16 @@
             "smithy.api#required": {}
           }
         },
+        "jurisdiction": {
+          "target": "com.cloudflare.kv#NamespacesGetResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time."
+          }
+        },
         "supports_url_encoding": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\"."
+            "smithy.api#documentation": "True if keys written on the URL will be URL-decoded before storing. For example, if set to “true”, a key written on the URL as “%3F” will be stored as ”?”."
           }
         }
       },
@@ -674,6 +781,29 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.kv#NamespacesListResultItemJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us"
+          }
+        }
+      }
+    },
     "com.cloudflare.kv#NamespacesListResultItem": {
       "type": "structure",
       "members": {
@@ -691,10 +821,16 @@
             "smithy.api#required": {}
           }
         },
+        "jurisdiction": {
+          "target": "com.cloudflare.kv#NamespacesListResultItemJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time."
+          }
+        },
         "supports_url_encoding": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\"."
+            "smithy.api#documentation": "True if keys written on the URL will be URL-decoded before storing. For example, if set to “true”, a key written on the URL as “%3F” will be stored as ”?”."
           }
         }
       }
@@ -769,6 +905,29 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.kv#NamespacesUpdateResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us"
+          }
+        }
+      }
+    },
     "com.cloudflare.kv#NamespacesUpdateResponse": {
       "type": "structure",
       "members": {
@@ -786,10 +945,16 @@
             "smithy.api#required": {}
           }
         },
+        "jurisdiction": {
+          "target": "com.cloudflare.kv#NamespacesUpdateResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time."
+          }
+        },
         "supports_url_encoding": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\"."
+            "smithy.api#documentation": "True if keys written on the URL will be URL-decoded before storing. For example, if set to “true”, a key written on the URL as “%3F” will be stored as ”?”."
           }
         }
       },
@@ -812,7 +977,7 @@
           "uri": "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Modifies a namespace's title.",
+        "smithy.api#documentation": "Modifies a namespace’s title.",
         "smithy.api#idempotent": {}
       }
     },
@@ -963,7 +1128,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map": {
+    "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesValueCase3Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -972,7 +1137,7 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues": {
+    "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesValue": {
       "type": "union",
       "members": {
         "String": {
@@ -984,23 +1149,21 @@
         "Boolean": {
           "target": "smithy.api#Boolean"
         },
-        "NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map": {
-          "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map"
+        "NamespacesKeysBulkGetResultValuesValueCase3Map": {
+          "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesValueCase3Map"
         }
       }
     },
-    "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResult": {
-      "type": "structure",
-      "members": {
-        "values": {
-          "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues",
-          "traits": {
-            "smithy.api#documentation": "Requested keys are paired with their values in an object."
-          }
-        }
+    "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesValue"
       }
     },
-    "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue": {
+    "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesValue2": {
       "type": "structure",
       "members": {
         "metadata": {
@@ -1025,34 +1188,30 @@
         }
       }
     },
-    "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap": {
+    "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesMap2": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue"
-      }
-    },
-    "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata": {
-      "type": "structure",
-      "members": {
-        "values": {
-          "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap",
-          "traits": {
-            "smithy.api#documentation": "Requested keys are paired with their values and metadata in an object."
-          }
-        }
+        "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesValue2"
       }
     },
     "com.cloudflare.kv#NamespacesKeysBulkGetResult": {
-      "type": "union",
+      "type": "structure",
       "members": {
-        "WorkersKVBulkGetResult": {
-          "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResult"
+        "values": {
+          "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesMap",
+          "traits": {
+            "smithy.api#documentation": "Requested keys are paired with their values in an object."
+          }
         },
-        "WorkersKVBulkGetResultWithMetadata": {
-          "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata"
+        "values_2": {
+          "target": "com.cloudflare.kv#NamespacesKeysBulkGetResultValuesMap2",
+          "traits": {
+            "smithy.api#documentation": "Requested keys are paired with their values and metadata in an object.",
+            "smithy.api#jsonName": "values"
+          }
         }
       }
     },
@@ -1094,7 +1253,7 @@
         "key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.",
+            "smithy.api#documentation": "A key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.",
             "smithy.api#required": {}
           }
         },
@@ -1108,7 +1267,7 @@
         "base64": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images."
+            "smithy.api#documentation": "Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn’t otherwise be valid JSON strings, such as images."
           }
         },
         "expiration": {
@@ -1264,7 +1423,7 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
+            "smithy.api#documentation": "A key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
             "smithy.api#required": {}
           }
         },
@@ -1317,7 +1476,7 @@
           "uri": "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys",
           "code": 200
         },
-        "smithy.api#documentation": "Lists a namespace's keys.",
+        "smithy.api#documentation": "Lists a namespace’s keys.",
         "smithy.api#readonly": {}
       }
     },
@@ -1343,7 +1502,7 @@
         "key_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
+            "smithy.api#documentation": "A key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1408,7 +1567,7 @@
         "key_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
+            "smithy.api#documentation": "A key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1458,7 +1617,7 @@
         "key_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
+            "smithy.api#documentation": "A key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1508,7 +1667,7 @@
         "key_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
+            "smithy.api#documentation": "A key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1525,6 +1684,21 @@
           "traits": {
             "smithy.api#documentation": "Expires the key after a number of seconds. Must be at least 60.",
             "smithy.api#httpQuery": "expiration_ttl"
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A byte sequence to be stored, up to 25 MiB in length.",
+            "smithy.api#httpQuery": "value",
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Associates arbitrary JSON data with a key/value pair.",
+            "smithy.api#httpQuery": "metadata"
           }
         }
       },

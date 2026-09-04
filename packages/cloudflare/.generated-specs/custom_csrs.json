@@ -46,7 +46,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -145,6 +145,17 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.custom_csrs#CreateForAccountResponseOrganizationalUnit": {
+      "type": "enum",
+      "members": {
+        "ENGINEERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Engineering"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_csrs#CreateForAccountResponse": {
       "type": "structure",
       "members": {
@@ -234,6 +245,78 @@
           "traits": {
             "smithy.api#documentation": "State or province name."
           }
+        },
+        "common_name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "common_name"
+          }
+        },
+        "country_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "country"
+          }
+        },
+        "locality_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "locality"
+          }
+        },
+        "organization_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "organization"
+          }
+        },
+        "sans_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"example.com\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "sans"
+          }
+        },
+        "state_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "state"
+          }
+        },
+        "description_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
+          }
+        },
+        "key_type_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "key_type"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "organizational_unit_2": {
+          "target": "com.cloudflare.custom_csrs#CreateForAccountResponseOrganizationalUnit",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "organizational_unit"
+          }
         }
       },
       "traits": {
@@ -287,7 +370,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -386,6 +469,17 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.custom_csrs#CreateForZoneResponseOrganizationalUnit": {
+      "type": "enum",
+      "members": {
+        "ENGINEERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Engineering"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_csrs#CreateForZoneResponse": {
       "type": "structure",
       "members": {
@@ -475,6 +569,78 @@
           "traits": {
             "smithy.api#documentation": "State or province name."
           }
+        },
+        "common_name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "common_name"
+          }
+        },
+        "country_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "country"
+          }
+        },
+        "locality_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "locality"
+          }
+        },
+        "organization_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "organization"
+          }
+        },
+        "sans_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"example.com\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "sans"
+          }
+        },
+        "state_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "state"
+          }
+        },
+        "description_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
+          }
+        },
+        "key_type_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "key_type"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "organizational_unit_2": {
+          "target": "com.cloudflare.custom_csrs#CreateForZoneResponseOrganizationalUnit",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "organizational_unit"
+          }
         }
       },
       "traits": {
@@ -505,7 +671,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -562,7 +728,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -619,7 +785,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -780,7 +946,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -935,15 +1101,69 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.custom_csrs#ListForAccountRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.custom_csrs#ListForAccountRequestOrder": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "ACCOUNT_TAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account_tag"
+          }
+        },
+        "CREATED_AT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_at"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_csrs#ListForAccountRequest": {
       "type": "structure",
       "members": {
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.custom_csrs#ListForAccountRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "The direction to sort by.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.custom_csrs#ListForAccountRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "The field to sort the returned custom CSRs by.",
+            "smithy.api#httpQuery": "order"
           }
         },
         "page": {
@@ -1119,15 +1339,69 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.custom_csrs#ListForZoneRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.custom_csrs#ListForZoneRequestOrder": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "ACCOUNT_TAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account_tag"
+          }
+        },
+        "CREATED_AT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_at"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_csrs#ListForZoneRequest": {
       "type": "structure",
       "members": {
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.custom_csrs#ListForZoneRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "The direction to sort by.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.custom_csrs#ListForZoneRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "The field to sort the returned custom CSRs by.",
+            "smithy.api#httpQuery": "order"
           }
         },
         "page": {

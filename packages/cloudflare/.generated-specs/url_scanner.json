@@ -130,7 +130,10 @@
           }
         },
         "customagent": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "maxLength4096"
+          }
         },
         "customHeaders": {
           "target": "com.cloudflare.url_scanner#ScansBulkCreateRequestBodyItemCustomHeadersMap",
@@ -139,7 +142,10 @@
           }
         },
         "referer": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "maxLength4096"
+          }
         },
         "screenshotsResolutions": {
           "target": "com.cloudflare.url_scanner#ScansBulkCreateRequestBodyItemScreenshotsResolutionsList",
@@ -150,7 +156,7 @@
         "visibility": {
           "target": "com.cloudflare.url_scanner#ScansBulkCreateRequestBodyItemVisibility",
           "traits": {
-            "smithy.api#documentation": "The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material."
+            "smithy.api#documentation": "The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan’s ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material."
           }
         }
       }
@@ -213,7 +219,7 @@
           "uri": "/accounts/{account_id}/urlscanner/v2/bulk",
           "code": 200
         },
-        "smithy.api#documentation": "Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish."
+        "smithy.api#documentation": "Submit URLs to scan. Check limits at <https://developers.cloudflare.com/security-center/investigate/scan-limits/> and take into account scans submitted in bulk have lower priority and may take longer to finish."
       }
     },
     "com.cloudflare.url_scanner#ScansCreateRequestCountry": {
@@ -1476,7 +1482,10 @@
           }
         },
         "customagent": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "maxLength4096"
+          }
         },
         "customHeaders": {
           "target": "com.cloudflare.url_scanner#ScansCreateRequestCustomHeadersMap",
@@ -1485,7 +1494,10 @@
           }
         },
         "referer": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "maxLength4096"
+          }
         },
         "screenshotsResolutions": {
           "target": "com.cloudflare.url_scanner#ScansCreateRequestScreenshotsResolutionsList",
@@ -1496,7 +1508,7 @@
         "visibility": {
           "target": "com.cloudflare.url_scanner#ScansCreateRequestVisibility",
           "traits": {
-            "smithy.api#documentation": "The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material."
+            "smithy.api#documentation": "The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan’s ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material."
           }
         }
       },
@@ -1533,7 +1545,7 @@
           "uri": "/accounts/{account_id}/urlscanner/v2/scan",
           "code": 200
         },
-        "smithy.api#documentation": "Submit a URL to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/."
+        "smithy.api#documentation": "Submit a URL to scan. Check limits at <https://developers.cloudflare.com/security-center/investigate/scan-limits/>."
       }
     },
     "com.cloudflare.url_scanner#ScansDomRequest": {
@@ -1574,7 +1586,7 @@
           "uri": "/accounts/{account_id}/urlscanner/v2/dom/{scan_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Returns a plain text response, with the scan's DOM content as rendered by Chrome.",
+        "smithy.api#documentation": "Returns a plain text response, with the scan’s DOM content as rendered by Chrome.",
         "smithy.api#readonly": {}
       }
     },
@@ -4282,6 +4294,127 @@
         }
       }
     },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemFinding": {
+      "type": "structure",
+      "members": {
+        "outcome": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemRequest": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemResponse": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "statusText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "bodyPreview": {
+          "target": "smithy.api#String"
+        },
+        "bodySize": {
+          "target": "smithy.api#Double"
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        },
+        "redirectedTo": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItem": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "finding": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemFinding"
+        },
+        "request": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemRequest"
+        },
+        "response": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemResponse"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItem"
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "details": {
+          "target": "smithy.api#Document"
+        },
+        "durationMs": {
+          "target": "smithy.api#Double"
+        },
+        "evidence": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
     "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding": {
       "type": "structure",
       "members": {
@@ -4648,6 +4781,12 @@
     "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability": {
       "type": "structure",
       "members": {
+        "dnsAid": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "linkHeaders": {
           "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders",
           "traits": {
@@ -5025,6 +5164,248 @@
         },
         "evidence": {
           "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemFinding": {
+      "type": "structure",
+      "members": {
+        "outcome": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemRequest": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemResponse": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "statusText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "bodyPreview": {
+          "target": "smithy.api#String"
+        },
+        "bodySize": {
+          "target": "smithy.api#Double"
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        },
+        "redirectedTo": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItem": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "finding": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemFinding"
+        },
+        "request": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemRequest"
+        },
+        "response": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemResponse"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItem"
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "details": {
+          "target": "smithy.api#Document"
+        },
+        "durationMs": {
+          "target": "smithy.api#Double"
+        },
+        "evidence": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemFinding": {
+      "type": "structure",
+      "members": {
+        "outcome": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemRequest": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemResponse": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "statusText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "bodyPreview": {
+          "target": "smithy.api#String"
+        },
+        "bodySize": {
+          "target": "smithy.api#Double"
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        },
+        "redirectedTo": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItem": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "finding": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemFinding"
+        },
+        "request": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemRequest"
+        },
+        "response": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemResponse"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItem"
+      }
+    },
+    "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "details": {
+          "target": "smithy.api#Document"
+        },
+        "durationMs": {
+          "target": "smithy.api#Double"
+        },
+        "evidence": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList"
         },
         "message": {
           "target": "smithy.api#String"
@@ -5532,6 +5913,18 @@
         },
         "apiCatalog": {
           "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ard": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "authMd": {
+          "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd",
           "traits": {
             "smithy.api#required": {}
           }
@@ -6893,6 +7286,7 @@
         "options": {
           "target": "com.cloudflare.url_scanner#ScansGetResponseTaskOptions",
           "traits": {
+            "smithy.api#documentation": "Custom headers set.",
             "smithy.api#required": {}
           }
         },
@@ -7040,6 +7434,7 @@
         "task": {
           "target": "com.cloudflare.url_scanner#ScansGetResponseTask",
           "traits": {
+            "smithy.api#documentation": "Custom headers set.",
             "smithy.api#required": {}
           }
         },
@@ -7143,6 +7538,616 @@
         "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestHeadersItem"
       }
     },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseContent": {
+      "type": "structure",
+      "members": {
+        "mimeType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseHeadersItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseHeadersList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseHeadersItem"
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponsePagesItemPageTimings": {
+      "type": "structure",
+      "members": {
+        "onContentLoad": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "onLoad": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponsePagesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pageTimings": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponsePagesItemPageTimings",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "startedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponsePagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponsePagesItem"
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseVersion": {
+      "type": "enum",
+      "members": {
+        "_0_13_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "0.13.1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseValue": {
+      "type": "enum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseUrl": {
+      "type": "enum",
+      "members": {
+        "HTTP_EXAMPLE_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http://example.com/"
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseCompression": {
+      "type": "intEnum",
+      "members": {
+        "_608": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 608
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseValue2": {
+      "type": "enum",
+      "members": {
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseStatusText": {
+      "type": "enum",
+      "members": {
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OK"
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseTitle": {
+      "type": "enum",
+      "members": {
+        "HTTP_EXAMPLE_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http://example.com/"
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseVersion2": {
+      "type": "enum",
+      "members": {
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponse": {
+      "type": "structure",
+      "members": {
+        "_transferSize": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "bodySize": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseContent",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseHeadersList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headersSize": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "httpVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "redirectURL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "statusText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "serverIPAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "startedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "time": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pages": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponsePagesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP",
+            "smithy.api#required": {}
+          }
+        },
+        "log": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "creator": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version_2": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseVersion",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "version"
+          }
+        },
+        "entries": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {}
+          }
+        },
+        "_initialPriority": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_initiator_type": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_priority": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_requestId": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_requestTime": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_resourceType": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cache": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "connection": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pageref": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "request": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "bodySize_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "bodySize"
+          }
+        },
+        "headers_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "headers"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseValue",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "headersSize_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "headersSize"
+          }
+        },
+        "httpVersion_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "httpVersion"
+          }
+        },
+        "method": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseUrl",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {}
+          }
+        },
+        "response": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_transferSize_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "_transferSize"
+          }
+        },
+        "bodySize_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "bodySize"
+          }
+        },
+        "content_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "content"
+          }
+        },
+        "mimeType": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseCompression",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {}
+          }
+        },
+        "headers_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "headers"
+          }
+        },
+        "name_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "value_2": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseValue2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
+          }
+        },
+        "headersSize_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "headersSize"
+          }
+        },
+        "httpVersion_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "httpVersion"
+          }
+        },
+        "redirectURL_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "redirectURL"
+          }
+        },
+        "status_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "status"
+          }
+        },
+        "statusText_2": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseStatusText",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "statusText"
+          }
+        },
+        "serverIPAddress_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "serverIPAddress"
+          }
+        },
+        "startedDateTime_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "startedDateTime"
+          }
+        },
+        "time_2": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "time"
+          }
+        },
+        "pages_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pages"
+          }
+        },
+        "id": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pageTimings": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "onContentLoad": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "onLoad": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {}
+          }
+        },
+        "startedDateTime_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "startedDateTime"
+          }
+        },
+        "title": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseTitle",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "version_3": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponseVersion2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "version"
+          }
+        }
+      }
+    },
     "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequest": {
       "type": "structure",
       "members": {
@@ -7181,105 +8186,9 @@
           "traits": {
             "smithy.api#required": {}
           }
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemResponseContent": {
-      "type": "structure",
-      "members": {
-        "mimeType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
         },
-        "size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "compression": {
-          "target": "smithy.api#Double"
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemResponseHeadersItem": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemResponseHeadersList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemResponseHeadersItem"
-      }
-    },
-    "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemResponse": {
-      "type": "structure",
-      "members": {
-        "_transferSize": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "bodySize": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "content": {
-          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemResponseContent",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "headers": {
-          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemResponseHeadersList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "headersSize": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "httpVersion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "redirectURL": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "status": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "statusText": {
-          "target": "smithy.api#String",
+        "response": {
+          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemRequestResponse",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7348,30 +8257,6 @@
           "traits": {
             "smithy.api#required": {}
           }
-        },
-        "response": {
-          "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItemResponse",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "serverIPAddress": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "startedDateTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "time": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
         }
       }
     },
@@ -7379,58 +8264,6 @@
       "type": "list",
       "member": {
         "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesItem"
-      }
-    },
-    "com.cloudflare.url_scanner#ScansHarResponseLogPagesItemPageTimings": {
-      "type": "structure",
-      "members": {
-        "onContentLoad": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "onLoad": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansHarResponseLogPagesItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "pageTimings": {
-          "target": "com.cloudflare.url_scanner#ScansHarResponseLogPagesItemPageTimings",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "startedDateTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansHarResponseLogPagesList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.url_scanner#ScansHarResponseLogPagesItem"
       }
     },
     "com.cloudflare.url_scanner#ScansHarResponseLog": {
@@ -7444,18 +8277,6 @@
         },
         "entries": {
           "target": "com.cloudflare.url_scanner#ScansHarResponseLogEntriesList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "pages": {
-          "target": "com.cloudflare.url_scanner#ScansHarResponseLogPagesList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "version": {
-          "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7491,7 +8312,7 @@
           "uri": "/accounts/{account_id}/urlscanner/v2/har/{scan_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/.",
+        "smithy.api#documentation": "Get a URL scan’s HAR file. See HAR spec at <http://www.softwareishard.com/blog/har-12-spec/>.",
         "smithy.api#readonly": {}
       }
     },
@@ -7525,164 +8346,19 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.url_scanner#ScansListResponseResultsItemPage": {
-      "type": "structure",
-      "members": {
-        "asn": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansListResponseResultsItemStats": {
-      "type": "structure",
-      "members": {
-        "dataLength": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "requests": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "uniqCountries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "uniqIPs": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansListResponseResultsItemTask": {
-      "type": "structure",
-      "members": {
-        "time": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "uuid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "visibility": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansListResponseResultsItemVerdicts": {
-      "type": "structure",
-      "members": {
-        "malicious": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansListResponseResultsItem": {
-      "type": "structure",
-      "members": {
-        "_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "page": {
-          "target": "com.cloudflare.url_scanner#ScansListResponseResultsItemPage",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "result": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "stats": {
-          "target": "com.cloudflare.url_scanner#ScansListResponseResultsItemStats",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "task": {
-          "target": "com.cloudflare.url_scanner#ScansListResponseResultsItemTask",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "verdicts": {
-          "target": "com.cloudflare.url_scanner#ScansListResponseResultsItemVerdicts",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.url_scanner#ScansListResponseResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.url_scanner#ScansListResponseResultsItem"
-      }
-    },
     "com.cloudflare.url_scanner#ScansListResponse": {
       "type": "structure",
       "members": {
-        "results": {
-          "target": "com.cloudflare.url_scanner#ScansListResponseResultsList",
+        "result": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.url_scanner#ScansList": {
@@ -7699,7 +8375,7 @@
           "uri": "/accounts/{account_id}/urlscanner/v2/search",
           "code": 200
         },
-        "smithy.api#documentation": "Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'path:\"/bundles/jquery.js\"': Searches for scans who requested resources with the given path.<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.<br/>- 'page.domain:microsoft* AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with \"microsoft\".<br/>- 'apikey:me AND date:[2025-01 TO 2025-02]': my scans from 2025 January to 2025 February.",
+        "smithy.api#documentation": "Use a subset of ElasticSearch Query syntax to filter scans. Some example queries: - ‘path:“/bundles/jquery.js”’: Searches for scans who requested resources with the given path. - ‘page.asn:AS24940 AND hash:xxx’: Websites hosted in AS24940 where a resource with the given hash was downloaded. - ‘page.domain:microsoft* AND verdicts.malicious:true AND NOT page.domain:microsoft.com’: malicious scans whose hostname starts with “microsoft”. - ‘apikey:me AND date:[2025-01 TO 2025-02]’: my scans from 2025 January to 2025 February.",
         "smithy.api#readonly": {}
       }
     },
@@ -7771,7 +8447,7 @@
           "uri": "/accounts/{account_id}/urlscanner/v2/screenshots/{scan_id}.png",
           "code": 200
         },
-        "smithy.api#documentation": "Get scan's screenshot by resolution (desktop/mobile/tablet).",
+        "smithy.api#documentation": "Get scan’s screenshot by resolution (desktop/mobile/tablet).",
         "smithy.api#readonly": {}
       }
     },

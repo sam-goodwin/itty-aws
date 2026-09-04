@@ -31,20 +31,31 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate.",
+            "smithy.api#documentation": "The zone’s leaf certificate.",
             "smithy.api#required": {}
           }
         },
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key.",
+            "smithy.api#documentation": "The zone’s private key.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.origin_tls_client_auth#CreateResponsePrivateKey": {
+      "type": "enum",
+      "members": {
+        "BEGIN_RSA_PRIVATE_KEY_MIIEOWIBAAKCAQEAWQHOETCL9_5IKGZV6CMZWTWPJHQXT3WPBEKRU9YZ7LGVDDMG_DTCGBG_1CGZU0JJGKMOPPOUO4C3DTS3IWQRYMBIKUP77WWY2QGMDZW2FVKJCJLKN_ABIRUGVBKWZESIXGKK2016ATP6_DAJEHYO6SEOK8LKIYSUVK0FYOVLSIESCMOPID_TNKX_A_50GJB79CJH4ER2LLVZNHEPFR_ZUOYPXZQQ4NAHF7YU_B5JHO0F8FWT_PY_FXIXJBEIDZLIWRKRMTZRHOJIHRMJ2A1J7IORIRBBWILLWJJNVUWPF3IJ3M12S9PE_EWOOAEO2IZNTERCG9HZAACBVRN2Y2SWIYT_18QIDAQABAOIBACBHTYXBZYKMYPCB_HBR1IBLCQA2NLGF0QRUJNJZG5IEZXOWS_6TC8YYMZKQE7NOLAPWSQ_UPK2Y5XDP_AXIUPRIS9JZKYK8OX0R_DLWCG1KSW_UABX0BQ_QUQLSTVU6MUVUMP8VZYHXJ3WMB_UFRBKZTPTQ_RYWAYQCGC0RWI20HTFBMXLTAYNXYNWZX7RKFKGVVYB9RSATMCC8G_J4ODOSBFNOJPS0HEIFNPAZNDFHKDXDK2YC1TV6RHBRC1YNYLE9_TAFLIADO2MVV_KLMLQ51GQYKTGJFILBRPQQKOYXDZ3FGVXRTKF_WY9QNQ0J1VK5EREPZ54MN8IZB7_9LWY_AKCGYEA6FXZOSXSWAJ2WQLEOYC7CEAWEX_SWTVXHGXZRYJIIT0EJWGX13WO_WA3IZIIMSJF6QE_SI_8LAXPP2A86VMAIT3Z3MJN_CQSVGW8LK2AQST_OWDPYDMU_IACE8LJ_IFGC8MWNUAB9CZGU3JPU4PXXGFJS_EMTGERXCWKK4NE_G08CGYEA1KP9_N2JRVLQUZ_GAX_LPME9OEMAS9WQSQSFCHGOGIFDGGCNF7_UWBM7GAASJIP01ZCOE_VAGWDZXCV3FLHSAZOJ6RYLOLAY5PHBU1IATR4UNYM5WTYTZMZQH8L1_MFFDL9XDB_VULUCIIRGLM5MES_QNSG1UMOH2OVPJ9TVST_IR8CGYEAXRI7WS9ZC4BT70N1AS_U_LYSJAEVZCMKQVHJ6TCUVZFFQOE0R0WHDLDRLU2PSLFP_Q7QAEZQQGBANSKEVCDYR_9B_NY_JOMQOPEWPVSP_VQTCNE_R81SPU0MP0YI6CIHET1Z9ZAY322SVCC43JAWB7_MEBEQYLOP4Z4QSOCMGHZBSECGYACVR9XS0DGN_WCSW4VZE_2EI77MD4OQVEPPIFX_DFZTLBY5ADCGE9Z0CUVB6CIL8DBDK5KWY9PGNR8HUCI03IHKW6ZS_0L0YMIHFEVE_PG19PSZK9CADDHD9KFZSBLYVFMWFXOT50H7YRTTIPMGJYFPFI5J2Q348YVT0TEQS_FHRQAQKBGACWPOKMJ7EBYQGEMBS7HC8EWO_RYAMLNSFFDCDSC7UE3ZDVJXPAKQ8W_QU80PEIF6RAIQFAF8MXIIZ7AUFOSNHQTXUBHCPVDLKI0MWQ3G8PL07L_2S6DQG6T_LV6XTQAMYF6N1YJZL_FZDRH3QXMXHMO_B13EEPXPDMPY7HQPOLDI_END_RSA_PRIVATE_KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n"
+          }
+        }
       }
     },
     "com.cloudflare.origin_tls_client_auth#CreateResponse": {
@@ -59,7 +70,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate."
+            "smithy.api#documentation": "The zone’s leaf certificate."
           }
         },
         "enabled": {
@@ -71,7 +82,22 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key."
+            "smithy.api#documentation": "The zone’s private key."
+          }
+        },
+        "certificate_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "certificate"
+          }
+        },
+        "private_key_2": {
+          "target": "com.cloudflare.origin_tls_client_auth#CreateResponsePrivateKey",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "private_key"
           }
         }
       },
@@ -133,7 +159,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate."
+            "smithy.api#documentation": "The zone’s leaf certificate."
           }
         },
         "enabled": {
@@ -145,7 +171,7 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key."
+            "smithy.api#documentation": "The zone’s private key."
           }
         }
       },
@@ -208,7 +234,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate."
+            "smithy.api#documentation": "The zone’s leaf certificate."
           }
         },
         "enabled": {
@@ -220,7 +246,7 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key."
+            "smithy.api#documentation": "The zone’s private key."
           }
         }
       },
@@ -275,7 +301,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate."
+            "smithy.api#documentation": "The zone’s leaf certificate."
           }
         },
         "enabled": {
@@ -287,7 +313,7 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key."
+            "smithy.api#documentation": "The zone’s private key."
           }
         }
       }
@@ -352,7 +378,7 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The hostname certificate's private key.",
+            "smithy.api#documentation": "The hostname certificate’s private key.",
             "smithy.api#required": {}
           }
         }
@@ -408,6 +434,17 @@
         }
       }
     },
+    "com.cloudflare.origin_tls_client_auth#HostnameCertificatesCreateResponsePrivateKey": {
+      "type": "enum",
+      "members": {
+        "BEGIN_RSA_PRIVATE_KEY_MIIEOWIBAAKCAQEAWQHOETCL9_5IKGZV6CMZWTWPJHQXT3WPBEKRU9YZ7LGVDDMG_DTCGBG_1CGZU0JJGKMOPPOUO4C3DTS3IWQRYMBIKUP77WWY2QGMDZW2FVKJCJLKN_ABIRUGVBKWZESIXGKK2016ATP6_DAJEHYO6SEOK8LKIYSUVK0FYOVLSIESCMOPID_TNKX_A_50GJB79CJH4ER2LLVZNHEPFR_ZUOYPXZQQ4NAHF7YU_B5JHO0F8FWT_PY_FXIXJBEIDZLIWRKRMTZRHOJIHRMJ2A1J7IORIRBBWILLWJJNVUWPF3IJ3M12S9PE_EWOOAEO2IZNTERCG9HZAACBVRN2Y2SWIYT_18QIDAQABAOIBACBHTYXBZYKMYPCB_HBR1IBLCQA2NLGF0QRUJNJZG5IEZXOWS_6TC8YYMZKQE7NOLAPWSQ_UPK2Y5XDP_AXIUPRIS9JZKYK8OX0R_DLWCG1KSW_UABX0BQ_QUQLSTVU6MUVUMP8VZYHXJ3WMB_UFRBKZTPTQ_RYWAYQCGC0RWI20HTFBMXLTAYNXYNWZX7RKFKGVVYB9RSATMCC8G_J4ODOSBFNOJPS0HEIFNPAZNDFHKDXDK2YC1TV6RHBRC1YNYLE9_TAFLIADO2MVV_KLMLQ51GQYKTGJFILBRPQQKOYXDZ3FGVXRTKF_WY9QNQ0J1VK5EREPZ54MN8IZB7_9LWY_AKCGYEA6FXZOSXSWAJ2WQLEOYC7CEAWEX_SWTVXHGXZRYJIIT0EJWGX13WO_WA3IZIIMSJF6QE_SI_8LAXPP2A86VMAIT3Z3MJN_CQSVGW8LK2AQST_OWDPYDMU_IACE8LJ_IFGC8MWNUAB9CZGU3JPU4PXXGFJS_EMTGERXCWKK4NE_G08CGYEA1KP9_N2JRVLQUZ_GAX_LPME9OEMAS9WQSQSFCHGOGIFDGGCNF7_UWBM7GAASJIP01ZCOE_VAGWDZXCV3FLHSAZOJ6RYLOLAY5PHBU1IATR4UNYM5WTYTZMZQH8L1_MFFDL9XDB_VULUCIIRGLM5MES_QNSG1UMOH2OVPJ9TVST_IR8CGYEAXRI7WS9ZC4BT70N1AS_U_LYSJAEVZCMKQVHJ6TCUVZFFQOE0R0WHDLDRLU2PSLFP_Q7QAEZQQGBANSKEVCDYR_9B_NY_JOMQOPEWPVSP_VQTCNE_R81SPU0MP0YI6CIHET1Z9ZAY322SVCC43JAWB7_MEBEQYLOP4Z4QSOCMGHZBSECGYACVR9XS0DGN_WCSW4VZE_2EI77MD4OQVEPPIFX_DFZTLBY5ADCGE9Z0CUVB6CIL8DBDK5KWY9PGNR8HUCI03IHKW6ZS_0L0YMIHFEVE_PG19PSZK9CADDHD9KFZSBLYVFMWFXOT50H7YRTTIPMGJYFPFI5J2Q348YVT0TEQS_FHRQAQKBGACWPOKMJ7EBYQGEMBS7HC8EWO_RYAMLNSFFDCDSC7UE3ZDVJXPAKQ8W_QU80PEIF6RAIQFAF8MXIIZ7AUFOSNHQTXUBHCPVDLKI0MWQ3G8PL07L_2S6DQG6T_LV6XTQAMYF6N1YJZL_FZDRH3QXMXHMO_B13EEPXPDMPY7HQPOLDI_END_RSA_PRIVATE_KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n"
+          }
+        }
+      }
+    },
     "com.cloudflare.origin_tls_client_auth#HostnameCertificatesCreateResponse": {
       "type": "structure",
       "members": {
@@ -457,6 +494,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The time when the certificate was uploaded."
+          }
+        },
+        "certificate_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "certificate"
+          }
+        },
+        "private_key": {
+          "target": "com.cloudflare.origin_tls_client_auth#HostnameCertificatesCreateResponsePrivateKey",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
           }
         }
       },
@@ -1245,7 +1296,7 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The hostname certificate's private key."
+            "smithy.api#documentation": "The hostname certificate’s private key."
           }
         }
       }
@@ -1285,7 +1336,7 @@
           "uri": "/zones/{zone_id}/origin_tls_client_auth/hostnames",
           "code": 200
         },
-        "smithy.api#documentation": "Associate a hostname to a certificate and enable, disable or invalidate the association. If disabled, client certificate will not be sent to the hostname even if activated at the zone level. 100 maximum associations on a single certificate are allowed. Note: Use a null value for parameter *enabled* to invalidate the association.",
+        "smithy.api#documentation": "Associate a hostname to a certificate and enable, disable or invalidate the association. If disabled, client certificate will not be sent to the hostname even if activated at the zone level. 100 maximum associations on a single certificate are allowed. Note: Use a null value for parameter _enabled_ to invalidate the association.",
         "smithy.api#idempotent": {}
       }
     },
@@ -1369,6 +1420,14 @@
           "traits": {
             "smithy.api#documentation": "Indicates whether zone-level authenticated origin pulls is enabled."
           }
+        },
+        "enabled_2": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "enabled"
+          }
         }
       },
       "traits": {
@@ -1390,7 +1449,7 @@
           "uri": "/zones/{zone_id}/origin_tls_client_auth/settings",
           "code": 200
         },
-        "smithy.api#documentation": "Enable or disable zone-level authenticated origin pulls. 'enabled' should be set true either before/after the certificate is uploaded to see the certificate in use.",
+        "smithy.api#documentation": "Enable or disable zone-level authenticated origin pulls. ‘enabled’ should be set true either before/after the certificate is uploaded to see the certificate in use.",
         "smithy.api#idempotent": {}
       }
     },
@@ -1408,20 +1467,31 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate.",
+            "smithy.api#documentation": "The zone’s leaf certificate.",
             "smithy.api#required": {}
           }
         },
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key.",
+            "smithy.api#documentation": "The zone’s private key.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.origin_tls_client_auth#ZoneCertificatesCreateResponsePrivateKey": {
+      "type": "enum",
+      "members": {
+        "BEGIN_RSA_PRIVATE_KEY_MIIEOWIBAAKCAQEAWQHOETCL9_5IKGZV6CMZWTWPJHQXT3WPBEKRU9YZ7LGVDDMG_DTCGBG_1CGZU0JJGKMOPPOUO4C3DTS3IWQRYMBIKUP77WWY2QGMDZW2FVKJCJLKN_ABIRUGVBKWZESIXGKK2016ATP6_DAJEHYO6SEOK8LKIYSUVK0FYOVLSIESCMOPID_TNKX_A_50GJB79CJH4ER2LLVZNHEPFR_ZUOYPXZQQ4NAHF7YU_B5JHO0F8FWT_PY_FXIXJBEIDZLIWRKRMTZRHOJIHRMJ2A1J7IORIRBBWILLWJJNVUWPF3IJ3M12S9PE_EWOOAEO2IZNTERCG9HZAACBVRN2Y2SWIYT_18QIDAQABAOIBACBHTYXBZYKMYPCB_HBR1IBLCQA2NLGF0QRUJNJZG5IEZXOWS_6TC8YYMZKQE7NOLAPWSQ_UPK2Y5XDP_AXIUPRIS9JZKYK8OX0R_DLWCG1KSW_UABX0BQ_QUQLSTVU6MUVUMP8VZYHXJ3WMB_UFRBKZTPTQ_RYWAYQCGC0RWI20HTFBMXLTAYNXYNWZX7RKFKGVVYB9RSATMCC8G_J4ODOSBFNOJPS0HEIFNPAZNDFHKDXDK2YC1TV6RHBRC1YNYLE9_TAFLIADO2MVV_KLMLQ51GQYKTGJFILBRPQQKOYXDZ3FGVXRTKF_WY9QNQ0J1VK5EREPZ54MN8IZB7_9LWY_AKCGYEA6FXZOSXSWAJ2WQLEOYC7CEAWEX_SWTVXHGXZRYJIIT0EJWGX13WO_WA3IZIIMSJF6QE_SI_8LAXPP2A86VMAIT3Z3MJN_CQSVGW8LK2AQST_OWDPYDMU_IACE8LJ_IFGC8MWNUAB9CZGU3JPU4PXXGFJS_EMTGERXCWKK4NE_G08CGYEA1KP9_N2JRVLQUZ_GAX_LPME9OEMAS9WQSQSFCHGOGIFDGGCNF7_UWBM7GAASJIP01ZCOE_VAGWDZXCV3FLHSAZOJ6RYLOLAY5PHBU1IATR4UNYM5WTYTZMZQH8L1_MFFDL9XDB_VULUCIIRGLM5MES_QNSG1UMOH2OVPJ9TVST_IR8CGYEAXRI7WS9ZC4BT70N1AS_U_LYSJAEVZCMKQVHJ6TCUVZFFQOE0R0WHDLDRLU2PSLFP_Q7QAEZQQGBANSKEVCDYR_9B_NY_JOMQOPEWPVSP_VQTCNE_R81SPU0MP0YI6CIHET1Z9ZAY322SVCC43JAWB7_MEBEQYLOP4Z4QSOCMGHZBSECGYACVR9XS0DGN_WCSW4VZE_2EI77MD4OQVEPPIFX_DFZTLBY5ADCGE9Z0CUVB6CIL8DBDK5KWY9PGNR8HUCI03IHKW6ZS_0L0YMIHFEVE_PG19PSZK9CADDHD9KFZSBLYVFMWFXOT50H7YRTTIPMGJYFPFI5J2Q348YVT0TEQS_FHRQAQKBGACWPOKMJ7EBYQGEMBS7HC8EWO_RYAMLNSFFDCDSC7UE3ZDVJXPAKQ8W_QU80PEIF6RAIQFAF8MXIIZ7AUFOSNHQTXUBHCPVDLKI0MWQ3G8PL07L_2S6DQG6T_LV6XTQAMYF6N1YJZL_FZDRH3QXMXHMO_B13EEPXPDMPY7HQPOLDI_END_RSA_PRIVATE_KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n"
+          }
+        }
       }
     },
     "com.cloudflare.origin_tls_client_auth#ZoneCertificatesCreateResponse": {
@@ -1436,7 +1506,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate."
+            "smithy.api#documentation": "The zone’s leaf certificate."
           }
         },
         "enabled": {
@@ -1448,7 +1518,22 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key."
+            "smithy.api#documentation": "The zone’s private key."
+          }
+        },
+        "certificate_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "certificate"
+          }
+        },
+        "private_key_2": {
+          "target": "com.cloudflare.origin_tls_client_auth#ZoneCertificatesCreateResponsePrivateKey",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "private_key"
           }
         }
       },
@@ -1510,7 +1595,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate."
+            "smithy.api#documentation": "The zone’s leaf certificate."
           }
         },
         "enabled": {
@@ -1522,7 +1607,7 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key."
+            "smithy.api#documentation": "The zone’s private key."
           }
         }
       },
@@ -1585,7 +1670,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate."
+            "smithy.api#documentation": "The zone’s leaf certificate."
           }
         },
         "enabled": {
@@ -1597,7 +1682,7 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key."
+            "smithy.api#documentation": "The zone’s private key."
           }
         }
       },
@@ -1652,7 +1737,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's leaf certificate."
+            "smithy.api#documentation": "The zone’s leaf certificate."
           }
         },
         "enabled": {
@@ -1664,7 +1749,7 @@
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key."
+            "smithy.api#documentation": "The zone’s private key."
           }
         }
       }

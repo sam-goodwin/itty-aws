@@ -54,7 +54,7 @@
         "setting_id": {
           "target": "com.cloudflare.hostnames#SettingsTlsDeleteRequestSettingId",
           "traits": {
-            "smithy.api#documentation": "The TLS Setting name.",
+            "smithy.api#documentation": "The TLS Setting name. The value type depends on the setting:",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -72,7 +72,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsDeleteResponseValueCase0": {
+    "com.cloudflare.hostnames#SettingsTlsDeleteResponseValue": {
       "type": "enum",
       "members": {
         "_1_0": {
@@ -113,23 +113,6 @@
         }
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsDeleteResponseValueCase1List": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.hostnames#SettingsTlsDeleteResponseValue": {
-      "type": "union",
-      "members": {
-        "SettingsTlsDeleteResponseValueCase0": {
-          "target": "com.cloudflare.hostnames#SettingsTlsDeleteResponseValueCase0"
-        },
-        "SettingsTlsDeleteResponseValueCase1List": {
-          "target": "com.cloudflare.hostnames#SettingsTlsDeleteResponseValueCase1List"
-        }
-      }
-    },
     "com.cloudflare.hostnames#SettingsTlsDeleteResponse": {
       "type": "structure",
       "members": {
@@ -160,7 +143,7 @@
         "value": {
           "target": "com.cloudflare.hostnames#SettingsTlsDeleteResponseValue",
           "traits": {
-            "smithy.api#documentation": "The TLS setting value."
+            "smithy.api#documentation": "The TLS setting value. The type depends on the `setting_id` used in the request path:"
           }
         }
       },
@@ -224,7 +207,15 @@
         "setting_id": {
           "target": "com.cloudflare.hostnames#SettingsTlsGetRequestSettingId",
           "traits": {
-            "smithy.api#documentation": "The TLS Setting name.",
+            "smithy.api#documentation": "The TLS Setting name. The value type depends on the setting:",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hostname for which the tls settings are set.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -234,7 +225,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsGetResultItemValueCase0": {
+    "com.cloudflare.hostnames#SettingsTlsGetResponseValue": {
       "type": "enum",
       "members": {
         "_1_0": {
@@ -275,24 +266,7 @@
         }
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsGetResultItemValueCase1List": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.hostnames#SettingsTlsGetResultItemValue": {
-      "type": "union",
-      "members": {
-        "SettingsTlsGetResultItemValueCase0": {
-          "target": "com.cloudflare.hostnames#SettingsTlsGetResultItemValueCase0"
-        },
-        "SettingsTlsGetResultItemValueCase1List": {
-          "target": "com.cloudflare.hostnames#SettingsTlsGetResultItemValueCase1List"
-        }
-      }
-    },
-    "com.cloudflare.hostnames#SettingsTlsGetResultItem": {
+    "com.cloudflare.hostnames#SettingsTlsGetResponse": {
       "type": "structure",
       "members": {
         "created_at": {
@@ -320,24 +294,169 @@
           }
         },
         "value": {
-          "target": "com.cloudflare.hostnames#SettingsTlsGetResultItemValue",
+          "target": "com.cloudflare.hostnames#SettingsTlsGetResponseValue",
           "traits": {
-            "smithy.api#documentation": "The TLS setting value."
+            "smithy.api#documentation": "The TLS setting value. The type depends on the `setting_id` used in the request path:"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.hostnames#SettingsTlsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.hostnames#SettingsTlsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the requested TLS setting for the hostname.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsListRequestSettingId": {
+      "type": "enum",
+      "members": {
+        "CIPHERS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ciphers"
+          }
+        },
+        "MIN_TLS_VERSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "min_tls_version"
+          }
+        },
+        "HTTP2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http2"
           }
         }
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsGetResultList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.hostnames#SettingsTlsGetResultItem"
+    "com.cloudflare.hostnames#SettingsTlsListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "setting_id": {
+          "target": "com.cloudflare.hostnames#SettingsTlsListRequestSettingId",
+          "traits": {
+            "smithy.api#documentation": "The TLS Setting name. The value type depends on the setting:",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsGetResponse": {
+    "com.cloudflare.hostnames#SettingsTlsListResultItemValue": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        },
+        "_1_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.3"
+          }
+        },
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsListResultItem": {
+      "type": "structure",
+      "members": {
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the time the tls setting was originally created for this hostname."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hostname for which the tls settings are set."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment status for the given tls setting."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the time the tls setting was updated."
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.hostnames#SettingsTlsListResultItemValue",
+          "traits": {
+            "smithy.api#documentation": "The TLS setting value. The type depends on the `setting_id` used in the request path:"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.hostnames#SettingsTlsListResultItem"
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsListResponse": {
       "type": "structure",
       "members": {
         "result": {
-          "target": "com.cloudflare.hostnames#SettingsTlsGetResultList",
+          "target": "com.cloudflare.hostnames#SettingsTlsListResultList",
           "traits": {
             "com.cloudflare.protocols#envelopePayload": {},
             "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
@@ -348,13 +467,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsGet": {
+    "com.cloudflare.hostnames#SettingsTlsList": {
       "type": "operation",
       "input": {
-        "target": "com.cloudflare.hostnames#SettingsTlsGetRequest"
+        "target": "com.cloudflare.hostnames#SettingsTlsListRequest"
       },
       "output": {
-        "target": "com.cloudflare.hostnames#SettingsTlsGetResponse"
+        "target": "com.cloudflare.hostnames#SettingsTlsListResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -389,7 +508,7 @@
         }
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsUpdateRequestValueCase0": {
+    "com.cloudflare.hostnames#SettingsTlsUpdateRequestValue": {
       "type": "enum",
       "members": {
         "_1_0": {
@@ -427,23 +546,6 @@
           "traits": {
             "smithy.api#enumValue": "off"
           }
-        }
-      }
-    },
-    "com.cloudflare.hostnames#SettingsTlsUpdateRequestValueCase1List": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.hostnames#SettingsTlsUpdateRequestValue": {
-      "type": "union",
-      "members": {
-        "SettingsTlsUpdateRequestValueCase0": {
-          "target": "com.cloudflare.hostnames#SettingsTlsUpdateRequestValueCase0"
-        },
-        "SettingsTlsUpdateRequestValueCase1List": {
-          "target": "com.cloudflare.hostnames#SettingsTlsUpdateRequestValueCase1List"
         }
       }
     },
@@ -461,7 +563,7 @@
         "setting_id": {
           "target": "com.cloudflare.hostnames#SettingsTlsUpdateRequestSettingId",
           "traits": {
-            "smithy.api#documentation": "The TLS Setting name.",
+            "smithy.api#documentation": "The TLS Setting name. The value type depends on the setting:",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -477,7 +579,7 @@
         "value": {
           "target": "com.cloudflare.hostnames#SettingsTlsUpdateRequestValue",
           "traits": {
-            "smithy.api#documentation": "The TLS setting value.",
+            "smithy.api#documentation": "The TLS setting value. The type depends on the `setting_id` used in the request path:",
             "smithy.api#required": {}
           }
         }
@@ -486,7 +588,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsUpdateResponseValueCase0": {
+    "com.cloudflare.hostnames#SettingsTlsUpdateResponseValue": {
       "type": "enum",
       "members": {
         "_1_0": {
@@ -524,23 +626,6 @@
           "traits": {
             "smithy.api#enumValue": "off"
           }
-        }
-      }
-    },
-    "com.cloudflare.hostnames#SettingsTlsUpdateResponseValueCase1List": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.hostnames#SettingsTlsUpdateResponseValue": {
-      "type": "union",
-      "members": {
-        "SettingsTlsUpdateResponseValueCase0": {
-          "target": "com.cloudflare.hostnames#SettingsTlsUpdateResponseValueCase0"
-        },
-        "SettingsTlsUpdateResponseValueCase1List": {
-          "target": "com.cloudflare.hostnames#SettingsTlsUpdateResponseValueCase1List"
         }
       }
     },
@@ -574,7 +659,15 @@
         "value": {
           "target": "com.cloudflare.hostnames#SettingsTlsUpdateResponseValue",
           "traits": {
-            "smithy.api#documentation": "The TLS setting value."
+            "smithy.api#documentation": "The TLS setting value. The type depends on the `setting_id` used in the request path:"
+          }
+        },
+        "value_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"ECDHE-RSA-AES128-GCM-SHA256\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
           }
         }
       },
@@ -610,6 +703,9 @@
         },
         {
           "target": "com.cloudflare.hostnames#SettingsTlsGet"
+        },
+        {
+          "target": "com.cloudflare.hostnames#SettingsTlsList"
         },
         {
           "target": "com.cloudflare.hostnames#SettingsTlsUpdate"

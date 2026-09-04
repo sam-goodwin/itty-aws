@@ -40,6 +40,24 @@
         }
       }
     },
+    "com.cloudflare.request_tracers#TracesCreateRequestContextGeolocCookiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.request_tracers#TracesCreateRequestContextGeolocHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.request_tracers#TracesCreateRequestContextGeoloc": {
       "type": "structure",
       "members": {
@@ -72,6 +90,42 @@
         },
         "timezone": {
           "target": "smithy.api#String"
+        },
+        "skip_challenge": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to skip any challenges for tracing request (e.g.: captcha)"
+          }
+        },
+        "threat_score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Threat score used for evaluating tracing request processing"
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.request_tracers#TracesCreateRequestContextGeolocCookiesMap",
+          "traits": {
+            "smithy.api#documentation": "Cookies added to tracing request"
+          }
+        },
+        "headers": {
+          "target": "com.cloudflare.request_tracers#TracesCreateRequestContextGeolocHeadersMap",
+          "traits": {
+            "smithy.api#documentation": "Headers added to tracing request"
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP Protocol of tracing request"
+          }
+        },
+        "skip_response": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Skip sending the request to the Origin server after all rules evaluation"
+          }
         }
       }
     },
@@ -89,37 +143,7 @@
           "traits": {
             "smithy.api#documentation": "Geodata for tracing request"
           }
-        },
-        "skip_challenge": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to skip any challenges for tracing request (e.g.: captcha)"
-          }
-        },
-        "threat_score": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Threat score used for evaluating tracing request processing"
-          }
         }
-      }
-    },
-    "com.cloudflare.request_tracers#TracesCreateRequestCookiesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.request_tracers#TracesCreateRequestHeadersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.request_tracers#TracesCreateRequest": {
@@ -155,30 +179,6 @@
           "traits": {
             "smithy.api#documentation": "Additional request parameters"
           }
-        },
-        "cookies": {
-          "target": "com.cloudflare.request_tracers#TracesCreateRequestCookiesMap",
-          "traits": {
-            "smithy.api#documentation": "Cookies added to tracing request"
-          }
-        },
-        "headers": {
-          "target": "com.cloudflare.request_tracers#TracesCreateRequestHeadersMap",
-          "traits": {
-            "smithy.api#documentation": "Headers added to tracing request"
-          }
-        },
-        "protocol": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP Protocol of tracing request"
-          }
-        },
-        "skip_response": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Skip sending the request to the Origin server after all rules evaluation"
-          }
         }
       },
       "traits": {
@@ -195,7 +195,10 @@
           }
         },
         "trace": {
-          "target": "smithy.api#Document"
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "HTTP"
+          }
         }
       },
       "traits": {
@@ -217,7 +220,7 @@
           "uri": "/accounts/{account_id}/request-tracer/trace",
           "code": 200
         },
-        "smithy.api#documentation": "Request Trace"
+        "smithy.api#documentation": "Traces a simulated HTTP request through Cloudflare’s edge to analyze how rules, settings, and configurations would process the request. Useful for debugging firewall rules, page rules, and other request transformations without sending actual traffic. Supports custom headers, cookies, body content, and geolocation context."
       }
     },
     "com.cloudflare.request_tracers#RequestTracers": {

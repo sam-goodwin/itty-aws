@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.cloudflare.vectorize#IndexesCreateRequestConfigIndexDimensionConfigurationMetric": {
+    "com.cloudflare.vectorize#IndexesCreateRequestMetric": {
       "type": "enum",
       "members": {
         "COSINE": {
@@ -40,26 +40,7 @@
         }
       }
     },
-    "com.cloudflare.vectorize#IndexesCreateRequestConfigIndexDimensionConfiguration": {
-      "type": "structure",
-      "members": {
-        "dimensions": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Specifies the number of dimensions for the index",
-            "smithy.api#required": {}
-          }
-        },
-        "metric": {
-          "target": "com.cloudflare.vectorize#IndexesCreateRequestConfigIndexDimensionConfigurationMetric",
-          "traits": {
-            "smithy.api#documentation": "Specifies the type of metric to use calculating distance.",
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.vectorize#IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset": {
+    "com.cloudflare.vectorize#IndexesCreateRequestPreset": {
       "type": "enum",
       "members": {
         "CF_BAAI_BGE_SMALL_EN_V1_5": {
@@ -94,29 +75,6 @@
         }
       }
     },
-    "com.cloudflare.vectorize#IndexesCreateRequestConfigVectorizeIndexPresetConfiguration": {
-      "type": "structure",
-      "members": {
-        "preset": {
-          "target": "com.cloudflare.vectorize#IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset",
-          "traits": {
-            "smithy.api#documentation": "Specifies the preset to use for the index.",
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.vectorize#IndexesCreateRequestConfig": {
-      "type": "union",
-      "members": {
-        "IndexDimensionConfiguration": {
-          "target": "com.cloudflare.vectorize#IndexesCreateRequestConfigIndexDimensionConfiguration"
-        },
-        "VectorizeIndexPresetConfiguration": {
-          "target": "com.cloudflare.vectorize#IndexesCreateRequestConfigVectorizeIndexPresetConfiguration"
-        }
-      }
-    },
     "com.cloudflare.vectorize#IndexesCreateRequest": {
       "type": "structure",
       "members": {
@@ -129,9 +87,30 @@
           }
         },
         "config": {
-          "target": "com.cloudflare.vectorize#IndexesCreateRequestConfig",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Specifies the type of configuration to use for the index.",
+            "smithy.api#required": {}
+          }
+        },
+        "dimensions": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of dimensions for the index",
+            "smithy.api#required": {}
+          }
+        },
+        "metric": {
+          "target": "com.cloudflare.vectorize#IndexesCreateRequestMetric",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of metric to use calculating distance.",
+            "smithy.api#required": {}
+          }
+        },
+        "preset": {
+          "target": "com.cloudflare.vectorize#IndexesCreateRequestPreset",
+          "traits": {
+            "smithy.api#documentation": "Specifies the preset to use for the index.",
             "smithy.api#required": {}
           }
         },
@@ -1058,7 +1037,7 @@
         "score": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The score of the vector according to the index's distance metric"
+            "smithy.api#documentation": "The score of the vector according to the index’s distance metric"
           }
         },
         "values": {

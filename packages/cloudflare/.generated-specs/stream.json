@@ -49,7 +49,7 @@
         "Tus_Resumable": {
           "target": "com.cloudflare.stream#CreateRequestTusResumable",
           "traits": {
-            "smithy.api#documentation": "Specifies the TUS protocol version. This value must be included in every upload request.",
+            "smithy.api#documentation": "Specifies the TUS protocol version. This value must be included in every upload request. Notes: The only supported version of TUS protocol is 1.0.0.",
             "smithy.api#httpHeader": "Tus-Resumable",
             "smithy.api#required": {}
           }
@@ -72,7 +72,7 @@
         "Upload_Metadata": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.",
+            "smithy.api#documentation": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded. Supported keys: `name`, `requiresignedurls`, `allowedorigins`, `thumbnailtimestamppct`, `watermark`, `scheduleddeletion`, `maxdurationseconds`.",
             "smithy.api#httpHeader": "Upload-Metadata"
           }
         }
@@ -95,7 +95,7 @@
           "uri": "/accounts/{account_id}/stream",
           "code": 200
         },
-        "smithy.api#documentation": "Initiates a video upload using the TUS protocol. On success, the server responds with a status code 201 (created) and includes a `location` header to indicate where the content should be uploaded. Refer to https://tus.io for protocol details."
+        "smithy.api#documentation": "Initiates a video upload using the TUS protocol. On success, the server responds with a status code 201 (created) and includes a `location` header to indicate where the content should be uploaded. Refer to <https://tus.io> for protocol details."
       }
     },
     "com.cloudflare.stream#DeleteRequest": {
@@ -227,7 +227,7 @@
         "thumbnailTimestampPct": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video."
+            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video’s duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video."
           }
         },
         "uid": {
@@ -287,27 +287,7 @@
         }
       }
     },
-    "com.cloudflare.stream#EditResponsePublicDetails": {
-      "type": "structure",
-      "members": {
-        "channel_link": {
-          "target": "smithy.api#String"
-        },
-        "logo": {
-          "target": "smithy.api#String"
-        },
-        "media_id": {
-          "target": "smithy.api#Double"
-        },
-        "share_link": {
-          "target": "smithy.api#String"
-        },
-        "title": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.stream#EditResponseStatusState": {
+    "com.cloudflare.stream#EditResponsePublicDetailsStatusState": {
       "type": "enum",
       "members": {
         "PENDINGUPLOAD": {
@@ -354,7 +334,7 @@
         }
       }
     },
-    "com.cloudflare.stream#EditResponseStatus": {
+    "com.cloudflare.stream#EditResponsePublicDetailsStatus": {
       "type": "structure",
       "members": {
         "errorReasonCode": {
@@ -376,14 +356,36 @@
           }
         },
         "state": {
-          "target": "com.cloudflare.stream#EditResponseStatusState",
+          "target": "com.cloudflare.stream#EditResponsePublicDetailsStatusState",
           "traits": {
             "smithy.api#documentation": "Specifies the processing status for all quality levels for a video."
           }
         }
       }
     },
-    "com.cloudflare.stream#EditResponseWatermark": {
+    "com.cloudflare.stream#EditResponsePublicDetailsWatermarkName": {
+      "type": "enum",
+      "members": {
+        "VIDEO12345_MP4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "video12345.mp4"
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#EditResponsePublicDetailsWatermarkUploadExpiry": {
+      "type": "enum",
+      "members": {
+        "_2014_01_02T02_20_00Z": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2014-01-02T02:20:00Z"
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#EditResponsePublicDetailsWatermark": {
       "type": "structure",
       "members": {
         "created": {
@@ -431,7 +433,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "size": {
@@ -451,6 +453,154 @@
           "traits": {
             "smithy.api#documentation": "The width of the image in pixels."
           }
+        },
+        "allowedOrigins": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"example.com\"",
+            "smithy.api#required": {}
+          }
+        },
+        "creator": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.stream#EditResponsePublicDetailsWatermarkName",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scheduledDeletion": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "thumbnailTimestampPct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "uid_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "uid"
+          }
+        },
+        "uploadExpiry": {
+          "target": "com.cloudflare.stream#EditResponsePublicDetailsWatermarkUploadExpiry",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#EditResponsePublicDetails": {
+      "type": "structure",
+      "members": {
+        "channel_link": {
+          "target": "smithy.api#String"
+        },
+        "logo": {
+          "target": "smithy.api#String"
+        },
+        "media_id": {
+          "target": "smithy.api#Double"
+        },
+        "share_link": {
+          "target": "smithy.api#String"
+        },
+        "title": {
+          "target": "smithy.api#String"
+        },
+        "readyToStream": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "readyToStreamAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
+          }
+        },
+        "scheduledDeletion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The size of the media item in bytes."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.stream#EditResponsePublicDetailsStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
+          }
+        },
+        "thumbnail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The media item’s thumbnail URI. This field is omitted until encoding is complete."
+          }
+        },
+        "thumbnailTimestampPct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video’s duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
+          }
+        },
+        "uploaded": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time the media item was uploaded."
+          }
+        },
+        "uploadExpiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
+          }
+        },
+        "watermark": {
+          "target": "com.cloudflare.stream#EditResponsePublicDetailsWatermark"
         }
       }
     },
@@ -526,7 +676,7 @@
         "preview": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The video's preview page URI. This field is omitted until encoding is complete."
+            "smithy.api#documentation": "The video’s preview page URI. This field is omitted until encoding is complete."
           }
         },
         "publicDetails": {
@@ -534,75 +684,6 @@
           "traits": {
             "smithy.api#documentation": "Public details for the video including title, share link, channel link, and logo."
           }
-        },
-        "readyToStream": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "readyToStreamAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "requireSignedURLs": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
-          }
-        },
-        "scheduledDeletion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
-          }
-        },
-        "size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The size of the media item in bytes."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.stream#EditResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
-          }
-        },
-        "thumbnail": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The media item's thumbnail URI. This field is omitted until encoding is complete."
-          }
-        },
-        "thumbnailTimestampPct": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video."
-          }
-        },
-        "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
-          }
-        },
-        "uploaded": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time the media item was uploaded."
-          }
-        },
-        "uploadExpiry": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
-          }
-        },
-        "watermark": {
-          "target": "com.cloudflare.stream#EditResponseWatermark"
         }
       },
       "traits": {
@@ -691,27 +772,7 @@
         }
       }
     },
-    "com.cloudflare.stream#GetResponsePublicDetails": {
-      "type": "structure",
-      "members": {
-        "channel_link": {
-          "target": "smithy.api#String"
-        },
-        "logo": {
-          "target": "smithy.api#String"
-        },
-        "media_id": {
-          "target": "smithy.api#Double"
-        },
-        "share_link": {
-          "target": "smithy.api#String"
-        },
-        "title": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.stream#GetResponseStatusState": {
+    "com.cloudflare.stream#GetResponsePublicDetailsStatusState": {
       "type": "enum",
       "members": {
         "PENDINGUPLOAD": {
@@ -758,7 +819,7 @@
         }
       }
     },
-    "com.cloudflare.stream#GetResponseStatus": {
+    "com.cloudflare.stream#GetResponsePublicDetailsStatus": {
       "type": "structure",
       "members": {
         "errorReasonCode": {
@@ -780,14 +841,14 @@
           }
         },
         "state": {
-          "target": "com.cloudflare.stream#GetResponseStatusState",
+          "target": "com.cloudflare.stream#GetResponsePublicDetailsStatusState",
           "traits": {
             "smithy.api#documentation": "Specifies the processing status for all quality levels for a video."
           }
         }
       }
     },
-    "com.cloudflare.stream#GetResponseWatermark": {
+    "com.cloudflare.stream#GetResponsePublicDetailsWatermark": {
       "type": "structure",
       "members": {
         "created": {
@@ -835,7 +896,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "size": {
@@ -855,6 +916,95 @@
           "traits": {
             "smithy.api#documentation": "The width of the image in pixels."
           }
+        }
+      }
+    },
+    "com.cloudflare.stream#GetResponsePublicDetails": {
+      "type": "structure",
+      "members": {
+        "channel_link": {
+          "target": "smithy.api#String"
+        },
+        "logo": {
+          "target": "smithy.api#String"
+        },
+        "media_id": {
+          "target": "smithy.api#Double"
+        },
+        "share_link": {
+          "target": "smithy.api#String"
+        },
+        "title": {
+          "target": "smithy.api#String"
+        },
+        "readyToStream": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "readyToStreamAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
+          }
+        },
+        "scheduledDeletion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The size of the media item in bytes."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.stream#GetResponsePublicDetailsStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
+          }
+        },
+        "thumbnail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The media item’s thumbnail URI. This field is omitted until encoding is complete."
+          }
+        },
+        "thumbnailTimestampPct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video’s duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
+          }
+        },
+        "uploaded": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time the media item was uploaded."
+          }
+        },
+        "uploadExpiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
+          }
+        },
+        "watermark": {
+          "target": "com.cloudflare.stream#GetResponsePublicDetailsWatermark"
         }
       }
     },
@@ -930,7 +1080,7 @@
         "preview": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The video's preview page URI. This field is omitted until encoding is complete."
+            "smithy.api#documentation": "The video’s preview page URI. This field is omitted until encoding is complete."
           }
         },
         "publicDetails": {
@@ -938,75 +1088,6 @@
           "traits": {
             "smithy.api#documentation": "Public details for the video including title, share link, channel link, and logo."
           }
-        },
-        "readyToStream": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "readyToStreamAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "requireSignedURLs": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
-          }
-        },
-        "scheduledDeletion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
-          }
-        },
-        "size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The size of the media item in bytes."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.stream#GetResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
-          }
-        },
-        "thumbnail": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The media item's thumbnail URI. This field is omitted until encoding is complete."
-          }
-        },
-        "thumbnailTimestampPct": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video."
-          }
-        },
-        "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
-          }
-        },
-        "uploaded": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time the media item was uploaded."
-          }
-        },
-        "uploadExpiry": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
-          }
-        },
-        "watermark": {
-          "target": "com.cloudflare.stream#GetResponseWatermark"
         }
       },
       "traits": {
@@ -1100,7 +1181,7 @@
         "after": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).",
+            "smithy.api#documentation": "Alias for ‘start’. Returns videos created after this date/time (RFC 3339 format).",
             "smithy.api#httpQuery": "after"
           }
         },
@@ -1114,7 +1195,7 @@
         "before": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).",
+            "smithy.api#documentation": "Alias for ‘end’. Returns videos created before this date/time (RFC 3339 format).",
             "smithy.api#httpQuery": "before"
           }
         },
@@ -1240,27 +1321,7 @@
         }
       }
     },
-    "com.cloudflare.stream#ListResultItemPublicDetails": {
-      "type": "structure",
-      "members": {
-        "channel_link": {
-          "target": "smithy.api#String"
-        },
-        "logo": {
-          "target": "smithy.api#String"
-        },
-        "media_id": {
-          "target": "smithy.api#Double"
-        },
-        "share_link": {
-          "target": "smithy.api#String"
-        },
-        "title": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.stream#ListResultItemStatusState": {
+    "com.cloudflare.stream#ListResultItemPublicDetailsStatusState": {
       "type": "enum",
       "members": {
         "PENDINGUPLOAD": {
@@ -1307,7 +1368,7 @@
         }
       }
     },
-    "com.cloudflare.stream#ListResultItemStatus": {
+    "com.cloudflare.stream#ListResultItemPublicDetailsStatus": {
       "type": "structure",
       "members": {
         "errorReasonCode": {
@@ -1329,14 +1390,14 @@
           }
         },
         "state": {
-          "target": "com.cloudflare.stream#ListResultItemStatusState",
+          "target": "com.cloudflare.stream#ListResultItemPublicDetailsStatusState",
           "traits": {
             "smithy.api#documentation": "Specifies the processing status for all quality levels for a video."
           }
         }
       }
     },
-    "com.cloudflare.stream#ListResultItemWatermark": {
+    "com.cloudflare.stream#ListResultItemPublicDetailsWatermark": {
       "type": "structure",
       "members": {
         "created": {
@@ -1384,7 +1445,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "size": {
@@ -1404,6 +1465,101 @@
           "traits": {
             "smithy.api#documentation": "The width of the image in pixels."
           }
+        },
+        "total": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of videos that match the provided filters."
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#ListResultItemPublicDetails": {
+      "type": "structure",
+      "members": {
+        "channel_link": {
+          "target": "smithy.api#String"
+        },
+        "logo": {
+          "target": "smithy.api#String"
+        },
+        "media_id": {
+          "target": "smithy.api#Double"
+        },
+        "share_link": {
+          "target": "smithy.api#String"
+        },
+        "title": {
+          "target": "smithy.api#String"
+        },
+        "readyToStream": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "readyToStreamAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
+          }
+        },
+        "scheduledDeletion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The size of the media item in bytes."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.stream#ListResultItemPublicDetailsStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
+          }
+        },
+        "thumbnail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The media item’s thumbnail URI. This field is omitted until encoding is complete."
+          }
+        },
+        "thumbnailTimestampPct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video’s duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
+          }
+        },
+        "uploaded": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time the media item was uploaded."
+          }
+        },
+        "uploadExpiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
+          }
+        },
+        "watermark": {
+          "target": "com.cloudflare.stream#ListResultItemPublicDetailsWatermark"
         }
       }
     },
@@ -1479,7 +1635,7 @@
         "preview": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The video's preview page URI. This field is omitted until encoding is complete."
+            "smithy.api#documentation": "The video’s preview page URI. This field is omitted until encoding is complete."
           }
         },
         "publicDetails": {
@@ -1487,75 +1643,6 @@
           "traits": {
             "smithy.api#documentation": "Public details for the video including title, share link, channel link, and logo."
           }
-        },
-        "readyToStream": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "readyToStreamAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "requireSignedURLs": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
-          }
-        },
-        "scheduledDeletion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
-          }
-        },
-        "size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The size of the media item in bytes."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.stream#ListResultItemStatus",
-          "traits": {
-            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
-          }
-        },
-        "thumbnail": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The media item's thumbnail URI. This field is omitted until encoding is complete."
-          }
-        },
-        "thumbnailTimestampPct": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video."
-          }
-        },
-        "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
-          }
-        },
-        "uploaded": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time the media item was uploaded."
-          }
-        },
-        "uploadExpiry": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
-          }
-        },
-        "watermark": {
-          "target": "com.cloudflare.stream#ListResultItemWatermark"
         }
       }
     },
@@ -1683,6 +1770,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
+          }
+        },
+        "label_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "label"
           }
         }
       },
@@ -1840,6 +1934,17 @@
         }
       }
     },
+    "com.cloudflare.stream#AudioTracksEditResponseLabel": {
+      "type": "enum",
+      "members": {
+        "DIRECTOR_COMMENTARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "director commentary"
+          }
+        }
+      }
+    },
     "com.cloudflare.stream#AudioTracksEditResponse": {
       "type": "structure",
       "members": {
@@ -1865,6 +1970,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
+          }
+        },
+        "label_2": {
+          "target": "com.cloudflare.stream#AudioTracksEditResponseLabel",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "label"
           }
         }
       },
@@ -2616,7 +2729,7 @@
         "input": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A video's URL. Preferred over 'url'."
+            "smithy.api#documentation": "A video’s URL. Preferred over ‘url’."
           }
         },
         "meta": {
@@ -2646,13 +2759,13 @@
         "thumbnailTimestampPct": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video."
+            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video’s duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video."
           }
         },
         "url": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A video's URL (legacy field, use 'input' instead)."
+            "smithy.api#documentation": "A video’s URL (legacy field, use ‘input’ instead)."
           }
         },
         "watermark": {
@@ -2703,27 +2816,7 @@
         }
       }
     },
-    "com.cloudflare.stream#ClipCreateResponsePublicDetails": {
-      "type": "structure",
-      "members": {
-        "channel_link": {
-          "target": "smithy.api#String"
-        },
-        "logo": {
-          "target": "smithy.api#String"
-        },
-        "media_id": {
-          "target": "smithy.api#Double"
-        },
-        "share_link": {
-          "target": "smithy.api#String"
-        },
-        "title": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.stream#ClipCreateResponseStatusState": {
+    "com.cloudflare.stream#ClipCreateResponsePublicDetailsStatusState": {
       "type": "enum",
       "members": {
         "PENDINGUPLOAD": {
@@ -2770,7 +2863,7 @@
         }
       }
     },
-    "com.cloudflare.stream#ClipCreateResponseStatus": {
+    "com.cloudflare.stream#ClipCreateResponsePublicDetailsStatus": {
       "type": "structure",
       "members": {
         "errorReasonCode": {
@@ -2792,14 +2885,36 @@
           }
         },
         "state": {
-          "target": "com.cloudflare.stream#ClipCreateResponseStatusState",
+          "target": "com.cloudflare.stream#ClipCreateResponsePublicDetailsStatusState",
           "traits": {
             "smithy.api#documentation": "Specifies the processing status for all quality levels for a video."
           }
         }
       }
     },
-    "com.cloudflare.stream#ClipCreateResponseWatermark": {
+    "com.cloudflare.stream#ClipCreateResponsePublicDetailsWatermarkName": {
+      "type": "enum",
+      "members": {
+        "VIDEO12345_MP4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "video12345.mp4"
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#ClipCreateResponsePublicDetailsWatermarkUrl": {
+      "type": "enum",
+      "members": {
+        "HTTPS_EXAMPLE_COM_MYVIDEO_MP4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https://example.com/myvideo.mp4"
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#ClipCreateResponsePublicDetailsWatermark": {
       "type": "structure",
       "members": {
         "created": {
@@ -2847,7 +2962,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "size": {
@@ -2867,6 +2982,178 @@
           "traits": {
             "smithy.api#documentation": "The width of the image in pixels."
           }
+        },
+        "clippedFromVideoUID": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endTimeSeconds": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "startTimeSeconds": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "allowedOrigins": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"example.com\"",
+            "smithy.api#required": {}
+          }
+        },
+        "creator": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "input": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.stream#ClipCreateResponsePublicDetailsWatermarkName",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "name_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scheduledDeletion": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "thumbnailTimestampPct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "com.cloudflare.stream#ClipCreateResponsePublicDetailsWatermarkUrl",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#ClipCreateResponsePublicDetails": {
+      "type": "structure",
+      "members": {
+        "channel_link": {
+          "target": "smithy.api#String"
+        },
+        "logo": {
+          "target": "smithy.api#String"
+        },
+        "media_id": {
+          "target": "smithy.api#Double"
+        },
+        "share_link": {
+          "target": "smithy.api#String"
+        },
+        "title": {
+          "target": "smithy.api#String"
+        },
+        "readyToStream": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "readyToStreamAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
+          }
+        },
+        "scheduledDeletion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The size of the media item in bytes."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.stream#ClipCreateResponsePublicDetailsStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
+          }
+        },
+        "thumbnail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The media item’s thumbnail URI. This field is omitted until encoding is complete."
+          }
+        },
+        "thumbnailTimestampPct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video’s duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
+          }
+        },
+        "uploaded": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time the media item was uploaded."
+          }
+        },
+        "uploadExpiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
+          }
+        },
+        "watermark": {
+          "target": "com.cloudflare.stream#ClipCreateResponsePublicDetailsWatermark"
         }
       }
     },
@@ -2942,7 +3229,7 @@
         "preview": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The video's preview page URI. This field is omitted until encoding is complete."
+            "smithy.api#documentation": "The video’s preview page URI. This field is omitted until encoding is complete."
           }
         },
         "publicDetails": {
@@ -2950,75 +3237,6 @@
           "traits": {
             "smithy.api#documentation": "Public details for the video including title, share link, channel link, and logo."
           }
-        },
-        "readyToStream": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "readyToStreamAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "requireSignedURLs": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
-          }
-        },
-        "scheduledDeletion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
-          }
-        },
-        "size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The size of the media item in bytes."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.stream#ClipCreateResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
-          }
-        },
-        "thumbnail": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The media item's thumbnail URI. This field is omitted until encoding is complete."
-          }
-        },
-        "thumbnailTimestampPct": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video."
-          }
-        },
-        "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
-          }
-        },
-        "uploaded": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time the media item was uploaded."
-          }
-        },
-        "uploadExpiry": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
-          }
-        },
-        "watermark": {
-          "target": "com.cloudflare.stream#ClipCreateResponseWatermark"
         }
       },
       "traits": {
@@ -3093,7 +3311,7 @@
         "input": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This is the preferred field over `url`."
+            "smithy.api#documentation": "A video’s URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This is the preferred field over `url`."
           }
         },
         "meta": {
@@ -3105,7 +3323,7 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A video's name. Used for legacy compatibility."
+            "smithy.api#documentation": "A video’s name. Used for legacy compatibility."
           }
         },
         "requireSignedURLs": {
@@ -3123,13 +3341,13 @@
         "thumbnailTimestampPct": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video."
+            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video’s duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video."
           }
         },
         "url": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This field is deprecated in favor of `input`."
+            "smithy.api#documentation": "A video’s URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This field is deprecated in favor of `input`."
           }
         },
         "watermark": {
@@ -3180,27 +3398,7 @@
         }
       }
     },
-    "com.cloudflare.stream#CopyCreateResponsePublicDetails": {
-      "type": "structure",
-      "members": {
-        "channel_link": {
-          "target": "smithy.api#String"
-        },
-        "logo": {
-          "target": "smithy.api#String"
-        },
-        "media_id": {
-          "target": "smithy.api#Double"
-        },
-        "share_link": {
-          "target": "smithy.api#String"
-        },
-        "title": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.stream#CopyCreateResponseStatusState": {
+    "com.cloudflare.stream#CopyCreateResponsePublicDetailsStatusState": {
       "type": "enum",
       "members": {
         "PENDINGUPLOAD": {
@@ -3247,7 +3445,7 @@
         }
       }
     },
-    "com.cloudflare.stream#CopyCreateResponseStatus": {
+    "com.cloudflare.stream#CopyCreateResponsePublicDetailsStatus": {
       "type": "structure",
       "members": {
         "errorReasonCode": {
@@ -3269,14 +3467,36 @@
           }
         },
         "state": {
-          "target": "com.cloudflare.stream#CopyCreateResponseStatusState",
+          "target": "com.cloudflare.stream#CopyCreateResponsePublicDetailsStatusState",
           "traits": {
             "smithy.api#documentation": "Specifies the processing status for all quality levels for a video."
           }
         }
       }
     },
-    "com.cloudflare.stream#CopyCreateResponseWatermark": {
+    "com.cloudflare.stream#CopyCreateResponsePublicDetailsWatermarkName": {
+      "type": "enum",
+      "members": {
+        "VIDEO12345_MP4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "video12345.mp4"
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#CopyCreateResponsePublicDetailsWatermarkUrl": {
+      "type": "enum",
+      "members": {
+        "HTTPS_EXAMPLE_COM_MYVIDEO_MP4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https://example.com/myvideo.mp4"
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#CopyCreateResponsePublicDetailsWatermark": {
       "type": "structure",
       "members": {
         "created": {
@@ -3324,7 +3544,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "size": {
@@ -3344,6 +3564,160 @@
           "traits": {
             "smithy.api#documentation": "The width of the image in pixels."
           }
+        },
+        "allowedOrigins": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"example.com\"",
+            "smithy.api#required": {}
+          }
+        },
+        "creator": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "input": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.stream#CopyCreateResponsePublicDetailsWatermarkName",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "name_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scheduledDeletion": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "thumbnailTimestampPct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "com.cloudflare.stream#CopyCreateResponsePublicDetailsWatermarkUrl",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#CopyCreateResponsePublicDetails": {
+      "type": "structure",
+      "members": {
+        "channel_link": {
+          "target": "smithy.api#String"
+        },
+        "logo": {
+          "target": "smithy.api#String"
+        },
+        "media_id": {
+          "target": "smithy.api#Double"
+        },
+        "share_link": {
+          "target": "smithy.api#String"
+        },
+        "title": {
+          "target": "smithy.api#String"
+        },
+        "readyToStream": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "readyToStreamAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
+          }
+        },
+        "scheduledDeletion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The size of the media item in bytes."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.stream#CopyCreateResponsePublicDetailsStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
+          }
+        },
+        "thumbnail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The media item’s thumbnail URI. This field is omitted until encoding is complete."
+          }
+        },
+        "thumbnailTimestampPct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video’s duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
+          }
+        },
+        "uploaded": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time the media item was uploaded."
+          }
+        },
+        "uploadExpiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
+          }
+        },
+        "watermark": {
+          "target": "com.cloudflare.stream#CopyCreateResponsePublicDetailsWatermark"
         }
       }
     },
@@ -3419,7 +3793,7 @@
         "preview": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The video's preview page URI. This field is omitted until encoding is complete."
+            "smithy.api#documentation": "The video’s preview page URI. This field is omitted until encoding is complete."
           }
         },
         "publicDetails": {
@@ -3427,75 +3801,6 @@
           "traits": {
             "smithy.api#documentation": "Public details for the video including title, share link, channel link, and logo."
           }
-        },
-        "readyToStream": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "readyToStreamAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress."
-          }
-        },
-        "requireSignedURLs": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video."
-          }
-        },
-        "scheduledDeletion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time."
-          }
-        },
-        "size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The size of the media item in bytes."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.stream#CopyCreateResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details."
-          }
-        },
-        "thumbnail": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The media item's thumbnail URI. This field is omitted until encoding is complete."
-          }
-        },
-        "thumbnailTimestampPct": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video."
-          }
-        },
-        "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Cloudflare-generated unique identifier for a media item."
-          }
-        },
-        "uploaded": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time the media item was uploaded."
-          }
-        },
-        "uploadExpiry": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time when the video upload URL is no longer valid for direct user uploads."
-          }
-        },
-        "watermark": {
-          "target": "com.cloudflare.stream#CopyCreateResponseWatermark"
         }
       },
       "traits": {
@@ -3601,7 +3906,7 @@
         "thumbnailTimestampPct": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video."
+            "smithy.api#documentation": "The timestamp for a thumbnail image calculated as a percentage value of the video’s duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video."
           }
         },
         "watermark": {
@@ -3610,6 +3915,17 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.stream#DirectUploadCreateResponseWatermarkName": {
+      "type": "enum",
+      "members": {
+        "VIDEO12345_MP4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "video12345.mp4"
+          }
+        }
       }
     },
     "com.cloudflare.stream#DirectUploadCreateResponseWatermark": {
@@ -3660,7 +3976,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "size": {
@@ -3679,6 +3995,64 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The width of the image in pixels."
+          }
+        },
+        "maxDurationSeconds": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "allowedOrigins": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"example.com\"",
+            "smithy.api#required": {}
+          }
+        },
+        "creator": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "expiry": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.stream#DirectUploadCreateResponseWatermarkName",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scheduledDeletion": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "thumbnailTimestampPct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
           }
         }
       }
@@ -4457,6 +4831,25 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.stream#LiveInputsCreateResponsePlayback": {
+      "type": "structure",
+      "members": {
+        "dash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DASH manifest URL used to play live video, referencing the live input ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "hls": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The HLS manifest URL used to play live video, referencing the live input ID.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.stream#LiveInputsCreateResponseRecordingAllowedOriginsList": {
       "type": "list",
       "member": {
@@ -4480,42 +4873,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsCreateResponseRecording": {
-      "type": "structure",
-      "members": {
-        "allowedOrigins": {
-          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingAllowedOriginsList",
-          "traits": {
-            "smithy.api#documentation": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin."
-          }
-        },
-        "hideLiveViewerCount": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Disables reporting the number of live viewers when this property is set to `true`."
-          }
-        },
-        "mode": {
-          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingMode",
-          "traits": {
-            "smithy.api#documentation": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input."
-          }
-        },
-        "requireSignedURLs": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input."
-          }
-        },
-        "timeoutSeconds": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used."
-          }
-        }
-      }
-    },
-    "com.cloudflare.stream#LiveInputsCreateResponseRtmps": {
+    "com.cloudflare.stream#LiveInputsCreateResponseRecordingRtmps": {
       "type": "structure",
       "members": {
         "streamKey": {
@@ -4532,7 +4890,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsCreateResponseRtmpsPlayback": {
+    "com.cloudflare.stream#LiveInputsCreateResponseRecordingRtmpsPlayback": {
       "type": "structure",
       "members": {
         "streamKey": {
@@ -4549,7 +4907,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsCreateResponseSrt": {
+    "com.cloudflare.stream#LiveInputsCreateResponseRecordingSrt": {
       "type": "structure",
       "members": {
         "passphrase": {
@@ -4572,7 +4930,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsCreateResponseSrtPlayback": {
+    "com.cloudflare.stream#LiveInputsCreateResponseRecordingSrtPlayback": {
       "type": "structure",
       "members": {
         "passphrase": {
@@ -4595,7 +4953,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsCreateResponseStatus": {
+    "com.cloudflare.stream#LiveInputsCreateResponseRecordingStatus": {
       "type": "enum",
       "members": {
         "CONNECTED": {
@@ -4648,7 +5006,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsCreateResponseWebRTC": {
+    "com.cloudflare.stream#LiveInputsCreateResponseRecordingWebRTC": {
       "type": "structure",
       "members": {
         "url": {
@@ -4659,13 +5017,184 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsCreateResponseWebRTCPlayback": {
+    "com.cloudflare.stream#LiveInputsCreateResponseRecordingWebRTCPlayback": {
       "type": "structure",
       "members": {
         "url": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL used to play live video over WebRTC."
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#LiveInputsCreateResponseRecordingName": {
+      "type": "enum",
+      "members": {
+        "TEST_STREAM_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "test stream 1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#LiveInputsCreateResponseRecordingTimeoutSeconds": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#LiveInputsCreateResponseRecording": {
+      "type": "structure",
+      "members": {
+        "allowedOrigins": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingAllowedOriginsList",
+          "traits": {
+            "smithy.api#documentation": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin."
+          }
+        },
+        "hideLiveViewerCount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disables reporting the number of live viewers when this property is set to `true`."
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input."
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input."
+          }
+        },
+        "timeoutSeconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used."
+          }
+        },
+        "rtmps": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingRtmps",
+          "traits": {
+            "smithy.api#documentation": "Details for streaming to an live input using RTMPS."
+          }
+        },
+        "rtmpsPlayback": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingRtmpsPlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playback from an live input using RTMPS."
+          }
+        },
+        "srt": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingSrt",
+          "traits": {
+            "smithy.api#documentation": "Details for streaming to a live input using SRT."
+          }
+        },
+        "srtPlayback": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingSrtPlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playback from an live input using SRT."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingStatus",
+          "traits": {
+            "smithy.api#documentation": "The connection status of a live input."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for a live input."
+          }
+        },
+        "webRTC": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingWebRTC",
+          "traits": {
+            "smithy.api#documentation": "Details for streaming to a live input using WebRTC."
+          }
+        },
+        "webRTCPlayback": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingWebRTCPlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playback from a live input using WebRTC."
+          }
+        },
+        "deleteRecordingAfterDays": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingName",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {}
+          }
+        },
+        "preferLowLatency": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "recording": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hideLiveViewerCount_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "hideLiveViewerCount"
+          }
+        },
+        "mode_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "mode"
+          }
+        },
+        "requireSignedURLs_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "requireSignedURLs"
+          }
+        },
+        "timeoutSeconds_2": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponseRecordingTimeoutSeconds",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "timeoutSeconds"
           }
         }
       }
@@ -4709,6 +5238,12 @@
             "smithy.api#documentation": "The date and time the live input was last modified."
           }
         },
+        "playback": {
+          "target": "com.cloudflare.stream#LiveInputsCreateResponsePlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playing a live input’s broadcast using the HLS or DASH manifests. URLs reference the live input ID."
+          }
+        },
         "preferLowLatency": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -4719,54 +5254,6 @@
           "target": "com.cloudflare.stream#LiveInputsCreateResponseRecording",
           "traits": {
             "smithy.api#documentation": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied."
-          }
-        },
-        "rtmps": {
-          "target": "com.cloudflare.stream#LiveInputsCreateResponseRtmps",
-          "traits": {
-            "smithy.api#documentation": "Details for streaming to an live input using RTMPS."
-          }
-        },
-        "rtmpsPlayback": {
-          "target": "com.cloudflare.stream#LiveInputsCreateResponseRtmpsPlayback",
-          "traits": {
-            "smithy.api#documentation": "Details for playback from an live input using RTMPS."
-          }
-        },
-        "srt": {
-          "target": "com.cloudflare.stream#LiveInputsCreateResponseSrt",
-          "traits": {
-            "smithy.api#documentation": "Details for streaming to a live input using SRT."
-          }
-        },
-        "srtPlayback": {
-          "target": "com.cloudflare.stream#LiveInputsCreateResponseSrtPlayback",
-          "traits": {
-            "smithy.api#documentation": "Details for playback from an live input using SRT."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.stream#LiveInputsCreateResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "The connection status of a live input."
-          }
-        },
-        "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A unique identifier for a live input."
-          }
-        },
-        "webRTC": {
-          "target": "com.cloudflare.stream#LiveInputsCreateResponseWebRTC",
-          "traits": {
-            "smithy.api#documentation": "Details for streaming to a live input using WebRTC."
-          }
-        },
-        "webRTCPlayback": {
-          "target": "com.cloudflare.stream#LiveInputsCreateResponseWebRTCPlayback",
-          "traits": {
-            "smithy.api#documentation": "Details for playback from a live input using WebRTC."
           }
         }
       },
@@ -4858,6 +5345,25 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.stream#LiveInputsGetResponsePlayback": {
+      "type": "structure",
+      "members": {
+        "dash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DASH manifest URL used to play live video, referencing the live input ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "hls": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The HLS manifest URL used to play live video, referencing the live input ID.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.stream#LiveInputsGetResponseRecordingAllowedOriginsList": {
       "type": "list",
       "member": {
@@ -4881,42 +5387,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsGetResponseRecording": {
-      "type": "structure",
-      "members": {
-        "allowedOrigins": {
-          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingAllowedOriginsList",
-          "traits": {
-            "smithy.api#documentation": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin."
-          }
-        },
-        "hideLiveViewerCount": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Disables reporting the number of live viewers when this property is set to `true`."
-          }
-        },
-        "mode": {
-          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingMode",
-          "traits": {
-            "smithy.api#documentation": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input."
-          }
-        },
-        "requireSignedURLs": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input."
-          }
-        },
-        "timeoutSeconds": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used."
-          }
-        }
-      }
-    },
-    "com.cloudflare.stream#LiveInputsGetResponseRtmps": {
+    "com.cloudflare.stream#LiveInputsGetResponseRecordingRtmps": {
       "type": "structure",
       "members": {
         "streamKey": {
@@ -4933,7 +5404,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsGetResponseRtmpsPlayback": {
+    "com.cloudflare.stream#LiveInputsGetResponseRecordingRtmpsPlayback": {
       "type": "structure",
       "members": {
         "streamKey": {
@@ -4950,7 +5421,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsGetResponseSrt": {
+    "com.cloudflare.stream#LiveInputsGetResponseRecordingSrt": {
       "type": "structure",
       "members": {
         "passphrase": {
@@ -4973,7 +5444,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsGetResponseSrtPlayback": {
+    "com.cloudflare.stream#LiveInputsGetResponseRecordingSrtPlayback": {
       "type": "structure",
       "members": {
         "passphrase": {
@@ -4996,7 +5467,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsGetResponseStatus": {
+    "com.cloudflare.stream#LiveInputsGetResponseRecordingStatus": {
       "type": "enum",
       "members": {
         "CONNECTED": {
@@ -5049,7 +5520,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsGetResponseWebRTC": {
+    "com.cloudflare.stream#LiveInputsGetResponseRecordingWebRTC": {
       "type": "structure",
       "members": {
         "url": {
@@ -5060,13 +5531,96 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsGetResponseWebRTCPlayback": {
+    "com.cloudflare.stream#LiveInputsGetResponseRecordingWebRTCPlayback": {
       "type": "structure",
       "members": {
         "url": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL used to play live video over WebRTC."
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#LiveInputsGetResponseRecording": {
+      "type": "structure",
+      "members": {
+        "allowedOrigins": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingAllowedOriginsList",
+          "traits": {
+            "smithy.api#documentation": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin."
+          }
+        },
+        "hideLiveViewerCount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disables reporting the number of live viewers when this property is set to `true`."
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input."
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input."
+          }
+        },
+        "timeoutSeconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used."
+          }
+        },
+        "rtmps": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingRtmps",
+          "traits": {
+            "smithy.api#documentation": "Details for streaming to an live input using RTMPS."
+          }
+        },
+        "rtmpsPlayback": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingRtmpsPlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playback from an live input using RTMPS."
+          }
+        },
+        "srt": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingSrt",
+          "traits": {
+            "smithy.api#documentation": "Details for streaming to a live input using SRT."
+          }
+        },
+        "srtPlayback": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingSrtPlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playback from an live input using SRT."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingStatus",
+          "traits": {
+            "smithy.api#documentation": "The connection status of a live input."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for a live input."
+          }
+        },
+        "webRTC": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingWebRTC",
+          "traits": {
+            "smithy.api#documentation": "Details for streaming to a live input using WebRTC."
+          }
+        },
+        "webRTCPlayback": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponseRecordingWebRTCPlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playback from a live input using WebRTC."
           }
         }
       }
@@ -5110,6 +5664,12 @@
             "smithy.api#documentation": "The date and time the live input was last modified."
           }
         },
+        "playback": {
+          "target": "com.cloudflare.stream#LiveInputsGetResponsePlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playing a live input’s broadcast using the HLS or DASH manifests. URLs reference the live input ID."
+          }
+        },
         "preferLowLatency": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -5120,54 +5680,6 @@
           "target": "com.cloudflare.stream#LiveInputsGetResponseRecording",
           "traits": {
             "smithy.api#documentation": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied."
-          }
-        },
-        "rtmps": {
-          "target": "com.cloudflare.stream#LiveInputsGetResponseRtmps",
-          "traits": {
-            "smithy.api#documentation": "Details for streaming to an live input using RTMPS."
-          }
-        },
-        "rtmpsPlayback": {
-          "target": "com.cloudflare.stream#LiveInputsGetResponseRtmpsPlayback",
-          "traits": {
-            "smithy.api#documentation": "Details for playback from an live input using RTMPS."
-          }
-        },
-        "srt": {
-          "target": "com.cloudflare.stream#LiveInputsGetResponseSrt",
-          "traits": {
-            "smithy.api#documentation": "Details for streaming to a live input using SRT."
-          }
-        },
-        "srtPlayback": {
-          "target": "com.cloudflare.stream#LiveInputsGetResponseSrtPlayback",
-          "traits": {
-            "smithy.api#documentation": "Details for playback from an live input using SRT."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.stream#LiveInputsGetResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "The connection status of a live input."
-          }
-        },
-        "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A unique identifier for a live input."
-          }
-        },
-        "webRTC": {
-          "target": "com.cloudflare.stream#LiveInputsGetResponseWebRTC",
-          "traits": {
-            "smithy.api#documentation": "Details for streaming to a live input using WebRTC."
-          }
-        },
-        "webRTCPlayback": {
-          "target": "com.cloudflare.stream#LiveInputsGetResponseWebRTCPlayback",
-          "traits": {
-            "smithy.api#documentation": "Details for playback from a live input using WebRTC."
           }
         }
       },
@@ -5255,6 +5767,18 @@
           "traits": {
             "smithy.api#documentation": "A unique identifier for a live input."
           }
+        },
+        "range": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of remaining live inputs based on cursor position."
+          }
+        },
+        "total": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of live inputs that match the provided filters."
+          }
         }
       }
     },
@@ -5269,18 +5793,6 @@
       "members": {
         "liveInputs": {
           "target": "com.cloudflare.stream#LiveInputsListResponseLiveInputsList"
-        },
-        "range": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The total number of remaining live inputs based on cursor position."
-          }
-        },
-        "total": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The total number of live inputs that match the provided filters."
-          }
         }
       },
       "traits": {
@@ -5424,6 +5936,25 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.stream#LiveInputsUpdateResponsePlayback": {
+      "type": "structure",
+      "members": {
+        "dash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DASH manifest URL used to play live video, referencing the live input ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "hls": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The HLS manifest URL used to play live video, referencing the live input ID.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.stream#LiveInputsUpdateResponseRecordingAllowedOriginsList": {
       "type": "list",
       "member": {
@@ -5447,42 +5978,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsUpdateResponseRecording": {
-      "type": "structure",
-      "members": {
-        "allowedOrigins": {
-          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingAllowedOriginsList",
-          "traits": {
-            "smithy.api#documentation": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin."
-          }
-        },
-        "hideLiveViewerCount": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Disables reporting the number of live viewers when this property is set to `true`."
-          }
-        },
-        "mode": {
-          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingMode",
-          "traits": {
-            "smithy.api#documentation": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input."
-          }
-        },
-        "requireSignedURLs": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input."
-          }
-        },
-        "timeoutSeconds": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used."
-          }
-        }
-      }
-    },
-    "com.cloudflare.stream#LiveInputsUpdateResponseRtmps": {
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecordingRtmps": {
       "type": "structure",
       "members": {
         "streamKey": {
@@ -5499,7 +5995,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsUpdateResponseRtmpsPlayback": {
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecordingRtmpsPlayback": {
       "type": "structure",
       "members": {
         "streamKey": {
@@ -5516,7 +6012,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsUpdateResponseSrt": {
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecordingSrt": {
       "type": "structure",
       "members": {
         "passphrase": {
@@ -5539,7 +6035,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsUpdateResponseSrtPlayback": {
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecordingSrtPlayback": {
       "type": "structure",
       "members": {
         "passphrase": {
@@ -5562,7 +6058,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsUpdateResponseStatus": {
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecordingStatus": {
       "type": "enum",
       "members": {
         "CONNECTED": {
@@ -5615,7 +6111,7 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsUpdateResponseWebRTC": {
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecordingWebRTC": {
       "type": "structure",
       "members": {
         "url": {
@@ -5626,13 +6122,184 @@
         }
       }
     },
-    "com.cloudflare.stream#LiveInputsUpdateResponseWebRTCPlayback": {
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecordingWebRTCPlayback": {
       "type": "structure",
       "members": {
         "url": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL used to play live video over WebRTC."
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecordingName": {
+      "type": "enum",
+      "members": {
+        "TEST_STREAM_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "test stream 1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecordingTimeoutSeconds": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        }
+      }
+    },
+    "com.cloudflare.stream#LiveInputsUpdateResponseRecording": {
+      "type": "structure",
+      "members": {
+        "allowedOrigins": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingAllowedOriginsList",
+          "traits": {
+            "smithy.api#documentation": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin."
+          }
+        },
+        "hideLiveViewerCount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disables reporting the number of live viewers when this property is set to `true`."
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input."
+          }
+        },
+        "requireSignedURLs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input."
+          }
+        },
+        "timeoutSeconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used."
+          }
+        },
+        "rtmps": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingRtmps",
+          "traits": {
+            "smithy.api#documentation": "Details for streaming to an live input using RTMPS."
+          }
+        },
+        "rtmpsPlayback": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingRtmpsPlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playback from an live input using RTMPS."
+          }
+        },
+        "srt": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingSrt",
+          "traits": {
+            "smithy.api#documentation": "Details for streaming to a live input using SRT."
+          }
+        },
+        "srtPlayback": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingSrtPlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playback from an live input using SRT."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingStatus",
+          "traits": {
+            "smithy.api#documentation": "The connection status of a live input."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for a live input."
+          }
+        },
+        "webRTC": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingWebRTC",
+          "traits": {
+            "smithy.api#documentation": "Details for streaming to a live input using WebRTC."
+          }
+        },
+        "webRTCPlayback": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingWebRTCPlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playback from a live input using WebRTC."
+          }
+        },
+        "deleteRecordingAfterDays": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingName",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {}
+          }
+        },
+        "preferLowLatency": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "recording": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hideLiveViewerCount_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "hideLiveViewerCount"
+          }
+        },
+        "mode_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "mode"
+          }
+        },
+        "requireSignedURLs_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "requireSignedURLs"
+          }
+        },
+        "timeoutSeconds_2": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecordingTimeoutSeconds",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "timeoutSeconds"
           }
         }
       }
@@ -5676,6 +6343,12 @@
             "smithy.api#documentation": "The date and time the live input was last modified."
           }
         },
+        "playback": {
+          "target": "com.cloudflare.stream#LiveInputsUpdateResponsePlayback",
+          "traits": {
+            "smithy.api#documentation": "Details for playing a live input’s broadcast using the HLS or DASH manifests. URLs reference the live input ID."
+          }
+        },
         "preferLowLatency": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -5686,54 +6359,6 @@
           "target": "com.cloudflare.stream#LiveInputsUpdateResponseRecording",
           "traits": {
             "smithy.api#documentation": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied."
-          }
-        },
-        "rtmps": {
-          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRtmps",
-          "traits": {
-            "smithy.api#documentation": "Details for streaming to an live input using RTMPS."
-          }
-        },
-        "rtmpsPlayback": {
-          "target": "com.cloudflare.stream#LiveInputsUpdateResponseRtmpsPlayback",
-          "traits": {
-            "smithy.api#documentation": "Details for playback from an live input using RTMPS."
-          }
-        },
-        "srt": {
-          "target": "com.cloudflare.stream#LiveInputsUpdateResponseSrt",
-          "traits": {
-            "smithy.api#documentation": "Details for streaming to a live input using SRT."
-          }
-        },
-        "srtPlayback": {
-          "target": "com.cloudflare.stream#LiveInputsUpdateResponseSrtPlayback",
-          "traits": {
-            "smithy.api#documentation": "Details for playback from an live input using SRT."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.stream#LiveInputsUpdateResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "The connection status of a live input."
-          }
-        },
-        "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A unique identifier for a live input."
-          }
-        },
-        "webRTC": {
-          "target": "com.cloudflare.stream#LiveInputsUpdateResponseWebRTC",
-          "traits": {
-            "smithy.api#documentation": "Details for streaming to a live input using WebRTC."
-          }
-        },
-        "webRTCPlayback": {
-          "target": "com.cloudflare.stream#LiveInputsUpdateResponseWebRTCPlayback",
-          "traits": {
-            "smithy.api#documentation": "Details for playback from a live input using WebRTC."
           }
         }
       },
@@ -5782,7 +6407,7 @@
         "streamKey": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The streamKey used to authenticate against an output's target.",
+            "smithy.api#documentation": "The streamKey used to authenticate against an output’s target.",
             "smithy.api#required": {}
           }
         },
@@ -5816,7 +6441,7 @@
         "streamKey": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The streamKey used to authenticate against an output's target."
+            "smithy.api#documentation": "The streamKey used to authenticate against an output’s target."
           }
         },
         "uid": {
@@ -5829,6 +6454,28 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL an output uses to restream."
+          }
+        },
+        "streamKey_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "streamKey"
+          }
+        },
+        "url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "url"
+          }
+        },
+        "enabled_2": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "enabled"
           }
         }
       },
@@ -5851,7 +6498,7 @@
           "uri": "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs",
           "code": 200
         },
-        "smithy.api#documentation": "Creates a new output that can be used to simulcast or restream live video to other RTMP or SRT destinations. Outputs are always linked to a specific live input —&nbsp;one live input can have many outputs."
+        "smithy.api#documentation": "Creates a new output that can be used to simulcast or restream live video to other RTMP or SRT destinations. Outputs are always linked to a specific live input — one live input can have many outputs."
       }
     },
     "com.cloudflare.stream#LiveInputsOutputsDeleteRequest": {
@@ -5940,7 +6587,7 @@
         "streamKey": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The streamKey used to authenticate against an output's target."
+            "smithy.api#documentation": "The streamKey used to authenticate against an output’s target."
           }
         },
         "uid": {
@@ -6047,7 +6694,7 @@
         "streamKey": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The streamKey used to authenticate against an output's target."
+            "smithy.api#documentation": "The streamKey used to authenticate against an output’s target."
           }
         },
         "uid": {
@@ -6060,6 +6707,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL an output uses to restream."
+          }
+        },
+        "enabled_2": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "enabled"
           }
         }
       },
@@ -6352,7 +7007,7 @@
           "uri": "/accounts/{account_id}/stream/storage-usage",
           "code": 200
         },
-        "smithy.api#documentation": "Returns information about an account's storage use.",
+        "smithy.api#documentation": "Returns information about an account’s storage use.",
         "smithy.api#readonly": {}
       }
     },
@@ -6394,7 +7049,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "url": {
@@ -6456,7 +7111,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "size": {
@@ -6475,6 +7130,42 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The width of the image in pixels."
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "opacity_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "opacity"
+          }
+        },
+        "padding_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "padding"
+          }
+        },
+        "position_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "position"
+          }
+        },
+        "scale_2": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "scale"
           }
         }
       },
@@ -6629,7 +7320,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "size": {
@@ -6738,7 +7429,7 @@
         "scale": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video."
+            "smithy.api#documentation": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video."
           }
         },
         "size": {
@@ -6944,6 +7635,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.stream#WebhooksUpdateResponseNotificationUrl": {
+      "type": "enum",
+      "members": {
+        "HTTPS_EXAMPLE_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https://example.com"
+          }
+        }
+      }
+    },
     "com.cloudflare.stream#WebhooksUpdateResponse": {
       "type": "structure",
       "members": {
@@ -6969,6 +7671,21 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The secret used to verify webhook signatures."
+          }
+        },
+        "notification_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "notification_url"
+          }
+        },
+        "notificationUrl_2": {
+          "target": "com.cloudflare.stream#WebhooksUpdateResponseNotificationUrl",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "notificationUrl"
           }
         }
       },

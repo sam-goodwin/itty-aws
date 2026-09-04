@@ -17,33 +17,10 @@
     ]
   },
   "shapes": {
-    "com.cloudflare.resource_sharing#CreateRequestRecipientsItem": {
-      "type": "structure",
-      "members": {
-        "account_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead."
-          }
-        },
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization identifier."
-          }
-        },
-        "recipient_account_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The account that will receive the share."
-          }
-        }
-      }
-    },
     "com.cloudflare.resource_sharing#CreateRequestRecipientsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.resource_sharing#CreateRequestRecipientsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.resource_sharing#CreateRequestResourcesItemResourceType": {
@@ -83,6 +60,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
+          }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
           }
         }
       }
@@ -148,6 +131,24 @@
           "target": "com.cloudflare.resource_sharing#CreateRequestRecipientsList",
           "traits": {
             "smithy.api#required": {}
+          }
+        },
+        "Deprecatedaccount_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period."
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organization identifier."
+          }
+        },
+        "recipient_account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account that will receive the share."
           }
         },
         "resources": {
@@ -256,6 +257,12 @@
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
           }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
+          }
         }
       }
     },
@@ -278,6 +285,17 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "deleted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_sharing#CreateResponseResourcesItemResourceType2": {
+      "type": "enum",
+      "members": {
+        "CUSTOM_RULESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom-ruleset"
           }
         }
       }
@@ -346,6 +364,55 @@
           "traits": {
             "smithy.api#documentation": "Resource Status.",
             "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "recipients": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{}",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {}
+          }
+        },
+        "meta_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "meta"
+          }
+        },
+        "resource_account_id_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "resource_account_id"
+          }
+        },
+        "resource_id_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "resource_id"
+          }
+        },
+        "resource_type_2": {
+          "target": "com.cloudflare.resource_sharing#CreateResponseResourcesItemResourceType2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "resource_type"
           }
         }
       }
@@ -423,25 +490,25 @@
         "associated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "associating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "kind": {
@@ -450,7 +517,7 @@
         "resources": {
           "target": "com.cloudflare.resource_sharing#CreateResponseResourcesList",
           "traits": {
-            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter."
+            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter."
           }
         }
       },
@@ -594,6 +661,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
+          }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
           }
         }
       }
@@ -762,25 +835,25 @@
         "associated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "associating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "kind": {
@@ -789,7 +862,7 @@
         "resources": {
           "target": "com.cloudflare.resource_sharing#DeleteResponseResourcesList",
           "traits": {
-            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter."
+            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter."
           }
         }
       },
@@ -948,6 +1021,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
+          }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
           }
         }
       }
@@ -1116,25 +1195,25 @@
         "associated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "associating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "kind": {
@@ -1143,7 +1222,7 @@
         "resources": {
           "target": "com.cloudflare.resource_sharing#GetResponseResourcesList",
           "traits": {
-            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter."
+            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter."
           }
         }
       },
@@ -1259,6 +1338,12 @@
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
           }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
+          }
         }
       }
     },
@@ -1363,14 +1448,14 @@
         "page": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Page number. Defaults to `1` when `per_page` is supplied without",
+            "smithy.api#documentation": "Page number. Defaults to `1` when `per_page` is supplied without `page`. May be omitted entirely along with `per_page` to receive a non-paginated response.",
             "smithy.api#httpQuery": "page"
           }
         },
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Number of objects to return per page. Defaults to `20` when `page`",
+            "smithy.api#documentation": "Number of objects to return per page. Defaults to `20` when `page`is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
             "smithy.api#httpQuery": "per_page"
           }
         },
@@ -1501,6 +1586,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
+          }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
           }
         }
       }
@@ -1669,25 +1760,25 @@
         "associated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "associating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "kind": {
@@ -1696,7 +1787,7 @@
         "resources": {
           "target": "com.cloudflare.resource_sharing#ListResultItemResourcesList",
           "traits": {
-            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter."
+            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter."
           }
         }
       }
@@ -1866,6 +1957,12 @@
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
           }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
+          }
         }
       }
     },
@@ -1888,6 +1985,17 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "deleted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_sharing#UpdateResponseResourcesItemName": {
+      "type": "enum",
+      "members": {
+        "MY_SHARED_WAF_MANAGED_RULE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "My Shared WAF Managed Rule"
           }
         }
       }
@@ -1955,6 +2063,13 @@
           "target": "com.cloudflare.resource_sharing#UpdateResponseResourcesItemStatus",
           "traits": {
             "smithy.api#documentation": "Resource Status.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "com.cloudflare.resource_sharing#UpdateResponseResourcesItemName",
+          "traits": {
+            "smithy.api#documentation": "}'",
             "smithy.api#required": {}
           }
         }
@@ -2033,25 +2148,25 @@
         "associated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "associating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociated_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "disassociating_recipient_count": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter."
+            "smithy.api#documentation": "The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter."
           }
         },
         "kind": {
@@ -2060,7 +2175,7 @@
         "resources": {
           "target": "com.cloudflare.resource_sharing#UpdateResponseResourcesList",
           "traits": {
-            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter."
+            "smithy.api#documentation": "A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter."
           }
         }
       },
@@ -2083,7 +2198,7 @@
           "uri": "/accounts/{account_id}/shares/{share_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Updating is not immediate, an updated share object with a new status will be returned.",
+        "smithy.api#documentation": "Updates the share’s display name and tags. This endpoint does **not**modify recipients or resources — those are managed via dedicated subresource endpoints: * **Recipients**: Use `POST /accounts/{account_id}/shares/{share_id}/recipients`to add a single recipient, `PUT /accounts/{account_id}/shares/{share_id}/recipients`to replace the full recipient list, or `DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}`to remove a recipient. * **Resources**: Use the share’s resource subresource endpoints. Updating is not immediate; an updated share object with a new status will be returned.",
         "smithy.api#idempotent": {}
       }
     },
@@ -2106,11 +2221,10 @@
             "smithy.api#required": {}
           }
         },
-        "account_id_2": {
+        "Deprecatedaccount_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead.",
-            "smithy.api#jsonName": "account_id"
+            "smithy.api#documentation": "This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period."
           }
         },
         "organization_id": {
@@ -2198,6 +2312,17 @@
         "target": "com.cloudflare.resource_sharing#RecipientsCreateResponseResourcesItem"
       }
     },
+    "com.cloudflare.resource_sharing#RecipientsCreateResponseRecipientAccountId": {
+      "type": "enum",
+      "members": {
+        "_023E105F4ECEF8AD9CA31A8372D0C353": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "023e105f4ecef8ad9ca31a8372d0c353"
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_sharing#RecipientsCreateResponse": {
       "type": "structure",
       "members": {
@@ -2218,7 +2343,7 @@
         "association_status": {
           "target": "com.cloudflare.resource_sharing#RecipientsCreateResponseAssociationStatus",
           "traits": {
-            "smithy.api#documentation": "Share Recipient association status.",
+            "smithy.api#documentation": "The current state of the recipient relative to the share. The `desired_association_status` (not exposed in the response) tracks the target state set by the API; the background reconciliation workflow drives `current_association_status` toward it.",
             "smithy.api#required": {}
           }
         },
@@ -2238,6 +2363,26 @@
         },
         "resources": {
           "target": "com.cloudflare.resource_sharing#RecipientsCreateResponseResourcesList"
+        },
+        "account_id_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "account_id"
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "recipient_account_id": {
+          "target": "com.cloudflare.resource_sharing#RecipientsCreateResponseRecipientAccountId",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -2259,7 +2404,7 @@
           "uri": "/accounts/{account_id}/shares/{share_id}/recipients",
           "code": 200
         },
-        "smithy.api#documentation": "Adds a recipient to a resource share, granting them access to the shared resources."
+        "smithy.api#documentation": "Adds a single recipient to an account-targeted resource share, granting them access to the shared resources. The recipient account must belong to the same organization as the share owner. To replace the entire recipient list in one call, use `PUT /accounts/{account_id}/shares/{share_id}/recipients` instead."
       }
     },
     "com.cloudflare.resource_sharing#RecipientsDeleteRequest": {
@@ -2382,7 +2527,7 @@
         "association_status": {
           "target": "com.cloudflare.resource_sharing#RecipientsDeleteResponseAssociationStatus",
           "traits": {
-            "smithy.api#documentation": "Share Recipient association status.",
+            "smithy.api#documentation": "The current state of the recipient relative to the share. The `desired_association_status` (not exposed in the response) tracks the target state set by the API; the background reconciliation workflow drives `current_association_status` toward it.",
             "smithy.api#required": {}
           }
         },
@@ -2423,7 +2568,7 @@
           "uri": "/accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Deletion is not immediate, an updated share recipient object with a new status will be returned.",
+        "smithy.api#documentation": "Performs a **soft delete**: sets the recipient’s `desired_association_status` to `disassociated`, which signals the background reconciliation workflow (Temporal) to remove the shared resources from the recipient account. The recipient record remains in the database for audit purposes and is still returned by `GET /accounts/{account_id}/shares/{share_id}/recipients` with its updated status. Resource access is not fully removed until the workflow completes and `current_association_status` transitions to `disassociated`. The recipient record itself is never physically deleted.",
         "smithy.api#idempotent": {}
       }
     },
@@ -2554,7 +2699,7 @@
         "association_status": {
           "target": "com.cloudflare.resource_sharing#RecipientsGetResponseAssociationStatus",
           "traits": {
-            "smithy.api#documentation": "Share Recipient association status.",
+            "smithy.api#documentation": "The current state of the recipient relative to the share. The `desired_association_status` (not exposed in the response) tracks the target state set by the API; the background reconciliation workflow drives `current_association_status` toward it.",
             "smithy.api#required": {}
           }
         },
@@ -2628,14 +2773,14 @@
         "page": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Page number. Defaults to `1` when `per_page` is supplied without",
+            "smithy.api#documentation": "Page number. Defaults to `1` when `per_page` is supplied without `page`. May be omitted entirely along with `per_page` to receive a non-paginated response.",
             "smithy.api#httpQuery": "page"
           }
         },
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Number of objects to return per page. Defaults to `20` when `page`",
+            "smithy.api#documentation": "Number of objects to return per page. Defaults to `20` when `page`is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
             "smithy.api#httpQuery": "per_page"
           }
         }
@@ -2732,7 +2877,7 @@
         "association_status": {
           "target": "com.cloudflare.resource_sharing#RecipientsListResultItemAssociationStatus",
           "traits": {
-            "smithy.api#documentation": "Share Recipient association status.",
+            "smithy.api#documentation": "The current state of the recipient relative to the share. The `desired_association_status` (not exposed in the response) tracks the target state set by the API; the background reconciliation workflow drives `current_association_status` toward it.",
             "smithy.api#required": {}
           }
         },
@@ -2790,7 +2935,7 @@
           "uri": "/accounts/{account_id}/shares/{share_id}/recipients",
           "code": 200
         },
-        "smithy.api#documentation": "List share recipients by share ID.",
+        "smithy.api#documentation": "List share recipients by share ID. Returns **all** recipients regardless of their `association_status` (associating, associated, disassociating, disassociated). Callers that want only “active” recipients must filter client-side on the `association_status` field.",
         "smithy.api#readonly": {}
       }
     },
@@ -2831,6 +2976,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
+          }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
           }
         }
       }
@@ -2925,6 +3076,12 @@
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
           }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
+          }
         }
       }
     },
@@ -2947,6 +3104,17 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "deleted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_sharing#ResourcesCreateResponseResourceType2": {
+      "type": "enum",
+      "members": {
+        "CUSTOM_RULESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom-ruleset"
           }
         }
       }
@@ -3015,6 +3183,35 @@
           "traits": {
             "smithy.api#documentation": "Resource Status.",
             "smithy.api#required": {}
+          }
+        },
+        "meta_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "meta"
+          }
+        },
+        "resource_account_id_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "resource_account_id"
+          }
+        },
+        "resource_id_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "resource_id"
+          }
+        },
+        "resource_type_2": {
+          "target": "com.cloudflare.resource_sharing#ResourcesCreateResponseResourceType2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "resource_type"
           }
         }
       },
@@ -3109,6 +3306,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
+          }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
           }
         }
       }
@@ -3296,6 +3499,12 @@
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
           }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
+          }
         }
       }
     },
@@ -3450,6 +3659,12 @@
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
           }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
+          }
         }
       }
     },
@@ -3498,14 +3713,14 @@
         "page": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Page number. Defaults to `1` when `per_page` is supplied without",
+            "smithy.api#documentation": "Page number. Defaults to `1` when `per_page` is supplied without `page`. May be omitted entirely along with `per_page` to receive a non-paginated response.",
             "smithy.api#httpQuery": "page"
           }
         },
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Number of objects to return per page. Defaults to `20` when `page`",
+            "smithy.api#documentation": "Number of objects to return per page. Defaults to `20` when `page`is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
             "smithy.api#httpQuery": "per_page"
           }
         },
@@ -3565,6 +3780,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
+          }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
           }
         }
       }
@@ -3776,6 +3997,12 @@
           "traits": {
             "smithy.api#enumValue": "idp-federation-grant"
           }
+        },
+        "TRUST_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trust-grant"
+          }
         }
       }
     },
@@ -3866,6 +4093,14 @@
           "traits": {
             "smithy.api#documentation": "Resource Status.",
             "smithy.api#required": {}
+          }
+        },
+        "meta_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "meta"
           }
         }
       },

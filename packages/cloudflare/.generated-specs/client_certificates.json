@@ -87,6 +87,17 @@
         }
       }
     },
+    "com.cloudflare.client_certificates#CreateResponseValidityDays": {
+      "type": "intEnum",
+      "members": {
+        "_3650": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3650
+          }
+        }
+      }
+    },
     "com.cloudflare.client_certificates#CreateResponse": {
       "type": "structure",
       "members": {
@@ -196,6 +207,21 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The number of days the Client Certificate will be valid after the issued_on date."
+          }
+        },
+        "csr_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "csr"
+          }
+        },
+        "validity_days_2": {
+          "target": "com.cloudflare.client_certificates#CreateResponseValidityDays",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "validity_days"
           }
         }
       },
@@ -596,6 +622,13 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The number of days the Client Certificate will be valid after the issued_on date."
+          }
+        },
+        "reactivate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
           }
         }
       },
@@ -1094,7 +1127,7 @@
           "uri": "/zones/{zone_id}/client_certificates",
           "code": 200
         },
-        "smithy.api#documentation": "List all of your Zone's API Shield mTLS Client Certificates by Status and/or using Pagination.",
+        "smithy.api#documentation": "List all of your Zone’s API Shield mTLS Client Certificates by Status and/or using Pagination.",
         "smithy.api#readonly": {}
       }
     },
