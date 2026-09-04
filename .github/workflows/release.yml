@@ -3,6 +3,11 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
+      branch:
+        description: Branch to release from
+        required: false
+        type: string
+        default: main
       version:
         description: >-
           Release spec. `rc` (the default) publishes the next `1.0.0-rc.N`;
@@ -19,7 +24,7 @@ on:
         default: false
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: release-${{ inputs.branch }}
   cancel-in-progress: false
 
 permissions:
@@ -49,6 +54,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ inputs.branch }}
           fetch-depth: 0
           token: ${{ steps.bot-token.outputs.token }}
 
