@@ -42716,7 +42716,7 @@
         "smithy.api#documentation": "Retrieves a Branch."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest": {
+    "com.gcp.discoveryengine_v1alpha#GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest": {
       "type": "structure",
       "members": {
         "matcher.fhirMatcher.fhirResources": {
@@ -42743,10 +42743,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchGetDocumentsMetadataProjectsLocationsDataStoresBranches": {
+    "com.gcp.discoveryengine_v1alpha#GetBatchDocumentMetadataProjectLocationDataStoreBranche": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse"
@@ -45688,7 +45688,7 @@
         "smithy.api#documentation": "Updates a TargetSite."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest": {
+    "com.gcp.discoveryengine_v1alpha#CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -45708,10 +45708,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSites": {
+    "com.gcp.discoveryengine_v1alpha#CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSite": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleLongrunningOperation"
@@ -46138,7 +46138,7 @@
         "smithy.api#documentation": "Permanently deletes all CompletionSuggestions for a DataStore."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest": {
+    "com.gcp.discoveryengine_v1alpha#ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -46158,10 +46158,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#ImportProjectsLocationsDataStoresSuggestionDenyListEntries": {
+    "com.gcp.discoveryengine_v1alpha#ListImportProjectLocationDataStoreSuggestionDenyEntries": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleLongrunningOperation"
@@ -46188,7 +46188,7 @@
         "smithy.api#documentation": "Imports all SuggestionDenyListEntry for a DataStore."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest": {
+    "com.gcp.discoveryengine_v1alpha#ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -46208,10 +46208,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#PurgeProjectsLocationsDataStoresSuggestionDenyListEntries": {
+    "com.gcp.discoveryengine_v1alpha#ListPurgeProjectLocationDataStoreSuggestionDenyEntries": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleLongrunningOperation"
@@ -53135,7 +53135,7 @@
         "smithy.api#documentation": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest": {
+    "com.gcp.discoveryengine_v1alpha#ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -53155,10 +53155,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries": {
+    "com.gcp.discoveryengine_v1alpha#ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntries": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleLongrunningOperation"
@@ -53185,7 +53185,7 @@
         "smithy.api#documentation": "Permanently deletes all SuggestionDenyListEntry for a DataStore."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest": {
+    "com.gcp.discoveryengine_v1alpha#ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -53205,10 +53205,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries": {
+    "com.gcp.discoveryengine_v1alpha#ListImportProjectLocationCollectionDataStoreSuggestionDenyEntries": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleLongrunningOperation"
@@ -54746,7 +54746,7 @@
         "smithy.api#documentation": "Gets a WidgetConfig."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest": {
+    "com.gcp.discoveryengine_v1alpha#GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest": {
       "type": "structure",
       "members": {
         "matcher.urisMatcher.uris": {
@@ -54773,10 +54773,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranches": {
+    "com.gcp.discoveryengine_v1alpha#GetBatchDocumentMetadataProjectLocationCollectionDataStoreBranche": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse"
@@ -55951,7 +55951,7 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest": {
+    "com.gcp.discoveryengine_v1alpha#VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -55971,10 +55971,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngine": {
+    "com.gcp.discoveryengine_v1alpha#VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngine": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleLongrunningOperation"
@@ -56634,7 +56634,7 @@
         "smithy.api#documentation": "Updates a TargetSite."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest": {
+    "com.gcp.discoveryengine_v1alpha#CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -56654,10 +56654,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites": {
+    "com.gcp.discoveryengine_v1alpha#CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSite": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleLongrunningOperation"
@@ -57426,7 +57426,7 @@
         "smithy.api#documentation": "Shares a notebook to other accounts."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchDeleteProjectsLocationsNotebooksRequest": {
+    "com.gcp.discoveryengine_v1alpha#DeleteBatchProjectLocationNotebookRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -57446,10 +57446,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchDeleteProjectsLocationsNotebooks": {
+    "com.gcp.discoveryengine_v1alpha#DeleteBatchProjectLocationNotebook": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#BatchDeleteProjectsLocationsNotebooksRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#DeleteBatchProjectLocationNotebookRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleProtobufEmpty"
@@ -57619,7 +57619,7 @@
         "smithy.api#documentation": "Deletes an audio overview."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchDeleteProjectsLocationsNotebooksSourcesRequest": {
+    "com.gcp.discoveryengine_v1alpha#DeleteBatchProjectLocationNotebookSourceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -57639,10 +57639,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchDeleteProjectsLocationsNotebooksSources": {
+    "com.gcp.discoveryengine_v1alpha#DeleteBatchProjectLocationNotebookSource": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#BatchDeleteProjectsLocationsNotebooksSourcesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#DeleteBatchProjectLocationNotebookSourceRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleProtobufEmpty"
@@ -57706,7 +57706,7 @@
         "smithy.api#documentation": "Gets a Source."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchCreateProjectsLocationsNotebooksSourcesRequest": {
+    "com.gcp.discoveryengine_v1alpha#CreateBatchProjectLocationNotebookSourceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -57726,10 +57726,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchCreateProjectsLocationsNotebooksSources": {
+    "com.gcp.discoveryengine_v1alpha#CreateBatchProjectLocationNotebookSource": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#BatchCreateProjectsLocationsNotebooksSourcesRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#CreateBatchProjectLocationNotebookSourceRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse"
@@ -59151,7 +59151,7 @@
         "smithy.api#documentation": "Gets the User Store."
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchUpdateUserLicensesProjectsLocationsUserStoresRequest": {
+    "com.gcp.discoveryengine_v1alpha#UpdateBatchUserLicenseProjectLocationUserStoreRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -59171,10 +59171,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1alpha#BatchUpdateUserLicensesProjectsLocationsUserStores": {
+    "com.gcp.discoveryengine_v1alpha#UpdateBatchUserLicenseProjectLocationUserStore": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1alpha#BatchUpdateUserLicensesProjectsLocationsUserStoresRequest"
+        "target": "com.gcp.discoveryengine_v1alpha#UpdateBatchUserLicenseProjectLocationUserStoreRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1alpha#GoogleLongrunningOperation"

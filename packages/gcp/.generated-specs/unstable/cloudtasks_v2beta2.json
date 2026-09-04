@@ -2776,7 +2776,7 @@
         }
       }
     },
-    "com.gcp.cloudtasks_v2beta2#BatchCreateProjectsLocationsQueuesTasksRequest": {
+    "com.gcp.cloudtasks_v2beta2#CreateBatchProjectLocationQueueTaskRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2796,10 +2796,10 @@
         }
       }
     },
-    "com.gcp.cloudtasks_v2beta2#BatchCreateProjectsLocationsQueuesTasks": {
+    "com.gcp.cloudtasks_v2beta2#CreateBatchProjectLocationQueueTask": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudtasks_v2beta2#BatchCreateProjectsLocationsQueuesTasksRequest"
+        "target": "com.gcp.cloudtasks_v2beta2#CreateBatchProjectLocationQueueTaskRequest"
       },
       "output": {
         "target": "com.gcp.cloudtasks_v2beta2#Operation"
@@ -3043,7 +3043,7 @@
         "smithy.api#documentation": "Creates a task and adds it to a queue. Tasks cannot be updated after creation; there is no UpdateTask command. * For App Engine queues, the maximum task size is 100KB. * For pull queues, the maximum task size is 1MB."
       }
     },
-    "com.gcp.cloudtasks_v2beta2#BatchDeleteProjectsLocationsQueuesTasksRequest": {
+    "com.gcp.cloudtasks_v2beta2#DeleteBatchProjectLocationQueueTaskRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3063,10 +3063,10 @@
         }
       }
     },
-    "com.gcp.cloudtasks_v2beta2#BatchDeleteProjectsLocationsQueuesTasks": {
+    "com.gcp.cloudtasks_v2beta2#DeleteBatchProjectLocationQueueTask": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudtasks_v2beta2#BatchDeleteProjectsLocationsQueuesTasksRequest"
+        "target": "com.gcp.cloudtasks_v2beta2#DeleteBatchProjectLocationQueueTaskRequest"
       },
       "output": {
         "target": "com.gcp.cloudtasks_v2beta2#Operation"

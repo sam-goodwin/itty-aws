@@ -2570,7 +2570,7 @@
         "smithy.api#documentation": "Updates an existing Instance in a given project and location."
       }
     },
-    "com.gcp.memcache_v1beta2#ApplySoftwareUpdateProjectsLocationsInstancesRequest": {
+    "com.gcp.memcache_v1beta2#UpdateApplySoftwareProjectLocationInstanceRequest": {
       "type": "structure",
       "members": {
         "instance": {
@@ -2590,10 +2590,10 @@
         }
       }
     },
-    "com.gcp.memcache_v1beta2#ApplySoftwareUpdateProjectsLocationsInstances": {
+    "com.gcp.memcache_v1beta2#UpdateApplySoftwareProjectLocationInstance": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.memcache_v1beta2#ApplySoftwareUpdateProjectsLocationsInstancesRequest"
+        "target": "com.gcp.memcache_v1beta2#UpdateApplySoftwareProjectLocationInstanceRequest"
       },
       "output": {
         "target": "com.gcp.memcache_v1beta2#Operation"

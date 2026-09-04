@@ -2272,7 +2272,7 @@
         }
       }
     },
-    "com.gcp.playdeveloperreporting_v1alpha1#FetchReleaseFilterOptionsAppsRequest": {
+    "com.gcp.playdeveloperreporting_v1alpha1#ReleaseFetchFilterOptionAppRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -2285,10 +2285,10 @@
         }
       }
     },
-    "com.gcp.playdeveloperreporting_v1alpha1#FetchReleaseFilterOptionsApps": {
+    "com.gcp.playdeveloperreporting_v1alpha1#ReleaseFetchFilterOptionApp": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.playdeveloperreporting_v1alpha1#FetchReleaseFilterOptionsAppsRequest"
+        "target": "com.gcp.playdeveloperreporting_v1alpha1#ReleaseFetchFilterOptionAppRequest"
       },
       "output": {
         "target": "com.gcp.playdeveloperreporting_v1alpha1#GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions"

@@ -158,47 +158,6 @@ export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleLongrunningOperation",
 }) as any as S.Schema<GoogleLongrunningOperation>;
 
-/** The request for HubService.AcceptSpokeUpdate. */
-export interface AcceptSpokeUpdateRequest {
-  /** Required. The URI of the spoke to accept update. */
-  spokeUri?: string;
-  /** Required. The etag of the spoke to accept update. */
-  spokeEtag?: string;
-  /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-}
-export const AcceptSpokeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spokeUri: S.optional(S.String),
-    spokeEtag: S.optional(S.String),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AcceptSpokeUpdateRequest",
-}) as any as S.Schema<AcceptSpokeUpdateRequest>;
-
-export interface AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest {
-  /** Required. The name of the hub to accept spoke update. */
-  name: string;
-  /** Request body */
-  body?: AcceptSpokeUpdateRequest;
-}
-export const AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AcceptSpokeUpdateRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:acceptSpokeUpdate",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest",
-  }) as any as S.Schema<AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest>;
-
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
 export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(
@@ -5801,50 +5760,6 @@ export const RejectSpokeProjectsLocationsGlobalHubsRequest =
     identifier: "RejectSpokeProjectsLocationsGlobalHubsRequest",
   }) as any as S.Schema<RejectSpokeProjectsLocationsGlobalHubsRequest>;
 
-/** The request for HubService.RejectSpokeUpdate. */
-export interface RejectSpokeUpdateRequest {
-  /** Optional. Additional information provided by the hub administrator. */
-  details?: string;
-  /** Required. The etag of the spoke to reject update. */
-  spokeEtag?: string;
-  /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Required. The URI of the spoke to reject update. */
-  spokeUri?: string;
-}
-export const RejectSpokeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(S.String),
-    spokeEtag: S.optional(S.String),
-    requestId: S.optional(S.String),
-    spokeUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RejectSpokeUpdateRequest",
-}) as any as S.Schema<RejectSpokeUpdateRequest>;
-
-export interface RejectSpokeUpdateProjectsLocationsGlobalHubsRequest {
-  /** Required. The name of the hub to reject spoke update. */
-  name: string;
-  /** Request body */
-  body?: RejectSpokeUpdateRequest;
-}
-export const RejectSpokeUpdateProjectsLocationsGlobalHubsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RejectSpokeUpdateRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:rejectSpokeUpdate",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RejectSpokeUpdateProjectsLocationsGlobalHubsRequest",
-  }) as any as S.Schema<RejectSpokeUpdateProjectsLocationsGlobalHubsRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -6108,6 +6023,91 @@ export const TestIamPermissionsProjectsLocationsSpokesRequest =
     identifier: "TestIamPermissionsProjectsLocationsSpokesRequest",
   }) as any as S.Schema<TestIamPermissionsProjectsLocationsSpokesRequest>;
 
+/** The request for HubService.AcceptSpokeUpdate. */
+export interface AcceptSpokeUpdateRequest {
+  /** Required. The URI of the spoke to accept update. */
+  spokeUri?: string;
+  /** Required. The etag of the spoke to accept update. */
+  spokeEtag?: string;
+  /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+export const AcceptSpokeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spokeUri: S.optional(S.String),
+    spokeEtag: S.optional(S.String),
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AcceptSpokeUpdateRequest",
+}) as any as S.Schema<AcceptSpokeUpdateRequest>;
+
+export interface UpdateAcceptSpokeProjectLocationGlobalHubRequest {
+  /** Required. The name of the hub to accept spoke update. */
+  name: string;
+  /** Request body */
+  body?: AcceptSpokeUpdateRequest;
+}
+export const UpdateAcceptSpokeProjectLocationGlobalHubRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(AcceptSpokeUpdateRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:acceptSpokeUpdate",
+        baseUrl: "https://networkconnectivity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAcceptSpokeProjectLocationGlobalHubRequest",
+  }) as any as S.Schema<UpdateAcceptSpokeProjectLocationGlobalHubRequest>;
+
+/** The request for HubService.RejectSpokeUpdate. */
+export interface RejectSpokeUpdateRequest {
+  /** Optional. Additional information provided by the hub administrator. */
+  details?: string;
+  /** Required. The etag of the spoke to reject update. */
+  spokeEtag?: string;
+  /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. The URI of the spoke to reject update. */
+  spokeUri?: string;
+}
+export const RejectSpokeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    details: S.optional(S.String),
+    spokeEtag: S.optional(S.String),
+    requestId: S.optional(S.String),
+    spokeUri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RejectSpokeUpdateRequest",
+}) as any as S.Schema<RejectSpokeUpdateRequest>;
+
+export interface UpdateRejectSpokeProjectLocationGlobalHubRequest {
+  /** Required. The name of the hub to reject spoke update. */
+  name: string;
+  /** Request body */
+  body?: RejectSpokeUpdateRequest;
+}
+export const UpdateRejectSpokeProjectLocationGlobalHubRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RejectSpokeUpdateRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:rejectSpokeUpdate",
+        baseUrl: "https://networkconnectivity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateRejectSpokeProjectLocationGlobalHubRequest",
+  }) as any as S.Schema<UpdateRejectSpokeProjectLocationGlobalHubRequest>;
+
 export type AcceptSpokeProjectsLocationsGlobalHubsError =
   | NotFound
   | Forbidden
@@ -6122,26 +6122,6 @@ export const acceptSpokeProjectsLocationsGlobalHubs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptSpokeProjectsLocationsGlobalHubsRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AcceptSpokeUpdateProjectsLocationsGlobalHubsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Accepts a proposal to update a Network Connectivity Center spoke in a hub. */
-export const acceptSpokeUpdateProjectsLocationsGlobalHubs: API.OperationMethod<
-  AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest,
-  GoogleLongrunningOperation,
-  AcceptSpokeUpdateProjectsLocationsGlobalHubsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest,
   output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8059,26 +8039,6 @@ export const rejectSpokeProjectsLocationsGlobalHubs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RejectSpokeUpdateProjectsLocationsGlobalHubsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Rejects a proposal to update a Network Connectivity Center spoke in a hub. */
-export const rejectSpokeUpdateProjectsLocationsGlobalHubs: API.OperationMethod<
-  RejectSpokeUpdateProjectsLocationsGlobalHubsRequest,
-  GoogleLongrunningOperation,
-  RejectSpokeUpdateProjectsLocationsGlobalHubsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RejectSpokeUpdateProjectsLocationsGlobalHubsRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SetIamPolicyProjectsLocationsGlobalHubsError =
   | NotFound
   | Forbidden
@@ -8274,6 +8234,46 @@ export const testIamPermissionsProjectsLocationsSpokes: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsSpokesRequest,
   output: TestIamPermissionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateAcceptSpokeProjectLocationGlobalHubError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Accepts a proposal to update a Network Connectivity Center spoke in a hub. */
+export const updateAcceptSpokeProjectLocationGlobalHub: API.OperationMethod<
+  UpdateAcceptSpokeProjectLocationGlobalHubRequest,
+  GoogleLongrunningOperation,
+  UpdateAcceptSpokeProjectLocationGlobalHubError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAcceptSpokeProjectLocationGlobalHubRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateRejectSpokeProjectLocationGlobalHubError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Rejects a proposal to update a Network Connectivity Center spoke in a hub. */
+export const updateRejectSpokeProjectLocationGlobalHub: API.OperationMethod<
+  UpdateRejectSpokeProjectLocationGlobalHubRequest,
+  GoogleLongrunningOperation,
+  UpdateRejectSpokeProjectLocationGlobalHubError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRejectSpokeProjectLocationGlobalHubRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

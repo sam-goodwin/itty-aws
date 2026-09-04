@@ -275,13 +275,13 @@ export type BatchGetDocumentsViewEnum =
   | "DOCUMENT_VIEW_CONTENT";
 export const BatchGetDocumentsViewEnum = /*@__PURE__*/ S.String;
 
-export interface BatchGetDocumentsRequest {
+export interface GetBatchDocumentRequest {
   /** Required. Specifies the names of the documents to retrieve. A maximum of 20 documents can be retrieved in a batch. The documents are returned in the same order as the `names` in the request. Format: `documents/{uri_without_scheme}` Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets` Each name must not exceed 500 characters; values longer than 500 characters will result in an `INVALID_ARGUMENT` error. */
   names?: StringList;
   /** Optional. Specifies the DocumentView of the document. If unspecified, DeveloperKnowledge.BatchGetDocuments defaults to `DOCUMENT_VIEW_CONTENT`. */
   view?: BatchGetDocumentsViewEnum | (string & {});
 }
-export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList.pipe(T.Query())),
     view: S.optional(BatchGetDocumentsViewEnum.pipe(T.Query())),
@@ -293,8 +293,8 @@ export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchGetDocumentsRequest",
-}) as any as S.Schema<BatchGetDocumentsRequest>;
+  identifier: "GetBatchDocumentRequest",
+}) as any as S.Schema<GetBatchDocumentRequest>;
 
 export type DocumentList = Array<Document>;
 export const DocumentList = /*@__PURE__*/ S.Array(
@@ -302,17 +302,17 @@ export const DocumentList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DocumentList>;
 
 /** Response message for DeveloperKnowledge.BatchGetDocuments. */
-export interface BatchGetDocumentsResponse {
+export interface GetBatchDocumentResponse {
   /** Contains the documents requested. */
   documents?: DocumentList;
 }
-export const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documents: S.optional(DocumentList),
   }),
 ).annotate({
-  identifier: "BatchGetDocumentsResponse",
-}) as any as S.Schema<BatchGetDocumentsResponse>;
+  identifier: "GetBatchDocumentResponse",
+}) as any as S.Schema<GetBatchDocumentResponse>;
 
 export type GetDocumentsViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
@@ -411,16 +411,16 @@ export const answerQueryV1: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchGetDocumentsError = NotFound | Forbidden | GcpOpError;
+export type GetBatchDocumentError = NotFound | Forbidden | GcpOpError;
 /** Retrieves multiple documents, each with its full Markdown content. */
-export const batchGetDocuments: API.OperationMethod<
-  BatchGetDocumentsRequest,
-  BatchGetDocumentsResponse,
-  BatchGetDocumentsError,
+export const getBatchDocument: API.OperationMethod<
+  GetBatchDocumentRequest,
+  GetBatchDocumentResponse,
+  GetBatchDocumentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetDocumentsRequest,
-  output: BatchGetDocumentsResponse,
+  input: GetBatchDocumentRequest,
+  output: GetBatchDocumentResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

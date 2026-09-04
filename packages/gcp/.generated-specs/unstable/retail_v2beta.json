@@ -11705,7 +11705,7 @@
         "smithy.api#documentation": "Returns all questions for a given catalog."
       }
     },
-    "com.gcp.retail_v2beta#BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest": {
+    "com.gcp.retail_v2beta#UpdateBatchProjectLocationCatalogGenerativeQuestionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -11725,10 +11725,10 @@
         }
       }
     },
-    "com.gcp.retail_v2beta#BatchUpdateProjectsLocationsCatalogsGenerativeQuestion": {
+    "com.gcp.retail_v2beta#UpdateBatchProjectLocationCatalogGenerativeQuestion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.retail_v2beta#BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest"
+        "target": "com.gcp.retail_v2beta#UpdateBatchProjectLocationCatalogGenerativeQuestionRequest"
       },
       "output": {
         "target": "com.gcp.retail_v2beta#GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse"

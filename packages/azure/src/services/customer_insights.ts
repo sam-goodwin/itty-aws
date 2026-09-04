@@ -123,124 +123,6 @@ export const AuthorizationPoliciesCreateOrUpdateResponse =
     identifier: "AuthorizationPoliciesCreateOrUpdateResponse",
   }) as any as S.Schema<AuthorizationPoliciesCreateOrUpdateResponse>;
 
-export interface AuthorizationPoliciesGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the policy. */
-  authorizationPolicyName: string;
-}
-export const AuthorizationPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    authorizationPolicyName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies/{authorizationPolicyName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "AuthorizationPoliciesGetRequest",
-}) as any as S.Schema<AuthorizationPoliciesGetRequest>;
-
-export interface AuthorizationPoliciesGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: AuthorizationPolicy;
-}
-export const AuthorizationPoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationPolicy),
-  }),
-).annotate({
-  identifier: "AuthorizationPoliciesGetResponse",
-}) as any as S.Schema<AuthorizationPoliciesGetResponse>;
-
-export interface AuthorizationPoliciesListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const AuthorizationPoliciesListByHubRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      hubName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies",
-        code: 200,
-        apiVersion: "2017-04-26",
-      }),
-    ),
-).annotate({
-  identifier: "AuthorizationPoliciesListByHubRequest",
-}) as any as S.Schema<AuthorizationPoliciesListByHubRequest>;
-
-/** The authorization policy resource format. */
-export interface AuthorizationPolicyResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: AuthorizationPolicy;
-}
-export const AuthorizationPolicyResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationPolicy),
-  }),
-).annotate({
-  identifier: "AuthorizationPolicyResourceFormat",
-}) as any as S.Schema<AuthorizationPolicyResourceFormat>;
-
-/** Results of the list operation. */
-export type AuthorizationPolicyListResultValueList =
-  Array<AuthorizationPolicyResourceFormat>;
-export const AuthorizationPolicyListResultValueList = /*@__PURE__*/ S.Array(
-  AuthorizationPolicyResourceFormat,
-) as any as S.Schema<AuthorizationPolicyListResultValueList>;
-
-/** The response of list authorization policy operation. */
-export interface AuthorizationPolicyListResult {
-  /** Results of the list operation. */
-  value?: AuthorizationPolicyListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const AuthorizationPolicyListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AuthorizationPolicyListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthorizationPolicyListResult",
-}) as any as S.Schema<AuthorizationPolicyListResult>;
-
 export interface AuthorizationPoliciesRegeneratePrimaryKeyRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -648,168 +530,6 @@ export const ConnectorMappingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ConnectorMappingsCreateOrUpdateResponse",
 }) as any as S.Schema<ConnectorMappingsCreateOrUpdateResponse>;
 
-export interface ConnectorMappingsDeleteRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the connector. */
-  connectorName: string;
-  /** The name of the connector mapping. */
-  mappingName: string;
-}
-export const ConnectorMappingsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    connectorName: S.String.pipe(T.Label()),
-    mappingName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings/{mappingName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorMappingsDeleteRequest",
-}) as any as S.Schema<ConnectorMappingsDeleteRequest>;
-
-export interface ConnectorMappingsDeleteResponse {}
-export const ConnectorMappingsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConnectorMappingsDeleteResponse",
-}) as any as S.Schema<ConnectorMappingsDeleteResponse>;
-
-export interface ConnectorMappingsGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the connector. */
-  connectorName: string;
-  /** The name of the connector mapping. */
-  mappingName: string;
-}
-export const ConnectorMappingsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    connectorName: S.String.pipe(T.Label()),
-    mappingName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings/{mappingName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorMappingsGetRequest",
-}) as any as S.Schema<ConnectorMappingsGetRequest>;
-
-export interface ConnectorMappingsGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: ConnectorMapping;
-}
-export const ConnectorMappingsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ConnectorMapping),
-  }),
-).annotate({
-  identifier: "ConnectorMappingsGetResponse",
-}) as any as S.Schema<ConnectorMappingsGetResponse>;
-
-export interface ConnectorMappingsListByConnectorRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the connector. */
-  connectorName: string;
-}
-export const ConnectorMappingsListByConnectorRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      hubName: S.String.pipe(T.Label()),
-      connectorName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings",
-        code: 200,
-        apiVersion: "2017-04-26",
-      }),
-    ),
-).annotate({
-  identifier: "ConnectorMappingsListByConnectorRequest",
-}) as any as S.Schema<ConnectorMappingsListByConnectorRequest>;
-
-/** The connector mapping resource format. */
-export interface ConnectorMappingResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: ConnectorMapping;
-}
-export const ConnectorMappingResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ConnectorMapping),
-  }),
-).annotate({
-  identifier: "ConnectorMappingResourceFormat",
-}) as any as S.Schema<ConnectorMappingResourceFormat>;
-
-/** Results of the list operation. */
-export type ConnectorMappingListResultValueList =
-  Array<ConnectorMappingResourceFormat>;
-export const ConnectorMappingListResultValueList = /*@__PURE__*/ S.Array(
-  ConnectorMappingResourceFormat,
-) as any as S.Schema<ConnectorMappingListResultValueList>;
-
-/** The response of list connector mapping operation. */
-export interface ConnectorMappingListResult {
-  /** Results of the list operation. */
-  value?: ConnectorMappingListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const ConnectorMappingListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ConnectorMappingListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectorMappingListResult",
-}) as any as S.Schema<ConnectorMappingListResult>;
-
 /** The connector properties. */
 export type ConnectorInputConnectorPropertiesMap = {
   [key: string]: unknown | undefined;
@@ -955,7 +675,7 @@ export const ConnectorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorsCreateOrUpdateResponse",
 }) as any as S.Schema<ConnectorsCreateOrUpdateResponse>;
 
-export interface ConnectorsDeleteRequest {
+export interface DeleteConnectorRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -965,7 +685,7 @@ export interface ConnectorsDeleteRequest {
   /** The name of the connector. */
   connectorName: string;
 }
-export const ConnectorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -980,17 +700,421 @@ export const ConnectorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectorsDeleteRequest",
-}) as any as S.Schema<ConnectorsDeleteRequest>;
+  identifier: "DeleteConnectorRequest",
+}) as any as S.Schema<DeleteConnectorRequest>;
 
-export interface ConnectorsDeleteResponse {}
-export const ConnectorsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteConnectorResponse {}
+export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "ConnectorsDeleteResponse",
-}) as any as S.Schema<ConnectorsDeleteResponse>;
+  identifier: "DeleteConnectorResponse",
+}) as any as S.Schema<DeleteConnectorResponse>;
 
-export interface ConnectorsGetRequest {
+export interface DeleteConnectorMappingRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the connector. */
+  connectorName: string;
+  /** The name of the connector mapping. */
+  mappingName: string;
+}
+export const DeleteConnectorMappingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    connectorName: S.String.pipe(T.Label()),
+    mappingName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings/{mappingName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteConnectorMappingRequest",
+}) as any as S.Schema<DeleteConnectorMappingRequest>;
+
+export interface DeleteConnectorMappingResponse {}
+export const DeleteConnectorMappingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConnectorMappingResponse",
+}) as any as S.Schema<DeleteConnectorMappingResponse>;
+
+export interface DeleteHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const DeleteHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteHubRequest",
+}) as any as S.Schema<DeleteHubRequest>;
+
+export interface DeleteHubResponse {}
+export const DeleteHubResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteHubResponse",
+}) as any as S.Schema<DeleteHubResponse>;
+
+export interface DeleteKpiRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the KPI. */
+  kpiName: string;
+}
+export const DeleteKpiRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    kpiName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteKpiRequest",
+}) as any as S.Schema<DeleteKpiRequest>;
+
+export interface DeleteKpiResponse {}
+export const DeleteKpiResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteKpiResponse",
+}) as any as S.Schema<DeleteKpiResponse>;
+
+export interface DeleteLinkRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the link. */
+  linkName: string;
+}
+export const DeleteLinkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    linkName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLinkRequest",
+}) as any as S.Schema<DeleteLinkRequest>;
+
+export interface DeleteLinkResponse {}
+export const DeleteLinkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteLinkResponse",
+}) as any as S.Schema<DeleteLinkResponse>;
+
+export interface DeletePredictionRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the Prediction. */
+  predictionName: string;
+}
+export const DeletePredictionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    predictionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePredictionRequest",
+}) as any as S.Schema<DeletePredictionRequest>;
+
+export interface DeletePredictionResponse {}
+export const DeletePredictionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePredictionResponse",
+}) as any as S.Schema<DeletePredictionResponse>;
+
+export interface DeleteProfileRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the profile. */
+  profileName: string;
+  /** Locale of profile to retrieve, default is en-us. */
+  locale_code?: string;
+}
+export const DeleteProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProfileRequest",
+}) as any as S.Schema<DeleteProfileRequest>;
+
+export interface DeleteProfileResponse {}
+export const DeleteProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteProfileResponse",
+}) as any as S.Schema<DeleteProfileResponse>;
+
+export interface DeleteRelationshipRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the relationship. */
+  relationshipName: string;
+}
+export const DeleteRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    relationshipName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships/{relationshipName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRelationshipRequest",
+}) as any as S.Schema<DeleteRelationshipRequest>;
+
+export interface DeleteRelationshipResponse {}
+export const DeleteRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRelationshipResponse",
+}) as any as S.Schema<DeleteRelationshipResponse>;
+
+export interface DeleteRelationshipLinkRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the relationship. */
+  relationshipLinkName: string;
+}
+export const DeleteRelationshipLinkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    relationshipLinkName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks/{relationshipLinkName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRelationshipLinkRequest",
+}) as any as S.Schema<DeleteRelationshipLinkRequest>;
+
+export interface DeleteRelationshipLinkResponse {}
+export const DeleteRelationshipLinkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRelationshipLinkResponse",
+}) as any as S.Schema<DeleteRelationshipLinkResponse>;
+
+export interface DeleteRoleAssignmentRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the role assignment. */
+  assignmentName: string;
+}
+export const DeleteRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    assignmentName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments/{assignmentName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRoleAssignmentRequest",
+}) as any as S.Schema<DeleteRoleAssignmentRequest>;
+
+export interface DeleteRoleAssignmentResponse {}
+export const DeleteRoleAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRoleAssignmentResponse",
+}) as any as S.Schema<DeleteRoleAssignmentResponse>;
+
+export interface DeleteViewRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the view. */
+  viewName: string;
+  /** The user ID. Use * to retrieve hub level view. */
+  userId: string;
+}
+export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    viewName: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views/{viewName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteViewRequest",
+}) as any as S.Schema<DeleteViewRequest>;
+
+export interface DeleteViewResponse {}
+export const DeleteViewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteViewResponse",
+}) as any as S.Schema<DeleteViewResponse>;
+
+export interface GetAuthorizationPolicyRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the policy. */
+  authorizationPolicyName: string;
+}
+export const GetAuthorizationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    authorizationPolicyName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies/{authorizationPolicyName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "GetAuthorizationPolicyRequest",
+}) as any as S.Schema<GetAuthorizationPolicyRequest>;
+
+export interface GetAuthorizationPolicyResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: AuthorizationPolicy;
+}
+export const GetAuthorizationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(AuthorizationPolicy),
+  }),
+).annotate({
+  identifier: "GetAuthorizationPolicyResponse",
+}) as any as S.Schema<GetAuthorizationPolicyResponse>;
+
+export interface GetConnectorRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -1000,7 +1124,7 @@ export interface ConnectorsGetRequest {
   /** The name of the connector. */
   connectorName: string;
 }
-export const ConnectorsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1015,10 +1139,10 @@ export const ConnectorsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectorsGetRequest",
-}) as any as S.Schema<ConnectorsGetRequest>;
+  identifier: "GetConnectorRequest",
+}) as any as S.Schema<GetConnectorRequest>;
 
-export interface ConnectorsGetResponse {
+export interface GetConnectorResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
@@ -1027,7 +1151,7 @@ export interface ConnectorsGetResponse {
   type?: string;
   properties?: Connector;
 }
-export const ConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1035,10 +1159,61 @@ export const ConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(Connector),
   }),
 ).annotate({
-  identifier: "ConnectorsGetResponse",
-}) as any as S.Schema<ConnectorsGetResponse>;
+  identifier: "GetConnectorResponse",
+}) as any as S.Schema<GetConnectorResponse>;
 
-export interface ConnectorsListByHubRequest {
+export interface GetConnectorMappingRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the connector. */
+  connectorName: string;
+  /** The name of the connector mapping. */
+  mappingName: string;
+}
+export const GetConnectorMappingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    connectorName: S.String.pipe(T.Label()),
+    mappingName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings/{mappingName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "GetConnectorMappingRequest",
+}) as any as S.Schema<GetConnectorMappingRequest>;
+
+export interface GetConnectorMappingResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: ConnectorMapping;
+}
+export const GetConnectorMappingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ConnectorMapping),
+  }),
+).annotate({
+  identifier: "GetConnectorMappingResponse",
+}) as any as S.Schema<GetConnectorMappingResponse>;
+
+export interface GetHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -1046,7 +1221,7 @@ export interface ConnectorsListByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-export const ConnectorsListByHubRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1054,66 +1229,19 @@ export const ConnectorsListByHubRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
       code: 200,
       apiVersion: "2017-04-26",
     }),
   ),
-).annotate({
-  identifier: "ConnectorsListByHubRequest",
-}) as any as S.Schema<ConnectorsListByHubRequest>;
-
-/** The connector resource format. */
-export interface ConnectorResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: Connector;
-}
-export const ConnectorResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(Connector),
-  }),
-).annotate({
-  identifier: "ConnectorResourceFormat",
-}) as any as S.Schema<ConnectorResourceFormat>;
-
-/** Results of the list operation. */
-export type ConnectorListResultValueList = Array<ConnectorResourceFormat>;
-export const ConnectorListResultValueList = /*@__PURE__*/ S.Array(
-  ConnectorResourceFormat,
-) as any as S.Schema<ConnectorListResultValueList>;
-
-/** The response of list connector operation. */
-export interface ConnectorListResult {
-  /** Results of the list operation. */
-  value?: ConnectorListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const ConnectorListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ConnectorListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectorListResult",
-}) as any as S.Schema<ConnectorListResult>;
+).annotate({ identifier: "GetHubRequest" }) as any as S.Schema<GetHubRequest>;
 
 /** Resource tags. */
-export type HubsCreateOrUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const HubsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+export type HubsGetResponseTagsMap = { [key: string]: string | undefined };
+export const HubsGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<HubsCreateOrUpdateRequestTagsMap>;
+) as any as S.Schema<HubsGetResponseTagsMap>;
 
 /** Hub billing info. */
 export interface HubBillingInfoFormat {
@@ -1133,64 +1261,6 @@ export const HubBillingInfoFormat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HubBillingInfoFormat",
 }) as any as S.Schema<HubBillingInfoFormat>;
-
-/** Properties of hub. */
-export interface HubPropertiesFormatInput {
-  /** The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0. */
-  tenantFeatures?: number;
-  /** Billing settings of the hub. */
-  hubBillingInfo?: HubBillingInfoFormat;
-}
-export const HubPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenantFeatures: S.optional(S.Number),
-    hubBillingInfo: S.optional(HubBillingInfoFormat),
-  }),
-).annotate({
-  identifier: "HubPropertiesFormatInput",
-}) as any as S.Schema<HubPropertiesFormatInput>;
-
-export interface HubsCreateOrUpdateRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the Hub. */
-  hubName: string;
-  /** Resource location. */
-  location?: string;
-  /** Resource tags. */
-  tags?: HubsCreateOrUpdateRequestTagsMap;
-  properties?: HubPropertiesFormatInput;
-}
-export const HubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    location: S.optional(S.String),
-    tags: S.optional(HubsCreateOrUpdateRequestTagsMap),
-    properties: S.optional(HubPropertiesFormatInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "HubsCreateOrUpdateRequest",
-}) as any as S.Schema<HubsCreateOrUpdateRequest>;
-
-/** Resource tags. */
-export type HubsCreateOrUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const HubsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HubsCreateOrUpdateResponseTagsMap>;
 
 /** Properties of hub. */
 export interface HubPropertiesFormat {
@@ -1217,95 +1287,7 @@ export const HubPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "HubPropertiesFormat",
 }) as any as S.Schema<HubPropertiesFormat>;
 
-export interface HubsCreateOrUpdateResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  /** Resource location. */
-  location?: string;
-  /** Resource tags. */
-  tags?: HubsCreateOrUpdateResponseTagsMap;
-  properties?: HubPropertiesFormat;
-}
-export const HubsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(HubsCreateOrUpdateResponseTagsMap),
-    properties: S.optional(HubPropertiesFormat),
-  }),
-).annotate({
-  identifier: "HubsCreateOrUpdateResponse",
-}) as any as S.Schema<HubsCreateOrUpdateResponse>;
-
-export interface HubsDeleteRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const HubsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "HubsDeleteRequest",
-}) as any as S.Schema<HubsDeleteRequest>;
-
-export interface HubsDeleteResponse {}
-export const HubsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "HubsDeleteResponse",
-}) as any as S.Schema<HubsDeleteResponse>;
-
-export interface HubsGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const HubsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({ identifier: "HubsGetRequest" }) as any as S.Schema<HubsGetRequest>;
-
-/** Resource tags. */
-export type HubsGetResponseTagsMap = { [key: string]: string | undefined };
-export const HubsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HubsGetResponseTagsMap>;
-
-export interface HubsGetResponse {
+export interface GetHubResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
@@ -1318,7 +1300,7 @@ export interface HubsGetResponse {
   tags?: HubsGetResponseTagsMap;
   properties?: HubPropertiesFormat;
 }
-export const HubsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetHubResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1327,177 +1309,9 @@ export const HubsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(HubsGetResponseTagsMap),
     properties: S.optional(HubPropertiesFormat),
   }),
-).annotate({
-  identifier: "HubsGetResponse",
-}) as any as S.Schema<HubsGetResponse>;
+).annotate({ identifier: "GetHubResponse" }) as any as S.Schema<GetHubResponse>;
 
-export interface HubsListRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-}
-export const HubsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CustomerInsights/hubs",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "HubsListRequest",
-}) as any as S.Schema<HubsListRequest>;
-
-/** Resource tags. */
-export type HubTagsMap = { [key: string]: string | undefined };
-export const HubTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HubTagsMap>;
-
-/** Hub resource. */
-export interface Hub {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  /** Resource location. */
-  location?: string;
-  /** Resource tags. */
-  tags?: HubTagsMap;
-  properties?: HubPropertiesFormat;
-}
-export const Hub = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(HubTagsMap),
-    properties: S.optional(HubPropertiesFormat),
-  }),
-).annotate({ identifier: "Hub" }) as any as S.Schema<Hub>;
-
-/** Results of the list operation. */
-export type HubListResultValueList = Array<Hub>;
-export const HubListResultValueList = /*@__PURE__*/ S.Array(
-  Hub,
-) as any as S.Schema<HubListResultValueList>;
-
-/** Response of list hub operation. */
-export interface HubListResult {
-  /** Results of the list operation. */
-  value?: HubListResultValueList;
-  /** Link for next set of results. */
-  nextLink?: string;
-}
-export const HubListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(HubListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "HubListResult" }) as any as S.Schema<HubListResult>;
-
-export interface HubsListByResourceGroupRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-}
-export const HubsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "HubsListByResourceGroupRequest",
-}) as any as S.Schema<HubsListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type HubsUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const HubsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HubsUpdateRequestTagsMap>;
-
-export interface HubsUpdateRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the Hub. */
-  hubName: string;
-  /** Resource location. */
-  location?: string;
-  /** Resource tags. */
-  tags?: HubsUpdateRequestTagsMap;
-  properties?: HubPropertiesFormatInput;
-}
-export const HubsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    location: S.optional(S.String),
-    tags: S.optional(HubsUpdateRequestTagsMap),
-    properties: S.optional(HubPropertiesFormatInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "HubsUpdateRequest",
-}) as any as S.Schema<HubsUpdateRequest>;
-
-/** Resource tags. */
-export type HubsUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const HubsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HubsUpdateResponseTagsMap>;
-
-export interface HubsUpdateResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  /** Resource location. */
-  location?: string;
-  /** Resource tags. */
-  tags?: HubsUpdateResponseTagsMap;
-  properties?: HubPropertiesFormat;
-}
-export const HubsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(HubsUpdateResponseTagsMap),
-    properties: S.optional(HubPropertiesFormat),
-  }),
-).annotate({
-  identifier: "HubsUpdateResponse",
-}) as any as S.Schema<HubsUpdateResponse>;
-
-export interface ImagesGetUploadUrlForDataRequest {
+export interface GetImageUploadUrlForDataRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -1511,7 +1325,7 @@ export interface ImagesGetUploadUrlForDataRequest {
   /** Relative path of the image. */
   relativePath?: string;
 }
-export const ImagesGetUploadUrlForDataRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetImageUploadUrlForDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1528,8 +1342,8 @@ export const ImagesGetUploadUrlForDataRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ImagesGetUploadUrlForDataRequest",
-}) as any as S.Schema<ImagesGetUploadUrlForDataRequest>;
+  identifier: "GetImageUploadUrlForDataRequest",
+}) as any as S.Schema<GetImageUploadUrlForDataRequest>;
 
 /** The image definition. */
 export interface ImageDefinition {
@@ -1550,7 +1364,7 @@ export const ImageDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageDefinition",
 }) as any as S.Schema<ImageDefinition>;
 
-export interface ImagesGetUploadUrlForEntityTypeRequest {
+export interface GetImageUploadUrlForEntityTypeRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -1564,7 +1378,7 @@ export interface ImagesGetUploadUrlForEntityTypeRequest {
   /** Relative path of the image. */
   relativePath?: string;
 }
-export const ImagesGetUploadUrlForEntityTypeRequest = /*@__PURE__*/ S.suspend(
+export const GetImageUploadUrlForEntityTypeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1582,332 +1396,10 @@ export const ImagesGetUploadUrlForEntityTypeRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ImagesGetUploadUrlForEntityTypeRequest",
-}) as any as S.Schema<ImagesGetUploadUrlForEntityTypeRequest>;
+  identifier: "GetImageUploadUrlForEntityTypeRequest",
+}) as any as S.Schema<GetImageUploadUrlForEntityTypeRequest>;
 
-export type InteractionTypeDefinitionInputAttributesValueList = Array<string>;
-export const InteractionTypeDefinitionInputAttributesValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InteractionTypeDefinitionInputAttributesValueList>;
-
-/** The attributes for the Type. */
-export type InteractionTypeDefinitionInputAttributesMap = {
-  [key: string]: InteractionTypeDefinitionInputAttributesValueList | undefined;
-};
-export const InteractionTypeDefinitionInputAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    InteractionTypeDefinitionInputAttributesValueList,
-  ) as any as S.Schema<InteractionTypeDefinitionInputAttributesMap>;
-
-/** Localized descriptions for the property. */
-export type InteractionTypeDefinitionInputDescriptionMap = {
-  [key: string]: string | undefined;
-};
-export const InteractionTypeDefinitionInputDescriptionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InteractionTypeDefinitionInputDescriptionMap>;
-
-/** Localized display names for the property. */
-export type InteractionTypeDefinitionInputDisplayNameMap = {
-  [key: string]: string | undefined;
-};
-export const InteractionTypeDefinitionInputDisplayNameMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InteractionTypeDefinitionInputDisplayNameMap>;
-
-export type InteractionTypeDefinitionInputLocalizedAttributesValueMap = {
-  [key: string]: string | undefined;
-};
-export const InteractionTypeDefinitionInputLocalizedAttributesValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesValueMap>;
-
-/** Any custom localized attributes for the Type. */
-export type InteractionTypeDefinitionInputLocalizedAttributesMap = {
-  [key: string]:
-    | InteractionTypeDefinitionInputLocalizedAttributesValueMap
-    | undefined;
-};
-export const InteractionTypeDefinitionInputLocalizedAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    InteractionTypeDefinitionInputLocalizedAttributesValueMap,
-  ) as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesMap>;
-
-/** Type of entity. */
-export type InteractionTypeDefinitionInputEntityType =
-  | "None"
-  | "Profile"
-  | "Interaction"
-  | "Relationship";
-export const InteractionTypeDefinitionInputEntityType = /*@__PURE__*/ S.String;
-
-/** Localized names of the enum member. */
-export type ProfileEnumValidValuesFormatLocalizedValueNamesMap = {
-  [key: string]: string | undefined;
-};
-export const ProfileEnumValidValuesFormatLocalizedValueNamesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ProfileEnumValidValuesFormatLocalizedValueNamesMap>;
-
-/** Valid enum values in case of an enum property. */
-export interface ProfileEnumValidValuesFormat {
-  /** The integer value of the enum member. */
-  value?: number;
-  /** Localized names of the enum member. */
-  localizedValueNames?: ProfileEnumValidValuesFormatLocalizedValueNamesMap;
-}
-export const ProfileEnumValidValuesFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    localizedValueNames: S.optional(
-      ProfileEnumValidValuesFormatLocalizedValueNamesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ProfileEnumValidValuesFormat",
-}) as any as S.Schema<ProfileEnumValidValuesFormat>;
-
-/** Describes valid values for an enum property. */
-export type PropertyDefinitionInputEnumValidValuesList =
-  Array<ProfileEnumValidValuesFormat>;
-export const PropertyDefinitionInputEnumValidValuesList = /*@__PURE__*/ S.Array(
-  ProfileEnumValidValuesFormat,
-) as any as S.Schema<PropertyDefinitionInputEnumValidValuesList>;
-
-/** Property definition. */
-export interface PropertyDefinitionInput {
-  /** Array value separator for properties with isArray set. */
-  arrayValueSeparator?: string;
-  /** Describes valid values for an enum property. */
-  enumValidValues?: PropertyDefinitionInputEnumValidValuesList;
-  /** Name of the property. */
-  fieldName: string;
-  /** Type of the property. */
-  fieldType: string;
-  /** Indicates if the property is actually an array of the fieldType above on the data api. */
-  isArray?: boolean;
-  /** Indicates if the property is an enum. */
-  isEnum?: boolean;
-  /** Indicates if the property is an flag enum. */
-  isFlagEnum?: boolean;
-  /** Whether the property is an Image. */
-  isImage?: boolean;
-  /** Whether the property is a localized string. */
-  isLocalizedString?: boolean;
-  /** Whether the property is a name or a part of name. */
-  isName?: boolean;
-  /** Whether property value is required on instances, IsRequired field only for Interaction. Profile Instance will not check for required field. */
-  isRequired?: boolean;
-  /** The ID associated with the property. */
-  propertyId?: string;
-  /** URL encoded schema.org item prop link for the property. */
-  schemaItemPropLink?: string;
-  /** Max length of string. Used only if type is string. */
-  maxLength?: number;
-  /** Whether property is available in graph or not. */
-  isAvailableInGraph?: boolean;
-}
-export const PropertyDefinitionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arrayValueSeparator: S.optional(S.String),
-    enumValidValues: S.optional(PropertyDefinitionInputEnumValidValuesList),
-    fieldName: S.String,
-    fieldType: S.String,
-    isArray: S.optional(S.Boolean),
-    isEnum: S.optional(S.Boolean),
-    isFlagEnum: S.optional(S.Boolean),
-    isImage: S.optional(S.Boolean),
-    isLocalizedString: S.optional(S.Boolean),
-    isName: S.optional(S.Boolean),
-    isRequired: S.optional(S.Boolean),
-    propertyId: S.optional(S.String),
-    schemaItemPropLink: S.optional(S.String),
-    maxLength: S.optional(S.Number),
-    isAvailableInGraph: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PropertyDefinitionInput",
-}) as any as S.Schema<PropertyDefinitionInput>;
-
-/** The properties of the Profile. */
-export type InteractionTypeDefinitionInputFieldsList =
-  Array<PropertyDefinitionInput>;
-export const InteractionTypeDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
-  PropertyDefinitionInput,
-) as any as S.Schema<InteractionTypeDefinitionInputFieldsList>;
-
-/** The id property names. Properties which uniquely identify an interaction instance. */
-export type InteractionTypeDefinitionInputIdPropertyNamesList = Array<string>;
-export const InteractionTypeDefinitionInputIdPropertyNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InteractionTypeDefinitionInputIdPropertyNamesList>;
-
-/** The participant property reference. */
-export interface ParticipantPropertyReference {
-  /** The source property that maps to the target property. */
-  sourcePropertyName: string;
-  /** The target property that maps to the source property. */
-  targetPropertyName: string;
-}
-export const ParticipantPropertyReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourcePropertyName: S.String,
-    targetPropertyName: S.String,
-  }),
-).annotate({
-  identifier: "ParticipantPropertyReference",
-}) as any as S.Schema<ParticipantPropertyReference>;
-
-/** The property references. */
-export type ParticipantParticipantPropertyReferencesList =
-  Array<ParticipantPropertyReference>;
-export const ParticipantParticipantPropertyReferencesList =
-  /*@__PURE__*/ S.Array(
-    ParticipantPropertyReference,
-  ) as any as S.Schema<ParticipantParticipantPropertyReferencesList>;
-
-/** Localized display name. */
-export type ParticipantDisplayNameMap = { [key: string]: string | undefined };
-export const ParticipantDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ParticipantDisplayNameMap>;
-
-/** Localized descriptions. */
-export type ParticipantDescriptionMap = { [key: string]: string | undefined };
-export const ParticipantDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ParticipantDescriptionMap>;
-
-/** Describes a profile type participating in an interaction. */
-export interface Participant {
-  /** Profile type name. */
-  profileTypeName: string;
-  /** The property references. */
-  participantPropertyReferences: ParticipantParticipantPropertyReferencesList;
-  /** Participant name. */
-  participantName: string;
-  /** Localized display name. */
-  displayName?: ParticipantDisplayNameMap;
-  /** Localized descriptions. */
-  description?: ParticipantDescriptionMap;
-  /** The role that the participant is playing in the interaction. */
-  role?: string;
-}
-export const Participant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileTypeName: S.String,
-    participantPropertyReferences: ParticipantParticipantPropertyReferencesList,
-    participantName: S.String,
-    displayName: S.optional(ParticipantDisplayNameMap),
-    description: S.optional(ParticipantDescriptionMap),
-    role: S.optional(S.String),
-  }),
-).annotate({ identifier: "Participant" }) as any as S.Schema<Participant>;
-
-/** Profiles that participated in the interaction. */
-export type InteractionTypeDefinitionInputParticipantProfilesList =
-  Array<Participant>;
-export const InteractionTypeDefinitionInputParticipantProfilesList =
-  /*@__PURE__*/ S.Array(
-    Participant,
-  ) as any as S.Schema<InteractionTypeDefinitionInputParticipantProfilesList>;
-
-/** Data Source is a way for us to know the source of instances. A single type can have data coming in from multiple places. In activities we use this to determine precedence rules. */
-export interface DataSourceInput {}
-export const DataSourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DataSourceInput",
-}) as any as S.Schema<DataSourceInput>;
-
-/** The Interaction Type Definition */
-export interface InteractionTypeDefinitionInput {
-  /** The attributes for the Type. */
-  attributes?: InteractionTypeDefinitionInputAttributesMap;
-  /** Localized descriptions for the property. */
-  description?: InteractionTypeDefinitionInputDescriptionMap;
-  /** Localized display names for the property. */
-  displayName?: InteractionTypeDefinitionInputDisplayNameMap;
-  /** Any custom localized attributes for the Type. */
-  localizedAttributes?: InteractionTypeDefinitionInputLocalizedAttributesMap;
-  /** Small Image associated with the Property or EntityType. */
-  smallImage?: string;
-  /** Medium Image associated with the Property or EntityType. */
-  mediumImage?: string;
-  /** Large Image associated with the Property or EntityType. */
-  largeImage?: string;
-  /** The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object. */
-  apiEntitySetName?: string;
-  /** Type of entity. */
-  entityType?: InteractionTypeDefinitionInputEntityType | (string & {});
-  /** The properties of the Profile. */
-  fields?: InteractionTypeDefinitionInputFieldsList;
-  /** The instance count. */
-  instancesCount?: number;
-  /** The schema org link. This helps ACI identify and suggest semantic models. */
-  schemaItemTypeLink?: string;
-  /** The timestamp property name. Represents the time when the interaction or profile update happened. */
-  timestampFieldName?: string;
-  /** The name of the entity. */
-  typeName?: string;
-  /** The id property names. Properties which uniquely identify an interaction instance. */
-  idPropertyNames?: InteractionTypeDefinitionInputIdPropertyNamesList;
-  /** Profiles that participated in the interaction. */
-  participantProfiles?: InteractionTypeDefinitionInputParticipantProfilesList;
-  /** The primary participant property name for an interaction ,This is used to logically represent the agent of the interaction, Specify the participant name here from ParticipantName. */
-  primaryParticipantProfilePropertyName?: string;
-  /** Default data source is specifically used in cases where data source is not specified in an instance. */
-  defaultDataSource?: DataSourceInput;
-  /** An interaction can be tagged as an activity only during create. This enables the interaction to be editable and can enable merging of properties from multiple data sources based on precedence, which is defined at a link level. */
-  isActivity?: boolean;
-}
-export const InteractionTypeDefinitionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(InteractionTypeDefinitionInputAttributesMap),
-    description: S.optional(InteractionTypeDefinitionInputDescriptionMap),
-    displayName: S.optional(InteractionTypeDefinitionInputDisplayNameMap),
-    localizedAttributes: S.optional(
-      InteractionTypeDefinitionInputLocalizedAttributesMap,
-    ),
-    smallImage: S.optional(S.String),
-    mediumImage: S.optional(S.String),
-    largeImage: S.optional(S.String),
-    apiEntitySetName: S.optional(S.String),
-    entityType: S.optional(InteractionTypeDefinitionInputEntityType),
-    fields: S.optional(InteractionTypeDefinitionInputFieldsList),
-    instancesCount: S.optional(S.Number),
-    schemaItemTypeLink: S.optional(S.String),
-    timestampFieldName: S.optional(S.String),
-    typeName: S.optional(S.String),
-    idPropertyNames: S.optional(
-      InteractionTypeDefinitionInputIdPropertyNamesList,
-    ),
-    participantProfiles: S.optional(
-      InteractionTypeDefinitionInputParticipantProfilesList,
-    ),
-    primaryParticipantProfilePropertyName: S.optional(S.String),
-    defaultDataSource: S.optional(DataSourceInput),
-    isActivity: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "InteractionTypeDefinitionInput",
-}) as any as S.Schema<InteractionTypeDefinitionInput>;
-
-export interface InteractionsCreateOrUpdateRequest {
+export interface GetInteractionRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -1916,26 +1408,27 @@ export interface InteractionsCreateOrUpdateRequest {
   hubName: string;
   /** The name of the interaction. */
   interactionName: string;
-  properties?: InteractionTypeDefinitionInput;
+  /** Locale of interaction to retrieve, default is en-us. */
+  locale_code?: string;
 }
-export const InteractionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetInteractionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     interactionName: S.String.pipe(T.Label()),
-    properties: S.optional(InteractionTypeDefinitionInput),
+    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}",
       code: 200,
       apiVersion: "2017-04-26",
     }),
   ),
 ).annotate({
-  identifier: "InteractionsCreateOrUpdateRequest",
-}) as any as S.Schema<InteractionsCreateOrUpdateRequest>;
+  identifier: "GetInteractionRequest",
+}) as any as S.Schema<GetInteractionRequest>;
 
 export type InteractionTypeDefinitionAttributesValueList = Array<string>;
 export const InteractionTypeDefinitionAttributesValueList =
@@ -1998,6 +1491,34 @@ export type InteractionTypeDefinitionEntityType =
   | "Interaction"
   | "Relationship";
 export const InteractionTypeDefinitionEntityType = /*@__PURE__*/ S.String;
+
+/** Localized names of the enum member. */
+export type ProfileEnumValidValuesFormatLocalizedValueNamesMap = {
+  [key: string]: string | undefined;
+};
+export const ProfileEnumValidValuesFormatLocalizedValueNamesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProfileEnumValidValuesFormatLocalizedValueNamesMap>;
+
+/** Valid enum values in case of an enum property. */
+export interface ProfileEnumValidValuesFormat {
+  /** The integer value of the enum member. */
+  value?: number;
+  /** Localized names of the enum member. */
+  localizedValueNames?: ProfileEnumValidValuesFormatLocalizedValueNamesMap;
+}
+export const ProfileEnumValidValuesFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.Number),
+    localizedValueNames: S.optional(
+      ProfileEnumValidValuesFormatLocalizedValueNamesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ProfileEnumValidValuesFormat",
+}) as any as S.Schema<ProfileEnumValidValuesFormat>;
 
 /** Describes valid values for an enum property. */
 export type PropertyDefinitionEnumValidValuesList =
@@ -2146,6 +1667,70 @@ export const InteractionTypeDefinitionIdPropertyNamesList =
     S.String,
   ) as any as S.Schema<InteractionTypeDefinitionIdPropertyNamesList>;
 
+/** The participant property reference. */
+export interface ParticipantPropertyReference {
+  /** The source property that maps to the target property. */
+  sourcePropertyName: string;
+  /** The target property that maps to the source property. */
+  targetPropertyName: string;
+}
+export const ParticipantPropertyReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourcePropertyName: S.String,
+    targetPropertyName: S.String,
+  }),
+).annotate({
+  identifier: "ParticipantPropertyReference",
+}) as any as S.Schema<ParticipantPropertyReference>;
+
+/** The property references. */
+export type ParticipantParticipantPropertyReferencesList =
+  Array<ParticipantPropertyReference>;
+export const ParticipantParticipantPropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantPropertyReference,
+  ) as any as S.Schema<ParticipantParticipantPropertyReferencesList>;
+
+/** Localized display name. */
+export type ParticipantDisplayNameMap = { [key: string]: string | undefined };
+export const ParticipantDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ParticipantDisplayNameMap>;
+
+/** Localized descriptions. */
+export type ParticipantDescriptionMap = { [key: string]: string | undefined };
+export const ParticipantDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ParticipantDescriptionMap>;
+
+/** Describes a profile type participating in an interaction. */
+export interface Participant {
+  /** Profile type name. */
+  profileTypeName: string;
+  /** The property references. */
+  participantPropertyReferences: ParticipantParticipantPropertyReferencesList;
+  /** Participant name. */
+  participantName: string;
+  /** Localized display name. */
+  displayName?: ParticipantDisplayNameMap;
+  /** Localized descriptions. */
+  description?: ParticipantDescriptionMap;
+  /** The role that the participant is playing in the interaction. */
+  role?: string;
+}
+export const Participant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileTypeName: S.String,
+    participantPropertyReferences: ParticipantParticipantPropertyReferencesList,
+    participantName: S.String,
+    displayName: S.optional(ParticipantDisplayNameMap),
+    description: S.optional(ParticipantDescriptionMap),
+    role: S.optional(S.String),
+  }),
+).annotate({ identifier: "Participant" }) as any as S.Schema<Participant>;
+
 /** Profiles that participated in the interaction. */
 export type InteractionTypeDefinitionParticipantProfilesList =
   Array<Participant>;
@@ -2247,7 +1832,7 @@ export const InteractionTypeDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "InteractionTypeDefinition",
 }) as any as S.Schema<InteractionTypeDefinition>;
 
-export interface InteractionsCreateOrUpdateResponse {
+export interface GetInteractionResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
@@ -2256,7 +1841,7 @@ export interface InteractionsCreateOrUpdateResponse {
   type?: string;
   properties?: InteractionTypeDefinition;
 }
-export const InteractionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetInteractionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2264,410 +1849,10 @@ export const InteractionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(InteractionTypeDefinition),
   }),
 ).annotate({
-  identifier: "InteractionsCreateOrUpdateResponse",
-}) as any as S.Schema<InteractionsCreateOrUpdateResponse>;
+  identifier: "GetInteractionResponse",
+}) as any as S.Schema<GetInteractionResponse>;
 
-export interface InteractionsGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the interaction. */
-  interactionName: string;
-  /** Locale of interaction to retrieve, default is en-us. */
-  locale_code?: string;
-}
-export const InteractionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    interactionName: S.String.pipe(T.Label()),
-    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "InteractionsGetRequest",
-}) as any as S.Schema<InteractionsGetRequest>;
-
-export interface InteractionsGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: InteractionTypeDefinition;
-}
-export const InteractionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(InteractionTypeDefinition),
-  }),
-).annotate({
-  identifier: "InteractionsGetResponse",
-}) as any as S.Schema<InteractionsGetResponse>;
-
-export interface InteractionsListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** Locale of interaction to retrieve, default is en-us. */
-  locale_code?: string;
-}
-export const InteractionsListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "InteractionsListByHubRequest",
-}) as any as S.Schema<InteractionsListByHubRequest>;
-
-/** The interaction resource format. */
-export interface InteractionResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: InteractionTypeDefinition;
-}
-export const InteractionResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(InteractionTypeDefinition),
-  }),
-).annotate({
-  identifier: "InteractionResourceFormat",
-}) as any as S.Schema<InteractionResourceFormat>;
-
-/** Results of the list operation. */
-export type InteractionListResultValueList = Array<InteractionResourceFormat>;
-export const InteractionListResultValueList = /*@__PURE__*/ S.Array(
-  InteractionResourceFormat,
-) as any as S.Schema<InteractionListResultValueList>;
-
-/** The response of list interaction operation. */
-export interface InteractionListResult {
-  /** Results of the list operation. */
-  value?: InteractionListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const InteractionListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InteractionListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InteractionListResult",
-}) as any as S.Schema<InteractionListResult>;
-
-export interface InteractionsSuggestRelationshipLinksRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the interaction. */
-  interactionName: string;
-}
-export const InteractionsSuggestRelationshipLinksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      hubName: S.String.pipe(T.Label()),
-      interactionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}/suggestRelationshipLinks",
-        code: 200,
-        apiVersion: "2017-04-26",
-      }),
-    ),
-  ).annotate({
-    identifier: "InteractionsSuggestRelationshipLinksRequest",
-  }) as any as S.Schema<InteractionsSuggestRelationshipLinksRequest>;
-
-/** The participant profile property reference. */
-export interface ParticipantProfilePropertyReference {
-  /** The source interaction property that maps to the target profile property. */
-  interactionPropertyName: string;
-  /** The target profile property that maps to the source interaction property. */
-  profilePropertyName: string;
-}
-export const ParticipantProfilePropertyReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interactionPropertyName: S.String,
-    profilePropertyName: S.String,
-  }),
-).annotate({
-  identifier: "ParticipantProfilePropertyReference",
-}) as any as S.Schema<ParticipantProfilePropertyReference>;
-
-/** The property references for the profile type. */
-export type RelationshipsLookupProfilePropertyReferencesList =
-  Array<ParticipantProfilePropertyReference>;
-export const RelationshipsLookupProfilePropertyReferencesList =
-  /*@__PURE__*/ S.Array(
-    ParticipantProfilePropertyReference,
-  ) as any as S.Schema<RelationshipsLookupProfilePropertyReferencesList>;
-
-/** The property references for the related profile type. */
-export type RelationshipsLookupRelatedProfilePropertyReferencesList =
-  Array<ParticipantProfilePropertyReference>;
-export const RelationshipsLookupRelatedProfilePropertyReferencesList =
-  /*@__PURE__*/ S.Array(
-    ParticipantProfilePropertyReference,
-  ) as any as S.Schema<RelationshipsLookupRelatedProfilePropertyReferencesList>;
-
-/** The definition of suggested relationship for the type. */
-export interface RelationshipsLookup {
-  /** The relationship profile. */
-  profileName?: string;
-  /** The property references for the profile type. */
-  profilePropertyReferences?: RelationshipsLookupProfilePropertyReferencesList;
-  /** The related profile. */
-  relatedProfileName?: string;
-  /** The property references for the related profile type. */
-  relatedProfilePropertyReferences?: RelationshipsLookupRelatedProfilePropertyReferencesList;
-  /** The name of existing Relationship. */
-  existingRelationshipName?: string;
-}
-export const RelationshipsLookup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileName: S.optional(S.String),
-    profilePropertyReferences: S.optional(
-      RelationshipsLookupProfilePropertyReferencesList,
-    ),
-    relatedProfileName: S.optional(S.String),
-    relatedProfilePropertyReferences: S.optional(
-      RelationshipsLookupRelatedProfilePropertyReferencesList,
-    ),
-    existingRelationshipName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RelationshipsLookup",
-}) as any as S.Schema<RelationshipsLookup>;
-
-/** Suggested relationships for the type. */
-export type SuggestRelationshipLinksResponseSuggestedRelationshipsList =
-  Array<RelationshipsLookup>;
-export const SuggestRelationshipLinksResponseSuggestedRelationshipsList =
-  /*@__PURE__*/ S.Array(
-    RelationshipsLookup,
-  ) as any as S.Schema<SuggestRelationshipLinksResponseSuggestedRelationshipsList>;
-
-/** The response of suggest relationship links operation. */
-export interface SuggestRelationshipLinksResponse {
-  /** The interaction name. */
-  interactionName?: string;
-  /** Suggested relationships for the type. */
-  suggestedRelationships?: SuggestRelationshipLinksResponseSuggestedRelationshipsList;
-}
-export const SuggestRelationshipLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interactionName: S.optional(S.String),
-    suggestedRelationships: S.optional(
-      SuggestRelationshipLinksResponseSuggestedRelationshipsList,
-    ),
-  }),
-).annotate({
-  identifier: "SuggestRelationshipLinksResponse",
-}) as any as S.Schema<SuggestRelationshipLinksResponse>;
-
-/** The mapping entity type. */
-export type KpiDefinitionInputEntityType =
-  | "None"
-  | "Profile"
-  | "Interaction"
-  | "Relationship";
-export const KpiDefinitionInputEntityType = /*@__PURE__*/ S.String;
-
-/** Localized display name for the KPI. */
-export type KpiDefinitionInputDisplayNameMap = {
-  [key: string]: string | undefined;
-};
-export const KpiDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KpiDefinitionInputDisplayNameMap>;
-
-/** Localized description for the KPI. */
-export type KpiDefinitionInputDescriptionMap = {
-  [key: string]: string | undefined;
-};
-export const KpiDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KpiDefinitionInputDescriptionMap>;
-
-/** The calculation window. */
-export type KpiDefinitionInputCalculationWindow =
-  | "Lifetime"
-  | "Hour"
-  | "Day"
-  | "Week"
-  | "Month";
-export const KpiDefinitionInputCalculationWindow = /*@__PURE__*/ S.String;
-
-/** The computation function for the KPI. */
-export type KpiDefinitionInputFunction =
-  | "Sum"
-  | "Avg"
-  | "Min"
-  | "Max"
-  | "Last"
-  | "Count"
-  | "None"
-  | "CountDistinct";
-export const KpiDefinitionInputFunction = /*@__PURE__*/ S.String;
-
-/** the group by properties for the KPI. */
-export type KpiDefinitionInputGroupByList = Array<string>;
-export const KpiDefinitionInputGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KpiDefinitionInputGroupByList>;
-
-/** Defines the KPI Threshold limits. */
-export interface KpiThresholds {
-  /** The lower threshold limit. */
-  lowerLimit: number;
-  /** The upper threshold limit. */
-  upperLimit: number;
-  /** Whether or not the KPI is an increasing KPI. */
-  increasingKpi: boolean;
-}
-export const KpiThresholds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lowerLimit: S.Number,
-    upperLimit: S.Number,
-    increasingKpi: S.Boolean,
-  }),
-).annotate({ identifier: "KpiThresholds" }) as any as S.Schema<KpiThresholds>;
-
-/** The KPI alias. */
-export interface KpiAlias {
-  /** KPI alias name. */
-  aliasName: string;
-  /** The expression. */
-  expression: string;
-}
-export const KpiAlias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aliasName: S.String,
-    expression: S.String,
-  }),
-).annotate({ identifier: "KpiAlias" }) as any as S.Schema<KpiAlias>;
-
-/** The aliases. */
-export type KpiDefinitionInputAliasesList = Array<KpiAlias>;
-export const KpiDefinitionInputAliasesList = /*@__PURE__*/ S.Array(
-  KpiAlias,
-) as any as S.Schema<KpiDefinitionInputAliasesList>;
-
-/** The KPI extract. */
-export interface KpiExtract {
-  /** KPI extract name. */
-  extractName: string;
-  /** The expression. */
-  expression: string;
-}
-export const KpiExtract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extractName: S.String,
-    expression: S.String,
-  }),
-).annotate({ identifier: "KpiExtract" }) as any as S.Schema<KpiExtract>;
-
-/** The KPI extracts. */
-export type KpiDefinitionInputExtractsList = Array<KpiExtract>;
-export const KpiDefinitionInputExtractsList = /*@__PURE__*/ S.Array(
-  KpiExtract,
-) as any as S.Schema<KpiDefinitionInputExtractsList>;
-
-/** Defines the KPI Threshold limits. */
-export interface KpiDefinitionInput {
-  /** The mapping entity type. */
-  entityType: KpiDefinitionInputEntityType | (string & {});
-  /** The mapping entity name. */
-  entityTypeName: string;
-  /** Localized display name for the KPI. */
-  displayName?: KpiDefinitionInputDisplayNameMap;
-  /** Localized description for the KPI. */
-  description?: KpiDefinitionInputDescriptionMap;
-  /** The calculation window. */
-  calculationWindow: KpiDefinitionInputCalculationWindow | (string & {});
-  /** Name of calculation window field. */
-  calculationWindowFieldName?: string;
-  /** The computation function for the KPI. */
-  function: KpiDefinitionInputFunction | (string & {});
-  /** The computation expression for the KPI. */
-  expression: string;
-  /** The unit of measurement for the KPI. */
-  unit?: string;
-  /** The filter expression for the KPI. */
-  filter?: string;
-  /** the group by properties for the KPI. */
-  groupBy?: KpiDefinitionInputGroupByList;
-  /** The KPI thresholds. */
-  thresHolds?: KpiThresholds;
-  /** The aliases. */
-  aliases?: KpiDefinitionInputAliasesList;
-  /** The KPI extracts. */
-  extracts?: KpiDefinitionInputExtractsList;
-}
-export const KpiDefinitionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityType: KpiDefinitionInputEntityType,
-    entityTypeName: S.String,
-    displayName: S.optional(KpiDefinitionInputDisplayNameMap),
-    description: S.optional(KpiDefinitionInputDescriptionMap),
-    calculationWindow: KpiDefinitionInputCalculationWindow,
-    calculationWindowFieldName: S.optional(S.String),
-    function: KpiDefinitionInputFunction,
-    expression: S.String,
-    unit: S.optional(S.String),
-    filter: S.optional(S.String),
-    groupBy: S.optional(KpiDefinitionInputGroupByList),
-    thresHolds: S.optional(KpiThresholds),
-    aliases: S.optional(KpiDefinitionInputAliasesList),
-    extracts: S.optional(KpiDefinitionInputExtractsList),
-  }),
-).annotate({
-  identifier: "KpiDefinitionInput",
-}) as any as S.Schema<KpiDefinitionInput>;
-
-export interface KpiCreateOrUpdateRequest {
+export interface GetKpiRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -2676,26 +1861,22 @@ export interface KpiCreateOrUpdateRequest {
   hubName: string;
   /** The name of the KPI. */
   kpiName: string;
-  properties?: KpiDefinitionInput;
 }
-export const KpiCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetKpiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     kpiName: S.String.pipe(T.Label()),
-    properties: S.optional(KpiDefinitionInput),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
       code: 200,
       apiVersion: "2017-04-26",
     }),
   ),
-).annotate({
-  identifier: "KpiCreateOrUpdateRequest",
-}) as any as S.Schema<KpiCreateOrUpdateRequest>;
+).annotate({ identifier: "GetKpiRequest" }) as any as S.Schema<GetKpiRequest>;
 
 /** The mapping entity type. */
 export type KpiDefinitionEntityType =
@@ -2801,11 +1982,56 @@ export const KpiDefinitionParticipantProfilesMetadataList =
     KpiParticipantProfilesMetadata,
   ) as any as S.Schema<KpiDefinitionParticipantProfilesMetadataList>;
 
+/** Defines the KPI Threshold limits. */
+export interface KpiThresholds {
+  /** The lower threshold limit. */
+  lowerLimit: number;
+  /** The upper threshold limit. */
+  upperLimit: number;
+  /** Whether or not the KPI is an increasing KPI. */
+  increasingKpi: boolean;
+}
+export const KpiThresholds = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lowerLimit: S.Number,
+    upperLimit: S.Number,
+    increasingKpi: S.Boolean,
+  }),
+).annotate({ identifier: "KpiThresholds" }) as any as S.Schema<KpiThresholds>;
+
+/** The KPI alias. */
+export interface KpiAlias {
+  /** KPI alias name. */
+  aliasName: string;
+  /** The expression. */
+  expression: string;
+}
+export const KpiAlias = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    aliasName: S.String,
+    expression: S.String,
+  }),
+).annotate({ identifier: "KpiAlias" }) as any as S.Schema<KpiAlias>;
+
 /** The aliases. */
 export type KpiDefinitionAliasesList = Array<KpiAlias>;
 export const KpiDefinitionAliasesList = /*@__PURE__*/ S.Array(
   KpiAlias,
 ) as any as S.Schema<KpiDefinitionAliasesList>;
+
+/** The KPI extract. */
+export interface KpiExtract {
+  /** KPI extract name. */
+  extractName: string;
+  /** The expression. */
+  expression: string;
+}
+export const KpiExtract = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    extractName: S.String,
+    expression: S.String,
+  }),
+).annotate({ identifier: "KpiExtract" }) as any as S.Schema<KpiExtract>;
 
 /** The KPI extracts. */
 export type KpiDefinitionExtractsList = Array<KpiExtract>;
@@ -2880,7 +2106,7 @@ export const KpiDefinition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KpiDefinition" }) as any as S.Schema<KpiDefinition>;
 
-export interface KpiCreateOrUpdateResponse {
+export interface GetKpiResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
@@ -2889,314 +2115,16 @@ export interface KpiCreateOrUpdateResponse {
   type?: string;
   properties?: KpiDefinition;
 }
-export const KpiCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetKpiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     properties: S.optional(KpiDefinition),
   }),
-).annotate({
-  identifier: "KpiCreateOrUpdateResponse",
-}) as any as S.Schema<KpiCreateOrUpdateResponse>;
+).annotate({ identifier: "GetKpiResponse" }) as any as S.Schema<GetKpiResponse>;
 
-export interface KpiDeleteRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the KPI. */
-  kpiName: string;
-}
-export const KpiDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    kpiName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "KpiDeleteRequest",
-}) as any as S.Schema<KpiDeleteRequest>;
-
-export interface KpiDeleteResponse {}
-export const KpiDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "KpiDeleteResponse",
-}) as any as S.Schema<KpiDeleteResponse>;
-
-export interface KpiGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the KPI. */
-  kpiName: string;
-}
-export const KpiGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    kpiName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({ identifier: "KpiGetRequest" }) as any as S.Schema<KpiGetRequest>;
-
-export interface KpiGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: KpiDefinition;
-}
-export const KpiGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(KpiDefinition),
-  }),
-).annotate({ identifier: "KpiGetResponse" }) as any as S.Schema<KpiGetResponse>;
-
-export interface KpiListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const KpiListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "KpiListByHubRequest",
-}) as any as S.Schema<KpiListByHubRequest>;
-
-/** The KPI resource format. */
-export interface KpiResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: KpiDefinition;
-}
-export const KpiResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(KpiDefinition),
-  }),
-).annotate({
-  identifier: "KpiResourceFormat",
-}) as any as S.Schema<KpiResourceFormat>;
-
-/** Results of the list operation. */
-export type KpiListResultValueList = Array<KpiResourceFormat>;
-export const KpiListResultValueList = /*@__PURE__*/ S.Array(
-  KpiResourceFormat,
-) as any as S.Schema<KpiListResultValueList>;
-
-/** The response of list KPI operation. */
-export interface KpiListResult {
-  /** Results of the list operation. */
-  value?: KpiListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const KpiListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(KpiListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "KpiListResult" }) as any as S.Schema<KpiListResult>;
-
-export interface KpiReprocessRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the KPI. */
-  kpiName: string;
-}
-export const KpiReprocessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    kpiName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}/reprocess",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "KpiReprocessRequest",
-}) as any as S.Schema<KpiReprocessRequest>;
-
-export interface KpiReprocessResponse {}
-export const KpiReprocessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "KpiReprocessResponse",
-}) as any as S.Schema<KpiReprocessResponse>;
-
-/** Type of source entity. */
-export type LinkDefinitionInputSourceEntityType =
-  | "None"
-  | "Profile"
-  | "Interaction"
-  | "Relationship";
-export const LinkDefinitionInputSourceEntityType = /*@__PURE__*/ S.String;
-
-/** Type of target entity. */
-export type LinkDefinitionInputTargetEntityType =
-  | "None"
-  | "Profile"
-  | "Interaction"
-  | "Relationship";
-export const LinkDefinitionInputTargetEntityType = /*@__PURE__*/ S.String;
-
-/** Localized display name for the Link. */
-export type LinkDefinitionInputDisplayNameMap = {
-  [key: string]: string | undefined;
-};
-export const LinkDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LinkDefinitionInputDisplayNameMap>;
-
-/** Localized descriptions for the Link. */
-export type LinkDefinitionInputDescriptionMap = {
-  [key: string]: string | undefined;
-};
-export const LinkDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LinkDefinitionInputDescriptionMap>;
-
-/** Link type. */
-export type TypePropertiesMappingLinkType = "UpdateAlways" | "CopyIfNull";
-export const TypePropertiesMappingLinkType = /*@__PURE__*/ S.String;
-
-/** Metadata for a Link's property mapping. */
-export interface TypePropertiesMapping {
-  /** Property name on the source Entity Type. */
-  sourcePropertyName: string;
-  /** Property name on the target Entity Type. */
-  targetPropertyName: string;
-  /** Link type. */
-  linkType?: TypePropertiesMappingLinkType | (string & {});
-}
-export const TypePropertiesMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourcePropertyName: S.String,
-    targetPropertyName: S.String,
-    linkType: S.optional(TypePropertiesMappingLinkType),
-  }),
-).annotate({
-  identifier: "TypePropertiesMapping",
-}) as any as S.Schema<TypePropertiesMapping>;
-
-/** The set of properties mappings between the source and target Types. */
-export type LinkDefinitionInputMappingsList = Array<TypePropertiesMapping>;
-export const LinkDefinitionInputMappingsList = /*@__PURE__*/ S.Array(
-  TypePropertiesMapping,
-) as any as S.Schema<LinkDefinitionInputMappingsList>;
-
-/** The properties that represent the participating profile. */
-export type LinkDefinitionInputParticipantPropertyReferencesList =
-  Array<ParticipantPropertyReference>;
-export const LinkDefinitionInputParticipantPropertyReferencesList =
-  /*@__PURE__*/ S.Array(
-    ParticipantPropertyReference,
-  ) as any as S.Schema<LinkDefinitionInputParticipantPropertyReferencesList>;
-
-/** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
-export type LinkDefinitionInputOperationType = "Upsert" | "Delete";
-export const LinkDefinitionInputOperationType = /*@__PURE__*/ S.String;
-
-/** The definition of Link. */
-export interface LinkDefinitionInput {
-  /** Type of source entity. */
-  sourceEntityType: LinkDefinitionInputSourceEntityType | (string & {});
-  /** Type of target entity. */
-  targetEntityType: LinkDefinitionInputTargetEntityType | (string & {});
-  /** Name of the source Entity Type. */
-  sourceEntityTypeName: string;
-  /** Name of the target Entity Type. */
-  targetEntityTypeName: string;
-  /** Localized display name for the Link. */
-  displayName?: LinkDefinitionInputDisplayNameMap;
-  /** Localized descriptions for the Link. */
-  description?: LinkDefinitionInputDescriptionMap;
-  /** The set of properties mappings between the source and target Types. */
-  mappings?: LinkDefinitionInputMappingsList;
-  /** The properties that represent the participating profile. */
-  participantPropertyReferences: LinkDefinitionInputParticipantPropertyReferencesList;
-  /** Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles. */
-  referenceOnly?: boolean;
-  /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
-  operationType?: LinkDefinitionInputOperationType | (string & {});
-}
-export const LinkDefinitionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceEntityType: LinkDefinitionInputSourceEntityType,
-    targetEntityType: LinkDefinitionInputTargetEntityType,
-    sourceEntityTypeName: S.String,
-    targetEntityTypeName: S.String,
-    displayName: S.optional(LinkDefinitionInputDisplayNameMap),
-    description: S.optional(LinkDefinitionInputDescriptionMap),
-    mappings: S.optional(LinkDefinitionInputMappingsList),
-    participantPropertyReferences:
-      LinkDefinitionInputParticipantPropertyReferencesList,
-    referenceOnly: S.optional(S.Boolean),
-    operationType: S.optional(LinkDefinitionInputOperationType),
-  }),
-).annotate({
-  identifier: "LinkDefinitionInput",
-}) as any as S.Schema<LinkDefinitionInput>;
-
-export interface LinksCreateOrUpdateRequest {
+export interface GetLinkRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -3205,26 +2133,22 @@ export interface LinksCreateOrUpdateRequest {
   hubName: string;
   /** The name of the link. */
   linkName: string;
-  properties?: LinkDefinitionInput;
 }
-export const LinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     linkName: S.String.pipe(T.Label()),
-    properties: S.optional(LinkDefinitionInput),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
       code: 200,
       apiVersion: "2017-04-26",
     }),
   ),
-).annotate({
-  identifier: "LinksCreateOrUpdateRequest",
-}) as any as S.Schema<LinksCreateOrUpdateRequest>;
+).annotate({ identifier: "GetLinkRequest" }) as any as S.Schema<GetLinkRequest>;
 
 /** Type of source entity. */
 export type LinkDefinitionSourceEntityType =
@@ -3259,6 +2183,29 @@ export const LinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<LinkDefinitionDescriptionMap>;
+
+/** Link type. */
+export type TypePropertiesMappingLinkType = "UpdateAlways" | "CopyIfNull";
+export const TypePropertiesMappingLinkType = /*@__PURE__*/ S.String;
+
+/** Metadata for a Link's property mapping. */
+export interface TypePropertiesMapping {
+  /** Property name on the source Entity Type. */
+  sourcePropertyName: string;
+  /** Property name on the target Entity Type. */
+  targetPropertyName: string;
+  /** Link type. */
+  linkType?: TypePropertiesMappingLinkType | (string & {});
+}
+export const TypePropertiesMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourcePropertyName: S.String,
+    targetPropertyName: S.String,
+    linkType: S.optional(TypePropertiesMappingLinkType),
+  }),
+).annotate({
+  identifier: "TypePropertiesMapping",
+}) as any as S.Schema<TypePropertiesMapping>;
 
 /** The set of properties mappings between the source and target Types. */
 export type LinkDefinitionMappingsList = Array<TypePropertiesMapping>;
@@ -3326,7 +2273,7 @@ export const LinkDefinition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LinkDefinition" }) as any as S.Schema<LinkDefinition>;
 
-export interface LinksCreateOrUpdateResponse {
+export interface GetLinkResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
@@ -3335,7 +2282,7 @@ export interface LinksCreateOrUpdateResponse {
   type?: string;
   properties?: LinkDefinition;
 }
-export const LinksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3343,363 +2290,10 @@ export const LinksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(LinkDefinition),
   }),
 ).annotate({
-  identifier: "LinksCreateOrUpdateResponse",
-}) as any as S.Schema<LinksCreateOrUpdateResponse>;
+  identifier: "GetLinkResponse",
+}) as any as S.Schema<GetLinkResponse>;
 
-export interface LinksDeleteRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the link. */
-  linkName: string;
-}
-export const LinksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    linkName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "LinksDeleteRequest",
-}) as any as S.Schema<LinksDeleteRequest>;
-
-export interface LinksDeleteResponse {}
-export const LinksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LinksDeleteResponse",
-}) as any as S.Schema<LinksDeleteResponse>;
-
-export interface LinksGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the link. */
-  linkName: string;
-}
-export const LinksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    linkName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "LinksGetRequest",
-}) as any as S.Schema<LinksGetRequest>;
-
-export interface LinksGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: LinkDefinition;
-}
-export const LinksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(LinkDefinition),
-  }),
-).annotate({
-  identifier: "LinksGetResponse",
-}) as any as S.Schema<LinksGetResponse>;
-
-export interface LinksListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const LinksListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "LinksListByHubRequest",
-}) as any as S.Schema<LinksListByHubRequest>;
-
-/** The link resource format. */
-export interface LinkResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: LinkDefinition;
-}
-export const LinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(LinkDefinition),
-  }),
-).annotate({
-  identifier: "LinkResourceFormat",
-}) as any as S.Schema<LinkResourceFormat>;
-
-/** Results of the list operation. */
-export type LinkListResultValueList = Array<LinkResourceFormat>;
-export const LinkListResultValueList = /*@__PURE__*/ S.Array(
-  LinkResourceFormat,
-) as any as S.Schema<LinkListResultValueList>;
-
-/** The response of list link operation. */
-export interface LinkListResult {
-  /** Results of the list operation. */
-  value?: LinkListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const LinkListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(LinkListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "LinkListResult" }) as any as S.Schema<LinkListResult>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.CustomerInsights/operations",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-/** The object that represents the operation. */
-export interface OperationDisplay {
-  /** Service provider: Microsoft.CustomerInsights */
-  provider?: string;
-  /** Resource on which the operation is performed: Invoice, etc. */
-  resource?: string;
-  /** Operation type: Read, write, delete, etc. */
-  operation?: string;
-}
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationDisplay",
-}) as any as S.Schema<OperationDisplay>;
-
-/** A Customer Insights REST API operation */
-export interface Operation {
-  /** Operation name: {provider}/{resource}/{operation} */
-  name?: string;
-  /** The object that represents the operation. */
-  display?: OperationDisplay;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    display: S.optional(OperationDisplay),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** List of Customer Insights operations supported by the Microsoft.CustomerInsights resource provider. */
-export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationListResultValueList>;
-
-/** Result of the request to list Customer Insights operations. It contains a list of operations and a URL link to get the next set of results. */
-export interface OperationListResult {
-  /** List of Customer Insights operations supported by the Microsoft.CustomerInsights resource provider. */
-  value?: OperationListResultValueList;
-  /** URL to get the next set of operation list results if there are any. */
-  nextLink?: string;
-}
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationListResult",
-}) as any as S.Schema<OperationListResult>;
-
-/** Description of the prediction. */
-export type PredictionInputDescriptionMap = {
-  [key: string]: string | undefined;
-};
-export const PredictionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PredictionInputDescriptionMap>;
-
-/** Display name of the prediction. */
-export type PredictionInputDisplayNameMap = {
-  [key: string]: string | undefined;
-};
-export const PredictionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PredictionInputDisplayNameMap>;
-
-/** Interaction types involved in the prediction. */
-export type PredictionInputInvolvedInteractionTypesList = Array<string>;
-export const PredictionInputInvolvedInteractionTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PredictionInputInvolvedInteractionTypesList>;
-
-/** KPI types involved in the prediction. */
-export type PredictionInputInvolvedKpiTypesList = Array<string>;
-export const PredictionInputInvolvedKpiTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionInputInvolvedKpiTypesList>;
-
-/** Relationships involved in the prediction. */
-export type PredictionInputInvolvedRelationshipsList = Array<string>;
-export const PredictionInputInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionInputInvolvedRelationshipsList>;
-
-/** Definition of the link mapping of prediction. */
-export interface PredictionInputMappings {
-  /** The score of the link mapping. */
-  score: string;
-  /** The grade of the link mapping. */
-  grade: string;
-  /** The reason of the link mapping. */
-  reason: string;
-}
-export const PredictionInputMappings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.String,
-    grade: S.String,
-    reason: S.String,
-  }),
-).annotate({
-  identifier: "PredictionInputMappings",
-}) as any as S.Schema<PredictionInputMappings>;
-
-/** The definition of a prediction grade. */
-export interface PredictionInputGradesItem {
-  /** Name of the grade. */
-  gradeName?: string;
-  /** Minimum score threshold. */
-  minScoreThreshold?: number;
-  /** Maximum score threshold. */
-  maxScoreThreshold?: number;
-}
-export const PredictionInputGradesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gradeName: S.optional(S.String),
-    minScoreThreshold: S.optional(S.Number),
-    maxScoreThreshold: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PredictionInputGradesItem",
-}) as any as S.Schema<PredictionInputGradesItem>;
-
-/** The prediction grades. */
-export type PredictionInputGradesList = Array<PredictionInputGradesItem>;
-export const PredictionInputGradesList = /*@__PURE__*/ S.Array(
-  PredictionInputGradesItem,
-) as any as S.Schema<PredictionInputGradesList>;
-
-/** The prediction definition. */
-export interface PredictionInput {
-  /** Description of the prediction. */
-  description?: PredictionInputDescriptionMap;
-  /** Display name of the prediction. */
-  displayName?: PredictionInputDisplayNameMap;
-  /** Interaction types involved in the prediction. */
-  involvedInteractionTypes?: PredictionInputInvolvedInteractionTypesList;
-  /** KPI types involved in the prediction. */
-  involvedKpiTypes?: PredictionInputInvolvedKpiTypesList;
-  /** Relationships involved in the prediction. */
-  involvedRelationships?: PredictionInputInvolvedRelationshipsList;
-  /** Negative outcome expression. */
-  negativeOutcomeExpression: string;
-  /** Positive outcome expression. */
-  positiveOutcomeExpression: string;
-  /** Primary profile type. */
-  primaryProfileType: string;
-  /** Name of the prediction. */
-  predictionName?: string;
-  /** Scope expression. */
-  scopeExpression: string;
-  /** Whether do auto analyze. */
-  autoAnalyze: boolean;
-  /** Definition of the link mapping of prediction. */
-  mappings: PredictionInputMappings;
-  /** Score label. */
-  scoreLabel: string;
-  /** The prediction grades. */
-  grades?: PredictionInputGradesList;
-}
-export const PredictionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(PredictionInputDescriptionMap),
-    displayName: S.optional(PredictionInputDisplayNameMap),
-    involvedInteractionTypes: S.optional(
-      PredictionInputInvolvedInteractionTypesList,
-    ),
-    involvedKpiTypes: S.optional(PredictionInputInvolvedKpiTypesList),
-    involvedRelationships: S.optional(PredictionInputInvolvedRelationshipsList),
-    negativeOutcomeExpression: S.String,
-    positiveOutcomeExpression: S.String,
-    primaryProfileType: S.String,
-    predictionName: S.optional(S.String),
-    scopeExpression: S.String,
-    autoAnalyze: S.Boolean,
-    mappings: PredictionInputMappings,
-    scoreLabel: S.String,
-    grades: S.optional(PredictionInputGradesList),
-  }),
-).annotate({
-  identifier: "PredictionInput",
-}) as any as S.Schema<PredictionInput>;
-
-export interface PredictionsCreateOrUpdateRequest {
+export interface GetPredictionRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -3708,26 +2302,24 @@ export interface PredictionsCreateOrUpdateRequest {
   hubName: string;
   /** The name of the Prediction. */
   predictionName: string;
-  properties?: PredictionInput;
 }
-export const PredictionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetPredictionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     predictionName: S.String.pipe(T.Label()),
-    properties: S.optional(PredictionInput),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
       code: 200,
       apiVersion: "2017-04-26",
     }),
   ),
 ).annotate({
-  identifier: "PredictionsCreateOrUpdateRequest",
-}) as any as S.Schema<PredictionsCreateOrUpdateRequest>;
+  identifier: "GetPredictionRequest",
+}) as any as S.Schema<GetPredictionRequest>;
 
 /** Description of the prediction. */
 export type PredictionDescriptionMap = { [key: string]: string | undefined };
@@ -3762,17 +2354,47 @@ export const PredictionInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PredictionInvolvedRelationshipsList>;
 
 /** Definition of the link mapping of prediction. */
-export type PredictionMappings = PredictionInputMappings;
-export const PredictionMappings = PredictionInputMappings;
+export interface PredictionMappings {
+  /** The score of the link mapping. */
+  score: string;
+  /** The grade of the link mapping. */
+  grade: string;
+  /** The reason of the link mapping. */
+  reason: string;
+}
+export const PredictionMappings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    score: S.String,
+    grade: S.String,
+    reason: S.String,
+  }),
+).annotate({
+  identifier: "PredictionMappings",
+}) as any as S.Schema<PredictionMappings>;
 
 /** The definition of a prediction grade. */
-export type PredictionGradesItem = PredictionInputGradesItem;
-export const PredictionGradesItem = PredictionInputGradesItem;
+export interface PredictionGradesItem {
+  /** Name of the grade. */
+  gradeName?: string;
+  /** Minimum score threshold. */
+  minScoreThreshold?: number;
+  /** Maximum score threshold. */
+  maxScoreThreshold?: number;
+}
+export const PredictionGradesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gradeName: S.optional(S.String),
+    minScoreThreshold: S.optional(S.Number),
+    maxScoreThreshold: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PredictionGradesItem",
+}) as any as S.Schema<PredictionGradesItem>;
 
 /** The prediction grades. */
-export type PredictionGradesList = Array<PredictionInputGradesItem>;
+export type PredictionGradesList = Array<PredictionGradesItem>;
 export const PredictionGradesList = /*@__PURE__*/ S.Array(
-  PredictionInputGradesItem,
+  PredictionGradesItem,
 ) as any as S.Schema<PredictionGradesList>;
 
 /** Generated interaction types. */
@@ -3854,7 +2476,7 @@ export interface Prediction {
   /** Whether do auto analyze. */
   autoAnalyze: boolean;
   /** Definition of the link mapping of prediction. */
-  mappings: PredictionInputMappings;
+  mappings: PredictionMappings;
   /** Score label. */
   scoreLabel: string;
   /** The prediction grades. */
@@ -3879,14 +2501,14 @@ export const Prediction = /*@__PURE__*/ S.suspend(() =>
     scopeExpression: S.String,
     tenantId: S.optional(S.String),
     autoAnalyze: S.Boolean,
-    mappings: PredictionInputMappings,
+    mappings: PredictionMappings,
     scoreLabel: S.String,
     grades: S.optional(PredictionGradesList),
     systemGeneratedEntities: S.optional(PredictionSystemGeneratedEntities),
   }),
 ).annotate({ identifier: "Prediction" }) as any as S.Schema<Prediction>;
 
-export interface PredictionsCreateOrUpdateResponse {
+export interface GetPredictionResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
@@ -3895,7 +2517,7 @@ export interface PredictionsCreateOrUpdateResponse {
   type?: string;
   properties?: Prediction;
 }
-export const PredictionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetPredictionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3903,10 +2525,10 @@ export const PredictionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(Prediction),
   }),
 ).annotate({
-  identifier: "PredictionsCreateOrUpdateResponse",
-}) as any as S.Schema<PredictionsCreateOrUpdateResponse>;
+  identifier: "GetPredictionResponse",
+}) as any as S.Schema<GetPredictionResponse>;
 
-export interface PredictionsDeleteRequest {
+export interface GetPredictionModelStatusRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -3916,90 +2538,7 @@ export interface PredictionsDeleteRequest {
   /** The name of the Prediction. */
   predictionName: string;
 }
-export const PredictionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    predictionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "PredictionsDeleteRequest",
-}) as any as S.Schema<PredictionsDeleteRequest>;
-
-export interface PredictionsDeleteResponse {}
-export const PredictionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PredictionsDeleteResponse",
-}) as any as S.Schema<PredictionsDeleteResponse>;
-
-export interface PredictionsGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the Prediction. */
-  predictionName: string;
-}
-export const PredictionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    predictionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "PredictionsGetRequest",
-}) as any as S.Schema<PredictionsGetRequest>;
-
-export interface PredictionsGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: Prediction;
-}
-export const PredictionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(Prediction),
-  }),
-).annotate({
-  identifier: "PredictionsGetResponse",
-}) as any as S.Schema<PredictionsGetResponse>;
-
-export interface PredictionsGetModelStatusRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the Prediction. */
-  predictionName: string;
-}
-export const PredictionsGetModelStatusRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetPredictionModelStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4014,8 +2553,8 @@ export const PredictionsGetModelStatusRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PredictionsGetModelStatusRequest",
-}) as any as S.Schema<PredictionsGetModelStatusRequest>;
+  identifier: "GetPredictionModelStatusRequest",
+}) as any as S.Schema<GetPredictionModelStatusRequest>;
 
 /** Prediction model life cycle. When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API. */
 export type PredictionModelStatusStatus =
@@ -4082,7 +2621,7 @@ export const PredictionModelStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "PredictionModelStatus",
 }) as any as S.Schema<PredictionModelStatus>;
 
-export interface PredictionsGetTrainingResultsRequest {
+export interface GetPredictionTrainingResultRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -4092,24 +2631,23 @@ export interface PredictionsGetTrainingResultsRequest {
   /** The name of the Prediction. */
   predictionName: string;
 }
-export const PredictionsGetTrainingResultsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      hubName: S.String.pipe(T.Label()),
-      predictionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}/getTrainingResults",
-        code: 200,
-        apiVersion: "2017-04-26",
-      }),
-    ),
+export const GetPredictionTrainingResultRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    predictionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}/getTrainingResults",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
 ).annotate({
-  identifier: "PredictionsGetTrainingResultsRequest",
-}) as any as S.Schema<PredictionsGetTrainingResultsRequest>;
+  identifier: "GetPredictionTrainingResultRequest",
+}) as any as S.Schema<GetPredictionTrainingResultRequest>;
 
 /** The definition of a prediction distribution. */
 export interface PredictionDistributionDefinitionDistributionsItem {
@@ -4259,7 +2797,1818 @@ export const PredictionTrainingResults = /*@__PURE__*/ S.suspend(() =>
   identifier: "PredictionTrainingResults",
 }) as any as S.Schema<PredictionTrainingResults>;
 
-export interface PredictionsListByHubRequest {
+export interface GetProfileRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the profile. */
+  profileName: string;
+  /** Locale of profile to retrieve, default is en-us. */
+  locale_code?: string;
+}
+export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "GetProfileRequest",
+}) as any as S.Schema<GetProfileRequest>;
+
+export type ProfileTypeDefinitionAttributesValueList = Array<string>;
+export const ProfileTypeDefinitionAttributesValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ProfileTypeDefinitionAttributesValueList>;
+
+/** The attributes for the Type. */
+export type ProfileTypeDefinitionAttributesMap = {
+  [key: string]: ProfileTypeDefinitionAttributesValueList | undefined;
+};
+export const ProfileTypeDefinitionAttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ProfileTypeDefinitionAttributesValueList,
+) as any as S.Schema<ProfileTypeDefinitionAttributesMap>;
+
+/** Localized descriptions for the property. */
+export type ProfileTypeDefinitionDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const ProfileTypeDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfileTypeDefinitionDescriptionMap>;
+
+/** Localized display names for the property. */
+export type ProfileTypeDefinitionDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const ProfileTypeDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfileTypeDefinitionDisplayNameMap>;
+
+export type ProfileTypeDefinitionLocalizedAttributesValueMap = {
+  [key: string]: string | undefined;
+};
+export const ProfileTypeDefinitionLocalizedAttributesValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProfileTypeDefinitionLocalizedAttributesValueMap>;
+
+/** Any custom localized attributes for the Type. */
+export type ProfileTypeDefinitionLocalizedAttributesMap = {
+  [key: string]: ProfileTypeDefinitionLocalizedAttributesValueMap | undefined;
+};
+export const ProfileTypeDefinitionLocalizedAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ProfileTypeDefinitionLocalizedAttributesValueMap,
+  ) as any as S.Schema<ProfileTypeDefinitionLocalizedAttributesMap>;
+
+/** Type of entity. */
+export type ProfileTypeDefinitionEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const ProfileTypeDefinitionEntityType = /*@__PURE__*/ S.String;
+
+/** The properties of the Profile. */
+export type ProfileTypeDefinitionFieldsList = Array<PropertyDefinition>;
+export const ProfileTypeDefinitionFieldsList = /*@__PURE__*/ S.Array(
+  PropertyDefinition,
+) as any as S.Schema<ProfileTypeDefinitionFieldsList>;
+
+/** The properties which make up the unique ID. */
+export type StrongIdKeyPropertyNamesList = Array<string>;
+export const StrongIdKeyPropertyNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StrongIdKeyPropertyNamesList>;
+
+/** Localized display name. */
+export type StrongIdDisplayNameMap = { [key: string]: string | undefined };
+export const StrongIdDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StrongIdDisplayNameMap>;
+
+/** Localized descriptions. */
+export type StrongIdDescriptionMap = { [key: string]: string | undefined };
+export const StrongIdDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StrongIdDescriptionMap>;
+
+/** Property/Properties which represent a unique ID. */
+export interface StrongId {
+  /** The properties which make up the unique ID. */
+  keyPropertyNames: StrongIdKeyPropertyNamesList;
+  /** The Name identifying the strong ID. */
+  strongIdName: string;
+  /** Localized display name. */
+  displayName?: StrongIdDisplayNameMap;
+  /** Localized descriptions. */
+  description?: StrongIdDescriptionMap;
+}
+export const StrongId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyPropertyNames: StrongIdKeyPropertyNamesList,
+    strongIdName: S.String,
+    displayName: S.optional(StrongIdDisplayNameMap),
+    description: S.optional(StrongIdDescriptionMap),
+  }),
+).annotate({ identifier: "StrongId" }) as any as S.Schema<StrongId>;
+
+/** The strong IDs. */
+export type ProfileTypeDefinitionStrongIdsList = Array<StrongId>;
+export const ProfileTypeDefinitionStrongIdsList = /*@__PURE__*/ S.Array(
+  StrongId,
+) as any as S.Schema<ProfileTypeDefinitionStrongIdsList>;
+
+/** The profile type definition. */
+export interface ProfileTypeDefinition {
+  /** The attributes for the Type. */
+  attributes?: ProfileTypeDefinitionAttributesMap;
+  /** Localized descriptions for the property. */
+  description?: ProfileTypeDefinitionDescriptionMap;
+  /** Localized display names for the property. */
+  displayName?: ProfileTypeDefinitionDisplayNameMap;
+  /** Any custom localized attributes for the Type. */
+  localizedAttributes?: ProfileTypeDefinitionLocalizedAttributesMap;
+  /** Small Image associated with the Property or EntityType. */
+  smallImage?: string;
+  /** Medium Image associated with the Property or EntityType. */
+  mediumImage?: string;
+  /** Large Image associated with the Property or EntityType. */
+  largeImage?: string;
+  /** The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object. */
+  apiEntitySetName?: string;
+  /** Type of entity. */
+  entityType?: ProfileTypeDefinitionEntityType;
+  /** The properties of the Profile. */
+  fields?: ProfileTypeDefinitionFieldsList;
+  /** The instance count. */
+  instancesCount?: number;
+  /** The last changed time for the type definition. */
+  lastChangedUtc?: string;
+  /** Provisioning state. */
+  provisioningState?: ProvisioningState;
+  /** The schema org link. This helps ACI identify and suggest semantic models. */
+  schemaItemTypeLink?: string;
+  /** The hub name. */
+  tenantId?: string;
+  /** The timestamp property name. Represents the time when the interaction or profile update happened. */
+  timestampFieldName?: string;
+  /** The name of the entity. */
+  typeName?: string;
+  /** The strong IDs. */
+  strongIds?: ProfileTypeDefinitionStrongIdsList;
+}
+export const ProfileTypeDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attributes: S.optional(ProfileTypeDefinitionAttributesMap),
+    description: S.optional(ProfileTypeDefinitionDescriptionMap),
+    displayName: S.optional(ProfileTypeDefinitionDisplayNameMap),
+    localizedAttributes: S.optional(
+      ProfileTypeDefinitionLocalizedAttributesMap,
+    ),
+    smallImage: S.optional(S.String),
+    mediumImage: S.optional(S.String),
+    largeImage: S.optional(S.String),
+    apiEntitySetName: S.optional(S.String),
+    entityType: S.optional(ProfileTypeDefinitionEntityType),
+    fields: S.optional(ProfileTypeDefinitionFieldsList),
+    instancesCount: S.optional(S.Number),
+    lastChangedUtc: S.optional(S.String),
+    provisioningState: S.optional(ProvisioningState),
+    schemaItemTypeLink: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    timestampFieldName: S.optional(S.String),
+    typeName: S.optional(S.String),
+    strongIds: S.optional(ProfileTypeDefinitionStrongIdsList),
+  }),
+).annotate({
+  identifier: "ProfileTypeDefinition",
+}) as any as S.Schema<ProfileTypeDefinition>;
+
+export interface GetProfileResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: ProfileTypeDefinition;
+}
+export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ProfileTypeDefinition),
+  }),
+).annotate({
+  identifier: "GetProfileResponse",
+}) as any as S.Schema<GetProfileResponse>;
+
+export interface GetProfileEnrichingKpisRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the profile. */
+  profileName: string;
+}
+export const GetProfileEnrichingKpisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}/getEnrichingKpis",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "GetProfileEnrichingKpisRequest",
+}) as any as S.Schema<GetProfileEnrichingKpisRequest>;
+
+export type ProfilesGetEnrichingKpisResponseBodyList = Array<KpiDefinition>;
+export const ProfilesGetEnrichingKpisResponseBodyList = /*@__PURE__*/ S.Array(
+  KpiDefinition,
+) as any as S.Schema<ProfilesGetEnrichingKpisResponseBodyList>;
+
+export type GetProfileEnrichingKpisResponse =
+  ProfilesGetEnrichingKpisResponseBodyList;
+export const GetProfileEnrichingKpisResponse = /*@__PURE__*/ S.suspend(() =>
+  ProfilesGetEnrichingKpisResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "GetProfileEnrichingKpisResponse",
+}) as any as S.Schema<GetProfileEnrichingKpisResponse>;
+
+export interface GetRelationshipRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the relationship. */
+  relationshipName: string;
+}
+export const GetRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    relationshipName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships/{relationshipName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "GetRelationshipRequest",
+}) as any as S.Schema<GetRelationshipRequest>;
+
+/** The Relationship Cardinality. */
+export type RelationshipDefinitionCardinality =
+  | "OneToOne"
+  | "OneToMany"
+  | "ManyToMany";
+export const RelationshipDefinitionCardinality = /*@__PURE__*/ S.String;
+
+/** Localized display name for the Relationship. */
+export type RelationshipDefinitionDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const RelationshipDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RelationshipDefinitionDisplayNameMap>;
+
+/** Localized descriptions for the Relationship. */
+export type RelationshipDefinitionDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const RelationshipDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RelationshipDefinitionDescriptionMap>;
+
+/** The properties of the Relationship. */
+export type RelationshipDefinitionFieldsList = Array<PropertyDefinition>;
+export const RelationshipDefinitionFieldsList = /*@__PURE__*/ S.Array(
+  PropertyDefinition,
+) as any as S.Schema<RelationshipDefinitionFieldsList>;
+
+/** Map a field of profile to its corresponding StrongId in Related Profile. */
+export interface RelationshipTypeFieldMapping {
+  /** Specifies the fieldName in profile. */
+  profileFieldName: string;
+  /** Specifies the KeyProperty (from StrongId) of the related profile. */
+  relatedProfileKeyProperty: string;
+}
+export const RelationshipTypeFieldMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileFieldName: S.String,
+    relatedProfileKeyProperty: S.String,
+  }),
+).annotate({
+  identifier: "RelationshipTypeFieldMapping",
+}) as any as S.Schema<RelationshipTypeFieldMapping>;
+
+/** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
+export type RelationshipTypeMappingFieldMappingsList =
+  Array<RelationshipTypeFieldMapping>;
+export const RelationshipTypeMappingFieldMappingsList = /*@__PURE__*/ S.Array(
+  RelationshipTypeFieldMapping,
+) as any as S.Schema<RelationshipTypeMappingFieldMappingsList>;
+
+/** Maps fields in Profile to their corresponding StrongIds in Related Profile. */
+export interface RelationshipTypeMapping {
+  /** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
+  fieldMappings: RelationshipTypeMappingFieldMappingsList;
+}
+export const RelationshipTypeMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fieldMappings: RelationshipTypeMappingFieldMappingsList,
+  }),
+).annotate({
+  identifier: "RelationshipTypeMapping",
+}) as any as S.Schema<RelationshipTypeMapping>;
+
+/** Optional property to be used to map fields in profile to their strong ids in related profile. */
+export type RelationshipDefinitionLookupMappingsList =
+  Array<RelationshipTypeMapping>;
+export const RelationshipDefinitionLookupMappingsList = /*@__PURE__*/ S.Array(
+  RelationshipTypeMapping,
+) as any as S.Schema<RelationshipDefinitionLookupMappingsList>;
+
+/** The definition of Relationship. */
+export interface RelationshipDefinition {
+  /** The Relationship Cardinality. */
+  cardinality?: RelationshipDefinitionCardinality;
+  /** Localized display name for the Relationship. */
+  displayName?: RelationshipDefinitionDisplayNameMap;
+  /** Localized descriptions for the Relationship. */
+  description?: RelationshipDefinitionDescriptionMap;
+  /** The expiry date time in UTC. */
+  expiryDateTimeUtc?: string;
+  /** The properties of the Relationship. */
+  fields?: RelationshipDefinitionFieldsList;
+  /** Optional property to be used to map fields in profile to their strong ids in related profile. */
+  lookupMappings?: RelationshipDefinitionLookupMappingsList;
+  /** Profile type. */
+  profileType: string;
+  /** Provisioning state. */
+  provisioningState?: ProvisioningState;
+  /** The Relationship name. */
+  relationshipName?: string;
+  /** Related profile being referenced. */
+  relatedProfileType: string;
+  /** The relationship guid id. */
+  relationshipGuidId?: string;
+  /** The hub name. */
+  tenantId?: string;
+}
+export const RelationshipDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cardinality: S.optional(RelationshipDefinitionCardinality),
+    displayName: S.optional(RelationshipDefinitionDisplayNameMap),
+    description: S.optional(RelationshipDefinitionDescriptionMap),
+    expiryDateTimeUtc: S.optional(S.String),
+    fields: S.optional(RelationshipDefinitionFieldsList),
+    lookupMappings: S.optional(RelationshipDefinitionLookupMappingsList),
+    profileType: S.String,
+    provisioningState: S.optional(ProvisioningState),
+    relationshipName: S.optional(S.String),
+    relatedProfileType: S.String,
+    relationshipGuidId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RelationshipDefinition",
+}) as any as S.Schema<RelationshipDefinition>;
+
+export interface GetRelationshipResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: RelationshipDefinition;
+}
+export const GetRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(RelationshipDefinition),
+  }),
+).annotate({
+  identifier: "GetRelationshipResponse",
+}) as any as S.Schema<GetRelationshipResponse>;
+
+export interface GetRelationshipLinkRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the relationship link. */
+  relationshipLinkName: string;
+}
+export const GetRelationshipLinkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    relationshipLinkName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks/{relationshipLinkName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "GetRelationshipLinkRequest",
+}) as any as S.Schema<GetRelationshipLinkRequest>;
+
+/** Localized display name for the Relationship Link. */
+export type RelationshipLinkDefinitionDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const RelationshipLinkDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RelationshipLinkDefinitionDisplayNameMap>;
+
+/** Localized descriptions for the Relationship Link. */
+export type RelationshipLinkDefinitionDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const RelationshipLinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RelationshipLinkDefinitionDescriptionMap>;
+
+/** Link type. */
+export type RelationshipLinkFieldMappingLinkType =
+  | "UpdateAlways"
+  | "CopyIfNull";
+export const RelationshipLinkFieldMappingLinkType = /*@__PURE__*/ S.String;
+
+/** The fields mapping for Relationships. */
+export interface RelationshipLinkFieldMapping {
+  /** The field name on the Interaction Type. */
+  interactionFieldName: string;
+  /** Link type. */
+  linkType?: RelationshipLinkFieldMappingLinkType | (string & {});
+  /** The field name on the Relationship metadata. */
+  relationshipFieldName: string;
+}
+export const RelationshipLinkFieldMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    interactionFieldName: S.String,
+    linkType: S.optional(RelationshipLinkFieldMappingLinkType),
+    relationshipFieldName: S.String,
+  }),
+).annotate({
+  identifier: "RelationshipLinkFieldMapping",
+}) as any as S.Schema<RelationshipLinkFieldMapping>;
+
+/** The mappings between Interaction and Relationship fields. */
+export type RelationshipLinkDefinitionMappingsList =
+  Array<RelationshipLinkFieldMapping>;
+export const RelationshipLinkDefinitionMappingsList = /*@__PURE__*/ S.Array(
+  RelationshipLinkFieldMapping,
+) as any as S.Schema<RelationshipLinkDefinitionMappingsList>;
+
+/** The participant profile property reference. */
+export interface ParticipantProfilePropertyReference {
+  /** The source interaction property that maps to the target profile property. */
+  interactionPropertyName: string;
+  /** The target profile property that maps to the source interaction property. */
+  profilePropertyName: string;
+}
+export const ParticipantProfilePropertyReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    interactionPropertyName: S.String,
+    profilePropertyName: S.String,
+  }),
+).annotate({
+  identifier: "ParticipantProfilePropertyReference",
+}) as any as S.Schema<ParticipantProfilePropertyReference>;
+
+/** The property references for the Profile of the Relationship. */
+export type RelationshipLinkDefinitionProfilePropertyReferencesList =
+  Array<ParticipantProfilePropertyReference>;
+export const RelationshipLinkDefinitionProfilePropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantProfilePropertyReference,
+  ) as any as S.Schema<RelationshipLinkDefinitionProfilePropertyReferencesList>;
+
+/** The property references for the Related Profile of the Relationship. */
+export type RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
+  Array<ParticipantProfilePropertyReference>;
+export const RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantProfilePropertyReference,
+  ) as any as S.Schema<RelationshipLinkDefinitionRelatedProfilePropertyReferencesList>;
+
+/** The definition of relationship link. */
+export interface RelationshipLinkDefinition {
+  /** Localized display name for the Relationship Link. */
+  displayName?: RelationshipLinkDefinitionDisplayNameMap;
+  /** Localized descriptions for the Relationship Link. */
+  description?: RelationshipLinkDefinitionDescriptionMap;
+  /** The InteractionType associated with the Relationship Link. */
+  interactionType: string;
+  /** The name of the Relationship Link. */
+  linkName?: string;
+  /** The mappings between Interaction and Relationship fields. */
+  mappings?: RelationshipLinkDefinitionMappingsList;
+  /** The property references for the Profile of the Relationship. */
+  profilePropertyReferences: RelationshipLinkDefinitionProfilePropertyReferencesList;
+  /** Provisioning state. */
+  provisioningState?: ProvisioningState;
+  /** The property references for the Related Profile of the Relationship. */
+  relatedProfilePropertyReferences: RelationshipLinkDefinitionRelatedProfilePropertyReferencesList;
+  /** The Relationship associated with the Link. */
+  relationshipName: string;
+  /** The relationship guid id. */
+  relationshipGuidId?: string;
+  /** The hub name. */
+  tenantId?: string;
+}
+export const RelationshipLinkDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(RelationshipLinkDefinitionDisplayNameMap),
+    description: S.optional(RelationshipLinkDefinitionDescriptionMap),
+    interactionType: S.String,
+    linkName: S.optional(S.String),
+    mappings: S.optional(RelationshipLinkDefinitionMappingsList),
+    profilePropertyReferences:
+      RelationshipLinkDefinitionProfilePropertyReferencesList,
+    provisioningState: S.optional(ProvisioningState),
+    relatedProfilePropertyReferences:
+      RelationshipLinkDefinitionRelatedProfilePropertyReferencesList,
+    relationshipName: S.String,
+    relationshipGuidId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RelationshipLinkDefinition",
+}) as any as S.Schema<RelationshipLinkDefinition>;
+
+export interface GetRelationshipLinkResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: RelationshipLinkDefinition;
+}
+export const GetRelationshipLinkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(RelationshipLinkDefinition),
+  }),
+).annotate({
+  identifier: "GetRelationshipLinkResponse",
+}) as any as S.Schema<GetRelationshipLinkResponse>;
+
+export interface GetRoleAssignmentRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the role assignment. */
+  assignmentName: string;
+}
+export const GetRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    assignmentName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments/{assignmentName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "GetRoleAssignmentRequest",
+}) as any as S.Schema<GetRoleAssignmentRequest>;
+
+/** Localized display names for the metadata. */
+export type RoleAssignmentDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const RoleAssignmentDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RoleAssignmentDisplayNameMap>;
+
+/** Localized description for the metadata. */
+export type RoleAssignmentDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const RoleAssignmentDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RoleAssignmentDescriptionMap>;
+
+/** Type of roles. */
+export type RoleAssignmentRole =
+  | "Admin"
+  | "Reader"
+  | "ManageAdmin"
+  | "ManageReader"
+  | "DataAdmin"
+  | "DataReader";
+export const RoleAssignmentRole = /*@__PURE__*/ S.String;
+
+/** Other metadata for the principal. */
+export type AssignmentPrincipalPrincipalMetadataMap = {
+  [key: string]: string | undefined;
+};
+export const AssignmentPrincipalPrincipalMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AssignmentPrincipalPrincipalMetadataMap>;
+
+/** The AssignmentPrincipal */
+export interface AssignmentPrincipal {
+  /** The principal id being assigned to. */
+  principalId: string;
+  /** The Type of the principal ID. */
+  principalType: string;
+  /** Other metadata for the principal. */
+  principalMetadata?: AssignmentPrincipalPrincipalMetadataMap;
+}
+export const AssignmentPrincipal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.String,
+    principalType: S.String,
+    principalMetadata: S.optional(AssignmentPrincipalPrincipalMetadataMap),
+  }),
+).annotate({
+  identifier: "AssignmentPrincipal",
+}) as any as S.Schema<AssignmentPrincipal>;
+
+/** The principals being assigned to. */
+export type RoleAssignmentPrincipalsList = Array<AssignmentPrincipal>;
+export const RoleAssignmentPrincipalsList = /*@__PURE__*/ S.Array(
+  AssignmentPrincipal,
+) as any as S.Schema<RoleAssignmentPrincipalsList>;
+
+/** The elements included in the set. */
+export type ResourceSetDescriptionElementsList = Array<string>;
+export const ResourceSetDescriptionElementsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceSetDescriptionElementsList>;
+
+/** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
+export type ResourceSetDescriptionExceptionsList = Array<string>;
+export const ResourceSetDescriptionExceptionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceSetDescriptionExceptionsList>;
+
+/** The resource set description. */
+export interface ResourceSetDescription {
+  /** The elements included in the set. */
+  elements?: ResourceSetDescriptionElementsList;
+  /** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
+  exceptions?: ResourceSetDescriptionExceptionsList;
+}
+export const ResourceSetDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    elements: S.optional(ResourceSetDescriptionElementsList),
+    exceptions: S.optional(ResourceSetDescriptionExceptionsList),
+  }),
+).annotate({
+  identifier: "ResourceSetDescription",
+}) as any as S.Schema<ResourceSetDescription>;
+
+/** The Role Assignment definition. */
+export interface RoleAssignment {
+  /** The hub name. */
+  tenantId?: string;
+  /** The name of the metadata object. */
+  assignmentName?: string;
+  /** Localized display names for the metadata. */
+  displayName?: RoleAssignmentDisplayNameMap;
+  /** Localized description for the metadata. */
+  description?: RoleAssignmentDescriptionMap;
+  /** Provisioning state. */
+  provisioningState?: ProvisioningState;
+  /** Type of roles. */
+  role: RoleAssignmentRole;
+  /** The principals being assigned to. */
+  principals: RoleAssignmentPrincipalsList;
+  /** Profiles set for the assignment. */
+  profiles?: ResourceSetDescription;
+  /** Interactions set for the assignment. */
+  interactions?: ResourceSetDescription;
+  /** Links set for the assignment. */
+  links?: ResourceSetDescription;
+  /** Kpis set for the assignment. */
+  kpis?: ResourceSetDescription;
+  /** Sas Policies set for the assignment. */
+  sasPolicies?: ResourceSetDescription;
+  /** Connectors set for the assignment. */
+  connectors?: ResourceSetDescription;
+  /** Views set for the assignment. */
+  views?: ResourceSetDescription;
+  /** The Role assignments set for the relationship links. */
+  relationshipLinks?: ResourceSetDescription;
+  /** The Role assignments set for the relationships. */
+  relationships?: ResourceSetDescription;
+  /** Widget types set for the assignment. */
+  widgetTypes?: ResourceSetDescription;
+  /** The Role assignments set for the assignment. */
+  roleAssignments?: ResourceSetDescription;
+  /** Widget types set for the assignment. */
+  conflationPolicies?: ResourceSetDescription;
+  /** The Role assignments set for the assignment. */
+  segments?: ResourceSetDescription;
+}
+export const RoleAssignment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantId: S.optional(S.String),
+    assignmentName: S.optional(S.String),
+    displayName: S.optional(RoleAssignmentDisplayNameMap),
+    description: S.optional(RoleAssignmentDescriptionMap),
+    provisioningState: S.optional(ProvisioningState),
+    role: RoleAssignmentRole,
+    principals: RoleAssignmentPrincipalsList,
+    profiles: S.optional(ResourceSetDescription),
+    interactions: S.optional(ResourceSetDescription),
+    links: S.optional(ResourceSetDescription),
+    kpis: S.optional(ResourceSetDescription),
+    sasPolicies: S.optional(ResourceSetDescription),
+    connectors: S.optional(ResourceSetDescription),
+    views: S.optional(ResourceSetDescription),
+    relationshipLinks: S.optional(ResourceSetDescription),
+    relationships: S.optional(ResourceSetDescription),
+    widgetTypes: S.optional(ResourceSetDescription),
+    roleAssignments: S.optional(ResourceSetDescription),
+    conflationPolicies: S.optional(ResourceSetDescription),
+    segments: S.optional(ResourceSetDescription),
+  }),
+).annotate({ identifier: "RoleAssignment" }) as any as S.Schema<RoleAssignment>;
+
+export interface GetRoleAssignmentResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: RoleAssignment;
+}
+export const GetRoleAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(RoleAssignment),
+  }),
+).annotate({
+  identifier: "GetRoleAssignmentResponse",
+}) as any as S.Schema<GetRoleAssignmentResponse>;
+
+export interface GetViewRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the view. */
+  viewName: string;
+  /** The user ID. Use * to retrieve hub level view. */
+  userId: string;
+}
+export const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    viewName: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views/{viewName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({ identifier: "GetViewRequest" }) as any as S.Schema<GetViewRequest>;
+
+/** Localized display name for the view. */
+export type ViewDisplayNameMap = { [key: string]: string | undefined };
+export const ViewDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ViewDisplayNameMap>;
+
+/** The view in Customer 360 web application. */
+export interface View {
+  /** Name of the view. */
+  viewName?: string;
+  /** the user ID. */
+  userId?: string;
+  /** the hub name. */
+  tenantId?: string;
+  /** Localized display name for the view. */
+  displayName?: ViewDisplayNameMap;
+  /** View definition. */
+  definition: string;
+  /** Date time when view was last modified. */
+  changed?: string;
+  /** Date time when view was created. */
+  created?: string;
+}
+export const View = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    viewName: S.optional(S.String),
+    userId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    displayName: S.optional(ViewDisplayNameMap),
+    definition: S.String,
+    changed: S.optional(S.String),
+    created: S.optional(S.String),
+  }),
+).annotate({ identifier: "View" }) as any as S.Schema<View>;
+
+export interface GetViewResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: View;
+}
+export const GetViewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(View),
+  }),
+).annotate({
+  identifier: "GetViewResponse",
+}) as any as S.Schema<GetViewResponse>;
+
+export interface GetWidgetTypeRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the widget type. */
+  widgetTypeName: string;
+}
+export const GetWidgetTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    widgetTypeName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/widgetTypes/{widgetTypeName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "GetWidgetTypeRequest",
+}) as any as S.Schema<GetWidgetTypeRequest>;
+
+/** Localized display name for the widget type. */
+export type WidgetTypeDisplayNameMap = { [key: string]: string | undefined };
+export const WidgetTypeDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WidgetTypeDisplayNameMap>;
+
+/** Definition of WidgetType. */
+export interface WidgetType {
+  /** Name of the widget type. */
+  widgetTypeName?: string;
+  /** Definition for widget type. */
+  definition: string;
+  /** Description for widget type. */
+  description?: string;
+  /** Localized display name for the widget type. */
+  displayName?: WidgetTypeDisplayNameMap;
+  /** The image URL. */
+  imageUrl?: string;
+  /** The hub name. */
+  tenantId?: string;
+  /** The widget version. */
+  widgetVersion?: string;
+  /** Date time when widget type was last modified. */
+  changed?: string;
+  /** Date time when widget type was created. */
+  created?: string;
+}
+export const WidgetType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    widgetTypeName: S.optional(S.String),
+    definition: S.String,
+    description: S.optional(S.String),
+    displayName: S.optional(WidgetTypeDisplayNameMap),
+    imageUrl: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    widgetVersion: S.optional(S.String),
+    changed: S.optional(S.String),
+    created: S.optional(S.String),
+  }),
+).annotate({ identifier: "WidgetType" }) as any as S.Schema<WidgetType>;
+
+export interface GetWidgetTypeResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: WidgetType;
+}
+export const GetWidgetTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(WidgetType),
+  }),
+).annotate({
+  identifier: "GetWidgetTypeResponse",
+}) as any as S.Schema<GetWidgetTypeResponse>;
+
+/** Resource tags. */
+export type HubsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HubsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HubsCreateOrUpdateRequestTagsMap>;
+
+/** Properties of hub. */
+export interface HubPropertiesFormatInput {
+  /** The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0. */
+  tenantFeatures?: number;
+  /** Billing settings of the hub. */
+  hubBillingInfo?: HubBillingInfoFormat;
+}
+export const HubPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantFeatures: S.optional(S.Number),
+    hubBillingInfo: S.optional(HubBillingInfoFormat),
+  }),
+).annotate({
+  identifier: "HubPropertiesFormatInput",
+}) as any as S.Schema<HubPropertiesFormatInput>;
+
+export interface HubsCreateOrUpdateRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the Hub. */
+  hubName: string;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: HubsCreateOrUpdateRequestTagsMap;
+  properties?: HubPropertiesFormatInput;
+}
+export const HubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    tags: S.optional(HubsCreateOrUpdateRequestTagsMap),
+    properties: S.optional(HubPropertiesFormatInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "HubsCreateOrUpdateRequest",
+}) as any as S.Schema<HubsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type HubsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HubsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HubsCreateOrUpdateResponseTagsMap>;
+
+export interface HubsCreateOrUpdateResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: HubsCreateOrUpdateResponseTagsMap;
+  properties?: HubPropertiesFormat;
+}
+export const HubsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    location: S.optional(S.String),
+    tags: S.optional(HubsCreateOrUpdateResponseTagsMap),
+    properties: S.optional(HubPropertiesFormat),
+  }),
+).annotate({
+  identifier: "HubsCreateOrUpdateResponse",
+}) as any as S.Schema<HubsCreateOrUpdateResponse>;
+
+export type InteractionTypeDefinitionInputAttributesValueList = Array<string>;
+export const InteractionTypeDefinitionInputAttributesValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputAttributesValueList>;
+
+/** The attributes for the Type. */
+export type InteractionTypeDefinitionInputAttributesMap = {
+  [key: string]: InteractionTypeDefinitionInputAttributesValueList | undefined;
+};
+export const InteractionTypeDefinitionInputAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    InteractionTypeDefinitionInputAttributesValueList,
+  ) as any as S.Schema<InteractionTypeDefinitionInputAttributesMap>;
+
+/** Localized descriptions for the property. */
+export type InteractionTypeDefinitionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const InteractionTypeDefinitionInputDescriptionMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputDescriptionMap>;
+
+/** Localized display names for the property. */
+export type InteractionTypeDefinitionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const InteractionTypeDefinitionInputDisplayNameMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputDisplayNameMap>;
+
+export type InteractionTypeDefinitionInputLocalizedAttributesValueMap = {
+  [key: string]: string | undefined;
+};
+export const InteractionTypeDefinitionInputLocalizedAttributesValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesValueMap>;
+
+/** Any custom localized attributes for the Type. */
+export type InteractionTypeDefinitionInputLocalizedAttributesMap = {
+  [key: string]:
+    | InteractionTypeDefinitionInputLocalizedAttributesValueMap
+    | undefined;
+};
+export const InteractionTypeDefinitionInputLocalizedAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    InteractionTypeDefinitionInputLocalizedAttributesValueMap,
+  ) as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesMap>;
+
+/** Type of entity. */
+export type InteractionTypeDefinitionInputEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const InteractionTypeDefinitionInputEntityType = /*@__PURE__*/ S.String;
+
+/** Describes valid values for an enum property. */
+export type PropertyDefinitionInputEnumValidValuesList =
+  Array<ProfileEnumValidValuesFormat>;
+export const PropertyDefinitionInputEnumValidValuesList = /*@__PURE__*/ S.Array(
+  ProfileEnumValidValuesFormat,
+) as any as S.Schema<PropertyDefinitionInputEnumValidValuesList>;
+
+/** Property definition. */
+export interface PropertyDefinitionInput {
+  /** Array value separator for properties with isArray set. */
+  arrayValueSeparator?: string;
+  /** Describes valid values for an enum property. */
+  enumValidValues?: PropertyDefinitionInputEnumValidValuesList;
+  /** Name of the property. */
+  fieldName: string;
+  /** Type of the property. */
+  fieldType: string;
+  /** Indicates if the property is actually an array of the fieldType above on the data api. */
+  isArray?: boolean;
+  /** Indicates if the property is an enum. */
+  isEnum?: boolean;
+  /** Indicates if the property is an flag enum. */
+  isFlagEnum?: boolean;
+  /** Whether the property is an Image. */
+  isImage?: boolean;
+  /** Whether the property is a localized string. */
+  isLocalizedString?: boolean;
+  /** Whether the property is a name or a part of name. */
+  isName?: boolean;
+  /** Whether property value is required on instances, IsRequired field only for Interaction. Profile Instance will not check for required field. */
+  isRequired?: boolean;
+  /** The ID associated with the property. */
+  propertyId?: string;
+  /** URL encoded schema.org item prop link for the property. */
+  schemaItemPropLink?: string;
+  /** Max length of string. Used only if type is string. */
+  maxLength?: number;
+  /** Whether property is available in graph or not. */
+  isAvailableInGraph?: boolean;
+}
+export const PropertyDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arrayValueSeparator: S.optional(S.String),
+    enumValidValues: S.optional(PropertyDefinitionInputEnumValidValuesList),
+    fieldName: S.String,
+    fieldType: S.String,
+    isArray: S.optional(S.Boolean),
+    isEnum: S.optional(S.Boolean),
+    isFlagEnum: S.optional(S.Boolean),
+    isImage: S.optional(S.Boolean),
+    isLocalizedString: S.optional(S.Boolean),
+    isName: S.optional(S.Boolean),
+    isRequired: S.optional(S.Boolean),
+    propertyId: S.optional(S.String),
+    schemaItemPropLink: S.optional(S.String),
+    maxLength: S.optional(S.Number),
+    isAvailableInGraph: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PropertyDefinitionInput",
+}) as any as S.Schema<PropertyDefinitionInput>;
+
+/** The properties of the Profile. */
+export type InteractionTypeDefinitionInputFieldsList =
+  Array<PropertyDefinitionInput>;
+export const InteractionTypeDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
+  PropertyDefinitionInput,
+) as any as S.Schema<InteractionTypeDefinitionInputFieldsList>;
+
+/** The id property names. Properties which uniquely identify an interaction instance. */
+export type InteractionTypeDefinitionInputIdPropertyNamesList = Array<string>;
+export const InteractionTypeDefinitionInputIdPropertyNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputIdPropertyNamesList>;
+
+/** Profiles that participated in the interaction. */
+export type InteractionTypeDefinitionInputParticipantProfilesList =
+  Array<Participant>;
+export const InteractionTypeDefinitionInputParticipantProfilesList =
+  /*@__PURE__*/ S.Array(
+    Participant,
+  ) as any as S.Schema<InteractionTypeDefinitionInputParticipantProfilesList>;
+
+/** Data Source is a way for us to know the source of instances. A single type can have data coming in from multiple places. In activities we use this to determine precedence rules. */
+export interface DataSourceInput {}
+export const DataSourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DataSourceInput",
+}) as any as S.Schema<DataSourceInput>;
+
+/** The Interaction Type Definition */
+export interface InteractionTypeDefinitionInput {
+  /** The attributes for the Type. */
+  attributes?: InteractionTypeDefinitionInputAttributesMap;
+  /** Localized descriptions for the property. */
+  description?: InteractionTypeDefinitionInputDescriptionMap;
+  /** Localized display names for the property. */
+  displayName?: InteractionTypeDefinitionInputDisplayNameMap;
+  /** Any custom localized attributes for the Type. */
+  localizedAttributes?: InteractionTypeDefinitionInputLocalizedAttributesMap;
+  /** Small Image associated with the Property or EntityType. */
+  smallImage?: string;
+  /** Medium Image associated with the Property or EntityType. */
+  mediumImage?: string;
+  /** Large Image associated with the Property or EntityType. */
+  largeImage?: string;
+  /** The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object. */
+  apiEntitySetName?: string;
+  /** Type of entity. */
+  entityType?: InteractionTypeDefinitionInputEntityType | (string & {});
+  /** The properties of the Profile. */
+  fields?: InteractionTypeDefinitionInputFieldsList;
+  /** The instance count. */
+  instancesCount?: number;
+  /** The schema org link. This helps ACI identify and suggest semantic models. */
+  schemaItemTypeLink?: string;
+  /** The timestamp property name. Represents the time when the interaction or profile update happened. */
+  timestampFieldName?: string;
+  /** The name of the entity. */
+  typeName?: string;
+  /** The id property names. Properties which uniquely identify an interaction instance. */
+  idPropertyNames?: InteractionTypeDefinitionInputIdPropertyNamesList;
+  /** Profiles that participated in the interaction. */
+  participantProfiles?: InteractionTypeDefinitionInputParticipantProfilesList;
+  /** The primary participant property name for an interaction ,This is used to logically represent the agent of the interaction, Specify the participant name here from ParticipantName. */
+  primaryParticipantProfilePropertyName?: string;
+  /** Default data source is specifically used in cases where data source is not specified in an instance. */
+  defaultDataSource?: DataSourceInput;
+  /** An interaction can be tagged as an activity only during create. This enables the interaction to be editable and can enable merging of properties from multiple data sources based on precedence, which is defined at a link level. */
+  isActivity?: boolean;
+}
+export const InteractionTypeDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attributes: S.optional(InteractionTypeDefinitionInputAttributesMap),
+    description: S.optional(InteractionTypeDefinitionInputDescriptionMap),
+    displayName: S.optional(InteractionTypeDefinitionInputDisplayNameMap),
+    localizedAttributes: S.optional(
+      InteractionTypeDefinitionInputLocalizedAttributesMap,
+    ),
+    smallImage: S.optional(S.String),
+    mediumImage: S.optional(S.String),
+    largeImage: S.optional(S.String),
+    apiEntitySetName: S.optional(S.String),
+    entityType: S.optional(InteractionTypeDefinitionInputEntityType),
+    fields: S.optional(InteractionTypeDefinitionInputFieldsList),
+    instancesCount: S.optional(S.Number),
+    schemaItemTypeLink: S.optional(S.String),
+    timestampFieldName: S.optional(S.String),
+    typeName: S.optional(S.String),
+    idPropertyNames: S.optional(
+      InteractionTypeDefinitionInputIdPropertyNamesList,
+    ),
+    participantProfiles: S.optional(
+      InteractionTypeDefinitionInputParticipantProfilesList,
+    ),
+    primaryParticipantProfilePropertyName: S.optional(S.String),
+    defaultDataSource: S.optional(DataSourceInput),
+    isActivity: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "InteractionTypeDefinitionInput",
+}) as any as S.Schema<InteractionTypeDefinitionInput>;
+
+export interface InteractionsCreateOrUpdateRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the interaction. */
+  interactionName: string;
+  properties?: InteractionTypeDefinitionInput;
+}
+export const InteractionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    interactionName: S.String.pipe(T.Label()),
+    properties: S.optional(InteractionTypeDefinitionInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "InteractionsCreateOrUpdateRequest",
+}) as any as S.Schema<InteractionsCreateOrUpdateRequest>;
+
+export interface InteractionsCreateOrUpdateResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: InteractionTypeDefinition;
+}
+export const InteractionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(InteractionTypeDefinition),
+  }),
+).annotate({
+  identifier: "InteractionsCreateOrUpdateResponse",
+}) as any as S.Schema<InteractionsCreateOrUpdateResponse>;
+
+export interface InteractionsSuggestRelationshipLinksRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the interaction. */
+  interactionName: string;
+}
+export const InteractionsSuggestRelationshipLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      hubName: S.String.pipe(T.Label()),
+      interactionName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}/suggestRelationshipLinks",
+        code: 200,
+        apiVersion: "2017-04-26",
+      }),
+    ),
+  ).annotate({
+    identifier: "InteractionsSuggestRelationshipLinksRequest",
+  }) as any as S.Schema<InteractionsSuggestRelationshipLinksRequest>;
+
+/** The property references for the profile type. */
+export type RelationshipsLookupProfilePropertyReferencesList =
+  Array<ParticipantProfilePropertyReference>;
+export const RelationshipsLookupProfilePropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantProfilePropertyReference,
+  ) as any as S.Schema<RelationshipsLookupProfilePropertyReferencesList>;
+
+/** The property references for the related profile type. */
+export type RelationshipsLookupRelatedProfilePropertyReferencesList =
+  Array<ParticipantProfilePropertyReference>;
+export const RelationshipsLookupRelatedProfilePropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantProfilePropertyReference,
+  ) as any as S.Schema<RelationshipsLookupRelatedProfilePropertyReferencesList>;
+
+/** The definition of suggested relationship for the type. */
+export interface RelationshipsLookup {
+  /** The relationship profile. */
+  profileName?: string;
+  /** The property references for the profile type. */
+  profilePropertyReferences?: RelationshipsLookupProfilePropertyReferencesList;
+  /** The related profile. */
+  relatedProfileName?: string;
+  /** The property references for the related profile type. */
+  relatedProfilePropertyReferences?: RelationshipsLookupRelatedProfilePropertyReferencesList;
+  /** The name of existing Relationship. */
+  existingRelationshipName?: string;
+}
+export const RelationshipsLookup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileName: S.optional(S.String),
+    profilePropertyReferences: S.optional(
+      RelationshipsLookupProfilePropertyReferencesList,
+    ),
+    relatedProfileName: S.optional(S.String),
+    relatedProfilePropertyReferences: S.optional(
+      RelationshipsLookupRelatedProfilePropertyReferencesList,
+    ),
+    existingRelationshipName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RelationshipsLookup",
+}) as any as S.Schema<RelationshipsLookup>;
+
+/** Suggested relationships for the type. */
+export type SuggestRelationshipLinksResponseSuggestedRelationshipsList =
+  Array<RelationshipsLookup>;
+export const SuggestRelationshipLinksResponseSuggestedRelationshipsList =
+  /*@__PURE__*/ S.Array(
+    RelationshipsLookup,
+  ) as any as S.Schema<SuggestRelationshipLinksResponseSuggestedRelationshipsList>;
+
+/** The response of suggest relationship links operation. */
+export interface SuggestRelationshipLinksResponse {
+  /** The interaction name. */
+  interactionName?: string;
+  /** Suggested relationships for the type. */
+  suggestedRelationships?: SuggestRelationshipLinksResponseSuggestedRelationshipsList;
+}
+export const SuggestRelationshipLinksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    interactionName: S.optional(S.String),
+    suggestedRelationships: S.optional(
+      SuggestRelationshipLinksResponseSuggestedRelationshipsList,
+    ),
+  }),
+).annotate({
+  identifier: "SuggestRelationshipLinksResponse",
+}) as any as S.Schema<SuggestRelationshipLinksResponse>;
+
+/** The mapping entity type. */
+export type KpiDefinitionInputEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const KpiDefinitionInputEntityType = /*@__PURE__*/ S.String;
+
+/** Localized display name for the KPI. */
+export type KpiDefinitionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const KpiDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<KpiDefinitionInputDisplayNameMap>;
+
+/** Localized description for the KPI. */
+export type KpiDefinitionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const KpiDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<KpiDefinitionInputDescriptionMap>;
+
+/** The calculation window. */
+export type KpiDefinitionInputCalculationWindow =
+  | "Lifetime"
+  | "Hour"
+  | "Day"
+  | "Week"
+  | "Month";
+export const KpiDefinitionInputCalculationWindow = /*@__PURE__*/ S.String;
+
+/** The computation function for the KPI. */
+export type KpiDefinitionInputFunction =
+  | "Sum"
+  | "Avg"
+  | "Min"
+  | "Max"
+  | "Last"
+  | "Count"
+  | "None"
+  | "CountDistinct";
+export const KpiDefinitionInputFunction = /*@__PURE__*/ S.String;
+
+/** the group by properties for the KPI. */
+export type KpiDefinitionInputGroupByList = Array<string>;
+export const KpiDefinitionInputGroupByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<KpiDefinitionInputGroupByList>;
+
+/** The aliases. */
+export type KpiDefinitionInputAliasesList = Array<KpiAlias>;
+export const KpiDefinitionInputAliasesList = /*@__PURE__*/ S.Array(
+  KpiAlias,
+) as any as S.Schema<KpiDefinitionInputAliasesList>;
+
+/** The KPI extracts. */
+export type KpiDefinitionInputExtractsList = Array<KpiExtract>;
+export const KpiDefinitionInputExtractsList = /*@__PURE__*/ S.Array(
+  KpiExtract,
+) as any as S.Schema<KpiDefinitionInputExtractsList>;
+
+/** Defines the KPI Threshold limits. */
+export interface KpiDefinitionInput {
+  /** The mapping entity type. */
+  entityType: KpiDefinitionInputEntityType | (string & {});
+  /** The mapping entity name. */
+  entityTypeName: string;
+  /** Localized display name for the KPI. */
+  displayName?: KpiDefinitionInputDisplayNameMap;
+  /** Localized description for the KPI. */
+  description?: KpiDefinitionInputDescriptionMap;
+  /** The calculation window. */
+  calculationWindow: KpiDefinitionInputCalculationWindow | (string & {});
+  /** Name of calculation window field. */
+  calculationWindowFieldName?: string;
+  /** The computation function for the KPI. */
+  function: KpiDefinitionInputFunction | (string & {});
+  /** The computation expression for the KPI. */
+  expression: string;
+  /** The unit of measurement for the KPI. */
+  unit?: string;
+  /** The filter expression for the KPI. */
+  filter?: string;
+  /** the group by properties for the KPI. */
+  groupBy?: KpiDefinitionInputGroupByList;
+  /** The KPI thresholds. */
+  thresHolds?: KpiThresholds;
+  /** The aliases. */
+  aliases?: KpiDefinitionInputAliasesList;
+  /** The KPI extracts. */
+  extracts?: KpiDefinitionInputExtractsList;
+}
+export const KpiDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entityType: KpiDefinitionInputEntityType,
+    entityTypeName: S.String,
+    displayName: S.optional(KpiDefinitionInputDisplayNameMap),
+    description: S.optional(KpiDefinitionInputDescriptionMap),
+    calculationWindow: KpiDefinitionInputCalculationWindow,
+    calculationWindowFieldName: S.optional(S.String),
+    function: KpiDefinitionInputFunction,
+    expression: S.String,
+    unit: S.optional(S.String),
+    filter: S.optional(S.String),
+    groupBy: S.optional(KpiDefinitionInputGroupByList),
+    thresHolds: S.optional(KpiThresholds),
+    aliases: S.optional(KpiDefinitionInputAliasesList),
+    extracts: S.optional(KpiDefinitionInputExtractsList),
+  }),
+).annotate({
+  identifier: "KpiDefinitionInput",
+}) as any as S.Schema<KpiDefinitionInput>;
+
+export interface KpiCreateOrUpdateRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the KPI. */
+  kpiName: string;
+  properties?: KpiDefinitionInput;
+}
+export const KpiCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    kpiName: S.String.pipe(T.Label()),
+    properties: S.optional(KpiDefinitionInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "KpiCreateOrUpdateRequest",
+}) as any as S.Schema<KpiCreateOrUpdateRequest>;
+
+export interface KpiCreateOrUpdateResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: KpiDefinition;
+}
+export const KpiCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(KpiDefinition),
+  }),
+).annotate({
+  identifier: "KpiCreateOrUpdateResponse",
+}) as any as S.Schema<KpiCreateOrUpdateResponse>;
+
+export interface KpiReprocessRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the KPI. */
+  kpiName: string;
+}
+export const KpiReprocessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    kpiName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}/reprocess",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "KpiReprocessRequest",
+}) as any as S.Schema<KpiReprocessRequest>;
+
+export interface KpiReprocessResponse {}
+export const KpiReprocessResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "KpiReprocessResponse",
+}) as any as S.Schema<KpiReprocessResponse>;
+
+/** Type of source entity. */
+export type LinkDefinitionInputSourceEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const LinkDefinitionInputSourceEntityType = /*@__PURE__*/ S.String;
+
+/** Type of target entity. */
+export type LinkDefinitionInputTargetEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const LinkDefinitionInputTargetEntityType = /*@__PURE__*/ S.String;
+
+/** Localized display name for the Link. */
+export type LinkDefinitionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const LinkDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LinkDefinitionInputDisplayNameMap>;
+
+/** Localized descriptions for the Link. */
+export type LinkDefinitionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const LinkDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LinkDefinitionInputDescriptionMap>;
+
+/** The set of properties mappings between the source and target Types. */
+export type LinkDefinitionInputMappingsList = Array<TypePropertiesMapping>;
+export const LinkDefinitionInputMappingsList = /*@__PURE__*/ S.Array(
+  TypePropertiesMapping,
+) as any as S.Schema<LinkDefinitionInputMappingsList>;
+
+/** The properties that represent the participating profile. */
+export type LinkDefinitionInputParticipantPropertyReferencesList =
+  Array<ParticipantPropertyReference>;
+export const LinkDefinitionInputParticipantPropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantPropertyReference,
+  ) as any as S.Schema<LinkDefinitionInputParticipantPropertyReferencesList>;
+
+/** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
+export type LinkDefinitionInputOperationType = "Upsert" | "Delete";
+export const LinkDefinitionInputOperationType = /*@__PURE__*/ S.String;
+
+/** The definition of Link. */
+export interface LinkDefinitionInput {
+  /** Type of source entity. */
+  sourceEntityType: LinkDefinitionInputSourceEntityType | (string & {});
+  /** Type of target entity. */
+  targetEntityType: LinkDefinitionInputTargetEntityType | (string & {});
+  /** Name of the source Entity Type. */
+  sourceEntityTypeName: string;
+  /** Name of the target Entity Type. */
+  targetEntityTypeName: string;
+  /** Localized display name for the Link. */
+  displayName?: LinkDefinitionInputDisplayNameMap;
+  /** Localized descriptions for the Link. */
+  description?: LinkDefinitionInputDescriptionMap;
+  /** The set of properties mappings between the source and target Types. */
+  mappings?: LinkDefinitionInputMappingsList;
+  /** The properties that represent the participating profile. */
+  participantPropertyReferences: LinkDefinitionInputParticipantPropertyReferencesList;
+  /** Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles. */
+  referenceOnly?: boolean;
+  /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
+  operationType?: LinkDefinitionInputOperationType | (string & {});
+}
+export const LinkDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceEntityType: LinkDefinitionInputSourceEntityType,
+    targetEntityType: LinkDefinitionInputTargetEntityType,
+    sourceEntityTypeName: S.String,
+    targetEntityTypeName: S.String,
+    displayName: S.optional(LinkDefinitionInputDisplayNameMap),
+    description: S.optional(LinkDefinitionInputDescriptionMap),
+    mappings: S.optional(LinkDefinitionInputMappingsList),
+    participantPropertyReferences:
+      LinkDefinitionInputParticipantPropertyReferencesList,
+    referenceOnly: S.optional(S.Boolean),
+    operationType: S.optional(LinkDefinitionInputOperationType),
+  }),
+).annotate({
+  identifier: "LinkDefinitionInput",
+}) as any as S.Schema<LinkDefinitionInput>;
+
+export interface LinksCreateOrUpdateRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the link. */
+  linkName: string;
+  properties?: LinkDefinitionInput;
+}
+export const LinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    linkName: S.String.pipe(T.Label()),
+    properties: S.optional(LinkDefinitionInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "LinksCreateOrUpdateRequest",
+}) as any as S.Schema<LinksCreateOrUpdateRequest>;
+
+export interface LinksCreateOrUpdateResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: LinkDefinition;
+}
+export const LinksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(LinkDefinition),
+  }),
+).annotate({
+  identifier: "LinksCreateOrUpdateResponse",
+}) as any as S.Schema<LinksCreateOrUpdateResponse>;
+
+export interface ListAuthorizationPolicyByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
@@ -4267,7 +4616,582 @@ export interface PredictionsListByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-export const PredictionsListByHubRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAuthorizationPolicyByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListAuthorizationPolicyByHubRequest",
+}) as any as S.Schema<ListAuthorizationPolicyByHubRequest>;
+
+/** The authorization policy resource format. */
+export interface AuthorizationPolicyResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: AuthorizationPolicy;
+}
+export const AuthorizationPolicyResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(AuthorizationPolicy),
+  }),
+).annotate({
+  identifier: "AuthorizationPolicyResourceFormat",
+}) as any as S.Schema<AuthorizationPolicyResourceFormat>;
+
+/** Results of the list operation. */
+export type AuthorizationPolicyListResultValueList =
+  Array<AuthorizationPolicyResourceFormat>;
+export const AuthorizationPolicyListResultValueList = /*@__PURE__*/ S.Array(
+  AuthorizationPolicyResourceFormat,
+) as any as S.Schema<AuthorizationPolicyListResultValueList>;
+
+/** The response of list authorization policy operation. */
+export interface AuthorizationPolicyListResult {
+  /** Results of the list operation. */
+  value?: AuthorizationPolicyListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const AuthorizationPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(AuthorizationPolicyListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthorizationPolicyListResult",
+}) as any as S.Schema<AuthorizationPolicyListResult>;
+
+export interface ListConnectorByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const ListConnectorByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListConnectorByHubRequest",
+}) as any as S.Schema<ListConnectorByHubRequest>;
+
+/** The connector resource format. */
+export interface ConnectorResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: Connector;
+}
+export const ConnectorResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(Connector),
+  }),
+).annotate({
+  identifier: "ConnectorResourceFormat",
+}) as any as S.Schema<ConnectorResourceFormat>;
+
+/** Results of the list operation. */
+export type ConnectorListResultValueList = Array<ConnectorResourceFormat>;
+export const ConnectorListResultValueList = /*@__PURE__*/ S.Array(
+  ConnectorResourceFormat,
+) as any as S.Schema<ConnectorListResultValueList>;
+
+/** The response of list connector operation. */
+export interface ConnectorListResult {
+  /** Results of the list operation. */
+  value?: ConnectorListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const ConnectorListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ConnectorListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectorListResult",
+}) as any as S.Schema<ConnectorListResult>;
+
+export interface ListConnectorMappingByConnectorRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the connector. */
+  connectorName: string;
+}
+export const ListConnectorMappingByConnectorRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      hubName: S.String.pipe(T.Label()),
+      connectorName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings",
+        code: 200,
+        apiVersion: "2017-04-26",
+      }),
+    ),
+).annotate({
+  identifier: "ListConnectorMappingByConnectorRequest",
+}) as any as S.Schema<ListConnectorMappingByConnectorRequest>;
+
+/** The connector mapping resource format. */
+export interface ConnectorMappingResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: ConnectorMapping;
+}
+export const ConnectorMappingResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ConnectorMapping),
+  }),
+).annotate({
+  identifier: "ConnectorMappingResourceFormat",
+}) as any as S.Schema<ConnectorMappingResourceFormat>;
+
+/** Results of the list operation. */
+export type ConnectorMappingListResultValueList =
+  Array<ConnectorMappingResourceFormat>;
+export const ConnectorMappingListResultValueList = /*@__PURE__*/ S.Array(
+  ConnectorMappingResourceFormat,
+) as any as S.Schema<ConnectorMappingListResultValueList>;
+
+/** The response of list connector mapping operation. */
+export interface ConnectorMappingListResult {
+  /** Results of the list operation. */
+  value?: ConnectorMappingListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const ConnectorMappingListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ConnectorMappingListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectorMappingListResult",
+}) as any as S.Schema<ConnectorMappingListResult>;
+
+export interface ListHubByResourceGroupRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+}
+export const ListHubByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListHubByResourceGroupRequest",
+}) as any as S.Schema<ListHubByResourceGroupRequest>;
+
+/** Resource tags. */
+export type HubTagsMap = { [key: string]: string | undefined };
+export const HubTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HubTagsMap>;
+
+/** Hub resource. */
+export interface Hub {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: HubTagsMap;
+  properties?: HubPropertiesFormat;
+}
+export const Hub = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    location: S.optional(S.String),
+    tags: S.optional(HubTagsMap),
+    properties: S.optional(HubPropertiesFormat),
+  }),
+).annotate({ identifier: "Hub" }) as any as S.Schema<Hub>;
+
+/** Results of the list operation. */
+export type HubListResultValueList = Array<Hub>;
+export const HubListResultValueList = /*@__PURE__*/ S.Array(
+  Hub,
+) as any as S.Schema<HubListResultValueList>;
+
+/** Response of list hub operation. */
+export interface HubListResult {
+  /** Results of the list operation. */
+  value?: HubListResultValueList;
+  /** Link for next set of results. */
+  nextLink?: string;
+}
+export const HubListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(HubListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "HubListResult" }) as any as S.Schema<HubListResult>;
+
+export interface ListHubsRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+}
+export const ListHubsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CustomerInsights/hubs",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListHubsRequest",
+}) as any as S.Schema<ListHubsRequest>;
+
+export interface ListInteractionByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** Locale of interaction to retrieve, default is en-us. */
+  locale_code?: string;
+}
+export const ListInteractionByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListInteractionByHubRequest",
+}) as any as S.Schema<ListInteractionByHubRequest>;
+
+/** The interaction resource format. */
+export interface InteractionResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: InteractionTypeDefinition;
+}
+export const InteractionResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(InteractionTypeDefinition),
+  }),
+).annotate({
+  identifier: "InteractionResourceFormat",
+}) as any as S.Schema<InteractionResourceFormat>;
+
+/** Results of the list operation. */
+export type InteractionListResultValueList = Array<InteractionResourceFormat>;
+export const InteractionListResultValueList = /*@__PURE__*/ S.Array(
+  InteractionResourceFormat,
+) as any as S.Schema<InteractionListResultValueList>;
+
+/** The response of list interaction operation. */
+export interface InteractionListResult {
+  /** Results of the list operation. */
+  value?: InteractionListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const InteractionListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(InteractionListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InteractionListResult",
+}) as any as S.Schema<InteractionListResult>;
+
+export interface ListKpiByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const ListKpiByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListKpiByHubRequest",
+}) as any as S.Schema<ListKpiByHubRequest>;
+
+/** The KPI resource format. */
+export interface KpiResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: KpiDefinition;
+}
+export const KpiResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(KpiDefinition),
+  }),
+).annotate({
+  identifier: "KpiResourceFormat",
+}) as any as S.Schema<KpiResourceFormat>;
+
+/** Results of the list operation. */
+export type KpiListResultValueList = Array<KpiResourceFormat>;
+export const KpiListResultValueList = /*@__PURE__*/ S.Array(
+  KpiResourceFormat,
+) as any as S.Schema<KpiListResultValueList>;
+
+/** The response of list KPI operation. */
+export interface KpiListResult {
+  /** Results of the list operation. */
+  value?: KpiListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const KpiListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(KpiListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "KpiListResult" }) as any as S.Schema<KpiListResult>;
+
+export interface ListLinkByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const ListLinkByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListLinkByHubRequest",
+}) as any as S.Schema<ListLinkByHubRequest>;
+
+/** The link resource format. */
+export interface LinkResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: LinkDefinition;
+}
+export const LinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(LinkDefinition),
+  }),
+).annotate({
+  identifier: "LinkResourceFormat",
+}) as any as S.Schema<LinkResourceFormat>;
+
+/** Results of the list operation. */
+export type LinkListResultValueList = Array<LinkResourceFormat>;
+export const LinkListResultValueList = /*@__PURE__*/ S.Array(
+  LinkResourceFormat,
+) as any as S.Schema<LinkListResultValueList>;
+
+/** The response of list link operation. */
+export interface LinkListResult {
+  /** Results of the list operation. */
+  value?: LinkListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const LinkListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(LinkListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "LinkListResult" }) as any as S.Schema<LinkListResult>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.CustomerInsights/operations",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** The object that represents the operation. */
+export interface OperationDisplay {
+  /** Service provider: Microsoft.CustomerInsights */
+  provider?: string;
+  /** Resource on which the operation is performed: Invoice, etc. */
+  resource?: string;
+  /** Operation type: Read, write, delete, etc. */
+  operation?: string;
+}
+export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationDisplay",
+}) as any as S.Schema<OperationDisplay>;
+
+/** A Customer Insights REST API operation */
+export interface Operation {
+  /** Operation name: {provider}/{resource}/{operation} */
+  name?: string;
+  /** The object that represents the operation. */
+  display?: OperationDisplay;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    display: S.optional(OperationDisplay),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+/** List of Customer Insights operations supported by the Microsoft.CustomerInsights resource provider. */
+export type OperationListResultValueList = Array<Operation>;
+export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationListResultValueList>;
+
+/** Result of the request to list Customer Insights operations. It contains a list of operations and a URL link to get the next set of results. */
+export interface OperationListResult {
+  /** List of Customer Insights operations supported by the Microsoft.CustomerInsights resource provider. */
+  value?: OperationListResultValueList;
+  /** URL to get the next set of operation list results if there are any. */
+  nextLink?: string;
+}
+export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationListResult",
+}) as any as S.Schema<OperationListResult>;
+
+export interface ListPredictionByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const ListPredictionByHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4281,8 +5205,8 @@ export const PredictionsListByHubRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PredictionsListByHubRequest",
-}) as any as S.Schema<PredictionsListByHubRequest>;
+  identifier: "ListPredictionByHubRequest",
+}) as any as S.Schema<ListPredictionByHubRequest>;
 
 /** The prediction resource format. */
 export interface PredictionResourceFormat {
@@ -4326,6 +5250,655 @@ export const PredictionListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PredictionListResult",
 }) as any as S.Schema<PredictionListResult>;
+
+export interface ListProfileByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** Locale of profile to retrieve, default is en-us. */
+  locale_code?: string;
+}
+export const ListProfileByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListProfileByHubRequest",
+}) as any as S.Schema<ListProfileByHubRequest>;
+
+/** The profile resource format. */
+export interface ProfileResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: ProfileTypeDefinition;
+}
+export const ProfileResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ProfileTypeDefinition),
+  }),
+).annotate({
+  identifier: "ProfileResourceFormat",
+}) as any as S.Schema<ProfileResourceFormat>;
+
+/** Results of the list operation. */
+export type ProfileListResultValueList = Array<ProfileResourceFormat>;
+export const ProfileListResultValueList = /*@__PURE__*/ S.Array(
+  ProfileResourceFormat,
+) as any as S.Schema<ProfileListResultValueList>;
+
+/** The response of list profile operation. */
+export interface ProfileListResult {
+  /** Results of the list operation. */
+  value?: ProfileListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const ProfileListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ProfileListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProfileListResult",
+}) as any as S.Schema<ProfileListResult>;
+
+export interface ListRelationshipByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const ListRelationshipByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListRelationshipByHubRequest",
+}) as any as S.Schema<ListRelationshipByHubRequest>;
+
+/** The relationship resource format. */
+export interface RelationshipResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: RelationshipDefinition;
+}
+export const RelationshipResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(RelationshipDefinition),
+  }),
+).annotate({
+  identifier: "RelationshipResourceFormat",
+}) as any as S.Schema<RelationshipResourceFormat>;
+
+/** Results of the list operation. */
+export type RelationshipListResultValueList = Array<RelationshipResourceFormat>;
+export const RelationshipListResultValueList = /*@__PURE__*/ S.Array(
+  RelationshipResourceFormat,
+) as any as S.Schema<RelationshipListResultValueList>;
+
+/** The response of list relationship operation. */
+export interface RelationshipListResult {
+  /** Results of the list operation. */
+  value?: RelationshipListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const RelationshipListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(RelationshipListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RelationshipListResult",
+}) as any as S.Schema<RelationshipListResult>;
+
+export interface ListRelationshipLinkByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const ListRelationshipLinkByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListRelationshipLinkByHubRequest",
+}) as any as S.Schema<ListRelationshipLinkByHubRequest>;
+
+/** The relationship link resource format. */
+export interface RelationshipLinkResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: RelationshipLinkDefinition;
+}
+export const RelationshipLinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(RelationshipLinkDefinition),
+  }),
+).annotate({
+  identifier: "RelationshipLinkResourceFormat",
+}) as any as S.Schema<RelationshipLinkResourceFormat>;
+
+/** Results of the list operation. */
+export type RelationshipLinkListResultValueList =
+  Array<RelationshipLinkResourceFormat>;
+export const RelationshipLinkListResultValueList = /*@__PURE__*/ S.Array(
+  RelationshipLinkResourceFormat,
+) as any as S.Schema<RelationshipLinkListResultValueList>;
+
+/** The response of list relationship link operation. */
+export interface RelationshipLinkListResult {
+  /** Results of the list operation. */
+  value?: RelationshipLinkListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const RelationshipLinkListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(RelationshipLinkListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RelationshipLinkListResult",
+}) as any as S.Schema<RelationshipLinkListResult>;
+
+export interface ListRoleAssignmentByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const ListRoleAssignmentByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListRoleAssignmentByHubRequest",
+}) as any as S.Schema<ListRoleAssignmentByHubRequest>;
+
+/** The Role Assignment resource format. */
+export interface RoleAssignmentResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: RoleAssignment;
+}
+export const RoleAssignmentResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(RoleAssignment),
+  }),
+).annotate({
+  identifier: "RoleAssignmentResourceFormat",
+}) as any as S.Schema<RoleAssignmentResourceFormat>;
+
+/** Results of the list operation. */
+export type RoleAssignmentListResultValueList =
+  Array<RoleAssignmentResourceFormat>;
+export const RoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
+  RoleAssignmentResourceFormat,
+) as any as S.Schema<RoleAssignmentListResultValueList>;
+
+/** The response of list role assignment operation. */
+export interface RoleAssignmentListResult {
+  /** Results of the list operation. */
+  value?: RoleAssignmentListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const RoleAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(RoleAssignmentListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RoleAssignmentListResult",
+}) as any as S.Schema<RoleAssignmentListResult>;
+
+export interface ListRoleByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const ListRoleByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roles",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListRoleByHubRequest",
+}) as any as S.Schema<ListRoleByHubRequest>;
+
+/** The Role definition. */
+export interface Role {
+  /** The role name. */
+  roleName?: string;
+  /** The description of the role. */
+  description?: string;
+}
+export const Role = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    roleName: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
+
+/** The role resource format. */
+export interface RoleResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: Role;
+}
+export const RoleResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(Role),
+  }),
+).annotate({
+  identifier: "RoleResourceFormat",
+}) as any as S.Schema<RoleResourceFormat>;
+
+/** Results of the list operation. */
+export type RoleListResultValueList = Array<RoleResourceFormat>;
+export const RoleListResultValueList = /*@__PURE__*/ S.Array(
+  RoleResourceFormat,
+) as any as S.Schema<RoleListResultValueList>;
+
+/** The response of list role assignment operation. */
+export interface RoleListResult {
+  /** Results of the list operation. */
+  value?: RoleListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const RoleListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(RoleListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "RoleListResult" }) as any as S.Schema<RoleListResult>;
+
+export interface ListViewByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The user ID. Use * to retrieve hub level views. */
+  userId: string;
+}
+export const ListViewByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListViewByHubRequest",
+}) as any as S.Schema<ListViewByHubRequest>;
+
+/** The view resource format. */
+export interface ViewResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: View;
+}
+export const ViewResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(View),
+  }),
+).annotate({
+  identifier: "ViewResourceFormat",
+}) as any as S.Schema<ViewResourceFormat>;
+
+/** Results of the list operation. */
+export type ViewListResultValueList = Array<ViewResourceFormat>;
+export const ViewListResultValueList = /*@__PURE__*/ S.Array(
+  ViewResourceFormat,
+) as any as S.Schema<ViewListResultValueList>;
+
+/** The response of list view operation. */
+export interface ViewListResult {
+  /** Results of the list operation. */
+  value?: ViewListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const ViewListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ViewListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "ViewListResult" }) as any as S.Schema<ViewListResult>;
+
+export interface ListWidgetTypeByHubRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+}
+export const ListWidgetTypeByHubRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/widgetTypes",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "ListWidgetTypeByHubRequest",
+}) as any as S.Schema<ListWidgetTypeByHubRequest>;
+
+/** The WidgetTypeResourceFormat */
+export interface WidgetTypeResourceFormat {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: WidgetType;
+}
+export const WidgetTypeResourceFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(WidgetType),
+  }),
+).annotate({
+  identifier: "WidgetTypeResourceFormat",
+}) as any as S.Schema<WidgetTypeResourceFormat>;
+
+/** Results of the list operation. */
+export type WidgetTypeListResultValueList = Array<WidgetTypeResourceFormat>;
+export const WidgetTypeListResultValueList = /*@__PURE__*/ S.Array(
+  WidgetTypeResourceFormat,
+) as any as S.Schema<WidgetTypeListResultValueList>;
+
+/** The response of list widget type operation. */
+export interface WidgetTypeListResult {
+  /** Results of the list operation. */
+  value?: WidgetTypeListResultValueList;
+  /** Link to the next set of results. */
+  nextLink?: string;
+}
+export const WidgetTypeListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(WidgetTypeListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WidgetTypeListResult",
+}) as any as S.Schema<WidgetTypeListResult>;
+
+/** Description of the prediction. */
+export type PredictionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const PredictionInputDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PredictionInputDescriptionMap>;
+
+/** Display name of the prediction. */
+export type PredictionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const PredictionInputDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PredictionInputDisplayNameMap>;
+
+/** Interaction types involved in the prediction. */
+export type PredictionInputInvolvedInteractionTypesList = Array<string>;
+export const PredictionInputInvolvedInteractionTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PredictionInputInvolvedInteractionTypesList>;
+
+/** KPI types involved in the prediction. */
+export type PredictionInputInvolvedKpiTypesList = Array<string>;
+export const PredictionInputInvolvedKpiTypesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PredictionInputInvolvedKpiTypesList>;
+
+/** Relationships involved in the prediction. */
+export type PredictionInputInvolvedRelationshipsList = Array<string>;
+export const PredictionInputInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PredictionInputInvolvedRelationshipsList>;
+
+/** Definition of the link mapping of prediction. */
+export type PredictionInputMappings = PredictionMappings;
+export const PredictionInputMappings = PredictionMappings;
+
+/** The definition of a prediction grade. */
+export type PredictionInputGradesItem = PredictionGradesItem;
+export const PredictionInputGradesItem = PredictionGradesItem;
+
+/** The prediction grades. */
+export type PredictionInputGradesList = Array<PredictionGradesItem>;
+export const PredictionInputGradesList = /*@__PURE__*/ S.Array(
+  PredictionGradesItem,
+) as any as S.Schema<PredictionInputGradesList>;
+
+/** The prediction definition. */
+export interface PredictionInput {
+  /** Description of the prediction. */
+  description?: PredictionInputDescriptionMap;
+  /** Display name of the prediction. */
+  displayName?: PredictionInputDisplayNameMap;
+  /** Interaction types involved in the prediction. */
+  involvedInteractionTypes?: PredictionInputInvolvedInteractionTypesList;
+  /** KPI types involved in the prediction. */
+  involvedKpiTypes?: PredictionInputInvolvedKpiTypesList;
+  /** Relationships involved in the prediction. */
+  involvedRelationships?: PredictionInputInvolvedRelationshipsList;
+  /** Negative outcome expression. */
+  negativeOutcomeExpression: string;
+  /** Positive outcome expression. */
+  positiveOutcomeExpression: string;
+  /** Primary profile type. */
+  primaryProfileType: string;
+  /** Name of the prediction. */
+  predictionName?: string;
+  /** Scope expression. */
+  scopeExpression: string;
+  /** Whether do auto analyze. */
+  autoAnalyze: boolean;
+  /** Definition of the link mapping of prediction. */
+  mappings: PredictionMappings;
+  /** Score label. */
+  scoreLabel: string;
+  /** The prediction grades. */
+  grades?: PredictionInputGradesList;
+}
+export const PredictionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(PredictionInputDescriptionMap),
+    displayName: S.optional(PredictionInputDisplayNameMap),
+    involvedInteractionTypes: S.optional(
+      PredictionInputInvolvedInteractionTypesList,
+    ),
+    involvedKpiTypes: S.optional(PredictionInputInvolvedKpiTypesList),
+    involvedRelationships: S.optional(PredictionInputInvolvedRelationshipsList),
+    negativeOutcomeExpression: S.String,
+    positiveOutcomeExpression: S.String,
+    primaryProfileType: S.String,
+    predictionName: S.optional(S.String),
+    scopeExpression: S.String,
+    autoAnalyze: S.Boolean,
+    mappings: PredictionMappings,
+    scoreLabel: S.String,
+    grades: S.optional(PredictionInputGradesList),
+  }),
+).annotate({
+  identifier: "PredictionInput",
+}) as any as S.Schema<PredictionInput>;
+
+export interface PredictionsCreateOrUpdateRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the Prediction. */
+  predictionName: string;
+  properties?: PredictionInput;
+}
+export const PredictionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    predictionName: S.String.pipe(T.Label()),
+    properties: S.optional(PredictionInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "PredictionsCreateOrUpdateRequest",
+}) as any as S.Schema<PredictionsCreateOrUpdateRequest>;
+
+export interface PredictionsCreateOrUpdateResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  properties?: Prediction;
+}
+export const PredictionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(Prediction),
+  }),
+).annotate({
+  identifier: "PredictionsCreateOrUpdateResponse",
+}) as any as S.Schema<PredictionsCreateOrUpdateResponse>;
 
 /** Prediction model life cycle. When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API. */
 export type PredictionsModelStatusRequestStatus =
@@ -4456,46 +6029,6 @@ export const ProfileTypeDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinitionInput,
 ) as any as S.Schema<ProfileTypeDefinitionInputFieldsList>;
 
-/** The properties which make up the unique ID. */
-export type StrongIdKeyPropertyNamesList = Array<string>;
-export const StrongIdKeyPropertyNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StrongIdKeyPropertyNamesList>;
-
-/** Localized display name. */
-export type StrongIdDisplayNameMap = { [key: string]: string | undefined };
-export const StrongIdDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StrongIdDisplayNameMap>;
-
-/** Localized descriptions. */
-export type StrongIdDescriptionMap = { [key: string]: string | undefined };
-export const StrongIdDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StrongIdDescriptionMap>;
-
-/** Property/Properties which represent a unique ID. */
-export interface StrongId {
-  /** The properties which make up the unique ID. */
-  keyPropertyNames: StrongIdKeyPropertyNamesList;
-  /** The Name identifying the strong ID. */
-  strongIdName: string;
-  /** Localized display name. */
-  displayName?: StrongIdDisplayNameMap;
-  /** Localized descriptions. */
-  description?: StrongIdDescriptionMap;
-}
-export const StrongId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyPropertyNames: StrongIdKeyPropertyNamesList,
-    strongIdName: S.String,
-    displayName: S.optional(StrongIdDisplayNameMap),
-    description: S.optional(StrongIdDescriptionMap),
-  }),
-).annotate({ identifier: "StrongId" }) as any as S.Schema<StrongId>;
-
 /** The strong IDs. */
 export type ProfileTypeDefinitionInputStrongIdsList = Array<StrongId>;
 export const ProfileTypeDefinitionInputStrongIdsList = /*@__PURE__*/ S.Array(
@@ -4589,143 +6122,6 @@ export const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilesCreateOrUpdateRequest",
 }) as any as S.Schema<ProfilesCreateOrUpdateRequest>;
 
-export type ProfileTypeDefinitionAttributesValueList = Array<string>;
-export const ProfileTypeDefinitionAttributesValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionAttributesValueList>;
-
-/** The attributes for the Type. */
-export type ProfileTypeDefinitionAttributesMap = {
-  [key: string]: ProfileTypeDefinitionAttributesValueList | undefined;
-};
-export const ProfileTypeDefinitionAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProfileTypeDefinitionAttributesValueList,
-) as any as S.Schema<ProfileTypeDefinitionAttributesMap>;
-
-/** Localized descriptions for the property. */
-export type ProfileTypeDefinitionDescriptionMap = {
-  [key: string]: string | undefined;
-};
-export const ProfileTypeDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionDescriptionMap>;
-
-/** Localized display names for the property. */
-export type ProfileTypeDefinitionDisplayNameMap = {
-  [key: string]: string | undefined;
-};
-export const ProfileTypeDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionDisplayNameMap>;
-
-export type ProfileTypeDefinitionLocalizedAttributesValueMap = {
-  [key: string]: string | undefined;
-};
-export const ProfileTypeDefinitionLocalizedAttributesValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ProfileTypeDefinitionLocalizedAttributesValueMap>;
-
-/** Any custom localized attributes for the Type. */
-export type ProfileTypeDefinitionLocalizedAttributesMap = {
-  [key: string]: ProfileTypeDefinitionLocalizedAttributesValueMap | undefined;
-};
-export const ProfileTypeDefinitionLocalizedAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProfileTypeDefinitionLocalizedAttributesValueMap,
-  ) as any as S.Schema<ProfileTypeDefinitionLocalizedAttributesMap>;
-
-/** Type of entity. */
-export type ProfileTypeDefinitionEntityType =
-  | "None"
-  | "Profile"
-  | "Interaction"
-  | "Relationship";
-export const ProfileTypeDefinitionEntityType = /*@__PURE__*/ S.String;
-
-/** The properties of the Profile. */
-export type ProfileTypeDefinitionFieldsList = Array<PropertyDefinition>;
-export const ProfileTypeDefinitionFieldsList = /*@__PURE__*/ S.Array(
-  PropertyDefinition,
-) as any as S.Schema<ProfileTypeDefinitionFieldsList>;
-
-/** The strong IDs. */
-export type ProfileTypeDefinitionStrongIdsList = Array<StrongId>;
-export const ProfileTypeDefinitionStrongIdsList = /*@__PURE__*/ S.Array(
-  StrongId,
-) as any as S.Schema<ProfileTypeDefinitionStrongIdsList>;
-
-/** The profile type definition. */
-export interface ProfileTypeDefinition {
-  /** The attributes for the Type. */
-  attributes?: ProfileTypeDefinitionAttributesMap;
-  /** Localized descriptions for the property. */
-  description?: ProfileTypeDefinitionDescriptionMap;
-  /** Localized display names for the property. */
-  displayName?: ProfileTypeDefinitionDisplayNameMap;
-  /** Any custom localized attributes for the Type. */
-  localizedAttributes?: ProfileTypeDefinitionLocalizedAttributesMap;
-  /** Small Image associated with the Property or EntityType. */
-  smallImage?: string;
-  /** Medium Image associated with the Property or EntityType. */
-  mediumImage?: string;
-  /** Large Image associated with the Property or EntityType. */
-  largeImage?: string;
-  /** The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object. */
-  apiEntitySetName?: string;
-  /** Type of entity. */
-  entityType?: ProfileTypeDefinitionEntityType;
-  /** The properties of the Profile. */
-  fields?: ProfileTypeDefinitionFieldsList;
-  /** The instance count. */
-  instancesCount?: number;
-  /** The last changed time for the type definition. */
-  lastChangedUtc?: string;
-  /** Provisioning state. */
-  provisioningState?: ProvisioningState;
-  /** The schema org link. This helps ACI identify and suggest semantic models. */
-  schemaItemTypeLink?: string;
-  /** The hub name. */
-  tenantId?: string;
-  /** The timestamp property name. Represents the time when the interaction or profile update happened. */
-  timestampFieldName?: string;
-  /** The name of the entity. */
-  typeName?: string;
-  /** The strong IDs. */
-  strongIds?: ProfileTypeDefinitionStrongIdsList;
-}
-export const ProfileTypeDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(ProfileTypeDefinitionAttributesMap),
-    description: S.optional(ProfileTypeDefinitionDescriptionMap),
-    displayName: S.optional(ProfileTypeDefinitionDisplayNameMap),
-    localizedAttributes: S.optional(
-      ProfileTypeDefinitionLocalizedAttributesMap,
-    ),
-    smallImage: S.optional(S.String),
-    mediumImage: S.optional(S.String),
-    largeImage: S.optional(S.String),
-    apiEntitySetName: S.optional(S.String),
-    entityType: S.optional(ProfileTypeDefinitionEntityType),
-    fields: S.optional(ProfileTypeDefinitionFieldsList),
-    instancesCount: S.optional(S.Number),
-    lastChangedUtc: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState),
-    schemaItemTypeLink: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    timestampFieldName: S.optional(S.String),
-    typeName: S.optional(S.String),
-    strongIds: S.optional(ProfileTypeDefinitionStrongIdsList),
-  }),
-).annotate({
-  identifier: "ProfileTypeDefinition",
-}) as any as S.Schema<ProfileTypeDefinition>;
-
 export interface ProfilesCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -4746,207 +6142,6 @@ export const ProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilesCreateOrUpdateResponse",
 }) as any as S.Schema<ProfilesCreateOrUpdateResponse>;
 
-export interface ProfilesDeleteRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the profile. */
-  profileName: string;
-  /** Locale of profile to retrieve, default is en-us. */
-  locale_code?: string;
-}
-export const ProfilesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesDeleteRequest",
-}) as any as S.Schema<ProfilesDeleteRequest>;
-
-export interface ProfilesDeleteResponse {}
-export const ProfilesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ProfilesDeleteResponse",
-}) as any as S.Schema<ProfilesDeleteResponse>;
-
-export interface ProfilesGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the profile. */
-  profileName: string;
-  /** Locale of profile to retrieve, default is en-us. */
-  locale_code?: string;
-}
-export const ProfilesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesGetRequest",
-}) as any as S.Schema<ProfilesGetRequest>;
-
-export interface ProfilesGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: ProfileTypeDefinition;
-}
-export const ProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProfileTypeDefinition),
-  }),
-).annotate({
-  identifier: "ProfilesGetResponse",
-}) as any as S.Schema<ProfilesGetResponse>;
-
-export interface ProfilesGetEnrichingKpisRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the profile. */
-  profileName: string;
-}
-export const ProfilesGetEnrichingKpisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}/getEnrichingKpis",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesGetEnrichingKpisRequest",
-}) as any as S.Schema<ProfilesGetEnrichingKpisRequest>;
-
-export type ProfilesGetEnrichingKpisResponseBodyList = Array<KpiDefinition>;
-export const ProfilesGetEnrichingKpisResponseBodyList = /*@__PURE__*/ S.Array(
-  KpiDefinition,
-) as any as S.Schema<ProfilesGetEnrichingKpisResponseBodyList>;
-
-export type ProfilesGetEnrichingKpisResponse =
-  ProfilesGetEnrichingKpisResponseBodyList;
-export const ProfilesGetEnrichingKpisResponse = /*@__PURE__*/ S.suspend(() =>
-  ProfilesGetEnrichingKpisResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ProfilesGetEnrichingKpisResponse",
-}) as any as S.Schema<ProfilesGetEnrichingKpisResponse>;
-
-export interface ProfilesListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** Locale of profile to retrieve, default is en-us. */
-  locale_code?: string;
-}
-export const ProfilesListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesListByHubRequest",
-}) as any as S.Schema<ProfilesListByHubRequest>;
-
-/** The profile resource format. */
-export interface ProfileResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: ProfileTypeDefinition;
-}
-export const ProfileResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProfileTypeDefinition),
-  }),
-).annotate({
-  identifier: "ProfileResourceFormat",
-}) as any as S.Schema<ProfileResourceFormat>;
-
-/** Results of the list operation. */
-export type ProfileListResultValueList = Array<ProfileResourceFormat>;
-export const ProfileListResultValueList = /*@__PURE__*/ S.Array(
-  ProfileResourceFormat,
-) as any as S.Schema<ProfileListResultValueList>;
-
-/** The response of list profile operation. */
-export interface ProfileListResult {
-  /** Results of the list operation. */
-  value?: ProfileListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const ProfileListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ProfileListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProfileListResult",
-}) as any as S.Schema<ProfileListResult>;
-
 /** Localized display name for the Relationship Link. */
 export type RelationshipLinkDefinitionInputDisplayNameMap = {
   [key: string]: string | undefined;
@@ -4966,31 +6161,6 @@ export const RelationshipLinkDefinitionInputDescriptionMap =
     S.String,
     S.String,
   ) as any as S.Schema<RelationshipLinkDefinitionInputDescriptionMap>;
-
-/** Link type. */
-export type RelationshipLinkFieldMappingLinkType =
-  | "UpdateAlways"
-  | "CopyIfNull";
-export const RelationshipLinkFieldMappingLinkType = /*@__PURE__*/ S.String;
-
-/** The fields mapping for Relationships. */
-export interface RelationshipLinkFieldMapping {
-  /** The field name on the Interaction Type. */
-  interactionFieldName: string;
-  /** Link type. */
-  linkType?: RelationshipLinkFieldMappingLinkType | (string & {});
-  /** The field name on the Relationship metadata. */
-  relationshipFieldName: string;
-}
-export const RelationshipLinkFieldMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interactionFieldName: S.String,
-    linkType: S.optional(RelationshipLinkFieldMappingLinkType),
-    relationshipFieldName: S.String,
-  }),
-).annotate({
-  identifier: "RelationshipLinkFieldMapping",
-}) as any as S.Schema<RelationshipLinkFieldMapping>;
 
 /** The mappings between Interaction and Relationship fields. */
 export type RelationshipLinkDefinitionInputMappingsList =
@@ -5080,92 +6250,6 @@ export const RelationshipLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "RelationshipLinksCreateOrUpdateRequest",
 }) as any as S.Schema<RelationshipLinksCreateOrUpdateRequest>;
 
-/** Localized display name for the Relationship Link. */
-export type RelationshipLinkDefinitionDisplayNameMap = {
-  [key: string]: string | undefined;
-};
-export const RelationshipLinkDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipLinkDefinitionDisplayNameMap>;
-
-/** Localized descriptions for the Relationship Link. */
-export type RelationshipLinkDefinitionDescriptionMap = {
-  [key: string]: string | undefined;
-};
-export const RelationshipLinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipLinkDefinitionDescriptionMap>;
-
-/** The mappings between Interaction and Relationship fields. */
-export type RelationshipLinkDefinitionMappingsList =
-  Array<RelationshipLinkFieldMapping>;
-export const RelationshipLinkDefinitionMappingsList = /*@__PURE__*/ S.Array(
-  RelationshipLinkFieldMapping,
-) as any as S.Schema<RelationshipLinkDefinitionMappingsList>;
-
-/** The property references for the Profile of the Relationship. */
-export type RelationshipLinkDefinitionProfilePropertyReferencesList =
-  Array<ParticipantProfilePropertyReference>;
-export const RelationshipLinkDefinitionProfilePropertyReferencesList =
-  /*@__PURE__*/ S.Array(
-    ParticipantProfilePropertyReference,
-  ) as any as S.Schema<RelationshipLinkDefinitionProfilePropertyReferencesList>;
-
-/** The property references for the Related Profile of the Relationship. */
-export type RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
-  Array<ParticipantProfilePropertyReference>;
-export const RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
-  /*@__PURE__*/ S.Array(
-    ParticipantProfilePropertyReference,
-  ) as any as S.Schema<RelationshipLinkDefinitionRelatedProfilePropertyReferencesList>;
-
-/** The definition of relationship link. */
-export interface RelationshipLinkDefinition {
-  /** Localized display name for the Relationship Link. */
-  displayName?: RelationshipLinkDefinitionDisplayNameMap;
-  /** Localized descriptions for the Relationship Link. */
-  description?: RelationshipLinkDefinitionDescriptionMap;
-  /** The InteractionType associated with the Relationship Link. */
-  interactionType: string;
-  /** The name of the Relationship Link. */
-  linkName?: string;
-  /** The mappings between Interaction and Relationship fields. */
-  mappings?: RelationshipLinkDefinitionMappingsList;
-  /** The property references for the Profile of the Relationship. */
-  profilePropertyReferences: RelationshipLinkDefinitionProfilePropertyReferencesList;
-  /** Provisioning state. */
-  provisioningState?: ProvisioningState;
-  /** The property references for the Related Profile of the Relationship. */
-  relatedProfilePropertyReferences: RelationshipLinkDefinitionRelatedProfilePropertyReferencesList;
-  /** The Relationship associated with the Link. */
-  relationshipName: string;
-  /** The relationship guid id. */
-  relationshipGuidId?: string;
-  /** The hub name. */
-  tenantId?: string;
-}
-export const RelationshipLinkDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(RelationshipLinkDefinitionDisplayNameMap),
-    description: S.optional(RelationshipLinkDefinitionDescriptionMap),
-    interactionType: S.String,
-    linkName: S.optional(S.String),
-    mappings: S.optional(RelationshipLinkDefinitionMappingsList),
-    profilePropertyReferences:
-      RelationshipLinkDefinitionProfilePropertyReferencesList,
-    provisioningState: S.optional(ProvisioningState),
-    relatedProfilePropertyReferences:
-      RelationshipLinkDefinitionRelatedProfilePropertyReferencesList,
-    relationshipName: S.String,
-    relationshipGuidId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RelationshipLinkDefinition",
-}) as any as S.Schema<RelationshipLinkDefinition>;
-
 export interface RelationshipLinksCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -5186,158 +6270,6 @@ export const RelationshipLinksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RelationshipLinksCreateOrUpdateResponse",
 }) as any as S.Schema<RelationshipLinksCreateOrUpdateResponse>;
-
-export interface RelationshipLinksDeleteRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the relationship. */
-  relationshipLinkName: string;
-}
-export const RelationshipLinksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    relationshipLinkName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks/{relationshipLinkName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "RelationshipLinksDeleteRequest",
-}) as any as S.Schema<RelationshipLinksDeleteRequest>;
-
-export interface RelationshipLinksDeleteResponse {}
-export const RelationshipLinksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RelationshipLinksDeleteResponse",
-}) as any as S.Schema<RelationshipLinksDeleteResponse>;
-
-export interface RelationshipLinksGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the relationship link. */
-  relationshipLinkName: string;
-}
-export const RelationshipLinksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    relationshipLinkName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks/{relationshipLinkName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "RelationshipLinksGetRequest",
-}) as any as S.Schema<RelationshipLinksGetRequest>;
-
-export interface RelationshipLinksGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: RelationshipLinkDefinition;
-}
-export const RelationshipLinksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RelationshipLinkDefinition),
-  }),
-).annotate({
-  identifier: "RelationshipLinksGetResponse",
-}) as any as S.Schema<RelationshipLinksGetResponse>;
-
-export interface RelationshipLinksListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const RelationshipLinksListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "RelationshipLinksListByHubRequest",
-}) as any as S.Schema<RelationshipLinksListByHubRequest>;
-
-/** The relationship link resource format. */
-export interface RelationshipLinkResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: RelationshipLinkDefinition;
-}
-export const RelationshipLinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RelationshipLinkDefinition),
-  }),
-).annotate({
-  identifier: "RelationshipLinkResourceFormat",
-}) as any as S.Schema<RelationshipLinkResourceFormat>;
-
-/** Results of the list operation. */
-export type RelationshipLinkListResultValueList =
-  Array<RelationshipLinkResourceFormat>;
-export const RelationshipLinkListResultValueList = /*@__PURE__*/ S.Array(
-  RelationshipLinkResourceFormat,
-) as any as S.Schema<RelationshipLinkListResultValueList>;
-
-/** The response of list relationship link operation. */
-export interface RelationshipLinkListResult {
-  /** Results of the list operation. */
-  value?: RelationshipLinkListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const RelationshipLinkListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RelationshipLinkListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RelationshipLinkListResult",
-}) as any as S.Schema<RelationshipLinkListResult>;
 
 /** The Relationship Cardinality. */
 export type RelationshipDefinitionInputCardinality =
@@ -5370,42 +6302,6 @@ export type RelationshipDefinitionInputFieldsList =
 export const RelationshipDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinitionInput,
 ) as any as S.Schema<RelationshipDefinitionInputFieldsList>;
-
-/** Map a field of profile to its corresponding StrongId in Related Profile. */
-export interface RelationshipTypeFieldMapping {
-  /** Specifies the fieldName in profile. */
-  profileFieldName: string;
-  /** Specifies the KeyProperty (from StrongId) of the related profile. */
-  relatedProfileKeyProperty: string;
-}
-export const RelationshipTypeFieldMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileFieldName: S.String,
-    relatedProfileKeyProperty: S.String,
-  }),
-).annotate({
-  identifier: "RelationshipTypeFieldMapping",
-}) as any as S.Schema<RelationshipTypeFieldMapping>;
-
-/** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
-export type RelationshipTypeMappingFieldMappingsList =
-  Array<RelationshipTypeFieldMapping>;
-export const RelationshipTypeMappingFieldMappingsList = /*@__PURE__*/ S.Array(
-  RelationshipTypeFieldMapping,
-) as any as S.Schema<RelationshipTypeMappingFieldMappingsList>;
-
-/** Maps fields in Profile to their corresponding StrongIds in Related Profile. */
-export interface RelationshipTypeMapping {
-  /** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
-  fieldMappings: RelationshipTypeMappingFieldMappingsList;
-}
-export const RelationshipTypeMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldMappings: RelationshipTypeMappingFieldMappingsList,
-  }),
-).annotate({
-  identifier: "RelationshipTypeMapping",
-}) as any as S.Schema<RelationshipTypeMapping>;
 
 /** Optional property to be used to map fields in profile to their strong ids in related profile. */
 export type RelationshipDefinitionInputLookupMappingsList =
@@ -5479,90 +6375,6 @@ export const RelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelationshipsCreateOrUpdateRequest",
 }) as any as S.Schema<RelationshipsCreateOrUpdateRequest>;
 
-/** The Relationship Cardinality. */
-export type RelationshipDefinitionCardinality =
-  | "OneToOne"
-  | "OneToMany"
-  | "ManyToMany";
-export const RelationshipDefinitionCardinality = /*@__PURE__*/ S.String;
-
-/** Localized display name for the Relationship. */
-export type RelationshipDefinitionDisplayNameMap = {
-  [key: string]: string | undefined;
-};
-export const RelationshipDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipDefinitionDisplayNameMap>;
-
-/** Localized descriptions for the Relationship. */
-export type RelationshipDefinitionDescriptionMap = {
-  [key: string]: string | undefined;
-};
-export const RelationshipDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipDefinitionDescriptionMap>;
-
-/** The properties of the Relationship. */
-export type RelationshipDefinitionFieldsList = Array<PropertyDefinition>;
-export const RelationshipDefinitionFieldsList = /*@__PURE__*/ S.Array(
-  PropertyDefinition,
-) as any as S.Schema<RelationshipDefinitionFieldsList>;
-
-/** Optional property to be used to map fields in profile to their strong ids in related profile. */
-export type RelationshipDefinitionLookupMappingsList =
-  Array<RelationshipTypeMapping>;
-export const RelationshipDefinitionLookupMappingsList = /*@__PURE__*/ S.Array(
-  RelationshipTypeMapping,
-) as any as S.Schema<RelationshipDefinitionLookupMappingsList>;
-
-/** The definition of Relationship. */
-export interface RelationshipDefinition {
-  /** The Relationship Cardinality. */
-  cardinality?: RelationshipDefinitionCardinality;
-  /** Localized display name for the Relationship. */
-  displayName?: RelationshipDefinitionDisplayNameMap;
-  /** Localized descriptions for the Relationship. */
-  description?: RelationshipDefinitionDescriptionMap;
-  /** The expiry date time in UTC. */
-  expiryDateTimeUtc?: string;
-  /** The properties of the Relationship. */
-  fields?: RelationshipDefinitionFieldsList;
-  /** Optional property to be used to map fields in profile to their strong ids in related profile. */
-  lookupMappings?: RelationshipDefinitionLookupMappingsList;
-  /** Profile type. */
-  profileType: string;
-  /** Provisioning state. */
-  provisioningState?: ProvisioningState;
-  /** The Relationship name. */
-  relationshipName?: string;
-  /** Related profile being referenced. */
-  relatedProfileType: string;
-  /** The relationship guid id. */
-  relationshipGuidId?: string;
-  /** The hub name. */
-  tenantId?: string;
-}
-export const RelationshipDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cardinality: S.optional(RelationshipDefinitionCardinality),
-    displayName: S.optional(RelationshipDefinitionDisplayNameMap),
-    description: S.optional(RelationshipDefinitionDescriptionMap),
-    expiryDateTimeUtc: S.optional(S.String),
-    fields: S.optional(RelationshipDefinitionFieldsList),
-    lookupMappings: S.optional(RelationshipDefinitionLookupMappingsList),
-    profileType: S.String,
-    provisioningState: S.optional(ProvisioningState),
-    relationshipName: S.optional(S.String),
-    relatedProfileType: S.String,
-    relationshipGuidId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RelationshipDefinition",
-}) as any as S.Schema<RelationshipDefinition>;
-
 export interface RelationshipsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -5582,157 +6394,6 @@ export const RelationshipsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RelationshipsCreateOrUpdateResponse",
 }) as any as S.Schema<RelationshipsCreateOrUpdateResponse>;
-
-export interface RelationshipsDeleteRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the relationship. */
-  relationshipName: string;
-}
-export const RelationshipsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    relationshipName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships/{relationshipName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "RelationshipsDeleteRequest",
-}) as any as S.Schema<RelationshipsDeleteRequest>;
-
-export interface RelationshipsDeleteResponse {}
-export const RelationshipsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RelationshipsDeleteResponse",
-}) as any as S.Schema<RelationshipsDeleteResponse>;
-
-export interface RelationshipsGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the relationship. */
-  relationshipName: string;
-}
-export const RelationshipsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    relationshipName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships/{relationshipName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "RelationshipsGetRequest",
-}) as any as S.Schema<RelationshipsGetRequest>;
-
-export interface RelationshipsGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: RelationshipDefinition;
-}
-export const RelationshipsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RelationshipDefinition),
-  }),
-).annotate({
-  identifier: "RelationshipsGetResponse",
-}) as any as S.Schema<RelationshipsGetResponse>;
-
-export interface RelationshipsListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const RelationshipsListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "RelationshipsListByHubRequest",
-}) as any as S.Schema<RelationshipsListByHubRequest>;
-
-/** The relationship resource format. */
-export interface RelationshipResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: RelationshipDefinition;
-}
-export const RelationshipResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RelationshipDefinition),
-  }),
-).annotate({
-  identifier: "RelationshipResourceFormat",
-}) as any as S.Schema<RelationshipResourceFormat>;
-
-/** Results of the list operation. */
-export type RelationshipListResultValueList = Array<RelationshipResourceFormat>;
-export const RelationshipListResultValueList = /*@__PURE__*/ S.Array(
-  RelationshipResourceFormat,
-) as any as S.Schema<RelationshipListResultValueList>;
-
-/** The response of list relationship operation. */
-export interface RelationshipListResult {
-  /** Results of the list operation. */
-  value?: RelationshipListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const RelationshipListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RelationshipListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RelationshipListResult",
-}) as any as S.Schema<RelationshipListResult>;
 
 /** Localized display names for the metadata. */
 export type RoleAssignmentInputDisplayNameMap = {
@@ -5762,67 +6423,11 @@ export type RoleAssignmentInputRole =
   | "DataReader";
 export const RoleAssignmentInputRole = /*@__PURE__*/ S.String;
 
-/** Other metadata for the principal. */
-export type AssignmentPrincipalPrincipalMetadataMap = {
-  [key: string]: string | undefined;
-};
-export const AssignmentPrincipalPrincipalMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssignmentPrincipalPrincipalMetadataMap>;
-
-/** The AssignmentPrincipal */
-export interface AssignmentPrincipal {
-  /** The principal id being assigned to. */
-  principalId: string;
-  /** The Type of the principal ID. */
-  principalType: string;
-  /** Other metadata for the principal. */
-  principalMetadata?: AssignmentPrincipalPrincipalMetadataMap;
-}
-export const AssignmentPrincipal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.String,
-    principalType: S.String,
-    principalMetadata: S.optional(AssignmentPrincipalPrincipalMetadataMap),
-  }),
-).annotate({
-  identifier: "AssignmentPrincipal",
-}) as any as S.Schema<AssignmentPrincipal>;
-
 /** The principals being assigned to. */
 export type RoleAssignmentInputPrincipalsList = Array<AssignmentPrincipal>;
 export const RoleAssignmentInputPrincipalsList = /*@__PURE__*/ S.Array(
   AssignmentPrincipal,
 ) as any as S.Schema<RoleAssignmentInputPrincipalsList>;
-
-/** The elements included in the set. */
-export type ResourceSetDescriptionElementsList = Array<string>;
-export const ResourceSetDescriptionElementsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSetDescriptionElementsList>;
-
-/** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
-export type ResourceSetDescriptionExceptionsList = Array<string>;
-export const ResourceSetDescriptionExceptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSetDescriptionExceptionsList>;
-
-/** The resource set description. */
-export interface ResourceSetDescription {
-  /** The elements included in the set. */
-  elements?: ResourceSetDescriptionElementsList;
-  /** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
-  exceptions?: ResourceSetDescriptionExceptionsList;
-}
-export const ResourceSetDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    elements: S.optional(ResourceSetDescriptionElementsList),
-    exceptions: S.optional(ResourceSetDescriptionExceptionsList),
-  }),
-).annotate({
-  identifier: "ResourceSetDescription",
-}) as any as S.Schema<ResourceSetDescription>;
 
 /** The Role Assignment definition. */
 export interface RoleAssignmentInput {
@@ -5916,108 +6521,6 @@ export const RoleAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "RoleAssignmentsCreateOrUpdateRequest",
 }) as any as S.Schema<RoleAssignmentsCreateOrUpdateRequest>;
 
-/** Localized display names for the metadata. */
-export type RoleAssignmentDisplayNameMap = {
-  [key: string]: string | undefined;
-};
-export const RoleAssignmentDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RoleAssignmentDisplayNameMap>;
-
-/** Localized description for the metadata. */
-export type RoleAssignmentDescriptionMap = {
-  [key: string]: string | undefined;
-};
-export const RoleAssignmentDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RoleAssignmentDescriptionMap>;
-
-/** Type of roles. */
-export type RoleAssignmentRole =
-  | "Admin"
-  | "Reader"
-  | "ManageAdmin"
-  | "ManageReader"
-  | "DataAdmin"
-  | "DataReader";
-export const RoleAssignmentRole = /*@__PURE__*/ S.String;
-
-/** The principals being assigned to. */
-export type RoleAssignmentPrincipalsList = Array<AssignmentPrincipal>;
-export const RoleAssignmentPrincipalsList = /*@__PURE__*/ S.Array(
-  AssignmentPrincipal,
-) as any as S.Schema<RoleAssignmentPrincipalsList>;
-
-/** The Role Assignment definition. */
-export interface RoleAssignment {
-  /** The hub name. */
-  tenantId?: string;
-  /** The name of the metadata object. */
-  assignmentName?: string;
-  /** Localized display names for the metadata. */
-  displayName?: RoleAssignmentDisplayNameMap;
-  /** Localized description for the metadata. */
-  description?: RoleAssignmentDescriptionMap;
-  /** Provisioning state. */
-  provisioningState?: ProvisioningState;
-  /** Type of roles. */
-  role: RoleAssignmentRole;
-  /** The principals being assigned to. */
-  principals: RoleAssignmentPrincipalsList;
-  /** Profiles set for the assignment. */
-  profiles?: ResourceSetDescription;
-  /** Interactions set for the assignment. */
-  interactions?: ResourceSetDescription;
-  /** Links set for the assignment. */
-  links?: ResourceSetDescription;
-  /** Kpis set for the assignment. */
-  kpis?: ResourceSetDescription;
-  /** Sas Policies set for the assignment. */
-  sasPolicies?: ResourceSetDescription;
-  /** Connectors set for the assignment. */
-  connectors?: ResourceSetDescription;
-  /** Views set for the assignment. */
-  views?: ResourceSetDescription;
-  /** The Role assignments set for the relationship links. */
-  relationshipLinks?: ResourceSetDescription;
-  /** The Role assignments set for the relationships. */
-  relationships?: ResourceSetDescription;
-  /** Widget types set for the assignment. */
-  widgetTypes?: ResourceSetDescription;
-  /** The Role assignments set for the assignment. */
-  roleAssignments?: ResourceSetDescription;
-  /** Widget types set for the assignment. */
-  conflationPolicies?: ResourceSetDescription;
-  /** The Role assignments set for the assignment. */
-  segments?: ResourceSetDescription;
-}
-export const RoleAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenantId: S.optional(S.String),
-    assignmentName: S.optional(S.String),
-    displayName: S.optional(RoleAssignmentDisplayNameMap),
-    description: S.optional(RoleAssignmentDescriptionMap),
-    provisioningState: S.optional(ProvisioningState),
-    role: RoleAssignmentRole,
-    principals: RoleAssignmentPrincipalsList,
-    profiles: S.optional(ResourceSetDescription),
-    interactions: S.optional(ResourceSetDescription),
-    links: S.optional(ResourceSetDescription),
-    kpis: S.optional(ResourceSetDescription),
-    sasPolicies: S.optional(ResourceSetDescription),
-    connectors: S.optional(ResourceSetDescription),
-    views: S.optional(ResourceSetDescription),
-    relationshipLinks: S.optional(ResourceSetDescription),
-    relationships: S.optional(ResourceSetDescription),
-    widgetTypes: S.optional(ResourceSetDescription),
-    roleAssignments: S.optional(ResourceSetDescription),
-    conflationPolicies: S.optional(ResourceSetDescription),
-    segments: S.optional(ResourceSetDescription),
-  }),
-).annotate({ identifier: "RoleAssignment" }) as any as S.Schema<RoleAssignment>;
-
 export interface RoleAssignmentsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -6039,237 +6542,78 @@ export const RoleAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "RoleAssignmentsCreateOrUpdateResponse",
 }) as any as S.Schema<RoleAssignmentsCreateOrUpdateResponse>;
 
-export interface RoleAssignmentsDeleteRequest {
+/** Resource tags. */
+export type HubsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const HubsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HubsUpdateRequestTagsMap>;
+
+export interface UpdateHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
   resourceGroupName: string;
-  /** The name of the hub. */
+  /** The name of the Hub. */
   hubName: string;
-  /** The name of the role assignment. */
-  assignmentName: string;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: HubsUpdateRequestTagsMap;
+  properties?: HubPropertiesFormatInput;
 }
-export const RoleAssignmentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
-    assignmentName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    tags: S.optional(HubsUpdateRequestTagsMap),
+    properties: S.optional(HubPropertiesFormatInput),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments/{assignmentName}",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
       code: 200,
       apiVersion: "2017-04-26",
     }),
   ),
 ).annotate({
-  identifier: "RoleAssignmentsDeleteRequest",
-}) as any as S.Schema<RoleAssignmentsDeleteRequest>;
+  identifier: "UpdateHubRequest",
+}) as any as S.Schema<UpdateHubRequest>;
 
-export interface RoleAssignmentsDeleteResponse {}
-export const RoleAssignmentsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RoleAssignmentsDeleteResponse",
-}) as any as S.Schema<RoleAssignmentsDeleteResponse>;
+/** Resource tags. */
+export type HubsUpdateResponseTagsMap = { [key: string]: string | undefined };
+export const HubsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HubsUpdateResponseTagsMap>;
 
-export interface RoleAssignmentsGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the role assignment. */
-  assignmentName: string;
-}
-export const RoleAssignmentsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    assignmentName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments/{assignmentName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "RoleAssignmentsGetRequest",
-}) as any as S.Schema<RoleAssignmentsGetRequest>;
-
-export interface RoleAssignmentsGetResponse {
+export interface UpdateHubResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
   name?: string;
   /** Resource type. */
   type?: string;
-  properties?: RoleAssignment;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: HubsUpdateResponseTagsMap;
+  properties?: HubPropertiesFormat;
 }
-export const RoleAssignmentsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateHubResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
-    properties: S.optional(RoleAssignment),
+    location: S.optional(S.String),
+    tags: S.optional(HubsUpdateResponseTagsMap),
+    properties: S.optional(HubPropertiesFormat),
   }),
 ).annotate({
-  identifier: "RoleAssignmentsGetResponse",
-}) as any as S.Schema<RoleAssignmentsGetResponse>;
-
-export interface RoleAssignmentsListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const RoleAssignmentsListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "RoleAssignmentsListByHubRequest",
-}) as any as S.Schema<RoleAssignmentsListByHubRequest>;
-
-/** The Role Assignment resource format. */
-export interface RoleAssignmentResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: RoleAssignment;
-}
-export const RoleAssignmentResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RoleAssignment),
-  }),
-).annotate({
-  identifier: "RoleAssignmentResourceFormat",
-}) as any as S.Schema<RoleAssignmentResourceFormat>;
-
-/** Results of the list operation. */
-export type RoleAssignmentListResultValueList =
-  Array<RoleAssignmentResourceFormat>;
-export const RoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
-  RoleAssignmentResourceFormat,
-) as any as S.Schema<RoleAssignmentListResultValueList>;
-
-/** The response of list role assignment operation. */
-export interface RoleAssignmentListResult {
-  /** Results of the list operation. */
-  value?: RoleAssignmentListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const RoleAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RoleAssignmentListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoleAssignmentListResult",
-}) as any as S.Schema<RoleAssignmentListResult>;
-
-export interface RolesListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const RolesListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roles",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "RolesListByHubRequest",
-}) as any as S.Schema<RolesListByHubRequest>;
-
-/** The Role definition. */
-export interface Role {
-  /** The role name. */
-  roleName?: string;
-  /** The description of the role. */
-  description?: string;
-}
-export const Role = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    roleName: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
-
-/** The role resource format. */
-export interface RoleResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: Role;
-}
-export const RoleResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(Role),
-  }),
-).annotate({
-  identifier: "RoleResourceFormat",
-}) as any as S.Schema<RoleResourceFormat>;
-
-/** Results of the list operation. */
-export type RoleListResultValueList = Array<RoleResourceFormat>;
-export const RoleListResultValueList = /*@__PURE__*/ S.Array(
-  RoleResourceFormat,
-) as any as S.Schema<RoleListResultValueList>;
-
-/** The response of list role assignment operation. */
-export interface RoleListResult {
-  /** Results of the list operation. */
-  value?: RoleListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const RoleListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RoleListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "RoleListResult" }) as any as S.Schema<RoleListResult>;
+  identifier: "UpdateHubResponse",
+}) as any as S.Schema<UpdateHubResponse>;
 
 /** Localized display name for the view. */
 export type ViewInputDisplayNameMap = { [key: string]: string | undefined };
@@ -6325,42 +6669,6 @@ export const ViewsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ViewsCreateOrUpdateRequest",
 }) as any as S.Schema<ViewsCreateOrUpdateRequest>;
 
-/** Localized display name for the view. */
-export type ViewDisplayNameMap = { [key: string]: string | undefined };
-export const ViewDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ViewDisplayNameMap>;
-
-/** The view in Customer 360 web application. */
-export interface View {
-  /** Name of the view. */
-  viewName?: string;
-  /** the user ID. */
-  userId?: string;
-  /** the hub name. */
-  tenantId?: string;
-  /** Localized display name for the view. */
-  displayName?: ViewDisplayNameMap;
-  /** View definition. */
-  definition: string;
-  /** Date time when view was last modified. */
-  changed?: string;
-  /** Date time when view was created. */
-  created?: string;
-}
-export const View = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    viewName: S.optional(S.String),
-    userId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    displayName: S.optional(ViewDisplayNameMap),
-    definition: S.String,
-    changed: S.optional(S.String),
-    created: S.optional(S.String),
-  }),
-).annotate({ identifier: "View" }) as any as S.Schema<View>;
-
 export interface ViewsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -6381,322 +6689,6 @@ export const ViewsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ViewsCreateOrUpdateResponse",
 }) as any as S.Schema<ViewsCreateOrUpdateResponse>;
 
-export interface ViewsDeleteRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the view. */
-  viewName: string;
-  /** The user ID. Use * to retrieve hub level view. */
-  userId: string;
-}
-export const ViewsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    viewName: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views/{viewName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "ViewsDeleteRequest",
-}) as any as S.Schema<ViewsDeleteRequest>;
-
-export interface ViewsDeleteResponse {}
-export const ViewsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ViewsDeleteResponse",
-}) as any as S.Schema<ViewsDeleteResponse>;
-
-export interface ViewsGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the view. */
-  viewName: string;
-  /** The user ID. Use * to retrieve hub level view. */
-  userId: string;
-}
-export const ViewsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    viewName: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views/{viewName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "ViewsGetRequest",
-}) as any as S.Schema<ViewsGetRequest>;
-
-export interface ViewsGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: View;
-}
-export const ViewsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(View),
-  }),
-).annotate({
-  identifier: "ViewsGetResponse",
-}) as any as S.Schema<ViewsGetResponse>;
-
-export interface ViewsListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The user ID. Use * to retrieve hub level views. */
-  userId: string;
-}
-export const ViewsListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "ViewsListByHubRequest",
-}) as any as S.Schema<ViewsListByHubRequest>;
-
-/** The view resource format. */
-export interface ViewResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: View;
-}
-export const ViewResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(View),
-  }),
-).annotate({
-  identifier: "ViewResourceFormat",
-}) as any as S.Schema<ViewResourceFormat>;
-
-/** Results of the list operation. */
-export type ViewListResultValueList = Array<ViewResourceFormat>;
-export const ViewListResultValueList = /*@__PURE__*/ S.Array(
-  ViewResourceFormat,
-) as any as S.Schema<ViewListResultValueList>;
-
-/** The response of list view operation. */
-export interface ViewListResult {
-  /** Results of the list operation. */
-  value?: ViewListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const ViewListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ViewListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ViewListResult" }) as any as S.Schema<ViewListResult>;
-
-export interface WidgetTypesGetRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the widget type. */
-  widgetTypeName: string;
-}
-export const WidgetTypesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    widgetTypeName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/widgetTypes/{widgetTypeName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "WidgetTypesGetRequest",
-}) as any as S.Schema<WidgetTypesGetRequest>;
-
-/** Localized display name for the widget type. */
-export type WidgetTypeDisplayNameMap = { [key: string]: string | undefined };
-export const WidgetTypeDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WidgetTypeDisplayNameMap>;
-
-/** Definition of WidgetType. */
-export interface WidgetType {
-  /** Name of the widget type. */
-  widgetTypeName?: string;
-  /** Definition for widget type. */
-  definition: string;
-  /** Description for widget type. */
-  description?: string;
-  /** Localized display name for the widget type. */
-  displayName?: WidgetTypeDisplayNameMap;
-  /** The image URL. */
-  imageUrl?: string;
-  /** The hub name. */
-  tenantId?: string;
-  /** The widget version. */
-  widgetVersion?: string;
-  /** Date time when widget type was last modified. */
-  changed?: string;
-  /** Date time when widget type was created. */
-  created?: string;
-}
-export const WidgetType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    widgetTypeName: S.optional(S.String),
-    definition: S.String,
-    description: S.optional(S.String),
-    displayName: S.optional(WidgetTypeDisplayNameMap),
-    imageUrl: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    widgetVersion: S.optional(S.String),
-    changed: S.optional(S.String),
-    created: S.optional(S.String),
-  }),
-).annotate({ identifier: "WidgetType" }) as any as S.Schema<WidgetType>;
-
-export interface WidgetTypesGetResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: WidgetType;
-}
-export const WidgetTypesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WidgetType),
-  }),
-).annotate({
-  identifier: "WidgetTypesGetResponse",
-}) as any as S.Schema<WidgetTypesGetResponse>;
-
-export interface WidgetTypesListByHubRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-}
-export const WidgetTypesListByHubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/widgetTypes",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "WidgetTypesListByHubRequest",
-}) as any as S.Schema<WidgetTypesListByHubRequest>;
-
-/** The WidgetTypeResourceFormat */
-export interface WidgetTypeResourceFormat {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  properties?: WidgetType;
-}
-export const WidgetTypeResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WidgetType),
-  }),
-).annotate({
-  identifier: "WidgetTypeResourceFormat",
-}) as any as S.Schema<WidgetTypeResourceFormat>;
-
-/** Results of the list operation. */
-export type WidgetTypeListResultValueList = Array<WidgetTypeResourceFormat>;
-export const WidgetTypeListResultValueList = /*@__PURE__*/ S.Array(
-  WidgetTypeResourceFormat,
-) as any as S.Schema<WidgetTypeListResultValueList>;
-
-/** The response of list widget type operation. */
-export interface WidgetTypeListResult {
-  /** Results of the list operation. */
-  value?: WidgetTypeListResultValueList;
-  /** Link to the next set of results. */
-  nextLink?: string;
-}
-export const WidgetTypeListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(WidgetTypeListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WidgetTypeListResult",
-}) as any as S.Schema<WidgetTypeListResult>;
-
 export type AuthorizationPoliciesCreateOrUpdateError = AzureOpError;
 /** Creates an authorization policy or updates an existing authorization policy. */
 export const AuthorizationPoliciesCreateOrUpdate: API.OperationMethod<
@@ -6707,36 +6699,6 @@ export const AuthorizationPoliciesCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AuthorizationPoliciesCreateOrUpdateRequest,
   output: AuthorizationPoliciesCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AuthorizationPoliciesGetError = AzureOpError;
-/** Gets an authorization policy in the hub. */
-export const AuthorizationPoliciesGet: API.OperationMethod<
-  AuthorizationPoliciesGetRequest,
-  AuthorizationPoliciesGetResponse,
-  AuthorizationPoliciesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizationPoliciesGetRequest,
-  output: AuthorizationPoliciesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AuthorizationPoliciesListByHubError = AzureOpError;
-/** Gets all the authorization policies in a specified hub. */
-export const AuthorizationPoliciesListByHub: API.OperationMethod<
-  AuthorizationPoliciesListByHubRequest,
-  AuthorizationPolicyListResult,
-  AuthorizationPoliciesListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizationPoliciesListByHubRequest,
-  output: AuthorizationPolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6787,51 +6749,6 @@ export const ConnectorMappingsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConnectorMappingsDeleteError = AzureOpError;
-/** Deletes a connector mapping in the connector. */
-export const ConnectorMappingsDelete: API.OperationMethod<
-  ConnectorMappingsDeleteRequest,
-  ConnectorMappingsDeleteResponse,
-  ConnectorMappingsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorMappingsDeleteRequest,
-  output: ConnectorMappingsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorMappingsGetError = AzureOpError;
-/** Gets a connector mapping in the connector. */
-export const ConnectorMappingsGet: API.OperationMethod<
-  ConnectorMappingsGetRequest,
-  ConnectorMappingsGetResponse,
-  ConnectorMappingsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorMappingsGetRequest,
-  output: ConnectorMappingsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorMappingsListByConnectorError = AzureOpError;
-/** Gets all the connector mappings in the specified connector. */
-export const ConnectorMappingsListByConnector: API.OperationMethod<
-  ConnectorMappingsListByConnectorRequest,
-  ConnectorMappingListResult,
-  ConnectorMappingsListByConnectorError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorMappingsListByConnectorRequest,
-  output: ConnectorMappingListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ConnectorsCreateOrUpdateError = AzureOpError;
 /** Creates a connector or updates an existing connector in the hub. */
 export const ConnectorsCreateOrUpdate: API.OperationMethod<
@@ -6847,46 +6764,451 @@ export const ConnectorsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConnectorsDeleteError = AzureOpError;
+export type DeleteConnectorError = AzureOpError;
 /** Deletes a connector in the hub. */
-export const ConnectorsDelete: API.OperationMethod<
-  ConnectorsDeleteRequest,
-  ConnectorsDeleteResponse,
-  ConnectorsDeleteError,
+export const DeleteConnector: API.OperationMethod<
+  DeleteConnectorRequest,
+  DeleteConnectorResponse,
+  DeleteConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsDeleteRequest,
-  output: ConnectorsDeleteResponse,
+  input: DeleteConnectorRequest,
+  output: DeleteConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConnectorsGetError = AzureOpError;
+export type DeleteConnectorMappingError = AzureOpError;
+/** Deletes a connector mapping in the connector. */
+export const DeleteConnectorMapping: API.OperationMethod<
+  DeleteConnectorMappingRequest,
+  DeleteConnectorMappingResponse,
+  DeleteConnectorMappingError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConnectorMappingRequest,
+  output: DeleteConnectorMappingResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteHubError = AzureOpError;
+/** Deletes the specified hub. */
+export const DeleteHub: API.OperationMethod<
+  DeleteHubRequest,
+  DeleteHubResponse,
+  DeleteHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteHubRequest,
+  output: DeleteHubResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteKpiError = AzureOpError;
+/** Deletes a KPI in the hub. */
+export const DeleteKpi: API.OperationMethod<
+  DeleteKpiRequest,
+  DeleteKpiResponse,
+  DeleteKpiError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteKpiRequest,
+  output: DeleteKpiResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteLinkError = AzureOpError;
+/** Deletes a link in the hub. */
+export const DeleteLink: API.OperationMethod<
+  DeleteLinkRequest,
+  DeleteLinkResponse,
+  DeleteLinkError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLinkRequest,
+  output: DeleteLinkResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePredictionError = AzureOpError;
+/** Deletes a Prediction in the hub. */
+export const DeletePrediction: API.OperationMethod<
+  DeletePredictionRequest,
+  DeletePredictionResponse,
+  DeletePredictionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePredictionRequest,
+  output: DeletePredictionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProfileError = AzureOpError;
+/** Deletes a profile within a hub */
+export const DeleteProfile: API.OperationMethod<
+  DeleteProfileRequest,
+  DeleteProfileResponse,
+  DeleteProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProfileRequest,
+  output: DeleteProfileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRelationshipError = AzureOpError;
+/** Deletes a relationship within a hub. */
+export const DeleteRelationship: API.OperationMethod<
+  DeleteRelationshipRequest,
+  DeleteRelationshipResponse,
+  DeleteRelationshipError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRelationshipRequest,
+  output: DeleteRelationshipResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRelationshipLinkError = AzureOpError;
+/** Deletes a relationship link within a hub. */
+export const DeleteRelationshipLink: API.OperationMethod<
+  DeleteRelationshipLinkRequest,
+  DeleteRelationshipLinkResponse,
+  DeleteRelationshipLinkError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRelationshipLinkRequest,
+  output: DeleteRelationshipLinkResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRoleAssignmentError = AzureOpError;
+/** Deletes the role assignment in the hub. */
+export const DeleteRoleAssignment: API.OperationMethod<
+  DeleteRoleAssignmentRequest,
+  DeleteRoleAssignmentResponse,
+  DeleteRoleAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRoleAssignmentRequest,
+  output: DeleteRoleAssignmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteViewError = AzureOpError;
+/** Deletes a view in the specified hub. */
+export const DeleteView: API.OperationMethod<
+  DeleteViewRequest,
+  DeleteViewResponse,
+  DeleteViewError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteViewRequest,
+  output: DeleteViewResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAuthorizationPolicyError = AzureOpError;
+/** Gets an authorization policy in the hub. */
+export const GetAuthorizationPolicy: API.OperationMethod<
+  GetAuthorizationPolicyRequest,
+  GetAuthorizationPolicyResponse,
+  GetAuthorizationPolicyError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAuthorizationPolicyRequest,
+  output: GetAuthorizationPolicyResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConnectorError = AzureOpError;
 /** Gets a connector in the hub. */
-export const ConnectorsGet: API.OperationMethod<
-  ConnectorsGetRequest,
-  ConnectorsGetResponse,
-  ConnectorsGetError,
+export const GetConnector: API.OperationMethod<
+  GetConnectorRequest,
+  GetConnectorResponse,
+  GetConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsGetRequest,
-  output: ConnectorsGetResponse,
+  input: GetConnectorRequest,
+  output: GetConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConnectorsListByHubError = AzureOpError;
-/** Gets all the connectors in the specified hub. */
-export const ConnectorsListByHub: API.OperationMethod<
-  ConnectorsListByHubRequest,
-  ConnectorListResult,
-  ConnectorsListByHubError,
+export type GetConnectorMappingError = AzureOpError;
+/** Gets a connector mapping in the connector. */
+export const GetConnectorMapping: API.OperationMethod<
+  GetConnectorMappingRequest,
+  GetConnectorMappingResponse,
+  GetConnectorMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsListByHubRequest,
-  output: ConnectorListResult,
+  input: GetConnectorMappingRequest,
+  output: GetConnectorMappingResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetHubError = AzureOpError;
+/** Gets information about the specified hub. */
+export const GetHub: API.OperationMethod<
+  GetHubRequest,
+  GetHubResponse,
+  GetHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHubRequest,
+  output: GetHubResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetImageUploadUrlForDataError = AzureOpError;
+/** Gets data image upload URL. */
+export const GetImageUploadUrlForData: API.OperationMethod<
+  GetImageUploadUrlForDataRequest,
+  ImageDefinition,
+  GetImageUploadUrlForDataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetImageUploadUrlForDataRequest,
+  output: ImageDefinition,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetImageUploadUrlForEntityTypeError = AzureOpError;
+/** Gets entity type (profile or interaction) image upload URL. */
+export const GetImageUploadUrlForEntityType: API.OperationMethod<
+  GetImageUploadUrlForEntityTypeRequest,
+  ImageDefinition,
+  GetImageUploadUrlForEntityTypeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetImageUploadUrlForEntityTypeRequest,
+  output: ImageDefinition,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetInteractionError = AzureOpError;
+/** Gets information about the specified interaction. */
+export const GetInteraction: API.OperationMethod<
+  GetInteractionRequest,
+  GetInteractionResponse,
+  GetInteractionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInteractionRequest,
+  output: GetInteractionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetKpiError = AzureOpError;
+/** Gets a KPI in the hub. */
+export const GetKpi: API.OperationMethod<
+  GetKpiRequest,
+  GetKpiResponse,
+  GetKpiError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetKpiRequest,
+  output: GetKpiResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetLinkError = AzureOpError;
+/** Gets a link in the hub. */
+export const GetLink: API.OperationMethod<
+  GetLinkRequest,
+  GetLinkResponse,
+  GetLinkError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLinkRequest,
+  output: GetLinkResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPredictionError = AzureOpError;
+/** Gets a Prediction in the hub. */
+export const GetPrediction: API.OperationMethod<
+  GetPredictionRequest,
+  GetPredictionResponse,
+  GetPredictionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPredictionRequest,
+  output: GetPredictionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPredictionModelStatusError = AzureOpError;
+/** Gets model status of the prediction. */
+export const GetPredictionModelStatus: API.OperationMethod<
+  GetPredictionModelStatusRequest,
+  PredictionModelStatus,
+  GetPredictionModelStatusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPredictionModelStatusRequest,
+  output: PredictionModelStatus,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPredictionTrainingResultError = AzureOpError;
+/** Gets training results. */
+export const GetPredictionTrainingResult: API.OperationMethod<
+  GetPredictionTrainingResultRequest,
+  PredictionTrainingResults,
+  GetPredictionTrainingResultError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPredictionTrainingResultRequest,
+  output: PredictionTrainingResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetProfileError = AzureOpError;
+/** Gets information about the specified profile. */
+export const GetProfile: API.OperationMethod<
+  GetProfileRequest,
+  GetProfileResponse,
+  GetProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProfileRequest,
+  output: GetProfileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetProfileEnrichingKpisError = AzureOpError;
+/** Gets the KPIs that enrich the profile Type identified by the supplied name. Enrichment happens through participants of the Interaction on an Interaction KPI and through Relationships for Profile KPIs. */
+export const GetProfileEnrichingKpis: API.OperationMethod<
+  GetProfileEnrichingKpisRequest,
+  GetProfileEnrichingKpisResponse,
+  GetProfileEnrichingKpisError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProfileEnrichingKpisRequest,
+  output: GetProfileEnrichingKpisResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRelationshipError = AzureOpError;
+/** Gets information about the specified relationship. */
+export const GetRelationship: API.OperationMethod<
+  GetRelationshipRequest,
+  GetRelationshipResponse,
+  GetRelationshipError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRelationshipRequest,
+  output: GetRelationshipResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRelationshipLinkError = AzureOpError;
+/** Gets information about the specified relationship Link. */
+export const GetRelationshipLink: API.OperationMethod<
+  GetRelationshipLinkRequest,
+  GetRelationshipLinkResponse,
+  GetRelationshipLinkError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRelationshipLinkRequest,
+  output: GetRelationshipLinkResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRoleAssignmentError = AzureOpError;
+/** Gets the role assignment in the hub. */
+export const GetRoleAssignment: API.OperationMethod<
+  GetRoleAssignmentRequest,
+  GetRoleAssignmentResponse,
+  GetRoleAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRoleAssignmentRequest,
+  output: GetRoleAssignmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetViewError = AzureOpError;
+/** Gets a view in the hub. */
+export const GetView: API.OperationMethod<
+  GetViewRequest,
+  GetViewResponse,
+  GetViewError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetViewRequest,
+  output: GetViewResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetWidgetTypeError = AzureOpError;
+/** Gets a widget type in the specified hub. */
+export const GetWidgetType: API.OperationMethod<
+  GetWidgetTypeRequest,
+  GetWidgetTypeResponse,
+  GetWidgetTypeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWidgetTypeRequest,
+  output: GetWidgetTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6907,111 +7229,6 @@ export const HubsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HubsDeleteError = AzureOpError;
-/** Deletes the specified hub. */
-export const HubsDelete: API.OperationMethod<
-  HubsDeleteRequest,
-  HubsDeleteResponse,
-  HubsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HubsDeleteRequest,
-  output: HubsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HubsGetError = AzureOpError;
-/** Gets information about the specified hub. */
-export const HubsGet: API.OperationMethod<
-  HubsGetRequest,
-  HubsGetResponse,
-  HubsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HubsGetRequest,
-  output: HubsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HubsListError = AzureOpError;
-/** Gets all hubs in the specified subscription. */
-export const HubsList: API.OperationMethod<
-  HubsListRequest,
-  HubListResult,
-  HubsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HubsListRequest,
-  output: HubListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HubsListByResourceGroupError = AzureOpError;
-/** Gets all the hubs in a resource group. */
-export const HubsListByResourceGroup: API.OperationMethod<
-  HubsListByResourceGroupRequest,
-  HubListResult,
-  HubsListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HubsListByResourceGroupRequest,
-  output: HubListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HubsUpdateError = AzureOpError;
-/** Updates a Hub. */
-export const HubsUpdate: API.OperationMethod<
-  HubsUpdateRequest,
-  HubsUpdateResponse,
-  HubsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HubsUpdateRequest,
-  output: HubsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ImagesGetUploadUrlForDataError = AzureOpError;
-/** Gets data image upload URL. */
-export const ImagesGetUploadUrlForData: API.OperationMethod<
-  ImagesGetUploadUrlForDataRequest,
-  ImageDefinition,
-  ImagesGetUploadUrlForDataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ImagesGetUploadUrlForDataRequest,
-  output: ImageDefinition,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ImagesGetUploadUrlForEntityTypeError = AzureOpError;
-/** Gets entity type (profile or interaction) image upload URL. */
-export const ImagesGetUploadUrlForEntityType: API.OperationMethod<
-  ImagesGetUploadUrlForEntityTypeRequest,
-  ImageDefinition,
-  ImagesGetUploadUrlForEntityTypeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ImagesGetUploadUrlForEntityTypeRequest,
-  output: ImageDefinition,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type InteractionsCreateOrUpdateError = AzureOpError;
 /** Creates an interaction or updates an existing interaction within a hub. */
 export const InteractionsCreateOrUpdate: API.OperationMethod<
@@ -7022,36 +7239,6 @@ export const InteractionsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: InteractionsCreateOrUpdateRequest,
   output: InteractionsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type InteractionsGetError = AzureOpError;
-/** Gets information about the specified interaction. */
-export const InteractionsGet: API.OperationMethod<
-  InteractionsGetRequest,
-  InteractionsGetResponse,
-  InteractionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InteractionsGetRequest,
-  output: InteractionsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type InteractionsListByHubError = AzureOpError;
-/** Gets all interactions in the hub. */
-export const InteractionsListByHub: API.OperationMethod<
-  InteractionsListByHubRequest,
-  InteractionListResult,
-  InteractionsListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InteractionsListByHubRequest,
-  output: InteractionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7087,51 +7274,6 @@ export const KpiCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type KpiDeleteError = AzureOpError;
-/** Deletes a KPI in the hub. */
-export const KpiDelete: API.OperationMethod<
-  KpiDeleteRequest,
-  KpiDeleteResponse,
-  KpiDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: KpiDeleteRequest,
-  output: KpiDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type KpiGetError = AzureOpError;
-/** Gets a KPI in the hub. */
-export const KpiGet: API.OperationMethod<
-  KpiGetRequest,
-  KpiGetResponse,
-  KpiGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: KpiGetRequest,
-  output: KpiGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type KpiListByHubError = AzureOpError;
-/** Gets all the KPIs in the specified hub. */
-export const KpiListByHub: API.OperationMethod<
-  KpiListByHubRequest,
-  KpiListResult,
-  KpiListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: KpiListByHubRequest,
-  output: KpiListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type KpiReprocessError = AzureOpError;
 /** Reprocesses the Kpi values of the specified KPI. */
 export const KpiReprocess: API.OperationMethod<
@@ -7162,61 +7304,256 @@ export const LinksCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LinksDeleteError = AzureOpError;
-/** Deletes a link in the hub. */
-export const LinksDelete: API.OperationMethod<
-  LinksDeleteRequest,
-  LinksDeleteResponse,
-  LinksDeleteError,
+export type ListAuthorizationPolicyByHubError = AzureOpError;
+/** Gets all the authorization policies in a specified hub. */
+export const ListAuthorizationPolicyByHub: API.OperationMethod<
+  ListAuthorizationPolicyByHubRequest,
+  AuthorizationPolicyListResult,
+  ListAuthorizationPolicyByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinksDeleteRequest,
-  output: LinksDeleteResponse,
+  input: ListAuthorizationPolicyByHubRequest,
+  output: AuthorizationPolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LinksGetError = AzureOpError;
-/** Gets a link in the hub. */
-export const LinksGet: API.OperationMethod<
-  LinksGetRequest,
-  LinksGetResponse,
-  LinksGetError,
+export type ListConnectorByHubError = AzureOpError;
+/** Gets all the connectors in the specified hub. */
+export const ListConnectorByHub: API.OperationMethod<
+  ListConnectorByHubRequest,
+  ConnectorListResult,
+  ListConnectorByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinksGetRequest,
-  output: LinksGetResponse,
+  input: ListConnectorByHubRequest,
+  output: ConnectorListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LinksListByHubError = AzureOpError;
+export type ListConnectorMappingByConnectorError = AzureOpError;
+/** Gets all the connector mappings in the specified connector. */
+export const ListConnectorMappingByConnector: API.OperationMethod<
+  ListConnectorMappingByConnectorRequest,
+  ConnectorMappingListResult,
+  ListConnectorMappingByConnectorError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectorMappingByConnectorRequest,
+  output: ConnectorMappingListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListHubByResourceGroupError = AzureOpError;
+/** Gets all the hubs in a resource group. */
+export const ListHubByResourceGroup: API.OperationMethod<
+  ListHubByResourceGroupRequest,
+  HubListResult,
+  ListHubByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHubByResourceGroupRequest,
+  output: HubListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListHubsError = AzureOpError;
+/** Gets all hubs in the specified subscription. */
+export const ListHubs: API.OperationMethod<
+  ListHubsRequest,
+  HubListResult,
+  ListHubsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHubsRequest,
+  output: HubListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListInteractionByHubError = AzureOpError;
+/** Gets all interactions in the hub. */
+export const ListInteractionByHub: API.OperationMethod<
+  ListInteractionByHubRequest,
+  InteractionListResult,
+  ListInteractionByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListInteractionByHubRequest,
+  output: InteractionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListKpiByHubError = AzureOpError;
+/** Gets all the KPIs in the specified hub. */
+export const ListKpiByHub: API.OperationMethod<
+  ListKpiByHubRequest,
+  KpiListResult,
+  ListKpiByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListKpiByHubRequest,
+  output: KpiListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListLinkByHubError = AzureOpError;
 /** Gets all the links in the specified hub. */
-export const LinksListByHub: API.OperationMethod<
-  LinksListByHubRequest,
+export const ListLinkByHub: API.OperationMethod<
+  ListLinkByHubRequest,
   LinkListResult,
-  LinksListByHubError,
+  ListLinkByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinksListByHubRequest,
+  input: ListLinkByHubRequest,
   output: LinkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
+export type ListOperationsError = AzureOpError;
 /** Lists all of the available Customer Insights REST API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
   OperationListResult,
-  OperationsListError,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: ListOperationsRequest,
   output: OperationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPredictionByHubError = AzureOpError;
+/** Gets all the predictions in the specified hub. */
+export const ListPredictionByHub: API.OperationMethod<
+  ListPredictionByHubRequest,
+  PredictionListResult,
+  ListPredictionByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPredictionByHubRequest,
+  output: PredictionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProfileByHubError = AzureOpError;
+/** Gets all profile in the hub. */
+export const ListProfileByHub: API.OperationMethod<
+  ListProfileByHubRequest,
+  ProfileListResult,
+  ListProfileByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProfileByHubRequest,
+  output: ProfileListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRelationshipByHubError = AzureOpError;
+/** Gets all relationships in the hub. */
+export const ListRelationshipByHub: API.OperationMethod<
+  ListRelationshipByHubRequest,
+  RelationshipListResult,
+  ListRelationshipByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRelationshipByHubRequest,
+  output: RelationshipListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRelationshipLinkByHubError = AzureOpError;
+/** Gets all relationship links in the hub. */
+export const ListRelationshipLinkByHub: API.OperationMethod<
+  ListRelationshipLinkByHubRequest,
+  RelationshipLinkListResult,
+  ListRelationshipLinkByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRelationshipLinkByHubRequest,
+  output: RelationshipLinkListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRoleAssignmentByHubError = AzureOpError;
+/** Gets all the role assignments for the specified hub. */
+export const ListRoleAssignmentByHub: API.OperationMethod<
+  ListRoleAssignmentByHubRequest,
+  RoleAssignmentListResult,
+  ListRoleAssignmentByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRoleAssignmentByHubRequest,
+  output: RoleAssignmentListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRoleByHubError = AzureOpError;
+/** Gets all the roles for the hub. */
+export const ListRoleByHub: API.OperationMethod<
+  ListRoleByHubRequest,
+  RoleListResult,
+  ListRoleByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRoleByHubRequest,
+  output: RoleListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListViewByHubError = AzureOpError;
+/** Gets all available views for given user in the specified hub. */
+export const ListViewByHub: API.OperationMethod<
+  ListViewByHubRequest,
+  ViewListResult,
+  ListViewByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListViewByHubRequest,
+  output: ViewListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListWidgetTypeByHubError = AzureOpError;
+/** Gets all available widget types in the specified hub. */
+export const ListWidgetTypeByHub: API.OperationMethod<
+  ListWidgetTypeByHubRequest,
+  WidgetTypeListResult,
+  ListWidgetTypeByHubError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWidgetTypeByHubRequest,
+  output: WidgetTypeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7232,81 +7569,6 @@ export const PredictionsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PredictionsCreateOrUpdateRequest,
   output: PredictionsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PredictionsDeleteError = AzureOpError;
-/** Deletes a Prediction in the hub. */
-export const PredictionsDelete: API.OperationMethod<
-  PredictionsDeleteRequest,
-  PredictionsDeleteResponse,
-  PredictionsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PredictionsDeleteRequest,
-  output: PredictionsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PredictionsGetError = AzureOpError;
-/** Gets a Prediction in the hub. */
-export const PredictionsGet: API.OperationMethod<
-  PredictionsGetRequest,
-  PredictionsGetResponse,
-  PredictionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PredictionsGetRequest,
-  output: PredictionsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PredictionsGetModelStatusError = AzureOpError;
-/** Gets model status of the prediction. */
-export const PredictionsGetModelStatus: API.OperationMethod<
-  PredictionsGetModelStatusRequest,
-  PredictionModelStatus,
-  PredictionsGetModelStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PredictionsGetModelStatusRequest,
-  output: PredictionModelStatus,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PredictionsGetTrainingResultsError = AzureOpError;
-/** Gets training results. */
-export const PredictionsGetTrainingResults: API.OperationMethod<
-  PredictionsGetTrainingResultsRequest,
-  PredictionTrainingResults,
-  PredictionsGetTrainingResultsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PredictionsGetTrainingResultsRequest,
-  output: PredictionTrainingResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PredictionsListByHubError = AzureOpError;
-/** Gets all the predictions in the specified hub. */
-export const PredictionsListByHub: API.OperationMethod<
-  PredictionsListByHubRequest,
-  PredictionListResult,
-  PredictionsListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PredictionsListByHubRequest,
-  output: PredictionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7342,66 +7604,6 @@ export const ProfilesCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProfilesDeleteError = AzureOpError;
-/** Deletes a profile within a hub */
-export const ProfilesDelete: API.OperationMethod<
-  ProfilesDeleteRequest,
-  ProfilesDeleteResponse,
-  ProfilesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesDeleteRequest,
-  output: ProfilesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesGetError = AzureOpError;
-/** Gets information about the specified profile. */
-export const ProfilesGet: API.OperationMethod<
-  ProfilesGetRequest,
-  ProfilesGetResponse,
-  ProfilesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesGetRequest,
-  output: ProfilesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesGetEnrichingKpisError = AzureOpError;
-/** Gets the KPIs that enrich the profile Type identified by the supplied name. Enrichment happens through participants of the Interaction on an Interaction KPI and through Relationships for Profile KPIs. */
-export const ProfilesGetEnrichingKpis: API.OperationMethod<
-  ProfilesGetEnrichingKpisRequest,
-  ProfilesGetEnrichingKpisResponse,
-  ProfilesGetEnrichingKpisError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesGetEnrichingKpisRequest,
-  output: ProfilesGetEnrichingKpisResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesListByHubError = AzureOpError;
-/** Gets all profile in the hub. */
-export const ProfilesListByHub: API.OperationMethod<
-  ProfilesListByHubRequest,
-  ProfileListResult,
-  ProfilesListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesListByHubRequest,
-  output: ProfileListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RelationshipLinksCreateOrUpdateError = AzureOpError;
 /** Creates a relationship link or updates an existing relationship link within a hub. */
 export const RelationshipLinksCreateOrUpdate: API.OperationMethod<
@@ -7412,51 +7614,6 @@ export const RelationshipLinksCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RelationshipLinksCreateOrUpdateRequest,
   output: RelationshipLinksCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RelationshipLinksDeleteError = AzureOpError;
-/** Deletes a relationship link within a hub. */
-export const RelationshipLinksDelete: API.OperationMethod<
-  RelationshipLinksDeleteRequest,
-  RelationshipLinksDeleteResponse,
-  RelationshipLinksDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RelationshipLinksDeleteRequest,
-  output: RelationshipLinksDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RelationshipLinksGetError = AzureOpError;
-/** Gets information about the specified relationship Link. */
-export const RelationshipLinksGet: API.OperationMethod<
-  RelationshipLinksGetRequest,
-  RelationshipLinksGetResponse,
-  RelationshipLinksGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RelationshipLinksGetRequest,
-  output: RelationshipLinksGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RelationshipLinksListByHubError = AzureOpError;
-/** Gets all relationship links in the hub. */
-export const RelationshipLinksListByHub: API.OperationMethod<
-  RelationshipLinksListByHubRequest,
-  RelationshipLinkListResult,
-  RelationshipLinksListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RelationshipLinksListByHubRequest,
-  output: RelationshipLinkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7477,51 +7634,6 @@ export const RelationshipsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RelationshipsDeleteError = AzureOpError;
-/** Deletes a relationship within a hub. */
-export const RelationshipsDelete: API.OperationMethod<
-  RelationshipsDeleteRequest,
-  RelationshipsDeleteResponse,
-  RelationshipsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RelationshipsDeleteRequest,
-  output: RelationshipsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RelationshipsGetError = AzureOpError;
-/** Gets information about the specified relationship. */
-export const RelationshipsGet: API.OperationMethod<
-  RelationshipsGetRequest,
-  RelationshipsGetResponse,
-  RelationshipsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RelationshipsGetRequest,
-  output: RelationshipsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RelationshipsListByHubError = AzureOpError;
-/** Gets all relationships in the hub. */
-export const RelationshipsListByHub: API.OperationMethod<
-  RelationshipsListByHubRequest,
-  RelationshipListResult,
-  RelationshipsListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RelationshipsListByHubRequest,
-  output: RelationshipListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RoleAssignmentsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a role assignment in the hub. */
 export const RoleAssignmentsCreateOrUpdate: API.OperationMethod<
@@ -7537,61 +7649,16 @@ export const RoleAssignmentsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RoleAssignmentsDeleteError = AzureOpError;
-/** Deletes the role assignment in the hub. */
-export const RoleAssignmentsDelete: API.OperationMethod<
-  RoleAssignmentsDeleteRequest,
-  RoleAssignmentsDeleteResponse,
-  RoleAssignmentsDeleteError,
+export type UpdateHubError = AzureOpError;
+/** Updates a Hub. */
+export const UpdateHub: API.OperationMethod<
+  UpdateHubRequest,
+  UpdateHubResponse,
+  UpdateHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RoleAssignmentsDeleteRequest,
-  output: RoleAssignmentsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RoleAssignmentsGetError = AzureOpError;
-/** Gets the role assignment in the hub. */
-export const RoleAssignmentsGet: API.OperationMethod<
-  RoleAssignmentsGetRequest,
-  RoleAssignmentsGetResponse,
-  RoleAssignmentsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoleAssignmentsGetRequest,
-  output: RoleAssignmentsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RoleAssignmentsListByHubError = AzureOpError;
-/** Gets all the role assignments for the specified hub. */
-export const RoleAssignmentsListByHub: API.OperationMethod<
-  RoleAssignmentsListByHubRequest,
-  RoleAssignmentListResult,
-  RoleAssignmentsListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoleAssignmentsListByHubRequest,
-  output: RoleAssignmentListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RolesListByHubError = AzureOpError;
-/** Gets all the roles for the hub. */
-export const RolesListByHub: API.OperationMethod<
-  RolesListByHubRequest,
-  RoleListResult,
-  RolesListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RolesListByHubRequest,
-  output: RoleListResult,
+  input: UpdateHubRequest,
+  output: UpdateHubResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7607,81 +7674,6 @@ export const ViewsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ViewsCreateOrUpdateRequest,
   output: ViewsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ViewsDeleteError = AzureOpError;
-/** Deletes a view in the specified hub. */
-export const ViewsDelete: API.OperationMethod<
-  ViewsDeleteRequest,
-  ViewsDeleteResponse,
-  ViewsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ViewsDeleteRequest,
-  output: ViewsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ViewsGetError = AzureOpError;
-/** Gets a view in the hub. */
-export const ViewsGet: API.OperationMethod<
-  ViewsGetRequest,
-  ViewsGetResponse,
-  ViewsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ViewsGetRequest,
-  output: ViewsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ViewsListByHubError = AzureOpError;
-/** Gets all available views for given user in the specified hub. */
-export const ViewsListByHub: API.OperationMethod<
-  ViewsListByHubRequest,
-  ViewListResult,
-  ViewsListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ViewsListByHubRequest,
-  output: ViewListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WidgetTypesGetError = AzureOpError;
-/** Gets a widget type in the specified hub. */
-export const WidgetTypesGet: API.OperationMethod<
-  WidgetTypesGetRequest,
-  WidgetTypesGetResponse,
-  WidgetTypesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WidgetTypesGetRequest,
-  output: WidgetTypesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WidgetTypesListByHubError = AzureOpError;
-/** Gets all available widget types in the specified hub. */
-export const WidgetTypesListByHub: API.OperationMethod<
-  WidgetTypesListByHubRequest,
-  WidgetTypeListResult,
-  WidgetTypesListByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WidgetTypesListByHubRequest,
-  output: WidgetTypeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

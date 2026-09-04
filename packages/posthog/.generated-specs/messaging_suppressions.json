@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.messaging_suppressions#MessagingSuppressionsAddSuppressionCreateRequest": {
+    "com.posthog.messaging_suppressions#CreateMessagingSuppressionAddSuppressionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -153,10 +153,10 @@
         "smithy.api#documentation": "* `BOUNCE` - Bounce\n* `MANUAL` - Manual\n* `COMPLAINT` - Complaint"
       }
     },
-    "com.posthog.messaging_suppressions#MessagingSuppressionsAddSuppressionCreate": {
+    "com.posthog.messaging_suppressions#CreateMessagingSuppressionAddSuppression": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.messaging_suppressions#MessagingSuppressionsAddSuppressionCreateRequest"
+        "target": "com.posthog.messaging_suppressions#CreateMessagingSuppressionAddSuppressionRequest"
       },
       "output": {
         "target": "com.posthog.messaging_suppressions#MessageSuppression"
@@ -170,7 +170,7 @@
         "smithy.api#documentation": "Manually add an email address to the suppression list\n\nManually suppress an email address so no workflow sends to it."
       }
     },
-    "com.posthog.messaging_suppressions#MessagingSuppressionsRemoveSuppressionCreateRequest": {
+    "com.posthog.messaging_suppressions#CreateMessagingSuppressionRemoveSuppressionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -193,10 +193,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.messaging_suppressions#MessagingSuppressionsRemoveSuppressionCreate": {
+    "com.posthog.messaging_suppressions#CreateMessagingSuppressionRemoveSuppression": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.messaging_suppressions#MessagingSuppressionsRemoveSuppressionCreateRequest"
+        "target": "com.posthog.messaging_suppressions#CreateMessagingSuppressionRemoveSuppressionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -311,10 +311,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.messaging_suppressions#MessagingSuppressionsAddSuppressionCreate"
+          "target": "com.posthog.messaging_suppressions#CreateMessagingSuppressionAddSuppression"
         },
         {
-          "target": "com.posthog.messaging_suppressions#MessagingSuppressionsRemoveSuppressionCreate"
+          "target": "com.posthog.messaging_suppressions#CreateMessagingSuppressionRemoveSuppression"
         },
         {
           "target": "com.posthog.messaging_suppressions#MessagingSuppressionsSuppressionsRetrieve"

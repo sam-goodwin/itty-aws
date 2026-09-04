@@ -491,433 +491,6 @@ export const AccountsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsCreateOrUpdateResponse",
 }) as any as S.Schema<AccountsCreateOrUpdateResponse>;
 
-export interface AccountsDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Maps Account. */
-  accountName: string;
-}
-export const AccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    accountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
-      code: 200,
-      apiVersion: "2023-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AccountsDeleteRequest",
-}) as any as S.Schema<AccountsDeleteRequest>;
-
-export interface AccountsDeleteResponse {}
-export const AccountsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AccountsDeleteResponse",
-}) as any as S.Schema<AccountsDeleteResponse>;
-
-export interface AccountsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Maps Account. */
-  accountName: string;
-}
-export const AccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    accountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
-      code: 200,
-      apiVersion: "2023-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AccountsGetRequest",
-}) as any as S.Schema<AccountsGetRequest>;
-
-/** Resource tags. */
-export type AccountsGetResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountsGetResponseTagsMap>;
-
-/** The type of identity that created the resource. */
-export type AccountsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const AccountsGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type AccountsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const AccountsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface AccountsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: AccountsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: AccountsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const AccountsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(AccountsGetResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      AccountsGetResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsGetResponseSystemData",
-}) as any as S.Schema<AccountsGetResponseSystemData>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export type AccountsGetResponseIdentity =
-  AccountsCreateOrUpdateResponseIdentity;
-export const AccountsGetResponseIdentity =
-  AccountsCreateOrUpdateResponseIdentity;
-
-export interface AccountsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource tags. */
-  tags?: AccountsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The SKU of this account. */
-  sku: Sku;
-  /** Get or Set Kind property. */
-  kind?: Kind;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: AccountsGetResponseSystemData;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccountsCreateOrUpdateResponseIdentity;
-  /** The map account properties. */
-  properties?: MapsAccountProperties;
-}
-export const AccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(AccountsGetResponseTagsMap),
-    location: S.String,
-    sku: Sku,
-    kind: S.optional(Kind),
-    systemData: S.optional(AccountsGetResponseSystemData),
-    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
-    properties: S.optional(MapsAccountProperties),
-  }),
-).annotate({
-  identifier: "AccountsGetResponse",
-}) as any as S.Schema<AccountsGetResponse>;
-
-export interface AccountsListByResourceGroupRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const AccountsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts",
-      code: 200,
-      apiVersion: "2023-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AccountsListByResourceGroupRequest",
-}) as any as S.Schema<AccountsListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type MapsAccountTagsMap = { [key: string]: string | undefined };
-export const MapsAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MapsAccountTagsMap>;
-
-/** The type of identity that created the resource. */
-export type MapsAccountSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const MapsAccountSystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type MapsAccountSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const MapsAccountSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface MapsAccountSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: MapsAccountSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: MapsAccountSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const MapsAccountSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(MapsAccountSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(MapsAccountSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MapsAccountSystemData",
-}) as any as S.Schema<MapsAccountSystemData>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export type MapsAccountIdentity = AccountsCreateOrUpdateResponseIdentity;
-export const MapsAccountIdentity = AccountsCreateOrUpdateResponseIdentity;
-
-/** An Azure resource which represents access to a suite of Maps REST APIs. */
-export interface MapsAccount {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource tags. */
-  tags?: MapsAccountTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The SKU of this account. */
-  sku: Sku;
-  /** Get or Set Kind property. */
-  kind?: Kind;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: MapsAccountSystemData;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccountsCreateOrUpdateResponseIdentity;
-  /** The map account properties. */
-  properties?: MapsAccountProperties;
-}
-export const MapsAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(MapsAccountTagsMap),
-    location: S.String,
-    sku: Sku,
-    kind: S.optional(Kind),
-    systemData: S.optional(MapsAccountSystemData),
-    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
-    properties: S.optional(MapsAccountProperties),
-  }),
-).annotate({ identifier: "MapsAccount" }) as any as S.Schema<MapsAccount>;
-
-/** a Maps Account. */
-export type MapsAccountsValueList = Array<MapsAccount>;
-export const MapsAccountsValueList = /*@__PURE__*/ S.Array(
-  MapsAccount,
-) as any as S.Schema<MapsAccountsValueList>;
-
-/** A list of Maps Accounts. */
-export interface MapsAccounts {
-  /** a Maps Account. */
-  value?: MapsAccountsValueList;
-  /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
-  nextLink?: string;
-}
-export const MapsAccounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MapsAccountsValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "MapsAccounts" }) as any as S.Schema<MapsAccounts>;
-
-export interface AccountsListBySubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-}
-export const AccountsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/accounts",
-      code: 200,
-      apiVersion: "2023-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AccountsListBySubscriptionRequest",
-}) as any as S.Schema<AccountsListBySubscriptionRequest>;
-
-export interface AccountsListKeysRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Maps Account. */
-  accountName: string;
-}
-export const AccountsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    accountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/listKeys",
-      code: 200,
-      apiVersion: "2023-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AccountsListKeysRequest",
-}) as any as S.Schema<AccountsListKeysRequest>;
-
-/** The set of keys which can be used to access the Maps REST APIs. Two keys are provided for key rotation without interruption. */
-export interface MapsAccountKeys {
-  /** The last updated date and time of the primary key. */
-  primaryKeyLastUpdated?: string;
-  /** The primary key for accessing the Maps REST APIs. */
-  primaryKey?: string;
-  /** The secondary key for accessing the Maps REST APIs. */
-  secondaryKey?: string;
-  /** The last updated date and time of the secondary key. */
-  secondaryKeyLastUpdated?: string;
-}
-export const MapsAccountKeys = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primaryKeyLastUpdated: S.optional(S.String),
-    primaryKey: S.optional(S.String),
-    secondaryKey: S.optional(S.String),
-    secondaryKeyLastUpdated: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MapsAccountKeys",
-}) as any as S.Schema<MapsAccountKeys>;
-
-/** The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS. */
-export type AccountsListSasRequestSigningKey =
-  | "primaryKey"
-  | "secondaryKey"
-  | "managedIdentity";
-export const AccountsListSasRequestSigningKey = /*@__PURE__*/ S.String;
-
-/** Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible. */
-export type AccountsListSasRequestRegionsList = Array<string>;
-export const AccountsListSasRequestRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountsListSasRequestRegionsList>;
-
-export interface AccountsListSasRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Maps Account. */
-  accountName: string;
-  /** The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS. */
-  signingKey: AccountsListSasRequestSigningKey | (string & {});
-  /** The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Map Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id. */
-  principalId: string;
-  /** Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible. */
-  regions?: AccountsListSasRequestRegionsList;
-  /** Required parameter which represents the desired maximum request per second to allowed for the given SAS token. This does not guarantee perfect accuracy in measurements but provides application safe guards of abuse with eventual enforcement. */
-  maxRatePerSecond: number;
-  /** The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`. */
-  start: string;
-  /** The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`. */
-  expiry: string;
-}
-export const AccountsListSasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    accountName: S.String.pipe(T.Label()),
-    signingKey: AccountsListSasRequestSigningKey,
-    principalId: S.String,
-    regions: S.optional(AccountsListSasRequestRegionsList),
-    maxRatePerSecond: S.Number,
-    start: S.String,
-    expiry: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/listSas",
-      code: 200,
-      apiVersion: "2023-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AccountsListSasRequest",
-}) as any as S.Schema<AccountsListSasRequest>;
-
-/** A new Sas token which can be used to access the Maps REST APIs and is controlled by the specified Managed identity permissions on Azure (IAM) Role Based Access Control. */
-export interface MapsAccountSasToken {
-  /** The shared access signature access token. */
-  accountSasToken?: string;
-}
-export const MapsAccountSasToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountSasToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MapsAccountSasToken",
-}) as any as S.Schema<MapsAccountSasToken>;
-
 /** Whether the operation refers to the primary or secondary key. */
 export type AccountsRegenerateKeysRequestKeyType = "primary" | "secondary";
 export const AccountsRegenerateKeysRequestKeyType = /*@__PURE__*/ S.String;
@@ -950,162 +523,27 @@ export const AccountsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsRegenerateKeysRequest",
 }) as any as S.Schema<AccountsRegenerateKeysRequest>;
 
-/** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
-export type AccountsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountsUpdateRequestTagsMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export type AccountsUpdateRequestIdentity =
-  AccountsCreateOrUpdateRequestIdentity;
-export const AccountsUpdateRequestIdentity =
-  AccountsCreateOrUpdateRequestIdentity;
-
-export interface AccountsUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Maps Account. */
-  accountName: string;
-  /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
-  tags?: AccountsUpdateRequestTagsMap;
-  /** Get or Set Kind property. */
-  kind?: Kind | (string & {});
-  /** The SKU of this account. */
-  sku?: SkuInput;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccountsCreateOrUpdateRequestIdentity;
-  /** The map account properties. */
-  properties?: MapsAccountPropertiesInput;
+/** The set of keys which can be used to access the Maps REST APIs. Two keys are provided for key rotation without interruption. */
+export interface MapsAccountKeys {
+  /** The last updated date and time of the primary key. */
+  primaryKeyLastUpdated?: string;
+  /** The primary key for accessing the Maps REST APIs. */
+  primaryKey?: string;
+  /** The secondary key for accessing the Maps REST APIs. */
+  secondaryKey?: string;
+  /** The last updated date and time of the secondary key. */
+  secondaryKeyLastUpdated?: string;
 }
-export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const MapsAccountKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    accountName: S.String.pipe(T.Label()),
-    tags: S.optional(AccountsUpdateRequestTagsMap),
-    kind: S.optional(Kind),
-    sku: S.optional(SkuInput),
-    identity: S.optional(AccountsCreateOrUpdateRequestIdentity),
-    properties: S.optional(MapsAccountPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
-      code: 200,
-      apiVersion: "2023-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AccountsUpdateRequest",
-}) as any as S.Schema<AccountsUpdateRequest>;
-
-/** Resource tags. */
-export type AccountsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AccountsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountsUpdateResponseTagsMap>;
-
-/** The type of identity that created the resource. */
-export type AccountsUpdateResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const AccountsUpdateResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type AccountsUpdateResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const AccountsUpdateResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface AccountsUpdateResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: AccountsUpdateResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: AccountsUpdateResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const AccountsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(AccountsUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      AccountsUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
+    primaryKeyLastUpdated: S.optional(S.String),
+    primaryKey: S.optional(S.String),
+    secondaryKey: S.optional(S.String),
+    secondaryKeyLastUpdated: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "AccountsUpdateResponseSystemData",
-}) as any as S.Schema<AccountsUpdateResponseSystemData>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export type AccountsUpdateResponseIdentity =
-  AccountsCreateOrUpdateResponseIdentity;
-export const AccountsUpdateResponseIdentity =
-  AccountsCreateOrUpdateResponseIdentity;
-
-export interface AccountsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource tags. */
-  tags?: AccountsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The SKU of this account. */
-  sku: Sku;
-  /** Get or Set Kind property. */
-  kind?: Kind;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: AccountsUpdateResponseSystemData;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccountsCreateOrUpdateResponseIdentity;
-  /** The map account properties. */
-  properties?: MapsAccountProperties;
-}
-export const AccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(AccountsUpdateResponseTagsMap),
-    location: S.String,
-    sku: Sku,
-    kind: S.optional(Kind),
-    systemData: S.optional(AccountsUpdateResponseSystemData),
-    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
-    properties: S.optional(MapsAccountProperties),
-  }),
-).annotate({
-  identifier: "AccountsUpdateResponse",
-}) as any as S.Schema<AccountsUpdateResponse>;
+  identifier: "MapsAccountKeys",
+}) as any as S.Schema<MapsAccountKeys>;
 
 /** Resource tags. */
 export type CreatorsCreateOrUpdateRequestTagsMap = {
@@ -1272,7 +710,39 @@ export const CreatorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatorsCreateOrUpdateResponse",
 }) as any as S.Schema<CreatorsCreateOrUpdateResponse>;
 
-export interface CreatorsDeleteRequest {
+export interface DeleteAccountRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Maps Account. */
+  accountName: string;
+}
+export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
+      code: 200,
+      apiVersion: "2023-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAccountRequest",
+}) as any as S.Schema<DeleteAccountRequest>;
+
+export interface DeleteAccountResponse {}
+export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAccountResponse",
+}) as any as S.Schema<DeleteAccountResponse>;
+
+export interface DeleteCreatorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1282,7 +752,7 @@ export interface CreatorsDeleteRequest {
   /** The name of the Maps Creator instance. */
   creatorName: string;
 }
-export const CreatorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCreatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1297,17 +767,142 @@ export const CreatorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreatorsDeleteRequest",
-}) as any as S.Schema<CreatorsDeleteRequest>;
+  identifier: "DeleteCreatorRequest",
+}) as any as S.Schema<DeleteCreatorRequest>;
 
-export interface CreatorsDeleteResponse {}
-export const CreatorsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteCreatorResponse {}
+export const DeleteCreatorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "CreatorsDeleteResponse",
-}) as any as S.Schema<CreatorsDeleteResponse>;
+  identifier: "DeleteCreatorResponse",
+}) as any as S.Schema<DeleteCreatorResponse>;
 
-export interface CreatorsGetRequest {
+export interface GetAccountRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Maps Account. */
+  accountName: string;
+}
+export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
+      code: 200,
+      apiVersion: "2023-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountRequest",
+}) as any as S.Schema<GetAccountRequest>;
+
+/** Resource tags. */
+export type AccountsGetResponseTagsMap = { [key: string]: string | undefined };
+export const AccountsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsGetResponseTagsMap>;
+
+/** The type of identity that created the resource. */
+export type AccountsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const AccountsGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type AccountsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const AccountsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface AccountsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: AccountsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: AccountsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const AccountsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(AccountsGetResponseSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      AccountsGetResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AccountsGetResponseSystemData",
+}) as any as S.Schema<AccountsGetResponseSystemData>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export type AccountsGetResponseIdentity =
+  AccountsCreateOrUpdateResponseIdentity;
+export const AccountsGetResponseIdentity =
+  AccountsCreateOrUpdateResponseIdentity;
+
+export interface GetAccountResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Resource tags. */
+  tags?: AccountsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The SKU of this account. */
+  sku: Sku;
+  /** Get or Set Kind property. */
+  kind?: Kind;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: AccountsGetResponseSystemData;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: AccountsCreateOrUpdateResponseIdentity;
+  /** The map account properties. */
+  properties?: MapsAccountProperties;
+}
+export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(AccountsGetResponseTagsMap),
+    location: S.String,
+    sku: Sku,
+    kind: S.optional(Kind),
+    systemData: S.optional(AccountsGetResponseSystemData),
+    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
+    properties: S.optional(MapsAccountProperties),
+  }),
+).annotate({
+  identifier: "GetAccountResponse",
+}) as any as S.Schema<GetAccountResponse>;
+
+export interface GetCreatorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1317,7 +912,7 @@ export interface CreatorsGetRequest {
   /** The name of the Maps Creator instance. */
   creatorName: string;
 }
-export const CreatorsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCreatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1332,8 +927,8 @@ export const CreatorsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreatorsGetRequest",
-}) as any as S.Schema<CreatorsGetRequest>;
+  identifier: "GetCreatorRequest",
+}) as any as S.Schema<GetCreatorRequest>;
 
 /** Resource tags. */
 export type CreatorsGetResponseTagsMap = { [key: string]: string | undefined };
@@ -1390,7 +985,7 @@ export const CreatorsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatorsGetResponseSystemData",
 }) as any as S.Schema<CreatorsGetResponseSystemData>;
 
-export interface CreatorsGetResponse {
+export interface GetCreatorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1406,7 +1001,7 @@ export interface CreatorsGetResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreatorsGetResponseSystemData;
 }
-export const CreatorsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCreatorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1417,10 +1012,164 @@ export const CreatorsGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(CreatorsGetResponseSystemData),
   }),
 ).annotate({
-  identifier: "CreatorsGetResponse",
-}) as any as S.Schema<CreatorsGetResponse>;
+  identifier: "GetCreatorResponse",
+}) as any as S.Schema<GetCreatorResponse>;
 
-export interface CreatorsListByAccountRequest {
+export interface ListAccountByResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts",
+      code: 200,
+      apiVersion: "2023-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountByResourceGroupRequest",
+}) as any as S.Schema<ListAccountByResourceGroupRequest>;
+
+/** Resource tags. */
+export type MapsAccountTagsMap = { [key: string]: string | undefined };
+export const MapsAccountTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MapsAccountTagsMap>;
+
+/** The type of identity that created the resource. */
+export type MapsAccountSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const MapsAccountSystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type MapsAccountSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const MapsAccountSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface MapsAccountSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: MapsAccountSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: MapsAccountSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const MapsAccountSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(MapsAccountSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(MapsAccountSystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MapsAccountSystemData",
+}) as any as S.Schema<MapsAccountSystemData>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export type MapsAccountIdentity = AccountsCreateOrUpdateResponseIdentity;
+export const MapsAccountIdentity = AccountsCreateOrUpdateResponseIdentity;
+
+/** An Azure resource which represents access to a suite of Maps REST APIs. */
+export interface MapsAccount {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Resource tags. */
+  tags?: MapsAccountTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The SKU of this account. */
+  sku: Sku;
+  /** Get or Set Kind property. */
+  kind?: Kind;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: MapsAccountSystemData;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: AccountsCreateOrUpdateResponseIdentity;
+  /** The map account properties. */
+  properties?: MapsAccountProperties;
+}
+export const MapsAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(MapsAccountTagsMap),
+    location: S.String,
+    sku: Sku,
+    kind: S.optional(Kind),
+    systemData: S.optional(MapsAccountSystemData),
+    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
+    properties: S.optional(MapsAccountProperties),
+  }),
+).annotate({ identifier: "MapsAccount" }) as any as S.Schema<MapsAccount>;
+
+/** a Maps Account. */
+export type MapsAccountsValueList = Array<MapsAccount>;
+export const MapsAccountsValueList = /*@__PURE__*/ S.Array(
+  MapsAccount,
+) as any as S.Schema<MapsAccountsValueList>;
+
+/** A list of Maps Accounts. */
+export interface MapsAccounts {
+  /** a Maps Account. */
+  value?: MapsAccountsValueList;
+  /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
+  nextLink?: string;
+}
+export const MapsAccounts = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(MapsAccountsValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "MapsAccounts" }) as any as S.Schema<MapsAccounts>;
+
+export interface ListAccountBySubscriptionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+}
+export const ListAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/accounts",
+      code: 200,
+      apiVersion: "2023-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountBySubscriptionRequest",
+}) as any as S.Schema<ListAccountBySubscriptionRequest>;
+
+export interface ListAccountKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1428,7 +1177,101 @@ export interface CreatorsListByAccountRequest {
   /** The name of the Maps Account. */
   accountName: string;
 }
-export const CreatorsListByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/listKeys",
+      code: 200,
+      apiVersion: "2023-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountKeysRequest",
+}) as any as S.Schema<ListAccountKeysRequest>;
+
+/** The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS. */
+export type AccountsListSasRequestSigningKey =
+  | "primaryKey"
+  | "secondaryKey"
+  | "managedIdentity";
+export const AccountsListSasRequestSigningKey = /*@__PURE__*/ S.String;
+
+/** Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible. */
+export type AccountsListSasRequestRegionsList = Array<string>;
+export const AccountsListSasRequestRegionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AccountsListSasRequestRegionsList>;
+
+export interface ListAccountSasRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Maps Account. */
+  accountName: string;
+  /** The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS. */
+  signingKey: AccountsListSasRequestSigningKey | (string & {});
+  /** The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Map Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id. */
+  principalId: string;
+  /** Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible. */
+  regions?: AccountsListSasRequestRegionsList;
+  /** Required parameter which represents the desired maximum request per second to allowed for the given SAS token. This does not guarantee perfect accuracy in measurements but provides application safe guards of abuse with eventual enforcement. */
+  maxRatePerSecond: number;
+  /** The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`. */
+  start: string;
+  /** The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`. */
+  expiry: string;
+}
+export const ListAccountSasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+    signingKey: AccountsListSasRequestSigningKey,
+    principalId: S.String,
+    regions: S.optional(AccountsListSasRequestRegionsList),
+    maxRatePerSecond: S.Number,
+    start: S.String,
+    expiry: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/listSas",
+      code: 200,
+      apiVersion: "2023-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountSasRequest",
+}) as any as S.Schema<ListAccountSasRequest>;
+
+/** A new Sas token which can be used to access the Maps REST APIs and is controlled by the specified Managed identity permissions on Azure (IAM) Role Based Access Control. */
+export interface MapsAccountSasToken {
+  /** The shared access signature access token. */
+  accountSasToken?: string;
+}
+export const MapsAccountSasToken = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountSasToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MapsAccountSasToken",
+}) as any as S.Schema<MapsAccountSasToken>;
+
+export interface ListCreatorByAccountRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Maps Account. */
+  accountName: string;
+}
+export const ListCreatorByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1442,8 +1285,8 @@ export const CreatorsListByAccountRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreatorsListByAccountRequest",
-}) as any as S.Schema<CreatorsListByAccountRequest>;
+  identifier: "ListCreatorByAccountRequest",
+}) as any as S.Schema<ListCreatorByAccountRequest>;
 
 /** Resource tags. */
 export type CreatorTagsMap = { [key: string]: string | undefined };
@@ -1545,138 +1388,8 @@ export const CreatorList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreatorList" }) as any as S.Schema<CreatorList>;
 
-/** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
-export type CreatorsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const CreatorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatorsUpdateRequestTagsMap>;
-
-export interface CreatorsUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Maps Account. */
-  accountName: string;
-  /** The name of the Maps Creator instance. */
-  creatorName: string;
-  /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
-  tags?: CreatorsUpdateRequestTagsMap;
-  /** Creator resource properties. */
-  properties?: CreatorPropertiesInput;
-}
-export const CreatorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    accountName: S.String.pipe(T.Label()),
-    creatorName: S.String.pipe(T.Label()),
-    tags: S.optional(CreatorsUpdateRequestTagsMap),
-    properties: S.optional(CreatorPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators/{creatorName}",
-      code: 200,
-      apiVersion: "2023-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "CreatorsUpdateRequest",
-}) as any as S.Schema<CreatorsUpdateRequest>;
-
-/** Resource tags. */
-export type CreatorsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const CreatorsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatorsUpdateResponseTagsMap>;
-
-/** The type of identity that created the resource. */
-export type CreatorsUpdateResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const CreatorsUpdateResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type CreatorsUpdateResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const CreatorsUpdateResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface CreatorsUpdateResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: CreatorsUpdateResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: CreatorsUpdateResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const CreatorsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CreatorsUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      CreatorsUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreatorsUpdateResponseSystemData",
-}) as any as S.Schema<CreatorsUpdateResponseSystemData>;
-
-export interface CreatorsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource tags. */
-  tags?: CreatorsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The Creator resource properties. */
-  properties: CreatorProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: CreatorsUpdateResponseSystemData;
-}
-export const CreatorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(CreatorsUpdateResponseTagsMap),
-    location: S.String,
-    properties: CreatorProperties,
-    systemData: S.optional(CreatorsUpdateResponseSystemData),
-  }),
-).annotate({
-  identifier: "CreatorsUpdateResponse",
-}) as any as S.Schema<CreatorsUpdateResponse>;
-
-export interface MapsListOperationsRequest {}
-export const MapsListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListMapOperationsRequest {}
+export const ListMapOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1686,8 +1399,8 @@ export const MapsListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MapsListOperationsRequest",
-}) as any as S.Schema<MapsListOperationsRequest>;
+  identifier: "ListMapOperationsRequest",
+}) as any as S.Schema<ListMapOperationsRequest>;
 
 /** Operation display payload */
 export interface OperationDisplay {
@@ -1876,11 +1589,11 @@ export const MapsOperations = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MapsOperations" }) as any as S.Schema<MapsOperations>;
 
-export interface MapsListSubscriptionOperationsRequest {
+export interface ListMapSubscriptionOperationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const MapsListSubscriptionOperationsRequest = /*@__PURE__*/ S.suspend(
+export const ListMapSubscriptionOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1893,8 +1606,295 @@ export const MapsListSubscriptionOperationsRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "MapsListSubscriptionOperationsRequest",
-}) as any as S.Schema<MapsListSubscriptionOperationsRequest>;
+  identifier: "ListMapSubscriptionOperationsRequest",
+}) as any as S.Schema<ListMapSubscriptionOperationsRequest>;
+
+/** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
+export type AccountsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsUpdateRequestTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export type AccountsUpdateRequestIdentity =
+  AccountsCreateOrUpdateRequestIdentity;
+export const AccountsUpdateRequestIdentity =
+  AccountsCreateOrUpdateRequestIdentity;
+
+export interface UpdateAccountRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Maps Account. */
+  accountName: string;
+  /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
+  tags?: AccountsUpdateRequestTagsMap;
+  /** Get or Set Kind property. */
+  kind?: Kind | (string & {});
+  /** The SKU of this account. */
+  sku?: SkuInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: AccountsCreateOrUpdateRequestIdentity;
+  /** The map account properties. */
+  properties?: MapsAccountPropertiesInput;
+}
+export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+    tags: S.optional(AccountsUpdateRequestTagsMap),
+    kind: S.optional(Kind),
+    sku: S.optional(SkuInput),
+    identity: S.optional(AccountsCreateOrUpdateRequestIdentity),
+    properties: S.optional(MapsAccountPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
+      code: 200,
+      apiVersion: "2023-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAccountRequest",
+}) as any as S.Schema<UpdateAccountRequest>;
+
+/** Resource tags. */
+export type AccountsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsUpdateResponseTagsMap>;
+
+/** The type of identity that created the resource. */
+export type AccountsUpdateResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const AccountsUpdateResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type AccountsUpdateResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const AccountsUpdateResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface AccountsUpdateResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: AccountsUpdateResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: AccountsUpdateResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const AccountsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(AccountsUpdateResponseSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      AccountsUpdateResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AccountsUpdateResponseSystemData",
+}) as any as S.Schema<AccountsUpdateResponseSystemData>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export type AccountsUpdateResponseIdentity =
+  AccountsCreateOrUpdateResponseIdentity;
+export const AccountsUpdateResponseIdentity =
+  AccountsCreateOrUpdateResponseIdentity;
+
+export interface UpdateAccountResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Resource tags. */
+  tags?: AccountsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The SKU of this account. */
+  sku: Sku;
+  /** Get or Set Kind property. */
+  kind?: Kind;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: AccountsUpdateResponseSystemData;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: AccountsCreateOrUpdateResponseIdentity;
+  /** The map account properties. */
+  properties?: MapsAccountProperties;
+}
+export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(AccountsUpdateResponseTagsMap),
+    location: S.String,
+    sku: Sku,
+    kind: S.optional(Kind),
+    systemData: S.optional(AccountsUpdateResponseSystemData),
+    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
+    properties: S.optional(MapsAccountProperties),
+  }),
+).annotate({
+  identifier: "UpdateAccountResponse",
+}) as any as S.Schema<UpdateAccountResponse>;
+
+/** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
+export type CreatorsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CreatorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreatorsUpdateRequestTagsMap>;
+
+export interface UpdateCreatorRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Maps Account. */
+  accountName: string;
+  /** The name of the Maps Creator instance. */
+  creatorName: string;
+  /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
+  tags?: CreatorsUpdateRequestTagsMap;
+  /** Creator resource properties. */
+  properties?: CreatorPropertiesInput;
+}
+export const UpdateCreatorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+    creatorName: S.String.pipe(T.Label()),
+    tags: S.optional(CreatorsUpdateRequestTagsMap),
+    properties: S.optional(CreatorPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators/{creatorName}",
+      code: 200,
+      apiVersion: "2023-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCreatorRequest",
+}) as any as S.Schema<UpdateCreatorRequest>;
+
+/** Resource tags. */
+export type CreatorsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CreatorsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreatorsUpdateResponseTagsMap>;
+
+/** The type of identity that created the resource. */
+export type CreatorsUpdateResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const CreatorsUpdateResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type CreatorsUpdateResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const CreatorsUpdateResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface CreatorsUpdateResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: CreatorsUpdateResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: CreatorsUpdateResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const CreatorsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(CreatorsUpdateResponseSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      CreatorsUpdateResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreatorsUpdateResponseSystemData",
+}) as any as S.Schema<CreatorsUpdateResponseSystemData>;
+
+export interface UpdateCreatorResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Resource tags. */
+  tags?: CreatorsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The Creator resource properties. */
+  properties: CreatorProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: CreatorsUpdateResponseSystemData;
+}
+export const UpdateCreatorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(CreatorsUpdateResponseTagsMap),
+    location: S.String,
+    properties: CreatorProperties,
+    systemData: S.optional(CreatorsUpdateResponseSystemData),
+  }),
+).annotate({
+  identifier: "UpdateCreatorResponse",
+}) as any as S.Schema<UpdateCreatorResponse>;
 
 export type AccountsCreateOrUpdateError = AzureOpError;
 /** Create or update a Maps Account. A Maps Account holds the keys which allow access to the Maps REST APIs. */
@@ -1906,96 +1906,6 @@ export const AccountsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AccountsCreateOrUpdateRequest,
   output: AccountsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccountsDeleteError = AzureOpError;
-/** Delete a Maps Account. */
-export const AccountsDelete: API.OperationMethod<
-  AccountsDeleteRequest,
-  AccountsDeleteResponse,
-  AccountsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsDeleteRequest,
-  output: AccountsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccountsGetError = AzureOpError;
-/** Get a Maps Account. */
-export const AccountsGet: API.OperationMethod<
-  AccountsGetRequest,
-  AccountsGetResponse,
-  AccountsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsGetRequest,
-  output: AccountsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccountsListByResourceGroupError = AzureOpError;
-/** Get all Maps Accounts in a Resource Group */
-export const AccountsListByResourceGroup: API.OperationMethod<
-  AccountsListByResourceGroupRequest,
-  MapsAccounts,
-  AccountsListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsListByResourceGroupRequest,
-  output: MapsAccounts,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccountsListBySubscriptionError = AzureOpError;
-/** Get all Maps Accounts in a Subscription */
-export const AccountsListBySubscription: API.OperationMethod<
-  AccountsListBySubscriptionRequest,
-  MapsAccounts,
-  AccountsListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsListBySubscriptionRequest,
-  output: MapsAccounts,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccountsListKeysError = AzureOpError;
-/** Get the keys to use with the Maps APIs. A key is used to authenticate and authorize access to the Maps REST APIs. Only one key is needed at a time; two are given to provide seamless key regeneration. */
-export const AccountsListKeys: API.OperationMethod<
-  AccountsListKeysRequest,
-  MapsAccountKeys,
-  AccountsListKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsListKeysRequest,
-  output: MapsAccountKeys,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccountsListSasError = AzureOpError;
-/** Create and list an account shared access signature token. Use this SAS token for authentication to Azure Maps REST APIs through various Azure Maps SDKs. As prerequisite to create a SAS Token. Prerequisites: 1. Create or have an existing User Assigned Managed Identity in the same Azure region as the account. 2. Create or update an Azure Map account with the same Azure region as the User Assigned Managed Identity is placed. */
-export const AccountsListSas: API.OperationMethod<
-  AccountsListSasRequest,
-  MapsAccountSasToken,
-  AccountsListSasError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsListSasRequest,
-  output: MapsAccountSasToken,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2016,21 +1926,6 @@ export const AccountsRegenerateKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AccountsUpdateError = AzureOpError;
-/** Updates a Maps Account. Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties. */
-export const AccountsUpdate: API.OperationMethod<
-  AccountsUpdateRequest,
-  AccountsUpdateResponse,
-  AccountsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsUpdateRequest,
-  output: AccountsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CreatorsCreateOrUpdateError = AzureOpError;
 /** Create or update a Maps Creator resource. Creator resource will manage Azure resources required to populate a custom set of mapping data. It requires an account to exist before it can be created. */
 export const CreatorsCreateOrUpdate: API.OperationMethod<
@@ -2046,91 +1941,196 @@ export const CreatorsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatorsDeleteError = AzureOpError;
+export type DeleteAccountError = AzureOpError;
+/** Delete a Maps Account. */
+export const DeleteAccount: API.OperationMethod<
+  DeleteAccountRequest,
+  DeleteAccountResponse,
+  DeleteAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAccountRequest,
+  output: DeleteAccountResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCreatorError = AzureOpError;
 /** Delete a Maps Creator resource. */
-export const CreatorsDelete: API.OperationMethod<
-  CreatorsDeleteRequest,
-  CreatorsDeleteResponse,
-  CreatorsDeleteError,
+export const DeleteCreator: API.OperationMethod<
+  DeleteCreatorRequest,
+  DeleteCreatorResponse,
+  DeleteCreatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatorsDeleteRequest,
-  output: CreatorsDeleteResponse,
+  input: DeleteCreatorRequest,
+  output: DeleteCreatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreatorsGetError = AzureOpError;
+export type GetAccountError = AzureOpError;
+/** Get a Maps Account. */
+export const GetAccount: API.OperationMethod<
+  GetAccountRequest,
+  GetAccountResponse,
+  GetAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAccountRequest,
+  output: GetAccountResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetCreatorError = AzureOpError;
 /** Get a Maps Creator resource. */
-export const CreatorsGet: API.OperationMethod<
-  CreatorsGetRequest,
-  CreatorsGetResponse,
-  CreatorsGetError,
+export const GetCreator: API.OperationMethod<
+  GetCreatorRequest,
+  GetCreatorResponse,
+  GetCreatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatorsGetRequest,
-  output: CreatorsGetResponse,
+  input: GetCreatorRequest,
+  output: GetCreatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreatorsListByAccountError = AzureOpError;
-/** Get all Creator instances for an Azure Maps Account */
-export const CreatorsListByAccount: API.OperationMethod<
-  CreatorsListByAccountRequest,
-  CreatorList,
-  CreatorsListByAccountError,
+export type ListAccountByResourceGroupError = AzureOpError;
+/** Get all Maps Accounts in a Resource Group */
+export const ListAccountByResourceGroup: API.OperationMethod<
+  ListAccountByResourceGroupRequest,
+  MapsAccounts,
+  ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatorsListByAccountRequest,
+  input: ListAccountByResourceGroupRequest,
+  output: MapsAccounts,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAccountBySubscriptionError = AzureOpError;
+/** Get all Maps Accounts in a Subscription */
+export const ListAccountBySubscription: API.OperationMethod<
+  ListAccountBySubscriptionRequest,
+  MapsAccounts,
+  ListAccountBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAccountBySubscriptionRequest,
+  output: MapsAccounts,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAccountKeysError = AzureOpError;
+/** Get the keys to use with the Maps APIs. A key is used to authenticate and authorize access to the Maps REST APIs. Only one key is needed at a time; two are given to provide seamless key regeneration. */
+export const ListAccountKeys: API.OperationMethod<
+  ListAccountKeysRequest,
+  MapsAccountKeys,
+  ListAccountKeysError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAccountKeysRequest,
+  output: MapsAccountKeys,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAccountSasError = AzureOpError;
+/** Create and list an account shared access signature token. Use this SAS token for authentication to Azure Maps REST APIs through various Azure Maps SDKs. As prerequisite to create a SAS Token. Prerequisites: 1. Create or have an existing User Assigned Managed Identity in the same Azure region as the account. 2. Create or update an Azure Map account with the same Azure region as the User Assigned Managed Identity is placed. */
+export const ListAccountSas: API.OperationMethod<
+  ListAccountSasRequest,
+  MapsAccountSasToken,
+  ListAccountSasError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAccountSasRequest,
+  output: MapsAccountSasToken,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCreatorByAccountError = AzureOpError;
+/** Get all Creator instances for an Azure Maps Account */
+export const ListCreatorByAccount: API.OperationMethod<
+  ListCreatorByAccountRequest,
+  CreatorList,
+  ListCreatorByAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCreatorByAccountRequest,
   output: CreatorList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreatorsUpdateError = AzureOpError;
+export type ListMapOperationsError = AzureOpError;
+/** List operations available for the Maps Resource Provider */
+export const ListMapOperations: API.OperationMethod<
+  ListMapOperationsRequest,
+  MapsOperations,
+  ListMapOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMapOperationsRequest,
+  output: MapsOperations,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMapSubscriptionOperationsError = AzureOpError;
+/** List operations available for the Maps Resource Provider */
+export const ListMapSubscriptionOperations: API.OperationMethod<
+  ListMapSubscriptionOperationsRequest,
+  MapsOperations,
+  ListMapSubscriptionOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMapSubscriptionOperationsRequest,
+  output: MapsOperations,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateAccountError = AzureOpError;
+/** Updates a Maps Account. Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties. */
+export const UpdateAccount: API.OperationMethod<
+  UpdateAccountRequest,
+  UpdateAccountResponse,
+  UpdateAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAccountRequest,
+  output: UpdateAccountResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateCreatorError = AzureOpError;
 /** Updates the Maps Creator resource. Only a subset of the parameters may be updated after creation, such as Tags. */
-export const CreatorsUpdate: API.OperationMethod<
-  CreatorsUpdateRequest,
-  CreatorsUpdateResponse,
-  CreatorsUpdateError,
+export const UpdateCreator: API.OperationMethod<
+  UpdateCreatorRequest,
+  UpdateCreatorResponse,
+  UpdateCreatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatorsUpdateRequest,
-  output: CreatorsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MapsListOperationsError = AzureOpError;
-/** List operations available for the Maps Resource Provider */
-export const MapsListOperations: API.OperationMethod<
-  MapsListOperationsRequest,
-  MapsOperations,
-  MapsListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MapsListOperationsRequest,
-  output: MapsOperations,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MapsListSubscriptionOperationsError = AzureOpError;
-/** List operations available for the Maps Resource Provider */
-export const MapsListSubscriptionOperations: API.OperationMethod<
-  MapsListSubscriptionOperationsRequest,
-  MapsOperations,
-  MapsListSubscriptionOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MapsListSubscriptionOperationsRequest,
-  output: MapsOperations,
+  input: UpdateCreatorRequest,
+  output: UpdateCreatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

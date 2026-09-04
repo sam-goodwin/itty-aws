@@ -7774,7 +7774,7 @@
         "smithy.api#documentation": "* `off` - Off\n* `opt_out` - Opt Out\n* `opt_in` - Opt In"
       }
     },
-    "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequest": {
+    "com.posthog.environments#UpdateEnvironmentAddProductIntentPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8107,10 +8107,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdate": {
+    "com.posthog.environments#UpdateEnvironmentAddProductIntentPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequest"
+        "target": "com.posthog.environments#UpdateEnvironmentAddProductIntentPartialRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8198,7 +8198,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequest": {
+    "com.posthog.environments#UpdateEnvironmentCompleteProductOnboardingPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8531,10 +8531,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdate": {
+    "com.posthog.environments#UpdateEnvironmentCompleteProductOnboardingPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequest"
+        "target": "com.posthog.environments#UpdateEnvironmentCompleteProductOnboardingPartialRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8983,7 +8983,7 @@
         "smithy.api#documentation": "Deprecated: use /api/environments/{id}/ instead."
       }
     },
-    "com.posthog.environments#EnvironmentsEvaluationContextSuggestionsCreateRequest": {
+    "com.posthog.environments#CreateEnvironmentEvaluationContextSuggestionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9041,10 +9041,10 @@
       },
       "traits": {}
     },
-    "com.posthog.environments#EnvironmentsEvaluationContextSuggestionsCreate": {
+    "com.posthog.environments#CreateEnvironmentEvaluationContextSuggestion": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.environments#EnvironmentsEvaluationContextSuggestionsCreateRequest"
+        "target": "com.posthog.environments#CreateEnvironmentEvaluationContextSuggestionRequest"
       },
       "output": {
         "target": "com.posthog.environments#EvaluationContextSuggestionResponse"
@@ -9107,7 +9107,7 @@
         "smithy.api#documentation": "Hide an evaluation context name from the flag editor's suggestion list, or restore it.\n\nPOST hides the name; DELETE restores it. The underlying context row and any flags already\nusing it are never modified — this only controls what gets suggested."
       }
     },
-    "com.posthog.environments#EnvironmentsEventIngestionRestrictionsListRequest": {
+    "com.posthog.environments#ListEnvironmentEventIngestionRestrictionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9307,7 +9307,7 @@
       },
       "traits": {}
     },
-    "com.posthog.environments#EnvironmentsEventIngestionRestrictionsListResponse": {
+    "com.posthog.environments#ListEnvironmentEventIngestionRestrictionsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -9322,13 +9322,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.environments#EnvironmentsEventIngestionRestrictionsList": {
+    "com.posthog.environments#ListEnvironmentEventIngestionRestrictions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.environments#EnvironmentsEventIngestionRestrictionsListRequest"
+        "target": "com.posthog.environments#ListEnvironmentEventIngestionRestrictionsRequest"
       },
       "output": {
-        "target": "com.posthog.environments#EnvironmentsEventIngestionRestrictionsListResponse"
+        "target": "com.posthog.environments#ListEnvironmentEventIngestionRestrictionsResponse"
       },
       "errors": [
         {
@@ -9459,7 +9459,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequest": {
+    "com.posthog.environments#UpdateEnvironmentExperimentConfigPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9792,10 +9792,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdate": {
+    "com.posthog.environments#UpdateEnvironmentExperimentConfigPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequest"
+        "target": "com.posthog.environments#UpdateEnvironmentExperimentConfigPartialRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10397,7 +10397,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequest": {
+    "com.posthog.environments#UpdateEnvironmentLogConfigPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10730,10 +10730,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.environments#EnvironmentsLogsConfigPartialUpdate": {
+    "com.posthog.environments#UpdateEnvironmentLogConfigPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequest"
+        "target": "com.posthog.environments#UpdateEnvironmentLogConfigPartialRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10810,7 +10810,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequest": {
+    "com.posthog.environments#UpdateEnvironmentResetTokenPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -11143,10 +11143,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.environments#EnvironmentsResetTokenPartialUpdate": {
+    "com.posthog.environments#UpdateEnvironmentResetTokenPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequest"
+        "target": "com.posthog.environments#UpdateEnvironmentResetTokenPartialRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -11691,28 +11691,28 @@
           "target": "com.posthog.environments#EnvironmentsActivityRetrieve"
         },
         {
-          "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdate"
+          "target": "com.posthog.environments#UpdateEnvironmentAddProductIntentPartial"
         },
         {
-          "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdate"
+          "target": "com.posthog.environments#UpdateEnvironmentCompleteProductOnboardingPartial"
         },
         {
           "target": "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdate"
         },
         {
-          "target": "com.posthog.environments#EnvironmentsEvaluationContextSuggestionsCreate"
+          "target": "com.posthog.environments#CreateEnvironmentEvaluationContextSuggestion"
         },
         {
           "target": "com.posthog.environments#EnvironmentsEvaluationContextSuggestionsDestroy"
         },
         {
-          "target": "com.posthog.environments#EnvironmentsEventIngestionRestrictionsList"
+          "target": "com.posthog.environments#ListEnvironmentEventIngestionRestrictions"
         },
         {
           "target": "com.posthog.environments#EnvironmentsExperimentsConfigRetrieve"
         },
         {
-          "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdate"
+          "target": "com.posthog.environments#UpdateEnvironmentExperimentConfigPartial"
         },
         {
           "target": "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreate"
@@ -11724,10 +11724,10 @@
           "target": "com.posthog.environments#EnvironmentsLogsConfigRetrieve"
         },
         {
-          "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdate"
+          "target": "com.posthog.environments#UpdateEnvironmentLogConfigPartial"
         },
         {
-          "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdate"
+          "target": "com.posthog.environments#UpdateEnvironmentResetTokenPartial"
         },
         {
           "target": "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdate"

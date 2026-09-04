@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.domainservices#DomainServicesDelete": {
+    "com.azure.domainservices#DeleteDomainService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#DomainServicesDeleteRequest"
+        "target": "com.azure.domainservices#DeleteDomainServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.domainservices#DomainServicesDeleteRequest": {
+    "com.azure.domainservices#DeleteDomainServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -68,13 +68,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.domainservices#DomainServicesUpdate": {
+    "com.azure.domainservices#UpdateDomainService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#DomainServicesUpdateRequest"
+        "target": "com.azure.domainservices#UpdateDomainServiceRequest"
       },
       "output": {
-        "target": "com.azure.domainservices#DomainServicesUpdateResponse"
+        "target": "com.azure.domainservices#UpdateDomainServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -87,7 +87,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.domainservices#DomainServicesUpdateResponse": {
+    "com.azure.domainservices#UpdateDomainServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1264,7 +1264,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.domainservices#DomainServicesUpdateRequest": {
+    "com.azure.domainservices#UpdateDomainServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1811,13 +1811,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.domainservices#DomainServicesGet": {
+    "com.azure.domainservices#GetDomainService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#DomainServicesGetRequest"
+        "target": "com.azure.domainservices#GetDomainServiceRequest"
       },
       "output": {
-        "target": "com.azure.domainservices#DomainServicesGetResponse"
+        "target": "com.azure.domainservices#GetDomainServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1830,7 +1830,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.domainservices#DomainServicesGetResponse": {
+    "com.azure.domainservices#GetDomainServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2006,7 +2006,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.domainservices#DomainServicesGetRequest": {
+    "com.azure.domainservices#GetDomainServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2038,10 +2038,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.domainservices#DomainServicesListByResourceGroup": {
+    "com.azure.domainservices#ListDomainServiceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#DomainServicesListByResourceGroupRequest"
+        "target": "com.azure.domainservices#ListDomainServiceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.domainservices#DomainServiceListResult"
@@ -2262,7 +2262,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.domainservices#DomainServicesListByResourceGroupRequest": {
+    "com.azure.domainservices#ListDomainServiceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2286,10 +2286,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.domainservices#DomainServicesList": {
+    "com.azure.domainservices#ListDomainServices": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#DomainServicesListRequest"
+        "target": "com.azure.domainservices#ListDomainServicesRequest"
       },
       "output": {
         "target": "com.azure.domainservices#DomainServiceListResult"
@@ -2305,7 +2305,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.domainservices#DomainServicesListRequest": {
+    "com.azure.domainservices#ListDomainServicesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2321,7 +2321,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.domainservices#DomainServiceOperationsList": {
+    "com.azure.domainservices#ListDomainServiceOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -2427,10 +2427,10 @@
         "smithy.api#documentation": "The operation supported by Domain Services."
       }
     },
-    "com.azure.domainservices#OuContainerDelete": {
+    "com.azure.domainservices#DeleteOuContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#OuContainerDeleteRequest"
+        "target": "com.azure.domainservices#DeleteOuContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2446,7 +2446,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.domainservices#OuContainerDeleteRequest": {
+    "com.azure.domainservices#DeleteOuContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2486,13 +2486,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.domainservices#OuContainerUpdate": {
+    "com.azure.domainservices#UpdateOuContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#OuContainerUpdateRequest"
+        "target": "com.azure.domainservices#UpdateOuContainerRequest"
       },
       "output": {
-        "target": "com.azure.domainservices#OuContainerUpdateResponse"
+        "target": "com.azure.domainservices#UpdateOuContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2505,7 +2505,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.domainservices#OuContainerUpdateResponse": {
+    "com.azure.domainservices#UpdateOuContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2773,7 +2773,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.domainservices#OuContainerUpdateRequest": {
+    "com.azure.domainservices#UpdateOuContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2832,13 +2832,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.domainservices#OuContainerCreate": {
+    "com.azure.domainservices#CreateOuContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#OuContainerCreateRequest"
+        "target": "com.azure.domainservices#CreateOuContainerRequest"
       },
       "output": {
-        "target": "com.azure.domainservices#OuContainerCreateResponse"
+        "target": "com.azure.domainservices#CreateOuContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2851,7 +2851,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.domainservices#OuContainerCreateResponse": {
+    "com.azure.domainservices#CreateOuContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3027,7 +3027,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.domainservices#OuContainerCreateRequest": {
+    "com.azure.domainservices#CreateOuContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3086,13 +3086,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.domainservices#OuContainerGet": {
+    "com.azure.domainservices#GetOuContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#OuContainerGetRequest"
+        "target": "com.azure.domainservices#GetOuContainerRequest"
       },
       "output": {
-        "target": "com.azure.domainservices#OuContainerGetResponse"
+        "target": "com.azure.domainservices#GetOuContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3105,7 +3105,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.domainservices#OuContainerGetResponse": {
+    "com.azure.domainservices#GetOuContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3281,7 +3281,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.domainservices#OuContainerGetRequest": {
+    "com.azure.domainservices#GetOuContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3321,13 +3321,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.domainservices#OuContainerList": {
+    "com.azure.domainservices#ListOuContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.domainservices#OuContainerListRequest"
+        "target": "com.azure.domainservices#ListOuContainerRequest"
       },
       "output": {
-        "target": "com.azure.domainservices#OuContainerListResult"
+        "target": "com.azure.domainservices#ListOuContainerResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -3340,7 +3340,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.domainservices#OuContainerListResult": {
+    "com.azure.domainservices#ListOuContainerResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -3545,7 +3545,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.domainservices#OuContainerListRequest": {
+    "com.azure.domainservices#ListOuContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3577,7 +3577,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.domainservices#OuContainerOperationsList": {
+    "com.azure.domainservices#ListOuContainerOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -3601,43 +3601,43 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.domainservices#DomainServicesDelete"
+          "target": "com.azure.domainservices#DeleteDomainService"
         },
         {
-          "target": "com.azure.domainservices#DomainServicesUpdate"
+          "target": "com.azure.domainservices#UpdateDomainService"
         },
         {
           "target": "com.azure.domainservices#DomainServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.domainservices#DomainServicesGet"
+          "target": "com.azure.domainservices#GetDomainService"
         },
         {
-          "target": "com.azure.domainservices#DomainServicesListByResourceGroup"
+          "target": "com.azure.domainservices#ListDomainServiceByResourceGroup"
         },
         {
-          "target": "com.azure.domainservices#DomainServicesList"
+          "target": "com.azure.domainservices#ListDomainServices"
         },
         {
-          "target": "com.azure.domainservices#DomainServiceOperationsList"
+          "target": "com.azure.domainservices#ListDomainServiceOperations"
         },
         {
-          "target": "com.azure.domainservices#OuContainerDelete"
+          "target": "com.azure.domainservices#DeleteOuContainer"
         },
         {
-          "target": "com.azure.domainservices#OuContainerUpdate"
+          "target": "com.azure.domainservices#UpdateOuContainer"
         },
         {
-          "target": "com.azure.domainservices#OuContainerCreate"
+          "target": "com.azure.domainservices#CreateOuContainer"
         },
         {
-          "target": "com.azure.domainservices#OuContainerGet"
+          "target": "com.azure.domainservices#GetOuContainer"
         },
         {
-          "target": "com.azure.domainservices#OuContainerList"
+          "target": "com.azure.domainservices#ListOuContainer"
         },
         {
-          "target": "com.azure.domainservices#OuContainerOperationsList"
+          "target": "com.azure.domainservices#ListOuContainerOperations"
         }
       ],
       "traits": {

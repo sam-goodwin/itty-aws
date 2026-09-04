@@ -24,7 +24,7 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_functions#HogFunctionsListRequest": {
+    "com.posthog.hog_functions#ListHogFunctionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -563,10 +563,10 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_functions#HogFunctionsList": {
+    "com.posthog.hog_functions#ListHogFunctions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsListRequest"
+        "target": "com.posthog.hog_functions#ListHogFunctionsRequest"
       },
       "output": {
         "target": "com.posthog.hog_functions#PaginatedHogFunctionMinimalList"
@@ -1136,7 +1136,7 @@
         "smithy.api#documentation": "Event-to-destination field mappings. Only for destination and site_destination types."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsCreateRequest": {
+    "com.posthog.hog_functions#CreateHogFunctionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1494,10 +1494,10 @@
         "smithy.api#documentation": "Event-to-destination field mappings. Only for destination and site_destination types."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsCreate": {
+    "com.posthog.hog_functions#CreateHogFunction": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsCreateRequest"
+        "target": "com.posthog.hog_functions#CreateHogFunctionRequest"
       },
       "output": {
         "target": "com.posthog.hog_functions#HogFunctionOutput"
@@ -1599,7 +1599,7 @@
         "smithy.api#documentation": "Event-to-destination field mappings. Only for destination and site_destination types."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsUpdateRequest": {
+    "com.posthog.hog_functions#UpdateHogFunctionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1723,10 +1723,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_functions#HogFunctionsUpdate": {
+    "com.posthog.hog_functions#UpdateHogFunction": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsUpdateRequest"
+        "target": "com.posthog.hog_functions#UpdateHogFunctionRequest"
       },
       "output": {
         "target": "com.posthog.hog_functions#HogFunctionOutput"
@@ -1780,7 +1780,7 @@
         "smithy.api#documentation": "Event-to-destination field mappings. Only for destination and site_destination types."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsPartialUpdateRequest": {
+    "com.posthog.hog_functions#UpdateHogFunctionPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1904,10 +1904,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_functions#HogFunctionsPartialUpdate": {
+    "com.posthog.hog_functions#UpdateHogFunctionPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsPartialUpdateRequest"
+        "target": "com.posthog.hog_functions#UpdateHogFunctionPartialRequest"
       },
       "output": {
         "target": "com.posthog.hog_functions#HogFunctionOutput"
@@ -1980,7 +1980,7 @@
         "smithy.api#documentation": "Hard delete of this model is not allowed. Use a patch API call to set \"deleted\" to true"
       }
     },
-    "com.posthog.hog_functions#HogFunctionsDiscardDraftCreateRequest": {
+    "com.posthog.hog_functions#CreateHogFunctionDiscardDraftRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2004,10 +2004,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_functions#HogFunctionsDiscardDraftCreate": {
+    "com.posthog.hog_functions#CreateHogFunctionDiscardDraft": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsDiscardDraftCreateRequest"
+        "target": "com.posthog.hog_functions#CreateHogFunctionDiscardDraftRequest"
       },
       "output": {
         "target": "com.posthog.hog_functions#HogFunctionOutput"
@@ -2361,7 +2361,7 @@
         "smithy.api#documentation": "Mock ClickHouse event data to test the function with."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsInvocationsCreateRequest": {
+    "com.posthog.hog_functions#CreateHogFunctionInvocationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2456,10 +2456,10 @@
         "smithy.api#documentation": "Execution logs from the test invocation."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsInvocationsCreate": {
+    "com.posthog.hog_functions#CreateHogFunctionInvocation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsInvocationsCreateRequest"
+        "target": "com.posthog.hog_functions#CreateHogFunctionInvocationRequest"
       },
       "output": {
         "target": "com.posthog.hog_functions#HogFunctionInvocationOutput"
@@ -2924,7 +2924,7 @@
         }
       }
     },
-    "com.posthog.hog_functions#HogFunctionsPublishCreateRequest": {
+    "com.posthog.hog_functions#CreateHogFunctionPublishRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3013,10 +3013,10 @@
         "smithy.api#documentation": "Config fields publishing would change (hog, inputs_schema, inputs, filters, mappings, masking). Only set on previews."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsPublishCreate": {
+    "com.posthog.hog_functions#CreateHogFunctionPublish": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsPublishCreateRequest"
+        "target": "com.posthog.hog_functions#CreateHogFunctionPublishRequest"
       },
       "output": {
         "target": "com.posthog.hog_functions#HogFunctionPublishResponseOutput"
@@ -3146,7 +3146,7 @@
         "smithy.api#documentation": "Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsRerunCreateRequest": {
+    "com.posthog.hog_functions#CreateHogFunctionRerunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3206,10 +3206,10 @@
         "smithy.api#documentation": "Response from the rerun endpoint. The endpoint only enqueues a wrapper\njob onto the cyclotron `rerun` queue — the actual ClickHouse paging and\nre-enqueue work happens asynchronously in the `cdp-rerun-worker` service.\nUse `rerun_job_id` to look up progress on the wrapper job later."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsRerunCreate": {
+    "com.posthog.hog_functions#CreateHogFunctionRerun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsRerunCreateRequest"
+        "target": "com.posthog.hog_functions#CreateHogFunctionRerunRequest"
       },
       "output": {
         "target": "com.posthog.hog_functions#HogInvocationRerunResponse"
@@ -3228,7 +3228,7 @@
         "smithy.api#documentation": "Rerun past invocations of this hog function from their stored payloads.\n\nThe CDP worker reads matching rows from the `hog_invocation_results`\nClickHouse table, rehydrates the invocation from the stored\n`invocation_globals`, and re-enqueues onto cyclotron. Each rerun\nrun reuses the original `invocation_id` with `is_retry=1` set on the\nnew lifecycle row so the UI can surface that it was a rerun.\n\nOnly types a cyclotron worker executes (`TYPES_THAT_CAN_RERUN`) can be\nrerun: rerun re-enqueues onto the cyclotron hog queue, and other types\nrun elsewhere (source webhooks inline in the cdp-api HTTP handler,\ntransformations during ingestion, `site_*` transpiled to client-side\nJS). A re-enqueued invocation of one of those would never drain and\nwedges the partition, so a rerun of a non-rerunnable type is rejected\nwith a 400 here. A disabled function is rejected the same way: the\nworker skips its invocations, so the rerun could never execute.\n\nBecause rerun replays historical event/person/group data, it requires\n`person:read` and `group:read` on top of `hog_function:write`."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsRevisionsListRequest": {
+    "com.posthog.hog_functions#ListHogFunctionRevisionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3329,10 +3329,10 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_functions#HogFunctionsRevisionsList": {
+    "com.posthog.hog_functions#ListHogFunctionRevisions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsRevisionsListRequest"
+        "target": "com.posthog.hog_functions#ListHogFunctionRevisionsRequest"
       },
       "output": {
         "target": "com.posthog.hog_functions#PaginatedHogFunctionRevisionBasicList"
@@ -3693,7 +3693,7 @@
         "smithy.api#documentation": "Map of hog function UUIDs to their new execution_order values."
       }
     },
-    "com.posthog.hog_functions#HogFunctionsRearrangePartialUpdateRequest": {
+    "com.posthog.hog_functions#UpdateHogFunctionRearrangePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3722,7 +3722,7 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_functions#HogFunctionsRearrangePartialUpdateResponse": {
+    "com.posthog.hog_functions#UpdateHogFunctionRearrangePartialResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -3737,13 +3737,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.hog_functions#HogFunctionsRearrangePartialUpdate": {
+    "com.posthog.hog_functions#UpdateHogFunctionRearrangePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_functions#HogFunctionsRearrangePartialUpdateRequest"
+        "target": "com.posthog.hog_functions#UpdateHogFunctionRearrangePartialRequest"
       },
       "output": {
-        "target": "com.posthog.hog_functions#HogFunctionsRearrangePartialUpdateResponse"
+        "target": "com.posthog.hog_functions#UpdateHogFunctionRearrangePartialResponse"
       },
       "errors": [
         {
@@ -3809,31 +3809,31 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.hog_functions#HogFunctionsList"
+          "target": "com.posthog.hog_functions#ListHogFunctions"
         },
         {
-          "target": "com.posthog.hog_functions#HogFunctionsCreate"
+          "target": "com.posthog.hog_functions#CreateHogFunction"
         },
         {
           "target": "com.posthog.hog_functions#HogFunctionsRetrieve"
         },
         {
-          "target": "com.posthog.hog_functions#HogFunctionsUpdate"
+          "target": "com.posthog.hog_functions#UpdateHogFunction"
         },
         {
-          "target": "com.posthog.hog_functions#HogFunctionsPartialUpdate"
+          "target": "com.posthog.hog_functions#UpdateHogFunctionPartial"
         },
         {
           "target": "com.posthog.hog_functions#HogFunctionsDestroy"
         },
         {
-          "target": "com.posthog.hog_functions#HogFunctionsDiscardDraftCreate"
+          "target": "com.posthog.hog_functions#CreateHogFunctionDiscardDraft"
         },
         {
           "target": "com.posthog.hog_functions#HogFunctionsEnableBackfillsCreate"
         },
         {
-          "target": "com.posthog.hog_functions#HogFunctionsInvocationsCreate"
+          "target": "com.posthog.hog_functions#CreateHogFunctionInvocation"
         },
         {
           "target": "com.posthog.hog_functions#HogFunctionsLogsRetrieve"
@@ -3845,13 +3845,13 @@
           "target": "com.posthog.hog_functions#HogFunctionsMetricsTotalsRetrieve"
         },
         {
-          "target": "com.posthog.hog_functions#HogFunctionsPublishCreate"
+          "target": "com.posthog.hog_functions#CreateHogFunctionPublish"
         },
         {
-          "target": "com.posthog.hog_functions#HogFunctionsRerunCreate"
+          "target": "com.posthog.hog_functions#CreateHogFunctionRerun"
         },
         {
-          "target": "com.posthog.hog_functions#HogFunctionsRevisionsList"
+          "target": "com.posthog.hog_functions#ListHogFunctionRevisions"
         },
         {
           "target": "com.posthog.hog_functions#HogFunctionsRevisionsRetrieve"
@@ -3869,7 +3869,7 @@
           "target": "com.posthog.hog_functions#HogFunctionsMaskedSecretsRetrieve"
         },
         {
-          "target": "com.posthog.hog_functions#HogFunctionsRearrangePartialUpdate"
+          "target": "com.posthog.hog_functions#UpdateHogFunctionRearrangePartial"
         }
       ],
       "traits": {

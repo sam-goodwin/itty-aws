@@ -65,101 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** The request to delete multiple versions across a repository. */
-export interface BatchDeleteVersionsRequest {
-  /** Required. The names of the versions to delete. The maximum number of versions deleted per batch is determined by the service and is dependent on the available resources in the region. */
-  names?: StringList;
-  /** If true, the request is performed without deleting data, following AIP-163. */
-  validateOnly?: boolean;
-}
-export const BatchDeleteVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-    validateOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BatchDeleteVersionsRequest",
-}) as any as S.Schema<BatchDeleteVersionsRequest>;
-
-export interface BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest {
-  /** The name of the repository holding all requested versions. */
-  parent: string;
-  /** Request body */
-  body?: BatchDeleteVersionsRequest;
-}
-export const BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeleteVersionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/versions:batchDelete",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest",
-  }) as any as S.Schema<BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
-
-export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
-
-export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
-
-/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
-export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: DocumentMapList;
-}
-export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
-
-/** This resource represents a long-running operation that is the result of a network API call. */
-export interface Operation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -712,6 +617,11 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
 /** CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions. */
 export interface CleanupPolicyMostRecentVersions {
   /** List of package name prefixes that will apply this rule. */
@@ -991,6 +901,57 @@ export const CreateProjectsLocationsRepositoriesRequest =
     identifier: "CreateProjectsLocationsRepositoriesRequest",
   }) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
 
+export type DocumentMap = { [key: string]: unknown | undefined };
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
+
+export type DocumentMapList = Array<DocumentMap>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
+
+/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
+export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: DocumentMapList;
+}
+export const Status = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+  }),
+).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
+
+/** This resource represents a long-running operation that is the result of a network API call. */
+export interface Operation {
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
 /** An Attachment refers to additional metadata that can be attached to artifacts in Artifact Registry. An attachment consists of one or more files. */
 export interface Attachment {
   /** The name of the attachment. E.g. `projects/p1/locations/us/repositories/repo/attachments/sbom`. */
@@ -1172,6 +1133,44 @@ export const CreateProjectsLocationsRepositoriesRulesRequest =
   ).annotate({
     identifier: "CreateProjectsLocationsRepositoriesRulesRequest",
   }) as any as S.Schema<CreateProjectsLocationsRepositoriesRulesRequest>;
+
+/** The request to delete multiple versions across a repository. */
+export interface BatchDeleteVersionsRequest {
+  /** Required. The names of the versions to delete. The maximum number of versions deleted per batch is determined by the service and is dependent on the available resources in the region. */
+  names?: StringList;
+  /** If true, the request is performed without deleting data, following AIP-163. */
+  validateOnly?: boolean;
+}
+export const BatchDeleteVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    names: S.optional(StringList),
+    validateOnly: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "BatchDeleteVersionsRequest",
+}) as any as S.Schema<BatchDeleteVersionsRequest>;
+
+export interface DeleteBatchProjectLocationRepositoryPackageVersionRequest {
+  /** The name of the repository holding all requested versions. */
+  parent: string;
+  /** Request body */
+  body?: BatchDeleteVersionsRequest;
+}
+export const DeleteBatchProjectLocationRepositoryPackageVersionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(BatchDeleteVersionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/versions:batchDelete",
+        baseUrl: "https://artifactregistry.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBatchProjectLocationRepositoryPackageVersionRequest",
+  }) as any as S.Schema<DeleteBatchProjectLocationRepositoryPackageVersionRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Required. The name of the repository to delete. */
@@ -3632,26 +3631,6 @@ export const UploadYumArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UploadYumArtifactMediaResponse",
 }) as any as S.Schema<UploadYumArtifactMediaResponse>;
 
-export type BatchDeleteProjectsLocationsRepositoriesPackagesVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes multiple versions across a repository. The returned operation will complete once the versions have been deleted. */
-export const batchDeleteProjectsLocationsRepositoriesPackagesVersions: API.OperationMethod<
-  BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
-  Operation,
-  BatchDeleteProjectsLocationsRepositoriesPackagesVersionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -3767,6 +3746,26 @@ export const createProjectsLocationsRepositoriesRules: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsRepositoriesRulesRequest,
   output: GoogleDevtoolsArtifactregistryV1Rule,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchProjectLocationRepositoryPackageVersionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes multiple versions across a repository. The returned operation will complete once the versions have been deleted. */
+export const deleteBatchProjectLocationRepositoryPackageVersion: API.OperationMethod<
+  DeleteBatchProjectLocationRepositoryPackageVersionRequest,
+  Operation,
+  DeleteBatchProjectLocationRepositoryPackageVersionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchProjectLocationRepositoryPackageVersionRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

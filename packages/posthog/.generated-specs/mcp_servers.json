@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.mcp_servers#McpServersListRequest": {
+    "com.posthog.mcp_servers#ListMcpServersRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -181,10 +181,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_servers#McpServersList": {
+    "com.posthog.mcp_servers#ListMcpServers": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_servers#McpServersListRequest"
+        "target": "com.posthog.mcp_servers#ListMcpServersRequest"
       },
       "output": {
         "target": "com.posthog.mcp_servers#PaginatedMCPServerTemplateList"
@@ -203,7 +203,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.mcp_servers#McpServersList"
+          "target": "com.posthog.mcp_servers#ListMcpServers"
         }
       ],
       "traits": {

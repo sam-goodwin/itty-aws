@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.insight_variables#InsightVariablesListRequest": {
+    "com.posthog.insight_variables#ListInsightVariablesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -185,10 +185,10 @@
       },
       "traits": {}
     },
-    "com.posthog.insight_variables#InsightVariablesList": {
+    "com.posthog.insight_variables#ListInsightVariables": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insight_variables#InsightVariablesListRequest"
+        "target": "com.posthog.insight_variables#ListInsightVariablesRequest"
       },
       "output": {
         "target": "com.posthog.insight_variables#PaginatedInsightVariableList"
@@ -212,7 +212,7 @@
         }
       }
     },
-    "com.posthog.insight_variables#InsightVariablesCreateRequest": {
+    "com.posthog.insight_variables#CreateInsightVariableRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -272,10 +272,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insight_variables#InsightVariablesCreate": {
+    "com.posthog.insight_variables#CreateInsightVariable": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insight_variables#InsightVariablesCreateRequest"
+        "target": "com.posthog.insight_variables#CreateInsightVariableRequest"
       },
       "output": {
         "target": "com.posthog.insight_variables#InsightVariable"
@@ -347,7 +347,7 @@
         }
       }
     },
-    "com.posthog.insight_variables#InsightVariablesUpdateRequest": {
+    "com.posthog.insight_variables#UpdateInsightVariableRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -415,10 +415,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insight_variables#InsightVariablesUpdate": {
+    "com.posthog.insight_variables#UpdateInsightVariable": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insight_variables#InsightVariablesUpdateRequest"
+        "target": "com.posthog.insight_variables#UpdateInsightVariableRequest"
       },
       "output": {
         "target": "com.posthog.insight_variables#InsightVariable"
@@ -442,7 +442,7 @@
         }
       }
     },
-    "com.posthog.insight_variables#InsightVariablesPartialUpdateRequest": {
+    "com.posthog.insight_variables#UpdateInsightVariablePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -510,10 +510,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insight_variables#InsightVariablesPartialUpdate": {
+    "com.posthog.insight_variables#UpdateInsightVariablePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insight_variables#InsightVariablesPartialUpdateRequest"
+        "target": "com.posthog.insight_variables#UpdateInsightVariablePartialRequest"
       },
       "output": {
         "target": "com.posthog.insight_variables#InsightVariable"
@@ -629,19 +629,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.insight_variables#InsightVariablesList"
+          "target": "com.posthog.insight_variables#ListInsightVariables"
         },
         {
-          "target": "com.posthog.insight_variables#InsightVariablesCreate"
+          "target": "com.posthog.insight_variables#CreateInsightVariable"
         },
         {
           "target": "com.posthog.insight_variables#InsightVariablesRetrieve"
         },
         {
-          "target": "com.posthog.insight_variables#InsightVariablesUpdate"
+          "target": "com.posthog.insight_variables#UpdateInsightVariable"
         },
         {
-          "target": "com.posthog.insight_variables#InsightVariablesPartialUpdate"
+          "target": "com.posthog.insight_variables#UpdateInsightVariablePartial"
         },
         {
           "target": "com.posthog.insight_variables#InsightVariablesDestroy"

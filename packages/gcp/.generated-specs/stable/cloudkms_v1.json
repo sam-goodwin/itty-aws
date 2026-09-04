@@ -5663,7 +5663,7 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest": {
+    "com.gcp.cloudkms_v1#GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest": {
       "type": "structure",
       "members": {
         "project": {
@@ -5702,10 +5702,10 @@
         ]
       }
     },
-    "com.gcp.cloudkms_v1#ShowEffectiveKeyAccessJustificationsPolicyConfigProjects": {
+    "com.gcp.cloudkms_v1#GetEffectiveKeyAccessJustificationsPolicyConfigProjects": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest"
+        "target": "com.gcp.cloudkms_v1#GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#ShowEffectiveKeyAccessJustificationsPolicyConfigResponse"
@@ -5763,7 +5763,7 @@
         "smithy.api#documentation": "Returns the AutokeyConfig for a folder or project."
       }
     },
-    "com.gcp.cloudkms_v1#ShowEffectiveAutokeyConfigProjectsRequest": {
+    "com.gcp.cloudkms_v1#GetEffectiveAutokeyConfigProjectsRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -5776,10 +5776,10 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#ShowEffectiveAutokeyConfigProjects": {
+    "com.gcp.cloudkms_v1#GetEffectiveAutokeyConfigProjects": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#ShowEffectiveAutokeyConfigProjectsRequest"
+        "target": "com.gcp.cloudkms_v1#GetEffectiveAutokeyConfigProjectsRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#ShowEffectiveAutokeyConfigResponse"
@@ -5977,7 +5977,7 @@
         "smithy.api#documentation": "Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project."
       }
     },
-    "com.gcp.cloudkms_v1#ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest": {
+    "com.gcp.cloudkms_v1#GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest": {
       "type": "structure",
       "members": {
         "project": {
@@ -5990,10 +5990,10 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjects": {
+    "com.gcp.cloudkms_v1#GetEffectiveKeyAccessJustificationsEnrollmentConfigProjects": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest"
+        "target": "com.gcp.cloudkms_v1#GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse"
@@ -7647,7 +7647,7 @@
         "smithy.api#documentation": "Permanently deletes the given CryptoKey. All child CryptoKeyVersions must have been previously deleted using KeyManagementService.DeleteCryptoKeyVersion. The specified crypto key will be immediately and permanently deleted upon calling this method. This action cannot be undone."
       }
     },
-    "com.gcp.cloudkms_v1#AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest": {
+    "com.gcp.cloudkms_v1#DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -7667,10 +7667,10 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions": {
+    "com.gcp.cloudkms_v1#DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest"
+        "target": "com.gcp.cloudkms_v1#DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#AsymmetricDecryptResponse"
@@ -7826,7 +7826,7 @@
         "smithy.api#documentation": "Returns the public key for the given CryptoKeyVersion. The CryptoKey.purpose must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT."
       }
     },
-    "com.gcp.cloudkms_v1#AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest": {
+    "com.gcp.cloudkms_v1#SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -7846,10 +7846,10 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions": {
+    "com.gcp.cloudkms_v1#SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest"
+        "target": "com.gcp.cloudkms_v1#SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#AsymmetricSignResponse"
@@ -7926,7 +7926,7 @@
         "smithy.api#documentation": "Import wrapped key material into a CryptoKeyVersion with a trusted key. All requests must specify a CryptoKey. If a CryptoKeyVersion is additionally specified in the request, key material will be reimported into that version. Otherwise, a new version will be created, and will be assigned the next sequential id within the CryptoKey. The CryptoKeyVersion will have trusted_wrapping_enabled set to true."
       }
     },
-    "com.gcp.cloudkms_v1#MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest": {
+    "com.gcp.cloudkms_v1#SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -7946,10 +7946,10 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions": {
+    "com.gcp.cloudkms_v1#SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest"
+        "target": "com.gcp.cloudkms_v1#SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#MacSignResponse"
@@ -8070,7 +8070,7 @@
         "smithy.api#documentation": "Exports a CryptoKeyVersion with a trusted key. The CryptoKeyVersion must have trusted_wrapping_enabled set to true. The CryptoKeyVersion of the [wrapping_key] must have the AES_WRAPPING purpose. The [wrapping_key] must have the AES_256_KWP algorithm."
       }
     },
-    "com.gcp.cloudkms_v1#RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest": {
+    "com.gcp.cloudkms_v1#DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -8090,10 +8090,10 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions": {
+    "com.gcp.cloudkms_v1#DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest"
+        "target": "com.gcp.cloudkms_v1#DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#RawDecryptResponse"
@@ -8407,7 +8407,7 @@
         "smithy.api#documentation": "Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and DISABLED using this method. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move between other states."
       }
     },
-    "com.gcp.cloudkms_v1#RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest": {
+    "com.gcp.cloudkms_v1#EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -8427,10 +8427,10 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions": {
+    "com.gcp.cloudkms_v1#EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest"
+        "target": "com.gcp.cloudkms_v1#EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#RawEncryptResponse"
@@ -8457,7 +8457,7 @@
         "smithy.api#documentation": "Encrypts data using portable cryptographic primitives. Most users should choose Encrypt and Decrypt rather than their raw counterparts. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT."
       }
     },
-    "com.gcp.cloudkms_v1#MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest": {
+    "com.gcp.cloudkms_v1#VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -8477,10 +8477,10 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions": {
+    "com.gcp.cloudkms_v1#VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest"
+        "target": "com.gcp.cloudkms_v1#VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#MacVerifyResponse"
@@ -9955,7 +9955,7 @@
         "smithy.api#documentation": "Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project."
       }
     },
-    "com.gcp.cloudkms_v1#ShowEffectiveAutokeyConfigFoldersRequest": {
+    "com.gcp.cloudkms_v1#GetEffectiveAutokeyConfigFoldersRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -9968,10 +9968,10 @@
         }
       }
     },
-    "com.gcp.cloudkms_v1#ShowEffectiveAutokeyConfigFolders": {
+    "com.gcp.cloudkms_v1#GetEffectiveAutokeyConfigFolders": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudkms_v1#ShowEffectiveAutokeyConfigFoldersRequest"
+        "target": "com.gcp.cloudkms_v1#GetEffectiveAutokeyConfigFoldersRequest"
       },
       "output": {
         "target": "com.gcp.cloudkms_v1#ShowEffectiveAutokeyConfigResponse"

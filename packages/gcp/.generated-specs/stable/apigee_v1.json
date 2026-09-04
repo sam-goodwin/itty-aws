@@ -21547,7 +21547,7 @@
         }
       }
     },
-    "com.gcp.apigee_v1#BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest": {
+    "com.gcp.apigee_v1#UpdateBatchOrganizationEnvironmentSecurityIncidentRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -21567,10 +21567,10 @@
         }
       }
     },
-    "com.gcp.apigee_v1#BatchUpdateOrganizationsEnvironmentsSecurityIncidents": {
+    "com.gcp.apigee_v1#UpdateBatchOrganizationEnvironmentSecurityIncident": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.apigee_v1#BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest"
+        "target": "com.gcp.apigee_v1#UpdateBatchOrganizationEnvironmentSecurityIncidentRequest"
       },
       "output": {
         "target": "com.gcp.apigee_v1#GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse"

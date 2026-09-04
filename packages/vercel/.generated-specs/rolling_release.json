@@ -1652,7 +1652,7 @@
         "smithy.api#documentation": "Get the active rolling release information for a project\n\nReturn the Rolling Release for a project, regardless of whether the rollout is active, aborted, or completed. If the feature is enabled but no deployment has occurred yet, null will be returned."
       }
     },
-    "com.vercel.rolling_release#ApproveRollingReleaseStageRequest": {
+    "com.vercel.rolling_release#ReleaseApproveRollingStageRequest": {
       "type": "structure",
       "members": {
         "idOrName": {
@@ -2406,7 +2406,7 @@
         "smithy.api#documentation": "Rolling release information including configuration and document details, or null if no rolling release exists"
       }
     },
-    "com.vercel.rolling_release#ApproveRollingReleaseStageResponse": {
+    "com.vercel.rolling_release#ReleaseApproveRollingStageResponse": {
       "type": "structure",
       "members": {
         "rollingRelease": {
@@ -2422,13 +2422,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.vercel.rolling_release#ApproveRollingReleaseStage": {
+    "com.vercel.rolling_release#ReleaseApproveRollingStage": {
       "type": "operation",
       "input": {
-        "target": "com.vercel.rolling_release#ApproveRollingReleaseStageRequest"
+        "target": "com.vercel.rolling_release#ReleaseApproveRollingStageRequest"
       },
       "output": {
-        "target": "com.vercel.rolling_release#ApproveRollingReleaseStageResponse"
+        "target": "com.vercel.rolling_release#ReleaseApproveRollingStageResponse"
       },
       "errors": [
         {
@@ -3247,7 +3247,7 @@
         "smithy.api#documentation": "Start a rolling release for the project\n\nStart a rolling release for a deployment. If a rolling release is already active for the same canary deployment, returns the current state without side effects."
       }
     },
-    "com.vercel.rolling_release#CompleteRollingReleaseRequest": {
+    "com.vercel.rolling_release#ReleaseCompleteRollingRequest": {
       "type": "structure",
       "members": {
         "idOrName": {
@@ -3994,7 +3994,7 @@
         "smithy.api#documentation": "Rolling release information including configuration and document details, or null if no rolling release exists"
       }
     },
-    "com.vercel.rolling_release#CompleteRollingReleaseResponse": {
+    "com.vercel.rolling_release#ReleaseCompleteRollingResponse": {
       "type": "structure",
       "members": {
         "rollingRelease": {
@@ -4010,13 +4010,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.vercel.rolling_release#CompleteRollingRelease": {
+    "com.vercel.rolling_release#ReleaseCompleteRolling": {
       "type": "operation",
       "input": {
-        "target": "com.vercel.rolling_release#CompleteRollingReleaseRequest"
+        "target": "com.vercel.rolling_release#ReleaseCompleteRollingRequest"
       },
       "output": {
-        "target": "com.vercel.rolling_release#CompleteRollingReleaseResponse"
+        "target": "com.vercel.rolling_release#ReleaseCompleteRollingResponse"
       },
       "errors": [
         {
@@ -4123,13 +4123,13 @@
           "target": "com.vercel.rolling_release#GetRollingRelease"
         },
         {
-          "target": "com.vercel.rolling_release#ApproveRollingReleaseStage"
+          "target": "com.vercel.rolling_release#ReleaseApproveRollingStage"
         },
         {
           "target": "com.vercel.rolling_release#StartRollingRelease"
         },
         {
-          "target": "com.vercel.rolling_release#CompleteRollingRelease"
+          "target": "com.vercel.rolling_release#ReleaseCompleteRolling"
         }
       ],
       "traits": {

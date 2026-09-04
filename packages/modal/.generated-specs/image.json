@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.modal.image#ImageBuildChainGetRequest": {
+    "com.modal.image#GetImageBuildChainRequest": {
       "type": "structure",
       "members": {
         "imageId": {
@@ -54,7 +54,7 @@
         "target": "com.modal.image#ImageBuildStep"
       }
     },
-    "com.modal.image#ImageBuildChainGetResponse": {
+    "com.modal.image#GetImageBuildChainResponse": {
       "type": "structure",
       "members": {
         "buildSteps": {
@@ -65,13 +65,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.image#ImageBuildChainGet": {
+    "com.modal.image#GetImageBuildChain": {
       "type": "operation",
       "input": {
-        "target": "com.modal.image#ImageBuildChainGetRequest"
+        "target": "com.modal.image#GetImageBuildChainRequest"
       },
       "output": {
-        "target": "com.modal.image#ImageBuildChainGetResponse"
+        "target": "com.modal.image#GetImageBuildChainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -82,7 +82,7 @@
         "smithy.api#documentation": "Images"
       }
     },
-    "com.modal.image#ImageDeleteRequest": {
+    "com.modal.image#DeleteImageRequest": {
       "type": "structure",
       "members": {
         "imageId": {
@@ -93,10 +93,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.image#ImageDelete": {
+    "com.modal.image#DeleteImage": {
       "type": "operation",
       "input": {
-        "target": "com.modal.image#ImageDeleteRequest"
+        "target": "com.modal.image#DeleteImageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -194,7 +194,7 @@
         }
       }
     },
-    "com.modal.image#ImageGetByTagRequest": {
+    "com.modal.image#GetImageByTagRequest": {
       "type": "structure",
       "members": {
         "tag": {
@@ -214,7 +214,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.image#ImageGetByTagResponse": {
+    "com.modal.image#GetImageByTagResponse": {
       "type": "structure",
       "members": {
         "imageId": {
@@ -225,13 +225,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.image#ImageGetByTag": {
+    "com.modal.image#GetImageByTag": {
       "type": "operation",
       "input": {
-        "target": "com.modal.image#ImageGetByTagRequest"
+        "target": "com.modal.image#GetImageByTagRequest"
       },
       "output": {
-        "target": "com.modal.image#ImageGetByTagResponse"
+        "target": "com.modal.image#GetImageByTagResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -820,7 +820,7 @@
         }
       }
     },
-    "com.modal.image#ImageListTagsRequest": {
+    "com.modal.image#ListImageTagsRequest": {
       "type": "structure",
       "members": {
         "environmentName": {
@@ -875,7 +875,7 @@
         "target": "com.modal.image#ImageListTagsItem"
       }
     },
-    "com.modal.image#ImageListTagsResponse": {
+    "com.modal.image#ListImageTagsResponse": {
       "type": "structure",
       "members": {
         "items": {
@@ -892,13 +892,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.image#ImageListTags": {
+    "com.modal.image#ListImageTags": {
       "type": "operation",
       "input": {
-        "target": "com.modal.image#ImageListTagsRequest"
+        "target": "com.modal.image#ListImageTagsRequest"
       },
       "output": {
-        "target": "com.modal.image#ImageListTagsResponse"
+        "target": "com.modal.image#ListImageTagsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1060,22 +1060,22 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.modal.image#ImageBuildChainGet"
+          "target": "com.modal.image#GetImageBuildChain"
         },
         {
-          "target": "com.modal.image#ImageDelete"
+          "target": "com.modal.image#DeleteImage"
         },
         {
           "target": "com.modal.image#ImageFromId"
         },
         {
-          "target": "com.modal.image#ImageGetByTag"
+          "target": "com.modal.image#GetImageByTag"
         },
         {
           "target": "com.modal.image#ImageGetOrCreate"
         },
         {
-          "target": "com.modal.image#ImageListTags"
+          "target": "com.modal.image#ListImageTags"
         },
         {
           "target": "com.modal.image#ImagePublish"

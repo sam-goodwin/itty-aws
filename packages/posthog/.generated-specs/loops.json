@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.loops#LoopsListRequest": {
+    "com.posthog.loops#ListLoopsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -589,10 +589,10 @@
       },
       "traits": {}
     },
-    "com.posthog.loops#LoopsList": {
+    "com.posthog.loops#ListLoops": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.loops#LoopsListRequest"
+        "target": "com.posthog.loops#ListLoopsRequest"
       },
       "output": {
         "target": "com.posthog.loops#PaginatedLoopDTOList"
@@ -1040,7 +1040,7 @@
         "smithy.api#documentation": "Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop."
       }
     },
-    "com.posthog.loops#LoopsCreateRequest": {
+    "com.posthog.loops#CreateLoopRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1164,10 +1164,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.loops#LoopsCreate": {
+    "com.posthog.loops#CreateLoop": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.loops#LoopsCreateRequest"
+        "target": "com.posthog.loops#CreateLoopRequest"
       },
       "output": {
         "target": "com.posthog.loops#LoopDTO"
@@ -1244,7 +1244,7 @@
         "smithy.api#documentation": "Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop."
       }
     },
-    "com.posthog.loops#LoopsPartialUpdateRequest": {
+    "com.posthog.loops#UpdateLoopPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1372,10 +1372,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.loops#LoopsPartialUpdate": {
+    "com.posthog.loops#UpdateLoopPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.loops#LoopsPartialUpdateRequest"
+        "target": "com.posthog.loops#UpdateLoopPartialRequest"
       },
       "output": {
         "target": "com.posthog.loops#LoopDTO"
@@ -1445,7 +1445,7 @@
         "smithy.api#documentation": "Delete a loop\n\nSoft delete. Pauses every trigger's schedule. Owner or a project admin only."
       }
     },
-    "com.posthog.loops#LoopsPreviewCreateRequest": {
+    "com.posthog.loops#CreateLoopPreviewRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1504,10 +1504,10 @@
       },
       "traits": {}
     },
-    "com.posthog.loops#LoopsPreviewCreate": {
+    "com.posthog.loops#CreateLoopPreview": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.loops#LoopsPreviewCreateRequest"
+        "target": "com.posthog.loops#CreateLoopPreviewRequest"
       },
       "output": {
         "target": "com.posthog.loops#LoopPreviewDTO"
@@ -1526,7 +1526,7 @@
         "smithy.api#documentation": "Preview a loop fire\n\nDry run: renders the assembled instructions and trigger context for a supplied sample payload (or a synthetic schedule fire when omitted), without creating a task, run, or any other side effect."
       }
     },
-    "com.posthog.loops#LoopsRunCreateRequest": {
+    "com.posthog.loops#CreateLoopRunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1648,10 +1648,10 @@
         "smithy.api#documentation": "* `created` - created\n* `deduped` - deduped\n* `overlap_skipped` - overlap_skipped\n* `rate_capped` - rate_capped\n* `team_rate_capped` - team_rate_capped\n* `disabled` - disabled\n* `gate_blocked` - gate_blocked\n* `owner_inactive` - owner_inactive\n* `owner_changed` - owner_changed"
       }
     },
-    "com.posthog.loops#LoopsRunCreate": {
+    "com.posthog.loops#CreateLoopRun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.loops#LoopsRunCreateRequest"
+        "target": "com.posthog.loops#CreateLoopRunRequest"
       },
       "output": {
         "target": "com.posthog.loops#LoopFireResult"
@@ -1948,7 +1948,7 @@
       },
       "traits": {}
     },
-    "com.posthog.loops#LoopsSkillBundlesUpdateRequest": {
+    "com.posthog.loops#UpdateLoopSkillBundleRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1977,10 +1977,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.loops#LoopsSkillBundlesUpdate": {
+    "com.posthog.loops#UpdateLoopSkillBundle": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.loops#LoopsSkillBundlesUpdateRequest"
+        "target": "com.posthog.loops#UpdateLoopSkillBundleRequest"
       },
       "output": {
         "target": "com.posthog.loops#LoopDTO"
@@ -2012,7 +2012,7 @@
       },
       "traits": {}
     },
-    "com.posthog.loops#LoopsTriggerCreateRequest": {
+    "com.posthog.loops#CreateLoopTriggerRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2041,10 +2041,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.loops#LoopsTriggerCreate": {
+    "com.posthog.loops#CreateLoopTrigger": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.loops#LoopsTriggerCreateRequest"
+        "target": "com.posthog.loops#CreateLoopTriggerRequest"
       },
       "output": {
         "target": "com.posthog.loops#LoopFireResult"
@@ -2094,34 +2094,34 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.loops#LoopsList"
+          "target": "com.posthog.loops#ListLoops"
         },
         {
-          "target": "com.posthog.loops#LoopsCreate"
+          "target": "com.posthog.loops#CreateLoop"
         },
         {
           "target": "com.posthog.loops#LoopsRetrieve"
         },
         {
-          "target": "com.posthog.loops#LoopsPartialUpdate"
+          "target": "com.posthog.loops#UpdateLoopPartial"
         },
         {
           "target": "com.posthog.loops#LoopsDestroy"
         },
         {
-          "target": "com.posthog.loops#LoopsPreviewCreate"
+          "target": "com.posthog.loops#CreateLoopPreview"
         },
         {
-          "target": "com.posthog.loops#LoopsRunCreate"
+          "target": "com.posthog.loops#CreateLoopRun"
         },
         {
           "target": "com.posthog.loops#LoopsRunsRetrieve"
         },
         {
-          "target": "com.posthog.loops#LoopsSkillBundlesUpdate"
+          "target": "com.posthog.loops#UpdateLoopSkillBundle"
         },
         {
-          "target": "com.posthog.loops#LoopsTriggerCreate"
+          "target": "com.posthog.loops#CreateLoopTrigger"
         }
       ],
       "traits": {

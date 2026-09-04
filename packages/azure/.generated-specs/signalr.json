@@ -5286,10 +5286,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#UsagesList": {
+    "com.azure.signalr#ListUsages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#UsagesListRequest"
+        "target": "com.azure.signalr#ListUsagesRequest"
       },
       "output": {
         "target": "com.azure.signalr#SignalRUsageList"
@@ -5389,7 +5389,7 @@
         "smithy.api#documentation": "Localizable String object containing the name and a localized value."
       }
     },
-    "com.azure.signalr#UsagesListRequest": {
+    "com.azure.signalr#ListUsagesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5496,7 +5496,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#OperationsList": {
+    "com.azure.signalr#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -5890,13 +5890,13 @@
           "target": "com.azure.signalr#SignalRListBySubscription"
         },
         {
-          "target": "com.azure.signalr#UsagesList"
+          "target": "com.azure.signalr#ListUsages"
         },
         {
           "target": "com.azure.signalr#SignalRCheckNameAvailability"
         },
         {
-          "target": "com.azure.signalr#OperationsList"
+          "target": "com.azure.signalr#ListOperations"
         }
       ],
       "traits": {

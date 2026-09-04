@@ -51,7 +51,7 @@
         "smithy.api#documentation": "Queues"
       }
     },
-    "com.modal.queue#QueueDeleteRequest": {
+    "com.modal.queue#DeleteQueueRequest": {
       "type": "structure",
       "members": {
         "queueId": {
@@ -62,10 +62,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.queue#QueueDelete": {
+    "com.modal.queue#DeleteQueue": {
       "type": "operation",
       "input": {
-        "target": "com.modal.queue#QueueDeleteRequest"
+        "target": "com.modal.queue#DeleteQueueRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -78,7 +78,7 @@
         }
       }
     },
-    "com.modal.queue#QueueGetRequest": {
+    "com.modal.queue#GetQueueRequest": {
       "type": "structure",
       "members": {
         "queueId": {
@@ -104,7 +104,7 @@
         "target": "smithy.api#Blob"
       }
     },
-    "com.modal.queue#QueueGetResponse": {
+    "com.modal.queue#GetQueueResponse": {
       "type": "structure",
       "members": {
         "values": {
@@ -115,13 +115,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.queue#QueueGet": {
+    "com.modal.queue#GetQueue": {
       "type": "operation",
       "input": {
-        "target": "com.modal.queue#QueueGetRequest"
+        "target": "com.modal.queue#GetQueueRequest"
       },
       "output": {
-        "target": "com.modal.queue#QueueGetResponse"
+        "target": "com.modal.queue#GetQueueResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -131,7 +131,7 @@
         }
       }
     },
-    "com.modal.queue#QueueGetByIdRequest": {
+    "com.modal.queue#GetQueueByIdRequest": {
       "type": "structure",
       "members": {
         "queueId": {
@@ -170,7 +170,7 @@
         }
       }
     },
-    "com.modal.queue#QueueGetByIdResponse": {
+    "com.modal.queue#GetQueueByIdResponse": {
       "type": "structure",
       "members": {
         "queueId": {
@@ -184,13 +184,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.queue#QueueGetById": {
+    "com.modal.queue#GetQueueById": {
       "type": "operation",
       "input": {
-        "target": "com.modal.queue#QueueGetByIdRequest"
+        "target": "com.modal.queue#GetQueueByIdRequest"
       },
       "output": {
-        "target": "com.modal.queue#QueueGetByIdResponse"
+        "target": "com.modal.queue#GetQueueByIdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -375,7 +375,7 @@
         }
       }
     },
-    "com.modal.queue#QueueListRequest": {
+    "com.modal.queue#ListQueueRequest": {
       "type": "structure",
       "members": {
         "environmentName": {
@@ -427,7 +427,7 @@
         "target": "com.modal.queue#QueueListResponseQueueInfo"
       }
     },
-    "com.modal.queue#QueueListResponse": {
+    "com.modal.queue#ListQueueResponse": {
       "type": "structure",
       "members": {
         "queues": {
@@ -441,13 +441,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.queue#QueueList": {
+    "com.modal.queue#ListQueue": {
       "type": "operation",
       "input": {
-        "target": "com.modal.queue#QueueListRequest"
+        "target": "com.modal.queue#ListQueueRequest"
       },
       "output": {
-        "target": "com.modal.queue#QueueListResponse"
+        "target": "com.modal.queue#ListQueueResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -565,13 +565,13 @@
           "target": "com.modal.queue#QueueClear"
         },
         {
-          "target": "com.modal.queue#QueueDelete"
+          "target": "com.modal.queue#DeleteQueue"
         },
         {
-          "target": "com.modal.queue#QueueGet"
+          "target": "com.modal.queue#GetQueue"
         },
         {
-          "target": "com.modal.queue#QueueGetById"
+          "target": "com.modal.queue#GetQueueById"
         },
         {
           "target": "com.modal.queue#QueueGetOrCreate"
@@ -583,7 +583,7 @@
           "target": "com.modal.queue#QueueLen"
         },
         {
-          "target": "com.modal.queue#QueueList"
+          "target": "com.modal.queue#ListQueue"
         },
         {
           "target": "com.modal.queue#QueueNextItems"

@@ -52806,7 +52806,7 @@
       },
       "traits": {}
     },
-    "com.posthog.query#QueryCreateRequest": {
+    "com.posthog.query#CreateQueryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -67148,7 +67148,7 @@
       },
       "traits": {}
     },
-    "com.posthog.query#QueryCreateResponse": {
+    "com.posthog.query#CreateQueryResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -67163,13 +67163,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.query#QueryCreate": {
+    "com.posthog.query#CreateQuery": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.query#QueryCreateRequest"
+        "target": "com.posthog.query#CreateQueryRequest"
       },
       "output": {
-        "target": "com.posthog.query#QueryCreateResponse"
+        "target": "com.posthog.query#CreateQueryResponse"
       },
       "errors": [
         {
@@ -67369,7 +67369,7 @@
         "smithy.api#documentation": "Get query log details from query_log_archive table for a specific query_id, the query must have been issued in last 24 hours."
       }
     },
-    "com.posthog.query#QueryCreateWithKindRequest": {
+    "com.posthog.query#CreateQueryWithKindRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -67392,10 +67392,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.query#QueryCreateWithKind": {
+    "com.posthog.query#CreateQueryWithKind": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.query#QueryCreateWithKindRequest"
+        "target": "com.posthog.query#CreateQueryWithKindRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -67855,7 +67855,7 @@
       },
       "traits": {}
     },
-    "com.posthog.query#QueryUpgradeCreateRequest": {
+    "com.posthog.query#CreateQueryUpgradeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -68189,10 +68189,10 @@
       },
       "traits": {}
     },
-    "com.posthog.query#QueryUpgradeCreate": {
+    "com.posthog.query#CreateQueryUpgrade": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.query#QueryUpgradeCreateRequest"
+        "target": "com.posthog.query#CreateQueryUpgradeRequest"
       },
       "output": {
         "target": "com.posthog.query#QueryUpgradeResponse"
@@ -68261,7 +68261,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.query#QueryCreate"
+          "target": "com.posthog.query#CreateQuery"
         },
         {
           "target": "com.posthog.query#QueryRetrieve"
@@ -68273,7 +68273,7 @@
           "target": "com.posthog.query#QueryLogRetrieve"
         },
         {
-          "target": "com.posthog.query#QueryCreateWithKind"
+          "target": "com.posthog.query#CreateQueryWithKind"
         },
         {
           "target": "com.posthog.query#QueryCheckAuthForAsyncCreate"
@@ -68282,7 +68282,7 @@
           "target": "com.posthog.query#QueryDraftSqlRetrieve"
         },
         {
-          "target": "com.posthog.query#QueryUpgradeCreate"
+          "target": "com.posthog.query#CreateQueryUpgrade"
         }
       ],
       "traits": {

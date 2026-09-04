@@ -12,180 +12,6 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface BestPracticesGetRequest {
-  /** The Automanage best practice name. */
-  bestPracticeName: string;
-}
-export const BestPracticesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bestPracticeName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}",
-      code: 200,
-      apiVersion: "2022-05-04",
-    }),
-  ),
-).annotate({
-  identifier: "BestPracticesGetRequest",
-}) as any as S.Schema<BestPracticesGetRequest>;
-
-/** Automanage configuration profile properties. */
-export interface ConfigurationProfileProperties {
-  /** configuration dictionary of the configuration profile. */
-  configuration?: unknown;
-}
-export const ConfigurationProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "ConfigurationProfileProperties",
-}) as any as S.Schema<ConfigurationProfileProperties>;
-
-/** The type of identity that created the resource. */
-export type BestPracticeSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const BestPracticeSystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type BestPracticeSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const BestPracticeSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface BestPracticeSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: BestPracticeSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: BestPracticeSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const BestPracticeSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(BestPracticeSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(BestPracticeSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BestPracticeSystemData",
-}) as any as S.Schema<BestPracticeSystemData>;
-
-/** Definition of the Automanage best practice. */
-export interface BestPractice {
-  /** The fully qualified ID for the best practice. For example, /providers/Microsoft.Automanage/bestPractices/azureBestPracticesProduction */
-  id?: string;
-  /** The type of the resource. For example, Microsoft.Automanage/bestPractices */
-  type?: string;
-  /** The name of the best practice. For example, azureBestPracticesProduction */
-  name?: string;
-  /** Properties of the best practice. */
-  properties?: ConfigurationProfileProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: BestPracticeSystemData;
-}
-export const BestPractice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(S.String),
-    name: S.optional(S.String),
-    properties: S.optional(ConfigurationProfileProperties),
-    systemData: S.optional(BestPracticeSystemData),
-  }),
-).annotate({ identifier: "BestPractice" }) as any as S.Schema<BestPractice>;
-
-export interface BestPracticesListByTenantRequest {}
-export const BestPracticesListByTenantRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Automanage/bestPractices",
-      code: 200,
-      apiVersion: "2022-05-04",
-    }),
-  ),
-).annotate({
-  identifier: "BestPracticesListByTenantRequest",
-}) as any as S.Schema<BestPracticesListByTenantRequest>;
-
-/** Result of the list best practice operation. */
-export type BestPracticeListValueList = Array<BestPractice>;
-export const BestPracticeListValueList = /*@__PURE__*/ S.Array(
-  BestPractice,
-) as any as S.Schema<BestPracticeListValueList>;
-
-/** The response of the list best practice operation. */
-export interface BestPracticeList {
-  /** Result of the list best practice operation. */
-  value?: BestPracticeListValueList;
-}
-export const BestPracticeList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(BestPracticeListValueList),
-  }),
-).annotate({
-  identifier: "BestPracticeList",
-}) as any as S.Schema<BestPracticeList>;
-
-export interface BestPracticesVersionsGetRequest {
-  /** The Automanage best practice name. */
-  bestPracticeName: string;
-  /** The Automanage best practice version name. */
-  versionName: string;
-}
-export const BestPracticesVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bestPracticeName: S.String.pipe(T.Label()),
-    versionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions/{versionName}",
-      code: 200,
-      apiVersion: "2022-05-04",
-    }),
-  ),
-).annotate({
-  identifier: "BestPracticesVersionsGetRequest",
-}) as any as S.Schema<BestPracticesVersionsGetRequest>;
-
-export interface BestPracticesVersionsListByTenantRequest {
-  /** The Automanage best practice name. */
-  bestPracticeName: string;
-}
-export const BestPracticesVersionsListByTenantRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bestPracticeName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-).annotate({
-  identifier: "BestPracticesVersionsListByTenantRequest",
-}) as any as S.Schema<BestPracticesVersionsListByTenantRequest>;
-
 /** Automanage configuration profile assignment properties. */
 export interface ConfigurationProfileAssignmentPropertiesInput {
   /** The Automanage configurationProfile ARM Resource URI. */
@@ -334,372 +160,6 @@ export const ConfigurationProfileAssignmentsCreateOrUpdateResponse =
     identifier: "ConfigurationProfileAssignmentsCreateOrUpdateResponse",
   }) as any as S.Schema<ConfigurationProfileAssignmentsCreateOrUpdateResponse>;
 
-export interface ConfigurationProfileAssignmentsDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the virtual machine. */
-  vmName: string;
-  /** Name of the configuration profile assignment */
-  configurationProfileAssignmentName: string;
-}
-export const ConfigurationProfileAssignmentsDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      vmName: S.String.pipe(T.Label()),
-      configurationProfileAssignmentName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsDeleteRequest",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsDeleteRequest>;
-
-export interface ConfigurationProfileAssignmentsDeleteResponse {}
-export const ConfigurationProfileAssignmentsDeleteResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ConfigurationProfileAssignmentsDeleteResponse",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsDeleteResponse>;
-
-export interface ConfigurationProfileAssignmentsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the virtual machine. */
-  vmName: string;
-  /** The configuration profile assignment name. */
-  configurationProfileAssignmentName: string;
-}
-export const ConfigurationProfileAssignmentsGetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      vmName: S.String.pipe(T.Label()),
-      configurationProfileAssignmentName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsGetRequest",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsGetRequest>;
-
-/** The type of identity that created the resource. */
-export type ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ConfigurationProfileAssignmentsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ConfigurationProfileAssignmentsGetResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsGetResponseSystemData",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsGetResponseSystemData>;
-
-export interface ConfigurationProfileAssignmentsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties of the configuration profile assignment. */
-  properties?: ConfigurationProfileAssignmentProperties;
-  /** Azure resource id. Indicates if this resource is managed by another Azure resource. */
-  managedBy?: string;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ConfigurationProfileAssignmentsGetResponseSystemData;
-}
-export const ConfigurationProfileAssignmentsGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(ConfigurationProfileAssignmentProperties),
-      managedBy: S.optional(S.String),
-      systemData: S.optional(
-        ConfigurationProfileAssignmentsGetResponseSystemData,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsGetResponse",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsGetResponse>;
-
-export interface ConfigurationProfileAssignmentsListRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const ConfigurationProfileAssignmentsListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfileAssignments",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsListRequest",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsListRequest>;
-
-/** The type of identity that created the resource. */
-export type ConfigurationProfileAssignmentSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileAssignmentSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ConfigurationProfileAssignmentSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileAssignmentSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ConfigurationProfileAssignmentSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ConfigurationProfileAssignmentSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ConfigurationProfileAssignmentSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ConfigurationProfileAssignmentSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationProfileAssignmentSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationProfileAssignmentSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ConfigurationProfileAssignmentSystemData",
-}) as any as S.Schema<ConfigurationProfileAssignmentSystemData>;
-
-/** Configuration profile assignment is an association between a VM and automanage profile configuration. */
-export interface ConfigurationProfileAssignment {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties of the configuration profile assignment. */
-  properties?: ConfigurationProfileAssignmentProperties;
-  /** Azure resource id. Indicates if this resource is managed by another Azure resource. */
-  managedBy?: string;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ConfigurationProfileAssignmentSystemData;
-}
-export const ConfigurationProfileAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ConfigurationProfileAssignmentProperties),
-    managedBy: S.optional(S.String),
-    systemData: S.optional(ConfigurationProfileAssignmentSystemData),
-  }),
-).annotate({
-  identifier: "ConfigurationProfileAssignment",
-}) as any as S.Schema<ConfigurationProfileAssignment>;
-
-/** Result of the list configuration profile assignment operation. */
-export type ConfigurationProfileAssignmentListValueList =
-  Array<ConfigurationProfileAssignment>;
-export const ConfigurationProfileAssignmentListValueList =
-  /*@__PURE__*/ S.Array(
-    ConfigurationProfileAssignment,
-  ) as any as S.Schema<ConfigurationProfileAssignmentListValueList>;
-
-/** The response of the list configuration profile assignment operation. */
-export interface ConfigurationProfileAssignmentList {
-  /** Result of the list configuration profile assignment operation. */
-  value?: ConfigurationProfileAssignmentListValueList;
-}
-export const ConfigurationProfileAssignmentList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ConfigurationProfileAssignmentListValueList),
-  }),
-).annotate({
-  identifier: "ConfigurationProfileAssignmentList",
-}) as any as S.Schema<ConfigurationProfileAssignmentList>;
-
-export interface ConfigurationProfileAssignmentsListByClusterNameRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Arc machine. */
-  clusterName: string;
-}
-export const ConfigurationProfileAssignmentsListByClusterNameRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsListByClusterNameRequest",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsListByClusterNameRequest>;
-
-export interface ConfigurationProfileAssignmentsListByMachineNameRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Arc machine. */
-  machineName: string;
-}
-export const ConfigurationProfileAssignmentsListByMachineNameRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      machineName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsListByMachineNameRequest",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsListByMachineNameRequest>;
-
-export interface ConfigurationProfileAssignmentsListBySubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-}
-export const ConfigurationProfileAssignmentsListBySubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/configurationProfileAssignments",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsListBySubscriptionRequest",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsListBySubscriptionRequest>;
-
-export interface ConfigurationProfileAssignmentsListByVirtualMachinesRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the virtual machine. */
-  vmName: string;
-}
-export const ConfigurationProfileAssignmentsListByVirtualMachinesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      vmName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsListByVirtualMachinesRequest",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsListByVirtualMachinesRequest>;
-
 export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -813,151 +273,6 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse =
   ).annotate({
     identifier: "ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse",
   }) as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse>;
-
-export interface ConfigurationProfileHCIAssignmentsDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Arc machine. */
-  clusterName: string;
-  /** Name of the configuration profile assignment */
-  configurationProfileAssignmentName: string;
-}
-export const ConfigurationProfileHCIAssignmentsDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      configurationProfileAssignmentName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileHCIAssignmentsDeleteRequest",
-  }) as any as S.Schema<ConfigurationProfileHCIAssignmentsDeleteRequest>;
-
-export interface ConfigurationProfileHCIAssignmentsDeleteResponse {}
-export const ConfigurationProfileHCIAssignmentsDeleteResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ConfigurationProfileHCIAssignmentsDeleteResponse",
-  }) as any as S.Schema<ConfigurationProfileHCIAssignmentsDeleteResponse>;
-
-export interface ConfigurationProfileHCIAssignmentsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Arc machine. */
-  clusterName: string;
-  /** The configuration profile assignment name. */
-  configurationProfileAssignmentName: string;
-}
-export const ConfigurationProfileHCIAssignmentsGetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      configurationProfileAssignmentName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileHCIAssignmentsGetRequest",
-  }) as any as S.Schema<ConfigurationProfileHCIAssignmentsGetRequest>;
-
-/** The type of identity that created the resource. */
-export type ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ConfigurationProfileHCIAssignmentsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ConfigurationProfileHCIAssignmentsGetResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfileHCIAssignmentsGetResponseSystemData",
-  }) as any as S.Schema<ConfigurationProfileHCIAssignmentsGetResponseSystemData>;
-
-export interface ConfigurationProfileHCIAssignmentsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties of the configuration profile assignment. */
-  properties?: ConfigurationProfileAssignmentProperties;
-  /** Azure resource id. Indicates if this resource is managed by another Azure resource. */
-  managedBy?: string;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ConfigurationProfileHCIAssignmentsGetResponseSystemData;
-}
-export const ConfigurationProfileHCIAssignmentsGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(ConfigurationProfileAssignmentProperties),
-      managedBy: S.optional(S.String),
-      systemData: S.optional(
-        ConfigurationProfileHCIAssignmentsGetResponseSystemData,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfileHCIAssignmentsGetResponse",
-  }) as any as S.Schema<ConfigurationProfileHCIAssignmentsGetResponse>;
 
 export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1073,151 +388,6 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse =
     identifier: "ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse",
   }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse>;
 
-export interface ConfigurationProfileHCRPAssignmentsDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Arc machine. */
-  machineName: string;
-  /** Name of the configuration profile assignment */
-  configurationProfileAssignmentName: string;
-}
-export const ConfigurationProfileHCRPAssignmentsDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      machineName: S.String.pipe(T.Label()),
-      configurationProfileAssignmentName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileHCRPAssignmentsDeleteRequest",
-  }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsDeleteRequest>;
-
-export interface ConfigurationProfileHCRPAssignmentsDeleteResponse {}
-export const ConfigurationProfileHCRPAssignmentsDeleteResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ConfigurationProfileHCRPAssignmentsDeleteResponse",
-  }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsDeleteResponse>;
-
-export interface ConfigurationProfileHCRPAssignmentsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Arc machine. */
-  machineName: string;
-  /** The configuration profile assignment name. */
-  configurationProfileAssignmentName: string;
-}
-export const ConfigurationProfileHCRPAssignmentsGetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      machineName: S.String.pipe(T.Label()),
-      configurationProfileAssignmentName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfileHCRPAssignmentsGetRequest",
-  }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsGetRequest>;
-
-/** The type of identity that created the resource. */
-export type ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ConfigurationProfileHCRPAssignmentsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ConfigurationProfileHCRPAssignmentsGetResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfileHCRPAssignmentsGetResponseSystemData",
-  }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsGetResponseSystemData>;
-
-export interface ConfigurationProfileHCRPAssignmentsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties of the configuration profile assignment. */
-  properties?: ConfigurationProfileAssignmentProperties;
-  /** Azure resource id. Indicates if this resource is managed by another Azure resource. */
-  managedBy?: string;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ConfigurationProfileHCRPAssignmentsGetResponseSystemData;
-}
-export const ConfigurationProfileHCRPAssignmentsGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(ConfigurationProfileAssignmentProperties),
-      managedBy: S.optional(S.String),
-      systemData: S.optional(
-        ConfigurationProfileHCRPAssignmentsGetResponseSystemData,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfileHCRPAssignmentsGetResponse",
-  }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsGetResponse>;
-
 /** Resource tags. */
 export type ConfigurationProfilesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -1227,6 +397,19 @@ export const ConfigurationProfilesCreateOrUpdateRequestTagsMap =
     S.String,
     S.String,
   ) as any as S.Schema<ConfigurationProfilesCreateOrUpdateRequestTagsMap>;
+
+/** Automanage configuration profile properties. */
+export interface ConfigurationProfileProperties {
+  /** configuration dictionary of the configuration profile. */
+  configuration?: unknown;
+}
+export const ConfigurationProfileProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    configuration: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "ConfigurationProfileProperties",
+}) as any as S.Schema<ConfigurationProfileProperties>;
 
 export interface ConfigurationProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1356,432 +539,6 @@ export const ConfigurationProfilesCreateOrUpdateResponse =
   ).annotate({
     identifier: "ConfigurationProfilesCreateOrUpdateResponse",
   }) as any as S.Schema<ConfigurationProfilesCreateOrUpdateResponse>;
-
-export interface ConfigurationProfilesDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the configuration profile */
-  configurationProfileName: string;
-}
-export const ConfigurationProfilesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configurationProfileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
-      code: 200,
-      apiVersion: "2022-05-04",
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationProfilesDeleteRequest",
-}) as any as S.Schema<ConfigurationProfilesDeleteRequest>;
-
-export interface ConfigurationProfilesDeleteResponse {}
-export const ConfigurationProfilesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConfigurationProfilesDeleteResponse",
-}) as any as S.Schema<ConfigurationProfilesDeleteResponse>;
-
-export interface ConfigurationProfilesGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The configuration profile name. */
-  configurationProfileName: string;
-}
-export const ConfigurationProfilesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configurationProfileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
-      code: 200,
-      apiVersion: "2022-05-04",
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationProfilesGetRequest",
-}) as any as S.Schema<ConfigurationProfilesGetRequest>;
-
-/** Resource tags. */
-export type ConfigurationProfilesGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigurationProfilesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationProfilesGetResponseTagsMap>;
-
-/** The type of identity that created the resource. */
-export type ConfigurationProfilesGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfilesGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ConfigurationProfilesGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfilesGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ConfigurationProfilesGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ConfigurationProfilesGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ConfigurationProfilesGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ConfigurationProfilesGetResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationProfilesGetResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationProfilesGetResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfilesGetResponseSystemData",
-  }) as any as S.Schema<ConfigurationProfilesGetResponseSystemData>;
-
-export interface ConfigurationProfilesGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource tags. */
-  tags?: ConfigurationProfilesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of the configuration profile. */
-  properties?: ConfigurationProfileProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ConfigurationProfilesGetResponseSystemData;
-}
-export const ConfigurationProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ConfigurationProfilesGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ConfigurationProfileProperties),
-    systemData: S.optional(ConfigurationProfilesGetResponseSystemData),
-  }),
-).annotate({
-  identifier: "ConfigurationProfilesGetResponse",
-}) as any as S.Schema<ConfigurationProfilesGetResponse>;
-
-export interface ConfigurationProfilesListByResourceGroupRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const ConfigurationProfilesListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfilesListByResourceGroupRequest",
-  }) as any as S.Schema<ConfigurationProfilesListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type ConfigurationProfileTagsMap = { [key: string]: string | undefined };
-export const ConfigurationProfileTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationProfileTagsMap>;
-
-/** The type of identity that created the resource. */
-export type ConfigurationProfileSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ConfigurationProfileSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfileSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ConfigurationProfileSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ConfigurationProfileSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ConfigurationProfileSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ConfigurationProfileSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ConfigurationProfileSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      ConfigurationProfileSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationProfileSystemData",
-}) as any as S.Schema<ConfigurationProfileSystemData>;
-
-/** Definition of the configuration profile. */
-export interface ConfigurationProfile {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource tags. */
-  tags?: ConfigurationProfileTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of the configuration profile. */
-  properties?: ConfigurationProfileProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ConfigurationProfileSystemData;
-}
-export const ConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ConfigurationProfileTagsMap),
-    location: S.String,
-    properties: S.optional(ConfigurationProfileProperties),
-    systemData: S.optional(ConfigurationProfileSystemData),
-  }),
-).annotate({
-  identifier: "ConfigurationProfile",
-}) as any as S.Schema<ConfigurationProfile>;
-
-/** Result of the list ConfigurationProfile operation. */
-export type ConfigurationProfileListValueList = Array<ConfigurationProfile>;
-export const ConfigurationProfileListValueList = /*@__PURE__*/ S.Array(
-  ConfigurationProfile,
-) as any as S.Schema<ConfigurationProfileListValueList>;
-
-/** The response of the list configuration profile operation. */
-export interface ConfigurationProfileList {
-  /** Result of the list ConfigurationProfile operation. */
-  value?: ConfigurationProfileListValueList;
-}
-export const ConfigurationProfileList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ConfigurationProfileListValueList),
-  }),
-).annotate({
-  identifier: "ConfigurationProfileList",
-}) as any as S.Schema<ConfigurationProfileList>;
-
-export interface ConfigurationProfilesListBySubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-}
-export const ConfigurationProfilesListBySubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/configurationProfiles",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfilesListBySubscriptionRequest",
-  }) as any as S.Schema<ConfigurationProfilesListBySubscriptionRequest>;
-
-/** The tags of the resource. */
-export type ConfigurationProfilesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigurationProfilesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationProfilesUpdateRequestTagsMap>;
-
-export interface ConfigurationProfilesUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the configuration profile. */
-  configurationProfileName: string;
-  /** The tags of the resource. */
-  tags?: ConfigurationProfilesUpdateRequestTagsMap;
-  /** Properties of the configuration profile. */
-  properties?: ConfigurationProfileProperties;
-}
-export const ConfigurationProfilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configurationProfileName: S.String.pipe(T.Label()),
-    tags: S.optional(ConfigurationProfilesUpdateRequestTagsMap),
-    properties: S.optional(ConfigurationProfileProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
-      code: 200,
-      apiVersion: "2022-05-04",
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationProfilesUpdateRequest",
-}) as any as S.Schema<ConfigurationProfilesUpdateRequest>;
-
-/** Resource tags. */
-export type ConfigurationProfilesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigurationProfilesUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigurationProfilesUpdateResponseTagsMap>;
-
-/** The type of identity that created the resource. */
-export type ConfigurationProfilesUpdateResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfilesUpdateResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ConfigurationProfilesUpdateResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ConfigurationProfilesUpdateResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ConfigurationProfilesUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationProfilesUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfilesUpdateResponseSystemData",
-  }) as any as S.Schema<ConfigurationProfilesUpdateResponseSystemData>;
-
-export interface ConfigurationProfilesUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource tags. */
-  tags?: ConfigurationProfilesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of the configuration profile. */
-  properties?: ConfigurationProfileProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ConfigurationProfilesUpdateResponseSystemData;
-}
-export const ConfigurationProfilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ConfigurationProfilesUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ConfigurationProfileProperties),
-    systemData: S.optional(ConfigurationProfilesUpdateResponseSystemData),
-  }),
-).annotate({
-  identifier: "ConfigurationProfilesUpdateResponse",
-}) as any as S.Schema<ConfigurationProfilesUpdateResponse>;
 
 /** Resource tags. */
 export type ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap = {
@@ -1929,7 +686,144 @@ export const ConfigurationProfilesVersionsCreateOrUpdateResponse =
     identifier: "ConfigurationProfilesVersionsCreateOrUpdateResponse",
   }) as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponse>;
 
-export interface ConfigurationProfilesVersionsDeleteRequest {
+export interface DeleteConfigurationProfileRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the configuration profile */
+  configurationProfileName: string;
+}
+export const DeleteConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configurationProfileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteConfigurationProfileRequest",
+}) as any as S.Schema<DeleteConfigurationProfileRequest>;
+
+export interface DeleteConfigurationProfileResponse {}
+export const DeleteConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConfigurationProfileResponse",
+}) as any as S.Schema<DeleteConfigurationProfileResponse>;
+
+export interface DeleteConfigurationProfileAssignmentRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the virtual machine. */
+  vmName: string;
+  /** Name of the configuration profile assignment */
+  configurationProfileAssignmentName: string;
+}
+export const DeleteConfigurationProfileAssignmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      vmName: S.String.pipe(T.Label()),
+      configurationProfileAssignmentName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteConfigurationProfileAssignmentRequest",
+  }) as any as S.Schema<DeleteConfigurationProfileAssignmentRequest>;
+
+export interface DeleteConfigurationProfileAssignmentResponse {}
+export const DeleteConfigurationProfileAssignmentResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteConfigurationProfileAssignmentResponse",
+  }) as any as S.Schema<DeleteConfigurationProfileAssignmentResponse>;
+
+export interface DeleteConfigurationProfileHciAssignmentRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Arc machine. */
+  clusterName: string;
+  /** Name of the configuration profile assignment */
+  configurationProfileAssignmentName: string;
+}
+export const DeleteConfigurationProfileHciAssignmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      configurationProfileAssignmentName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteConfigurationProfileHciAssignmentRequest",
+  }) as any as S.Schema<DeleteConfigurationProfileHciAssignmentRequest>;
+
+export interface DeleteConfigurationProfileHciAssignmentResponse {}
+export const DeleteConfigurationProfileHciAssignmentResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteConfigurationProfileHciAssignmentResponse",
+  }) as any as S.Schema<DeleteConfigurationProfileHciAssignmentResponse>;
+
+export interface DeleteConfigurationProfileHcrpAssignmentRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Arc machine. */
+  machineName: string;
+  /** Name of the configuration profile assignment */
+  configurationProfileAssignmentName: string;
+}
+export const DeleteConfigurationProfileHcrpAssignmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      machineName: S.String.pipe(T.Label()),
+      configurationProfileAssignmentName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteConfigurationProfileHcrpAssignmentRequest",
+  }) as any as S.Schema<DeleteConfigurationProfileHcrpAssignmentRequest>;
+
+export interface DeleteConfigurationProfileHcrpAssignmentResponse {}
+export const DeleteConfigurationProfileHcrpAssignmentResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteConfigurationProfileHcrpAssignmentResponse",
+  }) as any as S.Schema<DeleteConfigurationProfileHcrpAssignmentResponse>;
+
+export interface DeleteConfigurationProfileVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1939,8 +833,8 @@ export interface ConfigurationProfilesVersionsDeleteRequest {
   /** The configuration profile version name. */
   versionName: string;
 }
-export const ConfigurationProfilesVersionsDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteConfigurationProfileVersionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -1954,17 +848,570 @@ export const ConfigurationProfilesVersionsDeleteRequest =
         apiVersion: "2022-05-04",
       }),
     ),
-  ).annotate({
-    identifier: "ConfigurationProfilesVersionsDeleteRequest",
-  }) as any as S.Schema<ConfigurationProfilesVersionsDeleteRequest>;
+).annotate({
+  identifier: "DeleteConfigurationProfileVersionRequest",
+}) as any as S.Schema<DeleteConfigurationProfileVersionRequest>;
 
-export interface ConfigurationProfilesVersionsDeleteResponse {}
-export const ConfigurationProfilesVersionsDeleteResponse =
+export interface DeleteConfigurationProfileVersionResponse {}
+export const DeleteConfigurationProfileVersionResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ConfigurationProfilesVersionsDeleteResponse",
-  }) as any as S.Schema<ConfigurationProfilesVersionsDeleteResponse>;
+    identifier: "DeleteConfigurationProfileVersionResponse",
+  }) as any as S.Schema<DeleteConfigurationProfileVersionResponse>;
 
-export interface ConfigurationProfilesVersionsGetRequest {
+export interface GetBestPracticeRequest {
+  /** The Automanage best practice name. */
+  bestPracticeName: string;
+}
+export const GetBestPracticeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bestPracticeName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
+).annotate({
+  identifier: "GetBestPracticeRequest",
+}) as any as S.Schema<GetBestPracticeRequest>;
+
+/** The type of identity that created the resource. */
+export type BestPracticeSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const BestPracticeSystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type BestPracticeSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const BestPracticeSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface BestPracticeSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: BestPracticeSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: BestPracticeSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const BestPracticeSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(BestPracticeSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(BestPracticeSystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BestPracticeSystemData",
+}) as any as S.Schema<BestPracticeSystemData>;
+
+/** Definition of the Automanage best practice. */
+export interface BestPractice {
+  /** The fully qualified ID for the best practice. For example, /providers/Microsoft.Automanage/bestPractices/azureBestPracticesProduction */
+  id?: string;
+  /** The type of the resource. For example, Microsoft.Automanage/bestPractices */
+  type?: string;
+  /** The name of the best practice. For example, azureBestPracticesProduction */
+  name?: string;
+  /** Properties of the best practice. */
+  properties?: ConfigurationProfileProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: BestPracticeSystemData;
+}
+export const BestPractice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    type: S.optional(S.String),
+    name: S.optional(S.String),
+    properties: S.optional(ConfigurationProfileProperties),
+    systemData: S.optional(BestPracticeSystemData),
+  }),
+).annotate({ identifier: "BestPractice" }) as any as S.Schema<BestPractice>;
+
+export interface GetBestPracticeVersionRequest {
+  /** The Automanage best practice name. */
+  bestPracticeName: string;
+  /** The Automanage best practice version name. */
+  versionName: string;
+}
+export const GetBestPracticeVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bestPracticeName: S.String.pipe(T.Label()),
+    versionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions/{versionName}",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
+).annotate({
+  identifier: "GetBestPracticeVersionRequest",
+}) as any as S.Schema<GetBestPracticeVersionRequest>;
+
+export interface GetConfigurationProfileRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The configuration profile name. */
+  configurationProfileName: string;
+}
+export const GetConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configurationProfileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
+).annotate({
+  identifier: "GetConfigurationProfileRequest",
+}) as any as S.Schema<GetConfigurationProfileRequest>;
+
+/** Resource tags. */
+export type ConfigurationProfilesGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationProfilesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigurationProfilesGetResponseTagsMap>;
+
+/** The type of identity that created the resource. */
+export type ConfigurationProfilesGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfilesGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ConfigurationProfilesGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfilesGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ConfigurationProfilesGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ConfigurationProfilesGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ConfigurationProfilesGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ConfigurationProfilesGetResponseSystemData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        ConfigurationProfilesGetResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        ConfigurationProfilesGetResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigurationProfilesGetResponseSystemData",
+  }) as any as S.Schema<ConfigurationProfilesGetResponseSystemData>;
+
+export interface GetConfigurationProfileResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Resource tags. */
+  tags?: ConfigurationProfilesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the configuration profile. */
+  properties?: ConfigurationProfileProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ConfigurationProfilesGetResponseSystemData;
+}
+export const GetConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(ConfigurationProfilesGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ConfigurationProfileProperties),
+    systemData: S.optional(ConfigurationProfilesGetResponseSystemData),
+  }),
+).annotate({
+  identifier: "GetConfigurationProfileResponse",
+}) as any as S.Schema<GetConfigurationProfileResponse>;
+
+export interface GetConfigurationProfileAssignmentRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the virtual machine. */
+  vmName: string;
+  /** The configuration profile assignment name. */
+  configurationProfileAssignmentName: string;
+}
+export const GetConfigurationProfileAssignmentRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      vmName: S.String.pipe(T.Label()),
+      configurationProfileAssignmentName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+).annotate({
+  identifier: "GetConfigurationProfileAssignmentRequest",
+}) as any as S.Schema<GetConfigurationProfileAssignmentRequest>;
+
+/** The type of identity that created the resource. */
+export type ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ConfigurationProfileAssignmentsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ConfigurationProfileAssignmentsGetResponseSystemData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigurationProfileAssignmentsGetResponseSystemData",
+  }) as any as S.Schema<ConfigurationProfileAssignmentsGetResponseSystemData>;
+
+export interface GetConfigurationProfileAssignmentResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties of the configuration profile assignment. */
+  properties?: ConfigurationProfileAssignmentProperties;
+  /** Azure resource id. Indicates if this resource is managed by another Azure resource. */
+  managedBy?: string;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ConfigurationProfileAssignmentsGetResponseSystemData;
+}
+export const GetConfigurationProfileAssignmentResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      properties: S.optional(ConfigurationProfileAssignmentProperties),
+      managedBy: S.optional(S.String),
+      systemData: S.optional(
+        ConfigurationProfileAssignmentsGetResponseSystemData,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetConfigurationProfileAssignmentResponse",
+  }) as any as S.Schema<GetConfigurationProfileAssignmentResponse>;
+
+export interface GetConfigurationProfileHciAssignmentRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Arc machine. */
+  clusterName: string;
+  /** The configuration profile assignment name. */
+  configurationProfileAssignmentName: string;
+}
+export const GetConfigurationProfileHciAssignmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      configurationProfileAssignmentName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConfigurationProfileHciAssignmentRequest",
+  }) as any as S.Schema<GetConfigurationProfileHciAssignmentRequest>;
+
+/** The type of identity that created the resource. */
+export type ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ConfigurationProfileHCIAssignmentsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ConfigurationProfileHCIAssignmentsGetResponseSystemData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigurationProfileHCIAssignmentsGetResponseSystemData",
+  }) as any as S.Schema<ConfigurationProfileHCIAssignmentsGetResponseSystemData>;
+
+export interface GetConfigurationProfileHciAssignmentResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties of the configuration profile assignment. */
+  properties?: ConfigurationProfileAssignmentProperties;
+  /** Azure resource id. Indicates if this resource is managed by another Azure resource. */
+  managedBy?: string;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ConfigurationProfileHCIAssignmentsGetResponseSystemData;
+}
+export const GetConfigurationProfileHciAssignmentResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      properties: S.optional(ConfigurationProfileAssignmentProperties),
+      managedBy: S.optional(S.String),
+      systemData: S.optional(
+        ConfigurationProfileHCIAssignmentsGetResponseSystemData,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetConfigurationProfileHciAssignmentResponse",
+  }) as any as S.Schema<GetConfigurationProfileHciAssignmentResponse>;
+
+export interface GetConfigurationProfileHcrpAssignmentRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Arc machine. */
+  machineName: string;
+  /** The configuration profile assignment name. */
+  configurationProfileAssignmentName: string;
+}
+export const GetConfigurationProfileHcrpAssignmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      machineName: S.String.pipe(T.Label()),
+      configurationProfileAssignmentName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConfigurationProfileHcrpAssignmentRequest",
+  }) as any as S.Schema<GetConfigurationProfileHcrpAssignmentRequest>;
+
+/** The type of identity that created the resource. */
+export type ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ConfigurationProfileHCRPAssignmentsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ConfigurationProfileHCRPAssignmentsGetResponseSystemData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigurationProfileHCRPAssignmentsGetResponseSystemData",
+  }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsGetResponseSystemData>;
+
+export interface GetConfigurationProfileHcrpAssignmentResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties of the configuration profile assignment. */
+  properties?: ConfigurationProfileAssignmentProperties;
+  /** Azure resource id. Indicates if this resource is managed by another Azure resource. */
+  managedBy?: string;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ConfigurationProfileHCRPAssignmentsGetResponseSystemData;
+}
+export const GetConfigurationProfileHcrpAssignmentResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      properties: S.optional(ConfigurationProfileAssignmentProperties),
+      managedBy: S.optional(S.String),
+      systemData: S.optional(
+        ConfigurationProfileHCRPAssignmentsGetResponseSystemData,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetConfigurationProfileHcrpAssignmentResponse",
+  }) as any as S.Schema<GetConfigurationProfileHcrpAssignmentResponse>;
+
+export interface GetConfigurationProfileVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1974,7 +1421,7 @@ export interface ConfigurationProfilesVersionsGetRequest {
   /** The configuration profile version name. */
   versionName: string;
 }
-export const ConfigurationProfilesVersionsGetRequest = /*@__PURE__*/ S.suspend(
+export const GetConfigurationProfileVersionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1990,8 +1437,8 @@ export const ConfigurationProfilesVersionsGetRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ConfigurationProfilesVersionsGetRequest",
-}) as any as S.Schema<ConfigurationProfilesVersionsGetRequest>;
+  identifier: "GetConfigurationProfileVersionRequest",
+}) as any as S.Schema<GetConfigurationProfileVersionRequest>;
 
 /** Resource tags. */
 export type ConfigurationProfilesVersionsGetResponseTagsMap = {
@@ -2054,7 +1501,7 @@ export const ConfigurationProfilesVersionsGetResponseSystemData =
     identifier: "ConfigurationProfilesVersionsGetResponseSystemData",
   }) as any as S.Schema<ConfigurationProfilesVersionsGetResponseSystemData>;
 
-export interface ConfigurationProfilesVersionsGetResponse {
+export interface GetConfigurationProfileVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2070,7 +1517,7 @@ export interface ConfigurationProfilesVersionsGetResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfilesVersionsGetResponseSystemData;
 }
-export const ConfigurationProfilesVersionsGetResponse = /*@__PURE__*/ S.suspend(
+export const GetConfigurationProfileVersionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -2084,36 +1531,10 @@ export const ConfigurationProfilesVersionsGetResponse = /*@__PURE__*/ S.suspend(
       ),
     }),
 ).annotate({
-  identifier: "ConfigurationProfilesVersionsGetResponse",
-}) as any as S.Schema<ConfigurationProfilesVersionsGetResponse>;
+  identifier: "GetConfigurationProfileVersionResponse",
+}) as any as S.Schema<GetConfigurationProfileVersionResponse>;
 
-export interface ConfigurationProfilesVersionsListChildResourcesRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the configuration profile. */
-  configurationProfileName: string;
-}
-export const ConfigurationProfilesVersionsListChildResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      configurationProfileName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationProfilesVersionsListChildResourcesRequest",
-  }) as any as S.Schema<ConfigurationProfilesVersionsListChildResourcesRequest>;
-
-export interface HCIReportsGetRequest {
+export interface GetHciReportRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2125,7 +1546,7 @@ export interface HCIReportsGetRequest {
   /** The report name. */
   reportName: string;
 }
-export const HCIReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetHciReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2141,8 +1562,8 @@ export const HCIReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HCIReportsGetRequest",
-}) as any as S.Schema<HCIReportsGetRequest>;
+  identifier: "GetHciReportRequest",
+}) as any as S.Schema<GetHciReportRequest>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
@@ -2390,7 +1811,7 @@ export const HCIReportsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   identifier: "HCIReportsGetResponseSystemData",
 }) as any as S.Schema<HCIReportsGetResponseSystemData>;
 
-export interface HCIReportsGetResponse {
+export interface GetHciReportResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2402,7 +1823,7 @@ export interface HCIReportsGetResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: HCIReportsGetResponseSystemData;
 }
-export const HCIReportsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetHciReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2411,10 +1832,773 @@ export const HCIReportsGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(HCIReportsGetResponseSystemData),
   }),
 ).annotate({
-  identifier: "HCIReportsGetResponse",
-}) as any as S.Schema<HCIReportsGetResponse>;
+  identifier: "GetHciReportResponse",
+}) as any as S.Schema<GetHciReportResponse>;
 
-export interface HCIReportsListByConfigurationProfileAssignmentsRequest {
+export interface GetHcrpReportRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Arc machine. */
+  machineName: string;
+  /** The configuration profile assignment name. */
+  configurationProfileAssignmentName: string;
+  /** The report name. */
+  reportName: string;
+}
+export const GetHcrpReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    machineName: S.String.pipe(T.Label()),
+    configurationProfileAssignmentName: S.String.pipe(T.Label()),
+    reportName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
+).annotate({
+  identifier: "GetHcrpReportRequest",
+}) as any as S.Schema<GetHcrpReportRequest>;
+
+/** The type of identity that created the resource. */
+export type HCRPReportsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const HCRPReportsGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type HCRPReportsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const HCRPReportsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface HCRPReportsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: HCRPReportsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: HCRPReportsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const HCRPReportsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(HCRPReportsGetResponseSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      HCRPReportsGetResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HCRPReportsGetResponseSystemData",
+}) as any as S.Schema<HCRPReportsGetResponseSystemData>;
+
+export interface GetHcrpReportResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** The properties for the report. */
+  properties?: AssignmentReportProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: HCRPReportsGetResponseSystemData;
+}
+export const GetHcrpReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(AssignmentReportProperties),
+    systemData: S.optional(HCRPReportsGetResponseSystemData),
+  }),
+).annotate({
+  identifier: "GetHcrpReportResponse",
+}) as any as S.Schema<GetHcrpReportResponse>;
+
+export interface GetReportRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the virtual machine. */
+  vmName: string;
+  /** The configuration profile assignment name. */
+  configurationProfileAssignmentName: string;
+  /** The report name. */
+  reportName: string;
+}
+export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    vmName: S.String.pipe(T.Label()),
+    configurationProfileAssignmentName: S.String.pipe(T.Label()),
+    reportName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
+).annotate({
+  identifier: "GetReportRequest",
+}) as any as S.Schema<GetReportRequest>;
+
+/** The type of identity that created the resource. */
+export type ReportsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ReportsGetResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ReportsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ReportsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ReportsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ReportsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ReportsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ReportsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(ReportsGetResponseSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      ReportsGetResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportsGetResponseSystemData",
+}) as any as S.Schema<ReportsGetResponseSystemData>;
+
+export interface GetReportResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** The properties for the report. */
+  properties?: AssignmentReportProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ReportsGetResponseSystemData;
+}
+export const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(AssignmentReportProperties),
+    systemData: S.optional(ReportsGetResponseSystemData),
+  }),
+).annotate({
+  identifier: "GetReportResponse",
+}) as any as S.Schema<GetReportResponse>;
+
+export interface GetServicePrincipalRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+}
+export const GetServicePrincipalRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals/default",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
+).annotate({
+  identifier: "GetServicePrincipalRequest",
+}) as any as S.Schema<GetServicePrincipalRequest>;
+
+/** The Service Principal properties for the subscription. */
+export interface ServicePrincipalProperties {
+  /** The Service Principal Id for the subscription. */
+  servicePrincipalId?: string;
+  /** Returns the contributor RBAC Role exist or not for the Service Principal Id. */
+  authorizationSet?: boolean;
+}
+export const ServicePrincipalProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    servicePrincipalId: S.optional(S.String),
+    authorizationSet: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ServicePrincipalProperties",
+}) as any as S.Schema<ServicePrincipalProperties>;
+
+/** The type of identity that created the resource. */
+export type ServicePrincipalsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ServicePrincipalsGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ServicePrincipalsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ServicePrincipalsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ServicePrincipalsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ServicePrincipalsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ServicePrincipalsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ServicePrincipalsGetResponseSystemData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        ServicePrincipalsGetResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        ServicePrincipalsGetResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ServicePrincipalsGetResponseSystemData",
+}) as any as S.Schema<ServicePrincipalsGetResponseSystemData>;
+
+export interface GetServicePrincipalResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** The Service Principal properties for the subscription */
+  properties?: ServicePrincipalProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ServicePrincipalsGetResponseSystemData;
+}
+export const GetServicePrincipalResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ServicePrincipalProperties),
+    systemData: S.optional(ServicePrincipalsGetResponseSystemData),
+  }),
+).annotate({
+  identifier: "GetServicePrincipalResponse",
+}) as any as S.Schema<GetServicePrincipalResponse>;
+
+export interface ListBestPracticeByTenantRequest {}
+export const ListBestPracticeByTenantRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Automanage/bestPractices",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
+).annotate({
+  identifier: "ListBestPracticeByTenantRequest",
+}) as any as S.Schema<ListBestPracticeByTenantRequest>;
+
+/** Result of the list best practice operation. */
+export type BestPracticeListValueList = Array<BestPractice>;
+export const BestPracticeListValueList = /*@__PURE__*/ S.Array(
+  BestPractice,
+) as any as S.Schema<BestPracticeListValueList>;
+
+/** The response of the list best practice operation. */
+export interface BestPracticeList {
+  /** Result of the list best practice operation. */
+  value?: BestPracticeListValueList;
+}
+export const BestPracticeList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(BestPracticeListValueList),
+  }),
+).annotate({
+  identifier: "BestPracticeList",
+}) as any as S.Schema<BestPracticeList>;
+
+export interface ListBestPracticeVersionByTenantRequest {
+  /** The Automanage best practice name. */
+  bestPracticeName: string;
+}
+export const ListBestPracticeVersionByTenantRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bestPracticeName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+).annotate({
+  identifier: "ListBestPracticeVersionByTenantRequest",
+}) as any as S.Schema<ListBestPracticeVersionByTenantRequest>;
+
+export interface ListConfigurationProfileAssignmentByClusterNameRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Arc machine. */
+  clusterName: string;
+}
+export const ListConfigurationProfileAssignmentByClusterNameRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConfigurationProfileAssignmentByClusterNameRequest",
+  }) as any as S.Schema<ListConfigurationProfileAssignmentByClusterNameRequest>;
+
+/** The type of identity that created the resource. */
+export type ConfigurationProfileAssignmentSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileAssignmentSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ConfigurationProfileAssignmentSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileAssignmentSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ConfigurationProfileAssignmentSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ConfigurationProfileAssignmentSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ConfigurationProfileAssignmentSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ConfigurationProfileAssignmentSystemData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        ConfigurationProfileAssignmentSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        ConfigurationProfileAssignmentSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ConfigurationProfileAssignmentSystemData",
+}) as any as S.Schema<ConfigurationProfileAssignmentSystemData>;
+
+/** Configuration profile assignment is an association between a VM and automanage profile configuration. */
+export interface ConfigurationProfileAssignment {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties of the configuration profile assignment. */
+  properties?: ConfigurationProfileAssignmentProperties;
+  /** Azure resource id. Indicates if this resource is managed by another Azure resource. */
+  managedBy?: string;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ConfigurationProfileAssignmentSystemData;
+}
+export const ConfigurationProfileAssignment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ConfigurationProfileAssignmentProperties),
+    managedBy: S.optional(S.String),
+    systemData: S.optional(ConfigurationProfileAssignmentSystemData),
+  }),
+).annotate({
+  identifier: "ConfigurationProfileAssignment",
+}) as any as S.Schema<ConfigurationProfileAssignment>;
+
+/** Result of the list configuration profile assignment operation. */
+export type ConfigurationProfileAssignmentListValueList =
+  Array<ConfigurationProfileAssignment>;
+export const ConfigurationProfileAssignmentListValueList =
+  /*@__PURE__*/ S.Array(
+    ConfigurationProfileAssignment,
+  ) as any as S.Schema<ConfigurationProfileAssignmentListValueList>;
+
+/** The response of the list configuration profile assignment operation. */
+export interface ConfigurationProfileAssignmentList {
+  /** Result of the list configuration profile assignment operation. */
+  value?: ConfigurationProfileAssignmentListValueList;
+}
+export const ConfigurationProfileAssignmentList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ConfigurationProfileAssignmentListValueList),
+  }),
+).annotate({
+  identifier: "ConfigurationProfileAssignmentList",
+}) as any as S.Schema<ConfigurationProfileAssignmentList>;
+
+export interface ListConfigurationProfileAssignmentByMachineNameRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Arc machine. */
+  machineName: string;
+}
+export const ListConfigurationProfileAssignmentByMachineNameRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      machineName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConfigurationProfileAssignmentByMachineNameRequest",
+  }) as any as S.Schema<ListConfigurationProfileAssignmentByMachineNameRequest>;
+
+export interface ListConfigurationProfileAssignmentBySubscriptionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+}
+export const ListConfigurationProfileAssignmentBySubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/configurationProfileAssignments",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConfigurationProfileAssignmentBySubscriptionRequest",
+  }) as any as S.Schema<ListConfigurationProfileAssignmentBySubscriptionRequest>;
+
+export interface ListConfigurationProfileAssignmentByVirtualMachinesRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the virtual machine. */
+  vmName: string;
+}
+export const ListConfigurationProfileAssignmentByVirtualMachinesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      vmName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConfigurationProfileAssignmentByVirtualMachinesRequest",
+  }) as any as S.Schema<ListConfigurationProfileAssignmentByVirtualMachinesRequest>;
+
+export interface ListConfigurationProfileAssignmentsRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListConfigurationProfileAssignmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConfigurationProfileAssignmentsRequest",
+  }) as any as S.Schema<ListConfigurationProfileAssignmentsRequest>;
+
+export interface ListConfigurationProfileByResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListConfigurationProfileByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConfigurationProfileByResourceGroupRequest",
+  }) as any as S.Schema<ListConfigurationProfileByResourceGroupRequest>;
+
+/** Resource tags. */
+export type ConfigurationProfileTagsMap = { [key: string]: string | undefined };
+export const ConfigurationProfileTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigurationProfileTagsMap>;
+
+/** The type of identity that created the resource. */
+export type ConfigurationProfileSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ConfigurationProfileSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfileSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ConfigurationProfileSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ConfigurationProfileSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ConfigurationProfileSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ConfigurationProfileSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(ConfigurationProfileSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      ConfigurationProfileSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigurationProfileSystemData",
+}) as any as S.Schema<ConfigurationProfileSystemData>;
+
+/** Definition of the configuration profile. */
+export interface ConfigurationProfile {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Resource tags. */
+  tags?: ConfigurationProfileTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the configuration profile. */
+  properties?: ConfigurationProfileProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ConfigurationProfileSystemData;
+}
+export const ConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(ConfigurationProfileTagsMap),
+    location: S.String,
+    properties: S.optional(ConfigurationProfileProperties),
+    systemData: S.optional(ConfigurationProfileSystemData),
+  }),
+).annotate({
+  identifier: "ConfigurationProfile",
+}) as any as S.Schema<ConfigurationProfile>;
+
+/** Result of the list ConfigurationProfile operation. */
+export type ConfigurationProfileListValueList = Array<ConfigurationProfile>;
+export const ConfigurationProfileListValueList = /*@__PURE__*/ S.Array(
+  ConfigurationProfile,
+) as any as S.Schema<ConfigurationProfileListValueList>;
+
+/** The response of the list configuration profile operation. */
+export interface ConfigurationProfileList {
+  /** Result of the list ConfigurationProfile operation. */
+  value?: ConfigurationProfileListValueList;
+}
+export const ConfigurationProfileList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ConfigurationProfileListValueList),
+  }),
+).annotate({
+  identifier: "ConfigurationProfileList",
+}) as any as S.Schema<ConfigurationProfileList>;
+
+export interface ListConfigurationProfileBySubscriptionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+}
+export const ListConfigurationProfileBySubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/configurationProfiles",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConfigurationProfileBySubscriptionRequest",
+  }) as any as S.Schema<ListConfigurationProfileBySubscriptionRequest>;
+
+export interface ListConfigurationProfileVersionChildResourcesRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the configuration profile. */
+  configurationProfileName: string;
+}
+export const ListConfigurationProfileVersionChildResourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      configurationProfileName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions",
+        code: 200,
+        apiVersion: "2022-05-04",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConfigurationProfileVersionChildResourcesRequest",
+  }) as any as S.Schema<ListConfigurationProfileVersionChildResourcesRequest>;
+
+export interface ListHciReportByConfigurationProfileAssignmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2424,7 +2608,7 @@ export interface HCIReportsListByConfigurationProfileAssignmentsRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
-export const HCIReportsListByConfigurationProfileAssignmentsRequest =
+export const ListHciReportByConfigurationProfileAssignmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2440,8 +2624,8 @@ export const HCIReportsListByConfigurationProfileAssignmentsRequest =
       }),
     ),
   ).annotate({
-    identifier: "HCIReportsListByConfigurationProfileAssignmentsRequest",
-  }) as any as S.Schema<HCIReportsListByConfigurationProfileAssignmentsRequest>;
+    identifier: "ListHciReportByConfigurationProfileAssignmentsRequest",
+  }) as any as S.Schema<ListHciReportByConfigurationProfileAssignmentsRequest>;
 
 /** The type of identity that created the resource. */
 export type ReportSystemDataCreatedByType =
@@ -2527,110 +2711,7 @@ export const ReportList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportList" }) as any as S.Schema<ReportList>;
 
-export interface HCRPReportsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Arc machine. */
-  machineName: string;
-  /** The configuration profile assignment name. */
-  configurationProfileAssignmentName: string;
-  /** The report name. */
-  reportName: string;
-}
-export const HCRPReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    machineName: S.String.pipe(T.Label()),
-    configurationProfileAssignmentName: S.String.pipe(T.Label()),
-    reportName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
-      code: 200,
-      apiVersion: "2022-05-04",
-    }),
-  ),
-).annotate({
-  identifier: "HCRPReportsGetRequest",
-}) as any as S.Schema<HCRPReportsGetRequest>;
-
-/** The type of identity that created the resource. */
-export type HCRPReportsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const HCRPReportsGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type HCRPReportsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const HCRPReportsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface HCRPReportsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: HCRPReportsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: HCRPReportsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const HCRPReportsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(HCRPReportsGetResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      HCRPReportsGetResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HCRPReportsGetResponseSystemData",
-}) as any as S.Schema<HCRPReportsGetResponseSystemData>;
-
-export interface HCRPReportsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** The properties for the report. */
-  properties?: AssignmentReportProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: HCRPReportsGetResponseSystemData;
-}
-export const HCRPReportsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AssignmentReportProperties),
-    systemData: S.optional(HCRPReportsGetResponseSystemData),
-  }),
-).annotate({
-  identifier: "HCRPReportsGetResponse",
-}) as any as S.Schema<HCRPReportsGetResponse>;
-
-export interface HCRPReportsListByConfigurationProfileAssignmentsRequest {
+export interface ListHcrpReportByConfigurationProfileAssignmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2640,7 +2721,7 @@ export interface HCRPReportsListByConfigurationProfileAssignmentsRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
-export const HCRPReportsListByConfigurationProfileAssignmentsRequest =
+export const ListHcrpReportByConfigurationProfileAssignmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2656,11 +2737,11 @@ export const HCRPReportsListByConfigurationProfileAssignmentsRequest =
       }),
     ),
   ).annotate({
-    identifier: "HCRPReportsListByConfigurationProfileAssignmentsRequest",
-  }) as any as S.Schema<HCRPReportsListByConfigurationProfileAssignmentsRequest>;
+    identifier: "ListHcrpReportByConfigurationProfileAssignmentsRequest",
+  }) as any as S.Schema<ListHcrpReportByConfigurationProfileAssignmentsRequest>;
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2670,8 +2751,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
@@ -2732,124 +2813,22 @@ export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
 
-export interface OperationsListResponse {
+export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: OperationsListResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationsListResponseValueList),
     nextLink: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
-export interface ReportsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the virtual machine. */
-  vmName: string;
-  /** The configuration profile assignment name. */
-  configurationProfileAssignmentName: string;
-  /** The report name. */
-  reportName: string;
-}
-export const ReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    vmName: S.String.pipe(T.Label()),
-    configurationProfileAssignmentName: S.String.pipe(T.Label()),
-    reportName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
-      code: 200,
-      apiVersion: "2022-05-04",
-    }),
-  ),
-).annotate({
-  identifier: "ReportsGetRequest",
-}) as any as S.Schema<ReportsGetRequest>;
-
-/** The type of identity that created the resource. */
-export type ReportsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ReportsGetResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ReportsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ReportsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ReportsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ReportsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ReportsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ReportsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ReportsGetResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      ReportsGetResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReportsGetResponseSystemData",
-}) as any as S.Schema<ReportsGetResponseSystemData>;
-
-export interface ReportsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** The properties for the report. */
-  properties?: AssignmentReportProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ReportsGetResponseSystemData;
-}
-export const ReportsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AssignmentReportProperties),
-    systemData: S.optional(ReportsGetResponseSystemData),
-  }),
-).annotate({
-  identifier: "ReportsGetResponse",
-}) as any as S.Schema<ReportsGetResponse>;
-
-export interface ReportsListByConfigurationProfileAssignmentsRequest {
+export interface ListReportByConfigurationProfileAssignmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2859,7 +2838,7 @@ export interface ReportsListByConfigurationProfileAssignmentsRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
-export const ReportsListByConfigurationProfileAssignmentsRequest =
+export const ListReportByConfigurationProfileAssignmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2875,124 +2854,14 @@ export const ReportsListByConfigurationProfileAssignmentsRequest =
       }),
     ),
   ).annotate({
-    identifier: "ReportsListByConfigurationProfileAssignmentsRequest",
-  }) as any as S.Schema<ReportsListByConfigurationProfileAssignmentsRequest>;
+    identifier: "ListReportByConfigurationProfileAssignmentsRequest",
+  }) as any as S.Schema<ListReportByConfigurationProfileAssignmentsRequest>;
 
-export interface ServicePrincipalsGetRequest {
+export interface ListServicePrincipalBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ServicePrincipalsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals/default",
-      code: 200,
-      apiVersion: "2022-05-04",
-    }),
-  ),
-).annotate({
-  identifier: "ServicePrincipalsGetRequest",
-}) as any as S.Schema<ServicePrincipalsGetRequest>;
-
-/** The Service Principal properties for the subscription. */
-export interface ServicePrincipalProperties {
-  /** The Service Principal Id for the subscription. */
-  servicePrincipalId?: string;
-  /** Returns the contributor RBAC Role exist or not for the Service Principal Id. */
-  authorizationSet?: boolean;
-}
-export const ServicePrincipalProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    servicePrincipalId: S.optional(S.String),
-    authorizationSet: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServicePrincipalProperties",
-}) as any as S.Schema<ServicePrincipalProperties>;
-
-/** The type of identity that created the resource. */
-export type ServicePrincipalsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ServicePrincipalsGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ServicePrincipalsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ServicePrincipalsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ServicePrincipalsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ServicePrincipalsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ServicePrincipalsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ServicePrincipalsGetResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ServicePrincipalsGetResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ServicePrincipalsGetResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ServicePrincipalsGetResponseSystemData",
-}) as any as S.Schema<ServicePrincipalsGetResponseSystemData>;
-
-export interface ServicePrincipalsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** The Service Principal properties for the subscription */
-  properties?: ServicePrincipalProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ServicePrincipalsGetResponseSystemData;
-}
-export const ServicePrincipalsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ServicePrincipalProperties),
-    systemData: S.optional(ServicePrincipalsGetResponseSystemData),
-  }),
-).annotate({
-  identifier: "ServicePrincipalsGetResponse",
-}) as any as S.Schema<ServicePrincipalsGetResponse>;
-
-export interface ServicePrincipalsListBySubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-}
-export const ServicePrincipalsListBySubscriptionRequest =
+export const ListServicePrincipalBySubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -3005,8 +2874,8 @@ export const ServicePrincipalsListBySubscriptionRequest =
       }),
     ),
   ).annotate({
-    identifier: "ServicePrincipalsListBySubscriptionRequest",
-  }) as any as S.Schema<ServicePrincipalsListBySubscriptionRequest>;
+    identifier: "ListServicePrincipalBySubscriptionRequest",
+  }) as any as S.Schema<ListServicePrincipalBySubscriptionRequest>;
 
 /** The type of identity that created the resource. */
 export type ServicePrincipalSystemDataCreatedByType =
@@ -3099,65 +2968,136 @@ export const ServicePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicePrincipalListResult",
 }) as any as S.Schema<ServicePrincipalListResult>;
 
-export type BestPracticesGetError = AzureOpError;
-/** Get information about a Automanage best practice */
-export const BestPracticesGet: API.OperationMethod<
-  BestPracticesGetRequest,
-  BestPractice,
-  BestPracticesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BestPracticesGetRequest,
-  output: BestPractice,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** The tags of the resource. */
+export type ConfigurationProfilesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationProfilesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigurationProfilesUpdateRequestTagsMap>;
 
-export type BestPracticesListByTenantError = AzureOpError;
-/** Retrieve a list of Automanage best practices */
-export const BestPracticesListByTenant: API.OperationMethod<
-  BestPracticesListByTenantRequest,
-  BestPracticeList,
-  BestPracticesListByTenantError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BestPracticesListByTenantRequest,
-  output: BestPracticeList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateConfigurationProfileRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the configuration profile. */
+  configurationProfileName: string;
+  /** The tags of the resource. */
+  tags?: ConfigurationProfilesUpdateRequestTagsMap;
+  /** Properties of the configuration profile. */
+  properties?: ConfigurationProfileProperties;
+}
+export const UpdateConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configurationProfileName: S.String.pipe(T.Label()),
+    tags: S.optional(ConfigurationProfilesUpdateRequestTagsMap),
+    properties: S.optional(ConfigurationProfileProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateConfigurationProfileRequest",
+}) as any as S.Schema<UpdateConfigurationProfileRequest>;
 
-export type BestPracticesVersionsGetError = AzureOpError;
-/** Get information about a Automanage best practice version */
-export const BestPracticesVersionsGet: API.OperationMethod<
-  BestPracticesVersionsGetRequest,
-  BestPractice,
-  BestPracticesVersionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BestPracticesVersionsGetRequest,
-  output: BestPractice,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Resource tags. */
+export type ConfigurationProfilesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationProfilesUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationProfilesUpdateResponseTagsMap>;
 
-export type BestPracticesVersionsListByTenantError = AzureOpError;
-/** Retrieve a list of Automanage best practices versions */
-export const BestPracticesVersionsListByTenant: API.OperationMethod<
-  BestPracticesVersionsListByTenantRequest,
-  BestPracticeList,
-  BestPracticesVersionsListByTenantError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BestPracticesVersionsListByTenantRequest,
-  output: BestPracticeList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** The type of identity that created the resource. */
+export type ConfigurationProfilesUpdateResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfilesUpdateResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ConfigurationProfilesUpdateResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ConfigurationProfilesUpdateResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ConfigurationProfilesUpdateResponseSystemData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        ConfigurationProfilesUpdateResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigurationProfilesUpdateResponseSystemData",
+  }) as any as S.Schema<ConfigurationProfilesUpdateResponseSystemData>;
+
+export interface UpdateConfigurationProfileResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Resource tags. */
+  tags?: ConfigurationProfilesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the configuration profile. */
+  properties?: ConfigurationProfileProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ConfigurationProfilesUpdateResponseSystemData;
+}
+export const UpdateConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(ConfigurationProfilesUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ConfigurationProfileProperties),
+    systemData: S.optional(ConfigurationProfilesUpdateResponseSystemData),
+  }),
+).annotate({
+  identifier: "UpdateConfigurationProfileResponse",
+}) as any as S.Schema<UpdateConfigurationProfileResponse>;
 
 export type ConfigurationProfileAssignmentsCreateOrUpdateError = AzureOpError;
 /** Creates an association between a VM and Automanage configuration profile */
@@ -3169,115 +3109,6 @@ export const ConfigurationProfileAssignmentsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigurationProfileAssignmentsCreateOrUpdateRequest,
   output: ConfigurationProfileAssignmentsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileAssignmentsDeleteError = AzureOpError;
-/** Delete a configuration profile assignment */
-export const ConfigurationProfileAssignmentsDelete: API.OperationMethod<
-  ConfigurationProfileAssignmentsDeleteRequest,
-  ConfigurationProfileAssignmentsDeleteResponse,
-  ConfigurationProfileAssignmentsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileAssignmentsDeleteRequest,
-  output: ConfigurationProfileAssignmentsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileAssignmentsGetError = AzureOpError;
-/** Get information about a configuration profile assignment */
-export const ConfigurationProfileAssignmentsGet: API.OperationMethod<
-  ConfigurationProfileAssignmentsGetRequest,
-  ConfigurationProfileAssignmentsGetResponse,
-  ConfigurationProfileAssignmentsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileAssignmentsGetRequest,
-  output: ConfigurationProfileAssignmentsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileAssignmentsListError = AzureOpError;
-/** Get list of configuration profile assignments */
-export const ConfigurationProfileAssignmentsList: API.OperationMethod<
-  ConfigurationProfileAssignmentsListRequest,
-  ConfigurationProfileAssignmentList,
-  ConfigurationProfileAssignmentsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileAssignmentsListRequest,
-  output: ConfigurationProfileAssignmentList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileAssignmentsListByClusterNameError =
-  AzureOpError;
-/** Get list of configuration profile assignments */
-export const ConfigurationProfileAssignmentsListByClusterName: API.OperationMethod<
-  ConfigurationProfileAssignmentsListByClusterNameRequest,
-  ConfigurationProfileAssignmentList,
-  ConfigurationProfileAssignmentsListByClusterNameError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileAssignmentsListByClusterNameRequest,
-  output: ConfigurationProfileAssignmentList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileAssignmentsListByMachineNameError =
-  AzureOpError;
-/** Get list of configuration profile assignments */
-export const ConfigurationProfileAssignmentsListByMachineName: API.OperationMethod<
-  ConfigurationProfileAssignmentsListByMachineNameRequest,
-  ConfigurationProfileAssignmentList,
-  ConfigurationProfileAssignmentsListByMachineNameError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileAssignmentsListByMachineNameRequest,
-  output: ConfigurationProfileAssignmentList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileAssignmentsListBySubscriptionError =
-  AzureOpError;
-/** Get list of configuration profile assignments under a given subscription */
-export const ConfigurationProfileAssignmentsListBySubscription: API.OperationMethod<
-  ConfigurationProfileAssignmentsListBySubscriptionRequest,
-  ConfigurationProfileAssignmentList,
-  ConfigurationProfileAssignmentsListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileAssignmentsListBySubscriptionRequest,
-  output: ConfigurationProfileAssignmentList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileAssignmentsListByVirtualMachinesError =
-  AzureOpError;
-/** Get list of configuration profile assignments */
-export const ConfigurationProfileAssignmentsListByVirtualMachines: API.OperationMethod<
-  ConfigurationProfileAssignmentsListByVirtualMachinesRequest,
-  ConfigurationProfileAssignmentList,
-  ConfigurationProfileAssignmentsListByVirtualMachinesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileAssignmentsListByVirtualMachinesRequest,
-  output: ConfigurationProfileAssignmentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3299,36 +3130,6 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdate: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type ConfigurationProfileHCIAssignmentsDeleteError = AzureOpError;
-/** Delete a configuration profile assignment */
-export const ConfigurationProfileHCIAssignmentsDelete: API.OperationMethod<
-  ConfigurationProfileHCIAssignmentsDeleteRequest,
-  ConfigurationProfileHCIAssignmentsDeleteResponse,
-  ConfigurationProfileHCIAssignmentsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileHCIAssignmentsDeleteRequest,
-  output: ConfigurationProfileHCIAssignmentsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileHCIAssignmentsGetError = AzureOpError;
-/** Get information about a configuration profile assignment */
-export const ConfigurationProfileHCIAssignmentsGet: API.OperationMethod<
-  ConfigurationProfileHCIAssignmentsGetRequest,
-  ConfigurationProfileHCIAssignmentsGetResponse,
-  ConfigurationProfileHCIAssignmentsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileHCIAssignmentsGetRequest,
-  output: ConfigurationProfileHCIAssignmentsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateError =
   AzureOpError;
 /** Creates an association between a ARC machine and Automanage configuration profile */
@@ -3340,36 +3141,6 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdate: API.OperationMet
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest,
   output: ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileHCRPAssignmentsDeleteError = AzureOpError;
-/** Delete a configuration profile assignment */
-export const ConfigurationProfileHCRPAssignmentsDelete: API.OperationMethod<
-  ConfigurationProfileHCRPAssignmentsDeleteRequest,
-  ConfigurationProfileHCRPAssignmentsDeleteResponse,
-  ConfigurationProfileHCRPAssignmentsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileHCRPAssignmentsDeleteRequest,
-  output: ConfigurationProfileHCRPAssignmentsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfileHCRPAssignmentsGetError = AzureOpError;
-/** Get information about a configuration profile assignment */
-export const ConfigurationProfileHCRPAssignmentsGet: API.OperationMethod<
-  ConfigurationProfileHCRPAssignmentsGetRequest,
-  ConfigurationProfileHCRPAssignmentsGetResponse,
-  ConfigurationProfileHCRPAssignmentsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfileHCRPAssignmentsGetRequest,
-  output: ConfigurationProfileHCRPAssignmentsGetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3390,81 +3161,6 @@ export const ConfigurationProfilesCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConfigurationProfilesDeleteError = AzureOpError;
-/** Delete a configuration profile */
-export const ConfigurationProfilesDelete: API.OperationMethod<
-  ConfigurationProfilesDeleteRequest,
-  ConfigurationProfilesDeleteResponse,
-  ConfigurationProfilesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfilesDeleteRequest,
-  output: ConfigurationProfilesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfilesGetError = AzureOpError;
-/** Get information about a configuration profile */
-export const ConfigurationProfilesGet: API.OperationMethod<
-  ConfigurationProfilesGetRequest,
-  ConfigurationProfilesGetResponse,
-  ConfigurationProfilesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfilesGetRequest,
-  output: ConfigurationProfilesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfilesListByResourceGroupError = AzureOpError;
-/** Retrieve a list of configuration profile within a given resource group */
-export const ConfigurationProfilesListByResourceGroup: API.OperationMethod<
-  ConfigurationProfilesListByResourceGroupRequest,
-  ConfigurationProfileList,
-  ConfigurationProfilesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfilesListByResourceGroupRequest,
-  output: ConfigurationProfileList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfilesListBySubscriptionError = AzureOpError;
-/** Retrieve a list of configuration profile within a subscription */
-export const ConfigurationProfilesListBySubscription: API.OperationMethod<
-  ConfigurationProfilesListBySubscriptionRequest,
-  ConfigurationProfileList,
-  ConfigurationProfilesListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfilesListBySubscriptionRequest,
-  output: ConfigurationProfileList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationProfilesUpdateError = AzureOpError;
-/** Updates a configuration profile */
-export const ConfigurationProfilesUpdate: API.OperationMethod<
-  ConfigurationProfilesUpdateRequest,
-  ConfigurationProfilesUpdateResponse,
-  ConfigurationProfilesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfilesUpdateRequest,
-  output: ConfigurationProfilesUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ConfigurationProfilesVersionsCreateOrUpdateError = AzureOpError;
 /** Creates a configuration profile version */
 export const ConfigurationProfilesVersionsCreateOrUpdate: API.OperationMethod<
@@ -3480,182 +3176,483 @@ export const ConfigurationProfilesVersionsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConfigurationProfilesVersionsDeleteError = AzureOpError;
+export type DeleteConfigurationProfileError = AzureOpError;
+/** Delete a configuration profile */
+export const DeleteConfigurationProfile: API.OperationMethod<
+  DeleteConfigurationProfileRequest,
+  DeleteConfigurationProfileResponse,
+  DeleteConfigurationProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConfigurationProfileRequest,
+  output: DeleteConfigurationProfileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConfigurationProfileAssignmentError = AzureOpError;
+/** Delete a configuration profile assignment */
+export const DeleteConfigurationProfileAssignment: API.OperationMethod<
+  DeleteConfigurationProfileAssignmentRequest,
+  DeleteConfigurationProfileAssignmentResponse,
+  DeleteConfigurationProfileAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConfigurationProfileAssignmentRequest,
+  output: DeleteConfigurationProfileAssignmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConfigurationProfileHciAssignmentError = AzureOpError;
+/** Delete a configuration profile assignment */
+export const DeleteConfigurationProfileHciAssignment: API.OperationMethod<
+  DeleteConfigurationProfileHciAssignmentRequest,
+  DeleteConfigurationProfileHciAssignmentResponse,
+  DeleteConfigurationProfileHciAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConfigurationProfileHciAssignmentRequest,
+  output: DeleteConfigurationProfileHciAssignmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConfigurationProfileHcrpAssignmentError = AzureOpError;
+/** Delete a configuration profile assignment */
+export const DeleteConfigurationProfileHcrpAssignment: API.OperationMethod<
+  DeleteConfigurationProfileHcrpAssignmentRequest,
+  DeleteConfigurationProfileHcrpAssignmentResponse,
+  DeleteConfigurationProfileHcrpAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConfigurationProfileHcrpAssignmentRequest,
+  output: DeleteConfigurationProfileHcrpAssignmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConfigurationProfileVersionError = AzureOpError;
 /** Delete a configuration profile version */
-export const ConfigurationProfilesVersionsDelete: API.OperationMethod<
-  ConfigurationProfilesVersionsDeleteRequest,
-  ConfigurationProfilesVersionsDeleteResponse,
-  ConfigurationProfilesVersionsDeleteError,
+export const DeleteConfigurationProfileVersion: API.OperationMethod<
+  DeleteConfigurationProfileVersionRequest,
+  DeleteConfigurationProfileVersionResponse,
+  DeleteConfigurationProfileVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfilesVersionsDeleteRequest,
-  output: ConfigurationProfilesVersionsDeleteResponse,
+  input: DeleteConfigurationProfileVersionRequest,
+  output: DeleteConfigurationProfileVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConfigurationProfilesVersionsGetError = AzureOpError;
+export type GetBestPracticeError = AzureOpError;
+/** Get information about a Automanage best practice */
+export const GetBestPractice: API.OperationMethod<
+  GetBestPracticeRequest,
+  BestPractice,
+  GetBestPracticeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBestPracticeRequest,
+  output: BestPractice,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBestPracticeVersionError = AzureOpError;
+/** Get information about a Automanage best practice version */
+export const GetBestPracticeVersion: API.OperationMethod<
+  GetBestPracticeVersionRequest,
+  BestPractice,
+  GetBestPracticeVersionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBestPracticeVersionRequest,
+  output: BestPractice,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConfigurationProfileError = AzureOpError;
+/** Get information about a configuration profile */
+export const GetConfigurationProfile: API.OperationMethod<
+  GetConfigurationProfileRequest,
+  GetConfigurationProfileResponse,
+  GetConfigurationProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConfigurationProfileRequest,
+  output: GetConfigurationProfileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConfigurationProfileAssignmentError = AzureOpError;
+/** Get information about a configuration profile assignment */
+export const GetConfigurationProfileAssignment: API.OperationMethod<
+  GetConfigurationProfileAssignmentRequest,
+  GetConfigurationProfileAssignmentResponse,
+  GetConfigurationProfileAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConfigurationProfileAssignmentRequest,
+  output: GetConfigurationProfileAssignmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConfigurationProfileHciAssignmentError = AzureOpError;
+/** Get information about a configuration profile assignment */
+export const GetConfigurationProfileHciAssignment: API.OperationMethod<
+  GetConfigurationProfileHciAssignmentRequest,
+  GetConfigurationProfileHciAssignmentResponse,
+  GetConfigurationProfileHciAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConfigurationProfileHciAssignmentRequest,
+  output: GetConfigurationProfileHciAssignmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConfigurationProfileHcrpAssignmentError = AzureOpError;
+/** Get information about a configuration profile assignment */
+export const GetConfigurationProfileHcrpAssignment: API.OperationMethod<
+  GetConfigurationProfileHcrpAssignmentRequest,
+  GetConfigurationProfileHcrpAssignmentResponse,
+  GetConfigurationProfileHcrpAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConfigurationProfileHcrpAssignmentRequest,
+  output: GetConfigurationProfileHcrpAssignmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConfigurationProfileVersionError = AzureOpError;
 /** Get information about a configuration profile version */
-export const ConfigurationProfilesVersionsGet: API.OperationMethod<
-  ConfigurationProfilesVersionsGetRequest,
-  ConfigurationProfilesVersionsGetResponse,
-  ConfigurationProfilesVersionsGetError,
+export const GetConfigurationProfileVersion: API.OperationMethod<
+  GetConfigurationProfileVersionRequest,
+  GetConfigurationProfileVersionResponse,
+  GetConfigurationProfileVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfilesVersionsGetRequest,
-  output: ConfigurationProfilesVersionsGetResponse,
+  input: GetConfigurationProfileVersionRequest,
+  output: GetConfigurationProfileVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConfigurationProfilesVersionsListChildResourcesError = AzureOpError;
-/** Retrieve a list of configuration profile version for a configuration profile */
-export const ConfigurationProfilesVersionsListChildResources: API.OperationMethod<
-  ConfigurationProfilesVersionsListChildResourcesRequest,
-  ConfigurationProfileList,
-  ConfigurationProfilesVersionsListChildResourcesError,
+export type GetHciReportError = AzureOpError;
+/** Get information about a report associated with a configuration profile assignment run */
+export const GetHciReport: API.OperationMethod<
+  GetHciReportRequest,
+  GetHciReportResponse,
+  GetHciReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationProfilesVersionsListChildResourcesRequest,
+  input: GetHciReportRequest,
+  output: GetHciReportResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetHcrpReportError = AzureOpError;
+/** Get information about a report associated with a configuration profile assignment run */
+export const GetHcrpReport: API.OperationMethod<
+  GetHcrpReportRequest,
+  GetHcrpReportResponse,
+  GetHcrpReportError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHcrpReportRequest,
+  output: GetHcrpReportResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetReportError = AzureOpError;
+/** Get information about a report associated with a configuration profile assignment run */
+export const GetReport: API.OperationMethod<
+  GetReportRequest,
+  GetReportResponse,
+  GetReportError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetReportRequest,
+  output: GetReportResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServicePrincipalError = AzureOpError;
+/** Get the Automanage AAD first party Application Service Principal details for the subscription id. */
+export const GetServicePrincipal: API.OperationMethod<
+  GetServicePrincipalRequest,
+  GetServicePrincipalResponse,
+  GetServicePrincipalError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServicePrincipalRequest,
+  output: GetServicePrincipalResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBestPracticeByTenantError = AzureOpError;
+/** Retrieve a list of Automanage best practices */
+export const ListBestPracticeByTenant: API.OperationMethod<
+  ListBestPracticeByTenantRequest,
+  BestPracticeList,
+  ListBestPracticeByTenantError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBestPracticeByTenantRequest,
+  output: BestPracticeList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBestPracticeVersionByTenantError = AzureOpError;
+/** Retrieve a list of Automanage best practices versions */
+export const ListBestPracticeVersionByTenant: API.OperationMethod<
+  ListBestPracticeVersionByTenantRequest,
+  BestPracticeList,
+  ListBestPracticeVersionByTenantError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBestPracticeVersionByTenantRequest,
+  output: BestPracticeList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConfigurationProfileAssignmentByClusterNameError = AzureOpError;
+/** Get list of configuration profile assignments */
+export const ListConfigurationProfileAssignmentByClusterName: API.OperationMethod<
+  ListConfigurationProfileAssignmentByClusterNameRequest,
+  ConfigurationProfileAssignmentList,
+  ListConfigurationProfileAssignmentByClusterNameError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConfigurationProfileAssignmentByClusterNameRequest,
+  output: ConfigurationProfileAssignmentList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConfigurationProfileAssignmentByMachineNameError = AzureOpError;
+/** Get list of configuration profile assignments */
+export const ListConfigurationProfileAssignmentByMachineName: API.OperationMethod<
+  ListConfigurationProfileAssignmentByMachineNameRequest,
+  ConfigurationProfileAssignmentList,
+  ListConfigurationProfileAssignmentByMachineNameError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConfigurationProfileAssignmentByMachineNameRequest,
+  output: ConfigurationProfileAssignmentList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConfigurationProfileAssignmentBySubscriptionError =
+  AzureOpError;
+/** Get list of configuration profile assignments under a given subscription */
+export const ListConfigurationProfileAssignmentBySubscription: API.OperationMethod<
+  ListConfigurationProfileAssignmentBySubscriptionRequest,
+  ConfigurationProfileAssignmentList,
+  ListConfigurationProfileAssignmentBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConfigurationProfileAssignmentBySubscriptionRequest,
+  output: ConfigurationProfileAssignmentList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConfigurationProfileAssignmentByVirtualMachinesError =
+  AzureOpError;
+/** Get list of configuration profile assignments */
+export const ListConfigurationProfileAssignmentByVirtualMachines: API.OperationMethod<
+  ListConfigurationProfileAssignmentByVirtualMachinesRequest,
+  ConfigurationProfileAssignmentList,
+  ListConfigurationProfileAssignmentByVirtualMachinesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConfigurationProfileAssignmentByVirtualMachinesRequest,
+  output: ConfigurationProfileAssignmentList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConfigurationProfileAssignmentsError = AzureOpError;
+/** Get list of configuration profile assignments */
+export const ListConfigurationProfileAssignments: API.OperationMethod<
+  ListConfigurationProfileAssignmentsRequest,
+  ConfigurationProfileAssignmentList,
+  ListConfigurationProfileAssignmentsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConfigurationProfileAssignmentsRequest,
+  output: ConfigurationProfileAssignmentList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConfigurationProfileByResourceGroupError = AzureOpError;
+/** Retrieve a list of configuration profile within a given resource group */
+export const ListConfigurationProfileByResourceGroup: API.OperationMethod<
+  ListConfigurationProfileByResourceGroupRequest,
+  ConfigurationProfileList,
+  ListConfigurationProfileByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConfigurationProfileByResourceGroupRequest,
   output: ConfigurationProfileList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type HCIReportsGetError = AzureOpError;
-/** Get information about a report associated with a configuration profile assignment run */
-export const HCIReportsGet: API.OperationMethod<
-  HCIReportsGetRequest,
-  HCIReportsGetResponse,
-  HCIReportsGetError,
+export type ListConfigurationProfileBySubscriptionError = AzureOpError;
+/** Retrieve a list of configuration profile within a subscription */
+export const ListConfigurationProfileBySubscription: API.OperationMethod<
+  ListConfigurationProfileBySubscriptionRequest,
+  ConfigurationProfileList,
+  ListConfigurationProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HCIReportsGetRequest,
-  output: HCIReportsGetResponse,
+  input: ListConfigurationProfileBySubscriptionRequest,
+  output: ConfigurationProfileList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type HCIReportsListByConfigurationProfileAssignmentsError = AzureOpError;
-/** Retrieve a list of reports within a given configuration profile assignment */
-export const HCIReportsListByConfigurationProfileAssignments: API.OperationMethod<
-  HCIReportsListByConfigurationProfileAssignmentsRequest,
-  ReportList,
-  HCIReportsListByConfigurationProfileAssignmentsError,
+export type ListConfigurationProfileVersionChildResourcesError = AzureOpError;
+/** Retrieve a list of configuration profile version for a configuration profile */
+export const ListConfigurationProfileVersionChildResources: API.OperationMethod<
+  ListConfigurationProfileVersionChildResourcesRequest,
+  ConfigurationProfileList,
+  ListConfigurationProfileVersionChildResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HCIReportsListByConfigurationProfileAssignmentsRequest,
+  input: ListConfigurationProfileVersionChildResourcesRequest,
+  output: ConfigurationProfileList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListHciReportByConfigurationProfileAssignmentsError = AzureOpError;
+/** Retrieve a list of reports within a given configuration profile assignment */
+export const ListHciReportByConfigurationProfileAssignments: API.OperationMethod<
+  ListHciReportByConfigurationProfileAssignmentsRequest,
+  ReportList,
+  ListHciReportByConfigurationProfileAssignmentsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHciReportByConfigurationProfileAssignmentsRequest,
   output: ReportList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type HCRPReportsGetError = AzureOpError;
-/** Get information about a report associated with a configuration profile assignment run */
-export const HCRPReportsGet: API.OperationMethod<
-  HCRPReportsGetRequest,
-  HCRPReportsGetResponse,
-  HCRPReportsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HCRPReportsGetRequest,
-  output: HCRPReportsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HCRPReportsListByConfigurationProfileAssignmentsError =
-  AzureOpError;
+export type ListHcrpReportByConfigurationProfileAssignmentsError = AzureOpError;
 /** Retrieve a list of reports within a given configuration profile assignment */
-export const HCRPReportsListByConfigurationProfileAssignments: API.OperationMethod<
-  HCRPReportsListByConfigurationProfileAssignmentsRequest,
+export const ListHcrpReportByConfigurationProfileAssignments: API.OperationMethod<
+  ListHcrpReportByConfigurationProfileAssignmentsRequest,
   ReportList,
-  HCRPReportsListByConfigurationProfileAssignmentsError,
+  ListHcrpReportByConfigurationProfileAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HCRPReportsListByConfigurationProfileAssignmentsRequest,
+  input: ListHcrpReportByConfigurationProfileAssignmentsRequest,
   output: ReportList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
+export type ListOperationsError = AzureOpError;
 /** Lists all of the available Automanage REST API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ReportsGetError = AzureOpError;
-/** Get information about a report associated with a configuration profile assignment run */
-export const ReportsGet: API.OperationMethod<
-  ReportsGetRequest,
-  ReportsGetResponse,
-  ReportsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReportsGetRequest,
-  output: ReportsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReportsListByConfigurationProfileAssignmentsError = AzureOpError;
+export type ListReportByConfigurationProfileAssignmentsError = AzureOpError;
 /** Retrieve a list of reports within a given configuration profile assignment */
-export const ReportsListByConfigurationProfileAssignments: API.OperationMethod<
-  ReportsListByConfigurationProfileAssignmentsRequest,
+export const ListReportByConfigurationProfileAssignments: API.OperationMethod<
+  ListReportByConfigurationProfileAssignmentsRequest,
   ReportList,
-  ReportsListByConfigurationProfileAssignmentsError,
+  ListReportByConfigurationProfileAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReportsListByConfigurationProfileAssignmentsRequest,
+  input: ListReportByConfigurationProfileAssignmentsRequest,
   output: ReportList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ServicePrincipalsGetError = AzureOpError;
+export type ListServicePrincipalBySubscriptionError = AzureOpError;
 /** Get the Automanage AAD first party Application Service Principal details for the subscription id. */
-export const ServicePrincipalsGet: API.OperationMethod<
-  ServicePrincipalsGetRequest,
-  ServicePrincipalsGetResponse,
-  ServicePrincipalsGetError,
+export const ListServicePrincipalBySubscription: API.OperationMethod<
+  ListServicePrincipalBySubscriptionRequest,
+  ServicePrincipalListResult,
+  ListServicePrincipalBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicePrincipalsGetRequest,
-  output: ServicePrincipalsGetResponse,
+  input: ListServicePrincipalBySubscriptionRequest,
+  output: ServicePrincipalListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ServicePrincipalsListBySubscriptionError = AzureOpError;
-/** Get the Automanage AAD first party Application Service Principal details for the subscription id. */
-export const ServicePrincipalsListBySubscription: API.OperationMethod<
-  ServicePrincipalsListBySubscriptionRequest,
-  ServicePrincipalListResult,
-  ServicePrincipalsListBySubscriptionError,
+export type UpdateConfigurationProfileError = AzureOpError;
+/** Updates a configuration profile */
+export const UpdateConfigurationProfile: API.OperationMethod<
+  UpdateConfigurationProfileRequest,
+  UpdateConfigurationProfileResponse,
+  UpdateConfigurationProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicePrincipalsListBySubscriptionRequest,
-  output: ServicePrincipalListResult,
+  input: UpdateConfigurationProfileRequest,
+  output: UpdateConfigurationProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

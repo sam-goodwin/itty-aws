@@ -9938,7 +9938,7 @@
         "smithy.api#documentation": "Deletes a single Cluster."
       }
     },
-    "com.gcp.alloydb_v1beta#RestoreFromCloudSQLProjectsLocationsClustersRequest": {
+    "com.gcp.alloydb_v1beta#RestoreFromCloudSqlProjectsLocationsClustersRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -9958,10 +9958,10 @@
         }
       }
     },
-    "com.gcp.alloydb_v1beta#RestoreFromCloudSQLProjectsLocationsClusters": {
+    "com.gcp.alloydb_v1beta#RestoreFromCloudSqlProjectsLocationsClusters": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.alloydb_v1beta#RestoreFromCloudSQLProjectsLocationsClustersRequest"
+        "target": "com.gcp.alloydb_v1beta#RestoreFromCloudSqlProjectsLocationsClustersRequest"
       },
       "output": {
         "target": "com.gcp.alloydb_v1beta#Operation"

@@ -12,10 +12,10 @@ import * as Retry from "../retry.ts";
 
 export type { ModalOpError, ModalOpContext };
 
-export interface CurlGetAuthTokenRequest {
+export interface GetCurlAuthTokenRequest {
   url?: string;
 }
-export const CurlGetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCurlAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }).pipe(
@@ -26,30 +26,30 @@ export const CurlGetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CurlGetAuthTokenRequest",
-}) as any as S.Schema<CurlGetAuthTokenRequest>;
+  identifier: "GetCurlAuthTokenRequest",
+}) as any as S.Schema<GetCurlAuthTokenRequest>;
 
-export interface CurlGetAuthTokenResponse {
+export interface GetCurlAuthTokenResponse {
   token?: string;
 }
-export const CurlGetAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCurlAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "CurlGetAuthTokenResponse",
-}) as any as S.Schema<CurlGetAuthTokenResponse>;
+  identifier: "GetCurlAuthTokenResponse",
+}) as any as S.Schema<GetCurlAuthTokenResponse>;
 
-export type CurlGetAuthTokenError = ModalOpError;
+export type GetCurlAuthTokenError = ModalOpError;
 /** Curl */
-export const curlGetAuthToken: API.OperationMethod<
-  CurlGetAuthTokenRequest,
-  CurlGetAuthTokenResponse,
-  CurlGetAuthTokenError,
+export const getCurlAuthToken: API.OperationMethod<
+  GetCurlAuthTokenRequest,
+  GetCurlAuthTokenResponse,
+  GetCurlAuthTokenError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CurlGetAuthTokenRequest,
-  output: CurlGetAuthTokenResponse,
+  input: GetCurlAuthTokenRequest,
+  output: GetCurlAuthTokenResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

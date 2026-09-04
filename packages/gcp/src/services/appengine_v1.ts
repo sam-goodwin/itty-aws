@@ -65,81 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type FirewallRuleActionEnum = "UNSPECIFIED_ACTION" | "ALLOW" | "DENY";
-export const FirewallRuleActionEnum = /*@__PURE__*/ S.String;
-
-/** A single firewall rule that is evaluated against incoming traffic and provides an action to take on matched requests. A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user. */
-export interface FirewallRule {
-  priority?: number;
-  /** The action to take on matched requests. */
-  action?: FirewallRuleActionEnum | (string & {});
-  /** IP address or range, defined using CIDR notation, of requests that this rule applies to. You can use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32. */
-  sourceRange?: string;
-  /** An optional string description of this rule. This field has a maximum length of 400 characters. */
-  description?: string;
-}
-export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priority: S.optional(S.Number),
-    action: S.optional(FirewallRuleActionEnum),
-    sourceRange: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
-
-export type FirewallRuleList = Array<FirewallRule>;
-export const FirewallRuleList = /*@__PURE__*/ S.Array(
-  FirewallRule,
-) as any as S.Schema<FirewallRuleList>;
-
-/** Request message for Firewall.BatchUpdateIngressRules. */
-export interface BatchUpdateIngressRulesRequest {
-  /** A list of FirewallRules to replace the existing set. */
-  ingressRules?: FirewallRuleList;
-}
-export const BatchUpdateIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ingressRules: S.optional(FirewallRuleList),
-  }),
-).annotate({
-  identifier: "BatchUpdateIngressRulesRequest",
-}) as any as S.Schema<BatchUpdateIngressRulesRequest>;
-
-export interface BatchUpdateAppsFirewallIngressRulesRequest {
-  /** Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules. */
-  appsId: string;
-  /** Request body */
-  body?: BatchUpdateIngressRulesRequest;
-}
-export const BatchUpdateAppsFirewallIngressRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appsId: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateIngressRulesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/apps/{appsId}/firewall/ingressRules:batchUpdate",
-        baseUrl: "https://appengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateAppsFirewallIngressRulesRequest",
-  }) as any as S.Schema<BatchUpdateAppsFirewallIngressRulesRequest>;
-
-/** Response message for Firewall.UpdateAllIngressRules. */
-export interface BatchUpdateIngressRulesResponse {
-  /** The full list of ingress FirewallRules for this application. */
-  ingressRules?: FirewallRuleList;
-}
-export const BatchUpdateIngressRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ingressRules: S.optional(FirewallRuleList),
-  }),
-).annotate({
-  identifier: "BatchUpdateIngressRulesResponse",
-}) as any as S.Schema<BatchUpdateIngressRulesResponse>;
-
 export type ApplicationDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "CLOUD_DATASTORE"
@@ -560,6 +485,28 @@ export const CreateAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppsDomainMappingsRequest",
 }) as any as S.Schema<CreateAppsDomainMappingsRequest>;
+
+export type FirewallRuleActionEnum = "UNSPECIFIED_ACTION" | "ALLOW" | "DENY";
+export const FirewallRuleActionEnum = /*@__PURE__*/ S.String;
+
+/** A single firewall rule that is evaluated against incoming traffic and provides an action to take on matched requests. A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user. */
+export interface FirewallRule {
+  priority?: number;
+  /** The action to take on matched requests. */
+  action?: FirewallRuleActionEnum | (string & {});
+  /** IP address or range, defined using CIDR notation, of requests that this rule applies to. You can use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32. */
+  sourceRange?: string;
+  /** An optional string description of this rule. This field has a maximum length of 400 characters. */
+  description?: string;
+}
+export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    priority: S.optional(S.Number),
+    action: S.optional(FirewallRuleActionEnum),
+    sourceRange: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 export interface CreateAppsFirewallIngressRulesRequest {
   /** Part of `parent`. Required. Name of the parent Firewall collection in which to create a new rule. Example: apps/myapp/firewall/ingressRules. */
@@ -2679,6 +2626,11 @@ export const ListAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsFirewallIngressRulesRequest",
 }) as any as S.Schema<ListAppsFirewallIngressRulesRequest>;
 
+export type FirewallRuleList = Array<FirewallRule>;
+export const FirewallRuleList = /*@__PURE__*/ S.Array(
+  FirewallRule,
+) as any as S.Schema<FirewallRuleList>;
+
 /** Response message for Firewall.ListIngressRules. */
 export interface ListIngressRulesResponse {
   /** The ingress FirewallRules for this application. */
@@ -3547,25 +3499,53 @@ export const RepairAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RepairAppsRequest",
 }) as any as S.Schema<RepairAppsRequest>;
 
-export type BatchUpdateAppsFirewallIngressRulesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the final rule does not match traffic with the '*' wildcard IP range, then an "allow all" rule is explicitly added to the end of the list. */
-export const batchUpdateAppsFirewallIngressRules: API.OperationMethod<
-  BatchUpdateAppsFirewallIngressRulesRequest,
-  BatchUpdateIngressRulesResponse,
-  BatchUpdateAppsFirewallIngressRulesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateAppsFirewallIngressRulesRequest,
-  output: BatchUpdateIngressRulesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
+/** Request message for Firewall.BatchUpdateIngressRules. */
+export interface BatchUpdateIngressRulesRequest {
+  /** A list of FirewallRules to replace the existing set. */
+  ingressRules?: FirewallRuleList;
+}
+export const BatchUpdateIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ingressRules: S.optional(FirewallRuleList),
+  }),
+).annotate({
+  identifier: "BatchUpdateIngressRulesRequest",
+}) as any as S.Schema<BatchUpdateIngressRulesRequest>;
+
+export interface UpdateBatchAppFirewallIngressRuleRequest {
+  /** Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules. */
+  appsId: string;
+  /** Request body */
+  body?: BatchUpdateIngressRulesRequest;
+}
+export const UpdateBatchAppFirewallIngressRuleRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      body: S.optional(BatchUpdateIngressRulesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/apps/{appsId}/firewall/ingressRules:batchUpdate",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateBatchAppFirewallIngressRuleRequest",
+}) as any as S.Schema<UpdateBatchAppFirewallIngressRuleRequest>;
+
+/** Response message for Firewall.UpdateAllIngressRules. */
+export interface BatchUpdateIngressRulesResponse {
+  /** The full list of ingress FirewallRules for this application. */
+  ingressRules?: FirewallRuleList;
+}
+export const BatchUpdateIngressRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ingressRules: S.optional(FirewallRuleList),
+  }),
+).annotate({
+  identifier: "BatchUpdateIngressRulesResponse",
+}) as any as S.Schema<BatchUpdateIngressRulesResponse>;
 
 export type CreateAppsError =
   | NotFound
@@ -4695,6 +4675,26 @@ export const repairApps: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RepairAppsRequest,
   output: Operation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchAppFirewallIngressRuleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the final rule does not match traffic with the '*' wildcard IP range, then an "allow all" rule is explicitly added to the end of the list. */
+export const updateBatchAppFirewallIngressRule: API.OperationMethod<
+  UpdateBatchAppFirewallIngressRuleRequest,
+  BatchUpdateIngressRulesResponse,
+  UpdateBatchAppFirewallIngressRuleError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchAppFirewallIngressRuleRequest,
+  output: BatchUpdateIngressRulesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

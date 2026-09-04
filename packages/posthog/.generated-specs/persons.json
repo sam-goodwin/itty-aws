@@ -506,7 +506,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsListRequest": {
+    "com.posthog.persons#ListPersonsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -661,10 +661,10 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsList": {
+    "com.posthog.persons#ListPersons": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsListRequest"
+        "target": "com.posthog.persons#ListPersonsRequest"
       },
       "output": {
         "target": "com.posthog.persons#PaginatedPersonRecordList"
@@ -783,7 +783,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsUpdateRequest": {
+    "com.posthog.persons#UpdatePersonRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -819,10 +819,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.persons#PersonsUpdate": {
+    "com.posthog.persons#UpdatePerson": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsUpdateRequest"
+        "target": "com.posthog.persons#UpdatePersonRequest"
       },
       "output": {
         "target": "com.posthog.persons#PersonRecord"
@@ -865,7 +865,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsPartialUpdateRequest": {
+    "com.posthog.persons#UpdatePersonPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -901,10 +901,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.persons#PersonsPartialUpdate": {
+    "com.posthog.persons#UpdatePersonPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsPartialUpdateRequest"
+        "target": "com.posthog.persons#UpdatePersonPartialRequest"
       },
       "output": {
         "target": "com.posthog.persons#PersonRecord"
@@ -1127,7 +1127,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsEmailsListRequest": {
+    "com.posthog.persons#ListPersonEmailsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1282,7 +1282,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsEmailsListResponse": {
+    "com.posthog.persons#ListPersonEmailsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1297,13 +1297,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.persons#PersonsEmailsList": {
+    "com.posthog.persons#ListPersonEmails": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsEmailsListRequest"
+        "target": "com.posthog.persons#ListPersonEmailsRequest"
       },
       "output": {
-        "target": "com.posthog.persons#PersonsEmailsListResponse"
+        "target": "com.posthog.persons#ListPersonEmailsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1408,7 +1408,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsPushNotificationsListRequest": {
+    "com.posthog.persons#ListPersonPushNotificationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1473,7 +1473,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsPushNotificationsListResponse": {
+    "com.posthog.persons#ListPersonPushNotificationsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1488,13 +1488,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.persons#PersonsPushNotificationsList": {
+    "com.posthog.persons#ListPersonPushNotifications": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsPushNotificationsListRequest"
+        "target": "com.posthog.persons#ListPersonPushNotificationsRequest"
       },
       "output": {
-        "target": "com.posthog.persons#PersonsPushNotificationsListResponse"
+        "target": "com.posthog.persons#ListPersonPushNotificationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1532,7 +1532,7 @@
         "smithy.api#documentation": "List of distinct_ids to **move off** this person onto new single-id persons. The original person keeps every other distinct_id and its properties. New persons are created with deterministic UUIDs derived from `(team_id, distinct_id)`. Cannot be combined with `main_distinct_id`."
       }
     },
-    "com.posthog.persons#PersonsSplitCreateRequest": {
+    "com.posthog.persons#CreatePersonSplitRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1589,10 +1589,10 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsSplitCreate": {
+    "com.posthog.persons#CreatePersonSplit": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsSplitCreateRequest"
+        "target": "com.posthog.persons#CreatePersonSplitRequest"
       },
       "output": {
         "target": "com.posthog.persons#PersonSplitResponse"
@@ -1791,7 +1791,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsBatchByDistinctIdsCreateRequest": {
+    "com.posthog.persons#CreatePersonBatchByDistinctIdsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1819,10 +1819,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.persons#PersonsBatchByDistinctIdsCreate": {
+    "com.posthog.persons#CreatePersonBatchByDistinctIds": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsBatchByDistinctIdsCreateRequest"
+        "target": "com.posthog.persons#CreatePersonBatchByDistinctIdsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1865,7 +1865,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsBatchByUuidsCreateRequest": {
+    "com.posthog.persons#CreatePersonBatchByUuidRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1893,10 +1893,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.persons#PersonsBatchByUuidsCreate": {
+    "com.posthog.persons#CreatePersonBatchByUuid": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsBatchByUuidsCreateRequest"
+        "target": "com.posthog.persons#CreatePersonBatchByUuidRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2155,7 +2155,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsDeletionStatusListRequest": {
+    "com.posthog.persons#ListPersonDeletionStatusRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2267,10 +2267,10 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsDeletionStatusList": {
+    "com.posthog.persons#ListPersonDeletionStatus": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsDeletionStatusListRequest"
+        "target": "com.posthog.persons#ListPersonDeletionStatusRequest"
       },
       "output": {
         "target": "com.posthog.persons#PaginatedAsyncDeletionStatusList"
@@ -2549,7 +2549,7 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsResetPersonDistinctIdCreateRequest": {
+    "com.posthog.persons#CreatePersonResetPersonDistinctIdRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2577,10 +2577,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.persons#PersonsResetPersonDistinctIdCreate": {
+    "com.posthog.persons#CreatePersonResetPersonDistinctId": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.persons#PersonsResetPersonDistinctIdCreateRequest"
+        "target": "com.posthog.persons#CreatePersonResetPersonDistinctIdRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2732,16 +2732,16 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.persons#PersonsList"
+          "target": "com.posthog.persons#ListPersons"
         },
         {
           "target": "com.posthog.persons#PersonsRetrieve"
         },
         {
-          "target": "com.posthog.persons#PersonsUpdate"
+          "target": "com.posthog.persons#UpdatePerson"
         },
         {
-          "target": "com.posthog.persons#PersonsPartialUpdate"
+          "target": "com.posthog.persons#UpdatePersonPartial"
         },
         {
           "target": "com.posthog.persons#PersonsActivityRetrieve"
@@ -2750,16 +2750,16 @@
           "target": "com.posthog.persons#PersonsDeletePropertyCreate"
         },
         {
-          "target": "com.posthog.persons#PersonsEmailsList"
+          "target": "com.posthog.persons#ListPersonEmails"
         },
         {
           "target": "com.posthog.persons#PersonsPropertiesTimelineRetrieve"
         },
         {
-          "target": "com.posthog.persons#PersonsPushNotificationsList"
+          "target": "com.posthog.persons#ListPersonPushNotifications"
         },
         {
-          "target": "com.posthog.persons#PersonsSplitCreate"
+          "target": "com.posthog.persons#CreatePersonSplit"
         },
         {
           "target": "com.posthog.persons#PersonsUpdatePropertyCreate"
@@ -2768,10 +2768,10 @@
           "target": "com.posthog.persons#PersonsAllActivityRetrieve"
         },
         {
-          "target": "com.posthog.persons#PersonsBatchByDistinctIdsCreate"
+          "target": "com.posthog.persons#CreatePersonBatchByDistinctIds"
         },
         {
-          "target": "com.posthog.persons#PersonsBatchByUuidsCreate"
+          "target": "com.posthog.persons#CreatePersonBatchByUuid"
         },
         {
           "target": "com.posthog.persons#PersonsBulkDeleteCreate"
@@ -2780,13 +2780,13 @@
           "target": "com.posthog.persons#PersonsCohortsRetrieve"
         },
         {
-          "target": "com.posthog.persons#PersonsDeletionStatusList"
+          "target": "com.posthog.persons#ListPersonDeletionStatus"
         },
         {
           "target": "com.posthog.persons#PersonsPropertiesAtTimeRetrieve"
         },
         {
-          "target": "com.posthog.persons#PersonsResetPersonDistinctIdCreate"
+          "target": "com.posthog.persons#CreatePersonResetPersonDistinctId"
         },
         {
           "target": "com.posthog.persons#PersonsValuesRetrieve"

@@ -12,6 +12,95 @@ import * as Retry from "../retry.ts";
 
 export type { ModalOpError, ModalOpContext };
 
+/** Environment-scoped settings, with workspace-level defaults. Note that we use MergeFrom to combine workspace / environment settings, which will *append* any `repeated` fields! */
+export interface EnvironmentSettings {
+  imageBuilderVersion?: string;
+  webhookSuffix?: string;
+  maxConcurrentGpus?: number;
+  maxConcurrentTasks?: number;
+}
+export const EnvironmentSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageBuilderVersion: S.optional(S.String),
+    webhookSuffix: S.optional(S.String),
+    maxConcurrentGpus: S.optional(S.Number),
+    maxConcurrentTasks: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "EnvironmentSettings",
+}) as any as S.Schema<EnvironmentSettings>;
+
+/** Creation-time environment classification. Captures whether an environment is public. is_managed and machine_generated may be folded in as future values. */
+export type EnvironmentType =
+  | "ENVIRONMENT_TYPE_UNSPECIFIED"
+  | "ENVIRONMENT_TYPE_PUBLIC";
+export const EnvironmentType = /*@__PURE__*/ S.String;
+
+export type EnvironmentRole =
+  | "ENVIRONMENT_ROLE_UNSPECIFIED"
+  | "ENVIRONMENT_ROLE_VIEWER"
+  | "ENVIRONMENT_ROLE_CONTRIBUTOR"
+  | "ENVIRONMENT_ROLE_NO_ACCESS";
+export const EnvironmentRole = /*@__PURE__*/ S.String;
+
+export interface CreateEnvironmentRequest {
+  name?: string;
+  isManaged?: boolean;
+  settings?: EnvironmentSettings;
+  environmentType?: EnvironmentType | (string & {});
+  defaultMemberRole?: EnvironmentRole | (string & {});
+  defaultMemberRoleStr?: string;
+}
+export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    isManaged: S.optional(S.Boolean),
+    settings: S.optional(EnvironmentSettings),
+    environmentType: S.optional(EnvironmentType),
+    defaultMemberRole: S.optional(EnvironmentRole),
+    defaultMemberRoleStr: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/EnvironmentCreate",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateEnvironmentRequest",
+}) as any as S.Schema<CreateEnvironmentRequest>;
+
+export interface CreateEnvironmentResponse {}
+export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateEnvironmentResponse",
+}) as any as S.Schema<CreateEnvironmentResponse>;
+
+export interface DeleteEnvironmentRequest {
+  name?: string;
+}
+export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/EnvironmentDelete",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteEnvironmentRequest",
+}) as any as S.Schema<DeleteEnvironmentRequest>;
+
+export interface DeleteEnvironmentResponse {}
+export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteEnvironmentResponse",
+}) as any as S.Schema<DeleteEnvironmentResponse>;
+
 export interface EnvironmentBillingSummaryRequest {
   /** all query intervals are implicitly one month long (to line up with billing cycles) */
   startTimestamp?: string;
@@ -56,209 +145,6 @@ export const EnvironmentBillingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnvironmentBillingSummaryResponse",
 }) as any as S.Schema<EnvironmentBillingSummaryResponse>;
-
-/** Environment-scoped settings, with workspace-level defaults. Note that we use MergeFrom to combine workspace / environment settings, which will *append* any `repeated` fields! */
-export interface EnvironmentSettings {
-  imageBuilderVersion?: string;
-  webhookSuffix?: string;
-  maxConcurrentGpus?: number;
-  maxConcurrentTasks?: number;
-}
-export const EnvironmentSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageBuilderVersion: S.optional(S.String),
-    webhookSuffix: S.optional(S.String),
-    maxConcurrentGpus: S.optional(S.Number),
-    maxConcurrentTasks: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EnvironmentSettings",
-}) as any as S.Schema<EnvironmentSettings>;
-
-/** Creation-time environment classification. Captures whether an environment is public. is_managed and machine_generated may be folded in as future values. */
-export type EnvironmentType =
-  | "ENVIRONMENT_TYPE_UNSPECIFIED"
-  | "ENVIRONMENT_TYPE_PUBLIC";
-export const EnvironmentType = /*@__PURE__*/ S.String;
-
-export type EnvironmentRole =
-  | "ENVIRONMENT_ROLE_UNSPECIFIED"
-  | "ENVIRONMENT_ROLE_VIEWER"
-  | "ENVIRONMENT_ROLE_CONTRIBUTOR"
-  | "ENVIRONMENT_ROLE_NO_ACCESS";
-export const EnvironmentRole = /*@__PURE__*/ S.String;
-
-export interface EnvironmentCreateRequest {
-  name?: string;
-  isManaged?: boolean;
-  settings?: EnvironmentSettings;
-  environmentType?: EnvironmentType | (string & {});
-  defaultMemberRole?: EnvironmentRole | (string & {});
-  defaultMemberRoleStr?: string;
-}
-export const EnvironmentCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    isManaged: S.optional(S.Boolean),
-    settings: S.optional(EnvironmentSettings),
-    environmentType: S.optional(EnvironmentType),
-    defaultMemberRole: S.optional(EnvironmentRole),
-    defaultMemberRoleStr: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/EnvironmentCreate",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EnvironmentCreateRequest",
-}) as any as S.Schema<EnvironmentCreateRequest>;
-
-export interface EnvironmentCreateResponse {}
-export const EnvironmentCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnvironmentCreateResponse",
-}) as any as S.Schema<EnvironmentCreateResponse>;
-
-export interface EnvironmentDeleteRequest {
-  name?: string;
-}
-export const EnvironmentDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/EnvironmentDelete",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EnvironmentDeleteRequest",
-}) as any as S.Schema<EnvironmentDeleteRequest>;
-
-export interface EnvironmentDeleteResponse {}
-export const EnvironmentDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnvironmentDeleteResponse",
-}) as any as S.Schema<EnvironmentDeleteResponse>;
-
-export interface EnvironmentGetBudgetRequest {
-  environmentId?: string;
-}
-export const EnvironmentGetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/EnvironmentGetBudget",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EnvironmentGetBudgetRequest",
-}) as any as S.Schema<EnvironmentGetBudgetRequest>;
-
-export interface EnvironmentGetBudgetResponse {
-  cycleBudgetDollars?: number;
-  effectiveCycleSpendLimit?: number;
-  currentCycleUsage?: number;
-  spendLimitReached?: boolean;
-}
-export const EnvironmentGetBudgetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cycleBudgetDollars: S.optional(S.Number),
-    effectiveCycleSpendLimit: S.optional(S.Number),
-    currentCycleUsage: S.optional(S.Number),
-    spendLimitReached: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EnvironmentGetBudgetResponse",
-}) as any as S.Schema<EnvironmentGetBudgetResponse>;
-
-export interface EnvironmentGetManagedRequest {
-  environmentId?: string;
-}
-export const EnvironmentGetManagedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/EnvironmentGetManaged",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EnvironmentGetManagedRequest",
-}) as any as S.Schema<EnvironmentGetManagedRequest>;
-
-export type MemberRole =
-  | "MEMBER_ROLE_UNSPECIFIED"
-  | "MEMBER_ROLE_USER"
-  | "MEMBER_ROLE_MANAGER"
-  | "MEMBER_ROLE_OWNER";
-export const MemberRole = /*@__PURE__*/ S.String;
-
-export interface EnvironmentGetManagedResponsePrincipalEnvRole {
-  userId?: string;
-  serviceUserId?: string;
-  email?: string;
-  avatarUrl?: string;
-  serviceUserName?: string;
-  role?: EnvironmentRole;
-  memberRole?: MemberRole;
-  userName?: string;
-}
-export const EnvironmentGetManagedResponsePrincipalEnvRole =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userId: S.optional(S.String),
-      serviceUserId: S.optional(S.String),
-      email: S.optional(S.String),
-      avatarUrl: S.optional(S.String),
-      serviceUserName: S.optional(S.String),
-      role: S.optional(EnvironmentRole),
-      memberRole: S.optional(MemberRole),
-      userName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EnvironmentGetManagedResponsePrincipalEnvRole",
-  }) as any as S.Schema<EnvironmentGetManagedResponsePrincipalEnvRole>;
-
-export type EnvironmentGetManagedResponsePrincipalEnvRoleList =
-  Array<EnvironmentGetManagedResponsePrincipalEnvRole>;
-export const EnvironmentGetManagedResponsePrincipalEnvRoleList =
-  /*@__PURE__*/ S.Array(
-    EnvironmentGetManagedResponsePrincipalEnvRole,
-  ) as any as S.Schema<EnvironmentGetManagedResponsePrincipalEnvRoleList>;
-
-export interface EnvironmentGetManagedResponse {
-  environmentId?: string;
-  name?: string;
-  createdAt?: number;
-  principalRoles?: EnvironmentGetManagedResponsePrincipalEnvRoleList;
-  additionalRoles?: EnvironmentGetManagedResponsePrincipalEnvRoleList;
-}
-export const EnvironmentGetManagedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.String),
-    name: S.optional(S.String),
-    createdAt: S.optional(S.Number),
-    principalRoles: S.optional(
-      EnvironmentGetManagedResponsePrincipalEnvRoleList,
-    ),
-    additionalRoles: S.optional(
-      EnvironmentGetManagedResponsePrincipalEnvRoleList,
-    ),
-  }),
-).annotate({
-  identifier: "EnvironmentGetManagedResponse",
-}) as any as S.Schema<EnvironmentGetManagedResponse>;
 
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
@@ -316,10 +202,124 @@ export const EnvironmentGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentGetOrCreateResponse",
 }) as any as S.Schema<EnvironmentGetOrCreateResponse>;
 
-export interface EnvironmentGetRolesRequest {
+export interface GetEnvironmentBudgetRequest {
   environmentId?: string;
 }
-export const EnvironmentGetRolesRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetEnvironmentBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/EnvironmentGetBudget",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetEnvironmentBudgetRequest",
+}) as any as S.Schema<GetEnvironmentBudgetRequest>;
+
+export interface GetEnvironmentBudgetResponse {
+  cycleBudgetDollars?: number;
+  effectiveCycleSpendLimit?: number;
+  currentCycleUsage?: number;
+  spendLimitReached?: boolean;
+}
+export const GetEnvironmentBudgetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cycleBudgetDollars: S.optional(S.Number),
+    effectiveCycleSpendLimit: S.optional(S.Number),
+    currentCycleUsage: S.optional(S.Number),
+    spendLimitReached: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetEnvironmentBudgetResponse",
+}) as any as S.Schema<GetEnvironmentBudgetResponse>;
+
+export interface GetEnvironmentManagedRequest {
+  environmentId?: string;
+}
+export const GetEnvironmentManagedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/EnvironmentGetManaged",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetEnvironmentManagedRequest",
+}) as any as S.Schema<GetEnvironmentManagedRequest>;
+
+export type MemberRole =
+  | "MEMBER_ROLE_UNSPECIFIED"
+  | "MEMBER_ROLE_USER"
+  | "MEMBER_ROLE_MANAGER"
+  | "MEMBER_ROLE_OWNER";
+export const MemberRole = /*@__PURE__*/ S.String;
+
+export interface EnvironmentGetManagedResponsePrincipalEnvRole {
+  userId?: string;
+  serviceUserId?: string;
+  email?: string;
+  avatarUrl?: string;
+  serviceUserName?: string;
+  role?: EnvironmentRole;
+  memberRole?: MemberRole;
+  userName?: string;
+}
+export const EnvironmentGetManagedResponsePrincipalEnvRole =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.optional(S.String),
+      serviceUserId: S.optional(S.String),
+      email: S.optional(S.String),
+      avatarUrl: S.optional(S.String),
+      serviceUserName: S.optional(S.String),
+      role: S.optional(EnvironmentRole),
+      memberRole: S.optional(MemberRole),
+      userName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentGetManagedResponsePrincipalEnvRole",
+  }) as any as S.Schema<EnvironmentGetManagedResponsePrincipalEnvRole>;
+
+export type EnvironmentGetManagedResponsePrincipalEnvRoleList =
+  Array<EnvironmentGetManagedResponsePrincipalEnvRole>;
+export const EnvironmentGetManagedResponsePrincipalEnvRoleList =
+  /*@__PURE__*/ S.Array(
+    EnvironmentGetManagedResponsePrincipalEnvRole,
+  ) as any as S.Schema<EnvironmentGetManagedResponsePrincipalEnvRoleList>;
+
+export interface GetEnvironmentManagedResponse {
+  environmentId?: string;
+  name?: string;
+  createdAt?: number;
+  principalRoles?: EnvironmentGetManagedResponsePrincipalEnvRoleList;
+  additionalRoles?: EnvironmentGetManagedResponsePrincipalEnvRoleList;
+}
+export const GetEnvironmentManagedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.String),
+    name: S.optional(S.String),
+    createdAt: S.optional(S.Number),
+    principalRoles: S.optional(
+      EnvironmentGetManagedResponsePrincipalEnvRoleList,
+    ),
+    additionalRoles: S.optional(
+      EnvironmentGetManagedResponsePrincipalEnvRoleList,
+    ),
+  }),
+).annotate({
+  identifier: "GetEnvironmentManagedResponse",
+}) as any as S.Schema<GetEnvironmentManagedResponse>;
+
+export interface GetEnvironmentRoleRequest {
+  environmentId?: string;
+}
+export const GetEnvironmentRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
   }).pipe(
@@ -330,8 +330,8 @@ export const EnvironmentGetRolesRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EnvironmentGetRolesRequest",
-}) as any as S.Schema<EnvironmentGetRolesRequest>;
+  identifier: "GetEnvironmentRoleRequest",
+}) as any as S.Schema<GetEnvironmentRoleRequest>;
 
 export type EnvironmentRoleList = Array<EnvironmentRole>;
 export const EnvironmentRoleList = /*@__PURE__*/ S.Array(
@@ -379,13 +379,13 @@ export const EnvironmentGetRolesResponsePrincipalList = /*@__PURE__*/ S.Array(
   EnvironmentGetRolesResponsePrincipal,
 ) as any as S.Schema<EnvironmentGetRolesResponsePrincipalList>;
 
-export interface EnvironmentGetRolesResponse {
+export interface GetEnvironmentRoleResponse {
   name?: string;
   createdAt?: number;
   principalRoles?: EnvironmentGetRolesResponsePrincipalList;
   defaultMemberRole?: EnvironmentRole;
 }
-export const EnvironmentGetRolesResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetEnvironmentRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -393,11 +393,11 @@ export const EnvironmentGetRolesResponse = /*@__PURE__*/ S.suspend(() =>
     defaultMemberRole: S.optional(EnvironmentRole),
   }),
 ).annotate({
-  identifier: "EnvironmentGetRolesResponse",
-}) as any as S.Schema<EnvironmentGetRolesResponse>;
+  identifier: "GetEnvironmentRoleResponse",
+}) as any as S.Schema<GetEnvironmentRoleResponse>;
 
-export interface EnvironmentListRequest {}
-export const EnvironmentListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListEnvironmentRequest {}
+export const ListEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -406,8 +406,8 @@ export const EnvironmentListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EnvironmentListRequest",
-}) as any as S.Schema<EnvironmentListRequest>;
+  identifier: "ListEnvironmentRequest",
+}) as any as S.Schema<ListEnvironmentRequest>;
 
 export interface EnvironmentListItem {
   name?: string;
@@ -456,25 +456,108 @@ export const EnvironmentListItemList = /*@__PURE__*/ S.Array(
   EnvironmentListItem,
 ) as any as S.Schema<EnvironmentListItemList>;
 
-export interface EnvironmentListResponse {
+export interface ListEnvironmentResponse {
   items?: EnvironmentListItemList;
 }
-export const EnvironmentListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(EnvironmentListItemList),
   }),
 ).annotate({
-  identifier: "EnvironmentListResponse",
-}) as any as S.Schema<EnvironmentListResponse>;
+  identifier: "ListEnvironmentResponse",
+}) as any as S.Schema<ListEnvironmentResponse>;
 
-export interface EnvironmentRoleSetRequest {
+export interface SetEnvironmentBudgetRequest {
+  environmentId?: string;
+  cycleBudgetDollars?: number;
+  clearBudget?: boolean;
+}
+export const SetEnvironmentBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.String),
+    cycleBudgetDollars: S.optional(S.Number),
+    clearBudget: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/EnvironmentSetBudget",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SetEnvironmentBudgetRequest",
+}) as any as S.Schema<SetEnvironmentBudgetRequest>;
+
+export interface SetEnvironmentBudgetResponse {}
+export const SetEnvironmentBudgetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SetEnvironmentBudgetResponse",
+}) as any as S.Schema<SetEnvironmentBudgetResponse>;
+
+export interface SetEnvironmentDefaultMemberRoleRequest {
+  environmentId?: string;
+  defaultMemberRole?: EnvironmentRole | (string & {});
+}
+export const SetEnvironmentDefaultMemberRoleRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      environmentId: S.optional(S.String),
+      defaultMemberRole: S.optional(EnvironmentRole),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/modal.client.ModalClient/EnvironmentSetDefaultMemberRole",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "SetEnvironmentDefaultMemberRoleRequest",
+}) as any as S.Schema<SetEnvironmentDefaultMemberRoleRequest>;
+
+export interface SetEnvironmentDefaultMemberRoleResponse {}
+export const SetEnvironmentDefaultMemberRoleResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "SetEnvironmentDefaultMemberRoleResponse",
+}) as any as S.Schema<SetEnvironmentDefaultMemberRoleResponse>;
+
+export interface SetEnvironmentManagedRequest {
+  environmentId?: string;
+  managed?: boolean;
+  defaultMemberRole?: EnvironmentRole | (string & {});
+}
+export const SetEnvironmentManagedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.String),
+    managed: S.optional(S.Boolean),
+    defaultMemberRole: S.optional(EnvironmentRole),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/EnvironmentSetManaged",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SetEnvironmentManagedRequest",
+}) as any as S.Schema<SetEnvironmentManagedRequest>;
+
+export interface SetEnvironmentManagedResponse {}
+export const SetEnvironmentManagedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SetEnvironmentManagedResponse",
+}) as any as S.Schema<SetEnvironmentManagedResponse>;
+
+export interface SetEnvironmentRoleRequest {
   environmentId?: string;
   userId?: string;
   serviceUserId?: string;
   role?: EnvironmentRole | (string & {});
   roleStr?: string;
 }
-export const EnvironmentRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
+export const SetEnvironmentRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     userId: S.optional(S.String),
@@ -489,107 +572,24 @@ export const EnvironmentRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EnvironmentRoleSetRequest",
-}) as any as S.Schema<EnvironmentRoleSetRequest>;
+  identifier: "SetEnvironmentRoleRequest",
+}) as any as S.Schema<SetEnvironmentRoleRequest>;
 
-export interface EnvironmentRoleSetResponse {}
-export const EnvironmentRoleSetResponse = /*@__PURE__*/ S.suspend(() =>
+export interface SetEnvironmentRoleResponse {}
+export const SetEnvironmentRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "EnvironmentRoleSetResponse",
-}) as any as S.Schema<EnvironmentRoleSetResponse>;
+  identifier: "SetEnvironmentRoleResponse",
+}) as any as S.Schema<SetEnvironmentRoleResponse>;
 
-export interface EnvironmentSetBudgetRequest {
-  environmentId?: string;
-  cycleBudgetDollars?: number;
-  clearBudget?: boolean;
-}
-export const EnvironmentSetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.String),
-    cycleBudgetDollars: S.optional(S.Number),
-    clearBudget: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/EnvironmentSetBudget",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EnvironmentSetBudgetRequest",
-}) as any as S.Schema<EnvironmentSetBudgetRequest>;
-
-export interface EnvironmentSetBudgetResponse {}
-export const EnvironmentSetBudgetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnvironmentSetBudgetResponse",
-}) as any as S.Schema<EnvironmentSetBudgetResponse>;
-
-export interface EnvironmentSetDefaultMemberRoleRequest {
-  environmentId?: string;
-  defaultMemberRole?: EnvironmentRole | (string & {});
-}
-export const EnvironmentSetDefaultMemberRoleRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environmentId: S.optional(S.String),
-      defaultMemberRole: S.optional(EnvironmentRole),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/modal.client.ModalClient/EnvironmentSetDefaultMemberRole",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "EnvironmentSetDefaultMemberRoleRequest",
-}) as any as S.Schema<EnvironmentSetDefaultMemberRoleRequest>;
-
-export interface EnvironmentSetDefaultMemberRoleResponse {}
-export const EnvironmentSetDefaultMemberRoleResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "EnvironmentSetDefaultMemberRoleResponse",
-}) as any as S.Schema<EnvironmentSetDefaultMemberRoleResponse>;
-
-export interface EnvironmentSetManagedRequest {
-  environmentId?: string;
-  managed?: boolean;
-  defaultMemberRole?: EnvironmentRole | (string & {});
-}
-export const EnvironmentSetManagedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.String),
-    managed: S.optional(S.Boolean),
-    defaultMemberRole: S.optional(EnvironmentRole),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/EnvironmentSetManaged",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EnvironmentSetManagedRequest",
-}) as any as S.Schema<EnvironmentSetManagedRequest>;
-
-export interface EnvironmentSetManagedResponse {}
-export const EnvironmentSetManagedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnvironmentSetManagedResponse",
-}) as any as S.Schema<EnvironmentSetManagedResponse>;
-
-export interface EnvironmentUpdateRequest {
+export interface UpdateEnvironmentRequest {
   currentName?: string;
   name?: string;
   webSuffix?: string;
   maxConcurrentTasks?: number;
   maxConcurrentGpus?: number;
 }
-export const EnvironmentUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentName: S.optional(S.String),
     name: S.optional(S.String),
@@ -604,10 +604,10 @@ export const EnvironmentUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EnvironmentUpdateRequest",
-}) as any as S.Schema<EnvironmentUpdateRequest>;
+  identifier: "UpdateEnvironmentRequest",
+}) as any as S.Schema<UpdateEnvironmentRequest>;
 
-export interface EnvironmentUpdateResponse {
+export interface UpdateEnvironmentResponse {
   name?: string;
   webhookSuffix?: string;
   createdAt?: number;
@@ -626,7 +626,7 @@ export interface EnvironmentUpdateResponse {
   environmentType?: EnvironmentType;
   defaultMemberRole?: EnvironmentRole;
 }
-export const EnvironmentUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     webhookSuffix: S.optional(S.String),
@@ -646,8 +646,36 @@ export const EnvironmentUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     defaultMemberRole: S.optional(EnvironmentRole),
   }),
 ).annotate({
-  identifier: "EnvironmentUpdateResponse",
-}) as any as S.Schema<EnvironmentUpdateResponse>;
+  identifier: "UpdateEnvironmentResponse",
+}) as any as S.Schema<UpdateEnvironmentResponse>;
+
+export type CreateEnvironmentError = ModalOpError;
+export const createEnvironment: API.OperationMethod<
+  CreateEnvironmentRequest,
+  CreateEnvironmentResponse,
+  CreateEnvironmentError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateEnvironmentRequest,
+  output: CreateEnvironmentResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteEnvironmentError = ModalOpError;
+export const deleteEnvironment: API.OperationMethod<
+  DeleteEnvironmentRequest,
+  DeleteEnvironmentResponse,
+  DeleteEnvironmentError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteEnvironmentRequest,
+  output: DeleteEnvironmentResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
 
 export type EnvironmentBillingSummaryError = ModalOpError;
 /** Environments */
@@ -659,62 +687,6 @@ export const environmentBillingSummary: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnvironmentBillingSummaryRequest,
   output: EnvironmentBillingSummaryResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentCreateError = ModalOpError;
-export const environmentCreate: API.OperationMethod<
-  EnvironmentCreateRequest,
-  EnvironmentCreateResponse,
-  EnvironmentCreateError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentCreateRequest,
-  output: EnvironmentCreateResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentDeleteError = ModalOpError;
-export const environmentDelete: API.OperationMethod<
-  EnvironmentDeleteRequest,
-  EnvironmentDeleteResponse,
-  EnvironmentDeleteError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentDeleteRequest,
-  output: EnvironmentDeleteResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentGetBudgetError = ModalOpError;
-export const environmentGetBudget: API.OperationMethod<
-  EnvironmentGetBudgetRequest,
-  EnvironmentGetBudgetResponse,
-  EnvironmentGetBudgetError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentGetBudgetRequest,
-  output: EnvironmentGetBudgetResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentGetManagedError = ModalOpError;
-export const environmentGetManaged: API.OperationMethod<
-  EnvironmentGetManagedRequest,
-  EnvironmentGetManagedResponse,
-  EnvironmentGetManagedError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentGetManagedRequest,
-  output: EnvironmentGetManagedResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -734,99 +706,127 @@ export const environmentGetOrCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnvironmentGetRolesError = ModalOpError;
-export const environmentGetRoles: API.OperationMethod<
-  EnvironmentGetRolesRequest,
-  EnvironmentGetRolesResponse,
-  EnvironmentGetRolesError,
+export type GetEnvironmentBudgetError = ModalOpError;
+export const getEnvironmentBudget: API.OperationMethod<
+  GetEnvironmentBudgetRequest,
+  GetEnvironmentBudgetResponse,
+  GetEnvironmentBudgetError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentGetRolesRequest,
-  output: EnvironmentGetRolesResponse,
+  input: GetEnvironmentBudgetRequest,
+  output: GetEnvironmentBudgetResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EnvironmentListError = ModalOpError;
-export const environmentList: API.OperationMethod<
-  EnvironmentListRequest,
-  EnvironmentListResponse,
-  EnvironmentListError,
+export type GetEnvironmentManagedError = ModalOpError;
+export const getEnvironmentManaged: API.OperationMethod<
+  GetEnvironmentManagedRequest,
+  GetEnvironmentManagedResponse,
+  GetEnvironmentManagedError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentListRequest,
-  output: EnvironmentListResponse,
+  input: GetEnvironmentManagedRequest,
+  output: GetEnvironmentManagedResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EnvironmentRoleSetError = ModalOpError;
-export const environmentRoleSet: API.OperationMethod<
-  EnvironmentRoleSetRequest,
-  EnvironmentRoleSetResponse,
-  EnvironmentRoleSetError,
+export type GetEnvironmentRoleError = ModalOpError;
+export const getEnvironmentRole: API.OperationMethod<
+  GetEnvironmentRoleRequest,
+  GetEnvironmentRoleResponse,
+  GetEnvironmentRoleError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentRoleSetRequest,
-  output: EnvironmentRoleSetResponse,
+  input: GetEnvironmentRoleRequest,
+  output: GetEnvironmentRoleResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EnvironmentSetBudgetError = ModalOpError;
-export const environmentSetBudget: API.OperationMethod<
-  EnvironmentSetBudgetRequest,
-  EnvironmentSetBudgetResponse,
-  EnvironmentSetBudgetError,
+export type ListEnvironmentError = ModalOpError;
+export const listEnvironment: API.OperationMethod<
+  ListEnvironmentRequest,
+  ListEnvironmentResponse,
+  ListEnvironmentError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentSetBudgetRequest,
-  output: EnvironmentSetBudgetResponse,
+  input: ListEnvironmentRequest,
+  output: ListEnvironmentResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EnvironmentSetDefaultMemberRoleError = ModalOpError;
-export const environmentSetDefaultMemberRole: API.OperationMethod<
-  EnvironmentSetDefaultMemberRoleRequest,
-  EnvironmentSetDefaultMemberRoleResponse,
-  EnvironmentSetDefaultMemberRoleError,
+export type SetEnvironmentBudgetError = ModalOpError;
+export const setEnvironmentBudget: API.OperationMethod<
+  SetEnvironmentBudgetRequest,
+  SetEnvironmentBudgetResponse,
+  SetEnvironmentBudgetError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentSetDefaultMemberRoleRequest,
-  output: EnvironmentSetDefaultMemberRoleResponse,
+  input: SetEnvironmentBudgetRequest,
+  output: SetEnvironmentBudgetResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EnvironmentSetManagedError = ModalOpError;
-export const environmentSetManaged: API.OperationMethod<
-  EnvironmentSetManagedRequest,
-  EnvironmentSetManagedResponse,
-  EnvironmentSetManagedError,
+export type SetEnvironmentDefaultMemberRoleError = ModalOpError;
+export const setEnvironmentDefaultMemberRole: API.OperationMethod<
+  SetEnvironmentDefaultMemberRoleRequest,
+  SetEnvironmentDefaultMemberRoleResponse,
+  SetEnvironmentDefaultMemberRoleError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentSetManagedRequest,
-  output: EnvironmentSetManagedResponse,
+  input: SetEnvironmentDefaultMemberRoleRequest,
+  output: SetEnvironmentDefaultMemberRoleResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EnvironmentUpdateError = ModalOpError;
-export const environmentUpdate: API.OperationMethod<
-  EnvironmentUpdateRequest,
-  EnvironmentUpdateResponse,
-  EnvironmentUpdateError,
+export type SetEnvironmentManagedError = ModalOpError;
+export const setEnvironmentManaged: API.OperationMethod<
+  SetEnvironmentManagedRequest,
+  SetEnvironmentManagedResponse,
+  SetEnvironmentManagedError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentUpdateRequest,
-  output: EnvironmentUpdateResponse,
+  input: SetEnvironmentManagedRequest,
+  output: SetEnvironmentManagedResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetEnvironmentRoleError = ModalOpError;
+export const setEnvironmentRole: API.OperationMethod<
+  SetEnvironmentRoleRequest,
+  SetEnvironmentRoleResponse,
+  SetEnvironmentRoleError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetEnvironmentRoleRequest,
+  output: SetEnvironmentRoleResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateEnvironmentError = ModalOpError;
+export const updateEnvironment: API.OperationMethod<
+  UpdateEnvironmentRequest,
+  UpdateEnvironmentResponse,
+  UpdateEnvironmentError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateEnvironmentRequest,
+  output: UpdateEnvironmentResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

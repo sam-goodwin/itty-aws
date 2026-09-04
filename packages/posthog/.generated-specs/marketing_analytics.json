@@ -52,7 +52,7 @@
         "smithy.api#documentation": "* `setup_tab` - setup_tab\n* `apply_all_safe` - apply_all_safe\n* `mcp` - mcp"
       }
     },
-    "com.posthog.marketing_analytics#MarketingAnalyticsApplySetupOpsCreateRequest": {
+    "com.posthog.marketing_analytics#CreateMarketingAnalyticApplySetupOpsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -126,10 +126,10 @@
         "smithy.api#documentation": "Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state — POST them back to undo."
       }
     },
-    "com.posthog.marketing_analytics#MarketingAnalyticsApplySetupOpsCreate": {
+    "com.posthog.marketing_analytics#CreateMarketingAnalyticApplySetupOps": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.marketing_analytics#MarketingAnalyticsApplySetupOpsCreateRequest"
+        "target": "com.posthog.marketing_analytics#CreateMarketingAnalyticApplySetupOpsRequest"
       },
       "output": {
         "target": "com.posthog.marketing_analytics#ApplySetupOpsResponse"
@@ -364,7 +364,7 @@
         "smithy.api#documentation": "List conversion goals\n\nRead the configured conversion goals for the current project — each with its kind, target, last-30d count, integrated vs non-integrated split, and a misconfiguration flag. Read-only."
       }
     },
-    "com.posthog.marketing_analytics#MarketingAnalyticsConversionGoalsDeleteDestroyRequest": {
+    "com.posthog.marketing_analytics#DeleteMarketingAnalyticConversionGoalDestroyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4832,10 +4832,10 @@
       },
       "traits": {}
     },
-    "com.posthog.marketing_analytics#MarketingAnalyticsConversionGoalsDeleteDestroy": {
+    "com.posthog.marketing_analytics#DeleteMarketingAnalyticConversionGoalDestroy": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.marketing_analytics#MarketingAnalyticsConversionGoalsDeleteDestroyRequest"
+        "target": "com.posthog.marketing_analytics#DeleteMarketingAnalyticConversionGoalDestroyRequest"
       },
       "output": {
         "target": "com.posthog.marketing_analytics#ConversionGoalWriteResponse"
@@ -7915,7 +7915,7 @@
         "smithy.api#documentation": "Suggest UTM source mappings\n\nDetect unmatched utm_source values from recent events and propose custom_source_mappings entries, alongside the full utm_source catalogue and current mappings. Read-only."
       }
     },
-    "com.posthog.marketing_analytics#MarketingAnalyticsTestMappingCreateRequest": {
+    "com.posthog.marketing_analytics#CreateMarketingAnalyticTestMappingRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7931,10 +7931,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.marketing_analytics#MarketingAnalyticsTestMappingCreate": {
+    "com.posthog.marketing_analytics#CreateMarketingAnalyticTestMapping": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.marketing_analytics#MarketingAnalyticsTestMappingCreateRequest"
+        "target": "com.posthog.marketing_analytics#CreateMarketingAnalyticTestMappingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8463,13 +8463,13 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.marketing_analytics#MarketingAnalyticsApplySetupOpsCreate"
+          "target": "com.posthog.marketing_analytics#CreateMarketingAnalyticApplySetupOps"
         },
         {
           "target": "com.posthog.marketing_analytics#MarketingAnalyticsConversionGoalsRetrieve"
         },
         {
-          "target": "com.posthog.marketing_analytics#MarketingAnalyticsConversionGoalsDeleteDestroy"
+          "target": "com.posthog.marketing_analytics#DeleteMarketingAnalyticConversionGoalDestroy"
         },
         {
           "target": "com.posthog.marketing_analytics#MarketingAnalyticsConversionGoalsUpdatePartialUpdate"
@@ -8496,7 +8496,7 @@
           "target": "com.posthog.marketing_analytics#MarketingAnalyticsSuggestUtmMappingsRetrieve"
         },
         {
-          "target": "com.posthog.marketing_analytics#MarketingAnalyticsTestMappingCreate"
+          "target": "com.posthog.marketing_analytics#CreateMarketingAnalyticTestMapping"
         },
         {
           "target": "com.posthog.marketing_analytics#MarketingAnalyticsUtmAuditRetrieve"

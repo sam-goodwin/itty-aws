@@ -57921,7 +57921,7 @@
         "smithy.api#documentation": "Updates the parameters of a single EntityType."
       }
     },
-    "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest": {
+    "com.gcp.aiplatform_v1#CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -57941,10 +57941,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsFeaturestoresEntityTypesFeatures": {
+    "com.gcp.aiplatform_v1#CreateBatchProjectLocationFeaturestoreEntityTypeFeature": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest"
+        "target": "com.gcp.aiplatform_v1#CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1#GoogleLongrunningOperation"
@@ -68366,7 +68366,7 @@
         "smithy.api#documentation": "Updates an existing deployed model. Updatable fields include `min_replica_count`, `max_replica_count`, `required_replica_count`, `autoscaling_metric_specs`, `disable_container_logging` (v1 only), and `enable_container_logging` (v1beta1 only)."
       }
     },
-    "com.gcp.aiplatform_v1#StreamGenerateContentProjectsLocationsEndpointsRequest": {
+    "com.gcp.aiplatform_v1#GenerateStreamContentProjectLocationEndpointRequest": {
       "type": "structure",
       "members": {
         "model": {
@@ -68386,10 +68386,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#StreamGenerateContentProjectsLocationsEndpoints": {
+    "com.gcp.aiplatform_v1#GenerateStreamContentProjectLocationEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1#StreamGenerateContentProjectsLocationsEndpointsRequest"
+        "target": "com.gcp.aiplatform_v1#GenerateStreamContentProjectLocationEndpointRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1#GoogleCloudAiplatformV1GenerateContentResponse"
@@ -71194,7 +71194,7 @@
         "smithy.api#documentation": "Generate content with multimodal inputs."
       }
     },
-    "com.gcp.aiplatform_v1#StreamGenerateContentProjectsLocationsPublishersModelsRequest": {
+    "com.gcp.aiplatform_v1#GenerateStreamContentProjectLocationPublisherModelRequest": {
       "type": "structure",
       "members": {
         "model": {
@@ -71214,10 +71214,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#StreamGenerateContentProjectsLocationsPublishersModels": {
+    "com.gcp.aiplatform_v1#GenerateStreamContentProjectLocationPublisherModel": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1#StreamGenerateContentProjectsLocationsPublishersModelsRequest"
+        "target": "com.gcp.aiplatform_v1#GenerateStreamContentProjectLocationPublisherModelRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1#GoogleCloudAiplatformV1GenerateContentResponse"
@@ -79849,7 +79849,7 @@
         "smithy.api#documentation": "Gets a PipelineJob."
       }
     },
-    "com.gcp.aiplatform_v1#BatchDeleteProjectsLocationsPipelineJobsRequest": {
+    "com.gcp.aiplatform_v1#DeleteBatchProjectLocationPipelineJobRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -79869,10 +79869,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#BatchDeleteProjectsLocationsPipelineJobs": {
+    "com.gcp.aiplatform_v1#DeleteBatchProjectLocationPipelineJob": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1#BatchDeleteProjectsLocationsPipelineJobsRequest"
+        "target": "com.gcp.aiplatform_v1#DeleteBatchProjectLocationPipelineJobRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1#GoogleLongrunningOperation"
@@ -86028,7 +86028,7 @@
         "smithy.api#documentation": "Updates a TensorboardExperiment."
       }
     },
-    "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsTensorboardsExperimentsRequest": {
+    "com.gcp.aiplatform_v1#CreateBatchProjectLocationTensorboardExperimentRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -86048,10 +86048,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsTensorboardsExperiments": {
+    "com.gcp.aiplatform_v1#CreateBatchProjectLocationTensorboardExperiment": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsTensorboardsExperimentsRequest"
+        "target": "com.gcp.aiplatform_v1#CreateBatchProjectLocationTensorboardExperimentRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1#GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse"
@@ -86640,7 +86640,7 @@
         "smithy.api#documentation": "Updates a TensorboardRun."
       }
     },
-    "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest": {
+    "com.gcp.aiplatform_v1#CreateBatchProjectLocationTensorboardExperimentRunRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -86660,10 +86660,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsTensorboardsExperimentsRuns": {
+    "com.gcp.aiplatform_v1#CreateBatchProjectLocationTensorboardExperimentRun": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest"
+        "target": "com.gcp.aiplatform_v1#CreateBatchProjectLocationTensorboardExperimentRunRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1#GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse"
@@ -91878,7 +91878,7 @@
         "smithy.api#documentation": "Deletes a single Feature."
       }
     },
-    "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest": {
+    "com.gcp.aiplatform_v1#CreateBatchProjectLocationFeatureGroupFeatureRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -91898,10 +91898,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsFeatureGroupsFeatures": {
+    "com.gcp.aiplatform_v1#CreateBatchProjectLocationFeatureGroupFeature": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1#BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest"
+        "target": "com.gcp.aiplatform_v1#CreateBatchProjectLocationFeatureGroupFeatureRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1#GoogleLongrunningOperation"
@@ -96953,7 +96953,7 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#StreamGenerateContentEndpointsRequest": {
+    "com.gcp.aiplatform_v1#GenerateStreamContentEndpointRequest": {
       "type": "structure",
       "members": {
         "model": {
@@ -96973,10 +96973,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#StreamGenerateContentEndpoints": {
+    "com.gcp.aiplatform_v1#GenerateStreamContentEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1#StreamGenerateContentEndpointsRequest"
+        "target": "com.gcp.aiplatform_v1#GenerateStreamContentEndpointRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1#GoogleCloudAiplatformV1GenerateContentResponse"
@@ -97792,7 +97792,7 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#StreamGenerateContentPublishersModelsRequest": {
+    "com.gcp.aiplatform_v1#GenerateStreamContentPublisherModelRequest": {
       "type": "structure",
       "members": {
         "model": {
@@ -97812,10 +97812,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1#StreamGenerateContentPublishersModels": {
+    "com.gcp.aiplatform_v1#GenerateStreamContentPublisherModel": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1#StreamGenerateContentPublishersModelsRequest"
+        "target": "com.gcp.aiplatform_v1#GenerateStreamContentPublisherModelRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1#GoogleCloudAiplatformV1GenerateContentResponse"

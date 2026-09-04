@@ -48,26 +48,79 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface CommentsCompleteCreateRequest {
+export interface CommentsCountRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const CommentsCountRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/comments/count/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CommentsCountRetrieveRequest",
+}) as any as S.Schema<CommentsCountRetrieveRequest>;
+
+export interface CommentsCountRetrieveResponse {}
+export const CommentsCountRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CommentsCountRetrieveResponse",
+}) as any as S.Schema<CommentsCountRetrieveResponse>;
+
+export interface CommentsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this comment. */
   id: string;
 }
-export const CommentsCompleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CommentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/comments/{id}/complete/",
+      method: "DELETE",
+      uri: "/api/projects/{project_id}/comments/{id}/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "CommentsCompleteCreateRequest",
-}) as any as S.Schema<CommentsCompleteCreateRequest>;
+  identifier: "CommentsDestroyRequest",
+}) as any as S.Schema<CommentsDestroyRequest>;
+
+export interface CommentsDestroyResponse {}
+export const CommentsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CommentsDestroyResponse",
+}) as any as S.Schema<CommentsDestroyResponse>;
+
+export interface CommentsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this comment. */
+  id: string;
+}
+export const CommentsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/comments/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CommentsRetrieveRequest",
+}) as any as S.Schema<CommentsRetrieveRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -180,37 +233,40 @@ export const CommentOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CommentOutput" }) as any as S.Schema<CommentOutput>;
 
-export interface CommentsCountRetrieveRequest {
+export interface CommentsThreadRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
+  /** A UUID string identifying this comment. */
+  id: string;
 }
-export const CommentsCountRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+export const CommentsThreadRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/api/projects/{project_id}/comments/count/",
+      uri: "/api/projects/{project_id}/comments/{id}/thread/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "CommentsCountRetrieveRequest",
-}) as any as S.Schema<CommentsCountRetrieveRequest>;
+  identifier: "CommentsThreadRetrieveRequest",
+}) as any as S.Schema<CommentsThreadRetrieveRequest>;
 
-export interface CommentsCountRetrieveResponse {}
-export const CommentsCountRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+export interface CommentsThreadRetrieveResponse {}
+export const CommentsThreadRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "CommentsCountRetrieveResponse",
-}) as any as S.Schema<CommentsCountRetrieveResponse>;
+  identifier: "CommentsThreadRetrieveResponse",
+}) as any as S.Schema<CommentsThreadRetrieveResponse>;
 
 export type CommentsCreateRequestMentionsList = Array<number>;
 export const CommentsCreateRequestMentionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CommentsCreateRequestMentionsList>;
 
-export interface CommentsCreateRequest {
+export interface CreateCommentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   scope?: string;
@@ -226,7 +282,7 @@ export interface CommentsCreateRequest {
   item_id?: string | null;
   source_comment?: string | null;
 }
-export const CommentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scope: S.optional(S.String),
@@ -247,160 +303,37 @@ export const CommentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CommentsCreateRequest",
-}) as any as S.Schema<CommentsCreateRequest>;
+  identifier: "CreateCommentRequest",
+}) as any as S.Schema<CreateCommentRequest>;
 
-export interface CommentsDestroyRequest {
+export interface CreateCommentCompleteRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this comment. */
   id: string;
 }
-export const CommentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCommentCompleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/comments/{id}/",
+      method: "POST",
+      uri: "/api/projects/{project_id}/comments/{id}/complete/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "CommentsDestroyRequest",
-}) as any as S.Schema<CommentsDestroyRequest>;
+  identifier: "CreateCommentCompleteRequest",
+}) as any as S.Schema<CreateCommentCompleteRequest>;
 
-export interface CommentsDestroyResponse {}
-export const CommentsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CommentsDestroyResponse",
-}) as any as S.Schema<CommentsDestroyResponse>;
-
-export type CommentsListRequestCompleted = "any" | "open" | "completed";
-export const CommentsListRequestCompleted = /*@__PURE__*/ S.String;
-
-export type CommentsListRequestKind = "any" | "comment" | "task";
-export const CommentsListRequestKind = /*@__PURE__*/ S.String;
-
-export interface CommentsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** When kind=task, restrict to open (incomplete) or completed tasks. Ignored when kind is not 'task'. Defaults to 'any' (no filter). * `any` - any * `open` - open * `completed` - completed */
-  completed?: CommentsListRequestCompleted | (string & {});
-  /** The pagination cursor value. */
-  cursor?: string;
-  /** Filter by the ID of the resource being commented on. */
-  item_id?: string;
-  /** Filter by comment kind. 'task' returns only items intentionally created as actionable. 'comment' excludes tasks. Defaults to 'any' (no filter). * `any` - any * `comment` - comment * `task` - task */
-  kind?: CommentsListRequestKind | (string & {});
-  /** Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay). Support-ticket scopes (Ticket, conversations_ticket) additionally require ticket API scope access. */
-  scope?: string;
-  /** Full-text search within comment content. */
-  search?: string;
-  /** Filter replies to a specific parent comment. */
-  source_comment?: string;
-  /** Owning task for task, task_artifact, and desktop_canvas comment scopes. */
-  task_id?: string;
-}
-export const CommentsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    completed: S.optional(CommentsListRequestCompleted.pipe(T.Query())),
-    cursor: S.optional(S.String.pipe(T.Query())),
-    item_id: S.optional(S.String.pipe(T.Query())),
-    kind: S.optional(CommentsListRequestKind.pipe(T.Query())),
-    scope: S.optional(S.String.pipe(T.Query())),
-    search: S.optional(S.String.pipe(T.Query())),
-    source_comment: S.optional(S.String.pipe(T.Query())),
-    task_id: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/comments/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CommentsListRequest",
-}) as any as S.Schema<CommentsListRequest>;
-
-export type PaginatedCommentListOutputResultsList = Array<CommentOutput>;
-export const PaginatedCommentListOutputResultsList = /*@__PURE__*/ S.Array(
-  CommentOutput,
-) as any as S.Schema<PaginatedCommentListOutputResultsList>;
-
-export interface PaginatedCommentListOutput {
-  next?: string | null;
-  previous?: string | null;
-  results?: PaginatedCommentListOutputResultsList;
-}
-export const PaginatedCommentListOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedCommentListOutputResultsList),
-  }),
-).annotate({
-  identifier: "PaginatedCommentListOutput",
-}) as any as S.Schema<PaginatedCommentListOutput>;
-
-export type CommentsPartialUpdateRequestMentionsList = Array<number>;
-export const CommentsPartialUpdateRequestMentionsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CommentsPartialUpdateRequestMentionsList>;
-
-export interface CommentsPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this comment. */
-  id: string;
-  scope?: string;
-  /** Metadata for the comment target, anchor, thread state, and owning task. */
-  item_context?: unknown;
-  deleted?: boolean | null;
-  mentions?: CommentsPartialUpdateRequestMentionsList;
-  slug?: string;
-  /** Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation. */
-  is_task?: boolean;
-  content?: string | null;
-  rich_content?: unknown;
-  item_id?: string | null;
-  source_comment?: string | null;
-}
-export const CommentsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    scope: S.optional(S.String),
-    item_context: S.optional(S.Unknown),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    mentions: S.optional(CommentsPartialUpdateRequestMentionsList),
-    slug: S.optional(S.String),
-    is_task: S.optional(S.Boolean),
-    content: S.optional(S.NullOr(S.String)),
-    rich_content: S.optional(S.Unknown),
-    item_id: S.optional(S.NullOr(S.String)),
-    source_comment: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/comments/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CommentsPartialUpdateRequest",
-}) as any as S.Schema<CommentsPartialUpdateRequest>;
-
-export interface CommentsReopenCreateRequest {
+export interface CreateCommentReopenRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this comment. */
   id: string;
 }
-export const CommentsReopenCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCommentReopenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -412,31 +345,10 @@ export const CommentsReopenCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CommentsReopenCreateRequest",
-}) as any as S.Schema<CommentsReopenCreateRequest>;
+  identifier: "CreateCommentReopenRequest",
+}) as any as S.Schema<CreateCommentReopenRequest>;
 
-export interface CommentsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this comment. */
-  id: string;
-}
-export const CommentsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/comments/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CommentsRetrieveRequest",
-}) as any as S.Schema<CommentsRetrieveRequest>;
-
-export interface CommentsSendToSlackCreateRequest {
+export interface CreateCommentSendToSlackRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this comment. */
@@ -446,7 +358,7 @@ export interface CommentsSendToSlackCreateRequest {
   /** Slack channel ID to create the mirrored thread in. The bot must be a member of the channel. The channel's display name is resolved server-side. */
   channel_id: string;
 }
-export const CommentsSendToSlackCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCommentSendToSlackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -460,8 +372,8 @@ export const CommentsSendToSlackCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CommentsSendToSlackCreateRequest",
-}) as any as S.Schema<CommentsSendToSlackCreateRequest>;
+  identifier: "CreateCommentSendToSlackRequest",
+}) as any as S.Schema<CreateCommentSendToSlackRequest>;
 
 export interface CommentSlackThread {
   id: string;
@@ -503,40 +415,80 @@ export const CommentSlackThread = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentSlackThread",
 }) as any as S.Schema<CommentSlackThread>;
 
-export interface CommentsThreadRetrieveRequest {
+export type CommentsListRequestCompleted = "any" | "open" | "completed";
+export const CommentsListRequestCompleted = /*@__PURE__*/ S.String;
+
+export type CommentsListRequestKind = "any" | "comment" | "task";
+export const CommentsListRequestKind = /*@__PURE__*/ S.String;
+
+export interface ListCommentsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** A UUID string identifying this comment. */
-  id: string;
+  /** When kind=task, restrict to open (incomplete) or completed tasks. Ignored when kind is not 'task'. Defaults to 'any' (no filter). * `any` - any * `open` - open * `completed` - completed */
+  completed?: CommentsListRequestCompleted | (string & {});
+  /** The pagination cursor value. */
+  cursor?: string;
+  /** Filter by the ID of the resource being commented on. */
+  item_id?: string;
+  /** Filter by comment kind. 'task' returns only items intentionally created as actionable. 'comment' excludes tasks. Defaults to 'any' (no filter). * `any` - any * `comment` - comment * `task` - task */
+  kind?: CommentsListRequestKind | (string & {});
+  /** Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay). Support-ticket scopes (Ticket, conversations_ticket) additionally require ticket API scope access. */
+  scope?: string;
+  /** Full-text search within comment content. */
+  search?: string;
+  /** Filter replies to a specific parent comment. */
+  source_comment?: string;
+  /** Owning task for task, task_artifact, and desktop_canvas comment scopes. */
+  task_id?: string;
 }
-export const CommentsThreadRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
+    completed: S.optional(CommentsListRequestCompleted.pipe(T.Query())),
+    cursor: S.optional(S.String.pipe(T.Query())),
+    item_id: S.optional(S.String.pipe(T.Query())),
+    kind: S.optional(CommentsListRequestKind.pipe(T.Query())),
+    scope: S.optional(S.String.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+    source_comment: S.optional(S.String.pipe(T.Query())),
+    task_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/api/projects/{project_id}/comments/{id}/thread/",
+      uri: "/api/projects/{project_id}/comments/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "CommentsThreadRetrieveRequest",
-}) as any as S.Schema<CommentsThreadRetrieveRequest>;
+  identifier: "ListCommentsRequest",
+}) as any as S.Schema<ListCommentsRequest>;
 
-export interface CommentsThreadRetrieveResponse {}
-export const CommentsThreadRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+export type PaginatedCommentListOutputResultsList = Array<CommentOutput>;
+export const PaginatedCommentListOutputResultsList = /*@__PURE__*/ S.Array(
+  CommentOutput,
+) as any as S.Schema<PaginatedCommentListOutputResultsList>;
+
+export interface PaginatedCommentListOutput {
+  next?: string | null;
+  previous?: string | null;
+  results?: PaginatedCommentListOutputResultsList;
+}
+export const PaginatedCommentListOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: S.optional(PaginatedCommentListOutputResultsList),
+  }),
 ).annotate({
-  identifier: "CommentsThreadRetrieveResponse",
-}) as any as S.Schema<CommentsThreadRetrieveResponse>;
+  identifier: "PaginatedCommentListOutput",
+}) as any as S.Schema<PaginatedCommentListOutput>;
 
 export type CommentsUpdateRequestMentionsList = Array<number>;
 export const CommentsUpdateRequestMentionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CommentsUpdateRequestMentionsList>;
 
-export interface CommentsUpdateRequest {
+export interface UpdateCommentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this comment. */
@@ -554,7 +506,7 @@ export interface CommentsUpdateRequest {
   item_id?: string | null;
   source_comment?: string | null;
 }
-export const CommentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -576,23 +528,56 @@ export const CommentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CommentsUpdateRequest",
-}) as any as S.Schema<CommentsUpdateRequest>;
+  identifier: "UpdateCommentRequest",
+}) as any as S.Schema<UpdateCommentRequest>;
 
-export type CommentsCompleteCreateError = PosthogOpError;
-/** Mark a task-comment as complete. Sets completed_at and completed_by. 400 if the comment is not a task or is already complete. */
-export const commentsCompleteCreate: API.OperationMethod<
-  CommentsCompleteCreateRequest,
-  CommentOutput,
-  CommentsCompleteCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommentsCompleteCreateRequest,
-  output: CommentOutput,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
+export type CommentsPartialUpdateRequestMentionsList = Array<number>;
+export const CommentsPartialUpdateRequestMentionsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<CommentsPartialUpdateRequestMentionsList>;
+
+export interface UpdateCommentPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this comment. */
+  id: string;
+  scope?: string;
+  /** Metadata for the comment target, anchor, thread state, and owning task. */
+  item_context?: unknown;
+  deleted?: boolean | null;
+  mentions?: CommentsPartialUpdateRequestMentionsList;
+  slug?: string;
+  /** Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation. */
+  is_task?: boolean;
+  content?: string | null;
+  rich_content?: unknown;
+  item_id?: string | null;
+  source_comment?: string | null;
+}
+export const UpdateCommentPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    scope: S.optional(S.String),
+    item_context: S.optional(S.Unknown),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    mentions: S.optional(CommentsPartialUpdateRequestMentionsList),
+    slug: S.optional(S.String),
+    is_task: S.optional(S.Boolean),
+    content: S.optional(S.NullOr(S.String)),
+    rich_content: S.optional(S.Unknown),
+    item_id: S.optional(S.NullOr(S.String)),
+    source_comment: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/comments/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCommentPartialRequest",
+}) as any as S.Schema<UpdateCommentPartialRequest>;
 
 export type CommentsCountRetrieveError = Forbidden | NotFound | PosthogOpError;
 export const commentsCountRetrieve: API.OperationMethod<
@@ -604,26 +589,6 @@ export const commentsCountRetrieve: API.OperationMethod<
   input: CommentsCountRetrieveRequest,
   output: CommentsCountRetrieveResponse,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CommentsCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | Conflict
-  | PosthogOpError;
-/** Create a comment. Support messages are deduplicated: an identical message from the same author on the same ticket within a short window returns the original comment with a 200 instead of creating a second one, and a 409 while a concurrent request is still creating it. */
-export const commentsCreate: API.OperationMethod<
-  CommentsCreateRequest,
-  CommentOutput,
-  CommentsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommentsCreateRequest,
-  output: CommentOutput,
-  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -643,57 +608,6 @@ export const commentsDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CommentsListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const commentsList: API.OperationMethod<
-  CommentsListRequest,
-  PaginatedCommentListOutput,
-  CommentsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommentsListRequest,
-  output: PaginatedCommentListOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CommentsPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const commentsPartialUpdate: API.OperationMethod<
-  CommentsPartialUpdateRequest,
-  CommentOutput,
-  CommentsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommentsPartialUpdateRequest,
-  output: CommentOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CommentsReopenCreateError = PosthogOpError;
-/** Reopen a completed task-comment. Clears completed_at and completed_by. 400 if the comment is not a task or is already open. */
-export const commentsReopenCreate: API.OperationMethod<
-  CommentsReopenCreateRequest,
-  CommentOutput,
-  CommentsReopenCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommentsReopenCreateRequest,
-  output: CommentOutput,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CommentsRetrieveError = Forbidden | NotFound | PosthogOpError;
 export const commentsRetrieve: API.OperationMethod<
   CommentsRetrieveRequest,
@@ -704,21 +618,6 @@ export const commentsRetrieve: API.OperationMethod<
   input: CommentsRetrieveRequest,
   output: CommentOutput,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CommentsSendToSlackCreateError = PosthogOpError;
-/** Mirror this discussion thread to a Slack channel. Posts the comment (and its existing replies) as a new Slack thread; later replies on either side sync across. A discussion mirrors to exactly one Slack thread: re-calling with the same channel returns the existing mirror; a different channel is a 400 naming the existing one. 409 while a concurrent send is in flight. 404 when the feature is not enabled for the team. */
-export const commentsSendToSlackCreate: API.OperationMethod<
-  CommentsSendToSlackCreateRequest,
-  CommentSlackThread,
-  CommentsSendToSlackCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommentsSendToSlackCreateRequest,
-  output: CommentSlackThread,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -737,18 +636,119 @@ export const commentsThreadRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CommentsUpdateError =
+export type CreateCommentError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | PosthogOpError;
+/** Create a comment. Support messages are deduplicated: an identical message from the same author on the same ticket within a short window returns the original comment with a 200 instead of creating a second one, and a 409 while a concurrent request is still creating it. */
+export const createComment: API.OperationMethod<
+  CreateCommentRequest,
+  CommentOutput,
+  CreateCommentError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCommentRequest,
+  output: CommentOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCommentCompleteError = PosthogOpError;
+/** Mark a task-comment as complete. Sets completed_at and completed_by. 400 if the comment is not a task or is already complete. */
+export const createCommentComplete: API.OperationMethod<
+  CreateCommentCompleteRequest,
+  CommentOutput,
+  CreateCommentCompleteError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCommentCompleteRequest,
+  output: CommentOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCommentReopenError = PosthogOpError;
+/** Reopen a completed task-comment. Clears completed_at and completed_by. 400 if the comment is not a task or is already open. */
+export const createCommentReopen: API.OperationMethod<
+  CreateCommentReopenRequest,
+  CommentOutput,
+  CreateCommentReopenError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCommentReopenRequest,
+  output: CommentOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCommentSendToSlackError = PosthogOpError;
+/** Mirror this discussion thread to a Slack channel. Posts the comment (and its existing replies) as a new Slack thread; later replies on either side sync across. A discussion mirrors to exactly one Slack thread: re-calling with the same channel returns the existing mirror; a different channel is a 400 naming the existing one. 409 while a concurrent send is in flight. 404 when the feature is not enabled for the team. */
+export const createCommentSendToSlack: API.OperationMethod<
+  CreateCommentSendToSlackRequest,
+  CommentSlackThread,
+  CreateCommentSendToSlackError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCommentSendToSlackRequest,
+  output: CommentSlackThread,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCommentsError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const commentsUpdate: API.OperationMethod<
-  CommentsUpdateRequest,
-  CommentOutput,
-  CommentsUpdateError,
+export const listComments: API.OperationMethod<
+  ListCommentsRequest,
+  PaginatedCommentListOutput,
+  ListCommentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommentsUpdateRequest,
+  input: ListCommentsRequest,
+  output: PaginatedCommentListOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateCommentError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const updateComment: API.OperationMethod<
+  UpdateCommentRequest,
+  CommentOutput,
+  UpdateCommentError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCommentRequest,
+  output: CommentOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateCommentPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const updateCommentPartial: API.OperationMethod<
+  UpdateCommentPartialRequest,
+  CommentOutput,
+  UpdateCommentPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCommentPartialRequest,
   output: CommentOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,

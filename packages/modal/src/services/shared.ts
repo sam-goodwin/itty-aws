@@ -12,10 +12,10 @@ import * as Retry from "../retry.ts";
 
 export type { ModalOpError, ModalOpContext };
 
-export interface SharedVolumeDeleteRequest {
+export interface DeleteSharedVolumeRequest {
   sharedVolumeId?: string;
 }
-export const SharedVolumeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSharedVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedVolumeId: S.optional(S.String),
   }).pipe(
@@ -26,21 +26,21 @@ export const SharedVolumeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SharedVolumeDeleteRequest",
-}) as any as S.Schema<SharedVolumeDeleteRequest>;
+  identifier: "DeleteSharedVolumeRequest",
+}) as any as S.Schema<DeleteSharedVolumeRequest>;
 
-export interface SharedVolumeDeleteResponse {}
-export const SharedVolumeDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteSharedVolumeResponse {}
+export const DeleteSharedVolumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "SharedVolumeDeleteResponse",
-}) as any as S.Schema<SharedVolumeDeleteResponse>;
+  identifier: "DeleteSharedVolumeResponse",
+}) as any as S.Schema<DeleteSharedVolumeResponse>;
 
-export interface SharedVolumeGetFileRequest {
+export interface GetSharedVolumeFileRequest {
   sharedVolumeId?: string;
   path?: string;
 }
-export const SharedVolumeGetFileRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSharedVolumeFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedVolumeId: S.optional(S.String),
     path: S.optional(S.String),
@@ -52,21 +52,143 @@ export const SharedVolumeGetFileRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SharedVolumeGetFileRequest",
-}) as any as S.Schema<SharedVolumeGetFileRequest>;
+  identifier: "GetSharedVolumeFileRequest",
+}) as any as S.Schema<GetSharedVolumeFileRequest>;
 
-export interface SharedVolumeGetFileResponse {
+export interface GetSharedVolumeFileResponse {
   data?: string;
   dataBlobId?: string;
 }
-export const SharedVolumeGetFileResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSharedVolumeFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     dataBlobId: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SharedVolumeGetFileResponse",
-}) as any as S.Schema<SharedVolumeGetFileResponse>;
+  identifier: "GetSharedVolumeFileResponse",
+}) as any as S.Schema<GetSharedVolumeFileResponse>;
+
+export interface ListSharedVolumeRequest {
+  environmentName?: string;
+}
+export const ListSharedVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentName: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SharedVolumeList",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListSharedVolumeRequest",
+}) as any as S.Schema<ListSharedVolumeRequest>;
+
+/** libmodal/modal-go: Go SDK, since version modal-go/v0.0.15 */
+export type CloudProvider =
+  | "CLOUD_PROVIDER_UNSPECIFIED"
+  | "CLOUD_PROVIDER_AWS"
+  | "CLOUD_PROVIDER_GCP"
+  | "CLOUD_PROVIDER_AUTO"
+  | "CLOUD_PROVIDER_OCI";
+export const CloudProvider = /*@__PURE__*/ S.String;
+
+export interface SharedVolumeListItem {
+  label?: string;
+  /** app name of object entity app */
+  sharedVolumeId?: string;
+  createdAt?: number;
+  cloudProvider?: CloudProvider;
+}
+export const SharedVolumeListItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    label: S.optional(S.String),
+    sharedVolumeId: S.optional(S.String),
+    createdAt: S.optional(S.Number),
+    cloudProvider: S.optional(CloudProvider),
+  }),
+).annotate({
+  identifier: "SharedVolumeListItem",
+}) as any as S.Schema<SharedVolumeListItem>;
+
+export type SharedVolumeListItemList = Array<SharedVolumeListItem>;
+export const SharedVolumeListItemList = /*@__PURE__*/ S.Array(
+  SharedVolumeListItem,
+) as any as S.Schema<SharedVolumeListItemList>;
+
+export interface ListSharedVolumeResponse {
+  items?: SharedVolumeListItemList;
+  environmentName?: string;
+}
+export const ListSharedVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(SharedVolumeListItemList),
+    environmentName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSharedVolumeResponse",
+}) as any as S.Schema<ListSharedVolumeResponse>;
+
+export interface ListSharedVolumeFilesRequest {
+  sharedVolumeId?: string;
+  path?: string;
+}
+export const ListSharedVolumeFilesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sharedVolumeId: S.optional(S.String),
+    path: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SharedVolumeListFiles",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListSharedVolumeFilesRequest",
+}) as any as S.Schema<ListSharedVolumeFilesRequest>;
+
+export type FileEntryFileType =
+  | "UNSPECIFIED"
+  | "FILE"
+  | "DIRECTORY"
+  | "SYMLINK"
+  | "FIFO"
+  | "SOCKET";
+export const FileEntryFileType = /*@__PURE__*/ S.String;
+
+/** A file entry when listing files in a volume or network file system. */
+export interface FileEntry {
+  path?: string;
+  type?: FileEntryFileType;
+  mtime?: string;
+  size?: string;
+}
+export const FileEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.optional(S.String),
+    type: S.optional(FileEntryFileType),
+    mtime: S.optional(S.String),
+    size: S.optional(S.String),
+  }),
+).annotate({ identifier: "FileEntry" }) as any as S.Schema<FileEntry>;
+
+export type FileEntryList = Array<FileEntry>;
+export const FileEntryList = /*@__PURE__*/ S.Array(
+  FileEntry,
+) as any as S.Schema<FileEntryList>;
+
+export interface ListSharedVolumeFilesResponse {
+  entries?: FileEntryList;
+}
+export const ListSharedVolumeFilesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entries: S.optional(FileEntryList),
+  }),
+).annotate({
+  identifier: "ListSharedVolumeFilesResponse",
+}) as any as S.Schema<ListSharedVolumeFilesResponse>;
 
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
@@ -136,128 +258,6 @@ export const SharedVolumeHeartbeatResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharedVolumeHeartbeatResponse",
 }) as any as S.Schema<SharedVolumeHeartbeatResponse>;
 
-export interface SharedVolumeListRequest {
-  environmentName?: string;
-}
-export const SharedVolumeListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentName: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SharedVolumeList",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SharedVolumeListRequest",
-}) as any as S.Schema<SharedVolumeListRequest>;
-
-/** libmodal/modal-go: Go SDK, since version modal-go/v0.0.15 */
-export type CloudProvider =
-  | "CLOUD_PROVIDER_UNSPECIFIED"
-  | "CLOUD_PROVIDER_AWS"
-  | "CLOUD_PROVIDER_GCP"
-  | "CLOUD_PROVIDER_AUTO"
-  | "CLOUD_PROVIDER_OCI";
-export const CloudProvider = /*@__PURE__*/ S.String;
-
-export interface SharedVolumeListItem {
-  label?: string;
-  /** app name of object entity app */
-  sharedVolumeId?: string;
-  createdAt?: number;
-  cloudProvider?: CloudProvider;
-}
-export const SharedVolumeListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.String),
-    sharedVolumeId: S.optional(S.String),
-    createdAt: S.optional(S.Number),
-    cloudProvider: S.optional(CloudProvider),
-  }),
-).annotate({
-  identifier: "SharedVolumeListItem",
-}) as any as S.Schema<SharedVolumeListItem>;
-
-export type SharedVolumeListItemList = Array<SharedVolumeListItem>;
-export const SharedVolumeListItemList = /*@__PURE__*/ S.Array(
-  SharedVolumeListItem,
-) as any as S.Schema<SharedVolumeListItemList>;
-
-export interface SharedVolumeListResponse {
-  items?: SharedVolumeListItemList;
-  environmentName?: string;
-}
-export const SharedVolumeListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(SharedVolumeListItemList),
-    environmentName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SharedVolumeListResponse",
-}) as any as S.Schema<SharedVolumeListResponse>;
-
-export interface SharedVolumeListFilesRequest {
-  sharedVolumeId?: string;
-  path?: string;
-}
-export const SharedVolumeListFilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sharedVolumeId: S.optional(S.String),
-    path: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SharedVolumeListFiles",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SharedVolumeListFilesRequest",
-}) as any as S.Schema<SharedVolumeListFilesRequest>;
-
-export type FileEntryFileType =
-  | "UNSPECIFIED"
-  | "FILE"
-  | "DIRECTORY"
-  | "SYMLINK"
-  | "FIFO"
-  | "SOCKET";
-export const FileEntryFileType = /*@__PURE__*/ S.String;
-
-/** A file entry when listing files in a volume or network file system. */
-export interface FileEntry {
-  path?: string;
-  type?: FileEntryFileType;
-  mtime?: string;
-  size?: string;
-}
-export const FileEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    type: S.optional(FileEntryFileType),
-    mtime: S.optional(S.String),
-    size: S.optional(S.String),
-  }),
-).annotate({ identifier: "FileEntry" }) as any as S.Schema<FileEntry>;
-
-export type FileEntryList = Array<FileEntry>;
-export const FileEntryList = /*@__PURE__*/ S.Array(
-  FileEntry,
-) as any as S.Schema<FileEntryList>;
-
-export interface SharedVolumeListFilesResponse {
-  entries?: FileEntryList;
-}
-export const SharedVolumeListFilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(FileEntryList),
-  }),
-).annotate({
-  identifier: "SharedVolumeListFilesResponse",
-}) as any as S.Schema<SharedVolumeListFilesResponse>;
-
 export interface SharedVolumePutFileRequest {
   sharedVolumeId?: string;
   path?: string;
@@ -324,30 +324,58 @@ export const SharedVolumeRemoveFileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharedVolumeRemoveFileResponse",
 }) as any as S.Schema<SharedVolumeRemoveFileResponse>;
 
-export type SharedVolumeDeleteError = ModalOpError;
+export type DeleteSharedVolumeError = ModalOpError;
 /** SharedVolumes */
-export const sharedVolumeDelete: API.OperationMethod<
-  SharedVolumeDeleteRequest,
-  SharedVolumeDeleteResponse,
-  SharedVolumeDeleteError,
+export const deleteSharedVolume: API.OperationMethod<
+  DeleteSharedVolumeRequest,
+  DeleteSharedVolumeResponse,
+  DeleteSharedVolumeError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SharedVolumeDeleteRequest,
-  output: SharedVolumeDeleteResponse,
+  input: DeleteSharedVolumeRequest,
+  output: DeleteSharedVolumeResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SharedVolumeGetFileError = ModalOpError;
-export const sharedVolumeGetFile: API.OperationMethod<
-  SharedVolumeGetFileRequest,
-  SharedVolumeGetFileResponse,
-  SharedVolumeGetFileError,
+export type GetSharedVolumeFileError = ModalOpError;
+export const getSharedVolumeFile: API.OperationMethod<
+  GetSharedVolumeFileRequest,
+  GetSharedVolumeFileResponse,
+  GetSharedVolumeFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SharedVolumeGetFileRequest,
-  output: SharedVolumeGetFileResponse,
+  input: GetSharedVolumeFileRequest,
+  output: GetSharedVolumeFileResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSharedVolumeError = ModalOpError;
+export const listSharedVolume: API.OperationMethod<
+  ListSharedVolumeRequest,
+  ListSharedVolumeResponse,
+  ListSharedVolumeError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSharedVolumeRequest,
+  output: ListSharedVolumeResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSharedVolumeFilesError = ModalOpError;
+export const listSharedVolumeFiles: API.OperationMethod<
+  ListSharedVolumeFilesRequest,
+  ListSharedVolumeFilesResponse,
+  ListSharedVolumeFilesError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSharedVolumeFilesRequest,
+  output: ListSharedVolumeFilesResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -376,34 +404,6 @@ export const sharedVolumeHeartbeat: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SharedVolumeHeartbeatRequest,
   output: SharedVolumeHeartbeatResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SharedVolumeListError = ModalOpError;
-export const sharedVolumeList: API.OperationMethod<
-  SharedVolumeListRequest,
-  SharedVolumeListResponse,
-  SharedVolumeListError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SharedVolumeListRequest,
-  output: SharedVolumeListResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SharedVolumeListFilesError = ModalOpError;
-export const sharedVolumeListFiles: API.OperationMethod<
-  SharedVolumeListFilesRequest,
-  SharedVolumeListFilesResponse,
-  SharedVolumeListFilesError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SharedVolumeListFilesRequest,
-  output: SharedVolumeListFilesResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

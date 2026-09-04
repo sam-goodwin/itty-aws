@@ -65,44 +65,106 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** Request message for the `BatchEnableServices` method. */
-export interface BatchEnableServicesRequest {
-  /** The identifiers of the services to enable on the project. A valid identifier would be: serviceusage.googleapis.com Enabling services requires that each service is public or is shared with the user enabling the service. A single request can enable a maximum of 20 services at a time. If more than 20 services are specified, the request will fail, and no state changes will occur. */
-  serviceIds?: StringList;
-}
-export const BatchEnableServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceIds: S.optional(StringList),
-  }),
+/** The request message for Operations.CancelOperation. */
+export interface CancelOperationRequest {}
+export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "BatchEnableServicesRequest",
-}) as any as S.Schema<BatchEnableServicesRequest>;
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
-export interface BatchEnableServicesRequest_ {
-  /** Parent to enable services on. An example name would be: `projects/123` where `123` is the project number. The `BatchEnableServices` method currently only supports projects. */
-  parent: string;
+export interface CancelOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
   /** Request body */
-  body?: BatchEnableServicesRequest;
+  body?: CancelOperationRequest;
 }
-export const BatchEnableServicesRequest_ = /*@__PURE__*/ S.suspend(() =>
+export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(BatchEnableServicesRequest.pipe(T.HttpBody())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "v1/{+parent}/services:batchEnable",
+      uri: "v1/{+name}:cancel",
       baseUrl: "https://serviceusage.googleapis.com/",
     }),
   ),
 ).annotate({
-  identifier: "BatchEnableServicesRequest_",
-}) as any as S.Schema<BatchEnableServicesRequest_>;
+  identifier: "CancelOperationsRequest",
+}) as any as S.Schema<CancelOperationsRequest>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface Empty {}
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
+
+export interface DeleteOperationsRequest {
+  /** The name of the operation resource to be deleted. */
+  name: string;
+}
+export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteOperationsRequest",
+}) as any as S.Schema<DeleteOperationsRequest>;
+
+export type DisableServiceRequestCheckIfServiceHasUsageEnum =
+  | "CHECK_IF_SERVICE_HAS_USAGE_UNSPECIFIED"
+  | "SKIP"
+  | "CHECK";
+export const DisableServiceRequestCheckIfServiceHasUsageEnum =
+  /*@__PURE__*/ S.String;
+
+/** Request message for the `DisableService` method. */
+export interface DisableServiceRequest {
+  /** Defines the behavior for checking service usage when disabling a service. */
+  checkIfServiceHasUsage?:
+    | DisableServiceRequestCheckIfServiceHasUsageEnum
+    | (string & {});
+  /** Indicates if services that are enabled and which depend on this service should also be disabled. If not set, an error will be generated if any enabled services depend on the service to be disabled. When set, the service, and any enabled services that depend on it, will be disabled together. */
+  disableDependentServices?: boolean;
+}
+export const DisableServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    checkIfServiceHasUsage: S.optional(
+      DisableServiceRequestCheckIfServiceHasUsageEnum,
+    ),
+    disableDependentServices: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DisableServiceRequest",
+}) as any as S.Schema<DisableServiceRequest>;
+
+export interface DisableServicesRequest {
+  /** Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. */
+  name: string;
+  /** Request body */
+  body?: DisableServiceRequest;
+}
+export const DisableServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(DisableServiceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:disable",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DisableServicesRequest",
+}) as any as S.Schema<DisableServicesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
 export const DocumentMap = /*@__PURE__*/ S.Record(
@@ -155,13 +217,77 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export interface BatchGetServicesRequest {
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+/** Request message for the `BatchEnableServices` method. */
+export interface EnableBatchServiceRequest {
+  /** The identifiers of the services to enable on the project. A valid identifier would be: serviceusage.googleapis.com Enabling services requires that each service is public or is shared with the user enabling the service. A single request can enable a maximum of 20 services at a time. If more than 20 services are specified, the request will fail, and no state changes will occur. */
+  serviceIds?: StringList;
+}
+export const EnableBatchServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "EnableBatchServiceRequest",
+}) as any as S.Schema<EnableBatchServiceRequest>;
+
+export interface BatchEnableServicesRequest_ {
+  /** Parent to enable services on. An example name would be: `projects/123` where `123` is the project number. The `BatchEnableServices` method currently only supports projects. */
+  parent: string;
+  /** Request body */
+  body?: EnableBatchServiceRequest;
+}
+export const BatchEnableServicesRequest_ = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(EnableBatchServiceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/services:batchEnable",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchEnableServicesRequest_",
+}) as any as S.Schema<BatchEnableServicesRequest_>;
+
+/** Request message for the `EnableService` method. */
+export type EnableServiceRequest = CancelOperationRequest;
+export const EnableServiceRequest = CancelOperationRequest;
+
+export interface EnableServicesRequest {
+  /** Name of the consumer and service to enable the service on. The `EnableService` and `DisableService` methods currently only support projects. Enabling a service requires that the service is public or is shared with the user enabling the service. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. */
+  name: string;
+  /** Request body */
+  body?: CancelOperationRequest;
+}
+export const EnableServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:enable",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "EnableServicesRequest",
+}) as any as S.Schema<EnableServicesRequest>;
+
+export interface GetBatchServiceRequest {
   /** Parent to retrieve services from. If this is set, the parent of all of the services specified in `names` must match this field. An example name would be: `projects/123` where `123` is the project number. The `BatchGetServices` method currently only supports projects. */
   parent: string;
   /** Names of the services to retrieve. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. A single request can get a maximum of 30 services at a time. */
   names?: StringList;
 }
-export const BatchGetServicesRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     names: S.optional(StringList.pipe(T.Query())),
@@ -173,8 +299,8 @@ export const BatchGetServicesRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchGetServicesRequest",
-}) as any as S.Schema<BatchGetServicesRequest>;
+  identifier: "GetBatchServiceRequest",
+}) as any as S.Schema<GetBatchServiceRequest>;
 
 /** Represents a documentation page. A page can contain subpages to represent nested documentation set structure. */
 export interface Page {
@@ -866,143 +992,17 @@ export const GoogleApiServiceusageV1ServiceList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GoogleApiServiceusageV1ServiceList>;
 
 /** Response message for the `BatchGetServices` method. */
-export interface BatchGetServicesResponse {
+export interface GetBatchServiceResponse {
   /** The requested Service states. */
   services?: GoogleApiServiceusageV1ServiceList;
 }
-export const BatchGetServicesResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(GoogleApiServiceusageV1ServiceList),
   }),
 ).annotate({
-  identifier: "BatchGetServicesResponse",
-}) as any as S.Schema<BatchGetServicesResponse>;
-
-/** The request message for Operations.CancelOperation. */
-export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
-
-export interface CancelOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-  /** Request body */
-  body?: CancelOperationRequest;
-}
-export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:cancel",
-      baseUrl: "https://serviceusage.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CancelOperationsRequest",
-}) as any as S.Schema<CancelOperationsRequest>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
-
-export interface DeleteOperationsRequest {
-  /** The name of the operation resource to be deleted. */
-  name: string;
-}
-export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://serviceusage.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteOperationsRequest",
-}) as any as S.Schema<DeleteOperationsRequest>;
-
-export type DisableServiceRequestCheckIfServiceHasUsageEnum =
-  | "CHECK_IF_SERVICE_HAS_USAGE_UNSPECIFIED"
-  | "SKIP"
-  | "CHECK";
-export const DisableServiceRequestCheckIfServiceHasUsageEnum =
-  /*@__PURE__*/ S.String;
-
-/** Request message for the `DisableService` method. */
-export interface DisableServiceRequest {
-  /** Defines the behavior for checking service usage when disabling a service. */
-  checkIfServiceHasUsage?:
-    | DisableServiceRequestCheckIfServiceHasUsageEnum
-    | (string & {});
-  /** Indicates if services that are enabled and which depend on this service should also be disabled. If not set, an error will be generated if any enabled services depend on the service to be disabled. When set, the service, and any enabled services that depend on it, will be disabled together. */
-  disableDependentServices?: boolean;
-}
-export const DisableServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkIfServiceHasUsage: S.optional(
-      DisableServiceRequestCheckIfServiceHasUsageEnum,
-    ),
-    disableDependentServices: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DisableServiceRequest",
-}) as any as S.Schema<DisableServiceRequest>;
-
-export interface DisableServicesRequest {
-  /** Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. */
-  name: string;
-  /** Request body */
-  body?: DisableServiceRequest;
-}
-export const DisableServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(DisableServiceRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:disable",
-      baseUrl: "https://serviceusage.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DisableServicesRequest",
-}) as any as S.Schema<DisableServicesRequest>;
-
-/** Request message for the `EnableService` method. */
-export type EnableServiceRequest = CancelOperationRequest;
-export const EnableServiceRequest = CancelOperationRequest;
-
-export interface EnableServicesRequest {
-  /** Name of the consumer and service to enable the service on. The `EnableService` and `DisableService` methods currently only support projects. Enabling a service requires that the service is public or is shared with the user enabling the service. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. */
-  name: string;
-  /** Request body */
-  body?: CancelOperationRequest;
-}
-export const EnableServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+name}:enable",
-      baseUrl: "https://serviceusage.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "EnableServicesRequest",
-}) as any as S.Schema<EnableServicesRequest>;
+  identifier: "GetBatchServiceResponse",
+}) as any as S.Schema<GetBatchServiceResponse>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
@@ -1137,41 +1137,6 @@ export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesResponse",
 }) as any as S.Schema<ListServicesResponse>;
 
-export type BatchEnableServicesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Enable multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. To enable a single service, use the `EnableService` method instead. */
-export const batchEnableServices: API.OperationMethod<
-  BatchEnableServicesRequest_,
-  Operation,
-  BatchEnableServicesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchEnableServicesRequest_,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchGetServicesError = NotFound | Forbidden | GcpOpError;
-/** Returns the service configurations and enabled states for a given list of services. */
-export const batchGetServices: API.OperationMethod<
-  BatchGetServicesRequest,
-  BatchGetServicesResponse,
-  BatchGetServicesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetServicesRequest,
-  output: BatchGetServicesResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CancelOperationsError =
   | NotFound
   | Forbidden
@@ -1232,6 +1197,26 @@ export const disableServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type EnableBatchServiceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Enable multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. To enable a single service, use the `EnableService` method instead. */
+export const enableBatchService: API.OperationMethod<
+  BatchEnableServicesRequest_,
+  Operation,
+  EnableBatchServiceError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: BatchEnableServicesRequest_,
+  output: Operation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type EnableServicesError =
   | NotFound
   | Forbidden
@@ -1248,6 +1233,21 @@ export const enableServices: API.OperationMethod<
   input: EnableServicesRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchServiceError = NotFound | Forbidden | GcpOpError;
+/** Returns the service configurations and enabled states for a given list of services. */
+export const getBatchService: API.OperationMethod<
+  GetBatchServiceRequest,
+  GetBatchServiceResponse,
+  GetBatchServiceError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchServiceRequest,
+  output: GetBatchServiceResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

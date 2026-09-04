@@ -8444,7 +8444,7 @@
         }
       }
     },
-    "com.gcp.networkmanagement_v1#ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest": {
+    "com.gcp.networkmanagement_v1#GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -8485,10 +8485,10 @@
         }
       }
     },
-    "com.gcp.networkmanagement_v1#ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs": {
+    "com.gcp.networkmanagement_v1#GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.networkmanagement_v1#ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest"
+        "target": "com.gcp.networkmanagement_v1#GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest"
       },
       "output": {
         "target": "com.gcp.networkmanagement_v1#ShowEffectiveFlowLogsConfigsResponse"

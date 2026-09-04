@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringConfigListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticClusteringConfigRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -77,10 +77,10 @@
         "smithy.api#documentation": "PostHog property filters that scope automated clustering jobs. Empty array means no saved filters."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringConfigList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticClusteringConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringConfigListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticClusteringConfigRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ClusteringConfig"
@@ -153,7 +153,7 @@
         "smithy.api#documentation": "Team-level clustering configuration (event filters for automated pipelines)."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticClusteringJobsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -267,10 +267,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticClusteringJobs": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticClusteringJobsRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#PaginatedClusteringJobList"
@@ -284,7 +284,7 @@
         "smithy.api#documentation": "CRUD for clustering job configurations (max 10 per team)."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticClusteringJobRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -312,10 +312,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticClusteringJob": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticClusteringJobRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ClusteringJob"
@@ -370,7 +370,7 @@
         "smithy.api#documentation": "CRUD for clustering job configurations (max 10 per team)."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticClusteringJobRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -406,10 +406,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticClusteringJob": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticClusteringJobRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ClusteringJob"
@@ -423,7 +423,7 @@
         "smithy.api#documentation": "CRUD for clustering job configurations (max 10 per team)."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsPartialUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticClusteringJobPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -459,10 +459,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsPartialUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticClusteringJobPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsPartialUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticClusteringJobPartialRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ClusteringJob"
@@ -628,7 +628,7 @@
         "smithy.api#documentation": "Property filters to scope which traces are included in clustering (PostHog standard format)"
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticClusteringRunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -841,10 +841,10 @@
         "smithy.api#documentation": "Property filters to scope which traces are included in clustering (PostHog standard format)"
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticClusteringRun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticClusteringRunRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ClusteringRunRequest"
@@ -1250,7 +1250,7 @@
         "smithy.api#documentation": "Set the active provider key for evaluations"
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticEvaluationReportsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1461,10 +1461,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticEvaluationReports": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticEvaluationReportsRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#PaginatedEvaluationReportList"
@@ -1478,7 +1478,7 @@
         "smithy.api#documentation": "CRUD for evaluation report configurations + report run history."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticEvaluationReportRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1555,10 +1555,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticEvaluationReport": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticEvaluationReportRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#EvaluationReport"
@@ -1613,7 +1613,7 @@
         "smithy.api#documentation": "CRUD for evaluation report configurations + report run history."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticEvaluationReportRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1830,10 +1830,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticEvaluationReport": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticEvaluationReportRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#EvaluationReportUpdate"
@@ -1847,7 +1847,7 @@
         "smithy.api#documentation": "CRUD for evaluation report configurations + report run history."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsPartialUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticEvaluationReportPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1926,10 +1926,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsPartialUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticEvaluationReportPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsPartialUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticEvaluationReportPartialRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#EvaluationReportUpdate"
@@ -2025,7 +2025,7 @@
         "smithy.api#documentation": "Trigger immediate report generation."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsRunsListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticEvaluationReportRunsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2501,10 +2501,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsRunsList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticEvaluationReportRuns": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsRunsListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticEvaluationReportRunsRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#PaginatedEvaluationReportRunList"
@@ -2710,7 +2710,7 @@
         "smithy.api#documentation": "List available models, for one provider or for every supported provider."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsParserRecipesListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticParserRecipesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2824,10 +2824,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsParserRecipesList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticParserRecipes": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsParserRecipesListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticParserRecipesRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#PaginatedParserRecipeList"
@@ -2840,7 +2840,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsParserRecipesCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticParserRecipeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2870,10 +2870,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsParserRecipesCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticParserRecipe": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsParserRecipesCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticParserRecipeRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ParserRecipe"
@@ -2926,7 +2926,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsParserRecipesPartialUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticParserRecipePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2962,10 +2962,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsParserRecipesPartialUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticParserRecipePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsParserRecipesPartialUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticParserRecipePartialRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ParserRecipe"
@@ -3018,7 +3018,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeyValidationsCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3044,7 +3044,7 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeyValidationsCreateResponse": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidationResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -3059,13 +3059,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeyValidationsCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeyValidationsCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidationRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeyValidationsCreateResponse"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3076,7 +3076,7 @@
         "smithy.api#documentation": "Validate LLM provider API keys without persisting them"
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticProviderKeysRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3137,10 +3137,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticProviderKeys": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticProviderKeysRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#PaginatedLLMProviderKeyListOutput"
@@ -3153,7 +3153,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3196,10 +3196,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticProviderKey": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
@@ -3252,7 +3252,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticProviderKeyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3303,10 +3303,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticProviderKey": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticProviderKeyRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
@@ -3319,7 +3319,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysPartialUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticProviderKeyPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3370,10 +3370,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysPartialUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticProviderKeyPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysPartialUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticProviderKeyPartialRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
@@ -3467,7 +3467,7 @@
         "smithy.api#documentation": "Get evaluations using this key and alternative keys for replacement."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysValidateCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3518,10 +3518,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysValidateCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysValidateCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidateRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
@@ -3534,7 +3534,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticReviewQueueItemsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3676,10 +3676,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticReviewQueueItems": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticReviewQueueItemsRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#PaginatedReviewQueueItemList"
@@ -3692,7 +3692,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticReviewQueueItemRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3720,10 +3720,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticReviewQueueItem": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticReviewQueueItemRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ReviewQueueItem"
@@ -3776,7 +3776,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsPartialUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticReviewQueueItemPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3806,10 +3806,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsPartialUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticReviewQueueItemPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsPartialUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticReviewQueueItemPartialRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ReviewQueueItem"
@@ -3862,7 +3862,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticReviewQueuesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3983,10 +3983,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticReviewQueues": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticReviewQueuesRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#PaginatedReviewQueueList"
@@ -3999,7 +3999,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticReviewQueueRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4021,10 +4021,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticReviewQueue": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticReviewQueueRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ReviewQueue"
@@ -4077,7 +4077,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesPartialUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticReviewQueuePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4107,10 +4107,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesPartialUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticReviewQueuePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesPartialUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticReviewQueuePartialRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ReviewQueue"
@@ -4163,7 +4163,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticScoreDefinitionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4476,10 +4476,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticScoreDefinitions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticScoreDefinitionsRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#PaginatedScoreDefinitionList"
@@ -4492,7 +4492,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticScoreDefinitionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4539,10 +4539,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticScoreDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticScoreDefinitionRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ScoreDefinition"
@@ -4595,7 +4595,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsPartialUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticScoreDefinitionPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4638,10 +4638,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsPartialUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticScoreDefinitionPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsPartialUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticScoreDefinitionPartialRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ScoreDefinition"
@@ -4654,7 +4654,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsNewVersionCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticScoreDefinitionNewVersionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4690,10 +4690,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsNewVersionCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticScoreDefinitionNewVersion": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsNewVersionCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticScoreDefinitionNewVersionRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#ScoreDefinition"
@@ -4706,7 +4706,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsListRequest": {
+    "com.posthog.llm_analytics#ListLlmAnalyticTraceReviewsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4965,10 +4965,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsList": {
+    "com.posthog.llm_analytics#ListLlmAnalyticTraceReviews": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsListRequest"
+        "target": "com.posthog.llm_analytics#ListLlmAnalyticTraceReviewsRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#PaginatedTraceReviewList"
@@ -5039,7 +5039,7 @@
         "smithy.api#documentation": "Full desired score set for this review. Omit scorers you want to leave blank."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticTraceReviewRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5081,10 +5081,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticTraceReview": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticTraceReviewRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#TraceReview"
@@ -5146,7 +5146,7 @@
         "smithy.api#documentation": "Full desired score set for this review. Omit scorers you want to leave blank."
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsPartialUpdateRequest": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticTraceReviewPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5196,10 +5196,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsPartialUpdate": {
+    "com.posthog.llm_analytics#UpdateLlmAnalyticTraceReviewPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsPartialUpdateRequest"
+        "target": "com.posthog.llm_analytics#UpdateLlmAnalyticTraceReviewPartialRequest"
       },
       "output": {
         "target": "com.posthog.llm_analytics#TraceReview"
@@ -5252,7 +5252,7 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsTranslateCreateRequest": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticTranslateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5290,7 +5290,7 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LlmAnalyticsTranslateCreateResponse": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticTranslateResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -5305,13 +5305,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsTranslateCreate": {
+    "com.posthog.llm_analytics#CreateLlmAnalyticTranslate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsTranslateCreateRequest"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticTranslateRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsTranslateCreateResponse"
+        "target": "com.posthog.llm_analytics#CreateLlmAnalyticTranslateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5327,31 +5327,31 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringConfigList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticClusteringConfig"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringConfigSetEventFiltersCreate"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticClusteringJobs"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticClusteringJob"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticClusteringJob"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsPartialUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticClusteringJobPartial"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsDestroy"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticClusteringRun"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationConfigRetrieve"
@@ -5360,19 +5360,19 @@
           "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationConfigSetActiveKeyCreate"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticEvaluationReports"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticEvaluationReport"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticEvaluationReport"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsPartialUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticEvaluationReportPartial"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsDestroy"
@@ -5381,43 +5381,43 @@
           "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsGenerateCreate"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsRunsList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticEvaluationReportRuns"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsModelsRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsParserRecipesList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticParserRecipes"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsParserRecipesCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticParserRecipe"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsParserRecipesRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsParserRecipesPartialUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticParserRecipePartial"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsParserRecipesDestroy"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeyValidationsCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidation"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticProviderKeys"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticProviderKey"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticProviderKey"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysPartialUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticProviderKeyPartial"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysDestroy"
@@ -5426,70 +5426,70 @@
           "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysDependentConfigsRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysValidateCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticProviderKeyValidate"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticReviewQueueItems"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticReviewQueueItem"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsPartialUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticReviewQueueItemPartial"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsDestroy"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticReviewQueues"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticReviewQueue"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesPartialUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticReviewQueuePartial"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueuesDestroy"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticScoreDefinitions"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticScoreDefinition"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsPartialUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticScoreDefinitionPartial"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsScoreDefinitionsNewVersionCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticScoreDefinitionNewVersion"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsList"
+          "target": "com.posthog.llm_analytics#ListLlmAnalyticTraceReviews"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticTraceReview"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsRetrieve"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsPartialUpdate"
+          "target": "com.posthog.llm_analytics#UpdateLlmAnalyticTraceReviewPartial"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsTraceReviewsDestroy"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsTranslateCreate"
+          "target": "com.posthog.llm_analytics#CreateLlmAnalyticTranslate"
         }
       ],
       "traits": {

@@ -125,7 +125,7 @@
         "smithy.api#documentation": "versions are the versions supported in this group."
       }
     },
-    "com.kubernetes.certificates#GetCertificatesAPIGroup": {
+    "com.kubernetes.certificates#GetCertificatesApiGroup": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -285,7 +285,7 @@
         "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
       }
     },
-    "com.kubernetes.certificates#GetCertificatesV1APIResources": {
+    "com.kubernetes.certificates#GetCertificatesV1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -1357,7 +1357,7 @@
         "smithy.api#documentation": "delete collection of CertificateSigningRequest"
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -1380,10 +1380,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigning": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestRequest"
+        "target": "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1CertificateSigningRequest"
@@ -1402,7 +1402,7 @@
         "smithy.api#documentation": "read the specified CertificateSigningRequest"
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -1474,10 +1474,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigning": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestRequest"
+        "target": "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1CertificateSigningRequest"
@@ -1691,7 +1691,7 @@
         "smithy.api#documentation": "delete a CertificateSigningRequest"
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestApprovalRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningApprovalRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -1714,10 +1714,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestApproval": {
+    "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningApproval": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestApprovalRequest"
+        "target": "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningApprovalRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1CertificateSigningRequest"
@@ -1736,7 +1736,7 @@
         "smithy.api#documentation": "read approval of the specified CertificateSigningRequest"
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestApprovalRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningApprovalRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -1808,10 +1808,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestApproval": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningApproval": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestApprovalRequest"
+        "target": "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningApprovalRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1CertificateSigningRequest"
@@ -1915,7 +1915,7 @@
         "smithy.api#documentation": "partially update approval of the specified CertificateSigningRequest"
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestStatusRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningStatusRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -1938,10 +1938,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestStatus": {
+    "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningStatus": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestStatusRequest"
+        "target": "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningStatusRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1CertificateSigningRequest"
@@ -1960,7 +1960,7 @@
         "smithy.api#documentation": "read status of the specified CertificateSigningRequest"
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestStatusRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningStatusRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -2032,10 +2032,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestStatus": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningStatus": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestStatusRequest"
+        "target": "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningStatusRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1CertificateSigningRequest"
@@ -3514,7 +3514,7 @@
         "smithy.api#documentation": "delete collection of PodCertificateRequest"
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1NamespacedPodCertificateRequestRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1NamespacedPodCertificateRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -3545,10 +3545,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1NamespacedPodCertificateRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1NamespacedPodCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReadCertificatesV1NamespacedPodCertificateRequestRequest"
+        "target": "com.kubernetes.certificates#RequestReadCertificateV1NamespacedPodCertificateRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1PodCertificateRequest"
@@ -3562,7 +3562,7 @@
         "smithy.api#documentation": "read the specified PodCertificateRequest"
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1NamespacedPodCertificateRequestRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1NamespacedPodCertificateRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -3645,10 +3645,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1NamespacedPodCertificateRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1NamespacedPodCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReplaceCertificatesV1NamespacedPodCertificateRequestRequest"
+        "target": "com.kubernetes.certificates#RequestReplaceCertificateV1NamespacedPodCertificateRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1PodCertificateRequest"
@@ -3848,7 +3848,7 @@
         "smithy.api#documentation": "delete a PodCertificateRequest"
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1NamespacedPodCertificateRequestStatusRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1NamespacedPodCertificateStatusRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -3879,10 +3879,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1NamespacedPodCertificateRequestStatus": {
+    "com.kubernetes.certificates#RequestReadCertificateV1NamespacedPodCertificateStatus": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReadCertificatesV1NamespacedPodCertificateRequestStatusRequest"
+        "target": "com.kubernetes.certificates#RequestReadCertificateV1NamespacedPodCertificateStatusRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1PodCertificateRequest"
@@ -3896,7 +3896,7 @@
         "smithy.api#documentation": "read status of the specified PodCertificateRequest"
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1NamespacedPodCertificateRequestStatusRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1NamespacedPodCertificateStatusRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -3979,10 +3979,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1NamespacedPodCertificateRequestStatus": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1NamespacedPodCertificateStatus": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReplaceCertificatesV1NamespacedPodCertificateRequestStatusRequest"
+        "target": "com.kubernetes.certificates#RequestReplaceCertificateV1NamespacedPodCertificateStatusRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1PodCertificateRequest"
@@ -4311,7 +4311,7 @@
         "smithy.api#documentation": "watch individual changes to a list of CertificateSigningRequest. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1CertificateSigningRequestRequest": {
+    "com.kubernetes.certificates#RequestWatchCertificateV1CertificateSigningRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -4411,10 +4411,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1CertificateSigningRequest": {
+    "com.kubernetes.certificates#RequestWatchCertificateV1CertificateSigning": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#WatchCertificatesV1CertificateSigningRequestRequest"
+        "target": "com.kubernetes.certificates#RequestWatchCertificateV1CertificateSigningRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -4428,7 +4428,7 @@
         "smithy.api#documentation": "watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1ClusterTrustBundleListRequest": {
+    "com.kubernetes.certificates#ListWatchCertificateV1ClusterTrustBundleRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -4520,10 +4520,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1ClusterTrustBundleList": {
+    "com.kubernetes.certificates#ListWatchCertificateV1ClusterTrustBundle": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#WatchCertificatesV1ClusterTrustBundleListRequest"
+        "target": "com.kubernetes.certificates#ListWatchCertificateV1ClusterTrustBundleRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -4771,7 +4771,7 @@
         "smithy.api#documentation": "watch individual changes to a list of PodCertificateRequest. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1NamespacedPodCertificateRequestRequest": {
+    "com.kubernetes.certificates#RequestWatchCertificateV1NamespacedPodCertificateRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -4879,10 +4879,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1NamespacedPodCertificateRequest": {
+    "com.kubernetes.certificates#RequestWatchCertificateV1NamespacedPodCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#WatchCertificatesV1NamespacedPodCertificateRequestRequest"
+        "target": "com.kubernetes.certificates#RequestWatchCertificateV1NamespacedPodCertificateRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -5005,7 +5005,7 @@
         "smithy.api#documentation": "watch individual changes to a list of PodCertificateRequest. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.certificates#GetCertificatesV1beta1APIResources": {
+    "com.kubernetes.certificates#GetCertificatesV1beta1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -6411,7 +6411,7 @@
         "smithy.api#documentation": "delete collection of PodCertificateRequest"
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1beta1NamespacedPodCertificateRequestRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1beta1NamespacedPodCertificateRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -6442,10 +6442,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1beta1NamespacedPodCertificateRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1beta1NamespacedPodCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReadCertificatesV1beta1NamespacedPodCertificateRequestRequest"
+        "target": "com.kubernetes.certificates#RequestReadCertificateV1beta1NamespacedPodCertificateRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1beta1PodCertificateRequest"
@@ -6464,7 +6464,7 @@
         "smithy.api#documentation": "read the specified PodCertificateRequest"
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1beta1NamespacedPodCertificateRequestRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1beta1NamespacedPodCertificateRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -6547,10 +6547,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1beta1NamespacedPodCertificateRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1beta1NamespacedPodCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReplaceCertificatesV1beta1NamespacedPodCertificateRequestRequest"
+        "target": "com.kubernetes.certificates#RequestReplaceCertificateV1beta1NamespacedPodCertificateRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1beta1PodCertificateRequest"
@@ -6780,7 +6780,7 @@
         "smithy.api#documentation": "delete a PodCertificateRequest"
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest": {
+    "com.kubernetes.certificates#RequestReadCertificateV1beta1NamespacedPodCertificateStatusRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -6811,10 +6811,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReadCertificatesV1beta1NamespacedPodCertificateRequestStatus": {
+    "com.kubernetes.certificates#RequestReadCertificateV1beta1NamespacedPodCertificateStatus": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest"
+        "target": "com.kubernetes.certificates#RequestReadCertificateV1beta1NamespacedPodCertificateStatusRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1beta1PodCertificateRequest"
@@ -6833,7 +6833,7 @@
         "smithy.api#documentation": "read status of the specified PodCertificateRequest"
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1beta1NamespacedPodCertificateStatusRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -6916,10 +6916,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatus": {
+    "com.kubernetes.certificates#RequestReplaceCertificateV1beta1NamespacedPodCertificateStatus": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest"
+        "target": "com.kubernetes.certificates#RequestReplaceCertificateV1beta1NamespacedPodCertificateStatusRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApiCertificatesV1beta1PodCertificateRequest"
@@ -7140,7 +7140,7 @@
         "smithy.api#documentation": "list or watch objects of kind PodCertificateRequest"
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1beta1ClusterTrustBundleListRequest": {
+    "com.kubernetes.certificates#ListWatchCertificateV1beta1ClusterTrustBundleRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -7232,10 +7232,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1beta1ClusterTrustBundleList": {
+    "com.kubernetes.certificates#ListWatchCertificateV1beta1ClusterTrustBundle": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#WatchCertificatesV1beta1ClusterTrustBundleListRequest"
+        "target": "com.kubernetes.certificates#ListWatchCertificateV1beta1ClusterTrustBundleRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -7483,7 +7483,7 @@
         "smithy.api#documentation": "watch individual changes to a list of PodCertificateRequest. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1beta1NamespacedPodCertificateRequestRequest": {
+    "com.kubernetes.certificates#RequestWatchCertificateV1beta1NamespacedPodCertificateRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -7591,10 +7591,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.certificates#WatchCertificatesV1beta1NamespacedPodCertificateRequest": {
+    "com.kubernetes.certificates#RequestWatchCertificateV1beta1NamespacedPodCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.certificates#WatchCertificatesV1beta1NamespacedPodCertificateRequestRequest"
+        "target": "com.kubernetes.certificates#RequestWatchCertificateV1beta1NamespacedPodCertificateRequest"
       },
       "output": {
         "target": "com.kubernetes.certificates#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -7761,10 +7761,10 @@
       "version": "unversioned",
       "operations": [
         {
-          "target": "com.kubernetes.certificates#GetCertificatesAPIGroup"
+          "target": "com.kubernetes.certificates#GetCertificatesApiGroup"
         },
         {
-          "target": "com.kubernetes.certificates#GetCertificatesV1APIResources"
+          "target": "com.kubernetes.certificates#GetCertificatesV1ApiResources"
         },
         {
           "target": "com.kubernetes.certificates#ListCertificatesV1CertificateSigningRequest"
@@ -7776,10 +7776,10 @@
           "target": "com.kubernetes.certificates#DeleteCertificatesV1CollectionCertificateSigningRequest"
         },
         {
-          "target": "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequest"
+          "target": "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigning"
         },
         {
-          "target": "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequest"
+          "target": "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigning"
         },
         {
           "target": "com.kubernetes.certificates#PatchCertificatesV1CertificateSigningRequest"
@@ -7788,19 +7788,19 @@
           "target": "com.kubernetes.certificates#DeleteCertificatesV1CertificateSigningRequest"
         },
         {
-          "target": "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestApproval"
+          "target": "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningApproval"
         },
         {
-          "target": "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestApproval"
+          "target": "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningApproval"
         },
         {
           "target": "com.kubernetes.certificates#PatchCertificatesV1CertificateSigningRequestApproval"
         },
         {
-          "target": "com.kubernetes.certificates#ReadCertificatesV1CertificateSigningRequestStatus"
+          "target": "com.kubernetes.certificates#RequestReadCertificateV1CertificateSigningStatus"
         },
         {
-          "target": "com.kubernetes.certificates#ReplaceCertificatesV1CertificateSigningRequestStatus"
+          "target": "com.kubernetes.certificates#RequestReplaceCertificateV1CertificateSigningStatus"
         },
         {
           "target": "com.kubernetes.certificates#PatchCertificatesV1CertificateSigningRequestStatus"
@@ -7836,10 +7836,10 @@
           "target": "com.kubernetes.certificates#DeleteCertificatesV1CollectionNamespacedPodCertificateRequest"
         },
         {
-          "target": "com.kubernetes.certificates#ReadCertificatesV1NamespacedPodCertificateRequest"
+          "target": "com.kubernetes.certificates#RequestReadCertificateV1NamespacedPodCertificate"
         },
         {
-          "target": "com.kubernetes.certificates#ReplaceCertificatesV1NamespacedPodCertificateRequest"
+          "target": "com.kubernetes.certificates#RequestReplaceCertificateV1NamespacedPodCertificate"
         },
         {
           "target": "com.kubernetes.certificates#PatchCertificatesV1NamespacedPodCertificateRequest"
@@ -7848,10 +7848,10 @@
           "target": "com.kubernetes.certificates#DeleteCertificatesV1NamespacedPodCertificateRequest"
         },
         {
-          "target": "com.kubernetes.certificates#ReadCertificatesV1NamespacedPodCertificateRequestStatus"
+          "target": "com.kubernetes.certificates#RequestReadCertificateV1NamespacedPodCertificateStatus"
         },
         {
-          "target": "com.kubernetes.certificates#ReplaceCertificatesV1NamespacedPodCertificateRequestStatus"
+          "target": "com.kubernetes.certificates#RequestReplaceCertificateV1NamespacedPodCertificateStatus"
         },
         {
           "target": "com.kubernetes.certificates#PatchCertificatesV1NamespacedPodCertificateRequestStatus"
@@ -7863,10 +7863,10 @@
           "target": "com.kubernetes.certificates#WatchCertificatesV1CertificateSigningRequestList"
         },
         {
-          "target": "com.kubernetes.certificates#WatchCertificatesV1CertificateSigningRequest"
+          "target": "com.kubernetes.certificates#RequestWatchCertificateV1CertificateSigning"
         },
         {
-          "target": "com.kubernetes.certificates#WatchCertificatesV1ClusterTrustBundleList"
+          "target": "com.kubernetes.certificates#ListWatchCertificateV1ClusterTrustBundle"
         },
         {
           "target": "com.kubernetes.certificates#WatchCertificatesV1ClusterTrustBundle"
@@ -7875,13 +7875,13 @@
           "target": "com.kubernetes.certificates#WatchCertificatesV1NamespacedPodCertificateRequestList"
         },
         {
-          "target": "com.kubernetes.certificates#WatchCertificatesV1NamespacedPodCertificateRequest"
+          "target": "com.kubernetes.certificates#RequestWatchCertificateV1NamespacedPodCertificate"
         },
         {
           "target": "com.kubernetes.certificates#WatchCertificatesV1PodCertificateRequestListForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.certificates#GetCertificatesV1beta1APIResources"
+          "target": "com.kubernetes.certificates#GetCertificatesV1beta1ApiResources"
         },
         {
           "target": "com.kubernetes.certificates#ListCertificatesV1beta1ClusterTrustBundle"
@@ -7914,10 +7914,10 @@
           "target": "com.kubernetes.certificates#DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequest"
         },
         {
-          "target": "com.kubernetes.certificates#ReadCertificatesV1beta1NamespacedPodCertificateRequest"
+          "target": "com.kubernetes.certificates#RequestReadCertificateV1beta1NamespacedPodCertificate"
         },
         {
-          "target": "com.kubernetes.certificates#ReplaceCertificatesV1beta1NamespacedPodCertificateRequest"
+          "target": "com.kubernetes.certificates#RequestReplaceCertificateV1beta1NamespacedPodCertificate"
         },
         {
           "target": "com.kubernetes.certificates#PatchCertificatesV1beta1NamespacedPodCertificateRequest"
@@ -7926,10 +7926,10 @@
           "target": "com.kubernetes.certificates#DeleteCertificatesV1beta1NamespacedPodCertificateRequest"
         },
         {
-          "target": "com.kubernetes.certificates#ReadCertificatesV1beta1NamespacedPodCertificateRequestStatus"
+          "target": "com.kubernetes.certificates#RequestReadCertificateV1beta1NamespacedPodCertificateStatus"
         },
         {
-          "target": "com.kubernetes.certificates#ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatus"
+          "target": "com.kubernetes.certificates#RequestReplaceCertificateV1beta1NamespacedPodCertificateStatus"
         },
         {
           "target": "com.kubernetes.certificates#PatchCertificatesV1beta1NamespacedPodCertificateRequestStatus"
@@ -7938,7 +7938,7 @@
           "target": "com.kubernetes.certificates#ListCertificatesV1beta1PodCertificateRequestForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.certificates#WatchCertificatesV1beta1ClusterTrustBundleList"
+          "target": "com.kubernetes.certificates#ListWatchCertificateV1beta1ClusterTrustBundle"
         },
         {
           "target": "com.kubernetes.certificates#WatchCertificatesV1beta1ClusterTrustBundle"
@@ -7947,7 +7947,7 @@
           "target": "com.kubernetes.certificates#WatchCertificatesV1beta1NamespacedPodCertificateRequestList"
         },
         {
-          "target": "com.kubernetes.certificates#WatchCertificatesV1beta1NamespacedPodCertificateRequest"
+          "target": "com.kubernetes.certificates#RequestWatchCertificateV1beta1NamespacedPodCertificate"
         },
         {
           "target": "com.kubernetes.certificates#WatchCertificatesV1beta1PodCertificateRequestListForAllNamespaces"

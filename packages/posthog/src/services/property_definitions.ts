@@ -39,136 +39,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** List of object IDs to update tags on. */
-export type PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
-  Array<number>;
-export const PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList>;
-
-/** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
-export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
-
-/** Tag names to add, remove, or set. */
-export type PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList =
-  Array<string>;
-export const PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList>;
-
-export interface PropertyDefinitionsBulkUpdateTagsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** List of object IDs to update tags on. */
-  ids?: PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList;
-  /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
-  action?: BulkUpdateTagsActionEnum | (string & {});
-  /** Tag names to add, remove, or set. */
-  tags?: PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList;
-}
-export const PropertyDefinitionsBulkUpdateTagsCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      ids: S.optional(PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList),
-      action: S.optional(BulkUpdateTagsActionEnum),
-      tags: S.optional(PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/property_definitions/bulk_update_tags/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "PropertyDefinitionsBulkUpdateTagsCreateRequest",
-  }) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>;
-
-export type BulkUpdateTagsItemTagsList = Array<string>;
-export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkUpdateTagsItemTagsList>;
-
-export interface BulkUpdateTagsItem {
-  id?: number;
-  tags?: BulkUpdateTagsItemTagsList;
-}
-export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    tags: S.optional(BulkUpdateTagsItemTagsList),
-  }),
-).annotate({
-  identifier: "BulkUpdateTagsItem",
-}) as any as S.Schema<BulkUpdateTagsItem>;
-
-export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
-export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
-  BulkUpdateTagsItem,
-) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
-
-export interface BulkUpdateTagsError {
-  id?: number;
-  reason?: string;
-}
-export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BulkUpdateTagsError",
-}) as any as S.Schema<BulkUpdateTagsError>;
-
-export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
-export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
-  BulkUpdateTagsError,
-) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
-
-export interface BulkUpdateTagsResponse {
-  updated?: BulkUpdateTagsResponseUpdatedList;
-  skipped?: BulkUpdateTagsResponseSkippedList;
-}
-export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updated: S.optional(BulkUpdateTagsResponseUpdatedList),
-    skipped: S.optional(BulkUpdateTagsResponseSkippedList),
-  }),
-).annotate({
-  identifier: "BulkUpdateTagsResponse",
-}) as any as S.Schema<BulkUpdateTagsResponse>;
-
-export interface PropertyDefinitionsDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this property definition. */
-  id: string;
-}
-export const PropertyDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/property_definitions/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PropertyDefinitionsDestroyRequest",
-}) as any as S.Schema<PropertyDefinitionsDestroyRequest>;
-
-export interface PropertyDefinitionsDestroyResponse {}
-export const PropertyDefinitionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PropertyDefinitionsDestroyResponse",
-}) as any as S.Schema<PropertyDefinitionsDestroyResponse>;
-
 export type PropertyDefinitionsListRequestType =
   | "event"
   | "person"
@@ -176,7 +46,7 @@ export type PropertyDefinitionsListRequestType =
   | "session";
 export const PropertyDefinitionsListRequestType = /*@__PURE__*/ S.String;
 
-export interface PropertyDefinitionsListRequest {
+export interface ListPropertyDefinitionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** If sent, response value will have `is_seen_on_filtered_events` populated. JSON-encoded */
@@ -210,7 +80,7 @@ export interface PropertyDefinitionsListRequest {
   /** Filter by verified status. True returns only verified, false returns only unverified. */
   verified?: boolean;
 }
-export const PropertyDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListPropertyDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     event_names: S.optional(S.String.pipe(T.Query())),
@@ -236,8 +106,8 @@ export const PropertyDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PropertyDefinitionsListRequest",
-}) as any as S.Schema<PropertyDefinitionsListRequest>;
+  identifier: "ListPropertyDefinitionsRequest",
+}) as any as S.Schema<ListPropertyDefinitionsRequest>;
 
 export type EnterprisePropertyDefinitionTagsList = Array<unknown>;
 export const EnterprisePropertyDefinitionTagsList = /*@__PURE__*/ S.Array(
@@ -376,51 +246,135 @@ export const PaginatedEnterprisePropertyDefinitionList =
     identifier: "PaginatedEnterprisePropertyDefinitionList",
   }) as any as S.Schema<PaginatedEnterprisePropertyDefinitionList>;
 
-export type PropertyDefinitionsPartialUpdateRequestTagsList = Array<unknown>;
-export const PropertyDefinitionsPartialUpdateRequestTagsList =
+/** List of object IDs to update tags on. */
+export type PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
+  Array<number>;
+export const PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<PropertyDefinitionsPartialUpdateRequestTagsList>;
+    S.Number,
+  ) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList>;
 
-export type PropertyDefinitionsPartialUpdateRequestPropertyType =
-  | PropertyDefinitionTypeEnum
-  | BlankEnum;
-export const PropertyDefinitionsPartialUpdateRequestPropertyType =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyDefinitionsPartialUpdateRequestPropertyType>;
+/** * `add` - add * `remove` - remove * `set` - set */
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
+export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
-export interface PropertyDefinitionsPartialUpdateRequest {
+/** Tag names to add, remove, or set. */
+export type PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList =
+  Array<string>;
+export const PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList>;
+
+export interface PropertyDefinitionsBulkUpdateTagsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** List of object IDs to update tags on. */
+  ids?: PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList;
+  /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
+  action?: BulkUpdateTagsActionEnum | (string & {});
+  /** Tag names to add, remove, or set. */
+  tags?: PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList;
+}
+export const PropertyDefinitionsBulkUpdateTagsCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      ids: S.optional(PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList),
+      action: S.optional(BulkUpdateTagsActionEnum),
+      tags: S.optional(PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/property_definitions/bulk_update_tags/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "PropertyDefinitionsBulkUpdateTagsCreateRequest",
+  }) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>;
+
+export type BulkUpdateTagsItemTagsList = Array<string>;
+export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BulkUpdateTagsItemTagsList>;
+
+export interface BulkUpdateTagsItem {
+  id?: number;
+  tags?: BulkUpdateTagsItemTagsList;
+}
+export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    tags: S.optional(BulkUpdateTagsItemTagsList),
+  }),
+).annotate({
+  identifier: "BulkUpdateTagsItem",
+}) as any as S.Schema<BulkUpdateTagsItem>;
+
+export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
+export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
+  BulkUpdateTagsItem,
+) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
+
+export interface BulkUpdateTagsError {
+  id?: number;
+  reason?: string;
+}
+export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BulkUpdateTagsError",
+}) as any as S.Schema<BulkUpdateTagsError>;
+
+export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
+export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
+  BulkUpdateTagsError,
+) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
+
+export interface BulkUpdateTagsResponse {
+  updated?: BulkUpdateTagsResponseUpdatedList;
+  skipped?: BulkUpdateTagsResponseSkippedList;
+}
+export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updated: S.optional(BulkUpdateTagsResponseUpdatedList),
+    skipped: S.optional(BulkUpdateTagsResponseSkippedList),
+  }),
+).annotate({
+  identifier: "BulkUpdateTagsResponse",
+}) as any as S.Schema<BulkUpdateTagsResponse>;
+
+export interface PropertyDefinitionsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this property definition. */
   id: string;
-  description?: string | null;
-  tags?: PropertyDefinitionsPartialUpdateRequestTagsList;
-  property_type?: PropertyDefinitionsPartialUpdateRequestPropertyType | null;
-  verified?: boolean;
-  hidden?: boolean | null;
 }
-export const PropertyDefinitionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      description: S.optional(S.NullOr(S.String)),
-      tags: S.optional(PropertyDefinitionsPartialUpdateRequestTagsList),
-      property_type: S.optional(
-        S.NullOr(PropertyDefinitionsPartialUpdateRequestPropertyType),
-      ),
-      verified: S.optional(S.Boolean),
-      hidden: S.optional(S.NullOr(S.Boolean)),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/property_definitions/{id}/",
-        code: 200,
-      }),
-    ),
+export const PropertyDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/projects/{project_id}/property_definitions/{id}/",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "PropertyDefinitionsPartialUpdateRequest",
-}) as any as S.Schema<PropertyDefinitionsPartialUpdateRequest>;
+  identifier: "PropertyDefinitionsDestroyRequest",
+}) as any as S.Schema<PropertyDefinitionsDestroyRequest>;
+
+export interface PropertyDefinitionsDestroyResponse {}
+export const PropertyDefinitionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PropertyDefinitionsDestroyResponse",
+}) as any as S.Schema<PropertyDefinitionsDestroyResponse>;
 
 export interface PropertyDefinitionsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -479,7 +433,7 @@ export type PropertyDefinitionsUpdateRequestPropertyType =
 export const PropertyDefinitionsUpdateRequestPropertyType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyDefinitionsUpdateRequestPropertyType>;
 
-export interface PropertyDefinitionsUpdateRequest {
+export interface UpdatePropertyDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this property definition. */
@@ -490,7 +444,7 @@ export interface PropertyDefinitionsUpdateRequest {
   verified?: boolean;
   hidden?: boolean | null;
 }
-export const PropertyDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -509,8 +463,72 @@ export const PropertyDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PropertyDefinitionsUpdateRequest",
-}) as any as S.Schema<PropertyDefinitionsUpdateRequest>;
+  identifier: "UpdatePropertyDefinitionRequest",
+}) as any as S.Schema<UpdatePropertyDefinitionRequest>;
+
+export type PropertyDefinitionsPartialUpdateRequestTagsList = Array<unknown>;
+export const PropertyDefinitionsPartialUpdateRequestTagsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<PropertyDefinitionsPartialUpdateRequestTagsList>;
+
+export type PropertyDefinitionsPartialUpdateRequestPropertyType =
+  | PropertyDefinitionTypeEnum
+  | BlankEnum;
+export const PropertyDefinitionsPartialUpdateRequestPropertyType =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyDefinitionsPartialUpdateRequestPropertyType>;
+
+export interface UpdatePropertyDefinitionPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this property definition. */
+  id: string;
+  description?: string | null;
+  tags?: PropertyDefinitionsPartialUpdateRequestTagsList;
+  property_type?: PropertyDefinitionsPartialUpdateRequestPropertyType | null;
+  verified?: boolean;
+  hidden?: boolean | null;
+}
+export const UpdatePropertyDefinitionPartialRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      description: S.optional(S.NullOr(S.String)),
+      tags: S.optional(PropertyDefinitionsPartialUpdateRequestTagsList),
+      property_type: S.optional(
+        S.NullOr(PropertyDefinitionsPartialUpdateRequestPropertyType),
+      ),
+      verified: S.optional(S.Boolean),
+      hidden: S.optional(S.NullOr(S.Boolean)),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/projects/{project_id}/property_definitions/{id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UpdatePropertyDefinitionPartialRequest",
+}) as any as S.Schema<UpdatePropertyDefinitionPartialRequest>;
+
+export type ListPropertyDefinitionsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const listPropertyDefinitions: API.OperationMethod<
+  ListPropertyDefinitionsRequest,
+  PaginatedEnterprisePropertyDefinitionList,
+  ListPropertyDefinitionsError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPropertyDefinitionsRequest,
+  output: PaginatedEnterprisePropertyDefinitionList,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PropertyDefinitionsBulkUpdateTagsCreateError =
   | BadRequest
@@ -544,42 +562,6 @@ export const propertyDefinitionsDestroy: API.OperationMethod<
   input: PropertyDefinitionsDestroyRequest,
   output: PropertyDefinitionsDestroyResponse,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PropertyDefinitionsListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const propertyDefinitionsList: API.OperationMethod<
-  PropertyDefinitionsListRequest,
-  PaginatedEnterprisePropertyDefinitionList,
-  PropertyDefinitionsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PropertyDefinitionsListRequest,
-  output: PaginatedEnterprisePropertyDefinitionList,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PropertyDefinitionsPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const propertyDefinitionsPartialUpdate: API.OperationMethod<
-  PropertyDefinitionsPartialUpdateRequest,
-  EnterprisePropertyDefinition,
-  PropertyDefinitionsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PropertyDefinitionsPartialUpdateRequest,
-  output: EnterprisePropertyDefinition,
-  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -619,18 +601,36 @@ export const propertyDefinitionsSeenTogetherRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PropertyDefinitionsUpdateError =
+export type UpdatePropertyDefinitionError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const propertyDefinitionsUpdate: API.OperationMethod<
-  PropertyDefinitionsUpdateRequest,
+export const updatePropertyDefinition: API.OperationMethod<
+  UpdatePropertyDefinitionRequest,
   EnterprisePropertyDefinition,
-  PropertyDefinitionsUpdateError,
+  UpdatePropertyDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PropertyDefinitionsUpdateRequest,
+  input: UpdatePropertyDefinitionRequest,
+  output: EnterprisePropertyDefinition,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdatePropertyDefinitionPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const updatePropertyDefinitionPartial: API.OperationMethod<
+  UpdatePropertyDefinitionPartialRequest,
+  EnterprisePropertyDefinition,
+  UpdatePropertyDefinitionPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePropertyDefinitionPartialRequest,
   output: EnterprisePropertyDefinition,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,

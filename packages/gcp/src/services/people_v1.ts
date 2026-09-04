@@ -65,21 +65,68 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type BatchCreateContactsRequestSourcesItemEnum =
+export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnum =
   | "READ_SOURCE_TYPE_UNSPECIFIED"
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
   | "READ_SOURCE_TYPE_OTHER_CONTACT";
-export const BatchCreateContactsRequestSourcesItemEnum = /*@__PURE__*/ S.String;
+export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type BatchCreateContactsRequestSourcesItemEnumList = Array<
-  BatchCreateContactsRequestSourcesItemEnum | (string & {})
+export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList = Array<
+  CopyOtherContactToMyContactsGroupRequestSourcesItemEnum | (string & {})
 >;
-export const BatchCreateContactsRequestSourcesItemEnumList =
+export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList =
   /*@__PURE__*/ S.Array(
-    BatchCreateContactsRequestSourcesItemEnum,
-  ) as any as S.Schema<BatchCreateContactsRequestSourcesItemEnumList>;
+    CopyOtherContactToMyContactsGroupRequestSourcesItemEnum,
+  ) as any as S.Schema<CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList>;
+
+/** A request to copy an "Other contact" to my contacts group. */
+export interface CopyOtherContactToMyContactsGroupRequest {
+  /** Required. A field mask to restrict which fields are copied into the new contact. Valid values are: * emailAddresses * names * phoneNumbers */
+  copyMask?: string;
+  /** Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Defaults to the copy mask with metadata and membership fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
+  readMask?: string;
+  /** Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. */
+  sources?: CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList;
+}
+export const CopyOtherContactToMyContactsGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      copyMask: S.optional(S.String),
+      readMask: S.optional(S.String),
+      sources: S.optional(
+        CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList,
+      ),
+    }),
+).annotate({
+  identifier: "CopyOtherContactToMyContactsGroupRequest",
+}) as any as S.Schema<CopyOtherContactToMyContactsGroupRequest>;
+
+export interface CopyOtherContactToMyContactsGroupOtherContactsRequest {
+  /** Required. The resource name of the "Other contact" to copy. */
+  resourceName: string;
+  /** Request body */
+  body?: CopyOtherContactToMyContactsGroupRequest;
+}
+export const CopyOtherContactToMyContactsGroupOtherContactsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceName: S.String.pipe(T.Label()),
+      body: S.optional(
+        CopyOtherContactToMyContactsGroupRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resourceName}:copyOtherContactToMyContactsGroup",
+        baseUrl: "https://people.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CopyOtherContactToMyContactsGroupOtherContactsRequest",
+  }) as any as S.Schema<CopyOtherContactToMyContactsGroupOtherContactsRequest>;
 
 export type ProfileMetadataObjectTypeEnum =
   | "OBJECT_TYPE_UNSPECIFIED"
@@ -1310,6 +1357,22 @@ export const Person = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Person" }) as any as S.Schema<Person>;
 
+export type BatchCreateContactsRequestSourcesItemEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export const BatchCreateContactsRequestSourcesItemEnum = /*@__PURE__*/ S.String;
+
+export type BatchCreateContactsRequestSourcesItemEnumList = Array<
+  BatchCreateContactsRequestSourcesItemEnum | (string & {})
+>;
+export const BatchCreateContactsRequestSourcesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    BatchCreateContactsRequestSourcesItemEnum,
+  ) as any as S.Schema<BatchCreateContactsRequestSourcesItemEnumList>;
+
 /** A wrapper that contains the person data to populate a newly created source. */
 export interface ContactToCreate {
   /** Required. The person data to populate a newly created source. */
@@ -1347,11 +1410,11 @@ export const BatchCreateContactsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateContactsRequest",
 }) as any as S.Schema<BatchCreateContactsRequest>;
 
-export interface BatchCreateContactsPeopleRequest {
+export interface CreateBatchContactPeopleRequest {
   /** Request body */
   body?: BatchCreateContactsRequest;
 }
-export const BatchCreateContactsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateBatchContactPeopleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(BatchCreateContactsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1362,8 +1425,8 @@ export const BatchCreateContactsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchCreateContactsPeopleRequest",
-}) as any as S.Schema<BatchCreateContactsPeopleRequest>;
+  identifier: "CreateBatchContactPeopleRequest",
+}) as any as S.Schema<CreateBatchContactPeopleRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
 export const DocumentMap = /*@__PURE__*/ S.Record(
@@ -1430,67 +1493,6 @@ export const BatchCreateContactsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateContactsResponse",
 }) as any as S.Schema<BatchCreateContactsResponse>;
-
-/** A request to delete a batch of existing contacts. */
-export interface BatchDeleteContactsRequest {
-  /** Required. The resource names of the contact to delete. It's repeatable. Allows up to 500 resource names in a single request. */
-  resourceNames?: StringList;
-}
-export const BatchDeleteContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeleteContactsRequest",
-}) as any as S.Schema<BatchDeleteContactsRequest>;
-
-export interface BatchDeleteContactsPeopleRequest {
-  /** Request body */
-  body?: BatchDeleteContactsRequest;
-}
-export const BatchDeleteContactsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(BatchDeleteContactsRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/people:batchDeleteContacts",
-      baseUrl: "https://people.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchDeleteContactsPeopleRequest",
-}) as any as S.Schema<BatchDeleteContactsPeopleRequest>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
-
-export interface BatchGetContactGroupsRequest {
-  /** Optional. Specifies the maximum number of members to return for each group. Defaults to 0 if not set, which will return zero members. */
-  maxMembers?: number;
-  /** Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount * metadata * name */
-  groupFields?: string;
-  /** Required. The resource names of the contact groups to get. There is a maximum of 200 resource names. */
-  resourceNames?: StringList;
-}
-export const BatchGetContactGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxMembers: S.optional(S.Number.pipe(T.Query())),
-    groupFields: S.optional(S.String.pipe(T.Query())),
-    resourceNames: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/contactGroups:batchGet",
-      baseUrl: "https://people.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchGetContactGroupsRequest",
-}) as any as S.Schema<BatchGetContactGroupsRequest>;
 
 /** Arbitrary client data that is populated by clients. Duplicate keys and values are allowed. */
 export interface GroupClientData {
@@ -1570,187 +1572,6 @@ export const ContactGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContactGroup" }) as any as S.Schema<ContactGroup>;
 
-/** The response for a specific contact group. */
-export interface ContactGroupResponse {
-  /** The contact group. */
-  contactGroup?: ContactGroup;
-  /** The status of the response. */
-  status?: Status;
-  /** The original requested resource name. */
-  requestedResourceName?: string;
-}
-export const ContactGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contactGroup: S.optional(ContactGroup),
-    status: S.optional(Status),
-    requestedResourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContactGroupResponse",
-}) as any as S.Schema<ContactGroupResponse>;
-
-export type ContactGroupResponseList = Array<ContactGroupResponse>;
-export const ContactGroupResponseList = /*@__PURE__*/ S.Array(
-  ContactGroupResponse,
-) as any as S.Schema<ContactGroupResponseList>;
-
-/** The response to a batch get contact groups request. */
-export interface BatchGetContactGroupsResponse {
-  /** The list of responses for each requested contact group resource. */
-  responses?: ContactGroupResponseList;
-}
-export const BatchGetContactGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responses: S.optional(ContactGroupResponseList),
-  }),
-).annotate({
-  identifier: "BatchGetContactGroupsResponse",
-}) as any as S.Schema<BatchGetContactGroupsResponse>;
-
-export type BatchUpdateContactsRequestSourcesItemEnum =
-  | "READ_SOURCE_TYPE_UNSPECIFIED"
-  | "READ_SOURCE_TYPE_PROFILE"
-  | "READ_SOURCE_TYPE_CONTACT"
-  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT";
-export const BatchUpdateContactsRequestSourcesItemEnum = /*@__PURE__*/ S.String;
-
-export type BatchUpdateContactsRequestSourcesItemEnumList = Array<
-  BatchUpdateContactsRequestSourcesItemEnum | (string & {})
->;
-export const BatchUpdateContactsRequestSourcesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    BatchUpdateContactsRequestSourcesItemEnum,
-  ) as any as S.Schema<BatchUpdateContactsRequestSourcesItemEnumList>;
-
-export type PersonMap = { [key: string]: Person | undefined };
-export const PersonMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Person,
-) as any as S.Schema<PersonMap>;
-
-/** A request to update a batch of contacts. */
-export interface BatchUpdateContactsRequest {
-  /** Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. If read mask is left empty, the post-mutate-get is skipped and no data will be returned in the response. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
-  readMask?: string;
-  /** Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. */
-  sources?: BatchUpdateContactsRequestSourcesItemEnumList;
-  /** Required. A field mask to restrict which fields on the person are updated. Multiple fields can be specified by separating them with commas. All specified fields will be replaced, or cleared if left empty for each person. Valid values are: * addresses * biographies * birthdays * calendarUrls * clientData * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * relations * sipAddresses * urls * userDefined */
-  updateMask?: string;
-  /** Required. A map of resource names to the person data to be updated. Allows up to 200 contacts in a single request. */
-  contacts?: PersonMap;
-}
-export const BatchUpdateContactsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readMask: S.optional(S.String),
-    sources: S.optional(BatchUpdateContactsRequestSourcesItemEnumList),
-    updateMask: S.optional(S.String),
-    contacts: S.optional(PersonMap),
-  }),
-).annotate({
-  identifier: "BatchUpdateContactsRequest",
-}) as any as S.Schema<BatchUpdateContactsRequest>;
-
-export interface BatchUpdateContactsPeopleRequest {
-  /** Request body */
-  body?: BatchUpdateContactsRequest;
-}
-export const BatchUpdateContactsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(BatchUpdateContactsRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/people:batchUpdateContacts",
-      baseUrl: "https://people.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchUpdateContactsPeopleRequest",
-}) as any as S.Schema<BatchUpdateContactsPeopleRequest>;
-
-export type PersonResponseMap = { [key: string]: PersonResponse | undefined };
-export const PersonResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PersonResponse,
-) as any as S.Schema<PersonResponseMap>;
-
-/** If not successful, returns BatchUpdateContactsErrorDetails, a list of errors corresponding to each contact. The response to a request to update a batch of contacts. */
-export interface BatchUpdateContactsResponse {
-  /** A map of resource names to the contacts that were updated, unless the request `read_mask` is empty. */
-  updateResult?: PersonResponseMap;
-}
-export const BatchUpdateContactsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateResult: S.optional(PersonResponseMap),
-  }),
-).annotate({
-  identifier: "BatchUpdateContactsResponse",
-}) as any as S.Schema<BatchUpdateContactsResponse>;
-
-export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnum =
-  | "READ_SOURCE_TYPE_UNSPECIFIED"
-  | "READ_SOURCE_TYPE_PROFILE"
-  | "READ_SOURCE_TYPE_CONTACT"
-  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT";
-export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnum =
-  /*@__PURE__*/ S.String;
-
-export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList = Array<
-  CopyOtherContactToMyContactsGroupRequestSourcesItemEnum | (string & {})
->;
-export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    CopyOtherContactToMyContactsGroupRequestSourcesItemEnum,
-  ) as any as S.Schema<CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList>;
-
-/** A request to copy an "Other contact" to my contacts group. */
-export interface CopyOtherContactToMyContactsGroupRequest {
-  /** Required. A field mask to restrict which fields are copied into the new contact. Valid values are: * emailAddresses * names * phoneNumbers */
-  copyMask?: string;
-  /** Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Defaults to the copy mask with metadata and membership fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
-  readMask?: string;
-  /** Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. */
-  sources?: CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList;
-}
-export const CopyOtherContactToMyContactsGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      copyMask: S.optional(S.String),
-      readMask: S.optional(S.String),
-      sources: S.optional(
-        CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList,
-      ),
-    }),
-).annotate({
-  identifier: "CopyOtherContactToMyContactsGroupRequest",
-}) as any as S.Schema<CopyOtherContactToMyContactsGroupRequest>;
-
-export interface CopyOtherContactToMyContactsGroupOtherContactsRequest {
-  /** Required. The resource name of the "Other contact" to copy. */
-  resourceName: string;
-  /** Request body */
-  body?: CopyOtherContactToMyContactsGroupRequest;
-}
-export const CopyOtherContactToMyContactsGroupOtherContactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.String.pipe(T.Label()),
-      body: S.optional(
-        CopyOtherContactToMyContactsGroupRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resourceName}:copyOtherContactToMyContactsGroup",
-        baseUrl: "https://people.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CopyOtherContactToMyContactsGroupOtherContactsRequest",
-  }) as any as S.Schema<CopyOtherContactToMyContactsGroupOtherContactsRequest>;
-
 /** A request to create a new contact group. */
 export interface CreateContactGroupRequest {
   /** Required. The contact group to create. */
@@ -1823,6 +1644,43 @@ export const CreateContactPeopleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContactPeopleRequest",
 }) as any as S.Schema<CreateContactPeopleRequest>;
+
+/** A request to delete a batch of existing contacts. */
+export interface BatchDeleteContactsRequest {
+  /** Required. The resource names of the contact to delete. It's repeatable. Allows up to 500 resource names in a single request. */
+  resourceNames?: StringList;
+}
+export const BatchDeleteContactsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceNames: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeleteContactsRequest",
+}) as any as S.Schema<BatchDeleteContactsRequest>;
+
+export interface DeleteBatchContactPeopleRequest {
+  /** Request body */
+  body?: BatchDeleteContactsRequest;
+}
+export const DeleteBatchContactPeopleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(BatchDeleteContactsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/people:batchDeleteContacts",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBatchContactPeopleRequest",
+}) as any as S.Schema<DeleteBatchContactPeopleRequest>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface Empty {}
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteContactGroupsRequest {
   /** Optional. Set to true to also delete the contacts in the specified group. */
@@ -1916,6 +1774,67 @@ export const DeleteContactPhotoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteContactPhotoResponse",
 }) as any as S.Schema<DeleteContactPhotoResponse>;
+
+export interface GetBatchContactGroupRequest {
+  /** Optional. Specifies the maximum number of members to return for each group. Defaults to 0 if not set, which will return zero members. */
+  maxMembers?: number;
+  /** Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount * metadata * name */
+  groupFields?: string;
+  /** Required. The resource names of the contact groups to get. There is a maximum of 200 resource names. */
+  resourceNames?: StringList;
+}
+export const GetBatchContactGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxMembers: S.optional(S.Number.pipe(T.Query())),
+    groupFields: S.optional(S.String.pipe(T.Query())),
+    resourceNames: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/contactGroups:batchGet",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBatchContactGroupRequest",
+}) as any as S.Schema<GetBatchContactGroupRequest>;
+
+/** The response for a specific contact group. */
+export interface ContactGroupResponse {
+  /** The contact group. */
+  contactGroup?: ContactGroup;
+  /** The status of the response. */
+  status?: Status;
+  /** The original requested resource name. */
+  requestedResourceName?: string;
+}
+export const ContactGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contactGroup: S.optional(ContactGroup),
+    status: S.optional(Status),
+    requestedResourceName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContactGroupResponse",
+}) as any as S.Schema<ContactGroupResponse>;
+
+export type ContactGroupResponseList = Array<ContactGroupResponse>;
+export const ContactGroupResponseList = /*@__PURE__*/ S.Array(
+  ContactGroupResponse,
+) as any as S.Schema<ContactGroupResponseList>;
+
+/** The response to a batch get contact groups request. */
+export interface GetBatchContactGroupResponse {
+  /** The list of responses for each requested contact group resource. */
+  responses?: ContactGroupResponseList;
+}
+export const GetBatchContactGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    responses: S.optional(ContactGroupResponseList),
+  }),
+).annotate({
+  identifier: "GetBatchContactGroupResponse",
+}) as any as S.Schema<GetBatchContactGroupResponse>;
 
 export type GetBatchGetPeopleSourcesEnum =
   | "READ_SOURCE_TYPE_UNSPECIFIED"
@@ -2570,6 +2489,87 @@ export const SearchOtherContactsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchOtherContactsRequest",
 }) as any as S.Schema<SearchOtherContactsRequest>;
 
+export type BatchUpdateContactsRequestSourcesItemEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export const BatchUpdateContactsRequestSourcesItemEnum = /*@__PURE__*/ S.String;
+
+export type BatchUpdateContactsRequestSourcesItemEnumList = Array<
+  BatchUpdateContactsRequestSourcesItemEnum | (string & {})
+>;
+export const BatchUpdateContactsRequestSourcesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    BatchUpdateContactsRequestSourcesItemEnum,
+  ) as any as S.Schema<BatchUpdateContactsRequestSourcesItemEnumList>;
+
+export type PersonMap = { [key: string]: Person | undefined };
+export const PersonMap = /*@__PURE__*/ S.Record(
+  S.String,
+  Person,
+) as any as S.Schema<PersonMap>;
+
+/** A request to update a batch of contacts. */
+export interface BatchUpdateContactsRequest {
+  /** Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. If read mask is left empty, the post-mutate-get is skipped and no data will be returned in the response. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
+  readMask?: string;
+  /** Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. */
+  sources?: BatchUpdateContactsRequestSourcesItemEnumList;
+  /** Required. A field mask to restrict which fields on the person are updated. Multiple fields can be specified by separating them with commas. All specified fields will be replaced, or cleared if left empty for each person. Valid values are: * addresses * biographies * birthdays * calendarUrls * clientData * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * relations * sipAddresses * urls * userDefined */
+  updateMask?: string;
+  /** Required. A map of resource names to the person data to be updated. Allows up to 200 contacts in a single request. */
+  contacts?: PersonMap;
+}
+export const BatchUpdateContactsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    readMask: S.optional(S.String),
+    sources: S.optional(BatchUpdateContactsRequestSourcesItemEnumList),
+    updateMask: S.optional(S.String),
+    contacts: S.optional(PersonMap),
+  }),
+).annotate({
+  identifier: "BatchUpdateContactsRequest",
+}) as any as S.Schema<BatchUpdateContactsRequest>;
+
+export interface UpdateBatchContactPeopleRequest {
+  /** Request body */
+  body?: BatchUpdateContactsRequest;
+}
+export const UpdateBatchContactPeopleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(BatchUpdateContactsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/people:batchUpdateContacts",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBatchContactPeopleRequest",
+}) as any as S.Schema<UpdateBatchContactPeopleRequest>;
+
+export type PersonResponseMap = { [key: string]: PersonResponse | undefined };
+export const PersonResponseMap = /*@__PURE__*/ S.Record(
+  S.String,
+  PersonResponse,
+) as any as S.Schema<PersonResponseMap>;
+
+/** If not successful, returns BatchUpdateContactsErrorDetails, a list of errors corresponding to each contact. The response to a request to update a batch of contacts. */
+export interface BatchUpdateContactsResponse {
+  /** A map of resource names to the contacts that were updated, unless the request `read_mask` is empty. */
+  updateResult?: PersonResponseMap;
+}
+export const BatchUpdateContactsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateResult: S.optional(PersonResponseMap),
+  }),
+).annotate({
+  identifier: "BatchUpdateContactsResponse",
+}) as any as S.Schema<BatchUpdateContactsResponse>;
+
 /** A request to update an existing user contact group. All updated fields will be replaced. */
 export interface UpdateContactGroupRequest {
   /** Required. The contact group to update. */
@@ -2724,81 +2724,6 @@ export const UpdateContactPhotoResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactPhotoResponse",
 }) as any as S.Schema<UpdateContactPhotoResponse>;
 
-export type BatchCreateContactsPeopleError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Create a batch of new contacts and return the PersonResponses for the newly Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
-export const batchCreateContactsPeople: API.OperationMethod<
-  BatchCreateContactsPeopleRequest,
-  BatchCreateContactsResponse,
-  BatchCreateContactsPeopleError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateContactsPeopleRequest,
-  output: BatchCreateContactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchDeleteContactsPeopleError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Delete a batch of contacts. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
-export const batchDeleteContactsPeople: API.OperationMethod<
-  BatchDeleteContactsPeopleRequest,
-  Empty,
-  BatchDeleteContactsPeopleError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteContactsPeopleRequest,
-  output: Empty,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchGetContactGroupsError = NotFound | Forbidden | GcpOpError;
-/** Get a list of contact groups owned by the authenticated user by specifying a list of contact group resource names. */
-export const batchGetContactGroups: API.OperationMethod<
-  BatchGetContactGroupsRequest,
-  BatchGetContactGroupsResponse,
-  BatchGetContactGroupsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetContactGroupsRequest,
-  output: BatchGetContactGroupsResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchUpdateContactsPeopleError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
-export const batchUpdateContactsPeople: API.OperationMethod<
-  BatchUpdateContactsPeopleRequest,
-  BatchUpdateContactsResponse,
-  BatchUpdateContactsPeopleError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateContactsPeopleRequest,
-  output: BatchUpdateContactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CopyOtherContactToMyContactsGroupOtherContactsError =
   | NotFound
   | Forbidden
@@ -2814,6 +2739,26 @@ export const copyOtherContactToMyContactsGroupOtherContacts: API.OperationMethod
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyOtherContactToMyContactsGroupOtherContactsRequest,
   output: Person,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchContactPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Create a batch of new contacts and return the PersonResponses for the newly Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
+export const createBatchContactPeople: API.OperationMethod<
+  CreateBatchContactPeopleRequest,
+  BatchCreateContactsResponse,
+  CreateBatchContactPeopleError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchContactPeopleRequest,
+  output: BatchCreateContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2854,6 +2799,26 @@ export const createContactPeople: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateContactPeopleRequest,
   output: Person,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchContactPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Delete a batch of contacts. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
+export const deleteBatchContactPeople: API.OperationMethod<
+  DeleteBatchContactPeopleRequest,
+  Empty,
+  DeleteBatchContactPeopleError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchContactPeopleRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2915,6 +2880,21 @@ export const deleteContactPhotoPeople: API.OperationMethod<
   input: DeleteContactPhotoPeopleRequest,
   output: DeleteContactPhotoResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchContactGroupError = NotFound | Forbidden | GcpOpError;
+/** Get a list of contact groups owned by the authenticated user by specifying a list of contact group resource names. */
+export const getBatchContactGroup: API.OperationMethod<
+  GetBatchContactGroupRequest,
+  GetBatchContactGroupResponse,
+  GetBatchContactGroupError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchContactGroupRequest,
+  output: GetBatchContactGroupResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
@@ -3113,6 +3093,26 @@ export const searchOtherContacts: API.OperationMethod<
   input: SearchOtherContactsRequest,
   output: SearchResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchContactPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
+export const updateBatchContactPeople: API.OperationMethod<
+  UpdateBatchContactPeopleRequest,
+  BatchUpdateContactsResponse,
+  UpdateBatchContactPeopleError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchContactPeopleRequest,
+  output: BatchUpdateContactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

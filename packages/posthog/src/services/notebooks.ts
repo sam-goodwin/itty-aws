@@ -49,243 +49,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface NotebooksActivityRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-}
-export const NotebooksActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    short_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/notebooks/{short_id}/activity/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksActivityRetrieveRequest",
-}) as any as S.Schema<NotebooksActivityRetrieveRequest>;
-
-export interface NotebooksActivityRetrieveResponse {}
-export const NotebooksActivityRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotebooksActivityRetrieveResponse",
-}) as any as S.Schema<NotebooksActivityRetrieveResponse>;
-
-export interface NotebooksAllActivityRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const NotebooksAllActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/notebooks/activity/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksAllActivityRetrieveRequest",
-}) as any as S.Schema<NotebooksAllActivityRetrieveRequest>;
-
-export interface NotebooksAllActivityRetrieveResponse {}
-export const NotebooksAllActivityRetrieveResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "NotebooksAllActivityRetrieveResponse",
-}) as any as S.Schema<NotebooksAllActivityRetrieveResponse>;
-
-export interface NotebookCollabCursor {
-  /** ProseMirror selection head position (rich v1 notebooks). */
-  head?: number;
-  /** Index of the caret's block node in the markdown notebook document (markdown notebooks). */
-  node_index?: number;
-  /** Caret offset in the plain text of the focused editable element, in UTF-16 code units. */
-  offset?: number;
-  /** Index of the focused list item when the caret is inside a list block. */
-  list_item_index?: number;
-}
-export const NotebookCollabCursor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    head: S.optional(S.Number),
-    node_index: S.optional(S.Number),
-    offset: S.optional(S.Number),
-    list_item_index: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "NotebookCollabCursor",
-}) as any as S.Schema<NotebookCollabCursor>;
-
-export interface NotebooksCollabMarkdownSaveCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** Unique identifier for the client session, used to skip self-echo on the update stream. */
-  client_id: string;
-  /** The notebook version the submitted content is based on (optimistic concurrency baseline). */
-  version: number;
-  /** The full markdown notebook document: a ProseMirror doc wrapping a single markdown node. */
-  content: unknown;
-  /** Plain text for search indexing. */
-  text_content?: string;
-  /** Updated notebook title. */
-  title?: string;
-  /** The author's caret in the saved markdown, broadcast with the update so other clients can move the author's remote caret together with the text change. */
-  cursor?: NotebookCollabCursor;
-}
-export const NotebooksCollabMarkdownSaveCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      short_id: S.String.pipe(T.Label()),
-      client_id: S.String,
-      version: S.Number,
-      content: S.Unknown,
-      text_content: S.optional(S.String),
-      title: S.optional(S.String),
-      cursor: S.optional(NotebookCollabCursor),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/notebooks/{short_id}/collab/markdown_save/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "NotebooksCollabMarkdownSaveCreateRequest",
-}) as any as S.Schema<NotebooksCollabMarkdownSaveCreateRequest>;
-
-export interface NotebooksCollabMarkdownSaveCreateResponse {}
-export const NotebooksCollabMarkdownSaveCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "NotebooksCollabMarkdownSaveCreateResponse",
-  }) as any as S.Schema<NotebooksCollabMarkdownSaveCreateResponse>;
-
-export interface NotebooksCollabPresenceCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** Unique identifier for the client session, used to skip self-echo on the update stream. */
-  client_id: string;
-  /** The notebook version the cursor position is relative to. */
-  version: number;
-  /** The caller's caret position, broadcast to other clients on this notebook's collab stream. */
-  cursor: NotebookCollabCursor;
-}
-export const NotebooksCollabPresenceCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      short_id: S.String.pipe(T.Label()),
-      client_id: S.String,
-      version: S.Number,
-      cursor: NotebookCollabCursor,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/notebooks/{short_id}/collab/presence/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "NotebooksCollabPresenceCreateRequest",
-}) as any as S.Schema<NotebooksCollabPresenceCreateRequest>;
-
-export interface NotebooksCollabPresenceCreateResponse {}
-export const NotebooksCollabPresenceCreateResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "NotebooksCollabPresenceCreateResponse",
-}) as any as S.Schema<NotebooksCollabPresenceCreateResponse>;
-
-/** List of ProseMirror step JSON objects to apply. */
-export type NotebooksCollabSaveCreateRequestStepsList = Array<unknown>;
-export const NotebooksCollabSaveCreateRequestStepsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<NotebooksCollabSaveCreateRequestStepsList>;
-
-export interface NotebooksCollabSaveCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** Unique identifier for the client session. */
-  client_id?: string;
-  /** The collab version the client's steps are based on. */
-  version?: number;
-  /** List of ProseMirror step JSON objects to apply. */
-  steps?: NotebooksCollabSaveCreateRequestStepsList;
-  /** The resulting ProseMirror document after applying the steps locally. */
-  content?: unknown;
-  /** Plain text for search indexing. */
-  text_content?: string;
-  /** Updated notebook title. */
-  title?: string;
-  /** ProseMirror cursor head position after applying steps. */
-  cursor_head?: number | null;
-}
-export const NotebooksCollabSaveCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    short_id: S.String.pipe(T.Label()),
-    client_id: S.optional(S.String),
-    version: S.optional(S.Number),
-    steps: S.optional(NotebooksCollabSaveCreateRequestStepsList),
-    content: S.optional(S.Unknown),
-    text_content: S.optional(S.String),
-    title: S.optional(S.String),
-    cursor_head: S.optional(S.NullOr(S.Number)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/notebooks/{short_id}/collab/save/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksCollabSaveCreateRequest",
-}) as any as S.Schema<NotebooksCollabSaveCreateRequest>;
-
-export interface NotebooksCollabSaveCreateResponse {}
-export const NotebooksCollabSaveCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotebooksCollabSaveCreateResponse",
-}) as any as S.Schema<NotebooksCollabSaveCreateResponse>;
-
-export interface NotebooksCollabStreamRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-}
-export const NotebooksCollabStreamRetrieveRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      short_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/notebooks/{short_id}/collab/stream/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "NotebooksCollabStreamRetrieveRequest",
-}) as any as S.Schema<NotebooksCollabStreamRetrieveRequest>;
-
-export interface NotebooksCollabStreamRetrieveResponse {}
-export const NotebooksCollabStreamRetrieveResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "NotebooksCollabStreamRetrieveResponse",
-}) as any as S.Schema<NotebooksCollabStreamRetrieveResponse>;
-
 /** One notebook-level variable. Shared by the notebook's own `variables` field and a run body. */
 export interface NotebookVariable {
   /** Identifier the cell reads: `{name}` in a SQL cell, a plain global in a Python cell. */
@@ -311,7 +74,7 @@ export const NotebooksCreateRequestVariablesList = /*@__PURE__*/ S.Array(
   NotebookVariable,
 ) as any as S.Schema<NotebooksCreateRequestVariablesList>;
 
-export interface NotebooksCreateRequest {
+export interface CreateNotebookRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Title of the notebook. */
@@ -328,7 +91,7 @@ export interface NotebooksCreateRequest {
   variables?: NotebooksCreateRequestVariablesList;
   _create_in_folder?: string;
 }
-export const NotebooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     title: S.optional(S.NullOr(S.String)),
@@ -346,8 +109,8 @@ export const NotebooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "NotebooksCreateRequest",
-}) as any as S.Schema<NotebooksCreateRequest>;
+  identifier: "CreateNotebookRequest",
+}) as any as S.Schema<CreateNotebookRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -468,6 +231,822 @@ export const NotebookOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NotebookOutput" }) as any as S.Schema<NotebookOutput>;
 
+export interface NotebookCollabCursor {
+  /** ProseMirror selection head position (rich v1 notebooks). */
+  head?: number;
+  /** Index of the caret's block node in the markdown notebook document (markdown notebooks). */
+  node_index?: number;
+  /** Caret offset in the plain text of the focused editable element, in UTF-16 code units. */
+  offset?: number;
+  /** Index of the focused list item when the caret is inside a list block. */
+  list_item_index?: number;
+}
+export const NotebookCollabCursor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    head: S.optional(S.Number),
+    node_index: S.optional(S.Number),
+    offset: S.optional(S.Number),
+    list_item_index: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NotebookCollabCursor",
+}) as any as S.Schema<NotebookCollabCursor>;
+
+export interface CreateNotebookCollabMarkdownSaveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** Unique identifier for the client session, used to skip self-echo on the update stream. */
+  client_id: string;
+  /** The notebook version the submitted content is based on (optimistic concurrency baseline). */
+  version: number;
+  /** The full markdown notebook document: a ProseMirror doc wrapping a single markdown node. */
+  content: unknown;
+  /** Plain text for search indexing. */
+  text_content?: string;
+  /** Updated notebook title. */
+  title?: string;
+  /** The author's caret in the saved markdown, broadcast with the update so other clients can move the author's remote caret together with the text change. */
+  cursor?: NotebookCollabCursor;
+}
+export const CreateNotebookCollabMarkdownSaveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      short_id: S.String.pipe(T.Label()),
+      client_id: S.String,
+      version: S.Number,
+      content: S.Unknown,
+      text_content: S.optional(S.String),
+      title: S.optional(S.String),
+      cursor: S.optional(NotebookCollabCursor),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/notebooks/{short_id}/collab/markdown_save/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateNotebookCollabMarkdownSaveRequest",
+}) as any as S.Schema<CreateNotebookCollabMarkdownSaveRequest>;
+
+export interface CreateNotebookCollabMarkdownSaveResponse {}
+export const CreateNotebookCollabMarkdownSaveResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "CreateNotebookCollabMarkdownSaveResponse",
+}) as any as S.Schema<CreateNotebookCollabMarkdownSaveResponse>;
+
+export interface CreateNotebookCollabPresenceRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** Unique identifier for the client session, used to skip self-echo on the update stream. */
+  client_id: string;
+  /** The notebook version the cursor position is relative to. */
+  version: number;
+  /** The caller's caret position, broadcast to other clients on this notebook's collab stream. */
+  cursor: NotebookCollabCursor;
+}
+export const CreateNotebookCollabPresenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    client_id: S.String,
+    version: S.Number,
+    cursor: NotebookCollabCursor,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/collab/presence/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateNotebookCollabPresenceRequest",
+}) as any as S.Schema<CreateNotebookCollabPresenceRequest>;
+
+export interface CreateNotebookCollabPresenceResponse {}
+export const CreateNotebookCollabPresenceResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "CreateNotebookCollabPresenceResponse",
+}) as any as S.Schema<CreateNotebookCollabPresenceResponse>;
+
+/** List of ProseMirror step JSON objects to apply. */
+export type NotebooksCollabSaveCreateRequestStepsList = Array<unknown>;
+export const NotebooksCollabSaveCreateRequestStepsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<NotebooksCollabSaveCreateRequestStepsList>;
+
+export interface CreateNotebookCollabSaveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** Unique identifier for the client session. */
+  client_id?: string;
+  /** The collab version the client's steps are based on. */
+  version?: number;
+  /** List of ProseMirror step JSON objects to apply. */
+  steps?: NotebooksCollabSaveCreateRequestStepsList;
+  /** The resulting ProseMirror document after applying the steps locally. */
+  content?: unknown;
+  /** Plain text for search indexing. */
+  text_content?: string;
+  /** Updated notebook title. */
+  title?: string;
+  /** ProseMirror cursor head position after applying steps. */
+  cursor_head?: number | null;
+}
+export const CreateNotebookCollabSaveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    client_id: S.optional(S.String),
+    version: S.optional(S.Number),
+    steps: S.optional(NotebooksCollabSaveCreateRequestStepsList),
+    content: S.optional(S.Unknown),
+    text_content: S.optional(S.String),
+    title: S.optional(S.String),
+    cursor_head: S.optional(S.NullOr(S.Number)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/collab/save/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateNotebookCollabSaveRequest",
+}) as any as S.Schema<CreateNotebookCollabSaveRequest>;
+
+export interface CreateNotebookCollabSaveResponse {}
+export const CreateNotebookCollabSaveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateNotebookCollabSaveResponse",
+}) as any as S.Schema<CreateNotebookCollabSaveResponse>;
+
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksHogqlExecuteCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksHogqlExecuteCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksHogqlExecuteCreateRequestVariablesList>;
+
+export interface CreateNotebookHogqlExecuteRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** Title of the notebook. */
+  title?: string | null;
+  /** Notebook content as a ProseMirror JSON document structure. */
+  content?: unknown;
+  /** Plain text representation of the notebook content for search. */
+  text_content?: string | null;
+  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
+  version?: number;
+  /** Whether the notebook has been soft-deleted. */
+  deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksHogqlExecuteCreateRequestVariablesList;
+  _create_in_folder?: string;
+}
+export const CreateNotebookHogqlExecuteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    title: S.optional(S.NullOr(S.String)),
+    content: S.optional(S.Unknown),
+    text_content: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.Number),
+    deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksHogqlExecuteCreateRequestVariablesList),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/hogql/execute/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateNotebookHogqlExecuteRequest",
+}) as any as S.Schema<CreateNotebookHogqlExecuteRequest>;
+
+export interface CreateNotebookHogqlExecuteResponse {}
+export const CreateNotebookHogqlExecuteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateNotebookHogqlExecuteResponse",
+}) as any as S.Schema<CreateNotebookHogqlExecuteResponse>;
+
+export interface CreateNotebookKernelConfigRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** CPU cores for the notebook's sandbox kernel; must be a supported option. */
+  cpu_cores?: number;
+  /** Memory in GB for the notebook's sandbox kernel; must be a supported option. */
+  memory_gb?: number;
+  /** Seconds of inactivity before the sandbox kernel shuts down. */
+  idle_timeout_seconds?: number;
+}
+export const CreateNotebookKernelConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    cpu_cores: S.optional(S.Number),
+    memory_gb: S.optional(S.Number),
+    idle_timeout_seconds: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/kernel/config/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateNotebookKernelConfigRequest",
+}) as any as S.Schema<CreateNotebookKernelConfigRequest>;
+
+export interface NotebookKernelConfigResponse {
+  /** Configured CPU cores; null means the default applies. */
+  cpu_cores?: number | null;
+  /** Configured memory in GB; null means the default applies. */
+  memory_gb?: number | null;
+  /** Configured idle timeout in seconds; null means the default. */
+  idle_timeout_seconds?: number | null;
+  /** True when a kernel is currently active: config applies at sandbox provision time, so the running kernel keeps its old resources until restarted (restarting loses materialized dataframes). */
+  restart_required: boolean;
+}
+export const NotebookKernelConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cpu_cores: S.optional(S.NullOr(S.Number)),
+    memory_gb: S.optional(S.NullOr(S.Number)),
+    idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
+    restart_required: S.Boolean,
+  }),
+).annotate({
+  identifier: "NotebookKernelConfigResponse",
+}) as any as S.Schema<NotebookKernelConfigResponse>;
+
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksKernelExecuteCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksKernelExecuteCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksKernelExecuteCreateRequestVariablesList>;
+
+export interface CreateNotebookKernelExecuteRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** Title of the notebook. */
+  title?: string | null;
+  /** Notebook content as a ProseMirror JSON document structure. */
+  content?: unknown;
+  /** Plain text representation of the notebook content for search. */
+  text_content?: string | null;
+  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
+  version?: number;
+  /** Whether the notebook has been soft-deleted. */
+  deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksKernelExecuteCreateRequestVariablesList;
+  _create_in_folder?: string;
+}
+export const CreateNotebookKernelExecuteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    title: S.optional(S.NullOr(S.String)),
+    content: S.optional(S.Unknown),
+    text_content: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.Number),
+    deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksKernelExecuteCreateRequestVariablesList),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/kernel/execute/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateNotebookKernelExecuteRequest",
+}) as any as S.Schema<CreateNotebookKernelExecuteRequest>;
+
+export interface CreateNotebookKernelExecuteResponse {}
+export const CreateNotebookKernelExecuteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateNotebookKernelExecuteResponse",
+}) as any as S.Schema<CreateNotebookKernelExecuteResponse>;
+
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksKernelExecuteStreamCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksKernelExecuteStreamCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksKernelExecuteStreamCreateRequestVariablesList>;
+
+export interface CreateNotebookKernelExecuteStreamRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** Title of the notebook. */
+  title?: string | null;
+  /** Notebook content as a ProseMirror JSON document structure. */
+  content?: unknown;
+  /** Plain text representation of the notebook content for search. */
+  text_content?: string | null;
+  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
+  version?: number;
+  /** Whether the notebook has been soft-deleted. */
+  deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksKernelExecuteStreamCreateRequestVariablesList;
+  _create_in_folder?: string;
+}
+export const CreateNotebookKernelExecuteStreamRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      short_id: S.String.pipe(T.Label()),
+      title: S.optional(S.NullOr(S.String)),
+      content: S.optional(S.Unknown),
+      text_content: S.optional(S.NullOr(S.String)),
+      version: S.optional(S.Number),
+      deleted: S.optional(S.Boolean),
+      variables: S.optional(
+        NotebooksKernelExecuteStreamCreateRequestVariablesList,
+      ),
+      _create_in_folder: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/notebooks/{short_id}/kernel/execute/stream/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateNotebookKernelExecuteStreamRequest",
+}) as any as S.Schema<CreateNotebookKernelExecuteStreamRequest>;
+
+export interface CreateNotebookKernelExecuteStreamResponse {}
+export const CreateNotebookKernelExecuteStreamResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "CreateNotebookKernelExecuteStreamResponse",
+  }) as any as S.Schema<CreateNotebookKernelExecuteStreamResponse>;
+
+export interface CreateNotebookSharingPasswordRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  notebook_id: string;
+  enabled?: boolean;
+  settings?: unknown;
+  password_required?: boolean;
+}
+export const CreateNotebookSharingPasswordRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      notebook_id: S.String.pipe(T.Label()),
+      enabled: S.optional(S.Boolean),
+      settings: S.optional(S.Unknown),
+      password_required: S.optional(S.Boolean),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/notebooks/{notebook_id}/sharing/passwords/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateNotebookSharingPasswordRequest",
+}) as any as S.Schema<CreateNotebookSharingPasswordRequest>;
+
+export interface SharePassword {
+  id?: number;
+  created_at?: string;
+  note?: string | null;
+  created_by_email?: string;
+  is_active?: boolean;
+}
+export const SharePassword = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    created_at: S.optional(S.String),
+    note: S.optional(S.NullOr(S.String)),
+    created_by_email: S.optional(S.String),
+    is_active: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
+
+export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
+export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
+  SharePassword,
+) as any as S.Schema<SharingConfigurationSharePasswordsList>;
+
+/** Mixin for serializers to add user access control fields */
+export interface SharingConfiguration {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: string | Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: SharingConfigurationSharePasswordsList;
+  /** The effective access level the user has for this object */
+  user_access_level?: string | null;
+}
+export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created_at: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+    settings: S.optional(S.Unknown),
+    password_required: S.optional(S.Boolean),
+    share_passwords: S.optional(SharingConfigurationSharePasswordsList),
+    user_access_level: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "SharingConfiguration",
+}) as any as S.Schema<SharingConfiguration>;
+
+export interface CreateNotebookSharingRefreshRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  notebook_id: string;
+  enabled?: boolean;
+  settings?: unknown;
+  password_required?: boolean;
+}
+export const CreateNotebookSharingRefreshRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    notebook_id: S.String.pipe(T.Label()),
+    enabled: S.optional(S.Boolean),
+    settings: S.optional(S.Unknown),
+    password_required: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/notebooks/{notebook_id}/sharing/refresh/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateNotebookSharingRefreshRequest",
+}) as any as S.Schema<CreateNotebookSharingRefreshRequest>;
+
+/** * `hogql` - hogql * `python` - python */
+export type NotebookSQLV2NodeTypeEnum = "hogql" | "python";
+export const NotebookSQLV2NodeTypeEnum = /*@__PURE__*/ S.String;
+
+/** * `hogql` - hogql * `local` - local */
+export type NotebookSQLV2RefKindEnum = "hogql" | "local";
+export const NotebookSQLV2RefKindEnum = /*@__PURE__*/ S.String;
+
+export interface NotebookSQLV2Ref {
+  /** ProseMirror node id of the upstream node this name points at. */
+  node_id: string;
+  /** What the name resolves to: 'hogql' is a SQL node's query definition (resolved to its last-run HogQL); 'local' is a dataframe a Python node bound in the kernel namespace. * `hogql` - hogql * `local` - local */
+  kind?: NotebookSQLV2RefKindEnum | (string & {});
+}
+export const NotebookSQLV2Ref = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    node_id: S.String,
+    kind: S.optional(NotebookSQLV2RefKindEnum),
+  }),
+).annotate({
+  identifier: "NotebookSQLV2Ref",
+}) as any as S.Schema<NotebookSQLV2Ref>;
+
+/** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs — unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
+export type NotebooksSqlV2RunCreateRequestRefsMap = {
+  [key: string]: NotebookSQLV2Ref | undefined;
+};
+export const NotebooksSqlV2RunCreateRequestRefsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  NotebookSQLV2Ref,
+) as any as S.Schema<NotebooksSqlV2RunCreateRequestRefsMap>;
+
+/** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
+export type NotebooksSqlV2RunCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksSqlV2RunCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksSqlV2RunCreateRequestVariablesList>;
+
+export interface CreateNotebookSqlV2RunRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** ProseMirror node id of the SQLV2 node being run. */
+  node_id: string;
+  /** Execution kind. 'hogql' is a SQL node — pushed to ClickHouse, or rerouted to the sandbox's DuckDB when it references a local frame; 'python' runs the code in the sandbox kernel, materializing referenced upstream nodes as pandas frames first. * `hogql` - hogql * `python` - python */
+  node_type?: NotebookSQLV2NodeTypeEnum | (string & {});
+  /** The node's source — SQL for a hogql node, Python for a python node. Must not be blank. */
+  code: string;
+  /** Kernel nodes only: the dataframe variable to bind the result to in the kernel namespace (a python node falls back to the last expression for its preview). */
+  output_name?: string;
+  /** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs — unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
+  refs?: NotebooksSqlV2RunCreateRequestRefsMap;
+  /** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
+  variables?: NotebooksSqlV2RunCreateRequestVariablesList;
+  /** SQL nodes only: id of a direct-query-capable external data source to run against instead of PostHog's ClickHouse. Omit to query PostHog. */
+  connection_id?: string | null;
+  /** Send the code to the selected connection verbatim instead of compiling it from HogQL first. Ignored without connection_id, and incompatible with references to other cells. */
+  send_raw_query?: boolean;
+}
+export const CreateNotebookSqlV2RunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    node_id: S.String,
+    node_type: S.optional(NotebookSQLV2NodeTypeEnum),
+    code: S.String,
+    output_name: S.optional(S.String),
+    refs: S.optional(NotebooksSqlV2RunCreateRequestRefsMap),
+    variables: S.optional(NotebooksSqlV2RunCreateRequestVariablesList),
+    connection_id: S.optional(S.NullOr(S.String)),
+    send_raw_query: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/sql_v2/run/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateNotebookSqlV2RunRequest",
+}) as any as S.Schema<CreateNotebookSqlV2RunRequest>;
+
+export interface NotebookSQLV2RunResponse {
+  /** Identifier of the dispatched run. Poll the run result endpoint with it until the status is terminal. */
+  run_id: string;
+}
+export const NotebookSQLV2RunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    run_id: S.String,
+  }),
+).annotate({
+  identifier: "NotebookSQLV2RunResponse",
+}) as any as S.Schema<NotebookSQLV2RunResponse>;
+
+export interface CreateNotebookSqlV2RunInterruptRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** ID of the run, as returned by the run dispatch endpoint. */
+  run_id: string;
+}
+export const CreateNotebookSqlV2RunInterruptRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      short_id: S.String.pipe(T.Label()),
+      run_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/notebooks/{short_id}/sql_v2/runs/{run_id}/interrupt/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateNotebookSqlV2RunInterruptRequest",
+}) as any as S.Schema<CreateNotebookSqlV2RunInterruptRequest>;
+
+export interface NotebookSQLV2InterruptResponse {
+  /** The run's status after the interrupt request. Already-terminal runs return their outcome unchanged (idempotent noop); a stopped kernel run reports its terminal state through the normal result poll. */
+  status: string;
+  /** Present when the interrupt could not take effect yet, e.g. the run has not reached the kernel. */
+  detail?: string;
+}
+export const NotebookSQLV2InterruptResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.String,
+    detail: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NotebookSQLV2InterruptResponse",
+}) as any as S.Schema<NotebookSQLV2InterruptResponse>;
+
+export interface ListNotebooksRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Filter for notebooks that match a provided filter. Each match pair is separated by a colon, multiple match pairs can be sent separated by a space or a comma */
+  contains?: string;
+  /** The UUID of the Notebook's creator */
+  created_by?: string;
+  /** Filter for notebooks created after this date & time */
+  date_from?: string;
+  /** Filter for notebooks created before this date & time */
+  date_to?: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** If any value is provided for this parameter, return notebooks created by the logged in user. */
+  user?: string;
+}
+export const ListNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    contains: S.optional(S.String.pipe(T.Query())),
+    created_by: S.optional(S.String.pipe(T.Query())),
+    date_from: S.optional(S.String.pipe(T.Query())),
+    date_to: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    user: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/notebooks/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListNotebooksRequest",
+}) as any as S.Schema<ListNotebooksRequest>;
+
+export interface NotebookMinimalOutput {
+  /** UUID of the notebook. */
+  id?: string;
+  /** Short alphanumeric identifier used in URLs and API lookups. */
+  short_id?: string;
+  /** Title of the notebook. */
+  title?: string | null;
+  /** Whether the notebook has been soft-deleted. */
+  deleted?: boolean;
+  created_at?: string;
+  created_by?: UserBasic | null;
+  last_modified_at?: string;
+  last_modified_by?: UserBasic | null;
+  /** The effective access level the user has for this object */
+  user_access_level?: string | null;
+}
+export const NotebookMinimalOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    short_id: S.optional(S.String),
+    title: S.optional(S.NullOr(S.String)),
+    deleted: S.optional(S.Boolean),
+    created_at: S.optional(S.String),
+    created_by: S.optional(S.NullOr(UserBasic)),
+    last_modified_at: S.optional(S.String),
+    last_modified_by: S.optional(S.NullOr(UserBasic)),
+    user_access_level: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "NotebookMinimalOutput",
+}) as any as S.Schema<NotebookMinimalOutput>;
+
+export type PaginatedNotebookMinimalListOutputResultsList =
+  Array<NotebookMinimalOutput>;
+export const PaginatedNotebookMinimalListOutputResultsList =
+  /*@__PURE__*/ S.Array(
+    NotebookMinimalOutput,
+  ) as any as S.Schema<PaginatedNotebookMinimalListOutputResultsList>;
+
+export interface PaginatedNotebookMinimalListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: PaginatedNotebookMinimalListOutputResultsList;
+}
+export const PaginatedNotebookMinimalListOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: S.optional(PaginatedNotebookMinimalListOutputResultsList),
+  }),
+).annotate({
+  identifier: "PaginatedNotebookMinimalListOutput",
+}) as any as S.Schema<PaginatedNotebookMinimalListOutput>;
+
+export interface ListNotebookSharingRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  notebook_id: string;
+}
+export const ListNotebookSharingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    notebook_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/notebooks/{notebook_id}/sharing/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListNotebookSharingRequest",
+}) as any as S.Schema<ListNotebookSharingRequest>;
+
+export type NotebooksSharingListResponseBodyList = Array<SharingConfiguration>;
+export const NotebooksSharingListResponseBodyList = /*@__PURE__*/ S.Array(
+  SharingConfiguration,
+) as any as S.Schema<NotebooksSharingListResponseBodyList>;
+
+export type ListNotebookSharingResponse = NotebooksSharingListResponseBodyList;
+export const ListNotebookSharingResponse = /*@__PURE__*/ S.suspend(() =>
+  NotebooksSharingListResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "ListNotebookSharingResponse",
+}) as any as S.Schema<ListNotebookSharingResponse>;
+
+export interface NotebooksActivityRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+}
+export const NotebooksActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/activity/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "NotebooksActivityRetrieveRequest",
+}) as any as S.Schema<NotebooksActivityRetrieveRequest>;
+
+export interface NotebooksActivityRetrieveResponse {}
+export const NotebooksActivityRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "NotebooksActivityRetrieveResponse",
+}) as any as S.Schema<NotebooksActivityRetrieveResponse>;
+
+export interface NotebooksAllActivityRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const NotebooksAllActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/notebooks/activity/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "NotebooksAllActivityRetrieveRequest",
+}) as any as S.Schema<NotebooksAllActivityRetrieveRequest>;
+
+export interface NotebooksAllActivityRetrieveResponse {}
+export const NotebooksAllActivityRetrieveResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "NotebooksAllActivityRetrieveResponse",
+}) as any as S.Schema<NotebooksAllActivityRetrieveResponse>;
+
+export interface NotebooksCollabStreamRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+}
+export const NotebooksCollabStreamRetrieveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      short_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/notebooks/{short_id}/collab/stream/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "NotebooksCollabStreamRetrieveRequest",
+}) as any as S.Schema<NotebooksCollabStreamRetrieveRequest>;
+
+export interface NotebooksCollabStreamRetrieveResponse {}
+export const NotebooksCollabStreamRetrieveResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "NotebooksCollabStreamRetrieveResponse",
+}) as any as S.Schema<NotebooksCollabStreamRetrieveResponse>;
+
 export interface NotebooksDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -494,111 +1073,6 @@ export const NotebooksDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotebooksDestroyResponse",
 }) as any as S.Schema<NotebooksDestroyResponse>;
-
-/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
-export type NotebooksHogqlExecuteCreateRequestVariablesList =
-  Array<NotebookVariable>;
-export const NotebooksHogqlExecuteCreateRequestVariablesList =
-  /*@__PURE__*/ S.Array(
-    NotebookVariable,
-  ) as any as S.Schema<NotebooksHogqlExecuteCreateRequestVariablesList>;
-
-export interface NotebooksHogqlExecuteCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** Title of the notebook. */
-  title?: string | null;
-  /** Notebook content as a ProseMirror JSON document structure. */
-  content?: unknown;
-  /** Plain text representation of the notebook content for search. */
-  text_content?: string | null;
-  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
-  version?: number;
-  /** Whether the notebook has been soft-deleted. */
-  deleted?: boolean;
-  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
-  variables?: NotebooksHogqlExecuteCreateRequestVariablesList;
-  _create_in_folder?: string;
-}
-export const NotebooksHogqlExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    short_id: S.String.pipe(T.Label()),
-    title: S.optional(S.NullOr(S.String)),
-    content: S.optional(S.Unknown),
-    text_content: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.Number),
-    deleted: S.optional(S.Boolean),
-    variables: S.optional(NotebooksHogqlExecuteCreateRequestVariablesList),
-    _create_in_folder: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/notebooks/{short_id}/hogql/execute/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksHogqlExecuteCreateRequest",
-}) as any as S.Schema<NotebooksHogqlExecuteCreateRequest>;
-
-export interface NotebooksHogqlExecuteCreateResponse {}
-export const NotebooksHogqlExecuteCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotebooksHogqlExecuteCreateResponse",
-}) as any as S.Schema<NotebooksHogqlExecuteCreateResponse>;
-
-export interface NotebooksKernelConfigCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** CPU cores for the notebook's sandbox kernel; must be a supported option. */
-  cpu_cores?: number;
-  /** Memory in GB for the notebook's sandbox kernel; must be a supported option. */
-  memory_gb?: number;
-  /** Seconds of inactivity before the sandbox kernel shuts down. */
-  idle_timeout_seconds?: number;
-}
-export const NotebooksKernelConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    short_id: S.String.pipe(T.Label()),
-    cpu_cores: S.optional(S.Number),
-    memory_gb: S.optional(S.Number),
-    idle_timeout_seconds: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/notebooks/{short_id}/kernel/config/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksKernelConfigCreateRequest",
-}) as any as S.Schema<NotebooksKernelConfigCreateRequest>;
-
-export interface NotebookKernelConfigResponse {
-  /** Configured CPU cores; null means the default applies. */
-  cpu_cores?: number | null;
-  /** Configured memory in GB; null means the default applies. */
-  memory_gb?: number | null;
-  /** Configured idle timeout in seconds; null means the default. */
-  idle_timeout_seconds?: number | null;
-  /** True when a kernel is currently active: config applies at sandbox provision time, so the running kernel keeps its old resources until restarted (restarting loses materialized dataframes). */
-  restart_required: boolean;
-}
-export const NotebookKernelConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpu_cores: S.optional(S.NullOr(S.Number)),
-    memory_gb: S.optional(S.NullOr(S.Number)),
-    idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
-    restart_required: S.Boolean,
-  }),
-).annotate({
-  identifier: "NotebookKernelConfigResponse",
-}) as any as S.Schema<NotebookKernelConfigResponse>;
 
 export interface NotebooksKernelDataframeRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -627,118 +1101,6 @@ export const NotebooksKernelDataframeRetrieveResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "NotebooksKernelDataframeRetrieveResponse",
 }) as any as S.Schema<NotebooksKernelDataframeRetrieveResponse>;
-
-/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
-export type NotebooksKernelExecuteCreateRequestVariablesList =
-  Array<NotebookVariable>;
-export const NotebooksKernelExecuteCreateRequestVariablesList =
-  /*@__PURE__*/ S.Array(
-    NotebookVariable,
-  ) as any as S.Schema<NotebooksKernelExecuteCreateRequestVariablesList>;
-
-export interface NotebooksKernelExecuteCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** Title of the notebook. */
-  title?: string | null;
-  /** Notebook content as a ProseMirror JSON document structure. */
-  content?: unknown;
-  /** Plain text representation of the notebook content for search. */
-  text_content?: string | null;
-  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
-  version?: number;
-  /** Whether the notebook has been soft-deleted. */
-  deleted?: boolean;
-  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
-  variables?: NotebooksKernelExecuteCreateRequestVariablesList;
-  _create_in_folder?: string;
-}
-export const NotebooksKernelExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    short_id: S.String.pipe(T.Label()),
-    title: S.optional(S.NullOr(S.String)),
-    content: S.optional(S.Unknown),
-    text_content: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.Number),
-    deleted: S.optional(S.Boolean),
-    variables: S.optional(NotebooksKernelExecuteCreateRequestVariablesList),
-    _create_in_folder: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/notebooks/{short_id}/kernel/execute/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksKernelExecuteCreateRequest",
-}) as any as S.Schema<NotebooksKernelExecuteCreateRequest>;
-
-export interface NotebooksKernelExecuteCreateResponse {}
-export const NotebooksKernelExecuteCreateResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "NotebooksKernelExecuteCreateResponse",
-}) as any as S.Schema<NotebooksKernelExecuteCreateResponse>;
-
-/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
-export type NotebooksKernelExecuteStreamCreateRequestVariablesList =
-  Array<NotebookVariable>;
-export const NotebooksKernelExecuteStreamCreateRequestVariablesList =
-  /*@__PURE__*/ S.Array(
-    NotebookVariable,
-  ) as any as S.Schema<NotebooksKernelExecuteStreamCreateRequestVariablesList>;
-
-export interface NotebooksKernelExecuteStreamCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** Title of the notebook. */
-  title?: string | null;
-  /** Notebook content as a ProseMirror JSON document structure. */
-  content?: unknown;
-  /** Plain text representation of the notebook content for search. */
-  text_content?: string | null;
-  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
-  version?: number;
-  /** Whether the notebook has been soft-deleted. */
-  deleted?: boolean;
-  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
-  variables?: NotebooksKernelExecuteStreamCreateRequestVariablesList;
-  _create_in_folder?: string;
-}
-export const NotebooksKernelExecuteStreamCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      short_id: S.String.pipe(T.Label()),
-      title: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.Unknown),
-      text_content: S.optional(S.NullOr(S.String)),
-      version: S.optional(S.Number),
-      deleted: S.optional(S.Boolean),
-      variables: S.optional(
-        NotebooksKernelExecuteStreamCreateRequestVariablesList,
-      ),
-      _create_in_folder: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/notebooks/{short_id}/kernel/execute/stream/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "NotebooksKernelExecuteStreamCreateRequest",
-  }) as any as S.Schema<NotebooksKernelExecuteStreamCreateRequest>;
-
-export interface NotebooksKernelExecuteStreamCreateResponse {}
-export const NotebooksKernelExecuteStreamCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "NotebooksKernelExecuteStreamCreateResponse",
-  }) as any as S.Schema<NotebooksKernelExecuteStreamCreateResponse>;
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebooksKernelRestartCreateRequestVariablesList =
@@ -1017,148 +1379,6 @@ export const NotebooksKernelStopCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebooksKernelStopCreateResponse",
 }) as any as S.Schema<NotebooksKernelStopCreateResponse>;
 
-export interface NotebooksListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Filter for notebooks that match a provided filter. Each match pair is separated by a colon, multiple match pairs can be sent separated by a space or a comma */
-  contains?: string;
-  /** The UUID of the Notebook's creator */
-  created_by?: string;
-  /** Filter for notebooks created after this date & time */
-  date_from?: string;
-  /** Filter for notebooks created before this date & time */
-  date_to?: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** If any value is provided for this parameter, return notebooks created by the logged in user. */
-  user?: string;
-}
-export const NotebooksListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    contains: S.optional(S.String.pipe(T.Query())),
-    created_by: S.optional(S.String.pipe(T.Query())),
-    date_from: S.optional(S.String.pipe(T.Query())),
-    date_to: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    user: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/notebooks/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksListRequest",
-}) as any as S.Schema<NotebooksListRequest>;
-
-export interface NotebookMinimalOutput {
-  /** UUID of the notebook. */
-  id?: string;
-  /** Short alphanumeric identifier used in URLs and API lookups. */
-  short_id?: string;
-  /** Title of the notebook. */
-  title?: string | null;
-  /** Whether the notebook has been soft-deleted. */
-  deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic | null;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic | null;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-}
-export const NotebookMinimalOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    short_id: S.optional(S.String),
-    title: S.optional(S.NullOr(S.String)),
-    deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(S.NullOr(UserBasic)),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(S.NullOr(UserBasic)),
-    user_access_level: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "NotebookMinimalOutput",
-}) as any as S.Schema<NotebookMinimalOutput>;
-
-export type PaginatedNotebookMinimalListOutputResultsList =
-  Array<NotebookMinimalOutput>;
-export const PaginatedNotebookMinimalListOutputResultsList =
-  /*@__PURE__*/ S.Array(
-    NotebookMinimalOutput,
-  ) as any as S.Schema<PaginatedNotebookMinimalListOutputResultsList>;
-
-export interface PaginatedNotebookMinimalListOutput {
-  count?: number;
-  next?: string | null;
-  previous?: string | null;
-  results?: PaginatedNotebookMinimalListOutputResultsList;
-}
-export const PaginatedNotebookMinimalListOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedNotebookMinimalListOutputResultsList),
-  }),
-).annotate({
-  identifier: "PaginatedNotebookMinimalListOutput",
-}) as any as S.Schema<PaginatedNotebookMinimalListOutput>;
-
-/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
-export type NotebooksPartialUpdateRequestVariablesList =
-  Array<NotebookVariable>;
-export const NotebooksPartialUpdateRequestVariablesList = /*@__PURE__*/ S.Array(
-  NotebookVariable,
-) as any as S.Schema<NotebooksPartialUpdateRequestVariablesList>;
-
-export interface NotebooksPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** Title of the notebook. */
-  title?: string | null;
-  /** Notebook content as a ProseMirror JSON document structure. */
-  content?: unknown;
-  /** Plain text representation of the notebook content for search. */
-  text_content?: string | null;
-  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
-  version?: number;
-  /** Whether the notebook has been soft-deleted. */
-  deleted?: boolean;
-  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
-  variables?: NotebooksPartialUpdateRequestVariablesList;
-  _create_in_folder?: string;
-}
-export const NotebooksPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    short_id: S.String.pipe(T.Label()),
-    title: S.optional(S.NullOr(S.String)),
-    content: S.optional(S.Unknown),
-    text_content: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.Number),
-    deleted: S.optional(S.Boolean),
-    variables: S.optional(NotebooksPartialUpdateRequestVariablesList),
-    _create_in_folder: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/notebooks/{short_id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksPartialUpdateRequest",
-}) as any as S.Schema<NotebooksPartialUpdateRequest>;
-
 export interface NotebooksRecordingCommentsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1204,112 +1424,6 @@ export const NotebooksRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebooksRetrieveRequest",
 }) as any as S.Schema<NotebooksRetrieveRequest>;
 
-export interface NotebooksSharingListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  notebook_id: string;
-}
-export const NotebooksSharingListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    notebook_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/notebooks/{notebook_id}/sharing/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksSharingListRequest",
-}) as any as S.Schema<NotebooksSharingListRequest>;
-
-export interface SharePassword {
-  id?: number;
-  created_at?: string;
-  note?: string | null;
-  created_by_email?: string;
-  is_active?: boolean;
-}
-export const SharePassword = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    note: S.optional(S.NullOr(S.String)),
-    created_by_email: S.optional(S.String),
-    is_active: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
-
-export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
-export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
-  SharePassword,
-) as any as S.Schema<SharingConfigurationSharePasswordsList>;
-
-/** Mixin for serializers to add user access control fields */
-export interface SharingConfiguration {
-  created_at?: string;
-  enabled?: boolean;
-  access_token?: string | Redacted.Redacted<string> | null;
-  settings?: unknown;
-  password_required?: boolean;
-  share_passwords?: SharingConfigurationSharePasswordsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-}
-export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-    settings: S.optional(S.Unknown),
-    password_required: S.optional(S.Boolean),
-    share_passwords: S.optional(SharingConfigurationSharePasswordsList),
-    user_access_level: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SharingConfiguration",
-}) as any as S.Schema<SharingConfiguration>;
-
-export type NotebooksSharingListResponseBodyList = Array<SharingConfiguration>;
-export const NotebooksSharingListResponseBodyList = /*@__PURE__*/ S.Array(
-  SharingConfiguration,
-) as any as S.Schema<NotebooksSharingListResponseBodyList>;
-
-export type NotebooksSharingListResponse = NotebooksSharingListResponseBodyList;
-export const NotebooksSharingListResponse = /*@__PURE__*/ S.suspend(() =>
-  NotebooksSharingListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "NotebooksSharingListResponse",
-}) as any as S.Schema<NotebooksSharingListResponse>;
-
-export interface NotebooksSharingPasswordsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  notebook_id: string;
-  enabled?: boolean;
-  settings?: unknown;
-  password_required?: boolean;
-}
-export const NotebooksSharingPasswordsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      notebook_id: S.String.pipe(T.Label()),
-      enabled: S.optional(S.Boolean),
-      settings: S.optional(S.Unknown),
-      password_required: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/notebooks/{notebook_id}/sharing/passwords/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "NotebooksSharingPasswordsCreateRequest",
-}) as any as S.Schema<NotebooksSharingPasswordsCreateRequest>;
-
 export interface NotebooksSharingPasswordsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1339,168 +1453,6 @@ export const NotebooksSharingPasswordsDestroyResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "NotebooksSharingPasswordsDestroyResponse",
 }) as any as S.Schema<NotebooksSharingPasswordsDestroyResponse>;
-
-export interface NotebooksSharingRefreshCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  notebook_id: string;
-  enabled?: boolean;
-  settings?: unknown;
-  password_required?: boolean;
-}
-export const NotebooksSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      notebook_id: S.String.pipe(T.Label()),
-      enabled: S.optional(S.Boolean),
-      settings: S.optional(S.Unknown),
-      password_required: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/notebooks/{notebook_id}/sharing/refresh/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "NotebooksSharingRefreshCreateRequest",
-}) as any as S.Schema<NotebooksSharingRefreshCreateRequest>;
-
-/** * `hogql` - hogql * `python` - python */
-export type NotebookSQLV2NodeTypeEnum = "hogql" | "python";
-export const NotebookSQLV2NodeTypeEnum = /*@__PURE__*/ S.String;
-
-/** * `hogql` - hogql * `local` - local */
-export type NotebookSQLV2RefKindEnum = "hogql" | "local";
-export const NotebookSQLV2RefKindEnum = /*@__PURE__*/ S.String;
-
-export interface NotebookSQLV2Ref {
-  /** ProseMirror node id of the upstream node this name points at. */
-  node_id: string;
-  /** What the name resolves to: 'hogql' is a SQL node's query definition (resolved to its last-run HogQL); 'local' is a dataframe a Python node bound in the kernel namespace. * `hogql` - hogql * `local` - local */
-  kind?: NotebookSQLV2RefKindEnum | (string & {});
-}
-export const NotebookSQLV2Ref = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    node_id: S.String,
-    kind: S.optional(NotebookSQLV2RefKindEnum),
-  }),
-).annotate({
-  identifier: "NotebookSQLV2Ref",
-}) as any as S.Schema<NotebookSQLV2Ref>;
-
-/** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs — unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
-export type NotebooksSqlV2RunCreateRequestRefsMap = {
-  [key: string]: NotebookSQLV2Ref | undefined;
-};
-export const NotebooksSqlV2RunCreateRequestRefsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  NotebookSQLV2Ref,
-) as any as S.Schema<NotebooksSqlV2RunCreateRequestRefsMap>;
-
-/** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
-export type NotebooksSqlV2RunCreateRequestVariablesList =
-  Array<NotebookVariable>;
-export const NotebooksSqlV2RunCreateRequestVariablesList =
-  /*@__PURE__*/ S.Array(
-    NotebookVariable,
-  ) as any as S.Schema<NotebooksSqlV2RunCreateRequestVariablesList>;
-
-export interface NotebooksSqlV2RunCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** ProseMirror node id of the SQLV2 node being run. */
-  node_id: string;
-  /** Execution kind. 'hogql' is a SQL node — pushed to ClickHouse, or rerouted to the sandbox's DuckDB when it references a local frame; 'python' runs the code in the sandbox kernel, materializing referenced upstream nodes as pandas frames first. * `hogql` - hogql * `python` - python */
-  node_type?: NotebookSQLV2NodeTypeEnum | (string & {});
-  /** The node's source — SQL for a hogql node, Python for a python node. Must not be blank. */
-  code: string;
-  /** Kernel nodes only: the dataframe variable to bind the result to in the kernel namespace (a python node falls back to the last expression for its preview). */
-  output_name?: string;
-  /** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs — unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
-  refs?: NotebooksSqlV2RunCreateRequestRefsMap;
-  /** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
-  variables?: NotebooksSqlV2RunCreateRequestVariablesList;
-  /** SQL nodes only: id of a direct-query-capable external data source to run against instead of PostHog's ClickHouse. Omit to query PostHog. */
-  connection_id?: string | null;
-  /** Send the code to the selected connection verbatim instead of compiling it from HogQL first. Ignored without connection_id, and incompatible with references to other cells. */
-  send_raw_query?: boolean;
-}
-export const NotebooksSqlV2RunCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    short_id: S.String.pipe(T.Label()),
-    node_id: S.String,
-    node_type: S.optional(NotebookSQLV2NodeTypeEnum),
-    code: S.String,
-    output_name: S.optional(S.String),
-    refs: S.optional(NotebooksSqlV2RunCreateRequestRefsMap),
-    variables: S.optional(NotebooksSqlV2RunCreateRequestVariablesList),
-    connection_id: S.optional(S.NullOr(S.String)),
-    send_raw_query: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/notebooks/{short_id}/sql_v2/run/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksSqlV2RunCreateRequest",
-}) as any as S.Schema<NotebooksSqlV2RunCreateRequest>;
-
-export interface NotebookSQLV2RunResponse {
-  /** Identifier of the dispatched run. Poll the run result endpoint with it until the status is terminal. */
-  run_id: string;
-}
-export const NotebookSQLV2RunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    run_id: S.String,
-  }),
-).annotate({
-  identifier: "NotebookSQLV2RunResponse",
-}) as any as S.Schema<NotebookSQLV2RunResponse>;
-
-export interface NotebooksSqlV2RunsInterruptCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** ID of the run, as returned by the run dispatch endpoint. */
-  run_id: string;
-}
-export const NotebooksSqlV2RunsInterruptCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      short_id: S.String.pipe(T.Label()),
-      run_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/notebooks/{short_id}/sql_v2/runs/{run_id}/interrupt/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "NotebooksSqlV2RunsInterruptCreateRequest",
-}) as any as S.Schema<NotebooksSqlV2RunsInterruptCreateRequest>;
-
-export interface NotebookSQLV2InterruptResponse {
-  /** The run's status after the interrupt request. Already-terminal runs return their outcome unchanged (idempotent noop); a stopped kernel run reports its terminal state through the normal result poll. */
-  status: string;
-  /** Present when the interrupt could not take effect yet, e.g. the run has not reached the kernel. */
-  detail?: string;
-}
-export const NotebookSQLV2InterruptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-    detail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NotebookSQLV2InterruptResponse",
-}) as any as S.Schema<NotebookSQLV2InterruptResponse>;
 
 export interface NotebooksSqlV2RunsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1836,7 +1788,7 @@ export const NotebooksUpdateRequestVariablesList = /*@__PURE__*/ S.Array(
   NotebookVariable,
 ) as any as S.Schema<NotebooksUpdateRequestVariablesList>;
 
-export interface NotebooksUpdateRequest {
+export interface UpdateNotebookRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
@@ -1854,7 +1806,7 @@ export interface NotebooksUpdateRequest {
   variables?: NotebooksUpdateRequestVariablesList;
   _create_in_folder?: string;
 }
-export const NotebooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1873,8 +1825,291 @@ export const NotebooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "NotebooksUpdateRequest",
-}) as any as S.Schema<NotebooksUpdateRequest>;
+  identifier: "UpdateNotebookRequest",
+}) as any as S.Schema<UpdateNotebookRequest>;
+
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksPartialUpdateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksPartialUpdateRequestVariablesList = /*@__PURE__*/ S.Array(
+  NotebookVariable,
+) as any as S.Schema<NotebooksPartialUpdateRequestVariablesList>;
+
+export interface UpdateNotebookPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** Title of the notebook. */
+  title?: string | null;
+  /** Notebook content as a ProseMirror JSON document structure. */
+  content?: unknown;
+  /** Plain text representation of the notebook content for search. */
+  text_content?: string | null;
+  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
+  version?: number;
+  /** Whether the notebook has been soft-deleted. */
+  deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksPartialUpdateRequestVariablesList;
+  _create_in_folder?: string;
+}
+export const UpdateNotebookPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    title: S.optional(S.NullOr(S.String)),
+    content: S.optional(S.Unknown),
+    text_content: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.Number),
+    deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksPartialUpdateRequestVariablesList),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateNotebookPartialRequest",
+}) as any as S.Schema<UpdateNotebookPartialRequest>;
+
+export type CreateNotebookError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+export const createNotebook: API.OperationMethod<
+  CreateNotebookRequest,
+  NotebookOutput,
+  CreateNotebookError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookRequest,
+  output: NotebookOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookCollabMarkdownSaveError = PosthogOpError;
+/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+export const createNotebookCollabMarkdownSave: API.OperationMethod<
+  CreateNotebookCollabMarkdownSaveRequest,
+  CreateNotebookCollabMarkdownSaveResponse,
+  CreateNotebookCollabMarkdownSaveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookCollabMarkdownSaveRequest,
+  output: CreateNotebookCollabMarkdownSaveResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookCollabPresenceError = PosthogOpError;
+/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+export const createNotebookCollabPresence: API.OperationMethod<
+  CreateNotebookCollabPresenceRequest,
+  CreateNotebookCollabPresenceResponse,
+  CreateNotebookCollabPresenceError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookCollabPresenceRequest,
+  output: CreateNotebookCollabPresenceResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookCollabSaveError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+export const createNotebookCollabSave: API.OperationMethod<
+  CreateNotebookCollabSaveRequest,
+  CreateNotebookCollabSaveResponse,
+  CreateNotebookCollabSaveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookCollabSaveRequest,
+  output: CreateNotebookCollabSaveResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookHogqlExecuteError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+export const createNotebookHogqlExecute: API.OperationMethod<
+  CreateNotebookHogqlExecuteRequest,
+  CreateNotebookHogqlExecuteResponse,
+  CreateNotebookHogqlExecuteError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookHogqlExecuteRequest,
+  output: CreateNotebookHogqlExecuteResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookKernelConfigError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Set the notebook's kernel compute configuration. Applies at sandbox provision time: a currently running kernel keeps its resources until restarted. */
+export const createNotebookKernelConfig: API.OperationMethod<
+  CreateNotebookKernelConfigRequest,
+  NotebookKernelConfigResponse,
+  CreateNotebookKernelConfigError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookKernelConfigRequest,
+  output: NotebookKernelConfigResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookKernelExecuteError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+export const createNotebookKernelExecute: API.OperationMethod<
+  CreateNotebookKernelExecuteRequest,
+  CreateNotebookKernelExecuteResponse,
+  CreateNotebookKernelExecuteError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookKernelExecuteRequest,
+  output: CreateNotebookKernelExecuteResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookKernelExecuteStreamError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+export const createNotebookKernelExecuteStream: API.OperationMethod<
+  CreateNotebookKernelExecuteStreamRequest,
+  CreateNotebookKernelExecuteStreamResponse,
+  CreateNotebookKernelExecuteStreamError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookKernelExecuteStreamRequest,
+  output: CreateNotebookKernelExecuteStreamResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookSharingPasswordError = PosthogOpError;
+/** Create a new password for the sharing configuration. */
+export const createNotebookSharingPassword: API.OperationMethod<
+  CreateNotebookSharingPasswordRequest,
+  SharingConfiguration,
+  CreateNotebookSharingPasswordError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookSharingPasswordRequest,
+  output: SharingConfiguration,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookSharingRefreshError = PosthogOpError;
+export const createNotebookSharingRefresh: API.OperationMethod<
+  CreateNotebookSharingRefreshRequest,
+  SharingConfiguration,
+  CreateNotebookSharingRefreshError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookSharingRefreshRequest,
+  output: SharingConfiguration,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookSqlV2RunError = Conflict | PosthogOpError;
+/** Dispatch an asynchronous run of a notebook SQL or Python cell. Returns a run_id immediately; poll the run result endpoint until the status is terminal. One run at a time per notebook. Flag-gated (revamped-py-notebooks). */
+export const createNotebookSqlV2Run: API.OperationMethod<
+  CreateNotebookSqlV2RunRequest,
+  NotebookSQLV2RunResponse,
+  CreateNotebookSqlV2RunError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookSqlV2RunRequest,
+  output: NotebookSQLV2RunResponse,
+  errors: [Conflict],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotebookSqlV2RunInterruptError = PosthogOpError;
+/** Stop a running cell. Idempotent: interrupting an already-finished run returns its outcome unchanged. Flag-gated (revamped-py-notebooks). */
+export const createNotebookSqlV2RunInterrupt: API.OperationMethod<
+  CreateNotebookSqlV2RunInterruptRequest,
+  NotebookSQLV2InterruptResponse,
+  CreateNotebookSqlV2RunInterruptError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotebookSqlV2RunInterruptRequest,
+  output: NotebookSQLV2InterruptResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListNotebooksError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+export const listNotebooks: API.OperationMethod<
+  ListNotebooksRequest,
+  PaginatedNotebookMinimalListOutput,
+  ListNotebooksError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListNotebooksRequest,
+  output: PaginatedNotebookMinimalListOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListNotebookSharingError = PosthogOpError;
+export const listNotebookSharing: API.OperationMethod<
+  ListNotebookSharingRequest,
+  ListNotebookSharingResponse,
+  ListNotebookSharingError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListNotebookSharingRequest,
+  output: ListNotebookSharingResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
 export type NotebooksActivityRetrieveError =
   | Forbidden
@@ -1912,55 +2147,6 @@ export const notebooksAllActivityRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type NotebooksCollabMarkdownSaveCreateError = PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksCollabMarkdownSaveCreate: API.OperationMethod<
-  NotebooksCollabMarkdownSaveCreateRequest,
-  NotebooksCollabMarkdownSaveCreateResponse,
-  NotebooksCollabMarkdownSaveCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksCollabMarkdownSaveCreateRequest,
-  output: NotebooksCollabMarkdownSaveCreateResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksCollabPresenceCreateError = PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksCollabPresenceCreate: API.OperationMethod<
-  NotebooksCollabPresenceCreateRequest,
-  NotebooksCollabPresenceCreateResponse,
-  NotebooksCollabPresenceCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksCollabPresenceCreateRequest,
-  output: NotebooksCollabPresenceCreateResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksCollabSaveCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksCollabSaveCreate: API.OperationMethod<
-  NotebooksCollabSaveCreateRequest,
-  NotebooksCollabSaveCreateResponse,
-  NotebooksCollabSaveCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksCollabSaveCreateRequest,
-  output: NotebooksCollabSaveCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type NotebooksCollabStreamRetrieveError =
   | Forbidden
   | NotFound
@@ -1975,25 +2161,6 @@ export const notebooksCollabStreamRetrieve: API.OperationMethod<
   input: NotebooksCollabStreamRetrieveRequest,
   output: NotebooksCollabStreamRetrieveResponse,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksCreate: API.OperationMethod<
-  NotebooksCreateRequest,
-  NotebookOutput,
-  NotebooksCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksCreateRequest,
-  output: NotebookOutput,
-  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -2013,44 +2180,6 @@ export const notebooksDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type NotebooksHogqlExecuteCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksHogqlExecuteCreate: API.OperationMethod<
-  NotebooksHogqlExecuteCreateRequest,
-  NotebooksHogqlExecuteCreateResponse,
-  NotebooksHogqlExecuteCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksHogqlExecuteCreateRequest,
-  output: NotebooksHogqlExecuteCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksKernelConfigCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Set the notebook's kernel compute configuration. Applies at sandbox provision time: a currently running kernel keeps its resources until restarted. */
-export const notebooksKernelConfigCreate: API.OperationMethod<
-  NotebooksKernelConfigCreateRequest,
-  NotebookKernelConfigResponse,
-  NotebooksKernelConfigCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksKernelConfigCreateRequest,
-  output: NotebookKernelConfigResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type NotebooksKernelDataframeRetrieveError =
   | Forbidden
   | NotFound
@@ -2065,44 +2194,6 @@ export const notebooksKernelDataframeRetrieve: API.OperationMethod<
   input: NotebooksKernelDataframeRetrieveRequest,
   output: NotebooksKernelDataframeRetrieveResponse,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksKernelExecuteCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksKernelExecuteCreate: API.OperationMethod<
-  NotebooksKernelExecuteCreateRequest,
-  NotebooksKernelExecuteCreateResponse,
-  NotebooksKernelExecuteCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksKernelExecuteCreateRequest,
-  output: NotebooksKernelExecuteCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksKernelExecuteStreamCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksKernelExecuteStreamCreate: API.OperationMethod<
-  NotebooksKernelExecuteStreamCreateRequest,
-  NotebooksKernelExecuteStreamCreateResponse,
-  NotebooksKernelExecuteStreamCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksKernelExecuteStreamCreateRequest,
-  output: NotebooksKernelExecuteStreamCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -2182,44 +2273,6 @@ export const notebooksKernelStopCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type NotebooksListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksList: API.OperationMethod<
-  NotebooksListRequest,
-  PaginatedNotebookMinimalListOutput,
-  NotebooksListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksListRequest,
-  output: PaginatedNotebookMinimalListOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksPartialUpdate: API.OperationMethod<
-  NotebooksPartialUpdateRequest,
-  NotebookOutput,
-  NotebooksPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksPartialUpdateRequest,
-  output: NotebookOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type NotebooksRecordingCommentsRetrieveError =
   | Forbidden
   | NotFound
@@ -2253,35 +2306,6 @@ export const notebooksRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type NotebooksSharingListError = PosthogOpError;
-export const notebooksSharingList: API.OperationMethod<
-  NotebooksSharingListRequest,
-  NotebooksSharingListResponse,
-  NotebooksSharingListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksSharingListRequest,
-  output: NotebooksSharingListResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksSharingPasswordsCreateError = PosthogOpError;
-/** Create a new password for the sharing configuration. */
-export const notebooksSharingPasswordsCreate: API.OperationMethod<
-  NotebooksSharingPasswordsCreateRequest,
-  SharingConfiguration,
-  NotebooksSharingPasswordsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksSharingPasswordsCreateRequest,
-  output: SharingConfiguration,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type NotebooksSharingPasswordsDestroyError = PosthogOpError;
 /** Delete a password from the sharing configuration. */
 export const notebooksSharingPasswordsDestroy: API.OperationMethod<
@@ -2292,50 +2316,6 @@ export const notebooksSharingPasswordsDestroy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: NotebooksSharingPasswordsDestroyRequest,
   output: NotebooksSharingPasswordsDestroyResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksSharingRefreshCreateError = PosthogOpError;
-export const notebooksSharingRefreshCreate: API.OperationMethod<
-  NotebooksSharingRefreshCreateRequest,
-  SharingConfiguration,
-  NotebooksSharingRefreshCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksSharingRefreshCreateRequest,
-  output: SharingConfiguration,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksSqlV2RunCreateError = Conflict | PosthogOpError;
-/** Dispatch an asynchronous run of a notebook SQL or Python cell. Returns a run_id immediately; poll the run result endpoint until the status is terminal. One run at a time per notebook. Flag-gated (revamped-py-notebooks). */
-export const notebooksSqlV2RunCreate: API.OperationMethod<
-  NotebooksSqlV2RunCreateRequest,
-  NotebookSQLV2RunResponse,
-  NotebooksSqlV2RunCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksSqlV2RunCreateRequest,
-  output: NotebookSQLV2RunResponse,
-  errors: [Conflict],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotebooksSqlV2RunsInterruptCreateError = PosthogOpError;
-/** Stop a running cell. Idempotent: interrupting an already-finished run returns its outcome unchanged. Flag-gated (revamped-py-notebooks). */
-export const notebooksSqlV2RunsInterruptCreate: API.OperationMethod<
-  NotebooksSqlV2RunsInterruptCreateRequest,
-  NotebookSQLV2InterruptResponse,
-  NotebooksSqlV2RunsInterruptCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksSqlV2RunsInterruptCreateRequest,
-  output: NotebookSQLV2InterruptResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2371,19 +2351,38 @@ export const notebooksSqlV2StateRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type NotebooksUpdateError =
+export type UpdateNotebookError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
 /** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
-export const notebooksUpdate: API.OperationMethod<
-  NotebooksUpdateRequest,
+export const updateNotebook: API.OperationMethod<
+  UpdateNotebookRequest,
   NotebookOutput,
-  NotebooksUpdateError,
+  UpdateNotebookError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NotebooksUpdateRequest,
+  input: UpdateNotebookRequest,
+  output: NotebookOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateNotebookPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+export const updateNotebookPartial: API.OperationMethod<
+  UpdateNotebookPartialRequest,
+  NotebookOutput,
+  UpdateNotebookPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateNotebookPartialRequest,
   output: NotebookOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,

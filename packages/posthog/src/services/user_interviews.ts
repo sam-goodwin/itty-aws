@@ -30,7 +30,7 @@ export const UserInterviewsCreateRequestClassificationsList =
     ClassificationsEnum,
   ) as any as S.Schema<UserInterviewsCreateRequestClassificationsList>;
 
-export interface UserInterviewsCreateRequest {
+export interface CreateUserInterviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   interviewee_emails?: UserInterviewsCreateRequestIntervieweeEmailsList;
@@ -39,7 +39,7 @@ export interface UserInterviewsCreateRequest {
   classifications?: UserInterviewsCreateRequestClassificationsList;
   audio?: string;
 }
-export const UserInterviewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateUserInterviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     interviewee_emails: S.optional(
@@ -56,8 +56,8 @@ export const UserInterviewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "UserInterviewsCreateRequest",
-}) as any as S.Schema<UserInterviewsCreateRequest>;
+  identifier: "CreateUserInterviewRequest",
+}) as any as S.Schema<CreateUserInterviewRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -149,158 +149,6 @@ export const UserInterviewOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserInterviewOutput",
 }) as any as S.Schema<UserInterviewOutput>;
 
-export interface UserInterviewsDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this user interview. */
-  id: string;
-}
-export const UserInterviewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/user_interviews/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UserInterviewsDestroyRequest",
-}) as any as S.Schema<UserInterviewsDestroyRequest>;
-
-export interface UserInterviewsDestroyResponse {}
-export const UserInterviewsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserInterviewsDestroyResponse",
-}) as any as S.Schema<UserInterviewsDestroyResponse>;
-
-export interface UserInterviewsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Comma-separated classifications; returns responses carrying any of them (OR). Valid values: abandoned, off-topic. */
-  classifications?: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  topic?: string;
-}
-export const UserInterviewsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    classifications: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    topic: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/user_interviews/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UserInterviewsListRequest",
-}) as any as S.Schema<UserInterviewsListRequest>;
-
-export type PaginatedUserInterviewListOutputResultsList =
-  Array<UserInterviewOutput>;
-export const PaginatedUserInterviewListOutputResultsList =
-  /*@__PURE__*/ S.Array(
-    UserInterviewOutput,
-  ) as any as S.Schema<PaginatedUserInterviewListOutputResultsList>;
-
-export interface PaginatedUserInterviewListOutput {
-  count?: number;
-  next?: string | null;
-  previous?: string | null;
-  results?: PaginatedUserInterviewListOutputResultsList;
-}
-export const PaginatedUserInterviewListOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedUserInterviewListOutputResultsList),
-  }),
-).annotate({
-  identifier: "PaginatedUserInterviewListOutput",
-}) as any as S.Schema<PaginatedUserInterviewListOutput>;
-
-export type UserInterviewsPartialUpdateRequestIntervieweeEmailsList =
-  Array<string>;
-export const UserInterviewsPartialUpdateRequestIntervieweeEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UserInterviewsPartialUpdateRequestIntervieweeEmailsList>;
-
-/** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
-export type UserInterviewsPartialUpdateRequestClassificationsList = Array<
-  ClassificationsEnum | (string & {})
->;
-export const UserInterviewsPartialUpdateRequestClassificationsList =
-  /*@__PURE__*/ S.Array(
-    ClassificationsEnum,
-  ) as any as S.Schema<UserInterviewsPartialUpdateRequestClassificationsList>;
-
-export interface UserInterviewsPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this user interview. */
-  id: string;
-  interviewee_emails?: UserInterviewsPartialUpdateRequestIntervieweeEmailsList;
-  summary?: string;
-  /** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
-  classifications?: UserInterviewsPartialUpdateRequestClassificationsList;
-  audio?: string;
-}
-export const UserInterviewsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    interviewee_emails: S.optional(
-      UserInterviewsPartialUpdateRequestIntervieweeEmailsList,
-    ),
-    summary: S.optional(S.String),
-    classifications: S.optional(
-      UserInterviewsPartialUpdateRequestClassificationsList,
-    ),
-    audio: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/user_interviews/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UserInterviewsPartialUpdateRequest",
-}) as any as S.Schema<UserInterviewsPartialUpdateRequest>;
-
-export interface UserInterviewsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this user interview. */
-  id: string;
-}
-export const UserInterviewsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/user_interviews/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UserInterviewsRetrieveRequest",
-}) as any as S.Schema<UserInterviewsRetrieveRequest>;
-
 /** * `transcript` - transcript * `summary` - summary */
 export type UserInterviewSearchDocumentTypeEnum = "transcript" | "summary";
 export const UserInterviewSearchDocumentTypeEnum = /*@__PURE__*/ S.String;
@@ -323,7 +171,7 @@ export const UserInterviewsSearchCreateRequestClassificationsList =
     ClassificationsEnum,
   ) as any as S.Schema<UserInterviewsSearchCreateRequestClassificationsList>;
 
-export interface UserInterviewsSearchCreateRequest {
+export interface CreateUserInterviewSearchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Natural-language query to match semantically against interview transcripts and summaries. */
@@ -337,7 +185,7 @@ export interface UserInterviewsSearchCreateRequest {
   /** Maximum number of matches to return (1-50). Defaults to 10. Two matches per interview are possible — one for the transcript, one for the summary. */
   limit?: number;
 }
-export const UserInterviewsSearchCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateUserInterviewSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.String,
@@ -357,8 +205,8 @@ export const UserInterviewsSearchCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "UserInterviewsSearchCreateRequest",
-}) as any as S.Schema<UserInterviewsSearchCreateRequest>;
+  identifier: "CreateUserInterviewSearchRequest",
+}) as any as S.Schema<CreateUserInterviewSearchRequest>;
 
 export interface UserInterviewSearchResult {
   /** ID of the matched UserInterview. */
@@ -396,13 +244,66 @@ export const UserInterviewsSearchCreateResponseBodyList = /*@__PURE__*/ S.Array(
   UserInterviewSearchResult,
 ) as any as S.Schema<UserInterviewsSearchCreateResponseBodyList>;
 
-export type UserInterviewsSearchCreateResponse =
+export type CreateUserInterviewSearchResponse =
   UserInterviewsSearchCreateResponseBodyList;
-export const UserInterviewsSearchCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateUserInterviewSearchResponse = /*@__PURE__*/ S.suspend(() =>
   UserInterviewsSearchCreateResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "UserInterviewsSearchCreateResponse",
-}) as any as S.Schema<UserInterviewsSearchCreateResponse>;
+  identifier: "CreateUserInterviewSearchResponse",
+}) as any as S.Schema<CreateUserInterviewSearchResponse>;
+
+export interface ListUserInterviewsRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Comma-separated classifications; returns responses carrying any of them (OR). Valid values: abandoned, off-topic. */
+  classifications?: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  topic?: string;
+}
+export const ListUserInterviewsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    classifications: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    topic: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/user_interviews/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListUserInterviewsRequest",
+}) as any as S.Schema<ListUserInterviewsRequest>;
+
+export type PaginatedUserInterviewListOutputResultsList =
+  Array<UserInterviewOutput>;
+export const PaginatedUserInterviewListOutputResultsList =
+  /*@__PURE__*/ S.Array(
+    UserInterviewOutput,
+  ) as any as S.Schema<PaginatedUserInterviewListOutputResultsList>;
+
+export interface PaginatedUserInterviewListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: PaginatedUserInterviewListOutputResultsList;
+}
+export const PaginatedUserInterviewListOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: S.optional(PaginatedUserInterviewListOutputResultsList),
+  }),
+).annotate({
+  identifier: "PaginatedUserInterviewListOutput",
+}) as any as S.Schema<PaginatedUserInterviewListOutput>;
 
 export type UserInterviewsUpdateRequestIntervieweeEmailsList = Array<string>;
 export const UserInterviewsUpdateRequestIntervieweeEmailsList =
@@ -419,7 +320,7 @@ export const UserInterviewsUpdateRequestClassificationsList =
     ClassificationsEnum,
   ) as any as S.Schema<UserInterviewsUpdateRequestClassificationsList>;
 
-export interface UserInterviewsUpdateRequest {
+export interface UpdateUserInterviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this user interview. */
@@ -430,7 +331,7 @@ export interface UserInterviewsUpdateRequest {
   classifications?: UserInterviewsUpdateRequestClassificationsList;
   audio?: string;
 }
-export const UserInterviewsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateUserInterviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -448,17 +349,173 @@ export const UserInterviewsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "UserInterviewsUpdateRequest",
-}) as any as S.Schema<UserInterviewsUpdateRequest>;
+  identifier: "UpdateUserInterviewRequest",
+}) as any as S.Schema<UpdateUserInterviewRequest>;
 
-export type UserInterviewsCreateError = PosthogOpError;
-export const userInterviewsCreate: API.OperationMethod<
-  UserInterviewsCreateRequest,
+export type UserInterviewsPartialUpdateRequestIntervieweeEmailsList =
+  Array<string>;
+export const UserInterviewsPartialUpdateRequestIntervieweeEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UserInterviewsPartialUpdateRequestIntervieweeEmailsList>;
+
+/** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
+export type UserInterviewsPartialUpdateRequestClassificationsList = Array<
+  ClassificationsEnum | (string & {})
+>;
+export const UserInterviewsPartialUpdateRequestClassificationsList =
+  /*@__PURE__*/ S.Array(
+    ClassificationsEnum,
+  ) as any as S.Schema<UserInterviewsPartialUpdateRequestClassificationsList>;
+
+export interface UpdateUserInterviewPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this user interview. */
+  id: string;
+  interviewee_emails?: UserInterviewsPartialUpdateRequestIntervieweeEmailsList;
+  summary?: string;
+  /** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
+  classifications?: UserInterviewsPartialUpdateRequestClassificationsList;
+  audio?: string;
+}
+export const UpdateUserInterviewPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    interviewee_emails: S.optional(
+      UserInterviewsPartialUpdateRequestIntervieweeEmailsList,
+    ),
+    summary: S.optional(S.String),
+    classifications: S.optional(
+      UserInterviewsPartialUpdateRequestClassificationsList,
+    ),
+    audio: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/user_interviews/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateUserInterviewPartialRequest",
+}) as any as S.Schema<UpdateUserInterviewPartialRequest>;
+
+export interface UserInterviewsDestroyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this user interview. */
+  id: string;
+}
+export const UserInterviewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/projects/{project_id}/user_interviews/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UserInterviewsDestroyRequest",
+}) as any as S.Schema<UserInterviewsDestroyRequest>;
+
+export interface UserInterviewsDestroyResponse {}
+export const UserInterviewsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserInterviewsDestroyResponse",
+}) as any as S.Schema<UserInterviewsDestroyResponse>;
+
+export interface UserInterviewsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this user interview. */
+  id: string;
+}
+export const UserInterviewsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/user_interviews/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UserInterviewsRetrieveRequest",
+}) as any as S.Schema<UserInterviewsRetrieveRequest>;
+
+export type CreateUserInterviewError = PosthogOpError;
+export const createUserInterview: API.OperationMethod<
+  CreateUserInterviewRequest,
   UserInterviewOutput,
-  UserInterviewsCreateError,
+  CreateUserInterviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserInterviewsCreateRequest,
+  input: CreateUserInterviewRequest,
+  output: UserInterviewOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateUserInterviewSearchError = PosthogOpError;
+/** Search interview responses by semantic similarity Embed `query` with the same model used to index interview transcripts and summaries, then return the top matches by cosine distance. Each match is a single (interview, document_type) pair — an interview can appear up to twice if both its transcript and summary score above other interviews. Useful for surfacing relevant interview snippets in natural language, without exact keyword matches. */
+export const createUserInterviewSearch: API.OperationMethod<
+  CreateUserInterviewSearchRequest,
+  CreateUserInterviewSearchResponse,
+  CreateUserInterviewSearchError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateUserInterviewSearchRequest,
+  output: CreateUserInterviewSearchResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListUserInterviewsError = PosthogOpError;
+export const listUserInterviews: API.OperationMethod<
+  ListUserInterviewsRequest,
+  PaginatedUserInterviewListOutput,
+  ListUserInterviewsError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListUserInterviewsRequest,
+  output: PaginatedUserInterviewListOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateUserInterviewError = PosthogOpError;
+export const updateUserInterview: API.OperationMethod<
+  UpdateUserInterviewRequest,
+  UserInterviewOutput,
+  UpdateUserInterviewError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateUserInterviewRequest,
+  output: UserInterviewOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateUserInterviewPartialError = PosthogOpError;
+export const updateUserInterviewPartial: API.OperationMethod<
+  UpdateUserInterviewPartialRequest,
+  UserInterviewOutput,
+  UpdateUserInterviewPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateUserInterviewPartialRequest,
   output: UserInterviewOutput,
   errors: [],
   protocol: PosthogProtocol,
@@ -479,34 +536,6 @@ export const userInterviewsDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UserInterviewsListError = PosthogOpError;
-export const userInterviewsList: API.OperationMethod<
-  UserInterviewsListRequest,
-  PaginatedUserInterviewListOutput,
-  UserInterviewsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserInterviewsListRequest,
-  output: PaginatedUserInterviewListOutput,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UserInterviewsPartialUpdateError = PosthogOpError;
-export const userInterviewsPartialUpdate: API.OperationMethod<
-  UserInterviewsPartialUpdateRequest,
-  UserInterviewOutput,
-  UserInterviewsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserInterviewsPartialUpdateRequest,
-  output: UserInterviewOutput,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type UserInterviewsRetrieveError = PosthogOpError;
 export const userInterviewsRetrieve: API.OperationMethod<
   UserInterviewsRetrieveRequest,
@@ -515,35 +544,6 @@ export const userInterviewsRetrieve: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserInterviewsRetrieveRequest,
-  output: UserInterviewOutput,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UserInterviewsSearchCreateError = PosthogOpError;
-/** Search interview responses by semantic similarity Embed `query` with the same model used to index interview transcripts and summaries, then return the top matches by cosine distance. Each match is a single (interview, document_type) pair — an interview can appear up to twice if both its transcript and summary score above other interviews. Useful for surfacing relevant interview snippets in natural language, without exact keyword matches. */
-export const userInterviewsSearchCreate: API.OperationMethod<
-  UserInterviewsSearchCreateRequest,
-  UserInterviewsSearchCreateResponse,
-  UserInterviewsSearchCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserInterviewsSearchCreateRequest,
-  output: UserInterviewsSearchCreateResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UserInterviewsUpdateError = PosthogOpError;
-export const userInterviewsUpdate: API.OperationMethod<
-  UserInterviewsUpdateRequest,
-  UserInterviewOutput,
-  UserInterviewsUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserInterviewsUpdateRequest,
   output: UserInterviewOutput,
   errors: [],
   protocol: PosthogProtocol,

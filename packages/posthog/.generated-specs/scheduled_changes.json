@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.scheduled_changes#ScheduledChangesListRequest": {
+    "com.posthog.scheduled_changes#ListScheduledChangesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -478,10 +478,10 @@
       },
       "traits": {}
     },
-    "com.posthog.scheduled_changes#ScheduledChangesList": {
+    "com.posthog.scheduled_changes#ListScheduledChanges": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.scheduled_changes#ScheduledChangesListRequest"
+        "target": "com.posthog.scheduled_changes#ListScheduledChangesRequest"
       },
       "output": {
         "target": "com.posthog.scheduled_changes#PaginatedScheduledChangeList"
@@ -495,7 +495,7 @@
         "smithy.api#documentation": "Create, read, update and delete scheduled changes."
       }
     },
-    "com.posthog.scheduled_changes#ScheduledChangesCreateRequest": {
+    "com.posthog.scheduled_changes#CreateScheduledChangeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -565,10 +565,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.scheduled_changes#ScheduledChangesCreate": {
+    "com.posthog.scheduled_changes#CreateScheduledChange": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.scheduled_changes#ScheduledChangesCreateRequest"
+        "target": "com.posthog.scheduled_changes#CreateScheduledChangeRequest"
       },
       "output": {
         "target": "com.posthog.scheduled_changes#ScheduledChange"
@@ -623,7 +623,7 @@
         "smithy.api#documentation": "Create, read, update and delete scheduled changes."
       }
     },
-    "com.posthog.scheduled_changes#ScheduledChangesUpdateRequest": {
+    "com.posthog.scheduled_changes#UpdateScheduledChangeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -701,10 +701,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.scheduled_changes#ScheduledChangesUpdate": {
+    "com.posthog.scheduled_changes#UpdateScheduledChange": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.scheduled_changes#ScheduledChangesUpdateRequest"
+        "target": "com.posthog.scheduled_changes#UpdateScheduledChangeRequest"
       },
       "output": {
         "target": "com.posthog.scheduled_changes#ScheduledChange"
@@ -718,7 +718,7 @@
         "smithy.api#documentation": "Create, read, update and delete scheduled changes."
       }
     },
-    "com.posthog.scheduled_changes#ScheduledChangesPartialUpdateRequest": {
+    "com.posthog.scheduled_changes#UpdateScheduledChangePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -792,10 +792,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.scheduled_changes#ScheduledChangesPartialUpdate": {
+    "com.posthog.scheduled_changes#UpdateScheduledChangePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.scheduled_changes#ScheduledChangesPartialUpdateRequest"
+        "target": "com.posthog.scheduled_changes#UpdateScheduledChangePartialRequest"
       },
       "output": {
         "target": "com.posthog.scheduled_changes#ScheduledChange"
@@ -855,19 +855,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.scheduled_changes#ScheduledChangesList"
+          "target": "com.posthog.scheduled_changes#ListScheduledChanges"
         },
         {
-          "target": "com.posthog.scheduled_changes#ScheduledChangesCreate"
+          "target": "com.posthog.scheduled_changes#CreateScheduledChange"
         },
         {
           "target": "com.posthog.scheduled_changes#ScheduledChangesRetrieve"
         },
         {
-          "target": "com.posthog.scheduled_changes#ScheduledChangesUpdate"
+          "target": "com.posthog.scheduled_changes#UpdateScheduledChange"
         },
         {
-          "target": "com.posthog.scheduled_changes#ScheduledChangesPartialUpdate"
+          "target": "com.posthog.scheduled_changes#UpdateScheduledChangePartial"
         },
         {
           "target": "com.posthog.scheduled_changes#ScheduledChangesDestroy"

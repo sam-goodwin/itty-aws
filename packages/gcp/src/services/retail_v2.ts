@@ -842,131 +842,6 @@ export const AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest
       "AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest",
   }) as any as S.Schema<AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>;
 
-/** Configuration for a single generated question. */
-export interface GoogleCloudRetailV2GenerativeQuestionConfig {
-  /** Output only. The LLM generated question. */
-  generatedQuestion?: string;
-  /** Output only. The ratio of how often a question was asked. */
-  frequency?: number;
-  /** Optional. Whether the question is asked at serving time. */
-  allowedInConversation?: boolean;
-  /** Optional. The question that will be used at serving time. Question can have a max length of 300 bytes. When not populated, generated_question should be used. */
-  finalQuestion?: string;
-  /** Output only. Values that can be used to answer the question. */
-  exampleValues?: StringList;
-  /** Required. The facet to which the question is associated. */
-  facet?: string;
-  /** Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
-  catalog?: string;
-}
-export const GoogleCloudRetailV2GenerativeQuestionConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      generatedQuestion: S.optional(S.String),
-      frequency: S.optional(S.Number),
-      allowedInConversation: S.optional(S.Boolean),
-      finalQuestion: S.optional(S.String),
-      exampleValues: S.optional(StringList),
-      facet: S.optional(S.String),
-      catalog: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2GenerativeQuestionConfig",
-  }) as any as S.Schema<GoogleCloudRetailV2GenerativeQuestionConfig>;
-
-/** Request for UpdateGenerativeQuestionConfig method. */
-export interface GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest {
-  /** Required. The question to update. */
-  generativeQuestionConfig?: GoogleCloudRetailV2GenerativeQuestionConfig;
-  /** Optional. Indicates which fields in the provided GenerativeQuestionConfig to update. The following are NOT supported: * GenerativeQuestionConfig.frequency If not set or empty, all supported fields are updated. */
-  updateMask?: string;
-}
-export const GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      generativeQuestionConfig: S.optional(
-        GoogleCloudRetailV2GenerativeQuestionConfig,
-      ),
-      updateMask: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest>;
-
-export type GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList =
-  Array<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest>;
-export const GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest,
-  ) as any as S.Schema<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList>;
-
-/** Request for BatchUpdateGenerativeQuestionConfig method. */
-export interface GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest {
-  /** Required. The updates question configs. */
-  requests?: GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList;
-}
-export const GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(
-        GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest",
-  }) as any as S.Schema<GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest>;
-
-export interface BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest {
-  /** Optional. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest;
-}
-export const BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/generativeQuestion:batchUpdate",
-        baseUrl: "https://retail.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest",
-  }) as any as S.Schema<BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest>;
-
-export type GoogleCloudRetailV2GenerativeQuestionConfigList =
-  Array<GoogleCloudRetailV2GenerativeQuestionConfig>;
-export const GoogleCloudRetailV2GenerativeQuestionConfigList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2GenerativeQuestionConfig,
-  ) as any as S.Schema<GoogleCloudRetailV2GenerativeQuestionConfigList>;
-
-/** Aggregated response for UpdateGenerativeQuestionConfig method. */
-export interface GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse {
-  /** Optional. The updates question configs. */
-  generativeQuestionConfigs?: GoogleCloudRetailV2GenerativeQuestionConfigList;
-}
-export const GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      generativeQuestionConfigs: S.optional(
-        GoogleCloudRetailV2GenerativeQuestionConfigList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse",
-  }) as any as S.Schema<GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse>;
-
 /** Request message for CollectUserEvent method. */
 export interface GoogleCloudRetailV2CollectUserEventRequest {
   /** The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The name is abbreviated to reduce the payload bytes. */
@@ -3878,6 +3753,45 @@ export const ListProjectsLocationsCatalogsGenerativeQuestionsRequest =
     identifier: "ListProjectsLocationsCatalogsGenerativeQuestionsRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsGenerativeQuestionsRequest>;
 
+/** Configuration for a single generated question. */
+export interface GoogleCloudRetailV2GenerativeQuestionConfig {
+  /** Output only. The LLM generated question. */
+  generatedQuestion?: string;
+  /** Output only. The ratio of how often a question was asked. */
+  frequency?: number;
+  /** Optional. Whether the question is asked at serving time. */
+  allowedInConversation?: boolean;
+  /** Optional. The question that will be used at serving time. Question can have a max length of 300 bytes. When not populated, generated_question should be used. */
+  finalQuestion?: string;
+  /** Output only. Values that can be used to answer the question. */
+  exampleValues?: StringList;
+  /** Required. The facet to which the question is associated. */
+  facet?: string;
+  /** Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
+  catalog?: string;
+}
+export const GoogleCloudRetailV2GenerativeQuestionConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      generatedQuestion: S.optional(S.String),
+      frequency: S.optional(S.Number),
+      allowedInConversation: S.optional(S.Boolean),
+      finalQuestion: S.optional(S.String),
+      exampleValues: S.optional(StringList),
+      facet: S.optional(S.String),
+      catalog: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRetailV2GenerativeQuestionConfig",
+  }) as any as S.Schema<GoogleCloudRetailV2GenerativeQuestionConfig>;
+
+export type GoogleCloudRetailV2GenerativeQuestionConfigList =
+  Array<GoogleCloudRetailV2GenerativeQuestionConfig>;
+export const GoogleCloudRetailV2GenerativeQuestionConfigList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudRetailV2GenerativeQuestionConfig,
+  ) as any as S.Schema<GoogleCloudRetailV2GenerativeQuestionConfigList>;
+
 /** Response for ListQuestions method. */
 export interface GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse {
   /** All the questions for a given catalog. */
@@ -5683,6 +5597,92 @@ export const UpdateAttributesConfigProjectsLocationsCatalogsRequest =
     identifier: "UpdateAttributesConfigProjectsLocationsCatalogsRequest",
   }) as any as S.Schema<UpdateAttributesConfigProjectsLocationsCatalogsRequest>;
 
+/** Request for UpdateGenerativeQuestionConfig method. */
+export interface GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest {
+  /** Required. The question to update. */
+  generativeQuestionConfig?: GoogleCloudRetailV2GenerativeQuestionConfig;
+  /** Optional. Indicates which fields in the provided GenerativeQuestionConfig to update. The following are NOT supported: * GenerativeQuestionConfig.frequency If not set or empty, all supported fields are updated. */
+  updateMask?: string;
+}
+export const GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      generativeQuestionConfig: S.optional(
+        GoogleCloudRetailV2GenerativeQuestionConfig,
+      ),
+      updateMask: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest",
+  }) as any as S.Schema<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest>;
+
+export type GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList =
+  Array<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest>;
+export const GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest,
+  ) as any as S.Schema<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList>;
+
+/** Request for BatchUpdateGenerativeQuestionConfig method. */
+export interface GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest {
+  /** Required. The updates question configs. */
+  requests?: GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList;
+}
+export const GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest",
+  }) as any as S.Schema<GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest>;
+
+export interface UpdateBatchProjectLocationCatalogGenerativeQuestionRequest {
+  /** Optional. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest;
+}
+export const UpdateBatchProjectLocationCatalogGenerativeQuestionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+parent}/generativeQuestion:batchUpdate",
+        baseUrl: "https://retail.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateBatchProjectLocationCatalogGenerativeQuestionRequest",
+  }) as any as S.Schema<UpdateBatchProjectLocationCatalogGenerativeQuestionRequest>;
+
+/** Aggregated response for UpdateGenerativeQuestionConfig method. */
+export interface GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse {
+  /** Optional. The updates question configs. */
+  generativeQuestionConfigs?: GoogleCloudRetailV2GenerativeQuestionConfigList;
+}
+export const GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      generativeQuestionConfigs: S.optional(
+        GoogleCloudRetailV2GenerativeQuestionConfigList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse",
+  }) as any as S.Schema<GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse>;
+
 export interface UpdateCompletionConfigProjectsLocationsCatalogsRequest {
   /** Optional. Indicates which fields in the provided CompletionConfig to update. The following are the only supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length * CompletionConfig.auto_learning If not set, all supported fields are updated. */
   updateMask?: string;
@@ -5893,26 +5893,6 @@ export const addLocalInventoriesProjectsLocationsCatalogsBranchesProducts: API.O
 > = /*@__PURE__*/ API.make(() => ({
   input: AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest,
   output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchUpdateProjectsLocationsCatalogsGenerativeQuestionError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Allows management of multiple questions. */
-export const batchUpdateProjectsLocationsCatalogsGenerativeQuestion: API.OperationMethod<
-  BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest,
-  GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse,
-  BatchUpdateProjectsLocationsCatalogsGenerativeQuestionError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest,
-  output: GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7124,6 +7104,26 @@ export const updateAttributesConfigProjectsLocationsCatalogs: API.OperationMetho
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAttributesConfigProjectsLocationsCatalogsRequest,
   output: GoogleCloudRetailV2AttributesConfig,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchProjectLocationCatalogGenerativeQuestionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Allows management of multiple questions. */
+export const updateBatchProjectLocationCatalogGenerativeQuestion: API.OperationMethod<
+  UpdateBatchProjectLocationCatalogGenerativeQuestionRequest,
+  GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse,
+  UpdateBatchProjectLocationCatalogGenerativeQuestionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchProjectLocationCatalogGenerativeQuestionRequest,
+  output: GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

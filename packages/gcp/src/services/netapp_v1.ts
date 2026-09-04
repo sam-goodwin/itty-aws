@@ -2043,6 +2043,38 @@ export const CreateProjectsLocationsVolumesSnapshotsRequest =
     identifier: "CreateProjectsLocationsVolumesSnapshotsRequest",
   }) as any as S.Schema<CreateProjectsLocationsVolumesSnapshotsRequest>;
 
+export interface DeleteExecuteOntapProjectLocationStoragePoolOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+}
+export const DeleteExecuteOntapProjectLocationStoragePoolOntapRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ontapPath: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+ontapPath}",
+        baseUrl: "https://netapp.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteExecuteOntapProjectLocationStoragePoolOntapRequest",
+  }) as any as S.Schema<DeleteExecuteOntapProjectLocationStoragePoolOntapRequest>;
+
+/** Response message for `ExecuteOntapDelete` API. */
+export interface ExecuteOntapDeleteResponse {
+  /** The raw `JSON` body of the response. */
+  body?: DocumentMap;
+}
+export const ExecuteOntapDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "ExecuteOntapDeleteResponse",
+}) as any as S.Schema<ExecuteOntapDeleteResponse>;
+
 export interface DeleteProjectsLocationsActiveDirectoriesRequest {
   /** Required. Name of the active directory. */
   name: string;
@@ -2388,70 +2420,6 @@ export const EstablishPeeringProjectsLocationsVolumesReplicationsRequest =
     identifier: "EstablishPeeringProjectsLocationsVolumesReplicationsRequest",
   }) as any as S.Schema<EstablishPeeringProjectsLocationsVolumesReplicationsRequest>;
 
-export interface ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest {
-  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
-  ontapPath: string;
-}
-export const ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ontapPath: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+ontapPath}",
-        baseUrl: "https://netapp.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest",
-  }) as any as S.Schema<ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest>;
-
-/** Response message for `ExecuteOntapDelete` API. */
-export interface ExecuteOntapDeleteResponse {
-  /** The raw `JSON` body of the response. */
-  body?: DocumentMap;
-}
-export const ExecuteOntapDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "ExecuteOntapDeleteResponse",
-}) as any as S.Schema<ExecuteOntapDeleteResponse>;
-
-export interface ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest {
-  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
-  ontapPath: string;
-}
-export const ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ontapPath: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+ontapPath}",
-        baseUrl: "https://netapp.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest",
-  }) as any as S.Schema<ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest>;
-
-/** Response message for `ExecuteOntapGet` API. */
-export interface ExecuteOntapGetResponse {
-  /** The raw `JSON` body of the response. */
-  body?: DocumentMap;
-}
-export const ExecuteOntapGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "ExecuteOntapGetResponse",
-}) as any as S.Schema<ExecuteOntapGetResponse>;
-
 /** Request message for `ExecuteOntapPatch` API. */
 export interface ExecuteOntapPatchRequest {
   /** Required. The raw `JSON` body of the request. The body should be in the format of the ONTAP resource. For example: ``` { "body": { "field1": "value1", "field2": "value2", } } ``` */
@@ -2538,6 +2506,38 @@ export const ExecuteOntapPostResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteOntapPostResponse",
 }) as any as S.Schema<ExecuteOntapPostResponse>;
+
+export interface GetExecuteOntapProjectLocationStoragePoolOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+}
+export const GetExecuteOntapProjectLocationStoragePoolOntapRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ontapPath: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+ontapPath}",
+        baseUrl: "https://netapp.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetExecuteOntapProjectLocationStoragePoolOntapRequest",
+  }) as any as S.Schema<GetExecuteOntapProjectLocationStoragePoolOntapRequest>;
+
+/** Response message for `ExecuteOntapGet` API. */
+export interface ExecuteOntapGetResponse {
+  /** The raw `JSON` body of the response. */
+  body?: DocumentMap;
+}
+export const ExecuteOntapGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "ExecuteOntapGetResponse",
+}) as any as S.Schema<ExecuteOntapGetResponse>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
@@ -4586,6 +4586,26 @@ export const createProjectsLocationsVolumesSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type DeleteExecuteOntapProjectLocationStoragePoolOntapError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** `ExecuteOntapDelete` sends the ONTAP `DELETE` request to the `StoragePool` cluster. */
+export const deleteExecuteOntapProjectLocationStoragePoolOntap: API.OperationMethod<
+  DeleteExecuteOntapProjectLocationStoragePoolOntapRequest,
+  ExecuteOntapDeleteResponse,
+  DeleteExecuteOntapProjectLocationStoragePoolOntapError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteExecuteOntapProjectLocationStoragePoolOntapRequest,
+  output: ExecuteOntapDeleteResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type DeleteProjectsLocationsActiveDirectoriesError =
   | NotFound
   | Forbidden
@@ -4886,44 +4906,6 @@ export const establishPeeringProjectsLocationsVolumesReplications: API.Operation
   retry: Retry.Retry,
 }));
 
-export type ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** `ExecuteOntapDelete` sends the ONTAP `DELETE` request to the `StoragePool` cluster. */
-export const executeOntapDeleteProjectsLocationsStoragePoolsOntap: API.OperationMethod<
-  ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest,
-  ExecuteOntapDeleteResponse,
-  ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest,
-  output: ExecuteOntapDeleteResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExecuteOntapGetProjectsLocationsStoragePoolsOntapError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** `ExecuteOntapGet` sends the ONTAP `GET` request to the `StoragePool` cluster. */
-export const executeOntapGetProjectsLocationsStoragePoolsOntap: API.OperationMethod<
-  ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest,
-  ExecuteOntapGetResponse,
-  ExecuteOntapGetProjectsLocationsStoragePoolsOntapError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest,
-  output: ExecuteOntapGetResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ExecuteOntapPatchProjectsLocationsStoragePoolsOntapError =
   | NotFound
   | Forbidden
@@ -4960,6 +4942,24 @@ export const executeOntapPostProjectsLocationsStoragePoolsOntap: API.OperationMe
   input: ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest,
   output: ExecuteOntapPostResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetExecuteOntapProjectLocationStoragePoolOntapError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** `ExecuteOntapGet` sends the ONTAP `GET` request to the `StoragePool` cluster. */
+export const getExecuteOntapProjectLocationStoragePoolOntap: API.OperationMethod<
+  GetExecuteOntapProjectLocationStoragePoolOntapRequest,
+  ExecuteOntapGetResponse,
+  GetExecuteOntapProjectLocationStoragePoolOntapError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetExecuteOntapProjectLocationStoragePoolOntapRequest,
+  output: ExecuteOntapGetResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

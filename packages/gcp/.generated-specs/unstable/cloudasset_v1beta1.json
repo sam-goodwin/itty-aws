@@ -2104,7 +2104,7 @@
         }
       }
     },
-    "com.gcp.cloudasset_v1beta1#BatchGetAssetsHistoryProjectsRequest": {
+    "com.gcp.cloudasset_v1beta1#GetBatchAssetHistoryProjectRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2145,10 +2145,10 @@
         }
       }
     },
-    "com.gcp.cloudasset_v1beta1#BatchGetAssetsHistoryProjects": {
+    "com.gcp.cloudasset_v1beta1#GetBatchAssetHistoryProject": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudasset_v1beta1#BatchGetAssetsHistoryProjectsRequest"
+        "target": "com.gcp.cloudasset_v1beta1#GetBatchAssetHistoryProjectRequest"
       },
       "output": {
         "target": "com.gcp.cloudasset_v1beta1#BatchGetAssetsHistoryResponse"
@@ -2329,7 +2329,7 @@
         }
       }
     },
-    "com.gcp.cloudasset_v1beta1#BatchGetAssetsHistoryOrganizationsRequest": {
+    "com.gcp.cloudasset_v1beta1#GetBatchAssetHistoryOrganizationRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2370,10 +2370,10 @@
         }
       }
     },
-    "com.gcp.cloudasset_v1beta1#BatchGetAssetsHistoryOrganizations": {
+    "com.gcp.cloudasset_v1beta1#GetBatchAssetHistoryOrganization": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudasset_v1beta1#BatchGetAssetsHistoryOrganizationsRequest"
+        "target": "com.gcp.cloudasset_v1beta1#GetBatchAssetHistoryOrganizationRequest"
       },
       "output": {
         "target": "com.gcp.cloudasset_v1beta1#BatchGetAssetsHistoryResponse"

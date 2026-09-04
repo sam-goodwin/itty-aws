@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.exports#ExportsListRequest": {
+    "com.posthog.exports#ListExportsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -200,10 +200,10 @@
       },
       "traits": {}
     },
-    "com.posthog.exports#ExportsList": {
+    "com.posthog.exports#ListExports": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.exports#ExportsListRequest"
+        "target": "com.posthog.exports#ListExportsRequest"
       },
       "output": {
         "target": "com.posthog.exports#PaginatedExportedAssetList"
@@ -283,7 +283,7 @@
         "smithy.api#documentation": "* `image/png` - image/png\n* `application/pdf` - application/pdf\n* `text/csv` - text/csv\n* `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\n* `video/webm` - video/webm\n* `video/mp4` - video/mp4\n* `image/gif` - image/gif\n* `application/json` - application/json"
       }
     },
-    "com.posthog.exports#ExportsCreateRequest": {
+    "com.posthog.exports#CreateExportRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -397,10 +397,10 @@
         "smithy.api#documentation": "Standard ExportedAsset serializer that doesn't return content."
       }
     },
-    "com.posthog.exports#ExportsCreate": {
+    "com.posthog.exports#CreateExport": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.exports#ExportsCreateRequest"
+        "target": "com.posthog.exports#CreateExportRequest"
       },
       "output": {
         "target": "com.posthog.exports#ExportedAssetCreate"
@@ -564,10 +564,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.exports#ExportsList"
+          "target": "com.posthog.exports#ListExports"
         },
         {
-          "target": "com.posthog.exports#ExportsCreate"
+          "target": "com.posthog.exports#CreateExport"
         },
         {
           "target": "com.posthog.exports#ExportsRetrieve"

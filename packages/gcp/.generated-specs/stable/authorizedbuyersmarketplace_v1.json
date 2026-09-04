@@ -4703,7 +4703,7 @@
         "smithy.api#documentation": "Gets a proposal using its resource name. The proposal is returned at the latest revision."
       }
     },
-    "com.gcp.authorizedbuyersmarketplace_v1#BatchUpdateBuyersProposalsDealsRequest": {
+    "com.gcp.authorizedbuyersmarketplace_v1#UpdateBatchBuyerProposalDealRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4723,10 +4723,10 @@
         }
       }
     },
-    "com.gcp.authorizedbuyersmarketplace_v1#BatchUpdateBuyersProposalsDeals": {
+    "com.gcp.authorizedbuyersmarketplace_v1#UpdateBatchBuyerProposalDeal": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.authorizedbuyersmarketplace_v1#BatchUpdateBuyersProposalsDealsRequest"
+        "target": "com.gcp.authorizedbuyersmarketplace_v1#UpdateBatchBuyerProposalDealRequest"
       },
       "output": {
         "target": "com.gcp.authorizedbuyersmarketplace_v1#BatchUpdateDealsResponse"

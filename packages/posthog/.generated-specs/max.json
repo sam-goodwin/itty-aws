@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.max#ConversationsListRequest": {
+    "com.posthog.max#ListConversationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -660,10 +660,10 @@
       },
       "traits": {}
     },
-    "com.posthog.max#ConversationsList": {
+    "com.posthog.max#ListConversations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.max#ConversationsListRequest"
+        "target": "com.posthog.max#ListConversationsRequest"
       },
       "output": {
         "target": "com.posthog.max#PaginatedConversationMinimalList"
@@ -772,7 +772,7 @@
         "smithy.api#documentation": "* `product_analytics` - product_analytics\n* `sql` - sql\n* `session_replay` - session_replay\n* `error_tracking` - error_tracking\n* `plan` - plan\n* `execution` - execution\n* `survey` - survey\n* `research` - research\n* `flags` - flags\n* `llm_analytics` - llm_analytics\n* `sandbox` - sandbox\n* `user_interview` - user_interview\n* `customer_analytics` - customer_analytics"
       }
     },
-    "com.posthog.max#ConversationsCreateRequest": {
+    "com.posthog.max#CreateConversationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -872,10 +872,10 @@
       },
       "traits": {}
     },
-    "com.posthog.max#ConversationsCreate": {
+    "com.posthog.max#CreateConversation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.max#ConversationsCreateRequest"
+        "target": "com.posthog.max#CreateConversationRequest"
       },
       "output": {
         "target": "com.posthog.max#Message"
@@ -1127,7 +1127,7 @@
         "smithy.api#documentation": "Delete a conversation."
       }
     },
-    "com.posthog.max#ConversationsAppendMessageCreateRequest": {
+    "com.posthog.max#CreateConversationAppendMessageRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1165,10 +1165,10 @@
         "smithy.api#documentation": "Serializer for appending a message to an existing conversation without triggering AI processing."
       }
     },
-    "com.posthog.max#ConversationsAppendMessageCreate": {
+    "com.posthog.max#CreateConversationAppendMessage": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.max#ConversationsAppendMessageCreateRequest"
+        "target": "com.posthog.max#CreateConversationAppendMessageRequest"
       },
       "output": {
         "target": "com.posthog.max#MessageMinimal"
@@ -1182,7 +1182,7 @@
         "smithy.api#documentation": "Appends a message to an existing conversation without triggering AI processing.\nThis is used for client-side generated messages that need to be persisted\n(e.g., support ticket confirmation messages)."
       }
     },
-    "com.posthog.max#ConversationsCancelPartialUpdateRequest": {
+    "com.posthog.max#UpdateConversationCancelPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1206,10 +1206,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.max#ConversationsCancelPartialUpdate": {
+    "com.posthog.max#UpdateConversationCancelPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.max#ConversationsCancelPartialUpdateRequest"
+        "target": "com.posthog.max#UpdateConversationCancelPartialRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1364,7 +1364,7 @@
         "smithy.api#documentation": "* `default` - default\n* `acceptEdits` - acceptEdits\n* `plan` - plan\n* `bypassPermissions` - bypassPermissions\n* `auto` - auto"
       }
     },
-    "com.posthog.max#ConversationsOpenCreateRequest": {
+    "com.posthog.max#CreateConversationOpenRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1463,10 +1463,10 @@
         "smithy.api#documentation": "Response for `POST /conversations/{id}/open/` — the IDs the frontend opens SSE against."
       }
     },
-    "com.posthog.max#ConversationsOpenCreate": {
+    "com.posthog.max#CreateConversationOpen": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.max#ConversationsOpenCreateRequest"
+        "target": "com.posthog.max#CreateConversationOpenRequest"
       },
       "output": {
         "target": "com.posthog.max#SandboxMessageResponse"
@@ -1525,7 +1525,7 @@
         }
       }
     },
-    "com.posthog.max#ConversationsQueueCreateRequest": {
+    "com.posthog.max#CreateConversationQueueRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1549,10 +1549,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.max#ConversationsQueueCreate": {
+    "com.posthog.max#CreateConversationQueue": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.max#ConversationsQueueCreateRequest"
+        "target": "com.posthog.max#CreateConversationQueueRequest"
       },
       "output": {
         "target": "com.posthog.max#Conversation"
@@ -1565,7 +1565,7 @@
         }
       }
     },
-    "com.posthog.max#ConversationsQueuePartialUpdateRequest": {
+    "com.posthog.max#UpdateConversationQueuePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1596,10 +1596,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.max#ConversationsQueuePartialUpdate": {
+    "com.posthog.max#UpdateConversationQueuePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.max#ConversationsQueuePartialUpdateRequest"
+        "target": "com.posthog.max#UpdateConversationQueuePartialRequest"
       },
       "output": {
         "target": "com.posthog.max#Conversation"
@@ -1659,7 +1659,7 @@
         }
       }
     },
-    "com.posthog.max#ConversationsQueueClearCreateRequest": {
+    "com.posthog.max#CreateConversationQueueClearRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1683,10 +1683,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.max#ConversationsQueueClearCreate": {
+    "com.posthog.max#CreateConversationQueueClear": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.max#ConversationsQueueClearCreateRequest"
+        "target": "com.posthog.max#CreateConversationQueueClearRequest"
       },
       "output": {
         "target": "com.posthog.max#Conversation"
@@ -1730,10 +1730,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.max#ConversationsList"
+          "target": "com.posthog.max#ListConversations"
         },
         {
-          "target": "com.posthog.max#ConversationsCreate"
+          "target": "com.posthog.max#CreateConversation"
         },
         {
           "target": "com.posthog.max#ConversationsRetrieve"
@@ -1742,28 +1742,28 @@
           "target": "com.posthog.max#ConversationsDestroy"
         },
         {
-          "target": "com.posthog.max#ConversationsAppendMessageCreate"
+          "target": "com.posthog.max#CreateConversationAppendMessage"
         },
         {
-          "target": "com.posthog.max#ConversationsCancelPartialUpdate"
+          "target": "com.posthog.max#UpdateConversationCancelPartial"
         },
         {
-          "target": "com.posthog.max#ConversationsOpenCreate"
+          "target": "com.posthog.max#CreateConversationOpen"
         },
         {
           "target": "com.posthog.max#ConversationsQueueRetrieve"
         },
         {
-          "target": "com.posthog.max#ConversationsQueueCreate"
+          "target": "com.posthog.max#CreateConversationQueue"
         },
         {
-          "target": "com.posthog.max#ConversationsQueuePartialUpdate"
+          "target": "com.posthog.max#UpdateConversationQueuePartial"
         },
         {
           "target": "com.posthog.max#ConversationsQueueDestroy"
         },
         {
-          "target": "com.posthog.max#ConversationsQueueClearCreate"
+          "target": "com.posthog.max#CreateConversationQueueClear"
         }
       ],
       "traits": {

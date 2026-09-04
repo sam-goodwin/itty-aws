@@ -430,10 +430,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest"
+        "target": "com.azure.policyinsights#ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyStatesQueryResults"
@@ -862,7 +862,7 @@
         "smithy.api#documentation": "Evaluation details of policy language expressions."
       }
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -996,10 +996,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignment": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest"
+        "target": "com.azure.policyinsights#ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyEventsQueryResults"
@@ -1314,7 +1314,7 @@
         "smithy.api#documentation": "Component event details."
       }
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1442,10 +1442,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#RemediationsListDeploymentsAtResourceGroup": {
+    "com.azure.policyinsights#ListRemediationDeploymentAtResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsListDeploymentsAtResourceGroupRequest"
+        "target": "com.azure.policyinsights#ListRemediationDeploymentAtResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#RemediationDeploymentsListResult"
@@ -1617,7 +1617,7 @@
         "smithy.api#documentation": "Internal error details."
       }
     },
-    "com.azure.policyinsights#RemediationsListDeploymentsAtResourceGroupRequest": {
+    "com.azure.policyinsights#ListRemediationDeploymentAtResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2037,13 +2037,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtResourceGroup": {
+    "com.azure.policyinsights#DeleteRemediationAtResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsDeleteAtResourceGroupRequest"
+        "target": "com.azure.policyinsights#DeleteRemediationAtResourceGroupRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#RemediationsDeleteAtResourceGroupResponse"
+        "target": "com.azure.policyinsights#DeleteRemediationAtResourceGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2056,7 +2056,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtResourceGroupResponse": {
+    "com.azure.policyinsights#DeleteRemediationAtResourceGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2094,7 +2094,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtResourceGroupRequest": {
+    "com.azure.policyinsights#DeleteRemediationAtResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2271,13 +2271,13 @@
         "smithy.api#documentation": "The remediation properties."
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtResourceGroup": {
+    "com.azure.policyinsights#GetRemediationAtResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsGetAtResourceGroupRequest"
+        "target": "com.azure.policyinsights#GetRemediationAtResourceGroupRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#RemediationsGetAtResourceGroupResponse"
+        "target": "com.azure.policyinsights#GetRemediationAtResourceGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2290,7 +2290,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtResourceGroupResponse": {
+    "com.azure.policyinsights#GetRemediationAtResourceGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2328,7 +2328,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtResourceGroupRequest": {
+    "com.azure.policyinsights#GetRemediationAtResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2360,10 +2360,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#RemediationsListForResourceGroup": {
+    "com.azure.policyinsights#ListRemediationForResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsListForResourceGroupRequest"
+        "target": "com.azure.policyinsights#ListRemediationForResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#RemediationListResult"
@@ -2447,7 +2447,7 @@
         "smithy.api#documentation": "The remediation definition."
       }
     },
-    "com.azure.policyinsights#RemediationsListForResourceGroupRequest": {
+    "com.azure.policyinsights#ListRemediationForResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2619,10 +2619,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceGroup": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceGroupRequest"
+        "target": "com.azure.policyinsights#ListPolicyStateQueryResultForResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyStatesQueryResults"
@@ -2638,7 +2638,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceGroupRequest": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2744,10 +2744,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceGroup": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceGroupRequest"
+        "target": "com.azure.policyinsights#ListPolicyEventQueryResultForResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyEventsQueryResults"
@@ -2763,7 +2763,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceGroupRequest": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2863,10 +2863,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceGroup": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceGroupRequest"
+        "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#ComponentPolicyStatesQueryResults"
@@ -3209,7 +3209,7 @@
         "smithy.api#documentation": "Evaluation details of policy language expressions."
       }
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceGroupRequest": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3302,10 +3302,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyRestrictionsCheckAtResourceGroupScope": {
+    "com.azure.policyinsights#CheckPolicyRestrictionAtResourceGroupScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyRestrictionsCheckAtResourceGroupScopeRequest"
+        "target": "com.azure.policyinsights#CheckPolicyRestrictionAtResourceGroupScopeRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#CheckRestrictionsResult"
@@ -3600,7 +3600,7 @@
         "smithy.api#documentation": "The type of restriction that is imposed on the field."
       }
     },
-    "com.azure.policyinsights#PolicyRestrictionsCheckAtResourceGroupScopeRequest": {
+    "com.azure.policyinsights#CheckPolicyRestrictionAtResourceGroupScopeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3709,10 +3709,10 @@
         "smithy.api#documentation": "The information about the resource that will be evaluated."
       }
     },
-    "com.azure.policyinsights#AttestationsDeleteAtResourceGroup": {
+    "com.azure.policyinsights#DeleteAttestationAtResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#AttestationsDeleteAtResourceGroupRequest"
+        "target": "com.azure.policyinsights#DeleteAttestationAtResourceGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3728,7 +3728,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#AttestationsDeleteAtResourceGroupRequest": {
+    "com.azure.policyinsights#DeleteAttestationAtResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4059,13 +4059,13 @@
         "smithy.api#documentation": "The evidence supporting the compliance state set in this attestation."
       }
     },
-    "com.azure.policyinsights#AttestationsGetAtResourceGroup": {
+    "com.azure.policyinsights#GetAttestationAtResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#AttestationsGetAtResourceGroupRequest"
+        "target": "com.azure.policyinsights#GetAttestationAtResourceGroupRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#AttestationsGetAtResourceGroupResponse"
+        "target": "com.azure.policyinsights#GetAttestationAtResourceGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4078,7 +4078,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#AttestationsGetAtResourceGroupResponse": {
+    "com.azure.policyinsights#GetAttestationAtResourceGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4117,7 +4117,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#AttestationsGetAtResourceGroupRequest": {
+    "com.azure.policyinsights#GetAttestationAtResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4149,10 +4149,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#AttestationsListForResourceGroup": {
+    "com.azure.policyinsights#ListAttestationForResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#AttestationsListForResourceGroupRequest"
+        "target": "com.azure.policyinsights#ListAttestationForResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#AttestationListResult"
@@ -4237,7 +4237,7 @@
         "smithy.api#documentation": "An attestation resource."
       }
     },
-    "com.azure.policyinsights#AttestationsListForResourceGroupRequest": {
+    "com.azure.policyinsights#ListAttestationForResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4275,10 +4275,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest"
+        "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#ComponentPolicyStatesQueryResults"
@@ -4294,7 +4294,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4415,10 +4415,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#RemediationsListDeploymentsAtSubscription": {
+    "com.azure.policyinsights#ListRemediationDeploymentAtSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsListDeploymentsAtSubscriptionRequest"
+        "target": "com.azure.policyinsights#ListRemediationDeploymentAtSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#RemediationDeploymentsListResult"
@@ -4434,7 +4434,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsListDeploymentsAtSubscriptionRequest": {
+    "com.azure.policyinsights#ListRemediationDeploymentAtSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4546,13 +4546,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtSubscription": {
+    "com.azure.policyinsights#DeleteRemediationAtSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsDeleteAtSubscriptionRequest"
+        "target": "com.azure.policyinsights#DeleteRemediationAtSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#RemediationsDeleteAtSubscriptionResponse"
+        "target": "com.azure.policyinsights#DeleteRemediationAtSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4565,7 +4565,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtSubscriptionResponse": {
+    "com.azure.policyinsights#DeleteRemediationAtSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4603,7 +4603,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtSubscriptionRequest": {
+    "com.azure.policyinsights#DeleteRemediationAtSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4714,13 +4714,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtSubscription": {
+    "com.azure.policyinsights#GetRemediationAtSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsGetAtSubscriptionRequest"
+        "target": "com.azure.policyinsights#GetRemediationAtSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#RemediationsGetAtSubscriptionResponse"
+        "target": "com.azure.policyinsights#GetRemediationAtSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4733,7 +4733,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtSubscriptionResponse": {
+    "com.azure.policyinsights#GetRemediationAtSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4771,7 +4771,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtSubscriptionRequest": {
+    "com.azure.policyinsights#GetRemediationAtSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4795,10 +4795,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#RemediationsListForSubscription": {
+    "com.azure.policyinsights#ListRemediationForSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsListForSubscriptionRequest"
+        "target": "com.azure.policyinsights#ListRemediationForSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#RemediationListResult"
@@ -4814,7 +4814,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsListForSubscriptionRequest": {
+    "com.azure.policyinsights#ListRemediationForSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4962,10 +4962,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForSubscription": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForSubscriptionRequest"
+        "target": "com.azure.policyinsights#ListPolicyStateQueryResultForSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyStatesQueryResults"
@@ -4981,7 +4981,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForSubscriptionRequest": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5079,10 +5079,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForSubscription": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForSubscriptionRequest"
+        "target": "com.azure.policyinsights#ListPolicyEventQueryResultForSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyEventsQueryResults"
@@ -5098,7 +5098,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForSubscriptionRequest": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5190,10 +5190,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForSubscription": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForSubscriptionRequest"
+        "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#ComponentPolicyStatesQueryResults"
@@ -5209,7 +5209,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForSubscriptionRequest": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5294,10 +5294,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyRestrictionsCheckAtSubscriptionScope": {
+    "com.azure.policyinsights#CheckPolicyRestrictionAtSubscriptionScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyRestrictionsCheckAtSubscriptionScopeRequest"
+        "target": "com.azure.policyinsights#CheckPolicyRestrictionAtSubscriptionScopeRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#CheckRestrictionsResult"
@@ -5313,7 +5313,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyRestrictionsCheckAtSubscriptionScopeRequest": {
+    "com.azure.policyinsights#CheckPolicyRestrictionAtSubscriptionScopeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5357,10 +5357,10 @@
         "smithy.api#documentation": "The list of fields and values that should be evaluated for potential restrictions."
       }
     },
-    "com.azure.policyinsights#AttestationsDeleteAtSubscription": {
+    "com.azure.policyinsights#DeleteAttestationAtSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#AttestationsDeleteAtSubscriptionRequest"
+        "target": "com.azure.policyinsights#DeleteAttestationAtSubscriptionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5376,7 +5376,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#AttestationsDeleteAtSubscriptionRequest": {
+    "com.azure.policyinsights#DeleteAttestationAtSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5489,13 +5489,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#AttestationsGetAtSubscription": {
+    "com.azure.policyinsights#GetAttestationAtSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#AttestationsGetAtSubscriptionRequest"
+        "target": "com.azure.policyinsights#GetAttestationAtSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#AttestationsGetAtSubscriptionResponse"
+        "target": "com.azure.policyinsights#GetAttestationAtSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5508,7 +5508,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#AttestationsGetAtSubscriptionResponse": {
+    "com.azure.policyinsights#GetAttestationAtSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5547,7 +5547,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#AttestationsGetAtSubscriptionRequest": {
+    "com.azure.policyinsights#GetAttestationAtSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5571,10 +5571,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#AttestationsListForSubscription": {
+    "com.azure.policyinsights#ListAttestationForSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#AttestationsListForSubscriptionRequest"
+        "target": "com.azure.policyinsights#ListAttestationForSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#AttestationListResult"
@@ -5590,7 +5590,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#AttestationsListForSubscriptionRequest": {
+    "com.azure.policyinsights#ListAttestationForSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5620,10 +5620,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#PolicyStatesSummarizeForPolicySetDefinition": {
+    "com.azure.policyinsights#SetPolicyStateSummarizeForPolicyDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyStatesSummarizeForPolicySetDefinitionRequest"
+        "target": "com.azure.policyinsights#SetPolicyStateSummarizeForPolicyDefinitionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#SummarizeResults"
@@ -5639,7 +5639,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyStatesSummarizeForPolicySetDefinitionRequest": {
+    "com.azure.policyinsights#SetPolicyStateSummarizeForPolicyDefinitionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6126,10 +6126,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForPolicyDefinition": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForPolicyDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForPolicyDefinitionRequest"
+        "target": "com.azure.policyinsights#ListPolicyStateQueryResultForPolicyDefinitionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyStatesQueryResults"
@@ -6145,7 +6145,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForPolicyDefinitionRequest": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForPolicyDefinitionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6271,10 +6271,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForPolicyDefinition": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForPolicyDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForPolicyDefinitionRequest"
+        "target": "com.azure.policyinsights#ListPolicyEventQueryResultForPolicyDefinitionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyEventsQueryResults"
@@ -6290,7 +6290,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForPolicyDefinitionRequest": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForPolicyDefinitionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6410,10 +6410,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForPolicyDefinition": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForPolicyDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest"
+        "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForPolicyDefinitionRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#ComponentPolicyStatesQueryResults"
@@ -6429,7 +6429,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForPolicyDefinitionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6653,10 +6653,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest"
+        "target": "com.azure.policyinsights#ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyStatesQueryResults"
@@ -6672,7 +6672,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6798,10 +6798,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignment": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequest"
+        "target": "com.azure.policyinsights#ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyEventsQueryResults"
@@ -6817,7 +6817,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequest": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6937,10 +6937,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest"
+        "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#ComponentPolicyStatesQueryResults"
@@ -6956,7 +6956,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7069,13 +7069,13 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyMetadataGetResource": {
+    "com.azure.policyinsights#GetPolicyMetadataResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyMetadataGetResourceRequest"
+        "target": "com.azure.policyinsights#GetPolicyMetadataResourceRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#PolicyMetadataGetResourceResponse"
+        "target": "com.azure.policyinsights#GetPolicyMetadataResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7088,7 +7088,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyMetadataGetResourceResponse": {
+    "com.azure.policyinsights#GetPolicyMetadataResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7182,7 +7182,7 @@
         "smithy.api#documentation": "The properties of the policy metadata."
       }
     },
-    "com.azure.policyinsights#PolicyMetadataGetResourceRequest": {
+    "com.azure.policyinsights#GetPolicyMetadataResourceRequest": {
       "type": "structure",
       "members": {
         "resourceName": {
@@ -7198,10 +7198,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#PolicyMetadataList": {
+    "com.azure.policyinsights#ListPolicyMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyMetadataListRequest"
+        "target": "com.azure.policyinsights#ListPolicyMetadataRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyMetadataCollection"
@@ -7323,7 +7323,7 @@
         "smithy.api#documentation": "The properties of the policy metadata, excluding properties containing large strings"
       }
     },
-    "com.azure.policyinsights#PolicyMetadataListRequest": {
+    "com.azure.policyinsights#ListPolicyMetadataRequest": {
       "type": "structure",
       "members": {
         "_top": {
@@ -7338,7 +7338,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#OperationsList": {
+    "com.azure.policyinsights#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -7445,10 +7445,10 @@
         "smithy.api#documentation": "Display metadata associated with the operation."
       }
     },
-    "com.azure.policyinsights#RemediationsListDeploymentsAtManagementGroup": {
+    "com.azure.policyinsights#ListRemediationDeploymentAtManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsListDeploymentsAtManagementGroupRequest"
+        "target": "com.azure.policyinsights#ListRemediationDeploymentAtManagementGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#RemediationDeploymentsListResult"
@@ -7464,7 +7464,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsListDeploymentsAtManagementGroupRequest": {
+    "com.azure.policyinsights#ListRemediationDeploymentAtManagementGroupRequest": {
       "type": "structure",
       "members": {
         "managementGroupsNamespace": {
@@ -7616,13 +7616,13 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#RemediationsDeleteAtManagementGroup": {
+    "com.azure.policyinsights#DeleteRemediationAtManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsDeleteAtManagementGroupRequest"
+        "target": "com.azure.policyinsights#DeleteRemediationAtManagementGroupRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#RemediationsDeleteAtManagementGroupResponse"
+        "target": "com.azure.policyinsights#DeleteRemediationAtManagementGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7635,7 +7635,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtManagementGroupResponse": {
+    "com.azure.policyinsights#DeleteRemediationAtManagementGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7673,7 +7673,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtManagementGroupRequest": {
+    "com.azure.policyinsights#DeleteRemediationAtManagementGroupRequest": {
       "type": "structure",
       "members": {
         "managementGroupsNamespace": {
@@ -7824,13 +7824,13 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#RemediationsGetAtManagementGroup": {
+    "com.azure.policyinsights#GetRemediationAtManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsGetAtManagementGroupRequest"
+        "target": "com.azure.policyinsights#GetRemediationAtManagementGroupRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#RemediationsGetAtManagementGroupResponse"
+        "target": "com.azure.policyinsights#GetRemediationAtManagementGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7843,7 +7843,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtManagementGroupResponse": {
+    "com.azure.policyinsights#GetRemediationAtManagementGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7881,7 +7881,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtManagementGroupRequest": {
+    "com.azure.policyinsights#GetRemediationAtManagementGroupRequest": {
       "type": "structure",
       "members": {
         "managementGroupsNamespace": {
@@ -7925,10 +7925,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#RemediationsListForManagementGroup": {
+    "com.azure.policyinsights#ListRemediationForManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsListForManagementGroupRequest"
+        "target": "com.azure.policyinsights#ListRemediationForManagementGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#RemediationListResult"
@@ -7944,7 +7944,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsListForManagementGroupRequest": {
+    "com.azure.policyinsights#ListRemediationForManagementGroupRequest": {
       "type": "structure",
       "members": {
         "managementGroupsNamespace": {
@@ -8097,10 +8097,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForManagementGroup": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForManagementGroupRequest"
+        "target": "com.azure.policyinsights#ListPolicyStateQueryResultForManagementGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyStatesQueryResults"
@@ -8116,7 +8116,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForManagementGroupRequest": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForManagementGroupRequest": {
       "type": "structure",
       "members": {
         "managementGroupsNamespace": {
@@ -8234,10 +8234,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForManagementGroup": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForManagementGroupRequest"
+        "target": "com.azure.policyinsights#ListPolicyEventQueryResultForManagementGroupRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyEventsQueryResults"
@@ -8253,7 +8253,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForManagementGroupRequest": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForManagementGroupRequest": {
       "type": "structure",
       "members": {
         "managementGroupsNamespace": {
@@ -8365,10 +8365,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyRestrictionsCheckAtManagementGroupScope": {
+    "com.azure.policyinsights#CheckPolicyRestrictionAtManagementGroupScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyRestrictionsCheckAtManagementGroupScopeRequest"
+        "target": "com.azure.policyinsights#CheckPolicyRestrictionAtManagementGroupScopeRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#CheckRestrictionsResult"
@@ -8384,7 +8384,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyRestrictionsCheckAtManagementGroupScopeRequest": {
+    "com.azure.policyinsights#CheckPolicyRestrictionAtManagementGroupScopeRequest": {
       "type": "structure",
       "members": {
         "managementGroupsNamespace": {
@@ -8441,10 +8441,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#RemediationsListDeploymentsAtResource": {
+    "com.azure.policyinsights#ListRemediationDeploymentAtResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsListDeploymentsAtResourceRequest"
+        "target": "com.azure.policyinsights#ListRemediationDeploymentAtResourceRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#RemediationDeploymentsListResult"
@@ -8460,7 +8460,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsListDeploymentsAtResourceRequest": {
+    "com.azure.policyinsights#ListRemediationDeploymentAtResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -8572,13 +8572,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtResource": {
+    "com.azure.policyinsights#DeleteRemediationAtResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsDeleteAtResourceRequest"
+        "target": "com.azure.policyinsights#DeleteRemediationAtResourceRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#RemediationsDeleteAtResourceResponse"
+        "target": "com.azure.policyinsights#DeleteRemediationAtResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8591,7 +8591,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtResourceResponse": {
+    "com.azure.policyinsights#DeleteRemediationAtResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8629,7 +8629,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#RemediationsDeleteAtResourceRequest": {
+    "com.azure.policyinsights#DeleteRemediationAtResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -8740,13 +8740,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtResource": {
+    "com.azure.policyinsights#GetRemediationAtResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsGetAtResourceRequest"
+        "target": "com.azure.policyinsights#GetRemediationAtResourceRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#RemediationsGetAtResourceResponse"
+        "target": "com.azure.policyinsights#GetRemediationAtResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8759,7 +8759,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtResourceResponse": {
+    "com.azure.policyinsights#GetRemediationAtResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8797,7 +8797,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#RemediationsGetAtResourceRequest": {
+    "com.azure.policyinsights#GetRemediationAtResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -8821,10 +8821,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#RemediationsListForResource": {
+    "com.azure.policyinsights#ListRemediationForResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#RemediationsListForResourceRequest"
+        "target": "com.azure.policyinsights#ListRemediationForResourceRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#RemediationListResult"
@@ -8840,7 +8840,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#RemediationsListForResourceRequest": {
+    "com.azure.policyinsights#ListRemediationForResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -8953,10 +8953,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForResource": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceRequest"
+        "target": "com.azure.policyinsights#ListPolicyStateQueryResultForResourceRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyStatesQueryResults"
@@ -8972,7 +8972,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceRequest": {
+    "com.azure.policyinsights#ListPolicyStateQueryResultForResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -9077,10 +9077,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForResource": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceRequest"
+        "target": "com.azure.policyinsights#ListPolicyEventQueryResultForResourceRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#PolicyEventsQueryResults"
@@ -9096,7 +9096,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceRequest": {
+    "com.azure.policyinsights#ListPolicyEventQueryResultForResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -9195,10 +9195,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResource": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceRequest"
+        "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#ComponentPolicyStatesQueryResults"
@@ -9214,7 +9214,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceRequest": {
+    "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -9306,10 +9306,10 @@
       },
       "traits": {}
     },
-    "com.azure.policyinsights#AttestationsDeleteAtResource": {
+    "com.azure.policyinsights#DeleteAttestationAtResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#AttestationsDeleteAtResourceRequest"
+        "target": "com.azure.policyinsights#DeleteAttestationAtResourceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9325,7 +9325,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#AttestationsDeleteAtResourceRequest": {
+    "com.azure.policyinsights#DeleteAttestationAtResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -9438,13 +9438,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#AttestationsGetAtResource": {
+    "com.azure.policyinsights#GetAttestationAtResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#AttestationsGetAtResourceRequest"
+        "target": "com.azure.policyinsights#GetAttestationAtResourceRequest"
       },
       "output": {
-        "target": "com.azure.policyinsights#AttestationsGetAtResourceResponse"
+        "target": "com.azure.policyinsights#GetAttestationAtResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9457,7 +9457,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#AttestationsGetAtResourceResponse": {
+    "com.azure.policyinsights#GetAttestationAtResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9496,7 +9496,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.policyinsights#AttestationsGetAtResourceRequest": {
+    "com.azure.policyinsights#GetAttestationAtResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -9520,10 +9520,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.policyinsights#AttestationsListForResource": {
+    "com.azure.policyinsights#ListAttestationForResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.policyinsights#AttestationsListForResourceRequest"
+        "target": "com.azure.policyinsights#ListAttestationForResourceRequest"
       },
       "output": {
         "target": "com.azure.policyinsights#AttestationListResult"
@@ -9539,7 +9539,7 @@
         "com.distilled.openapi#apiVersion": "2024-10-01"
       }
     },
-    "com.azure.policyinsights#AttestationsListForResourceRequest": {
+    "com.azure.policyinsights#ListAttestationForResourceRequest": {
       "type": "structure",
       "members": {
         "resourceId": {
@@ -9577,28 +9577,28 @@
           "target": "com.azure.policyinsights#PolicyStatesSummarizeForResourceGroupLevelPolicyAssignment"
         },
         {
-          "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment"
+          "target": "com.azure.policyinsights#ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignment"
         },
         {
-          "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignment"
+          "target": "com.azure.policyinsights#ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignment"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsListDeploymentsAtResourceGroup"
+          "target": "com.azure.policyinsights#ListRemediationDeploymentAtResourceGroup"
         },
         {
           "target": "com.azure.policyinsights#RemediationsCancelAtResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsDeleteAtResourceGroup"
+          "target": "com.azure.policyinsights#DeleteRemediationAtResourceGroup"
         },
         {
           "target": "com.azure.policyinsights#RemediationsCreateOrUpdateAtResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsGetAtResourceGroup"
+          "target": "com.azure.policyinsights#GetRemediationAtResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsListForResourceGroup"
+          "target": "com.azure.policyinsights#ListRemediationForResourceGroup"
         },
         {
           "target": "com.azure.policyinsights#PolicyStatesTriggerResourceGroupEvaluation"
@@ -9607,49 +9607,49 @@
           "target": "com.azure.policyinsights#PolicyStatesSummarizeForResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForResourceGroup"
+          "target": "com.azure.policyinsights#ListPolicyStateQueryResultForResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForResourceGroup"
+          "target": "com.azure.policyinsights#ListPolicyEventQueryResultForResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceGroup"
+          "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#PolicyRestrictionsCheckAtResourceGroupScope"
+          "target": "com.azure.policyinsights#CheckPolicyRestrictionAtResourceGroupScope"
         },
         {
-          "target": "com.azure.policyinsights#AttestationsDeleteAtResourceGroup"
+          "target": "com.azure.policyinsights#DeleteAttestationAtResourceGroup"
         },
         {
           "target": "com.azure.policyinsights#AttestationsCreateOrUpdateAtResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#AttestationsGetAtResourceGroup"
+          "target": "com.azure.policyinsights#GetAttestationAtResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#AttestationsListForResourceGroup"
+          "target": "com.azure.policyinsights#ListAttestationForResourceGroup"
         },
         {
-          "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment"
+          "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignment"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsListDeploymentsAtSubscription"
+          "target": "com.azure.policyinsights#ListRemediationDeploymentAtSubscription"
         },
         {
           "target": "com.azure.policyinsights#RemediationsCancelAtSubscription"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsDeleteAtSubscription"
+          "target": "com.azure.policyinsights#DeleteRemediationAtSubscription"
         },
         {
           "target": "com.azure.policyinsights#RemediationsCreateOrUpdateAtSubscription"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsGetAtSubscription"
+          "target": "com.azure.policyinsights#GetRemediationAtSubscription"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsListForSubscription"
+          "target": "com.azure.policyinsights#ListRemediationForSubscription"
         },
         {
           "target": "com.azure.policyinsights#PolicyStatesTriggerSubscriptionEvaluation"
@@ -9658,31 +9658,31 @@
           "target": "com.azure.policyinsights#PolicyStatesSummarizeForSubscription"
         },
         {
-          "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForSubscription"
+          "target": "com.azure.policyinsights#ListPolicyStateQueryResultForSubscription"
         },
         {
-          "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForSubscription"
+          "target": "com.azure.policyinsights#ListPolicyEventQueryResultForSubscription"
         },
         {
-          "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForSubscription"
+          "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForSubscription"
         },
         {
-          "target": "com.azure.policyinsights#PolicyRestrictionsCheckAtSubscriptionScope"
+          "target": "com.azure.policyinsights#CheckPolicyRestrictionAtSubscriptionScope"
         },
         {
-          "target": "com.azure.policyinsights#AttestationsDeleteAtSubscription"
+          "target": "com.azure.policyinsights#DeleteAttestationAtSubscription"
         },
         {
           "target": "com.azure.policyinsights#AttestationsCreateOrUpdateAtSubscription"
         },
         {
-          "target": "com.azure.policyinsights#AttestationsGetAtSubscription"
+          "target": "com.azure.policyinsights#GetAttestationAtSubscription"
         },
         {
-          "target": "com.azure.policyinsights#AttestationsListForSubscription"
+          "target": "com.azure.policyinsights#ListAttestationForSubscription"
         },
         {
-          "target": "com.azure.policyinsights#PolicyStatesSummarizeForPolicySetDefinition"
+          "target": "com.azure.policyinsights#SetPolicyStateSummarizeForPolicyDefinition"
         },
         {
           "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForPolicySetDefinition"
@@ -9694,106 +9694,106 @@
           "target": "com.azure.policyinsights#PolicyStatesSummarizeForPolicyDefinition"
         },
         {
-          "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForPolicyDefinition"
+          "target": "com.azure.policyinsights#ListPolicyStateQueryResultForPolicyDefinition"
         },
         {
-          "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForPolicyDefinition"
+          "target": "com.azure.policyinsights#ListPolicyEventQueryResultForPolicyDefinition"
         },
         {
-          "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForPolicyDefinition"
+          "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForPolicyDefinition"
         },
         {
           "target": "com.azure.policyinsights#PolicyStatesSummarizeForSubscriptionLevelPolicyAssignment"
         },
         {
-          "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment"
+          "target": "com.azure.policyinsights#ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignment"
         },
         {
-          "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignment"
+          "target": "com.azure.policyinsights#ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignment"
         },
         {
-          "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment"
+          "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignment"
         },
         {
-          "target": "com.azure.policyinsights#PolicyMetadataGetResource"
+          "target": "com.azure.policyinsights#GetPolicyMetadataResource"
         },
         {
-          "target": "com.azure.policyinsights#PolicyMetadataList"
+          "target": "com.azure.policyinsights#ListPolicyMetadata"
         },
         {
-          "target": "com.azure.policyinsights#OperationsList"
+          "target": "com.azure.policyinsights#ListOperations"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsListDeploymentsAtManagementGroup"
+          "target": "com.azure.policyinsights#ListRemediationDeploymentAtManagementGroup"
         },
         {
           "target": "com.azure.policyinsights#RemediationsCancelAtManagementGroup"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsDeleteAtManagementGroup"
+          "target": "com.azure.policyinsights#DeleteRemediationAtManagementGroup"
         },
         {
           "target": "com.azure.policyinsights#RemediationsCreateOrUpdateAtManagementGroup"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsGetAtManagementGroup"
+          "target": "com.azure.policyinsights#GetRemediationAtManagementGroup"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsListForManagementGroup"
+          "target": "com.azure.policyinsights#ListRemediationForManagementGroup"
         },
         {
           "target": "com.azure.policyinsights#PolicyStatesSummarizeForManagementGroup"
         },
         {
-          "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForManagementGroup"
+          "target": "com.azure.policyinsights#ListPolicyStateQueryResultForManagementGroup"
         },
         {
-          "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForManagementGroup"
+          "target": "com.azure.policyinsights#ListPolicyEventQueryResultForManagementGroup"
         },
         {
-          "target": "com.azure.policyinsights#PolicyRestrictionsCheckAtManagementGroupScope"
+          "target": "com.azure.policyinsights#CheckPolicyRestrictionAtManagementGroupScope"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsListDeploymentsAtResource"
+          "target": "com.azure.policyinsights#ListRemediationDeploymentAtResource"
         },
         {
           "target": "com.azure.policyinsights#RemediationsCancelAtResource"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsDeleteAtResource"
+          "target": "com.azure.policyinsights#DeleteRemediationAtResource"
         },
         {
           "target": "com.azure.policyinsights#RemediationsCreateOrUpdateAtResource"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsGetAtResource"
+          "target": "com.azure.policyinsights#GetRemediationAtResource"
         },
         {
-          "target": "com.azure.policyinsights#RemediationsListForResource"
+          "target": "com.azure.policyinsights#ListRemediationForResource"
         },
         {
           "target": "com.azure.policyinsights#PolicyStatesSummarizeForResource"
         },
         {
-          "target": "com.azure.policyinsights#PolicyStatesListQueryResultsForResource"
+          "target": "com.azure.policyinsights#ListPolicyStateQueryResultForResource"
         },
         {
-          "target": "com.azure.policyinsights#PolicyEventsListQueryResultsForResource"
+          "target": "com.azure.policyinsights#ListPolicyEventQueryResultForResource"
         },
         {
-          "target": "com.azure.policyinsights#ComponentPolicyStatesListQueryResultsForResource"
+          "target": "com.azure.policyinsights#ListComponentPolicyStateQueryResultForResource"
         },
         {
-          "target": "com.azure.policyinsights#AttestationsDeleteAtResource"
+          "target": "com.azure.policyinsights#DeleteAttestationAtResource"
         },
         {
           "target": "com.azure.policyinsights#AttestationsCreateOrUpdateAtResource"
         },
         {
-          "target": "com.azure.policyinsights#AttestationsGetAtResource"
+          "target": "com.azure.policyinsights#GetAttestationAtResource"
         },
         {
-          "target": "com.azure.policyinsights#AttestationsListForResource"
+          "target": "com.azure.policyinsights#ListAttestationForResource"
         }
       ],
       "traits": {

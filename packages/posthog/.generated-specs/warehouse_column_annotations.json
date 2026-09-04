@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsListRequest": {
+    "com.posthog.warehouse_column_annotations#ListWarehouseColumnAnnotationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -185,10 +185,10 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsList": {
+    "com.posthog.warehouse_column_annotations#ListWarehouseColumnAnnotations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsListRequest"
+        "target": "com.posthog.warehouse_column_annotations#ListWarehouseColumnAnnotationsRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_column_annotations#PaginatedWarehouseColumnAnnotationList"
@@ -202,7 +202,7 @@
         "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation."
       }
     },
-    "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsCreateRequest": {
+    "com.posthog.warehouse_column_annotations#CreateWarehouseColumnAnnotationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -238,10 +238,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsCreate": {
+    "com.posthog.warehouse_column_annotations#CreateWarehouseColumnAnnotation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsCreateRequest"
+        "target": "com.posthog.warehouse_column_annotations#CreateWarehouseColumnAnnotationRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotation"
@@ -296,7 +296,7 @@
         "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation."
       }
     },
-    "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsUpdateRequest": {
+    "com.posthog.warehouse_column_annotations#UpdateWarehouseColumnAnnotationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -340,10 +340,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsUpdate": {
+    "com.posthog.warehouse_column_annotations#UpdateWarehouseColumnAnnotation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsUpdateRequest"
+        "target": "com.posthog.warehouse_column_annotations#UpdateWarehouseColumnAnnotationRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotation"
@@ -357,7 +357,7 @@
         "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation."
       }
     },
-    "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsPartialUpdateRequest": {
+    "com.posthog.warehouse_column_annotations#UpdateWarehouseColumnAnnotationPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -399,10 +399,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsPartialUpdate": {
+    "com.posthog.warehouse_column_annotations#UpdateWarehouseColumnAnnotationPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsPartialUpdateRequest"
+        "target": "com.posthog.warehouse_column_annotations#UpdateWarehouseColumnAnnotationPartialRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotation"
@@ -462,19 +462,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsList"
+          "target": "com.posthog.warehouse_column_annotations#ListWarehouseColumnAnnotations"
         },
         {
-          "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsCreate"
+          "target": "com.posthog.warehouse_column_annotations#CreateWarehouseColumnAnnotation"
         },
         {
           "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsRetrieve"
         },
         {
-          "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsUpdate"
+          "target": "com.posthog.warehouse_column_annotations#UpdateWarehouseColumnAnnotation"
         },
         {
-          "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsPartialUpdate"
+          "target": "com.posthog.warehouse_column_annotations#UpdateWarehouseColumnAnnotationPartial"
         },
         {
           "target": "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsDestroy"

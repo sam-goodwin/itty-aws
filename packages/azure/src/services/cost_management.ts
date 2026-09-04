@@ -350,590 +350,6 @@ export const AlertsDismissResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertsDismissResponse",
 }) as any as S.Schema<AlertsDismissResponse>;
 
-export interface AlertsGetRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** Alert ID */
-  alertId: string;
-}
-export const AlertsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    alertId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AlertsGetRequest",
-}) as any as S.Schema<AlertsGetRequest>;
-
-export interface AlertsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Alert properties. */
-  properties?: AlertProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const AlertsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AlertProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AlertsGetResponse",
-}) as any as S.Schema<AlertsGetResponse>;
-
-export interface AlertsListRequest {
-  /** The scope associated with alerts operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
-  scope: string;
-}
-export const AlertsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/alerts",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AlertsListRequest",
-}) as any as S.Schema<AlertsListRequest>;
-
-/** An individual alert. */
-export interface Alert {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Alert properties. */
-  properties?: AlertProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const Alert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AlertProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
-
-/** List of alerts. */
-export type AlertsResultValueList = Array<Alert>;
-export const AlertsResultValueList = /*@__PURE__*/ S.Array(
-  Alert,
-) as any as S.Schema<AlertsResultValueList>;
-
-/** Result of alerts. */
-export interface AlertsResult {
-  /** List of alerts. */
-  value?: AlertsResultValueList;
-  /** URL to get the next set of alerts results if there are any. */
-  nextLink?: string;
-}
-export const AlertsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AlertsResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "AlertsResult" }) as any as S.Schema<AlertsResult>;
-
-export type AlertsListExternalRequestExternalCloudProviderType =
-  | "externalSubscriptions"
-  | "externalBillingAccounts";
-export const AlertsListExternalRequestExternalCloudProviderType =
-  /*@__PURE__*/ S.String;
-
-export interface AlertsListExternalRequest {
-  /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
-  externalCloudProviderType:
-    | AlertsListExternalRequestExternalCloudProviderType
-    | (string & {});
-  /** This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations. */
-  externalCloudProviderId: string;
-}
-export const AlertsListExternalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCloudProviderType:
-      AlertsListExternalRequestExternalCloudProviderType.pipe(T.Label()),
-    externalCloudProviderId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/alerts",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "AlertsListExternalRequest",
-}) as any as S.Schema<AlertsListExternalRequest>;
-
-export interface BenefitRecommendationsListRequest {
-  /** The scope associated with benefit recommendation operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resource group scope, /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for enterprise agreement scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope */
-  billingScope: string;
-  /** Can be used to filter benefitRecommendations by: properties/scope with allowed values ['Single', 'Shared'] and default value 'Shared'; and properties/lookBackPeriod with allowed values ['Last7Days', 'Last30Days', 'Last60Days'] and default value 'Last60Days'; properties/term with allowed values ['P1Y', 'P3Y'] and default value 'P3Y'; properties/subscriptionId; properties/resourceGroup */
-  _filter?: string;
-  /** May be used to order the recommendations by: properties/armSkuName. For the savings plan, the results are in order by default. There is no need to use this clause. */
-  _orderby?: string;
-  /** May be used to expand the properties by: properties/usage, properties/allRecommendationDetails */
-  _expand?: string;
-}
-export const BenefitRecommendationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingScope: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{billingScope}/providers/Microsoft.CostManagement/benefitRecommendations",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "BenefitRecommendationsListRequest",
-}) as any as S.Schema<BenefitRecommendationsListRequest>;
-
-/** Kind/type of the benefit. */
-export type BenefitKind = "IncludedQuantity" | "Reservation" | "SavingsPlan";
-export const BenefitKind = /*@__PURE__*/ S.String;
-
-/** The number of days used to look back. */
-export type LookBackPeriod = "Last7Days" | "Last30Days" | "Last60Days";
-export const LookBackPeriod = /*@__PURE__*/ S.String;
-
-/** Grain which corresponds to value. */
-export type Grain = "Hourly" | "Daily" | "Monthly";
-export const Grain = /*@__PURE__*/ S.String;
-
-/** On-demand charges for each hour between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
-export type RecommendationUsageDetailsChargesList = Array<number>;
-export const RecommendationUsageDetailsChargesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RecommendationUsageDetailsChargesList>;
-
-/** On-demand charges between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
-export interface RecommendationUsageDetails {
-  /** The grain of the usage. Supported values: 'Hourly' */
-  usageGrain?: Grain;
-  /** On-demand charges for each hour between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
-  charges?: RecommendationUsageDetailsChargesList;
-}
-export const RecommendationUsageDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    usageGrain: S.optional(Grain),
-    charges: S.optional(RecommendationUsageDetailsChargesList),
-  }),
-).annotate({
-  identifier: "RecommendationUsageDetails",
-}) as any as S.Schema<RecommendationUsageDetails>;
-
-/** Grain which corresponds to value. */
-export type Term = "P1Y" | "P3Y";
-export const Term = /*@__PURE__*/ S.String;
-
-/** Benefit recommendation details. */
-export interface AllSavingsBenefitDetails {
-  /** The difference between total cost and benefit cost for the 'totalHours' in the look-back period. */
-  overageCost?: number;
-  /** The estimated cost with benefit for the 'totalHours' in the look-back period. It's equal to (commitmentAmount * totalHours) */
-  benefitCost?: number;
-  /** Total cost, which is sum of benefit cost and overage cost. */
-  totalCost?: number;
-  /** The amount saved for the 'totalHours' in the look-back period, by purchasing the recommended quantity of the benefit. */
-  savingsAmount?: number;
-  /** The savings in percentage for the 'totalHours' in the look-back period, by purchasing the recommended quantity of benefit. */
-  savingsPercentage?: number;
-  /** Estimated benefit coverage percentage for the 'totalHours' in the look-back period, with this commitment. */
-  coveragePercentage?: number;
-  /** The commitment amount at the commitmentGranularity. */
-  commitmentAmount?: number;
-  /** Estimated average utilization percentage for the 'totalHours' in the look-back period, with this commitment. */
-  averageUtilizationPercentage?: number;
-  /** Estimated unused portion of the 'benefitCost'. */
-  wastageCost?: number;
-}
-export const AllSavingsBenefitDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    overageCost: S.optional(S.Number),
-    benefitCost: S.optional(S.Number),
-    totalCost: S.optional(S.Number),
-    savingsAmount: S.optional(S.Number),
-    savingsPercentage: S.optional(S.Number),
-    coveragePercentage: S.optional(S.Number),
-    commitmentAmount: S.optional(S.Number),
-    averageUtilizationPercentage: S.optional(S.Number),
-    wastageCost: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AllSavingsBenefitDetails",
-}) as any as S.Schema<AllSavingsBenefitDetails>;
-
-/** The list of benefit recommendations with the recommendation details.. */
-export type AllSavingsListValueList = Array<AllSavingsBenefitDetails>;
-export const AllSavingsListValueList = /*@__PURE__*/ S.Array(
-  AllSavingsBenefitDetails,
-) as any as S.Schema<AllSavingsListValueList>;
-
-/** The list of all benefit recommendations with the recommendation details. */
-export interface AllSavingsList {
-  /** The list of benefit recommendations with the recommendation details.. */
-  value?: AllSavingsListValueList;
-  /** The link (URL) to the next page of results. */
-  nextLink?: string;
-}
-export const AllSavingsList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AllSavingsListValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "AllSavingsList" }) as any as S.Schema<AllSavingsList>;
-
-/** Kind of the recommendation scope. */
-export type Scope = "Single" | "Shared" | "ManagementGroup";
-export const Scope = /*@__PURE__*/ S.String;
-
-/** The properties of the benefit recommendations. */
-export interface BenefitRecommendationProperties {
-  /** The first usage date used for looking back for computing the recommendations. */
-  firstConsumptionDate?: string;
-  /** The last usage date used for looking back for computing the recommendations. */
-  lastConsumptionDate?: string;
-  /** The number of days of usage evaluated for computing the recommendations. */
-  lookBackPeriod?: LookBackPeriod;
-  /** The total hours for which the cost is covered. Its equal to number of records in a property 'properties/usage/charges'. */
-  totalHours?: number;
-  /** On-demand charges between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
-  usage?: RecommendationUsageDetails;
-  /** ARM SKU name. 'Compute_Savings_Plan' for SavingsPlan. */
-  armSkuName?: string;
-  /** Term period of the benefit. For example, P1Y or P3Y. */
-  term?: Term;
-  /** Grain of the proposed commitment amount. Supported values: 'Hourly' */
-  commitmentGranularity?: Grain;
-  /** An ISO 4217 currency code identifier for the costs and savings amounts. */
-  currencyCode?: string;
-  /** The current cost without benefit, corresponds to 'totalHours' in the look-back period. */
-  costWithoutBenefit?: number;
-  /** The details of the proposed recommendation. */
-  recommendationDetails?: AllSavingsBenefitDetails;
-  /** The list of all benefit recommendations with the recommendation details. */
-  allRecommendationDetails?: AllSavingsList;
-  /** Benefit scope. For example, Single or Shared. */
-  scope: Scope;
-}
-export const BenefitRecommendationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstConsumptionDate: S.optional(S.String),
-    lastConsumptionDate: S.optional(S.String),
-    lookBackPeriod: S.optional(LookBackPeriod),
-    totalHours: S.optional(S.Number),
-    usage: S.optional(RecommendationUsageDetails),
-    armSkuName: S.optional(S.String),
-    term: S.optional(Term),
-    commitmentGranularity: S.optional(Grain),
-    currencyCode: S.optional(S.String),
-    costWithoutBenefit: S.optional(S.Number),
-    recommendationDetails: S.optional(AllSavingsBenefitDetails),
-    allRecommendationDetails: S.optional(AllSavingsList),
-    scope: Scope,
-  }),
-).annotate({
-  identifier: "BenefitRecommendationProperties",
-}) as any as S.Schema<BenefitRecommendationProperties>;
-
-/** benefit plan recommendation details. */
-export interface BenefitRecommendationModel {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Reservation or SavingsPlan. */
-  kind?: BenefitKind;
-  /** The properties of the benefit recommendations. */
-  properties?: BenefitRecommendationProperties;
-}
-export const BenefitRecommendationModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: S.optional(BenefitKind),
-    properties: S.optional(BenefitRecommendationProperties),
-  }),
-).annotate({
-  identifier: "BenefitRecommendationModel",
-}) as any as S.Schema<BenefitRecommendationModel>;
-
-/** The list of benefit recommendations. */
-export type BenefitRecommendationsListResultValueList =
-  Array<BenefitRecommendationModel>;
-export const BenefitRecommendationsListResultValueList = /*@__PURE__*/ S.Array(
-  BenefitRecommendationModel,
-) as any as S.Schema<BenefitRecommendationsListResultValueList>;
-
-/** Result of listing benefit recommendations. */
-export interface BenefitRecommendationsListResult {
-  /** The list of benefit recommendations. */
-  value?: BenefitRecommendationsListResultValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const BenefitRecommendationsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(BenefitRecommendationsListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BenefitRecommendationsListResult",
-}) as any as S.Schema<BenefitRecommendationsListResult>;
-
-export type BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter =
-  | "Hourly"
-  | "Daily"
-  | "Monthly";
-export const BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter =
-  /*@__PURE__*/ S.String;
-
-export interface BenefitUtilizationSummariesListByBillingAccountIdRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** Grain. */
-  grainParameter?:
-    | BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter
-    | (string & {});
-  /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
-  filter?: string;
-}
-export const BenefitUtilizationSummariesListByBillingAccountIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountId: S.String.pipe(T.Label()),
-      grainParameter: S.optional(
-        BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter.pipe(
-          T.Query(),
-        ),
-      ),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "BenefitUtilizationSummariesListByBillingAccountIdRequest",
-  }) as any as S.Schema<BenefitUtilizationSummariesListByBillingAccountIdRequest>;
-
-/** Benefit utilization summary resource. */
-export interface BenefitUtilizationSummary {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Supported values: 'SavingsPlan'. */
-  kind: BenefitKind;
-}
-export const BenefitUtilizationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: BenefitKind,
-  }),
-).annotate({
-  identifier: "BenefitUtilizationSummary",
-}) as any as S.Schema<BenefitUtilizationSummary>;
-
-/** The list of benefit utilization summaries. */
-export type BenefitUtilizationSummariesListResultValueList =
-  Array<BenefitUtilizationSummary>;
-export const BenefitUtilizationSummariesListResultValueList =
-  /*@__PURE__*/ S.Array(
-    BenefitUtilizationSummary,
-  ) as any as S.Schema<BenefitUtilizationSummariesListResultValueList>;
-
-/** List of benefit utilization summaries. */
-export interface BenefitUtilizationSummariesListResult {
-  /** The list of benefit utilization summaries. */
-  value?: BenefitUtilizationSummariesListResultValueList;
-  /** The link (URL) to the next page of results. */
-  nextLink?: string;
-}
-export const BenefitUtilizationSummariesListResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.optional(BenefitUtilizationSummariesListResultValueList),
-      nextLink: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "BenefitUtilizationSummariesListResult",
-}) as any as S.Schema<BenefitUtilizationSummariesListResult>;
-
-export type BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter =
-  | "Hourly"
-  | "Daily"
-  | "Monthly";
-export const BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter =
-  /*@__PURE__*/ S.String;
-
-export interface BenefitUtilizationSummariesListByBillingProfileIdRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** Billing Profile ID. */
-  billingProfileId: string;
-  /** Grain. */
-  grainParameter?:
-    | BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter
-    | (string & {});
-  /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
-  filter?: string;
-}
-export const BenefitUtilizationSummariesListByBillingProfileIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountId: S.String.pipe(T.Label()),
-      billingProfileId: S.String.pipe(T.Label()),
-      grainParameter: S.optional(
-        BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter.pipe(
-          T.Query(),
-        ),
-      ),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "BenefitUtilizationSummariesListByBillingProfileIdRequest",
-  }) as any as S.Schema<BenefitUtilizationSummariesListByBillingProfileIdRequest>;
-
-export type BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter =
-  | "Hourly"
-  | "Daily"
-  | "Monthly";
-export const BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter =
-  /*@__PURE__*/ S.String;
-
-export interface BenefitUtilizationSummariesListBySavingsPlanIdRequest {
-  /** Savings plan order ID. */
-  savingsPlanOrderId: string;
-  /** Savings plan ID. */
-  savingsPlanId: string;
-  /** Supports filtering by properties/usageDate. */
-  _filter?: string;
-  /** Grain. */
-  grainParameter?:
-    | BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter
-    | (string & {});
-}
-export const BenefitUtilizationSummariesListBySavingsPlanIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      savingsPlanOrderId: S.String.pipe(T.Label()),
-      savingsPlanId: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      grainParameter: S.optional(
-        BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter.pipe(
-          T.Query(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "BenefitUtilizationSummariesListBySavingsPlanIdRequest",
-  }) as any as S.Schema<BenefitUtilizationSummariesListBySavingsPlanIdRequest>;
-
-export type BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter =
-  | "Hourly"
-  | "Daily"
-  | "Monthly";
-export const BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter =
-  /*@__PURE__*/ S.String;
-
-export interface BenefitUtilizationSummariesListBySavingsPlanOrderRequest {
-  /** Savings plan order ID. */
-  savingsPlanOrderId: string;
-  /** Supports filtering by properties/usageDate. */
-  _filter?: string;
-  /** Grain. */
-  grainParameter?:
-    | BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter
-    | (string & {});
-}
-export const BenefitUtilizationSummariesListBySavingsPlanOrderRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      savingsPlanOrderId: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      grainParameter: S.optional(
-        BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter.pipe(
-          T.Query(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "BenefitUtilizationSummariesListBySavingsPlanOrderRequest",
-  }) as any as S.Schema<BenefitUtilizationSummariesListBySavingsPlanOrderRequest>;
-
 /** The category of the budget. - 'Cost' defines a Budget. - 'ReservationUtilization' defines a Reservation Utilization Alert Rule. */
 export type CategoryType = "Cost" | "ReservationUtilization";
 export const CategoryType = /*@__PURE__*/ S.String;
@@ -1291,155 +707,7 @@ export const BudgetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BudgetsCreateOrUpdateResponse",
 }) as any as S.Schema<BudgetsCreateOrUpdateResponse>;
 
-export interface BudgetsDeleteRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** Budget Name. */
-  budgetName: string;
-}
-export const BudgetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    budgetName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "BudgetsDeleteRequest",
-}) as any as S.Schema<BudgetsDeleteRequest>;
-
-export interface BudgetsDeleteResponse {}
-export const BudgetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BudgetsDeleteResponse",
-}) as any as S.Schema<BudgetsDeleteResponse>;
-
-export interface BudgetsGetRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** Budget Name. */
-  budgetName: string;
-}
-export const BudgetsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    budgetName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "BudgetsGetRequest",
-}) as any as S.Schema<BudgetsGetRequest>;
-
-export interface BudgetsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the budget. */
-  properties?: BudgetProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const BudgetsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BudgetProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BudgetsGetResponse",
-}) as any as S.Schema<BudgetsGetResponse>;
-
-export interface BudgetsListRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** OData filter option. May be used to filter budgets by properties/category. The filter supports 'eq' only. */
-  _filter?: string;
-}
-export const BudgetsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/budgets",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "BudgetsListRequest",
-}) as any as S.Schema<BudgetsListRequest>;
-
-/** A budget resource. */
-export interface Budget {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the budget. */
-  properties?: BudgetProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const Budget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BudgetProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
-
-/** The list of budgets. */
-export type BudgetsListResultValueList = Array<Budget>;
-export const BudgetsListResultValueList = /*@__PURE__*/ S.Array(
-  Budget,
-) as any as S.Schema<BudgetsListResultValueList>;
-
-/** Result of listing budgets. It contains a list of available budgets in the scope provided. */
-export interface BudgetsListResult {
-  /** The list of budgets. */
-  value?: BudgetsListResultValueList;
-  /** The link (url) to the next page of results.\r\nIt's null for now, added for future use. */
-  nextLink?: string;
-}
-export const BudgetsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(BudgetsListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BudgetsListResult",
-}) as any as S.Schema<BudgetsListResult>;
-
-export interface CostAllocationRulesCheckNameAvailabilityRequest {
+export interface CheckCostAllocationRuleNameAvailabilityRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Rule name */
@@ -1447,7 +715,7 @@ export interface CostAllocationRulesCheckNameAvailabilityRequest {
   /** Resource type. This is expected to be Microsoft.CostManagement/costAllocationRules */
   type?: string;
 }
-export const CostAllocationRulesCheckNameAvailabilityRequest =
+export const CheckCostAllocationRuleNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountId: S.String.pipe(T.Label()),
@@ -1462,8 +730,8 @@ export const CostAllocationRulesCheckNameAvailabilityRequest =
       }),
     ),
   ).annotate({
-    identifier: "CostAllocationRulesCheckNameAvailabilityRequest",
-  }) as any as S.Schema<CostAllocationRulesCheckNameAvailabilityRequest>;
+    identifier: "CheckCostAllocationRuleNameAvailabilityRequest",
+  }) as any as S.Schema<CheckCostAllocationRuleNameAvailabilityRequest>;
 
 /** The reason this name is not available. */
 export type Reason = "Invalid" | "AlreadyExists" | "Valid";
@@ -1488,6 +756,109 @@ export const CostAllocationRuleCheckNameAvailabilityResponse =
   ).annotate({
     identifier: "CostAllocationRuleCheckNameAvailabilityResponse",
   }) as any as S.Schema<CostAllocationRuleCheckNameAvailabilityResponse>;
+
+export interface CheckScheduledActionNameAvailabilityRequest {
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
+}
+export const CheckScheduledActionNameAvailabilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/providers/Microsoft.CostManagement/checkNameAvailability",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckScheduledActionNameAvailabilityRequest",
+  }) as any as S.Schema<CheckScheduledActionNameAvailabilityRequest>;
+
+/** The reason why the given name is not available. */
+export type ScheduledActionsCheckNameAvailabilityResponseReason =
+  | "Invalid"
+  | "AlreadyExists";
+export const ScheduledActionsCheckNameAvailabilityResponseReason =
+  /*@__PURE__*/ S.String;
+
+export interface CheckScheduledActionNameAvailabilityResponse {
+  /** Indicates if the resource name is available. */
+  nameAvailable?: boolean;
+  /** The reason why the given name is not available. */
+  reason?: ScheduledActionsCheckNameAvailabilityResponseReason;
+  /** Detailed reason why the given name is available. */
+  message?: string;
+}
+export const CheckScheduledActionNameAvailabilityResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nameAvailable: S.optional(S.Boolean),
+      reason: S.optional(ScheduledActionsCheckNameAvailabilityResponseReason),
+      message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CheckScheduledActionNameAvailabilityResponse",
+  }) as any as S.Schema<CheckScheduledActionNameAvailabilityResponse>;
+
+export interface CheckScheduledActionNameAvailabilityByScopeRequest {
+  /** The scope associated with scheduled action operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope. Note: Insight Alerts are only available on subscription scope. */
+  scope: string;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
+}
+export const CheckScheduledActionNameAvailabilityByScopeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      scope: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/{scope}/providers/Microsoft.CostManagement/checkNameAvailability",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckScheduledActionNameAvailabilityByScopeRequest",
+  }) as any as S.Schema<CheckScheduledActionNameAvailabilityByScopeRequest>;
+
+/** The reason why the given name is not available. */
+export type ScheduledActionsCheckNameAvailabilityByScopeResponseReason =
+  | "Invalid"
+  | "AlreadyExists";
+export const ScheduledActionsCheckNameAvailabilityByScopeResponseReason =
+  /*@__PURE__*/ S.String;
+
+export interface CheckScheduledActionNameAvailabilityByScopeResponse {
+  /** Indicates if the resource name is available. */
+  nameAvailable?: boolean;
+  /** The reason why the given name is not available. */
+  reason?: ScheduledActionsCheckNameAvailabilityByScopeResponseReason;
+  /** Detailed reason why the given name is available. */
+  message?: string;
+}
+export const CheckScheduledActionNameAvailabilityByScopeResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nameAvailable: S.optional(S.Boolean),
+      reason: S.optional(
+        ScheduledActionsCheckNameAvailabilityByScopeResponseReason,
+      ),
+      message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CheckScheduledActionNameAvailabilityByScopeResponse",
+  }) as any as S.Schema<CheckScheduledActionNameAvailabilityByScopeResponse>;
 
 /** Category of resource to use for allocation. */
 export type CostAllocationResourceType = "Dimension" | "Tag";
@@ -1698,13 +1069,42 @@ export const CostAllocationRulesCreateOrUpdateResponse =
     identifier: "CostAllocationRulesCreateOrUpdateResponse",
   }) as any as S.Schema<CostAllocationRulesCreateOrUpdateResponse>;
 
-export interface CostAllocationRulesDeleteRequest {
+export interface DeleteBudgetRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** Budget Name. */
+  budgetName: string;
+}
+export const DeleteBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    budgetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBudgetRequest",
+}) as any as S.Schema<DeleteBudgetRequest>;
+
+export interface DeleteBudgetResponse {}
+export const DeleteBudgetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteBudgetResponse",
+}) as any as S.Schema<DeleteBudgetResponse>;
+
+export interface DeleteCostAllocationRuleRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters. */
   ruleName: string;
 }
-export const CostAllocationRulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCostAllocationRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     ruleName: S.String.pipe(T.Label()),
@@ -1717,128 +1117,218 @@ export const CostAllocationRulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CostAllocationRulesDeleteRequest",
-}) as any as S.Schema<CostAllocationRulesDeleteRequest>;
+  identifier: "DeleteCostAllocationRuleRequest",
+}) as any as S.Schema<DeleteCostAllocationRuleRequest>;
 
-export interface CostAllocationRulesDeleteResponse {}
-export const CostAllocationRulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteCostAllocationRuleResponse {}
+export const DeleteCostAllocationRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "CostAllocationRulesDeleteResponse",
-}) as any as S.Schema<CostAllocationRulesDeleteResponse>;
+  identifier: "DeleteCostAllocationRuleResponse",
+}) as any as S.Schema<DeleteCostAllocationRuleResponse>;
 
-export interface CostAllocationRulesGetRequest {
+export interface DeleteExportRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** Export Name. */
+  exportName: string;
+}
+export const DeleteExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    exportName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteExportRequest",
+}) as any as S.Schema<DeleteExportRequest>;
+
+export interface DeleteExportResponse {}
+export const DeleteExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteExportResponse",
+}) as any as S.Schema<DeleteExportResponse>;
+
+export interface DeleteMarkupRuleRequest {
   /** BillingAccount ID */
   billingAccountId: string;
-  /** Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters. */
+  /** BillingProfile ID */
+  billingProfileId: string;
+  /** Markup rule name. */
   ruleName: string;
 }
-export const CostAllocationRulesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteMarkupRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
     ruleName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
+      method: "DELETE",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
       code: 200,
       apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
-  identifier: "CostAllocationRulesGetRequest",
-}) as any as S.Schema<CostAllocationRulesGetRequest>;
+  identifier: "DeleteMarkupRuleRequest",
+}) as any as S.Schema<DeleteMarkupRuleRequest>;
 
-export interface CostAllocationRulesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Cost allocation rule properties */
-  properties?: CostAllocationRuleProperties;
-}
-export const CostAllocationRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CostAllocationRuleProperties),
-  }),
+export interface DeleteMarkupRuleResponse {}
+export const DeleteMarkupRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "CostAllocationRulesGetResponse",
-}) as any as S.Schema<CostAllocationRulesGetResponse>;
+  identifier: "DeleteMarkupRuleResponse",
+}) as any as S.Schema<DeleteMarkupRuleResponse>;
 
-export interface CostAllocationRulesListRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
+export interface DeleteScheduledActionRequest {
+  /** Scheduled action name. */
+  name: string;
 }
-export const CostAllocationRulesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteScheduledActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules",
+      method: "DELETE",
+      uri: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
       code: 200,
       apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
-  identifier: "CostAllocationRulesListRequest",
-}) as any as S.Schema<CostAllocationRulesListRequest>;
+  identifier: "DeleteScheduledActionRequest",
+}) as any as S.Schema<DeleteScheduledActionRequest>;
 
-/** The cost allocation rule model definition */
-export interface CostAllocationRuleDefinition {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Cost allocation rule properties */
-  properties?: CostAllocationRuleProperties;
-}
-export const CostAllocationRuleDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CostAllocationRuleProperties),
-  }),
+export interface DeleteScheduledActionResponse {}
+export const DeleteScheduledActionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "CostAllocationRuleDefinition",
-}) as any as S.Schema<CostAllocationRuleDefinition>;
+  identifier: "DeleteScheduledActionResponse",
+}) as any as S.Schema<DeleteScheduledActionResponse>;
 
-/** The list of cost allocation rules. */
-export type CostAllocationRuleListValueList =
-  Array<CostAllocationRuleDefinition>;
-export const CostAllocationRuleListValueList = /*@__PURE__*/ S.Array(
-  CostAllocationRuleDefinition,
-) as any as S.Schema<CostAllocationRuleListValueList>;
-
-/** Result of listing cost allocation rules. It contains a list of available rules in the billing account or enterprise enrollment provided. */
-export interface CostAllocationRuleList {
-  /** The list of cost allocation rules. */
-  value?: CostAllocationRuleListValueList;
-  /** URL to get the next set of rule list results if there are any. */
-  nextLink?: string;
+export interface DeleteScheduledActionByScopeRequest {
+  /** undefined */
+  scope: string;
+  /** Scheduled action name. */
+  name: string;
 }
-export const CostAllocationRuleList = /*@__PURE__*/ S.suspend(() =>
+export const DeleteScheduledActionByScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: S.optional(CostAllocationRuleListValueList),
-    nextLink: S.optional(S.String),
-  }),
+    scope: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
 ).annotate({
-  identifier: "CostAllocationRuleList",
-}) as any as S.Schema<CostAllocationRuleList>;
+  identifier: "DeleteScheduledActionByScopeRequest",
+}) as any as S.Schema<DeleteScheduledActionByScopeRequest>;
+
+export interface DeleteScheduledActionByScopeResponse {}
+export const DeleteScheduledActionByScopeResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteScheduledActionByScopeResponse",
+}) as any as S.Schema<DeleteScheduledActionByScopeResponse>;
+
+export type SettingsDeleteByScopeRequestType = "taginheritance";
+export const SettingsDeleteByScopeRequestType = /*@__PURE__*/ S.String;
+
+export interface DeleteSettingByScopeRequest {
+  /** undefined */
+  scope: string;
+  /** Setting type. */
+  type: SettingsDeleteByScopeRequestType | (string & {});
+}
+export const DeleteSettingByScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    type: SettingsDeleteByScopeRequestType.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSettingByScopeRequest",
+}) as any as S.Schema<DeleteSettingByScopeRequest>;
+
+export interface DeleteSettingByScopeResponse {}
+export const DeleteSettingByScopeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSettingByScopeResponse",
+}) as any as S.Schema<DeleteSettingByScopeResponse>;
+
+export interface DeleteViewRequest {
+  /** View name */
+  viewName: string;
+}
+export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    viewName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.CostManagement/views/{viewName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteViewRequest",
+}) as any as S.Schema<DeleteViewRequest>;
+
+export interface DeleteViewResponse {}
+export const DeleteViewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteViewResponse",
+}) as any as S.Schema<DeleteViewResponse>;
+
+export interface DeleteViewByScopeRequest {
+  /** undefined */
+  scope: string;
+  /** View name */
+  viewName: string;
+}
+export const DeleteViewByScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    viewName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteViewByScopeRequest",
+}) as any as S.Schema<DeleteViewByScopeRequest>;
+
+export interface DeleteViewByScopeResponse {}
+export const DeleteViewByScopeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteViewByScopeResponse",
+}) as any as S.Schema<DeleteViewByScopeResponse>;
 
 export type DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType =
   | "externalSubscriptions"
@@ -1975,51 +1465,20 @@ export const DimensionsListResultValueList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DimensionsListResultValueList>;
 
 /** Result of listing dimensions. It contains a list of available dimensions. */
-export interface DimensionsListResult {
+export interface ListDimensionsResult {
   /** The list of dimensions. */
   value?: DimensionsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const DimensionsListResult = /*@__PURE__*/ S.suspend(() =>
+export const ListDimensionsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DimensionsListResultValueList),
     nextLink: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DimensionsListResult",
-}) as any as S.Schema<DimensionsListResult>;
-
-export interface DimensionsListRequest {
-  /** The scope associated with dimension operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
-  scope: string;
-  /** May be used to filter dimensions by properties/category, properties/usageStart, properties/usageEnd. Supported operators are 'eq','lt', 'gt', 'le', 'ge'. */
-  _filter?: string;
-  /** May be used to expand the properties/data within a dimension category. By default, data is not included when listing dimensions. */
-  _expand?: string;
-  /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
-  _skiptoken?: string;
-  /** May be used to limit the number of results to the most recent N dimension data. */
-  _top?: number;
-}
-export const DimensionsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-    _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/dimensions",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "DimensionsListRequest",
-}) as any as S.Schema<DimensionsListRequest>;
+  identifier: "ListDimensionsResult",
+}) as any as S.Schema<ListDimensionsResult>;
 
 /** The format of the export being delivered. */
 export type FormatType = "Csv" | "Parquet";
@@ -2619,35 +2078,6 @@ export const ExportsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportsCreateOrUpdateResponse",
 }) as any as S.Schema<ExportsCreateOrUpdateResponse>;
 
-export interface ExportsDeleteRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** Export Name. */
-  exportName: string;
-}
-export const ExportsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    exportName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ExportsDeleteRequest",
-}) as any as S.Schema<ExportsDeleteRequest>;
-
-export interface ExportsDeleteResponse {}
-export const ExportsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExportsDeleteResponse",
-}) as any as S.Schema<ExportsDeleteResponse>;
-
 export interface ExportsExecuteRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -2679,167 +2109,6 @@ export const ExportsExecuteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportsExecuteResponse",
 }) as any as S.Schema<ExportsExecuteResponse>;
-
-export interface ExportsGetRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** Export Name. */
-  exportName: string;
-  /** May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last 10 runs of the export. */
-  _expand?: string;
-}
-export const ExportsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    exportName: S.String.pipe(T.Label()),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ExportsGetRequest",
-}) as any as S.Schema<ExportsGetRequest>;
-
-/** Managed service identity (either system assigned, or none) */
-export type ExportsGetResponseIdentity = ExportsCreateOrUpdateResponseIdentity;
-export const ExportsGetResponseIdentity = ExportsCreateOrUpdateResponseIdentity;
-
-export interface ExportsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the export. */
-  properties?: ExportProperties;
-  /** Managed service identity (either system assigned, or none) */
-  identity?: ExportsCreateOrUpdateResponseIdentity;
-  /** The location of the Export's managed identity. Only required when utilizing managed identity. */
-  location?: string;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const ExportsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExportProperties),
-    identity: S.optional(ExportsCreateOrUpdateResponseIdentity),
-    location: S.optional(S.String),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportsGetResponse",
-}) as any as S.Schema<ExportsGetResponse>;
-
-export interface ExportsGetExecutionHistoryRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** Export Name. */
-  exportName: string;
-}
-export const ExportsGetExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    exportName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ExportsGetExecutionHistoryRequest",
-}) as any as S.Schema<ExportsGetExecutionHistoryRequest>;
-
-export interface ExportsListRequest {
-  /** The scope associated with alerts operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
-  scope: string;
-  /** May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last run of each export. */
-  _expand?: string;
-}
-export const ExportsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/exports",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ExportsListRequest",
-}) as any as S.Schema<ExportsListRequest>;
-
-/** Managed service identity (either system assigned, or none) */
-export type ExportIdentity = ExportsCreateOrUpdateResponseIdentity;
-export const ExportIdentity = ExportsCreateOrUpdateResponseIdentity;
-
-/** An export resource. */
-export interface Export {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the export. */
-  properties?: ExportProperties;
-  /** Managed service identity (either system assigned, or none) */
-  identity?: ExportsCreateOrUpdateResponseIdentity;
-  /** The location of the Export's managed identity. Only required when utilizing managed identity. */
-  location?: string;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const Export = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExportProperties),
-    identity: S.optional(ExportsCreateOrUpdateResponseIdentity),
-    location: S.optional(S.String),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Export" }) as any as S.Schema<Export>;
-
-/** The list of exports. */
-export type ExportListResultValueList = Array<Export>;
-export const ExportListResultValueList = /*@__PURE__*/ S.Array(
-  Export,
-) as any as S.Schema<ExportListResultValueList>;
-
-/** Result of listing exports. It contains a list of available exports in the scope provided. */
-export interface ExportListResult {
-  /** The list of exports. */
-  value?: ExportListResultValueList;
-}
-export const ExportListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ExportListResultValueList),
-  }),
-).annotate({
-  identifier: "ExportListResult",
-}) as any as S.Schema<ExportListResult>;
 
 export type ForecastExternalCloudProviderUsageRequestExternalCloudProviderType =
   | "externalSubscriptions"
@@ -3230,6 +2499,14 @@ export const ForecastUsageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ForecastUsageResponse",
 }) as any as S.Schema<ForecastUsageResponse>;
+
+/** Grain which corresponds to value. */
+export type Grain = "Hourly" | "Daily" | "Monthly";
+export const Grain = /*@__PURE__*/ S.String;
+
+/** Kind/type of the benefit. */
+export type BenefitKind = "IncludedQuantity" | "Reservation" | "SavingsPlan";
+export const BenefitKind = /*@__PURE__*/ S.String;
 
 export interface GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountRequest {
   /** BillingAccount ID */
@@ -4108,6 +3385,259 @@ export const GenerateReservationDetailsReportByBillingProfileIdRequest =
     identifier: "GenerateReservationDetailsReportByBillingProfileIdRequest",
   }) as any as S.Schema<GenerateReservationDetailsReportByBillingProfileIdRequest>;
 
+export interface GetAlertRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** Alert ID */
+  alertId: string;
+}
+export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    alertId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAlertRequest",
+}) as any as S.Schema<GetAlertRequest>;
+
+export interface GetAlertResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Alert properties. */
+  properties?: AlertProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const GetAlertResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AlertProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetAlertResponse",
+}) as any as S.Schema<GetAlertResponse>;
+
+export interface GetBudgetRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** Budget Name. */
+  budgetName: string;
+}
+export const GetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    budgetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetBudgetRequest",
+}) as any as S.Schema<GetBudgetRequest>;
+
+export interface GetBudgetResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the budget. */
+  properties?: BudgetProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const GetBudgetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(BudgetProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetBudgetResponse",
+}) as any as S.Schema<GetBudgetResponse>;
+
+export interface GetCostAllocationRuleRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters. */
+  ruleName: string;
+}
+export const GetCostAllocationRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    ruleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetCostAllocationRuleRequest",
+}) as any as S.Schema<GetCostAllocationRuleRequest>;
+
+export interface GetCostAllocationRuleResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Cost allocation rule properties */
+  properties?: CostAllocationRuleProperties;
+}
+export const GetCostAllocationRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CostAllocationRuleProperties),
+  }),
+).annotate({
+  identifier: "GetCostAllocationRuleResponse",
+}) as any as S.Schema<GetCostAllocationRuleResponse>;
+
+export interface GetExportRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** Export Name. */
+  exportName: string;
+  /** May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last 10 runs of the export. */
+  _expand?: string;
+}
+export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    exportName: S.String.pipe(T.Label()),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetExportRequest",
+}) as any as S.Schema<GetExportRequest>;
+
+/** Managed service identity (either system assigned, or none) */
+export type ExportsGetResponseIdentity = ExportsCreateOrUpdateResponseIdentity;
+export const ExportsGetResponseIdentity = ExportsCreateOrUpdateResponseIdentity;
+
+export interface GetExportResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the export. */
+  properties?: ExportProperties;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ExportsCreateOrUpdateResponseIdentity;
+  /** The location of the Export's managed identity. Only required when utilizing managed identity. */
+  location?: string;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const GetExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ExportProperties),
+    identity: S.optional(ExportsCreateOrUpdateResponseIdentity),
+    location: S.optional(S.String),
+    eTag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetExportResponse",
+}) as any as S.Schema<GetExportResponse>;
+
+export interface GetExportExecutionHistoryRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** Export Name. */
+  exportName: string;
+}
+export const GetExportExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    exportName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetExportExecutionHistoryRequest",
+}) as any as S.Schema<GetExportExecutionHistoryRequest>;
+
+export interface GetMarkupRuleRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** BillingProfile ID */
+  billingProfileId: string;
+  /** Markup rule name. */
+  ruleName: string;
+}
+export const GetMarkupRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+    ruleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetMarkupRuleRequest",
+}) as any as S.Schema<GetMarkupRuleRequest>;
+
 /** The customer billing metadata */
 export interface CustomerMetadata {
   /** Customer billing account id */
@@ -4149,35 +3679,7 @@ export const MarkupRuleProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarkupRuleProperties",
 }) as any as S.Schema<MarkupRuleProperties>;
 
-export interface MarkupRulesCreateOrUpdateRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** BillingProfile ID */
-  billingProfileId: string;
-  /** Markup rule name. */
-  ruleName: string;
-  /** Markup rule properties */
-  properties?: MarkupRuleProperties;
-}
-export const MarkupRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-    ruleName: S.String.pipe(T.Label()),
-    properties: S.optional(MarkupRuleProperties),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MarkupRulesCreateOrUpdateRequest",
-}) as any as S.Schema<MarkupRulesCreateOrUpdateRequest>;
-
-export interface MarkupRulesCreateOrUpdateResponse {
+export interface GetMarkupRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4189,7 +3691,7 @@ export interface MarkupRulesCreateOrUpdateResponse {
   /** Markup rule properties */
   properties?: MarkupRuleProperties;
 }
-export const MarkupRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetMarkupRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4198,67 +3700,191 @@ export const MarkupRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(MarkupRuleProperties),
   }),
 ).annotate({
-  identifier: "MarkupRulesCreateOrUpdateResponse",
-}) as any as S.Schema<MarkupRulesCreateOrUpdateResponse>;
+  identifier: "GetMarkupRuleResponse",
+}) as any as S.Schema<GetMarkupRuleResponse>;
 
-export interface MarkupRulesDeleteRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** BillingProfile ID */
-  billingProfileId: string;
-  /** Markup rule name. */
-  ruleName: string;
+export interface GetScheduledActionRequest {
+  /** Scheduled action name. */
+  name: string;
 }
-export const MarkupRulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetScheduledActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-    ruleName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MarkupRulesDeleteRequest",
-}) as any as S.Schema<MarkupRulesDeleteRequest>;
-
-export interface MarkupRulesDeleteResponse {}
-export const MarkupRulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MarkupRulesDeleteResponse",
-}) as any as S.Schema<MarkupRulesDeleteResponse>;
-
-export interface MarkupRulesGetRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** BillingProfile ID */
-  billingProfileId: string;
-  /** Markup rule name. */
-  ruleName: string;
-}
-export const MarkupRulesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-    ruleName: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
+      uri: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
       code: 200,
       apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
-  identifier: "MarkupRulesGetRequest",
-}) as any as S.Schema<MarkupRulesGetRequest>;
+  identifier: "GetScheduledActionRequest",
+}) as any as S.Schema<GetScheduledActionRequest>;
 
-export interface MarkupRulesGetResponse {
+/** Destination of the view data. Currently only CSV format is supported. */
+export type FileFormat = "Csv";
+export const FileFormat = /*@__PURE__*/ S.String;
+
+/** Destination of the view data. Currently only CSV format is supported. */
+export type FileDestinationFileFormatsList = Array<FileFormat | (string & {})>;
+export const FileDestinationFileFormatsList = /*@__PURE__*/ S.Array(
+  FileFormat,
+) as any as S.Schema<FileDestinationFileFormatsList>;
+
+/** Destination of the view data. This is optional. Currently only CSV format is supported. */
+export interface FileDestination {
+  /** Destination of the view data. Currently only CSV format is supported. */
+  fileFormats?: FileDestinationFileFormatsList;
+}
+export const FileDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fileFormats: S.optional(FileDestinationFileFormatsList),
+  }),
+).annotate({
+  identifier: "FileDestination",
+}) as any as S.Schema<FileDestination>;
+
+/** Array of email addresses. */
+export type NotificationPropertiesToList = Array<string>;
+export const NotificationPropertiesToList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NotificationPropertiesToList>;
+
+/** The properties of the scheduled action notification. */
+export interface NotificationProperties {
+  /** Array of email addresses. */
+  to: NotificationPropertiesToList;
+  /** Locale of the email. */
+  language?: string;
+  /** Optional message to be added in the email. Length is limited to 250 characters. */
+  message?: string;
+  /** Regional format used for formatting date/time and currency values in the email. */
+  regionalFormat?: string;
+  /** Subject of the email. Length is limited to 70 characters. */
+  subject: string;
+}
+export const NotificationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    to: NotificationPropertiesToList,
+    language: S.optional(S.String),
+    message: S.optional(S.String),
+    regionalFormat: S.optional(S.String),
+    subject: S.String,
+  }),
+).annotate({
+  identifier: "NotificationProperties",
+}) as any as S.Schema<NotificationProperties>;
+
+/** Frequency of the schedule. */
+export type ScheduleFrequency = "Daily" | "Weekly" | "Monthly";
+export const ScheduleFrequency = /*@__PURE__*/ S.String;
+
+/** Days of Week. */
+export type DaysOfWeek =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+export const DaysOfWeek = /*@__PURE__*/ S.String;
+
+/** Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly. */
+export type SchedulePropertiesDaysOfWeekList = Array<
+  DaysOfWeek | (string & {})
+>;
+export const SchedulePropertiesDaysOfWeekList = /*@__PURE__*/ S.Array(
+  DaysOfWeek,
+) as any as S.Schema<SchedulePropertiesDaysOfWeekList>;
+
+/** Weeks of month. */
+export type WeeksOfMonth = "First" | "Second" | "Third" | "Fourth" | "Last";
+export const WeeksOfMonth = /*@__PURE__*/ S.String;
+
+/** Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek. */
+export type SchedulePropertiesWeeksOfMonthList = Array<
+  WeeksOfMonth | (string & {})
+>;
+export const SchedulePropertiesWeeksOfMonthList = /*@__PURE__*/ S.Array(
+  WeeksOfMonth,
+) as any as S.Schema<SchedulePropertiesWeeksOfMonthList>;
+
+/** The properties of the schedule. */
+export interface ScheduleProperties {
+  /** Frequency of the schedule. */
+  frequency: ScheduleFrequency | (string & {});
+  /** UTC time at which cost analysis data will be emailed. */
+  hourOfDay?: number;
+  /** Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly. */
+  daysOfWeek?: SchedulePropertiesDaysOfWeekList;
+  /** Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek. */
+  weeksOfMonth?: SchedulePropertiesWeeksOfMonthList;
+  /** UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek. */
+  dayOfMonth?: number;
+  /** The start date and time of the scheduled action (UTC). */
+  startDate: string;
+  /** The end date and time of the scheduled action (UTC). */
+  endDate: string;
+}
+export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    frequency: ScheduleFrequency,
+    hourOfDay: S.optional(S.Number),
+    daysOfWeek: S.optional(SchedulePropertiesDaysOfWeekList),
+    weeksOfMonth: S.optional(SchedulePropertiesWeeksOfMonthList),
+    dayOfMonth: S.optional(S.Number),
+    startDate: S.String,
+    endDate: S.String,
+  }),
+).annotate({
+  identifier: "ScheduleProperties",
+}) as any as S.Schema<ScheduleProperties>;
+
+/** Status of the scheduled action. */
+export type ScheduledActionStatus = "Enabled" | "Expired" | "Disabled";
+export const ScheduledActionStatus = /*@__PURE__*/ S.String;
+
+/** The properties of the scheduled action. */
+export interface ScheduledActionProperties {
+  /** Scheduled action name. */
+  displayName: string;
+  /** Destination format of the view data. This is optional. */
+  fileDestination?: FileDestination;
+  /** Notification properties based on scheduled action kind. */
+  notification: NotificationProperties;
+  /** Email address of the point of contact that should get the unsubscribe requests and notification emails. */
+  notificationEmail?: string;
+  /** Schedule of the scheduled action. */
+  schedule: ScheduleProperties;
+  /** For private scheduled action(Create or Update), scope will be empty.<br /> For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope. */
+  scope?: string;
+  /** Status of the scheduled action. */
+  status: ScheduledActionStatus | (string & {});
+  /** Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample' */
+  viewId: string;
+}
+export const ScheduledActionProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.String,
+    fileDestination: S.optional(FileDestination),
+    notification: NotificationProperties,
+    notificationEmail: S.optional(S.String),
+    schedule: ScheduleProperties,
+    scope: S.optional(S.String),
+    status: ScheduledActionStatus,
+    viewId: S.String,
+  }),
+).annotate({
+  identifier: "ScheduledActionProperties",
+}) as any as S.Schema<ScheduledActionProperties>;
+
+/** Kind of the scheduled action. */
+export type ScheduledActionKind = "Email" | "InsightAlert";
+export const ScheduledActionKind = /*@__PURE__*/ S.String;
+
+export interface GetScheduledActionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4267,28 +3893,1351 @@ export interface MarkupRulesGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Markup rule properties */
-  properties?: MarkupRuleProperties;
+  /** The properties of the scheduled action. */
+  properties?: ScheduledActionProperties;
+  /** Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required. */
+  eTag?: string;
+  /** Kind of the scheduled action. */
+  kind?: ScheduledActionKind;
 }
-export const MarkupRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetScheduledActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(MarkupRuleProperties),
+    properties: S.optional(ScheduledActionProperties),
+    eTag: S.optional(S.String),
+    kind: S.optional(ScheduledActionKind),
   }),
 ).annotate({
-  identifier: "MarkupRulesGetResponse",
-}) as any as S.Schema<MarkupRulesGetResponse>;
+  identifier: "GetScheduledActionResponse",
+}) as any as S.Schema<GetScheduledActionResponse>;
 
-export interface MarkupRulesListRequest {
+export interface GetScheduledActionByScopeRequest {
+  /** undefined */
+  scope: string;
+  /** Scheduled action name. */
+  name: string;
+}
+export const GetScheduledActionByScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetScheduledActionByScopeRequest",
+}) as any as S.Schema<GetScheduledActionByScopeRequest>;
+
+export interface GetScheduledActionByScopeResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the scheduled action. */
+  properties?: ScheduledActionProperties;
+  /** Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required. */
+  eTag?: string;
+  /** Kind of the scheduled action. */
+  kind?: ScheduledActionKind;
+}
+export const GetScheduledActionByScopeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ScheduledActionProperties),
+    eTag: S.optional(S.String),
+    kind: S.optional(ScheduledActionKind),
+  }),
+).annotate({
+  identifier: "GetScheduledActionByScopeResponse",
+}) as any as S.Schema<GetScheduledActionByScopeResponse>;
+
+export type SettingsGetByScopeRequestType = "taginheritance";
+export const SettingsGetByScopeRequestType = /*@__PURE__*/ S.String;
+
+export interface GetSettingByScopeRequest {
+  /** undefined */
+  scope: string;
+  /** Setting type. */
+  type: SettingsGetByScopeRequestType | (string & {});
+}
+export const GetSettingByScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    type: SettingsGetByScopeRequestType.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingByScopeRequest",
+}) as any as S.Schema<GetSettingByScopeRequest>;
+
+/** Specifies the kind of settings. */
+export type SettingsKind = "taginheritance";
+export const SettingsKind = /*@__PURE__*/ S.String;
+
+export interface GetSettingByScopeResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind: SettingsKind;
+}
+export const GetSettingByScopeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    kind: SettingsKind,
+  }),
+).annotate({
+  identifier: "GetSettingByScopeResponse",
+}) as any as S.Schema<GetSettingByScopeResponse>;
+
+export interface GetViewRequest {
+  /** View name */
+  viewName: string;
+}
+export const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    viewName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.CostManagement/views/{viewName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({ identifier: "GetViewRequest" }) as any as S.Schema<GetViewRequest>;
+
+/** The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates. */
+export type ReportType = "Usage";
+export const ReportType = /*@__PURE__*/ S.String;
+
+/** The time frame for pulling data for the report. If custom, then a specific time period must be provided. */
+export type ReportTimeframeType =
+  | "WeekToDate"
+  | "MonthToDate"
+  | "YearToDate"
+  | "Custom";
+export const ReportTimeframeType = /*@__PURE__*/ S.String;
+
+/** The start and end date for pulling data for the report. */
+export type ReportConfigTimePeriod = ForecastTimePeriod;
+export const ReportConfigTimePeriod = ForecastTimePeriod;
+
+/** The granularity of rows in the report. */
+export type ReportGranularityType = "Daily" | "Monthly";
+export const ReportGranularityType = /*@__PURE__*/ S.String;
+
+/** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
+export type ReportConfigDatasetConfigurationColumnsList = Array<string>;
+export const ReportConfigDatasetConfigurationColumnsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ReportConfigDatasetConfigurationColumnsList>;
+
+/** The configuration of dataset in the report. */
+export interface ReportConfigDatasetConfiguration {
+  /** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
+  columns?: ReportConfigDatasetConfigurationColumnsList;
+}
+export const ReportConfigDatasetConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    columns: S.optional(ReportConfigDatasetConfigurationColumnsList),
+  }),
+).annotate({
+  identifier: "ReportConfigDatasetConfiguration",
+}) as any as S.Schema<ReportConfigDatasetConfiguration>;
+
+/** The aggregation expression to be used in the report. */
+export interface ReportConfigAggregation {
+  /** The name of the column to aggregate. */
+  name: string;
+  /** The name of the aggregation function to use. */
+  function: FunctionType | (string & {});
+}
+export const ReportConfigAggregation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    function: FunctionType,
+  }),
+).annotate({
+  identifier: "ReportConfigAggregation",
+}) as any as S.Schema<ReportConfigAggregation>;
+
+/** Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses. */
+export type ReportConfigDatasetAggregationMap = {
+  [key: string]: ReportConfigAggregation | undefined;
+};
+export const ReportConfigDatasetAggregationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ReportConfigAggregation,
+) as any as S.Schema<ReportConfigDatasetAggregationMap>;
+
+/** The type of the column in the report. */
+export type QueryColumnType = "TagKey" | "Dimension";
+export const QueryColumnType = /*@__PURE__*/ S.String;
+
+/** The group by expression to be used in the report. */
+export interface ReportConfigGrouping {
+  /** Has type of the column to group. */
+  type: QueryColumnType | (string & {});
+  /** The name of the column to group. This version supports subscription lowest possible grain. */
+  name: string;
+}
+export const ReportConfigGrouping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: QueryColumnType,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "ReportConfigGrouping",
+}) as any as S.Schema<ReportConfigGrouping>;
+
+/** Array of group by expression to use in the report. Report can have up to 2 group by clauses. */
+export type ReportConfigDatasetGroupingList = Array<ReportConfigGrouping>;
+export const ReportConfigDatasetGroupingList = /*@__PURE__*/ S.Array(
+  ReportConfigGrouping,
+) as any as S.Schema<ReportConfigDatasetGroupingList>;
+
+/** Direction of sort. */
+export type ReportConfigSortingType = "Ascending" | "Descending";
+export const ReportConfigSortingType = /*@__PURE__*/ S.String;
+
+/** The order by expression to be used in the report. */
+export interface ReportConfigSorting {
+  /** Direction of sort. */
+  direction?: ReportConfigSortingType | (string & {});
+  /** The name of the column to sort. */
+  name: string;
+}
+export const ReportConfigSorting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    direction: S.optional(ReportConfigSortingType),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "ReportConfigSorting",
+}) as any as S.Schema<ReportConfigSorting>;
+
+/** Array of order by expression to use in the report. */
+export type ReportConfigDatasetSortingList = Array<ReportConfigSorting>;
+export const ReportConfigDatasetSortingList = /*@__PURE__*/ S.Array(
+  ReportConfigSorting,
+) as any as S.Schema<ReportConfigDatasetSortingList>;
+
+/** The logical "AND" expression. Must have at least 2 items. */
+export type ReportConfigFilterAndList = Array<ReportConfigFilter>;
+export const ReportConfigFilterAndList = /*@__PURE__*/ S.Array(
+  S.suspend(() => ReportConfigFilter),
+) as any as S.Schema<ReportConfigFilterAndList>;
+
+/** The logical "OR" expression. Must have at least 2 items. */
+export type ReportConfigFilterOrList = Array<ReportConfigFilter>;
+export const ReportConfigFilterOrList = /*@__PURE__*/ S.Array(
+  S.suspend(() => ReportConfigFilter),
+) as any as S.Schema<ReportConfigFilterOrList>;
+
+/** The operator to use for comparison. */
+export type OperatorType = "In" | "Contains";
+export const OperatorType = /*@__PURE__*/ S.String;
+
+/** Array of values to use for comparison */
+export type ReportConfigComparisonExpressionValuesList = Array<string>;
+export const ReportConfigComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ReportConfigComparisonExpressionValuesList>;
+
+/** The comparison expression to be used in the report. */
+export interface ReportConfigComparisonExpression {
+  /** The name of the column to use in comparison. */
+  name: string;
+  /** The operator to use for comparison. */
+  operator: OperatorType | (string & {});
+  /** Array of values to use for comparison */
+  values: ReportConfigComparisonExpressionValuesList;
+}
+export const ReportConfigComparisonExpression = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    operator: OperatorType,
+    values: ReportConfigComparisonExpressionValuesList,
+  }),
+).annotate({
+  identifier: "ReportConfigComparisonExpression",
+}) as any as S.Schema<ReportConfigComparisonExpression>;
+
+/** The filter expression to be used in the report. */
+export interface ReportConfigFilter {
+  /** The logical "AND" expression. Must have at least 2 items. */
+  and?: ReportConfigFilterAndList;
+  /** The logical "OR" expression. Must have at least 2 items. */
+  or?: ReportConfigFilterOrList;
+  /** Has comparison expression for a dimension */
+  dimensions?: ReportConfigComparisonExpression;
+  /** Has comparison expression for a tag */
+  tags?: ReportConfigComparisonExpression;
+}
+export const ReportConfigFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    and: S.optional(ReportConfigFilterAndList),
+    or: S.optional(ReportConfigFilterOrList),
+    dimensions: S.optional(ReportConfigComparisonExpression),
+    tags: S.optional(ReportConfigComparisonExpression),
+  }),
+).annotate({
+  identifier: "ReportConfigFilter",
+}) as any as S.Schema<ReportConfigFilter>;
+
+/** The definition of data present in the report. */
+export interface ReportConfigDataset {
+  /** The granularity of rows in the report. */
+  granularity?: ReportGranularityType | (string & {});
+  /** Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided. */
+  configuration?: ReportConfigDatasetConfiguration;
+  /** Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses. */
+  aggregation?: ReportConfigDatasetAggregationMap;
+  /** Array of group by expression to use in the report. Report can have up to 2 group by clauses. */
+  grouping?: ReportConfigDatasetGroupingList;
+  /** Array of order by expression to use in the report. */
+  sorting?: ReportConfigDatasetSortingList;
+  /** Has filter expression to use in the report. */
+  filter?: ReportConfigFilter;
+}
+export const ReportConfigDataset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    granularity: S.optional(ReportGranularityType),
+    configuration: S.optional(ReportConfigDatasetConfiguration),
+    aggregation: S.optional(ReportConfigDatasetAggregationMap),
+    grouping: S.optional(ReportConfigDatasetGroupingList),
+    sorting: S.optional(ReportConfigDatasetSortingList),
+    filter: S.optional(ReportConfigFilter),
+  }),
+).annotate({
+  identifier: "ReportConfigDataset",
+}) as any as S.Schema<ReportConfigDataset>;
+
+/** The definition of a report config. */
+export interface ReportConfigDefinition {
+  /** The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates. */
+  type: ReportType | (string & {});
+  /** The time frame for pulling data for the report. If custom, then a specific time period must be provided. */
+  timeframe: ReportTimeframeType | (string & {});
+  /** Has time period for pulling data for the report. */
+  timePeriod?: ForecastTimePeriod;
+  /** Has definition for data in this report config. */
+  dataSet?: ReportConfigDataset;
+  /** If true, report includes monetary commitment. */
+  includeMonetaryCommitment?: boolean;
+}
+export const ReportConfigDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ReportType,
+    timeframe: ReportTimeframeType,
+    timePeriod: S.optional(ForecastTimePeriod),
+    dataSet: S.optional(ReportConfigDataset),
+    includeMonetaryCommitment: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ReportConfigDefinition",
+}) as any as S.Schema<ReportConfigDefinition>;
+
+/** Chart type of the main view in Cost Analysis. Required. */
+export type ChartType =
+  | "Area"
+  | "Line"
+  | "StackedColumn"
+  | "GroupedColumn"
+  | "Table";
+export const ChartType = /*@__PURE__*/ S.String;
+
+/** Show costs accumulated over time. */
+export type AccumulatedType = "true" | "false";
+export const AccumulatedType = /*@__PURE__*/ S.String;
+
+/** Metric to use when displaying costs. */
+export type MetricType = "ActualCost" | "AmortizedCost" | "AHUB";
+export const MetricType = /*@__PURE__*/ S.String;
+
+/** KPI type (Forecast, Budget). */
+export type KpiTypeType = "Forecast" | "Budget";
+export const KpiTypeType = /*@__PURE__*/ S.String;
+
+/** Each KPI must contain a 'type' and 'enabled' key. */
+export interface KpiProperties {
+  /** KPI type (Forecast, Budget). */
+  type?: KpiTypeType | (string & {});
+  /** ID of resource related to metric (budget). */
+  id?: string;
+  /** show the KPI in the UI? */
+  enabled?: boolean;
+}
+export const KpiProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(KpiTypeType),
+    id: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "KpiProperties" }) as any as S.Schema<KpiProperties>;
+
+/** List of KPIs to show in Cost Analysis UI. */
+export type ViewPropertiesKpisList = Array<KpiProperties>;
+export const ViewPropertiesKpisList = /*@__PURE__*/ S.Array(
+  KpiProperties,
+) as any as S.Schema<ViewPropertiesKpisList>;
+
+/** Data type to show in view. */
+export type PivotTypeType = "Dimension" | "TagKey";
+export const PivotTypeType = /*@__PURE__*/ S.String;
+
+/** Each pivot must contain a 'type' and 'name'. */
+export interface PivotProperties {
+  /** Data type to show in view. */
+  type?: PivotTypeType | (string & {});
+  /** Data field to show in view. */
+  name?: string;
+}
+export const PivotProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(PivotTypeType),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PivotProperties",
+}) as any as S.Schema<PivotProperties>;
+
+/** Configuration of 3 sub-views in the Cost Analysis UI. */
+export type ViewPropertiesPivotsList = Array<PivotProperties>;
+export const ViewPropertiesPivotsList = /*@__PURE__*/ S.Array(
+  PivotProperties,
+) as any as S.Schema<ViewPropertiesPivotsList>;
+
+/** The properties of the view. */
+export interface ViewProperties {
+  /** User input name of the view. Required. */
+  displayName?: string;
+  /** Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope. */
+  scope?: string;
+  /** Date the user created this view. */
+  createdOn?: string;
+  /** Date when the user last modified this view. */
+  modifiedOn?: string;
+  /** Date range of the current view. */
+  dateRange?: string;
+  /** Currency of the current view. */
+  currency?: string;
+  /** Query body configuration. Required. */
+  query?: ReportConfigDefinition;
+  /** Chart type of the main view in Cost Analysis. Required. */
+  chart?: ChartType;
+  /** Show costs accumulated over time. */
+  accumulated?: AccumulatedType;
+  /** Metric to use when displaying costs. */
+  metric?: MetricType;
+  /** List of KPIs to show in Cost Analysis UI. */
+  kpis?: ViewPropertiesKpisList;
+  /** Configuration of 3 sub-views in the Cost Analysis UI. */
+  pivots?: ViewPropertiesPivotsList;
+}
+export const ViewProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    scope: S.optional(S.String),
+    createdOn: S.optional(S.String),
+    modifiedOn: S.optional(S.String),
+    dateRange: S.optional(S.String),
+    currency: S.optional(S.String),
+    query: S.optional(ReportConfigDefinition),
+    chart: S.optional(ChartType),
+    accumulated: S.optional(AccumulatedType),
+    metric: S.optional(MetricType),
+    kpis: S.optional(ViewPropertiesKpisList),
+    pivots: S.optional(ViewPropertiesPivotsList),
+  }),
+).annotate({ identifier: "ViewProperties" }) as any as S.Schema<ViewProperties>;
+
+export interface GetViewResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the view. */
+  properties?: ViewProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const GetViewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ViewProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetViewResponse",
+}) as any as S.Schema<GetViewResponse>;
+
+export interface GetViewByScopeRequest {
+  /** undefined */
+  scope: string;
+  /** View name */
+  viewName: string;
+}
+export const GetViewByScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    viewName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetViewByScopeRequest",
+}) as any as S.Schema<GetViewByScopeRequest>;
+
+export interface GetViewByScopeResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the view. */
+  properties?: ViewProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const GetViewByScopeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ViewProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetViewByScopeResponse",
+}) as any as S.Schema<GetViewByScopeResponse>;
+
+export type AlertsListExternalRequestExternalCloudProviderType =
+  | "externalSubscriptions"
+  | "externalBillingAccounts";
+export const AlertsListExternalRequestExternalCloudProviderType =
+  /*@__PURE__*/ S.String;
+
+export interface ListAlertExternalRequest {
+  /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
+  externalCloudProviderType:
+    | AlertsListExternalRequestExternalCloudProviderType
+    | (string & {});
+  /** This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations. */
+  externalCloudProviderId: string;
+}
+export const ListAlertExternalRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    externalCloudProviderType:
+      AlertsListExternalRequestExternalCloudProviderType.pipe(T.Label()),
+    externalCloudProviderId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/alerts",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAlertExternalRequest",
+}) as any as S.Schema<ListAlertExternalRequest>;
+
+/** An individual alert. */
+export interface Alert {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Alert properties. */
+  properties?: AlertProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const Alert = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AlertProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
+
+/** List of alerts. */
+export type AlertsResultValueList = Array<Alert>;
+export const AlertsResultValueList = /*@__PURE__*/ S.Array(
+  Alert,
+) as any as S.Schema<AlertsResultValueList>;
+
+/** Result of alerts. */
+export interface AlertsResult {
+  /** List of alerts. */
+  value?: AlertsResultValueList;
+  /** URL to get the next set of alerts results if there are any. */
+  nextLink?: string;
+}
+export const AlertsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(AlertsResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "AlertsResult" }) as any as S.Schema<AlertsResult>;
+
+export interface ListAlertsRequest {
+  /** The scope associated with alerts operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
+  scope: string;
+}
+export const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/alerts",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAlertsRequest",
+}) as any as S.Schema<ListAlertsRequest>;
+
+export interface ListBenefitRecommendationsRequest {
+  /** The scope associated with benefit recommendation operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resource group scope, /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for enterprise agreement scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope */
+  billingScope: string;
+  /** Can be used to filter benefitRecommendations by: properties/scope with allowed values ['Single', 'Shared'] and default value 'Shared'; and properties/lookBackPeriod with allowed values ['Last7Days', 'Last30Days', 'Last60Days'] and default value 'Last60Days'; properties/term with allowed values ['P1Y', 'P3Y'] and default value 'P3Y'; properties/subscriptionId; properties/resourceGroup */
+  _filter?: string;
+  /** May be used to order the recommendations by: properties/armSkuName. For the savings plan, the results are in order by default. There is no need to use this clause. */
+  _orderby?: string;
+  /** May be used to expand the properties by: properties/usage, properties/allRecommendationDetails */
+  _expand?: string;
+}
+export const ListBenefitRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingScope: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{billingScope}/providers/Microsoft.CostManagement/benefitRecommendations",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListBenefitRecommendationsRequest",
+}) as any as S.Schema<ListBenefitRecommendationsRequest>;
+
+/** The number of days used to look back. */
+export type LookBackPeriod = "Last7Days" | "Last30Days" | "Last60Days";
+export const LookBackPeriod = /*@__PURE__*/ S.String;
+
+/** On-demand charges for each hour between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
+export type RecommendationUsageDetailsChargesList = Array<number>;
+export const RecommendationUsageDetailsChargesList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<RecommendationUsageDetailsChargesList>;
+
+/** On-demand charges between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
+export interface RecommendationUsageDetails {
+  /** The grain of the usage. Supported values: 'Hourly' */
+  usageGrain?: Grain;
+  /** On-demand charges for each hour between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
+  charges?: RecommendationUsageDetailsChargesList;
+}
+export const RecommendationUsageDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    usageGrain: S.optional(Grain),
+    charges: S.optional(RecommendationUsageDetailsChargesList),
+  }),
+).annotate({
+  identifier: "RecommendationUsageDetails",
+}) as any as S.Schema<RecommendationUsageDetails>;
+
+/** Grain which corresponds to value. */
+export type Term = "P1Y" | "P3Y";
+export const Term = /*@__PURE__*/ S.String;
+
+/** Benefit recommendation details. */
+export interface AllSavingsBenefitDetails {
+  /** The difference between total cost and benefit cost for the 'totalHours' in the look-back period. */
+  overageCost?: number;
+  /** The estimated cost with benefit for the 'totalHours' in the look-back period. It's equal to (commitmentAmount * totalHours) */
+  benefitCost?: number;
+  /** Total cost, which is sum of benefit cost and overage cost. */
+  totalCost?: number;
+  /** The amount saved for the 'totalHours' in the look-back period, by purchasing the recommended quantity of the benefit. */
+  savingsAmount?: number;
+  /** The savings in percentage for the 'totalHours' in the look-back period, by purchasing the recommended quantity of benefit. */
+  savingsPercentage?: number;
+  /** Estimated benefit coverage percentage for the 'totalHours' in the look-back period, with this commitment. */
+  coveragePercentage?: number;
+  /** The commitment amount at the commitmentGranularity. */
+  commitmentAmount?: number;
+  /** Estimated average utilization percentage for the 'totalHours' in the look-back period, with this commitment. */
+  averageUtilizationPercentage?: number;
+  /** Estimated unused portion of the 'benefitCost'. */
+  wastageCost?: number;
+}
+export const AllSavingsBenefitDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    overageCost: S.optional(S.Number),
+    benefitCost: S.optional(S.Number),
+    totalCost: S.optional(S.Number),
+    savingsAmount: S.optional(S.Number),
+    savingsPercentage: S.optional(S.Number),
+    coveragePercentage: S.optional(S.Number),
+    commitmentAmount: S.optional(S.Number),
+    averageUtilizationPercentage: S.optional(S.Number),
+    wastageCost: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AllSavingsBenefitDetails",
+}) as any as S.Schema<AllSavingsBenefitDetails>;
+
+/** The list of benefit recommendations with the recommendation details.. */
+export type AllSavingsListValueList = Array<AllSavingsBenefitDetails>;
+export const AllSavingsListValueList = /*@__PURE__*/ S.Array(
+  AllSavingsBenefitDetails,
+) as any as S.Schema<AllSavingsListValueList>;
+
+/** The list of all benefit recommendations with the recommendation details. */
+export interface AllSavingsList {
+  /** The list of benefit recommendations with the recommendation details.. */
+  value?: AllSavingsListValueList;
+  /** The link (URL) to the next page of results. */
+  nextLink?: string;
+}
+export const AllSavingsList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(AllSavingsListValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "AllSavingsList" }) as any as S.Schema<AllSavingsList>;
+
+/** Kind of the recommendation scope. */
+export type Scope = "Single" | "Shared" | "ManagementGroup";
+export const Scope = /*@__PURE__*/ S.String;
+
+/** The properties of the benefit recommendations. */
+export interface BenefitRecommendationProperties {
+  /** The first usage date used for looking back for computing the recommendations. */
+  firstConsumptionDate?: string;
+  /** The last usage date used for looking back for computing the recommendations. */
+  lastConsumptionDate?: string;
+  /** The number of days of usage evaluated for computing the recommendations. */
+  lookBackPeriod?: LookBackPeriod;
+  /** The total hours for which the cost is covered. Its equal to number of records in a property 'properties/usage/charges'. */
+  totalHours?: number;
+  /** On-demand charges between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
+  usage?: RecommendationUsageDetails;
+  /** ARM SKU name. 'Compute_Savings_Plan' for SavingsPlan. */
+  armSkuName?: string;
+  /** Term period of the benefit. For example, P1Y or P3Y. */
+  term?: Term;
+  /** Grain of the proposed commitment amount. Supported values: 'Hourly' */
+  commitmentGranularity?: Grain;
+  /** An ISO 4217 currency code identifier for the costs and savings amounts. */
+  currencyCode?: string;
+  /** The current cost without benefit, corresponds to 'totalHours' in the look-back period. */
+  costWithoutBenefit?: number;
+  /** The details of the proposed recommendation. */
+  recommendationDetails?: AllSavingsBenefitDetails;
+  /** The list of all benefit recommendations with the recommendation details. */
+  allRecommendationDetails?: AllSavingsList;
+  /** Benefit scope. For example, Single or Shared. */
+  scope: Scope;
+}
+export const BenefitRecommendationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    firstConsumptionDate: S.optional(S.String),
+    lastConsumptionDate: S.optional(S.String),
+    lookBackPeriod: S.optional(LookBackPeriod),
+    totalHours: S.optional(S.Number),
+    usage: S.optional(RecommendationUsageDetails),
+    armSkuName: S.optional(S.String),
+    term: S.optional(Term),
+    commitmentGranularity: S.optional(Grain),
+    currencyCode: S.optional(S.String),
+    costWithoutBenefit: S.optional(S.Number),
+    recommendationDetails: S.optional(AllSavingsBenefitDetails),
+    allRecommendationDetails: S.optional(AllSavingsList),
+    scope: Scope,
+  }),
+).annotate({
+  identifier: "BenefitRecommendationProperties",
+}) as any as S.Schema<BenefitRecommendationProperties>;
+
+/** benefit plan recommendation details. */
+export interface BenefitRecommendationModel {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Reservation or SavingsPlan. */
+  kind?: BenefitKind;
+  /** The properties of the benefit recommendations. */
+  properties?: BenefitRecommendationProperties;
+}
+export const BenefitRecommendationModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    kind: S.optional(BenefitKind),
+    properties: S.optional(BenefitRecommendationProperties),
+  }),
+).annotate({
+  identifier: "BenefitRecommendationModel",
+}) as any as S.Schema<BenefitRecommendationModel>;
+
+/** The list of benefit recommendations. */
+export type BenefitRecommendationsListResultValueList =
+  Array<BenefitRecommendationModel>;
+export const BenefitRecommendationsListResultValueList = /*@__PURE__*/ S.Array(
+  BenefitRecommendationModel,
+) as any as S.Schema<BenefitRecommendationsListResultValueList>;
+
+/** Result of listing benefit recommendations. */
+export interface ListBenefitRecommendationsResult {
+  /** The list of benefit recommendations. */
+  value?: BenefitRecommendationsListResultValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const ListBenefitRecommendationsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(BenefitRecommendationsListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBenefitRecommendationsResult",
+}) as any as S.Schema<ListBenefitRecommendationsResult>;
+
+export type BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter =
+  | "Hourly"
+  | "Daily"
+  | "Monthly";
+export const BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter =
+  /*@__PURE__*/ S.String;
+
+export interface ListBenefitUtilizationSummaryByBillingAccountIdRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** Grain. */
+  grainParameter?:
+    | BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter
+    | (string & {});
+  /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
+  filter?: string;
+}
+export const ListBenefitUtilizationSummaryByBillingAccountIdRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      billingAccountId: S.String.pipe(T.Label()),
+      grainParameter: S.optional(
+        BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter.pipe(
+          T.Query(),
+        ),
+      ),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListBenefitUtilizationSummaryByBillingAccountIdRequest",
+  }) as any as S.Schema<ListBenefitUtilizationSummaryByBillingAccountIdRequest>;
+
+/** Benefit utilization summary resource. */
+export interface BenefitUtilizationSummary {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Supported values: 'SavingsPlan'. */
+  kind: BenefitKind;
+}
+export const BenefitUtilizationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    kind: BenefitKind,
+  }),
+).annotate({
+  identifier: "BenefitUtilizationSummary",
+}) as any as S.Schema<BenefitUtilizationSummary>;
+
+/** The list of benefit utilization summaries. */
+export type BenefitUtilizationSummariesListResultValueList =
+  Array<BenefitUtilizationSummary>;
+export const BenefitUtilizationSummariesListResultValueList =
+  /*@__PURE__*/ S.Array(
+    BenefitUtilizationSummary,
+  ) as any as S.Schema<BenefitUtilizationSummariesListResultValueList>;
+
+/** List of benefit utilization summaries. */
+export interface BenefitUtilizationSummariesListResult {
+  /** The list of benefit utilization summaries. */
+  value?: BenefitUtilizationSummariesListResultValueList;
+  /** The link (URL) to the next page of results. */
+  nextLink?: string;
+}
+export const BenefitUtilizationSummariesListResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: S.optional(BenefitUtilizationSummariesListResultValueList),
+      nextLink: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "BenefitUtilizationSummariesListResult",
+}) as any as S.Schema<BenefitUtilizationSummariesListResult>;
+
+export type BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter =
+  | "Hourly"
+  | "Daily"
+  | "Monthly";
+export const BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter =
+  /*@__PURE__*/ S.String;
+
+export interface ListBenefitUtilizationSummaryByBillingProfileIdRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** Billing Profile ID. */
+  billingProfileId: string;
+  /** Grain. */
+  grainParameter?:
+    | BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter
+    | (string & {});
+  /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
+  filter?: string;
+}
+export const ListBenefitUtilizationSummaryByBillingProfileIdRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      billingAccountId: S.String.pipe(T.Label()),
+      billingProfileId: S.String.pipe(T.Label()),
+      grainParameter: S.optional(
+        BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter.pipe(
+          T.Query(),
+        ),
+      ),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListBenefitUtilizationSummaryByBillingProfileIdRequest",
+  }) as any as S.Schema<ListBenefitUtilizationSummaryByBillingProfileIdRequest>;
+
+export type BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter =
+  | "Hourly"
+  | "Daily"
+  | "Monthly";
+export const BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter =
+  /*@__PURE__*/ S.String;
+
+export interface ListBenefitUtilizationSummaryBySavingPlanIdRequest {
+  /** Savings plan order ID. */
+  savingsPlanOrderId: string;
+  /** Savings plan ID. */
+  savingsPlanId: string;
+  /** Supports filtering by properties/usageDate. */
+  _filter?: string;
+  /** Grain. */
+  grainParameter?:
+    | BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter
+    | (string & {});
+}
+export const ListBenefitUtilizationSummaryBySavingPlanIdRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      savingsPlanOrderId: S.String.pipe(T.Label()),
+      savingsPlanId: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      grainParameter: S.optional(
+        BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListBenefitUtilizationSummaryBySavingPlanIdRequest",
+  }) as any as S.Schema<ListBenefitUtilizationSummaryBySavingPlanIdRequest>;
+
+export type BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter =
+  | "Hourly"
+  | "Daily"
+  | "Monthly";
+export const BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter =
+  /*@__PURE__*/ S.String;
+
+export interface ListBenefitUtilizationSummaryBySavingPlanOrderRequest {
+  /** Savings plan order ID. */
+  savingsPlanOrderId: string;
+  /** Supports filtering by properties/usageDate. */
+  _filter?: string;
+  /** Grain. */
+  grainParameter?:
+    | BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter
+    | (string & {});
+}
+export const ListBenefitUtilizationSummaryBySavingPlanOrderRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      savingsPlanOrderId: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      grainParameter: S.optional(
+        BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListBenefitUtilizationSummaryBySavingPlanOrderRequest",
+  }) as any as S.Schema<ListBenefitUtilizationSummaryBySavingPlanOrderRequest>;
+
+export interface ListBudgetsRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** OData filter option. May be used to filter budgets by properties/category. The filter supports 'eq' only. */
+  _filter?: string;
+}
+export const ListBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/budgets",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListBudgetsRequest",
+}) as any as S.Schema<ListBudgetsRequest>;
+
+/** A budget resource. */
+export interface Budget {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the budget. */
+  properties?: BudgetProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const Budget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(BudgetProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
+
+/** The list of budgets. */
+export type BudgetsListResultValueList = Array<Budget>;
+export const BudgetsListResultValueList = /*@__PURE__*/ S.Array(
+  Budget,
+) as any as S.Schema<BudgetsListResultValueList>;
+
+/** Result of listing budgets. It contains a list of available budgets in the scope provided. */
+export interface ListBudgetsResult {
+  /** The list of budgets. */
+  value?: BudgetsListResultValueList;
+  /** The link (url) to the next page of results.\r\nIt's null for now, added for future use. */
+  nextLink?: string;
+}
+export const ListBudgetsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(BudgetsListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBudgetsResult",
+}) as any as S.Schema<ListBudgetsResult>;
+
+export interface ListCostAllocationRulesRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+}
+export const ListCostAllocationRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListCostAllocationRulesRequest",
+}) as any as S.Schema<ListCostAllocationRulesRequest>;
+
+/** The cost allocation rule model definition */
+export interface CostAllocationRuleDefinition {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Cost allocation rule properties */
+  properties?: CostAllocationRuleProperties;
+}
+export const CostAllocationRuleDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CostAllocationRuleProperties),
+  }),
+).annotate({
+  identifier: "CostAllocationRuleDefinition",
+}) as any as S.Schema<CostAllocationRuleDefinition>;
+
+/** The list of cost allocation rules. */
+export type CostAllocationRuleListValueList =
+  Array<CostAllocationRuleDefinition>;
+export const CostAllocationRuleListValueList = /*@__PURE__*/ S.Array(
+  CostAllocationRuleDefinition,
+) as any as S.Schema<CostAllocationRuleListValueList>;
+
+/** Result of listing cost allocation rules. It contains a list of available rules in the billing account or enterprise enrollment provided. */
+export interface CostAllocationRuleList {
+  /** The list of cost allocation rules. */
+  value?: CostAllocationRuleListValueList;
+  /** URL to get the next set of rule list results if there are any. */
+  nextLink?: string;
+}
+export const CostAllocationRuleList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(CostAllocationRuleListValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CostAllocationRuleList",
+}) as any as S.Schema<CostAllocationRuleList>;
+
+export interface ListDimensionsRequest {
+  /** The scope associated with dimension operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
+  scope: string;
+  /** May be used to filter dimensions by properties/category, properties/usageStart, properties/usageEnd. Supported operators are 'eq','lt', 'gt', 'le', 'ge'. */
+  _filter?: string;
+  /** May be used to expand the properties/data within a dimension category. By default, data is not included when listing dimensions. */
+  _expand?: string;
+  /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
+  _skiptoken?: string;
+  /** May be used to limit the number of results to the most recent N dimension data. */
+  _top?: number;
+}
+export const ListDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/dimensions",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListDimensionsRequest",
+}) as any as S.Schema<ListDimensionsRequest>;
+
+export interface ListExportsRequest {
+  /** The scope associated with alerts operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
+  scope: string;
+  /** May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last run of each export. */
+  _expand?: string;
+}
+export const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/exports",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListExportsRequest",
+}) as any as S.Schema<ListExportsRequest>;
+
+/** Managed service identity (either system assigned, or none) */
+export type ExportIdentity = ExportsCreateOrUpdateResponseIdentity;
+export const ExportIdentity = ExportsCreateOrUpdateResponseIdentity;
+
+/** An export resource. */
+export interface Export {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the export. */
+  properties?: ExportProperties;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ExportsCreateOrUpdateResponseIdentity;
+  /** The location of the Export's managed identity. Only required when utilizing managed identity. */
+  location?: string;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const Export = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ExportProperties),
+    identity: S.optional(ExportsCreateOrUpdateResponseIdentity),
+    location: S.optional(S.String),
+    eTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "Export" }) as any as S.Schema<Export>;
+
+/** The list of exports. */
+export type ExportListResultValueList = Array<Export>;
+export const ExportListResultValueList = /*@__PURE__*/ S.Array(
+  Export,
+) as any as S.Schema<ExportListResultValueList>;
+
+/** Result of listing exports. It contains a list of available exports in the scope provided. */
+export interface ExportListResult {
+  /** The list of exports. */
+  value?: ExportListResultValueList;
+}
+export const ExportListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ExportListResultValueList),
+  }),
+).annotate({
+  identifier: "ExportListResult",
+}) as any as S.Schema<ExportListResult>;
+
+export interface ListMarkupRulesRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** BillingProfile ID */
   billingProfileId: string;
 }
-export const MarkupRulesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMarkupRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     billingProfileId: S.String.pipe(T.Label()),
@@ -4301,8 +5250,8 @@ export const MarkupRulesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MarkupRulesListRequest",
-}) as any as S.Schema<MarkupRulesListRequest>;
+  identifier: "ListMarkupRulesRequest",
+}) as any as S.Schema<ListMarkupRulesRequest>;
 
 /** Markup rule */
 export interface MarkupRule {
@@ -4349,8 +5298,8 @@ export const MarkupRulePagedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarkupRulePagedResponse",
 }) as any as S.Schema<MarkupRulePagedResponse>;
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -4360,8 +5309,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Localized display information for this particular operation. */
 export interface CostManagementOperationDisplay {
@@ -4442,6 +5391,292 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
+
+export interface ListScheduledActionByScopeRequest {
+  /** undefined */
+  scope: string;
+  /** May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'. */
+  _filter?: string;
+}
+export const ListScheduledActionByScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListScheduledActionByScopeRequest",
+}) as any as S.Schema<ListScheduledActionByScopeRequest>;
+
+/** Scheduled action definition. */
+export interface ScheduledAction {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the scheduled action. */
+  properties?: ScheduledActionProperties;
+  /** Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required. */
+  eTag?: string;
+  /** Kind of the scheduled action. */
+  kind?: ScheduledActionKind;
+}
+export const ScheduledAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ScheduledActionProperties),
+    eTag: S.optional(S.String),
+    kind: S.optional(ScheduledActionKind),
+  }),
+).annotate({
+  identifier: "ScheduledAction",
+}) as any as S.Schema<ScheduledAction>;
+
+/** The list of scheduled actions. */
+export type ScheduledActionListResultValueList = Array<ScheduledAction>;
+export const ScheduledActionListResultValueList = /*@__PURE__*/ S.Array(
+  ScheduledAction,
+) as any as S.Schema<ScheduledActionListResultValueList>;
+
+/** Scheduled actions list result. It contains a list of scheduled actions. */
+export interface ScheduledActionListResult {
+  /** The list of scheduled actions. */
+  value?: ScheduledActionListResultValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const ScheduledActionListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ScheduledActionListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScheduledActionListResult",
+}) as any as S.Schema<ScheduledActionListResult>;
+
+export interface ListScheduledActionsRequest {
+  /** May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'. */
+  _filter?: string;
+}
+export const ListScheduledActionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.CostManagement/scheduledActions",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListScheduledActionsRequest",
+}) as any as S.Schema<ListScheduledActionsRequest>;
+
+export interface ListSettingsRequest {
+  /** undefined */
+  scope: string;
+}
+export const ListSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/settings",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSettingsRequest",
+}) as any as S.Schema<ListSettingsRequest>;
+
+/** Setting definition. */
+export interface Setting {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind: SettingsKind;
+}
+export const Setting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    kind: SettingsKind,
+  }),
+).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
+
+/** The list of settings. */
+export type SettingsListResultValueList = Array<Setting>;
+export const SettingsListResultValueList = /*@__PURE__*/ S.Array(
+  Setting,
+) as any as S.Schema<SettingsListResultValueList>;
+
+/** Setting list result. It contains a list of settings. */
+export interface ListSettingsResult {
+  /** The list of settings. */
+  value?: SettingsListResultValueList;
+}
+export const ListSettingsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SettingsListResultValueList),
+  }),
+).annotate({
+  identifier: "ListSettingsResult",
+}) as any as S.Schema<ListSettingsResult>;
+
+export interface ListViewByScopeRequest {
+  /** undefined */
+  scope: string;
+}
+export const ListViewByScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.CostManagement/views",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListViewByScopeRequest",
+}) as any as S.Schema<ListViewByScopeRequest>;
+
+/** States and configurations of Cost Analysis. */
+export interface View {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the view. */
+  properties?: ViewProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const View = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ViewProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "View" }) as any as S.Schema<View>;
+
+/** The list of views. */
+export type ViewListResultValueList = Array<View>;
+export const ViewListResultValueList = /*@__PURE__*/ S.Array(
+  View,
+) as any as S.Schema<ViewListResultValueList>;
+
+/** Result of listing views. It contains a list of available views. */
+export interface ViewListResult {
+  /** The list of views. */
+  value?: ViewListResultValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const ViewListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ViewListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "ViewListResult" }) as any as S.Schema<ViewListResult>;
+
+export interface ListViewsRequest {}
+export const ListViewsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.CostManagement/views",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListViewsRequest",
+}) as any as S.Schema<ListViewsRequest>;
+
+export interface MarkupRulesCreateOrUpdateRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** BillingProfile ID */
+  billingProfileId: string;
+  /** Markup rule name. */
+  ruleName: string;
+  /** Markup rule properties */
+  properties?: MarkupRuleProperties;
+}
+export const MarkupRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+    ruleName: S.String.pipe(T.Label()),
+    properties: S.optional(MarkupRuleProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "MarkupRulesCreateOrUpdateRequest",
+}) as any as S.Schema<MarkupRulesCreateOrUpdateRequest>;
+
+export interface MarkupRulesCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Markup rule properties */
+  properties?: MarkupRuleProperties;
+}
+export const MarkupRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(MarkupRuleProperties),
+  }),
+).annotate({
+  identifier: "MarkupRulesCreateOrUpdateResponse",
+}) as any as S.Schema<MarkupRulesCreateOrUpdateResponse>;
 
 export interface PriceSheetDownloadByBillingAccountRequest {
   /** BillingAccount ID */
@@ -4645,33 +5880,17 @@ export const QueryDatasetConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryDatasetConfiguration>;
 
 /** The aggregation expression to be used in the query. */
-export interface QueryAggregation {
-  /** The name of the column to aggregate. */
-  name: string;
-  /** The name of the aggregation function to use. */
-  function: FunctionType | (string & {});
-}
-export const QueryAggregation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    function: FunctionType,
-  }),
-).annotate({
-  identifier: "QueryAggregation",
-}) as any as S.Schema<QueryAggregation>;
+export type QueryAggregation = ReportConfigAggregation;
+export const QueryAggregation = ReportConfigAggregation;
 
 /** Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses. */
 export type QueryDatasetAggregationMap = {
-  [key: string]: QueryAggregation | undefined;
+  [key: string]: ReportConfigAggregation | undefined;
 };
 export const QueryDatasetAggregationMap = /*@__PURE__*/ S.Record(
   S.String,
-  QueryAggregation,
+  ReportConfigAggregation,
 ) as any as S.Schema<QueryDatasetAggregationMap>;
-
-/** The type of the column in the report. */
-export type QueryColumnType = "TagKey" | "Dimension";
-export const QueryColumnType = /*@__PURE__*/ S.String;
 
 /** The group by expression to be used in the query. */
 export interface QueryGrouping {
@@ -4978,271 +6197,6 @@ export const QueryUsageByExternalCloudProviderTypeResponse =
     identifier: "QueryUsageByExternalCloudProviderTypeResponse",
   }) as any as S.Schema<QueryUsageByExternalCloudProviderTypeResponse>;
 
-export interface ScheduledActionsCheckNameAvailabilityRequest {
-  /** The name of the resource for which availability needs to be checked. */
-  name?: string;
-  /** The resource type. */
-  type?: string;
-}
-export const ScheduledActionsCheckNameAvailabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.CostManagement/checkNameAvailability",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ScheduledActionsCheckNameAvailabilityRequest",
-  }) as any as S.Schema<ScheduledActionsCheckNameAvailabilityRequest>;
-
-/** The reason why the given name is not available. */
-export type ScheduledActionsCheckNameAvailabilityResponseReason =
-  | "Invalid"
-  | "AlreadyExists";
-export const ScheduledActionsCheckNameAvailabilityResponseReason =
-  /*@__PURE__*/ S.String;
-
-export interface ScheduledActionsCheckNameAvailabilityResponse {
-  /** Indicates if the resource name is available. */
-  nameAvailable?: boolean;
-  /** The reason why the given name is not available. */
-  reason?: ScheduledActionsCheckNameAvailabilityResponseReason;
-  /** Detailed reason why the given name is available. */
-  message?: string;
-}
-export const ScheduledActionsCheckNameAvailabilityResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nameAvailable: S.optional(S.Boolean),
-      reason: S.optional(ScheduledActionsCheckNameAvailabilityResponseReason),
-      message: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ScheduledActionsCheckNameAvailabilityResponse",
-  }) as any as S.Schema<ScheduledActionsCheckNameAvailabilityResponse>;
-
-export interface ScheduledActionsCheckNameAvailabilityByScopeRequest {
-  /** The scope associated with scheduled action operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope. Note: Insight Alerts are only available on subscription scope. */
-  scope: string;
-  /** The name of the resource for which availability needs to be checked. */
-  name?: string;
-  /** The resource type. */
-  type?: string;
-}
-export const ScheduledActionsCheckNameAvailabilityByScopeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scope: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/{scope}/providers/Microsoft.CostManagement/checkNameAvailability",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ScheduledActionsCheckNameAvailabilityByScopeRequest",
-  }) as any as S.Schema<ScheduledActionsCheckNameAvailabilityByScopeRequest>;
-
-/** The reason why the given name is not available. */
-export type ScheduledActionsCheckNameAvailabilityByScopeResponseReason =
-  | "Invalid"
-  | "AlreadyExists";
-export const ScheduledActionsCheckNameAvailabilityByScopeResponseReason =
-  /*@__PURE__*/ S.String;
-
-export interface ScheduledActionsCheckNameAvailabilityByScopeResponse {
-  /** Indicates if the resource name is available. */
-  nameAvailable?: boolean;
-  /** The reason why the given name is not available. */
-  reason?: ScheduledActionsCheckNameAvailabilityByScopeResponseReason;
-  /** Detailed reason why the given name is available. */
-  message?: string;
-}
-export const ScheduledActionsCheckNameAvailabilityByScopeResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nameAvailable: S.optional(S.Boolean),
-      reason: S.optional(
-        ScheduledActionsCheckNameAvailabilityByScopeResponseReason,
-      ),
-      message: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ScheduledActionsCheckNameAvailabilityByScopeResponse",
-  }) as any as S.Schema<ScheduledActionsCheckNameAvailabilityByScopeResponse>;
-
-/** Destination of the view data. Currently only CSV format is supported. */
-export type FileFormat = "Csv";
-export const FileFormat = /*@__PURE__*/ S.String;
-
-/** Destination of the view data. Currently only CSV format is supported. */
-export type FileDestinationFileFormatsList = Array<FileFormat | (string & {})>;
-export const FileDestinationFileFormatsList = /*@__PURE__*/ S.Array(
-  FileFormat,
-) as any as S.Schema<FileDestinationFileFormatsList>;
-
-/** Destination of the view data. This is optional. Currently only CSV format is supported. */
-export interface FileDestination {
-  /** Destination of the view data. Currently only CSV format is supported. */
-  fileFormats?: FileDestinationFileFormatsList;
-}
-export const FileDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileFormats: S.optional(FileDestinationFileFormatsList),
-  }),
-).annotate({
-  identifier: "FileDestination",
-}) as any as S.Schema<FileDestination>;
-
-/** Array of email addresses. */
-export type NotificationPropertiesToList = Array<string>;
-export const NotificationPropertiesToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationPropertiesToList>;
-
-/** The properties of the scheduled action notification. */
-export interface NotificationProperties {
-  /** Array of email addresses. */
-  to: NotificationPropertiesToList;
-  /** Locale of the email. */
-  language?: string;
-  /** Optional message to be added in the email. Length is limited to 250 characters. */
-  message?: string;
-  /** Regional format used for formatting date/time and currency values in the email. */
-  regionalFormat?: string;
-  /** Subject of the email. Length is limited to 70 characters. */
-  subject: string;
-}
-export const NotificationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    to: NotificationPropertiesToList,
-    language: S.optional(S.String),
-    message: S.optional(S.String),
-    regionalFormat: S.optional(S.String),
-    subject: S.String,
-  }),
-).annotate({
-  identifier: "NotificationProperties",
-}) as any as S.Schema<NotificationProperties>;
-
-/** Frequency of the schedule. */
-export type ScheduleFrequency = "Daily" | "Weekly" | "Monthly";
-export const ScheduleFrequency = /*@__PURE__*/ S.String;
-
-/** Days of Week. */
-export type DaysOfWeek =
-  | "Monday"
-  | "Tuesday"
-  | "Wednesday"
-  | "Thursday"
-  | "Friday"
-  | "Saturday"
-  | "Sunday";
-export const DaysOfWeek = /*@__PURE__*/ S.String;
-
-/** Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly. */
-export type SchedulePropertiesDaysOfWeekList = Array<
-  DaysOfWeek | (string & {})
->;
-export const SchedulePropertiesDaysOfWeekList = /*@__PURE__*/ S.Array(
-  DaysOfWeek,
-) as any as S.Schema<SchedulePropertiesDaysOfWeekList>;
-
-/** Weeks of month. */
-export type WeeksOfMonth = "First" | "Second" | "Third" | "Fourth" | "Last";
-export const WeeksOfMonth = /*@__PURE__*/ S.String;
-
-/** Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek. */
-export type SchedulePropertiesWeeksOfMonthList = Array<
-  WeeksOfMonth | (string & {})
->;
-export const SchedulePropertiesWeeksOfMonthList = /*@__PURE__*/ S.Array(
-  WeeksOfMonth,
-) as any as S.Schema<SchedulePropertiesWeeksOfMonthList>;
-
-/** The properties of the schedule. */
-export interface ScheduleProperties {
-  /** Frequency of the schedule. */
-  frequency: ScheduleFrequency | (string & {});
-  /** UTC time at which cost analysis data will be emailed. */
-  hourOfDay?: number;
-  /** Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly. */
-  daysOfWeek?: SchedulePropertiesDaysOfWeekList;
-  /** Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek. */
-  weeksOfMonth?: SchedulePropertiesWeeksOfMonthList;
-  /** UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek. */
-  dayOfMonth?: number;
-  /** The start date and time of the scheduled action (UTC). */
-  startDate: string;
-  /** The end date and time of the scheduled action (UTC). */
-  endDate: string;
-}
-export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frequency: ScheduleFrequency,
-    hourOfDay: S.optional(S.Number),
-    daysOfWeek: S.optional(SchedulePropertiesDaysOfWeekList),
-    weeksOfMonth: S.optional(SchedulePropertiesWeeksOfMonthList),
-    dayOfMonth: S.optional(S.Number),
-    startDate: S.String,
-    endDate: S.String,
-  }),
-).annotate({
-  identifier: "ScheduleProperties",
-}) as any as S.Schema<ScheduleProperties>;
-
-/** Status of the scheduled action. */
-export type ScheduledActionStatus = "Enabled" | "Expired" | "Disabled";
-export const ScheduledActionStatus = /*@__PURE__*/ S.String;
-
-/** The properties of the scheduled action. */
-export interface ScheduledActionProperties {
-  /** Scheduled action name. */
-  displayName: string;
-  /** Destination format of the view data. This is optional. */
-  fileDestination?: FileDestination;
-  /** Notification properties based on scheduled action kind. */
-  notification: NotificationProperties;
-  /** Email address of the point of contact that should get the unsubscribe requests and notification emails. */
-  notificationEmail?: string;
-  /** Schedule of the scheduled action. */
-  schedule: ScheduleProperties;
-  /** For private scheduled action(Create or Update), scope will be empty.<br /> For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope. */
-  scope?: string;
-  /** Status of the scheduled action. */
-  status: ScheduledActionStatus | (string & {});
-  /** Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample' */
-  viewId: string;
-}
-export const ScheduledActionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    fileDestination: S.optional(FileDestination),
-    notification: NotificationProperties,
-    notificationEmail: S.optional(S.String),
-    schedule: ScheduleProperties,
-    scope: S.optional(S.String),
-    status: ScheduledActionStatus,
-    viewId: S.String,
-  }),
-).annotate({
-  identifier: "ScheduledActionProperties",
-}) as any as S.Schema<ScheduledActionProperties>;
-
-/** Kind of the scheduled action. */
-export type ScheduledActionKind = "Email" | "InsightAlert";
-export const ScheduledActionKind = /*@__PURE__*/ S.String;
-
 export interface ScheduledActionsCreateOrUpdateRequest {
   /** Scheduled action name. */
   name: string;
@@ -5366,257 +6320,6 @@ export const ScheduledActionsCreateOrUpdateByScopeResponse =
     identifier: "ScheduledActionsCreateOrUpdateByScopeResponse",
   }) as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeResponse>;
 
-export interface ScheduledActionsDeleteRequest {
-  /** Scheduled action name. */
-  name: string;
-}
-export const ScheduledActionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ScheduledActionsDeleteRequest",
-}) as any as S.Schema<ScheduledActionsDeleteRequest>;
-
-export interface ScheduledActionsDeleteResponse {}
-export const ScheduledActionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ScheduledActionsDeleteResponse",
-}) as any as S.Schema<ScheduledActionsDeleteResponse>;
-
-export interface ScheduledActionsDeleteByScopeRequest {
-  /** undefined */
-  scope: string;
-  /** Scheduled action name. */
-  name: string;
-}
-export const ScheduledActionsDeleteByScopeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scope: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "ScheduledActionsDeleteByScopeRequest",
-}) as any as S.Schema<ScheduledActionsDeleteByScopeRequest>;
-
-export interface ScheduledActionsDeleteByScopeResponse {}
-export const ScheduledActionsDeleteByScopeResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ScheduledActionsDeleteByScopeResponse",
-}) as any as S.Schema<ScheduledActionsDeleteByScopeResponse>;
-
-export interface ScheduledActionsGetRequest {
-  /** Scheduled action name. */
-  name: string;
-}
-export const ScheduledActionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ScheduledActionsGetRequest",
-}) as any as S.Schema<ScheduledActionsGetRequest>;
-
-export interface ScheduledActionsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the scheduled action. */
-  properties?: ScheduledActionProperties;
-  /** Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required. */
-  eTag?: string;
-  /** Kind of the scheduled action. */
-  kind?: ScheduledActionKind;
-}
-export const ScheduledActionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduledActionProperties),
-    eTag: S.optional(S.String),
-    kind: S.optional(ScheduledActionKind),
-  }),
-).annotate({
-  identifier: "ScheduledActionsGetResponse",
-}) as any as S.Schema<ScheduledActionsGetResponse>;
-
-export interface ScheduledActionsGetByScopeRequest {
-  /** undefined */
-  scope: string;
-  /** Scheduled action name. */
-  name: string;
-}
-export const ScheduledActionsGetByScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ScheduledActionsGetByScopeRequest",
-}) as any as S.Schema<ScheduledActionsGetByScopeRequest>;
-
-export interface ScheduledActionsGetByScopeResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the scheduled action. */
-  properties?: ScheduledActionProperties;
-  /** Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required. */
-  eTag?: string;
-  /** Kind of the scheduled action. */
-  kind?: ScheduledActionKind;
-}
-export const ScheduledActionsGetByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduledActionProperties),
-    eTag: S.optional(S.String),
-    kind: S.optional(ScheduledActionKind),
-  }),
-).annotate({
-  identifier: "ScheduledActionsGetByScopeResponse",
-}) as any as S.Schema<ScheduledActionsGetByScopeResponse>;
-
-export interface ScheduledActionsListRequest {
-  /** May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'. */
-  _filter?: string;
-}
-export const ScheduledActionsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.CostManagement/scheduledActions",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ScheduledActionsListRequest",
-}) as any as S.Schema<ScheduledActionsListRequest>;
-
-/** Scheduled action definition. */
-export interface ScheduledAction {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the scheduled action. */
-  properties?: ScheduledActionProperties;
-  /** Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required. */
-  eTag?: string;
-  /** Kind of the scheduled action. */
-  kind?: ScheduledActionKind;
-}
-export const ScheduledAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduledActionProperties),
-    eTag: S.optional(S.String),
-    kind: S.optional(ScheduledActionKind),
-  }),
-).annotate({
-  identifier: "ScheduledAction",
-}) as any as S.Schema<ScheduledAction>;
-
-/** The list of scheduled actions. */
-export type ScheduledActionListResultValueList = Array<ScheduledAction>;
-export const ScheduledActionListResultValueList = /*@__PURE__*/ S.Array(
-  ScheduledAction,
-) as any as S.Schema<ScheduledActionListResultValueList>;
-
-/** Scheduled actions list result. It contains a list of scheduled actions. */
-export interface ScheduledActionListResult {
-  /** The list of scheduled actions. */
-  value?: ScheduledActionListResultValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const ScheduledActionListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ScheduledActionListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScheduledActionListResult",
-}) as any as S.Schema<ScheduledActionListResult>;
-
-export interface ScheduledActionsListByScopeRequest {
-  /** undefined */
-  scope: string;
-  /** May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'. */
-  _filter?: string;
-}
-export const ScheduledActionsListByScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ScheduledActionsListByScopeRequest",
-}) as any as S.Schema<ScheduledActionsListByScopeRequest>;
-
 export interface ScheduledActionsRunRequest {
   /** Scheduled action name. */
   name: string;
@@ -5675,10 +6378,6 @@ export const ScheduledActionsRunByScopeResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsCreateOrUpdateByScopeRequestType = "taginheritance";
 export const SettingsCreateOrUpdateByScopeRequestType = /*@__PURE__*/ S.String;
 
-/** Specifies the kind of settings. */
-export type SettingsKind = "taginheritance";
-export const SettingsKind = /*@__PURE__*/ S.String;
-
 export interface SettingsCreateOrUpdateByScopeRequest {
   /** undefined */
   scope: string;
@@ -5730,428 +6429,11 @@ export const SettingsCreateOrUpdateByScopeResponse = /*@__PURE__*/ S.suspend(
   identifier: "SettingsCreateOrUpdateByScopeResponse",
 }) as any as S.Schema<SettingsCreateOrUpdateByScopeResponse>;
 
-export type SettingsDeleteByScopeRequestType = "taginheritance";
-export const SettingsDeleteByScopeRequestType = /*@__PURE__*/ S.String;
-
-export interface SettingsDeleteByScopeRequest {
-  /** undefined */
-  scope: string;
-  /** Setting type. */
-  type: SettingsDeleteByScopeRequestType | (string & {});
-}
-export const SettingsDeleteByScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    type: SettingsDeleteByScopeRequestType.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SettingsDeleteByScopeRequest",
-}) as any as S.Schema<SettingsDeleteByScopeRequest>;
-
-export interface SettingsDeleteByScopeResponse {}
-export const SettingsDeleteByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SettingsDeleteByScopeResponse",
-}) as any as S.Schema<SettingsDeleteByScopeResponse>;
-
-export type SettingsGetByScopeRequestType = "taginheritance";
-export const SettingsGetByScopeRequestType = /*@__PURE__*/ S.String;
-
-export interface SettingsGetByScopeRequest {
-  /** undefined */
-  scope: string;
-  /** Setting type. */
-  type: SettingsGetByScopeRequestType | (string & {});
-}
-export const SettingsGetByScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    type: SettingsGetByScopeRequestType.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SettingsGetByScopeRequest",
-}) as any as S.Schema<SettingsGetByScopeRequest>;
-
-export interface SettingsGetByScopeResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: SettingsKind;
-}
-export const SettingsGetByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: SettingsKind,
-  }),
-).annotate({
-  identifier: "SettingsGetByScopeResponse",
-}) as any as S.Schema<SettingsGetByScopeResponse>;
-
-export interface SettingsListRequest {
-  /** undefined */
-  scope: string;
-}
-export const SettingsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/settings",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SettingsListRequest",
-}) as any as S.Schema<SettingsListRequest>;
-
-/** Setting definition. */
-export interface Setting {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: SettingsKind;
-}
-export const Setting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: SettingsKind,
-  }),
-).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
-
-/** The list of settings. */
-export type SettingsListResultValueList = Array<Setting>;
-export const SettingsListResultValueList = /*@__PURE__*/ S.Array(
-  Setting,
-) as any as S.Schema<SettingsListResultValueList>;
-
-/** Setting list result. It contains a list of settings. */
-export interface SettingsListResult {
-  /** The list of settings. */
-  value?: SettingsListResultValueList;
-}
-export const SettingsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SettingsListResultValueList),
-  }),
-).annotate({
-  identifier: "SettingsListResult",
-}) as any as S.Schema<SettingsListResult>;
-
-/** The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates. */
-export type ReportType = "Usage";
-export const ReportType = /*@__PURE__*/ S.String;
-
-/** The time frame for pulling data for the report. If custom, then a specific time period must be provided. */
-export type ReportTimeframeType =
-  | "WeekToDate"
-  | "MonthToDate"
-  | "YearToDate"
-  | "Custom";
-export const ReportTimeframeType = /*@__PURE__*/ S.String;
-
-/** The start and end date for pulling data for the report. */
-export type ReportConfigTimePeriod = ForecastTimePeriod;
-export const ReportConfigTimePeriod = ForecastTimePeriod;
-
-/** The granularity of rows in the report. */
-export type ReportGranularityType = "Daily" | "Monthly";
-export const ReportGranularityType = /*@__PURE__*/ S.String;
-
-/** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
-export type ReportConfigDatasetConfigurationColumnsList = Array<string>;
-export const ReportConfigDatasetConfigurationColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReportConfigDatasetConfigurationColumnsList>;
-
-/** The configuration of dataset in the report. */
-export interface ReportConfigDatasetConfiguration {
-  /** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
-  columns?: ReportConfigDatasetConfigurationColumnsList;
-}
-export const ReportConfigDatasetConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(ReportConfigDatasetConfigurationColumnsList),
-  }),
-).annotate({
-  identifier: "ReportConfigDatasetConfiguration",
-}) as any as S.Schema<ReportConfigDatasetConfiguration>;
-
-/** The aggregation expression to be used in the report. */
-export type ReportConfigAggregation = QueryAggregation;
-export const ReportConfigAggregation = QueryAggregation;
-
-/** Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses. */
-export type ReportConfigDatasetAggregationMap = {
-  [key: string]: QueryAggregation | undefined;
-};
-export const ReportConfigDatasetAggregationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  QueryAggregation,
-) as any as S.Schema<ReportConfigDatasetAggregationMap>;
-
-/** The group by expression to be used in the report. */
-export interface ReportConfigGrouping {
-  /** Has type of the column to group. */
-  type: QueryColumnType | (string & {});
-  /** The name of the column to group. This version supports subscription lowest possible grain. */
-  name: string;
-}
-export const ReportConfigGrouping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: QueryColumnType,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ReportConfigGrouping",
-}) as any as S.Schema<ReportConfigGrouping>;
-
-/** Array of group by expression to use in the report. Report can have up to 2 group by clauses. */
-export type ReportConfigDatasetGroupingList = Array<ReportConfigGrouping>;
-export const ReportConfigDatasetGroupingList = /*@__PURE__*/ S.Array(
-  ReportConfigGrouping,
-) as any as S.Schema<ReportConfigDatasetGroupingList>;
-
-/** Direction of sort. */
-export type ReportConfigSortingType = "Ascending" | "Descending";
-export const ReportConfigSortingType = /*@__PURE__*/ S.String;
-
-/** The order by expression to be used in the report. */
-export interface ReportConfigSorting {
-  /** Direction of sort. */
-  direction?: ReportConfigSortingType | (string & {});
-  /** The name of the column to sort. */
-  name: string;
-}
-export const ReportConfigSorting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direction: S.optional(ReportConfigSortingType),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ReportConfigSorting",
-}) as any as S.Schema<ReportConfigSorting>;
-
-/** Array of order by expression to use in the report. */
-export type ReportConfigDatasetSortingList = Array<ReportConfigSorting>;
-export const ReportConfigDatasetSortingList = /*@__PURE__*/ S.Array(
-  ReportConfigSorting,
-) as any as S.Schema<ReportConfigDatasetSortingList>;
-
-/** The logical "AND" expression. Must have at least 2 items. */
-export type ReportConfigFilterAndList = Array<ReportConfigFilter>;
-export const ReportConfigFilterAndList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ReportConfigFilter),
-) as any as S.Schema<ReportConfigFilterAndList>;
-
-/** The logical "OR" expression. Must have at least 2 items. */
-export type ReportConfigFilterOrList = Array<ReportConfigFilter>;
-export const ReportConfigFilterOrList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ReportConfigFilter),
-) as any as S.Schema<ReportConfigFilterOrList>;
-
-/** The operator to use for comparison. */
-export type OperatorType = "In" | "Contains";
-export const OperatorType = /*@__PURE__*/ S.String;
-
-/** Array of values to use for comparison */
-export type ReportConfigComparisonExpressionValuesList = Array<string>;
-export const ReportConfigComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportConfigComparisonExpressionValuesList>;
-
-/** The comparison expression to be used in the report. */
-export interface ReportConfigComparisonExpression {
-  /** The name of the column to use in comparison. */
-  name: string;
-  /** The operator to use for comparison. */
-  operator: OperatorType | (string & {});
-  /** Array of values to use for comparison */
-  values: ReportConfigComparisonExpressionValuesList;
-}
-export const ReportConfigComparisonExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    operator: OperatorType,
-    values: ReportConfigComparisonExpressionValuesList,
-  }),
-).annotate({
-  identifier: "ReportConfigComparisonExpression",
-}) as any as S.Schema<ReportConfigComparisonExpression>;
-
-/** The filter expression to be used in the report. */
-export interface ReportConfigFilter {
-  /** The logical "AND" expression. Must have at least 2 items. */
-  and?: ReportConfigFilterAndList;
-  /** The logical "OR" expression. Must have at least 2 items. */
-  or?: ReportConfigFilterOrList;
-  /** Has comparison expression for a dimension */
-  dimensions?: ReportConfigComparisonExpression;
-  /** Has comparison expression for a tag */
-  tags?: ReportConfigComparisonExpression;
-}
-export const ReportConfigFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    and: S.optional(ReportConfigFilterAndList),
-    or: S.optional(ReportConfigFilterOrList),
-    dimensions: S.optional(ReportConfigComparisonExpression),
-    tags: S.optional(ReportConfigComparisonExpression),
-  }),
-).annotate({
-  identifier: "ReportConfigFilter",
-}) as any as S.Schema<ReportConfigFilter>;
-
-/** The definition of data present in the report. */
-export interface ReportConfigDataset {
-  /** The granularity of rows in the report. */
-  granularity?: ReportGranularityType | (string & {});
-  /** Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided. */
-  configuration?: ReportConfigDatasetConfiguration;
-  /** Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses. */
-  aggregation?: ReportConfigDatasetAggregationMap;
-  /** Array of group by expression to use in the report. Report can have up to 2 group by clauses. */
-  grouping?: ReportConfigDatasetGroupingList;
-  /** Array of order by expression to use in the report. */
-  sorting?: ReportConfigDatasetSortingList;
-  /** Has filter expression to use in the report. */
-  filter?: ReportConfigFilter;
-}
-export const ReportConfigDataset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    granularity: S.optional(ReportGranularityType),
-    configuration: S.optional(ReportConfigDatasetConfiguration),
-    aggregation: S.optional(ReportConfigDatasetAggregationMap),
-    grouping: S.optional(ReportConfigDatasetGroupingList),
-    sorting: S.optional(ReportConfigDatasetSortingList),
-    filter: S.optional(ReportConfigFilter),
-  }),
-).annotate({
-  identifier: "ReportConfigDataset",
-}) as any as S.Schema<ReportConfigDataset>;
-
-/** The definition of a report config. */
-export interface ReportConfigDefinition {
-  /** The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates. */
-  type: ReportType | (string & {});
-  /** The time frame for pulling data for the report. If custom, then a specific time period must be provided. */
-  timeframe: ReportTimeframeType | (string & {});
-  /** Has time period for pulling data for the report. */
-  timePeriod?: ForecastTimePeriod;
-  /** Has definition for data in this report config. */
-  dataSet?: ReportConfigDataset;
-  /** If true, report includes monetary commitment. */
-  includeMonetaryCommitment?: boolean;
-}
-export const ReportConfigDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ReportType,
-    timeframe: ReportTimeframeType,
-    timePeriod: S.optional(ForecastTimePeriod),
-    dataSet: S.optional(ReportConfigDataset),
-    includeMonetaryCommitment: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ReportConfigDefinition",
-}) as any as S.Schema<ReportConfigDefinition>;
-
-/** Chart type of the main view in Cost Analysis. Required. */
-export type ChartType =
-  | "Area"
-  | "Line"
-  | "StackedColumn"
-  | "GroupedColumn"
-  | "Table";
-export const ChartType = /*@__PURE__*/ S.String;
-
-/** Show costs accumulated over time. */
-export type AccumulatedType = "true" | "false";
-export const AccumulatedType = /*@__PURE__*/ S.String;
-
-/** Metric to use when displaying costs. */
-export type MetricType = "ActualCost" | "AmortizedCost" | "AHUB";
-export const MetricType = /*@__PURE__*/ S.String;
-
-/** KPI type (Forecast, Budget). */
-export type KpiTypeType = "Forecast" | "Budget";
-export const KpiTypeType = /*@__PURE__*/ S.String;
-
-/** Each KPI must contain a 'type' and 'enabled' key. */
-export interface KpiProperties {
-  /** KPI type (Forecast, Budget). */
-  type?: KpiTypeType | (string & {});
-  /** ID of resource related to metric (budget). */
-  id?: string;
-  /** show the KPI in the UI? */
-  enabled?: boolean;
-}
-export const KpiProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(KpiTypeType),
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "KpiProperties" }) as any as S.Schema<KpiProperties>;
-
 /** List of KPIs to show in Cost Analysis UI. */
 export type ViewPropertiesInputKpisList = Array<KpiProperties>;
 export const ViewPropertiesInputKpisList = /*@__PURE__*/ S.Array(
   KpiProperties,
 ) as any as S.Schema<ViewPropertiesInputKpisList>;
-
-/** Data type to show in view. */
-export type PivotTypeType = "Dimension" | "TagKey";
-export const PivotTypeType = /*@__PURE__*/ S.String;
-
-/** Each pivot must contain a 'type' and 'name'. */
-export interface PivotProperties {
-  /** Data type to show in view. */
-  type?: PivotTypeType | (string & {});
-  /** Data field to show in view. */
-  name?: string;
-}
-export const PivotProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(PivotTypeType),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PivotProperties",
-}) as any as S.Schema<PivotProperties>;
 
 /** Configuration of 3 sub-views in the Cost Analysis UI. */
 export type ViewPropertiesInputPivotsList = Array<PivotProperties>;
@@ -6223,62 +6505,6 @@ export const ViewsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ViewsCreateOrUpdateRequest",
 }) as any as S.Schema<ViewsCreateOrUpdateRequest>;
-
-/** List of KPIs to show in Cost Analysis UI. */
-export type ViewPropertiesKpisList = Array<KpiProperties>;
-export const ViewPropertiesKpisList = /*@__PURE__*/ S.Array(
-  KpiProperties,
-) as any as S.Schema<ViewPropertiesKpisList>;
-
-/** Configuration of 3 sub-views in the Cost Analysis UI. */
-export type ViewPropertiesPivotsList = Array<PivotProperties>;
-export const ViewPropertiesPivotsList = /*@__PURE__*/ S.Array(
-  PivotProperties,
-) as any as S.Schema<ViewPropertiesPivotsList>;
-
-/** The properties of the view. */
-export interface ViewProperties {
-  /** User input name of the view. Required. */
-  displayName?: string;
-  /** Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope. */
-  scope?: string;
-  /** Date the user created this view. */
-  createdOn?: string;
-  /** Date when the user last modified this view. */
-  modifiedOn?: string;
-  /** Date range of the current view. */
-  dateRange?: string;
-  /** Currency of the current view. */
-  currency?: string;
-  /** Query body configuration. Required. */
-  query?: ReportConfigDefinition;
-  /** Chart type of the main view in Cost Analysis. Required. */
-  chart?: ChartType;
-  /** Show costs accumulated over time. */
-  accumulated?: AccumulatedType;
-  /** Metric to use when displaying costs. */
-  metric?: MetricType;
-  /** List of KPIs to show in Cost Analysis UI. */
-  kpis?: ViewPropertiesKpisList;
-  /** Configuration of 3 sub-views in the Cost Analysis UI. */
-  pivots?: ViewPropertiesPivotsList;
-}
-export const ViewProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    scope: S.optional(S.String),
-    createdOn: S.optional(S.String),
-    modifiedOn: S.optional(S.String),
-    dateRange: S.optional(S.String),
-    currency: S.optional(S.String),
-    query: S.optional(ReportConfigDefinition),
-    chart: S.optional(ChartType),
-    accumulated: S.optional(AccumulatedType),
-    metric: S.optional(MetricType),
-    kpis: S.optional(ViewPropertiesKpisList),
-    pivots: S.optional(ViewPropertiesPivotsList),
-  }),
-).annotate({ identifier: "ViewProperties" }) as any as S.Schema<ViewProperties>;
 
 export interface ViewsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6362,235 +6588,6 @@ export const ViewsCreateOrUpdateByScopeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ViewsCreateOrUpdateByScopeResponse",
 }) as any as S.Schema<ViewsCreateOrUpdateByScopeResponse>;
 
-export interface ViewsDeleteRequest {
-  /** View name */
-  viewName: string;
-}
-export const ViewsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    viewName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.CostManagement/views/{viewName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ViewsDeleteRequest",
-}) as any as S.Schema<ViewsDeleteRequest>;
-
-export interface ViewsDeleteResponse {}
-export const ViewsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ViewsDeleteResponse",
-}) as any as S.Schema<ViewsDeleteResponse>;
-
-export interface ViewsDeleteByScopeRequest {
-  /** undefined */
-  scope: string;
-  /** View name */
-  viewName: string;
-}
-export const ViewsDeleteByScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    viewName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ViewsDeleteByScopeRequest",
-}) as any as S.Schema<ViewsDeleteByScopeRequest>;
-
-export interface ViewsDeleteByScopeResponse {}
-export const ViewsDeleteByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ViewsDeleteByScopeResponse",
-}) as any as S.Schema<ViewsDeleteByScopeResponse>;
-
-export interface ViewsGetRequest {
-  /** View name */
-  viewName: string;
-}
-export const ViewsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    viewName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.CostManagement/views/{viewName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ViewsGetRequest",
-}) as any as S.Schema<ViewsGetRequest>;
-
-export interface ViewsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the view. */
-  properties?: ViewProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const ViewsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ViewProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ViewsGetResponse",
-}) as any as S.Schema<ViewsGetResponse>;
-
-export interface ViewsGetByScopeRequest {
-  /** undefined */
-  scope: string;
-  /** View name */
-  viewName: string;
-}
-export const ViewsGetByScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    viewName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ViewsGetByScopeRequest",
-}) as any as S.Schema<ViewsGetByScopeRequest>;
-
-export interface ViewsGetByScopeResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the view. */
-  properties?: ViewProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const ViewsGetByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ViewProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ViewsGetByScopeResponse",
-}) as any as S.Schema<ViewsGetByScopeResponse>;
-
-export interface ViewsListRequest {}
-export const ViewsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.CostManagement/views",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ViewsListRequest",
-}) as any as S.Schema<ViewsListRequest>;
-
-/** States and configurations of Cost Analysis. */
-export interface View {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the view. */
-  properties?: ViewProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const View = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ViewProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "View" }) as any as S.Schema<View>;
-
-/** The list of views. */
-export type ViewListResultValueList = Array<View>;
-export const ViewListResultValueList = /*@__PURE__*/ S.Array(
-  View,
-) as any as S.Schema<ViewListResultValueList>;
-
-/** Result of listing views. It contains a list of available views. */
-export interface ViewListResult {
-  /** The list of views. */
-  value?: ViewListResultValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const ViewListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ViewListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ViewListResult" }) as any as S.Schema<ViewListResult>;
-
-export interface ViewsListByScopeRequest {
-  /** undefined */
-  scope: string;
-}
-export const ViewsListByScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.CostManagement/views",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ViewsListByScopeRequest",
-}) as any as S.Schema<ViewsListByScopeRequest>;
-
 export type AlertsDismissError = AzureOpError;
 /** Dismisses the specified alert */
 export const AlertsDismiss: API.OperationMethod<
@@ -6601,129 +6598,6 @@ export const AlertsDismiss: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AlertsDismissRequest,
   output: AlertsDismissResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AlertsGetError = AzureOpError;
-/** Gets the alert for the scope by alert ID. */
-export const AlertsGet: API.OperationMethod<
-  AlertsGetRequest,
-  AlertsGetResponse,
-  AlertsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AlertsGetRequest,
-  output: AlertsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AlertsListError = AzureOpError;
-/** Lists the alerts for scope defined. */
-export const AlertsList: API.OperationMethod<
-  AlertsListRequest,
-  AlertsResult,
-  AlertsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AlertsListRequest,
-  output: AlertsResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AlertsListExternalError = AzureOpError;
-/** Lists the Alerts for external cloud provider type defined. */
-export const AlertsListExternal: API.OperationMethod<
-  AlertsListExternalRequest,
-  AlertsResult,
-  AlertsListExternalError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AlertsListExternalRequest,
-  output: AlertsResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BenefitRecommendationsListError = AzureOpError;
-/** List of recommendations for purchasing savings plan. */
-export const BenefitRecommendationsList: API.OperationMethod<
-  BenefitRecommendationsListRequest,
-  BenefitRecommendationsListResult,
-  BenefitRecommendationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BenefitRecommendationsListRequest,
-  output: BenefitRecommendationsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BenefitUtilizationSummariesListByBillingAccountIdError =
-  AzureOpError;
-/** Lists savings plan utilization summaries for the enterprise agreement scope. Supported at grain values: 'Daily' and 'Monthly'. */
-export const BenefitUtilizationSummariesListByBillingAccountId: API.OperationMethod<
-  BenefitUtilizationSummariesListByBillingAccountIdRequest,
-  BenefitUtilizationSummariesListResult,
-  BenefitUtilizationSummariesListByBillingAccountIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BenefitUtilizationSummariesListByBillingAccountIdRequest,
-  output: BenefitUtilizationSummariesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BenefitUtilizationSummariesListByBillingProfileIdError =
-  AzureOpError;
-/** Lists savings plan utilization summaries for billing profile. Supported at grain values: 'Daily' and 'Monthly'. */
-export const BenefitUtilizationSummariesListByBillingProfileId: API.OperationMethod<
-  BenefitUtilizationSummariesListByBillingProfileIdRequest,
-  BenefitUtilizationSummariesListResult,
-  BenefitUtilizationSummariesListByBillingProfileIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BenefitUtilizationSummariesListByBillingProfileIdRequest,
-  output: BenefitUtilizationSummariesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BenefitUtilizationSummariesListBySavingsPlanIdError = AzureOpError;
-/** Lists the savings plan utilization summaries for daily or monthly grain. */
-export const BenefitUtilizationSummariesListBySavingsPlanId: API.OperationMethod<
-  BenefitUtilizationSummariesListBySavingsPlanIdRequest,
-  BenefitUtilizationSummariesListResult,
-  BenefitUtilizationSummariesListBySavingsPlanIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BenefitUtilizationSummariesListBySavingsPlanIdRequest,
-  output: BenefitUtilizationSummariesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BenefitUtilizationSummariesListBySavingsPlanOrderError =
-  AzureOpError;
-/** Lists the savings plan utilization summaries for daily or monthly grain. */
-export const BenefitUtilizationSummariesListBySavingsPlanOrder: API.OperationMethod<
-  BenefitUtilizationSummariesListBySavingsPlanOrderRequest,
-  BenefitUtilizationSummariesListResult,
-  BenefitUtilizationSummariesListBySavingsPlanOrderError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BenefitUtilizationSummariesListBySavingsPlanOrderRequest,
-  output: BenefitUtilizationSummariesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6744,61 +6618,46 @@ export const BudgetsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BudgetsDeleteError = AzureOpError;
-/** The operation to delete a budget. */
-export const BudgetsDelete: API.OperationMethod<
-  BudgetsDeleteRequest,
-  BudgetsDeleteResponse,
-  BudgetsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BudgetsDeleteRequest,
-  output: BudgetsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BudgetsGetError = AzureOpError;
-/** Gets the budget for the scope by budget name. */
-export const BudgetsGet: API.OperationMethod<
-  BudgetsGetRequest,
-  BudgetsGetResponse,
-  BudgetsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BudgetsGetRequest,
-  output: BudgetsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BudgetsListError = AzureOpError;
-/** Lists all budgets for the defined scope. */
-export const BudgetsList: API.OperationMethod<
-  BudgetsListRequest,
-  BudgetsListResult,
-  BudgetsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BudgetsListRequest,
-  output: BudgetsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CostAllocationRulesCheckNameAvailabilityError = AzureOpError;
+export type CheckCostAllocationRuleNameAvailabilityError = AzureOpError;
 /** Checks availability and correctness of a name for a cost allocation rule */
-export const CostAllocationRulesCheckNameAvailability: API.OperationMethod<
-  CostAllocationRulesCheckNameAvailabilityRequest,
+export const CheckCostAllocationRuleNameAvailability: API.OperationMethod<
+  CheckCostAllocationRuleNameAvailabilityRequest,
   CostAllocationRuleCheckNameAvailabilityResponse,
-  CostAllocationRulesCheckNameAvailabilityError,
+  CheckCostAllocationRuleNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CostAllocationRulesCheckNameAvailabilityRequest,
+  input: CheckCostAllocationRuleNameAvailabilityRequest,
   output: CostAllocationRuleCheckNameAvailabilityResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CheckScheduledActionNameAvailabilityError = AzureOpError;
+/** Checks availability and correctness of the name for a scheduled action. */
+export const CheckScheduledActionNameAvailability: API.OperationMethod<
+  CheckScheduledActionNameAvailabilityRequest,
+  CheckScheduledActionNameAvailabilityResponse,
+  CheckScheduledActionNameAvailabilityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckScheduledActionNameAvailabilityRequest,
+  output: CheckScheduledActionNameAvailabilityResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CheckScheduledActionNameAvailabilityByScopeError = AzureOpError;
+/** Checks availability and correctness of the name for a scheduled action within the given scope. */
+export const CheckScheduledActionNameAvailabilityByScope: API.OperationMethod<
+  CheckScheduledActionNameAvailabilityByScopeRequest,
+  CheckScheduledActionNameAvailabilityByScopeResponse,
+  CheckScheduledActionNameAvailabilityByScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckScheduledActionNameAvailabilityByScopeRequest,
+  output: CheckScheduledActionNameAvailabilityByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6819,46 +6678,136 @@ export const CostAllocationRulesCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CostAllocationRulesDeleteError = AzureOpError;
+export type DeleteBudgetError = AzureOpError;
+/** The operation to delete a budget. */
+export const DeleteBudget: API.OperationMethod<
+  DeleteBudgetRequest,
+  DeleteBudgetResponse,
+  DeleteBudgetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBudgetRequest,
+  output: DeleteBudgetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCostAllocationRuleError = AzureOpError;
 /** Delete cost allocation rule for billing account or enterprise enrollment. */
-export const CostAllocationRulesDelete: API.OperationMethod<
-  CostAllocationRulesDeleteRequest,
-  CostAllocationRulesDeleteResponse,
-  CostAllocationRulesDeleteError,
+export const DeleteCostAllocationRule: API.OperationMethod<
+  DeleteCostAllocationRuleRequest,
+  DeleteCostAllocationRuleResponse,
+  DeleteCostAllocationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CostAllocationRulesDeleteRequest,
-  output: CostAllocationRulesDeleteResponse,
+  input: DeleteCostAllocationRuleRequest,
+  output: DeleteCostAllocationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CostAllocationRulesGetError = AzureOpError;
-/** Get a cost allocation rule by rule name and billing account or enterprise enrollment. */
-export const CostAllocationRulesGet: API.OperationMethod<
-  CostAllocationRulesGetRequest,
-  CostAllocationRulesGetResponse,
-  CostAllocationRulesGetError,
+export type DeleteExportError = AzureOpError;
+/** The operation to delete a export. */
+export const DeleteExport: API.OperationMethod<
+  DeleteExportRequest,
+  DeleteExportResponse,
+  DeleteExportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CostAllocationRulesGetRequest,
-  output: CostAllocationRulesGetResponse,
+  input: DeleteExportRequest,
+  output: DeleteExportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CostAllocationRulesListError = AzureOpError;
-/** Get the list of all cost allocation rules for a billing account or enterprise enrollment. */
-export const CostAllocationRulesList: API.OperationMethod<
-  CostAllocationRulesListRequest,
-  CostAllocationRuleList,
-  CostAllocationRulesListError,
+export type DeleteMarkupRuleError = AzureOpError;
+/** Delete a markup rule for a billing account and billing profile. */
+export const DeleteMarkupRule: API.OperationMethod<
+  DeleteMarkupRuleRequest,
+  DeleteMarkupRuleResponse,
+  DeleteMarkupRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CostAllocationRulesListRequest,
-  output: CostAllocationRuleList,
+  input: DeleteMarkupRuleRequest,
+  output: DeleteMarkupRuleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteScheduledActionError = AzureOpError;
+/** Delete a private scheduled action. */
+export const DeleteScheduledAction: API.OperationMethod<
+  DeleteScheduledActionRequest,
+  DeleteScheduledActionResponse,
+  DeleteScheduledActionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteScheduledActionRequest,
+  output: DeleteScheduledActionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteScheduledActionByScopeError = AzureOpError;
+/** Delete a scheduled action within the given scope. */
+export const DeleteScheduledActionByScope: API.OperationMethod<
+  DeleteScheduledActionByScopeRequest,
+  DeleteScheduledActionByScopeResponse,
+  DeleteScheduledActionByScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteScheduledActionByScopeRequest,
+  output: DeleteScheduledActionByScopeResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSettingByScopeError = AzureOpError;
+/** Delete a setting within the given scope. */
+export const DeleteSettingByScope: API.OperationMethod<
+  DeleteSettingByScopeRequest,
+  DeleteSettingByScopeResponse,
+  DeleteSettingByScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSettingByScopeRequest,
+  output: DeleteSettingByScopeResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteViewError = AzureOpError;
+/** The operation to delete a view. */
+export const DeleteView: API.OperationMethod<
+  DeleteViewRequest,
+  DeleteViewResponse,
+  DeleteViewError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteViewRequest,
+  output: DeleteViewResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteViewByScopeError = AzureOpError;
+/** The operation to delete a view. */
+export const DeleteViewByScope: API.OperationMethod<
+  DeleteViewByScopeRequest,
+  DeleteViewByScopeResponse,
+  DeleteViewByScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteViewByScopeRequest,
+  output: DeleteViewByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6868,27 +6817,12 @@ export type DimensionsByExternalCloudProviderTypeError = AzureOpError;
 /** Lists the dimensions by the external cloud provider type. */
 export const DimensionsByExternalCloudProviderType: API.OperationMethod<
   DimensionsByExternalCloudProviderTypeRequest,
-  DimensionsListResult,
+  ListDimensionsResult,
   DimensionsByExternalCloudProviderTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DimensionsByExternalCloudProviderTypeRequest,
-  output: DimensionsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DimensionsListError = AzureOpError;
-/** Lists the dimensions by the defined scope. */
-export const DimensionsList: API.OperationMethod<
-  DimensionsListRequest,
-  DimensionsListResult,
-  DimensionsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DimensionsListRequest,
-  output: DimensionsListResult,
+  output: ListDimensionsResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6909,21 +6843,6 @@ export const ExportsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExportsDeleteError = AzureOpError;
-/** The operation to delete a export. */
-export const ExportsDelete: API.OperationMethod<
-  ExportsDeleteRequest,
-  ExportsDeleteResponse,
-  ExportsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExportsDeleteRequest,
-  output: ExportsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ExportsExecuteError = AzureOpError;
 /** The operation to run an export. */
 export const ExportsExecute: API.OperationMethod<
@@ -6934,51 +6853,6 @@ export const ExportsExecute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportsExecuteRequest,
   output: ExportsExecuteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExportsGetError = AzureOpError;
-/** The operation to get the export for the defined scope by export name. */
-export const ExportsGet: API.OperationMethod<
-  ExportsGetRequest,
-  ExportsGetResponse,
-  ExportsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExportsGetRequest,
-  output: ExportsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExportsGetExecutionHistoryError = AzureOpError;
-/** The operation to get the run history of an export for the defined scope and export name. */
-export const ExportsGetExecutionHistory: API.OperationMethod<
-  ExportsGetExecutionHistoryRequest,
-  ExportExecutionListResult,
-  ExportsGetExecutionHistoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExportsGetExecutionHistoryRequest,
-  output: ExportExecutionListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExportsListError = AzureOpError;
-/** The operation to list all exports at the given scope. */
-export const ExportsList: API.OperationMethod<
-  ExportsListRequest,
-  ExportListResult,
-  ExportsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExportsListRequest,
-  output: ExportListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7223,6 +7097,441 @@ export const GenerateReservationDetailsReportByBillingProfileId: API.OperationMe
   retry: Retry.Retry,
 }));
 
+export type GetAlertError = AzureOpError;
+/** Gets the alert for the scope by alert ID. */
+export const GetAlert: API.OperationMethod<
+  GetAlertRequest,
+  GetAlertResponse,
+  GetAlertError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAlertRequest,
+  output: GetAlertResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBudgetError = AzureOpError;
+/** Gets the budget for the scope by budget name. */
+export const GetBudget: API.OperationMethod<
+  GetBudgetRequest,
+  GetBudgetResponse,
+  GetBudgetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBudgetRequest,
+  output: GetBudgetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetCostAllocationRuleError = AzureOpError;
+/** Get a cost allocation rule by rule name and billing account or enterprise enrollment. */
+export const GetCostAllocationRule: API.OperationMethod<
+  GetCostAllocationRuleRequest,
+  GetCostAllocationRuleResponse,
+  GetCostAllocationRuleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCostAllocationRuleRequest,
+  output: GetCostAllocationRuleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetExportError = AzureOpError;
+/** The operation to get the export for the defined scope by export name. */
+export const GetExport: API.OperationMethod<
+  GetExportRequest,
+  GetExportResponse,
+  GetExportError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetExportRequest,
+  output: GetExportResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetExportExecutionHistoryError = AzureOpError;
+/** The operation to get the run history of an export for the defined scope and export name. */
+export const GetExportExecutionHistory: API.OperationMethod<
+  GetExportExecutionHistoryRequest,
+  ExportExecutionListResult,
+  GetExportExecutionHistoryError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetExportExecutionHistoryRequest,
+  output: ExportExecutionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetMarkupRuleError = AzureOpError;
+/** Get a markup rule by name for a billing account and billing profile. */
+export const GetMarkupRule: API.OperationMethod<
+  GetMarkupRuleRequest,
+  GetMarkupRuleResponse,
+  GetMarkupRuleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMarkupRuleRequest,
+  output: GetMarkupRuleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetScheduledActionError = AzureOpError;
+/** Get the private scheduled action by name. */
+export const GetScheduledAction: API.OperationMethod<
+  GetScheduledActionRequest,
+  GetScheduledActionResponse,
+  GetScheduledActionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetScheduledActionRequest,
+  output: GetScheduledActionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetScheduledActionByScopeError = AzureOpError;
+/** Get the shared scheduled action from the given scope by name. */
+export const GetScheduledActionByScope: API.OperationMethod<
+  GetScheduledActionByScopeRequest,
+  GetScheduledActionByScopeResponse,
+  GetScheduledActionByScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetScheduledActionByScopeRequest,
+  output: GetScheduledActionByScopeResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSettingByScopeError = AzureOpError;
+/** Get the setting from the given scope by name. */
+export const GetSettingByScope: API.OperationMethod<
+  GetSettingByScopeRequest,
+  GetSettingByScopeResponse,
+  GetSettingByScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingByScopeRequest,
+  output: GetSettingByScopeResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetViewError = AzureOpError;
+/** Gets the view by view name. */
+export const GetView: API.OperationMethod<
+  GetViewRequest,
+  GetViewResponse,
+  GetViewError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetViewRequest,
+  output: GetViewResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetViewByScopeError = AzureOpError;
+/** Gets the view for the defined scope by view name. */
+export const GetViewByScope: API.OperationMethod<
+  GetViewByScopeRequest,
+  GetViewByScopeResponse,
+  GetViewByScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetViewByScopeRequest,
+  output: GetViewByScopeResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAlertExternalError = AzureOpError;
+/** Lists the Alerts for external cloud provider type defined. */
+export const ListAlertExternal: API.OperationMethod<
+  ListAlertExternalRequest,
+  AlertsResult,
+  ListAlertExternalError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAlertExternalRequest,
+  output: AlertsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAlertsError = AzureOpError;
+/** Lists the alerts for scope defined. */
+export const ListAlerts: API.OperationMethod<
+  ListAlertsRequest,
+  AlertsResult,
+  ListAlertsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAlertsRequest,
+  output: AlertsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBenefitRecommendationsError = AzureOpError;
+/** List of recommendations for purchasing savings plan. */
+export const ListBenefitRecommendations: API.OperationMethod<
+  ListBenefitRecommendationsRequest,
+  ListBenefitRecommendationsResult,
+  ListBenefitRecommendationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBenefitRecommendationsRequest,
+  output: ListBenefitRecommendationsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBenefitUtilizationSummaryByBillingAccountIdError = AzureOpError;
+/** Lists savings plan utilization summaries for the enterprise agreement scope. Supported at grain values: 'Daily' and 'Monthly'. */
+export const ListBenefitUtilizationSummaryByBillingAccountId: API.OperationMethod<
+  ListBenefitUtilizationSummaryByBillingAccountIdRequest,
+  BenefitUtilizationSummariesListResult,
+  ListBenefitUtilizationSummaryByBillingAccountIdError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBenefitUtilizationSummaryByBillingAccountIdRequest,
+  output: BenefitUtilizationSummariesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBenefitUtilizationSummaryByBillingProfileIdError = AzureOpError;
+/** Lists savings plan utilization summaries for billing profile. Supported at grain values: 'Daily' and 'Monthly'. */
+export const ListBenefitUtilizationSummaryByBillingProfileId: API.OperationMethod<
+  ListBenefitUtilizationSummaryByBillingProfileIdRequest,
+  BenefitUtilizationSummariesListResult,
+  ListBenefitUtilizationSummaryByBillingProfileIdError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBenefitUtilizationSummaryByBillingProfileIdRequest,
+  output: BenefitUtilizationSummariesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBenefitUtilizationSummaryBySavingPlanIdError = AzureOpError;
+/** Lists the savings plan utilization summaries for daily or monthly grain. */
+export const ListBenefitUtilizationSummaryBySavingPlanId: API.OperationMethod<
+  ListBenefitUtilizationSummaryBySavingPlanIdRequest,
+  BenefitUtilizationSummariesListResult,
+  ListBenefitUtilizationSummaryBySavingPlanIdError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBenefitUtilizationSummaryBySavingPlanIdRequest,
+  output: BenefitUtilizationSummariesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBenefitUtilizationSummaryBySavingPlanOrderError = AzureOpError;
+/** Lists the savings plan utilization summaries for daily or monthly grain. */
+export const ListBenefitUtilizationSummaryBySavingPlanOrder: API.OperationMethod<
+  ListBenefitUtilizationSummaryBySavingPlanOrderRequest,
+  BenefitUtilizationSummariesListResult,
+  ListBenefitUtilizationSummaryBySavingPlanOrderError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBenefitUtilizationSummaryBySavingPlanOrderRequest,
+  output: BenefitUtilizationSummariesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBudgetsError = AzureOpError;
+/** Lists all budgets for the defined scope. */
+export const ListBudgets: API.OperationMethod<
+  ListBudgetsRequest,
+  ListBudgetsResult,
+  ListBudgetsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBudgetsRequest,
+  output: ListBudgetsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCostAllocationRulesError = AzureOpError;
+/** Get the list of all cost allocation rules for a billing account or enterprise enrollment. */
+export const ListCostAllocationRules: API.OperationMethod<
+  ListCostAllocationRulesRequest,
+  CostAllocationRuleList,
+  ListCostAllocationRulesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCostAllocationRulesRequest,
+  output: CostAllocationRuleList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDimensionsError = AzureOpError;
+/** Lists the dimensions by the defined scope. */
+export const ListDimensions: API.OperationMethod<
+  ListDimensionsRequest,
+  ListDimensionsResult,
+  ListDimensionsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDimensionsRequest,
+  output: ListDimensionsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListExportsError = AzureOpError;
+/** The operation to list all exports at the given scope. */
+export const ListExports: API.OperationMethod<
+  ListExportsRequest,
+  ExportListResult,
+  ListExportsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListExportsRequest,
+  output: ExportListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMarkupRulesError = AzureOpError;
+/** List all markup rules for a billing account and billing profile. */
+export const ListMarkupRules: API.OperationMethod<
+  ListMarkupRulesRequest,
+  MarkupRulePagedResponse,
+  ListMarkupRulesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMarkupRulesRequest,
+  output: MarkupRulePagedResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** List the operations for the provider */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  OperationListResult,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: OperationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListScheduledActionByScopeError = AzureOpError;
+/** List all shared scheduled actions within the given scope. */
+export const ListScheduledActionByScope: API.OperationMethod<
+  ListScheduledActionByScopeRequest,
+  ScheduledActionListResult,
+  ListScheduledActionByScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListScheduledActionByScopeRequest,
+  output: ScheduledActionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListScheduledActionsError = AzureOpError;
+/** List all private scheduled actions. */
+export const ListScheduledActions: API.OperationMethod<
+  ListScheduledActionsRequest,
+  ScheduledActionListResult,
+  ListScheduledActionsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListScheduledActionsRequest,
+  output: ScheduledActionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSettingsError = AzureOpError;
+/** List all cost management settings in the requested scope. */
+export const ListSettings: API.OperationMethod<
+  ListSettingsRequest,
+  ListSettingsResult,
+  ListSettingsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSettingsRequest,
+  output: ListSettingsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListViewByScopeError = AzureOpError;
+/** Lists all views at the given scope. */
+export const ListViewByScope: API.OperationMethod<
+  ListViewByScopeRequest,
+  ViewListResult,
+  ListViewByScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListViewByScopeRequest,
+  output: ViewListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListViewsError = AzureOpError;
+/** Lists all views by tenant and object. */
+export const ListViews: API.OperationMethod<
+  ListViewsRequest,
+  ViewListResult,
+  ListViewsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListViewsRequest,
+  output: ViewListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
 export type MarkupRulesCreateOrUpdateError = AzureOpError;
 /** Create or update a markup rule for a billing account and billing profile. */
 export const MarkupRulesCreateOrUpdate: API.OperationMethod<
@@ -7233,66 +7542,6 @@ export const MarkupRulesCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MarkupRulesCreateOrUpdateRequest,
   output: MarkupRulesCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MarkupRulesDeleteError = AzureOpError;
-/** Delete a markup rule for a billing account and billing profile. */
-export const MarkupRulesDelete: API.OperationMethod<
-  MarkupRulesDeleteRequest,
-  MarkupRulesDeleteResponse,
-  MarkupRulesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MarkupRulesDeleteRequest,
-  output: MarkupRulesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MarkupRulesGetError = AzureOpError;
-/** Get a markup rule by name for a billing account and billing profile. */
-export const MarkupRulesGet: API.OperationMethod<
-  MarkupRulesGetRequest,
-  MarkupRulesGetResponse,
-  MarkupRulesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MarkupRulesGetRequest,
-  output: MarkupRulesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MarkupRulesListError = AzureOpError;
-/** List all markup rules for a billing account and billing profile. */
-export const MarkupRulesList: API.OperationMethod<
-  MarkupRulesListRequest,
-  MarkupRulePagedResponse,
-  MarkupRulesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MarkupRulesListRequest,
-  output: MarkupRulePagedResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationListResult,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7373,36 +7622,6 @@ export const QueryUsageByExternalCloudProviderType: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ScheduledActionsCheckNameAvailabilityError = AzureOpError;
-/** Checks availability and correctness of the name for a scheduled action. */
-export const ScheduledActionsCheckNameAvailability: API.OperationMethod<
-  ScheduledActionsCheckNameAvailabilityRequest,
-  ScheduledActionsCheckNameAvailabilityResponse,
-  ScheduledActionsCheckNameAvailabilityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsCheckNameAvailabilityRequest,
-  output: ScheduledActionsCheckNameAvailabilityResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsCheckNameAvailabilityByScopeError = AzureOpError;
-/** Checks availability and correctness of the name for a scheduled action within the given scope. */
-export const ScheduledActionsCheckNameAvailabilityByScope: API.OperationMethod<
-  ScheduledActionsCheckNameAvailabilityByScopeRequest,
-  ScheduledActionsCheckNameAvailabilityByScopeResponse,
-  ScheduledActionsCheckNameAvailabilityByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsCheckNameAvailabilityByScopeRequest,
-  output: ScheduledActionsCheckNameAvailabilityByScopeResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ScheduledActionsCreateOrUpdateError = AzureOpError;
 /** Create or update a private scheduled action. */
 export const ScheduledActionsCreateOrUpdate: API.OperationMethod<
@@ -7428,96 +7647,6 @@ export const ScheduledActionsCreateOrUpdateByScope: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ScheduledActionsCreateOrUpdateByScopeRequest,
   output: ScheduledActionsCreateOrUpdateByScopeResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsDeleteError = AzureOpError;
-/** Delete a private scheduled action. */
-export const ScheduledActionsDelete: API.OperationMethod<
-  ScheduledActionsDeleteRequest,
-  ScheduledActionsDeleteResponse,
-  ScheduledActionsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsDeleteRequest,
-  output: ScheduledActionsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsDeleteByScopeError = AzureOpError;
-/** Delete a scheduled action within the given scope. */
-export const ScheduledActionsDeleteByScope: API.OperationMethod<
-  ScheduledActionsDeleteByScopeRequest,
-  ScheduledActionsDeleteByScopeResponse,
-  ScheduledActionsDeleteByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsDeleteByScopeRequest,
-  output: ScheduledActionsDeleteByScopeResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsGetError = AzureOpError;
-/** Get the private scheduled action by name. */
-export const ScheduledActionsGet: API.OperationMethod<
-  ScheduledActionsGetRequest,
-  ScheduledActionsGetResponse,
-  ScheduledActionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsGetRequest,
-  output: ScheduledActionsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsGetByScopeError = AzureOpError;
-/** Get the shared scheduled action from the given scope by name. */
-export const ScheduledActionsGetByScope: API.OperationMethod<
-  ScheduledActionsGetByScopeRequest,
-  ScheduledActionsGetByScopeResponse,
-  ScheduledActionsGetByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsGetByScopeRequest,
-  output: ScheduledActionsGetByScopeResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsListError = AzureOpError;
-/** List all private scheduled actions. */
-export const ScheduledActionsList: API.OperationMethod<
-  ScheduledActionsListRequest,
-  ScheduledActionListResult,
-  ScheduledActionsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsListRequest,
-  output: ScheduledActionListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsListByScopeError = AzureOpError;
-/** List all shared scheduled actions within the given scope. */
-export const ScheduledActionsListByScope: API.OperationMethod<
-  ScheduledActionsListByScopeRequest,
-  ScheduledActionListResult,
-  ScheduledActionsListByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsListByScopeRequest,
-  output: ScheduledActionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7568,51 +7697,6 @@ export const SettingsCreateOrUpdateByScope: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SettingsDeleteByScopeError = AzureOpError;
-/** Delete a setting within the given scope. */
-export const SettingsDeleteByScope: API.OperationMethod<
-  SettingsDeleteByScopeRequest,
-  SettingsDeleteByScopeResponse,
-  SettingsDeleteByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsDeleteByScopeRequest,
-  output: SettingsDeleteByScopeResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SettingsGetByScopeError = AzureOpError;
-/** Get the setting from the given scope by name. */
-export const SettingsGetByScope: API.OperationMethod<
-  SettingsGetByScopeRequest,
-  SettingsGetByScopeResponse,
-  SettingsGetByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsGetByScopeRequest,
-  output: SettingsGetByScopeResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SettingsListError = AzureOpError;
-/** List all cost management settings in the requested scope. */
-export const SettingsList: API.OperationMethod<
-  SettingsListRequest,
-  SettingsListResult,
-  SettingsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsListRequest,
-  output: SettingsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ViewsCreateOrUpdateError = AzureOpError;
 /** The operation to create or update a view. Update operation requires latest eTag to be set in the request. You may obtain the latest eTag by performing a get operation. Create operation does not require eTag. */
 export const ViewsCreateOrUpdate: API.OperationMethod<
@@ -7638,96 +7722,6 @@ export const ViewsCreateOrUpdateByScope: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ViewsCreateOrUpdateByScopeRequest,
   output: ViewsCreateOrUpdateByScopeResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ViewsDeleteError = AzureOpError;
-/** The operation to delete a view. */
-export const ViewsDelete: API.OperationMethod<
-  ViewsDeleteRequest,
-  ViewsDeleteResponse,
-  ViewsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ViewsDeleteRequest,
-  output: ViewsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ViewsDeleteByScopeError = AzureOpError;
-/** The operation to delete a view. */
-export const ViewsDeleteByScope: API.OperationMethod<
-  ViewsDeleteByScopeRequest,
-  ViewsDeleteByScopeResponse,
-  ViewsDeleteByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ViewsDeleteByScopeRequest,
-  output: ViewsDeleteByScopeResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ViewsGetError = AzureOpError;
-/** Gets the view by view name. */
-export const ViewsGet: API.OperationMethod<
-  ViewsGetRequest,
-  ViewsGetResponse,
-  ViewsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ViewsGetRequest,
-  output: ViewsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ViewsGetByScopeError = AzureOpError;
-/** Gets the view for the defined scope by view name. */
-export const ViewsGetByScope: API.OperationMethod<
-  ViewsGetByScopeRequest,
-  ViewsGetByScopeResponse,
-  ViewsGetByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ViewsGetByScopeRequest,
-  output: ViewsGetByScopeResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ViewsListError = AzureOpError;
-/** Lists all views by tenant and object. */
-export const ViewsList: API.OperationMethod<
-  ViewsListRequest,
-  ViewListResult,
-  ViewsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ViewsListRequest,
-  output: ViewListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ViewsListByScopeError = AzureOpError;
-/** Lists all views at the given scope. */
-export const ViewsListByScope: API.OperationMethod<
-  ViewsListByScopeRequest,
-  ViewListResult,
-  ViewsListByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ViewsListByScopeRequest,
-  output: ViewListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

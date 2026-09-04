@@ -125,7 +125,7 @@
         "smithy.api#documentation": "versions are the versions supported in this group."
       }
     },
-    "com.kubernetes.apiextensions#GetApiextensionsAPIGroup": {
+    "com.kubernetes.apiextensions#GetApiextensionsApiGroup": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -285,7 +285,7 @@
         "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
       }
     },
-    "com.kubernetes.apiextensions#GetApiextensionsV1APIResources": {
+    "com.kubernetes.apiextensions#GetApiextensionsV1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -2627,7 +2627,7 @@
         "smithy.api#documentation": "partially update status of the specified CustomResourceDefinition"
       }
     },
-    "com.kubernetes.apiextensions#WatchApiextensionsV1CustomResourceDefinitionListRequest": {
+    "com.kubernetes.apiextensions#ListWatchApiextensionV1CustomResourceDefinitionRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -2740,10 +2740,10 @@
         "smithy.api#documentation": "Event represents a single event to a watched resource."
       }
     },
-    "com.kubernetes.apiextensions#WatchApiextensionsV1CustomResourceDefinitionList": {
+    "com.kubernetes.apiextensions#ListWatchApiextensionV1CustomResourceDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.apiextensions#WatchApiextensionsV1CustomResourceDefinitionListRequest"
+        "target": "com.kubernetes.apiextensions#ListWatchApiextensionV1CustomResourceDefinitionRequest"
       },
       "output": {
         "target": "com.kubernetes.apiextensions#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -2918,10 +2918,10 @@
       "version": "unversioned",
       "operations": [
         {
-          "target": "com.kubernetes.apiextensions#GetApiextensionsAPIGroup"
+          "target": "com.kubernetes.apiextensions#GetApiextensionsApiGroup"
         },
         {
-          "target": "com.kubernetes.apiextensions#GetApiextensionsV1APIResources"
+          "target": "com.kubernetes.apiextensions#GetApiextensionsV1ApiResources"
         },
         {
           "target": "com.kubernetes.apiextensions#ListApiextensionsV1CustomResourceDefinition"
@@ -2954,7 +2954,7 @@
           "target": "com.kubernetes.apiextensions#PatchApiextensionsV1CustomResourceDefinitionStatus"
         },
         {
-          "target": "com.kubernetes.apiextensions#WatchApiextensionsV1CustomResourceDefinitionList"
+          "target": "com.kubernetes.apiextensions#ListWatchApiextensionV1CustomResourceDefinition"
         },
         {
           "target": "com.kubernetes.apiextensions#WatchApiextensionsV1CustomResourceDefinition"

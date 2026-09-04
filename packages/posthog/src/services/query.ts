@@ -39,41 +39,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface QueryCheckAuthForAsyncCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const QueryCheckAuthForAsyncCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/query/check_auth_for_async/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "QueryCheckAuthForAsyncCreateRequest",
-}) as any as S.Schema<QueryCheckAuthForAsyncCreateRequest>;
-
-export type QueryCheckAuthForAsyncCreateResponseBodyMap = {
-  [key: string]: unknown | undefined;
-};
-export const QueryCheckAuthForAsyncCreateResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<QueryCheckAuthForAsyncCreateResponseBodyMap>;
-
-export type QueryCheckAuthForAsyncCreateResponse =
-  QueryCheckAuthForAsyncCreateResponseBodyMap;
-export const QueryCheckAuthForAsyncCreateResponse = /*@__PURE__*/ S.suspend(
-  () => QueryCheckAuthForAsyncCreateResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "QueryCheckAuthForAsyncCreateResponse",
-}) as any as S.Schema<QueryCheckAuthForAsyncCreateResponse>;
-
 export type BreakdownFilterBreakdownCase1Item = string | number;
 export const BreakdownFilterBreakdownCase1Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BreakdownFilterBreakdownCase1Item>;
@@ -26436,7 +26401,7 @@ export const QueryCreateRequestVariablesOverrideMap = /*@__PURE__*/ S.Record(
   QueryCreateRequestVariablesOverrideValueMap,
 ) as any as S.Schema<QueryCreateRequestVariablesOverrideMap>;
 
-export interface QueryCreateRequest {
+export interface CreateQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   async?: boolean | null;
@@ -26453,7 +26418,7 @@ export interface QueryCreateRequest {
   refresh?: RefreshType | (string & {}) | null;
   variables_override?: QueryCreateRequestVariablesOverrideMap | null;
 }
-export const QueryCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     async: S.optional(S.NullOr(S.Boolean)),
@@ -26474,8 +26439,8 @@ export const QueryCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "QueryCreateRequest",
-}) as any as S.Schema<QueryCreateRequest>;
+  identifier: "CreateQueryRequest",
+}) as any as S.Schema<CreateQueryRequest>;
 
 export type QueryResponseAlternativeCase0Map = {
   [key: string]: unknown | undefined;
@@ -35163,19 +35128,258 @@ export type QueryResponseAlternative =
 export const QueryResponseAlternative =
   /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative>;
 
-export type QueryCreateResponse = QueryResponseAlternative;
-export const QueryCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export type CreateQueryResponse = QueryResponseAlternative;
+export const CreateQueryResponse = /*@__PURE__*/ S.suspend(() =>
   QueryResponseAlternative.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "QueryCreateResponse",
-}) as any as S.Schema<QueryCreateResponse>;
+  identifier: "CreateQueryResponse",
+}) as any as S.Schema<CreateQueryResponse>;
 
-export interface QueryCreateWithKindRequest {
+export type QueryUpgradeCreateRequestQuery =
+  | EventsNode
+  | ActionsNode
+  | PersonsNode
+  | DataWarehouseNode
+  | FunnelsDataWarehouseNode
+  | LifecycleDataWarehouseNode
+  | EventsQuery
+  | SessionsQuery
+  | ActorsQuery
+  | GroupsQuery
+  | InsightActorsQuery
+  | InsightActorsQueryOptions
+  | SessionsTimelineQuery
+  | HogQuery
+  | HogQLQuery
+  | HogQLMetadata
+  | HogQLAutocomplete
+  | SessionAttributionExplorerQuery
+  | ErrorTrackingQuery
+  | ErrorTrackingSimilarIssuesQuery
+  | ErrorTrackingFingerprintProjectionQuery
+  | ErrorTrackingBreakdownsQuery
+  | ErrorTrackingReleasesQuery
+  | ErrorTrackingIssueCorrelationQuery
+  | ExperimentFunnelsQuery
+  | ExperimentTrendsQuery
+  | ExperimentQuery
+  | ExperimentExposureQuery
+  | DocumentSimilarityQuery
+  | WebOverviewQuery
+  | WebStatsTableQuery
+  | WebExternalClicksTableQuery
+  | WebBotsTableQuery
+  | WebAgentAnalyticsQuery
+  | WebGoalsQuery
+  | WebVitalsQuery
+  | WebVitalsPathBreakdownQuery
+  | WebPageURLSearchQuery
+  | WebAnalyticsExternalSummaryQuery
+  | WebNotableChangesQuery
+  | MarketingAnalyticsTableQuery
+  | MarketingAnalyticsAggregatedQuery
+  | MarketingAnalyticsAttributionQuery
+  | MarketingAnalyticsAttributionPathsQuery
+  | MarketingAnalyticsRetentionQuery
+  | NonIntegratedConversionsTableQuery
+  | DataVisualizationNode
+  | DataTableNode
+  | SavedInsightNode
+  | InsightVizNode
+  | TrendsQuery
+  | FunnelsQuery
+  | RetentionQuery
+  | PathsQuery
+  | PathsV2Query
+  | StickinessQuery
+  | LifecycleQuery
+  | FunnelCorrelationQuery
+  | DatabaseSchemaQuery
+  | RecordingsQuery
+  | LogsQuery
+  | LogAttributesQuery
+  | LogValuesQuery
+  | MetricsQuery
+  | TraceSpansQuery
+  | TraceSpansAggregationQuery
+  | TraceSpansTreeQuery
+  | TraceSpansAttributeBreakdownQuery
+  | SuggestedQuestionsQuery
+  | TeamTaxonomyQuery
+  | EventTaxonomyQuery
+  | ActorsPropertyTaxonomyQuery
+  | TracesQuery
+  | TraceQuery
+  | SessionQuery
+  | TraceNeighborsQuery
+  | VectorSearchQuery
+  | UsageMetricsQuery
+  | AccountsQuery
+  | AccountsTableQuery
+  | EndpointsUsageOverviewQuery
+  | EndpointsUsageTableQuery
+  | EndpointsUsageTrendsQuery
+  | MCPToolCallBreakdownQuery
+  | MCPToolCallsAndErrorsQuery
+  | MCPHarnessBreakdownQuery
+  | MCPToolTopUsersQuery
+  | MCPToolFailuresQuery
+  | MCPToolFailureOccurrencesQuery
+  | MCPToolStatsQuery
+  | MCPToolDailyStatsQuery
+  | MCPToolQualityRowsQuery
+  | MCPToolQualityDailyStatsQuery
+  | MCPToolCategoryCountsQuery
+  | MCPToolCategoriesQuery
+  | MCPToolCategoryMapQuery
+  | MCPToolDescriptionsQuery
+  | MCPToolSampleIntentsQuery
+  | MCPToolNeighborsQuery
+  | PropertyValuesQuery;
+export const QueryUpgradeCreateRequestQuery =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryUpgradeCreateRequestQuery>;
+
+export interface CreateQueryUpgradeRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  query?: QueryUpgradeCreateRequestQuery;
+}
+export const CreateQueryUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    query: S.optional(QueryUpgradeCreateRequestQuery),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/query/upgrade/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateQueryUpgradeRequest",
+}) as any as S.Schema<CreateQueryUpgradeRequest>;
+
+export type QueryUpgradeResponseQuery =
+  | EventsNode
+  | ActionsNode
+  | PersonsNode
+  | DataWarehouseNode
+  | FunnelsDataWarehouseNode
+  | LifecycleDataWarehouseNode
+  | EventsQuery
+  | SessionsQuery
+  | ActorsQuery
+  | GroupsQuery
+  | InsightActorsQuery
+  | InsightActorsQueryOptions
+  | SessionsTimelineQuery
+  | HogQuery
+  | HogQLQuery
+  | HogQLMetadata
+  | HogQLAutocomplete
+  | SessionAttributionExplorerQuery
+  | ErrorTrackingQuery
+  | ErrorTrackingSimilarIssuesQuery
+  | ErrorTrackingFingerprintProjectionQuery
+  | ErrorTrackingBreakdownsQuery
+  | ErrorTrackingReleasesQuery
+  | ErrorTrackingIssueCorrelationQuery
+  | ExperimentFunnelsQuery
+  | ExperimentTrendsQuery
+  | ExperimentQuery
+  | ExperimentExposureQuery
+  | DocumentSimilarityQuery
+  | WebOverviewQuery
+  | WebStatsTableQuery
+  | WebExternalClicksTableQuery
+  | WebBotsTableQuery
+  | WebAgentAnalyticsQuery
+  | WebGoalsQuery
+  | WebVitalsQuery
+  | WebVitalsPathBreakdownQuery
+  | WebPageURLSearchQuery
+  | WebAnalyticsExternalSummaryQuery
+  | WebNotableChangesQuery
+  | MarketingAnalyticsTableQuery
+  | MarketingAnalyticsAggregatedQuery
+  | MarketingAnalyticsAttributionQuery
+  | MarketingAnalyticsAttributionPathsQuery
+  | MarketingAnalyticsRetentionQuery
+  | NonIntegratedConversionsTableQuery
+  | DataVisualizationNode
+  | DataTableNode
+  | SavedInsightNode
+  | InsightVizNode
+  | TrendsQuery
+  | FunnelsQuery
+  | RetentionQuery
+  | PathsQuery
+  | PathsV2Query
+  | StickinessQuery
+  | LifecycleQuery
+  | FunnelCorrelationQuery
+  | DatabaseSchemaQuery
+  | RecordingsQuery
+  | LogsQuery
+  | LogAttributesQuery
+  | LogValuesQuery
+  | MetricsQuery
+  | TraceSpansQuery
+  | TraceSpansAggregationQuery
+  | TraceSpansTreeQuery
+  | TraceSpansAttributeBreakdownQuery
+  | SuggestedQuestionsQuery
+  | TeamTaxonomyQuery
+  | EventTaxonomyQuery
+  | ActorsPropertyTaxonomyQuery
+  | TracesQuery
+  | TraceQuery
+  | SessionQuery
+  | TraceNeighborsQuery
+  | VectorSearchQuery
+  | UsageMetricsQuery
+  | AccountsQuery
+  | AccountsTableQuery
+  | EndpointsUsageOverviewQuery
+  | EndpointsUsageTableQuery
+  | EndpointsUsageTrendsQuery
+  | MCPToolCallBreakdownQuery
+  | MCPToolCallsAndErrorsQuery
+  | MCPHarnessBreakdownQuery
+  | MCPToolTopUsersQuery
+  | MCPToolFailuresQuery
+  | MCPToolFailureOccurrencesQuery
+  | MCPToolStatsQuery
+  | MCPToolDailyStatsQuery
+  | MCPToolQualityRowsQuery
+  | MCPToolQualityDailyStatsQuery
+  | MCPToolCategoryCountsQuery
+  | MCPToolCategoriesQuery
+  | MCPToolCategoryMapQuery
+  | MCPToolDescriptionsQuery
+  | MCPToolSampleIntentsQuery
+  | MCPToolNeighborsQuery
+  | PropertyValuesQuery;
+export const QueryUpgradeResponseQuery =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryUpgradeResponseQuery>;
+
+export interface QueryUpgradeResponse {
+  query?: QueryUpgradeResponseQuery;
+}
+export const QueryUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    query: S.optional(QueryUpgradeResponseQuery),
+  }),
+).annotate({
+  identifier: "QueryUpgradeResponse",
+}) as any as S.Schema<QueryUpgradeResponse>;
+
+export interface CreateQueryWithKindRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   query_kind: string;
 }
-export const QueryCreateWithKindRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateQueryWithKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query_kind: S.String.pipe(T.Label()),
@@ -35187,15 +35391,50 @@ export const QueryCreateWithKindRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "QueryCreateWithKindRequest",
-}) as any as S.Schema<QueryCreateWithKindRequest>;
+  identifier: "CreateQueryWithKindRequest",
+}) as any as S.Schema<CreateQueryWithKindRequest>;
 
-export interface QueryCreateWithKindResponse {}
-export const QueryCreateWithKindResponse = /*@__PURE__*/ S.suspend(() =>
+export interface CreateQueryWithKindResponse {}
+export const CreateQueryWithKindResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "QueryCreateWithKindResponse",
-}) as any as S.Schema<QueryCreateWithKindResponse>;
+  identifier: "CreateQueryWithKindResponse",
+}) as any as S.Schema<CreateQueryWithKindResponse>;
+
+export interface QueryCheckAuthForAsyncCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const QueryCheckAuthForAsyncCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/query/check_auth_for_async/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "QueryCheckAuthForAsyncCreateRequest",
+}) as any as S.Schema<QueryCheckAuthForAsyncCreateRequest>;
+
+export type QueryCheckAuthForAsyncCreateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const QueryCheckAuthForAsyncCreateResponseBodyMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<QueryCheckAuthForAsyncCreateResponseBodyMap>;
+
+export type QueryCheckAuthForAsyncCreateResponse =
+  QueryCheckAuthForAsyncCreateResponseBodyMap;
+export const QueryCheckAuthForAsyncCreateResponse = /*@__PURE__*/ S.suspend(
+  () => QueryCheckAuthForAsyncCreateResponseBodyMap.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "QueryCheckAuthForAsyncCreateResponse",
+}) as any as S.Schema<QueryCheckAuthForAsyncCreateResponse>;
 
 export interface QueryDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -35324,244 +35563,58 @@ export const QueryStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryStatusResponse",
 }) as any as S.Schema<QueryStatusResponse>;
 
-export type QueryUpgradeCreateRequestQuery =
-  | EventsNode
-  | ActionsNode
-  | PersonsNode
-  | DataWarehouseNode
-  | FunnelsDataWarehouseNode
-  | LifecycleDataWarehouseNode
-  | EventsQuery
-  | SessionsQuery
-  | ActorsQuery
-  | GroupsQuery
-  | InsightActorsQuery
-  | InsightActorsQueryOptions
-  | SessionsTimelineQuery
-  | HogQuery
-  | HogQLQuery
-  | HogQLMetadata
-  | HogQLAutocomplete
-  | SessionAttributionExplorerQuery
-  | ErrorTrackingQuery
-  | ErrorTrackingSimilarIssuesQuery
-  | ErrorTrackingFingerprintProjectionQuery
-  | ErrorTrackingBreakdownsQuery
-  | ErrorTrackingReleasesQuery
-  | ErrorTrackingIssueCorrelationQuery
-  | ExperimentFunnelsQuery
-  | ExperimentTrendsQuery
-  | ExperimentQuery
-  | ExperimentExposureQuery
-  | DocumentSimilarityQuery
-  | WebOverviewQuery
-  | WebStatsTableQuery
-  | WebExternalClicksTableQuery
-  | WebBotsTableQuery
-  | WebAgentAnalyticsQuery
-  | WebGoalsQuery
-  | WebVitalsQuery
-  | WebVitalsPathBreakdownQuery
-  | WebPageURLSearchQuery
-  | WebAnalyticsExternalSummaryQuery
-  | WebNotableChangesQuery
-  | MarketingAnalyticsTableQuery
-  | MarketingAnalyticsAggregatedQuery
-  | MarketingAnalyticsAttributionQuery
-  | MarketingAnalyticsAttributionPathsQuery
-  | MarketingAnalyticsRetentionQuery
-  | NonIntegratedConversionsTableQuery
-  | DataVisualizationNode
-  | DataTableNode
-  | SavedInsightNode
-  | InsightVizNode
-  | TrendsQuery
-  | FunnelsQuery
-  | RetentionQuery
-  | PathsQuery
-  | PathsV2Query
-  | StickinessQuery
-  | LifecycleQuery
-  | FunnelCorrelationQuery
-  | DatabaseSchemaQuery
-  | RecordingsQuery
-  | LogsQuery
-  | LogAttributesQuery
-  | LogValuesQuery
-  | MetricsQuery
-  | TraceSpansQuery
-  | TraceSpansAggregationQuery
-  | TraceSpansTreeQuery
-  | TraceSpansAttributeBreakdownQuery
-  | SuggestedQuestionsQuery
-  | TeamTaxonomyQuery
-  | EventTaxonomyQuery
-  | ActorsPropertyTaxonomyQuery
-  | TracesQuery
-  | TraceQuery
-  | SessionQuery
-  | TraceNeighborsQuery
-  | VectorSearchQuery
-  | UsageMetricsQuery
-  | AccountsQuery
-  | AccountsTableQuery
-  | EndpointsUsageOverviewQuery
-  | EndpointsUsageTableQuery
-  | EndpointsUsageTrendsQuery
-  | MCPToolCallBreakdownQuery
-  | MCPToolCallsAndErrorsQuery
-  | MCPHarnessBreakdownQuery
-  | MCPToolTopUsersQuery
-  | MCPToolFailuresQuery
-  | MCPToolFailureOccurrencesQuery
-  | MCPToolStatsQuery
-  | MCPToolDailyStatsQuery
-  | MCPToolQualityRowsQuery
-  | MCPToolQualityDailyStatsQuery
-  | MCPToolCategoryCountsQuery
-  | MCPToolCategoriesQuery
-  | MCPToolCategoryMapQuery
-  | MCPToolDescriptionsQuery
-  | MCPToolSampleIntentsQuery
-  | MCPToolNeighborsQuery
-  | PropertyValuesQuery;
-export const QueryUpgradeCreateRequestQuery =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryUpgradeCreateRequestQuery>;
+export type CreateQueryError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
+export const createQuery: API.OperationMethod<
+  CreateQueryRequest,
+  CreateQueryResponse,
+  CreateQueryError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateQueryRequest,
+  output: CreateQueryResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
-export interface QueryUpgradeCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  query?: QueryUpgradeCreateRequestQuery;
-}
-export const QueryUpgradeCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    query: S.optional(QueryUpgradeCreateRequestQuery),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/query/upgrade/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "QueryUpgradeCreateRequest",
-}) as any as S.Schema<QueryUpgradeCreateRequest>;
+export type CreateQueryUpgradeError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Upgrades a query without executing it. Returns a query with all nodes migrated to the latest version. */
+export const createQueryUpgrade: API.OperationMethod<
+  CreateQueryUpgradeRequest,
+  QueryUpgradeResponse,
+  CreateQueryUpgradeError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateQueryUpgradeRequest,
+  output: QueryUpgradeResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
-export type QueryUpgradeResponseQuery =
-  | EventsNode
-  | ActionsNode
-  | PersonsNode
-  | DataWarehouseNode
-  | FunnelsDataWarehouseNode
-  | LifecycleDataWarehouseNode
-  | EventsQuery
-  | SessionsQuery
-  | ActorsQuery
-  | GroupsQuery
-  | InsightActorsQuery
-  | InsightActorsQueryOptions
-  | SessionsTimelineQuery
-  | HogQuery
-  | HogQLQuery
-  | HogQLMetadata
-  | HogQLAutocomplete
-  | SessionAttributionExplorerQuery
-  | ErrorTrackingQuery
-  | ErrorTrackingSimilarIssuesQuery
-  | ErrorTrackingFingerprintProjectionQuery
-  | ErrorTrackingBreakdownsQuery
-  | ErrorTrackingReleasesQuery
-  | ErrorTrackingIssueCorrelationQuery
-  | ExperimentFunnelsQuery
-  | ExperimentTrendsQuery
-  | ExperimentQuery
-  | ExperimentExposureQuery
-  | DocumentSimilarityQuery
-  | WebOverviewQuery
-  | WebStatsTableQuery
-  | WebExternalClicksTableQuery
-  | WebBotsTableQuery
-  | WebAgentAnalyticsQuery
-  | WebGoalsQuery
-  | WebVitalsQuery
-  | WebVitalsPathBreakdownQuery
-  | WebPageURLSearchQuery
-  | WebAnalyticsExternalSummaryQuery
-  | WebNotableChangesQuery
-  | MarketingAnalyticsTableQuery
-  | MarketingAnalyticsAggregatedQuery
-  | MarketingAnalyticsAttributionQuery
-  | MarketingAnalyticsAttributionPathsQuery
-  | MarketingAnalyticsRetentionQuery
-  | NonIntegratedConversionsTableQuery
-  | DataVisualizationNode
-  | DataTableNode
-  | SavedInsightNode
-  | InsightVizNode
-  | TrendsQuery
-  | FunnelsQuery
-  | RetentionQuery
-  | PathsQuery
-  | PathsV2Query
-  | StickinessQuery
-  | LifecycleQuery
-  | FunnelCorrelationQuery
-  | DatabaseSchemaQuery
-  | RecordingsQuery
-  | LogsQuery
-  | LogAttributesQuery
-  | LogValuesQuery
-  | MetricsQuery
-  | TraceSpansQuery
-  | TraceSpansAggregationQuery
-  | TraceSpansTreeQuery
-  | TraceSpansAttributeBreakdownQuery
-  | SuggestedQuestionsQuery
-  | TeamTaxonomyQuery
-  | EventTaxonomyQuery
-  | ActorsPropertyTaxonomyQuery
-  | TracesQuery
-  | TraceQuery
-  | SessionQuery
-  | TraceNeighborsQuery
-  | VectorSearchQuery
-  | UsageMetricsQuery
-  | AccountsQuery
-  | AccountsTableQuery
-  | EndpointsUsageOverviewQuery
-  | EndpointsUsageTableQuery
-  | EndpointsUsageTrendsQuery
-  | MCPToolCallBreakdownQuery
-  | MCPToolCallsAndErrorsQuery
-  | MCPHarnessBreakdownQuery
-  | MCPToolTopUsersQuery
-  | MCPToolFailuresQuery
-  | MCPToolFailureOccurrencesQuery
-  | MCPToolStatsQuery
-  | MCPToolDailyStatsQuery
-  | MCPToolQualityRowsQuery
-  | MCPToolQualityDailyStatsQuery
-  | MCPToolCategoryCountsQuery
-  | MCPToolCategoriesQuery
-  | MCPToolCategoryMapQuery
-  | MCPToolDescriptionsQuery
-  | MCPToolSampleIntentsQuery
-  | MCPToolNeighborsQuery
-  | PropertyValuesQuery;
-export const QueryUpgradeResponseQuery =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryUpgradeResponseQuery>;
-
-export interface QueryUpgradeResponse {
-  query?: QueryUpgradeResponseQuery;
-}
-export const QueryUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(QueryUpgradeResponseQuery),
-  }),
-).annotate({
-  identifier: "QueryUpgradeResponse",
-}) as any as S.Schema<QueryUpgradeResponse>;
+export type CreateQueryWithKindError = Forbidden | NotFound | PosthogOpError;
+/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
+export const createQueryWithKind: API.OperationMethod<
+  CreateQueryWithKindRequest,
+  CreateQueryWithKindResponse,
+  CreateQueryWithKindError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateQueryWithKindRequest,
+  output: CreateQueryWithKindResponse,
+  errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
 export type QueryCheckAuthForAsyncCreateError =
   | Forbidden
@@ -35576,40 +35629,6 @@ export const queryCheckAuthForAsyncCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: QueryCheckAuthForAsyncCreateRequest,
   output: QueryCheckAuthForAsyncCreateResponse,
-  errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type QueryCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
-export const queryCreate: API.OperationMethod<
-  QueryCreateRequest,
-  QueryCreateResponse,
-  QueryCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueryCreateRequest,
-  output: QueryCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type QueryCreateWithKindError = Forbidden | NotFound | PosthogOpError;
-/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
-export const queryCreateWithKind: API.OperationMethod<
-  QueryCreateWithKindRequest,
-  QueryCreateWithKindResponse,
-  QueryCreateWithKindError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueryCreateWithKindRequest,
-  output: QueryCreateWithKindResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -35671,25 +35690,6 @@ export const queryRetrieve: API.OperationMethod<
   input: QueryRetrieveRequest,
   output: QueryStatusResponse,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type QueryUpgradeCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Upgrades a query without executing it. Returns a query with all nodes migrated to the latest version. */
-export const queryUpgradeCreate: API.OperationMethod<
-  QueryUpgradeCreateRequest,
-  QueryUpgradeResponse,
-  QueryUpgradeCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueryUpgradeCreateRequest,
-  output: QueryUpgradeResponse,
-  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

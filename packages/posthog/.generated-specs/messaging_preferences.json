@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.messaging_preferences#MessagingPreferencesAddOptOutCreateRequest": {
+    "com.posthog.messaging_preferences#CreateMessagingPreferenceAddOptOutRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -80,10 +80,10 @@
       },
       "traits": {}
     },
-    "com.posthog.messaging_preferences#MessagingPreferencesAddOptOutCreate": {
+    "com.posthog.messaging_preferences#CreateMessagingPreferenceAddOptOut": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.messaging_preferences#MessagingPreferencesAddOptOutCreateRequest"
+        "target": "com.posthog.messaging_preferences#CreateMessagingPreferenceAddOptOutRequest"
       },
       "output": {
         "target": "com.posthog.messaging_preferences#MessagePreferences"
@@ -125,7 +125,7 @@
         "smithy.api#documentation": "Recipients to opt out, at most 1000 per request."
       }
     },
-    "com.posthog.messaging_preferences#MessagingPreferencesBulkAddOptOutsCreateRequest": {
+    "com.posthog.messaging_preferences#CreateMessagingPreferenceBulkAddOptOutRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -197,10 +197,10 @@
         "smithy.api#documentation": "The first few entry-level problems, so the caller can fix their list."
       }
     },
-    "com.posthog.messaging_preferences#MessagingPreferencesBulkAddOptOutsCreate": {
+    "com.posthog.messaging_preferences#CreateMessagingPreferenceBulkAddOptOut": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.messaging_preferences#MessagingPreferencesBulkAddOptOutsCreateRequest"
+        "target": "com.posthog.messaging_preferences#CreateMessagingPreferenceBulkAddOptOutRequest"
       },
       "output": {
         "target": "com.posthog.messaging_preferences#BulkAddOptOutsResult"
@@ -424,7 +424,7 @@
         "smithy.api#documentation": "List recipients opted out of a message category\n\nGet opt-outs filtered by category or overall opt-outs if no category specified"
       }
     },
-    "com.posthog.messaging_preferences#MessagingPreferencesRemoveOptOutCreateRequest": {
+    "com.posthog.messaging_preferences#CreateMessagingPreferenceRemoveOptOutRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -453,10 +453,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.messaging_preferences#MessagingPreferencesRemoveOptOutCreate": {
+    "com.posthog.messaging_preferences#CreateMessagingPreferenceRemoveOptOut": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.messaging_preferences#MessagingPreferencesRemoveOptOutCreateRequest"
+        "target": "com.posthog.messaging_preferences#CreateMessagingPreferenceRemoveOptOutRequest"
       },
       "output": {
         "target": "com.posthog.messaging_preferences#MessagePreferences"
@@ -534,10 +534,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.messaging_preferences#MessagingPreferencesAddOptOutCreate"
+          "target": "com.posthog.messaging_preferences#CreateMessagingPreferenceAddOptOut"
         },
         {
-          "target": "com.posthog.messaging_preferences#MessagingPreferencesBulkAddOptOutsCreate"
+          "target": "com.posthog.messaging_preferences#CreateMessagingPreferenceBulkAddOptOut"
         },
         {
           "target": "com.posthog.messaging_preferences#MessagingPreferencesExportOptOutsCsvRetrieve"
@@ -549,7 +549,7 @@
           "target": "com.posthog.messaging_preferences#MessagingPreferencesOptOutsRetrieve"
         },
         {
-          "target": "com.posthog.messaging_preferences#MessagingPreferencesRemoveOptOutCreate"
+          "target": "com.posthog.messaging_preferences#CreateMessagingPreferenceRemoveOptOut"
         },
         {
           "target": "com.posthog.messaging_preferences#MessagingPreferencesWebhookUrlRetrieve"

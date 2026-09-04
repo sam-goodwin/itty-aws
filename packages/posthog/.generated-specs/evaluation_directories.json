@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.evaluation_directories#EvaluationDirectoriesListRequest": {
+    "com.posthog.evaluation_directories#ListEvaluationDirectoriesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -228,7 +228,7 @@
       },
       "traits": {}
     },
-    "com.posthog.evaluation_directories#EvaluationDirectoriesListResponse": {
+    "com.posthog.evaluation_directories#ListEvaluationDirectoriesResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -243,13 +243,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.evaluation_directories#EvaluationDirectoriesList": {
+    "com.posthog.evaluation_directories#ListEvaluationDirectories": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.evaluation_directories#EvaluationDirectoriesListRequest"
+        "target": "com.posthog.evaluation_directories#ListEvaluationDirectoriesRequest"
       },
       "output": {
-        "target": "com.posthog.evaluation_directories#EvaluationDirectoriesListResponse"
+        "target": "com.posthog.evaluation_directories#ListEvaluationDirectoriesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -259,7 +259,7 @@
         }
       }
     },
-    "com.posthog.evaluation_directories#EvaluationDirectoriesCreateRequest": {
+    "com.posthog.evaluation_directories#CreateEvaluationDirectoryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -282,10 +282,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.evaluation_directories#EvaluationDirectoriesCreate": {
+    "com.posthog.evaluation_directories#CreateEvaluationDirectory": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.evaluation_directories#EvaluationDirectoriesCreateRequest"
+        "target": "com.posthog.evaluation_directories#CreateEvaluationDirectoryRequest"
       },
       "output": {
         "target": "com.posthog.evaluation_directories#EvaluationDirectory"
@@ -338,7 +338,7 @@
         }
       }
     },
-    "com.posthog.evaluation_directories#EvaluationDirectoriesPartialUpdateRequest": {
+    "com.posthog.evaluation_directories#UpdateEvaluationDirectoryPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -368,10 +368,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.evaluation_directories#EvaluationDirectoriesPartialUpdate": {
+    "com.posthog.evaluation_directories#UpdateEvaluationDirectoryPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.evaluation_directories#EvaluationDirectoriesPartialUpdateRequest"
+        "target": "com.posthog.evaluation_directories#UpdateEvaluationDirectoryPartialRequest"
       },
       "output": {
         "target": "com.posthog.evaluation_directories#EvaluationDirectory"
@@ -429,16 +429,16 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.evaluation_directories#EvaluationDirectoriesList"
+          "target": "com.posthog.evaluation_directories#ListEvaluationDirectories"
         },
         {
-          "target": "com.posthog.evaluation_directories#EvaluationDirectoriesCreate"
+          "target": "com.posthog.evaluation_directories#CreateEvaluationDirectory"
         },
         {
           "target": "com.posthog.evaluation_directories#EvaluationDirectoriesRetrieve"
         },
         {
-          "target": "com.posthog.evaluation_directories#EvaluationDirectoriesPartialUpdate"
+          "target": "com.posthog.evaluation_directories#UpdateEvaluationDirectoryPartial"
         },
         {
           "target": "com.posthog.evaluation_directories#EvaluationDirectoriesDestroy"

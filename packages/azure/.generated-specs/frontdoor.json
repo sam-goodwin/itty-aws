@@ -101,10 +101,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#RulesEnginesDelete": {
+    "com.azure.frontdoor#DeleteRuleEngine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#RulesEnginesDeleteRequest"
+        "target": "com.azure.frontdoor#DeleteRuleEngineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -120,7 +120,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#RulesEnginesDeleteRequest": {
+    "com.azure.frontdoor#DeleteRuleEngineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -788,13 +788,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#RulesEnginesGet": {
+    "com.azure.frontdoor#GetRuleEngine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#RulesEnginesGetRequest"
+        "target": "com.azure.frontdoor#GetRuleEngineRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#RulesEnginesGetResponse"
+        "target": "com.azure.frontdoor#GetRuleEngineResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -807,7 +807,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#RulesEnginesGetResponse": {
+    "com.azure.frontdoor#GetRuleEngineResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -839,7 +839,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.frontdoor#RulesEnginesGetRequest": {
+    "com.azure.frontdoor#GetRuleEngineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -879,10 +879,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#RulesEnginesListByFrontDoor": {
+    "com.azure.frontdoor#ListRuleEngineByFrontDoor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#RulesEnginesListByFrontDoorRequest"
+        "target": "com.azure.frontdoor#ListRuleEngineByFrontDoorRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#RulesEngineListResult"
@@ -960,7 +960,7 @@
         "smithy.api#documentation": "A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response."
       }
     },
-    "com.azure.frontdoor#RulesEnginesListByFrontDoorRequest": {
+    "com.azure.frontdoor#ListRuleEngineByFrontDoorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1059,10 +1059,10 @@
         "smithy.api#documentation": "The path to the content to be purged. Can describe a file path or a wild card directory."
       }
     },
-    "com.azure.frontdoor#FrontendEndpointsEnableHttps": {
+    "com.azure.frontdoor#EnableFrontendEndpointHttp": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontendEndpointsEnableHttpsRequest"
+        "target": "com.azure.frontdoor#EnableFrontendEndpointHttpRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1078,7 +1078,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#FrontendEndpointsEnableHttpsRequest": {
+    "com.azure.frontdoor#EnableFrontendEndpointHttpRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1273,10 +1273,10 @@
         "smithy.api#documentation": "Defines the source of the SSL certificate"
       }
     },
-    "com.azure.frontdoor#FrontendEndpointsDisableHttps": {
+    "com.azure.frontdoor#DisableFrontendEndpointHttp": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontendEndpointsDisableHttpsRequest"
+        "target": "com.azure.frontdoor#DisableFrontendEndpointHttpRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1292,7 +1292,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#FrontendEndpointsDisableHttpsRequest": {
+    "com.azure.frontdoor#DisableFrontendEndpointHttpRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1332,13 +1332,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#FrontendEndpointsGet": {
+    "com.azure.frontdoor#GetFrontendEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontendEndpointsGetRequest"
+        "target": "com.azure.frontdoor#GetFrontendEndpointRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#FrontendEndpointsGetResponse"
+        "target": "com.azure.frontdoor#GetFrontendEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1351,7 +1351,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#FrontendEndpointsGetResponse": {
+    "com.azure.frontdoor#GetFrontendEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1620,7 +1620,7 @@
         "smithy.api#documentation": "Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'"
       }
     },
-    "com.azure.frontdoor#FrontendEndpointsGetRequest": {
+    "com.azure.frontdoor#GetFrontendEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1660,10 +1660,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#FrontendEndpointsListByFrontDoor": {
+    "com.azure.frontdoor#ListFrontendEndpointByFrontDoor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontendEndpointsListByFrontDoorRequest"
+        "target": "com.azure.frontdoor#ListFrontendEndpointByFrontDoorRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#FrontendEndpointsListResult"
@@ -1741,7 +1741,7 @@
         "smithy.api#documentation": "A frontend endpoint used for routing."
       }
     },
-    "com.azure.frontdoor#FrontendEndpointsListByFrontDoorRequest": {
+    "com.azure.frontdoor#ListFrontendEndpointByFrontDoorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1773,10 +1773,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#FrontDoorsDelete": {
+    "com.azure.frontdoor#DeleteFrontDoor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontDoorsDeleteRequest"
+        "target": "com.azure.frontdoor#DeleteFrontDoorRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1792,7 +1792,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#FrontDoorsDeleteRequest": {
+    "com.azure.frontdoor#DeleteFrontDoorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2984,13 +2984,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#FrontDoorsGet": {
+    "com.azure.frontdoor#GetFrontDoor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontDoorsGetRequest"
+        "target": "com.azure.frontdoor#GetFrontDoorRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#FrontDoorsGetResponse"
+        "target": "com.azure.frontdoor#GetFrontDoorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3003,7 +3003,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#FrontDoorsGetResponse": {
+    "com.azure.frontdoor#GetFrontDoorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3059,7 +3059,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#FrontDoorsGetRequest": {
+    "com.azure.frontdoor#GetFrontDoorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3091,10 +3091,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#FrontDoorsListByResourceGroup": {
+    "com.azure.frontdoor#ListFrontDoorByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontDoorsListByResourceGroupRequest"
+        "target": "com.azure.frontdoor#ListFrontDoorByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#FrontDoorListResult"
@@ -3196,7 +3196,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#FrontDoorsListByResourceGroupRequest": {
+    "com.azure.frontdoor#ListFrontDoorByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3220,10 +3220,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#PreconfiguredEndpointsList": {
+    "com.azure.frontdoor#ListPreconfiguredEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#PreconfiguredEndpointsListRequest"
+        "target": "com.azure.frontdoor#ListPreconfiguredEndpointsRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#PreconfiguredEndpointList"
@@ -3389,7 +3389,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#PreconfiguredEndpointsListRequest": {
+    "com.azure.frontdoor#ListPreconfiguredEndpointsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3421,13 +3421,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#ReportsGetTimeseries": {
+    "com.azure.frontdoor#GetReportTimesery": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#ReportsGetTimeseriesRequest"
+        "target": "com.azure.frontdoor#GetReportTimeseryRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#ReportsGetTimeseriesResponse"
+        "target": "com.azure.frontdoor#GetReportTimeseryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3440,7 +3440,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#ReportsGetTimeseriesResponse": {
+    "com.azure.frontdoor#GetReportTimeseryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3627,7 +3627,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#ReportsGetTimeseriesRequest": {
+    "com.azure.frontdoor#GetReportTimeseryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3761,13 +3761,13 @@
       },
       "traits": {}
     },
-    "com.azure.frontdoor#ReportsGetLatencyScorecards": {
+    "com.azure.frontdoor#GetReportLatencyScorecard": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#ReportsGetLatencyScorecardsRequest"
+        "target": "com.azure.frontdoor#GetReportLatencyScorecardRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#ReportsGetLatencyScorecardsResponse"
+        "target": "com.azure.frontdoor#GetReportLatencyScorecardResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3780,7 +3780,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#ReportsGetLatencyScorecardsResponse": {
+    "com.azure.frontdoor#GetReportLatencyScorecardResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3975,7 +3975,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#ReportsGetLatencyScorecardsRequest": {
+    "com.azure.frontdoor#GetReportLatencyScorecardRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4061,10 +4061,10 @@
       },
       "traits": {}
     },
-    "com.azure.frontdoor#ExperimentsDelete": {
+    "com.azure.frontdoor#DeleteExperiment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#ExperimentsDeleteRequest"
+        "target": "com.azure.frontdoor#DeleteExperimentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4080,7 +4080,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#ExperimentsDeleteRequest": {
+    "com.azure.frontdoor#DeleteExperimentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4120,13 +4120,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#ExperimentsUpdate": {
+    "com.azure.frontdoor#UpdateExperiment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#ExperimentsUpdateRequest"
+        "target": "com.azure.frontdoor#UpdateExperimentRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#ExperimentsUpdateResponse"
+        "target": "com.azure.frontdoor#UpdateExperimentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4139,7 +4139,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#ExperimentsUpdateResponse": {
+    "com.azure.frontdoor#UpdateExperimentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4329,7 +4329,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#ExperimentsUpdateRequest": {
+    "com.azure.frontdoor#UpdateExperimentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4590,13 +4590,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#ExperimentsGet": {
+    "com.azure.frontdoor#GetExperiment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#ExperimentsGetRequest"
+        "target": "com.azure.frontdoor#GetExperimentRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#ExperimentsGetResponse"
+        "target": "com.azure.frontdoor#GetExperimentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4609,7 +4609,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#ExperimentsGetResponse": {
+    "com.azure.frontdoor#GetExperimentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4665,7 +4665,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#ExperimentsGetRequest": {
+    "com.azure.frontdoor#GetExperimentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4705,10 +4705,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#ExperimentsListByProfile": {
+    "com.azure.frontdoor#ListExperimentByProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#ExperimentsListByProfileRequest"
+        "target": "com.azure.frontdoor#ListExperimentByProfileRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#ExperimentList"
@@ -4810,7 +4810,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#ExperimentsListByProfileRequest": {
+    "com.azure.frontdoor#ListExperimentByProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4842,10 +4842,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesDelete": {
+    "com.azure.frontdoor#DeleteNetworkExperimentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#NetworkExperimentProfilesDeleteRequest"
+        "target": "com.azure.frontdoor#DeleteNetworkExperimentProfileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4861,7 +4861,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesDeleteRequest": {
+    "com.azure.frontdoor#DeleteNetworkExperimentProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4893,13 +4893,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesUpdate": {
+    "com.azure.frontdoor#UpdateNetworkExperimentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#NetworkExperimentProfilesUpdateRequest"
+        "target": "com.azure.frontdoor#UpdateNetworkExperimentProfileRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#NetworkExperimentProfilesUpdateResponse"
+        "target": "com.azure.frontdoor#UpdateNetworkExperimentProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4912,7 +4912,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesUpdateResponse": {
+    "com.azure.frontdoor#UpdateNetworkExperimentProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4994,7 +4994,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesUpdateRequest": {
+    "com.azure.frontdoor#UpdateNetworkExperimentProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5213,13 +5213,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesGet": {
+    "com.azure.frontdoor#GetNetworkExperimentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#NetworkExperimentProfilesGetRequest"
+        "target": "com.azure.frontdoor#GetNetworkExperimentProfileRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#NetworkExperimentProfilesGetResponse"
+        "target": "com.azure.frontdoor#GetNetworkExperimentProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5232,7 +5232,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesGetResponse": {
+    "com.azure.frontdoor#GetNetworkExperimentProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5294,7 +5294,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesGetRequest": {
+    "com.azure.frontdoor#GetNetworkExperimentProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5326,10 +5326,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesListByResourceGroup": {
+    "com.azure.frontdoor#ListNetworkExperimentProfileByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#NetworkExperimentProfilesListByResourceGroupRequest"
+        "target": "com.azure.frontdoor#ListNetworkExperimentProfileByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#ProfileList"
@@ -5437,7 +5437,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesListByResourceGroupRequest": {
+    "com.azure.frontdoor#ListNetworkExperimentProfileByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5461,10 +5461,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#PoliciesDelete": {
+    "com.azure.frontdoor#DeletePolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#PoliciesDeleteRequest"
+        "target": "com.azure.frontdoor#DeletePolicyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5480,7 +5480,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#PoliciesDeleteRequest": {
+    "com.azure.frontdoor#DeletePolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5512,13 +5512,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#PoliciesUpdate": {
+    "com.azure.frontdoor#UpdatePolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#PoliciesUpdateRequest"
+        "target": "com.azure.frontdoor#UpdatePolicyRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#PoliciesUpdateResponse"
+        "target": "com.azure.frontdoor#UpdatePolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5531,7 +5531,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#PoliciesUpdateResponse": {
+    "com.azure.frontdoor#UpdatePolicyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7228,7 +7228,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#PoliciesUpdateRequest": {
+    "com.azure.frontdoor#UpdatePolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7465,13 +7465,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#PoliciesGet": {
+    "com.azure.frontdoor#GetPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#PoliciesGetRequest"
+        "target": "com.azure.frontdoor#GetPolicyRequest"
       },
       "output": {
-        "target": "com.azure.frontdoor#PoliciesGetResponse"
+        "target": "com.azure.frontdoor#GetPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7484,7 +7484,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#PoliciesGetResponse": {
+    "com.azure.frontdoor#GetPolicyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7552,7 +7552,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#PoliciesGetRequest": {
+    "com.azure.frontdoor#GetPolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7584,10 +7584,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#PoliciesList": {
+    "com.azure.frontdoor#ListPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#PoliciesListRequest"
+        "target": "com.azure.frontdoor#ListPoliciesRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#WebApplicationFirewallPolicyList"
@@ -7701,7 +7701,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#PoliciesListRequest": {
+    "com.azure.frontdoor#ListPoliciesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7725,10 +7725,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#FrontDoorsList": {
+    "com.azure.frontdoor#ListFrontDoors": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontDoorsListRequest"
+        "target": "com.azure.frontdoor#ListFrontDoorsRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#FrontDoorListResult"
@@ -7744,7 +7744,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#FrontDoorsListRequest": {
+    "com.azure.frontdoor#ListFrontDoorsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7760,10 +7760,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#ManagedRuleSetsList": {
+    "com.azure.frontdoor#ListManagedRuleSets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#ManagedRuleSetsListRequest"
+        "target": "com.azure.frontdoor#ListManagedRuleSetsRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#ManagedRuleSetDefinitionList"
@@ -7985,7 +7985,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.frontdoor#ManagedRuleSetsListRequest": {
+    "com.azure.frontdoor#ListManagedRuleSetsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8001,10 +8001,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#FrontDoorNameAvailabilityWithSubscriptionCheck": {
+    "com.azure.frontdoor#CheckFrontDoorNameAvailabilityWithSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontDoorNameAvailabilityWithSubscriptionCheckRequest"
+        "target": "com.azure.frontdoor#CheckFrontDoorNameAvailabilityWithSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#CheckNameAvailabilityOutput"
@@ -8066,7 +8066,7 @@
         "smithy.api#documentation": "Indicates whether the name is available."
       }
     },
-    "com.azure.frontdoor#FrontDoorNameAvailabilityWithSubscriptionCheckRequest": {
+    "com.azure.frontdoor#CheckFrontDoorNameAvailabilityWithSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8116,10 +8116,10 @@
         "smithy.api#documentation": "Type of Front Door resource used in CheckNameAvailability."
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesList": {
+    "com.azure.frontdoor#ListNetworkExperimentProfiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#NetworkExperimentProfilesListRequest"
+        "target": "com.azure.frontdoor#ListNetworkExperimentProfilesRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#ProfileList"
@@ -8135,7 +8135,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#NetworkExperimentProfilesListRequest": {
+    "com.azure.frontdoor#ListNetworkExperimentProfilesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8151,10 +8151,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#PoliciesListBySubscription": {
+    "com.azure.frontdoor#ListPolicyBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#PoliciesListBySubscriptionRequest"
+        "target": "com.azure.frontdoor#ListPolicyBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#WebApplicationFirewallPolicyList"
@@ -8170,7 +8170,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#PoliciesListBySubscriptionRequest": {
+    "com.azure.frontdoor#ListPolicyBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8186,10 +8186,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.frontdoor#FrontDoorNameAvailabilityCheck": {
+    "com.azure.frontdoor#CheckFrontDoorNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.frontdoor#FrontDoorNameAvailabilityCheckRequest"
+        "target": "com.azure.frontdoor#CheckFrontDoorNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.frontdoor#CheckNameAvailabilityOutput"
@@ -8205,7 +8205,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.frontdoor#FrontDoorNameAvailabilityCheckRequest": {
+    "com.azure.frontdoor#CheckFrontDoorNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -8235,115 +8235,115 @@
           "target": "com.azure.frontdoor#FrontDoorsValidateCustomDomain"
         },
         {
-          "target": "com.azure.frontdoor#RulesEnginesDelete"
+          "target": "com.azure.frontdoor#DeleteRuleEngine"
         },
         {
           "target": "com.azure.frontdoor#RulesEnginesCreateOrUpdate"
         },
         {
-          "target": "com.azure.frontdoor#RulesEnginesGet"
+          "target": "com.azure.frontdoor#GetRuleEngine"
         },
         {
-          "target": "com.azure.frontdoor#RulesEnginesListByFrontDoor"
+          "target": "com.azure.frontdoor#ListRuleEngineByFrontDoor"
         },
         {
           "target": "com.azure.frontdoor#EndpointsPurgeContent"
         },
         {
-          "target": "com.azure.frontdoor#FrontendEndpointsEnableHttps"
+          "target": "com.azure.frontdoor#EnableFrontendEndpointHttp"
         },
         {
-          "target": "com.azure.frontdoor#FrontendEndpointsDisableHttps"
+          "target": "com.azure.frontdoor#DisableFrontendEndpointHttp"
         },
         {
-          "target": "com.azure.frontdoor#FrontendEndpointsGet"
+          "target": "com.azure.frontdoor#GetFrontendEndpoint"
         },
         {
-          "target": "com.azure.frontdoor#FrontendEndpointsListByFrontDoor"
+          "target": "com.azure.frontdoor#ListFrontendEndpointByFrontDoor"
         },
         {
-          "target": "com.azure.frontdoor#FrontDoorsDelete"
+          "target": "com.azure.frontdoor#DeleteFrontDoor"
         },
         {
           "target": "com.azure.frontdoor#FrontDoorsCreateOrUpdate"
         },
         {
-          "target": "com.azure.frontdoor#FrontDoorsGet"
+          "target": "com.azure.frontdoor#GetFrontDoor"
         },
         {
-          "target": "com.azure.frontdoor#FrontDoorsListByResourceGroup"
+          "target": "com.azure.frontdoor#ListFrontDoorByResourceGroup"
         },
         {
-          "target": "com.azure.frontdoor#PreconfiguredEndpointsList"
+          "target": "com.azure.frontdoor#ListPreconfiguredEndpoints"
         },
         {
-          "target": "com.azure.frontdoor#ReportsGetTimeseries"
+          "target": "com.azure.frontdoor#GetReportTimesery"
         },
         {
-          "target": "com.azure.frontdoor#ReportsGetLatencyScorecards"
+          "target": "com.azure.frontdoor#GetReportLatencyScorecard"
         },
         {
-          "target": "com.azure.frontdoor#ExperimentsDelete"
+          "target": "com.azure.frontdoor#DeleteExperiment"
         },
         {
-          "target": "com.azure.frontdoor#ExperimentsUpdate"
+          "target": "com.azure.frontdoor#UpdateExperiment"
         },
         {
           "target": "com.azure.frontdoor#ExperimentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.frontdoor#ExperimentsGet"
+          "target": "com.azure.frontdoor#GetExperiment"
         },
         {
-          "target": "com.azure.frontdoor#ExperimentsListByProfile"
+          "target": "com.azure.frontdoor#ListExperimentByProfile"
         },
         {
-          "target": "com.azure.frontdoor#NetworkExperimentProfilesDelete"
+          "target": "com.azure.frontdoor#DeleteNetworkExperimentProfile"
         },
         {
-          "target": "com.azure.frontdoor#NetworkExperimentProfilesUpdate"
+          "target": "com.azure.frontdoor#UpdateNetworkExperimentProfile"
         },
         {
           "target": "com.azure.frontdoor#NetworkExperimentProfilesCreateOrUpdate"
         },
         {
-          "target": "com.azure.frontdoor#NetworkExperimentProfilesGet"
+          "target": "com.azure.frontdoor#GetNetworkExperimentProfile"
         },
         {
-          "target": "com.azure.frontdoor#NetworkExperimentProfilesListByResourceGroup"
+          "target": "com.azure.frontdoor#ListNetworkExperimentProfileByResourceGroup"
         },
         {
-          "target": "com.azure.frontdoor#PoliciesDelete"
+          "target": "com.azure.frontdoor#DeletePolicy"
         },
         {
-          "target": "com.azure.frontdoor#PoliciesUpdate"
+          "target": "com.azure.frontdoor#UpdatePolicy"
         },
         {
           "target": "com.azure.frontdoor#PoliciesCreateOrUpdate"
         },
         {
-          "target": "com.azure.frontdoor#PoliciesGet"
+          "target": "com.azure.frontdoor#GetPolicy"
         },
         {
-          "target": "com.azure.frontdoor#PoliciesList"
+          "target": "com.azure.frontdoor#ListPolicies"
         },
         {
-          "target": "com.azure.frontdoor#FrontDoorsList"
+          "target": "com.azure.frontdoor#ListFrontDoors"
         },
         {
-          "target": "com.azure.frontdoor#ManagedRuleSetsList"
+          "target": "com.azure.frontdoor#ListManagedRuleSets"
         },
         {
-          "target": "com.azure.frontdoor#FrontDoorNameAvailabilityWithSubscriptionCheck"
+          "target": "com.azure.frontdoor#CheckFrontDoorNameAvailabilityWithSubscription"
         },
         {
-          "target": "com.azure.frontdoor#NetworkExperimentProfilesList"
+          "target": "com.azure.frontdoor#ListNetworkExperimentProfiles"
         },
         {
-          "target": "com.azure.frontdoor#PoliciesListBySubscription"
+          "target": "com.azure.frontdoor#ListPolicyBySubscription"
         },
         {
-          "target": "com.azure.frontdoor#FrontDoorNameAvailabilityCheck"
+          "target": "com.azure.frontdoor#CheckFrontDoorNameAvailability"
         }
       ],
       "traits": {

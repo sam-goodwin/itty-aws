@@ -143,7 +143,7 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_prompts#LlmPromptsListRequest": {
+    "com.posthog.llm_prompts#ListLlmPromptsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -523,10 +523,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_prompts#LlmPromptsList": {
+    "com.posthog.llm_prompts#ListLlmPrompts": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_prompts#LlmPromptsListRequest"
+        "target": "com.posthog.llm_prompts#ListLlmPromptsRequest"
       },
       "output": {
         "target": "com.posthog.llm_prompts#PaginatedLLMPromptListList"
@@ -539,7 +539,7 @@
         }
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsCreateRequest": {
+    "com.posthog.llm_prompts#CreateLlmPromptRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -677,10 +677,10 @@
         "smithy.api#documentation": "Names of the labels currently pointing at this version."
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsCreate": {
+    "com.posthog.llm_prompts#CreateLlmPrompt": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_prompts#LlmPromptsCreateRequest"
+        "target": "com.posthog.llm_prompts#CreateLlmPromptRequest"
       },
       "output": {
         "target": "com.posthog.llm_prompts#LLMPrompt"
@@ -880,7 +880,7 @@
         "smithy.api#documentation": "List of find/replace operations to apply to the current prompt version. Each edit's 'old' text must match exactly once. Edits are applied sequentially. Mutually exclusive with prompt."
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsNamePartialUpdateRequest": {
+    "com.posthog.llm_prompts#UpdateLlmPromptNamePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -934,10 +934,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsNamePartialUpdate": {
+    "com.posthog.llm_prompts#UpdateLlmPromptNamePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_prompts#LlmPromptsNamePartialUpdateRequest"
+        "target": "com.posthog.llm_prompts#UpdateLlmPromptNamePartialRequest"
       },
       "output": {
         "target": "com.posthog.llm_prompts#LLMPrompt"
@@ -950,7 +950,7 @@
         }
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsNameArchiveCreateRequest": {
+    "com.posthog.llm_prompts#CreateLlmPromptNameArchiveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -973,10 +973,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsNameArchiveCreate": {
+    "com.posthog.llm_prompts#CreateLlmPromptNameArchive": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_prompts#LlmPromptsNameArchiveCreateRequest"
+        "target": "com.posthog.llm_prompts#CreateLlmPromptNameArchiveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -989,7 +989,7 @@
         }
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsNameDuplicateCreateRequest": {
+    "com.posthog.llm_prompts#CreateLlmPromptNameDuplicateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1018,10 +1018,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsNameDuplicateCreate": {
+    "com.posthog.llm_prompts#CreateLlmPromptNameDuplicate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_prompts#LlmPromptsNameDuplicateCreateRequest"
+        "target": "com.posthog.llm_prompts#CreateLlmPromptNameDuplicateRequest"
       },
       "output": {
         "target": "com.posthog.llm_prompts#LLMPrompt"
@@ -1034,7 +1034,7 @@
         }
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsNameLabelsUpdateRequest": {
+    "com.posthog.llm_prompts#UpdateLlmPromptNameLabelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1121,10 +1121,10 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_prompts#LlmPromptsNameLabelsUpdate": {
+    "com.posthog.llm_prompts#UpdateLlmPromptNameLabel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.llm_prompts#LlmPromptsNameLabelsUpdateRequest"
+        "target": "com.posthog.llm_prompts#UpdateLlmPromptNameLabelRequest"
       },
       "output": {
         "target": "com.posthog.llm_prompts#LLMPromptLabel"
@@ -1344,25 +1344,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.llm_prompts#LlmPromptsList"
+          "target": "com.posthog.llm_prompts#ListLlmPrompts"
         },
         {
-          "target": "com.posthog.llm_prompts#LlmPromptsCreate"
+          "target": "com.posthog.llm_prompts#CreateLlmPrompt"
         },
         {
           "target": "com.posthog.llm_prompts#LlmPromptsNameRetrieve"
         },
         {
-          "target": "com.posthog.llm_prompts#LlmPromptsNamePartialUpdate"
+          "target": "com.posthog.llm_prompts#UpdateLlmPromptNamePartial"
         },
         {
-          "target": "com.posthog.llm_prompts#LlmPromptsNameArchiveCreate"
+          "target": "com.posthog.llm_prompts#CreateLlmPromptNameArchive"
         },
         {
-          "target": "com.posthog.llm_prompts#LlmPromptsNameDuplicateCreate"
+          "target": "com.posthog.llm_prompts#CreateLlmPromptNameDuplicate"
         },
         {
-          "target": "com.posthog.llm_prompts#LlmPromptsNameLabelsUpdate"
+          "target": "com.posthog.llm_prompts#UpdateLlmPromptNameLabel"
         },
         {
           "target": "com.posthog.llm_prompts#LlmPromptsNameLabelsDestroy"

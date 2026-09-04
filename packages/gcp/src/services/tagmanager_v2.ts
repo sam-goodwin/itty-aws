@@ -65,1055 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type ParameterList = Array<Parameter>;
-export const ParameterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Parameter),
-) as any as S.Schema<ParameterList>;
-
-export type ParameterTypeEnum =
-  | "typeUnspecified"
-  | "template"
-  | "integer"
-  | "boolean"
-  | "list"
-  | "map"
-  | "triggerReference"
-  | "tagReference";
-export const ParameterTypeEnum = /*@__PURE__*/ S.String;
-
-/** Represents a Google Tag Manager Parameter. */
-export interface Parameter {
-  /** This map parameter's parameters (must have keys; keys must be unique). */
-  map?: ParameterList;
-  /** The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of parameters should be specified - map: A map of parameters should be specified - template: The value represents any text; this can include variable references (even variable references that might return non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id - tag_reference: The value represents a tag, represented as the tag name */
-  type?: ParameterTypeEnum | (string & {});
-  /** The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values. */
-  key?: string;
-  /** Whether or not a reference type parameter is strongly or weakly referenced. Only used by Transformations. */
-  isWeakReference?: boolean;
-  /** A parameter's value (may contain variable references). as appropriate to the specified type. */
-  value?: string;
-  /** This list parameter's parameters (keys will be ignored). */
-  list?: ParameterList;
-}
-export const Parameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    map: S.optional(ParameterList),
-    type: S.optional(ParameterTypeEnum),
-    key: S.optional(S.String),
-    isWeakReference: S.optional(S.Boolean),
-    value: S.optional(S.String),
-    list: S.optional(ParameterList),
-  }),
-).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
-
-export type VariableFormatValueConvertToNumberEnum =
-  | "decimalSeparatorTypeUnspecified"
-  | "period"
-  | "comma"
-  | "automatic";
-export const VariableFormatValueConvertToNumberEnum = /*@__PURE__*/ S.String;
-
-export type VariableFormatValueCaseConversionTypeEnum =
-  | "none"
-  | "lowercase"
-  | "uppercase";
-export const VariableFormatValueCaseConversionTypeEnum = /*@__PURE__*/ S.String;
-
-export interface VariableFormatValue {
-  /** The value to convert if a variable value is false. */
-  convertFalseToValue?: Parameter;
-  /** The option to convert a variable value to a number. */
-  convertToNumber?: VariableFormatValueConvertToNumberEnum | (string & {});
-  /** The value to convert if a variable value is null. */
-  convertNullToValue?: Parameter;
-  /** The option to convert a string-type variable value to either lowercase or uppercase. */
-  caseConversionType?:
-    | VariableFormatValueCaseConversionTypeEnum
-    | (string & {});
-  /** The value to convert if a variable value is undefined. */
-  convertUndefinedToValue?: Parameter;
-  /** The value to convert if a variable value is true. */
-  convertTrueToValue?: Parameter;
-  /** The option to convert a variable value to a boolean. */
-  convertToBoolean?: boolean;
-}
-export const VariableFormatValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    convertFalseToValue: S.optional(Parameter),
-    convertToNumber: S.optional(VariableFormatValueConvertToNumberEnum),
-    convertNullToValue: S.optional(Parameter),
-    caseConversionType: S.optional(VariableFormatValueCaseConversionTypeEnum),
-    convertUndefinedToValue: S.optional(Parameter),
-    convertTrueToValue: S.optional(Parameter),
-    convertToBoolean: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VariableFormatValue",
-}) as any as S.Schema<VariableFormatValue>;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** Represents a Google Tag Manager Variable. */
-export interface Variable {
-  /** GTM Account ID. */
-  accountId?: string;
-  /** GTM Workspace ID. */
-  workspaceId?: string;
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-  /** GTM Variable's API relative path. */
-  path?: string;
-  /** The Variable ID uniquely identifies the GTM Variable. */
-  variableId?: string;
-  /** Option to convert a variable value to other value. */
-  formatValue?: VariableFormatValue;
-  /** GTM Variable Type. */
-  type?: string;
-  /** The end timestamp in milliseconds to schedule a variable. */
-  scheduleEndMs?: string;
-  /** For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an unordered set. */
-  disablingTriggerId?: StringList;
-  /** Parent folder id. */
-  parentFolderId?: string;
-  /** User notes on how to apply this variable in the container. */
-  notes?: string;
-  /** The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever the variable is modified. */
-  fingerprint?: string;
-  /** The start timestamp in milliseconds to schedule a variable. */
-  scheduleStartMs?: string;
-  /** Variable display name. */
-  name?: string;
-  /** The variable's parameters. */
-  parameter?: ParameterList;
-  /** For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an unordered set. */
-  enablingTriggerId?: StringList;
-  /** GTM Container ID. */
-  containerId?: string;
-}
-export const Variable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    workspaceId: S.optional(S.String),
-    tagManagerUrl: S.optional(S.String),
-    path: S.optional(S.String),
-    variableId: S.optional(S.String),
-    formatValue: S.optional(VariableFormatValue),
-    type: S.optional(S.String),
-    scheduleEndMs: S.optional(S.String),
-    disablingTriggerId: S.optional(StringList),
-    parentFolderId: S.optional(S.String),
-    notes: S.optional(S.String),
-    fingerprint: S.optional(S.String),
-    scheduleStartMs: S.optional(S.String),
-    name: S.optional(S.String),
-    parameter: S.optional(ParameterList),
-    enablingTriggerId: S.optional(StringList),
-    containerId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Variable" }) as any as S.Schema<Variable>;
-
-export interface Client {
-  /** GTM client's API relative path. */
-  path?: string;
-  /** GTM Account ID. */
-  accountId?: string;
-  /** The Client ID uniquely identifies the GTM client. */
-  clientId?: string;
-  /** Client type. */
-  type?: string;
-  /** GTM Workspace ID. */
-  workspaceId?: string;
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-  /** GTM Container ID. */
-  containerId?: string;
-  /** User notes on how to apply this tag in the container. */
-  notes?: string;
-  /** Priority determines relative firing order. */
-  priority?: number;
-  /** Client display name. */
-  name?: string;
-  /** The client's parameters. */
-  parameter?: ParameterList;
-  /** Parent folder id. */
-  parentFolderId?: string;
-  /** The fingerprint of the GTM Client as computed at storage time. This value is recomputed whenever the client is modified. */
-  fingerprint?: string;
-}
-export const Client = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    accountId: S.optional(S.String),
-    clientId: S.optional(S.String),
-    type: S.optional(S.String),
-    workspaceId: S.optional(S.String),
-    tagManagerUrl: S.optional(S.String),
-    containerId: S.optional(S.String),
-    notes: S.optional(S.String),
-    priority: S.optional(S.Number),
-    name: S.optional(S.String),
-    parameter: S.optional(ParameterList),
-    parentFolderId: S.optional(S.String),
-    fingerprint: S.optional(S.String),
-  }),
-).annotate({ identifier: "Client" }) as any as S.Schema<Client>;
-
-/** Represents a Google Tag Manager Transformation. */
-export interface Transformation {
-  /** User notes on how to apply this transformation in the container. */
-  notes?: string;
-  /** Parent folder id. */
-  parentFolderId?: string;
-  /** Transformation display name. */
-  name?: string;
-  /** The transformation's parameters. */
-  parameter?: ParameterList;
-  /** The fingerprint of the GTM Transformation as computed at storage time. This value is recomputed whenever the transformation is modified. */
-  fingerprint?: string;
-  /** GTM Workspace ID. */
-  workspaceId?: string;
-  /** Transformation type. */
-  type?: string;
-  /** GTM Container ID. */
-  containerId?: string;
-  /** GTM transformation's API relative path. */
-  path?: string;
-  /** The Transformation ID uniquely identifies the GTM transformation. */
-  transformationId?: string;
-  /** GTM Account ID. */
-  accountId?: string;
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-}
-export const Transformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notes: S.optional(S.String),
-    parentFolderId: S.optional(S.String),
-    name: S.optional(S.String),
-    parameter: S.optional(ParameterList),
-    fingerprint: S.optional(S.String),
-    workspaceId: S.optional(S.String),
-    type: S.optional(S.String),
-    containerId: S.optional(S.String),
-    path: S.optional(S.String),
-    transformationId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    tagManagerUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "Transformation" }) as any as S.Schema<Transformation>;
-
-export type BuiltInVariableTypeEnum =
-  | "builtInVariableTypeUnspecified"
-  | "pageUrl"
-  | "pageHostname"
-  | "pagePath"
-  | "referrer"
-  | "event"
-  | "clickElement"
-  | "clickClasses"
-  | "clickId"
-  | "clickTarget"
-  | "clickUrl"
-  | "clickText"
-  | "firstPartyServingUrl"
-  | "formElement"
-  | "formClasses"
-  | "formId"
-  | "formTarget"
-  | "formUrl"
-  | "formText"
-  | "errorMessage"
-  | "errorUrl"
-  | "errorLine"
-  | "newHistoryUrl"
-  | "oldHistoryUrl"
-  | "newHistoryFragment"
-  | "oldHistoryFragment"
-  | "newHistoryState"
-  | "oldHistoryState"
-  | "historySource"
-  | "containerVersion"
-  | "debugMode"
-  | "randomNumber"
-  | "containerId"
-  | "appId"
-  | "appName"
-  | "appVersionCode"
-  | "appVersionName"
-  | "language"
-  | "osVersion"
-  | "platform"
-  | "sdkVersion"
-  | "deviceName"
-  | "resolution"
-  | "advertiserId"
-  | "advertisingTrackingEnabled"
-  | "htmlId"
-  | "environmentName"
-  | "ampBrowserLanguage"
-  | "ampCanonicalPath"
-  | "ampCanonicalUrl"
-  | "ampCanonicalHost"
-  | "ampReferrer"
-  | "ampTitle"
-  | "ampClientId"
-  | "ampClientTimezone"
-  | "ampClientTimestamp"
-  | "ampClientScreenWidth"
-  | "ampClientScreenHeight"
-  | "ampClientScrollX"
-  | "ampClientScrollY"
-  | "ampClientMaxScrollX"
-  | "ampClientMaxScrollY"
-  | "ampTotalEngagedTime"
-  | "ampPageViewId"
-  | "ampPageLoadTime"
-  | "ampPageDownloadTime"
-  | "ampGtmEvent"
-  | "eventName"
-  | "firebaseEventParameterCampaign"
-  | "firebaseEventParameterCampaignAclid"
-  | "firebaseEventParameterCampaignAnid"
-  | "firebaseEventParameterCampaignClickTimestamp"
-  | "firebaseEventParameterCampaignContent"
-  | "firebaseEventParameterCampaignCp1"
-  | "firebaseEventParameterCampaignGclid"
-  | "firebaseEventParameterCampaignSource"
-  | "firebaseEventParameterCampaignTerm"
-  | "firebaseEventParameterCurrency"
-  | "firebaseEventParameterDynamicLinkAcceptTime"
-  | "firebaseEventParameterDynamicLinkLinkid"
-  | "firebaseEventParameterNotificationMessageDeviceTime"
-  | "firebaseEventParameterNotificationMessageId"
-  | "firebaseEventParameterNotificationMessageName"
-  | "firebaseEventParameterNotificationMessageTime"
-  | "firebaseEventParameterNotificationTopic"
-  | "firebaseEventParameterPreviousAppVersion"
-  | "firebaseEventParameterPreviousOsVersion"
-  | "firebaseEventParameterPrice"
-  | "firebaseEventParameterProductId"
-  | "firebaseEventParameterQuantity"
-  | "firebaseEventParameterValue"
-  | "videoProvider"
-  | "videoUrl"
-  | "videoTitle"
-  | "videoDuration"
-  | "videoPercent"
-  | "videoVisible"
-  | "videoStatus"
-  | "videoCurrentTime"
-  | "scrollDepthThreshold"
-  | "scrollDepthUnits"
-  | "scrollDepthDirection"
-  | "elementVisibilityRatio"
-  | "elementVisibilityTime"
-  | "elementVisibilityFirstTime"
-  | "elementVisibilityRecentTime"
-  | "requestPath"
-  | "requestMethod"
-  | "clientName"
-  | "queryString"
-  | "serverPageLocationUrl"
-  | "serverPageLocationPath"
-  | "serverPageLocationHostname"
-  | "visitorRegion"
-  | "analyticsClientId"
-  | "analyticsSessionId"
-  | "analyticsSessionNumber";
-export const BuiltInVariableTypeEnum = /*@__PURE__*/ S.String;
-
-/** Built-in variables are a special category of variables that are pre-created and non-customizable. They provide common functionality like accessing properties of the gtm data layer, monitoring clicks, or accessing elements of a page URL. */
-export interface BuiltInVariable {
-  /** Type of built-in variable. */
-  type?: BuiltInVariableTypeEnum | (string & {});
-  /** GTM Container ID. */
-  containerId?: string;
-  /** GTM Workspace ID. */
-  workspaceId?: string;
-  /** GTM BuiltInVariable's API relative path. */
-  path?: string;
-  /** Name of the built-in variable to be used to refer to the built-in variable. */
-  name?: string;
-  /** GTM Account ID. */
-  accountId?: string;
-}
-export const BuiltInVariable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(BuiltInVariableTypeEnum),
-    containerId: S.optional(S.String),
-    workspaceId: S.optional(S.String),
-    path: S.optional(S.String),
-    name: S.optional(S.String),
-    accountId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BuiltInVariable",
-}) as any as S.Schema<BuiltInVariable>;
-
-export type TagConsentSettingConsentStatusEnum =
-  | "notSet"
-  | "notNeeded"
-  | "needed";
-export const TagConsentSettingConsentStatusEnum = /*@__PURE__*/ S.String;
-
-export interface TagConsentSetting {
-  /** The type of consents to check for during tag firing if in the consent NEEDED state. This parameter must be of type LIST where each list item is of type STRING. */
-  consentType?: Parameter;
-  /** The tag's consent status. If set to NEEDED, the runtime will check that the consent types specified by the consent_type field have been granted. */
-  consentStatus?: TagConsentSettingConsentStatusEnum | (string & {});
-}
-export const TagConsentSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consentType: S.optional(Parameter),
-    consentStatus: S.optional(TagConsentSettingConsentStatusEnum),
-  }),
-).annotate({
-  identifier: "TagConsentSetting",
-}) as any as S.Schema<TagConsentSetting>;
-
-/** Represents a tag that fires after another tag in order to tear down dependencies. */
-export interface TeardownTag {
-  /** If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the teardown tag regardless of main tag firing status. */
-  stopTeardownOnFailure?: boolean;
-  /** The name of the teardown tag. */
-  tagName?: string;
-}
-export const TeardownTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stopTeardownOnFailure: S.optional(S.Boolean),
-    tagName: S.optional(S.String),
-  }),
-).annotate({ identifier: "TeardownTag" }) as any as S.Schema<TeardownTag>;
-
-export type TeardownTagList = Array<TeardownTag>;
-export const TeardownTagList = /*@__PURE__*/ S.Array(
-  TeardownTag,
-) as any as S.Schema<TeardownTagList>;
-
-/** Represents a reference to atag that fires before another tag in order to set up dependencies. */
-export interface SetupTag {
-  /** The name of the setup tag. */
-  tagName?: string;
-  /** If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main tag regardless of setup tag firing status. */
-  stopOnSetupFailure?: boolean;
-}
-export const SetupTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tagName: S.optional(S.String),
-    stopOnSetupFailure: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SetupTag" }) as any as S.Schema<SetupTag>;
-
-export type SetupTagList = Array<SetupTag>;
-export const SetupTagList = /*@__PURE__*/ S.Array(
-  SetupTag,
-) as any as S.Schema<SetupTagList>;
-
-export type TagTagFiringOptionEnum =
-  | "tagFiringOptionUnspecified"
-  | "unlimited"
-  | "oncePerEvent"
-  | "oncePerLoad";
-export const TagTagFiringOptionEnum = /*@__PURE__*/ S.String;
-
-/** Represents a Google Tag Manager Tag. */
-export interface Tag {
-  /** The Tag ID uniquely identifies the GTM Tag. */
-  tagId?: string;
-  /** The tag's parameters. */
-  parameter?: ParameterList;
-  /** Parent folder id. */
-  parentFolderId?: string;
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-  /** Tag display name. */
-  name?: string;
-  /** If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode). */
-  liveOnly?: boolean;
-  /** GTM Account ID. */
-  accountId?: string;
-  /** The start timestamp in milliseconds to schedule a tag. */
-  scheduleStartMs?: string;
-  /** Consent settings of a tag. */
-  consentSettings?: TagConsentSetting;
-  /** The list of teardown tags. Currently we only allow one. */
-  teardownTag?: TeardownTagList;
-  /** GTM Container ID. */
-  containerId?: string;
-  /** Indicates whether the tag is paused, which prevents the tag from firing. */
-  paused?: boolean;
-  /** GTM Tag Type. */
-  type?: string;
-  /** GTM Workspace ID. */
-  workspaceId?: string;
-  /** A map of key-value pairs of tag metadata to be included in the event data for tag monitoring. Notes: - This parameter must be type MAP. - Each parameter in the map are type TEMPLATE, however cannot contain variable references. */
-  monitoringMetadata?: Parameter;
-  /** The end timestamp in milliseconds to schedule a tag. */
-  scheduleEndMs?: string;
-  /** User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0. */
-  priority?: Parameter;
-  /** GTM Tag's API relative path. */
-  path?: string;
-  /** The list of setup tags. Currently we only allow one. */
-  setupTag?: SetupTagList;
-  /** Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its blockingTriggerIds (if any specified) are false. */
-  firingTriggerId?: StringList;
-  /** The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the tag is modified. */
-  fingerprint?: string;
-  /** User notes on how to apply this tag in the container. */
-  notes?: string;
-  /** Option to fire this tag. */
-  tagFiringOption?: TagTagFiringOptionEnum | (string & {});
-  /** Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire. */
-  blockingTriggerId?: StringList;
-  /** If non-empty, then the tag display name will be included in the monitoring metadata map using the key specified. */
-  monitoringMetadataTagNameKey?: string;
-}
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tagId: S.optional(S.String),
-    parameter: S.optional(ParameterList),
-    parentFolderId: S.optional(S.String),
-    tagManagerUrl: S.optional(S.String),
-    name: S.optional(S.String),
-    liveOnly: S.optional(S.Boolean),
-    accountId: S.optional(S.String),
-    scheduleStartMs: S.optional(S.String),
-    consentSettings: S.optional(TagConsentSetting),
-    teardownTag: S.optional(TeardownTagList),
-    containerId: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    type: S.optional(S.String),
-    workspaceId: S.optional(S.String),
-    monitoringMetadata: S.optional(Parameter),
-    scheduleEndMs: S.optional(S.String),
-    priority: S.optional(Parameter),
-    path: S.optional(S.String),
-    setupTag: S.optional(SetupTagList),
-    firingTriggerId: S.optional(StringList),
-    fingerprint: S.optional(S.String),
-    notes: S.optional(S.String),
-    tagFiringOption: S.optional(TagTagFiringOptionEnum),
-    blockingTriggerId: S.optional(StringList),
-    monitoringMetadataTagNameKey: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
-
-/** Represents a Zone's type restrictions. */
-export interface ZoneTypeRestriction {
-  /** True if type restrictions have been enabled for this Zone. */
-  enable?: boolean;
-  /** List of type public ids that have been whitelisted for use in this Zone. */
-  whitelistedTypeId?: StringList;
-}
-export const ZoneTypeRestriction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enable: S.optional(S.Boolean),
-    whitelistedTypeId: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ZoneTypeRestriction",
-}) as any as S.Schema<ZoneTypeRestriction>;
-
-export type ConditionTypeEnum =
-  | "conditionTypeUnspecified"
-  | "equals"
-  | "contains"
-  | "startsWith"
-  | "endsWith"
-  | "matchRegex"
-  | "greater"
-  | "greaterOrEquals"
-  | "less"
-  | "lessOrEquals"
-  | "cssSelector"
-  | "urlMatches";
-export const ConditionTypeEnum = /*@__PURE__*/ S.String;
-
-/** Represents a predicate. */
-export interface Condition {
-  /** The type of operator for this condition. */
-  type?: ConditionTypeEnum | (string & {});
-  /** A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named negate boolean parameter that is set to true. */
-  parameter?: ParameterList;
-}
-export const Condition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ConditionTypeEnum),
-    parameter: S.optional(ParameterList),
-  }),
-).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
-
-export type ConditionList = Array<Condition>;
-export const ConditionList = /*@__PURE__*/ S.Array(
-  Condition,
-) as any as S.Schema<ConditionList>;
-
-/** Represents a Zone's boundaries. */
-export interface ZoneBoundary {
-  /** The conditions that, when conjoined, make up the boundary. */
-  condition?: ConditionList;
-  /** Custom evaluation trigger IDs. A zone will evaluate its boundary conditions when any of the listed triggers are true. */
-  customEvaluationTriggerId?: StringList;
-}
-export const ZoneBoundary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(ConditionList),
-    customEvaluationTriggerId: S.optional(StringList),
-  }),
-).annotate({ identifier: "ZoneBoundary" }) as any as S.Schema<ZoneBoundary>;
-
-/** Represents a child container of a Zone. */
-export interface ZoneChildContainer {
-  /** The zone's nickname for the child container. */
-  nickname?: string;
-  /** The child container's public id. */
-  publicId?: string;
-}
-export const ZoneChildContainer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nickname: S.optional(S.String),
-    publicId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ZoneChildContainer",
-}) as any as S.Schema<ZoneChildContainer>;
-
-export type ZoneChildContainerList = Array<ZoneChildContainer>;
-export const ZoneChildContainerList = /*@__PURE__*/ S.Array(
-  ZoneChildContainer,
-) as any as S.Schema<ZoneChildContainerList>;
-
-/** Represents a Google Tag Manager Zone's contents. */
-export interface Zone {
-  /** User notes on how to apply this zone in the container. */
-  notes?: string;
-  /** Zone display name. */
-  name?: string;
-  /** This Zone's type restrictions. */
-  typeRestriction?: ZoneTypeRestriction;
-  /** GTM Workspace ID. */
-  workspaceId?: string;
-  /** GTM Account ID. */
-  accountId?: string;
-  /** The fingerprint of the GTM Zone as computed at storage time. This value is recomputed whenever the zone is modified. */
-  fingerprint?: string;
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-  /** The Zone ID uniquely identifies the GTM Zone. */
-  zoneId?: string;
-  /** This Zone's boundary. */
-  boundary?: ZoneBoundary;
-  /** GTM Container ID. */
-  containerId?: string;
-  /** GTM Zone's API relative path. */
-  path?: string;
-  /** Containers that are children of this Zone. */
-  childContainer?: ZoneChildContainerList;
-}
-export const Zone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notes: S.optional(S.String),
-    name: S.optional(S.String),
-    typeRestriction: S.optional(ZoneTypeRestriction),
-    workspaceId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    fingerprint: S.optional(S.String),
-    tagManagerUrl: S.optional(S.String),
-    zoneId: S.optional(S.String),
-    boundary: S.optional(ZoneBoundary),
-    containerId: S.optional(S.String),
-    path: S.optional(S.String),
-    childContainer: S.optional(ZoneChildContainerList),
-  }),
-).annotate({ identifier: "Zone" }) as any as S.Schema<Zone>;
-
-export type TriggerTypeEnum =
-  | "eventTypeUnspecified"
-  | "pageview"
-  | "domReady"
-  | "windowLoaded"
-  | "customEvent"
-  | "triggerGroup"
-  | "init"
-  | "consentInit"
-  | "serverPageview"
-  | "always"
-  | "firebaseAppException"
-  | "firebaseAppUpdate"
-  | "firebaseCampaign"
-  | "firebaseFirstOpen"
-  | "firebaseInAppPurchase"
-  | "firebaseNotificationDismiss"
-  | "firebaseNotificationForeground"
-  | "firebaseNotificationOpen"
-  | "firebaseNotificationReceive"
-  | "firebaseOsUpdate"
-  | "firebaseSessionStart"
-  | "firebaseUserEngagement"
-  | "formSubmission"
-  | "click"
-  | "linkClick"
-  | "jsError"
-  | "historyChange"
-  | "timer"
-  | "ampClick"
-  | "ampTimer"
-  | "ampScroll"
-  | "ampVisibility"
-  | "youTubeVideo"
-  | "scrollDepth"
-  | "elementVisibility";
-export const TriggerTypeEnum = /*@__PURE__*/ S.String;
-
-/** Represents a Google Tag Manager Trigger */
-export interface Trigger {
-  /** List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. */
-  verticalScrollPercentageList?: Parameter;
-  /** A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. */
-  visiblePercentageMin?: Parameter;
-  /** Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers. */
-  limit?: Parameter;
-  /** Trigger display name. */
-  name?: string;
-  /** Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. */
-  interval?: Parameter;
-  /** Used in the case of custom event, which is fired iff all Conditions are true. */
-  customEventFilter?: ConditionList;
-  /** Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. */
-  maxTimerLengthSeconds?: Parameter;
-  /** List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers. */
-  horizontalScrollPercentageList?: Parameter;
-  /** Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers. */
-  checkValidation?: Parameter;
-  /** GTM Container ID. */
-  containerId?: string;
-  /** A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. */
-  visiblePercentageMax?: Parameter;
-  /** A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger. */
-  selector?: Parameter;
-  /** Name of the GTM event that is fired. Only valid for Timer triggers. */
-  eventName?: Parameter;
-  /** User notes on how to apply this trigger in the container. */
-  notes?: string;
-  /** The Trigger ID uniquely identifies the GTM Trigger. */
-  triggerId?: string;
-  /** A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger. */
-  totalTimeMinMilliseconds?: Parameter;
-  /** Additional parameters. */
-  parameter?: ParameterList;
-  /** Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. */
-  intervalSeconds?: Parameter;
-  /** How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers. */
-  waitForTagsTimeout?: Parameter;
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-  /** Parent folder id. */
-  parentFolderId?: string;
-  /** A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger. */
-  visibilitySelector?: Parameter;
-  /** GTM Workspace ID. */
-  workspaceId?: string;
-  /** The trigger will only fire iff all Conditions are true. */
-  filter?: ConditionList;
-  /** Used in the case of auto event tracking. */
-  autoEventFilter?: ConditionList;
-  /** Defines the data layer event that causes this trigger. */
-  type?: TriggerTypeEnum | (string & {});
-  /** Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers. */
-  uniqueTriggerId?: Parameter;
-  /** GTM Account ID. */
-  accountId?: string;
-  /** A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger. */
-  continuousTimeMinMilliseconds?: Parameter;
-  /** GTM Trigger's API relative path. */
-  path?: string;
-  /** Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers. */
-  waitForTags?: Parameter;
-  /** The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified. */
-  fingerprint?: string;
-}
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verticalScrollPercentageList: S.optional(Parameter),
-    visiblePercentageMin: S.optional(Parameter),
-    limit: S.optional(Parameter),
-    name: S.optional(S.String),
-    interval: S.optional(Parameter),
-    customEventFilter: S.optional(ConditionList),
-    maxTimerLengthSeconds: S.optional(Parameter),
-    horizontalScrollPercentageList: S.optional(Parameter),
-    checkValidation: S.optional(Parameter),
-    containerId: S.optional(S.String),
-    visiblePercentageMax: S.optional(Parameter),
-    selector: S.optional(Parameter),
-    eventName: S.optional(Parameter),
-    notes: S.optional(S.String),
-    triggerId: S.optional(S.String),
-    totalTimeMinMilliseconds: S.optional(Parameter),
-    parameter: S.optional(ParameterList),
-    intervalSeconds: S.optional(Parameter),
-    waitForTagsTimeout: S.optional(Parameter),
-    tagManagerUrl: S.optional(S.String),
-    parentFolderId: S.optional(S.String),
-    visibilitySelector: S.optional(Parameter),
-    workspaceId: S.optional(S.String),
-    filter: S.optional(ConditionList),
-    autoEventFilter: S.optional(ConditionList),
-    type: S.optional(TriggerTypeEnum),
-    uniqueTriggerId: S.optional(Parameter),
-    accountId: S.optional(S.String),
-    continuousTimeMinMilliseconds: S.optional(Parameter),
-    path: S.optional(S.String),
-    waitForTags: S.optional(Parameter),
-    fingerprint: S.optional(S.String),
-  }),
-).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
-
-/** Represents the link between a custom template and an entry on the Community Template Gallery site. */
-export interface GalleryReference {
-  /** The version of the community gallery template. */
-  version?: string;
-  /** The signature of the community gallery template as computed at import time. This value is recomputed whenever the template is updated from the gallery. */
-  signature?: string;
-  /** The name of the host for the community gallery template. */
-  host?: string;
-  /** If a user has manually edited the community gallery template. */
-  isModified?: boolean;
-  /** The developer id of the community gallery template. This value is set whenever the template is created from the gallery. */
-  templateDeveloperId?: string;
-  /** The name of the repository for the community gallery template. */
-  repository?: string;
-  /** The name of the owner for the community gallery template. */
-  owner?: string;
-  /** ID for the gallery template that is generated once during first sync and travels with the template redirects. */
-  galleryTemplateId?: string;
-}
-export const GalleryReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    signature: S.optional(S.String),
-    host: S.optional(S.String),
-    isModified: S.optional(S.Boolean),
-    templateDeveloperId: S.optional(S.String),
-    repository: S.optional(S.String),
-    owner: S.optional(S.String),
-    galleryTemplateId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GalleryReference",
-}) as any as S.Schema<GalleryReference>;
-
-/** Represents a Google Tag Manager Custom Template's contents. */
-export interface CustomTemplate {
-  /** GTM Account ID. */
-  accountId?: string;
-  /** Custom Template display name. */
-  name?: string;
-  /** GTM Container ID. */
-  containerId?: string;
-  /** The custom template in text format. */
-  templateData?: string;
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-  /** GTM Workspace ID. */
-  workspaceId?: string;
-  /** The Custom Template ID uniquely identifies the GTM custom template. */
-  templateId?: string;
-  /** The fingerprint of the GTM Custom Template as computed at storage time. This value is recomputed whenever the template is modified. */
-  fingerprint?: string;
-  /** GTM Custom Template's API relative path. */
-  path?: string;
-  /** A reference to the Community Template Gallery entry. */
-  galleryReference?: GalleryReference;
-}
-export const CustomTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    name: S.optional(S.String),
-    containerId: S.optional(S.String),
-    templateData: S.optional(S.String),
-    tagManagerUrl: S.optional(S.String),
-    workspaceId: S.optional(S.String),
-    templateId: S.optional(S.String),
-    fingerprint: S.optional(S.String),
-    path: S.optional(S.String),
-    galleryReference: S.optional(GalleryReference),
-  }),
-).annotate({ identifier: "CustomTemplate" }) as any as S.Schema<CustomTemplate>;
-
-/** Represents a Google tag configuration. */
-export interface GtagConfig {
-  /** Google tag config type. */
-  type?: string;
-  /** The fingerprint of the Google tag config as computed at storage time. This value is recomputed whenever the config is modified. */
-  fingerprint?: string;
-  /** Google tag workspace ID. Only used by GTM containers. Set to 0 otherwise. */
-  workspaceId?: string;
-  /** Google tag account ID. */
-  accountId?: string;
-  /** The ID uniquely identifies the Google tag config. */
-  gtagConfigId?: string;
-  /** The Google tag config's parameters. */
-  parameter?: ParameterList;
-  /** Google tag config's API relative path. */
-  path?: string;
-  /** Google tag container ID. */
-  containerId?: string;
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-}
-export const GtagConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    fingerprint: S.optional(S.String),
-    workspaceId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    gtagConfigId: S.optional(S.String),
-    parameter: S.optional(ParameterList),
-    path: S.optional(S.String),
-    containerId: S.optional(S.String),
-    tagManagerUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "GtagConfig" }) as any as S.Schema<GtagConfig>;
-
-/** Represents a Google Tag Manager Folder. */
-export interface Folder {
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-  /** GTM Account ID. */
-  accountId?: string;
-  /** GTM Workspace ID. */
-  workspaceId?: string;
-  /** Folder display name. */
-  name?: string;
-  /** User notes on how to apply this folder in the container. */
-  notes?: string;
-  /** The fingerprint of the GTM Folder as computed at storage time. This value is recomputed whenever the folder is modified. */
-  fingerprint?: string;
-  /** GTM Container ID. */
-  containerId?: string;
-  /** The Folder ID uniquely identifies the GTM Folder. */
-  folderId?: string;
-  /** GTM Folder's API relative path. */
-  path?: string;
-}
-export const Folder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tagManagerUrl: S.optional(S.String),
-    accountId: S.optional(S.String),
-    workspaceId: S.optional(S.String),
-    name: S.optional(S.String),
-    notes: S.optional(S.String),
-    fingerprint: S.optional(S.String),
-    containerId: S.optional(S.String),
-    folderId: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
-).annotate({ identifier: "Folder" }) as any as S.Schema<Folder>;
-
-export type EntityChangeStatusEnum =
-  | "changeStatusUnspecified"
-  | "none"
-  | "added"
-  | "deleted"
-  | "updated";
-export const EntityChangeStatusEnum = /*@__PURE__*/ S.String;
-
-/** A workspace entity that may represent a tag, trigger, variable, or folder in addition to its status in the workspace. */
-export interface Entity {
-  /** The variable being represented by the entity. */
-  variable?: Variable;
-  /** The client being represented by the entity. */
-  client?: Client;
-  /** The transformation being represented by the entity. */
-  transformation?: Transformation;
-  /** The built in variable being represented by the entity. */
-  builtInVariable?: BuiltInVariable;
-  /** The tag being represented by the entity. */
-  tag?: Tag;
-  /** The zone being represented by the entity. */
-  zone?: Zone;
-  /** The trigger being represented by the entity. */
-  trigger?: Trigger;
-  /** The custom template being represented by the entity. */
-  customTemplate?: CustomTemplate;
-  /** The gtag config being represented by the entity. */
-  gtagConfig?: GtagConfig;
-  /** The folder being represented by the entity. */
-  folder?: Folder;
-  /** Represents how the entity has been changed in the workspace. */
-  changeStatus?: EntityChangeStatusEnum | (string & {});
-}
-export const Entity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variable: S.optional(Variable),
-    client: S.optional(Client),
-    transformation: S.optional(Transformation),
-    builtInVariable: S.optional(BuiltInVariable),
-    tag: S.optional(Tag),
-    zone: S.optional(Zone),
-    trigger: S.optional(Trigger),
-    customTemplate: S.optional(CustomTemplate),
-    gtagConfig: S.optional(GtagConfig),
-    folder: S.optional(Folder),
-    changeStatus: S.optional(EntityChangeStatusEnum),
-  }),
-).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
-
-export type EntityList = Array<Entity>;
-export const EntityList = /*@__PURE__*/ S.Array(
-  Entity,
-) as any as S.Schema<EntityList>;
-
-export interface ProposedChange {
-  /** The list of workspace changes to be applied. */
-  changes?: EntityList;
-}
-export const ProposedChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changes: S.optional(EntityList),
-  }),
-).annotate({ identifier: "ProposedChange" }) as any as S.Schema<ProposedChange>;
-
-export interface Bulk_updateAccountsContainersWorkspacesRequest {
-  /** GTM Workspace's API relative path. */
-  path: string;
-  /** Request body */
-  body?: ProposedChange;
-}
-export const Bulk_updateAccountsContainersWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String.pipe(T.Label()),
-      body: S.optional(ProposedChange.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "tagmanager/v2/{+path}/bulk_update",
-        baseUrl: "https://tagmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "Bulk_updateAccountsContainersWorkspacesRequest",
-  }) as any as S.Schema<Bulk_updateAccountsContainersWorkspacesRequest>;
-
-export interface BulkUpdateWorkspaceResponse {
-  /** The entities that were added or updated during the bulk-update. Does not include entities that were deleted or updated by the system. */
-  changes?: EntityList;
-}
-export const BulkUpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changes: S.optional(EntityList),
-  }),
-).annotate({
-  identifier: "BulkUpdateWorkspaceResponse",
-}) as any as S.Schema<BulkUpdateWorkspaceResponse>;
-
 export type CombineAccountsContainersSettingSourceEnum =
   | "settingSourceUnspecified"
   | "current"
@@ -1219,6 +170,11 @@ export const ContainerUsageContextItemEnumList = /*@__PURE__*/ S.Array(
   ContainerUsageContextItemEnum,
 ) as any as S.Schema<ContainerUsageContextItemEnumList>;
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
 /** Represents a Google Tag Manager Container, which specifies the platform tags will run on, manages workspaces, and retains container versions. */
 export interface Container {
   /** Read-only Container feature set. */
@@ -1265,201 +221,6 @@ export const Container = /*@__PURE__*/ S.suspend(() =>
     tagIds: S.optional(StringList),
   }),
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
-
-/** Options for new container versions. */
-export interface CreateContainerVersionRequestVersionOptions {
-  /** The notes of the container version to be created. */
-  notes?: string;
-  /** The name of the container version to be created. */
-  name?: string;
-}
-export const CreateContainerVersionRequestVersionOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      notes: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateContainerVersionRequestVersionOptions",
-  }) as any as S.Schema<CreateContainerVersionRequestVersionOptions>;
-
-export interface Create_versionAccountsContainersWorkspacesRequest {
-  /** GTM Workspace's API relative path. */
-  path: string;
-  /** Request body */
-  body?: CreateContainerVersionRequestVersionOptions;
-}
-export const Create_versionAccountsContainersWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String.pipe(T.Label()),
-      body: S.optional(
-        CreateContainerVersionRequestVersionOptions.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "tagmanager/v2/{+path}:create_version",
-        baseUrl: "https://tagmanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "Create_versionAccountsContainersWorkspacesRequest",
-  }) as any as S.Schema<Create_versionAccountsContainersWorkspacesRequest>;
-
-export type FolderList = Array<Folder>;
-export const FolderList = /*@__PURE__*/ S.Array(
-  Folder,
-) as any as S.Schema<FolderList>;
-
-export type CustomTemplateList = Array<CustomTemplate>;
-export const CustomTemplateList = /*@__PURE__*/ S.Array(
-  CustomTemplate,
-) as any as S.Schema<CustomTemplateList>;
-
-export type ClientList = Array<Client>;
-export const ClientList = /*@__PURE__*/ S.Array(
-  Client,
-) as any as S.Schema<ClientList>;
-
-export type GtagConfigList = Array<GtagConfig>;
-export const GtagConfigList = /*@__PURE__*/ S.Array(
-  GtagConfig,
-) as any as S.Schema<GtagConfigList>;
-
-export type ZoneList = Array<Zone>;
-export const ZoneList = /*@__PURE__*/ S.Array(
-  Zone,
-) as any as S.Schema<ZoneList>;
-
-export type BuiltInVariableList = Array<BuiltInVariable>;
-export const BuiltInVariableList = /*@__PURE__*/ S.Array(
-  BuiltInVariable,
-) as any as S.Schema<BuiltInVariableList>;
-
-export type TransformationList = Array<Transformation>;
-export const TransformationList = /*@__PURE__*/ S.Array(
-  Transformation,
-) as any as S.Schema<TransformationList>;
-
-export type TagList = Array<Tag>;
-export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
-
-export type TriggerList = Array<Trigger>;
-export const TriggerList = /*@__PURE__*/ S.Array(
-  Trigger,
-) as any as S.Schema<TriggerList>;
-
-export type VariableList = Array<Variable>;
-export const VariableList = /*@__PURE__*/ S.Array(
-  Variable,
-) as any as S.Schema<VariableList>;
-
-/** Represents a Google Tag Manager Container Version. */
-export interface ContainerVersion {
-  /** The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified. */
-  fingerprint?: string;
-  /** Container version display name. */
-  name?: string;
-  /** The folders in the container that this version was taken from. */
-  folder?: FolderList;
-  /** The custom templates in the container that this version was taken from. */
-  customTemplate?: CustomTemplateList;
-  /** Container version description. */
-  description?: string;
-  /** The clients in the container that this version was taken from. */
-  client?: ClientList;
-  /** The Container Version ID uniquely identifies the GTM Container Version. */
-  containerVersionId?: string;
-  /** GTM Container ID. */
-  containerId?: string;
-  /** The Google tag configs in the container that this version was taken from. */
-  gtagConfig?: GtagConfigList;
-  /** The zones in the container that this version was taken from. */
-  zone?: ZoneList;
-  /** The built-in variables in the container that this version was taken from. */
-  builtInVariable?: BuiltInVariableList;
-  /** GTM Account ID. */
-  accountId?: string;
-  /** The container that this version was taken from. */
-  container?: Container;
-  /** The transformations in the container that this version was taken from. */
-  transformation?: TransformationList;
-  /** GTM Container Version's API relative path. */
-  path?: string;
-  /** A value of true indicates this container version has been deleted. */
-  deleted?: boolean;
-  /** The tags in the container that this version was taken from. */
-  tag?: TagList;
-  /** The triggers in the container that this version was taken from. */
-  trigger?: TriggerList;
-  /** The variables in the container that this version was taken from. */
-  variable?: VariableList;
-  /** Auto generated link to the tag manager UI */
-  tagManagerUrl?: string;
-}
-export const ContainerVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fingerprint: S.optional(S.String),
-    name: S.optional(S.String),
-    folder: S.optional(FolderList),
-    customTemplate: S.optional(CustomTemplateList),
-    description: S.optional(S.String),
-    client: S.optional(ClientList),
-    containerVersionId: S.optional(S.String),
-    containerId: S.optional(S.String),
-    gtagConfig: S.optional(GtagConfigList),
-    zone: S.optional(ZoneList),
-    builtInVariable: S.optional(BuiltInVariableList),
-    accountId: S.optional(S.String),
-    container: S.optional(Container),
-    transformation: S.optional(TransformationList),
-    path: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-    tag: S.optional(TagList),
-    trigger: S.optional(TriggerList),
-    variable: S.optional(VariableList),
-    tagManagerUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContainerVersion",
-}) as any as S.Schema<ContainerVersion>;
-
-/** The status of a workspace after synchronization. */
-export interface SyncStatus {
-  /** An error occurred during the synchronization operation. */
-  syncError?: boolean;
-  /** Synchornization operation detected a merge conflict. */
-  mergeConflict?: boolean;
-}
-export const SyncStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    syncError: S.optional(S.Boolean),
-    mergeConflict: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SyncStatus" }) as any as S.Schema<SyncStatus>;
-
-/** Create container versions response. */
-export interface CreateContainerVersionResponse {
-  /** Auto generated workspace path created as a result of version creation. This field should only be populated if the created version was not a quick preview. */
-  newWorkspacePath?: string;
-  /** The container version created. */
-  containerVersion?: ContainerVersion;
-  /** Compiler errors or not. */
-  compilerError?: boolean;
-  /** Whether version creation failed when syncing the workspace to the latest container version. */
-  syncStatus?: SyncStatus;
-}
-export const CreateContainerVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newWorkspacePath: S.optional(S.String),
-    containerVersion: S.optional(ContainerVersion),
-    compilerError: S.optional(S.Boolean),
-    syncStatus: S.optional(SyncStatus),
-  }),
-).annotate({
-  identifier: "CreateContainerVersionResponse",
-}) as any as S.Schema<CreateContainerVersionResponse>;
 
 export interface CreateAccountsContainersRequest {
   /** GTM Account's API relative path. */
@@ -1744,13 +505,13 @@ export const CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList =
     CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum,
   ) as any as S.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
 
-export interface CreateAccountsContainersWorkspacesBuilt_in_variablesRequest {
+export interface CreateAccountsContainersWorkspacesBuiltInVariablesRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
   /** The types of built-in variables to enable. */
   type?: CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList;
 }
-export const CreateAccountsContainersWorkspacesBuilt_in_variablesRequest =
+export const CreateAccountsContainersWorkspacesBuiltInVariablesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -1767,8 +528,161 @@ export const CreateAccountsContainersWorkspacesBuilt_in_variablesRequest =
       }),
     ),
   ).annotate({
-    identifier: "CreateAccountsContainersWorkspacesBuilt_in_variablesRequest",
-  }) as any as S.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+    identifier: "CreateAccountsContainersWorkspacesBuiltInVariablesRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesBuiltInVariablesRequest>;
+
+export type BuiltInVariableTypeEnum =
+  | "builtInVariableTypeUnspecified"
+  | "pageUrl"
+  | "pageHostname"
+  | "pagePath"
+  | "referrer"
+  | "event"
+  | "clickElement"
+  | "clickClasses"
+  | "clickId"
+  | "clickTarget"
+  | "clickUrl"
+  | "clickText"
+  | "firstPartyServingUrl"
+  | "formElement"
+  | "formClasses"
+  | "formId"
+  | "formTarget"
+  | "formUrl"
+  | "formText"
+  | "errorMessage"
+  | "errorUrl"
+  | "errorLine"
+  | "newHistoryUrl"
+  | "oldHistoryUrl"
+  | "newHistoryFragment"
+  | "oldHistoryFragment"
+  | "newHistoryState"
+  | "oldHistoryState"
+  | "historySource"
+  | "containerVersion"
+  | "debugMode"
+  | "randomNumber"
+  | "containerId"
+  | "appId"
+  | "appName"
+  | "appVersionCode"
+  | "appVersionName"
+  | "language"
+  | "osVersion"
+  | "platform"
+  | "sdkVersion"
+  | "deviceName"
+  | "resolution"
+  | "advertiserId"
+  | "advertisingTrackingEnabled"
+  | "htmlId"
+  | "environmentName"
+  | "ampBrowserLanguage"
+  | "ampCanonicalPath"
+  | "ampCanonicalUrl"
+  | "ampCanonicalHost"
+  | "ampReferrer"
+  | "ampTitle"
+  | "ampClientId"
+  | "ampClientTimezone"
+  | "ampClientTimestamp"
+  | "ampClientScreenWidth"
+  | "ampClientScreenHeight"
+  | "ampClientScrollX"
+  | "ampClientScrollY"
+  | "ampClientMaxScrollX"
+  | "ampClientMaxScrollY"
+  | "ampTotalEngagedTime"
+  | "ampPageViewId"
+  | "ampPageLoadTime"
+  | "ampPageDownloadTime"
+  | "ampGtmEvent"
+  | "eventName"
+  | "firebaseEventParameterCampaign"
+  | "firebaseEventParameterCampaignAclid"
+  | "firebaseEventParameterCampaignAnid"
+  | "firebaseEventParameterCampaignClickTimestamp"
+  | "firebaseEventParameterCampaignContent"
+  | "firebaseEventParameterCampaignCp1"
+  | "firebaseEventParameterCampaignGclid"
+  | "firebaseEventParameterCampaignSource"
+  | "firebaseEventParameterCampaignTerm"
+  | "firebaseEventParameterCurrency"
+  | "firebaseEventParameterDynamicLinkAcceptTime"
+  | "firebaseEventParameterDynamicLinkLinkid"
+  | "firebaseEventParameterNotificationMessageDeviceTime"
+  | "firebaseEventParameterNotificationMessageId"
+  | "firebaseEventParameterNotificationMessageName"
+  | "firebaseEventParameterNotificationMessageTime"
+  | "firebaseEventParameterNotificationTopic"
+  | "firebaseEventParameterPreviousAppVersion"
+  | "firebaseEventParameterPreviousOsVersion"
+  | "firebaseEventParameterPrice"
+  | "firebaseEventParameterProductId"
+  | "firebaseEventParameterQuantity"
+  | "firebaseEventParameterValue"
+  | "videoProvider"
+  | "videoUrl"
+  | "videoTitle"
+  | "videoDuration"
+  | "videoPercent"
+  | "videoVisible"
+  | "videoStatus"
+  | "videoCurrentTime"
+  | "scrollDepthThreshold"
+  | "scrollDepthUnits"
+  | "scrollDepthDirection"
+  | "elementVisibilityRatio"
+  | "elementVisibilityTime"
+  | "elementVisibilityFirstTime"
+  | "elementVisibilityRecentTime"
+  | "requestPath"
+  | "requestMethod"
+  | "clientName"
+  | "queryString"
+  | "serverPageLocationUrl"
+  | "serverPageLocationPath"
+  | "serverPageLocationHostname"
+  | "visitorRegion"
+  | "analyticsClientId"
+  | "analyticsSessionId"
+  | "analyticsSessionNumber";
+export const BuiltInVariableTypeEnum = /*@__PURE__*/ S.String;
+
+/** Built-in variables are a special category of variables that are pre-created and non-customizable. They provide common functionality like accessing properties of the gtm data layer, monitoring clicks, or accessing elements of a page URL. */
+export interface BuiltInVariable {
+  /** Type of built-in variable. */
+  type?: BuiltInVariableTypeEnum | (string & {});
+  /** GTM Container ID. */
+  containerId?: string;
+  /** GTM Workspace ID. */
+  workspaceId?: string;
+  /** GTM BuiltInVariable's API relative path. */
+  path?: string;
+  /** Name of the built-in variable to be used to refer to the built-in variable. */
+  name?: string;
+  /** GTM Account ID. */
+  accountId?: string;
+}
+export const BuiltInVariable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(BuiltInVariableTypeEnum),
+    containerId: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    path: S.optional(S.String),
+    name: S.optional(S.String),
+    accountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BuiltInVariable",
+}) as any as S.Schema<BuiltInVariable>;
+
+export type BuiltInVariableList = Array<BuiltInVariable>;
+export const BuiltInVariableList = /*@__PURE__*/ S.Array(
+  BuiltInVariable,
+) as any as S.Schema<BuiltInVariableList>;
 
 export interface CreateBuiltInVariableResponse {
   /** List of created built-in variables. */
@@ -1781,6 +695,94 @@ export const CreateBuiltInVariableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBuiltInVariableResponse",
 }) as any as S.Schema<CreateBuiltInVariableResponse>;
+
+export type ParameterTypeEnum =
+  | "typeUnspecified"
+  | "template"
+  | "integer"
+  | "boolean"
+  | "list"
+  | "map"
+  | "triggerReference"
+  | "tagReference";
+export const ParameterTypeEnum = /*@__PURE__*/ S.String;
+
+/** Represents a Google Tag Manager Parameter. */
+export interface Parameter {
+  /** This map parameter's parameters (must have keys; keys must be unique). */
+  map?: ParameterList;
+  /** The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of parameters should be specified - map: A map of parameters should be specified - template: The value represents any text; this can include variable references (even variable references that might return non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id - tag_reference: The value represents a tag, represented as the tag name */
+  type?: ParameterTypeEnum | (string & {});
+  /** The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values. */
+  key?: string;
+  /** Whether or not a reference type parameter is strongly or weakly referenced. Only used by Transformations. */
+  isWeakReference?: boolean;
+  /** A parameter's value (may contain variable references). as appropriate to the specified type. */
+  value?: string;
+  /** This list parameter's parameters (keys will be ignored). */
+  list?: ParameterList;
+}
+export const Parameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    map: S.optional(S.suspend(() => ParameterList)),
+    type: S.optional(ParameterTypeEnum),
+    key: S.optional(S.String),
+    isWeakReference: S.optional(S.Boolean),
+    value: S.optional(S.String),
+    list: S.optional(S.suspend(() => ParameterList)),
+  }),
+).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
+
+export type ParameterList = Array<Parameter>;
+export const ParameterList = /*@__PURE__*/ S.Array(
+  Parameter,
+) as any as S.Schema<ParameterList>;
+
+export interface Client {
+  /** GTM client's API relative path. */
+  path?: string;
+  /** GTM Account ID. */
+  accountId?: string;
+  /** The Client ID uniquely identifies the GTM client. */
+  clientId?: string;
+  /** Client type. */
+  type?: string;
+  /** GTM Workspace ID. */
+  workspaceId?: string;
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+  /** GTM Container ID. */
+  containerId?: string;
+  /** User notes on how to apply this tag in the container. */
+  notes?: string;
+  /** Priority determines relative firing order. */
+  priority?: number;
+  /** Client display name. */
+  name?: string;
+  /** The client's parameters. */
+  parameter?: ParameterList;
+  /** Parent folder id. */
+  parentFolderId?: string;
+  /** The fingerprint of the GTM Client as computed at storage time. This value is recomputed whenever the client is modified. */
+  fingerprint?: string;
+}
+export const Client = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.optional(S.String),
+    accountId: S.optional(S.String),
+    clientId: S.optional(S.String),
+    type: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    containerId: S.optional(S.String),
+    notes: S.optional(S.String),
+    priority: S.optional(S.Number),
+    name: S.optional(S.String),
+    parameter: S.optional(ParameterList),
+    parentFolderId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+  }),
+).annotate({ identifier: "Client" }) as any as S.Schema<Client>;
 
 export interface CreateAccountsContainersWorkspacesClientsRequest {
   /** GTM Workspace's API relative path. */
@@ -1804,6 +806,41 @@ export const CreateAccountsContainersWorkspacesClientsRequest =
     identifier: "CreateAccountsContainersWorkspacesClientsRequest",
   }) as any as S.Schema<CreateAccountsContainersWorkspacesClientsRequest>;
 
+/** Represents a Google Tag Manager Folder. */
+export interface Folder {
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+  /** GTM Account ID. */
+  accountId?: string;
+  /** GTM Workspace ID. */
+  workspaceId?: string;
+  /** Folder display name. */
+  name?: string;
+  /** User notes on how to apply this folder in the container. */
+  notes?: string;
+  /** The fingerprint of the GTM Folder as computed at storage time. This value is recomputed whenever the folder is modified. */
+  fingerprint?: string;
+  /** GTM Container ID. */
+  containerId?: string;
+  /** The Folder ID uniquely identifies the GTM Folder. */
+  folderId?: string;
+  /** GTM Folder's API relative path. */
+  path?: string;
+}
+export const Folder = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tagManagerUrl: S.optional(S.String),
+    accountId: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    name: S.optional(S.String),
+    notes: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    containerId: S.optional(S.String),
+    folderId: S.optional(S.String),
+    path: S.optional(S.String),
+  }),
+).annotate({ identifier: "Folder" }) as any as S.Schema<Folder>;
+
 export interface CreateAccountsContainersWorkspacesFoldersRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
@@ -1826,13 +863,48 @@ export const CreateAccountsContainersWorkspacesFoldersRequest =
     identifier: "CreateAccountsContainersWorkspacesFoldersRequest",
   }) as any as S.Schema<CreateAccountsContainersWorkspacesFoldersRequest>;
 
-export interface CreateAccountsContainersWorkspacesGtag_configRequest {
+/** Represents a Google tag configuration. */
+export interface GtagConfig {
+  /** Google tag config type. */
+  type?: string;
+  /** The fingerprint of the Google tag config as computed at storage time. This value is recomputed whenever the config is modified. */
+  fingerprint?: string;
+  /** Google tag workspace ID. Only used by GTM containers. Set to 0 otherwise. */
+  workspaceId?: string;
+  /** Google tag account ID. */
+  accountId?: string;
+  /** The ID uniquely identifies the Google tag config. */
+  gtagConfigId?: string;
+  /** The Google tag config's parameters. */
+  parameter?: ParameterList;
+  /** Google tag config's API relative path. */
+  path?: string;
+  /** Google tag container ID. */
+  containerId?: string;
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+}
+export const GtagConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    gtagConfigId: S.optional(S.String),
+    parameter: S.optional(ParameterList),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+  }),
+).annotate({ identifier: "GtagConfig" }) as any as S.Schema<GtagConfig>;
+
+export interface CreateAccountsContainersWorkspacesGtagConfigRequest {
   /** Workspace's API relative path. */
   parent: string;
   /** Request body */
   body?: GtagConfig;
 }
-export const CreateAccountsContainersWorkspacesGtag_configRequest =
+export const CreateAccountsContainersWorkspacesGtagConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -1845,8 +917,157 @@ export const CreateAccountsContainersWorkspacesGtag_configRequest =
       }),
     ),
   ).annotate({
-    identifier: "CreateAccountsContainersWorkspacesGtag_configRequest",
-  }) as any as S.Schema<CreateAccountsContainersWorkspacesGtag_configRequest>;
+    identifier: "CreateAccountsContainersWorkspacesGtagConfigRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesGtagConfigRequest>;
+
+export type TagConsentSettingConsentStatusEnum =
+  | "notSet"
+  | "notNeeded"
+  | "needed";
+export const TagConsentSettingConsentStatusEnum = /*@__PURE__*/ S.String;
+
+export interface TagConsentSetting {
+  /** The type of consents to check for during tag firing if in the consent NEEDED state. This parameter must be of type LIST where each list item is of type STRING. */
+  consentType?: Parameter;
+  /** The tag's consent status. If set to NEEDED, the runtime will check that the consent types specified by the consent_type field have been granted. */
+  consentStatus?: TagConsentSettingConsentStatusEnum | (string & {});
+}
+export const TagConsentSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consentType: S.optional(Parameter),
+    consentStatus: S.optional(TagConsentSettingConsentStatusEnum),
+  }),
+).annotate({
+  identifier: "TagConsentSetting",
+}) as any as S.Schema<TagConsentSetting>;
+
+/** Represents a tag that fires after another tag in order to tear down dependencies. */
+export interface TeardownTag {
+  /** If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the teardown tag regardless of main tag firing status. */
+  stopTeardownOnFailure?: boolean;
+  /** The name of the teardown tag. */
+  tagName?: string;
+}
+export const TeardownTag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stopTeardownOnFailure: S.optional(S.Boolean),
+    tagName: S.optional(S.String),
+  }),
+).annotate({ identifier: "TeardownTag" }) as any as S.Schema<TeardownTag>;
+
+export type TeardownTagList = Array<TeardownTag>;
+export const TeardownTagList = /*@__PURE__*/ S.Array(
+  TeardownTag,
+) as any as S.Schema<TeardownTagList>;
+
+/** Represents a reference to atag that fires before another tag in order to set up dependencies. */
+export interface SetupTag {
+  /** The name of the setup tag. */
+  tagName?: string;
+  /** If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main tag regardless of setup tag firing status. */
+  stopOnSetupFailure?: boolean;
+}
+export const SetupTag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tagName: S.optional(S.String),
+    stopOnSetupFailure: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "SetupTag" }) as any as S.Schema<SetupTag>;
+
+export type SetupTagList = Array<SetupTag>;
+export const SetupTagList = /*@__PURE__*/ S.Array(
+  SetupTag,
+) as any as S.Schema<SetupTagList>;
+
+export type TagTagFiringOptionEnum =
+  | "tagFiringOptionUnspecified"
+  | "unlimited"
+  | "oncePerEvent"
+  | "oncePerLoad";
+export const TagTagFiringOptionEnum = /*@__PURE__*/ S.String;
+
+/** Represents a Google Tag Manager Tag. */
+export interface Tag {
+  /** The Tag ID uniquely identifies the GTM Tag. */
+  tagId?: string;
+  /** The tag's parameters. */
+  parameter?: ParameterList;
+  /** Parent folder id. */
+  parentFolderId?: string;
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+  /** Tag display name. */
+  name?: string;
+  /** If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode). */
+  liveOnly?: boolean;
+  /** GTM Account ID. */
+  accountId?: string;
+  /** The start timestamp in milliseconds to schedule a tag. */
+  scheduleStartMs?: string;
+  /** Consent settings of a tag. */
+  consentSettings?: TagConsentSetting;
+  /** The list of teardown tags. Currently we only allow one. */
+  teardownTag?: TeardownTagList;
+  /** GTM Container ID. */
+  containerId?: string;
+  /** Indicates whether the tag is paused, which prevents the tag from firing. */
+  paused?: boolean;
+  /** GTM Tag Type. */
+  type?: string;
+  /** GTM Workspace ID. */
+  workspaceId?: string;
+  /** A map of key-value pairs of tag metadata to be included in the event data for tag monitoring. Notes: - This parameter must be type MAP. - Each parameter in the map are type TEMPLATE, however cannot contain variable references. */
+  monitoringMetadata?: Parameter;
+  /** The end timestamp in milliseconds to schedule a tag. */
+  scheduleEndMs?: string;
+  /** User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0. */
+  priority?: Parameter;
+  /** GTM Tag's API relative path. */
+  path?: string;
+  /** The list of setup tags. Currently we only allow one. */
+  setupTag?: SetupTagList;
+  /** Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its blockingTriggerIds (if any specified) are false. */
+  firingTriggerId?: StringList;
+  /** The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the tag is modified. */
+  fingerprint?: string;
+  /** User notes on how to apply this tag in the container. */
+  notes?: string;
+  /** Option to fire this tag. */
+  tagFiringOption?: TagTagFiringOptionEnum | (string & {});
+  /** Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire. */
+  blockingTriggerId?: StringList;
+  /** If non-empty, then the tag display name will be included in the monitoring metadata map using the key specified. */
+  monitoringMetadataTagNameKey?: string;
+}
+export const Tag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tagId: S.optional(S.String),
+    parameter: S.optional(ParameterList),
+    parentFolderId: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    name: S.optional(S.String),
+    liveOnly: S.optional(S.Boolean),
+    accountId: S.optional(S.String),
+    scheduleStartMs: S.optional(S.String),
+    consentSettings: S.optional(TagConsentSetting),
+    teardownTag: S.optional(TeardownTagList),
+    containerId: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    type: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    monitoringMetadata: S.optional(Parameter),
+    scheduleEndMs: S.optional(S.String),
+    priority: S.optional(Parameter),
+    path: S.optional(S.String),
+    setupTag: S.optional(SetupTagList),
+    firingTriggerId: S.optional(StringList),
+    fingerprint: S.optional(S.String),
+    notes: S.optional(S.String),
+    tagFiringOption: S.optional(TagTagFiringOptionEnum),
+    blockingTriggerId: S.optional(StringList),
+    monitoringMetadataTagNameKey: S.optional(S.String),
+  }),
+).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export interface CreateAccountsContainersWorkspacesTagsRequest {
   /** GTM Workspace's API relative path. */
@@ -1870,6 +1091,78 @@ export const CreateAccountsContainersWorkspacesTagsRequest =
     identifier: "CreateAccountsContainersWorkspacesTagsRequest",
   }) as any as S.Schema<CreateAccountsContainersWorkspacesTagsRequest>;
 
+/** Represents the link between a custom template and an entry on the Community Template Gallery site. */
+export interface GalleryReference {
+  /** The version of the community gallery template. */
+  version?: string;
+  /** The signature of the community gallery template as computed at import time. This value is recomputed whenever the template is updated from the gallery. */
+  signature?: string;
+  /** The name of the host for the community gallery template. */
+  host?: string;
+  /** If a user has manually edited the community gallery template. */
+  isModified?: boolean;
+  /** The developer id of the community gallery template. This value is set whenever the template is created from the gallery. */
+  templateDeveloperId?: string;
+  /** The name of the repository for the community gallery template. */
+  repository?: string;
+  /** The name of the owner for the community gallery template. */
+  owner?: string;
+  /** ID for the gallery template that is generated once during first sync and travels with the template redirects. */
+  galleryTemplateId?: string;
+}
+export const GalleryReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.optional(S.String),
+    signature: S.optional(S.String),
+    host: S.optional(S.String),
+    isModified: S.optional(S.Boolean),
+    templateDeveloperId: S.optional(S.String),
+    repository: S.optional(S.String),
+    owner: S.optional(S.String),
+    galleryTemplateId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GalleryReference",
+}) as any as S.Schema<GalleryReference>;
+
+/** Represents a Google Tag Manager Custom Template's contents. */
+export interface CustomTemplate {
+  /** GTM Account ID. */
+  accountId?: string;
+  /** Custom Template display name. */
+  name?: string;
+  /** GTM Container ID. */
+  containerId?: string;
+  /** The custom template in text format. */
+  templateData?: string;
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+  /** GTM Workspace ID. */
+  workspaceId?: string;
+  /** The Custom Template ID uniquely identifies the GTM custom template. */
+  templateId?: string;
+  /** The fingerprint of the GTM Custom Template as computed at storage time. This value is recomputed whenever the template is modified. */
+  fingerprint?: string;
+  /** GTM Custom Template's API relative path. */
+  path?: string;
+  /** A reference to the Community Template Gallery entry. */
+  galleryReference?: GalleryReference;
+}
+export const CustomTemplate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.optional(S.String),
+    name: S.optional(S.String),
+    containerId: S.optional(S.String),
+    templateData: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    templateId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    path: S.optional(S.String),
+    galleryReference: S.optional(GalleryReference),
+  }),
+).annotate({ identifier: "CustomTemplate" }) as any as S.Schema<CustomTemplate>;
+
 export interface CreateAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
@@ -1891,6 +1184,50 @@ export const CreateAccountsContainersWorkspacesTemplatesRequest =
   ).annotate({
     identifier: "CreateAccountsContainersWorkspacesTemplatesRequest",
   }) as any as S.Schema<CreateAccountsContainersWorkspacesTemplatesRequest>;
+
+/** Represents a Google Tag Manager Transformation. */
+export interface Transformation {
+  /** User notes on how to apply this transformation in the container. */
+  notes?: string;
+  /** Parent folder id. */
+  parentFolderId?: string;
+  /** Transformation display name. */
+  name?: string;
+  /** The transformation's parameters. */
+  parameter?: ParameterList;
+  /** The fingerprint of the GTM Transformation as computed at storage time. This value is recomputed whenever the transformation is modified. */
+  fingerprint?: string;
+  /** GTM Workspace ID. */
+  workspaceId?: string;
+  /** Transformation type. */
+  type?: string;
+  /** GTM Container ID. */
+  containerId?: string;
+  /** GTM transformation's API relative path. */
+  path?: string;
+  /** The Transformation ID uniquely identifies the GTM transformation. */
+  transformationId?: string;
+  /** GTM Account ID. */
+  accountId?: string;
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+}
+export const Transformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notes: S.optional(S.String),
+    parentFolderId: S.optional(S.String),
+    name: S.optional(S.String),
+    parameter: S.optional(ParameterList),
+    fingerprint: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    type: S.optional(S.String),
+    containerId: S.optional(S.String),
+    path: S.optional(S.String),
+    transformationId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+  }),
+).annotate({ identifier: "Transformation" }) as any as S.Schema<Transformation>;
 
 export interface CreateAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Workspace's API relative path. */
@@ -1914,6 +1251,182 @@ export const CreateAccountsContainersWorkspacesTransformationsRequest =
     identifier: "CreateAccountsContainersWorkspacesTransformationsRequest",
   }) as any as S.Schema<CreateAccountsContainersWorkspacesTransformationsRequest>;
 
+export type ConditionTypeEnum =
+  | "conditionTypeUnspecified"
+  | "equals"
+  | "contains"
+  | "startsWith"
+  | "endsWith"
+  | "matchRegex"
+  | "greater"
+  | "greaterOrEquals"
+  | "less"
+  | "lessOrEquals"
+  | "cssSelector"
+  | "urlMatches";
+export const ConditionTypeEnum = /*@__PURE__*/ S.String;
+
+/** Represents a predicate. */
+export interface Condition {
+  /** The type of operator for this condition. */
+  type?: ConditionTypeEnum | (string & {});
+  /** A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named negate boolean parameter that is set to true. */
+  parameter?: ParameterList;
+}
+export const Condition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ConditionTypeEnum),
+    parameter: S.optional(ParameterList),
+  }),
+).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
+
+export type ConditionList = Array<Condition>;
+export const ConditionList = /*@__PURE__*/ S.Array(
+  Condition,
+) as any as S.Schema<ConditionList>;
+
+export type TriggerTypeEnum =
+  | "eventTypeUnspecified"
+  | "pageview"
+  | "domReady"
+  | "windowLoaded"
+  | "customEvent"
+  | "triggerGroup"
+  | "init"
+  | "consentInit"
+  | "serverPageview"
+  | "always"
+  | "firebaseAppException"
+  | "firebaseAppUpdate"
+  | "firebaseCampaign"
+  | "firebaseFirstOpen"
+  | "firebaseInAppPurchase"
+  | "firebaseNotificationDismiss"
+  | "firebaseNotificationForeground"
+  | "firebaseNotificationOpen"
+  | "firebaseNotificationReceive"
+  | "firebaseOsUpdate"
+  | "firebaseSessionStart"
+  | "firebaseUserEngagement"
+  | "formSubmission"
+  | "click"
+  | "linkClick"
+  | "jsError"
+  | "historyChange"
+  | "timer"
+  | "ampClick"
+  | "ampTimer"
+  | "ampScroll"
+  | "ampVisibility"
+  | "youTubeVideo"
+  | "scrollDepth"
+  | "elementVisibility";
+export const TriggerTypeEnum = /*@__PURE__*/ S.String;
+
+/** Represents a Google Tag Manager Trigger */
+export interface Trigger {
+  /** List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. */
+  verticalScrollPercentageList?: Parameter;
+  /** A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. */
+  visiblePercentageMin?: Parameter;
+  /** Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers. */
+  limit?: Parameter;
+  /** Trigger display name. */
+  name?: string;
+  /** Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. */
+  interval?: Parameter;
+  /** Used in the case of custom event, which is fired iff all Conditions are true. */
+  customEventFilter?: ConditionList;
+  /** Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. */
+  maxTimerLengthSeconds?: Parameter;
+  /** List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers. */
+  horizontalScrollPercentageList?: Parameter;
+  /** Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers. */
+  checkValidation?: Parameter;
+  /** GTM Container ID. */
+  containerId?: string;
+  /** A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. */
+  visiblePercentageMax?: Parameter;
+  /** A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger. */
+  selector?: Parameter;
+  /** Name of the GTM event that is fired. Only valid for Timer triggers. */
+  eventName?: Parameter;
+  /** User notes on how to apply this trigger in the container. */
+  notes?: string;
+  /** The Trigger ID uniquely identifies the GTM Trigger. */
+  triggerId?: string;
+  /** A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger. */
+  totalTimeMinMilliseconds?: Parameter;
+  /** Additional parameters. */
+  parameter?: ParameterList;
+  /** Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. */
+  intervalSeconds?: Parameter;
+  /** How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers. */
+  waitForTagsTimeout?: Parameter;
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+  /** Parent folder id. */
+  parentFolderId?: string;
+  /** A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger. */
+  visibilitySelector?: Parameter;
+  /** GTM Workspace ID. */
+  workspaceId?: string;
+  /** The trigger will only fire iff all Conditions are true. */
+  filter?: ConditionList;
+  /** Used in the case of auto event tracking. */
+  autoEventFilter?: ConditionList;
+  /** Defines the data layer event that causes this trigger. */
+  type?: TriggerTypeEnum | (string & {});
+  /** Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers. */
+  uniqueTriggerId?: Parameter;
+  /** GTM Account ID. */
+  accountId?: string;
+  /** A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger. */
+  continuousTimeMinMilliseconds?: Parameter;
+  /** GTM Trigger's API relative path. */
+  path?: string;
+  /** Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers. */
+  waitForTags?: Parameter;
+  /** The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified. */
+  fingerprint?: string;
+}
+export const Trigger = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    verticalScrollPercentageList: S.optional(Parameter),
+    visiblePercentageMin: S.optional(Parameter),
+    limit: S.optional(Parameter),
+    name: S.optional(S.String),
+    interval: S.optional(Parameter),
+    customEventFilter: S.optional(ConditionList),
+    maxTimerLengthSeconds: S.optional(Parameter),
+    horizontalScrollPercentageList: S.optional(Parameter),
+    checkValidation: S.optional(Parameter),
+    containerId: S.optional(S.String),
+    visiblePercentageMax: S.optional(Parameter),
+    selector: S.optional(Parameter),
+    eventName: S.optional(Parameter),
+    notes: S.optional(S.String),
+    triggerId: S.optional(S.String),
+    totalTimeMinMilliseconds: S.optional(Parameter),
+    parameter: S.optional(ParameterList),
+    intervalSeconds: S.optional(Parameter),
+    waitForTagsTimeout: S.optional(Parameter),
+    tagManagerUrl: S.optional(S.String),
+    parentFolderId: S.optional(S.String),
+    visibilitySelector: S.optional(Parameter),
+    workspaceId: S.optional(S.String),
+    filter: S.optional(ConditionList),
+    autoEventFilter: S.optional(ConditionList),
+    type: S.optional(TriggerTypeEnum),
+    uniqueTriggerId: S.optional(Parameter),
+    accountId: S.optional(S.String),
+    continuousTimeMinMilliseconds: S.optional(Parameter),
+    path: S.optional(S.String),
+    waitForTags: S.optional(Parameter),
+    fingerprint: S.optional(S.String),
+  }),
+).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
+
 export interface CreateAccountsContainersWorkspacesTriggersRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
@@ -1936,6 +1449,110 @@ export const CreateAccountsContainersWorkspacesTriggersRequest =
     identifier: "CreateAccountsContainersWorkspacesTriggersRequest",
   }) as any as S.Schema<CreateAccountsContainersWorkspacesTriggersRequest>;
 
+export type VariableFormatValueConvertToNumberEnum =
+  | "decimalSeparatorTypeUnspecified"
+  | "period"
+  | "comma"
+  | "automatic";
+export const VariableFormatValueConvertToNumberEnum = /*@__PURE__*/ S.String;
+
+export type VariableFormatValueCaseConversionTypeEnum =
+  | "none"
+  | "lowercase"
+  | "uppercase";
+export const VariableFormatValueCaseConversionTypeEnum = /*@__PURE__*/ S.String;
+
+export interface VariableFormatValue {
+  /** The value to convert if a variable value is false. */
+  convertFalseToValue?: Parameter;
+  /** The option to convert a variable value to a number. */
+  convertToNumber?: VariableFormatValueConvertToNumberEnum | (string & {});
+  /** The value to convert if a variable value is null. */
+  convertNullToValue?: Parameter;
+  /** The option to convert a string-type variable value to either lowercase or uppercase. */
+  caseConversionType?:
+    | VariableFormatValueCaseConversionTypeEnum
+    | (string & {});
+  /** The value to convert if a variable value is undefined. */
+  convertUndefinedToValue?: Parameter;
+  /** The value to convert if a variable value is true. */
+  convertTrueToValue?: Parameter;
+  /** The option to convert a variable value to a boolean. */
+  convertToBoolean?: boolean;
+}
+export const VariableFormatValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    convertFalseToValue: S.optional(Parameter),
+    convertToNumber: S.optional(VariableFormatValueConvertToNumberEnum),
+    convertNullToValue: S.optional(Parameter),
+    caseConversionType: S.optional(VariableFormatValueCaseConversionTypeEnum),
+    convertUndefinedToValue: S.optional(Parameter),
+    convertTrueToValue: S.optional(Parameter),
+    convertToBoolean: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VariableFormatValue",
+}) as any as S.Schema<VariableFormatValue>;
+
+/** Represents a Google Tag Manager Variable. */
+export interface Variable {
+  /** GTM Account ID. */
+  accountId?: string;
+  /** GTM Workspace ID. */
+  workspaceId?: string;
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+  /** GTM Variable's API relative path. */
+  path?: string;
+  /** The Variable ID uniquely identifies the GTM Variable. */
+  variableId?: string;
+  /** Option to convert a variable value to other value. */
+  formatValue?: VariableFormatValue;
+  /** GTM Variable Type. */
+  type?: string;
+  /** The end timestamp in milliseconds to schedule a variable. */
+  scheduleEndMs?: string;
+  /** For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an unordered set. */
+  disablingTriggerId?: StringList;
+  /** Parent folder id. */
+  parentFolderId?: string;
+  /** User notes on how to apply this variable in the container. */
+  notes?: string;
+  /** The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever the variable is modified. */
+  fingerprint?: string;
+  /** The start timestamp in milliseconds to schedule a variable. */
+  scheduleStartMs?: string;
+  /** Variable display name. */
+  name?: string;
+  /** The variable's parameters. */
+  parameter?: ParameterList;
+  /** For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an unordered set. */
+  enablingTriggerId?: StringList;
+  /** GTM Container ID. */
+  containerId?: string;
+}
+export const Variable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    path: S.optional(S.String),
+    variableId: S.optional(S.String),
+    formatValue: S.optional(VariableFormatValue),
+    type: S.optional(S.String),
+    scheduleEndMs: S.optional(S.String),
+    disablingTriggerId: S.optional(StringList),
+    parentFolderId: S.optional(S.String),
+    notes: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    scheduleStartMs: S.optional(S.String),
+    name: S.optional(S.String),
+    parameter: S.optional(ParameterList),
+    enablingTriggerId: S.optional(StringList),
+    containerId: S.optional(S.String),
+  }),
+).annotate({ identifier: "Variable" }) as any as S.Schema<Variable>;
+
 export interface CreateAccountsContainersWorkspacesVariablesRequest {
   /** GTM Workspace's API relative path. */
   parent: string;
@@ -1957,6 +1574,101 @@ export const CreateAccountsContainersWorkspacesVariablesRequest =
   ).annotate({
     identifier: "CreateAccountsContainersWorkspacesVariablesRequest",
   }) as any as S.Schema<CreateAccountsContainersWorkspacesVariablesRequest>;
+
+/** Represents a Zone's type restrictions. */
+export interface ZoneTypeRestriction {
+  /** True if type restrictions have been enabled for this Zone. */
+  enable?: boolean;
+  /** List of type public ids that have been whitelisted for use in this Zone. */
+  whitelistedTypeId?: StringList;
+}
+export const ZoneTypeRestriction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enable: S.optional(S.Boolean),
+    whitelistedTypeId: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ZoneTypeRestriction",
+}) as any as S.Schema<ZoneTypeRestriction>;
+
+/** Represents a Zone's boundaries. */
+export interface ZoneBoundary {
+  /** The conditions that, when conjoined, make up the boundary. */
+  condition?: ConditionList;
+  /** Custom evaluation trigger IDs. A zone will evaluate its boundary conditions when any of the listed triggers are true. */
+  customEvaluationTriggerId?: StringList;
+}
+export const ZoneBoundary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    condition: S.optional(ConditionList),
+    customEvaluationTriggerId: S.optional(StringList),
+  }),
+).annotate({ identifier: "ZoneBoundary" }) as any as S.Schema<ZoneBoundary>;
+
+/** Represents a child container of a Zone. */
+export interface ZoneChildContainer {
+  /** The zone's nickname for the child container. */
+  nickname?: string;
+  /** The child container's public id. */
+  publicId?: string;
+}
+export const ZoneChildContainer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nickname: S.optional(S.String),
+    publicId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ZoneChildContainer",
+}) as any as S.Schema<ZoneChildContainer>;
+
+export type ZoneChildContainerList = Array<ZoneChildContainer>;
+export const ZoneChildContainerList = /*@__PURE__*/ S.Array(
+  ZoneChildContainer,
+) as any as S.Schema<ZoneChildContainerList>;
+
+/** Represents a Google Tag Manager Zone's contents. */
+export interface Zone {
+  /** User notes on how to apply this zone in the container. */
+  notes?: string;
+  /** Zone display name. */
+  name?: string;
+  /** This Zone's type restrictions. */
+  typeRestriction?: ZoneTypeRestriction;
+  /** GTM Workspace ID. */
+  workspaceId?: string;
+  /** GTM Account ID. */
+  accountId?: string;
+  /** The fingerprint of the GTM Zone as computed at storage time. This value is recomputed whenever the zone is modified. */
+  fingerprint?: string;
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+  /** The Zone ID uniquely identifies the GTM Zone. */
+  zoneId?: string;
+  /** This Zone's boundary. */
+  boundary?: ZoneBoundary;
+  /** GTM Container ID. */
+  containerId?: string;
+  /** GTM Zone's API relative path. */
+  path?: string;
+  /** Containers that are children of this Zone. */
+  childContainer?: ZoneChildContainerList;
+}
+export const Zone = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notes: S.optional(S.String),
+    name: S.optional(S.String),
+    typeRestriction: S.optional(ZoneTypeRestriction),
+    workspaceId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    zoneId: S.optional(S.String),
+    boundary: S.optional(ZoneBoundary),
+    containerId: S.optional(S.String),
+    path: S.optional(S.String),
+    childContainer: S.optional(ZoneChildContainerList),
+  }),
+).annotate({ identifier: "Zone" }) as any as S.Schema<Zone>;
 
 export interface CreateAccountsContainersWorkspacesZonesRequest {
   /** GTM Workspace's API relative path. */
@@ -2051,13 +1763,13 @@ export const UserPermission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserPermission" }) as any as S.Schema<UserPermission>;
 
-export interface CreateAccountsUser_permissionsRequest {
+export interface CreateAccountsUserPermissionsRequest {
   /** GTM Account's API relative path. */
   parent: string;
   /** Request body */
   body?: UserPermission;
 }
-export const CreateAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(
+export const CreateAccountsUserPermissionsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2070,8 +1782,198 @@ export const CreateAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "CreateAccountsUser_permissionsRequest",
-}) as any as S.Schema<CreateAccountsUser_permissionsRequest>;
+  identifier: "CreateAccountsUserPermissionsRequest",
+}) as any as S.Schema<CreateAccountsUserPermissionsRequest>;
+
+/** Options for new container versions. */
+export interface CreateContainerVersionRequestVersionOptions {
+  /** The notes of the container version to be created. */
+  notes?: string;
+  /** The name of the container version to be created. */
+  name?: string;
+}
+export const CreateContainerVersionRequestVersionOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      notes: S.optional(S.String),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateContainerVersionRequestVersionOptions",
+  }) as any as S.Schema<CreateContainerVersionRequestVersionOptions>;
+
+export interface CreateVersionAccountsContainersWorkspacesRequest {
+  /** GTM Workspace's API relative path. */
+  path: string;
+  /** Request body */
+  body?: CreateContainerVersionRequestVersionOptions;
+}
+export const CreateVersionAccountsContainersWorkspacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      body: S.optional(
+        CreateContainerVersionRequestVersionOptions.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:create_version",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateVersionAccountsContainersWorkspacesRequest",
+  }) as any as S.Schema<CreateVersionAccountsContainersWorkspacesRequest>;
+
+export type FolderList = Array<Folder>;
+export const FolderList = /*@__PURE__*/ S.Array(
+  Folder,
+) as any as S.Schema<FolderList>;
+
+export type CustomTemplateList = Array<CustomTemplate>;
+export const CustomTemplateList = /*@__PURE__*/ S.Array(
+  CustomTemplate,
+) as any as S.Schema<CustomTemplateList>;
+
+export type ClientList = Array<Client>;
+export const ClientList = /*@__PURE__*/ S.Array(
+  Client,
+) as any as S.Schema<ClientList>;
+
+export type GtagConfigList = Array<GtagConfig>;
+export const GtagConfigList = /*@__PURE__*/ S.Array(
+  GtagConfig,
+) as any as S.Schema<GtagConfigList>;
+
+export type ZoneList = Array<Zone>;
+export const ZoneList = /*@__PURE__*/ S.Array(
+  Zone,
+) as any as S.Schema<ZoneList>;
+
+export type TransformationList = Array<Transformation>;
+export const TransformationList = /*@__PURE__*/ S.Array(
+  Transformation,
+) as any as S.Schema<TransformationList>;
+
+export type TagList = Array<Tag>;
+export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
+
+export type TriggerList = Array<Trigger>;
+export const TriggerList = /*@__PURE__*/ S.Array(
+  Trigger,
+) as any as S.Schema<TriggerList>;
+
+export type VariableList = Array<Variable>;
+export const VariableList = /*@__PURE__*/ S.Array(
+  Variable,
+) as any as S.Schema<VariableList>;
+
+/** Represents a Google Tag Manager Container Version. */
+export interface ContainerVersion {
+  /** The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified. */
+  fingerprint?: string;
+  /** Container version display name. */
+  name?: string;
+  /** The folders in the container that this version was taken from. */
+  folder?: FolderList;
+  /** The custom templates in the container that this version was taken from. */
+  customTemplate?: CustomTemplateList;
+  /** Container version description. */
+  description?: string;
+  /** The clients in the container that this version was taken from. */
+  client?: ClientList;
+  /** The Container Version ID uniquely identifies the GTM Container Version. */
+  containerVersionId?: string;
+  /** GTM Container ID. */
+  containerId?: string;
+  /** The Google tag configs in the container that this version was taken from. */
+  gtagConfig?: GtagConfigList;
+  /** The zones in the container that this version was taken from. */
+  zone?: ZoneList;
+  /** The built-in variables in the container that this version was taken from. */
+  builtInVariable?: BuiltInVariableList;
+  /** GTM Account ID. */
+  accountId?: string;
+  /** The container that this version was taken from. */
+  container?: Container;
+  /** The transformations in the container that this version was taken from. */
+  transformation?: TransformationList;
+  /** GTM Container Version's API relative path. */
+  path?: string;
+  /** A value of true indicates this container version has been deleted. */
+  deleted?: boolean;
+  /** The tags in the container that this version was taken from. */
+  tag?: TagList;
+  /** The triggers in the container that this version was taken from. */
+  trigger?: TriggerList;
+  /** The variables in the container that this version was taken from. */
+  variable?: VariableList;
+  /** Auto generated link to the tag manager UI */
+  tagManagerUrl?: string;
+}
+export const ContainerVersion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fingerprint: S.optional(S.String),
+    name: S.optional(S.String),
+    folder: S.optional(FolderList),
+    customTemplate: S.optional(CustomTemplateList),
+    description: S.optional(S.String),
+    client: S.optional(ClientList),
+    containerVersionId: S.optional(S.String),
+    containerId: S.optional(S.String),
+    gtagConfig: S.optional(GtagConfigList),
+    zone: S.optional(ZoneList),
+    builtInVariable: S.optional(BuiltInVariableList),
+    accountId: S.optional(S.String),
+    container: S.optional(Container),
+    transformation: S.optional(TransformationList),
+    path: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+    tag: S.optional(TagList),
+    trigger: S.optional(TriggerList),
+    variable: S.optional(VariableList),
+    tagManagerUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContainerVersion",
+}) as any as S.Schema<ContainerVersion>;
+
+/** The status of a workspace after synchronization. */
+export interface SyncStatus {
+  /** An error occurred during the synchronization operation. */
+  syncError?: boolean;
+  /** Synchornization operation detected a merge conflict. */
+  mergeConflict?: boolean;
+}
+export const SyncStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    syncError: S.optional(S.Boolean),
+    mergeConflict: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "SyncStatus" }) as any as S.Schema<SyncStatus>;
+
+/** Create container versions response. */
+export interface CreateContainerVersionResponse {
+  /** Auto generated workspace path created as a result of version creation. This field should only be populated if the created version was not a quick preview. */
+  newWorkspacePath?: string;
+  /** The container version created. */
+  containerVersion?: ContainerVersion;
+  /** Compiler errors or not. */
+  compilerError?: boolean;
+  /** Whether version creation failed when syncing the workspace to the latest container version. */
+  syncStatus?: SyncStatus;
+}
+export const CreateContainerVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    newWorkspacePath: S.optional(S.String),
+    containerVersion: S.optional(ContainerVersion),
+    compilerError: S.optional(S.Boolean),
+    syncStatus: S.optional(SyncStatus),
+  }),
+).annotate({
+  identifier: "CreateContainerVersionResponse",
+}) as any as S.Schema<CreateContainerVersionResponse>;
 
 export interface DeleteAccountsContainersRequest {
   /** GTM Container's API relative path. */
@@ -2304,13 +2206,13 @@ export const DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList =
     DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum,
   ) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
 
-export interface DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest {
+export interface DeleteAccountsContainersWorkspacesBuiltInVariablesRequest {
   /** GTM BuiltInVariable's API relative path. */
   path: string;
   /** The types of built-in variables to delete. */
   type?: DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList;
 }
-export const DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest =
+export const DeleteAccountsContainersWorkspacesBuiltInVariablesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       path: S.String.pipe(T.Label()),
@@ -2327,14 +2229,14 @@ export const DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest =
       }),
     ),
   ).annotate({
-    identifier: "DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest",
-  }) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+    identifier: "DeleteAccountsContainersWorkspacesBuiltInVariablesRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesBuiltInVariablesRequest>;
 
-export interface DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse {}
-export const DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse =
+export interface DeleteAccountsContainersWorkspacesBuiltInVariablesResponse {}
+export const DeleteAccountsContainersWorkspacesBuiltInVariablesResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse",
-  }) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse>;
+    identifier: "DeleteAccountsContainersWorkspacesBuiltInVariablesResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesBuiltInVariablesResponse>;
 
 export interface DeleteAccountsContainersWorkspacesClientsRequest {
   /** GTM Client's API relative path. */
@@ -2386,11 +2288,11 @@ export const DeleteAccountsContainersWorkspacesFoldersResponse =
     identifier: "DeleteAccountsContainersWorkspacesFoldersResponse",
   }) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersResponse>;
 
-export interface DeleteAccountsContainersWorkspacesGtag_configRequest {
+export interface DeleteAccountsContainersWorkspacesGtagConfigRequest {
   /** Google tag config's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesGtag_configRequest =
+export const DeleteAccountsContainersWorkspacesGtagConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       path: S.String.pipe(T.Label()),
@@ -2402,14 +2304,14 @@ export const DeleteAccountsContainersWorkspacesGtag_configRequest =
       }),
     ),
   ).annotate({
-    identifier: "DeleteAccountsContainersWorkspacesGtag_configRequest",
-  }) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configRequest>;
+    identifier: "DeleteAccountsContainersWorkspacesGtagConfigRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesGtagConfigRequest>;
 
-export interface DeleteAccountsContainersWorkspacesGtag_configResponse {}
-export const DeleteAccountsContainersWorkspacesGtag_configResponse =
+export interface DeleteAccountsContainersWorkspacesGtagConfigResponse {}
+export const DeleteAccountsContainersWorkspacesGtagConfigResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteAccountsContainersWorkspacesGtag_configResponse",
-  }) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse>;
+    identifier: "DeleteAccountsContainersWorkspacesGtagConfigResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesGtagConfigResponse>;
 
 export interface DeleteAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
@@ -2561,11 +2463,11 @@ export const DeleteAccountsContainersWorkspacesZonesResponse =
     identifier: "DeleteAccountsContainersWorkspacesZonesResponse",
   }) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesResponse>;
 
-export interface DeleteAccountsUser_permissionsRequest {
+export interface DeleteAccountsUserPermissionsRequest {
   /** GTM UserPermission's API relative path. */
   path: string;
 }
-export const DeleteAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(
+export const DeleteAccountsUserPermissionsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       path: S.String.pipe(T.Label()),
@@ -2577,15 +2479,15 @@ export const DeleteAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "DeleteAccountsUser_permissionsRequest",
-}) as any as S.Schema<DeleteAccountsUser_permissionsRequest>;
+  identifier: "DeleteAccountsUserPermissionsRequest",
+}) as any as S.Schema<DeleteAccountsUserPermissionsRequest>;
 
-export interface DeleteAccountsUser_permissionsResponse {}
-export const DeleteAccountsUser_permissionsResponse = /*@__PURE__*/ S.suspend(
+export interface DeleteAccountsUserPermissionsResponse {}
+export const DeleteAccountsUserPermissionsResponse = /*@__PURE__*/ S.suspend(
   () => S.Struct({}),
 ).annotate({
-  identifier: "DeleteAccountsUser_permissionsResponse",
-}) as any as S.Schema<DeleteAccountsUser_permissionsResponse>;
+  identifier: "DeleteAccountsUserPermissionsResponse",
+}) as any as S.Schema<DeleteAccountsUserPermissionsResponse>;
 
 export interface EntitiesAccountsContainersWorkspacesFoldersRequest {
   /** Continuation token for fetching the next page of results. */
@@ -2858,11 +2760,11 @@ export const GetAccountsContainersWorkspacesFoldersRequest =
     identifier: "GetAccountsContainersWorkspacesFoldersRequest",
   }) as any as S.Schema<GetAccountsContainersWorkspacesFoldersRequest>;
 
-export interface GetAccountsContainersWorkspacesGtag_configRequest {
+export interface GetAccountsContainersWorkspacesGtagConfigRequest {
   /** Google tag config's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesGtag_configRequest =
+export const GetAccountsContainersWorkspacesGtagConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       path: S.String.pipe(T.Label()),
@@ -2874,8 +2776,8 @@ export const GetAccountsContainersWorkspacesGtag_configRequest =
       }),
     ),
   ).annotate({
-    identifier: "GetAccountsContainersWorkspacesGtag_configRequest",
-  }) as any as S.Schema<GetAccountsContainersWorkspacesGtag_configRequest>;
+    identifier: "GetAccountsContainersWorkspacesGtagConfigRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesGtagConfigRequest>;
 
 export interface GetAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
@@ -2991,11 +2893,11 @@ export const GetAccountsContainersWorkspacesZonesRequest =
     identifier: "GetAccountsContainersWorkspacesZonesRequest",
   }) as any as S.Schema<GetAccountsContainersWorkspacesZonesRequest>;
 
-export interface GetAccountsUser_permissionsRequest {
+export interface GetAccountsUserPermissionsRequest {
   /** GTM UserPermission's API relative path. */
   path: string;
 }
-export const GetAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAccountsUserPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Label()),
   }).pipe(
@@ -3006,8 +2908,8 @@ export const GetAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "GetAccountsUser_permissionsRequest",
-}) as any as S.Schema<GetAccountsUser_permissionsRequest>;
+  identifier: "GetAccountsUserPermissionsRequest",
+}) as any as S.Schema<GetAccountsUserPermissionsRequest>;
 
 export interface GetStatusAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
@@ -3028,6 +2930,55 @@ export const GetStatusAccountsContainersWorkspacesRequest =
     identifier: "GetStatusAccountsContainersWorkspacesRequest",
   }) as any as S.Schema<GetStatusAccountsContainersWorkspacesRequest>;
 
+export type EntityChangeStatusEnum =
+  | "changeStatusUnspecified"
+  | "none"
+  | "added"
+  | "deleted"
+  | "updated";
+export const EntityChangeStatusEnum = /*@__PURE__*/ S.String;
+
+/** A workspace entity that may represent a tag, trigger, variable, or folder in addition to its status in the workspace. */
+export interface Entity {
+  /** The variable being represented by the entity. */
+  variable?: Variable;
+  /** The client being represented by the entity. */
+  client?: Client;
+  /** The transformation being represented by the entity. */
+  transformation?: Transformation;
+  /** The built in variable being represented by the entity. */
+  builtInVariable?: BuiltInVariable;
+  /** The tag being represented by the entity. */
+  tag?: Tag;
+  /** The zone being represented by the entity. */
+  zone?: Zone;
+  /** The trigger being represented by the entity. */
+  trigger?: Trigger;
+  /** The custom template being represented by the entity. */
+  customTemplate?: CustomTemplate;
+  /** The gtag config being represented by the entity. */
+  gtagConfig?: GtagConfig;
+  /** The folder being represented by the entity. */
+  folder?: Folder;
+  /** Represents how the entity has been changed in the workspace. */
+  changeStatus?: EntityChangeStatusEnum | (string & {});
+}
+export const Entity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    variable: S.optional(Variable),
+    client: S.optional(Client),
+    transformation: S.optional(Transformation),
+    builtInVariable: S.optional(BuiltInVariable),
+    tag: S.optional(Tag),
+    zone: S.optional(Zone),
+    trigger: S.optional(Trigger),
+    customTemplate: S.optional(CustomTemplate),
+    gtagConfig: S.optional(GtagConfig),
+    folder: S.optional(Folder),
+    changeStatus: S.optional(EntityChangeStatusEnum),
+  }),
+).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
+
 /** Represents a merge conflict. */
 export interface MergeConflict {
   /** The workspace entity that has conflicting changes compared to the base version. If an entity is deleted in a workspace, it will still appear with a deleted change status. */
@@ -3046,6 +2997,11 @@ export type MergeConflictList = Array<MergeConflict>;
 export const MergeConflictList = /*@__PURE__*/ S.Array(
   MergeConflict,
 ) as any as S.Schema<MergeConflictList>;
+
+export type EntityList = Array<Entity>;
+export const EntityList = /*@__PURE__*/ S.Array(
+  Entity,
+) as any as S.Schema<EntityList>;
 
 /** The changes that have occurred in the workspace since the base container version. */
 export interface GetWorkspaceStatusResponse {
@@ -3357,7 +3313,7 @@ export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnvironmentsResponse",
 }) as any as S.Schema<ListEnvironmentsResponse>;
 
-export interface ListAccountsContainersVersion_headersRequest {
+export interface ListAccountsContainersVersionHeadersRequest {
   /** GTM Container's API relative path. */
   parent: string;
   /** Also retrieve deleted (archived) versions when true. */
@@ -3365,7 +3321,7 @@ export interface ListAccountsContainersVersion_headersRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersVersion_headersRequest =
+export const ListAccountsContainersVersionHeadersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -3379,8 +3335,8 @@ export const ListAccountsContainersVersion_headersRequest =
       }),
     ),
   ).annotate({
-    identifier: "ListAccountsContainersVersion_headersRequest",
-  }) as any as S.Schema<ListAccountsContainersVersion_headersRequest>;
+    identifier: "ListAccountsContainersVersionHeadersRequest",
+  }) as any as S.Schema<ListAccountsContainersVersionHeadersRequest>;
 
 export type ContainerVersionHeaderList = Array<ContainerVersionHeader>;
 export const ContainerVersionHeaderList = /*@__PURE__*/ S.Array(
@@ -3446,13 +3402,13 @@ export const ListWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWorkspacesResponse",
 }) as any as S.Schema<ListWorkspacesResponse>;
 
-export interface ListAccountsContainersWorkspacesBuilt_in_variablesRequest {
+export interface ListAccountsContainersWorkspacesBuiltInVariablesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** GTM Workspace's API relative path. */
   parent: string;
 }
-export const ListAccountsContainersWorkspacesBuilt_in_variablesRequest =
+export const ListAccountsContainersWorkspacesBuiltInVariablesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3465,8 +3421,8 @@ export const ListAccountsContainersWorkspacesBuilt_in_variablesRequest =
       }),
     ),
   ).annotate({
-    identifier: "ListAccountsContainersWorkspacesBuilt_in_variablesRequest",
-  }) as any as S.Schema<ListAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+    identifier: "ListAccountsContainersWorkspacesBuiltInVariablesRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesBuiltInVariablesRequest>;
 
 /** A list of enabled built-in variables. */
 export interface ListEnabledBuiltInVariablesResponse {
@@ -3559,13 +3515,13 @@ export const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFoldersResponse",
 }) as any as S.Schema<ListFoldersResponse>;
 
-export interface ListAccountsContainersWorkspacesGtag_configRequest {
+export interface ListAccountsContainersWorkspacesGtagConfigRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** Workspace's API relative path. */
   parent: string;
 }
-export const ListAccountsContainersWorkspacesGtag_configRequest =
+export const ListAccountsContainersWorkspacesGtagConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3578,8 +3534,8 @@ export const ListAccountsContainersWorkspacesGtag_configRequest =
       }),
     ),
   ).annotate({
-    identifier: "ListAccountsContainersWorkspacesGtag_configRequest",
-  }) as any as S.Schema<ListAccountsContainersWorkspacesGtag_configRequest>;
+    identifier: "ListAccountsContainersWorkspacesGtagConfigRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesGtagConfigRequest>;
 
 export interface ListGtagConfigResponse {
   /** All Google tag configs in a Container. */
@@ -3821,13 +3777,13 @@ export const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListZonesResponse",
 }) as any as S.Schema<ListZonesResponse>;
 
-export interface ListAccountsUser_permissionsRequest {
+export interface ListAccountsUserPermissionsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** GTM Account's API relative path. */
   parent: string;
 }
-export const ListAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAccountsUserPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3839,8 +3795,8 @@ export const ListAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ListAccountsUser_permissionsRequest",
-}) as any as S.Schema<ListAccountsUser_permissionsRequest>;
+  identifier: "ListAccountsUserPermissionsRequest",
+}) as any as S.Schema<ListAccountsUserPermissionsRequest>;
 
 export type UserPermissionList = Array<UserPermission>;
 export const UserPermissionList = /*@__PURE__*/ S.Array(
@@ -4550,11 +4506,11 @@ export const RevertZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevertZoneResponse",
 }) as any as S.Schema<RevertZoneResponse>;
 
-export interface Set_latestAccountsContainersVersionsRequest {
+export interface SetLatestAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
   path: string;
 }
-export const Set_latestAccountsContainersVersionsRequest =
+export const SetLatestAccountsContainersVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       path: S.String.pipe(T.Label()),
@@ -4566,8 +4522,8 @@ export const Set_latestAccountsContainersVersionsRequest =
       }),
     ),
   ).annotate({
-    identifier: "Set_latestAccountsContainersVersionsRequest",
-  }) as any as S.Schema<Set_latestAccountsContainersVersionsRequest>;
+    identifier: "SetLatestAccountsContainersVersionsRequest",
+  }) as any as S.Schema<SetLatestAccountsContainersVersionsRequest>;
 
 export interface SnippetAccountsContainersRequest {
   /** Container snippet's API relative path. */
@@ -4829,7 +4785,7 @@ export const UpdateAccountsContainersWorkspacesFoldersRequest =
     identifier: "UpdateAccountsContainersWorkspacesFoldersRequest",
   }) as any as S.Schema<UpdateAccountsContainersWorkspacesFoldersRequest>;
 
-export interface UpdateAccountsContainersWorkspacesGtag_configRequest {
+export interface UpdateAccountsContainersWorkspacesGtagConfigRequest {
   /** When provided, this fingerprint must match the fingerprint of the config in storage. */
   fingerprint?: string;
   /** Google tag config's API relative path. */
@@ -4837,7 +4793,7 @@ export interface UpdateAccountsContainersWorkspacesGtag_configRequest {
   /** Request body */
   body?: GtagConfig;
 }
-export const UpdateAccountsContainersWorkspacesGtag_configRequest =
+export const UpdateAccountsContainersWorkspacesGtagConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fingerprint: S.optional(S.String.pipe(T.Query())),
@@ -4851,8 +4807,8 @@ export const UpdateAccountsContainersWorkspacesGtag_configRequest =
       }),
     ),
   ).annotate({
-    identifier: "UpdateAccountsContainersWorkspacesGtag_configRequest",
-  }) as any as S.Schema<UpdateAccountsContainersWorkspacesGtag_configRequest>;
+    identifier: "UpdateAccountsContainersWorkspacesGtagConfigRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesGtagConfigRequest>;
 
 export interface UpdateAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
@@ -5004,13 +4960,13 @@ export const UpdateAccountsContainersWorkspacesZonesRequest =
     identifier: "UpdateAccountsContainersWorkspacesZonesRequest",
   }) as any as S.Schema<UpdateAccountsContainersWorkspacesZonesRequest>;
 
-export interface UpdateAccountsUser_permissionsRequest {
+export interface UpdateAccountsUserPermissionsRequest {
   /** GTM UserPermission's API relative path. */
   path: string;
   /** Request body */
   body?: UserPermission;
 }
-export const UpdateAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(
+export const UpdateAccountsUserPermissionsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       path: S.String.pipe(T.Label()),
@@ -5023,28 +4979,52 @@ export const UpdateAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "UpdateAccountsUser_permissionsRequest",
-}) as any as S.Schema<UpdateAccountsUser_permissionsRequest>;
+  identifier: "UpdateAccountsUserPermissionsRequest",
+}) as any as S.Schema<UpdateAccountsUserPermissionsRequest>;
 
-export type Bulk_updateAccountsContainersWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Applies multiple entity changes to a workspace in one call. When creating new entities, their entity IDs must be unique and in correct format. That is, they must start with "new_" and followed by number, e.g. "new_1", "new_2". Example body snippet to create myNewTag under myNewFolder is: ``` "changes": [ { "folder": { "folderId": "new_1", "name": "myNewFolder", ... }, "changeStatus": "added" }, { "tag": { "tagId": "new_2", "name": "myNewTag", "parentFolderId": "new_1", ... }, "changeStatus": "added" } ] ``` */
-export const bulk_updateAccountsContainersWorkspaces: API.OperationMethod<
-  Bulk_updateAccountsContainersWorkspacesRequest,
-  BulkUpdateWorkspaceResponse,
-  Bulk_updateAccountsContainersWorkspacesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Bulk_updateAccountsContainersWorkspacesRequest,
-  output: BulkUpdateWorkspaceResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
+export interface ProposedChange {
+  /** The list of workspace changes to be applied. */
+  changes?: EntityList;
+}
+export const ProposedChange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    changes: S.optional(EntityList),
+  }),
+).annotate({ identifier: "ProposedChange" }) as any as S.Schema<ProposedChange>;
+
+export interface UpdateBulkAccountContainerWorkspaceRequest {
+  /** GTM Workspace's API relative path. */
+  path: string;
+  /** Request body */
+  body?: ProposedChange;
+}
+export const UpdateBulkAccountContainerWorkspaceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      body: S.optional(ProposedChange.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}/bulk_update",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateBulkAccountContainerWorkspaceRequest",
+  }) as any as S.Schema<UpdateBulkAccountContainerWorkspaceRequest>;
+
+export interface BulkUpdateWorkspaceResponse {
+  /** The entities that were added or updated during the bulk-update. Does not include entities that were deleted or updated by the system. */
+  changes?: EntityList;
+}
+export const BulkUpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    changes: S.optional(EntityList),
+  }),
+).annotate({
+  identifier: "BulkUpdateWorkspaceResponse",
+}) as any as S.Schema<BulkUpdateWorkspaceResponse>;
 
 export type CombineAccountsContainersError =
   | NotFound
@@ -5061,26 +5041,6 @@ export const combineAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CombineAccountsContainersRequest,
   output: Container,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type Create_versionAccountsContainersWorkspacesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates a Container Version from the entities present in the workspace, deletes the workspace, and sets the base container version to the newly created version. */
-export const create_versionAccountsContainersWorkspaces: API.OperationMethod<
-  Create_versionAccountsContainersWorkspacesRequest,
-  CreateContainerVersionResponse,
-  Create_versionAccountsContainersWorkspacesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Create_versionAccountsContainersWorkspacesRequest,
-  output: CreateContainerVersionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5146,20 +5106,20 @@ export const createAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesBuilt_in_variablesError =
+export type CreateAccountsContainersWorkspacesBuiltInVariablesError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates one or more GTM Built-In Variables. */
-export const createAccountsContainersWorkspacesBuilt_in_variables: API.OperationMethod<
-  CreateAccountsContainersWorkspacesBuilt_in_variablesRequest,
+export const createAccountsContainersWorkspacesBuiltInVariables: API.OperationMethod<
+  CreateAccountsContainersWorkspacesBuiltInVariablesRequest,
   CreateBuiltInVariableResponse,
-  CreateAccountsContainersWorkspacesBuilt_in_variablesError,
+  CreateAccountsContainersWorkspacesBuiltInVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesBuilt_in_variablesRequest,
+  input: CreateAccountsContainersWorkspacesBuiltInVariablesRequest,
   output: CreateBuiltInVariableResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5206,20 +5166,20 @@ export const createAccountsContainersWorkspacesFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesGtag_configError =
+export type CreateAccountsContainersWorkspacesGtagConfigError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates a Google tag config. */
-export const createAccountsContainersWorkspacesGtag_config: API.OperationMethod<
-  CreateAccountsContainersWorkspacesGtag_configRequest,
+export const createAccountsContainersWorkspacesGtagConfig: API.OperationMethod<
+  CreateAccountsContainersWorkspacesGtagConfigRequest,
   GtagConfig,
-  CreateAccountsContainersWorkspacesGtag_configError,
+  CreateAccountsContainersWorkspacesGtagConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsContainersWorkspacesGtag_configRequest,
+  input: CreateAccountsContainersWorkspacesGtagConfigRequest,
   output: GtagConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5346,21 +5306,41 @@ export const createAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsUser_permissionsError =
+export type CreateAccountsUserPermissionsError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates a user's Account & Container access. */
-export const createAccountsUser_permissions: API.OperationMethod<
-  CreateAccountsUser_permissionsRequest,
+export const createAccountsUserPermissions: API.OperationMethod<
+  CreateAccountsUserPermissionsRequest,
   UserPermission,
-  CreateAccountsUser_permissionsError,
+  CreateAccountsUserPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsUser_permissionsRequest,
+  input: CreateAccountsUserPermissionsRequest,
   output: UserPermission,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateVersionAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates a Container Version from the entities present in the workspace, deletes the workspace, and sets the base container version to the newly created version. */
+export const createVersionAccountsContainersWorkspaces: API.OperationMethod<
+  CreateVersionAccountsContainersWorkspacesRequest,
+  CreateContainerVersionResponse,
+  CreateVersionAccountsContainersWorkspacesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateVersionAccountsContainersWorkspacesRequest,
+  output: CreateContainerVersionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5446,21 +5426,21 @@ export const deleteAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesBuilt_in_variablesError =
+export type DeleteAccountsContainersWorkspacesBuiltInVariablesError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Deletes one or more GTM Built-In Variables. */
-export const deleteAccountsContainersWorkspacesBuilt_in_variables: API.OperationMethod<
-  DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest,
-  DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse,
-  DeleteAccountsContainersWorkspacesBuilt_in_variablesError,
+export const deleteAccountsContainersWorkspacesBuiltInVariables: API.OperationMethod<
+  DeleteAccountsContainersWorkspacesBuiltInVariablesRequest,
+  DeleteAccountsContainersWorkspacesBuiltInVariablesResponse,
+  DeleteAccountsContainersWorkspacesBuiltInVariablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest,
-  output: DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse,
+  input: DeleteAccountsContainersWorkspacesBuiltInVariablesRequest,
+  output: DeleteAccountsContainersWorkspacesBuiltInVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5506,21 +5486,21 @@ export const deleteAccountsContainersWorkspacesFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesGtag_configError =
+export type DeleteAccountsContainersWorkspacesGtagConfigError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Deletes a Google tag config. */
-export const deleteAccountsContainersWorkspacesGtag_config: API.OperationMethod<
-  DeleteAccountsContainersWorkspacesGtag_configRequest,
-  DeleteAccountsContainersWorkspacesGtag_configResponse,
-  DeleteAccountsContainersWorkspacesGtag_configError,
+export const deleteAccountsContainersWorkspacesGtagConfig: API.OperationMethod<
+  DeleteAccountsContainersWorkspacesGtagConfigRequest,
+  DeleteAccountsContainersWorkspacesGtagConfigResponse,
+  DeleteAccountsContainersWorkspacesGtagConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsContainersWorkspacesGtag_configRequest,
-  output: DeleteAccountsContainersWorkspacesGtag_configResponse,
+  input: DeleteAccountsContainersWorkspacesGtagConfigRequest,
+  output: DeleteAccountsContainersWorkspacesGtagConfigResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5646,21 +5626,21 @@ export const deleteAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsUser_permissionsError =
+export type DeleteAccountsUserPermissionsError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Removes a user from the account, revoking access to it and all of its containers. */
-export const deleteAccountsUser_permissions: API.OperationMethod<
-  DeleteAccountsUser_permissionsRequest,
-  DeleteAccountsUser_permissionsResponse,
-  DeleteAccountsUser_permissionsError,
+export const deleteAccountsUserPermissions: API.OperationMethod<
+  DeleteAccountsUserPermissionsRequest,
+  DeleteAccountsUserPermissionsResponse,
+  DeleteAccountsUserPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsUser_permissionsRequest,
-  output: DeleteAccountsUser_permissionsResponse,
+  input: DeleteAccountsUserPermissionsRequest,
+  output: DeleteAccountsUserPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5829,18 +5809,18 @@ export const getAccountsContainersWorkspacesFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesGtag_configError =
+export type GetAccountsContainersWorkspacesGtagConfigError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Gets a Google tag config. */
-export const getAccountsContainersWorkspacesGtag_config: API.OperationMethod<
-  GetAccountsContainersWorkspacesGtag_configRequest,
+export const getAccountsContainersWorkspacesGtagConfig: API.OperationMethod<
+  GetAccountsContainersWorkspacesGtagConfigRequest,
   GtagConfig,
-  GetAccountsContainersWorkspacesGtag_configError,
+  GetAccountsContainersWorkspacesGtagConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsContainersWorkspacesGtag_configRequest,
+  input: GetAccountsContainersWorkspacesGtagConfigRequest,
   output: GtagConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5955,18 +5935,15 @@ export const getAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsUser_permissionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
+export type GetAccountsUserPermissionsError = NotFound | Forbidden | GcpOpError;
 /** Gets a user's Account & Container access. */
-export const getAccountsUser_permissions: API.OperationMethod<
-  GetAccountsUser_permissionsRequest,
+export const getAccountsUserPermissions: API.OperationMethod<
+  GetAccountsUserPermissionsRequest,
   UserPermission,
-  GetAccountsUser_permissionsError,
+  GetAccountsUserPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsUser_permissionsRequest,
+  input: GetAccountsUserPermissionsRequest,
   output: UserPermission,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6130,19 +6107,19 @@ export const listAccountsContainersEnvironments: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
-export type ListAccountsContainersVersion_headersError =
+export type ListAccountsContainersVersionHeadersError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Lists all Container Versions of a GTM Container. */
-export const listAccountsContainersVersion_headers: API.PaginatedOperationMethod<
-  ListAccountsContainersVersion_headersRequest,
+export const listAccountsContainersVersionHeaders: API.PaginatedOperationMethod<
+  ListAccountsContainersVersionHeadersRequest,
   ListContainerVersionsResponse,
-  ListAccountsContainersVersion_headersError,
+  ListAccountsContainersVersionHeadersError,
   GcpOpContext,
   ListContainerVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersVersion_headersRequest,
+  input: ListAccountsContainersVersionHeadersRequest,
   output: ListContainerVersionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6176,19 +6153,19 @@ export const listAccountsContainersWorkspaces: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
-export type ListAccountsContainersWorkspacesBuilt_in_variablesError =
+export type ListAccountsContainersWorkspacesBuiltInVariablesError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Lists all the enabled Built-In Variables of a GTM Container. */
-export const listAccountsContainersWorkspacesBuilt_in_variables: API.PaginatedOperationMethod<
-  ListAccountsContainersWorkspacesBuilt_in_variablesRequest,
+export const listAccountsContainersWorkspacesBuiltInVariables: API.PaginatedOperationMethod<
+  ListAccountsContainersWorkspacesBuiltInVariablesRequest,
   ListEnabledBuiltInVariablesResponse,
-  ListAccountsContainersWorkspacesBuilt_in_variablesError,
+  ListAccountsContainersWorkspacesBuiltInVariablesError,
   GcpOpContext,
   ListEnabledBuiltInVariablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesBuilt_in_variablesRequest,
+  input: ListAccountsContainersWorkspacesBuiltInVariablesRequest,
   output: ListEnabledBuiltInVariablesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6245,19 +6222,19 @@ export const listAccountsContainersWorkspacesFolders: API.PaginatedOperationMeth
   } as const,
 })) as any;
 
-export type ListAccountsContainersWorkspacesGtag_configError =
+export type ListAccountsContainersWorkspacesGtagConfigError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Lists all Google tag configs in a Container. */
-export const listAccountsContainersWorkspacesGtag_config: API.PaginatedOperationMethod<
-  ListAccountsContainersWorkspacesGtag_configRequest,
+export const listAccountsContainersWorkspacesGtagConfig: API.PaginatedOperationMethod<
+  ListAccountsContainersWorkspacesGtagConfigRequest,
   ListGtagConfigResponse,
-  ListAccountsContainersWorkspacesGtag_configError,
+  ListAccountsContainersWorkspacesGtagConfigError,
   GcpOpContext,
   ListGtagConfigResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsContainersWorkspacesGtag_configRequest,
+  input: ListAccountsContainersWorkspacesGtagConfigRequest,
   output: ListGtagConfigResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6406,19 +6383,19 @@ export const listAccountsContainersWorkspacesZones: API.PaginatedOperationMethod
   } as const,
 })) as any;
 
-export type ListAccountsUser_permissionsError =
+export type ListAccountsUserPermissionsError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** List all users that have access to the account along with Account and Container user access granted to each of them. */
-export const listAccountsUser_permissions: API.PaginatedOperationMethod<
-  ListAccountsUser_permissionsRequest,
+export const listAccountsUserPermissions: API.PaginatedOperationMethod<
+  ListAccountsUserPermissionsRequest,
   ListUserPermissionsResponse,
-  ListAccountsUser_permissionsError,
+  ListAccountsUserPermissionsError,
   GcpOpContext,
   ListUserPermissionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsUser_permissionsRequest,
+  input: ListAccountsUserPermissionsRequest,
   output: ListUserPermissionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6762,20 +6739,20 @@ export const revertAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Set_latestAccountsContainersVersionsError =
+export type SetLatestAccountsContainersVersionsError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Sets the latest version used for synchronization of workspaces when detecting conflicts and errors. */
-export const set_latestAccountsContainersVersions: API.OperationMethod<
-  Set_latestAccountsContainersVersionsRequest,
+export const setLatestAccountsContainersVersions: API.OperationMethod<
+  SetLatestAccountsContainersVersionsRequest,
   ContainerVersion,
-  Set_latestAccountsContainersVersionsError,
+  SetLatestAccountsContainersVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Set_latestAccountsContainersVersionsRequest,
+  input: SetLatestAccountsContainersVersionsRequest,
   output: ContainerVersion,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6977,20 +6954,20 @@ export const updateAccountsContainersWorkspacesFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesGtag_configError =
+export type UpdateAccountsContainersWorkspacesGtagConfigError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Updates a Google tag config. */
-export const updateAccountsContainersWorkspacesGtag_config: API.OperationMethod<
-  UpdateAccountsContainersWorkspacesGtag_configRequest,
+export const updateAccountsContainersWorkspacesGtagConfig: API.OperationMethod<
+  UpdateAccountsContainersWorkspacesGtagConfigRequest,
   GtagConfig,
-  UpdateAccountsContainersWorkspacesGtag_configError,
+  UpdateAccountsContainersWorkspacesGtagConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsContainersWorkspacesGtag_configRequest,
+  input: UpdateAccountsContainersWorkspacesGtagConfigRequest,
   output: GtagConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7117,21 +7094,41 @@ export const updateAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsUser_permissionsError =
+export type UpdateAccountsUserPermissionsError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Updates a user's Account & Container access. */
-export const updateAccountsUser_permissions: API.OperationMethod<
-  UpdateAccountsUser_permissionsRequest,
+export const updateAccountsUserPermissions: API.OperationMethod<
+  UpdateAccountsUserPermissionsRequest,
   UserPermission,
-  UpdateAccountsUser_permissionsError,
+  UpdateAccountsUserPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsUser_permissionsRequest,
+  input: UpdateAccountsUserPermissionsRequest,
   output: UserPermission,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBulkAccountContainerWorkspaceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Applies multiple entity changes to a workspace in one call. When creating new entities, their entity IDs must be unique and in correct format. That is, they must start with "new_" and followed by number, e.g. "new_1", "new_2". Example body snippet to create myNewTag under myNewFolder is: ``` "changes": [ { "folder": { "folderId": "new_1", "name": "myNewFolder", ... }, "changeStatus": "added" }, { "tag": { "tagId": "new_2", "name": "myNewTag", "parentFolderId": "new_1", ... }, "changeStatus": "added" } ] ``` */
+export const updateBulkAccountContainerWorkspace: API.OperationMethod<
+  UpdateBulkAccountContainerWorkspaceRequest,
+  BulkUpdateWorkspaceResponse,
+  UpdateBulkAccountContainerWorkspaceError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBulkAccountContainerWorkspaceRequest,
+  output: BulkUpdateWorkspaceResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

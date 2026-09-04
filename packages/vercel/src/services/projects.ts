@@ -67,183 +67,6 @@ export class UnprocessableEntity
     [{ status: 422 }],
   ) {}
 
-export interface AcceptProjectTransferRequestRequestPaidFeatures {
-  concurrentBuilds?: number | null;
-  passwordProtection?: boolean | null;
-  previewDeploymentSuffix?: boolean | null;
-}
-export const AcceptProjectTransferRequestRequestPaidFeatures =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      concurrentBuilds: S.optional(S.NullOr(S.Number)),
-      passwordProtection: S.optional(S.NullOr(S.Boolean)),
-      previewDeploymentSuffix: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "AcceptProjectTransferRequestRequestPaidFeatures",
-  }) as any as S.Schema<AcceptProjectTransferRequestRequestPaidFeatures>;
-
-export interface AcceptProjectTransferRequestRequestAcceptedPoliciesValue {
-  eula: string;
-  privacy: string;
-}
-export const AcceptProjectTransferRequestRequestAcceptedPoliciesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eula: S.String,
-      privacy: S.String,
-    }),
-  ).annotate({
-    identifier: "AcceptProjectTransferRequestRequestAcceptedPoliciesValue",
-  }) as any as S.Schema<AcceptProjectTransferRequestRequestAcceptedPoliciesValue>;
-
-export type AcceptProjectTransferRequestRequestAcceptedPoliciesMap = {
-  [key: string]:
-    | AcceptProjectTransferRequestRequestAcceptedPoliciesValue
-    | undefined;
-};
-export const AcceptProjectTransferRequestRequestAcceptedPoliciesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    AcceptProjectTransferRequestRequestAcceptedPoliciesValue,
-  ) as any as S.Schema<AcceptProjectTransferRequestRequestAcceptedPoliciesMap>;
-
-export interface AcceptProjectTransferRequestRequest {
-  /** The code of the project transfer request. */
-  code: string;
-  /** The Team identifier to perform the request on behalf of. */
-  teamId?: string;
-  /** The Team slug to perform the request on behalf of. */
-  slug?: string;
-  /** The desired name for the project */
-  newProjectName?: string;
-  paidFeatures?: AcceptProjectTransferRequestRequestPaidFeatures;
-  acceptedPolicies?: AcceptProjectTransferRequestRequestAcceptedPoliciesMap;
-}
-export const AcceptProjectTransferRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String.pipe(T.Label()),
-    teamId: S.optional(S.String.pipe(T.Query())),
-    slug: S.optional(S.String.pipe(T.Query())),
-    newProjectName: S.optional(S.String),
-    paidFeatures: S.optional(AcceptProjectTransferRequestRequestPaidFeatures),
-    acceptedPolicies: S.optional(
-      AcceptProjectTransferRequestRequestAcceptedPoliciesMap,
-    ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/projects/transfer-request/{code}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AcceptProjectTransferRequestRequest",
-}) as any as S.Schema<AcceptProjectTransferRequestRequest>;
-
-export type AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList =
-  Array<string>;
-export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList>;
-
-export type AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResultStatus =
-  | "errored"
-  | "fulfilled";
-export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResultStatus =
-  /*@__PURE__*/ S.String;
-
-export interface AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult {
-  status: AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResultStatus;
-  error?: unknown;
-  code?: string;
-}
-export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status:
-        AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResultStatus,
-      error: S.optional(S.Unknown),
-      code: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult",
-  }) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult>;
-
-export interface AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem {
-  installationId: string;
-  resourceIds: AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList;
-  result: AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult;
-}
-export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      installationId: S.String,
-      resourceIds:
-        AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList,
-      result:
-        AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult,
-    }),
-  ).annotate({
-    identifier: "AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem",
-  }) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem>;
-
-export type AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList =
-  Array<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem>;
-export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList =
-  /*@__PURE__*/ S.Array(
-    AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem,
-  ) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList>;
-
-export type AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList =
-  Array<unknown>;
-export const AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList>;
-
-export type AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList =
-  Array<string>;
-export const AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList>;
-
-export interface AcceptProjectTransferRequestResponseBodyCase0 {
-  partnerCalls: AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList;
-  resourceTransferErrors: AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList;
-  transferredStoreIds: AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList;
-}
-export const AcceptProjectTransferRequestResponseBodyCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partnerCalls:
-        AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList,
-      resourceTransferErrors:
-        AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList,
-      transferredStoreIds:
-        AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList,
-    }),
-  ).annotate({
-    identifier: "AcceptProjectTransferRequestResponseBodyCase0",
-  }) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0>;
-
-export type AcceptProjectTransferRequestResponseBody =
-  | AcceptProjectTransferRequestResponseBodyCase0
-  | unknown;
-export const AcceptProjectTransferRequestResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AcceptProjectTransferRequestResponseBody>;
-
-export type AcceptProjectTransferRequestResponse =
-  AcceptProjectTransferRequestResponseBody;
-export const AcceptProjectTransferRequestResponse = /*@__PURE__*/ S.suspend(
-  () => AcceptProjectTransferRequestResponseBody.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "AcceptProjectTransferRequestResponse",
-}) as any as S.Schema<AcceptProjectTransferRequestResponse>;
-
 /** Status code for domain redirect */
 export type AddProjectDomainRequestRedirectStatusCode = 301 | 302 | 307 | 308;
 export const AddProjectDomainRequestRedirectStatusCode = /*@__PURE__*/ S.Number;
@@ -41392,6 +41215,183 @@ export const RemoveProjectEnvResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveProjectEnvResponse",
 }) as any as S.Schema<RemoveProjectEnvResponse>;
 
+export interface AcceptProjectTransferRequestRequestPaidFeatures {
+  concurrentBuilds?: number | null;
+  passwordProtection?: boolean | null;
+  previewDeploymentSuffix?: boolean | null;
+}
+export const AcceptProjectTransferRequestRequestPaidFeatures =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      concurrentBuilds: S.optional(S.NullOr(S.Number)),
+      passwordProtection: S.optional(S.NullOr(S.Boolean)),
+      previewDeploymentSuffix: S.optional(S.NullOr(S.Boolean)),
+    }),
+  ).annotate({
+    identifier: "AcceptProjectTransferRequestRequestPaidFeatures",
+  }) as any as S.Schema<AcceptProjectTransferRequestRequestPaidFeatures>;
+
+export interface AcceptProjectTransferRequestRequestAcceptedPoliciesValue {
+  eula: string;
+  privacy: string;
+}
+export const AcceptProjectTransferRequestRequestAcceptedPoliciesValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      eula: S.String,
+      privacy: S.String,
+    }),
+  ).annotate({
+    identifier: "AcceptProjectTransferRequestRequestAcceptedPoliciesValue",
+  }) as any as S.Schema<AcceptProjectTransferRequestRequestAcceptedPoliciesValue>;
+
+export type AcceptProjectTransferRequestRequestAcceptedPoliciesMap = {
+  [key: string]:
+    | AcceptProjectTransferRequestRequestAcceptedPoliciesValue
+    | undefined;
+};
+export const AcceptProjectTransferRequestRequestAcceptedPoliciesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    AcceptProjectTransferRequestRequestAcceptedPoliciesValue,
+  ) as any as S.Schema<AcceptProjectTransferRequestRequestAcceptedPoliciesMap>;
+
+export interface RequestAcceptProjectTransferRequest {
+  /** The code of the project transfer request. */
+  code: string;
+  /** The Team identifier to perform the request on behalf of. */
+  teamId?: string;
+  /** The Team slug to perform the request on behalf of. */
+  slug?: string;
+  /** The desired name for the project */
+  newProjectName?: string;
+  paidFeatures?: AcceptProjectTransferRequestRequestPaidFeatures;
+  acceptedPolicies?: AcceptProjectTransferRequestRequestAcceptedPoliciesMap;
+}
+export const RequestAcceptProjectTransferRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.String.pipe(T.Label()),
+    teamId: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String.pipe(T.Query())),
+    newProjectName: S.optional(S.String),
+    paidFeatures: S.optional(AcceptProjectTransferRequestRequestPaidFeatures),
+    acceptedPolicies: S.optional(
+      AcceptProjectTransferRequestRequestAcceptedPoliciesMap,
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/projects/transfer-request/{code}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestAcceptProjectTransferRequest",
+}) as any as S.Schema<RequestAcceptProjectTransferRequest>;
+
+export type AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList =
+  Array<string>;
+export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList>;
+
+export type AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResultStatus =
+  | "errored"
+  | "fulfilled";
+export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResultStatus =
+  /*@__PURE__*/ S.String;
+
+export interface AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult {
+  status: AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResultStatus;
+  error?: unknown;
+  code?: string;
+}
+export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status:
+        AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResultStatus,
+      error: S.optional(S.Unknown),
+      code: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult",
+  }) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult>;
+
+export interface AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem {
+  installationId: string;
+  resourceIds: AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList;
+  result: AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult;
+}
+export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      installationId: S.String,
+      resourceIds:
+        AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResourceIdsList,
+      result:
+        AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItemResult,
+    }),
+  ).annotate({
+    identifier: "AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem",
+  }) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem>;
+
+export type AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList =
+  Array<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem>;
+export const AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList =
+  /*@__PURE__*/ S.Array(
+    AcceptProjectTransferRequestResponseBodyCase0PartnerCallsItem,
+  ) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList>;
+
+export type AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList =
+  Array<unknown>;
+export const AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList>;
+
+export type AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList =
+  Array<string>;
+export const AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList>;
+
+export interface AcceptProjectTransferRequestResponseBodyCase0 {
+  partnerCalls: AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList;
+  resourceTransferErrors: AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList;
+  transferredStoreIds: AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList;
+}
+export const AcceptProjectTransferRequestResponseBodyCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      partnerCalls:
+        AcceptProjectTransferRequestResponseBodyCase0PartnerCallsList,
+      resourceTransferErrors:
+        AcceptProjectTransferRequestResponseBodyCase0ResourceTransferErrorsList,
+      transferredStoreIds:
+        AcceptProjectTransferRequestResponseBodyCase0TransferredStoreIdsList,
+    }),
+  ).annotate({
+    identifier: "AcceptProjectTransferRequestResponseBodyCase0",
+  }) as any as S.Schema<AcceptProjectTransferRequestResponseBodyCase0>;
+
+export type AcceptProjectTransferRequestResponseBody =
+  | AcceptProjectTransferRequestResponseBodyCase0
+  | unknown;
+export const AcceptProjectTransferRequestResponseBody =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AcceptProjectTransferRequestResponseBody>;
+
+export type RequestAcceptProjectTransferResponse =
+  AcceptProjectTransferRequestResponseBody;
+export const RequestAcceptProjectTransferResponse = /*@__PURE__*/ S.suspend(
+  () => AcceptProjectTransferRequestResponseBody.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "RequestAcceptProjectTransferResponse",
+}) as any as S.Schema<RequestAcceptProjectTransferResponse>;
+
 export interface RequestPromoteRequest {
   projectId: string;
   deploymentId: string;
@@ -67866,26 +67866,6 @@ export const VerifyProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerifyProjectDomainResponse",
 }) as any as S.Schema<VerifyProjectDomainResponse>;
 
-export type AcceptProjectTransferRequestError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | UnprocessableEntity
-  | VercelOpError;
-/** Accept project transfer request Accept a project transfer request initated by another team. <br/> The `code` is generated using the `POST /projects/:idOrName/transfer-request` endpoint. */
-export const acceptProjectTransferRequest: API.OperationMethod<
-  AcceptProjectTransferRequestRequest,
-  AcceptProjectTransferRequestResponse,
-  AcceptProjectTransferRequestError,
-  VercelOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AcceptProjectTransferRequestRequest,
-  output: AcceptProjectTransferRequestResponse,
-  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
-  protocol: VercelProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AddProjectDomainError =
   | BadRequest
   | PaymentRequired
@@ -68261,6 +68241,26 @@ export const removeProjectEnv: API.OperationMethod<
   input: RemoveProjectEnvRequest,
   output: RemoveProjectEnvResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
+  protocol: VercelProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestAcceptProjectTransferError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | UnprocessableEntity
+  | VercelOpError;
+/** Accept project transfer request Accept a project transfer request initated by another team. <br/> The `code` is generated using the `POST /projects/:idOrName/transfer-request` endpoint. */
+export const requestAcceptProjectTransfer: API.OperationMethod<
+  RequestAcceptProjectTransferRequest,
+  RequestAcceptProjectTransferResponse,
+  RequestAcceptProjectTransferError,
+  VercelOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestAcceptProjectTransferRequest,
+  output: RequestAcceptProjectTransferResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

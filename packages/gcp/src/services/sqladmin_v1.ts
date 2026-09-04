@@ -958,6 +958,49 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
+/** Request for Pre-checks for MVU */
+export interface InstancesPreCheckMajorVersionUpgradeRequest {
+  /** Required. Contains details about the pre-check major version upgrade operation. */
+  preCheckMajorVersionUpgradeContext?: PreCheckMajorVersionUpgradeContext;
+}
+export const InstancesPreCheckMajorVersionUpgradeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      preCheckMajorVersionUpgradeContext: S.optional(
+        PreCheckMajorVersionUpgradeContext,
+      ),
+    }),
+  ).annotate({
+    identifier: "InstancesPreCheckMajorVersionUpgradeRequest",
+  }) as any as S.Schema<InstancesPreCheckMajorVersionUpgradeRequest>;
+
+export interface CheckPreMajorVersionUpgradeInstanceRequest {
+  /** Required. Project ID of the project that contains the instance. */
+  project: string;
+  /** Required. Cloud SQL instance ID. This does not include the project ID. */
+  instance: string;
+  /** Request body */
+  body?: InstancesPreCheckMajorVersionUpgradeRequest;
+}
+export const CheckPreMajorVersionUpgradeInstanceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project: S.String.pipe(T.Label()),
+      instance: S.String.pipe(T.Label()),
+      body: S.optional(
+        InstancesPreCheckMajorVersionUpgradeRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade",
+        baseUrl: "https://sqladmin.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckPreMajorVersionUpgradeInstanceRequest",
+  }) as any as S.Schema<CheckPreMajorVersionUpgradeInstanceRequest>;
+
 /** Binary log coordinates. */
 export interface BinLogCoordinates {
   /** Name of the binary log file for a Cloud SQL instance. */
@@ -5412,110 +5455,6 @@ export const PerformDiskShrinkProjectsInstancesRequest =
     identifier: "PerformDiskShrinkProjectsInstancesRequest",
   }) as any as S.Schema<PerformDiskShrinkProjectsInstancesRequest>;
 
-/** The context to perform a point-in-time recovery of an instance managed by Backup and Disaster Recovery (DR) Service. */
-export interface PointInTimeRestoreContext {
-  /** The Backup and Disaster Recovery (DR) Service Datasource URI. Format: projects/{project}/locations/{region}/backupVaults/{backupvault}/dataSources/{datasource}. */
-  datasource?: string;
-  /** Target instance name. */
-  targetInstance?: string;
-  /** Optional. Point-in-time recovery of a regional instance in the specified zones. If not specified, clone to the same secondary zone as the source instance. This value cannot be the same as the preferred_zone field. */
-  preferredSecondaryZone?: string;
-  /** Optional. Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance. */
-  preferredZone?: string;
-  /** Optional. Specifies the instance settings that will be overridden from the source instance. This field is only applicable for cross project PITRs. */
-  targetInstanceSettings?: DatabaseInstance;
-  /** Optional. The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. */
-  privateNetwork?: string;
-  /** Optional. The region of the target instance where the datasource will be restored. For example: "us-central1". */
-  region?: string;
-  /** Required. The date and time to which you want to restore the instance. */
-  pointInTime?: string;
-  /** Optional. Specifies the instance settings that will be cleared from the source instance. This field is only applicable for cross project PITRs. */
-  targetInstanceClearSettingsFieldNames?: StringList;
-  /** Optional. The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future use. */
-  allocatedIpRange?: string;
-}
-export const PointInTimeRestoreContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasource: S.optional(S.String),
-    targetInstance: S.optional(S.String),
-    preferredSecondaryZone: S.optional(S.String),
-    preferredZone: S.optional(S.String),
-    targetInstanceSettings: S.optional(DatabaseInstance),
-    privateNetwork: S.optional(S.String),
-    region: S.optional(S.String),
-    pointInTime: S.optional(S.String),
-    targetInstanceClearSettingsFieldNames: S.optional(StringList),
-    allocatedIpRange: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PointInTimeRestoreContext",
-}) as any as S.Schema<PointInTimeRestoreContext>;
-
-export interface PointInTimeRestoreInstancesRequest {
-  /** Required. The parent resource where you created this instance. Format: projects/{project} */
-  parent: string;
-  /** Request body */
-  body?: PointInTimeRestoreContext;
-}
-export const PointInTimeRestoreInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(PointInTimeRestoreContext.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}:pointInTimeRestore",
-      baseUrl: "https://sqladmin.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PointInTimeRestoreInstancesRequest",
-}) as any as S.Schema<PointInTimeRestoreInstancesRequest>;
-
-/** Request for Pre-checks for MVU */
-export interface InstancesPreCheckMajorVersionUpgradeRequest {
-  /** Required. Contains details about the pre-check major version upgrade operation. */
-  preCheckMajorVersionUpgradeContext?: PreCheckMajorVersionUpgradeContext;
-}
-export const InstancesPreCheckMajorVersionUpgradeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      preCheckMajorVersionUpgradeContext: S.optional(
-        PreCheckMajorVersionUpgradeContext,
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesPreCheckMajorVersionUpgradeRequest",
-  }) as any as S.Schema<InstancesPreCheckMajorVersionUpgradeRequest>;
-
-export interface PreCheckMajorVersionUpgradeInstancesRequest {
-  /** Required. Project ID of the project that contains the instance. */
-  project: string;
-  /** Required. Cloud SQL instance ID. This does not include the project ID. */
-  instance: string;
-  /** Request body */
-  body?: InstancesPreCheckMajorVersionUpgradeRequest;
-}
-export const PreCheckMajorVersionUpgradeInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project: S.String.pipe(T.Label()),
-      instance: S.String.pipe(T.Label()),
-      body: S.optional(
-        InstancesPreCheckMajorVersionUpgradeRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade",
-        baseUrl: "https://sqladmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PreCheckMajorVersionUpgradeInstancesRequest",
-  }) as any as S.Schema<PreCheckMajorVersionUpgradeInstancesRequest>;
-
 export interface PromoteReplicaInstancesRequest {
   /** Set to true to invoke a replica failover to the DR replica. As part of replica failover, the promote operation attempts to add the original primary instance as a replica of the promoted DR replica when the original primary instance comes back online. If set to false or not specified, then the original primary instance becomes an independent Cloud SQL primary instance. */
   failover?: boolean;
@@ -5870,6 +5809,67 @@ export const RestoreBackupInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RestoreBackupInstancesRequest",
 }) as any as S.Schema<RestoreBackupInstancesRequest>;
+
+/** The context to perform a point-in-time recovery of an instance managed by Backup and Disaster Recovery (DR) Service. */
+export interface PointInTimeRestoreContext {
+  /** The Backup and Disaster Recovery (DR) Service Datasource URI. Format: projects/{project}/locations/{region}/backupVaults/{backupvault}/dataSources/{datasource}. */
+  datasource?: string;
+  /** Target instance name. */
+  targetInstance?: string;
+  /** Optional. Point-in-time recovery of a regional instance in the specified zones. If not specified, clone to the same secondary zone as the source instance. This value cannot be the same as the preferred_zone field. */
+  preferredSecondaryZone?: string;
+  /** Optional. Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance. */
+  preferredZone?: string;
+  /** Optional. Specifies the instance settings that will be overridden from the source instance. This field is only applicable for cross project PITRs. */
+  targetInstanceSettings?: DatabaseInstance;
+  /** Optional. The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. */
+  privateNetwork?: string;
+  /** Optional. The region of the target instance where the datasource will be restored. For example: "us-central1". */
+  region?: string;
+  /** Required. The date and time to which you want to restore the instance. */
+  pointInTime?: string;
+  /** Optional. Specifies the instance settings that will be cleared from the source instance. This field is only applicable for cross project PITRs. */
+  targetInstanceClearSettingsFieldNames?: StringList;
+  /** Optional. The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future use. */
+  allocatedIpRange?: string;
+}
+export const PointInTimeRestoreContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasource: S.optional(S.String),
+    targetInstance: S.optional(S.String),
+    preferredSecondaryZone: S.optional(S.String),
+    preferredZone: S.optional(S.String),
+    targetInstanceSettings: S.optional(DatabaseInstance),
+    privateNetwork: S.optional(S.String),
+    region: S.optional(S.String),
+    pointInTime: S.optional(S.String),
+    targetInstanceClearSettingsFieldNames: S.optional(StringList),
+    allocatedIpRange: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PointInTimeRestoreContext",
+}) as any as S.Schema<PointInTimeRestoreContext>;
+
+export interface RestorePointInTimeInstanceRequest {
+  /** Required. The parent resource where you created this instance. Format: projects/{project} */
+  parent: string;
+  /** Request body */
+  body?: PointInTimeRestoreContext;
+}
+export const RestorePointInTimeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(PointInTimeRestoreContext.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}:pointInTimeRestore",
+      baseUrl: "https://sqladmin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RestorePointInTimeInstanceRequest",
+}) as any as S.Schema<RestorePointInTimeInstanceRequest>;
 
 /** Instance rotate Entra ID certificate context. */
 export interface RotateEntraIdCertificateContext {
@@ -6707,6 +6707,26 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: Empty,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CheckPreMajorVersionUpgradeInstanceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Execute MVU Pre-checks */
+export const checkPreMajorVersionUpgradeInstance: API.OperationMethod<
+  CheckPreMajorVersionUpgradeInstanceRequest,
+  Operation,
+  CheckPreMajorVersionUpgradeInstanceError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckPreMajorVersionUpgradeInstanceRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7557,46 +7577,6 @@ export const performDiskShrinkProjectsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PointInTimeRestoreInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Point in time restore for an instance managed by Google Cloud Backup and Disaster Recovery. */
-export const pointInTimeRestoreInstances: API.OperationMethod<
-  PointInTimeRestoreInstancesRequest,
-  Operation,
-  PointInTimeRestoreInstancesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PointInTimeRestoreInstancesRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PreCheckMajorVersionUpgradeInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Execute MVU Pre-checks */
-export const preCheckMajorVersionUpgradeInstances: API.OperationMethod<
-  PreCheckMajorVersionUpgradeInstancesRequest,
-  Operation,
-  PreCheckMajorVersionUpgradeInstancesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PreCheckMajorVersionUpgradeInstancesRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PromoteReplicaInstancesError =
   | NotFound
   | Forbidden
@@ -7766,6 +7746,26 @@ export const restoreBackupInstances: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreBackupInstancesRequest,
+  output: Operation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RestorePointInTimeInstanceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Point in time restore for an instance managed by Google Cloud Backup and Disaster Recovery. */
+export const restorePointInTimeInstance: API.OperationMethod<
+  RestorePointInTimeInstanceRequest,
+  Operation,
+  RestorePointInTimeInstanceError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RestorePointInTimeInstanceRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,

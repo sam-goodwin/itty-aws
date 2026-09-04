@@ -11,41 +11,57 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface HealthIssuesListRequest {
+export interface CreateHealthIssueRefreshRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Filter by dismissed state. Omit to include both dismissed and non-dismissed issues. */
-  dismissed?: boolean;
-  /** Only return issues from this check kind (e.g. 'sdk_outdated'). */
-  kind?: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** Only return issues with this severity. One of: 'critical', 'warning', 'info'. */
-  severity?: string;
-  /** Only return issues with this status. One of: 'active', 'resolved'. */
-  status?: string;
 }
-export const HealthIssuesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateHealthIssueRefreshRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    dismissed: S.optional(S.Boolean.pipe(T.Query())),
-    kind: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    severity: S.optional(S.String.pipe(T.Query())),
-    status: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/health_issues/",
+      method: "POST",
+      uri: "/api/projects/{project_id}/health_issues/refresh/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "HealthIssuesListRequest",
-}) as any as S.Schema<HealthIssuesListRequest>;
+  identifier: "CreateHealthIssueRefreshRequest",
+}) as any as S.Schema<CreateHealthIssueRefreshRequest>;
+
+export interface CreateHealthIssueRefreshResponse {}
+export const CreateHealthIssueRefreshResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateHealthIssueRefreshResponse",
+}) as any as S.Schema<CreateHealthIssueRefreshResponse>;
+
+export interface CreateHealthIssueResolveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this health issue. */
+  id: string;
+  /** Whether a user has dismissed this issue from the Health UI. Dismissed issues stay in the list but are hidden by default. */
+  dismissed?: boolean;
+  /** When the issue's snooze ends, or null if it isn't snoozed. A snoozed issue still appears in every list; it just stops counting towards the health badge in the navigation. Write a relative duration such as '7d' to snooze, capped at 90 days, or null to end the snooze. Unlike `dismissed`, this expires on its own. */
+  snoozed_until?: string | null;
+}
+export const CreateHealthIssueResolveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    dismissed: S.optional(S.Boolean),
+    snoozed_until: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/health_issues/{id}/resolve/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateHealthIssueResolveRequest",
+}) as any as S.Schema<CreateHealthIssueResolveRequest>;
 
 /** * `critical` - Critical * `warning` - Warning * `info` - Info */
 export type HealthIssueSeverityEnum = "critical" | "warning" | "info";
@@ -98,107 +114,6 @@ export const HealthIssue = /*@__PURE__*/ S.suspend(() =>
     resolved_at: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "HealthIssue" }) as any as S.Schema<HealthIssue>;
-
-export type PaginatedHealthIssueListResultsList = Array<HealthIssue>;
-export const PaginatedHealthIssueListResultsList = /*@__PURE__*/ S.Array(
-  HealthIssue,
-) as any as S.Schema<PaginatedHealthIssueListResultsList>;
-
-export interface PaginatedHealthIssueList {
-  count?: number;
-  next?: string | null;
-  previous?: string | null;
-  results?: PaginatedHealthIssueListResultsList;
-}
-export const PaginatedHealthIssueList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedHealthIssueListResultsList),
-  }),
-).annotate({
-  identifier: "PaginatedHealthIssueList",
-}) as any as S.Schema<PaginatedHealthIssueList>;
-
-export interface HealthIssuesPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this health issue. */
-  id: string;
-  /** Whether a user has dismissed this issue from the Health UI. Dismissed issues stay in the list but are hidden by default. */
-  dismissed?: boolean;
-  /** When the issue's snooze ends, or null if it isn't snoozed. A snoozed issue still appears in every list; it just stops counting towards the health badge in the navigation. Write a relative duration such as '7d' to snooze, capped at 90 days, or null to end the snooze. Unlike `dismissed`, this expires on its own. */
-  snoozed_until?: string | null;
-}
-export const HealthIssuesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    dismissed: S.optional(S.Boolean),
-    snoozed_until: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/health_issues/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HealthIssuesPartialUpdateRequest",
-}) as any as S.Schema<HealthIssuesPartialUpdateRequest>;
-
-export interface HealthIssuesRefreshCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const HealthIssuesRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/health_issues/refresh/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HealthIssuesRefreshCreateRequest",
-}) as any as S.Schema<HealthIssuesRefreshCreateRequest>;
-
-export interface HealthIssuesRefreshCreateResponse {}
-export const HealthIssuesRefreshCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "HealthIssuesRefreshCreateResponse",
-}) as any as S.Schema<HealthIssuesRefreshCreateResponse>;
-
-export interface HealthIssuesResolveCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this health issue. */
-  id: string;
-  /** Whether a user has dismissed this issue from the Health UI. Dismissed issues stay in the list but are hidden by default. */
-  dismissed?: boolean;
-  /** When the issue's snooze ends, or null if it isn't snoozed. A snoozed issue still appears in every list; it just stops counting towards the health badge in the navigation. Write a relative duration such as '7d' to snooze, capped at 90 days, or null to end the snooze. Unlike `dismissed`, this expires on its own. */
-  snoozed_until?: string | null;
-}
-export const HealthIssuesResolveCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    dismissed: S.optional(S.Boolean),
-    snoozed_until: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/health_issues/{id}/resolve/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HealthIssuesResolveCreateRequest",
-}) as any as S.Schema<HealthIssuesResolveCreateRequest>;
 
 export interface HealthIssuesRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -364,57 +279,113 @@ export const HealthIssueSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthIssueSummary",
 }) as any as S.Schema<HealthIssueSummary>;
 
-export type HealthIssuesListError = PosthogOpError;
-/** List health issues Lists health issues detected across all of this project's PostHog health checks (outdated SDKs, data warehouse sync failures, missing web analytics events, ingestion warnings, and more). Filter by status, severity, kind, or dismissed state. */
-export const healthIssuesList: API.OperationMethod<
-  HealthIssuesListRequest,
-  PaginatedHealthIssueList,
-  HealthIssuesListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HealthIssuesListRequest,
-  output: PaginatedHealthIssueList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
+export interface ListHealthIssuesRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Filter by dismissed state. Omit to include both dismissed and non-dismissed issues. */
+  dismissed?: boolean;
+  /** Only return issues from this check kind (e.g. 'sdk_outdated'). */
+  kind?: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** Only return issues with this severity. One of: 'critical', 'warning', 'info'. */
+  severity?: string;
+  /** Only return issues with this status. One of: 'active', 'resolved'. */
+  status?: string;
+}
+export const ListHealthIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    dismissed: S.optional(S.Boolean.pipe(T.Query())),
+    kind: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    severity: S.optional(S.String.pipe(T.Query())),
+    status: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/health_issues/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListHealthIssuesRequest",
+}) as any as S.Schema<ListHealthIssuesRequest>;
 
-export type HealthIssuesPartialUpdateError = PosthogOpError;
-export const healthIssuesPartialUpdate: API.OperationMethod<
-  HealthIssuesPartialUpdateRequest,
+export type PaginatedHealthIssueListResultsList = Array<HealthIssue>;
+export const PaginatedHealthIssueListResultsList = /*@__PURE__*/ S.Array(
   HealthIssue,
-  HealthIssuesPartialUpdateError,
+) as any as S.Schema<PaginatedHealthIssueListResultsList>;
+
+export interface PaginatedHealthIssueList {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: PaginatedHealthIssueListResultsList;
+}
+export const PaginatedHealthIssueList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: S.optional(PaginatedHealthIssueListResultsList),
+  }),
+).annotate({
+  identifier: "PaginatedHealthIssueList",
+}) as any as S.Schema<PaginatedHealthIssueList>;
+
+export interface UpdateHealthIssuePartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this health issue. */
+  id: string;
+  /** Whether a user has dismissed this issue from the Health UI. Dismissed issues stay in the list but are hidden by default. */
+  dismissed?: boolean;
+  /** When the issue's snooze ends, or null if it isn't snoozed. A snoozed issue still appears in every list; it just stops counting towards the health badge in the navigation. Write a relative duration such as '7d' to snooze, capped at 90 days, or null to end the snooze. Unlike `dismissed`, this expires on its own. */
+  snoozed_until?: string | null;
+}
+export const UpdateHealthIssuePartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    dismissed: S.optional(S.Boolean),
+    snoozed_until: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/health_issues/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateHealthIssuePartialRequest",
+}) as any as S.Schema<UpdateHealthIssuePartialRequest>;
+
+export type CreateHealthIssueRefreshError = PosthogOpError;
+export const createHealthIssueRefresh: API.OperationMethod<
+  CreateHealthIssueRefreshRequest,
+  CreateHealthIssueRefreshResponse,
+  CreateHealthIssueRefreshError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HealthIssuesPartialUpdateRequest,
-  output: HealthIssue,
+  input: CreateHealthIssueRefreshRequest,
+  output: CreateHealthIssueRefreshResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
 
-export type HealthIssuesRefreshCreateError = PosthogOpError;
-export const healthIssuesRefreshCreate: API.OperationMethod<
-  HealthIssuesRefreshCreateRequest,
-  HealthIssuesRefreshCreateResponse,
-  HealthIssuesRefreshCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HealthIssuesRefreshCreateRequest,
-  output: HealthIssuesRefreshCreateResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HealthIssuesResolveCreateError = PosthogOpError;
-export const healthIssuesResolveCreate: API.OperationMethod<
-  HealthIssuesResolveCreateRequest,
+export type CreateHealthIssueResolveError = PosthogOpError;
+export const createHealthIssueResolve: API.OperationMethod<
+  CreateHealthIssueResolveRequest,
   HealthIssue,
-  HealthIssuesResolveCreateError,
+  CreateHealthIssueResolveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HealthIssuesResolveCreateRequest,
+  input: CreateHealthIssueResolveRequest,
   output: HealthIssue,
   errors: [],
   protocol: PosthogProtocol,
@@ -446,6 +417,35 @@ export const healthIssuesSummaryRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: HealthIssuesSummaryRetrieveRequest,
   output: HealthIssueSummary,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListHealthIssuesError = PosthogOpError;
+/** List health issues Lists health issues detected across all of this project's PostHog health checks (outdated SDKs, data warehouse sync failures, missing web analytics events, ingestion warnings, and more). Filter by status, severity, kind, or dismissed state. */
+export const listHealthIssues: API.OperationMethod<
+  ListHealthIssuesRequest,
+  PaginatedHealthIssueList,
+  ListHealthIssuesError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHealthIssuesRequest,
+  output: PaginatedHealthIssueList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateHealthIssuePartialError = PosthogOpError;
+export const updateHealthIssuePartial: API.OperationMethod<
+  UpdateHealthIssuePartialRequest,
+  HealthIssue,
+  UpdateHealthIssuePartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHealthIssuePartialRequest,
+  output: HealthIssue,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

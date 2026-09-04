@@ -187,7 +187,7 @@
         "smithy.api#documentation": "Get all property access control rules for a property definition."
       }
     },
-    "com.posthog.property_access_controls#PropertyAccessControlsCreateRequest": {
+    "com.posthog.property_access_controls#CreatePropertyAccessControlRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -231,10 +231,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.property_access_controls#PropertyAccessControlsCreate": {
+    "com.posthog.property_access_controls#CreatePropertyAccessControl": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.property_access_controls#PropertyAccessControlsCreateRequest"
+        "target": "com.posthog.property_access_controls#CreatePropertyAccessControlRequest"
       },
       "output": {
         "target": "com.posthog.property_access_controls#PropertyAccessControlRule"
@@ -311,7 +311,7 @@
           "target": "com.posthog.property_access_controls#PropertyAccessControlsRetrieve"
         },
         {
-          "target": "com.posthog.property_access_controls#PropertyAccessControlsCreate"
+          "target": "com.posthog.property_access_controls#CreatePropertyAccessControl"
         },
         {
           "target": "com.posthog.property_access_controls#PropertyAccessControlsDestroy"

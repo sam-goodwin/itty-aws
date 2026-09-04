@@ -2395,7 +2395,7 @@
         "smithy.api#documentation": "Gets a queue."
       }
     },
-    "com.gcp.cloudtasks_v2beta3#BatchDeleteProjectsLocationsQueuesTasksRequest": {
+    "com.gcp.cloudtasks_v2beta3#DeleteBatchProjectLocationQueueTaskRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2415,10 +2415,10 @@
         }
       }
     },
-    "com.gcp.cloudtasks_v2beta3#BatchDeleteProjectsLocationsQueuesTasks": {
+    "com.gcp.cloudtasks_v2beta3#DeleteBatchProjectLocationQueueTask": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudtasks_v2beta3#BatchDeleteProjectsLocationsQueuesTasksRequest"
+        "target": "com.gcp.cloudtasks_v2beta3#DeleteBatchProjectLocationQueueTaskRequest"
       },
       "output": {
         "target": "com.gcp.cloudtasks_v2beta3#Operation"
@@ -2562,7 +2562,7 @@
         "smithy.api#documentation": "Gets a task. After a task is successfully executed or has exhausted its retry attempts, the task is deleted. A `GetTask` request for a deleted task returns a `NOT_FOUND` error."
       }
     },
-    "com.gcp.cloudtasks_v2beta3#BatchCreateProjectsLocationsQueuesTasksRequest": {
+    "com.gcp.cloudtasks_v2beta3#CreateBatchProjectLocationQueueTaskRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2582,10 +2582,10 @@
         }
       }
     },
-    "com.gcp.cloudtasks_v2beta3#BatchCreateProjectsLocationsQueuesTasks": {
+    "com.gcp.cloudtasks_v2beta3#CreateBatchProjectLocationQueueTask": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudtasks_v2beta3#BatchCreateProjectsLocationsQueuesTasksRequest"
+        "target": "com.gcp.cloudtasks_v2beta3#CreateBatchProjectLocationQueueTaskRequest"
       },
       "output": {
         "target": "com.gcp.cloudtasks_v2beta3#Operation"

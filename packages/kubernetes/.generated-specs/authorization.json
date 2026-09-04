@@ -125,7 +125,7 @@
         "smithy.api#documentation": "versions are the versions supported in this group."
       }
     },
-    "com.kubernetes.authorization#GetAuthorizationAPIGroup": {
+    "com.kubernetes.authorization#GetAuthorizationApiGroup": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -285,7 +285,7 @@
         "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
       }
     },
-    "com.kubernetes.authorization#GetAuthorizationV1APIResources": {
+    "com.kubernetes.authorization#GetAuthorizationV1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -1621,10 +1621,10 @@
       "version": "unversioned",
       "operations": [
         {
-          "target": "com.kubernetes.authorization#GetAuthorizationAPIGroup"
+          "target": "com.kubernetes.authorization#GetAuthorizationApiGroup"
         },
         {
-          "target": "com.kubernetes.authorization#GetAuthorizationV1APIResources"
+          "target": "com.kubernetes.authorization#GetAuthorizationV1ApiResources"
         },
         {
           "target": "com.kubernetes.authorization#CreateAuthorizationV1NamespacedLocalSubjectAccessReview"

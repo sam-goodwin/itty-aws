@@ -70,48 +70,6 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export interface GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest {
-  names?: StringList;
-}
-export const GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      names: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest",
-  }) as any as S.Schema<GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest>;
-
-export interface BatchDeleteProjectsLocationsAgentsTestCasesRequest {
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest;
-}
-export const BatchDeleteProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/{+parent}/testCases:batchDelete",
-        baseUrl: "https://dialogflow.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeleteProjectsLocationsAgentsTestCasesRequest",
-  }) as any as S.Schema<BatchDeleteProjectsLocationsAgentsTestCasesRequest>;
-
-export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
-
 export interface GoogleCloudDialogflowCxV3BatchRunTestCasesRequest {
   environment?: string;
   testCases?: StringList;
@@ -1297,6 +1255,13 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CancelProjectsLocationsOperationsRequest",
 }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
+export interface GoogleProtobufEmpty {}
+export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobufEmpty",
+}) as any as S.Schema<GoogleProtobufEmpty>;
 
 export interface CancelProjectsOperationsRequest {
   name: string;
@@ -4123,6 +4088,41 @@ export const CreateProjectsLocationsSecuritySettingsRequest =
   ).annotate({
     identifier: "CreateProjectsLocationsSecuritySettingsRequest",
   }) as any as S.Schema<CreateProjectsLocationsSecuritySettingsRequest>;
+
+export interface GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest {
+  names?: StringList;
+}
+export const GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      names: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest",
+  }) as any as S.Schema<GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest>;
+
+export interface DeleteBatchProjectLocationAgentTestCaseRequest {
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest;
+}
+export const DeleteBatchProjectLocationAgentTestCaseRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v3/{+parent}/testCases:batchDelete",
+        baseUrl: "https://dialogflow.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBatchProjectLocationAgentTestCaseRequest",
+  }) as any as S.Schema<DeleteBatchProjectLocationAgentTestCaseRequest>;
 
 export interface DeleteProjectsLocationsAgentsRequest {
   name: string;
@@ -9388,25 +9388,6 @@ export const ValidateProjectsLocationsAgentsFlowsRequest =
     identifier: "ValidateProjectsLocationsAgentsFlowsRequest",
   }) as any as S.Schema<ValidateProjectsLocationsAgentsFlowsRequest>;
 
-export type BatchDeleteProjectsLocationsAgentsTestCasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-export const batchDeleteProjectsLocationsAgentsTestCases: API.OperationMethod<
-  BatchDeleteProjectsLocationsAgentsTestCasesRequest,
-  GoogleProtobufEmpty,
-  BatchDeleteProjectsLocationsAgentsTestCasesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteProjectsLocationsAgentsTestCasesRequest,
-  output: GoogleProtobufEmpty,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BatchRunProjectsLocationsAgentsTestCasesError =
   | NotFound
   | Forbidden
@@ -9894,6 +9875,25 @@ export const createProjectsLocationsSecuritySettings: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSecuritySettingsRequest,
   output: GoogleCloudDialogflowCxV3SecuritySettings,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchProjectLocationAgentTestCaseError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+export const deleteBatchProjectLocationAgentTestCase: API.OperationMethod<
+  DeleteBatchProjectLocationAgentTestCaseRequest,
+  GoogleProtobufEmpty,
+  DeleteBatchProjectLocationAgentTestCaseError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchProjectLocationAgentTestCaseRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

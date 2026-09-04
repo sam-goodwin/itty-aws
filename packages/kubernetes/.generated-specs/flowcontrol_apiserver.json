@@ -125,7 +125,7 @@
         "smithy.api#documentation": "versions are the versions supported in this group."
       }
     },
-    "com.kubernetes.flowcontrol_apiserver#GetFlowcontrolApiserverAPIGroup": {
+    "com.kubernetes.flowcontrol_apiserver#GetFlowcontrolApiserverApiGroup": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -285,7 +285,7 @@
         "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
       }
     },
-    "com.kubernetes.flowcontrol_apiserver#GetFlowcontrolApiserverV1APIResources": {
+    "com.kubernetes.flowcontrol_apiserver#GetFlowcontrolApiserverV1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -3342,7 +3342,7 @@
         "smithy.api#documentation": "partially update status of the specified PriorityLevelConfiguration"
       }
     },
-    "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1FlowSchemaListRequest": {
+    "com.kubernetes.flowcontrol_apiserver#ListWatchFlowcontrolApiserverV1FlowSchemaRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -3455,10 +3455,10 @@
         "smithy.api#documentation": "Event represents a single event to a watched resource."
       }
     },
-    "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1FlowSchemaList": {
+    "com.kubernetes.flowcontrol_apiserver#ListWatchFlowcontrolApiserverV1FlowSchema": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1FlowSchemaListRequest"
+        "target": "com.kubernetes.flowcontrol_apiserver#ListWatchFlowcontrolApiserverV1FlowSchemaRequest"
       },
       "output": {
         "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -3589,7 +3589,7 @@
         "smithy.api#documentation": "watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest": {
+    "com.kubernetes.flowcontrol_apiserver#ListWatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -3681,10 +3681,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1PriorityLevelConfigurationList": {
+    "com.kubernetes.flowcontrol_apiserver#ListWatchFlowcontrolApiserverV1PriorityLevelConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest"
+        "target": "com.kubernetes.flowcontrol_apiserver#ListWatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest"
       },
       "output": {
         "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -3859,10 +3859,10 @@
       "version": "unversioned",
       "operations": [
         {
-          "target": "com.kubernetes.flowcontrol_apiserver#GetFlowcontrolApiserverAPIGroup"
+          "target": "com.kubernetes.flowcontrol_apiserver#GetFlowcontrolApiserverApiGroup"
         },
         {
-          "target": "com.kubernetes.flowcontrol_apiserver#GetFlowcontrolApiserverV1APIResources"
+          "target": "com.kubernetes.flowcontrol_apiserver#GetFlowcontrolApiserverV1ApiResources"
         },
         {
           "target": "com.kubernetes.flowcontrol_apiserver#ListFlowcontrolApiserverV1FlowSchema"
@@ -3925,13 +3925,13 @@
           "target": "com.kubernetes.flowcontrol_apiserver#PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatus"
         },
         {
-          "target": "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1FlowSchemaList"
+          "target": "com.kubernetes.flowcontrol_apiserver#ListWatchFlowcontrolApiserverV1FlowSchema"
         },
         {
           "target": "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1FlowSchema"
         },
         {
-          "target": "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1PriorityLevelConfigurationList"
+          "target": "com.kubernetes.flowcontrol_apiserver#ListWatchFlowcontrolApiserverV1PriorityLevelConfiguration"
         },
         {
           "target": "com.kubernetes.flowcontrol_apiserver#WatchFlowcontrolApiserverV1PriorityLevelConfiguration"

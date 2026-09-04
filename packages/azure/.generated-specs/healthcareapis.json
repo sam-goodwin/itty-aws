@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.healthcareapis#OperationResultsGet": {
+    "com.azure.healthcareapis#GetOperationResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#OperationResultsGetRequest"
+        "target": "com.azure.healthcareapis#GetOperationResultRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#OperationResultsDescription"
@@ -118,7 +118,7 @@
         "smithy.api#documentation": "The status of the operation being performed."
       }
     },
-    "com.azure.healthcareapis#OperationResultsGetRequest": {
+    "com.azure.healthcareapis#GetOperationResultRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -523,13 +523,13 @@
         "smithy.api#documentation": "The object that represents the operation."
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateLinkResourcesGet": {
+    "com.azure.healthcareapis#GetWorkspacePrivateLinkResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacePrivateLinkResourcesGetRequest"
+        "target": "com.azure.healthcareapis#GetWorkspacePrivateLinkResourceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#WorkspacePrivateLinkResourcesGetResponse"
+        "target": "com.azure.healthcareapis#GetWorkspacePrivateLinkResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -542,7 +542,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateLinkResourcesGetResponse": {
+    "com.azure.healthcareapis#GetWorkspacePrivateLinkResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -732,7 +732,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateLinkResourcesGetRequest": {
+    "com.azure.healthcareapis#GetWorkspacePrivateLinkResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -772,10 +772,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateLinkResourcesListByWorkspace": {
+    "com.azure.healthcareapis#ListWorkspacePrivateLinkResourceByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacePrivateLinkResourcesListByWorkspaceRequest"
+        "target": "com.azure.healthcareapis#ListWorkspacePrivateLinkResourceByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#PrivateLinkResourceListResultDescription"
@@ -960,7 +960,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateLinkResourcesListByWorkspaceRequest": {
+    "com.azure.healthcareapis#ListWorkspacePrivateLinkResourceByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -992,10 +992,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsDelete": {
+    "com.azure.healthcareapis#DeleteWorkspacePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.healthcareapis#DeleteWorkspacePrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1011,7 +1011,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.healthcareapis#DeleteWorkspacePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1415,13 +1415,13 @@
         "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsGet": {
+    "com.azure.healthcareapis#GetWorkspacePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.healthcareapis#GetWorkspacePrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.healthcareapis#GetWorkspacePrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1434,7 +1434,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsGetResponse": {
+    "com.azure.healthcareapis#GetWorkspacePrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1580,7 +1580,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsGetRequest": {
+    "com.azure.healthcareapis#GetWorkspacePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1620,10 +1620,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsListByWorkspace": {
+    "com.azure.healthcareapis#ListWorkspacePrivateEndpointConnectionByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsListByWorkspaceRequest"
+        "target": "com.azure.healthcareapis#ListWorkspacePrivateEndpointConnectionByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#PrivateEndpointConnectionListResultDescription"
@@ -1808,7 +1808,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsListByWorkspaceRequest": {
+    "com.azure.healthcareapis#ListWorkspacePrivateEndpointConnectionByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1840,10 +1840,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#FhirServicesDelete": {
+    "com.azure.healthcareapis#DeleteFhirService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#FhirServicesDeleteRequest"
+        "target": "com.azure.healthcareapis#DeleteFhirServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1859,7 +1859,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#FhirServicesDeleteRequest": {
+    "com.azure.healthcareapis#DeleteFhirServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1899,13 +1899,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#FhirServicesUpdate": {
+    "com.azure.healthcareapis#UpdateFhirService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#FhirServicesUpdateRequest"
+        "target": "com.azure.healthcareapis#UpdateFhirServiceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#FhirServicesUpdateResponse"
+        "target": "com.azure.healthcareapis#UpdateFhirServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1918,7 +1918,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#FhirServicesUpdateResponse": {
+    "com.azure.healthcareapis#UpdateFhirServiceResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -2861,7 +2861,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#FhirServicesUpdateRequest": {
+    "com.azure.healthcareapis#UpdateFhirServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3389,13 +3389,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#FhirServicesGet": {
+    "com.azure.healthcareapis#GetFhirService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#FhirServicesGetRequest"
+        "target": "com.azure.healthcareapis#GetFhirServiceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#FhirServicesGetResponse"
+        "target": "com.azure.healthcareapis#GetFhirServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3408,7 +3408,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#FhirServicesGetResponse": {
+    "com.azure.healthcareapis#GetFhirServiceResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -3570,7 +3570,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#FhirServicesGetRequest": {
+    "com.azure.healthcareapis#GetFhirServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3610,10 +3610,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#FhirServicesListByWorkspace": {
+    "com.azure.healthcareapis#ListFhirServiceByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#FhirServicesListByWorkspaceRequest"
+        "target": "com.azure.healthcareapis#ListFhirServiceByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#FhirServiceCollection"
@@ -3820,7 +3820,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#FhirServicesListByWorkspaceRequest": {
+    "com.azure.healthcareapis#ListFhirServiceByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3852,10 +3852,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#IotConnectorFhirDestinationDelete": {
+    "com.azure.healthcareapis#DeleteIotConnectorFhirDestination": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#IotConnectorFhirDestinationDeleteRequest"
+        "target": "com.azure.healthcareapis#DeleteIotConnectorFhirDestinationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3871,7 +3871,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#IotConnectorFhirDestinationDeleteRequest": {
+    "com.azure.healthcareapis#DeleteIotConnectorFhirDestinationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4154,13 +4154,13 @@
         "smithy.api#documentation": "IoT Connector destination properties for an Azure FHIR service."
       }
     },
-    "com.azure.healthcareapis#IotConnectorFhirDestinationGet": {
+    "com.azure.healthcareapis#GetIotConnectorFhirDestination": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#IotConnectorFhirDestinationGetRequest"
+        "target": "com.azure.healthcareapis#GetIotConnectorFhirDestinationRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#IotConnectorFhirDestinationGetResponse"
+        "target": "com.azure.healthcareapis#GetIotConnectorFhirDestinationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4173,7 +4173,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#IotConnectorFhirDestinationGetResponse": {
+    "com.azure.healthcareapis#GetIotConnectorFhirDestinationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4224,7 +4224,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthcareapis#IotConnectorFhirDestinationGetRequest": {
+    "com.azure.healthcareapis#GetIotConnectorFhirDestinationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4272,10 +4272,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#FhirDestinationsListByIotConnector": {
+    "com.azure.healthcareapis#ListFhirDestinationByIotConnector": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#FhirDestinationsListByIotConnectorRequest"
+        "target": "com.azure.healthcareapis#ListFhirDestinationByIotConnectorRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#IotFhirDestinationCollection"
@@ -4371,7 +4371,7 @@
         "smithy.api#documentation": "IoT Connector FHIR destination definition."
       }
     },
-    "com.azure.healthcareapis#FhirDestinationsListByIotConnectorRequest": {
+    "com.azure.healthcareapis#ListFhirDestinationByIotConnectorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4411,10 +4411,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#IotConnectorsDelete": {
+    "com.azure.healthcareapis#DeleteIotConnector": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#IotConnectorsDeleteRequest"
+        "target": "com.azure.healthcareapis#DeleteIotConnectorRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4430,7 +4430,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#IotConnectorsDeleteRequest": {
+    "com.azure.healthcareapis#DeleteIotConnectorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4470,13 +4470,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#IotConnectorsUpdate": {
+    "com.azure.healthcareapis#UpdateIotConnector": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#IotConnectorsUpdateRequest"
+        "target": "com.azure.healthcareapis#UpdateIotConnectorRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#IotConnectorsUpdateResponse"
+        "target": "com.azure.healthcareapis#UpdateIotConnectorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4489,7 +4489,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#IotConnectorsUpdateResponse": {
+    "com.azure.healthcareapis#UpdateIotConnectorResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -4677,7 +4677,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#IotConnectorsUpdateRequest": {
+    "com.azure.healthcareapis#UpdateIotConnectorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5098,13 +5098,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#IotConnectorsGet": {
+    "com.azure.healthcareapis#GetIotConnector": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#IotConnectorsGetRequest"
+        "target": "com.azure.healthcareapis#GetIotConnectorRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#IotConnectorsGetResponse"
+        "target": "com.azure.healthcareapis#GetIotConnectorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5117,7 +5117,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#IotConnectorsGetResponse": {
+    "com.azure.healthcareapis#GetIotConnectorResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -5253,7 +5253,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#IotConnectorsGetRequest": {
+    "com.azure.healthcareapis#GetIotConnectorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5293,10 +5293,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#IotConnectorsListByWorkspace": {
+    "com.azure.healthcareapis#ListIotConnectorByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#IotConnectorsListByWorkspaceRequest"
+        "target": "com.azure.healthcareapis#ListIotConnectorByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#IotConnectorCollection"
@@ -5477,7 +5477,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#IotConnectorsListByWorkspaceRequest": {
+    "com.azure.healthcareapis#ListIotConnectorByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5509,10 +5509,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#DicomServicesDelete": {
+    "com.azure.healthcareapis#DeleteDicomService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#DicomServicesDeleteRequest"
+        "target": "com.azure.healthcareapis#DeleteDicomServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5528,7 +5528,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#DicomServicesDeleteRequest": {
+    "com.azure.healthcareapis#DeleteDicomServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5568,13 +5568,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#DicomServicesUpdate": {
+    "com.azure.healthcareapis#UpdateDicomService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#DicomServicesUpdateRequest"
+        "target": "com.azure.healthcareapis#UpdateDicomServiceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#DicomServicesUpdateResponse"
+        "target": "com.azure.healthcareapis#UpdateDicomServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5587,7 +5587,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#DicomServicesUpdateResponse": {
+    "com.azure.healthcareapis#UpdateDicomServiceResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -5946,7 +5946,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#DicomServicesUpdateRequest": {
+    "com.azure.healthcareapis#UpdateDicomServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6392,13 +6392,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#DicomServicesGet": {
+    "com.azure.healthcareapis#GetDicomService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#DicomServicesGetRequest"
+        "target": "com.azure.healthcareapis#GetDicomServiceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#DicomServicesGetResponse"
+        "target": "com.azure.healthcareapis#GetDicomServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6411,7 +6411,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#DicomServicesGetResponse": {
+    "com.azure.healthcareapis#GetDicomServiceResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -6547,7 +6547,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#DicomServicesGetRequest": {
+    "com.azure.healthcareapis#GetDicomServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6587,10 +6587,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#DicomServicesListByWorkspace": {
+    "com.azure.healthcareapis#ListDicomServiceByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#DicomServicesListByWorkspaceRequest"
+        "target": "com.azure.healthcareapis#ListDicomServiceByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#DicomServiceCollection"
@@ -6771,7 +6771,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#DicomServicesListByWorkspaceRequest": {
+    "com.azure.healthcareapis#ListDicomServiceByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6803,10 +6803,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#WorkspacesDelete": {
+    "com.azure.healthcareapis#DeleteWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacesDeleteRequest"
+        "target": "com.azure.healthcareapis#DeleteWorkspaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6822,7 +6822,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#WorkspacesDeleteRequest": {
+    "com.azure.healthcareapis#DeleteWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6854,13 +6854,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#WorkspacesUpdate": {
+    "com.azure.healthcareapis#UpdateWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacesUpdateRequest"
+        "target": "com.azure.healthcareapis#UpdateWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#WorkspacesUpdateResponse"
+        "target": "com.azure.healthcareapis#UpdateWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6873,7 +6873,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#WorkspacesUpdateResponse": {
+    "com.azure.healthcareapis#UpdateWorkspaceResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -7008,7 +7008,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#WorkspacesUpdateRequest": {
+    "com.azure.healthcareapis#UpdateWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7287,13 +7287,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#WorkspacesGet": {
+    "com.azure.healthcareapis#GetWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacesGetRequest"
+        "target": "com.azure.healthcareapis#GetWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#WorkspacesGetResponse"
+        "target": "com.azure.healthcareapis#GetWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7306,7 +7306,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#WorkspacesGetResponse": {
+    "com.azure.healthcareapis#GetWorkspaceResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -7441,7 +7441,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#WorkspacesGetRequest": {
+    "com.azure.healthcareapis#GetWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7473,10 +7473,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#WorkspacesListByResourceGroup": {
+    "com.azure.healthcareapis#ListWorkspaceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacesListByResourceGroupRequest"
+        "target": "com.azure.healthcareapis#ListWorkspaceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#WorkspaceList"
@@ -7656,7 +7656,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthcareapis#WorkspacesListByResourceGroupRequest": {
+    "com.azure.healthcareapis#ListWorkspaceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7680,10 +7680,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#WorkspacesListBySubscription": {
+    "com.azure.healthcareapis#ListWorkspaceBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#WorkspacesListBySubscriptionRequest"
+        "target": "com.azure.healthcareapis#ListWorkspaceBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#WorkspaceList"
@@ -7699,7 +7699,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#WorkspacesListBySubscriptionRequest": {
+    "com.azure.healthcareapis#ListWorkspaceBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7715,13 +7715,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#PrivateLinkResourcesGet": {
+    "com.azure.healthcareapis#GetPrivateLinkResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#PrivateLinkResourcesGetRequest"
+        "target": "com.azure.healthcareapis#GetPrivateLinkResourceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#PrivateLinkResourcesGetResponse"
+        "target": "com.azure.healthcareapis#GetPrivateLinkResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7734,7 +7734,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#PrivateLinkResourcesGetResponse": {
+    "com.azure.healthcareapis#GetPrivateLinkResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7880,7 +7880,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.healthcareapis#PrivateLinkResourcesGetRequest": {
+    "com.azure.healthcareapis#GetPrivateLinkResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7920,10 +7920,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#PrivateLinkResourcesListByService": {
+    "com.azure.healthcareapis#ListPrivateLinkResourceByService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#PrivateLinkResourcesListByServiceRequest"
+        "target": "com.azure.healthcareapis#ListPrivateLinkResourceByServiceRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#PrivateLinkResourceListResultDescription"
@@ -7939,7 +7939,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#PrivateLinkResourcesListByServiceRequest": {
+    "com.azure.healthcareapis#ListPrivateLinkResourceByServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7971,10 +7971,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#PrivateEndpointConnectionsDelete": {
+    "com.azure.healthcareapis#DeletePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#PrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.healthcareapis#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7990,7 +7990,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#PrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.healthcareapis#DeletePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8241,13 +8241,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#PrivateEndpointConnectionsGet": {
+    "com.azure.healthcareapis#GetPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#PrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.healthcareapis#GetPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#PrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.healthcareapis#GetPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8260,7 +8260,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#PrivateEndpointConnectionsGetResponse": {
+    "com.azure.healthcareapis#GetPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8406,7 +8406,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.healthcareapis#PrivateEndpointConnectionsGetRequest": {
+    "com.azure.healthcareapis#GetPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8446,10 +8446,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#PrivateEndpointConnectionsListByService": {
+    "com.azure.healthcareapis#ListPrivateEndpointConnectionByService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#PrivateEndpointConnectionsListByServiceRequest"
+        "target": "com.azure.healthcareapis#ListPrivateEndpointConnectionByServiceRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#PrivateEndpointConnectionListResultDescription"
@@ -8465,7 +8465,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#PrivateEndpointConnectionsListByServiceRequest": {
+    "com.azure.healthcareapis#ListPrivateEndpointConnectionByServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8497,10 +8497,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#ServicesCheckNameAvailability": {
+    "com.azure.healthcareapis#CheckServiceNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#ServicesCheckNameAvailabilityRequest"
+        "target": "com.azure.healthcareapis#CheckServiceNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#ServicesNameAvailabilityInfo"
@@ -8562,7 +8562,7 @@
         "smithy.api#documentation": "The reason for unavailability."
       }
     },
-    "com.azure.healthcareapis#ServicesCheckNameAvailabilityRequest": {
+    "com.azure.healthcareapis#CheckServiceNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8592,10 +8592,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#ServicesListByResourceGroup": {
+    "com.azure.healthcareapis#ListServiceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#ServicesListByResourceGroupRequest"
+        "target": "com.azure.healthcareapis#ListServiceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#ServicesDescriptionListResult"
@@ -9142,7 +9142,7 @@
         "smithy.api#documentation": "The kind of the service."
       }
     },
-    "com.azure.healthcareapis#ServicesListByResourceGroupRequest": {
+    "com.azure.healthcareapis#ListServiceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9166,10 +9166,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#ServicesList": {
+    "com.azure.healthcareapis#ListServices": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#ServicesListRequest"
+        "target": "com.azure.healthcareapis#ListServicesRequest"
       },
       "output": {
         "target": "com.azure.healthcareapis#ServicesDescriptionListResult"
@@ -9185,7 +9185,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#ServicesListRequest": {
+    "com.azure.healthcareapis#ListServicesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9201,10 +9201,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#ServicesDelete": {
+    "com.azure.healthcareapis#DeleteService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#ServicesDeleteRequest"
+        "target": "com.azure.healthcareapis#DeleteServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9220,7 +9220,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#ServicesDeleteRequest": {
+    "com.azure.healthcareapis#DeleteServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9252,13 +9252,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthcareapis#ServicesUpdate": {
+    "com.azure.healthcareapis#UpdateService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#ServicesUpdateRequest"
+        "target": "com.azure.healthcareapis#UpdateServiceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#ServicesUpdateResponse"
+        "target": "com.azure.healthcareapis#UpdateServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9271,7 +9271,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#ServicesUpdateResponse": {
+    "com.azure.healthcareapis#UpdateServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9425,7 +9425,7 @@
         "smithy.api#documentation": "The kind of the service."
       }
     },
-    "com.azure.healthcareapis#ServicesUpdateRequest": {
+    "com.azure.healthcareapis#UpdateServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9935,13 +9935,13 @@
         "smithy.api#documentation": "The kind of the service."
       }
     },
-    "com.azure.healthcareapis#ServicesGet": {
+    "com.azure.healthcareapis#GetService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthcareapis#ServicesGetRequest"
+        "target": "com.azure.healthcareapis#GetServiceRequest"
       },
       "output": {
-        "target": "com.azure.healthcareapis#ServicesGetResponse"
+        "target": "com.azure.healthcareapis#GetServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9954,7 +9954,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-31"
       }
     },
-    "com.azure.healthcareapis#ServicesGetResponse": {
+    "com.azure.healthcareapis#GetServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10108,7 +10108,7 @@
         "smithy.api#documentation": "The kind of the service."
       }
     },
-    "com.azure.healthcareapis#ServicesGetRequest": {
+    "com.azure.healthcareapis#GetServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10145,142 +10145,142 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.healthcareapis#OperationResultsGet"
+          "target": "com.azure.healthcareapis#GetOperationResult"
         },
         {
           "target": "com.azure.healthcareapis#OperationsList"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacePrivateLinkResourcesGet"
+          "target": "com.azure.healthcareapis#GetWorkspacePrivateLinkResource"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacePrivateLinkResourcesListByWorkspace"
+          "target": "com.azure.healthcareapis#ListWorkspacePrivateLinkResourceByWorkspace"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsDelete"
+          "target": "com.azure.healthcareapis#DeleteWorkspacePrivateEndpointConnection"
         },
         {
           "target": "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsGet"
+          "target": "com.azure.healthcareapis#GetWorkspacePrivateEndpointConnection"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacePrivateEndpointConnectionsListByWorkspace"
+          "target": "com.azure.healthcareapis#ListWorkspacePrivateEndpointConnectionByWorkspace"
         },
         {
-          "target": "com.azure.healthcareapis#FhirServicesDelete"
+          "target": "com.azure.healthcareapis#DeleteFhirService"
         },
         {
-          "target": "com.azure.healthcareapis#FhirServicesUpdate"
+          "target": "com.azure.healthcareapis#UpdateFhirService"
         },
         {
           "target": "com.azure.healthcareapis#FhirServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.healthcareapis#FhirServicesGet"
+          "target": "com.azure.healthcareapis#GetFhirService"
         },
         {
-          "target": "com.azure.healthcareapis#FhirServicesListByWorkspace"
+          "target": "com.azure.healthcareapis#ListFhirServiceByWorkspace"
         },
         {
-          "target": "com.azure.healthcareapis#IotConnectorFhirDestinationDelete"
+          "target": "com.azure.healthcareapis#DeleteIotConnectorFhirDestination"
         },
         {
           "target": "com.azure.healthcareapis#IotConnectorFhirDestinationCreateOrUpdate"
         },
         {
-          "target": "com.azure.healthcareapis#IotConnectorFhirDestinationGet"
+          "target": "com.azure.healthcareapis#GetIotConnectorFhirDestination"
         },
         {
-          "target": "com.azure.healthcareapis#FhirDestinationsListByIotConnector"
+          "target": "com.azure.healthcareapis#ListFhirDestinationByIotConnector"
         },
         {
-          "target": "com.azure.healthcareapis#IotConnectorsDelete"
+          "target": "com.azure.healthcareapis#DeleteIotConnector"
         },
         {
-          "target": "com.azure.healthcareapis#IotConnectorsUpdate"
+          "target": "com.azure.healthcareapis#UpdateIotConnector"
         },
         {
           "target": "com.azure.healthcareapis#IotConnectorsCreateOrUpdate"
         },
         {
-          "target": "com.azure.healthcareapis#IotConnectorsGet"
+          "target": "com.azure.healthcareapis#GetIotConnector"
         },
         {
-          "target": "com.azure.healthcareapis#IotConnectorsListByWorkspace"
+          "target": "com.azure.healthcareapis#ListIotConnectorByWorkspace"
         },
         {
-          "target": "com.azure.healthcareapis#DicomServicesDelete"
+          "target": "com.azure.healthcareapis#DeleteDicomService"
         },
         {
-          "target": "com.azure.healthcareapis#DicomServicesUpdate"
+          "target": "com.azure.healthcareapis#UpdateDicomService"
         },
         {
           "target": "com.azure.healthcareapis#DicomServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.healthcareapis#DicomServicesGet"
+          "target": "com.azure.healthcareapis#GetDicomService"
         },
         {
-          "target": "com.azure.healthcareapis#DicomServicesListByWorkspace"
+          "target": "com.azure.healthcareapis#ListDicomServiceByWorkspace"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacesDelete"
+          "target": "com.azure.healthcareapis#DeleteWorkspace"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacesUpdate"
+          "target": "com.azure.healthcareapis#UpdateWorkspace"
         },
         {
           "target": "com.azure.healthcareapis#WorkspacesCreateOrUpdate"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacesGet"
+          "target": "com.azure.healthcareapis#GetWorkspace"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacesListByResourceGroup"
+          "target": "com.azure.healthcareapis#ListWorkspaceByResourceGroup"
         },
         {
-          "target": "com.azure.healthcareapis#WorkspacesListBySubscription"
+          "target": "com.azure.healthcareapis#ListWorkspaceBySubscription"
         },
         {
-          "target": "com.azure.healthcareapis#PrivateLinkResourcesGet"
+          "target": "com.azure.healthcareapis#GetPrivateLinkResource"
         },
         {
-          "target": "com.azure.healthcareapis#PrivateLinkResourcesListByService"
+          "target": "com.azure.healthcareapis#ListPrivateLinkResourceByService"
         },
         {
-          "target": "com.azure.healthcareapis#PrivateEndpointConnectionsDelete"
+          "target": "com.azure.healthcareapis#DeletePrivateEndpointConnection"
         },
         {
           "target": "com.azure.healthcareapis#PrivateEndpointConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.healthcareapis#PrivateEndpointConnectionsGet"
+          "target": "com.azure.healthcareapis#GetPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.healthcareapis#PrivateEndpointConnectionsListByService"
+          "target": "com.azure.healthcareapis#ListPrivateEndpointConnectionByService"
         },
         {
-          "target": "com.azure.healthcareapis#ServicesCheckNameAvailability"
+          "target": "com.azure.healthcareapis#CheckServiceNameAvailability"
         },
         {
-          "target": "com.azure.healthcareapis#ServicesListByResourceGroup"
+          "target": "com.azure.healthcareapis#ListServiceByResourceGroup"
         },
         {
-          "target": "com.azure.healthcareapis#ServicesList"
+          "target": "com.azure.healthcareapis#ListServices"
         },
         {
-          "target": "com.azure.healthcareapis#ServicesDelete"
+          "target": "com.azure.healthcareapis#DeleteService"
         },
         {
-          "target": "com.azure.healthcareapis#ServicesUpdate"
+          "target": "com.azure.healthcareapis#UpdateService"
         },
         {
           "target": "com.azure.healthcareapis#ServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.healthcareapis#ServicesGet"
+          "target": "com.azure.healthcareapis#GetService"
         }
       ],
       "traits": {

@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.datacatalog#ADCCatalogsDelete": {
+    "com.azure.datacatalog#DeleteAdcCatalog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datacatalog#ADCCatalogsDeleteRequest"
+        "target": "com.azure.datacatalog#DeleteAdcCatalogRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-30"
       }
     },
-    "com.azure.datacatalog#ADCCatalogsDeleteRequest": {
+    "com.azure.datacatalog#DeleteAdcCatalogRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -68,13 +68,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datacatalog#ADCCatalogsUpdate": {
+    "com.azure.datacatalog#UpdateAdcCatalog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datacatalog#ADCCatalogsUpdateRequest"
+        "target": "com.azure.datacatalog#UpdateAdcCatalogRequest"
       },
       "output": {
-        "target": "com.azure.datacatalog#ADCCatalogsUpdateResponse"
+        "target": "com.azure.datacatalog#UpdateAdcCatalogResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -87,7 +87,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-30"
       }
     },
-    "com.azure.datacatalog#ADCCatalogsUpdateResponse": {
+    "com.azure.datacatalog#UpdateAdcCatalogResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -251,7 +251,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.datacatalog#ADCCatalogsUpdateRequest": {
+    "com.azure.datacatalog#UpdateAdcCatalogRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -468,13 +468,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.datacatalog#ADCCatalogsGet": {
+    "com.azure.datacatalog#GetAdcCatalog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datacatalog#ADCCatalogsGetRequest"
+        "target": "com.azure.datacatalog#GetAdcCatalogRequest"
       },
       "output": {
-        "target": "com.azure.datacatalog#ADCCatalogsGetResponse"
+        "target": "com.azure.datacatalog#GetAdcCatalogResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -487,7 +487,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-30"
       }
     },
-    "com.azure.datacatalog#ADCCatalogsGetResponse": {
+    "com.azure.datacatalog#GetAdcCatalogResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -549,7 +549,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.datacatalog#ADCCatalogsGetRequest": {
+    "com.azure.datacatalog#GetAdcCatalogRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -709,7 +709,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datacatalog#ADCOperationsList": {
+    "com.azure.datacatalog#ListAdcOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -808,22 +808,22 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.datacatalog#ADCCatalogsDelete"
+          "target": "com.azure.datacatalog#DeleteAdcCatalog"
         },
         {
-          "target": "com.azure.datacatalog#ADCCatalogsUpdate"
+          "target": "com.azure.datacatalog#UpdateAdcCatalog"
         },
         {
           "target": "com.azure.datacatalog#ADCCatalogsCreateOrUpdate"
         },
         {
-          "target": "com.azure.datacatalog#ADCCatalogsGet"
+          "target": "com.azure.datacatalog#GetAdcCatalog"
         },
         {
           "target": "com.azure.datacatalog#ADCCatalogsListtByResourceGroup"
         },
         {
-          "target": "com.azure.datacatalog#ADCOperationsList"
+          "target": "com.azure.datacatalog#ListAdcOperations"
         }
       ],
       "traits": {

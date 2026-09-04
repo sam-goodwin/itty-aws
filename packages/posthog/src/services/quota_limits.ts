@@ -11,11 +11,11 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface QuotaLimitsListRequest {
+export interface ListQuotaLimitsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const QuotaLimitsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListQuotaLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -26,8 +26,8 @@ export const QuotaLimitsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "QuotaLimitsListRequest",
-}) as any as S.Schema<QuotaLimitsListRequest>;
+  identifier: "ListQuotaLimitsRequest",
+}) as any as S.Schema<ListQuotaLimitsRequest>;
 
 export interface QuotaResourceLimit {
   /** True when the team is currently over its quota for this resource and limits are in effect. A deactivated organization additionally reads as limited on the two credit buckets `ai_credits` and `posthog_code_credits`, regardless of usage. */
@@ -76,23 +76,23 @@ export const QuotaLimitsListResponseBodyList = /*@__PURE__*/ S.Array(
   QuotaLimitsResponse,
 ) as any as S.Schema<QuotaLimitsListResponseBodyList>;
 
-export type QuotaLimitsListResponse = QuotaLimitsListResponseBodyList;
-export const QuotaLimitsListResponse = /*@__PURE__*/ S.suspend(() =>
+export type ListQuotaLimitsResponse = QuotaLimitsListResponseBodyList;
+export const ListQuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   QuotaLimitsListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "QuotaLimitsListResponse",
-}) as any as S.Schema<QuotaLimitsListResponse>;
+  identifier: "ListQuotaLimitsResponse",
+}) as any as S.Schema<ListQuotaLimitsResponse>;
 
-export type QuotaLimitsListError = PosthogOpError;
+export type ListQuotaLimitsError = PosthogOpError;
 /** Get a team's quota-limit state Return the current quota-limit state for the team identified in the URL, keyed by `QuotaResource` value. Used by the LLM gateway to gate billable products on AI credits exhaustion. */
-export const quotaLimitsList: API.OperationMethod<
-  QuotaLimitsListRequest,
-  QuotaLimitsListResponse,
-  QuotaLimitsListError,
+export const listQuotaLimits: API.OperationMethod<
+  ListQuotaLimitsRequest,
+  ListQuotaLimitsResponse,
+  ListQuotaLimitsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QuotaLimitsListRequest,
-  output: QuotaLimitsListResponse,
+  input: ListQuotaLimitsRequest,
+  output: ListQuotaLimitsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

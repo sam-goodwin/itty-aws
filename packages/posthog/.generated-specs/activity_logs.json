@@ -1016,7 +1016,7 @@
       },
       "traits": {}
     },
-    "com.posthog.activity_logs#ActivityLogListRequest": {
+    "com.posthog.activity_logs#ListActivityLogRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1328,10 +1328,10 @@
       },
       "traits": {}
     },
-    "com.posthog.activity_logs#ActivityLogList": {
+    "com.posthog.activity_logs#ListActivityLog": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.activity_logs#ActivityLogListRequest"
+        "target": "com.posthog.activity_logs#ListActivityLogRequest"
       },
       "output": {
         "target": "com.posthog.activity_logs#PaginatedActivityLogList"
@@ -1399,7 +1399,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.activity_logs#ActivityLogList"
+          "target": "com.posthog.activity_logs#ListActivityLog"
         }
       ],
       "traits": {

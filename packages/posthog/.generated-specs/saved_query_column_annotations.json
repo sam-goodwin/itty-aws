@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsListRequest": {
+    "com.posthog.saved_query_column_annotations#ListSavedQueryColumnAnnotationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -185,10 +185,10 @@
       },
       "traits": {}
     },
-    "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsList": {
+    "com.posthog.saved_query_column_annotations#ListSavedQueryColumnAnnotations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsListRequest"
+        "target": "com.posthog.saved_query_column_annotations#ListSavedQueryColumnAnnotationsRequest"
       },
       "output": {
         "target": "com.posthog.saved_query_column_annotations#PaginatedDataWarehouseSavedQueryColumnAnnotationList"
@@ -202,7 +202,7 @@
         "smithy.api#documentation": "Read and edit semantic descriptions of data-modelling views and columns surfaced to the AI agent.\n\nList can be filtered to one view with `?saved_query_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(saved_query, column_name)`; the view cannot be changed after creation."
       }
     },
-    "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsCreateRequest": {
+    "com.posthog.saved_query_column_annotations#CreateSavedQueryColumnAnnotationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -238,10 +238,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsCreate": {
+    "com.posthog.saved_query_column_annotations#CreateSavedQueryColumnAnnotation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsCreateRequest"
+        "target": "com.posthog.saved_query_column_annotations#CreateSavedQueryColumnAnnotationRequest"
       },
       "output": {
         "target": "com.posthog.saved_query_column_annotations#DataWarehouseSavedQueryColumnAnnotation"
@@ -296,7 +296,7 @@
         "smithy.api#documentation": "Read and edit semantic descriptions of data-modelling views and columns surfaced to the AI agent.\n\nList can be filtered to one view with `?saved_query_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(saved_query, column_name)`; the view cannot be changed after creation."
       }
     },
-    "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsUpdateRequest": {
+    "com.posthog.saved_query_column_annotations#UpdateSavedQueryColumnAnnotationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -340,10 +340,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsUpdate": {
+    "com.posthog.saved_query_column_annotations#UpdateSavedQueryColumnAnnotation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsUpdateRequest"
+        "target": "com.posthog.saved_query_column_annotations#UpdateSavedQueryColumnAnnotationRequest"
       },
       "output": {
         "target": "com.posthog.saved_query_column_annotations#DataWarehouseSavedQueryColumnAnnotation"
@@ -357,7 +357,7 @@
         "smithy.api#documentation": "Read and edit semantic descriptions of data-modelling views and columns surfaced to the AI agent.\n\nList can be filtered to one view with `?saved_query_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(saved_query, column_name)`; the view cannot be changed after creation."
       }
     },
-    "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsPartialUpdateRequest": {
+    "com.posthog.saved_query_column_annotations#UpdateSavedQueryColumnAnnotationPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -399,10 +399,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsPartialUpdate": {
+    "com.posthog.saved_query_column_annotations#UpdateSavedQueryColumnAnnotationPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsPartialUpdateRequest"
+        "target": "com.posthog.saved_query_column_annotations#UpdateSavedQueryColumnAnnotationPartialRequest"
       },
       "output": {
         "target": "com.posthog.saved_query_column_annotations#DataWarehouseSavedQueryColumnAnnotation"
@@ -462,19 +462,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsList"
+          "target": "com.posthog.saved_query_column_annotations#ListSavedQueryColumnAnnotations"
         },
         {
-          "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsCreate"
+          "target": "com.posthog.saved_query_column_annotations#CreateSavedQueryColumnAnnotation"
         },
         {
           "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsRetrieve"
         },
         {
-          "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsUpdate"
+          "target": "com.posthog.saved_query_column_annotations#UpdateSavedQueryColumnAnnotation"
         },
         {
-          "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsPartialUpdate"
+          "target": "com.posthog.saved_query_column_annotations#UpdateSavedQueryColumnAnnotationPartial"
         },
         {
           "target": "com.posthog.saved_query_column_annotations#SavedQueryColumnAnnotationsDestroy"

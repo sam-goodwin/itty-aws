@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.liftrweightsandbiases#InstancesDelete": {
+    "com.azure.liftrweightsandbiases#DeleteInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.liftrweightsandbiases#InstancesDeleteRequest"
+        "target": "com.azure.liftrweightsandbiases#DeleteInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-18"
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesDeleteRequest": {
+    "com.azure.liftrweightsandbiases#DeleteInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -68,13 +68,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesUpdate": {
+    "com.azure.liftrweightsandbiases#UpdateInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.liftrweightsandbiases#InstancesUpdateRequest"
+        "target": "com.azure.liftrweightsandbiases#UpdateInstanceRequest"
       },
       "output": {
-        "target": "com.azure.liftrweightsandbiases#InstancesUpdateResponse"
+        "target": "com.azure.liftrweightsandbiases#UpdateInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -87,7 +87,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-18"
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesUpdateResponse": {
+    "com.azure.liftrweightsandbiases#UpdateInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -728,7 +728,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesUpdateRequest": {
+    "com.azure.liftrweightsandbiases#UpdateInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1112,13 +1112,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesGet": {
+    "com.azure.liftrweightsandbiases#GetInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.liftrweightsandbiases#InstancesGetRequest"
+        "target": "com.azure.liftrweightsandbiases#GetInstanceRequest"
       },
       "output": {
-        "target": "com.azure.liftrweightsandbiases#InstancesGetResponse"
+        "target": "com.azure.liftrweightsandbiases#GetInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1131,7 +1131,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-18"
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesGetResponse": {
+    "com.azure.liftrweightsandbiases#GetInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1229,7 +1229,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesGetRequest": {
+    "com.azure.liftrweightsandbiases#GetInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1261,10 +1261,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesListByResourceGroup": {
+    "com.azure.liftrweightsandbiases#ListInstanceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.liftrweightsandbiases#InstancesListByResourceGroupRequest"
+        "target": "com.azure.liftrweightsandbiases#ListInstanceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.liftrweightsandbiases#InstanceResourceListResult"
@@ -1408,7 +1408,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesListByResourceGroupRequest": {
+    "com.azure.liftrweightsandbiases#ListInstanceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1432,10 +1432,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesListBySubscription": {
+    "com.azure.liftrweightsandbiases#ListInstanceBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.liftrweightsandbiases#InstancesListBySubscriptionRequest"
+        "target": "com.azure.liftrweightsandbiases#ListInstanceBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.liftrweightsandbiases#InstanceResourceListResult"
@@ -1451,7 +1451,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-18"
       }
     },
-    "com.azure.liftrweightsandbiases#InstancesListBySubscriptionRequest": {
+    "com.azure.liftrweightsandbiases#ListInstanceBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1467,13 +1467,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.liftrweightsandbiases#OperationsList": {
+    "com.azure.liftrweightsandbiases#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.liftrweightsandbiases#OperationsListResponse"
+        "target": "com.azure.liftrweightsandbiases#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1486,7 +1486,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-18"
       }
     },
-    "com.azure.liftrweightsandbiases#OperationsListResponse": {
+    "com.azure.liftrweightsandbiases#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -1630,25 +1630,25 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.liftrweightsandbiases#InstancesDelete"
+          "target": "com.azure.liftrweightsandbiases#DeleteInstance"
         },
         {
-          "target": "com.azure.liftrweightsandbiases#InstancesUpdate"
+          "target": "com.azure.liftrweightsandbiases#UpdateInstance"
         },
         {
           "target": "com.azure.liftrweightsandbiases#InstancesCreateOrUpdate"
         },
         {
-          "target": "com.azure.liftrweightsandbiases#InstancesGet"
+          "target": "com.azure.liftrweightsandbiases#GetInstance"
         },
         {
-          "target": "com.azure.liftrweightsandbiases#InstancesListByResourceGroup"
+          "target": "com.azure.liftrweightsandbiases#ListInstanceByResourceGroup"
         },
         {
-          "target": "com.azure.liftrweightsandbiases#InstancesListBySubscription"
+          "target": "com.azure.liftrweightsandbiases#ListInstanceBySubscription"
         },
         {
-          "target": "com.azure.liftrweightsandbiases#OperationsList"
+          "target": "com.azure.liftrweightsandbiases#ListOperations"
         }
       ],
       "traits": {

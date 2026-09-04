@@ -3305,558 +3305,6 @@ export const BatchCancelProjectsLocationsPipelineJobsRequest =
     identifier: "BatchCancelProjectsLocationsPipelineJobsRequest",
   }) as any as S.Schema<BatchCancelProjectsLocationsPipelineJobsRequest>;
 
-export type GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum =
-  | "OBJECTIVE_UNSPECIFIED"
-  | "IMPORT_FEATURE_ANALYSIS"
-  | "SNAPSHOT_ANALYSIS";
-export const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum =
-  /*@__PURE__*/ S.String;
-
-/** Stats and Anomaly generated at specific timestamp for specific Feature. The start_time and end_time are used to define the time range of the dataset that current stats belongs to, e.g. prediction traffic is bucketed into prediction datasets by time window. If the Dataset is not defined by time window, start_time = end_time. Timestamp of the stats and anomalies always refers to end_time. Raw stats and anomalies are stored in stats_uri or anomaly_uri in the tensorflow defined protos. Field data_stats contains almost identical information with the raw stats in Vertex AI defined proto, for UI to display. */
-export interface GoogleCloudAiplatformV1FeatureStatsAnomaly {
-  /** Deviation from the current stats to baseline stats. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. */
-  distributionDeviation?: number;
-  /** The start timestamp of window where stats were generated. For objectives where time window doesn't make sense (e.g. Featurestore Snapshot Monitoring), start_time is only used to indicate the monitoring intervals, so it always equals to (end_time - monitoring_interval). */
-  startTime?: string;
-  /** Path of the anomaly file for current feature values in Cloud Storage bucket. Format: gs:////anomalies. Example: gs://monitoring_bucket/feature_name/anomalies. Stats are stored as binary format with Protobuf message Anoamlies are stored as binary format with Protobuf message [tensorflow.metadata.v0.AnomalyInfo] (https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/anomalies.proto). */
-  anomalyUri?: string;
-  /** Path of the stats file for current feature values in Cloud Storage bucket. Format: gs:////stats. Example: gs://monitoring_bucket/feature_name/stats. Stats are stored as binary format with Protobuf message [tensorflow.metadata.v0.FeatureNameStatistics](https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/statistics.proto). */
-  statsUri?: string;
-  /** This is the threshold used when detecting anomalies. The threshold can be changed by user, so this one might be different from ThresholdConfig.value. */
-  anomalyDetectionThreshold?: number;
-  /** The end timestamp of window where stats were generated. For objectives where time window doesn't make sense (e.g. Featurestore Snapshot Monitoring), end_time indicates the timestamp of the data used to generate stats (e.g. timestamp we take snapshots for feature values). */
-  endTime?: string;
-  /** Feature importance score, only populated when cross-feature monitoring is enabled. For now only used to represent feature attribution score within range [0, 1] for ModelDeploymentMonitoringObjectiveType.FEATURE_ATTRIBUTION_SKEW and ModelDeploymentMonitoringObjectiveType.FEATURE_ATTRIBUTION_DRIFT. */
-  score?: number;
-}
-export const GoogleCloudAiplatformV1FeatureStatsAnomaly =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      distributionDeviation: S.optional(S.Number),
-      startTime: S.optional(S.String),
-      anomalyUri: S.optional(S.String),
-      statsUri: S.optional(S.String),
-      anomalyDetectionThreshold: S.optional(S.Number),
-      endTime: S.optional(S.String),
-      score: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1FeatureStatsAnomaly",
-  }) as any as S.Schema<GoogleCloudAiplatformV1FeatureStatsAnomaly>;
-
-/** A list of historical SnapshotAnalysis or ImportFeaturesAnalysis stats requested by user, sorted by FeatureStatsAnomaly.start_time descending. */
-export interface GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly {
-  /** Output only. The objective for each stats. */
-  objective?:
-    | GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum
-    | (string & {});
-  /** Output only. The stats and anomalies generated at specific timestamp. */
-  featureStatsAnomaly?: GoogleCloudAiplatformV1FeatureStatsAnomaly;
-}
-export const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      objective: S.optional(
-        GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum,
-      ),
-      featureStatsAnomaly: S.optional(
-        GoogleCloudAiplatformV1FeatureStatsAnomaly,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly",
-  }) as any as S.Schema<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>;
-
-export type GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList =
-  Array<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>;
-export const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly,
-  ) as any as S.Schema<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList>;
-
-export type GoogleCloudAiplatformV1FeatureValueTypeEnum =
-  | "VALUE_TYPE_UNSPECIFIED"
-  | "BOOL"
-  | "BOOL_ARRAY"
-  | "DOUBLE"
-  | "DOUBLE_ARRAY"
-  | "INT64"
-  | "INT64_ARRAY"
-  | "STRING"
-  | "STRING_ARRAY"
-  | "BYTES"
-  | "STRUCT";
-export const GoogleCloudAiplatformV1FeatureValueTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Feature Metadata information. For example, color is a feature that describes an apple. */
-export interface GoogleCloudAiplatformV1Feature {
-  /** Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens. */
-  etag?: string;
-  /** Optional. Only applicable for Vertex AI Feature Store (Legacy). If not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If set to true, all types of data monitoring are disabled despite the config on EntityType. */
-  disableMonitoring?: boolean;
-  /** Output only. Only applicable for Vertex AI Feature Store (Legacy). The list of historical stats and anomalies with specified objectives. */
-  monitoringStatsAnomalies?: GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList;
-  /** Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was created. */
-  createTime?: string;
-  /** Optional. The labels with user-defined metadata to organize your Features. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Feature (System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable. */
-  labels?: StringMap;
-  /** Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most recently updated. */
-  updateTime?: string;
-  /** Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type. */
-  name?: string;
-  /** Description of the Feature. */
-  description?: string;
-  /** Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value. */
-  valueType?: GoogleCloudAiplatformV1FeatureValueTypeEnum | (string & {});
-  /** Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id. */
-  versionColumnName?: string;
-  /** Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs. */
-  pointOfContact?: string;
-}
-export const GoogleCloudAiplatformV1Feature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-    disableMonitoring: S.optional(S.Boolean),
-    monitoringStatsAnomalies: S.optional(
-      GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList,
-    ),
-    createTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    valueType: S.optional(GoogleCloudAiplatformV1FeatureValueTypeEnum),
-    versionColumnName: S.optional(S.String),
-    pointOfContact: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1Feature",
-}) as any as S.Schema<GoogleCloudAiplatformV1Feature>;
-
-/** Request message for FeaturestoreService.CreateFeature. Request message for FeatureRegistryService.CreateFeature. */
-export interface GoogleCloudAiplatformV1CreateFeatureRequest {
-  /** Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format for entity_type as parent: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` Format for feature_group as parent: `projects/{project}/locations/{location}/featureGroups/{feature_group}` */
-  parent?: string;
-  /** Required. The Feature to create. */
-  feature?: GoogleCloudAiplatformV1Feature;
-  /** Required. The ID to use for the Feature, which will become the final component of the Feature's resource name. This value may be up to 128 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within an EntityType/FeatureGroup. */
-  featureId?: string;
-}
-export const GoogleCloudAiplatformV1CreateFeatureRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String),
-      feature: S.optional(GoogleCloudAiplatformV1Feature),
-      featureId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1CreateFeatureRequest",
-  }) as any as S.Schema<GoogleCloudAiplatformV1CreateFeatureRequest>;
-
-export type GoogleCloudAiplatformV1CreateFeatureRequestList =
-  Array<GoogleCloudAiplatformV1CreateFeatureRequest>;
-export const GoogleCloudAiplatformV1CreateFeatureRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1CreateFeatureRequest,
-  ) as any as S.Schema<GoogleCloudAiplatformV1CreateFeatureRequestList>;
-
-/** Request message for FeaturestoreService.BatchCreateFeatures. Request message for FeatureRegistryService.BatchCreateFeatures. */
-export interface GoogleCloudAiplatformV1BatchCreateFeaturesRequest {
-  /** Required. The request message specifying the Features to create. All Features must be created under the same parent EntityType / FeatureGroup. The `parent` field in each child request message can be omitted. If `parent` is set in a child request, then the value must match the `parent` value in this request message. */
-  requests?: GoogleCloudAiplatformV1CreateFeatureRequestList;
-}
-export const GoogleCloudAiplatformV1BatchCreateFeaturesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(GoogleCloudAiplatformV1CreateFeatureRequestList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1BatchCreateFeaturesRequest",
-  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateFeaturesRequest>;
-
-export interface BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest {
-  /** Required. The resource name of the EntityType/FeatureGroup to create the batch of Features under. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` `projects/{project}/locations/{location}/featureGroups/{feature_group}` */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudAiplatformV1BatchCreateFeaturesRequest;
-}
-export const BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAiplatformV1BatchCreateFeaturesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/features:batchCreate",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest>;
-
-export interface BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest {
-  /** Required. The resource name of the EntityType/FeatureGroup to create the batch of Features under. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` `projects/{project}/locations/{location}/featureGroups/{feature_group}` */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudAiplatformV1BatchCreateFeaturesRequest;
-}
-export const BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAiplatformV1BatchCreateFeaturesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/features:batchCreate",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest>;
-
-export type GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum =
-  | "VALUE_TYPE_UNSPECIFIED"
-  | "SCALAR"
-  | "TENSOR"
-  | "BLOB_SEQUENCE";
-export const GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Describes metadata for a TensorboardTimeSeries. */
-export interface GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata {
-  /** Output only. Max step index of all data points within a TensorboardTimeSeries. */
-  maxStep?: string;
-  /** Output only. Max wall clock timestamp of all data points within a TensorboardTimeSeries. */
-  maxWallTime?: string;
-  /** Output only. The largest blob sequence length (number of blobs) of all data points in this time series, if its ValueType is BLOB_SEQUENCE. */
-  maxBlobSequenceLength?: string;
-}
-export const GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxStep: S.optional(S.String),
-      maxWallTime: S.optional(S.String),
-      maxBlobSequenceLength: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata",
-  }) as any as S.Schema<GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata>;
-
-/** TensorboardTimeSeries maps to times series produced in training runs */
-export interface GoogleCloudAiplatformV1TensorboardTimeSeries {
-  /** Output only. Timestamp when this TensorboardTimeSeries was last updated. */
-  updateTime?: string;
-  /** Output only. Name of the TensorboardTimeSeries. */
-  name?: string;
-  /** Description of this TensorboardTimeSeries. */
-  description?: string;
-  /** Required. Immutable. Type of TensorboardTimeSeries value. */
-  valueType?:
-    | GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum
-    | (string & {});
-  /** Data of the current plugin, with the size limited to 65KB. */
-  pluginData?: string;
-  /** Output only. Scalar, Tensor, or Blob metadata for this TensorboardTimeSeries. */
-  metadata?: GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata;
-  /** Output only. Timestamp when this TensorboardTimeSeries was created. */
-  createTime?: string;
-  /** Required. User provided name of this TensorboardTimeSeries. This value should be unique among all TensorboardTimeSeries resources belonging to the same TensorboardRun resource (parent resource). */
-  displayName?: string;
-  /** Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens. */
-  etag?: string;
-  /** Immutable. Name of the plugin this time series pertain to. Such as Scalar, Tensor, Blob */
-  pluginName?: string;
-}
-export const GoogleCloudAiplatformV1TensorboardTimeSeries =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateTime: S.optional(S.String),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      valueType: S.optional(
-        GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum,
-      ),
-      pluginData: S.optional(S.String),
-      metadata: S.optional(
-        GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata,
-      ),
-      createTime: S.optional(S.String),
-      displayName: S.optional(S.String),
-      etag: S.optional(S.String),
-      pluginName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1TensorboardTimeSeries",
-  }) as any as S.Schema<GoogleCloudAiplatformV1TensorboardTimeSeries>;
-
-/** Request message for TensorboardService.CreateTensorboardTimeSeries. */
-export interface GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest {
-  /** Required. The resource name of the TensorboardRun to create the TensorboardTimeSeries in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` */
-  parent?: string;
-  /** Optional. The user specified unique ID to use for the TensorboardTimeSeries, which becomes the final component of the TensorboardTimeSeries's resource name. This value should match "a-z0-9{0, 127}" */
-  tensorboardTimeSeriesId?: string;
-  /** Required. The TensorboardTimeSeries to create. */
-  tensorboardTimeSeries?: GoogleCloudAiplatformV1TensorboardTimeSeries;
-}
-export const GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String),
-      tensorboardTimeSeriesId: S.optional(S.String),
-      tensorboardTimeSeries: S.optional(
-        GoogleCloudAiplatformV1TensorboardTimeSeries,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest",
-  }) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest>;
-
-export type GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList =
-  Array<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest>;
-export const GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest,
-  ) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList>;
-
-/** Request message for TensorboardService.BatchCreateTensorboardTimeSeries. */
-export interface GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest {
-  /** Required. The request message specifying the TensorboardTimeSeries to create. A maximum of 1000 TensorboardTimeSeries can be created in a batch. */
-  requests?: GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList;
-}
-export const GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(
-        GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest",
-  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest>;
-
-export interface BatchCreateProjectsLocationsTensorboardsExperimentsRequest {
-  /** Required. The resource name of the TensorboardExperiment to create the TensorboardTimeSeries in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` The TensorboardRuns referenced by the parent fields in the CreateTensorboardTimeSeriesRequest messages must be sub resources of this TensorboardExperiment. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest;
-}
-export const BatchCreateProjectsLocationsTensorboardsExperimentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:batchCreate",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchCreateProjectsLocationsTensorboardsExperimentsRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsTensorboardsExperimentsRequest>;
-
-export type GoogleCloudAiplatformV1TensorboardTimeSeriesList =
-  Array<GoogleCloudAiplatformV1TensorboardTimeSeries>;
-export const GoogleCloudAiplatformV1TensorboardTimeSeriesList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1TensorboardTimeSeries,
-  ) as any as S.Schema<GoogleCloudAiplatformV1TensorboardTimeSeriesList>;
-
-/** Response message for TensorboardService.BatchCreateTensorboardTimeSeries. */
-export interface GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse {
-  /** The created TensorboardTimeSeries. */
-  tensorboardTimeSeries?: GoogleCloudAiplatformV1TensorboardTimeSeriesList;
-}
-export const GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tensorboardTimeSeries: S.optional(
-        GoogleCloudAiplatformV1TensorboardTimeSeriesList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse>;
-
-/** TensorboardRun maps to a specific execution of a training job with a given set of hyperparameter values, model definition, dataset, etc */
-export interface GoogleCloudAiplatformV1TensorboardRun {
-  /** Description of this TensorboardRun. */
-  description?: string;
-  /** Output only. Name of the TensorboardRun. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` */
-  name?: string;
-  /** Output only. Timestamp when this TensorboardRun was created. */
-  createTime?: string;
-  /** Output only. Timestamp when this TensorboardRun was last updated. */
-  updateTime?: string;
-  /** Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens. */
-  etag?: string;
-  /** Required. User provided name of this TensorboardRun. This value must be unique among all TensorboardRuns belonging to the same parent TensorboardExperiment. */
-  displayName?: string;
-  /** The labels with user-defined metadata to organize your TensorboardRuns. This field will be used to filter and visualize Runs in the Tensorboard UI. For example, a Vertex AI training job can set a label aiplatform.googleapis.com/training_job_id=xxxxx to all the runs created within that job. An end user can set a label experiment_id=xxxxx for all the runs produced in a Jupyter notebook. These runs can be grouped by a label value and visualized together in the Tensorboard UI. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one TensorboardRun (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable. */
-  labels?: StringMap;
-}
-export const GoogleCloudAiplatformV1TensorboardRun = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      description: S.optional(S.String),
-      name: S.optional(S.String),
-      createTime: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      etag: S.optional(S.String),
-      displayName: S.optional(S.String),
-      labels: S.optional(StringMap),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TensorboardRun",
-}) as any as S.Schema<GoogleCloudAiplatformV1TensorboardRun>;
-
-/** Request message for TensorboardService.CreateTensorboardRun. */
-export interface GoogleCloudAiplatformV1CreateTensorboardRunRequest {
-  /** Required. The resource name of the TensorboardExperiment to create the TensorboardRun in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` */
-  parent?: string;
-  /** Required. The TensorboardRun to create. */
-  tensorboardRun?: GoogleCloudAiplatformV1TensorboardRun;
-  /** Required. The ID to use for the Tensorboard run, which becomes the final component of the Tensorboard run's resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`. */
-  tensorboardRunId?: string;
-}
-export const GoogleCloudAiplatformV1CreateTensorboardRunRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String),
-      tensorboardRun: S.optional(GoogleCloudAiplatformV1TensorboardRun),
-      tensorboardRunId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1CreateTensorboardRunRequest",
-  }) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardRunRequest>;
-
-export type GoogleCloudAiplatformV1CreateTensorboardRunRequestList =
-  Array<GoogleCloudAiplatformV1CreateTensorboardRunRequest>;
-export const GoogleCloudAiplatformV1CreateTensorboardRunRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1CreateTensorboardRunRequest,
-  ) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardRunRequestList>;
-
-/** Request message for TensorboardService.BatchCreateTensorboardRuns. */
-export interface GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest {
-  /** Required. The request message specifying the TensorboardRuns to create. A maximum of 1000 TensorboardRuns can be created in a batch. */
-  requests?: GoogleCloudAiplatformV1CreateTensorboardRunRequestList;
-}
-export const GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(
-        GoogleCloudAiplatformV1CreateTensorboardRunRequestList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest",
-  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest>;
-
-export interface BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest {
-  /** Required. The resource name of the TensorboardExperiment to create the TensorboardRuns in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` The parent field in the CreateTensorboardRunRequest messages must match this field. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest;
-}
-export const BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/runs:batchCreate",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest>;
-
-export type GoogleCloudAiplatformV1TensorboardRunList =
-  Array<GoogleCloudAiplatformV1TensorboardRun>;
-export const GoogleCloudAiplatformV1TensorboardRunList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TensorboardRun,
-) as any as S.Schema<GoogleCloudAiplatformV1TensorboardRunList>;
-
-/** Response message for TensorboardService.BatchCreateTensorboardRuns. */
-export interface GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse {
-  /** The created TensorboardRuns. */
-  tensorboardRuns?: GoogleCloudAiplatformV1TensorboardRunList;
-}
-export const GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tensorboardRuns: S.optional(GoogleCloudAiplatformV1TensorboardRunList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse>;
-
-/** Request message for PipelineService.BatchDeletePipelineJobs. */
-export interface GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest {
-  /** Required. The names of the PipelineJobs to delete. A maximum of 32 PipelineJobs can be deleted in a batch. Format: `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}` */
-  names?: StringList;
-}
-export const GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      names: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest",
-  }) as any as S.Schema<GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest>;
-
-export interface BatchDeleteProjectsLocationsPipelineJobsRequest {
-  /** Required. The name of the PipelineJobs' parent resource. Format: `projects/{project}/locations/{location}` */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest;
-}
-export const BatchDeleteProjectsLocationsPipelineJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/pipelineJobs:batchDelete",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeleteProjectsLocationsPipelineJobsRequest",
-  }) as any as S.Schema<BatchDeleteProjectsLocationsPipelineJobsRequest>;
-
 export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
@@ -9772,6 +9220,517 @@ export const CreateBatchPredictionJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBatchPredictionJobsRequest",
 }) as any as S.Schema<CreateBatchPredictionJobsRequest>;
+
+export type GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum =
+  | "OBJECTIVE_UNSPECIFIED"
+  | "IMPORT_FEATURE_ANALYSIS"
+  | "SNAPSHOT_ANALYSIS";
+export const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum =
+  /*@__PURE__*/ S.String;
+
+/** Stats and Anomaly generated at specific timestamp for specific Feature. The start_time and end_time are used to define the time range of the dataset that current stats belongs to, e.g. prediction traffic is bucketed into prediction datasets by time window. If the Dataset is not defined by time window, start_time = end_time. Timestamp of the stats and anomalies always refers to end_time. Raw stats and anomalies are stored in stats_uri or anomaly_uri in the tensorflow defined protos. Field data_stats contains almost identical information with the raw stats in Vertex AI defined proto, for UI to display. */
+export interface GoogleCloudAiplatformV1FeatureStatsAnomaly {
+  /** Deviation from the current stats to baseline stats. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. */
+  distributionDeviation?: number;
+  /** The start timestamp of window where stats were generated. For objectives where time window doesn't make sense (e.g. Featurestore Snapshot Monitoring), start_time is only used to indicate the monitoring intervals, so it always equals to (end_time - monitoring_interval). */
+  startTime?: string;
+  /** Path of the anomaly file for current feature values in Cloud Storage bucket. Format: gs:////anomalies. Example: gs://monitoring_bucket/feature_name/anomalies. Stats are stored as binary format with Protobuf message Anoamlies are stored as binary format with Protobuf message [tensorflow.metadata.v0.AnomalyInfo] (https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/anomalies.proto). */
+  anomalyUri?: string;
+  /** Path of the stats file for current feature values in Cloud Storage bucket. Format: gs:////stats. Example: gs://monitoring_bucket/feature_name/stats. Stats are stored as binary format with Protobuf message [tensorflow.metadata.v0.FeatureNameStatistics](https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/statistics.proto). */
+  statsUri?: string;
+  /** This is the threshold used when detecting anomalies. The threshold can be changed by user, so this one might be different from ThresholdConfig.value. */
+  anomalyDetectionThreshold?: number;
+  /** The end timestamp of window where stats were generated. For objectives where time window doesn't make sense (e.g. Featurestore Snapshot Monitoring), end_time indicates the timestamp of the data used to generate stats (e.g. timestamp we take snapshots for feature values). */
+  endTime?: string;
+  /** Feature importance score, only populated when cross-feature monitoring is enabled. For now only used to represent feature attribution score within range [0, 1] for ModelDeploymentMonitoringObjectiveType.FEATURE_ATTRIBUTION_SKEW and ModelDeploymentMonitoringObjectiveType.FEATURE_ATTRIBUTION_DRIFT. */
+  score?: number;
+}
+export const GoogleCloudAiplatformV1FeatureStatsAnomaly =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      distributionDeviation: S.optional(S.Number),
+      startTime: S.optional(S.String),
+      anomalyUri: S.optional(S.String),
+      statsUri: S.optional(S.String),
+      anomalyDetectionThreshold: S.optional(S.Number),
+      endTime: S.optional(S.String),
+      score: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1FeatureStatsAnomaly",
+  }) as any as S.Schema<GoogleCloudAiplatformV1FeatureStatsAnomaly>;
+
+/** A list of historical SnapshotAnalysis or ImportFeaturesAnalysis stats requested by user, sorted by FeatureStatsAnomaly.start_time descending. */
+export interface GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly {
+  /** Output only. The objective for each stats. */
+  objective?:
+    | GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum
+    | (string & {});
+  /** Output only. The stats and anomalies generated at specific timestamp. */
+  featureStatsAnomaly?: GoogleCloudAiplatformV1FeatureStatsAnomaly;
+}
+export const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objective: S.optional(
+        GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum,
+      ),
+      featureStatsAnomaly: S.optional(
+        GoogleCloudAiplatformV1FeatureStatsAnomaly,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly",
+  }) as any as S.Schema<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>;
+
+export type GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList =
+  Array<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>;
+export const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly,
+  ) as any as S.Schema<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList>;
+
+export type GoogleCloudAiplatformV1FeatureValueTypeEnum =
+  | "VALUE_TYPE_UNSPECIFIED"
+  | "BOOL"
+  | "BOOL_ARRAY"
+  | "DOUBLE"
+  | "DOUBLE_ARRAY"
+  | "INT64"
+  | "INT64_ARRAY"
+  | "STRING"
+  | "STRING_ARRAY"
+  | "BYTES"
+  | "STRUCT";
+export const GoogleCloudAiplatformV1FeatureValueTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Feature Metadata information. For example, color is a feature that describes an apple. */
+export interface GoogleCloudAiplatformV1Feature {
+  /** Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens. */
+  etag?: string;
+  /** Optional. Only applicable for Vertex AI Feature Store (Legacy). If not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If set to true, all types of data monitoring are disabled despite the config on EntityType. */
+  disableMonitoring?: boolean;
+  /** Output only. Only applicable for Vertex AI Feature Store (Legacy). The list of historical stats and anomalies with specified objectives. */
+  monitoringStatsAnomalies?: GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList;
+  /** Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was created. */
+  createTime?: string;
+  /** Optional. The labels with user-defined metadata to organize your Features. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Feature (System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable. */
+  labels?: StringMap;
+  /** Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most recently updated. */
+  updateTime?: string;
+  /** Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type. */
+  name?: string;
+  /** Description of the Feature. */
+  description?: string;
+  /** Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value. */
+  valueType?: GoogleCloudAiplatformV1FeatureValueTypeEnum | (string & {});
+  /** Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id. */
+  versionColumnName?: string;
+  /** Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs. */
+  pointOfContact?: string;
+}
+export const GoogleCloudAiplatformV1Feature = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    etag: S.optional(S.String),
+    disableMonitoring: S.optional(S.Boolean),
+    monitoringStatsAnomalies: S.optional(
+      GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList,
+    ),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    valueType: S.optional(GoogleCloudAiplatformV1FeatureValueTypeEnum),
+    versionColumnName: S.optional(S.String),
+    pointOfContact: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudAiplatformV1Feature",
+}) as any as S.Schema<GoogleCloudAiplatformV1Feature>;
+
+/** Request message for FeaturestoreService.CreateFeature. Request message for FeatureRegistryService.CreateFeature. */
+export interface GoogleCloudAiplatformV1CreateFeatureRequest {
+  /** Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format for entity_type as parent: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` Format for feature_group as parent: `projects/{project}/locations/{location}/featureGroups/{feature_group}` */
+  parent?: string;
+  /** Required. The Feature to create. */
+  feature?: GoogleCloudAiplatformV1Feature;
+  /** Required. The ID to use for the Feature, which will become the final component of the Feature's resource name. This value may be up to 128 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within an EntityType/FeatureGroup. */
+  featureId?: string;
+}
+export const GoogleCloudAiplatformV1CreateFeatureRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.optional(S.String),
+      feature: S.optional(GoogleCloudAiplatformV1Feature),
+      featureId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1CreateFeatureRequest",
+  }) as any as S.Schema<GoogleCloudAiplatformV1CreateFeatureRequest>;
+
+export type GoogleCloudAiplatformV1CreateFeatureRequestList =
+  Array<GoogleCloudAiplatformV1CreateFeatureRequest>;
+export const GoogleCloudAiplatformV1CreateFeatureRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudAiplatformV1CreateFeatureRequest,
+  ) as any as S.Schema<GoogleCloudAiplatformV1CreateFeatureRequestList>;
+
+/** Request message for FeaturestoreService.BatchCreateFeatures. Request message for FeatureRegistryService.BatchCreateFeatures. */
+export interface GoogleCloudAiplatformV1BatchCreateFeaturesRequest {
+  /** Required. The request message specifying the Features to create. All Features must be created under the same parent EntityType / FeatureGroup. The `parent` field in each child request message can be omitted. If `parent` is set in a child request, then the value must match the `parent` value in this request message. */
+  requests?: GoogleCloudAiplatformV1CreateFeatureRequestList;
+}
+export const GoogleCloudAiplatformV1BatchCreateFeaturesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(GoogleCloudAiplatformV1CreateFeatureRequestList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1BatchCreateFeaturesRequest",
+  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateFeaturesRequest>;
+
+export interface CreateBatchProjectLocationFeatureGroupFeatureRequest {
+  /** Required. The resource name of the EntityType/FeatureGroup to create the batch of Features under. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` `projects/{project}/locations/{location}/featureGroups/{feature_group}` */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudAiplatformV1BatchCreateFeaturesRequest;
+}
+export const CreateBatchProjectLocationFeatureGroupFeatureRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudAiplatformV1BatchCreateFeaturesRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/features:batchCreate",
+        baseUrl: "https://aiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateBatchProjectLocationFeatureGroupFeatureRequest",
+  }) as any as S.Schema<CreateBatchProjectLocationFeatureGroupFeatureRequest>;
+
+export interface CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest {
+  /** Required. The resource name of the EntityType/FeatureGroup to create the batch of Features under. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` `projects/{project}/locations/{location}/featureGroups/{feature_group}` */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudAiplatformV1BatchCreateFeaturesRequest;
+}
+export const CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudAiplatformV1BatchCreateFeaturesRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/features:batchCreate",
+        baseUrl: "https://aiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest",
+  }) as any as S.Schema<CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest>;
+
+export type GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum =
+  | "VALUE_TYPE_UNSPECIFIED"
+  | "SCALAR"
+  | "TENSOR"
+  | "BLOB_SEQUENCE";
+export const GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Describes metadata for a TensorboardTimeSeries. */
+export interface GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata {
+  /** Output only. Max step index of all data points within a TensorboardTimeSeries. */
+  maxStep?: string;
+  /** Output only. Max wall clock timestamp of all data points within a TensorboardTimeSeries. */
+  maxWallTime?: string;
+  /** Output only. The largest blob sequence length (number of blobs) of all data points in this time series, if its ValueType is BLOB_SEQUENCE. */
+  maxBlobSequenceLength?: string;
+}
+export const GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxStep: S.optional(S.String),
+      maxWallTime: S.optional(S.String),
+      maxBlobSequenceLength: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata",
+  }) as any as S.Schema<GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata>;
+
+/** TensorboardTimeSeries maps to times series produced in training runs */
+export interface GoogleCloudAiplatformV1TensorboardTimeSeries {
+  /** Output only. Timestamp when this TensorboardTimeSeries was last updated. */
+  updateTime?: string;
+  /** Output only. Name of the TensorboardTimeSeries. */
+  name?: string;
+  /** Description of this TensorboardTimeSeries. */
+  description?: string;
+  /** Required. Immutable. Type of TensorboardTimeSeries value. */
+  valueType?:
+    | GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum
+    | (string & {});
+  /** Data of the current plugin, with the size limited to 65KB. */
+  pluginData?: string;
+  /** Output only. Scalar, Tensor, or Blob metadata for this TensorboardTimeSeries. */
+  metadata?: GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata;
+  /** Output only. Timestamp when this TensorboardTimeSeries was created. */
+  createTime?: string;
+  /** Required. User provided name of this TensorboardTimeSeries. This value should be unique among all TensorboardTimeSeries resources belonging to the same TensorboardRun resource (parent resource). */
+  displayName?: string;
+  /** Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens. */
+  etag?: string;
+  /** Immutable. Name of the plugin this time series pertain to. Such as Scalar, Tensor, Blob */
+  pluginName?: string;
+}
+export const GoogleCloudAiplatformV1TensorboardTimeSeries =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateTime: S.optional(S.String),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      valueType: S.optional(
+        GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum,
+      ),
+      pluginData: S.optional(S.String),
+      metadata: S.optional(
+        GoogleCloudAiplatformV1TensorboardTimeSeriesMetadata,
+      ),
+      createTime: S.optional(S.String),
+      displayName: S.optional(S.String),
+      etag: S.optional(S.String),
+      pluginName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1TensorboardTimeSeries",
+  }) as any as S.Schema<GoogleCloudAiplatformV1TensorboardTimeSeries>;
+
+/** Request message for TensorboardService.CreateTensorboardTimeSeries. */
+export interface GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest {
+  /** Required. The resource name of the TensorboardRun to create the TensorboardTimeSeries in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` */
+  parent?: string;
+  /** Optional. The user specified unique ID to use for the TensorboardTimeSeries, which becomes the final component of the TensorboardTimeSeries's resource name. This value should match "a-z0-9{0, 127}" */
+  tensorboardTimeSeriesId?: string;
+  /** Required. The TensorboardTimeSeries to create. */
+  tensorboardTimeSeries?: GoogleCloudAiplatformV1TensorboardTimeSeries;
+}
+export const GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.optional(S.String),
+      tensorboardTimeSeriesId: S.optional(S.String),
+      tensorboardTimeSeries: S.optional(
+        GoogleCloudAiplatformV1TensorboardTimeSeries,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest",
+  }) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest>;
+
+export type GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList =
+  Array<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest>;
+export const GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest,
+  ) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList>;
+
+/** Request message for TensorboardService.BatchCreateTensorboardTimeSeries. */
+export interface GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest {
+  /** Required. The request message specifying the TensorboardTimeSeries to create. A maximum of 1000 TensorboardTimeSeries can be created in a batch. */
+  requests?: GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList;
+}
+export const GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest",
+  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest>;
+
+export interface CreateBatchProjectLocationTensorboardExperimentRequest {
+  /** Required. The resource name of the TensorboardExperiment to create the TensorboardTimeSeries in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` The TensorboardRuns referenced by the parent fields in the CreateTensorboardTimeSeriesRequest messages must be sub resources of this TensorboardExperiment. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest;
+}
+export const CreateBatchProjectLocationTensorboardExperimentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:batchCreate",
+        baseUrl: "https://aiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateBatchProjectLocationTensorboardExperimentRequest",
+  }) as any as S.Schema<CreateBatchProjectLocationTensorboardExperimentRequest>;
+
+export type GoogleCloudAiplatformV1TensorboardTimeSeriesList =
+  Array<GoogleCloudAiplatformV1TensorboardTimeSeries>;
+export const GoogleCloudAiplatformV1TensorboardTimeSeriesList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudAiplatformV1TensorboardTimeSeries,
+  ) as any as S.Schema<GoogleCloudAiplatformV1TensorboardTimeSeriesList>;
+
+/** Response message for TensorboardService.BatchCreateTensorboardTimeSeries. */
+export interface GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse {
+  /** The created TensorboardTimeSeries. */
+  tensorboardTimeSeries?: GoogleCloudAiplatformV1TensorboardTimeSeriesList;
+}
+export const GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tensorboardTimeSeries: S.optional(
+        GoogleCloudAiplatformV1TensorboardTimeSeriesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse",
+  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse>;
+
+/** TensorboardRun maps to a specific execution of a training job with a given set of hyperparameter values, model definition, dataset, etc */
+export interface GoogleCloudAiplatformV1TensorboardRun {
+  /** Description of this TensorboardRun. */
+  description?: string;
+  /** Output only. Name of the TensorboardRun. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` */
+  name?: string;
+  /** Output only. Timestamp when this TensorboardRun was created. */
+  createTime?: string;
+  /** Output only. Timestamp when this TensorboardRun was last updated. */
+  updateTime?: string;
+  /** Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens. */
+  etag?: string;
+  /** Required. User provided name of this TensorboardRun. This value must be unique among all TensorboardRuns belonging to the same parent TensorboardExperiment. */
+  displayName?: string;
+  /** The labels with user-defined metadata to organize your TensorboardRuns. This field will be used to filter and visualize Runs in the Tensorboard UI. For example, a Vertex AI training job can set a label aiplatform.googleapis.com/training_job_id=xxxxx to all the runs created within that job. An end user can set a label experiment_id=xxxxx for all the runs produced in a Jupyter notebook. These runs can be grouped by a label value and visualized together in the Tensorboard UI. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one TensorboardRun (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable. */
+  labels?: StringMap;
+}
+export const GoogleCloudAiplatformV1TensorboardRun = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      description: S.optional(S.String),
+      name: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      etag: S.optional(S.String),
+      displayName: S.optional(S.String),
+      labels: S.optional(StringMap),
+    }),
+).annotate({
+  identifier: "GoogleCloudAiplatformV1TensorboardRun",
+}) as any as S.Schema<GoogleCloudAiplatformV1TensorboardRun>;
+
+/** Request message for TensorboardService.CreateTensorboardRun. */
+export interface GoogleCloudAiplatformV1CreateTensorboardRunRequest {
+  /** Required. The resource name of the TensorboardExperiment to create the TensorboardRun in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` */
+  parent?: string;
+  /** Required. The TensorboardRun to create. */
+  tensorboardRun?: GoogleCloudAiplatformV1TensorboardRun;
+  /** Required. The ID to use for the Tensorboard run, which becomes the final component of the Tensorboard run's resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`. */
+  tensorboardRunId?: string;
+}
+export const GoogleCloudAiplatformV1CreateTensorboardRunRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.optional(S.String),
+      tensorboardRun: S.optional(GoogleCloudAiplatformV1TensorboardRun),
+      tensorboardRunId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1CreateTensorboardRunRequest",
+  }) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardRunRequest>;
+
+export type GoogleCloudAiplatformV1CreateTensorboardRunRequestList =
+  Array<GoogleCloudAiplatformV1CreateTensorboardRunRequest>;
+export const GoogleCloudAiplatformV1CreateTensorboardRunRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudAiplatformV1CreateTensorboardRunRequest,
+  ) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardRunRequestList>;
+
+/** Request message for TensorboardService.BatchCreateTensorboardRuns. */
+export interface GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest {
+  /** Required. The request message specifying the TensorboardRuns to create. A maximum of 1000 TensorboardRuns can be created in a batch. */
+  requests?: GoogleCloudAiplatformV1CreateTensorboardRunRequestList;
+}
+export const GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleCloudAiplatformV1CreateTensorboardRunRequestList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest",
+  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest>;
+
+export interface CreateBatchProjectLocationTensorboardExperimentRunRequest {
+  /** Required. The resource name of the TensorboardExperiment to create the TensorboardRuns in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` The parent field in the CreateTensorboardRunRequest messages must match this field. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest;
+}
+export const CreateBatchProjectLocationTensorboardExperimentRunRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/runs:batchCreate",
+        baseUrl: "https://aiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateBatchProjectLocationTensorboardExperimentRunRequest",
+  }) as any as S.Schema<CreateBatchProjectLocationTensorboardExperimentRunRequest>;
+
+export type GoogleCloudAiplatformV1TensorboardRunList =
+  Array<GoogleCloudAiplatformV1TensorboardRun>;
+export const GoogleCloudAiplatformV1TensorboardRunList = /*@__PURE__*/ S.Array(
+  GoogleCloudAiplatformV1TensorboardRun,
+) as any as S.Schema<GoogleCloudAiplatformV1TensorboardRunList>;
+
+/** Response message for TensorboardService.BatchCreateTensorboardRuns. */
+export interface GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse {
+  /** The created TensorboardRuns. */
+  tensorboardRuns?: GoogleCloudAiplatformV1TensorboardRunList;
+}
+export const GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tensorboardRuns: S.optional(GoogleCloudAiplatformV1TensorboardRunList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse",
+  }) as any as S.Schema<GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse>;
 
 /** A SavedQuery is a view of the dataset. It references a subset of annotations by problem type and filters. */
 export interface GoogleCloudAiplatformV1SavedQuery {
@@ -21941,6 +21900,46 @@ export const CreateReasoningEnginesSandboxEnvironmentTemplatesRequest =
     identifier: "CreateReasoningEnginesSandboxEnvironmentTemplatesRequest",
   }) as any as S.Schema<CreateReasoningEnginesSandboxEnvironmentTemplatesRequest>;
 
+/** Request message for PipelineService.BatchDeletePipelineJobs. */
+export interface GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest {
+  /** Required. The names of the PipelineJobs to delete. A maximum of 32 PipelineJobs can be deleted in a batch. Format: `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}` */
+  names?: StringList;
+}
+export const GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      names: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest",
+  }) as any as S.Schema<GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest>;
+
+export interface DeleteBatchProjectLocationPipelineJobRequest {
+  /** Required. The name of the PipelineJobs' parent resource. Format: `projects/{project}/locations/{location}` */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest;
+}
+export const DeleteBatchProjectLocationPipelineJobRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/pipelineJobs:batchDelete",
+        baseUrl: "https://aiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBatchProjectLocationPipelineJobRequest",
+  }) as any as S.Schema<DeleteBatchProjectLocationPipelineJobRequest>;
+
 export interface DeleteCustomJobsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
@@ -32053,6 +32052,102 @@ export const GenerateProjectsLocationsReasoningEnginesMemoriesRequest =
   ).annotate({
     identifier: "GenerateProjectsLocationsReasoningEnginesMemoriesRequest",
   }) as any as S.Schema<GenerateProjectsLocationsReasoningEnginesMemoriesRequest>;
+
+export interface GenerateStreamContentEndpointRequest {
+  /** Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
+  model: string;
+  /** Request body */
+  body?: GoogleCloudAiplatformV1GenerateContentRequest;
+}
+export const GenerateStreamContentEndpointRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      model: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudAiplatformV1GenerateContentRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+model}:streamGenerateContent",
+        baseUrl: "https://aiplatform.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GenerateStreamContentEndpointRequest",
+}) as any as S.Schema<GenerateStreamContentEndpointRequest>;
+
+export interface GenerateStreamContentProjectLocationEndpointRequest {
+  /** Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
+  model: string;
+  /** Request body */
+  body?: GoogleCloudAiplatformV1GenerateContentRequest;
+}
+export const GenerateStreamContentProjectLocationEndpointRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      model: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudAiplatformV1GenerateContentRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+model}:streamGenerateContent",
+        baseUrl: "https://aiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateStreamContentProjectLocationEndpointRequest",
+  }) as any as S.Schema<GenerateStreamContentProjectLocationEndpointRequest>;
+
+export interface GenerateStreamContentProjectLocationPublisherModelRequest {
+  /** Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
+  model: string;
+  /** Request body */
+  body?: GoogleCloudAiplatformV1GenerateContentRequest;
+}
+export const GenerateStreamContentProjectLocationPublisherModelRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      model: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudAiplatformV1GenerateContentRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+model}:streamGenerateContent",
+        baseUrl: "https://aiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateStreamContentProjectLocationPublisherModelRequest",
+  }) as any as S.Schema<GenerateStreamContentProjectLocationPublisherModelRequest>;
+
+export interface GenerateStreamContentPublisherModelRequest {
+  /** Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
+  model: string;
+  /** Request body */
+  body?: GoogleCloudAiplatformV1GenerateContentRequest;
+}
+export const GenerateStreamContentPublisherModelRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      model: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudAiplatformV1GenerateContentRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+model}:streamGenerateContent",
+        baseUrl: "https://aiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateStreamContentPublisherModelRequest",
+  }) as any as S.Schema<GenerateStreamContentPublisherModelRequest>;
 
 export type GoogleCloudAiplatformV1OutputFieldSpecFieldTypeEnum =
   | "FIELD_TYPE_UNSPECIFIED"
@@ -50579,102 +50674,6 @@ export const StopProjectsLocationsStudiesTrialsRequest =
     identifier: "StopProjectsLocationsStudiesTrialsRequest",
   }) as any as S.Schema<StopProjectsLocationsStudiesTrialsRequest>;
 
-export interface StreamGenerateContentEndpointsRequest {
-  /** Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
-  model: string;
-  /** Request body */
-  body?: GoogleCloudAiplatformV1GenerateContentRequest;
-}
-export const StreamGenerateContentEndpointsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      model: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAiplatformV1GenerateContentRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+model}:streamGenerateContent",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "StreamGenerateContentEndpointsRequest",
-}) as any as S.Schema<StreamGenerateContentEndpointsRequest>;
-
-export interface StreamGenerateContentProjectsLocationsEndpointsRequest {
-  /** Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
-  model: string;
-  /** Request body */
-  body?: GoogleCloudAiplatformV1GenerateContentRequest;
-}
-export const StreamGenerateContentProjectsLocationsEndpointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      model: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAiplatformV1GenerateContentRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+model}:streamGenerateContent",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "StreamGenerateContentProjectsLocationsEndpointsRequest",
-  }) as any as S.Schema<StreamGenerateContentProjectsLocationsEndpointsRequest>;
-
-export interface StreamGenerateContentProjectsLocationsPublishersModelsRequest {
-  /** Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
-  model: string;
-  /** Request body */
-  body?: GoogleCloudAiplatformV1GenerateContentRequest;
-}
-export const StreamGenerateContentProjectsLocationsPublishersModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      model: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAiplatformV1GenerateContentRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+model}:streamGenerateContent",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "StreamGenerateContentProjectsLocationsPublishersModelsRequest",
-  }) as any as S.Schema<StreamGenerateContentProjectsLocationsPublishersModelsRequest>;
-
-export interface StreamGenerateContentPublishersModelsRequest {
-  /** Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
-  model: string;
-  /** Request body */
-  body?: GoogleCloudAiplatformV1GenerateContentRequest;
-}
-export const StreamGenerateContentPublishersModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      model: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAiplatformV1GenerateContentRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+model}:streamGenerateContent",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "StreamGenerateContentPublishersModelsRequest",
-  }) as any as S.Schema<StreamGenerateContentPublishersModelsRequest>;
-
 /** Request message for FeaturestoreOnlineServingService.StreamingReadFeatureValues. */
 export interface GoogleCloudAiplatformV1StreamingReadFeatureValuesRequest {
   /** Required. IDs of entities to read Feature values of. The maximum number of IDs is 100. For example, for a machine learning model predicting user clicks on a website, an entity ID could be `user_123`. */
@@ -54693,106 +54692,6 @@ export const batchCancelProjectsLocationsPipelineJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsLocationsFeatureGroupsFeaturesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates a batch of Features in a given FeatureGroup. */
-export const batchCreateProjectsLocationsFeatureGroupsFeatures: API.OperationMethod<
-  BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest,
-  GoogleLongrunningOperation,
-  BatchCreateProjectsLocationsFeatureGroupsFeaturesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates a batch of Features in a given EntityType. */
-export const batchCreateProjectsLocationsFeaturestoresEntityTypesFeatures: API.OperationMethod<
-  BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest,
-  GoogleLongrunningOperation,
-  BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchCreateProjectsLocationsTensorboardsExperimentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Batch create TensorboardTimeSeries that belong to a TensorboardExperiment. */
-export const batchCreateProjectsLocationsTensorboardsExperiments: API.OperationMethod<
-  BatchCreateProjectsLocationsTensorboardsExperimentsRequest,
-  GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse,
-  BatchCreateProjectsLocationsTensorboardsExperimentsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsLocationsTensorboardsExperimentsRequest,
-  output: GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchCreateProjectsLocationsTensorboardsExperimentsRunsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Batch create TensorboardRuns. */
-export const batchCreateProjectsLocationsTensorboardsExperimentsRuns: API.OperationMethod<
-  BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest,
-  GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse,
-  BatchCreateProjectsLocationsTensorboardsExperimentsRunsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest,
-  output: GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchDeleteProjectsLocationsPipelineJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Batch deletes PipelineJobs The Operation is atomic. If it fails, none of the PipelineJobs are deleted. If it succeeds, all of the PipelineJobs are deleted. */
-export const batchDeleteProjectsLocationsPipelineJobs: API.OperationMethod<
-  BatchDeleteProjectsLocationsPipelineJobsRequest,
-  GoogleLongrunningOperation,
-  BatchDeleteProjectsLocationsPipelineJobsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteProjectsLocationsPipelineJobsRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BatchImportProjectsLocationsModelsEvaluationsSlicesError =
   | NotFound
   | Forbidden
@@ -57616,6 +57515,86 @@ export const createBatchPredictionJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateBatchProjectLocationFeatureGroupFeatureError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates a batch of Features in a given FeatureGroup. */
+export const createBatchProjectLocationFeatureGroupFeature: API.OperationMethod<
+  CreateBatchProjectLocationFeatureGroupFeatureRequest,
+  GoogleLongrunningOperation,
+  CreateBatchProjectLocationFeatureGroupFeatureError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchProjectLocationFeatureGroupFeatureRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchProjectLocationFeaturestoreEntityTypeFeatureError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates a batch of Features in a given EntityType. */
+export const createBatchProjectLocationFeaturestoreEntityTypeFeature: API.OperationMethod<
+  CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest,
+  GoogleLongrunningOperation,
+  CreateBatchProjectLocationFeaturestoreEntityTypeFeatureError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchProjectLocationTensorboardExperimentError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Batch create TensorboardTimeSeries that belong to a TensorboardExperiment. */
+export const createBatchProjectLocationTensorboardExperiment: API.OperationMethod<
+  CreateBatchProjectLocationTensorboardExperimentRequest,
+  GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse,
+  CreateBatchProjectLocationTensorboardExperimentError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchProjectLocationTensorboardExperimentRequest,
+  output: GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchProjectLocationTensorboardExperimentRunError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Batch create TensorboardRuns. */
+export const createBatchProjectLocationTensorboardExperimentRun: API.OperationMethod<
+  CreateBatchProjectLocationTensorboardExperimentRunRequest,
+  GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse,
+  CreateBatchProjectLocationTensorboardExperimentRunError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchProjectLocationTensorboardExperimentRunRequest,
+  output: GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CreateDatasetsError =
   | NotFound
   | Forbidden
@@ -58771,6 +58750,26 @@ export const createReasoningEnginesSandboxEnvironmentTemplates: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReasoningEnginesSandboxEnvironmentTemplatesRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchProjectLocationPipelineJobError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Batch deletes PipelineJobs The Operation is atomic. If it fails, none of the PipelineJobs are deleted. If it succeeds, all of the PipelineJobs are deleted. */
+export const deleteBatchProjectLocationPipelineJob: API.OperationMethod<
+  DeleteBatchProjectLocationPipelineJobRequest,
+  GoogleLongrunningOperation,
+  DeleteBatchProjectLocationPipelineJobError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchProjectLocationPipelineJobRequest,
   output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -63183,6 +63182,86 @@ export const generateProjectsLocationsReasoningEnginesMemories: API.OperationMet
 > = /*@__PURE__*/ API.make(() => ({
   input: GenerateProjectsLocationsReasoningEnginesMemoriesRequest,
   output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GenerateStreamContentEndpointError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Generate content with multimodal inputs with streaming support. */
+export const generateStreamContentEndpoint: API.OperationMethod<
+  GenerateStreamContentEndpointRequest,
+  GoogleCloudAiplatformV1GenerateContentResponse,
+  GenerateStreamContentEndpointError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateStreamContentEndpointRequest,
+  output: GoogleCloudAiplatformV1GenerateContentResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GenerateStreamContentProjectLocationEndpointError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Generate content with multimodal inputs with streaming support. */
+export const generateStreamContentProjectLocationEndpoint: API.OperationMethod<
+  GenerateStreamContentProjectLocationEndpointRequest,
+  GoogleCloudAiplatformV1GenerateContentResponse,
+  GenerateStreamContentProjectLocationEndpointError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateStreamContentProjectLocationEndpointRequest,
+  output: GoogleCloudAiplatformV1GenerateContentResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GenerateStreamContentProjectLocationPublisherModelError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Generate content with multimodal inputs with streaming support. */
+export const generateStreamContentProjectLocationPublisherModel: API.OperationMethod<
+  GenerateStreamContentProjectLocationPublisherModelRequest,
+  GoogleCloudAiplatformV1GenerateContentResponse,
+  GenerateStreamContentProjectLocationPublisherModelError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateStreamContentProjectLocationPublisherModelRequest,
+  output: GoogleCloudAiplatformV1GenerateContentResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GenerateStreamContentPublisherModelError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Generate content with multimodal inputs with streaming support. */
+export const generateStreamContentPublisherModel: API.OperationMethod<
+  GenerateStreamContentPublisherModelRequest,
+  GoogleCloudAiplatformV1GenerateContentResponse,
+  GenerateStreamContentPublisherModelError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateStreamContentPublisherModelRequest,
+  output: GoogleCloudAiplatformV1GenerateContentResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -73584,86 +73663,6 @@ export const stopProjectsLocationsStudiesTrials: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StopProjectsLocationsStudiesTrialsRequest,
   output: GoogleCloudAiplatformV1Trial,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type StreamGenerateContentEndpointsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Generate content with multimodal inputs with streaming support. */
-export const streamGenerateContentEndpoints: API.OperationMethod<
-  StreamGenerateContentEndpointsRequest,
-  GoogleCloudAiplatformV1GenerateContentResponse,
-  StreamGenerateContentEndpointsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StreamGenerateContentEndpointsRequest,
-  output: GoogleCloudAiplatformV1GenerateContentResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type StreamGenerateContentProjectsLocationsEndpointsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Generate content with multimodal inputs with streaming support. */
-export const streamGenerateContentProjectsLocationsEndpoints: API.OperationMethod<
-  StreamGenerateContentProjectsLocationsEndpointsRequest,
-  GoogleCloudAiplatformV1GenerateContentResponse,
-  StreamGenerateContentProjectsLocationsEndpointsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StreamGenerateContentProjectsLocationsEndpointsRequest,
-  output: GoogleCloudAiplatformV1GenerateContentResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type StreamGenerateContentProjectsLocationsPublishersModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Generate content with multimodal inputs with streaming support. */
-export const streamGenerateContentProjectsLocationsPublishersModels: API.OperationMethod<
-  StreamGenerateContentProjectsLocationsPublishersModelsRequest,
-  GoogleCloudAiplatformV1GenerateContentResponse,
-  StreamGenerateContentProjectsLocationsPublishersModelsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StreamGenerateContentProjectsLocationsPublishersModelsRequest,
-  output: GoogleCloudAiplatformV1GenerateContentResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type StreamGenerateContentPublishersModelsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Generate content with multimodal inputs with streaming support. */
-export const streamGenerateContentPublishersModels: API.OperationMethod<
-  StreamGenerateContentPublishersModelsRequest,
-  GoogleCloudAiplatformV1GenerateContentResponse,
-  StreamGenerateContentPublishersModelsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StreamGenerateContentPublishersModelsRequest,
-  output: GoogleCloudAiplatformV1GenerateContentResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

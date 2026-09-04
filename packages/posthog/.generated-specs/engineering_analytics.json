@@ -516,7 +516,7 @@
         "smithy.api#documentation": "Return the atomic CI Signals configuration and aggregate GitHub warehouse sync status."
       }
     },
-    "com.posthog.engineering_analytics#EngineeringAnalyticsCiSignalsConfigUpdateRequest": {
+    "com.posthog.engineering_analytics#UpdateEngineeringAnalyticCiSignalConfigRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -539,10 +539,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.engineering_analytics#EngineeringAnalyticsCiSignalsConfigUpdate": {
+    "com.posthog.engineering_analytics#UpdateEngineeringAnalyticCiSignalConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.engineering_analytics#EngineeringAnalyticsCiSignalsConfigUpdateRequest"
+        "target": "com.posthog.engineering_analytics#UpdateEngineeringAnalyticCiSignalConfigRequest"
       },
       "output": {
         "target": "com.posthog.engineering_analytics#CISignalsConfig"
@@ -6379,7 +6379,7 @@
           "target": "com.posthog.engineering_analytics#EngineeringAnalyticsCiSignalsConfigRetrieve"
         },
         {
-          "target": "com.posthog.engineering_analytics#EngineeringAnalyticsCiSignalsConfigUpdate"
+          "target": "com.posthog.engineering_analytics#UpdateEngineeringAnalyticCiSignalConfig"
         },
         {
           "target": "com.posthog.engineering_analytics#EngineeringAnalyticsCiCards"

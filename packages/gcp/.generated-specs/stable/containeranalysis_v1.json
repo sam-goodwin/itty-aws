@@ -9502,7 +9502,7 @@
         "smithy.api#documentation": "Deletes the specified note."
       }
     },
-    "com.gcp.containeranalysis_v1#BatchCreateProjectsNotesRequest": {
+    "com.gcp.containeranalysis_v1#CreateBatchProjectNoteRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -9522,10 +9522,10 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1#BatchCreateProjectsNotes": {
+    "com.gcp.containeranalysis_v1#CreateBatchProjectNote": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.containeranalysis_v1#BatchCreateProjectsNotesRequest"
+        "target": "com.gcp.containeranalysis_v1#CreateBatchProjectNoteRequest"
       },
       "output": {
         "target": "com.gcp.containeranalysis_v1#BatchCreateNotesResponse"
@@ -10153,7 +10153,7 @@
         "smithy.api#documentation": "Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences."
       }
     },
-    "com.gcp.containeranalysis_v1#BatchCreateProjectsLocationsOccurrencesRequest": {
+    "com.gcp.containeranalysis_v1#CreateBatchProjectLocationOccurrenceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -10173,10 +10173,10 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1#BatchCreateProjectsLocationsOccurrences": {
+    "com.gcp.containeranalysis_v1#CreateBatchProjectLocationOccurrence": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.containeranalysis_v1#BatchCreateProjectsLocationsOccurrencesRequest"
+        "target": "com.gcp.containeranalysis_v1#CreateBatchProjectLocationOccurrenceRequest"
       },
       "output": {
         "target": "com.gcp.containeranalysis_v1#BatchCreateOccurrencesResponse"
@@ -10785,7 +10785,7 @@
         "smithy.api#documentation": "Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences."
       }
     },
-    "com.gcp.containeranalysis_v1#BatchCreateProjectsLocationsNotesRequest": {
+    "com.gcp.containeranalysis_v1#CreateBatchProjectLocationNoteRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -10805,10 +10805,10 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1#BatchCreateProjectsLocationsNotes": {
+    "com.gcp.containeranalysis_v1#CreateBatchProjectLocationNote": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.containeranalysis_v1#BatchCreateProjectsLocationsNotesRequest"
+        "target": "com.gcp.containeranalysis_v1#CreateBatchProjectLocationNoteRequest"
       },
       "output": {
         "target": "com.gcp.containeranalysis_v1#BatchCreateNotesResponse"
@@ -11103,7 +11103,7 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1#BatchCreateProjectsOccurrencesRequest": {
+    "com.gcp.containeranalysis_v1#CreateBatchProjectOccurrenceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -11123,10 +11123,10 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1#BatchCreateProjectsOccurrences": {
+    "com.gcp.containeranalysis_v1#CreateBatchProjectOccurrence": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.containeranalysis_v1#BatchCreateProjectsOccurrencesRequest"
+        "target": "com.gcp.containeranalysis_v1#CreateBatchProjectOccurrenceRequest"
       },
       "output": {
         "target": "com.gcp.containeranalysis_v1#BatchCreateOccurrencesResponse"

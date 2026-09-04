@@ -229,7 +229,7 @@ export const ExtensionsCreateRequestPlan = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExtensionsCreateRequestPlan",
 }) as any as S.Schema<ExtensionsCreateRequestPlan>;
 
-export interface ExtensionsCreateRequest {
+export interface CreateExtensionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -249,7 +249,7 @@ export interface ExtensionsCreateRequest {
   /** Plan for the resource. */
   plan?: ExtensionsCreateRequestPlan;
 }
-export const ExtensionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -269,8 +269,8 @@ export const ExtensionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ExtensionsCreateRequest",
-}) as any as S.Schema<ExtensionsCreateRequest>;
+  identifier: "CreateExtensionRequest",
+}) as any as S.Schema<CreateExtensionRequest>;
 
 /** Configuration settings, as name-value pairs for configuring this extension. */
 export type ExtensionsCreateResponsePropertiesConfigurationSettingsMap = {
@@ -619,7 +619,7 @@ export const ExtensionsCreateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 export type ExtensionsCreateResponsePlan = ExtensionsCreateRequestPlan;
 export const ExtensionsCreateResponsePlan = ExtensionsCreateRequestPlan;
 
-export interface ExtensionsCreateResponse {
+export interface CreateExtensionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -635,7 +635,7 @@ export interface ExtensionsCreateResponse {
   /** Plan for the resource. */
   plan?: ExtensionsCreateRequestPlan;
 }
-export const ExtensionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateExtensionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -646,10 +646,10 @@ export const ExtensionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     plan: S.optional(ExtensionsCreateRequestPlan),
   }),
 ).annotate({
-  identifier: "ExtensionsCreateResponse",
-}) as any as S.Schema<ExtensionsCreateResponse>;
+  identifier: "CreateExtensionResponse",
+}) as any as S.Schema<CreateExtensionResponse>;
 
-export interface ExtensionsDeleteRequest {
+export interface DeleteExtensionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -665,7 +665,7 @@ export interface ExtensionsDeleteRequest {
   /** Delete the extension resource in Azure - not the normal asynchronous delete. */
   forceDelete?: boolean;
 }
-export const ExtensionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -683,17 +683,17 @@ export const ExtensionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ExtensionsDeleteRequest",
-}) as any as S.Schema<ExtensionsDeleteRequest>;
+  identifier: "DeleteExtensionRequest",
+}) as any as S.Schema<DeleteExtensionRequest>;
 
-export interface ExtensionsDeleteResponse {}
-export const ExtensionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteExtensionResponse {}
+export const DeleteExtensionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "ExtensionsDeleteResponse",
-}) as any as S.Schema<ExtensionsDeleteResponse>;
+  identifier: "DeleteExtensionResponse",
+}) as any as S.Schema<DeleteExtensionResponse>;
 
-export interface ExtensionsGetRequest {
+export interface DeleteFluxConfigurationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -704,320 +704,80 @@ export interface ExtensionsGetRequest {
   clusterResourceName: string;
   /** The name of the kubernetes cluster. */
   clusterName: string;
-  /** Name of the Extension. */
-  extensionName: string;
+  /** Name of the Flux Configuration. */
+  fluxConfigurationName: string;
+  /** Delete the extension resource in Azure - not the normal asynchronous delete. */
+  forceDelete?: boolean;
 }
-export const ExtensionsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterRp: S.String.pipe(T.Label()),
     clusterResourceName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    extensionName: S.String.pipe(T.Label()),
+    fluxConfigurationName: S.String.pipe(T.Label()),
+    forceDelete: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
       code: 200,
       apiVersion: "2023-05-01",
     }),
   ),
 ).annotate({
-  identifier: "ExtensionsGetRequest",
-}) as any as S.Schema<ExtensionsGetRequest>;
+  identifier: "DeleteFluxConfigurationRequest",
+}) as any as S.Schema<DeleteFluxConfigurationRequest>;
 
-/** Configuration settings, as name-value pairs for configuring this extension. */
-export type ExtensionsGetResponsePropertiesConfigurationSettingsMap = {
-  [key: string]: string | undefined;
-};
-export const ExtensionsGetResponsePropertiesConfigurationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ExtensionsGetResponsePropertiesConfigurationSettingsMap>;
+export interface DeleteFluxConfigurationResponse {}
+export const DeleteFluxConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteFluxConfigurationResponse",
+}) as any as S.Schema<DeleteFluxConfigurationResponse>;
 
-/** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
-export type ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap = {
-  [key: string]: string | undefined;
-};
-export const ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap>;
-
-/** The provisioning state of the resource. */
-export type ExtensionsGetResponsePropertiesProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Creating"
-  | "Updating"
-  | "Deleting";
-export const ExtensionsGetResponsePropertiesProvisioningState =
-  /*@__PURE__*/ S.String;
-
-/** Status from this extension. */
-export type ExtensionsGetResponsePropertiesStatusesList =
-  Array<ExtensionStatus>;
-export const ExtensionsGetResponsePropertiesStatusesList =
-  /*@__PURE__*/ S.Array(
-    ExtensionStatus,
-  ) as any as S.Schema<ExtensionsGetResponsePropertiesStatusesList>;
-
-/** The error details. */
-export type ExtensionsGetResponsePropertiesErrorInfoDetailsList =
-  Array<ErrorDetail>;
-export const ExtensionsGetResponsePropertiesErrorInfoDetailsList =
-  /*@__PURE__*/ S.Array(
-    ErrorDetail,
-  ) as any as S.Schema<ExtensionsGetResponsePropertiesErrorInfoDetailsList>;
-
-/** The error additional info. */
-export type ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
-export const ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList =
-  /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
-  ) as any as S.Schema<ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList>;
-
-/** The error detail. */
-export interface ExtensionsGetResponsePropertiesErrorInfo {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-  /** The error target. */
-  target?: string;
-  /** The error details. */
-  details?: ExtensionsGetResponsePropertiesErrorInfoDetailsList;
-  /** The error additional info. */
-  additionalInfo?: ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList;
+export interface DeleteSourceControlConfigurationRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+  /** Name of the Source Control Configuration. */
+  sourceControlConfigurationName: string;
 }
-export const ExtensionsGetResponsePropertiesErrorInfo = /*@__PURE__*/ S.suspend(
+export const DeleteSourceControlConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-      target: S.optional(S.String),
-      details: S.optional(ExtensionsGetResponsePropertiesErrorInfoDetailsList),
-      additionalInfo: S.optional(
-        ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList,
-      ),
-    }),
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterRp: S.String.pipe(T.Label()),
+      clusterResourceName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      sourceControlConfigurationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
+        code: 200,
+        apiVersion: "2023-05-01",
+      }),
+    ),
 ).annotate({
-  identifier: "ExtensionsGetResponsePropertiesErrorInfo",
-}) as any as S.Schema<ExtensionsGetResponsePropertiesErrorInfo>;
+  identifier: "DeleteSourceControlConfigurationRequest",
+}) as any as S.Schema<DeleteSourceControlConfigurationRequest>;
 
-/** Custom Location settings properties. */
-export type ExtensionsGetResponsePropertiesCustomLocationSettingsMap = {
-  [key: string]: string | undefined;
-};
-export const ExtensionsGetResponsePropertiesCustomLocationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ExtensionsGetResponsePropertiesCustomLocationSettingsMap>;
-
-/** The identity type. */
-export type ExtensionsGetResponsePropertiesAksAssignedIdentityType =
-  | "SystemAssigned"
-  | "UserAssigned";
-export const ExtensionsGetResponsePropertiesAksAssignedIdentityType =
-  /*@__PURE__*/ S.String;
-
-/** Identity of the Extension resource in an AKS cluster */
-export interface ExtensionsGetResponsePropertiesAksAssignedIdentity {
-  /** The principal ID of resource identity. */
-  principalId?: string;
-  /** The tenant ID of resource. */
-  tenantId?: string;
-  /** The identity type. */
-  type?: ExtensionsGetResponsePropertiesAksAssignedIdentityType;
-}
-export const ExtensionsGetResponsePropertiesAksAssignedIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(ExtensionsGetResponsePropertiesAksAssignedIdentityType),
-    }),
-  ).annotate({
-    identifier: "ExtensionsGetResponsePropertiesAksAssignedIdentity",
-  }) as any as S.Schema<ExtensionsGetResponsePropertiesAksAssignedIdentity>;
-
-/** Properties of an Extension resource */
-export interface ExtensionsGetResponseProperties {
-  /** Type of the Extension, of which this resource is an instance of. It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher. */
-  extensionType?: string;
-  /** Flag to note if this extension participates in auto upgrade of minor version, or not. */
-  autoUpgradeMinorVersion?: boolean;
-  /** ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'. */
-  releaseTrain?: string;
-  /** User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'. */
-  version?: string | null;
-  /** Scope at which the extension is installed. */
-  scope?: Scope;
-  /** Configuration settings, as name-value pairs for configuring this extension. */
-  configurationSettings?: ExtensionsGetResponsePropertiesConfigurationSettingsMap | null;
-  /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
-  configurationProtectedSettings?: ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap | null;
-  /** Currently installed version of the extension. */
-  currentVersion?: string | null;
-  /** The provisioning state of the resource. */
-  provisioningState?: ExtensionsGetResponsePropertiesProvisioningState;
-  /** Status from this extension. */
-  statuses?: ExtensionsGetResponsePropertiesStatusesList | null;
-  /** The error detail. */
-  errorInfo?: ExtensionsGetResponsePropertiesErrorInfo;
-  /** Custom Location settings properties. */
-  customLocationSettings?: ExtensionsGetResponsePropertiesCustomLocationSettingsMap | null;
-  /** Uri of the Helm package */
-  packageUri?: string | null;
-  /** Identity of the Extension resource in an AKS cluster */
-  aksAssignedIdentity?: ExtensionsGetResponsePropertiesAksAssignedIdentity | null;
-  /** Flag to note if this extension is a system extension */
-  isSystemExtension?: boolean;
-}
-export const ExtensionsGetResponseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extensionType: S.optional(S.String),
-    autoUpgradeMinorVersion: S.optional(S.Boolean),
-    releaseTrain: S.optional(S.String),
-    version: S.optional(S.NullOr(S.String)),
-    scope: S.optional(Scope),
-    configurationSettings: S.optional(
-      S.NullOr(ExtensionsGetResponsePropertiesConfigurationSettingsMap),
-    ),
-    configurationProtectedSettings: S.optional(
-      S.NullOr(
-        ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap,
-      ),
-    ),
-    currentVersion: S.optional(S.NullOr(S.String)),
-    provisioningState: S.optional(
-      ExtensionsGetResponsePropertiesProvisioningState,
-    ),
-    statuses: S.optional(S.NullOr(ExtensionsGetResponsePropertiesStatusesList)),
-    errorInfo: S.optional(ExtensionsGetResponsePropertiesErrorInfo),
-    customLocationSettings: S.optional(
-      S.NullOr(ExtensionsGetResponsePropertiesCustomLocationSettingsMap),
-    ),
-    packageUri: S.optional(S.NullOr(S.String)),
-    aksAssignedIdentity: S.optional(
-      S.NullOr(ExtensionsGetResponsePropertiesAksAssignedIdentity),
-    ),
-    isSystemExtension: S.optional(S.Boolean),
-  }),
+export interface DeleteSourceControlConfigurationResponse {}
+export const DeleteSourceControlConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
 ).annotate({
-  identifier: "ExtensionsGetResponseProperties",
-}) as any as S.Schema<ExtensionsGetResponseProperties>;
-
-/** The identity type. */
-export type ExtensionsGetResponseIdentityType = "SystemAssigned";
-export const ExtensionsGetResponseIdentityType = /*@__PURE__*/ S.String;
-
-/** Identity for the resource. */
-export interface ExtensionsGetResponseIdentity {
-  /** The principal ID of resource identity. */
-  principalId?: string;
-  /** The tenant ID of resource. */
-  tenantId?: string;
-  /** The identity type. */
-  type?: ExtensionsGetResponseIdentityType;
-}
-export const ExtensionsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(ExtensionsGetResponseIdentityType),
-  }),
-).annotate({
-  identifier: "ExtensionsGetResponseIdentity",
-}) as any as S.Schema<ExtensionsGetResponseIdentity>;
-
-/** The type of identity that created the resource. */
-export type ExtensionsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ExtensionsGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ExtensionsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ExtensionsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ExtensionsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ExtensionsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ExtensionsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ExtensionsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ExtensionsGetResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      ExtensionsGetResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtensionsGetResponseSystemData",
-}) as any as S.Schema<ExtensionsGetResponseSystemData>;
-
-/** Plan for the resource. */
-export type ExtensionsGetResponsePlan = ExtensionsCreateRequestPlan;
-export const ExtensionsGetResponsePlan = ExtensionsCreateRequestPlan;
-
-export interface ExtensionsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties of an Extension resource */
-  properties?: ExtensionsGetResponseProperties;
-  /** Identity for the resource. */
-  identity?: ExtensionsGetResponseIdentity;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ExtensionsGetResponseSystemData;
-  /** Plan for the resource. */
-  plan?: ExtensionsCreateRequestPlan;
-}
-export const ExtensionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ExtensionsGetResponseProperties),
-    identity: S.optional(ExtensionsGetResponseIdentity),
-    systemData: S.optional(ExtensionsGetResponseSystemData),
-    plan: S.optional(ExtensionsCreateRequestPlan),
-  }),
-).annotate({
-  identifier: "ExtensionsGetResponse",
-}) as any as S.Schema<ExtensionsGetResponse>;
+  identifier: "DeleteSourceControlConfigurationResponse",
+}) as any as S.Schema<DeleteSourceControlConfigurationResponse>;
 
 export interface ExtensionsListRequest {
   /** The ID of the target subscription. */
@@ -1344,508 +1104,6 @@ export const ExtensionsList = /*@__PURE__*/ S.suspend(() =>
     nextLink: S.optional(S.String),
   }),
 ).annotate({ identifier: "ExtensionsList" }) as any as S.Schema<ExtensionsList>;
-
-/** Configuration settings, as name-value pairs for configuring this extension. */
-export type ExtensionsUpdateRequestPropertiesConfigurationSettingsMap = {
-  [key: string]: string | undefined;
-};
-export const ExtensionsUpdateRequestPropertiesConfigurationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ExtensionsUpdateRequestPropertiesConfigurationSettingsMap>;
-
-/** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
-export type ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap =
-  { [key: string]: string | undefined };
-export const ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap>;
-
-/** Updatable properties of an Extension Patch Request */
-export interface ExtensionsUpdateRequestProperties {
-  /** Flag to note if this extension participates in auto upgrade of minor version, or not. */
-  autoUpgradeMinorVersion?: boolean;
-  /** ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'. */
-  releaseTrain?: string;
-  /** Version of the extension for this extension, if it is 'pinned' to a specific version. autoUpgradeMinorVersion must be 'false'. */
-  version?: string | null;
-  /** Configuration settings, as name-value pairs for configuring this extension. */
-  configurationSettings?: ExtensionsUpdateRequestPropertiesConfigurationSettingsMap | null;
-  /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
-  configurationProtectedSettings?: ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap | null;
-}
-export const ExtensionsUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoUpgradeMinorVersion: S.optional(S.Boolean),
-    releaseTrain: S.optional(S.String),
-    version: S.optional(S.NullOr(S.String)),
-    configurationSettings: S.optional(
-      S.NullOr(ExtensionsUpdateRequestPropertiesConfigurationSettingsMap),
-    ),
-    configurationProtectedSettings: S.optional(
-      S.NullOr(
-        ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap,
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "ExtensionsUpdateRequestProperties",
-}) as any as S.Schema<ExtensionsUpdateRequestProperties>;
-
-export interface ExtensionsUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-  /** Name of the Extension. */
-  extensionName: string;
-  /** Updatable properties of an Extension Patch Request */
-  properties?: ExtensionsUpdateRequestProperties;
-}
-export const ExtensionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterRp: S.String.pipe(T.Label()),
-    clusterResourceName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    extensionName: S.String.pipe(T.Label()),
-    properties: S.optional(ExtensionsUpdateRequestProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
-      code: 200,
-      apiVersion: "2023-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "ExtensionsUpdateRequest",
-}) as any as S.Schema<ExtensionsUpdateRequest>;
-
-/** Configuration settings, as name-value pairs for configuring this extension. */
-export type ExtensionsUpdateResponsePropertiesConfigurationSettingsMap = {
-  [key: string]: string | undefined;
-};
-export const ExtensionsUpdateResponsePropertiesConfigurationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesConfigurationSettingsMap>;
-
-/** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
-export type ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap =
-  { [key: string]: string | undefined };
-export const ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap>;
-
-/** The provisioning state of the resource. */
-export type ExtensionsUpdateResponsePropertiesProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Creating"
-  | "Updating"
-  | "Deleting";
-export const ExtensionsUpdateResponsePropertiesProvisioningState =
-  /*@__PURE__*/ S.String;
-
-/** Status from this extension. */
-export type ExtensionsUpdateResponsePropertiesStatusesList =
-  Array<ExtensionStatus>;
-export const ExtensionsUpdateResponsePropertiesStatusesList =
-  /*@__PURE__*/ S.Array(
-    ExtensionStatus,
-  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesStatusesList>;
-
-/** The error details. */
-export type ExtensionsUpdateResponsePropertiesErrorInfoDetailsList =
-  Array<ErrorDetail>;
-export const ExtensionsUpdateResponsePropertiesErrorInfoDetailsList =
-  /*@__PURE__*/ S.Array(
-    ErrorDetail,
-  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesErrorInfoDetailsList>;
-
-/** The error additional info. */
-export type ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
-export const ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList =
-  /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
-  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList>;
-
-/** The error detail. */
-export interface ExtensionsUpdateResponsePropertiesErrorInfo {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-  /** The error target. */
-  target?: string;
-  /** The error details. */
-  details?: ExtensionsUpdateResponsePropertiesErrorInfoDetailsList;
-  /** The error additional info. */
-  additionalInfo?: ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList;
-}
-export const ExtensionsUpdateResponsePropertiesErrorInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-      target: S.optional(S.String),
-      details: S.optional(
-        ExtensionsUpdateResponsePropertiesErrorInfoDetailsList,
-      ),
-      additionalInfo: S.optional(
-        ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExtensionsUpdateResponsePropertiesErrorInfo",
-  }) as any as S.Schema<ExtensionsUpdateResponsePropertiesErrorInfo>;
-
-/** Custom Location settings properties. */
-export type ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap = {
-  [key: string]: string | undefined;
-};
-export const ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap>;
-
-/** The identity type. */
-export type ExtensionsUpdateResponsePropertiesAksAssignedIdentityType =
-  | "SystemAssigned"
-  | "UserAssigned";
-export const ExtensionsUpdateResponsePropertiesAksAssignedIdentityType =
-  /*@__PURE__*/ S.String;
-
-/** Identity of the Extension resource in an AKS cluster */
-export interface ExtensionsUpdateResponsePropertiesAksAssignedIdentity {
-  /** The principal ID of resource identity. */
-  principalId?: string;
-  /** The tenant ID of resource. */
-  tenantId?: string;
-  /** The identity type. */
-  type?: ExtensionsUpdateResponsePropertiesAksAssignedIdentityType;
-}
-export const ExtensionsUpdateResponsePropertiesAksAssignedIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(
-        ExtensionsUpdateResponsePropertiesAksAssignedIdentityType,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExtensionsUpdateResponsePropertiesAksAssignedIdentity",
-  }) as any as S.Schema<ExtensionsUpdateResponsePropertiesAksAssignedIdentity>;
-
-/** Properties of an Extension resource */
-export interface ExtensionsUpdateResponseProperties {
-  /** Type of the Extension, of which this resource is an instance of. It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher. */
-  extensionType?: string;
-  /** Flag to note if this extension participates in auto upgrade of minor version, or not. */
-  autoUpgradeMinorVersion?: boolean;
-  /** ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'. */
-  releaseTrain?: string;
-  /** User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'. */
-  version?: string | null;
-  /** Scope at which the extension is installed. */
-  scope?: Scope;
-  /** Configuration settings, as name-value pairs for configuring this extension. */
-  configurationSettings?: ExtensionsUpdateResponsePropertiesConfigurationSettingsMap | null;
-  /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
-  configurationProtectedSettings?: ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap | null;
-  /** Currently installed version of the extension. */
-  currentVersion?: string | null;
-  /** The provisioning state of the resource. */
-  provisioningState?: ExtensionsUpdateResponsePropertiesProvisioningState;
-  /** Status from this extension. */
-  statuses?: ExtensionsUpdateResponsePropertiesStatusesList | null;
-  /** The error detail. */
-  errorInfo?: ExtensionsUpdateResponsePropertiesErrorInfo;
-  /** Custom Location settings properties. */
-  customLocationSettings?: ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap | null;
-  /** Uri of the Helm package */
-  packageUri?: string | null;
-  /** Identity of the Extension resource in an AKS cluster */
-  aksAssignedIdentity?: ExtensionsUpdateResponsePropertiesAksAssignedIdentity | null;
-  /** Flag to note if this extension is a system extension */
-  isSystemExtension?: boolean;
-}
-export const ExtensionsUpdateResponseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extensionType: S.optional(S.String),
-    autoUpgradeMinorVersion: S.optional(S.Boolean),
-    releaseTrain: S.optional(S.String),
-    version: S.optional(S.NullOr(S.String)),
-    scope: S.optional(Scope),
-    configurationSettings: S.optional(
-      S.NullOr(ExtensionsUpdateResponsePropertiesConfigurationSettingsMap),
-    ),
-    configurationProtectedSettings: S.optional(
-      S.NullOr(
-        ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap,
-      ),
-    ),
-    currentVersion: S.optional(S.NullOr(S.String)),
-    provisioningState: S.optional(
-      ExtensionsUpdateResponsePropertiesProvisioningState,
-    ),
-    statuses: S.optional(
-      S.NullOr(ExtensionsUpdateResponsePropertiesStatusesList),
-    ),
-    errorInfo: S.optional(ExtensionsUpdateResponsePropertiesErrorInfo),
-    customLocationSettings: S.optional(
-      S.NullOr(ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap),
-    ),
-    packageUri: S.optional(S.NullOr(S.String)),
-    aksAssignedIdentity: S.optional(
-      S.NullOr(ExtensionsUpdateResponsePropertiesAksAssignedIdentity),
-    ),
-    isSystemExtension: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ExtensionsUpdateResponseProperties",
-}) as any as S.Schema<ExtensionsUpdateResponseProperties>;
-
-/** The identity type. */
-export type ExtensionsUpdateResponseIdentityType = "SystemAssigned";
-export const ExtensionsUpdateResponseIdentityType = /*@__PURE__*/ S.String;
-
-/** Identity for the resource. */
-export interface ExtensionsUpdateResponseIdentity {
-  /** The principal ID of resource identity. */
-  principalId?: string;
-  /** The tenant ID of resource. */
-  tenantId?: string;
-  /** The identity type. */
-  type?: ExtensionsUpdateResponseIdentityType;
-}
-export const ExtensionsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(ExtensionsUpdateResponseIdentityType),
-  }),
-).annotate({
-  identifier: "ExtensionsUpdateResponseIdentity",
-}) as any as S.Schema<ExtensionsUpdateResponseIdentity>;
-
-/** The type of identity that created the resource. */
-export type ExtensionsUpdateResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ExtensionsUpdateResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ExtensionsUpdateResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ExtensionsUpdateResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ExtensionsUpdateResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ExtensionsUpdateResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ExtensionsUpdateResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ExtensionsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ExtensionsUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      ExtensionsUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtensionsUpdateResponseSystemData",
-}) as any as S.Schema<ExtensionsUpdateResponseSystemData>;
-
-/** Plan for the resource. */
-export type ExtensionsUpdateResponsePlan = ExtensionsCreateRequestPlan;
-export const ExtensionsUpdateResponsePlan = ExtensionsCreateRequestPlan;
-
-export interface ExtensionsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties of an Extension resource */
-  properties?: ExtensionsUpdateResponseProperties;
-  /** Identity for the resource. */
-  identity?: ExtensionsUpdateResponseIdentity;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ExtensionsUpdateResponseSystemData;
-  /** Plan for the resource. */
-  plan?: ExtensionsCreateRequestPlan;
-}
-export const ExtensionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ExtensionsUpdateResponseProperties),
-    identity: S.optional(ExtensionsUpdateResponseIdentity),
-    systemData: S.optional(ExtensionsUpdateResponseSystemData),
-    plan: S.optional(ExtensionsCreateRequestPlan),
-  }),
-).annotate({
-  identifier: "ExtensionsUpdateResponse",
-}) as any as S.Schema<ExtensionsUpdateResponse>;
-
-export interface FluxConfigOperationStatusGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-  /** Name of the Flux Configuration. */
-  fluxConfigurationName: string;
-  /** operation Id */
-  operationId: string;
-}
-export const FluxConfigOperationStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterRp: S.String.pipe(T.Label()),
-    clusterResourceName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    fluxConfigurationName: S.String.pipe(T.Label()),
-    operationId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}/operations/{operationId}",
-      code: 200,
-      apiVersion: "2023-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "FluxConfigOperationStatusGetRequest",
-}) as any as S.Schema<FluxConfigOperationStatusGetRequest>;
-
-/** Additional information, if available. */
-export type FluxConfigOperationStatusGetResponsePropertiesMap = {
-  [key: string]: string | undefined;
-};
-export const FluxConfigOperationStatusGetResponsePropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<FluxConfigOperationStatusGetResponsePropertiesMap>;
-
-/** The error details. */
-export type FluxConfigOperationStatusGetResponseErrorDetailsList =
-  Array<ErrorDetail>;
-export const FluxConfigOperationStatusGetResponseErrorDetailsList =
-  /*@__PURE__*/ S.Array(
-    ErrorDetail,
-  ) as any as S.Schema<FluxConfigOperationStatusGetResponseErrorDetailsList>;
-
-/** The error additional info. */
-export type FluxConfigOperationStatusGetResponseErrorAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
-export const FluxConfigOperationStatusGetResponseErrorAdditionalInfoList =
-  /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
-  ) as any as S.Schema<FluxConfigOperationStatusGetResponseErrorAdditionalInfoList>;
-
-/** The error detail. */
-export interface FluxConfigOperationStatusGetResponseError {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-  /** The error target. */
-  target?: string;
-  /** The error details. */
-  details?: FluxConfigOperationStatusGetResponseErrorDetailsList;
-  /** The error additional info. */
-  additionalInfo?: FluxConfigOperationStatusGetResponseErrorAdditionalInfoList;
-}
-export const FluxConfigOperationStatusGetResponseError =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-      target: S.optional(S.String),
-      details: S.optional(FluxConfigOperationStatusGetResponseErrorDetailsList),
-      additionalInfo: S.optional(
-        FluxConfigOperationStatusGetResponseErrorAdditionalInfoList,
-      ),
-    }),
-  ).annotate({
-    identifier: "FluxConfigOperationStatusGetResponseError",
-  }) as any as S.Schema<FluxConfigOperationStatusGetResponseError>;
-
-export interface FluxConfigOperationStatusGetResponse {
-  /** Fully qualified ID for the async operation. */
-  id?: string;
-  /** Name of the async operation. */
-  name?: string;
-  /** Operation status. */
-  status: string;
-  /** Additional information, if available. */
-  properties?: FluxConfigOperationStatusGetResponsePropertiesMap | null;
-  /** The error detail. */
-  error?: FluxConfigOperationStatusGetResponseError;
-}
-export const FluxConfigOperationStatusGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      status: S.String,
-      properties: S.optional(
-        S.NullOr(FluxConfigOperationStatusGetResponsePropertiesMap),
-      ),
-      error: S.optional(FluxConfigOperationStatusGetResponseError),
-    }),
-).annotate({
-  identifier: "FluxConfigOperationStatusGetResponse",
-}) as any as S.Schema<FluxConfigOperationStatusGetResponse>;
 
 /** Scope at which the configuration will be installed. */
 export type ScopeDefinition = "cluster" | "namespace";
@@ -2586,275 +1844,6 @@ export const FluxConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "FluxConfigurationsCreateOrUpdateResponse",
 }) as any as S.Schema<FluxConfigurationsCreateOrUpdateResponse>;
 
-export interface FluxConfigurationsDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-  /** Name of the Flux Configuration. */
-  fluxConfigurationName: string;
-  /** Delete the extension resource in Azure - not the normal asynchronous delete. */
-  forceDelete?: boolean;
-}
-export const FluxConfigurationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterRp: S.String.pipe(T.Label()),
-    clusterResourceName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    fluxConfigurationName: S.String.pipe(T.Label()),
-    forceDelete: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
-      code: 200,
-      apiVersion: "2023-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "FluxConfigurationsDeleteRequest",
-}) as any as S.Schema<FluxConfigurationsDeleteRequest>;
-
-export interface FluxConfigurationsDeleteResponse {}
-export const FluxConfigurationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FluxConfigurationsDeleteResponse",
-}) as any as S.Schema<FluxConfigurationsDeleteResponse>;
-
-export interface FluxConfigurationsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-  /** Name of the Flux Configuration. */
-  fluxConfigurationName: string;
-}
-export const FluxConfigurationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterRp: S.String.pipe(T.Label()),
-    clusterResourceName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    fluxConfigurationName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
-      code: 200,
-      apiVersion: "2023-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "FluxConfigurationsGetRequest",
-}) as any as S.Schema<FluxConfigurationsGetRequest>;
-
-/** Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster. */
-export type FluxConfigurationsGetResponsePropertiesKustomizationsMap = {
-  [key: string]: KustomizationDefinition | undefined;
-};
-export const FluxConfigurationsGetResponsePropertiesKustomizationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    KustomizationDefinition,
-  ) as any as S.Schema<FluxConfigurationsGetResponsePropertiesKustomizationsMap>;
-
-/** Key-value pairs of protected configuration settings for the configuration */
-export type FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap =
-  { [key: string]: string | undefined };
-export const FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap>;
-
-/** Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration. */
-export type FluxConfigurationsGetResponsePropertiesStatusesList =
-  Array<ObjectStatusDefinition>;
-export const FluxConfigurationsGetResponsePropertiesStatusesList =
-  /*@__PURE__*/ S.Array(
-    ObjectStatusDefinition,
-  ) as any as S.Schema<FluxConfigurationsGetResponsePropertiesStatusesList>;
-
-/** The provisioning state of the resource. */
-export type FluxConfigurationsGetResponsePropertiesProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Creating"
-  | "Updating"
-  | "Deleting";
-export const FluxConfigurationsGetResponsePropertiesProvisioningState =
-  /*@__PURE__*/ S.String;
-
-/** Properties to create a Flux Configuration resource */
-export interface FluxConfigurationsGetResponseProperties {
-  /** Scope at which the operator will be installed. */
-  scope?: ScopeDefinition;
-  /** The namespace to which this configuration is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
-  namespace?: string;
-  /** Source Kind to pull the configuration data from. */
-  sourceKind?: SourceKindDefinition;
-  /** Whether this configuration should suspend its reconciliation of its kustomizations and sources. */
-  suspend?: boolean;
-  /** Parameters to reconcile to the GitRepository source kind type. */
-  gitRepository?: GitRepositoryDefinition | null;
-  /** Parameters to reconcile to the Bucket source kind type. */
-  bucket?: BucketDefinition | null;
-  /** Parameters to reconcile to the AzureBlob source kind type. */
-  azureBlob?: AzureBlobDefinition | null;
-  /** Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster. */
-  kustomizations?: FluxConfigurationsGetResponsePropertiesKustomizationsMap | null;
-  /** Key-value pairs of protected configuration settings for the configuration */
-  configurationProtectedSettings?: FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap | null;
-  /** Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration. */
-  statuses?: FluxConfigurationsGetResponsePropertiesStatusesList | null;
-  /** Public Key associated with this fluxConfiguration (either generated within the cluster or provided by the user). */
-  repositoryPublicKey?: string | null;
-  /** Branch and/or SHA of the source commit synced with the cluster. */
-  sourceSyncedCommitId?: string | null;
-  /** Datetime the fluxConfiguration synced its source on the cluster. */
-  sourceUpdatedAt?: string | null;
-  /** Datetime the fluxConfiguration synced its status on the cluster with Azure. */
-  statusUpdatedAt?: string | null;
-  /** Whether flux configuration deployment should wait for cluster to reconcile the kustomizations. */
-  waitForReconciliation?: boolean | null;
-  /** Maximum duration to wait for flux configuration reconciliation. E.g PT1H, PT5M, P1D */
-  reconciliationWaitDuration?: string | null;
-  /** Combined status of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects. */
-  complianceState?: FluxComplianceStateDefinition;
-  /** The provisioning state of the resource. */
-  provisioningState?: FluxConfigurationsGetResponsePropertiesProvisioningState;
-  /** Error message returned to the user in the case of provisioning failure. */
-  errorMessage?: string | null;
-}
-export const FluxConfigurationsGetResponseProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scope: S.optional(ScopeDefinition),
-      namespace: S.optional(S.String),
-      sourceKind: S.optional(SourceKindDefinition),
-      suspend: S.optional(S.Boolean),
-      gitRepository: S.optional(S.NullOr(GitRepositoryDefinition)),
-      bucket: S.optional(S.NullOr(BucketDefinition)),
-      azureBlob: S.optional(S.NullOr(AzureBlobDefinition)),
-      kustomizations: S.optional(
-        S.NullOr(FluxConfigurationsGetResponsePropertiesKustomizationsMap),
-      ),
-      configurationProtectedSettings: S.optional(
-        S.NullOr(
-          FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap,
-        ),
-      ),
-      statuses: S.optional(
-        S.NullOr(FluxConfigurationsGetResponsePropertiesStatusesList),
-      ),
-      repositoryPublicKey: S.optional(S.NullOr(S.String)),
-      sourceSyncedCommitId: S.optional(S.NullOr(S.String)),
-      sourceUpdatedAt: S.optional(S.NullOr(S.String)),
-      statusUpdatedAt: S.optional(S.NullOr(S.String)),
-      waitForReconciliation: S.optional(S.NullOr(S.Boolean)),
-      reconciliationWaitDuration: S.optional(S.NullOr(S.String)),
-      complianceState: S.optional(FluxComplianceStateDefinition),
-      provisioningState: S.optional(
-        FluxConfigurationsGetResponsePropertiesProvisioningState,
-      ),
-      errorMessage: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "FluxConfigurationsGetResponseProperties",
-}) as any as S.Schema<FluxConfigurationsGetResponseProperties>;
-
-/** The type of identity that created the resource. */
-export type FluxConfigurationsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const FluxConfigurationsGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type FluxConfigurationsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const FluxConfigurationsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface FluxConfigurationsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: FluxConfigurationsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: FluxConfigurationsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const FluxConfigurationsGetResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        FluxConfigurationsGetResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        FluxConfigurationsGetResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "FluxConfigurationsGetResponseSystemData",
-}) as any as S.Schema<FluxConfigurationsGetResponseSystemData>;
-
-export interface FluxConfigurationsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties to create a Flux Configuration resource */
-  properties?: FluxConfigurationsGetResponseProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: FluxConfigurationsGetResponseSystemData;
-}
-export const FluxConfigurationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(FluxConfigurationsGetResponseProperties),
-    systemData: S.optional(FluxConfigurationsGetResponseSystemData),
-  }),
-).annotate({
-  identifier: "FluxConfigurationsGetResponse",
-}) as any as S.Schema<FluxConfigurationsGetResponse>;
-
 export interface FluxConfigurationsListRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3089,6 +2078,2092 @@ export const FluxConfigurationsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "FluxConfigurationsList",
 }) as any as S.Schema<FluxConfigurationsList>;
 
+export interface GetExtensionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+  /** Name of the Extension. */
+  extensionName: string;
+}
+export const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterRp: S.String.pipe(T.Label()),
+    clusterResourceName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    extensionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
+      code: 200,
+      apiVersion: "2023-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetExtensionRequest",
+}) as any as S.Schema<GetExtensionRequest>;
+
+/** Configuration settings, as name-value pairs for configuring this extension. */
+export type ExtensionsGetResponsePropertiesConfigurationSettingsMap = {
+  [key: string]: string | undefined;
+};
+export const ExtensionsGetResponsePropertiesConfigurationSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ExtensionsGetResponsePropertiesConfigurationSettingsMap>;
+
+/** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
+export type ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap = {
+  [key: string]: string | undefined;
+};
+export const ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap>;
+
+/** The provisioning state of the resource. */
+export type ExtensionsGetResponsePropertiesProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Creating"
+  | "Updating"
+  | "Deleting";
+export const ExtensionsGetResponsePropertiesProvisioningState =
+  /*@__PURE__*/ S.String;
+
+/** Status from this extension. */
+export type ExtensionsGetResponsePropertiesStatusesList =
+  Array<ExtensionStatus>;
+export const ExtensionsGetResponsePropertiesStatusesList =
+  /*@__PURE__*/ S.Array(
+    ExtensionStatus,
+  ) as any as S.Schema<ExtensionsGetResponsePropertiesStatusesList>;
+
+/** The error details. */
+export type ExtensionsGetResponsePropertiesErrorInfoDetailsList =
+  Array<ErrorDetail>;
+export const ExtensionsGetResponsePropertiesErrorInfoDetailsList =
+  /*@__PURE__*/ S.Array(
+    ErrorDetail,
+  ) as any as S.Schema<ExtensionsGetResponsePropertiesErrorInfoDetailsList>;
+
+/** The error additional info. */
+export type ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList =
+  Array<ErrorAdditionalInfo>;
+export const ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList =
+  /*@__PURE__*/ S.Array(
+    ErrorAdditionalInfo,
+  ) as any as S.Schema<ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList>;
+
+/** The error detail. */
+export interface ExtensionsGetResponsePropertiesErrorInfo {
+  /** The error code. */
+  code?: string;
+  /** The error message. */
+  message?: string;
+  /** The error target. */
+  target?: string;
+  /** The error details. */
+  details?: ExtensionsGetResponsePropertiesErrorInfoDetailsList;
+  /** The error additional info. */
+  additionalInfo?: ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList;
+}
+export const ExtensionsGetResponsePropertiesErrorInfo = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+      target: S.optional(S.String),
+      details: S.optional(ExtensionsGetResponsePropertiesErrorInfoDetailsList),
+      additionalInfo: S.optional(
+        ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList,
+      ),
+    }),
+).annotate({
+  identifier: "ExtensionsGetResponsePropertiesErrorInfo",
+}) as any as S.Schema<ExtensionsGetResponsePropertiesErrorInfo>;
+
+/** Custom Location settings properties. */
+export type ExtensionsGetResponsePropertiesCustomLocationSettingsMap = {
+  [key: string]: string | undefined;
+};
+export const ExtensionsGetResponsePropertiesCustomLocationSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ExtensionsGetResponsePropertiesCustomLocationSettingsMap>;
+
+/** The identity type. */
+export type ExtensionsGetResponsePropertiesAksAssignedIdentityType =
+  | "SystemAssigned"
+  | "UserAssigned";
+export const ExtensionsGetResponsePropertiesAksAssignedIdentityType =
+  /*@__PURE__*/ S.String;
+
+/** Identity of the Extension resource in an AKS cluster */
+export interface ExtensionsGetResponsePropertiesAksAssignedIdentity {
+  /** The principal ID of resource identity. */
+  principalId?: string;
+  /** The tenant ID of resource. */
+  tenantId?: string;
+  /** The identity type. */
+  type?: ExtensionsGetResponsePropertiesAksAssignedIdentityType;
+}
+export const ExtensionsGetResponsePropertiesAksAssignedIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      principalId: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      type: S.optional(ExtensionsGetResponsePropertiesAksAssignedIdentityType),
+    }),
+  ).annotate({
+    identifier: "ExtensionsGetResponsePropertiesAksAssignedIdentity",
+  }) as any as S.Schema<ExtensionsGetResponsePropertiesAksAssignedIdentity>;
+
+/** Properties of an Extension resource */
+export interface ExtensionsGetResponseProperties {
+  /** Type of the Extension, of which this resource is an instance of. It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher. */
+  extensionType?: string;
+  /** Flag to note if this extension participates in auto upgrade of minor version, or not. */
+  autoUpgradeMinorVersion?: boolean;
+  /** ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'. */
+  releaseTrain?: string;
+  /** User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'. */
+  version?: string | null;
+  /** Scope at which the extension is installed. */
+  scope?: Scope;
+  /** Configuration settings, as name-value pairs for configuring this extension. */
+  configurationSettings?: ExtensionsGetResponsePropertiesConfigurationSettingsMap | null;
+  /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
+  configurationProtectedSettings?: ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap | null;
+  /** Currently installed version of the extension. */
+  currentVersion?: string | null;
+  /** The provisioning state of the resource. */
+  provisioningState?: ExtensionsGetResponsePropertiesProvisioningState;
+  /** Status from this extension. */
+  statuses?: ExtensionsGetResponsePropertiesStatusesList | null;
+  /** The error detail. */
+  errorInfo?: ExtensionsGetResponsePropertiesErrorInfo;
+  /** Custom Location settings properties. */
+  customLocationSettings?: ExtensionsGetResponsePropertiesCustomLocationSettingsMap | null;
+  /** Uri of the Helm package */
+  packageUri?: string | null;
+  /** Identity of the Extension resource in an AKS cluster */
+  aksAssignedIdentity?: ExtensionsGetResponsePropertiesAksAssignedIdentity | null;
+  /** Flag to note if this extension is a system extension */
+  isSystemExtension?: boolean;
+}
+export const ExtensionsGetResponseProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    extensionType: S.optional(S.String),
+    autoUpgradeMinorVersion: S.optional(S.Boolean),
+    releaseTrain: S.optional(S.String),
+    version: S.optional(S.NullOr(S.String)),
+    scope: S.optional(Scope),
+    configurationSettings: S.optional(
+      S.NullOr(ExtensionsGetResponsePropertiesConfigurationSettingsMap),
+    ),
+    configurationProtectedSettings: S.optional(
+      S.NullOr(
+        ExtensionsGetResponsePropertiesConfigurationProtectedSettingsMap,
+      ),
+    ),
+    currentVersion: S.optional(S.NullOr(S.String)),
+    provisioningState: S.optional(
+      ExtensionsGetResponsePropertiesProvisioningState,
+    ),
+    statuses: S.optional(S.NullOr(ExtensionsGetResponsePropertiesStatusesList)),
+    errorInfo: S.optional(ExtensionsGetResponsePropertiesErrorInfo),
+    customLocationSettings: S.optional(
+      S.NullOr(ExtensionsGetResponsePropertiesCustomLocationSettingsMap),
+    ),
+    packageUri: S.optional(S.NullOr(S.String)),
+    aksAssignedIdentity: S.optional(
+      S.NullOr(ExtensionsGetResponsePropertiesAksAssignedIdentity),
+    ),
+    isSystemExtension: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ExtensionsGetResponseProperties",
+}) as any as S.Schema<ExtensionsGetResponseProperties>;
+
+/** The identity type. */
+export type ExtensionsGetResponseIdentityType = "SystemAssigned";
+export const ExtensionsGetResponseIdentityType = /*@__PURE__*/ S.String;
+
+/** Identity for the resource. */
+export interface ExtensionsGetResponseIdentity {
+  /** The principal ID of resource identity. */
+  principalId?: string;
+  /** The tenant ID of resource. */
+  tenantId?: string;
+  /** The identity type. */
+  type?: ExtensionsGetResponseIdentityType;
+}
+export const ExtensionsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: S.optional(ExtensionsGetResponseIdentityType),
+  }),
+).annotate({
+  identifier: "ExtensionsGetResponseIdentity",
+}) as any as S.Schema<ExtensionsGetResponseIdentity>;
+
+/** The type of identity that created the resource. */
+export type ExtensionsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ExtensionsGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ExtensionsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ExtensionsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ExtensionsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ExtensionsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ExtensionsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ExtensionsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(ExtensionsGetResponseSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      ExtensionsGetResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExtensionsGetResponseSystemData",
+}) as any as S.Schema<ExtensionsGetResponseSystemData>;
+
+/** Plan for the resource. */
+export type ExtensionsGetResponsePlan = ExtensionsCreateRequestPlan;
+export const ExtensionsGetResponsePlan = ExtensionsCreateRequestPlan;
+
+export interface GetExtensionResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties of an Extension resource */
+  properties?: ExtensionsGetResponseProperties;
+  /** Identity for the resource. */
+  identity?: ExtensionsGetResponseIdentity;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ExtensionsGetResponseSystemData;
+  /** Plan for the resource. */
+  plan?: ExtensionsCreateRequestPlan;
+}
+export const GetExtensionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ExtensionsGetResponseProperties),
+    identity: S.optional(ExtensionsGetResponseIdentity),
+    systemData: S.optional(ExtensionsGetResponseSystemData),
+    plan: S.optional(ExtensionsCreateRequestPlan),
+  }),
+).annotate({
+  identifier: "GetExtensionResponse",
+}) as any as S.Schema<GetExtensionResponse>;
+
+export interface GetFluxConfigOperationStatusRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+  /** Name of the Flux Configuration. */
+  fluxConfigurationName: string;
+  /** operation Id */
+  operationId: string;
+}
+export const GetFluxConfigOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterRp: S.String.pipe(T.Label()),
+    clusterResourceName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    fluxConfigurationName: S.String.pipe(T.Label()),
+    operationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}/operations/{operationId}",
+      code: 200,
+      apiVersion: "2023-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetFluxConfigOperationStatusRequest",
+}) as any as S.Schema<GetFluxConfigOperationStatusRequest>;
+
+/** Additional information, if available. */
+export type FluxConfigOperationStatusGetResponsePropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const FluxConfigOperationStatusGetResponsePropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<FluxConfigOperationStatusGetResponsePropertiesMap>;
+
+/** The error details. */
+export type FluxConfigOperationStatusGetResponseErrorDetailsList =
+  Array<ErrorDetail>;
+export const FluxConfigOperationStatusGetResponseErrorDetailsList =
+  /*@__PURE__*/ S.Array(
+    ErrorDetail,
+  ) as any as S.Schema<FluxConfigOperationStatusGetResponseErrorDetailsList>;
+
+/** The error additional info. */
+export type FluxConfigOperationStatusGetResponseErrorAdditionalInfoList =
+  Array<ErrorAdditionalInfo>;
+export const FluxConfigOperationStatusGetResponseErrorAdditionalInfoList =
+  /*@__PURE__*/ S.Array(
+    ErrorAdditionalInfo,
+  ) as any as S.Schema<FluxConfigOperationStatusGetResponseErrorAdditionalInfoList>;
+
+/** The error detail. */
+export interface FluxConfigOperationStatusGetResponseError {
+  /** The error code. */
+  code?: string;
+  /** The error message. */
+  message?: string;
+  /** The error target. */
+  target?: string;
+  /** The error details. */
+  details?: FluxConfigOperationStatusGetResponseErrorDetailsList;
+  /** The error additional info. */
+  additionalInfo?: FluxConfigOperationStatusGetResponseErrorAdditionalInfoList;
+}
+export const FluxConfigOperationStatusGetResponseError =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+      target: S.optional(S.String),
+      details: S.optional(FluxConfigOperationStatusGetResponseErrorDetailsList),
+      additionalInfo: S.optional(
+        FluxConfigOperationStatusGetResponseErrorAdditionalInfoList,
+      ),
+    }),
+  ).annotate({
+    identifier: "FluxConfigOperationStatusGetResponseError",
+  }) as any as S.Schema<FluxConfigOperationStatusGetResponseError>;
+
+export interface GetFluxConfigOperationStatusResponse {
+  /** Fully qualified ID for the async operation. */
+  id?: string;
+  /** Name of the async operation. */
+  name?: string;
+  /** Operation status. */
+  status: string;
+  /** Additional information, if available. */
+  properties?: FluxConfigOperationStatusGetResponsePropertiesMap | null;
+  /** The error detail. */
+  error?: FluxConfigOperationStatusGetResponseError;
+}
+export const GetFluxConfigOperationStatusResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      status: S.String,
+      properties: S.optional(
+        S.NullOr(FluxConfigOperationStatusGetResponsePropertiesMap),
+      ),
+      error: S.optional(FluxConfigOperationStatusGetResponseError),
+    }),
+).annotate({
+  identifier: "GetFluxConfigOperationStatusResponse",
+}) as any as S.Schema<GetFluxConfigOperationStatusResponse>;
+
+export interface GetFluxConfigurationRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+  /** Name of the Flux Configuration. */
+  fluxConfigurationName: string;
+}
+export const GetFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterRp: S.String.pipe(T.Label()),
+    clusterResourceName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    fluxConfigurationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
+      code: 200,
+      apiVersion: "2023-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetFluxConfigurationRequest",
+}) as any as S.Schema<GetFluxConfigurationRequest>;
+
+/** Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster. */
+export type FluxConfigurationsGetResponsePropertiesKustomizationsMap = {
+  [key: string]: KustomizationDefinition | undefined;
+};
+export const FluxConfigurationsGetResponsePropertiesKustomizationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    KustomizationDefinition,
+  ) as any as S.Schema<FluxConfigurationsGetResponsePropertiesKustomizationsMap>;
+
+/** Key-value pairs of protected configuration settings for the configuration */
+export type FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap =
+  { [key: string]: string | undefined };
+export const FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap>;
+
+/** Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration. */
+export type FluxConfigurationsGetResponsePropertiesStatusesList =
+  Array<ObjectStatusDefinition>;
+export const FluxConfigurationsGetResponsePropertiesStatusesList =
+  /*@__PURE__*/ S.Array(
+    ObjectStatusDefinition,
+  ) as any as S.Schema<FluxConfigurationsGetResponsePropertiesStatusesList>;
+
+/** The provisioning state of the resource. */
+export type FluxConfigurationsGetResponsePropertiesProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Creating"
+  | "Updating"
+  | "Deleting";
+export const FluxConfigurationsGetResponsePropertiesProvisioningState =
+  /*@__PURE__*/ S.String;
+
+/** Properties to create a Flux Configuration resource */
+export interface FluxConfigurationsGetResponseProperties {
+  /** Scope at which the operator will be installed. */
+  scope?: ScopeDefinition;
+  /** The namespace to which this configuration is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
+  namespace?: string;
+  /** Source Kind to pull the configuration data from. */
+  sourceKind?: SourceKindDefinition;
+  /** Whether this configuration should suspend its reconciliation of its kustomizations and sources. */
+  suspend?: boolean;
+  /** Parameters to reconcile to the GitRepository source kind type. */
+  gitRepository?: GitRepositoryDefinition | null;
+  /** Parameters to reconcile to the Bucket source kind type. */
+  bucket?: BucketDefinition | null;
+  /** Parameters to reconcile to the AzureBlob source kind type. */
+  azureBlob?: AzureBlobDefinition | null;
+  /** Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster. */
+  kustomizations?: FluxConfigurationsGetResponsePropertiesKustomizationsMap | null;
+  /** Key-value pairs of protected configuration settings for the configuration */
+  configurationProtectedSettings?: FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap | null;
+  /** Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration. */
+  statuses?: FluxConfigurationsGetResponsePropertiesStatusesList | null;
+  /** Public Key associated with this fluxConfiguration (either generated within the cluster or provided by the user). */
+  repositoryPublicKey?: string | null;
+  /** Branch and/or SHA of the source commit synced with the cluster. */
+  sourceSyncedCommitId?: string | null;
+  /** Datetime the fluxConfiguration synced its source on the cluster. */
+  sourceUpdatedAt?: string | null;
+  /** Datetime the fluxConfiguration synced its status on the cluster with Azure. */
+  statusUpdatedAt?: string | null;
+  /** Whether flux configuration deployment should wait for cluster to reconcile the kustomizations. */
+  waitForReconciliation?: boolean | null;
+  /** Maximum duration to wait for flux configuration reconciliation. E.g PT1H, PT5M, P1D */
+  reconciliationWaitDuration?: string | null;
+  /** Combined status of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects. */
+  complianceState?: FluxComplianceStateDefinition;
+  /** The provisioning state of the resource. */
+  provisioningState?: FluxConfigurationsGetResponsePropertiesProvisioningState;
+  /** Error message returned to the user in the case of provisioning failure. */
+  errorMessage?: string | null;
+}
+export const FluxConfigurationsGetResponseProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      scope: S.optional(ScopeDefinition),
+      namespace: S.optional(S.String),
+      sourceKind: S.optional(SourceKindDefinition),
+      suspend: S.optional(S.Boolean),
+      gitRepository: S.optional(S.NullOr(GitRepositoryDefinition)),
+      bucket: S.optional(S.NullOr(BucketDefinition)),
+      azureBlob: S.optional(S.NullOr(AzureBlobDefinition)),
+      kustomizations: S.optional(
+        S.NullOr(FluxConfigurationsGetResponsePropertiesKustomizationsMap),
+      ),
+      configurationProtectedSettings: S.optional(
+        S.NullOr(
+          FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettingsMap,
+        ),
+      ),
+      statuses: S.optional(
+        S.NullOr(FluxConfigurationsGetResponsePropertiesStatusesList),
+      ),
+      repositoryPublicKey: S.optional(S.NullOr(S.String)),
+      sourceSyncedCommitId: S.optional(S.NullOr(S.String)),
+      sourceUpdatedAt: S.optional(S.NullOr(S.String)),
+      statusUpdatedAt: S.optional(S.NullOr(S.String)),
+      waitForReconciliation: S.optional(S.NullOr(S.Boolean)),
+      reconciliationWaitDuration: S.optional(S.NullOr(S.String)),
+      complianceState: S.optional(FluxComplianceStateDefinition),
+      provisioningState: S.optional(
+        FluxConfigurationsGetResponsePropertiesProvisioningState,
+      ),
+      errorMessage: S.optional(S.NullOr(S.String)),
+    }),
+).annotate({
+  identifier: "FluxConfigurationsGetResponseProperties",
+}) as any as S.Schema<FluxConfigurationsGetResponseProperties>;
+
+/** The type of identity that created the resource. */
+export type FluxConfigurationsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const FluxConfigurationsGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type FluxConfigurationsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const FluxConfigurationsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface FluxConfigurationsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: FluxConfigurationsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: FluxConfigurationsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const FluxConfigurationsGetResponseSystemData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        FluxConfigurationsGetResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        FluxConfigurationsGetResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "FluxConfigurationsGetResponseSystemData",
+}) as any as S.Schema<FluxConfigurationsGetResponseSystemData>;
+
+export interface GetFluxConfigurationResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties to create a Flux Configuration resource */
+  properties?: FluxConfigurationsGetResponseProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: FluxConfigurationsGetResponseSystemData;
+}
+export const GetFluxConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(FluxConfigurationsGetResponseProperties),
+    systemData: S.optional(FluxConfigurationsGetResponseSystemData),
+  }),
+).annotate({
+  identifier: "GetFluxConfigurationResponse",
+}) as any as S.Schema<GetFluxConfigurationResponse>;
+
+export interface GetOperationStatusRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+  /** Name of the Extension. */
+  extensionName: string;
+  /** operation Id */
+  operationId: string;
+}
+export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterRp: S.String.pipe(T.Label()),
+    clusterResourceName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    extensionName: S.String.pipe(T.Label()),
+    operationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}/operations/{operationId}",
+      code: 200,
+      apiVersion: "2023-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetOperationStatusRequest",
+}) as any as S.Schema<GetOperationStatusRequest>;
+
+/** Additional information, if available. */
+export type OperationStatusGetResponsePropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const OperationStatusGetResponsePropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OperationStatusGetResponsePropertiesMap>;
+
+/** The error details. */
+export type OperationStatusGetResponseErrorDetailsList = Array<ErrorDetail>;
+export const OperationStatusGetResponseErrorDetailsList = /*@__PURE__*/ S.Array(
+  ErrorDetail,
+) as any as S.Schema<OperationStatusGetResponseErrorDetailsList>;
+
+/** The error additional info. */
+export type OperationStatusGetResponseErrorAdditionalInfoList =
+  Array<ErrorAdditionalInfo>;
+export const OperationStatusGetResponseErrorAdditionalInfoList =
+  /*@__PURE__*/ S.Array(
+    ErrorAdditionalInfo,
+  ) as any as S.Schema<OperationStatusGetResponseErrorAdditionalInfoList>;
+
+/** The error detail. */
+export interface OperationStatusGetResponseError {
+  /** The error code. */
+  code?: string;
+  /** The error message. */
+  message?: string;
+  /** The error target. */
+  target?: string;
+  /** The error details. */
+  details?: OperationStatusGetResponseErrorDetailsList;
+  /** The error additional info. */
+  additionalInfo?: OperationStatusGetResponseErrorAdditionalInfoList;
+}
+export const OperationStatusGetResponseError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+    target: S.optional(S.String),
+    details: S.optional(OperationStatusGetResponseErrorDetailsList),
+    additionalInfo: S.optional(
+      OperationStatusGetResponseErrorAdditionalInfoList,
+    ),
+  }),
+).annotate({
+  identifier: "OperationStatusGetResponseError",
+}) as any as S.Schema<OperationStatusGetResponseError>;
+
+export interface GetOperationStatusResponse {
+  /** Fully qualified ID for the async operation. */
+  id?: string;
+  /** Name of the async operation. */
+  name?: string;
+  /** Operation status. */
+  status: string;
+  /** Additional information, if available. */
+  properties?: OperationStatusGetResponsePropertiesMap | null;
+  /** The error detail. */
+  error?: OperationStatusGetResponseError;
+}
+export const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.String,
+    properties: S.optional(S.NullOr(OperationStatusGetResponsePropertiesMap)),
+    error: S.optional(OperationStatusGetResponseError),
+  }),
+).annotate({
+  identifier: "GetOperationStatusResponse",
+}) as any as S.Schema<GetOperationStatusResponse>;
+
+export interface GetSourceControlConfigurationRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+  /** Name of the Source Control Configuration. */
+  sourceControlConfigurationName: string;
+}
+export const GetSourceControlConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterRp: S.String.pipe(T.Label()),
+      clusterResourceName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      sourceControlConfigurationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
+        code: 200,
+        apiVersion: "2023-05-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetSourceControlConfigurationRequest",
+}) as any as S.Schema<GetSourceControlConfigurationRequest>;
+
+/** Type of the operator */
+export type OperatorTypeDefinition = "Flux";
+export const OperatorTypeDefinition = /*@__PURE__*/ S.String;
+
+/** Name-value pairs of protected configuration settings for the configuration */
+export type ConfigurationProtectedSettings = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationProtectedSettings = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigurationProtectedSettings>;
+
+/** Scope at which the operator will be installed. */
+export type OperatorScopeDefinition = "cluster" | "namespace";
+export const OperatorScopeDefinition = /*@__PURE__*/ S.String;
+
+/** Properties for Helm operator. */
+export interface HelmOperatorProperties {
+  /** Version of the operator Helm chart. */
+  chartVersion?: string;
+  /** Values override for the operator Helm chart. */
+  chartValues?: string;
+}
+export const HelmOperatorProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    chartVersion: S.optional(S.String),
+    chartValues: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HelmOperatorProperties",
+}) as any as S.Schema<HelmOperatorProperties>;
+
+/** The provisioning state of the resource provider. */
+export type SourceControlConfigurationsGetResponsePropertiesProvisioningState =
+  | "Accepted"
+  | "Deleting"
+  | "Running"
+  | "Succeeded"
+  | "Failed";
+export const SourceControlConfigurationsGetResponsePropertiesProvisioningState =
+  /*@__PURE__*/ S.String;
+
+/** The compliance state of the configuration. */
+export type ComplianceStatusComplianceState =
+  | "Pending"
+  | "Compliant"
+  | "Noncompliant"
+  | "Installed"
+  | "Failed";
+export const ComplianceStatusComplianceState = /*@__PURE__*/ S.String;
+
+/** Level of the message. */
+export type ComplianceStatusMessageLevel = "Error" | "Warning" | "Information";
+export const ComplianceStatusMessageLevel = /*@__PURE__*/ S.String;
+
+/** Compliance Status details */
+export interface ComplianceStatus {
+  /** The compliance state of the configuration. */
+  complianceState?: ComplianceStatusComplianceState;
+  /** Datetime the configuration was last applied. */
+  lastConfigApplied?: string;
+  /** Message from when the configuration was applied. */
+  message?: string;
+  /** Level of the message. */
+  messageLevel?: ComplianceStatusMessageLevel;
+}
+export const ComplianceStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    complianceState: S.optional(ComplianceStatusComplianceState),
+    lastConfigApplied: S.optional(S.String),
+    message: S.optional(S.String),
+    messageLevel: S.optional(ComplianceStatusMessageLevel),
+  }),
+).annotate({
+  identifier: "ComplianceStatus",
+}) as any as S.Schema<ComplianceStatus>;
+
+/** Properties to create a Source Control Configuration resource */
+export interface SourceControlConfigurationsGetResponseProperties {
+  /** Url of the SourceControl Repository. */
+  repositoryUrl?: string;
+  /** The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
+  operatorNamespace?: string;
+  /** Instance name of the operator - identifying the specific configuration. */
+  operatorInstanceName?: string;
+  /** Type of the operator */
+  operatorType?: OperatorTypeDefinition;
+  /** Any Parameters for the Operator instance in string format. */
+  operatorParams?: string;
+  /** Name-value pairs of protected configuration settings for the configuration */
+  configurationProtectedSettings?: ConfigurationProtectedSettings;
+  /** Scope at which the operator will be installed. */
+  operatorScope?: OperatorScopeDefinition;
+  /** Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user). */
+  repositoryPublicKey?: string;
+  /** Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances */
+  sshKnownHostsContents?: string;
+  /** Option to enable Helm Operator for this git configuration. */
+  enableHelmOperator?: boolean;
+  /** Properties for Helm operator. */
+  helmOperatorProperties?: HelmOperatorProperties;
+  /** The provisioning state of the resource provider. */
+  provisioningState?: SourceControlConfigurationsGetResponsePropertiesProvisioningState;
+  /** Compliance Status of the Configuration */
+  complianceStatus?: ComplianceStatus;
+}
+export const SourceControlConfigurationsGetResponseProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      repositoryUrl: S.optional(S.String),
+      operatorNamespace: S.optional(S.String),
+      operatorInstanceName: S.optional(S.String),
+      operatorType: S.optional(OperatorTypeDefinition),
+      operatorParams: S.optional(S.String),
+      configurationProtectedSettings: S.optional(
+        ConfigurationProtectedSettings,
+      ),
+      operatorScope: S.optional(OperatorScopeDefinition),
+      repositoryPublicKey: S.optional(S.String),
+      sshKnownHostsContents: S.optional(S.String),
+      enableHelmOperator: S.optional(S.Boolean),
+      helmOperatorProperties: S.optional(HelmOperatorProperties),
+      provisioningState: S.optional(
+        SourceControlConfigurationsGetResponsePropertiesProvisioningState,
+      ),
+      complianceStatus: S.optional(ComplianceStatus),
+    }),
+  ).annotate({
+    identifier: "SourceControlConfigurationsGetResponseProperties",
+  }) as any as S.Schema<SourceControlConfigurationsGetResponseProperties>;
+
+/** The type of identity that created the resource. */
+export type SourceControlConfigurationsGetResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SourceControlConfigurationsGetResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SourceControlConfigurationsGetResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SourceControlConfigurationsGetResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SourceControlConfigurationsGetResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SourceControlConfigurationsGetResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SourceControlConfigurationsGetResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SourceControlConfigurationsGetResponseSystemData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        SourceControlConfigurationsGetResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        SourceControlConfigurationsGetResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SourceControlConfigurationsGetResponseSystemData",
+  }) as any as S.Schema<SourceControlConfigurationsGetResponseSystemData>;
+
+export interface GetSourceControlConfigurationResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties to create a Source Control Configuration resource */
+  properties?: SourceControlConfigurationsGetResponseProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: SourceControlConfigurationsGetResponseSystemData;
+}
+export const GetSourceControlConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      properties: S.optional(SourceControlConfigurationsGetResponseProperties),
+      systemData: S.optional(SourceControlConfigurationsGetResponseSystemData),
+    }),
+).annotate({
+  identifier: "GetSourceControlConfigurationResponse",
+}) as any as S.Schema<GetSourceControlConfigurationResponse>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.KubernetesConfiguration/operations",
+      code: 200,
+      apiVersion: "2023-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** Display metadata associated with the operation. */
+export interface ResourceProviderOperationDisplay {
+  /** Resource provider: Microsoft KubernetesConfiguration. */
+  provider?: string;
+  /** Resource on which the operation is performed. */
+  resource?: string;
+  /** Type of operation: get, read, delete, etc. */
+  operation?: string;
+  /** Description of this operation. */
+  description?: string;
+}
+export const ResourceProviderOperationDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceProviderOperationDisplay",
+}) as any as S.Schema<ResourceProviderOperationDisplay>;
+
+/** Supported operation of this resource provider. */
+export interface ResourceProviderOperation {
+  /** Operation name, in format of {provider}/{resource}/{operation} */
+  name?: string;
+  /** Display metadata associated with the operation. */
+  display?: ResourceProviderOperationDisplay;
+  /** The flag that indicates whether the operation applies to data plane. */
+  isDataAction?: boolean;
+  /** Origin of the operation */
+  origin?: string;
+}
+export const ResourceProviderOperation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    display: S.optional(ResourceProviderOperationDisplay),
+    isDataAction: S.optional(S.Boolean),
+    origin: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceProviderOperation",
+}) as any as S.Schema<ResourceProviderOperation>;
+
+/** List of operations supported by this resource provider. */
+export type OperationsListResponseValueList = Array<ResourceProviderOperation>;
+export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
+  ResourceProviderOperation,
+) as any as S.Schema<OperationsListResponseValueList>;
+
+export interface ListOperationsResponse {
+  /** List of operations supported by this resource provider. */
+  value?: OperationsListResponseValueList;
+  /** URL to the next set of results, if any. */
+  nextLink?: string;
+}
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationsListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
+
+export interface ListOperationStatusRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+}
+export const ListOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterRp: S.String.pipe(T.Label()),
+    clusterResourceName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
+      code: 200,
+      apiVersion: "2023-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationStatusRequest",
+}) as any as S.Schema<ListOperationStatusRequest>;
+
+/** Additional information, if available. */
+export type OperationStatusResultPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const OperationStatusResultPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OperationStatusResultPropertiesMap>;
+
+/** The error details. */
+export type OperationStatusResultErrorDetailsList = Array<ErrorDetail>;
+export const OperationStatusResultErrorDetailsList = /*@__PURE__*/ S.Array(
+  ErrorDetail,
+) as any as S.Schema<OperationStatusResultErrorDetailsList>;
+
+/** The error additional info. */
+export type OperationStatusResultErrorAdditionalInfoList =
+  Array<ErrorAdditionalInfo>;
+export const OperationStatusResultErrorAdditionalInfoList =
+  /*@__PURE__*/ S.Array(
+    ErrorAdditionalInfo,
+  ) as any as S.Schema<OperationStatusResultErrorAdditionalInfoList>;
+
+/** The error detail. */
+export interface OperationStatusResultError {
+  /** The error code. */
+  code?: string;
+  /** The error message. */
+  message?: string;
+  /** The error target. */
+  target?: string;
+  /** The error details. */
+  details?: OperationStatusResultErrorDetailsList;
+  /** The error additional info. */
+  additionalInfo?: OperationStatusResultErrorAdditionalInfoList;
+}
+export const OperationStatusResultError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+    target: S.optional(S.String),
+    details: S.optional(OperationStatusResultErrorDetailsList),
+    additionalInfo: S.optional(OperationStatusResultErrorAdditionalInfoList),
+  }),
+).annotate({
+  identifier: "OperationStatusResultError",
+}) as any as S.Schema<OperationStatusResultError>;
+
+/** The current status of an async operation. */
+export interface OperationStatusResult {
+  /** Fully qualified ID for the async operation. */
+  id?: string;
+  /** Name of the async operation. */
+  name?: string;
+  /** Operation status. */
+  status: string;
+  /** Additional information, if available. */
+  properties?: OperationStatusResultPropertiesMap | null;
+  /** The error detail. */
+  error?: OperationStatusResultError;
+}
+export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.String,
+    properties: S.optional(S.NullOr(OperationStatusResultPropertiesMap)),
+    error: S.optional(OperationStatusResultError),
+  }),
+).annotate({
+  identifier: "OperationStatusResult",
+}) as any as S.Schema<OperationStatusResult>;
+
+/** List of async operations in progress, in the cluster. */
+export type OperationStatusListResponseValueList = Array<OperationStatusResult>;
+export const OperationStatusListResponseValueList = /*@__PURE__*/ S.Array(
+  OperationStatusResult,
+) as any as S.Schema<OperationStatusListResponseValueList>;
+
+export interface ListOperationStatusResponse {
+  /** List of async operations in progress, in the cluster. */
+  value?: OperationStatusListResponseValueList;
+  /** URL to get the next set of Operation Result objects, if any. */
+  nextLink?: string;
+}
+export const ListOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationStatusListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationStatusResponse",
+}) as any as S.Schema<ListOperationStatusResponse>;
+
+export interface ListSourceControlConfigurationsRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+}
+export const ListSourceControlConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterRp: S.String.pipe(T.Label()),
+      clusterResourceName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations",
+        code: 200,
+        apiVersion: "2023-05-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListSourceControlConfigurationsRequest",
+}) as any as S.Schema<ListSourceControlConfigurationsRequest>;
+
+/** The provisioning state of the resource provider. */
+export type SourceControlConfigurationPropertiesProvisioningState =
+  | "Accepted"
+  | "Deleting"
+  | "Running"
+  | "Succeeded"
+  | "Failed";
+export const SourceControlConfigurationPropertiesProvisioningState =
+  /*@__PURE__*/ S.String;
+
+/** Properties to create a Source Control Configuration resource */
+export interface SourceControlConfigurationProperties {
+  /** Url of the SourceControl Repository. */
+  repositoryUrl?: string;
+  /** The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
+  operatorNamespace?: string;
+  /** Instance name of the operator - identifying the specific configuration. */
+  operatorInstanceName?: string;
+  /** Type of the operator */
+  operatorType?: OperatorTypeDefinition;
+  /** Any Parameters for the Operator instance in string format. */
+  operatorParams?: string;
+  /** Name-value pairs of protected configuration settings for the configuration */
+  configurationProtectedSettings?: ConfigurationProtectedSettings;
+  /** Scope at which the operator will be installed. */
+  operatorScope?: OperatorScopeDefinition;
+  /** Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user). */
+  repositoryPublicKey?: string;
+  /** Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances */
+  sshKnownHostsContents?: string;
+  /** Option to enable Helm Operator for this git configuration. */
+  enableHelmOperator?: boolean;
+  /** Properties for Helm operator. */
+  helmOperatorProperties?: HelmOperatorProperties;
+  /** The provisioning state of the resource provider. */
+  provisioningState?: SourceControlConfigurationPropertiesProvisioningState;
+  /** Compliance Status of the Configuration */
+  complianceStatus?: ComplianceStatus;
+}
+export const SourceControlConfigurationProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      repositoryUrl: S.optional(S.String),
+      operatorNamespace: S.optional(S.String),
+      operatorInstanceName: S.optional(S.String),
+      operatorType: S.optional(OperatorTypeDefinition),
+      operatorParams: S.optional(S.String),
+      configurationProtectedSettings: S.optional(
+        ConfigurationProtectedSettings,
+      ),
+      operatorScope: S.optional(OperatorScopeDefinition),
+      repositoryPublicKey: S.optional(S.String),
+      sshKnownHostsContents: S.optional(S.String),
+      enableHelmOperator: S.optional(S.Boolean),
+      helmOperatorProperties: S.optional(HelmOperatorProperties),
+      provisioningState: S.optional(
+        SourceControlConfigurationPropertiesProvisioningState,
+      ),
+      complianceStatus: S.optional(ComplianceStatus),
+    }),
+).annotate({
+  identifier: "SourceControlConfigurationProperties",
+}) as any as S.Schema<SourceControlConfigurationProperties>;
+
+/** The type of identity that created the resource. */
+export type SourceControlConfigurationSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SourceControlConfigurationSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SourceControlConfigurationSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SourceControlConfigurationSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SourceControlConfigurationSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SourceControlConfigurationSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SourceControlConfigurationSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SourceControlConfigurationSystemData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        SourceControlConfigurationSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        SourceControlConfigurationSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SourceControlConfigurationSystemData",
+}) as any as S.Schema<SourceControlConfigurationSystemData>;
+
+/** The SourceControl Configuration object returned in Get & Put response. */
+export interface SourceControlConfiguration {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties to create a Source Control Configuration resource */
+  properties?: SourceControlConfigurationProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: SourceControlConfigurationSystemData;
+}
+export const SourceControlConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(SourceControlConfigurationProperties),
+    systemData: S.optional(SourceControlConfigurationSystemData),
+  }),
+).annotate({
+  identifier: "SourceControlConfiguration",
+}) as any as S.Schema<SourceControlConfiguration>;
+
+/** List of Source Control Configurations within a Kubernetes cluster. */
+export type SourceControlConfigurationListValueList =
+  Array<SourceControlConfiguration>;
+export const SourceControlConfigurationListValueList = /*@__PURE__*/ S.Array(
+  SourceControlConfiguration,
+) as any as S.Schema<SourceControlConfigurationListValueList>;
+
+/** Result of the request to list Source Control Configurations. It contains a list of SourceControlConfiguration objects and a URL link to get the next set of results. */
+export interface SourceControlConfigurationList {
+  /** List of Source Control Configurations within a Kubernetes cluster. */
+  value?: SourceControlConfigurationListValueList;
+  /** URL to get the next set of configuration objects, if any. */
+  nextLink?: string;
+}
+export const SourceControlConfigurationList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SourceControlConfigurationListValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SourceControlConfigurationList",
+}) as any as S.Schema<SourceControlConfigurationList>;
+
+export interface OperationStatusListRequest_2 {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters, appliances. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+}
+export const OperationStatusListRequest_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterRp: S.String.pipe(T.Label()),
+    clusterResourceName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
+      code: 200,
+      apiVersion: "2025-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "OperationStatusListRequest_2",
+}) as any as S.Schema<OperationStatusListRequest_2>;
+
+/** List of async operations in progress, in the cluster. */
+export type OperationStatusListValueList = Array<OperationStatusResult>;
+export const OperationStatusListValueList = /*@__PURE__*/ S.Array(
+  OperationStatusResult,
+) as any as S.Schema<OperationStatusListValueList>;
+
+/** The async operations in progress, in the cluster. */
+export interface OperationStatusList_2 {
+  /** List of async operations in progress, in the cluster. */
+  value?: OperationStatusListValueList;
+  /** URL to get the next set of Operation Result objects, if any. */
+  nextLink?: string;
+}
+export const OperationStatusList_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationStatusListValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationStatusList_2",
+}) as any as S.Schema<OperationStatusList_2>;
+
+/** Properties to create a Source Control Configuration resource */
+export interface SourceControlConfigurationsCreateOrUpdateRequestProperties {
+  /** Url of the SourceControl Repository. */
+  repositoryUrl?: string;
+  /** The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
+  operatorNamespace?: string;
+  /** Instance name of the operator - identifying the specific configuration. */
+  operatorInstanceName?: string;
+  /** Type of the operator */
+  operatorType?: OperatorTypeDefinition | (string & {});
+  /** Any Parameters for the Operator instance in string format. */
+  operatorParams?: string;
+  /** Name-value pairs of protected configuration settings for the configuration */
+  configurationProtectedSettings?: ConfigurationProtectedSettings;
+  /** Scope at which the operator will be installed. */
+  operatorScope?: OperatorScopeDefinition | (string & {});
+  /** Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances */
+  sshKnownHostsContents?: string;
+  /** Option to enable Helm Operator for this git configuration. */
+  enableHelmOperator?: boolean;
+  /** Properties for Helm operator. */
+  helmOperatorProperties?: HelmOperatorProperties;
+}
+export const SourceControlConfigurationsCreateOrUpdateRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      repositoryUrl: S.optional(S.String),
+      operatorNamespace: S.optional(S.String),
+      operatorInstanceName: S.optional(S.String),
+      operatorType: S.optional(OperatorTypeDefinition),
+      operatorParams: S.optional(S.String),
+      configurationProtectedSettings: S.optional(
+        ConfigurationProtectedSettings,
+      ),
+      operatorScope: S.optional(OperatorScopeDefinition),
+      sshKnownHostsContents: S.optional(S.String),
+      enableHelmOperator: S.optional(S.Boolean),
+      helmOperatorProperties: S.optional(HelmOperatorProperties),
+    }),
+  ).annotate({
+    identifier: "SourceControlConfigurationsCreateOrUpdateRequestProperties",
+  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateRequestProperties>;
+
+export interface SourceControlConfigurationsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+  /** Name of the Source Control Configuration. */
+  sourceControlConfigurationName: string;
+  /** Properties to create a Source Control Configuration resource */
+  properties?: SourceControlConfigurationsCreateOrUpdateRequestProperties;
+}
+export const SourceControlConfigurationsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterRp: S.String.pipe(T.Label()),
+      clusterResourceName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      sourceControlConfigurationName: S.String.pipe(T.Label()),
+      properties: S.optional(
+        SourceControlConfigurationsCreateOrUpdateRequestProperties,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
+        code: 200,
+        apiVersion: "2023-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "SourceControlConfigurationsCreateOrUpdateRequest",
+  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateRequest>;
+
+/** The provisioning state of the resource provider. */
+export type SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
+  | "Accepted"
+  | "Deleting"
+  | "Running"
+  | "Succeeded"
+  | "Failed";
+export const SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
+  /*@__PURE__*/ S.String;
+
+/** Properties to create a Source Control Configuration resource */
+export interface SourceControlConfigurationsCreateOrUpdateResponseProperties {
+  /** Url of the SourceControl Repository. */
+  repositoryUrl?: string;
+  /** The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
+  operatorNamespace?: string;
+  /** Instance name of the operator - identifying the specific configuration. */
+  operatorInstanceName?: string;
+  /** Type of the operator */
+  operatorType?: OperatorTypeDefinition;
+  /** Any Parameters for the Operator instance in string format. */
+  operatorParams?: string;
+  /** Name-value pairs of protected configuration settings for the configuration */
+  configurationProtectedSettings?: ConfigurationProtectedSettings;
+  /** Scope at which the operator will be installed. */
+  operatorScope?: OperatorScopeDefinition;
+  /** Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user). */
+  repositoryPublicKey?: string;
+  /** Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances */
+  sshKnownHostsContents?: string;
+  /** Option to enable Helm Operator for this git configuration. */
+  enableHelmOperator?: boolean;
+  /** Properties for Helm operator. */
+  helmOperatorProperties?: HelmOperatorProperties;
+  /** The provisioning state of the resource provider. */
+  provisioningState?: SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState;
+  /** Compliance Status of the Configuration */
+  complianceStatus?: ComplianceStatus;
+}
+export const SourceControlConfigurationsCreateOrUpdateResponseProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      repositoryUrl: S.optional(S.String),
+      operatorNamespace: S.optional(S.String),
+      operatorInstanceName: S.optional(S.String),
+      operatorType: S.optional(OperatorTypeDefinition),
+      operatorParams: S.optional(S.String),
+      configurationProtectedSettings: S.optional(
+        ConfigurationProtectedSettings,
+      ),
+      operatorScope: S.optional(OperatorScopeDefinition),
+      repositoryPublicKey: S.optional(S.String),
+      sshKnownHostsContents: S.optional(S.String),
+      enableHelmOperator: S.optional(S.Boolean),
+      helmOperatorProperties: S.optional(HelmOperatorProperties),
+      provisioningState: S.optional(
+        SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState,
+      ),
+      complianceStatus: S.optional(ComplianceStatus),
+    }),
+  ).annotate({
+    identifier: "SourceControlConfigurationsCreateOrUpdateResponseProperties",
+  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponseProperties>;
+
+/** The type of identity that created the resource. */
+export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SourceControlConfigurationsCreateOrUpdateResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SourceControlConfigurationsCreateOrUpdateResponseSystemData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SourceControlConfigurationsCreateOrUpdateResponseSystemData",
+  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponseSystemData>;
+
+export interface SourceControlConfigurationsCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties to create a Source Control Configuration resource */
+  properties?: SourceControlConfigurationsCreateOrUpdateResponseProperties;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: SourceControlConfigurationsCreateOrUpdateResponseSystemData;
+}
+export const SourceControlConfigurationsCreateOrUpdateResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      properties: S.optional(
+        SourceControlConfigurationsCreateOrUpdateResponseProperties,
+      ),
+      systemData: S.optional(
+        SourceControlConfigurationsCreateOrUpdateResponseSystemData,
+      ),
+    }),
+  ).annotate({
+    identifier: "SourceControlConfigurationsCreateOrUpdateResponse",
+  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponse>;
+
+/** Configuration settings, as name-value pairs for configuring this extension. */
+export type ExtensionsUpdateRequestPropertiesConfigurationSettingsMap = {
+  [key: string]: string | undefined;
+};
+export const ExtensionsUpdateRequestPropertiesConfigurationSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ExtensionsUpdateRequestPropertiesConfigurationSettingsMap>;
+
+/** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
+export type ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap =
+  { [key: string]: string | undefined };
+export const ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap>;
+
+/** Updatable properties of an Extension Patch Request */
+export interface ExtensionsUpdateRequestProperties {
+  /** Flag to note if this extension participates in auto upgrade of minor version, or not. */
+  autoUpgradeMinorVersion?: boolean;
+  /** ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'. */
+  releaseTrain?: string;
+  /** Version of the extension for this extension, if it is 'pinned' to a specific version. autoUpgradeMinorVersion must be 'false'. */
+  version?: string | null;
+  /** Configuration settings, as name-value pairs for configuring this extension. */
+  configurationSettings?: ExtensionsUpdateRequestPropertiesConfigurationSettingsMap | null;
+  /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
+  configurationProtectedSettings?: ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap | null;
+}
+export const ExtensionsUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoUpgradeMinorVersion: S.optional(S.Boolean),
+    releaseTrain: S.optional(S.String),
+    version: S.optional(S.NullOr(S.String)),
+    configurationSettings: S.optional(
+      S.NullOr(ExtensionsUpdateRequestPropertiesConfigurationSettingsMap),
+    ),
+    configurationProtectedSettings: S.optional(
+      S.NullOr(
+        ExtensionsUpdateRequestPropertiesConfigurationProtectedSettingsMap,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "ExtensionsUpdateRequestProperties",
+}) as any as S.Schema<ExtensionsUpdateRequestProperties>;
+
+export interface UpdateExtensionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
+  clusterRp: string;
+  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
+  clusterResourceName: string;
+  /** The name of the kubernetes cluster. */
+  clusterName: string;
+  /** Name of the Extension. */
+  extensionName: string;
+  /** Updatable properties of an Extension Patch Request */
+  properties?: ExtensionsUpdateRequestProperties;
+}
+export const UpdateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterRp: S.String.pipe(T.Label()),
+    clusterResourceName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    extensionName: S.String.pipe(T.Label()),
+    properties: S.optional(ExtensionsUpdateRequestProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
+      code: 200,
+      apiVersion: "2023-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateExtensionRequest",
+}) as any as S.Schema<UpdateExtensionRequest>;
+
+/** Configuration settings, as name-value pairs for configuring this extension. */
+export type ExtensionsUpdateResponsePropertiesConfigurationSettingsMap = {
+  [key: string]: string | undefined;
+};
+export const ExtensionsUpdateResponsePropertiesConfigurationSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesConfigurationSettingsMap>;
+
+/** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
+export type ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap =
+  { [key: string]: string | undefined };
+export const ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap>;
+
+/** The provisioning state of the resource. */
+export type ExtensionsUpdateResponsePropertiesProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Creating"
+  | "Updating"
+  | "Deleting";
+export const ExtensionsUpdateResponsePropertiesProvisioningState =
+  /*@__PURE__*/ S.String;
+
+/** Status from this extension. */
+export type ExtensionsUpdateResponsePropertiesStatusesList =
+  Array<ExtensionStatus>;
+export const ExtensionsUpdateResponsePropertiesStatusesList =
+  /*@__PURE__*/ S.Array(
+    ExtensionStatus,
+  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesStatusesList>;
+
+/** The error details. */
+export type ExtensionsUpdateResponsePropertiesErrorInfoDetailsList =
+  Array<ErrorDetail>;
+export const ExtensionsUpdateResponsePropertiesErrorInfoDetailsList =
+  /*@__PURE__*/ S.Array(
+    ErrorDetail,
+  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesErrorInfoDetailsList>;
+
+/** The error additional info. */
+export type ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList =
+  Array<ErrorAdditionalInfo>;
+export const ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList =
+  /*@__PURE__*/ S.Array(
+    ErrorAdditionalInfo,
+  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList>;
+
+/** The error detail. */
+export interface ExtensionsUpdateResponsePropertiesErrorInfo {
+  /** The error code. */
+  code?: string;
+  /** The error message. */
+  message?: string;
+  /** The error target. */
+  target?: string;
+  /** The error details. */
+  details?: ExtensionsUpdateResponsePropertiesErrorInfoDetailsList;
+  /** The error additional info. */
+  additionalInfo?: ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList;
+}
+export const ExtensionsUpdateResponsePropertiesErrorInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+      target: S.optional(S.String),
+      details: S.optional(
+        ExtensionsUpdateResponsePropertiesErrorInfoDetailsList,
+      ),
+      additionalInfo: S.optional(
+        ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ExtensionsUpdateResponsePropertiesErrorInfo",
+  }) as any as S.Schema<ExtensionsUpdateResponsePropertiesErrorInfo>;
+
+/** Custom Location settings properties. */
+export type ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap = {
+  [key: string]: string | undefined;
+};
+export const ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap>;
+
+/** The identity type. */
+export type ExtensionsUpdateResponsePropertiesAksAssignedIdentityType =
+  | "SystemAssigned"
+  | "UserAssigned";
+export const ExtensionsUpdateResponsePropertiesAksAssignedIdentityType =
+  /*@__PURE__*/ S.String;
+
+/** Identity of the Extension resource in an AKS cluster */
+export interface ExtensionsUpdateResponsePropertiesAksAssignedIdentity {
+  /** The principal ID of resource identity. */
+  principalId?: string;
+  /** The tenant ID of resource. */
+  tenantId?: string;
+  /** The identity type. */
+  type?: ExtensionsUpdateResponsePropertiesAksAssignedIdentityType;
+}
+export const ExtensionsUpdateResponsePropertiesAksAssignedIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      principalId: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      type: S.optional(
+        ExtensionsUpdateResponsePropertiesAksAssignedIdentityType,
+      ),
+    }),
+  ).annotate({
+    identifier: "ExtensionsUpdateResponsePropertiesAksAssignedIdentity",
+  }) as any as S.Schema<ExtensionsUpdateResponsePropertiesAksAssignedIdentity>;
+
+/** Properties of an Extension resource */
+export interface ExtensionsUpdateResponseProperties {
+  /** Type of the Extension, of which this resource is an instance of. It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher. */
+  extensionType?: string;
+  /** Flag to note if this extension participates in auto upgrade of minor version, or not. */
+  autoUpgradeMinorVersion?: boolean;
+  /** ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'. */
+  releaseTrain?: string;
+  /** User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'. */
+  version?: string | null;
+  /** Scope at which the extension is installed. */
+  scope?: Scope;
+  /** Configuration settings, as name-value pairs for configuring this extension. */
+  configurationSettings?: ExtensionsUpdateResponsePropertiesConfigurationSettingsMap | null;
+  /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
+  configurationProtectedSettings?: ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap | null;
+  /** Currently installed version of the extension. */
+  currentVersion?: string | null;
+  /** The provisioning state of the resource. */
+  provisioningState?: ExtensionsUpdateResponsePropertiesProvisioningState;
+  /** Status from this extension. */
+  statuses?: ExtensionsUpdateResponsePropertiesStatusesList | null;
+  /** The error detail. */
+  errorInfo?: ExtensionsUpdateResponsePropertiesErrorInfo;
+  /** Custom Location settings properties. */
+  customLocationSettings?: ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap | null;
+  /** Uri of the Helm package */
+  packageUri?: string | null;
+  /** Identity of the Extension resource in an AKS cluster */
+  aksAssignedIdentity?: ExtensionsUpdateResponsePropertiesAksAssignedIdentity | null;
+  /** Flag to note if this extension is a system extension */
+  isSystemExtension?: boolean;
+}
+export const ExtensionsUpdateResponseProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    extensionType: S.optional(S.String),
+    autoUpgradeMinorVersion: S.optional(S.Boolean),
+    releaseTrain: S.optional(S.String),
+    version: S.optional(S.NullOr(S.String)),
+    scope: S.optional(Scope),
+    configurationSettings: S.optional(
+      S.NullOr(ExtensionsUpdateResponsePropertiesConfigurationSettingsMap),
+    ),
+    configurationProtectedSettings: S.optional(
+      S.NullOr(
+        ExtensionsUpdateResponsePropertiesConfigurationProtectedSettingsMap,
+      ),
+    ),
+    currentVersion: S.optional(S.NullOr(S.String)),
+    provisioningState: S.optional(
+      ExtensionsUpdateResponsePropertiesProvisioningState,
+    ),
+    statuses: S.optional(
+      S.NullOr(ExtensionsUpdateResponsePropertiesStatusesList),
+    ),
+    errorInfo: S.optional(ExtensionsUpdateResponsePropertiesErrorInfo),
+    customLocationSettings: S.optional(
+      S.NullOr(ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap),
+    ),
+    packageUri: S.optional(S.NullOr(S.String)),
+    aksAssignedIdentity: S.optional(
+      S.NullOr(ExtensionsUpdateResponsePropertiesAksAssignedIdentity),
+    ),
+    isSystemExtension: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ExtensionsUpdateResponseProperties",
+}) as any as S.Schema<ExtensionsUpdateResponseProperties>;
+
+/** The identity type. */
+export type ExtensionsUpdateResponseIdentityType = "SystemAssigned";
+export const ExtensionsUpdateResponseIdentityType = /*@__PURE__*/ S.String;
+
+/** Identity for the resource. */
+export interface ExtensionsUpdateResponseIdentity {
+  /** The principal ID of resource identity. */
+  principalId?: string;
+  /** The tenant ID of resource. */
+  tenantId?: string;
+  /** The identity type. */
+  type?: ExtensionsUpdateResponseIdentityType;
+}
+export const ExtensionsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: S.optional(ExtensionsUpdateResponseIdentityType),
+  }),
+).annotate({
+  identifier: "ExtensionsUpdateResponseIdentity",
+}) as any as S.Schema<ExtensionsUpdateResponseIdentity>;
+
+/** The type of identity that created the resource. */
+export type ExtensionsUpdateResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ExtensionsUpdateResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ExtensionsUpdateResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ExtensionsUpdateResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ExtensionsUpdateResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ExtensionsUpdateResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ExtensionsUpdateResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ExtensionsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(ExtensionsUpdateResponseSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      ExtensionsUpdateResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExtensionsUpdateResponseSystemData",
+}) as any as S.Schema<ExtensionsUpdateResponseSystemData>;
+
+/** Plan for the resource. */
+export type ExtensionsUpdateResponsePlan = ExtensionsCreateRequestPlan;
+export const ExtensionsUpdateResponsePlan = ExtensionsCreateRequestPlan;
+
+export interface UpdateExtensionResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Properties of an Extension resource */
+  properties?: ExtensionsUpdateResponseProperties;
+  /** Identity for the resource. */
+  identity?: ExtensionsUpdateResponseIdentity;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ExtensionsUpdateResponseSystemData;
+  /** Plan for the resource. */
+  plan?: ExtensionsCreateRequestPlan;
+}
+export const UpdateExtensionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ExtensionsUpdateResponseProperties),
+    identity: S.optional(ExtensionsUpdateResponseIdentity),
+    systemData: S.optional(ExtensionsUpdateResponseSystemData),
+    plan: S.optional(ExtensionsCreateRequestPlan),
+  }),
+).annotate({
+  identifier: "UpdateExtensionResponse",
+}) as any as S.Schema<UpdateExtensionResponse>;
+
 /** Parameters to reconcile to the GitRepository source kind type. */
 export type GitRepositoryPatchDefinition = GitRepositoryDefinition;
 export const GitRepositoryPatchDefinition = GitRepositoryDefinition;
@@ -3236,7 +4311,7 @@ export const FluxConfigurationsUpdateRequestProperties =
     identifier: "FluxConfigurationsUpdateRequestProperties",
   }) as any as S.Schema<FluxConfigurationsUpdateRequestProperties>;
 
-export interface FluxConfigurationsUpdateRequest {
+export interface UpdateFluxConfigurationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -3252,7 +4327,7 @@ export interface FluxConfigurationsUpdateRequest {
   /** Updatable properties of an Flux Configuration Patch Request */
   properties?: FluxConfigurationsUpdateRequestProperties;
 }
-export const FluxConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3270,8 +4345,8 @@ export const FluxConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "FluxConfigurationsUpdateRequest",
-}) as any as S.Schema<FluxConfigurationsUpdateRequest>;
+  identifier: "UpdateFluxConfigurationRequest",
+}) as any as S.Schema<UpdateFluxConfigurationRequest>;
 
 /** Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster. */
 export type FluxConfigurationsUpdateResponsePropertiesKustomizationsMap = {
@@ -3440,7 +4515,7 @@ export const FluxConfigurationsUpdateResponseSystemData =
     identifier: "FluxConfigurationsUpdateResponseSystemData",
   }) as any as S.Schema<FluxConfigurationsUpdateResponseSystemData>;
 
-export interface FluxConfigurationsUpdateResponse {
+export interface UpdateFluxConfigurationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -3452,7 +4527,7 @@ export interface FluxConfigurationsUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: FluxConfigurationsUpdateResponseSystemData;
 }
-export const FluxConfigurationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateFluxConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3461,1123 +4536,64 @@ export const FluxConfigurationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(FluxConfigurationsUpdateResponseSystemData),
   }),
 ).annotate({
-  identifier: "FluxConfigurationsUpdateResponse",
-}) as any as S.Schema<FluxConfigurationsUpdateResponse>;
+  identifier: "UpdateFluxConfigurationResponse",
+}) as any as S.Schema<UpdateFluxConfigurationResponse>;
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.KubernetesConfiguration/operations",
-      code: 200,
-      apiVersion: "2023-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-/** Display metadata associated with the operation. */
-export interface ResourceProviderOperationDisplay {
-  /** Resource provider: Microsoft KubernetesConfiguration. */
-  provider?: string;
-  /** Resource on which the operation is performed. */
-  resource?: string;
-  /** Type of operation: get, read, delete, etc. */
-  operation?: string;
-  /** Description of this operation. */
-  description?: string;
-}
-export const ResourceProviderOperationDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceProviderOperationDisplay",
-}) as any as S.Schema<ResourceProviderOperationDisplay>;
-
-/** Supported operation of this resource provider. */
-export interface ResourceProviderOperation {
-  /** Operation name, in format of {provider}/{resource}/{operation} */
-  name?: string;
-  /** Display metadata associated with the operation. */
-  display?: ResourceProviderOperationDisplay;
-  /** The flag that indicates whether the operation applies to data plane. */
-  isDataAction?: boolean;
-  /** Origin of the operation */
-  origin?: string;
-}
-export const ResourceProviderOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    display: S.optional(ResourceProviderOperationDisplay),
-    isDataAction: S.optional(S.Boolean),
-    origin: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceProviderOperation",
-}) as any as S.Schema<ResourceProviderOperation>;
-
-/** List of operations supported by this resource provider. */
-export type OperationsListResponseValueList = Array<ResourceProviderOperation>;
-export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
-  ResourceProviderOperation,
-) as any as S.Schema<OperationsListResponseValueList>;
-
-export interface OperationsListResponse {
-  /** List of operations supported by this resource provider. */
-  value?: OperationsListResponseValueList;
-  /** URL to the next set of results, if any. */
-  nextLink?: string;
-}
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationsListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
-
-export interface OperationStatusGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-  /** Name of the Extension. */
-  extensionName: string;
-  /** operation Id */
-  operationId: string;
-}
-export const OperationStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterRp: S.String.pipe(T.Label()),
-    clusterResourceName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    extensionName: S.String.pipe(T.Label()),
-    operationId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}/operations/{operationId}",
-      code: 200,
-      apiVersion: "2023-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationStatusGetRequest",
-}) as any as S.Schema<OperationStatusGetRequest>;
-
-/** Additional information, if available. */
-export type OperationStatusGetResponsePropertiesMap = {
-  [key: string]: string | undefined;
-};
-export const OperationStatusGetResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OperationStatusGetResponsePropertiesMap>;
-
-/** The error details. */
-export type OperationStatusGetResponseErrorDetailsList = Array<ErrorDetail>;
-export const OperationStatusGetResponseErrorDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetail,
-) as any as S.Schema<OperationStatusGetResponseErrorDetailsList>;
-
-/** The error additional info. */
-export type OperationStatusGetResponseErrorAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
-export const OperationStatusGetResponseErrorAdditionalInfoList =
-  /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
-  ) as any as S.Schema<OperationStatusGetResponseErrorAdditionalInfoList>;
-
-/** The error detail. */
-export interface OperationStatusGetResponseError {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-  /** The error target. */
-  target?: string;
-  /** The error details. */
-  details?: OperationStatusGetResponseErrorDetailsList;
-  /** The error additional info. */
-  additionalInfo?: OperationStatusGetResponseErrorAdditionalInfoList;
-}
-export const OperationStatusGetResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    target: S.optional(S.String),
-    details: S.optional(OperationStatusGetResponseErrorDetailsList),
-    additionalInfo: S.optional(
-      OperationStatusGetResponseErrorAdditionalInfoList,
-    ),
-  }),
-).annotate({
-  identifier: "OperationStatusGetResponseError",
-}) as any as S.Schema<OperationStatusGetResponseError>;
-
-export interface OperationStatusGetResponse {
-  /** Fully qualified ID for the async operation. */
-  id?: string;
-  /** Name of the async operation. */
-  name?: string;
-  /** Operation status. */
-  status: string;
-  /** Additional information, if available. */
-  properties?: OperationStatusGetResponsePropertiesMap | null;
-  /** The error detail. */
-  error?: OperationStatusGetResponseError;
-}
-export const OperationStatusGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    status: S.String,
-    properties: S.optional(S.NullOr(OperationStatusGetResponsePropertiesMap)),
-    error: S.optional(OperationStatusGetResponseError),
-  }),
-).annotate({
-  identifier: "OperationStatusGetResponse",
-}) as any as S.Schema<OperationStatusGetResponse>;
-
-export interface OperationStatusListRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-}
-export const OperationStatusListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterRp: S.String.pipe(T.Label()),
-    clusterResourceName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
-      code: 200,
-      apiVersion: "2023-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationStatusListRequest",
-}) as any as S.Schema<OperationStatusListRequest>;
-
-/** Additional information, if available. */
-export type OperationStatusResultPropertiesMap = {
-  [key: string]: string | undefined;
-};
-export const OperationStatusResultPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OperationStatusResultPropertiesMap>;
-
-/** The error details. */
-export type OperationStatusResultErrorDetailsList = Array<ErrorDetail>;
-export const OperationStatusResultErrorDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetail,
-) as any as S.Schema<OperationStatusResultErrorDetailsList>;
-
-/** The error additional info. */
-export type OperationStatusResultErrorAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
-export const OperationStatusResultErrorAdditionalInfoList =
-  /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
-  ) as any as S.Schema<OperationStatusResultErrorAdditionalInfoList>;
-
-/** The error detail. */
-export interface OperationStatusResultError {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-  /** The error target. */
-  target?: string;
-  /** The error details. */
-  details?: OperationStatusResultErrorDetailsList;
-  /** The error additional info. */
-  additionalInfo?: OperationStatusResultErrorAdditionalInfoList;
-}
-export const OperationStatusResultError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    target: S.optional(S.String),
-    details: S.optional(OperationStatusResultErrorDetailsList),
-    additionalInfo: S.optional(OperationStatusResultErrorAdditionalInfoList),
-  }),
-).annotate({
-  identifier: "OperationStatusResultError",
-}) as any as S.Schema<OperationStatusResultError>;
-
-/** The current status of an async operation. */
-export interface OperationStatusResult {
-  /** Fully qualified ID for the async operation. */
-  id?: string;
-  /** Name of the async operation. */
-  name?: string;
-  /** Operation status. */
-  status: string;
-  /** Additional information, if available. */
-  properties?: OperationStatusResultPropertiesMap | null;
-  /** The error detail. */
-  error?: OperationStatusResultError;
-}
-export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    status: S.String,
-    properties: S.optional(S.NullOr(OperationStatusResultPropertiesMap)),
-    error: S.optional(OperationStatusResultError),
-  }),
-).annotate({
-  identifier: "OperationStatusResult",
-}) as any as S.Schema<OperationStatusResult>;
-
-/** List of async operations in progress, in the cluster. */
-export type OperationStatusListResponseValueList = Array<OperationStatusResult>;
-export const OperationStatusListResponseValueList = /*@__PURE__*/ S.Array(
-  OperationStatusResult,
-) as any as S.Schema<OperationStatusListResponseValueList>;
-
-export interface OperationStatusListResponse {
-  /** List of async operations in progress, in the cluster. */
-  value?: OperationStatusListResponseValueList;
-  /** URL to get the next set of Operation Result objects, if any. */
-  nextLink?: string;
-}
-export const OperationStatusListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationStatusListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationStatusListResponse",
-}) as any as S.Schema<OperationStatusListResponse>;
-
-export interface OperationStatusListRequest_2 {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters, appliances. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-}
-export const OperationStatusListRequest_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterRp: S.String.pipe(T.Label()),
-    clusterResourceName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
-      code: 200,
-      apiVersion: "2025-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationStatusListRequest_2",
-}) as any as S.Schema<OperationStatusListRequest_2>;
-
-/** List of async operations in progress, in the cluster. */
-export type OperationStatusListValueList = Array<OperationStatusResult>;
-export const OperationStatusListValueList = /*@__PURE__*/ S.Array(
-  OperationStatusResult,
-) as any as S.Schema<OperationStatusListValueList>;
-
-/** The async operations in progress, in the cluster. */
-export interface OperationStatusList_2 {
-  /** List of async operations in progress, in the cluster. */
-  value?: OperationStatusListValueList;
-  /** URL to get the next set of Operation Result objects, if any. */
-  nextLink?: string;
-}
-export const OperationStatusList_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationStatusListValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationStatusList_2",
-}) as any as S.Schema<OperationStatusList_2>;
-
-/** Type of the operator */
-export type OperatorTypeDefinition = "Flux";
-export const OperatorTypeDefinition = /*@__PURE__*/ S.String;
-
-/** Name-value pairs of protected configuration settings for the configuration */
-export type ConfigurationProtectedSettings = {
-  [key: string]: string | undefined;
-};
-export const ConfigurationProtectedSettings = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationProtectedSettings>;
-
-/** Scope at which the operator will be installed. */
-export type OperatorScopeDefinition = "cluster" | "namespace";
-export const OperatorScopeDefinition = /*@__PURE__*/ S.String;
-
-/** Properties for Helm operator. */
-export interface HelmOperatorProperties {
-  /** Version of the operator Helm chart. */
-  chartVersion?: string;
-  /** Values override for the operator Helm chart. */
-  chartValues?: string;
-}
-export const HelmOperatorProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chartVersion: S.optional(S.String),
-    chartValues: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HelmOperatorProperties",
-}) as any as S.Schema<HelmOperatorProperties>;
-
-/** Properties to create a Source Control Configuration resource */
-export interface SourceControlConfigurationsCreateOrUpdateRequestProperties {
-  /** Url of the SourceControl Repository. */
-  repositoryUrl?: string;
-  /** The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
-  operatorNamespace?: string;
-  /** Instance name of the operator - identifying the specific configuration. */
-  operatorInstanceName?: string;
-  /** Type of the operator */
-  operatorType?: OperatorTypeDefinition | (string & {});
-  /** Any Parameters for the Operator instance in string format. */
-  operatorParams?: string;
-  /** Name-value pairs of protected configuration settings for the configuration */
-  configurationProtectedSettings?: ConfigurationProtectedSettings;
-  /** Scope at which the operator will be installed. */
-  operatorScope?: OperatorScopeDefinition | (string & {});
-  /** Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances */
-  sshKnownHostsContents?: string;
-  /** Option to enable Helm Operator for this git configuration. */
-  enableHelmOperator?: boolean;
-  /** Properties for Helm operator. */
-  helmOperatorProperties?: HelmOperatorProperties;
-}
-export const SourceControlConfigurationsCreateOrUpdateRequestProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repositoryUrl: S.optional(S.String),
-      operatorNamespace: S.optional(S.String),
-      operatorInstanceName: S.optional(S.String),
-      operatorType: S.optional(OperatorTypeDefinition),
-      operatorParams: S.optional(S.String),
-      configurationProtectedSettings: S.optional(
-        ConfigurationProtectedSettings,
-      ),
-      operatorScope: S.optional(OperatorScopeDefinition),
-      sshKnownHostsContents: S.optional(S.String),
-      enableHelmOperator: S.optional(S.Boolean),
-      helmOperatorProperties: S.optional(HelmOperatorProperties),
-    }),
-  ).annotate({
-    identifier: "SourceControlConfigurationsCreateOrUpdateRequestProperties",
-  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateRequestProperties>;
-
-export interface SourceControlConfigurationsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-  /** Name of the Source Control Configuration. */
-  sourceControlConfigurationName: string;
-  /** Properties to create a Source Control Configuration resource */
-  properties?: SourceControlConfigurationsCreateOrUpdateRequestProperties;
-}
-export const SourceControlConfigurationsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterRp: S.String.pipe(T.Label()),
-      clusterResourceName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      sourceControlConfigurationName: S.String.pipe(T.Label()),
-      properties: S.optional(
-        SourceControlConfigurationsCreateOrUpdateRequestProperties,
-      ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
-        code: 200,
-        apiVersion: "2023-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SourceControlConfigurationsCreateOrUpdateRequest",
-  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateRequest>;
-
-/** The provisioning state of the resource provider. */
-export type SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
-  | "Accepted"
-  | "Deleting"
-  | "Running"
-  | "Succeeded"
-  | "Failed";
-export const SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
-  /*@__PURE__*/ S.String;
-
-/** The compliance state of the configuration. */
-export type ComplianceStatusComplianceState =
-  | "Pending"
-  | "Compliant"
-  | "Noncompliant"
-  | "Installed"
-  | "Failed";
-export const ComplianceStatusComplianceState = /*@__PURE__*/ S.String;
-
-/** Level of the message. */
-export type ComplianceStatusMessageLevel = "Error" | "Warning" | "Information";
-export const ComplianceStatusMessageLevel = /*@__PURE__*/ S.String;
-
-/** Compliance Status details */
-export interface ComplianceStatus {
-  /** The compliance state of the configuration. */
-  complianceState?: ComplianceStatusComplianceState;
-  /** Datetime the configuration was last applied. */
-  lastConfigApplied?: string;
-  /** Message from when the configuration was applied. */
-  message?: string;
-  /** Level of the message. */
-  messageLevel?: ComplianceStatusMessageLevel;
-}
-export const ComplianceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    complianceState: S.optional(ComplianceStatusComplianceState),
-    lastConfigApplied: S.optional(S.String),
-    message: S.optional(S.String),
-    messageLevel: S.optional(ComplianceStatusMessageLevel),
-  }),
-).annotate({
-  identifier: "ComplianceStatus",
-}) as any as S.Schema<ComplianceStatus>;
-
-/** Properties to create a Source Control Configuration resource */
-export interface SourceControlConfigurationsCreateOrUpdateResponseProperties {
-  /** Url of the SourceControl Repository. */
-  repositoryUrl?: string;
-  /** The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
-  operatorNamespace?: string;
-  /** Instance name of the operator - identifying the specific configuration. */
-  operatorInstanceName?: string;
-  /** Type of the operator */
-  operatorType?: OperatorTypeDefinition;
-  /** Any Parameters for the Operator instance in string format. */
-  operatorParams?: string;
-  /** Name-value pairs of protected configuration settings for the configuration */
-  configurationProtectedSettings?: ConfigurationProtectedSettings;
-  /** Scope at which the operator will be installed. */
-  operatorScope?: OperatorScopeDefinition;
-  /** Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user). */
-  repositoryPublicKey?: string;
-  /** Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances */
-  sshKnownHostsContents?: string;
-  /** Option to enable Helm Operator for this git configuration. */
-  enableHelmOperator?: boolean;
-  /** Properties for Helm operator. */
-  helmOperatorProperties?: HelmOperatorProperties;
-  /** The provisioning state of the resource provider. */
-  provisioningState?: SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState;
-  /** Compliance Status of the Configuration */
-  complianceStatus?: ComplianceStatus;
-}
-export const SourceControlConfigurationsCreateOrUpdateResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repositoryUrl: S.optional(S.String),
-      operatorNamespace: S.optional(S.String),
-      operatorInstanceName: S.optional(S.String),
-      operatorType: S.optional(OperatorTypeDefinition),
-      operatorParams: S.optional(S.String),
-      configurationProtectedSettings: S.optional(
-        ConfigurationProtectedSettings,
-      ),
-      operatorScope: S.optional(OperatorScopeDefinition),
-      repositoryPublicKey: S.optional(S.String),
-      sshKnownHostsContents: S.optional(S.String),
-      enableHelmOperator: S.optional(S.Boolean),
-      helmOperatorProperties: S.optional(HelmOperatorProperties),
-      provisioningState: S.optional(
-        SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState,
-      ),
-      complianceStatus: S.optional(ComplianceStatus),
-    }),
-  ).annotate({
-    identifier: "SourceControlConfigurationsCreateOrUpdateResponseProperties",
-  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponseProperties>;
-
-/** The type of identity that created the resource. */
-export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SourceControlConfigurationsCreateOrUpdateResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SourceControlConfigurationsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SourceControlConfigurationsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponseSystemData>;
-
-export interface SourceControlConfigurationsCreateOrUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties to create a Source Control Configuration resource */
-  properties?: SourceControlConfigurationsCreateOrUpdateResponseProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: SourceControlConfigurationsCreateOrUpdateResponseSystemData;
-}
-export const SourceControlConfigurationsCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(
-        SourceControlConfigurationsCreateOrUpdateResponseProperties,
-      ),
-      systemData: S.optional(
-        SourceControlConfigurationsCreateOrUpdateResponseSystemData,
-      ),
-    }),
-  ).annotate({
-    identifier: "SourceControlConfigurationsCreateOrUpdateResponse",
-  }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponse>;
-
-export interface SourceControlConfigurationsDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-  /** Name of the Source Control Configuration. */
-  sourceControlConfigurationName: string;
-}
-export const SourceControlConfigurationsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterRp: S.String.pipe(T.Label()),
-      clusterResourceName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      sourceControlConfigurationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
-        code: 200,
-        apiVersion: "2023-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "SourceControlConfigurationsDeleteRequest",
-}) as any as S.Schema<SourceControlConfigurationsDeleteRequest>;
-
-export interface SourceControlConfigurationsDeleteResponse {}
-export const SourceControlConfigurationsDeleteResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SourceControlConfigurationsDeleteResponse",
-  }) as any as S.Schema<SourceControlConfigurationsDeleteResponse>;
-
-export interface SourceControlConfigurationsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-  /** Name of the Source Control Configuration. */
-  sourceControlConfigurationName: string;
-}
-export const SourceControlConfigurationsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterRp: S.String.pipe(T.Label()),
-      clusterResourceName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      sourceControlConfigurationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
-        code: 200,
-        apiVersion: "2023-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "SourceControlConfigurationsGetRequest",
-}) as any as S.Schema<SourceControlConfigurationsGetRequest>;
-
-/** The provisioning state of the resource provider. */
-export type SourceControlConfigurationsGetResponsePropertiesProvisioningState =
-  | "Accepted"
-  | "Deleting"
-  | "Running"
-  | "Succeeded"
-  | "Failed";
-export const SourceControlConfigurationsGetResponsePropertiesProvisioningState =
-  /*@__PURE__*/ S.String;
-
-/** Properties to create a Source Control Configuration resource */
-export interface SourceControlConfigurationsGetResponseProperties {
-  /** Url of the SourceControl Repository. */
-  repositoryUrl?: string;
-  /** The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
-  operatorNamespace?: string;
-  /** Instance name of the operator - identifying the specific configuration. */
-  operatorInstanceName?: string;
-  /** Type of the operator */
-  operatorType?: OperatorTypeDefinition;
-  /** Any Parameters for the Operator instance in string format. */
-  operatorParams?: string;
-  /** Name-value pairs of protected configuration settings for the configuration */
-  configurationProtectedSettings?: ConfigurationProtectedSettings;
-  /** Scope at which the operator will be installed. */
-  operatorScope?: OperatorScopeDefinition;
-  /** Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user). */
-  repositoryPublicKey?: string;
-  /** Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances */
-  sshKnownHostsContents?: string;
-  /** Option to enable Helm Operator for this git configuration. */
-  enableHelmOperator?: boolean;
-  /** Properties for Helm operator. */
-  helmOperatorProperties?: HelmOperatorProperties;
-  /** The provisioning state of the resource provider. */
-  provisioningState?: SourceControlConfigurationsGetResponsePropertiesProvisioningState;
-  /** Compliance Status of the Configuration */
-  complianceStatus?: ComplianceStatus;
-}
-export const SourceControlConfigurationsGetResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repositoryUrl: S.optional(S.String),
-      operatorNamespace: S.optional(S.String),
-      operatorInstanceName: S.optional(S.String),
-      operatorType: S.optional(OperatorTypeDefinition),
-      operatorParams: S.optional(S.String),
-      configurationProtectedSettings: S.optional(
-        ConfigurationProtectedSettings,
-      ),
-      operatorScope: S.optional(OperatorScopeDefinition),
-      repositoryPublicKey: S.optional(S.String),
-      sshKnownHostsContents: S.optional(S.String),
-      enableHelmOperator: S.optional(S.Boolean),
-      helmOperatorProperties: S.optional(HelmOperatorProperties),
-      provisioningState: S.optional(
-        SourceControlConfigurationsGetResponsePropertiesProvisioningState,
-      ),
-      complianceStatus: S.optional(ComplianceStatus),
-    }),
-  ).annotate({
-    identifier: "SourceControlConfigurationsGetResponseProperties",
-  }) as any as S.Schema<SourceControlConfigurationsGetResponseProperties>;
-
-/** The type of identity that created the resource. */
-export type SourceControlConfigurationsGetResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SourceControlConfigurationsGetResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SourceControlConfigurationsGetResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SourceControlConfigurationsGetResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SourceControlConfigurationsGetResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SourceControlConfigurationsGetResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SourceControlConfigurationsGetResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SourceControlConfigurationsGetResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        SourceControlConfigurationsGetResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        SourceControlConfigurationsGetResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SourceControlConfigurationsGetResponseSystemData",
-  }) as any as S.Schema<SourceControlConfigurationsGetResponseSystemData>;
-
-export interface SourceControlConfigurationsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties to create a Source Control Configuration resource */
-  properties?: SourceControlConfigurationsGetResponseProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: SourceControlConfigurationsGetResponseSystemData;
-}
-export const SourceControlConfigurationsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(SourceControlConfigurationsGetResponseProperties),
-      systemData: S.optional(SourceControlConfigurationsGetResponseSystemData),
-    }),
-).annotate({
-  identifier: "SourceControlConfigurationsGetResponse",
-}) as any as S.Schema<SourceControlConfigurationsGetResponse>;
-
-export interface SourceControlConfigurationsListRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService. */
-  clusterRp: string;
-  /** The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters. */
-  clusterResourceName: string;
-  /** The name of the kubernetes cluster. */
-  clusterName: string;
-}
-export const SourceControlConfigurationsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterRp: S.String.pipe(T.Label()),
-      clusterResourceName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations",
-        code: 200,
-        apiVersion: "2023-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "SourceControlConfigurationsListRequest",
-}) as any as S.Schema<SourceControlConfigurationsListRequest>;
-
-/** The provisioning state of the resource provider. */
-export type SourceControlConfigurationPropertiesProvisioningState =
-  | "Accepted"
-  | "Deleting"
-  | "Running"
-  | "Succeeded"
-  | "Failed";
-export const SourceControlConfigurationPropertiesProvisioningState =
-  /*@__PURE__*/ S.String;
-
-/** Properties to create a Source Control Configuration resource */
-export interface SourceControlConfigurationProperties {
-  /** Url of the SourceControl Repository. */
-  repositoryUrl?: string;
-  /** The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only. */
-  operatorNamespace?: string;
-  /** Instance name of the operator - identifying the specific configuration. */
-  operatorInstanceName?: string;
-  /** Type of the operator */
-  operatorType?: OperatorTypeDefinition;
-  /** Any Parameters for the Operator instance in string format. */
-  operatorParams?: string;
-  /** Name-value pairs of protected configuration settings for the configuration */
-  configurationProtectedSettings?: ConfigurationProtectedSettings;
-  /** Scope at which the operator will be installed. */
-  operatorScope?: OperatorScopeDefinition;
-  /** Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user). */
-  repositoryPublicKey?: string;
-  /** Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances */
-  sshKnownHostsContents?: string;
-  /** Option to enable Helm Operator for this git configuration. */
-  enableHelmOperator?: boolean;
-  /** Properties for Helm operator. */
-  helmOperatorProperties?: HelmOperatorProperties;
-  /** The provisioning state of the resource provider. */
-  provisioningState?: SourceControlConfigurationPropertiesProvisioningState;
-  /** Compliance Status of the Configuration */
-  complianceStatus?: ComplianceStatus;
-}
-export const SourceControlConfigurationProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      repositoryUrl: S.optional(S.String),
-      operatorNamespace: S.optional(S.String),
-      operatorInstanceName: S.optional(S.String),
-      operatorType: S.optional(OperatorTypeDefinition),
-      operatorParams: S.optional(S.String),
-      configurationProtectedSettings: S.optional(
-        ConfigurationProtectedSettings,
-      ),
-      operatorScope: S.optional(OperatorScopeDefinition),
-      repositoryPublicKey: S.optional(S.String),
-      sshKnownHostsContents: S.optional(S.String),
-      enableHelmOperator: S.optional(S.Boolean),
-      helmOperatorProperties: S.optional(HelmOperatorProperties),
-      provisioningState: S.optional(
-        SourceControlConfigurationPropertiesProvisioningState,
-      ),
-      complianceStatus: S.optional(ComplianceStatus),
-    }),
-).annotate({
-  identifier: "SourceControlConfigurationProperties",
-}) as any as S.Schema<SourceControlConfigurationProperties>;
-
-/** The type of identity that created the resource. */
-export type SourceControlConfigurationSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SourceControlConfigurationSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SourceControlConfigurationSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SourceControlConfigurationSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SourceControlConfigurationSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SourceControlConfigurationSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SourceControlConfigurationSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SourceControlConfigurationSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        SourceControlConfigurationSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        SourceControlConfigurationSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SourceControlConfigurationSystemData",
-}) as any as S.Schema<SourceControlConfigurationSystemData>;
-
-/** The SourceControl Configuration object returned in Get & Put response. */
-export interface SourceControlConfiguration {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Properties to create a Source Control Configuration resource */
-  properties?: SourceControlConfigurationProperties;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: SourceControlConfigurationSystemData;
-}
-export const SourceControlConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SourceControlConfigurationProperties),
-    systemData: S.optional(SourceControlConfigurationSystemData),
-  }),
-).annotate({
-  identifier: "SourceControlConfiguration",
-}) as any as S.Schema<SourceControlConfiguration>;
-
-/** List of Source Control Configurations within a Kubernetes cluster. */
-export type SourceControlConfigurationListValueList =
-  Array<SourceControlConfiguration>;
-export const SourceControlConfigurationListValueList = /*@__PURE__*/ S.Array(
-  SourceControlConfiguration,
-) as any as S.Schema<SourceControlConfigurationListValueList>;
-
-/** Result of the request to list Source Control Configurations. It contains a list of SourceControlConfiguration objects and a URL link to get the next set of results. */
-export interface SourceControlConfigurationList {
-  /** List of Source Control Configurations within a Kubernetes cluster. */
-  value?: SourceControlConfigurationListValueList;
-  /** URL to get the next set of configuration objects, if any. */
-  nextLink?: string;
-}
-export const SourceControlConfigurationList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SourceControlConfigurationListValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SourceControlConfigurationList",
-}) as any as S.Schema<SourceControlConfigurationList>;
-
-export type ExtensionsCreateError = AzureOpError;
+export type CreateExtensionError = AzureOpError;
 /** Create a new Kubernetes Cluster Extension. */
-export const ExtensionsCreate: API.OperationMethod<
-  ExtensionsCreateRequest,
-  ExtensionsCreateResponse,
-  ExtensionsCreateError,
+export const CreateExtension: API.OperationMethod<
+  CreateExtensionRequest,
+  CreateExtensionResponse,
+  CreateExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExtensionsCreateRequest,
-  output: ExtensionsCreateResponse,
+  input: CreateExtensionRequest,
+  output: CreateExtensionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ExtensionsDeleteError = AzureOpError;
+export type DeleteExtensionError = AzureOpError;
 /** Delete a Kubernetes Cluster Extension. This will cause the Agent to Uninstall the extension from the cluster. */
-export const ExtensionsDelete: API.OperationMethod<
-  ExtensionsDeleteRequest,
-  ExtensionsDeleteResponse,
-  ExtensionsDeleteError,
+export const DeleteExtension: API.OperationMethod<
+  DeleteExtensionRequest,
+  DeleteExtensionResponse,
+  DeleteExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExtensionsDeleteRequest,
-  output: ExtensionsDeleteResponse,
+  input: DeleteExtensionRequest,
+  output: DeleteExtensionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ExtensionsGetError = AzureOpError;
-/** Gets Kubernetes Cluster Extension. */
-export const ExtensionsGet: API.OperationMethod<
-  ExtensionsGetRequest,
-  ExtensionsGetResponse,
-  ExtensionsGetError,
+export type DeleteFluxConfigurationError = AzureOpError;
+/** This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo. */
+export const DeleteFluxConfiguration: API.OperationMethod<
+  DeleteFluxConfigurationRequest,
+  DeleteFluxConfigurationResponse,
+  DeleteFluxConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExtensionsGetRequest,
-  output: ExtensionsGetResponse,
+  input: DeleteFluxConfigurationRequest,
+  output: DeleteFluxConfigurationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSourceControlConfigurationError = AzureOpError;
+/** This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo. */
+export const DeleteSourceControlConfiguration: API.OperationMethod<
+  DeleteSourceControlConfigurationRequest,
+  DeleteSourceControlConfigurationResponse,
+  DeleteSourceControlConfigurationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSourceControlConfigurationRequest,
+  output: DeleteSourceControlConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4598,36 +4614,6 @@ export const ExtensionsList2: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExtensionsUpdateError = AzureOpError;
-/** Patch an existing Kubernetes Cluster Extension. */
-export const ExtensionsUpdate: API.OperationMethod<
-  ExtensionsUpdateRequest,
-  ExtensionsUpdateResponse,
-  ExtensionsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExtensionsUpdateRequest,
-  output: ExtensionsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FluxConfigOperationStatusGetError = AzureOpError;
-/** Get Async Operation status */
-export const FluxConfigOperationStatusGet: API.OperationMethod<
-  FluxConfigOperationStatusGetRequest,
-  FluxConfigOperationStatusGetResponse,
-  FluxConfigOperationStatusGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FluxConfigOperationStatusGetRequest,
-  output: FluxConfigOperationStatusGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type FluxConfigurationsCreateOrUpdateError = AzureOpError;
 /** Create a new Kubernetes Flux Configuration. */
 export const FluxConfigurationsCreateOrUpdate: API.OperationMethod<
@@ -4638,36 +4624,6 @@ export const FluxConfigurationsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: FluxConfigurationsCreateOrUpdateRequest,
   output: FluxConfigurationsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FluxConfigurationsDeleteError = AzureOpError;
-/** This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo. */
-export const FluxConfigurationsDelete: API.OperationMethod<
-  FluxConfigurationsDeleteRequest,
-  FluxConfigurationsDeleteResponse,
-  FluxConfigurationsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FluxConfigurationsDeleteRequest,
-  output: FluxConfigurationsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FluxConfigurationsGetError = AzureOpError;
-/** Gets details of the Flux Configuration. */
-export const FluxConfigurationsGet: API.OperationMethod<
-  FluxConfigurationsGetRequest,
-  FluxConfigurationsGetResponse,
-  FluxConfigurationsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FluxConfigurationsGetRequest,
-  output: FluxConfigurationsGetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4688,61 +4644,121 @@ export const FluxConfigurationsList2: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FluxConfigurationsUpdateError = AzureOpError;
-/** Update an existing Kubernetes Flux Configuration. */
-export const FluxConfigurationsUpdate: API.OperationMethod<
-  FluxConfigurationsUpdateRequest,
-  FluxConfigurationsUpdateResponse,
-  FluxConfigurationsUpdateError,
+export type GetExtensionError = AzureOpError;
+/** Gets Kubernetes Cluster Extension. */
+export const GetExtension: API.OperationMethod<
+  GetExtensionRequest,
+  GetExtensionResponse,
+  GetExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FluxConfigurationsUpdateRequest,
-  output: FluxConfigurationsUpdateResponse,
+  input: GetExtensionRequest,
+  output: GetExtensionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
-/** List all the available operations the KubernetesConfiguration resource provider supports. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationStatusGetError = AzureOpError;
+export type GetFluxConfigOperationStatusError = AzureOpError;
 /** Get Async Operation status */
-export const OperationStatusGet: API.OperationMethod<
-  OperationStatusGetRequest,
-  OperationStatusGetResponse,
-  OperationStatusGetError,
+export const GetFluxConfigOperationStatus: API.OperationMethod<
+  GetFluxConfigOperationStatusRequest,
+  GetFluxConfigOperationStatusResponse,
+  GetFluxConfigOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationStatusGetRequest,
-  output: OperationStatusGetResponse,
+  input: GetFluxConfigOperationStatusRequest,
+  output: GetFluxConfigOperationStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationStatusListError = AzureOpError;
-/** List Async Operations, currently in progress, in a cluster */
-export const OperationStatusList: API.OperationMethod<
-  OperationStatusListRequest,
-  OperationStatusListResponse,
-  OperationStatusListError,
+export type GetFluxConfigurationError = AzureOpError;
+/** Gets details of the Flux Configuration. */
+export const GetFluxConfiguration: API.OperationMethod<
+  GetFluxConfigurationRequest,
+  GetFluxConfigurationResponse,
+  GetFluxConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationStatusListRequest,
-  output: OperationStatusListResponse,
+  input: GetFluxConfigurationRequest,
+  output: GetFluxConfigurationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOperationStatusError = AzureOpError;
+/** Get Async Operation status */
+export const GetOperationStatus: API.OperationMethod<
+  GetOperationStatusRequest,
+  GetOperationStatusResponse,
+  GetOperationStatusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOperationStatusRequest,
+  output: GetOperationStatusResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSourceControlConfigurationError = AzureOpError;
+/** Gets details of the Source Control Configuration. */
+export const GetSourceControlConfiguration: API.OperationMethod<
+  GetSourceControlConfigurationRequest,
+  GetSourceControlConfigurationResponse,
+  GetSourceControlConfigurationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSourceControlConfigurationRequest,
+  output: GetSourceControlConfigurationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** List all the available operations the KubernetesConfiguration resource provider supports. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationStatusError = AzureOpError;
+/** List Async Operations, currently in progress, in a cluster */
+export const ListOperationStatus: API.OperationMethod<
+  ListOperationStatusRequest,
+  ListOperationStatusResponse,
+  ListOperationStatusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationStatusRequest,
+  output: ListOperationStatusResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSourceControlConfigurationsError = AzureOpError;
+/** List all Source Control Configurations. */
+export const ListSourceControlConfigurations: API.OperationMethod<
+  ListSourceControlConfigurationsRequest,
+  SourceControlConfigurationList,
+  ListSourceControlConfigurationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSourceControlConfigurationsRequest,
+  output: SourceControlConfigurationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4778,46 +4794,31 @@ export const SourceControlConfigurationsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SourceControlConfigurationsDeleteError = AzureOpError;
-/** This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo. */
-export const SourceControlConfigurationsDelete: API.OperationMethod<
-  SourceControlConfigurationsDeleteRequest,
-  SourceControlConfigurationsDeleteResponse,
-  SourceControlConfigurationsDeleteError,
+export type UpdateExtensionError = AzureOpError;
+/** Patch an existing Kubernetes Cluster Extension. */
+export const UpdateExtension: API.OperationMethod<
+  UpdateExtensionRequest,
+  UpdateExtensionResponse,
+  UpdateExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlConfigurationsDeleteRequest,
-  output: SourceControlConfigurationsDeleteResponse,
+  input: UpdateExtensionRequest,
+  output: UpdateExtensionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SourceControlConfigurationsGetError = AzureOpError;
-/** Gets details of the Source Control Configuration. */
-export const SourceControlConfigurationsGet: API.OperationMethod<
-  SourceControlConfigurationsGetRequest,
-  SourceControlConfigurationsGetResponse,
-  SourceControlConfigurationsGetError,
+export type UpdateFluxConfigurationError = AzureOpError;
+/** Update an existing Kubernetes Flux Configuration. */
+export const UpdateFluxConfiguration: API.OperationMethod<
+  UpdateFluxConfigurationRequest,
+  UpdateFluxConfigurationResponse,
+  UpdateFluxConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlConfigurationsGetRequest,
-  output: SourceControlConfigurationsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SourceControlConfigurationsListError = AzureOpError;
-/** List all Source Control Configurations. */
-export const SourceControlConfigurationsList: API.OperationMethod<
-  SourceControlConfigurationsListRequest,
-  SourceControlConfigurationList,
-  SourceControlConfigurationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlConfigurationsListRequest,
-  output: SourceControlConfigurationList,
+  input: UpdateFluxConfigurationRequest,
+  output: UpdateFluxConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

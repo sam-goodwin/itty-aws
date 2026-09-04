@@ -47,7 +47,7 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_gateway#McpGatewayAuditListRequest": {
+    "com.posthog.mcp_gateway#ListMcpGatewayAuditRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -439,10 +439,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_gateway#McpGatewayAuditList": {
+    "com.posthog.mcp_gateway#ListMcpGatewayAudit": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayAuditListRequest"
+        "target": "com.posthog.mcp_gateway#ListMcpGatewayAuditRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#PaginatedMCPAuditEventList"
@@ -571,7 +571,7 @@
         "smithy.api#documentation": "Totals backing the quick-filter chips."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayConfigListRequest": {
+    "com.posthog.mcp_gateway#ListMcpGatewayConfigRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -706,10 +706,10 @@
         "smithy.api#documentation": "Catalog template ids that already have a gateway registration, including registrations hidden from the requesting member. Clients use this list to avoid presenting disabled or revoked templates as new."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayConfigList": {
+    "com.posthog.mcp_gateway#ListMcpGatewayConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayConfigListRequest"
+        "target": "com.posthog.mcp_gateway#ListMcpGatewayConfigRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#TeamMCPGatewayConfig"
@@ -743,7 +743,7 @@
         "smithy.api#documentation": "* `members` - members\n* `agents` - agents"
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayConfigApplyPresetCreateRequest": {
+    "com.posthog.mcp_gateway#CreateMcpGatewayConfigApplyPresetRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -773,10 +773,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayConfigApplyPresetCreate": {
+    "com.posthog.mcp_gateway#CreateMcpGatewayConfigApplyPreset": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayConfigApplyPresetCreateRequest"
+        "target": "com.posthog.mcp_gateway#CreateMcpGatewayConfigApplyPresetRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#TeamMCPGatewayConfig"
@@ -921,7 +921,7 @@
         "smithy.api#documentation": "Update team gateway settings (admin-only)."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayMembersListRequest": {
+    "com.posthog.mcp_gateway#ListMcpGatewayMembersRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1042,10 +1042,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_gateway#McpGatewayMembersList": {
+    "com.posthog.mcp_gateway#ListMcpGatewayMembers": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayMembersListRequest"
+        "target": "com.posthog.mcp_gateway#ListMcpGatewayMembersRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#PaginatedGatewayMemberSummaryList"
@@ -1153,7 +1153,7 @@
         "smithy.api#documentation": "Turn one gateway server off (or back on) for one member."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayRulesListRequest": {
+    "com.posthog.mcp_gateway#ListMcpGatewayRulesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1327,10 +1327,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_gateway#McpGatewayRulesList": {
+    "com.posthog.mcp_gateway#ListMcpGatewayRules": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayRulesListRequest"
+        "target": "com.posthog.mcp_gateway#ListMcpGatewayRulesRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#PaginatedMCPOrgRuleList"
@@ -1344,7 +1344,7 @@
         "smithy.api#documentation": "Team guardrails evaluated before any scope policy."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayRulesCreateRequest": {
+    "com.posthog.mcp_gateway#CreateMcpGatewayRuleRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1397,10 +1397,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayRulesCreate": {
+    "com.posthog.mcp_gateway#CreateMcpGatewayRule": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayRulesCreateRequest"
+        "target": "com.posthog.mcp_gateway#CreateMcpGatewayRuleRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#MCPOrgRule"
@@ -1455,7 +1455,7 @@
         "smithy.api#documentation": "Team guardrails evaluated before any scope policy."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayRulesUpdateRequest": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayRuleRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1516,10 +1516,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayRulesUpdate": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayRule": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayRulesUpdateRequest"
+        "target": "com.posthog.mcp_gateway#UpdateMcpGatewayRuleRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#MCPOrgRule"
@@ -1533,7 +1533,7 @@
         "smithy.api#documentation": "Team guardrails evaluated before any scope policy."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayRulesPartialUpdateRequest": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayRulePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1593,10 +1593,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayRulesPartialUpdate": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayRulePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayRulesPartialUpdateRequest"
+        "target": "com.posthog.mcp_gateway#UpdateMcpGatewayRulePartialRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#MCPOrgRule"
@@ -1651,7 +1651,7 @@
         "smithy.api#documentation": "Team guardrails evaluated before any scope policy."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServersListRequest": {
+    "com.posthog.mcp_gateway#ListMcpGatewayServersRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2127,10 +2127,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_gateway#McpGatewayServersList": {
+    "com.posthog.mcp_gateway#ListMcpGatewayServers": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayServersListRequest"
+        "target": "com.posthog.mcp_gateway#ListMcpGatewayServersRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#PaginatedMCPGatewayServerList"
@@ -2185,7 +2185,7 @@
         "smithy.api#documentation": "The team's gateway server registry. The registry is sparse: rows appear\nthrough the install/share/OAuth-start flows in views.py, or when an admin\ntoggles an untouched catalog template here (`set_template_enabled`).\nServers with no row follow the team config's `default_servers_enabled`."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServersUpdateRequest": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayServerRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2263,10 +2263,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_gateway#McpGatewayServersUpdate": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayServer": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayServersUpdateRequest"
+        "target": "com.posthog.mcp_gateway#UpdateMcpGatewayServerRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#MCPGatewayServerUpdate"
@@ -2280,7 +2280,7 @@
         "smithy.api#documentation": "The team's gateway server registry. The registry is sparse: rows appear\nthrough the install/share/OAuth-start flows in views.py, or when an admin\ntoggles an untouched catalog template here (`set_template_enabled`).\nServers with no row follow the team config's `default_servers_enabled`."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServersPartialUpdateRequest": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayServerPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2328,10 +2328,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServersPartialUpdate": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayServerPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayServersPartialUpdateRequest"
+        "target": "com.posthog.mcp_gateway#UpdateMcpGatewayServerPartialRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#MCPGatewayServerUpdate"
@@ -2467,7 +2467,7 @@
         "smithy.api#documentation": "Per-tool states to upsert for the scope. At most 1,000 entries per request."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServersPoliciesCreateRequest": {
+    "com.posthog.mcp_gateway#CreateMcpGatewayServerPolicyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2688,10 +2688,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_gateway#McpGatewayServersPoliciesCreate": {
+    "com.posthog.mcp_gateway#CreateMcpGatewayServerPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayServersPoliciesCreateRequest"
+        "target": "com.posthog.mcp_gateway#CreateMcpGatewayServerPolicyRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#PaginatedResolvedToolPolicyList"
@@ -2838,7 +2838,7 @@
         "smithy.api#documentation": "Enable or disable a catalog template for the team (admin-only),\nmaterializing its gateway registration on the first toggle."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServiceAccountsListRequest": {
+    "com.posthog.mcp_gateway#ListMcpGatewayServiceAccountsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3122,10 +3122,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_gateway#McpGatewayServiceAccountsList": {
+    "com.posthog.mcp_gateway#ListMcpGatewayServiceAccounts": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayServiceAccountsListRequest"
+        "target": "com.posthog.mcp_gateway#ListMcpGatewayServiceAccountsRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#PaginatedMCPServiceAccountList"
@@ -3180,7 +3180,7 @@
         "smithy.api#documentation": "PostHog's built-in agents and their MCP access grants.\n\nThe catalog is fixed. Projects can pause an agent's MCP access and grant or\nrevoke servers, but cannot create, rename, rotate, or delete agents."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServiceAccountsUpdateRequest": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayServiceAccountRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3222,10 +3222,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_gateway#McpGatewayServiceAccountsUpdate": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayServiceAccount": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayServiceAccountsUpdateRequest"
+        "target": "com.posthog.mcp_gateway#UpdateMcpGatewayServiceAccountRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#MCPServiceAccountUpdate"
@@ -3239,7 +3239,7 @@
         "smithy.api#documentation": "PostHog's built-in agents and their MCP access grants.\n\nThe catalog is fixed. Projects can pause an agent's MCP access and grant or\nrevoke servers, but cannot create, rename, rotate, or delete agents."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServiceAccountsPartialUpdateRequest": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayServiceAccountPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3269,10 +3269,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServiceAccountsPartialUpdate": {
+    "com.posthog.mcp_gateway#UpdateMcpGatewayServiceAccountPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayServiceAccountsPartialUpdateRequest"
+        "target": "com.posthog.mcp_gateway#UpdateMcpGatewayServiceAccountPartialRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#MCPServiceAccountUpdate"
@@ -3295,7 +3295,7 @@
         "smithy.api#documentation": "Optional agent-scope tool policies to set alongside the grant. At most 1,000 entries per request."
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServiceAccountsAccessCreateRequest": {
+    "com.posthog.mcp_gateway#CreateMcpGatewayServiceAccountAccessRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3351,10 +3351,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_gateway#McpGatewayServiceAccountsAccessCreate": {
+    "com.posthog.mcp_gateway#CreateMcpGatewayServiceAccountAccess": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_gateway#McpGatewayServiceAccountsAccessCreateRequest"
+        "target": "com.posthog.mcp_gateway#CreateMcpGatewayServiceAccountAccessRequest"
       },
       "output": {
         "target": "com.posthog.mcp_gateway#MCPServiceAccount"
@@ -3373,7 +3373,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayAuditList"
+          "target": "com.posthog.mcp_gateway#ListMcpGatewayAudit"
         },
         {
           "target": "com.posthog.mcp_gateway#McpGatewayAuditRetrieve"
@@ -3382,10 +3382,10 @@
           "target": "com.posthog.mcp_gateway#McpGatewayAuditCountsRetrieve"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayConfigList"
+          "target": "com.posthog.mcp_gateway#ListMcpGatewayConfig"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayConfigApplyPresetCreate"
+          "target": "com.posthog.mcp_gateway#CreateMcpGatewayConfigApplyPreset"
         },
         {
           "target": "com.posthog.mcp_gateway#McpGatewayConfigSetAllServersEnabledCreate"
@@ -3394,7 +3394,7 @@
           "target": "com.posthog.mcp_gateway#McpGatewayConfigUpdateSettingsCreate"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayMembersList"
+          "target": "com.posthog.mcp_gateway#ListMcpGatewayMembers"
         },
         {
           "target": "com.posthog.mcp_gateway#McpGatewayMembersRetrieve"
@@ -3403,40 +3403,40 @@
           "target": "com.posthog.mcp_gateway#McpGatewayMembersSetAccessCreate"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayRulesList"
+          "target": "com.posthog.mcp_gateway#ListMcpGatewayRules"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayRulesCreate"
+          "target": "com.posthog.mcp_gateway#CreateMcpGatewayRule"
         },
         {
           "target": "com.posthog.mcp_gateway#McpGatewayRulesRetrieve"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayRulesUpdate"
+          "target": "com.posthog.mcp_gateway#UpdateMcpGatewayRule"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayRulesPartialUpdate"
+          "target": "com.posthog.mcp_gateway#UpdateMcpGatewayRulePartial"
         },
         {
           "target": "com.posthog.mcp_gateway#McpGatewayRulesDestroy"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayServersList"
+          "target": "com.posthog.mcp_gateway#ListMcpGatewayServers"
         },
         {
           "target": "com.posthog.mcp_gateway#McpGatewayServersRetrieve"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayServersUpdate"
+          "target": "com.posthog.mcp_gateway#UpdateMcpGatewayServer"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayServersPartialUpdate"
+          "target": "com.posthog.mcp_gateway#UpdateMcpGatewayServerPartial"
         },
         {
           "target": "com.posthog.mcp_gateway#McpGatewayServersDestroy"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayServersPoliciesCreate"
+          "target": "com.posthog.mcp_gateway#CreateMcpGatewayServerPolicy"
         },
         {
           "target": "com.posthog.mcp_gateway#McpGatewayServersToolsRetrieve"
@@ -3445,19 +3445,19 @@
           "target": "com.posthog.mcp_gateway#McpGatewayServersSetTemplateEnabledCreate"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayServiceAccountsList"
+          "target": "com.posthog.mcp_gateway#ListMcpGatewayServiceAccounts"
         },
         {
           "target": "com.posthog.mcp_gateway#McpGatewayServiceAccountsRetrieve"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayServiceAccountsUpdate"
+          "target": "com.posthog.mcp_gateway#UpdateMcpGatewayServiceAccount"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayServiceAccountsPartialUpdate"
+          "target": "com.posthog.mcp_gateway#UpdateMcpGatewayServiceAccountPartial"
         },
         {
-          "target": "com.posthog.mcp_gateway#McpGatewayServiceAccountsAccessCreate"
+          "target": "com.posthog.mcp_gateway#CreateMcpGatewayServiceAccountAccess"
         }
       ],
       "traits": {

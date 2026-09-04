@@ -216,7 +216,7 @@ export const ActivityLogListRequestScopesList = /*@__PURE__*/ S.Array(
   ActivityLogListRequestScopesItem,
 ) as any as S.Schema<ActivityLogListRequestScopesList>;
 
-export interface ActivityLogListRequest {
+export interface ListActivityLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Filter by the ID of the affected resource. */
@@ -234,7 +234,7 @@ export interface ActivityLogListRequest {
   /** Filter by user UUID who performed the action. */
   user?: string;
 }
-export const ActivityLogListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListActivityLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     item_id: S.optional(S.String.pipe(T.Query())),
@@ -252,8 +252,8 @@ export const ActivityLogListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ActivityLogListRequest",
-}) as any as S.Schema<ActivityLogListRequest>;
+  identifier: "ListActivityLogRequest",
+}) as any as S.Schema<ListActivityLogRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -364,18 +364,18 @@ export const PaginatedActivityLogList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedActivityLogList",
 }) as any as S.Schema<PaginatedActivityLogList>;
 
-export type ActivityLogListError =
+export type ListActivityLogError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const activityLogList: API.OperationMethod<
-  ActivityLogListRequest,
+export const listActivityLog: API.OperationMethod<
+  ListActivityLogRequest,
   PaginatedActivityLogList,
-  ActivityLogListError,
+  ListActivityLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivityLogListRequest,
+  input: ListActivityLogRequest,
   output: PaginatedActivityLogList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,

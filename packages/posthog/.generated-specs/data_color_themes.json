@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.data_color_themes#DataColorThemesListRequest": {
+    "com.posthog.data_color_themes#ListDataColorThemesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -249,10 +249,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_color_themes#DataColorThemesList": {
+    "com.posthog.data_color_themes#ListDataColorThemes": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_color_themes#DataColorThemesListRequest"
+        "target": "com.posthog.data_color_themes#ListDataColorThemesRequest"
       },
       "output": {
         "target": "com.posthog.data_color_themes#PaginatedDataColorThemeList"
@@ -276,7 +276,7 @@
         }
       }
     },
-    "com.posthog.data_color_themes#DataColorThemesCreateRequest": {
+    "com.posthog.data_color_themes#CreateDataColorThemeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -298,10 +298,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_color_themes#DataColorThemesCreate": {
+    "com.posthog.data_color_themes#CreateDataColorTheme": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_color_themes#DataColorThemesCreateRequest"
+        "target": "com.posthog.data_color_themes#CreateDataColorThemeRequest"
       },
       "output": {
         "target": "com.posthog.data_color_themes#DataColorTheme"
@@ -373,7 +373,7 @@
         }
       }
     },
-    "com.posthog.data_color_themes#DataColorThemesUpdateRequest": {
+    "com.posthog.data_color_themes#UpdateDataColorThemeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -403,10 +403,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_color_themes#DataColorThemesUpdate": {
+    "com.posthog.data_color_themes#UpdateDataColorTheme": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_color_themes#DataColorThemesUpdateRequest"
+        "target": "com.posthog.data_color_themes#UpdateDataColorThemeRequest"
       },
       "output": {
         "target": "com.posthog.data_color_themes#DataColorTheme"
@@ -430,7 +430,7 @@
         }
       }
     },
-    "com.posthog.data_color_themes#DataColorThemesPartialUpdateRequest": {
+    "com.posthog.data_color_themes#UpdateDataColorThemePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -460,10 +460,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_color_themes#DataColorThemesPartialUpdate": {
+    "com.posthog.data_color_themes#UpdateDataColorThemePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_color_themes#DataColorThemesPartialUpdateRequest"
+        "target": "com.posthog.data_color_themes#UpdateDataColorThemePartialRequest"
       },
       "output": {
         "target": "com.posthog.data_color_themes#DataColorTheme"
@@ -579,19 +579,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.data_color_themes#DataColorThemesList"
+          "target": "com.posthog.data_color_themes#ListDataColorThemes"
         },
         {
-          "target": "com.posthog.data_color_themes#DataColorThemesCreate"
+          "target": "com.posthog.data_color_themes#CreateDataColorTheme"
         },
         {
           "target": "com.posthog.data_color_themes#DataColorThemesRetrieve"
         },
         {
-          "target": "com.posthog.data_color_themes#DataColorThemesUpdate"
+          "target": "com.posthog.data_color_themes#UpdateDataColorTheme"
         },
         {
-          "target": "com.posthog.data_color_themes#DataColorThemesPartialUpdate"
+          "target": "com.posthog.data_color_themes#UpdateDataColorThemePartial"
         },
         {
           "target": "com.posthog.data_color_themes#DataColorThemesDestroy"

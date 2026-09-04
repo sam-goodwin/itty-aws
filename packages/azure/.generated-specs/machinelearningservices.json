@@ -130,10 +130,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsListKeys": {
+    "com.azure.machinelearningservices#ListServerlessEndpointKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ServerlessEndpointsListKeysRequest"
+        "target": "com.azure.machinelearningservices#ListServerlessEndpointKeysRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#EndpointAuthKeys"
@@ -149,7 +149,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsListKeysRequest": {
+    "com.azure.machinelearningservices#ListServerlessEndpointKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -189,10 +189,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsDelete": {
+    "com.azure.machinelearningservices#DeleteServerlessEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ServerlessEndpointsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteServerlessEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -208,7 +208,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteServerlessEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -248,13 +248,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsUpdate": {
+    "com.azure.machinelearningservices#UpdateServerlessEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ServerlessEndpointsUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateServerlessEndpointRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#ServerlessEndpointsUpdateResponse"
+        "target": "com.azure.machinelearningservices#UpdateServerlessEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -267,7 +267,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsUpdateResponse": {
+    "com.azure.machinelearningservices#UpdateServerlessEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -882,7 +882,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateServerlessEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1447,13 +1447,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsGet": {
+    "com.azure.machinelearningservices#GetServerlessEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ServerlessEndpointsGetRequest"
+        "target": "com.azure.machinelearningservices#GetServerlessEndpointRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#ServerlessEndpointsGetResponse"
+        "target": "com.azure.machinelearningservices#GetServerlessEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1466,7 +1466,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsGetResponse": {
+    "com.azure.machinelearningservices#GetServerlessEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1616,7 +1616,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsGetRequest": {
+    "com.azure.machinelearningservices#GetServerlessEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1656,10 +1656,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsList": {
+    "com.azure.machinelearningservices#ListServerlessEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ServerlessEndpointsListRequest"
+        "target": "com.azure.machinelearningservices#ListServerlessEndpointsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ServerlessEndpointTrackedResourceArmPaginatedResult"
@@ -1855,7 +1855,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#ServerlessEndpointsListRequest": {
+    "com.azure.machinelearningservices#ListServerlessEndpointsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1894,10 +1894,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#SchedulesDelete": {
+    "com.azure.machinelearningservices#DeleteSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#SchedulesDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteScheduleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1913,7 +1913,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#SchedulesDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteScheduleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2274,13 +2274,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#SchedulesGet": {
+    "com.azure.machinelearningservices#GetSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#SchedulesGetRequest"
+        "target": "com.azure.machinelearningservices#GetScheduleRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#SchedulesGetResponse"
+        "target": "com.azure.machinelearningservices#GetScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2293,7 +2293,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#SchedulesGetResponse": {
+    "com.azure.machinelearningservices#GetScheduleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2332,7 +2332,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#SchedulesGetRequest": {
+    "com.azure.machinelearningservices#GetScheduleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2372,10 +2372,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#SchedulesList": {
+    "com.azure.machinelearningservices#ListSchedules": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#SchedulesListRequest"
+        "target": "com.azure.machinelearningservices#ListSchedulesRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ScheduleResourceArmPaginatedResult"
@@ -2460,7 +2460,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#SchedulesListRequest": {
+    "com.azure.machinelearningservices#ListSchedulesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2672,10 +2672,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#PrivateLinkResourcesList": {
+    "com.azure.machinelearningservices#ListPrivateLinkResources": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#PrivateLinkResourcesListRequest"
+        "target": "com.azure.machinelearningservices#ListPrivateLinkResourcesRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#PrivateLinkResourceListResult"
@@ -2898,7 +2898,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.machinelearningservices#PrivateLinkResourcesListRequest": {
+    "com.azure.machinelearningservices#ListPrivateLinkResourcesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2930,10 +2930,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#PrivateEndpointConnectionsDelete": {
+    "com.azure.machinelearningservices#DeletePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#PrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2949,7 +2949,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#PrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeletePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3441,13 +3441,13 @@
         "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
-    "com.azure.machinelearningservices#PrivateEndpointConnectionsGet": {
+    "com.azure.machinelearningservices#GetPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#PrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#PrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3460,7 +3460,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#PrivateEndpointConnectionsGetResponse": {
+    "com.azure.machinelearningservices#GetPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3597,7 +3597,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.machinelearningservices#PrivateEndpointConnectionsGetRequest": {
+    "com.azure.machinelearningservices#GetPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3637,10 +3637,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#PrivateEndpointConnectionsList": {
+    "com.azure.machinelearningservices#ListPrivateEndpointConnections": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#PrivateEndpointConnectionsListRequest"
+        "target": "com.azure.machinelearningservices#ListPrivateEndpointConnectionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#PrivateEndpointConnectionListResult"
@@ -3819,7 +3819,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.machinelearningservices#PrivateEndpointConnectionsListRequest": {
+    "com.azure.machinelearningservices#ListPrivateEndpointConnectionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3938,10 +3938,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ManagedNetworkSettingsRuleDelete": {
+    "com.azure.machinelearningservices#DeleteManagedNetworkSettingRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ManagedNetworkSettingsRuleDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteManagedNetworkSettingRuleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3957,7 +3957,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ManagedNetworkSettingsRuleDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteManagedNetworkSettingRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4268,13 +4268,13 @@
         "smithy.api#documentation": "Outbound Rule for the managed network of a machine learning workspace."
       }
     },
-    "com.azure.machinelearningservices#ManagedNetworkSettingsRuleGet": {
+    "com.azure.machinelearningservices#GetManagedNetworkSettingRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ManagedNetworkSettingsRuleGetRequest"
+        "target": "com.azure.machinelearningservices#GetManagedNetworkSettingRuleRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#ManagedNetworkSettingsRuleGetResponse"
+        "target": "com.azure.machinelearningservices#GetManagedNetworkSettingRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4287,7 +4287,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ManagedNetworkSettingsRuleGetResponse": {
+    "com.azure.machinelearningservices#GetManagedNetworkSettingRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4326,7 +4326,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#ManagedNetworkSettingsRuleGetRequest": {
+    "com.azure.machinelearningservices#GetManagedNetworkSettingRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4366,10 +4366,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ManagedNetworkSettingsRuleList": {
+    "com.azure.machinelearningservices#ListManagedNetworkSettingRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ManagedNetworkSettingsRuleListRequest"
+        "target": "com.azure.machinelearningservices#ListManagedNetworkSettingRuleRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#OutboundRuleListResult"
@@ -4454,7 +4454,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.machinelearningservices#ManagedNetworkSettingsRuleListRequest": {
+    "com.azure.machinelearningservices#ListManagedNetworkSettingRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4486,10 +4486,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspacesListOutboundNetworkDependenciesEndpoints": {
+    "com.azure.machinelearningservices#ListWorkspaceOutboundNetworkDependencyEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesListOutboundNetworkDependenciesEndpointsRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceOutboundNetworkDependencyEndpointsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ExternalFQDNResponse"
@@ -4579,7 +4579,7 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#WorkspacesListOutboundNetworkDependenciesEndpointsRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceOutboundNetworkDependencyEndpointsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4611,10 +4611,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsGetToken": {
+    "com.azure.machinelearningservices#GetOnlineEndpointToken": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineEndpointsGetTokenRequest"
+        "target": "com.azure.machinelearningservices#GetOnlineEndpointTokenRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#EndpointAuthToken"
@@ -4665,7 +4665,7 @@
         "smithy.api#documentation": "Service Token"
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsGetTokenRequest": {
+    "com.azure.machinelearningservices#GetOnlineEndpointTokenRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4778,10 +4778,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsListKeys": {
+    "com.azure.machinelearningservices#ListOnlineEndpointKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineEndpointsListKeysRequest"
+        "target": "com.azure.machinelearningservices#ListOnlineEndpointKeysRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#EndpointAuthKeys"
@@ -4797,7 +4797,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsListKeysRequest": {
+    "com.azure.machinelearningservices#ListOnlineEndpointKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4837,10 +4837,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsListSkus": {
+    "com.azure.machinelearningservices#ListOnlineDeploymentSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineDeploymentsListSkusRequest"
+        "target": "com.azure.machinelearningservices#ListOnlineDeploymentSkusRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#SkuResourceArmPaginatedResult"
@@ -5026,7 +5026,7 @@
         "smithy.api#documentation": "Node scaling setting for the compute sku."
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsListSkusRequest": {
+    "com.azure.machinelearningservices#ListOnlineDeploymentSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5088,10 +5088,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsGetLogs": {
+    "com.azure.machinelearningservices#GetOnlineDeploymentLog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineDeploymentsGetLogsRequest"
+        "target": "com.azure.machinelearningservices#GetOnlineDeploymentLogRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#DeploymentLogs"
@@ -5120,7 +5120,7 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsGetLogsRequest": {
+    "com.azure.machinelearningservices#GetOnlineDeploymentLogRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5201,10 +5201,10 @@
         "smithy.api#documentation": "The type of container to retrieve logs from."
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsDelete": {
+    "com.azure.machinelearningservices#DeleteOnlineDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineDeploymentsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteOnlineDeploymentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5220,7 +5220,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteOnlineDeploymentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5268,13 +5268,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsUpdate": {
+    "com.azure.machinelearningservices#UpdateOnlineDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineDeploymentsUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateOnlineDeploymentRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#OnlineDeploymentsUpdateResponse"
+        "target": "com.azure.machinelearningservices#UpdateOnlineDeploymentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5287,7 +5287,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsUpdateResponse": {
+    "com.azure.machinelearningservices#UpdateOnlineDeploymentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5956,7 +5956,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateOnlineDeploymentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6351,13 +6351,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsGet": {
+    "com.azure.machinelearningservices#GetOnlineDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineDeploymentsGetRequest"
+        "target": "com.azure.machinelearningservices#GetOnlineDeploymentRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#OnlineDeploymentsGetResponse"
+        "target": "com.azure.machinelearningservices#GetOnlineDeploymentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6370,7 +6370,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsGetResponse": {
+    "com.azure.machinelearningservices#GetOnlineDeploymentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6520,7 +6520,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsGetRequest": {
+    "com.azure.machinelearningservices#GetOnlineDeploymentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6568,10 +6568,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsList": {
+    "com.azure.machinelearningservices#ListOnlineDeployments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineDeploymentsListRequest"
+        "target": "com.azure.machinelearningservices#ListOnlineDeploymentsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#OnlineDeploymentTrackedResourceArmPaginatedResult"
@@ -6767,7 +6767,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#OnlineDeploymentsListRequest": {
+    "com.azure.machinelearningservices#ListOnlineDeploymentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6828,10 +6828,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsDelete": {
+    "com.azure.machinelearningservices#DeleteOnlineEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineEndpointsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteOnlineEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6847,7 +6847,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteOnlineEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6887,13 +6887,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsUpdate": {
+    "com.azure.machinelearningservices#UpdateOnlineEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineEndpointsUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateOnlineEndpointRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#OnlineEndpointsUpdateResponse"
+        "target": "com.azure.machinelearningservices#UpdateOnlineEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6906,7 +6906,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsUpdateResponse": {
+    "com.azure.machinelearningservices#UpdateOnlineEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7221,7 +7221,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateOnlineEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7719,13 +7719,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsGet": {
+    "com.azure.machinelearningservices#GetOnlineEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineEndpointsGetRequest"
+        "target": "com.azure.machinelearningservices#GetOnlineEndpointRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#OnlineEndpointsGetResponse"
+        "target": "com.azure.machinelearningservices#GetOnlineEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7738,7 +7738,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsGetResponse": {
+    "com.azure.machinelearningservices#GetOnlineEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7888,7 +7888,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsGetRequest": {
+    "com.azure.machinelearningservices#GetOnlineEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7928,10 +7928,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsList": {
+    "com.azure.machinelearningservices#ListOnlineEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#OnlineEndpointsListRequest"
+        "target": "com.azure.machinelearningservices#ListOnlineEndpointsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#OnlineEndpointTrackedResourceArmPaginatedResult"
@@ -8127,7 +8127,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#OnlineEndpointsListRequest": {
+    "com.azure.machinelearningservices#ListOnlineEndpointsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8350,10 +8350,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ModelVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteModelVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ModelVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteModelVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8369,7 +8369,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ModelVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteModelVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8755,13 +8755,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ModelVersionsGet": {
+    "com.azure.machinelearningservices#GetModelVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ModelVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetModelVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#ModelVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetModelVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8774,7 +8774,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ModelVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetModelVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8813,7 +8813,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#ModelVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetModelVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8861,10 +8861,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ModelVersionsList": {
+    "com.azure.machinelearningservices#ListModelVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ModelVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListModelVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ModelVersionResourceArmPaginatedResult"
@@ -8949,7 +8949,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#ModelVersionsListRequest": {
+    "com.azure.machinelearningservices#ListModelVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9083,10 +9083,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#ModelContainersDelete": {
+    "com.azure.machinelearningservices#DeleteModelContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ModelContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteModelContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9102,7 +9102,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ModelContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteModelContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9381,13 +9381,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#ModelContainersGet": {
+    "com.azure.machinelearningservices#GetModelContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ModelContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetModelContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#ModelContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetModelContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9400,7 +9400,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ModelContainersGetResponse": {
+    "com.azure.machinelearningservices#GetModelContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9439,7 +9439,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#ModelContainersGetRequest": {
+    "com.azure.machinelearningservices#GetModelContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9479,10 +9479,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ModelContainersList": {
+    "com.azure.machinelearningservices#ListModelContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ModelContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListModelContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ModelContainerResourceArmPaginatedResult"
@@ -9567,7 +9567,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#ModelContainersListRequest": {
+    "com.azure.machinelearningservices#ListModelContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9644,10 +9644,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#MarketplaceSubscriptionsDelete": {
+    "com.azure.machinelearningservices#DeleteMarketplaceSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#MarketplaceSubscriptionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteMarketplaceSubscriptionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9663,7 +9663,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#MarketplaceSubscriptionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteMarketplaceSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9946,13 +9946,13 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#MarketplaceSubscriptionsGet": {
+    "com.azure.machinelearningservices#GetMarketplaceSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#MarketplaceSubscriptionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetMarketplaceSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#MarketplaceSubscriptionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetMarketplaceSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9965,7 +9965,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#MarketplaceSubscriptionsGetResponse": {
+    "com.azure.machinelearningservices#GetMarketplaceSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10004,7 +10004,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#MarketplaceSubscriptionsGetRequest": {
+    "com.azure.machinelearningservices#GetMarketplaceSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10044,10 +10044,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#MarketplaceSubscriptionsList": {
+    "com.azure.machinelearningservices#ListMarketplaceSubscriptions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#MarketplaceSubscriptionsListRequest"
+        "target": "com.azure.machinelearningservices#ListMarketplaceSubscriptionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#MarketplaceSubscriptionResourceArmPaginatedResult"
@@ -10132,7 +10132,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#MarketplaceSubscriptionsListRequest": {
+    "com.azure.machinelearningservices#ListMarketplaceSubscriptionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10171,10 +10171,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspacesListStorageAccountKeys": {
+    "com.azure.machinelearningservices#ListWorkspaceStorageAccountKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesListStorageAccountKeysRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceStorageAccountKeysRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ListStorageAccountKeysResult"
@@ -10202,7 +10202,7 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#WorkspacesListStorageAccountKeysRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceStorageAccountKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10234,10 +10234,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspacesListNotebookKeys": {
+    "com.azure.machinelearningservices#ListWorkspaceNotebookKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesListNotebookKeysRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceNotebookKeysRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ListNotebookKeysResult"
@@ -10271,7 +10271,7 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#WorkspacesListNotebookKeysRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceNotebookKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10303,10 +10303,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspacesListNotebookAccessToken": {
+    "com.azure.machinelearningservices#ListWorkspaceNotebookAccessToken": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesListNotebookAccessTokenRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceNotebookAccessTokenRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#NotebookAccessTokenResult"
@@ -10358,7 +10358,7 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#WorkspacesListNotebookAccessTokenRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceNotebookAccessTokenRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10390,10 +10390,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspacesListKeys": {
+    "com.azure.machinelearningservices#ListWorkspaceKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesListKeysRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceKeysRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ListWorkspaceKeysResult"
@@ -10479,7 +10479,7 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#WorkspacesListKeysRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10570,10 +10570,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#JobsDelete": {
+    "com.azure.machinelearningservices#DeleteJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#JobsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteJobRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10589,7 +10589,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#JobsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteJobRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11437,13 +11437,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#JobsGet": {
+    "com.azure.machinelearningservices#GetJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#JobsGetRequest"
+        "target": "com.azure.machinelearningservices#GetJobRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#JobsGetResponse"
+        "target": "com.azure.machinelearningservices#GetJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11456,7 +11456,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#JobsGetResponse": {
+    "com.azure.machinelearningservices#GetJobResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11495,7 +11495,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#JobsGetRequest": {
+    "com.azure.machinelearningservices#GetJobRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11535,10 +11535,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#JobsList": {
+    "com.azure.machinelearningservices#ListJobs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#JobsListRequest"
+        "target": "com.azure.machinelearningservices#ListJobsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#JobBaseResourceArmPaginatedResult"
@@ -11623,7 +11623,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#JobsListRequest": {
+    "com.azure.machinelearningservices#ListJobsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11714,10 +11714,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteFeaturestoreEntityVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturestoreEntityVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteFeaturestoreEntityVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -11733,7 +11733,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteFeaturestoreEntityVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12065,13 +12065,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityVersionsGet": {
+    "com.azure.machinelearningservices#GetFeaturestoreEntityVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturestoreEntityVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetFeaturestoreEntityVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#FeaturestoreEntityVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetFeaturestoreEntityVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12084,7 +12084,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetFeaturestoreEntityVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12123,7 +12123,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetFeaturestoreEntityVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12171,10 +12171,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityVersionsList": {
+    "com.azure.machinelearningservices#ListFeaturestoreEntityVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturestoreEntityVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListFeaturestoreEntityVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#FeaturestoreEntityVersionResourceArmPaginatedResult"
@@ -12259,7 +12259,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityVersionsListRequest": {
+    "com.azure.machinelearningservices#ListFeaturestoreEntityVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12386,10 +12386,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityContainersDelete": {
+    "com.azure.machinelearningservices#DeleteFeaturestoreEntityContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturestoreEntityContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteFeaturestoreEntityContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -12405,7 +12405,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteFeaturestoreEntityContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12688,13 +12688,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityContainersGetEntity": {
+    "com.azure.machinelearningservices#GetFeaturestoreEntityContainerEntity": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturestoreEntityContainersGetEntityRequest"
+        "target": "com.azure.machinelearningservices#GetFeaturestoreEntityContainerEntityRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#FeaturestoreEntityContainersGetEntityResponse"
+        "target": "com.azure.machinelearningservices#GetFeaturestoreEntityContainerEntityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12707,7 +12707,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityContainersGetEntityResponse": {
+    "com.azure.machinelearningservices#GetFeaturestoreEntityContainerEntityResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12746,7 +12746,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityContainersGetEntityRequest": {
+    "com.azure.machinelearningservices#GetFeaturestoreEntityContainerEntityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12786,10 +12786,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityContainersList": {
+    "com.azure.machinelearningservices#ListFeaturestoreEntityContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturestoreEntityContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListFeaturestoreEntityContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#FeaturestoreEntityContainerResourceArmPaginatedResult"
@@ -12874,7 +12874,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#FeaturestoreEntityContainersListRequest": {
+    "com.azure.machinelearningservices#ListFeaturestoreEntityContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12979,13 +12979,13 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#FeaturesGet": {
+    "com.azure.machinelearningservices#GetFeature": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturesGetRequest"
+        "target": "com.azure.machinelearningservices#GetFeatureRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#FeaturesGetResponse"
+        "target": "com.azure.machinelearningservices#GetFeatureResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12998,7 +12998,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#FeaturesGetResponse": {
+    "com.azure.machinelearningservices#GetFeatureResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13159,7 +13159,7 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#FeaturesGetRequest": {
+    "com.azure.machinelearningservices#GetFeatureRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13215,10 +13215,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturesList": {
+    "com.azure.machinelearningservices#ListFeatures": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturesListRequest"
+        "target": "com.azure.machinelearningservices#ListFeaturesRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#FeatureResourceArmPaginatedResult"
@@ -13303,7 +13303,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#FeaturesListRequest": {
+    "com.azure.machinelearningservices#ListFeaturesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13675,10 +13675,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#FeaturesetVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteFeaturesetVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturesetVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteFeaturesetVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -13694,7 +13694,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#FeaturesetVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteFeaturesetVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14274,13 +14274,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturesetVersionsGet": {
+    "com.azure.machinelearningservices#GetFeaturesetVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturesetVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetFeaturesetVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#FeaturesetVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetFeaturesetVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14293,7 +14293,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#FeaturesetVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetFeaturesetVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14332,7 +14332,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturesetVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetFeaturesetVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14380,10 +14380,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturesetVersionsList": {
+    "com.azure.machinelearningservices#ListFeaturesetVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturesetVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListFeaturesetVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#FeaturesetVersionResourceArmPaginatedResult"
@@ -14468,7 +14468,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#FeaturesetVersionsListRequest": {
+    "com.azure.machinelearningservices#ListFeaturesetVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14595,10 +14595,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#FeaturesetContainersDelete": {
+    "com.azure.machinelearningservices#DeleteFeaturesetContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturesetContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteFeaturesetContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14614,7 +14614,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#FeaturesetContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteFeaturesetContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14897,13 +14897,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#FeaturesetContainersGetEntity": {
+    "com.azure.machinelearningservices#GetFeaturesetContainerEntity": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturesetContainersGetEntityRequest"
+        "target": "com.azure.machinelearningservices#GetFeaturesetContainerEntityRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#FeaturesetContainersGetEntityResponse"
+        "target": "com.azure.machinelearningservices#GetFeaturesetContainerEntityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14916,7 +14916,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#FeaturesetContainersGetEntityResponse": {
+    "com.azure.machinelearningservices#GetFeaturesetContainerEntityResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14955,7 +14955,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturesetContainersGetEntityRequest": {
+    "com.azure.machinelearningservices#GetFeaturesetContainerEntityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14995,10 +14995,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#FeaturesetContainersList": {
+    "com.azure.machinelearningservices#ListFeaturesetContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#FeaturesetContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListFeaturesetContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#FeaturesetContainerResourceArmPaginatedResult"
@@ -15083,7 +15083,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#FeaturesetContainersListRequest": {
+    "com.azure.machinelearningservices#ListFeaturesetContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15188,10 +15188,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#WorkspaceFeaturesList": {
+    "com.azure.machinelearningservices#ListWorkspaceFeatures": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspaceFeaturesListRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceFeaturesRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ListAmlUserFeatureResult"
@@ -15263,7 +15263,7 @@
         "smithy.api#documentation": "Features enabled for a workspace"
       }
     },
-    "com.azure.machinelearningservices#WorkspaceFeaturesListRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceFeaturesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15383,10 +15383,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#EnvironmentVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteEnvironmentVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#EnvironmentVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteEnvironmentVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15402,7 +15402,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#EnvironmentVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteEnvironmentVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15815,13 +15815,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#EnvironmentVersionsGet": {
+    "com.azure.machinelearningservices#GetEnvironmentVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#EnvironmentVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetEnvironmentVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#EnvironmentVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetEnvironmentVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15834,7 +15834,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#EnvironmentVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetEnvironmentVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15873,7 +15873,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#EnvironmentVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetEnvironmentVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15921,10 +15921,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#EnvironmentVersionsList": {
+    "com.azure.machinelearningservices#ListEnvironmentVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#EnvironmentVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListEnvironmentVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#EnvironmentVersionResourceArmPaginatedResult"
@@ -16009,7 +16009,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#EnvironmentVersionsListRequest": {
+    "com.azure.machinelearningservices#ListEnvironmentVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16101,10 +16101,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#EnvironmentContainersDelete": {
+    "com.azure.machinelearningservices#DeleteEnvironmentContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#EnvironmentContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteEnvironmentContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -16120,7 +16120,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#EnvironmentContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteEnvironmentContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16403,13 +16403,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#EnvironmentContainersGet": {
+    "com.azure.machinelearningservices#GetEnvironmentContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#EnvironmentContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetEnvironmentContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#EnvironmentContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetEnvironmentContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16422,7 +16422,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#EnvironmentContainersGetResponse": {
+    "com.azure.machinelearningservices#GetEnvironmentContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16461,7 +16461,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#EnvironmentContainersGetRequest": {
+    "com.azure.machinelearningservices#GetEnvironmentContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16501,10 +16501,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#EnvironmentContainersList": {
+    "com.azure.machinelearningservices#ListEnvironmentContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#EnvironmentContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListEnvironmentContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#EnvironmentContainerResourceArmPaginatedResult"
@@ -16589,7 +16589,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#EnvironmentContainersListRequest": {
+    "com.azure.machinelearningservices#ListEnvironmentContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17056,10 +17056,10 @@
         "smithy.api#documentation": "Setting for diagnosing dependent application insights"
       }
     },
-    "com.azure.machinelearningservices#DatastoresListSecrets": {
+    "com.azure.machinelearningservices#ListDatastoreSecrets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DatastoresListSecretsRequest"
+        "target": "com.azure.machinelearningservices#ListDatastoreSecretsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#DatastoreSecrets"
@@ -17122,7 +17122,7 @@
         "smithy.api#documentation": "Enum to determine the datastore secrets type."
       }
     },
-    "com.azure.machinelearningservices#DatastoresListSecretsRequest": {
+    "com.azure.machinelearningservices#ListDatastoreSecretsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17174,10 +17174,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#DatastoresDelete": {
+    "com.azure.machinelearningservices#DeleteDatastore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DatastoresDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteDatastoreRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17193,7 +17193,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#DatastoresDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteDatastoreRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17576,13 +17576,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#DatastoresGet": {
+    "com.azure.machinelearningservices#GetDatastore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DatastoresGetRequest"
+        "target": "com.azure.machinelearningservices#GetDatastoreRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#DatastoresGetResponse"
+        "target": "com.azure.machinelearningservices#GetDatastoreResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17595,7 +17595,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#DatastoresGetResponse": {
+    "com.azure.machinelearningservices#GetDatastoreResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -17634,7 +17634,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#DatastoresGetRequest": {
+    "com.azure.machinelearningservices#GetDatastoreRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17674,10 +17674,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#DatastoresList": {
+    "com.azure.machinelearningservices#ListDatastores": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DatastoresListRequest"
+        "target": "com.azure.machinelearningservices#ListDatastoresRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#DatastoreResourceArmPaginatedResult"
@@ -17762,7 +17762,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#DatastoresListRequest": {
+    "com.azure.machinelearningservices#ListDatastoresRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17938,10 +17938,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#DataVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteDataVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DataVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteDataVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17957,7 +17957,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#DataVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteDataVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18223,13 +18223,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#DataVersionsGet": {
+    "com.azure.machinelearningservices#GetDataVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DataVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetDataVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#DataVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetDataVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18242,7 +18242,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#DataVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetDataVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18281,7 +18281,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#DataVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetDataVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18329,10 +18329,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#DataVersionsList": {
+    "com.azure.machinelearningservices#ListDataVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DataVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListDataVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#DataVersionBaseResourceArmPaginatedResult"
@@ -18417,7 +18417,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#DataVersionsListRequest": {
+    "com.azure.machinelearningservices#ListDataVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18516,10 +18516,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#DataContainersDelete": {
+    "com.azure.machinelearningservices#DeleteDataContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DataContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteDataContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -18535,7 +18535,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#DataContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteDataContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18826,13 +18826,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#DataContainersGet": {
+    "com.azure.machinelearningservices#GetDataContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DataContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetDataContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#DataContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetDataContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18845,7 +18845,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#DataContainersGetResponse": {
+    "com.azure.machinelearningservices#GetDataContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18884,7 +18884,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#DataContainersGetRequest": {
+    "com.azure.machinelearningservices#GetDataContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18924,10 +18924,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#DataContainersList": {
+    "com.azure.machinelearningservices#ListDataContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#DataContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListDataContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#DataContainerResourceArmPaginatedResult"
@@ -19012,7 +19012,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#DataContainersListRequest": {
+    "com.azure.machinelearningservices#ListDataContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19082,13 +19082,13 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsListSecrets": {
+    "com.azure.machinelearningservices#ListWorkspaceConnectionSecrets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsListSecretsRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceConnectionSecretsRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsListSecretsResponse"
+        "target": "com.azure.machinelearningservices#ListWorkspaceConnectionSecretsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19101,7 +19101,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsListSecretsResponse": {
+    "com.azure.machinelearningservices#ListWorkspaceConnectionSecretsResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20167,7 +20167,7 @@
         "smithy.api#documentation": "Authentication type of the connection target"
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsListSecretsRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceConnectionSecretsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20207,10 +20207,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsDelete": {
+    "com.azure.machinelearningservices#DeleteWorkspaceConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteWorkspaceConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -20226,7 +20226,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteWorkspaceConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20266,13 +20266,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsUpdate": {
+    "com.azure.machinelearningservices#UpdateWorkspaceConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateWorkspaceConnectionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsUpdateResponse"
+        "target": "com.azure.machinelearningservices#UpdateWorkspaceConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20285,7 +20285,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsUpdateResponse": {
+    "com.azure.machinelearningservices#UpdateWorkspaceConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20323,7 +20323,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateWorkspaceConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20437,13 +20437,13 @@
         "smithy.api#documentation": "Store user metadata for this connection"
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsCreate": {
+    "com.azure.machinelearningservices#CreateWorkspaceConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsCreateRequest"
+        "target": "com.azure.machinelearningservices#CreateWorkspaceConnectionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsCreateResponse"
+        "target": "com.azure.machinelearningservices#CreateWorkspaceConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20456,7 +20456,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsCreateResponse": {
+    "com.azure.machinelearningservices#CreateWorkspaceConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20494,7 +20494,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsCreateRequest": {
+    "com.azure.machinelearningservices#CreateWorkspaceConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20540,13 +20540,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsGet": {
+    "com.azure.machinelearningservices#GetWorkspaceConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetWorkspaceConnectionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetWorkspaceConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20559,7 +20559,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsGetResponse": {
+    "com.azure.machinelearningservices#GetWorkspaceConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20597,7 +20597,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsGetRequest": {
+    "com.azure.machinelearningservices#GetWorkspaceConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20637,10 +20637,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsList": {
+    "com.azure.machinelearningservices#ListWorkspaceConnections": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspaceConnectionsListRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceConnectionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResult"
@@ -20724,7 +20724,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.machinelearningservices#WorkspaceConnectionsListRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceConnectionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20777,10 +20777,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComputeStop": {
+    "com.azure.machinelearningservices#StopCompute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComputeStopRequest"
+        "target": "com.azure.machinelearningservices#StopComputeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -20796,7 +20796,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComputeStopRequest": {
+    "com.azure.machinelearningservices#StopComputeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20836,10 +20836,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComputeStart": {
+    "com.azure.machinelearningservices#StartCompute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComputeStartRequest"
+        "target": "com.azure.machinelearningservices#StartComputeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -20855,7 +20855,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComputeStartRequest": {
+    "com.azure.machinelearningservices#StartComputeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20895,10 +20895,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComputeRestart": {
+    "com.azure.machinelearningservices#RestartCompute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComputeRestartRequest"
+        "target": "com.azure.machinelearningservices#RestartComputeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -20914,7 +20914,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComputeRestartRequest": {
+    "com.azure.machinelearningservices#RestartComputeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20954,10 +20954,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComputeListNodes": {
+    "com.azure.machinelearningservices#ListComputeNodes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComputeListNodesRequest"
+        "target": "com.azure.machinelearningservices#ListComputeNodesRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#AmlComputeNodesInformation"
@@ -21093,7 +21093,7 @@
         "smithy.api#documentation": "State of the compute node. Values are idle, running, preparing, unusable, leaving and preempted."
       }
     },
-    "com.azure.machinelearningservices#ComputeListNodesRequest": {
+    "com.azure.machinelearningservices#ListComputeNodesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21133,10 +21133,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComputeListKeys": {
+    "com.azure.machinelearningservices#ListComputeKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComputeListKeysRequest"
+        "target": "com.azure.machinelearningservices#ListComputeKeysRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ComputeSecrets"
@@ -21235,7 +21235,7 @@
         "smithy.api#documentation": "The type of compute"
       }
     },
-    "com.azure.machinelearningservices#ComputeListKeysRequest": {
+    "com.azure.machinelearningservices#ListComputeKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21275,10 +21275,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComputeDelete": {
+    "com.azure.machinelearningservices#DeleteCompute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComputeDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteComputeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -21294,7 +21294,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComputeDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteComputeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21360,13 +21360,13 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#ComputeUpdate": {
+    "com.azure.machinelearningservices#UpdateCompute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComputeUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateComputeRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#ComputeUpdateResponse"
+        "target": "com.azure.machinelearningservices#UpdateComputeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21379,7 +21379,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComputeUpdateResponse": {
+    "com.azure.machinelearningservices#UpdateComputeResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -21743,7 +21743,7 @@
         "smithy.api#documentation": "The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed."
       }
     },
-    "com.azure.machinelearningservices#ComputeUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateComputeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -22183,13 +22183,13 @@
         "smithy.api#documentation": "Machine Learning compute object."
       }
     },
-    "com.azure.machinelearningservices#ComputeGet": {
+    "com.azure.machinelearningservices#GetCompute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComputeGetRequest"
+        "target": "com.azure.machinelearningservices#GetComputeRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#ComputeGetResponse"
+        "target": "com.azure.machinelearningservices#GetComputeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22202,7 +22202,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComputeGetResponse": {
+    "com.azure.machinelearningservices#GetComputeResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -22345,7 +22345,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.machinelearningservices#ComputeGetRequest": {
+    "com.azure.machinelearningservices#GetComputeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -22385,10 +22385,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComputeList": {
+    "com.azure.machinelearningservices#ListCompute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComputeListRequest"
+        "target": "com.azure.machinelearningservices#ListComputeRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#PaginatedComputeResourcesList"
@@ -22577,7 +22577,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.machinelearningservices#ComputeListRequest": {
+    "com.azure.machinelearningservices#ListComputeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -22704,10 +22704,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComponentVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteComponentVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComponentVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteComponentVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -22723,7 +22723,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComponentVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteComponentVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -22962,13 +22962,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComponentVersionsGet": {
+    "com.azure.machinelearningservices#GetComponentVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComponentVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetComponentVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#ComponentVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetComponentVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22981,7 +22981,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComponentVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetComponentVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -23020,7 +23020,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#ComponentVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetComponentVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -23068,10 +23068,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComponentVersionsList": {
+    "com.azure.machinelearningservices#ListComponentVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComponentVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListComponentVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ComponentVersionResourceArmPaginatedResult"
@@ -23156,7 +23156,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#ComponentVersionsListRequest": {
+    "com.azure.machinelearningservices#ListComponentVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -23248,10 +23248,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#ComponentContainersDelete": {
+    "com.azure.machinelearningservices#DeleteComponentContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComponentContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteComponentContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -23267,7 +23267,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComponentContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteComponentContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -23550,13 +23550,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#ComponentContainersGet": {
+    "com.azure.machinelearningservices#GetComponentContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComponentContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetComponentContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#ComponentContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetComponentContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -23569,7 +23569,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#ComponentContainersGetResponse": {
+    "com.azure.machinelearningservices#GetComponentContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -23608,7 +23608,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#ComponentContainersGetRequest": {
+    "com.azure.machinelearningservices#GetComponentContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -23648,10 +23648,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#ComponentContainersList": {
+    "com.azure.machinelearningservices#ListComponentContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#ComponentContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListComponentContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ComponentContainerResourceArmPaginatedResult"
@@ -23736,7 +23736,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#ComponentContainersListRequest": {
+    "com.azure.machinelearningservices#ListComponentContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -24094,10 +24094,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#CodeVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteCodeVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#CodeVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteCodeVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -24113,7 +24113,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#CodeVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteCodeVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -24352,13 +24352,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#CodeVersionsGet": {
+    "com.azure.machinelearningservices#GetCodeVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#CodeVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetCodeVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#CodeVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetCodeVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -24371,7 +24371,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#CodeVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetCodeVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -24410,7 +24410,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#CodeVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetCodeVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -24458,10 +24458,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#CodeVersionsList": {
+    "com.azure.machinelearningservices#ListCodeVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#CodeVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListCodeVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#CodeVersionResourceArmPaginatedResult"
@@ -24546,7 +24546,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#CodeVersionsListRequest": {
+    "com.azure.machinelearningservices#ListCodeVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -24621,10 +24621,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#CodeContainersDelete": {
+    "com.azure.machinelearningservices#DeleteCodeContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#CodeContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteCodeContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -24640,7 +24640,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#CodeContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteCodeContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -24923,13 +24923,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#CodeContainersGet": {
+    "com.azure.machinelearningservices#GetCodeContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#CodeContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetCodeContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#CodeContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetCodeContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -24942,7 +24942,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#CodeContainersGetResponse": {
+    "com.azure.machinelearningservices#GetCodeContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -24981,7 +24981,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#CodeContainersGetRequest": {
+    "com.azure.machinelearningservices#GetCodeContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25021,10 +25021,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#CodeContainersList": {
+    "com.azure.machinelearningservices#ListCodeContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#CodeContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListCodeContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#CodeContainerResourceArmPaginatedResult"
@@ -25109,7 +25109,7 @@
         "smithy.api#documentation": "Azure Resource Manager resource envelope."
       }
     },
-    "com.azure.machinelearningservices#CodeContainersListRequest": {
+    "com.azure.machinelearningservices#ListCodeContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25148,10 +25148,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#CapabilityHostsDelete": {
+    "com.azure.machinelearningservices#DeleteCapabilityHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#CapabilityHostsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteCapabilityHostRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -25167,7 +25167,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#CapabilityHostsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteCapabilityHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25694,13 +25694,13 @@
         "smithy.api#documentation": "The asset property dictionary."
       }
     },
-    "com.azure.machinelearningservices#CapabilityHostsGet": {
+    "com.azure.machinelearningservices#GetCapabilityHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#CapabilityHostsGetRequest"
+        "target": "com.azure.machinelearningservices#GetCapabilityHostRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#CapabilityHostsGetResponse"
+        "target": "com.azure.machinelearningservices#GetCapabilityHostResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25713,7 +25713,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#CapabilityHostsGetResponse": {
+    "com.azure.machinelearningservices#GetCapabilityHostResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -25752,7 +25752,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#CapabilityHostsGetRequest": {
+    "com.azure.machinelearningservices#GetCapabilityHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25792,10 +25792,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsListKeys": {
+    "com.azure.machinelearningservices#ListBatchEndpointKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#BatchEndpointsListKeysRequest"
+        "target": "com.azure.machinelearningservices#ListBatchEndpointKeysRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#EndpointAuthKeys"
@@ -25811,7 +25811,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsListKeysRequest": {
+    "com.azure.machinelearningservices#ListBatchEndpointKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25851,10 +25851,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsDelete": {
+    "com.azure.machinelearningservices#DeleteBatchDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#BatchDeploymentsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteBatchDeploymentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -25870,7 +25870,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteBatchDeploymentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25918,13 +25918,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsUpdate": {
+    "com.azure.machinelearningservices#UpdateBatchDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#BatchDeploymentsUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateBatchDeploymentRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#BatchDeploymentsUpdateResponse"
+        "target": "com.azure.machinelearningservices#UpdateBatchDeploymentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25937,7 +25937,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsUpdateResponse": {
+    "com.azure.machinelearningservices#UpdateBatchDeploymentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -26411,7 +26411,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateBatchDeploymentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -26821,13 +26821,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsGet": {
+    "com.azure.machinelearningservices#GetBatchDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#BatchDeploymentsGetRequest"
+        "target": "com.azure.machinelearningservices#GetBatchDeploymentRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#BatchDeploymentsGetResponse"
+        "target": "com.azure.machinelearningservices#GetBatchDeploymentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26840,7 +26840,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsGetResponse": {
+    "com.azure.machinelearningservices#GetBatchDeploymentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -26990,7 +26990,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsGetRequest": {
+    "com.azure.machinelearningservices#GetBatchDeploymentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -27038,10 +27038,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsList": {
+    "com.azure.machinelearningservices#ListBatchDeployments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#BatchDeploymentsListRequest"
+        "target": "com.azure.machinelearningservices#ListBatchDeploymentsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#BatchDeploymentTrackedResourceArmPaginatedResult"
@@ -27237,7 +27237,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#BatchDeploymentsListRequest": {
+    "com.azure.machinelearningservices#ListBatchDeploymentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -27298,10 +27298,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsDelete": {
+    "com.azure.machinelearningservices#DeleteBatchEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#BatchEndpointsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteBatchEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -27317,7 +27317,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteBatchEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -27357,13 +27357,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsUpdate": {
+    "com.azure.machinelearningservices#UpdateBatchEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#BatchEndpointsUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateBatchEndpointRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#BatchEndpointsUpdateResponse"
+        "target": "com.azure.machinelearningservices#UpdateBatchEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -27376,7 +27376,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsUpdateResponse": {
+    "com.azure.machinelearningservices#UpdateBatchEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -27616,7 +27616,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateBatchEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -28050,13 +28050,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsGet": {
+    "com.azure.machinelearningservices#GetBatchEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#BatchEndpointsGetRequest"
+        "target": "com.azure.machinelearningservices#GetBatchEndpointRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#BatchEndpointsGetResponse"
+        "target": "com.azure.machinelearningservices#GetBatchEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -28069,7 +28069,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsGetResponse": {
+    "com.azure.machinelearningservices#GetBatchEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -28219,7 +28219,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsGetRequest": {
+    "com.azure.machinelearningservices#GetBatchEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -28259,10 +28259,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsList": {
+    "com.azure.machinelearningservices#ListBatchEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#BatchEndpointsListRequest"
+        "target": "com.azure.machinelearningservices#ListBatchEndpointsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#BatchEndpointTrackedResourceArmPaginatedResult"
@@ -28458,7 +28458,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#BatchEndpointsListRequest": {
+    "com.azure.machinelearningservices#ListBatchEndpointsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -28504,10 +28504,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspacesDelete": {
+    "com.azure.machinelearningservices#DeleteWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteWorkspaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -28523,7 +28523,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#WorkspacesDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -28562,13 +28562,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspacesUpdate": {
+    "com.azure.machinelearningservices#UpdateWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#WorkspacesUpdateResponse"
+        "target": "com.azure.machinelearningservices#UpdateWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -28581,7 +28581,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#WorkspacesUpdateResponse": {
+    "com.azure.machinelearningservices#UpdateWorkspaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -29360,7 +29360,7 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#WorkspacesUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -30099,13 +30099,13 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#WorkspacesGet": {
+    "com.azure.machinelearningservices#GetWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesGetRequest"
+        "target": "com.azure.machinelearningservices#GetWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#WorkspacesGetResponse"
+        "target": "com.azure.machinelearningservices#GetWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -30118,7 +30118,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#WorkspacesGetResponse": {
+    "com.azure.machinelearningservices#GetWorkspaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -30256,7 +30256,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.machinelearningservices#WorkspacesGetRequest": {
+    "com.azure.machinelearningservices#GetWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -30288,10 +30288,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspacesListByResourceGroup": {
+    "com.azure.machinelearningservices#ListWorkspaceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesListByResourceGroupRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#WorkspaceListResult"
@@ -30475,7 +30475,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.machinelearningservices#WorkspacesListByResourceGroupRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -31498,10 +31498,10 @@
         "smithy.api#documentation": "Type of storage to use for the pending upload location"
       }
     },
-    "com.azure.machinelearningservices#RegistryModelVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryModelVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryModelVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryModelVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -31517,7 +31517,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryModelVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryModelVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -31678,13 +31678,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryModelVersionsGet": {
+    "com.azure.machinelearningservices#GetRegistryModelVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryModelVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryModelVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryModelVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryModelVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -31697,7 +31697,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryModelVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryModelVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -31736,7 +31736,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryModelVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryModelVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -31784,10 +31784,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryModelVersionsList": {
+    "com.azure.machinelearningservices#ListRegistryModelVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryModelVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryModelVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ModelVersionResourceArmPaginatedResult"
@@ -31803,7 +31803,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryModelVersionsListRequest": {
+    "com.azure.machinelearningservices#ListRegistryModelVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -31923,10 +31923,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#RegistryModelContainersDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryModelContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryModelContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryModelContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -31942,7 +31942,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryModelContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryModelContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32087,13 +32087,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryModelContainersGet": {
+    "com.azure.machinelearningservices#GetRegistryModelContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryModelContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryModelContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryModelContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryModelContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32106,7 +32106,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryModelContainersGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryModelContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -32145,7 +32145,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryModelContainersGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryModelContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32185,10 +32185,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryModelContainersList": {
+    "com.azure.machinelearningservices#ListRegistryModelContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryModelContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryModelContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ModelContainerResourceArmPaginatedResult"
@@ -32204,7 +32204,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryModelContainersListRequest": {
+    "com.azure.machinelearningservices#ListRegistryModelContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32274,10 +32274,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryEnvironmentVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryEnvironmentVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryEnvironmentVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -32293,7 +32293,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryEnvironmentVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32454,13 +32454,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentVersionsGet": {
+    "com.azure.machinelearningservices#GetRegistryEnvironmentVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryEnvironmentVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryEnvironmentVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryEnvironmentVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryEnvironmentVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32473,7 +32473,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryEnvironmentVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -32512,7 +32512,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryEnvironmentVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32560,10 +32560,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentVersionsList": {
+    "com.azure.machinelearningservices#ListRegistryEnvironmentVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryEnvironmentVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryEnvironmentVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#EnvironmentVersionResourceArmPaginatedResult"
@@ -32579,7 +32579,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentVersionsListRequest": {
+    "com.azure.machinelearningservices#ListRegistryEnvironmentVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32671,10 +32671,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentContainersDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryEnvironmentContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryEnvironmentContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryEnvironmentContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -32690,7 +32690,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryEnvironmentContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32835,13 +32835,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentContainersGet": {
+    "com.azure.machinelearningservices#GetRegistryEnvironmentContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryEnvironmentContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryEnvironmentContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryEnvironmentContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryEnvironmentContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32854,7 +32854,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentContainersGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryEnvironmentContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -32893,7 +32893,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentContainersGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryEnvironmentContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32933,10 +32933,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentContainersList": {
+    "com.azure.machinelearningservices#ListRegistryEnvironmentContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryEnvironmentContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryEnvironmentContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#EnvironmentContainerResourceArmPaginatedResult"
@@ -32952,7 +32952,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryEnvironmentContainersListRequest": {
+    "com.azure.machinelearningservices#ListRegistryEnvironmentContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33022,10 +33022,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#RegistryDataReferencesGetBlobReferenceSAS": {
+    "com.azure.machinelearningservices#GetRegistryDataReferenceBlobReferenceSas": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryDataReferencesGetBlobReferenceSASRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryDataReferenceBlobReferenceSasRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#GetBlobReferenceSASResponseDto"
@@ -33130,7 +33130,7 @@
         "smithy.api#documentation": "Enum to determine the DataReference credentials type."
       }
     },
-    "com.azure.machinelearningservices#RegistryDataReferencesGetBlobReferenceSASRequest": {
+    "com.azure.machinelearningservices#GetRegistryDataReferenceBlobReferenceSasRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33292,10 +33292,10 @@
         "smithy.api#documentation": "Type of storage to use for the pending upload location"
       }
     },
-    "com.azure.machinelearningservices#RegistryDataVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryDataVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryDataVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryDataVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -33311,7 +33311,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryDataVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryDataVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33472,13 +33472,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryDataVersionsGet": {
+    "com.azure.machinelearningservices#GetRegistryDataVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryDataVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryDataVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryDataVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryDataVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -33491,7 +33491,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryDataVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryDataVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -33530,7 +33530,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryDataVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryDataVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33578,10 +33578,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryDataVersionsList": {
+    "com.azure.machinelearningservices#ListRegistryDataVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryDataVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryDataVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#DataVersionBaseResourceArmPaginatedResult"
@@ -33597,7 +33597,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryDataVersionsListRequest": {
+    "com.azure.machinelearningservices#ListRegistryDataVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33696,10 +33696,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#RegistryDataContainersDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryDataContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryDataContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryDataContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -33715,7 +33715,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryDataContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryDataContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33860,13 +33860,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryDataContainersGet": {
+    "com.azure.machinelearningservices#GetRegistryDataContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryDataContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryDataContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryDataContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryDataContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -33879,7 +33879,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryDataContainersGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryDataContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -33918,7 +33918,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryDataContainersGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryDataContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33958,10 +33958,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryDataContainersList": {
+    "com.azure.machinelearningservices#ListRegistryDataContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryDataContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryDataContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#DataContainerResourceArmPaginatedResult"
@@ -33977,7 +33977,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryDataContainersListRequest": {
+    "com.azure.machinelearningservices#ListRegistryDataContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34047,10 +34047,10 @@
       },
       "traits": {}
     },
-    "com.azure.machinelearningservices#RegistryComponentVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryComponentVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryComponentVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryComponentVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -34066,7 +34066,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryComponentVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34227,13 +34227,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentVersionsGet": {
+    "com.azure.machinelearningservices#GetRegistryComponentVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryComponentVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryComponentVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryComponentVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryComponentVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -34246,7 +34246,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryComponentVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -34285,7 +34285,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryComponentVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34333,10 +34333,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentVersionsList": {
+    "com.azure.machinelearningservices#ListRegistryComponentVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryComponentVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryComponentVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ComponentVersionResourceArmPaginatedResult"
@@ -34352,7 +34352,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentVersionsListRequest": {
+    "com.azure.machinelearningservices#ListRegistryComponentVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34413,10 +34413,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentContainersDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryComponentContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryComponentContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryComponentContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -34432,7 +34432,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryComponentContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34577,13 +34577,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentContainersGet": {
+    "com.azure.machinelearningservices#GetRegistryComponentContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryComponentContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryComponentContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryComponentContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryComponentContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -34596,7 +34596,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentContainersGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryComponentContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -34635,7 +34635,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentContainersGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryComponentContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34675,10 +34675,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentContainersList": {
+    "com.azure.machinelearningservices#ListRegistryComponentContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryComponentContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryComponentContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ComponentContainerResourceArmPaginatedResult"
@@ -34694,7 +34694,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryComponentContainersListRequest": {
+    "com.azure.machinelearningservices#ListRegistryComponentContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34833,10 +34833,10 @@
         "smithy.api#documentation": "Type of storage to use for the pending upload location"
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeVersionsDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryCodeVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryCodeVersionsDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryCodeVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -34852,7 +34852,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeVersionsDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryCodeVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35013,13 +35013,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeVersionsGet": {
+    "com.azure.machinelearningservices#GetRegistryCodeVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryCodeVersionsGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryCodeVersionRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryCodeVersionsGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryCodeVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35032,7 +35032,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeVersionsGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryCodeVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -35071,7 +35071,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeVersionsGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryCodeVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35119,10 +35119,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeVersionsList": {
+    "com.azure.machinelearningservices#ListRegistryCodeVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryCodeVersionsListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryCodeVersionsRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#CodeVersionResourceArmPaginatedResult"
@@ -35138,7 +35138,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeVersionsListRequest": {
+    "com.azure.machinelearningservices#ListRegistryCodeVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35199,10 +35199,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeContainersDelete": {
+    "com.azure.machinelearningservices#DeleteRegistryCodeContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryCodeContainersDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryCodeContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -35218,7 +35218,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeContainersDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryCodeContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35363,13 +35363,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeContainersGet": {
+    "com.azure.machinelearningservices#GetRegistryCodeContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryCodeContainersGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryCodeContainerRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistryCodeContainersGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryCodeContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35382,7 +35382,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeContainersGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryCodeContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -35421,7 +35421,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeContainersGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryCodeContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35461,10 +35461,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeContainersList": {
+    "com.azure.machinelearningservices#ListRegistryCodeContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistryCodeContainersListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryCodeContainersRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#CodeContainerResourceArmPaginatedResult"
@@ -35480,7 +35480,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistryCodeContainersListRequest": {
+    "com.azure.machinelearningservices#ListRegistryCodeContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35519,10 +35519,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistriesDelete": {
+    "com.azure.machinelearningservices#DeleteRegistry": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistriesDeleteRequest"
+        "target": "com.azure.machinelearningservices#DeleteRegistryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -35538,7 +35538,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistriesDeleteRequest": {
+    "com.azure.machinelearningservices#DeleteRegistryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35570,13 +35570,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistriesUpdate": {
+    "com.azure.machinelearningservices#UpdateRegistry": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistriesUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateRegistryRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistriesUpdateResponse"
+        "target": "com.azure.machinelearningservices#UpdateRegistryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35589,7 +35589,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistriesUpdateResponse": {
+    "com.azure.machinelearningservices#UpdateRegistryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -35739,7 +35739,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#RegistriesUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateRegistryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36128,13 +36128,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#RegistriesGet": {
+    "com.azure.machinelearningservices#GetRegistry": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistriesGetRequest"
+        "target": "com.azure.machinelearningservices#GetRegistryRequest"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#RegistriesGetResponse"
+        "target": "com.azure.machinelearningservices#GetRegistryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36147,7 +36147,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistriesGetResponse": {
+    "com.azure.machinelearningservices#GetRegistryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -36297,7 +36297,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#RegistriesGetRequest": {
+    "com.azure.machinelearningservices#GetRegistryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36329,10 +36329,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistriesList": {
+    "com.azure.machinelearningservices#ListRegistries": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistriesListRequest"
+        "target": "com.azure.machinelearningservices#ListRegistriesRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#RegistryTrackedResourceArmPaginatedResult"
@@ -36528,7 +36528,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.machinelearningservices#RegistriesListRequest": {
+    "com.azure.machinelearningservices#ListRegistriesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36552,10 +36552,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#WorkspacesListBySubscription": {
+    "com.azure.machinelearningservices#ListWorkspaceBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#WorkspacesListBySubscriptionRequest"
+        "target": "com.azure.machinelearningservices#ListWorkspaceBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#WorkspaceListResult"
@@ -36571,7 +36571,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#WorkspacesListBySubscriptionRequest": {
+    "com.azure.machinelearningservices#ListWorkspaceBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36607,10 +36607,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#RegistriesListBySubscription": {
+    "com.azure.machinelearningservices#ListRegistryBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#RegistriesListBySubscriptionRequest"
+        "target": "com.azure.machinelearningservices#ListRegistryBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#RegistryTrackedResourceArmPaginatedResult"
@@ -36626,7 +36626,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#RegistriesListBySubscriptionRequest": {
+    "com.azure.machinelearningservices#ListRegistryBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36642,10 +36642,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#VirtualMachineSizesList": {
+    "com.azure.machinelearningservices#ListVirtualMachineSizes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#VirtualMachineSizesListRequest"
+        "target": "com.azure.machinelearningservices#ListVirtualMachineSizesRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#VirtualMachineSizeListResult"
@@ -36908,7 +36908,7 @@
         "smithy.api#documentation": "Three lettered code specifying the currency of the VM price. Example: USD"
       }
     },
-    "com.azure.machinelearningservices#VirtualMachineSizesListRequest": {
+    "com.azure.machinelearningservices#ListVirtualMachineSizesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36932,10 +36932,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#UsagesList": {
+    "com.azure.machinelearningservices#ListUsages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#UsagesListRequest"
+        "target": "com.azure.machinelearningservices#ListUsagesRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ListUsagesResult"
@@ -37065,7 +37065,7 @@
         "smithy.api#documentation": "An enum describing the unit of usage measurement."
       }
     },
-    "com.azure.machinelearningservices#UsagesListRequest": {
+    "com.azure.machinelearningservices#ListUsagesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -37089,10 +37089,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#QuotasUpdate": {
+    "com.azure.machinelearningservices#UpdateQuota": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#QuotasUpdateRequest"
+        "target": "com.azure.machinelearningservices#UpdateQuotaRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#UpdateWorkspaceQuotasResult"
@@ -37245,7 +37245,7 @@
         "smithy.api#documentation": "An enum describing the unit of quota measurement."
       }
     },
-    "com.azure.machinelearningservices#QuotasUpdateRequest": {
+    "com.azure.machinelearningservices#UpdateQuotaRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -37316,10 +37316,10 @@
         "smithy.api#documentation": "The properties for Quota update or retrieval."
       }
     },
-    "com.azure.machinelearningservices#QuotasList": {
+    "com.azure.machinelearningservices#ListQuotas": {
       "type": "operation",
       "input": {
-        "target": "com.azure.machinelearningservices#QuotasListRequest"
+        "target": "com.azure.machinelearningservices#ListQuotasRequest"
       },
       "output": {
         "target": "com.azure.machinelearningservices#ListWorkspaceQuotas"
@@ -37429,7 +37429,7 @@
         "smithy.api#documentation": "The Resource Name."
       }
     },
-    "com.azure.machinelearningservices#QuotasListRequest": {
+    "com.azure.machinelearningservices#ListQuotasRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -37453,13 +37453,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.machinelearningservices#OperationsList": {
+    "com.azure.machinelearningservices#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.machinelearningservices#OperationsListResponse"
+        "target": "com.azure.machinelearningservices#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37472,7 +37472,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.machinelearningservices#OperationsListResponse": {
+    "com.azure.machinelearningservices#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -37619,34 +37619,34 @@
           "target": "com.azure.machinelearningservices#ServerlessEndpointsRegenerateKeys"
         },
         {
-          "target": "com.azure.machinelearningservices#ServerlessEndpointsListKeys"
+          "target": "com.azure.machinelearningservices#ListServerlessEndpointKeys"
         },
         {
-          "target": "com.azure.machinelearningservices#ServerlessEndpointsDelete"
+          "target": "com.azure.machinelearningservices#DeleteServerlessEndpoint"
         },
         {
-          "target": "com.azure.machinelearningservices#ServerlessEndpointsUpdate"
+          "target": "com.azure.machinelearningservices#UpdateServerlessEndpoint"
         },
         {
           "target": "com.azure.machinelearningservices#ServerlessEndpointsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#ServerlessEndpointsGet"
+          "target": "com.azure.machinelearningservices#GetServerlessEndpoint"
         },
         {
-          "target": "com.azure.machinelearningservices#ServerlessEndpointsList"
+          "target": "com.azure.machinelearningservices#ListServerlessEndpoints"
         },
         {
-          "target": "com.azure.machinelearningservices#SchedulesDelete"
+          "target": "com.azure.machinelearningservices#DeleteSchedule"
         },
         {
           "target": "com.azure.machinelearningservices#SchedulesCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#SchedulesGet"
+          "target": "com.azure.machinelearningservices#GetSchedule"
         },
         {
-          "target": "com.azure.machinelearningservices#SchedulesList"
+          "target": "com.azure.machinelearningservices#ListSchedules"
         },
         {
           "target": "com.azure.machinelearningservices#WorkspacesResyncKeys"
@@ -37655,355 +37655,355 @@
           "target": "com.azure.machinelearningservices#ManagedNetworkProvisionsProvisionManagedNetwork"
         },
         {
-          "target": "com.azure.machinelearningservices#PrivateLinkResourcesList"
+          "target": "com.azure.machinelearningservices#ListPrivateLinkResources"
         },
         {
-          "target": "com.azure.machinelearningservices#PrivateEndpointConnectionsDelete"
+          "target": "com.azure.machinelearningservices#DeletePrivateEndpointConnection"
         },
         {
           "target": "com.azure.machinelearningservices#PrivateEndpointConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#PrivateEndpointConnectionsGet"
+          "target": "com.azure.machinelearningservices#GetPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.machinelearningservices#PrivateEndpointConnectionsList"
+          "target": "com.azure.machinelearningservices#ListPrivateEndpointConnections"
         },
         {
           "target": "com.azure.machinelearningservices#WorkspacesPrepareNotebook"
         },
         {
-          "target": "com.azure.machinelearningservices#ManagedNetworkSettingsRuleDelete"
+          "target": "com.azure.machinelearningservices#DeleteManagedNetworkSettingRule"
         },
         {
           "target": "com.azure.machinelearningservices#ManagedNetworkSettingsRuleCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#ManagedNetworkSettingsRuleGet"
+          "target": "com.azure.machinelearningservices#GetManagedNetworkSettingRule"
         },
         {
-          "target": "com.azure.machinelearningservices#ManagedNetworkSettingsRuleList"
+          "target": "com.azure.machinelearningservices#ListManagedNetworkSettingRule"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesListOutboundNetworkDependenciesEndpoints"
+          "target": "com.azure.machinelearningservices#ListWorkspaceOutboundNetworkDependencyEndpoints"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineEndpointsGetToken"
+          "target": "com.azure.machinelearningservices#GetOnlineEndpointToken"
         },
         {
           "target": "com.azure.machinelearningservices#OnlineEndpointsRegenerateKeys"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineEndpointsListKeys"
+          "target": "com.azure.machinelearningservices#ListOnlineEndpointKeys"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineDeploymentsListSkus"
+          "target": "com.azure.machinelearningservices#ListOnlineDeploymentSkus"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineDeploymentsGetLogs"
+          "target": "com.azure.machinelearningservices#GetOnlineDeploymentLog"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineDeploymentsDelete"
+          "target": "com.azure.machinelearningservices#DeleteOnlineDeployment"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineDeploymentsUpdate"
+          "target": "com.azure.machinelearningservices#UpdateOnlineDeployment"
         },
         {
           "target": "com.azure.machinelearningservices#OnlineDeploymentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineDeploymentsGet"
+          "target": "com.azure.machinelearningservices#GetOnlineDeployment"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineDeploymentsList"
+          "target": "com.azure.machinelearningservices#ListOnlineDeployments"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineEndpointsDelete"
+          "target": "com.azure.machinelearningservices#DeleteOnlineEndpoint"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineEndpointsUpdate"
+          "target": "com.azure.machinelearningservices#UpdateOnlineEndpoint"
         },
         {
           "target": "com.azure.machinelearningservices#OnlineEndpointsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineEndpointsGet"
+          "target": "com.azure.machinelearningservices#GetOnlineEndpoint"
         },
         {
-          "target": "com.azure.machinelearningservices#OnlineEndpointsList"
+          "target": "com.azure.machinelearningservices#ListOnlineEndpoints"
         },
         {
           "target": "com.azure.machinelearningservices#ModelVersionsPublish"
         },
         {
-          "target": "com.azure.machinelearningservices#ModelVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteModelVersion"
         },
         {
           "target": "com.azure.machinelearningservices#ModelVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#ModelVersionsGet"
+          "target": "com.azure.machinelearningservices#GetModelVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#ModelVersionsList"
+          "target": "com.azure.machinelearningservices#ListModelVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#ModelContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteModelContainer"
         },
         {
           "target": "com.azure.machinelearningservices#ModelContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#ModelContainersGet"
+          "target": "com.azure.machinelearningservices#GetModelContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#ModelContainersList"
+          "target": "com.azure.machinelearningservices#ListModelContainers"
         },
         {
-          "target": "com.azure.machinelearningservices#MarketplaceSubscriptionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteMarketplaceSubscription"
         },
         {
           "target": "com.azure.machinelearningservices#MarketplaceSubscriptionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#MarketplaceSubscriptionsGet"
+          "target": "com.azure.machinelearningservices#GetMarketplaceSubscription"
         },
         {
-          "target": "com.azure.machinelearningservices#MarketplaceSubscriptionsList"
+          "target": "com.azure.machinelearningservices#ListMarketplaceSubscriptions"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesListStorageAccountKeys"
+          "target": "com.azure.machinelearningservices#ListWorkspaceStorageAccountKeys"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesListNotebookKeys"
+          "target": "com.azure.machinelearningservices#ListWorkspaceNotebookKeys"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesListNotebookAccessToken"
+          "target": "com.azure.machinelearningservices#ListWorkspaceNotebookAccessToken"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesListKeys"
+          "target": "com.azure.machinelearningservices#ListWorkspaceKeys"
         },
         {
           "target": "com.azure.machinelearningservices#JobsCancel"
         },
         {
-          "target": "com.azure.machinelearningservices#JobsDelete"
+          "target": "com.azure.machinelearningservices#DeleteJob"
         },
         {
           "target": "com.azure.machinelearningservices#JobsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#JobsGet"
+          "target": "com.azure.machinelearningservices#GetJob"
         },
         {
-          "target": "com.azure.machinelearningservices#JobsList"
+          "target": "com.azure.machinelearningservices#ListJobs"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturestoreEntityVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteFeaturestoreEntityVersion"
         },
         {
           "target": "com.azure.machinelearningservices#FeaturestoreEntityVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturestoreEntityVersionsGet"
+          "target": "com.azure.machinelearningservices#GetFeaturestoreEntityVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturestoreEntityVersionsList"
+          "target": "com.azure.machinelearningservices#ListFeaturestoreEntityVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturestoreEntityContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteFeaturestoreEntityContainer"
         },
         {
           "target": "com.azure.machinelearningservices#FeaturestoreEntityContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturestoreEntityContainersGetEntity"
+          "target": "com.azure.machinelearningservices#GetFeaturestoreEntityContainerEntity"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturestoreEntityContainersList"
+          "target": "com.azure.machinelearningservices#ListFeaturestoreEntityContainers"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturesGet"
+          "target": "com.azure.machinelearningservices#GetFeature"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturesList"
+          "target": "com.azure.machinelearningservices#ListFeatures"
         },
         {
           "target": "com.azure.machinelearningservices#FeaturesetVersionsBackfill"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturesetVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteFeaturesetVersion"
         },
         {
           "target": "com.azure.machinelearningservices#FeaturesetVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturesetVersionsGet"
+          "target": "com.azure.machinelearningservices#GetFeaturesetVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturesetVersionsList"
+          "target": "com.azure.machinelearningservices#ListFeaturesetVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturesetContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteFeaturesetContainer"
         },
         {
           "target": "com.azure.machinelearningservices#FeaturesetContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturesetContainersGetEntity"
+          "target": "com.azure.machinelearningservices#GetFeaturesetContainerEntity"
         },
         {
-          "target": "com.azure.machinelearningservices#FeaturesetContainersList"
+          "target": "com.azure.machinelearningservices#ListFeaturesetContainers"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspaceFeaturesList"
+          "target": "com.azure.machinelearningservices#ListWorkspaceFeatures"
         },
         {
           "target": "com.azure.machinelearningservices#EnvironmentVersionsPublish"
         },
         {
-          "target": "com.azure.machinelearningservices#EnvironmentVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteEnvironmentVersion"
         },
         {
           "target": "com.azure.machinelearningservices#EnvironmentVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#EnvironmentVersionsGet"
+          "target": "com.azure.machinelearningservices#GetEnvironmentVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#EnvironmentVersionsList"
+          "target": "com.azure.machinelearningservices#ListEnvironmentVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#EnvironmentContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteEnvironmentContainer"
         },
         {
           "target": "com.azure.machinelearningservices#EnvironmentContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#EnvironmentContainersGet"
+          "target": "com.azure.machinelearningservices#GetEnvironmentContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#EnvironmentContainersList"
+          "target": "com.azure.machinelearningservices#ListEnvironmentContainers"
         },
         {
           "target": "com.azure.machinelearningservices#WorkspacesDiagnose"
         },
         {
-          "target": "com.azure.machinelearningservices#DatastoresListSecrets"
+          "target": "com.azure.machinelearningservices#ListDatastoreSecrets"
         },
         {
-          "target": "com.azure.machinelearningservices#DatastoresDelete"
+          "target": "com.azure.machinelearningservices#DeleteDatastore"
         },
         {
           "target": "com.azure.machinelearningservices#DatastoresCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#DatastoresGet"
+          "target": "com.azure.machinelearningservices#GetDatastore"
         },
         {
-          "target": "com.azure.machinelearningservices#DatastoresList"
+          "target": "com.azure.machinelearningservices#ListDatastores"
         },
         {
           "target": "com.azure.machinelearningservices#DataVersionsPublish"
         },
         {
-          "target": "com.azure.machinelearningservices#DataVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteDataVersion"
         },
         {
           "target": "com.azure.machinelearningservices#DataVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#DataVersionsGet"
+          "target": "com.azure.machinelearningservices#GetDataVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#DataVersionsList"
+          "target": "com.azure.machinelearningservices#ListDataVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#DataContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteDataContainer"
         },
         {
           "target": "com.azure.machinelearningservices#DataContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#DataContainersGet"
+          "target": "com.azure.machinelearningservices#GetDataContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#DataContainersList"
+          "target": "com.azure.machinelearningservices#ListDataContainers"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspaceConnectionsListSecrets"
+          "target": "com.azure.machinelearningservices#ListWorkspaceConnectionSecrets"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspaceConnectionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteWorkspaceConnection"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspaceConnectionsUpdate"
+          "target": "com.azure.machinelearningservices#UpdateWorkspaceConnection"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspaceConnectionsCreate"
+          "target": "com.azure.machinelearningservices#CreateWorkspaceConnection"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspaceConnectionsGet"
+          "target": "com.azure.machinelearningservices#GetWorkspaceConnection"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspaceConnectionsList"
+          "target": "com.azure.machinelearningservices#ListWorkspaceConnections"
         },
         {
-          "target": "com.azure.machinelearningservices#ComputeStop"
+          "target": "com.azure.machinelearningservices#StopCompute"
         },
         {
-          "target": "com.azure.machinelearningservices#ComputeStart"
+          "target": "com.azure.machinelearningservices#StartCompute"
         },
         {
-          "target": "com.azure.machinelearningservices#ComputeRestart"
+          "target": "com.azure.machinelearningservices#RestartCompute"
         },
         {
-          "target": "com.azure.machinelearningservices#ComputeListNodes"
+          "target": "com.azure.machinelearningservices#ListComputeNodes"
         },
         {
-          "target": "com.azure.machinelearningservices#ComputeListKeys"
+          "target": "com.azure.machinelearningservices#ListComputeKeys"
         },
         {
-          "target": "com.azure.machinelearningservices#ComputeDelete"
+          "target": "com.azure.machinelearningservices#DeleteCompute"
         },
         {
-          "target": "com.azure.machinelearningservices#ComputeUpdate"
+          "target": "com.azure.machinelearningservices#UpdateCompute"
         },
         {
           "target": "com.azure.machinelearningservices#ComputeCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#ComputeGet"
+          "target": "com.azure.machinelearningservices#GetCompute"
         },
         {
-          "target": "com.azure.machinelearningservices#ComputeList"
+          "target": "com.azure.machinelearningservices#ListCompute"
         },
         {
           "target": "com.azure.machinelearningservices#ComponentVersionsPublish"
         },
         {
-          "target": "com.azure.machinelearningservices#ComponentVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteComponentVersion"
         },
         {
           "target": "com.azure.machinelearningservices#ComponentVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#ComponentVersionsGet"
+          "target": "com.azure.machinelearningservices#GetComponentVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#ComponentVersionsList"
+          "target": "com.azure.machinelearningservices#ListComponentVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#ComponentContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteComponentContainer"
         },
         {
           "target": "com.azure.machinelearningservices#ComponentContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#ComponentContainersGet"
+          "target": "com.azure.machinelearningservices#GetComponentContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#ComponentContainersList"
+          "target": "com.azure.machinelearningservices#ListComponentContainers"
         },
         {
           "target": "com.azure.machinelearningservices#CodeVersionsCreateOrGetStartPendingUpload"
@@ -38012,85 +38012,85 @@
           "target": "com.azure.machinelearningservices#CodeVersionsPublish"
         },
         {
-          "target": "com.azure.machinelearningservices#CodeVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteCodeVersion"
         },
         {
           "target": "com.azure.machinelearningservices#CodeVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#CodeVersionsGet"
+          "target": "com.azure.machinelearningservices#GetCodeVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#CodeVersionsList"
+          "target": "com.azure.machinelearningservices#ListCodeVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#CodeContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteCodeContainer"
         },
         {
           "target": "com.azure.machinelearningservices#CodeContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#CodeContainersGet"
+          "target": "com.azure.machinelearningservices#GetCodeContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#CodeContainersList"
+          "target": "com.azure.machinelearningservices#ListCodeContainers"
         },
         {
-          "target": "com.azure.machinelearningservices#CapabilityHostsDelete"
+          "target": "com.azure.machinelearningservices#DeleteCapabilityHost"
         },
         {
           "target": "com.azure.machinelearningservices#CapabilityHostsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#CapabilityHostsGet"
+          "target": "com.azure.machinelearningservices#GetCapabilityHost"
         },
         {
-          "target": "com.azure.machinelearningservices#BatchEndpointsListKeys"
+          "target": "com.azure.machinelearningservices#ListBatchEndpointKeys"
         },
         {
-          "target": "com.azure.machinelearningservices#BatchDeploymentsDelete"
+          "target": "com.azure.machinelearningservices#DeleteBatchDeployment"
         },
         {
-          "target": "com.azure.machinelearningservices#BatchDeploymentsUpdate"
+          "target": "com.azure.machinelearningservices#UpdateBatchDeployment"
         },
         {
           "target": "com.azure.machinelearningservices#BatchDeploymentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#BatchDeploymentsGet"
+          "target": "com.azure.machinelearningservices#GetBatchDeployment"
         },
         {
-          "target": "com.azure.machinelearningservices#BatchDeploymentsList"
+          "target": "com.azure.machinelearningservices#ListBatchDeployments"
         },
         {
-          "target": "com.azure.machinelearningservices#BatchEndpointsDelete"
+          "target": "com.azure.machinelearningservices#DeleteBatchEndpoint"
         },
         {
-          "target": "com.azure.machinelearningservices#BatchEndpointsUpdate"
+          "target": "com.azure.machinelearningservices#UpdateBatchEndpoint"
         },
         {
           "target": "com.azure.machinelearningservices#BatchEndpointsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#BatchEndpointsGet"
+          "target": "com.azure.machinelearningservices#GetBatchEndpoint"
         },
         {
-          "target": "com.azure.machinelearningservices#BatchEndpointsList"
+          "target": "com.azure.machinelearningservices#ListBatchEndpoints"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesDelete"
+          "target": "com.azure.machinelearningservices#DeleteWorkspace"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesUpdate"
+          "target": "com.azure.machinelearningservices#UpdateWorkspace"
         },
         {
           "target": "com.azure.machinelearningservices#WorkspacesCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesGet"
+          "target": "com.azure.machinelearningservices#GetWorkspace"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesListByResourceGroup"
+          "target": "com.azure.machinelearningservices#ListWorkspaceByResourceGroup"
         },
         {
           "target": "com.azure.machinelearningservices#RegistriesRemoveRegions"
@@ -38099,169 +38099,169 @@
           "target": "com.azure.machinelearningservices#RegistryModelVersionsCreateOrGetStartPendingUpload"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryModelVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryModelVersion"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryModelVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryModelVersionsGet"
+          "target": "com.azure.machinelearningservices#GetRegistryModelVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryModelVersionsList"
+          "target": "com.azure.machinelearningservices#ListRegistryModelVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryModelContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryModelContainer"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryModelContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryModelContainersGet"
+          "target": "com.azure.machinelearningservices#GetRegistryModelContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryModelContainersList"
+          "target": "com.azure.machinelearningservices#ListRegistryModelContainers"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryEnvironmentVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryEnvironmentVersion"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryEnvironmentVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryEnvironmentVersionsGet"
+          "target": "com.azure.machinelearningservices#GetRegistryEnvironmentVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryEnvironmentVersionsList"
+          "target": "com.azure.machinelearningservices#ListRegistryEnvironmentVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryEnvironmentContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryEnvironmentContainer"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryEnvironmentContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryEnvironmentContainersGet"
+          "target": "com.azure.machinelearningservices#GetRegistryEnvironmentContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryEnvironmentContainersList"
+          "target": "com.azure.machinelearningservices#ListRegistryEnvironmentContainers"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryDataReferencesGetBlobReferenceSAS"
+          "target": "com.azure.machinelearningservices#GetRegistryDataReferenceBlobReferenceSas"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryDataVersionsCreateOrGetStartPendingUpload"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryDataVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryDataVersion"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryDataVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryDataVersionsGet"
+          "target": "com.azure.machinelearningservices#GetRegistryDataVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryDataVersionsList"
+          "target": "com.azure.machinelearningservices#ListRegistryDataVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryDataContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryDataContainer"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryDataContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryDataContainersGet"
+          "target": "com.azure.machinelearningservices#GetRegistryDataContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryDataContainersList"
+          "target": "com.azure.machinelearningservices#ListRegistryDataContainers"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryComponentVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryComponentVersion"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryComponentVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryComponentVersionsGet"
+          "target": "com.azure.machinelearningservices#GetRegistryComponentVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryComponentVersionsList"
+          "target": "com.azure.machinelearningservices#ListRegistryComponentVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryComponentContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryComponentContainer"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryComponentContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryComponentContainersGet"
+          "target": "com.azure.machinelearningservices#GetRegistryComponentContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryComponentContainersList"
+          "target": "com.azure.machinelearningservices#ListRegistryComponentContainers"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryCodeVersionsCreateOrGetStartPendingUpload"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryCodeVersionsDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryCodeVersion"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryCodeVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryCodeVersionsGet"
+          "target": "com.azure.machinelearningservices#GetRegistryCodeVersion"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryCodeVersionsList"
+          "target": "com.azure.machinelearningservices#ListRegistryCodeVersions"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryCodeContainersDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistryCodeContainer"
         },
         {
           "target": "com.azure.machinelearningservices#RegistryCodeContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryCodeContainersGet"
+          "target": "com.azure.machinelearningservices#GetRegistryCodeContainer"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistryCodeContainersList"
+          "target": "com.azure.machinelearningservices#ListRegistryCodeContainers"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistriesDelete"
+          "target": "com.azure.machinelearningservices#DeleteRegistry"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistriesUpdate"
+          "target": "com.azure.machinelearningservices#UpdateRegistry"
         },
         {
           "target": "com.azure.machinelearningservices#RegistriesCreateOrUpdate"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistriesGet"
+          "target": "com.azure.machinelearningservices#GetRegistry"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistriesList"
+          "target": "com.azure.machinelearningservices#ListRegistries"
         },
         {
-          "target": "com.azure.machinelearningservices#WorkspacesListBySubscription"
+          "target": "com.azure.machinelearningservices#ListWorkspaceBySubscription"
         },
         {
-          "target": "com.azure.machinelearningservices#RegistriesListBySubscription"
+          "target": "com.azure.machinelearningservices#ListRegistryBySubscription"
         },
         {
-          "target": "com.azure.machinelearningservices#VirtualMachineSizesList"
+          "target": "com.azure.machinelearningservices#ListVirtualMachineSizes"
         },
         {
-          "target": "com.azure.machinelearningservices#UsagesList"
+          "target": "com.azure.machinelearningservices#ListUsages"
         },
         {
-          "target": "com.azure.machinelearningservices#QuotasUpdate"
+          "target": "com.azure.machinelearningservices#UpdateQuota"
         },
         {
-          "target": "com.azure.machinelearningservices#QuotasList"
+          "target": "com.azure.machinelearningservices#ListQuotas"
         },
         {
-          "target": "com.azure.machinelearningservices#OperationsList"
+          "target": "com.azure.machinelearningservices#ListOperations"
         }
       ],
       "traits": {

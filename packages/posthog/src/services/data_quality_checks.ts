@@ -11,11 +11,11 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface DataQualityChecksHealthListRequest {
+export interface ListDataQualityCheckHealthRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const DataQualityChecksHealthListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDataQualityCheckHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -26,8 +26,8 @@ export const DataQualityChecksHealthListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DataQualityChecksHealthListRequest",
-}) as any as S.Schema<DataQualityChecksHealthListRequest>;
+  identifier: "ListDataQualityCheckHealthRequest",
+}) as any as S.Schema<ListDataQualityCheckHealthRequest>;
 
 /** Per-subject rollup, the same rule the information_schema.data_quality_health table uses. */
 export interface DataQualitySubjectHealth {
@@ -61,15 +61,15 @@ export const DataQualityChecksHealthListResponseBodyList =
     DataQualitySubjectHealth,
   ) as any as S.Schema<DataQualityChecksHealthListResponseBodyList>;
 
-export type DataQualityChecksHealthListResponse =
+export type ListDataQualityCheckHealthResponse =
   DataQualityChecksHealthListResponseBodyList;
-export const DataQualityChecksHealthListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListDataQualityCheckHealthResponse = /*@__PURE__*/ S.suspend(() =>
   DataQualityChecksHealthListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "DataQualityChecksHealthListResponse",
-}) as any as S.Schema<DataQualityChecksHealthListResponse>;
+  identifier: "ListDataQualityCheckHealthResponse",
+}) as any as S.Schema<ListDataQualityCheckHealthResponse>;
 
-export interface DataQualityChecksListRequest {
+export interface ListDataQualityChecksRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Number of results to return per page. */
@@ -77,7 +77,7 @@ export interface DataQualityChecksListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const DataQualityChecksListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDataQualityChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -90,8 +90,8 @@ export const DataQualityChecksListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DataQualityChecksListRequest",
-}) as any as S.Schema<DataQualityChecksListRequest>;
+  identifier: "ListDataQualityChecksRequest",
+}) as any as S.Schema<ListDataQualityChecksRequest>;
 
 /** * `table` - table * `view` - view */
 export type SubjectTypeEnum = "table" | "view";
@@ -298,30 +298,30 @@ export const PaginatedDataQualityOverviewCheckList = /*@__PURE__*/ S.suspend(
   identifier: "PaginatedDataQualityOverviewCheckList",
 }) as any as S.Schema<PaginatedDataQualityOverviewCheckList>;
 
-export type DataQualityChecksHealthListError = PosthogOpError;
+export type ListDataQualityCheckHealthError = PosthogOpError;
 /** Health rollup for every table and view in the project that has checks. */
-export const dataQualityChecksHealthList: API.OperationMethod<
-  DataQualityChecksHealthListRequest,
-  DataQualityChecksHealthListResponse,
-  DataQualityChecksHealthListError,
+export const listDataQualityCheckHealth: API.OperationMethod<
+  ListDataQualityCheckHealthRequest,
+  ListDataQualityCheckHealthResponse,
+  ListDataQualityCheckHealthError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataQualityChecksHealthListRequest,
-  output: DataQualityChecksHealthListResponse,
+  input: ListDataQualityCheckHealthRequest,
+  output: ListDataQualityCheckHealthResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
 
-export type DataQualityChecksListError = PosthogOpError;
+export type ListDataQualityChecksError = PosthogOpError;
 /** Every check in the project, and the health of every subject that has one. The per-subject surfaces answer "what is wrong with this table". This answers "what is wrong across the project", which they cannot: each is nested under one parent. Read-only -- authoring still happens against the subject that owns the check. */
-export const dataQualityChecksList: API.OperationMethod<
-  DataQualityChecksListRequest,
+export const listDataQualityChecks: API.OperationMethod<
+  ListDataQualityChecksRequest,
   PaginatedDataQualityOverviewCheckList,
-  DataQualityChecksListError,
+  ListDataQualityChecksError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataQualityChecksListRequest,
+  input: ListDataQualityChecksRequest,
   output: PaginatedDataQualityOverviewCheckList,
   errors: [],
   protocol: PosthogProtocol,

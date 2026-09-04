@@ -39,6 +39,79 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
+export type EventsRetrieveRequestFormat = "csv" | "json";
+export const EventsRetrieveRequestFormat = /*@__PURE__*/ S.String;
+
+export interface EventsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  id: string;
+  format?: EventsRetrieveRequestFormat | (string & {});
+  /** Include person details for the event. Default: false. */
+  include_person?: boolean;
+}
+export const EventsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    format: S.optional(EventsRetrieveRequestFormat.pipe(T.Query())),
+    include_person: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/events/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "EventsRetrieveRequest",
+}) as any as S.Schema<EventsRetrieveRequest>;
+
+export type EventsRetrieveResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const EventsRetrieveResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EventsRetrieveResponseBodyMap>;
+
+export type EventsRetrieveResponse = EventsRetrieveResponseBodyMap;
+export const EventsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  EventsRetrieveResponseBodyMap.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "EventsRetrieveResponse",
+}) as any as S.Schema<EventsRetrieveResponse>;
+
+export type EventsValuesRetrieveRequestFormat = "csv" | "json";
+export const EventsValuesRetrieveRequestFormat = /*@__PURE__*/ S.String;
+
+export interface EventsValuesRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: EventsValuesRetrieveRequestFormat | (string & {});
+}
+export const EventsValuesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(EventsValuesRetrieveRequestFormat.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/events/values/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "EventsValuesRetrieveRequest",
+}) as any as S.Schema<EventsValuesRetrieveRequest>;
+
+export interface EventsValuesRetrieveResponse {}
+export const EventsValuesRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "EventsValuesRetrieveResponse",
+}) as any as S.Schema<EventsValuesRetrieveResponse>;
+
 export type EventsListRequestFormat = "csv" | "json";
 export const EventsListRequestFormat = /*@__PURE__*/ S.String;
 
@@ -182,7 +255,7 @@ export const EventsListRequestWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsListRequestWhereList>;
 
-export interface EventsListRequest {
+export interface ListEventsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Only return events with a timestamp after this time. Default: now() - 24 hours. */
@@ -209,7 +282,7 @@ export interface EventsListRequest {
   /** (Experimental) JSON-serialized array of HogQL expressions that must pass */
   where?: EventsListRequestWhereList;
 }
-export const EventsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     after: S.optional(S.String.pipe(T.Query())),
@@ -232,8 +305,8 @@ export const EventsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EventsListRequest",
-}) as any as S.Schema<EventsListRequest>;
+  identifier: "ListEventsRequest",
+}) as any as S.Schema<ListEventsRequest>;
 
 export type ClickhouseEventPropertiesMap = {
   [key: string]: unknown | undefined;
@@ -329,98 +402,6 @@ export const PaginatedClickhouseEventList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedClickhouseEventList",
 }) as any as S.Schema<PaginatedClickhouseEventList>;
 
-export type EventsRetrieveRequestFormat = "csv" | "json";
-export const EventsRetrieveRequestFormat = /*@__PURE__*/ S.String;
-
-export interface EventsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  format?: EventsRetrieveRequestFormat | (string & {});
-  /** Include person details for the event. Default: false. */
-  include_person?: boolean;
-}
-export const EventsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    format: S.optional(EventsRetrieveRequestFormat.pipe(T.Query())),
-    include_person: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/events/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EventsRetrieveRequest",
-}) as any as S.Schema<EventsRetrieveRequest>;
-
-export type EventsRetrieveResponseBodyMap = {
-  [key: string]: unknown | undefined;
-};
-export const EventsRetrieveResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EventsRetrieveResponseBodyMap>;
-
-export type EventsRetrieveResponse = EventsRetrieveResponseBodyMap;
-export const EventsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  EventsRetrieveResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "EventsRetrieveResponse",
-}) as any as S.Schema<EventsRetrieveResponse>;
-
-export type EventsValuesRetrieveRequestFormat = "csv" | "json";
-export const EventsValuesRetrieveRequestFormat = /*@__PURE__*/ S.String;
-
-export interface EventsValuesRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  format?: EventsValuesRetrieveRequestFormat | (string & {});
-}
-export const EventsValuesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    format: S.optional(EventsValuesRetrieveRequestFormat.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/events/values/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EventsValuesRetrieveRequest",
-}) as any as S.Schema<EventsValuesRetrieveRequest>;
-
-export interface EventsValuesRetrieveResponse {}
-export const EventsValuesRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EventsValuesRetrieveResponse",
-}) as any as S.Schema<EventsValuesRetrieveResponse>;
-
-export type EventsListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** This endpoint allows you to list and filter events. It is effectively deprecated and is kept only for backwards compatibility. If you ever ask about it you will be advised to not use it... If you want to ad-hoc list or aggregate events, use the Query endpoint instead. If you want to export all events or many pages of events you should use our CDP/Batch Exports products instead. */
-export const eventsList: API.OperationMethod<
-  EventsListRequest,
-  PaginatedClickhouseEventList,
-  EventsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EventsListRequest,
-  output: PaginatedClickhouseEventList,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EventsRetrieveError =
   | BadRequest
   | Forbidden
@@ -452,6 +433,25 @@ export const eventsValuesRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EventsValuesRetrieveRequest,
   output: EventsValuesRetrieveResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEventsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** This endpoint allows you to list and filter events. It is effectively deprecated and is kept only for backwards compatibility. If you ever ask about it you will be advised to not use it... If you want to ad-hoc list or aggregate events, use the Query endpoint instead. If you want to export all events or many pages of events you should use our CDP/Batch Exports products instead. */
+export const listEvents: API.OperationMethod<
+  ListEventsRequest,
+  PaginatedClickhouseEventList,
+  ListEventsError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEventsRequest,
+  output: PaginatedClickhouseEventList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

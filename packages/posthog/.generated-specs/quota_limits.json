@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.quota_limits#QuotaLimitsListRequest": {
+    "com.posthog.quota_limits#ListQuotaLimitsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -101,7 +101,7 @@
       },
       "traits": {}
     },
-    "com.posthog.quota_limits#QuotaLimitsListResponse": {
+    "com.posthog.quota_limits#ListQuotaLimitsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -116,13 +116,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.quota_limits#QuotaLimitsList": {
+    "com.posthog.quota_limits#ListQuotaLimits": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.quota_limits#QuotaLimitsListRequest"
+        "target": "com.posthog.quota_limits#ListQuotaLimitsRequest"
       },
       "output": {
-        "target": "com.posthog.quota_limits#QuotaLimitsListResponse"
+        "target": "com.posthog.quota_limits#ListQuotaLimitsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -138,7 +138,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.quota_limits#QuotaLimitsList"
+          "target": "com.posthog.quota_limits#ListQuotaLimits"
         }
       ],
       "traits": {

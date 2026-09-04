@@ -47,7 +47,7 @@
       },
       "traits": {}
     },
-    "com.posthog.ai_observability#LlmAnalyticsPersonalSpendListRequest": {
+    "com.posthog.ai_observability#ListLlmAnalyticPersonalSpendRequest": {
       "type": "structure",
       "members": {
         "bucket_minutes": {
@@ -734,7 +734,7 @@
       },
       "traits": {}
     },
-    "com.posthog.ai_observability#LlmAnalyticsPersonalSpendListResponse": {
+    "com.posthog.ai_observability#ListLlmAnalyticPersonalSpendResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -749,13 +749,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.ai_observability#LlmAnalyticsPersonalSpendList": {
+    "com.posthog.ai_observability#ListLlmAnalyticPersonalSpend": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#LlmAnalyticsPersonalSpendListRequest"
+        "target": "com.posthog.ai_observability#ListLlmAnalyticPersonalSpendRequest"
       },
       "output": {
-        "target": "com.posthog.ai_observability#LlmAnalyticsPersonalSpendListResponse"
+        "target": "com.posthog.ai_observability#ListLlmAnalyticPersonalSpendResponse"
       },
       "errors": [
         {
@@ -963,7 +963,7 @@
         "smithy.api#documentation": "Grade every instrumentation check for this project."
       }
     },
-    "com.posthog.ai_observability#AiObservabilityInstrumentationChecklistDismissCreateRequest": {
+    "com.posthog.ai_observability#CreateAiObservabilityInstrumentationChecklistDismissRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -986,10 +986,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.ai_observability#AiObservabilityInstrumentationChecklistDismissCreate": {
+    "com.posthog.ai_observability#CreateAiObservabilityInstrumentationChecklistDismiss": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#AiObservabilityInstrumentationChecklistDismissCreateRequest"
+        "target": "com.posthog.ai_observability#CreateAiObservabilityInstrumentationChecklistDismissRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#InstrumentationChecklist"
@@ -1043,7 +1043,7 @@
         "smithy.api#documentation": "Bring a dismissed check back into grading."
       }
     },
-    "com.posthog.ai_observability#DatasetItemsListRequest": {
+    "com.posthog.ai_observability#ListDatasetItemsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1478,10 +1478,10 @@
       },
       "traits": {}
     },
-    "com.posthog.ai_observability#DatasetItemsList": {
+    "com.posthog.ai_observability#ListDatasetItems": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetItemsListRequest"
+        "target": "com.posthog.ai_observability#ListDatasetItemsRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#PaginatedDatasetItemReadList"
@@ -1518,7 +1518,7 @@
         "smithy.api#documentation": "Optional JSON object with item metadata."
       }
     },
-    "com.posthog.ai_observability#DatasetItemsCreateRequest": {
+    "com.posthog.ai_observability#CreateDatasetItemRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1596,10 +1596,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.ai_observability#DatasetItemsCreate": {
+    "com.posthog.ai_observability#CreateDatasetItem": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetItemsCreateRequest"
+        "target": "com.posthog.ai_observability#CreateDatasetItemRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#DatasetItemRead"
@@ -1766,7 +1766,7 @@
         "smithy.api#documentation": "Replacement metadata object. Send an empty object to clear it."
       }
     },
-    "com.posthog.ai_observability#DatasetItemsPartialUpdateRequest": {
+    "com.posthog.ai_observability#UpdateDatasetItemPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1815,10 +1815,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.ai_observability#DatasetItemsPartialUpdate": {
+    "com.posthog.ai_observability#UpdateDatasetItemPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetItemsPartialUpdateRequest"
+        "target": "com.posthog.ai_observability#UpdateDatasetItemPartialRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#DatasetItemRead"
@@ -1889,7 +1889,7 @@
         "smithy.api#documentation": "Archive an active item by creating a new immutable version."
       }
     },
-    "com.posthog.ai_observability#DatasetItemsRestoreRequest": {
+    "com.posthog.ai_observability#RestoreDatasetItemRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1926,10 +1926,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.ai_observability#DatasetItemsRestore": {
+    "com.posthog.ai_observability#RestoreDatasetItem": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetItemsRestoreRequest"
+        "target": "com.posthog.ai_observability#RestoreDatasetItemRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#DatasetItemRead"
@@ -1948,7 +1948,7 @@
         "smithy.api#documentation": "Restore an archived item by copying content into a new immutable version."
       }
     },
-    "com.posthog.ai_observability#DatasetItemsVersionsListRequest": {
+    "com.posthog.ai_observability#ListDatasetItemVersionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1985,10 +1985,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.ai_observability#DatasetItemsVersionsList": {
+    "com.posthog.ai_observability#ListDatasetItemVersions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetItemsVersionsListRequest"
+        "target": "com.posthog.ai_observability#ListDatasetItemVersionsRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#PaginatedDatasetItemReadList"
@@ -2039,7 +2039,7 @@
       },
       "traits": {}
     },
-    "com.posthog.ai_observability#DatasetsListRequest": {
+    "com.posthog.ai_observability#ListDatasetsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2236,10 +2236,10 @@
       },
       "traits": {}
     },
-    "com.posthog.ai_observability#DatasetsList": {
+    "com.posthog.ai_observability#ListDatasets": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetsListRequest"
+        "target": "com.posthog.ai_observability#ListDatasetsRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#PaginatedDatasetReadList"
@@ -2276,7 +2276,7 @@
         "smithy.api#documentation": "Optional JSON object with descriptive dataset metadata."
       }
     },
-    "com.posthog.ai_observability#DatasetsCreateRequest": {
+    "com.posthog.ai_observability#CreateDatasetRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2311,10 +2311,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.ai_observability#DatasetsCreate": {
+    "com.posthog.ai_observability#CreateDataset": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetsCreateRequest"
+        "target": "com.posthog.ai_observability#CreateDatasetRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#DatasetRead"
@@ -2403,7 +2403,7 @@
         "smithy.api#documentation": "Replacement JSON object for descriptive dataset metadata."
       }
     },
-    "com.posthog.ai_observability#DatasetsPartialUpdateRequest": {
+    "com.posthog.ai_observability#UpdateDatasetPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2445,10 +2445,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.ai_observability#DatasetsPartialUpdate": {
+    "com.posthog.ai_observability#UpdateDatasetPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetsPartialUpdateRequest"
+        "target": "com.posthog.ai_observability#UpdateDatasetPartialRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#DatasetRead"
@@ -2517,7 +2517,7 @@
         "smithy.api#documentation": "Archive a dataset. Archived datasets remain readable and reject item mutations."
       }
     },
-    "com.posthog.ai_observability#DatasetsExportsCreateRequest": {
+    "com.posthog.ai_observability#CreateDatasetExportRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2627,10 +2627,10 @@
       },
       "traits": {}
     },
-    "com.posthog.ai_observability#DatasetsExportsCreate": {
+    "com.posthog.ai_observability#CreateDatasetExport": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetsExportsCreateRequest"
+        "target": "com.posthog.ai_observability#CreateDatasetExportRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#DatasetExportRead"
@@ -2750,7 +2750,7 @@
         "smithy.api#documentation": "Download a completed dataset JSONL export."
       }
     },
-    "com.posthog.ai_observability#DatasetsRestoreRequest": {
+    "com.posthog.ai_observability#RestoreDatasetRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2774,10 +2774,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.ai_observability#DatasetsRestore": {
+    "com.posthog.ai_observability#RestoreDataset": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetsRestoreRequest"
+        "target": "com.posthog.ai_observability#RestoreDatasetRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#DatasetRead"
@@ -2791,7 +2791,7 @@
         "smithy.api#documentation": "Restore an archived dataset without changing its item states."
       }
     },
-    "com.posthog.ai_observability#DatasetsRevisionsListRequest": {
+    "com.posthog.ai_observability#ListDatasetRevisionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2911,10 +2911,10 @@
       },
       "traits": {}
     },
-    "com.posthog.ai_observability#DatasetsRevisionsList": {
+    "com.posthog.ai_observability#ListDatasetRevisions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#DatasetsRevisionsListRequest"
+        "target": "com.posthog.ai_observability#ListDatasetRevisionsRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#PaginatedDatasetRevisionReadList"
@@ -2928,7 +2928,7 @@
         "smithy.api#documentation": "List immutable dataset revisions, newest first."
       }
     },
-    "com.posthog.ai_observability#LlmAnalyticsOfflineEvaluationsExperimentItemsCreateRequest": {
+    "com.posthog.ai_observability#CreateLlmAnalyticOfflineEvaluationExperimentItemRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2994,10 +2994,10 @@
         "smithy.api#documentation": "Tuple-positional rows; positions match `RawOfflineExperimentMetricRow` in the frontend."
       }
     },
-    "com.posthog.ai_observability#LlmAnalyticsOfflineEvaluationsExperimentItemsCreate": {
+    "com.posthog.ai_observability#CreateLlmAnalyticOfflineEvaluationExperimentItem": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#LlmAnalyticsOfflineEvaluationsExperimentItemsCreateRequest"
+        "target": "com.posthog.ai_observability#CreateLlmAnalyticOfflineEvaluationExperimentItemRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#OfflineExperimentItemsResponse"
@@ -3055,7 +3055,7 @@
         "smithy.api#documentation": "* `minimal` - minimal\n* `detailed` - detailed"
       }
     },
-    "com.posthog.ai_observability#LlmAnalyticsSummarizationCreateRequest": {
+    "com.posthog.ai_observability#CreateLlmAnalyticSummarizationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3224,10 +3224,10 @@
         "smithy.api#documentation": "Interesting notes (0-2 for minimal, more for detailed)"
       }
     },
-    "com.posthog.ai_observability#LlmAnalyticsSummarizationCreate": {
+    "com.posthog.ai_observability#CreateLlmAnalyticSummarization": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#LlmAnalyticsSummarizationCreateRequest"
+        "target": "com.posthog.ai_observability#CreateLlmAnalyticSummarizationRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#SummarizeResponse"
@@ -3447,7 +3447,7 @@
       },
       "traits": {}
     },
-    "com.posthog.ai_observability#LlmAnalyticsTextReprCreateRequest": {
+    "com.posthog.ai_observability#CreateLlmAnalyticTextReprRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3526,10 +3526,10 @@
       },
       "traits": {}
     },
-    "com.posthog.ai_observability#LlmAnalyticsTextReprCreate": {
+    "com.posthog.ai_observability#CreateLlmAnalyticTextRepr": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ai_observability#LlmAnalyticsTextReprCreateRequest"
+        "target": "com.posthog.ai_observability#CreateLlmAnalyticTextReprRequest"
       },
       "output": {
         "target": "com.posthog.ai_observability#TextReprResponse"
@@ -3605,55 +3605,55 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.ai_observability#LlmAnalyticsPersonalSpendList"
+          "target": "com.posthog.ai_observability#ListLlmAnalyticPersonalSpend"
         },
         {
           "target": "com.posthog.ai_observability#AiObservabilityInstrumentationChecklistRetrieve"
         },
         {
-          "target": "com.posthog.ai_observability#AiObservabilityInstrumentationChecklistDismissCreate"
+          "target": "com.posthog.ai_observability#CreateAiObservabilityInstrumentationChecklistDismiss"
         },
         {
           "target": "com.posthog.ai_observability#AiObservabilityInstrumentationChecklistRestoreCreate"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetItemsList"
+          "target": "com.posthog.ai_observability#ListDatasetItems"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetItemsCreate"
+          "target": "com.posthog.ai_observability#CreateDatasetItem"
         },
         {
           "target": "com.posthog.ai_observability#DatasetItemsRetrieve"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetItemsPartialUpdate"
+          "target": "com.posthog.ai_observability#UpdateDatasetItemPartial"
         },
         {
           "target": "com.posthog.ai_observability#DatasetItemsArchive"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetItemsRestore"
+          "target": "com.posthog.ai_observability#RestoreDatasetItem"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetItemsVersionsList"
+          "target": "com.posthog.ai_observability#ListDatasetItemVersions"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetsList"
+          "target": "com.posthog.ai_observability#ListDatasets"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetsCreate"
+          "target": "com.posthog.ai_observability#CreateDataset"
         },
         {
           "target": "com.posthog.ai_observability#DatasetsRetrieve"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetsPartialUpdate"
+          "target": "com.posthog.ai_observability#UpdateDatasetPartial"
         },
         {
           "target": "com.posthog.ai_observability#DatasetsArchive"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetsExportsCreate"
+          "target": "com.posthog.ai_observability#CreateDatasetExport"
         },
         {
           "target": "com.posthog.ai_observability#DatasetsExportsRetrieve"
@@ -3662,22 +3662,22 @@
           "target": "com.posthog.ai_observability#DatasetsExportsContentRetrieve"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetsRestore"
+          "target": "com.posthog.ai_observability#RestoreDataset"
         },
         {
-          "target": "com.posthog.ai_observability#DatasetsRevisionsList"
+          "target": "com.posthog.ai_observability#ListDatasetRevisions"
         },
         {
-          "target": "com.posthog.ai_observability#LlmAnalyticsOfflineEvaluationsExperimentItemsCreate"
+          "target": "com.posthog.ai_observability#CreateLlmAnalyticOfflineEvaluationExperimentItem"
         },
         {
-          "target": "com.posthog.ai_observability#LlmAnalyticsSummarizationCreate"
+          "target": "com.posthog.ai_observability#CreateLlmAnalyticSummarization"
         },
         {
           "target": "com.posthog.ai_observability#LlmAnalyticsSummarizationBatchCheckCreate"
         },
         {
-          "target": "com.posthog.ai_observability#LlmAnalyticsTextReprCreate"
+          "target": "com.posthog.ai_observability#CreateLlmAnalyticTextRepr"
         }
       ],
       "traits": {

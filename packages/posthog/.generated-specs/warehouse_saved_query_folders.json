@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersListRequest": {
+    "com.posthog.warehouse_saved_query_folders#ListWarehouseSavedQueryFoldersRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -217,7 +217,7 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersListResponse": {
+    "com.posthog.warehouse_saved_query_folders#ListWarehouseSavedQueryFoldersResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -232,13 +232,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersList": {
+    "com.posthog.warehouse_saved_query_folders#ListWarehouseSavedQueryFolders": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersListRequest"
+        "target": "com.posthog.warehouse_saved_query_folders#ListWarehouseSavedQueryFoldersRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersListResponse"
+        "target": "com.posthog.warehouse_saved_query_folders#ListWarehouseSavedQueryFoldersResponse"
       },
       "errors": [
         {
@@ -256,7 +256,7 @@
         }
       }
     },
-    "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersCreateRequest": {
+    "com.posthog.warehouse_saved_query_folders#CreateWarehouseSavedQueryFolderRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -278,10 +278,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersCreate": {
+    "com.posthog.warehouse_saved_query_folders#CreateWarehouseSavedQueryFolder": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersCreateRequest"
+        "target": "com.posthog.warehouse_saved_query_folders#CreateWarehouseSavedQueryFolderRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_saved_query_folders#DataWarehouseSavedQueryFolder"
@@ -353,7 +353,7 @@
         }
       }
     },
-    "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersPartialUpdateRequest": {
+    "com.posthog.warehouse_saved_query_folders#UpdateWarehouseSavedQueryFolderPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -383,10 +383,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersPartialUpdate": {
+    "com.posthog.warehouse_saved_query_folders#UpdateWarehouseSavedQueryFolderPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersPartialUpdateRequest"
+        "target": "com.posthog.warehouse_saved_query_folders#UpdateWarehouseSavedQueryFolderPartialRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_saved_query_folders#DataWarehouseSavedQueryFolder"
@@ -502,16 +502,16 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersList"
+          "target": "com.posthog.warehouse_saved_query_folders#ListWarehouseSavedQueryFolders"
         },
         {
-          "target": "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersCreate"
+          "target": "com.posthog.warehouse_saved_query_folders#CreateWarehouseSavedQueryFolder"
         },
         {
           "target": "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersRetrieve"
         },
         {
-          "target": "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersPartialUpdate"
+          "target": "com.posthog.warehouse_saved_query_folders#UpdateWarehouseSavedQueryFolderPartial"
         },
         {
           "target": "com.posthog.warehouse_saved_query_folders#WarehouseSavedQueryFoldersDestroy"

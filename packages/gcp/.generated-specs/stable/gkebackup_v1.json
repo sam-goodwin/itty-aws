@@ -5815,7 +5815,7 @@
         "smithy.api#documentation": "Retrieve the details of a single RestorePlan."
       }
     },
-    "com.gcp.gkebackup_v1#TestIamPermissionsProjectsLocationsRestorePlansRequest": {
+    "com.gcp.gkebackup_v1#RestoreTestIamPermissionProjectLocationPlanRequest": {
       "type": "structure",
       "members": {
         "resource": {
@@ -5835,10 +5835,10 @@
         }
       }
     },
-    "com.gcp.gkebackup_v1#TestIamPermissionsProjectsLocationsRestorePlans": {
+    "com.gcp.gkebackup_v1#RestoreTestIamPermissionProjectLocationPlan": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.gkebackup_v1#TestIamPermissionsProjectsLocationsRestorePlansRequest"
+        "target": "com.gcp.gkebackup_v1#RestoreTestIamPermissionProjectLocationPlanRequest"
       },
       "output": {
         "target": "com.gcp.gkebackup_v1#TestIamPermissionsResponse"
@@ -6229,7 +6229,7 @@
         "smithy.api#documentation": "Updates tags directly bound to a GCP resource."
       }
     },
-    "com.gcp.gkebackup_v1#TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest": {
+    "com.gcp.gkebackup_v1#RestoreTestIamPermissionProjectLocationPlanRestoreRequest": {
       "type": "structure",
       "members": {
         "resource": {
@@ -6249,10 +6249,10 @@
         }
       }
     },
-    "com.gcp.gkebackup_v1#TestIamPermissionsProjectsLocationsRestorePlansRestores": {
+    "com.gcp.gkebackup_v1#RestoreTestIamPermissionProjectLocationPlanRestore": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.gkebackup_v1#TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest"
+        "target": "com.gcp.gkebackup_v1#RestoreTestIamPermissionProjectLocationPlanRestoreRequest"
       },
       "output": {
         "target": "com.gcp.gkebackup_v1#TestIamPermissionsResponse"
@@ -6763,7 +6763,7 @@
         "smithy.api#documentation": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set."
       }
     },
-    "com.gcp.gkebackup_v1#TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest": {
+    "com.gcp.gkebackup_v1#RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreRequest": {
       "type": "structure",
       "members": {
         "resource": {
@@ -6783,10 +6783,10 @@
         }
       }
     },
-    "com.gcp.gkebackup_v1#TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestores": {
+    "com.gcp.gkebackup_v1#RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestore": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.gkebackup_v1#TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest"
+        "target": "com.gcp.gkebackup_v1#RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreRequest"
       },
       "output": {
         "target": "com.gcp.gkebackup_v1#TestIamPermissionsResponse"

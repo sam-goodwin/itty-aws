@@ -88,10 +88,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#VMCollectionUpdate": {
+    "com.azure.elastic#UpdateVmCollection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#VMCollectionUpdateRequest"
+        "target": "com.azure.elastic#UpdateVmCollectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -107,7 +107,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#VMCollectionUpdateRequest": {
+    "com.azure.elastic#UpdateVmCollectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -228,10 +228,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#TagRulesDelete": {
+    "com.azure.elastic#DeleteTagRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#TagRulesDeleteRequest"
+        "target": "com.azure.elastic#DeleteTagRuleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -247,7 +247,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#TagRulesDeleteRequest": {
+    "com.azure.elastic#DeleteTagRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -665,13 +665,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#TagRulesGet": {
+    "com.azure.elastic#GetTagRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#TagRulesGetRequest"
+        "target": "com.azure.elastic#GetTagRuleRequest"
       },
       "output": {
-        "target": "com.azure.elastic#TagRulesGetResponse"
+        "target": "com.azure.elastic#GetTagRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -684,7 +684,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#TagRulesGetResponse": {
+    "com.azure.elastic#GetTagRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -722,7 +722,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.elastic#TagRulesGetRequest": {
+    "com.azure.elastic#GetTagRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -762,10 +762,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#TagRulesList": {
+    "com.azure.elastic#ListTagRules": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#TagRulesListRequest"
+        "target": "com.azure.elastic#ListTagRulesRequest"
       },
       "output": {
         "target": "com.azure.elastic#MonitoringTagRulesListResponse"
@@ -849,7 +849,7 @@
         "smithy.api#documentation": "Capture logs and metrics of Azure resources based on ARM tags."
       }
     },
-    "com.azure.elastic#TagRulesListRequest": {
+    "com.azure.elastic#ListTagRulesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1539,10 +1539,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#OpenAIGetStatus": {
+    "com.azure.elastic#GetOpenAiStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#OpenAIGetStatusRequest"
+        "target": "com.azure.elastic#GetOpenAiStatusRequest"
       },
       "output": {
         "target": "com.azure.elastic#OpenAIIntegrationStatusResponse"
@@ -1586,7 +1586,7 @@
         "smithy.api#documentation": "Status of the OpenAI Integration"
       }
     },
-    "com.azure.elastic#OpenAIGetStatusRequest": {
+    "com.azure.elastic#GetOpenAiStatusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1626,10 +1626,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#OpenAIDelete": {
+    "com.azure.elastic#DeleteOpenAi": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#OpenAIDeleteRequest"
+        "target": "com.azure.elastic#DeleteOpenAiRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1645,7 +1645,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#OpenAIDeleteRequest": {
+    "com.azure.elastic#DeleteOpenAiRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1856,13 +1856,13 @@
         "smithy.api#documentation": "Open AI Integration details."
       }
     },
-    "com.azure.elastic#OpenAIGet": {
+    "com.azure.elastic#GetOpenAi": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#OpenAIGetRequest"
+        "target": "com.azure.elastic#GetOpenAiRequest"
       },
       "output": {
-        "target": "com.azure.elastic#OpenAIGetResponse"
+        "target": "com.azure.elastic#GetOpenAiResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1875,7 +1875,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#OpenAIGetResponse": {
+    "com.azure.elastic#GetOpenAiResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1913,7 +1913,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.elastic#OpenAIGetRequest": {
+    "com.azure.elastic#GetOpenAiRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1953,10 +1953,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#OpenAIList": {
+    "com.azure.elastic#ListOpenAi": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#OpenAIListRequest"
+        "target": "com.azure.elastic#ListOpenAiRequest"
       },
       "output": {
         "target": "com.azure.elastic#OpenAIIntegrationRPModelListResponse"
@@ -2040,7 +2040,7 @@
         "smithy.api#documentation": "Capture properties of Open AI resource Integration."
       }
     },
-    "com.azure.elastic#OpenAIListRequest": {
+    "com.azure.elastic#ListOpenAiRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2072,10 +2072,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsDelete": {
+    "com.azure.elastic#DeleteMonitoredSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitoredSubscriptionsDeleteRequest"
+        "target": "com.azure.elastic#DeleteMonitoredSubscriptionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2091,7 +2091,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsDeleteRequest": {
+    "com.azure.elastic#DeleteMonitoredSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2131,13 +2131,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsUpdate": {
+    "com.azure.elastic#UpdateMonitoredSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitoredSubscriptionsUpdateRequest"
+        "target": "com.azure.elastic#UpdateMonitoredSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.elastic#MonitoredSubscriptionsUpdateResponse"
+        "target": "com.azure.elastic#UpdateMonitoredSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2150,7 +2150,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsUpdateResponse": {
+    "com.azure.elastic#UpdateMonitoredSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2326,7 +2326,7 @@
         "smithy.api#documentation": "The operation for the patch on the resource."
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsUpdateRequest": {
+    "com.azure.elastic#UpdateMonitoredSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2370,13 +2370,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsCreateorUpdate": {
+    "com.azure.elastic#UpdateMonitoredSubscriptionCreateor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitoredSubscriptionsCreateorUpdateRequest"
+        "target": "com.azure.elastic#UpdateMonitoredSubscriptionCreateorRequest"
       },
       "output": {
-        "target": "com.azure.elastic#MonitoredSubscriptionsCreateorUpdateResponse"
+        "target": "com.azure.elastic#UpdateMonitoredSubscriptionCreateorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2389,7 +2389,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsCreateorUpdateResponse": {
+    "com.azure.elastic#UpdateMonitoredSubscriptionCreateorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2427,7 +2427,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsCreateorUpdateRequest": {
+    "com.azure.elastic#UpdateMonitoredSubscriptionCreateorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2471,13 +2471,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsGet": {
+    "com.azure.elastic#GetMonitoredSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitoredSubscriptionsGetRequest"
+        "target": "com.azure.elastic#GetMonitoredSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.elastic#MonitoredSubscriptionsGetResponse"
+        "target": "com.azure.elastic#GetMonitoredSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2490,7 +2490,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsGetResponse": {
+    "com.azure.elastic#GetMonitoredSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2528,7 +2528,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsGetRequest": {
+    "com.azure.elastic#GetMonitoredSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2568,10 +2568,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsList": {
+    "com.azure.elastic#ListMonitoredSubscriptions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitoredSubscriptionsListRequest"
+        "target": "com.azure.elastic#ListMonitoredSubscriptionsRequest"
       },
       "output": {
         "target": "com.azure.elastic#MonitoredSubscriptionPropertiesList"
@@ -2655,7 +2655,7 @@
         "smithy.api#documentation": "The request to update subscriptions needed to be monitored by the Elastic monitor resource."
       }
     },
-    "com.azure.elastic#MonitoredSubscriptionsListRequest": {
+    "com.azure.elastic#ListMonitoredSubscriptionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2687,13 +2687,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#VMHostList": {
+    "com.azure.elastic#ListVmHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#VMHostListRequest"
+        "target": "com.azure.elastic#ListVmHostRequest"
       },
       "output": {
-        "target": "com.azure.elastic#VMHostListResponse"
+        "target": "com.azure.elastic#ListVmHostResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2706,7 +2706,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#VMHostListResponse": {
+    "com.azure.elastic#ListVmHostResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -2750,7 +2750,7 @@
         "smithy.api#documentation": "The vm resource properties that is currently being monitored by the Elastic monitor resource."
       }
     },
-    "com.azure.elastic#VMHostListRequest": {
+    "com.azure.elastic#ListVmHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2862,10 +2862,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitoredResourcesList": {
+    "com.azure.elastic#ListMonitoredResources": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitoredResourcesListRequest"
+        "target": "com.azure.elastic#ListMonitoredResourcesRequest"
       },
       "output": {
         "target": "com.azure.elastic#MonitoredResourceListResponse"
@@ -2957,7 +2957,7 @@
         "smithy.api#documentation": "Flag indicating the status of the resource for sending logs operation to Elastic."
       }
     },
-    "com.azure.elastic#MonitoredResourcesListRequest": {
+    "com.azure.elastic#ListMonitoredResourcesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2989,10 +2989,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#DeploymentInfoList": {
+    "com.azure.elastic#ListDeploymentInfo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#DeploymentInfoListRequest"
+        "target": "com.azure.elastic#ListDeploymentInfoRequest"
       },
       "output": {
         "target": "com.azure.elastic#DeploymentInfoResponse"
@@ -3160,7 +3160,7 @@
         "smithy.api#documentation": "Flag specifying if the Elastic deployment status is healthy or not."
       }
     },
-    "com.azure.elastic#DeploymentInfoListRequest": {
+    "com.azure.elastic#ListDeploymentInfoRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3192,13 +3192,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#ConnectedPartnerResourcesList": {
+    "com.azure.elastic#ListConnectedPartnerResources": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#ConnectedPartnerResourcesListRequest"
+        "target": "com.azure.elastic#ListConnectedPartnerResourcesRequest"
       },
       "output": {
-        "target": "com.azure.elastic#ConnectedPartnerResourcesListResponse"
+        "target": "com.azure.elastic#ListConnectedPartnerResourcesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3211,7 +3211,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#ConnectedPartnerResourcesListResponse": {
+    "com.azure.elastic#ListConnectedPartnerResourcesResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -3293,7 +3293,7 @@
         "smithy.api#documentation": "Connected Partner Resource Properties"
       }
     },
-    "com.azure.elastic#ConnectedPartnerResourcesListRequest": {
+    "com.azure.elastic#ListConnectedPartnerResourcesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3516,10 +3516,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#AllTrafficFiltersList": {
+    "com.azure.elastic#ListAllTrafficFilters": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#AllTrafficFiltersListRequest"
+        "target": "com.azure.elastic#ListAllTrafficFiltersRequest"
       },
       "output": {
         "target": "com.azure.elastic#ElasticTrafficFilterResponse"
@@ -3535,7 +3535,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#AllTrafficFiltersListRequest": {
+    "com.azure.elastic#ListAllTrafficFiltersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3567,10 +3567,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#BillingInfoGet": {
+    "com.azure.elastic#GetBillingInfo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#BillingInfoGetRequest"
+        "target": "com.azure.elastic#GetBillingInfoRequest"
       },
       "output": {
         "target": "com.azure.elastic#BillingInfoResponse"
@@ -3632,7 +3632,7 @@
         "smithy.api#documentation": "Partner Billing details associated with the resource."
       }
     },
-    "com.azure.elastic#BillingInfoGetRequest": {
+    "com.azure.elastic#GetBillingInfoRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3664,10 +3664,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#DetachTrafficFilterUpdate": {
+    "com.azure.elastic#UpdateDetachTrafficFilter": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#DetachTrafficFilterUpdateRequest"
+        "target": "com.azure.elastic#UpdateDetachTrafficFilterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3683,7 +3683,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#DetachTrafficFilterUpdateRequest": {
+    "com.azure.elastic#UpdateDetachTrafficFilterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3780,10 +3780,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#TrafficFiltersDelete": {
+    "com.azure.elastic#DeleteTrafficFilter": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#TrafficFiltersDeleteRequest"
+        "target": "com.azure.elastic#DeleteTrafficFilterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3799,7 +3799,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#TrafficFiltersDeleteRequest": {
+    "com.azure.elastic#DeleteTrafficFilterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3943,10 +3943,10 @@
         "smithy.api#documentation": "Roles to be assigned for  created or updated user"
       }
     },
-    "com.azure.elastic#CreateAndAssociatePLFilterCreate": {
+    "com.azure.elastic#CreateAndAssociatePlFilterCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#CreateAndAssociatePLFilterCreateRequest"
+        "target": "com.azure.elastic#CreateAndAssociatePlFilterCreateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3962,7 +3962,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#CreateAndAssociatePLFilterCreateRequest": {
+    "com.azure.elastic#CreateAndAssociatePlFilterCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4015,10 +4015,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#CreateAndAssociateIPFilterCreate": {
+    "com.azure.elastic#CreateAndAssociateIpFilterCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#CreateAndAssociateIPFilterCreateRequest"
+        "target": "com.azure.elastic#CreateAndAssociateIpFilterCreateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4034,7 +4034,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#CreateAndAssociateIPFilterCreateRequest": {
+    "com.azure.elastic#CreateAndAssociateIpFilterCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4138,10 +4138,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitorsDelete": {
+    "com.azure.elastic#DeleteMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitorsDeleteRequest"
+        "target": "com.azure.elastic#DeleteMonitorRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4157,7 +4157,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#MonitorsDeleteRequest": {
+    "com.azure.elastic#DeleteMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4189,13 +4189,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitorsUpdate": {
+    "com.azure.elastic#UpdateMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitorsUpdateRequest"
+        "target": "com.azure.elastic#UpdateMonitorRequest"
       },
       "output": {
-        "target": "com.azure.elastic#MonitorsUpdateResponse"
+        "target": "com.azure.elastic#UpdateMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4208,7 +4208,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#MonitorsUpdateResponse": {
+    "com.azure.elastic#UpdateMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4289,7 +4289,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.elastic#MonitorsUpdateRequest": {
+    "com.azure.elastic#UpdateMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4338,13 +4338,13 @@
         "smithy.api#documentation": "elastic monitor resource tags."
       }
     },
-    "com.azure.elastic#MonitorsCreate": {
+    "com.azure.elastic#CreateMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitorsCreateRequest"
+        "target": "com.azure.elastic#CreateMonitorRequest"
       },
       "output": {
-        "target": "com.azure.elastic#MonitorsCreateResponse"
+        "target": "com.azure.elastic#CreateMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4357,7 +4357,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#MonitorsCreateResponse": {
+    "com.azure.elastic#CreateMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4438,7 +4438,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.elastic#MonitorsCreateRequest": {
+    "com.azure.elastic#CreateMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4646,13 +4646,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.elastic#MonitorsGet": {
+    "com.azure.elastic#GetMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitorsGetRequest"
+        "target": "com.azure.elastic#GetMonitorRequest"
       },
       "output": {
-        "target": "com.azure.elastic#MonitorsGetResponse"
+        "target": "com.azure.elastic#GetMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4665,7 +4665,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#MonitorsGetResponse": {
+    "com.azure.elastic#GetMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4746,7 +4746,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.elastic#MonitorsGetRequest": {
+    "com.azure.elastic#GetMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4778,10 +4778,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitorsListByResourceGroup": {
+    "com.azure.elastic#ListMonitorByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitorsListByResourceGroupRequest"
+        "target": "com.azure.elastic#ListMonitorByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.elastic#ElasticMonitorResourceListResponse"
@@ -4908,7 +4908,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.elastic#MonitorsListByResourceGroupRequest": {
+    "com.azure.elastic#ListMonitorByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4932,10 +4932,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#MonitorsList": {
+    "com.azure.elastic#ListMonitors": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#MonitorsListRequest"
+        "target": "com.azure.elastic#ListMonitorsRequest"
       },
       "output": {
         "target": "com.azure.elastic#ElasticMonitorResourceListResponse"
@@ -4951,7 +4951,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#MonitorsListRequest": {
+    "com.azure.elastic#ListMonitorsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4967,10 +4967,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#OrganizationsGetApiKey": {
+    "com.azure.elastic#GetOrganizationApiKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#OrganizationsGetApiKeyRequest"
+        "target": "com.azure.elastic#GetOrganizationApiKeyRequest"
       },
       "output": {
         "target": "com.azure.elastic#UserApiKeyResponse"
@@ -5010,7 +5010,7 @@
       },
       "traits": {}
     },
-    "com.azure.elastic#OrganizationsGetApiKeyRequest": {
+    "com.azure.elastic#GetOrganizationApiKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5032,10 +5032,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#OrganizationsGetElasticToAzureSubscriptionMapping": {
+    "com.azure.elastic#GetOrganizationElasticToAzureSubscriptionMapping": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#OrganizationsGetElasticToAzureSubscriptionMappingRequest"
+        "target": "com.azure.elastic#GetOrganizationElasticToAzureSubscriptionMappingRequest"
       },
       "output": {
         "target": "com.azure.elastic#ElasticOrganizationToAzureSubscriptionMappingResponse"
@@ -5097,7 +5097,7 @@
         "smithy.api#documentation": "The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into."
       }
     },
-    "com.azure.elastic#OrganizationsGetElasticToAzureSubscriptionMappingRequest": {
+    "com.azure.elastic#GetOrganizationElasticToAzureSubscriptionMappingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5113,13 +5113,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#ElasticVersionsList": {
+    "com.azure.elastic#ListElasticVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.elastic#ElasticVersionsListRequest"
+        "target": "com.azure.elastic#ListElasticVersionsRequest"
       },
       "output": {
-        "target": "com.azure.elastic#ElasticVersionsListResponse"
+        "target": "com.azure.elastic#ListElasticVersionsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5132,7 +5132,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-01"
       }
     },
-    "com.azure.elastic#ElasticVersionsListResponse": {
+    "com.azure.elastic#ListElasticVersionsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -5190,7 +5190,7 @@
         "smithy.api#documentation": "Elastic Version Properties"
       }
     },
-    "com.azure.elastic#ElasticVersionsListRequest": {
+    "com.azure.elastic#ListElasticVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5214,7 +5214,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.elastic#OperationsList": {
+    "com.azure.elastic#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -5335,130 +5335,130 @@
           "target": "com.azure.elastic#VMIngestionDetails"
         },
         {
-          "target": "com.azure.elastic#VMCollectionUpdate"
+          "target": "com.azure.elastic#UpdateVmCollection"
         },
         {
           "target": "com.azure.elastic#MonitorUpgrade"
         },
         {
-          "target": "com.azure.elastic#TagRulesDelete"
+          "target": "com.azure.elastic#DeleteTagRule"
         },
         {
           "target": "com.azure.elastic#TagRulesCreateOrUpdate"
         },
         {
-          "target": "com.azure.elastic#TagRulesGet"
+          "target": "com.azure.elastic#GetTagRule"
         },
         {
-          "target": "com.azure.elastic#TagRulesList"
+          "target": "com.azure.elastic#ListTagRules"
         },
         {
           "target": "com.azure.elastic#OrganizationsResubscribe"
         },
         {
-          "target": "com.azure.elastic#OpenAIGetStatus"
+          "target": "com.azure.elastic#GetOpenAiStatus"
         },
         {
-          "target": "com.azure.elastic#OpenAIDelete"
+          "target": "com.azure.elastic#DeleteOpenAi"
         },
         {
           "target": "com.azure.elastic#OpenAICreateOrUpdate"
         },
         {
-          "target": "com.azure.elastic#OpenAIGet"
+          "target": "com.azure.elastic#GetOpenAi"
         },
         {
-          "target": "com.azure.elastic#OpenAIList"
+          "target": "com.azure.elastic#ListOpenAi"
         },
         {
-          "target": "com.azure.elastic#MonitoredSubscriptionsDelete"
+          "target": "com.azure.elastic#DeleteMonitoredSubscription"
         },
         {
-          "target": "com.azure.elastic#MonitoredSubscriptionsUpdate"
+          "target": "com.azure.elastic#UpdateMonitoredSubscription"
         },
         {
-          "target": "com.azure.elastic#MonitoredSubscriptionsCreateorUpdate"
+          "target": "com.azure.elastic#UpdateMonitoredSubscriptionCreateor"
         },
         {
-          "target": "com.azure.elastic#MonitoredSubscriptionsGet"
+          "target": "com.azure.elastic#GetMonitoredSubscription"
         },
         {
-          "target": "com.azure.elastic#MonitoredSubscriptionsList"
+          "target": "com.azure.elastic#ListMonitoredSubscriptions"
         },
         {
-          "target": "com.azure.elastic#VMHostList"
+          "target": "com.azure.elastic#ListVmHost"
         },
         {
           "target": "com.azure.elastic#UpgradableVersionsDetails"
         },
         {
-          "target": "com.azure.elastic#MonitoredResourcesList"
+          "target": "com.azure.elastic#ListMonitoredResources"
         },
         {
-          "target": "com.azure.elastic#DeploymentInfoList"
+          "target": "com.azure.elastic#ListDeploymentInfo"
         },
         {
-          "target": "com.azure.elastic#ConnectedPartnerResourcesList"
+          "target": "com.azure.elastic#ListConnectedPartnerResources"
         },
         {
           "target": "com.azure.elastic#ListAssociatedTrafficFiltersList"
         },
         {
-          "target": "com.azure.elastic#AllTrafficFiltersList"
+          "target": "com.azure.elastic#ListAllTrafficFilters"
         },
         {
-          "target": "com.azure.elastic#BillingInfoGet"
+          "target": "com.azure.elastic#GetBillingInfo"
         },
         {
-          "target": "com.azure.elastic#DetachTrafficFilterUpdate"
+          "target": "com.azure.elastic#UpdateDetachTrafficFilter"
         },
         {
           "target": "com.azure.elastic#DetachAndDeleteTrafficFilterDelete"
         },
         {
-          "target": "com.azure.elastic#TrafficFiltersDelete"
+          "target": "com.azure.elastic#DeleteTrafficFilter"
         },
         {
           "target": "com.azure.elastic#ExternalUserCreateOrUpdate"
         },
         {
-          "target": "com.azure.elastic#CreateAndAssociatePLFilterCreate"
+          "target": "com.azure.elastic#CreateAndAssociatePlFilterCreate"
         },
         {
-          "target": "com.azure.elastic#CreateAndAssociateIPFilterCreate"
+          "target": "com.azure.elastic#CreateAndAssociateIpFilterCreate"
         },
         {
           "target": "com.azure.elastic#AssociateTrafficFilterAssociate"
         },
         {
-          "target": "com.azure.elastic#MonitorsDelete"
+          "target": "com.azure.elastic#DeleteMonitor"
         },
         {
-          "target": "com.azure.elastic#MonitorsUpdate"
+          "target": "com.azure.elastic#UpdateMonitor"
         },
         {
-          "target": "com.azure.elastic#MonitorsCreate"
+          "target": "com.azure.elastic#CreateMonitor"
         },
         {
-          "target": "com.azure.elastic#MonitorsGet"
+          "target": "com.azure.elastic#GetMonitor"
         },
         {
-          "target": "com.azure.elastic#MonitorsListByResourceGroup"
+          "target": "com.azure.elastic#ListMonitorByResourceGroup"
         },
         {
-          "target": "com.azure.elastic#MonitorsList"
+          "target": "com.azure.elastic#ListMonitors"
         },
         {
-          "target": "com.azure.elastic#OrganizationsGetApiKey"
+          "target": "com.azure.elastic#GetOrganizationApiKey"
         },
         {
-          "target": "com.azure.elastic#OrganizationsGetElasticToAzureSubscriptionMapping"
+          "target": "com.azure.elastic#GetOrganizationElasticToAzureSubscriptionMapping"
         },
         {
-          "target": "com.azure.elastic#ElasticVersionsList"
+          "target": "com.azure.elastic#ListElasticVersions"
         },
         {
-          "target": "com.azure.elastic#OperationsList"
+          "target": "com.azure.elastic#ListOperations"
         }
       ],
       "traits": {

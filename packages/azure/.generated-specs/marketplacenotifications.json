@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.azure.marketplacenotifications#NotificationGetOperations": {
+    "com.azure.marketplacenotifications#GetNotificationOperation": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -134,13 +134,13 @@
         "smithy.api#documentation": "Operation display payload"
       }
     },
-    "com.azure.marketplacenotifications#NotificationGet": {
+    "com.azure.marketplacenotifications#GetNotification": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacenotifications#NotificationGetRequest"
+        "target": "com.azure.marketplacenotifications#GetNotificationRequest"
       },
       "output": {
-        "target": "com.azure.marketplacenotifications#NotificationGetResponse"
+        "target": "com.azure.marketplacenotifications#GetNotificationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -152,7 +152,7 @@
         "com.distilled.openapi#apiVersion": "2021-03-03"
       }
     },
-    "com.azure.marketplacenotifications#NotificationGetResponse": {
+    "com.azure.marketplacenotifications#GetNotificationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -328,7 +328,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.marketplacenotifications#NotificationGetRequest": {
+    "com.azure.marketplacenotifications#GetNotificationRequest": {
       "type": "structure",
       "members": {
         "subscription": {
@@ -360,10 +360,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacenotifications#NotificationsList": {
+    "com.azure.marketplacenotifications#ListNotifications": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacenotifications#NotificationsListRequest"
+        "target": "com.azure.marketplacenotifications#ListNotificationsRequest"
       },
       "output": {
         "target": "com.azure.marketplacenotifications#NotificationList"
@@ -548,7 +548,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.marketplacenotifications#NotificationsListRequest": {
+    "com.azure.marketplacenotifications#ListNotificationsRequest": {
       "type": "structure",
       "members": {
         "subscription": {
@@ -577,13 +577,13 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.marketplacenotifications#NotificationGetOperations"
+          "target": "com.azure.marketplacenotifications#GetNotificationOperation"
         },
         {
-          "target": "com.azure.marketplacenotifications#NotificationGet"
+          "target": "com.azure.marketplacenotifications#GetNotification"
         },
         {
-          "target": "com.azure.marketplacenotifications#NotificationsList"
+          "target": "com.azure.marketplacenotifications#ListNotifications"
         }
       ],
       "traits": {

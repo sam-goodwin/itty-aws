@@ -10810,7 +10810,7 @@
         "smithy.api#documentation": "Replaces the specified CatalogAttribute in the AttributesConfig by updating the catalog attribute with the same CatalogAttribute.key. If the CatalogAttribute to replace does not exist, a NOT_FOUND error is returned."
       }
     },
-    "com.gcp.retail_v2#BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest": {
+    "com.gcp.retail_v2#UpdateBatchProjectLocationCatalogGenerativeQuestionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -10830,10 +10830,10 @@
         }
       }
     },
-    "com.gcp.retail_v2#BatchUpdateProjectsLocationsCatalogsGenerativeQuestion": {
+    "com.gcp.retail_v2#UpdateBatchProjectLocationCatalogGenerativeQuestion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.retail_v2#BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest"
+        "target": "com.gcp.retail_v2#UpdateBatchProjectLocationCatalogGenerativeQuestionRequest"
       },
       "output": {
         "target": "com.gcp.retail_v2#GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse"

@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.uploaded_media#UploadedMediaCreateRequest": {
+    "com.posthog.uploaded_media#CreateUploadedMediaRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -43,7 +43,7 @@
       },
       "traits": {}
     },
-    "com.posthog.uploaded_media#UploadedMediaCreateResponse": {
+    "com.posthog.uploaded_media#CreateUploadedMediaResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -58,13 +58,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.uploaded_media#UploadedMediaCreate": {
+    "com.posthog.uploaded_media#CreateUploadedMedia": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.uploaded_media#UploadedMediaCreateRequest"
+        "target": "com.posthog.uploaded_media#CreateUploadedMediaRequest"
       },
       "output": {
-        "target": "com.posthog.uploaded_media#UploadedMediaCreateResponse"
+        "target": "com.posthog.uploaded_media#CreateUploadedMediaResponse"
       },
       "errors": [
         {
@@ -114,7 +114,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.uploaded_media#UploadedMediaCreate"
+          "target": "com.posthog.uploaded_media#CreateUploadedMedia"
         }
       ],
       "traits": {

@@ -797,7 +797,7 @@
         "target": "com.modal.sandbox#SandboxTag"
       }
     },
-    "com.modal.sandbox#SandboxCreateRequest": {
+    "com.modal.sandbox#CreateSandboxRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -956,7 +956,7 @@
         "smithy.api#documentation": "Used for both tasks and function outputs"
       }
     },
-    "com.modal.sandbox#SandboxCreateResponse": {
+    "com.modal.sandbox#CreateSandboxResponse": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -970,13 +970,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxCreate": {
+    "com.modal.sandbox#CreateSandbox": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxCreateRequest"
+        "target": "com.modal.sandbox#CreateSandboxRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxCreateResponse"
+        "target": "com.modal.sandbox#CreateSandboxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -987,7 +987,7 @@
         "smithy.api#documentation": "Sandboxes"
       }
     },
-    "com.modal.sandbox#SandboxCreateConnectTokenRequest": {
+    "com.modal.sandbox#CreateSandboxConnectTokenRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1007,7 +1007,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxCreateConnectTokenResponse": {
+    "com.modal.sandbox#CreateSandboxConnectTokenResponse": {
       "type": "structure",
       "members": {
         "url": {
@@ -1021,13 +1021,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxCreateConnectToken": {
+    "com.modal.sandbox#CreateSandboxConnectToken": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxCreateConnectTokenRequest"
+        "target": "com.modal.sandbox#CreateSandboxConnectTokenRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxCreateConnectTokenResponse"
+        "target": "com.modal.sandbox#CreateSandboxConnectTokenResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1037,7 +1037,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxCreateConnectTokenV2Request": {
+    "com.modal.sandbox#CreateSandboxConnectTokenV2Request": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1057,7 +1057,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxCreateConnectTokenV2Response": {
+    "com.modal.sandbox#CreateSandboxConnectTokenV2Response": {
       "type": "structure",
       "members": {
         "url": {
@@ -1071,13 +1071,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxCreateConnectTokenV2": {
+    "com.modal.sandbox#CreateSandboxConnectTokenV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxCreateConnectTokenV2Request"
+        "target": "com.modal.sandbox#CreateSandboxConnectTokenV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxCreateConnectTokenV2Response"
+        "target": "com.modal.sandbox#CreateSandboxConnectTokenV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -1096,7 +1096,7 @@
         "target": "com.modal.sandbox#StringMap2"
       }
     },
-    "com.modal.sandbox#SandboxCreateV2Request": {
+    "com.modal.sandbox#CreateSandboxV2Request": {
       "type": "structure",
       "members": {
         "appId": {
@@ -1159,7 +1159,7 @@
         "smithy.api#documentation": "Defined as start time of the first task in the cluster"
       }
     },
-    "com.modal.sandbox#SandboxCreateV2Response": {
+    "com.modal.sandbox#CreateSandboxV2Response": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1182,13 +1182,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxCreateV2": {
+    "com.modal.sandbox#CreateSandboxV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxCreateV2Request"
+        "target": "com.modal.sandbox#CreateSandboxV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxCreateV2Response"
+        "target": "com.modal.sandbox#CreateSandboxV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -1198,7 +1198,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetCommandRouterAccessRequest": {
+    "com.modal.sandbox#GetSandboxCommandRouterAccessRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1212,7 +1212,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxGetCommandRouterAccessResponse": {
+    "com.modal.sandbox#GetSandboxCommandRouterAccessResponse": {
       "type": "structure",
       "members": {
         "jwt": {
@@ -1232,13 +1232,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetCommandRouterAccess": {
+    "com.modal.sandbox#GetSandboxCommandRouterAccess": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetCommandRouterAccessRequest"
+        "target": "com.modal.sandbox#GetSandboxCommandRouterAccessRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetCommandRouterAccessResponse"
+        "target": "com.modal.sandbox#GetSandboxCommandRouterAccessResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1248,7 +1248,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetExitSnapshotRequest": {
+    "com.modal.sandbox#GetSandboxExitSnapshotRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1308,7 +1308,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetExitSnapshotResponse": {
+    "com.modal.sandbox#GetSandboxExitSnapshotResponse": {
       "type": "structure",
       "members": {
         "success": {
@@ -1325,13 +1325,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetExitSnapshot": {
+    "com.modal.sandbox#GetSandboxExitSnapshot": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetExitSnapshotRequest"
+        "target": "com.modal.sandbox#GetSandboxExitSnapshotRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetExitSnapshotResponse"
+        "target": "com.modal.sandbox#GetSandboxExitSnapshotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1341,7 +1341,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetExitSnapshotV2Request": {
+    "com.modal.sandbox#GetSandboxExitSnapshotV2Request": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1355,7 +1355,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxGetExitSnapshotV2Response": {
+    "com.modal.sandbox#GetSandboxExitSnapshotV2Response": {
       "type": "structure",
       "members": {
         "success": {
@@ -1372,13 +1372,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetExitSnapshotV2": {
+    "com.modal.sandbox#GetSandboxExitSnapshotV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetExitSnapshotV2Request"
+        "target": "com.modal.sandbox#GetSandboxExitSnapshotV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetExitSnapshotV2Response"
+        "target": "com.modal.sandbox#GetSandboxExitSnapshotV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -1388,7 +1388,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetFromNameRequest": {
+    "com.modal.sandbox#GetSandboxFromNameRequest": {
       "type": "structure",
       "members": {
         "sandboxName": {
@@ -1405,7 +1405,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxGetFromNameResponse": {
+    "com.modal.sandbox#GetSandboxFromNameResponse": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1419,13 +1419,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetFromName": {
+    "com.modal.sandbox#GetSandboxFromName": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetFromNameRequest"
+        "target": "com.modal.sandbox#GetSandboxFromNameRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetFromNameResponse"
+        "target": "com.modal.sandbox#GetSandboxFromNameResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1435,7 +1435,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetFromNameV2Request": {
+    "com.modal.sandbox#GetSandboxFromNameV2Request": {
       "type": "structure",
       "members": {
         "sandboxName": {
@@ -1452,7 +1452,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxGetFromNameV2Response": {
+    "com.modal.sandbox#GetSandboxFromNameV2Response": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1466,13 +1466,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetFromNameV2": {
+    "com.modal.sandbox#GetSandboxFromNameV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetFromNameV2Request"
+        "target": "com.modal.sandbox#GetSandboxFromNameV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetFromNameV2Response"
+        "target": "com.modal.sandbox#GetSandboxFromNameV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -1482,7 +1482,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetResourceUsageRequest": {
+    "com.modal.sandbox#GetSandboxResourceUsageRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1493,7 +1493,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxGetResourceUsageResponse": {
+    "com.modal.sandbox#GetSandboxResourceUsageResponse": {
       "type": "structure",
       "members": {
         "cpuCoreNanosecs": {
@@ -1513,13 +1513,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetResourceUsage": {
+    "com.modal.sandbox#GetSandboxResourceUsage": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetResourceUsageRequest"
+        "target": "com.modal.sandbox#GetSandboxResourceUsageRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetResourceUsageResponse"
+        "target": "com.modal.sandbox#GetSandboxResourceUsageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1529,7 +1529,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetTaskIdRequest": {
+    "com.modal.sandbox#GetSandboxTaskIdRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1549,7 +1549,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxGetTaskIdResponse": {
+    "com.modal.sandbox#GetSandboxTaskIdResponse": {
       "type": "structure",
       "members": {
         "taskId": {
@@ -1566,13 +1566,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetTaskId": {
+    "com.modal.sandbox#GetSandboxTaskId": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetTaskIdRequest"
+        "target": "com.modal.sandbox#GetSandboxTaskIdRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetTaskIdResponse"
+        "target": "com.modal.sandbox#GetSandboxTaskIdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1582,7 +1582,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetTaskIdV2Request": {
+    "com.modal.sandbox#GetSandboxTaskIdV2Request": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1602,7 +1602,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxGetTaskIdV2Response": {
+    "com.modal.sandbox#GetSandboxTaskIdV2Response": {
       "type": "structure",
       "members": {
         "taskId": {
@@ -1619,13 +1619,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetTaskIdV2": {
+    "com.modal.sandbox#GetSandboxTaskIdV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetTaskIdV2Request"
+        "target": "com.modal.sandbox#GetSandboxTaskIdV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetTaskIdV2Response"
+        "target": "com.modal.sandbox#GetSandboxTaskIdV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -1636,7 +1636,7 @@
         "smithy.api#documentation": "needed for modal container exec"
       }
     },
-    "com.modal.sandbox#SandboxGetTunnelsRequest": {
+    "com.modal.sandbox#GetSandboxTunnelRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1650,7 +1650,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxGetTunnelsResponse": {
+    "com.modal.sandbox#GetSandboxTunnelResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -1664,13 +1664,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetTunnels": {
+    "com.modal.sandbox#GetSandboxTunnel": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetTunnelsRequest"
+        "target": "com.modal.sandbox#GetSandboxTunnelRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetTunnelsResponse"
+        "target": "com.modal.sandbox#GetSandboxTunnelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1680,7 +1680,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxGetTunnelsV2Request": {
+    "com.modal.sandbox#GetSandboxTunnelV2Request": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -1694,7 +1694,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxGetTunnelsV2Response": {
+    "com.modal.sandbox#GetSandboxTunnelV2Response": {
       "type": "structure",
       "members": {
         "result": {
@@ -1708,13 +1708,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxGetTunnelsV2": {
+    "com.modal.sandbox#GetSandboxTunnelV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxGetTunnelsV2Request"
+        "target": "com.modal.sandbox#GetSandboxTunnelV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxGetTunnelsV2Response"
+        "target": "com.modal.sandbox#GetSandboxTunnelV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -1724,7 +1724,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxListRequest": {
+    "com.modal.sandbox#ListSandboxRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -1922,7 +1922,7 @@
         "target": "com.modal.sandbox#SandboxInfo"
       }
     },
-    "com.modal.sandbox#SandboxListResponse": {
+    "com.modal.sandbox#ListSandboxResponse": {
       "type": "structure",
       "members": {
         "sandboxes": {
@@ -1933,13 +1933,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxList": {
+    "com.modal.sandbox#ListSandbox": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxListRequest"
+        "target": "com.modal.sandbox#ListSandboxRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxListResponse"
+        "target": "com.modal.sandbox#ListSandboxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1949,7 +1949,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxListV2Request": {
+    "com.modal.sandbox#ListSandboxV2Request": {
       "type": "structure",
       "members": {
         "appId": {
@@ -1972,7 +1972,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxListV2Response": {
+    "com.modal.sandbox#ListSandboxV2Response": {
       "type": "structure",
       "members": {
         "sandboxes": {
@@ -1983,13 +1983,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxListV2": {
+    "com.modal.sandbox#ListSandboxV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxListV2Request"
+        "target": "com.modal.sandbox#ListSandboxV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxListV2Response"
+        "target": "com.modal.sandbox#ListSandboxV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -2022,7 +2022,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxRestoreRequest": {
+    "com.modal.sandbox#RestoreSandboxRequest": {
       "type": "structure",
       "members": {
         "snapshotId": {
@@ -2051,7 +2051,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxRestoreResponse": {
+    "com.modal.sandbox#RestoreSandboxResponse": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -2062,13 +2062,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxRestore": {
+    "com.modal.sandbox#RestoreSandbox": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxRestoreRequest"
+        "target": "com.modal.sandbox#RestoreSandboxRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxRestoreResponse"
+        "target": "com.modal.sandbox#RestoreSandboxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2078,7 +2078,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxRestoreV2Request": {
+    "com.modal.sandbox#RestoreSandboxV2Request": {
       "type": "structure",
       "members": {
         "snapshotId": {
@@ -2098,7 +2098,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxRestoreV2Response": {
+    "com.modal.sandbox#RestoreSandboxV2Response": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -2121,13 +2121,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxRestoreV2": {
+    "com.modal.sandbox#RestoreSandboxV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxRestoreV2Request"
+        "target": "com.modal.sandbox#RestoreSandboxV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxRestoreV2Response"
+        "target": "com.modal.sandbox#RestoreSandboxV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -2137,7 +2137,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxSetNameRequest": {
+    "com.modal.sandbox#SetSandboxNameRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -2151,20 +2151,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxSetNameResponse": {
+    "com.modal.sandbox#SetSandboxNameResponse": {
       "type": "structure",
       "members": {},
       "traits": {
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxSetName": {
+    "com.modal.sandbox#SetSandboxName": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxSetNameRequest"
+        "target": "com.modal.sandbox#SetSandboxNameRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxSetNameResponse"
+        "target": "com.modal.sandbox#SetSandboxNameResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2335,7 +2335,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxSnapshotFsAsyncGetRequest": {
+    "com.modal.sandbox#GetSandboxSnapshotFsAsyncRequest": {
       "type": "structure",
       "members": {
         "imageId": {
@@ -2349,7 +2349,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxSnapshotFsAsyncGetResponse": {
+    "com.modal.sandbox#GetSandboxSnapshotFsAsyncResponse": {
       "type": "structure",
       "members": {
         "imageId": {
@@ -2369,13 +2369,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxSnapshotFsAsyncGet": {
+    "com.modal.sandbox#GetSandboxSnapshotFsAsync": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxSnapshotFsAsyncGetRequest"
+        "target": "com.modal.sandbox#GetSandboxSnapshotFsAsyncRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxSnapshotFsAsyncGetResponse"
+        "target": "com.modal.sandbox#GetSandboxSnapshotFsAsyncResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2385,7 +2385,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxSnapshotGetRequest": {
+    "com.modal.sandbox#GetSandboxSnapshotRequest": {
       "type": "structure",
       "members": {
         "snapshotId": {
@@ -2404,7 +2404,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxSnapshotGetResponse": {
+    "com.modal.sandbox#GetSandboxSnapshotResponse": {
       "type": "structure",
       "members": {
         "snapshotId": {
@@ -2418,13 +2418,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxSnapshotGet": {
+    "com.modal.sandbox#GetSandboxSnapshot": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxSnapshotGetRequest"
+        "target": "com.modal.sandbox#GetSandboxSnapshotRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxSnapshotGetResponse"
+        "target": "com.modal.sandbox#GetSandboxSnapshotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2434,7 +2434,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxSnapshotWaitRequest": {
+    "com.modal.sandbox#WaitSandboxSnapshotRequest": {
       "type": "structure",
       "members": {
         "snapshotId": {
@@ -2448,7 +2448,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxSnapshotWaitResponse": {
+    "com.modal.sandbox#WaitSandboxSnapshotResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -2459,13 +2459,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxSnapshotWait": {
+    "com.modal.sandbox#WaitSandboxSnapshot": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxSnapshotWaitRequest"
+        "target": "com.modal.sandbox#WaitSandboxSnapshotRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxSnapshotWaitResponse"
+        "target": "com.modal.sandbox#WaitSandboxSnapshotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2518,7 +2518,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxTagsGetRequest": {
+    "com.modal.sandbox#GetSandboxTagRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -2529,7 +2529,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxTagsGetResponse": {
+    "com.modal.sandbox#GetSandboxTagResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -2540,13 +2540,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxTagsGet": {
+    "com.modal.sandbox#GetSandboxTag": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxTagsGetRequest"
+        "target": "com.modal.sandbox#GetSandboxTagRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxTagsGetResponse"
+        "target": "com.modal.sandbox#GetSandboxTagResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2556,7 +2556,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxTagsGetV2Request": {
+    "com.modal.sandbox#GetSandboxTagV2Request": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -2567,7 +2567,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxTagsGetV2Response": {
+    "com.modal.sandbox#GetSandboxTagV2Response": {
       "type": "structure",
       "members": {
         "tags": {
@@ -2578,13 +2578,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxTagsGetV2": {
+    "com.modal.sandbox#GetSandboxTagV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxTagsGetV2Request"
+        "target": "com.modal.sandbox#GetSandboxTagV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxTagsGetV2Response"
+        "target": "com.modal.sandbox#GetSandboxTagV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -2594,7 +2594,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxTagsSetRequest": {
+    "com.modal.sandbox#SetSandboxTagRequest": {
       "type": "structure",
       "members": {
         "environmentName": {
@@ -2611,10 +2611,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxTagsSet": {
+    "com.modal.sandbox#SetSandboxTag": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxTagsSetRequest"
+        "target": "com.modal.sandbox#SetSandboxTagRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2627,7 +2627,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxTagsSetV2Request": {
+    "com.modal.sandbox#SetSandboxTagV2Request": {
       "type": "structure",
       "members": {
         "environmentName": {
@@ -2644,10 +2644,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxTagsSetV2": {
+    "com.modal.sandbox#SetSandboxTagV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxTagsSetV2Request"
+        "target": "com.modal.sandbox#SetSandboxTagV2Request"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2736,7 +2736,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxWaitRequest": {
+    "com.modal.sandbox#WaitSandboxRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -2750,7 +2750,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxWaitResponse": {
+    "com.modal.sandbox#WaitSandboxResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -2764,13 +2764,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxWait": {
+    "com.modal.sandbox#WaitSandbox": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxWaitRequest"
+        "target": "com.modal.sandbox#WaitSandboxRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxWaitResponse"
+        "target": "com.modal.sandbox#WaitSandboxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2780,7 +2780,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxWaitUntilReadyRequest": {
+    "com.modal.sandbox#WaitSandboxUntilReadyRequest": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -2794,7 +2794,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxWaitUntilReadyResponse": {
+    "com.modal.sandbox#WaitSandboxUntilReadyResponse": {
       "type": "structure",
       "members": {
         "readyAt": {
@@ -2805,13 +2805,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxWaitUntilReady": {
+    "com.modal.sandbox#WaitSandboxUntilReady": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxWaitUntilReadyRequest"
+        "target": "com.modal.sandbox#WaitSandboxUntilReadyRequest"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxWaitUntilReadyResponse"
+        "target": "com.modal.sandbox#WaitSandboxUntilReadyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2821,7 +2821,7 @@
         }
       }
     },
-    "com.modal.sandbox#SandboxWaitV2Request": {
+    "com.modal.sandbox#WaitSandboxV2Request": {
       "type": "structure",
       "members": {
         "sandboxId": {
@@ -2835,7 +2835,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.sandbox#SandboxWaitV2Response": {
+    "com.modal.sandbox#WaitSandboxV2Response": {
       "type": "structure",
       "members": {
         "result": {
@@ -2849,13 +2849,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.sandbox#SandboxWaitV2": {
+    "com.modal.sandbox#WaitSandboxV2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.sandbox#SandboxWaitV2Request"
+        "target": "com.modal.sandbox#WaitSandboxV2Request"
       },
       "output": {
-        "target": "com.modal.sandbox#SandboxWaitV2Response"
+        "target": "com.modal.sandbox#WaitSandboxV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -2870,61 +2870,61 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.modal.sandbox#SandboxCreate"
+          "target": "com.modal.sandbox#CreateSandbox"
         },
         {
-          "target": "com.modal.sandbox#SandboxCreateConnectToken"
+          "target": "com.modal.sandbox#CreateSandboxConnectToken"
         },
         {
-          "target": "com.modal.sandbox#SandboxCreateConnectTokenV2"
+          "target": "com.modal.sandbox#CreateSandboxConnectTokenV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxCreateV2"
+          "target": "com.modal.sandbox#CreateSandboxV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetCommandRouterAccess"
+          "target": "com.modal.sandbox#GetSandboxCommandRouterAccess"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetExitSnapshot"
+          "target": "com.modal.sandbox#GetSandboxExitSnapshot"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetExitSnapshotV2"
+          "target": "com.modal.sandbox#GetSandboxExitSnapshotV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetFromName"
+          "target": "com.modal.sandbox#GetSandboxFromName"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetFromNameV2"
+          "target": "com.modal.sandbox#GetSandboxFromNameV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetResourceUsage"
+          "target": "com.modal.sandbox#GetSandboxResourceUsage"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetTaskId"
+          "target": "com.modal.sandbox#GetSandboxTaskId"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetTaskIdV2"
+          "target": "com.modal.sandbox#GetSandboxTaskIdV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetTunnels"
+          "target": "com.modal.sandbox#GetSandboxTunnel"
         },
         {
-          "target": "com.modal.sandbox#SandboxGetTunnelsV2"
+          "target": "com.modal.sandbox#GetSandboxTunnelV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxList"
+          "target": "com.modal.sandbox#ListSandbox"
         },
         {
-          "target": "com.modal.sandbox#SandboxListV2"
+          "target": "com.modal.sandbox#ListSandboxV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxRestore"
+          "target": "com.modal.sandbox#RestoreSandbox"
         },
         {
-          "target": "com.modal.sandbox#SandboxRestoreV2"
+          "target": "com.modal.sandbox#RestoreSandboxV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxSetName"
+          "target": "com.modal.sandbox#SetSandboxName"
         },
         {
           "target": "com.modal.sandbox#SandboxSnapshot"
@@ -2936,28 +2936,28 @@
           "target": "com.modal.sandbox#SandboxSnapshotFsAsync"
         },
         {
-          "target": "com.modal.sandbox#SandboxSnapshotFsAsyncGet"
+          "target": "com.modal.sandbox#GetSandboxSnapshotFsAsync"
         },
         {
-          "target": "com.modal.sandbox#SandboxSnapshotGet"
+          "target": "com.modal.sandbox#GetSandboxSnapshot"
         },
         {
-          "target": "com.modal.sandbox#SandboxSnapshotWait"
+          "target": "com.modal.sandbox#WaitSandboxSnapshot"
         },
         {
           "target": "com.modal.sandbox#SandboxStdinWrite"
         },
         {
-          "target": "com.modal.sandbox#SandboxTagsGet"
+          "target": "com.modal.sandbox#GetSandboxTag"
         },
         {
-          "target": "com.modal.sandbox#SandboxTagsGetV2"
+          "target": "com.modal.sandbox#GetSandboxTagV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxTagsSet"
+          "target": "com.modal.sandbox#SetSandboxTag"
         },
         {
-          "target": "com.modal.sandbox#SandboxTagsSetV2"
+          "target": "com.modal.sandbox#SetSandboxTagV2"
         },
         {
           "target": "com.modal.sandbox#SandboxTerminate"
@@ -2966,13 +2966,13 @@
           "target": "com.modal.sandbox#SandboxTerminateV2"
         },
         {
-          "target": "com.modal.sandbox#SandboxWait"
+          "target": "com.modal.sandbox#WaitSandbox"
         },
         {
-          "target": "com.modal.sandbox#SandboxWaitUntilReady"
+          "target": "com.modal.sandbox#WaitSandboxUntilReady"
         },
         {
-          "target": "com.modal.sandbox#SandboxWaitV2"
+          "target": "com.modal.sandbox#WaitSandboxV2"
         }
       ],
       "traits": {

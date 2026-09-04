@@ -48,7 +48,950 @@ export const ApiKey = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApiKey" }) as any as S.Schema<ApiKey>;
 
-export interface EdgeZonesProductsListRequest {
+export interface GetApiKeysListRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const GetApiKeysListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys",
+      code: 200,
+      apiVersion: "2023-01-01-preview",
+    }),
+  ),
+).annotate({
+  identifier: "GetApiKeysListRequest",
+}) as any as S.Schema<GetApiKeysListRequest>;
+
+export type ApiKeysValueList = Array<ApiKey>;
+export const ApiKeysValueList = /*@__PURE__*/ S.Array(
+  ApiKey,
+) as any as S.Schema<ApiKeysValueList>;
+
+/** List of ApiKey objects. */
+export interface ApiKeys {
+  value?: ApiKeysValueList;
+  /** Next page of results. */
+  nextLink?: string;
+}
+export const ApiKeys = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ApiKeysValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "ApiKeys" }) as any as S.Schema<ApiKeys>;
+
+export interface GetSkusByBillingAccountRequest {
+  /** The ID of the target billing account. */
+  billingAccountId: string;
+  /** The ID of the SKU */
+  skuId: string;
+  /** Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'. */
+  language?: string;
+  /** Include stop-sold SKUs in the response. Default is false. */
+  includeStopSold?: boolean;
+  /** Include availabilities whose start date is in the future. Default is false. */
+  includeFutureAvailabilities?: boolean;
+}
+export const GetSkusByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    skuId: S.String.pipe(T.Label()),
+    language: S.optional(S.String.pipe(T.Query())),
+    includeStopSold: S.optional(S.Boolean.pipe(T.Query())),
+    includeFutureAvailabilities: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus/{skuId}",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSkusByBillingAccountRequest",
+}) as any as S.Schema<GetSkusByBillingAccountRequest>;
+
+/** Key-value attribute pair. */
+export interface Attribute_2 {
+  /** The attribute key. */
+  key?: string;
+  /** The attribute value. */
+  value?: string;
+}
+export const Attribute_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({ identifier: "Attribute_2" }) as any as S.Schema<Attribute_2>;
+
+/** The product attributes. */
+export type SkusGetByBillingAccountResponseProductAttributesList =
+  Array<Attribute_2>;
+export const SkusGetByBillingAccountResponseProductAttributesList =
+  /*@__PURE__*/ S.Array(
+    Attribute_2,
+  ) as any as S.Schema<SkusGetByBillingAccountResponseProductAttributesList>;
+
+/** The SKU attributes. */
+export type SkusGetByBillingAccountResponseSkuAttributesList =
+  Array<Attribute_2>;
+export const SkusGetByBillingAccountResponseSkuAttributesList =
+  /*@__PURE__*/ S.Array(
+    Attribute_2,
+  ) as any as S.Schema<SkusGetByBillingAccountResponseSkuAttributesList>;
+
+/** SKU properties, can be different per each service family. */
+export interface SkuProperties_2 {
+  /** The SKU category. */
+  category?: string;
+  /** The data disk type, such as 'Ssd'. */
+  dataDiskType?: string;
+  /** The disk type, such as 'Ssd'. */
+  diskType?: string;
+  /** The number of cores. */
+  numberOfCores?: string;
+  /** The RAM. */
+  ram?: string;
+  /** The number of virtual CPUs. */
+  vCpu?: string;
+  /** The ARM SKU name. */
+  armSkuName?: string;
+  /** The access tier, such as 'Standard'. */
+  accessTier?: string;
+}
+export const SkuProperties_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    category: S.optional(S.String),
+    dataDiskType: S.optional(S.String),
+    diskType: S.optional(S.String),
+    numberOfCores: S.optional(S.String),
+    ram: S.optional(S.String),
+    vCpu: S.optional(S.String),
+    armSkuName: S.optional(S.String),
+    accessTier: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SkuProperties_2",
+}) as any as S.Schema<SkuProperties_2>;
+
+/** Offering properties such as: product code (UPN), term id, meter type, offering id. */
+export interface OfferingProperties_2 {
+  /** The meter type. */
+  meterType?: string;
+  /** The billing meter id. */
+  billingMeterId?: string;
+  /** The offering id. */
+  offeringId?: string;
+  /** The product code (UPN). */
+  productCode?: string;
+  /** The term id. */
+  termId?: string;
+  /** The pricing property type (e.g., Consumption, Reservation, Entitlement). */
+  type?: string;
+}
+export const OfferingProperties_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    meterType: S.optional(S.String),
+    billingMeterId: S.optional(S.String),
+    offeringId: S.optional(S.String),
+    productCode: S.optional(S.String),
+    termId: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OfferingProperties_2",
+}) as any as S.Schema<OfferingProperties_2>;
+
+/** Offering properties such as: product code (UPN), term id, meter type, offering id. */
+export type SkusGetByBillingAccountResponseOfferingPropertiesList =
+  Array<OfferingProperties_2>;
+export const SkusGetByBillingAccountResponseOfferingPropertiesList =
+  /*@__PURE__*/ S.Array(
+    OfferingProperties_2,
+  ) as any as S.Schema<SkusGetByBillingAccountResponseOfferingPropertiesList>;
+
+/** AAD SKU identifiers. */
+export type SkuAlternateIdsAadSkuIdList = Array<string>;
+export const SkuAlternateIdsAadSkuIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuAlternateIdsAadSkuIdList>;
+
+/** Legacy offer GUID identifiers. */
+export type SkuAlternateIdsLegacyOfferGuidList = Array<string>;
+export const SkuAlternateIdsLegacyOfferGuidList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuAlternateIdsLegacyOfferGuidList>;
+
+/** Applicable promotion identifiers. */
+export type SkuAlternateIdsApplicablePromotionList = Array<string>;
+export const SkuAlternateIdsApplicablePromotionList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuAlternateIdsApplicablePromotionList>;
+
+/** Add-on parent identifiers. */
+export type SkuAlternateIdsAddOnParentList = Array<string>;
+export const SkuAlternateIdsAddOnParentList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuAlternateIdsAddOnParentList>;
+
+/** Applicable future price concession identifiers. */
+export type SkuAlternateIdsApplicableFuturePriceConcessionList = Array<string>;
+export const SkuAlternateIdsApplicableFuturePriceConcessionList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SkuAlternateIdsApplicableFuturePriceConcessionList>;
+
+/** Benefit SKU identifiers. */
+export type SkuAlternateIdsBenefitSkuList = Array<string>;
+export const SkuAlternateIdsBenefitSkuList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuAlternateIdsBenefitSkuList>;
+
+/** Included in bundle identifiers. */
+export type SkuAlternateIdsIncludedInBundleList = Array<string>;
+export const SkuAlternateIdsIncludedInBundleList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuAlternateIdsIncludedInBundleList>;
+
+/** Associated SKU identifiers. */
+export type SkuAlternateIdsAssociatedSkuList = Array<string>;
+export const SkuAlternateIdsAssociatedSkuList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuAlternateIdsAssociatedSkuList>;
+
+/** Applicable promotion product identifiers. */
+export type ProductAlternateIdsApplicablePromotionList = Array<string>;
+export const ProductAlternateIdsApplicablePromotionList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ProductAlternateIdsApplicablePromotionList>;
+
+/** Add-on parent product identifiers. */
+export type ProductAlternateIdsAddOnParentList = Array<string>;
+export const ProductAlternateIdsAddOnParentList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ProductAlternateIdsAddOnParentList>;
+
+/** Applicable future price concession product identifiers. */
+export type ProductAlternateIdsApplicableFuturePriceConcessionList =
+  Array<string>;
+export const ProductAlternateIdsApplicableFuturePriceConcessionList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProductAlternateIdsApplicableFuturePriceConcessionList>;
+
+/** Benefit SKU product identifiers. */
+export type ProductAlternateIdsBenefitSkuList = Array<string>;
+export const ProductAlternateIdsBenefitSkuList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ProductAlternateIdsBenefitSkuList>;
+
+/** Included in bundle product identifiers. */
+export type ProductAlternateIdsIncludedInBundleList = Array<string>;
+export const ProductAlternateIdsIncludedInBundleList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ProductAlternateIdsIncludedInBundleList>;
+
+/** Associated SKU product identifiers. */
+export type ProductAlternateIdsAssociatedSkuList = Array<string>;
+export const ProductAlternateIdsAssociatedSkuList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ProductAlternateIdsAssociatedSkuList>;
+
+/** Product-level alternate ids (product id without SKU id), used for OData lookup on SKUs of a specific product. */
+export interface ProductAlternateIds {
+  /** Applicable promotion product identifiers. */
+  applicablePromotion?: ProductAlternateIdsApplicablePromotionList;
+  /** Add-on parent product identifiers. */
+  addOnParent?: ProductAlternateIdsAddOnParentList;
+  /** Applicable future price concession product identifiers. */
+  applicableFuturePriceConcession?: ProductAlternateIdsApplicableFuturePriceConcessionList;
+  /** Benefit SKU product identifiers. */
+  benefitSku?: ProductAlternateIdsBenefitSkuList;
+  /** Included in bundle product identifiers. */
+  includedInBundle?: ProductAlternateIdsIncludedInBundleList;
+  /** Associated SKU product identifiers. */
+  associatedSku?: ProductAlternateIdsAssociatedSkuList;
+}
+export const ProductAlternateIds = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicablePromotion: S.optional(ProductAlternateIdsApplicablePromotionList),
+    addOnParent: S.optional(ProductAlternateIdsAddOnParentList),
+    applicableFuturePriceConcession: S.optional(
+      ProductAlternateIdsApplicableFuturePriceConcessionList,
+    ),
+    benefitSku: S.optional(ProductAlternateIdsBenefitSkuList),
+    includedInBundle: S.optional(ProductAlternateIdsIncludedInBundleList),
+    associatedSku: S.optional(ProductAlternateIdsAssociatedSkuList),
+  }),
+).annotate({
+  identifier: "ProductAlternateIds",
+}) as any as S.Schema<ProductAlternateIds>;
+
+/** Alternate ids for the SKU. */
+export interface SkuAlternateIds {
+  /** AAD SKU identifiers. */
+  aadSkuId?: SkuAlternateIdsAadSkuIdList;
+  /** Legacy offer GUID identifiers. */
+  legacyOfferGuid?: SkuAlternateIdsLegacyOfferGuidList;
+  /** Applicable promotion identifiers. */
+  applicablePromotion?: SkuAlternateIdsApplicablePromotionList;
+  /** Add-on parent identifiers. */
+  addOnParent?: SkuAlternateIdsAddOnParentList;
+  /** Applicable future price concession identifiers. */
+  applicableFuturePriceConcession?: SkuAlternateIdsApplicableFuturePriceConcessionList;
+  /** Benefit SKU identifiers. */
+  benefitSku?: SkuAlternateIdsBenefitSkuList;
+  /** Included in bundle identifiers. */
+  includedInBundle?: SkuAlternateIdsIncludedInBundleList;
+  /** Associated SKU identifiers. */
+  associatedSku?: SkuAlternateIdsAssociatedSkuList;
+  /** Product-level alternate ids (product id without SKU id), used for OData lookup on SKUs of a specific product. */
+  products?: ProductAlternateIds;
+}
+export const SkuAlternateIds = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    aadSkuId: S.optional(SkuAlternateIdsAadSkuIdList),
+    legacyOfferGuid: S.optional(SkuAlternateIdsLegacyOfferGuidList),
+    applicablePromotion: S.optional(SkuAlternateIdsApplicablePromotionList),
+    addOnParent: S.optional(SkuAlternateIdsAddOnParentList),
+    applicableFuturePriceConcession: S.optional(
+      SkuAlternateIdsApplicableFuturePriceConcessionList,
+    ),
+    benefitSku: S.optional(SkuAlternateIdsBenefitSkuList),
+    includedInBundle: S.optional(SkuAlternateIdsIncludedInBundleList),
+    associatedSku: S.optional(SkuAlternateIdsAssociatedSkuList),
+    products: S.optional(ProductAlternateIds),
+  }),
+).annotate({
+  identifier: "SkuAlternateIds",
+}) as any as S.Schema<SkuAlternateIds>;
+
+/** Category IDs for this SKU. */
+export type SkusGetByBillingAccountResponseCategoryIdsList = Array<string>;
+export const SkusGetByBillingAccountResponseCategoryIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SkusGetByBillingAccountResponseCategoryIdsList>;
+
+/** Pricing audiences for the SKU. */
+export type SkusGetByBillingAccountResponsePricingAudiencesList = Array<string>;
+export const SkusGetByBillingAccountResponsePricingAudiencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SkusGetByBillingAccountResponsePricingAudiencesList>;
+
+/** List of allowed actions */
+export type AvailabilityActionsList = Array<string>;
+export const AvailabilityActionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AvailabilityActionsList>;
+
+/** Retail price with currency */
+export interface Price_3 {
+  /** Currency code i.e. 'USD' */
+  currencyCode?: string;
+  /** A value indicating whether a payment instrument is required */
+  isPiRequired: boolean;
+  /** Retail price for the item */
+  listPrice: number;
+  /** Manufacturer's suggested retail price for the item */
+  msrp: number;
+}
+export const Price_3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    isPiRequired: S.Boolean,
+    listPrice: S.Number,
+    msrp: S.Number,
+  }),
+).annotate({ identifier: "Price_3" }) as any as S.Schema<Price_3>;
+
+/** Included quantity properties for a meter */
+export interface IncludedQuantityProperty_3 {
+  /** Term id */
+  termId?: string;
+  /** Included quantity */
+  quantity?: string;
+}
+export const IncludedQuantityProperty_3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    termId: S.optional(S.String),
+    quantity: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IncludedQuantityProperty_3",
+}) as any as S.Schema<IncludedQuantityProperty_3>;
+
+/** Included quantity properties */
+export type MeterIncludedQuantityPropertiesList_3 =
+  Array<IncludedQuantityProperty_3>;
+export const MeterIncludedQuantityPropertiesList_3 = /*@__PURE__*/ S.Array(
+  IncludedQuantityProperty_3,
+) as any as S.Schema<MeterIncludedQuantityPropertiesList_3>;
+
+/** Applicable billing meter information */
+export interface Meter_3 {
+  /** Meter id */
+  meterId?: string;
+  /** Compute part number */
+  partNumber?: string;
+  /** Consumption resource id */
+  consumptionResourceId?: string;
+  /** Retail price with currency */
+  price?: Price_3;
+  /** Type of this meter */
+  type?: string;
+  /** Included quantity properties */
+  includedQuantityProperties?: MeterIncludedQuantityPropertiesList_3;
+}
+export const Meter_3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    meterId: S.optional(S.String),
+    partNumber: S.optional(S.String),
+    consumptionResourceId: S.optional(S.String),
+    price: S.optional(Price_3),
+    type: S.optional(S.String),
+    includedQuantityProperties: S.optional(
+      MeterIncludedQuantityPropertiesList_3,
+    ),
+  }),
+).annotate({ identifier: "Meter_3" }) as any as S.Schema<Meter_3>;
+
+/** Term description parameters */
+export interface TermDescriptionParameter_3 {
+  /** Description parameter */
+  parameter?: string;
+  /** Parameter's value */
+  value?: string;
+}
+export const TermDescriptionParameter_3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameter: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TermDescriptionParameter_3",
+}) as any as S.Schema<TermDescriptionParameter_3>;
+
+/** Term description parameters */
+export type TermTermDescriptionParametersList_3 =
+  Array<TermDescriptionParameter_3>;
+export const TermTermDescriptionParametersList_3 = /*@__PURE__*/ S.Array(
+  TermDescriptionParameter_3,
+) as any as S.Schema<TermTermDescriptionParametersList_3>;
+
+/** Proration policy */
+export interface ProrationPolicy_3 {
+  /** Minimum prorated units */
+  minimumProratedUnits?: string;
+}
+export const ProrationPolicy_3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimumProratedUnits: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProrationPolicy_3",
+}) as any as S.Schema<ProrationPolicy_3>;
+
+/** Renew Billing Plan */
+export interface BillingPlan_3 {
+  /** Billing period */
+  billingPeriod?: string;
+  /** Title of the billing plan */
+  title?: string;
+  /** Description of the billing plan */
+  description?: string;
+  /** Retail price with currency */
+  price?: Price_3;
+}
+export const BillingPlan_3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingPeriod: S.optional(S.String),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    price: S.optional(Price_3),
+  }),
+).annotate({ identifier: "BillingPlan_3" }) as any as S.Schema<BillingPlan_3>;
+
+/** Defines the lifecycle management policy for the term */
+export interface LifecyclePolicy_2 {
+  /** Grace period duration where customers retain access to their product. Examples: 'P1M' (1 month), 'P30D' (30 days), 'P0D' (0 days) */
+  graceDuration?: string;
+  /** Inactive period duration */
+  inactiveDuration?: string;
+  /** Lockout period duration */
+  lockoutDuration?: string;
+}
+export const LifecyclePolicy_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    graceDuration: S.optional(S.String),
+    inactiveDuration: S.optional(S.String),
+    lockoutDuration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LifecyclePolicy_2",
+}) as any as S.Schema<LifecyclePolicy_2>;
+
+/** Term Actions */
+export type TermActionsList = Array<string>;
+export const TermActionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TermActionsList>;
+
+/** Applicable term */
+export interface Term_3 {
+  /** Term description parameters */
+  termDescriptionParameters?: TermTermDescriptionParametersList_3;
+  /** Term id */
+  termId?: string;
+  /** Term unit */
+  termUnit?: string;
+  /** Defines the rules for calculating prorated charges or refunds for a subscription. */
+  prorationPolicy?: ProrationPolicy_3;
+  /** Term description */
+  termDescription?: string;
+  /** Retail price with currency */
+  price?: Price_3;
+  /** Renew term id */
+  renewTermId?: string;
+  /** Renew term units */
+  renewTermUnits?: string;
+  /** Billing Plan */
+  billingPlan?: BillingPlan_3;
+  /** Renew Billing Plan */
+  renewToTermBillingPlan?: string;
+  /** Indicates if autorenew is enabled */
+  isAutorenewable?: boolean;
+  /** Defines the lifecycle management policy for the term */
+  lifecyclePolicy?: LifecyclePolicy_2;
+  /** Product code for this term */
+  productCode?: string;
+  /** Term state */
+  state?: string;
+  /** Term Actions */
+  actions?: TermActionsList;
+}
+export const Term_3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    termDescriptionParameters: S.optional(TermTermDescriptionParametersList_3),
+    termId: S.optional(S.String),
+    termUnit: S.optional(S.String),
+    prorationPolicy: S.optional(ProrationPolicy_3),
+    termDescription: S.optional(S.String),
+    price: S.optional(Price_3),
+    renewTermId: S.optional(S.String),
+    renewTermUnits: S.optional(S.String),
+    billingPlan: S.optional(BillingPlan_3),
+    renewToTermBillingPlan: S.optional(S.String),
+    isAutorenewable: S.optional(S.Boolean),
+    lifecyclePolicy: S.optional(LifecyclePolicy_2),
+    productCode: S.optional(S.String),
+    state: S.optional(S.String),
+    actions: S.optional(TermActionsList),
+  }),
+).annotate({ identifier: "Term_3" }) as any as S.Schema<Term_3>;
+
+/** List of applicable terms */
+export type AvailabilityTermsList_2 = Array<Term_3>;
+export const AvailabilityTermsList_2 = /*@__PURE__*/ S.Array(
+  Term_3,
+) as any as S.Schema<AvailabilityTermsList_2>;
+
+/** Availability for a given plan */
+export interface Availability_2 {
+  /** The document id */
+  id?: string;
+  /** List of allowed actions */
+  actions?: AvailabilityActionsList;
+  /** Applicable billing meter information */
+  meter?: Meter_3;
+  /** Specifies the distribution channel and customer segment for product pricing and availability. Possible values:\n- `Direct-Commercial` - Available through direct Azure Marketplace purchases for commercial customers without intermediaries like partners or resellers\n- `Partner-Commercial` - Available through Cloud Solution Provider partner channel for reseller distribution */
+  pricingAudience: string;
+  /** List of applicable terms */
+  terms?: AvailabilityTermsList_2;
+  /** A value indicating whether it has free trials */
+  hasFreeTrials: boolean;
+  /** Consumption unit type */
+  consumptionUnitType?: string;
+  /** Display rank */
+  displayRank: number;
+}
+export const Availability_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    actions: S.optional(AvailabilityActionsList),
+    meter: S.optional(Meter_3),
+    pricingAudience: S.String,
+    terms: S.optional(AvailabilityTermsList_2),
+    hasFreeTrials: S.Boolean,
+    consumptionUnitType: S.optional(S.String),
+    displayRank: S.Number,
+  }),
+).annotate({ identifier: "Availability_2" }) as any as S.Schema<Availability_2>;
+
+/** Availabilities for this SKU. */
+export type SkusGetByBillingAccountResponseAvailabilitiesList =
+  Array<Availability_2>;
+export const SkusGetByBillingAccountResponseAvailabilitiesList =
+  /*@__PURE__*/ S.Array(
+    Availability_2,
+  ) as any as S.Schema<SkusGetByBillingAccountResponseAvailabilitiesList>;
+
+export interface GetSkusByBillingAccountResponse {
+  /** The unique id of the product. */
+  productId: string;
+  /** Product display name. */
+  productDisplayName?: string;
+  /** The product description text. */
+  productDescription?: string;
+  /** The service family of the product, such as 'Compute'. */
+  serviceFamily?: string;
+  /** The service name of the product, such as 'Virtual Machines'. */
+  service?: string;
+  /** Publisher id. */
+  publisherId?: string;
+  /** Identifies the publisher relationship to Microsoft for support and partnership classification.\n- `Microsoft` - First-party Microsoft product with direct Microsoft support and development\n- `ThirdParty` - Independent software vendor product with publisher-provided support and maintenance */
+  publisherType?: string;
+  /** Offer type. */
+  productType?: string;
+  /** Product sub type. */
+  productSubType?: string;
+  /** Product summary. */
+  summary?: string;
+  /** The product attributes. */
+  productAttributes?: SkusGetByBillingAccountResponseProductAttributesList;
+  /** SKU name. */
+  skuName: string;
+  /** SKU id. */
+  skuId: string;
+  /** SKU type. */
+  skuType: string;
+  /** Language code for the SKU content. */
+  language: string;
+  /** SKU description localized. */
+  skuDescription: string;
+  /** SKU title localized. */
+  skuTitle: string;
+  /** Latest update date of the SKU. */
+  lastModifiedDateTime?: string;
+  /** Location (region). */
+  location: string;
+  /** The ARM region name. */
+  armRegionName?: string;
+  /** The cloud, such as 'Global'. */
+  cloud: string;
+  /** The location type, such as 'Region'. */
+  locationType: string;
+  /** The region. */
+  region?: string;
+  /** The SKU group id. */
+  skuGroupId?: string;
+  /** The zone, such as 'Zone 1'. */
+  zone?: string;
+  /** The feature. */
+  feature?: string;
+  /** The service type. */
+  serviceType?: string;
+  /** Minimum order quantity. */
+  minQuantity?: number;
+  /** Maximum order quantity. */
+  maxQuantity?: number;
+  /** Controls plan availability and partner access within the Microsoft Cloud Solution Provider (CSP) program.\n- `OptIn` - Enables all authorized Cloud Solution Provider partners to resell and deploy the product to customers\n- `OptOut` - Excluded from Cloud Solution Provider program, available only through direct channels\n- `SelectiveOptIn` - Available only to selected Cloud Solution Provider partners for resale and customer deployment */
+  cspState?: string;
+  /** A value indicating whether the SKU supports reservations. */
+  hasRi?: boolean;
+  /** The SKU attributes. */
+  skuAttributes?: SkusGetByBillingAccountResponseSkuAttributesList;
+  /** The SKU properties. */
+  skuProperties?: SkuProperties_2;
+  /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
+  offeringProperties?: SkusGetByBillingAccountResponseOfferingPropertiesList;
+  /** Alternate ids for the SKU. */
+  alternateIds?: SkuAlternateIds;
+  /** Offering type of product family Offers. */
+  offeringType?: string;
+  /** Category IDs for this SKU. */
+  categoryIds?: SkusGetByBillingAccountResponseCategoryIdsList;
+  /** Pricing audiences for the SKU. */
+  pricingAudiences?: SkusGetByBillingAccountResponsePricingAudiencesList;
+  /** Availabilities for this SKU. */
+  availabilities?: SkusGetByBillingAccountResponseAvailabilitiesList;
+}
+export const GetSkusByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productId: S.String,
+    productDisplayName: S.optional(S.String),
+    productDescription: S.optional(S.String),
+    serviceFamily: S.optional(S.String),
+    service: S.optional(S.String),
+    publisherId: S.optional(S.String),
+    publisherType: S.optional(S.String),
+    productType: S.optional(S.String),
+    productSubType: S.optional(S.String),
+    summary: S.optional(S.String),
+    productAttributes: S.optional(
+      SkusGetByBillingAccountResponseProductAttributesList,
+    ),
+    skuName: S.String,
+    skuId: S.String,
+    skuType: S.String,
+    language: S.String,
+    skuDescription: S.String,
+    skuTitle: S.String,
+    lastModifiedDateTime: S.optional(S.String),
+    location: S.String,
+    armRegionName: S.optional(S.String),
+    cloud: S.String,
+    locationType: S.String,
+    region: S.optional(S.String),
+    skuGroupId: S.optional(S.String),
+    zone: S.optional(S.String),
+    feature: S.optional(S.String),
+    serviceType: S.optional(S.String),
+    minQuantity: S.optional(S.Number),
+    maxQuantity: S.optional(S.Number),
+    cspState: S.optional(S.String),
+    hasRi: S.optional(S.Boolean),
+    skuAttributes: S.optional(SkusGetByBillingAccountResponseSkuAttributesList),
+    skuProperties: S.optional(SkuProperties_2),
+    offeringProperties: S.optional(
+      SkusGetByBillingAccountResponseOfferingPropertiesList,
+    ),
+    alternateIds: S.optional(SkuAlternateIds),
+    offeringType: S.optional(S.String),
+    categoryIds: S.optional(SkusGetByBillingAccountResponseCategoryIdsList),
+    pricingAudiences: S.optional(
+      SkusGetByBillingAccountResponsePricingAudiencesList,
+    ),
+    availabilities: S.optional(
+      SkusGetByBillingAccountResponseAvailabilitiesList,
+    ),
+  }),
+).annotate({
+  identifier: "GetSkusByBillingAccountResponse",
+}) as any as S.Schema<GetSkusByBillingAccountResponse>;
+
+export interface GetSkusByBillingProfileRequest {
+  /** The ID of the target billing account. */
+  billingAccountId: string;
+  /** The ID of the target billing profile. */
+  billingProfileId: string;
+  /** The ID of the SKU */
+  skuId: string;
+  /** Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'. */
+  language?: string;
+  /** Include stop-sold SKUs in the response. Default is false. */
+  includeStopSold?: boolean;
+  /** Include availabilities whose start date is in the future. Default is false. */
+  includeFutureAvailabilities?: boolean;
+}
+export const GetSkusByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+    skuId: S.String.pipe(T.Label()),
+    language: S.optional(S.String.pipe(T.Query())),
+    includeStopSold: S.optional(S.Boolean.pipe(T.Query())),
+    includeFutureAvailabilities: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus/{skuId}",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSkusByBillingProfileRequest",
+}) as any as S.Schema<GetSkusByBillingProfileRequest>;
+
+/** The product attributes. */
+export type SkusGetByBillingProfileResponseProductAttributesList =
+  Array<Attribute_2>;
+export const SkusGetByBillingProfileResponseProductAttributesList =
+  /*@__PURE__*/ S.Array(
+    Attribute_2,
+  ) as any as S.Schema<SkusGetByBillingProfileResponseProductAttributesList>;
+
+/** The SKU attributes. */
+export type SkusGetByBillingProfileResponseSkuAttributesList =
+  Array<Attribute_2>;
+export const SkusGetByBillingProfileResponseSkuAttributesList =
+  /*@__PURE__*/ S.Array(
+    Attribute_2,
+  ) as any as S.Schema<SkusGetByBillingProfileResponseSkuAttributesList>;
+
+/** Offering properties such as: product code (UPN), term id, meter type, offering id. */
+export type SkusGetByBillingProfileResponseOfferingPropertiesList =
+  Array<OfferingProperties_2>;
+export const SkusGetByBillingProfileResponseOfferingPropertiesList =
+  /*@__PURE__*/ S.Array(
+    OfferingProperties_2,
+  ) as any as S.Schema<SkusGetByBillingProfileResponseOfferingPropertiesList>;
+
+/** Category IDs for this SKU. */
+export type SkusGetByBillingProfileResponseCategoryIdsList = Array<string>;
+export const SkusGetByBillingProfileResponseCategoryIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SkusGetByBillingProfileResponseCategoryIdsList>;
+
+/** Pricing audiences for the SKU. */
+export type SkusGetByBillingProfileResponsePricingAudiencesList = Array<string>;
+export const SkusGetByBillingProfileResponsePricingAudiencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SkusGetByBillingProfileResponsePricingAudiencesList>;
+
+/** Availabilities for this SKU. */
+export type SkusGetByBillingProfileResponseAvailabilitiesList =
+  Array<Availability_2>;
+export const SkusGetByBillingProfileResponseAvailabilitiesList =
+  /*@__PURE__*/ S.Array(
+    Availability_2,
+  ) as any as S.Schema<SkusGetByBillingProfileResponseAvailabilitiesList>;
+
+export interface GetSkusByBillingProfileResponse {
+  /** The unique id of the product. */
+  productId: string;
+  /** Product display name. */
+  productDisplayName?: string;
+  /** The product description text. */
+  productDescription?: string;
+  /** The service family of the product, such as 'Compute'. */
+  serviceFamily?: string;
+  /** The service name of the product, such as 'Virtual Machines'. */
+  service?: string;
+  /** Publisher id. */
+  publisherId?: string;
+  /** Identifies the publisher relationship to Microsoft for support and partnership classification.\n- `Microsoft` - First-party Microsoft product with direct Microsoft support and development\n- `ThirdParty` - Independent software vendor product with publisher-provided support and maintenance */
+  publisherType?: string;
+  /** Offer type. */
+  productType?: string;
+  /** Product sub type. */
+  productSubType?: string;
+  /** Product summary. */
+  summary?: string;
+  /** The product attributes. */
+  productAttributes?: SkusGetByBillingProfileResponseProductAttributesList;
+  /** SKU name. */
+  skuName: string;
+  /** SKU id. */
+  skuId: string;
+  /** SKU type. */
+  skuType: string;
+  /** Language code for the SKU content. */
+  language: string;
+  /** SKU description localized. */
+  skuDescription: string;
+  /** SKU title localized. */
+  skuTitle: string;
+  /** Latest update date of the SKU. */
+  lastModifiedDateTime?: string;
+  /** Location (region). */
+  location: string;
+  /** The ARM region name. */
+  armRegionName?: string;
+  /** The cloud, such as 'Global'. */
+  cloud: string;
+  /** The location type, such as 'Region'. */
+  locationType: string;
+  /** The region. */
+  region?: string;
+  /** The SKU group id. */
+  skuGroupId?: string;
+  /** The zone, such as 'Zone 1'. */
+  zone?: string;
+  /** The feature. */
+  feature?: string;
+  /** The service type. */
+  serviceType?: string;
+  /** Minimum order quantity. */
+  minQuantity?: number;
+  /** Maximum order quantity. */
+  maxQuantity?: number;
+  /** Controls plan availability and partner access within the Microsoft Cloud Solution Provider (CSP) program.\n- `OptIn` - Enables all authorized Cloud Solution Provider partners to resell and deploy the product to customers\n- `OptOut` - Excluded from Cloud Solution Provider program, available only through direct channels\n- `SelectiveOptIn` - Available only to selected Cloud Solution Provider partners for resale and customer deployment */
+  cspState?: string;
+  /** A value indicating whether the SKU supports reservations. */
+  hasRi?: boolean;
+  /** The SKU attributes. */
+  skuAttributes?: SkusGetByBillingProfileResponseSkuAttributesList;
+  /** The SKU properties. */
+  skuProperties?: SkuProperties_2;
+  /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
+  offeringProperties?: SkusGetByBillingProfileResponseOfferingPropertiesList;
+  /** Alternate ids for the SKU. */
+  alternateIds?: SkuAlternateIds;
+  /** Offering type of product family Offers. */
+  offeringType?: string;
+  /** Category IDs for this SKU. */
+  categoryIds?: SkusGetByBillingProfileResponseCategoryIdsList;
+  /** Pricing audiences for the SKU. */
+  pricingAudiences?: SkusGetByBillingProfileResponsePricingAudiencesList;
+  /** Availabilities for this SKU. */
+  availabilities?: SkusGetByBillingProfileResponseAvailabilitiesList;
+}
+export const GetSkusByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productId: S.String,
+    productDisplayName: S.optional(S.String),
+    productDescription: S.optional(S.String),
+    serviceFamily: S.optional(S.String),
+    service: S.optional(S.String),
+    publisherId: S.optional(S.String),
+    publisherType: S.optional(S.String),
+    productType: S.optional(S.String),
+    productSubType: S.optional(S.String),
+    summary: S.optional(S.String),
+    productAttributes: S.optional(
+      SkusGetByBillingProfileResponseProductAttributesList,
+    ),
+    skuName: S.String,
+    skuId: S.String,
+    skuType: S.String,
+    language: S.String,
+    skuDescription: S.String,
+    skuTitle: S.String,
+    lastModifiedDateTime: S.optional(S.String),
+    location: S.String,
+    armRegionName: S.optional(S.String),
+    cloud: S.String,
+    locationType: S.String,
+    region: S.optional(S.String),
+    skuGroupId: S.optional(S.String),
+    zone: S.optional(S.String),
+    feature: S.optional(S.String),
+    serviceType: S.optional(S.String),
+    minQuantity: S.optional(S.Number),
+    maxQuantity: S.optional(S.Number),
+    cspState: S.optional(S.String),
+    hasRi: S.optional(S.Boolean),
+    skuAttributes: S.optional(SkusGetByBillingProfileResponseSkuAttributesList),
+    skuProperties: S.optional(SkuProperties_2),
+    offeringProperties: S.optional(
+      SkusGetByBillingProfileResponseOfferingPropertiesList,
+    ),
+    alternateIds: S.optional(SkuAlternateIds),
+    offeringType: S.optional(S.String),
+    categoryIds: S.optional(SkusGetByBillingProfileResponseCategoryIdsList),
+    pricingAudiences: S.optional(
+      SkusGetByBillingProfileResponsePricingAudiencesList,
+    ),
+    availabilities: S.optional(
+      SkusGetByBillingProfileResponseAvailabilitiesList,
+    ),
+  }),
+).annotate({
+  identifier: "GetSkusByBillingProfileResponse",
+}) as any as S.Schema<GetSkusByBillingProfileResponse>;
+
+export interface ListEdgeZoneProductsRequest {
   /** Subscription id of the caller */
   subscriptionId: string;
   /** Location of the edge zones */
@@ -64,7 +1007,7 @@ export interface EdgeZonesProductsListRequest {
   /** The optional page continuation token that is used in the event of paginated result. */
   _skipToken?: string;
 }
-export const EdgeZonesProductsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListEdgeZoneProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -82,8 +1025,8 @@ export const EdgeZonesProductsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EdgeZonesProductsListRequest",
-}) as any as S.Schema<EdgeZonesProductsListRequest>;
+  identifier: "ListEdgeZoneProductsRequest",
+}) as any as S.Schema<ListEdgeZoneProductsRequest>;
 
 export type Store =
   | "Appsource"
@@ -1986,45 +2929,8 @@ export const PageResultOfCatalogItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PageResultOfCatalogItem",
 }) as any as S.Schema<PageResultOfCatalogItem>;
 
-export interface GetApiKeysListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const GetApiKeysListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys",
-      code: 200,
-      apiVersion: "2023-01-01-preview",
-    }),
-  ),
-).annotate({
-  identifier: "GetApiKeysListRequest",
-}) as any as S.Schema<GetApiKeysListRequest>;
-
-export type ApiKeysValueList = Array<ApiKey>;
-export const ApiKeysValueList = /*@__PURE__*/ S.Array(
-  ApiKey,
-) as any as S.Schema<ApiKeysValueList>;
-
-/** List of ApiKey objects. */
-export interface ApiKeys {
-  value?: ApiKeysValueList;
-  /** Next page of results. */
-  nextLink?: string;
-}
-export const ApiKeys = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ApiKeysValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ApiKeys" }) as any as S.Schema<ApiKeys>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2034,8 +2940,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
@@ -2096,20 +3002,299 @@ export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
 
-export interface OperationsListResponse {
+export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: OperationsListResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationsListResponseValueList),
     nextLink: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
+
+export type SkusListByBillingAccountRequestLocationsList = Array<string>;
+export const SkusListByBillingAccountRequestLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SkusListByBillingAccountRequestLocationsList>;
+
+export interface ListSkusByBillingAccountRequest {
+  /** The ID of the target billing account. */
+  billingAccountId: string;
+  /** The service family to filter by, such as 'Compute'. */
+  serviceFamily: string;
+  /** The service to filter by, such as 'Virtual Machines'. */
+  service: string;
+  /** Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'. */
+  language?: string;
+  /** Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/. */
+  locations?: SkusListByBillingAccountRequestLocationsList;
+  /** Filters the results, based on a Boolean condition. Example: $filter=serviceFamily eq 'Compute'. Fields that can be filtered by are: - `productId` - `serviceFamily` - `service` - `skuId` - `skuName` - `skuType` - `armRegionName` - `location` - `publisherId` - `productType` */
+  _filter?: string;
+  /** Selects which properties to include in the results. Example: $select=skuName,skuId */
+  _select?: string;
+  /** Expands related entities inline. */
+  _expand?: string;
+  /** Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are: - `lastModifiedDateTime` - `skuName` - `skuId` - `productId` - `serviceFamily` - `service` */
+  _orderBy?: string;
+}
+export const ListSkusByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    serviceFamily: S.String.pipe(T.Query()),
+    service: S.String.pipe(T.Query()),
+    language: S.optional(S.String.pipe(T.Query())),
+    locations: S.optional(
+      SkusListByBillingAccountRequestLocationsList.pipe(T.Query()),
+    ),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _select: S.optional(S.String.pipe(T.Query("$select"))),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    _orderBy: S.optional(S.String.pipe(T.Query("$orderBy"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSkusByBillingAccountRequest",
+}) as any as S.Schema<ListSkusByBillingAccountRequest>;
+
+/** The product attributes. */
+export type SkuSummaryProductAttributesList = Array<Attribute_2>;
+export const SkuSummaryProductAttributesList = /*@__PURE__*/ S.Array(
+  Attribute_2,
+) as any as S.Schema<SkuSummaryProductAttributesList>;
+
+/** The SKU attributes. */
+export type SkuSummarySkuAttributesList = Array<Attribute_2>;
+export const SkuSummarySkuAttributesList = /*@__PURE__*/ S.Array(
+  Attribute_2,
+) as any as S.Schema<SkuSummarySkuAttributesList>;
+
+/** Offering properties such as: product code (UPN), term id, meter type, offering id. */
+export type SkuSummaryOfferingPropertiesList = Array<OfferingProperties_2>;
+export const SkuSummaryOfferingPropertiesList = /*@__PURE__*/ S.Array(
+  OfferingProperties_2,
+) as any as S.Schema<SkuSummaryOfferingPropertiesList>;
+
+/** Category IDs for this SKU. */
+export type SkuSummaryCategoryIdsList = Array<string>;
+export const SkuSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuSummaryCategoryIdsList>;
+
+/** Pricing audiences for the SKU. */
+export type SkuSummaryPricingAudiencesList = Array<string>;
+export const SkuSummaryPricingAudiencesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuSummaryPricingAudiencesList>;
+
+/** Summary description of the SKU. */
+export interface SkuSummary {
+  /** The unique id of the product. */
+  productId: string;
+  /** Product display name. */
+  productDisplayName?: string;
+  /** The product description text. */
+  productDescription?: string;
+  /** The service family of the product, such as 'Compute'. */
+  serviceFamily?: string;
+  /** The service name of the product, such as 'Virtual Machines'. */
+  service?: string;
+  /** Publisher id. */
+  publisherId?: string;
+  /** Identifies the publisher relationship to Microsoft for support and partnership classification.\n- `Microsoft` - First-party Microsoft product with direct Microsoft support and development\n- `ThirdParty` - Independent software vendor product with publisher-provided support and maintenance */
+  publisherType?: string;
+  /** Offer type. */
+  productType?: string;
+  /** Product sub type. */
+  productSubType?: string;
+  /** Product summary. */
+  summary?: string;
+  /** The product attributes. */
+  productAttributes?: SkuSummaryProductAttributesList;
+  /** SKU name. */
+  skuName: string;
+  /** SKU id. */
+  skuId: string;
+  /** SKU type. */
+  skuType: string;
+  /** Language code for the SKU content. */
+  language: string;
+  /** SKU description localized. */
+  skuDescription: string;
+  /** SKU title localized. */
+  skuTitle: string;
+  /** Latest update date of the SKU. */
+  lastModifiedDateTime?: string;
+  /** Location (region). */
+  location: string;
+  /** The ARM region name. */
+  armRegionName?: string;
+  /** The cloud, such as 'Global'. */
+  cloud: string;
+  /** The location type, such as 'Region'. */
+  locationType: string;
+  /** The region. */
+  region?: string;
+  /** The SKU group id. */
+  skuGroupId?: string;
+  /** The zone, such as 'Zone 1'. */
+  zone?: string;
+  /** The feature. */
+  feature?: string;
+  /** The service type. */
+  serviceType?: string;
+  /** Minimum order quantity. */
+  minQuantity?: number;
+  /** Maximum order quantity. */
+  maxQuantity?: number;
+  /** Controls plan availability and partner access within the Microsoft Cloud Solution Provider (CSP) program.\n- `OptIn` - Enables all authorized Cloud Solution Provider partners to resell and deploy the product to customers\n- `OptOut` - Excluded from Cloud Solution Provider program, available only through direct channels\n- `SelectiveOptIn` - Available only to selected Cloud Solution Provider partners for resale and customer deployment */
+  cspState?: string;
+  /** A value indicating whether the SKU supports reservations. */
+  hasRi?: boolean;
+  /** The SKU attributes. */
+  skuAttributes?: SkuSummarySkuAttributesList;
+  /** The SKU properties. */
+  skuProperties?: SkuProperties_2;
+  /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
+  offeringProperties?: SkuSummaryOfferingPropertiesList;
+  /** Alternate ids for the SKU. */
+  alternateIds?: SkuAlternateIds;
+  /** Offering type of product family Offers. */
+  offeringType?: string;
+  /** Category IDs for this SKU. */
+  categoryIds?: SkuSummaryCategoryIdsList;
+  /** Pricing audiences for the SKU. */
+  pricingAudiences?: SkuSummaryPricingAudiencesList;
+}
+export const SkuSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productId: S.String,
+    productDisplayName: S.optional(S.String),
+    productDescription: S.optional(S.String),
+    serviceFamily: S.optional(S.String),
+    service: S.optional(S.String),
+    publisherId: S.optional(S.String),
+    publisherType: S.optional(S.String),
+    productType: S.optional(S.String),
+    productSubType: S.optional(S.String),
+    summary: S.optional(S.String),
+    productAttributes: S.optional(SkuSummaryProductAttributesList),
+    skuName: S.String,
+    skuId: S.String,
+    skuType: S.String,
+    language: S.String,
+    skuDescription: S.String,
+    skuTitle: S.String,
+    lastModifiedDateTime: S.optional(S.String),
+    location: S.String,
+    armRegionName: S.optional(S.String),
+    cloud: S.String,
+    locationType: S.String,
+    region: S.optional(S.String),
+    skuGroupId: S.optional(S.String),
+    zone: S.optional(S.String),
+    feature: S.optional(S.String),
+    serviceType: S.optional(S.String),
+    minQuantity: S.optional(S.Number),
+    maxQuantity: S.optional(S.Number),
+    cspState: S.optional(S.String),
+    hasRi: S.optional(S.Boolean),
+    skuAttributes: S.optional(SkuSummarySkuAttributesList),
+    skuProperties: S.optional(SkuProperties_2),
+    offeringProperties: S.optional(SkuSummaryOfferingPropertiesList),
+    alternateIds: S.optional(SkuAlternateIds),
+    offeringType: S.optional(S.String),
+    categoryIds: S.optional(SkuSummaryCategoryIdsList),
+    pricingAudiences: S.optional(SkuSummaryPricingAudiencesList),
+  }),
+).annotate({ identifier: "SkuSummary" }) as any as S.Schema<SkuSummary>;
+
+/** The SkuSummary items on this page */
+export type SkuSummaryListResultValueList = Array<SkuSummary>;
+export const SkuSummaryListResultValueList = /*@__PURE__*/ S.Array(
+  SkuSummary,
+) as any as S.Schema<SkuSummaryListResultValueList>;
+
+/** The response of a SkuSummary list operation. */
+export interface SkuSummaryListResult {
+  /** The SkuSummary items on this page */
+  value: SkuSummaryListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const SkuSummaryListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: SkuSummaryListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SkuSummaryListResult",
+}) as any as S.Schema<SkuSummaryListResult>;
+
+export type SkusListByBillingProfileRequestLocationsList = Array<string>;
+export const SkusListByBillingProfileRequestLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SkusListByBillingProfileRequestLocationsList>;
+
+export interface ListSkusByBillingProfileRequest {
+  /** The ID of the target billing account. */
+  billingAccountId: string;
+  /** The ID of the target billing profile. */
+  billingProfileId: string;
+  /** The service family to filter by, such as 'Compute'. */
+  serviceFamily: string;
+  /** The service to filter by, such as 'Virtual Machines'. */
+  service: string;
+  /** Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'. */
+  language?: string;
+  /** Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/. */
+  locations?: SkusListByBillingProfileRequestLocationsList;
+  /** Filters the results, based on a Boolean condition. Example: $filter=serviceFamily eq 'Compute'. Fields that can be filtered by are: - `productId` - `serviceFamily` - `service` - `skuId` - `skuName` - `skuType` - `armRegionName` - `location` - `publisherId` - `productType` */
+  _filter?: string;
+  /** Selects which properties to include in the results. Example: $select=skuName,skuId */
+  _select?: string;
+  /** Expands related entities inline. */
+  _expand?: string;
+  /** Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are: - `lastModifiedDateTime` - `skuName` - `skuId` - `productId` - `serviceFamily` - `service` */
+  _orderBy?: string;
+}
+export const ListSkusByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+    serviceFamily: S.String.pipe(T.Query()),
+    service: S.String.pipe(T.Query()),
+    language: S.optional(S.String.pipe(T.Query())),
+    locations: S.optional(
+      SkusListByBillingProfileRequestLocationsList.pipe(T.Query()),
+    ),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _select: S.optional(S.String.pipe(T.Query("$select"))),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    _orderBy: S.optional(S.String.pipe(T.Query("$orderBy"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSkusByBillingProfileRequest",
+}) as any as S.Schema<ListSkusByBillingProfileRequest>;
 
 export interface ProductGetGetByBillingAccountRequest {
   /** The ID of the target billing account. */
@@ -2440,53 +3625,19 @@ export const PlanDetailsVmSecuritytypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanDetailsVmSecuritytypesList>;
 
-/** List of allowed actions */
-export type AvailabilityActionsList = Array<string>;
-export const AvailabilityActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AvailabilityActionsList>;
-
 /** Retail price with currency */
-export interface Price_2 {
-  /** Currency code i.e. 'USD' */
-  currencyCode?: string;
-  /** A value indicating whether a payment instrument is required */
-  isPiRequired: boolean;
-  /** Retail price for the item */
-  listPrice: number;
-  /** Manufacturer's suggested retail price for the item */
-  msrp: number;
-}
-export const Price_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String),
-    isPiRequired: S.Boolean,
-    listPrice: S.Number,
-    msrp: S.Number,
-  }),
-).annotate({ identifier: "Price_2" }) as any as S.Schema<Price_2>;
+export type Price_2 = Price_3;
+export const Price_2 = Price_3;
 
 /** Included quantity properties */
-export interface IncludedQuantityProperty_2 {
-  /** Term id */
-  termId?: string;
-  /** Included quantity */
-  quantity?: string;
-}
-export const IncludedQuantityProperty_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    termId: S.optional(S.String),
-    quantity: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IncludedQuantityProperty_2",
-}) as any as S.Schema<IncludedQuantityProperty_2>;
+export type IncludedQuantityProperty_2 = IncludedQuantityProperty_3;
+export const IncludedQuantityProperty_2 = IncludedQuantityProperty_3;
 
 /** Included quantity properties */
 export type MeterIncludedQuantityPropertiesList_2 =
-  Array<IncludedQuantityProperty_2>;
+  Array<IncludedQuantityProperty_3>;
 export const MeterIncludedQuantityPropertiesList_2 = /*@__PURE__*/ S.Array(
-  IncludedQuantityProperty_2,
+  IncludedQuantityProperty_3,
 ) as any as S.Schema<MeterIncludedQuantityPropertiesList_2>;
 
 /** Applicable billing meter information */
@@ -2498,7 +3649,7 @@ export interface Meter_2 {
   /** Consumption resource id */
   consumptionResourceId?: string;
   /** Retail price with currency */
-  price?: Price_2;
+  price?: Price_3;
   /** Type of this meter */
   type?: string;
   /** Included quantity properties */
@@ -2509,7 +3660,7 @@ export const Meter_2 = /*@__PURE__*/ S.suspend(() =>
     meterId: S.optional(S.String),
     partNumber: S.optional(S.String),
     consumptionResourceId: S.optional(S.String),
-    price: S.optional(Price_2),
+    price: S.optional(Price_3),
     type: S.optional(S.String),
     includedQuantityProperties: S.optional(
       MeterIncludedQuantityPropertiesList_2,
@@ -2518,85 +3669,27 @@ export const Meter_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Meter_2" }) as any as S.Schema<Meter_2>;
 
 /** Term description parameters */
-export interface TermDescriptionParameter_2 {
-  /** Description parameter */
-  parameter?: string;
-  /** Parameter's value */
-  value?: string;
-}
-export const TermDescriptionParameter_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameter: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TermDescriptionParameter_2",
-}) as any as S.Schema<TermDescriptionParameter_2>;
+export type TermDescriptionParameter_2 = TermDescriptionParameter_3;
+export const TermDescriptionParameter_2 = TermDescriptionParameter_3;
 
 /** Term description parameters */
 export type TermTermDescriptionParametersList_2 =
-  Array<TermDescriptionParameter_2>;
+  Array<TermDescriptionParameter_3>;
 export const TermTermDescriptionParametersList_2 = /*@__PURE__*/ S.Array(
-  TermDescriptionParameter_2,
+  TermDescriptionParameter_3,
 ) as any as S.Schema<TermTermDescriptionParametersList_2>;
 
 /** Proration policy */
-export interface ProrationPolicy_2 {
-  /** Minimum prorated units */
-  minimumProratedUnits?: string;
-}
-export const ProrationPolicy_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimumProratedUnits: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProrationPolicy_2",
-}) as any as S.Schema<ProrationPolicy_2>;
+export type ProrationPolicy_2 = ProrationPolicy_3;
+export const ProrationPolicy_2 = ProrationPolicy_3;
 
 /** Renew Billing Plan */
-export interface BillingPlan_2 {
-  /** Billing period */
-  billingPeriod?: string;
-  /** Title of the billing plan */
-  title?: string;
-  /** Description of the billing plan */
-  description?: string;
-  /** Retail price with currency */
-  price?: Price_2;
-}
-export const BillingPlan_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingPeriod: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    price: S.optional(Price_2),
-  }),
-).annotate({ identifier: "BillingPlan_2" }) as any as S.Schema<BillingPlan_2>;
+export type BillingPlan_2 = BillingPlan_3;
+export const BillingPlan_2 = BillingPlan_3;
 
 /** Defines lifecycle management policy */
-export interface LifecyclePolicy {
-  /** Grace period duration where customers retain access to their product. Examples: 'P1M' (1 month), 'P30D' (30 days), 'P0D' (0 days) */
-  graceDuration?: string;
-  /** Inactive period duration */
-  inactiveDuration?: string;
-  /** Lockout period duration */
-  lockoutDuration?: string;
-}
-export const LifecyclePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    graceDuration: S.optional(S.String),
-    inactiveDuration: S.optional(S.String),
-    lockoutDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LifecyclePolicy",
-}) as any as S.Schema<LifecyclePolicy>;
-
-/** Term Actions */
-export type TermActionsList = Array<string>;
-export const TermActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TermActionsList>;
+export type LifecyclePolicy = LifecyclePolicy_2;
+export const LifecyclePolicy = LifecyclePolicy_2;
 
 /** Applicable term */
 export interface Term_2 {
@@ -2607,23 +3700,23 @@ export interface Term_2 {
   /** Term unit */
   termUnit?: string;
   /** Defines the rules for calculating prorated charges or refunds for a subscription. */
-  prorationPolicy?: ProrationPolicy_2;
+  prorationPolicy?: ProrationPolicy_3;
   /** Term description */
   termDescription?: string;
   /** Retail price with currency */
-  price?: Price_2;
+  price?: Price_3;
   /** Renew term id */
   renewTermId?: string;
   /** Renew term units */
   renewTermUnits?: string;
   /** Billing Plan */
-  billingPlan?: BillingPlan_2;
+  billingPlan?: BillingPlan_3;
   /** Renew Billing Plan */
   renewToTermBillingPlan?: string;
   /** Indicates if autorenew is enabled */
   isAutorenewable?: boolean;
   /** Defines the lifecycle management policy for the term */
-  lifecyclePolicy?: LifecyclePolicy;
+  lifecyclePolicy?: LifecyclePolicy_2;
   /** Product code for this term */
   productCode?: string;
   /** Term state */
@@ -2636,15 +3729,15 @@ export const Term_2 = /*@__PURE__*/ S.suspend(() =>
     termDescriptionParameters: S.optional(TermTermDescriptionParametersList_2),
     termId: S.optional(S.String),
     termUnit: S.optional(S.String),
-    prorationPolicy: S.optional(ProrationPolicy_2),
+    prorationPolicy: S.optional(ProrationPolicy_3),
     termDescription: S.optional(S.String),
-    price: S.optional(Price_2),
+    price: S.optional(Price_3),
     renewTermId: S.optional(S.String),
     renewTermUnits: S.optional(S.String),
-    billingPlan: S.optional(BillingPlan_2),
+    billingPlan: S.optional(BillingPlan_3),
     renewToTermBillingPlan: S.optional(S.String),
     isAutorenewable: S.optional(S.Boolean),
-    lifecyclePolicy: S.optional(LifecyclePolicy),
+    lifecyclePolicy: S.optional(LifecyclePolicy_2),
     productCode: S.optional(S.String),
     state: S.optional(S.String),
     actions: S.optional(TermActionsList),
@@ -4670,1099 +5763,6 @@ export const SearchResponseDto = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchResponseDto",
 }) as any as S.Schema<SearchResponseDto>;
 
-export interface SkusGetByBillingAccountRequest {
-  /** The ID of the target billing account. */
-  billingAccountId: string;
-  /** The ID of the SKU */
-  skuId: string;
-  /** Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'. */
-  language?: string;
-  /** Include stop-sold SKUs in the response. Default is false. */
-  includeStopSold?: boolean;
-  /** Include availabilities whose start date is in the future. Default is false. */
-  includeFutureAvailabilities?: boolean;
-}
-export const SkusGetByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    skuId: S.String.pipe(T.Label()),
-    language: S.optional(S.String.pipe(T.Query())),
-    includeStopSold: S.optional(S.Boolean.pipe(T.Query())),
-    includeFutureAvailabilities: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus/{skuId}",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "SkusGetByBillingAccountRequest",
-}) as any as S.Schema<SkusGetByBillingAccountRequest>;
-
-/** Key-value attribute pair. */
-export interface Attribute_2 {
-  /** The attribute key. */
-  key?: string;
-  /** The attribute value. */
-  value?: string;
-}
-export const Attribute_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Attribute_2" }) as any as S.Schema<Attribute_2>;
-
-/** The product attributes. */
-export type SkusGetByBillingAccountResponseProductAttributesList =
-  Array<Attribute_2>;
-export const SkusGetByBillingAccountResponseProductAttributesList =
-  /*@__PURE__*/ S.Array(
-    Attribute_2,
-  ) as any as S.Schema<SkusGetByBillingAccountResponseProductAttributesList>;
-
-/** The SKU attributes. */
-export type SkusGetByBillingAccountResponseSkuAttributesList =
-  Array<Attribute_2>;
-export const SkusGetByBillingAccountResponseSkuAttributesList =
-  /*@__PURE__*/ S.Array(
-    Attribute_2,
-  ) as any as S.Schema<SkusGetByBillingAccountResponseSkuAttributesList>;
-
-/** SKU properties, can be different per each service family. */
-export interface SkuProperties_2 {
-  /** The SKU category. */
-  category?: string;
-  /** The data disk type, such as 'Ssd'. */
-  dataDiskType?: string;
-  /** The disk type, such as 'Ssd'. */
-  diskType?: string;
-  /** The number of cores. */
-  numberOfCores?: string;
-  /** The RAM. */
-  ram?: string;
-  /** The number of virtual CPUs. */
-  vCpu?: string;
-  /** The ARM SKU name. */
-  armSkuName?: string;
-  /** The access tier, such as 'Standard'. */
-  accessTier?: string;
-}
-export const SkuProperties_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    category: S.optional(S.String),
-    dataDiskType: S.optional(S.String),
-    diskType: S.optional(S.String),
-    numberOfCores: S.optional(S.String),
-    ram: S.optional(S.String),
-    vCpu: S.optional(S.String),
-    armSkuName: S.optional(S.String),
-    accessTier: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SkuProperties_2",
-}) as any as S.Schema<SkuProperties_2>;
-
-/** Offering properties such as: product code (UPN), term id, meter type, offering id. */
-export interface OfferingProperties_2 {
-  /** The meter type. */
-  meterType?: string;
-  /** The billing meter id. */
-  billingMeterId?: string;
-  /** The offering id. */
-  offeringId?: string;
-  /** The product code (UPN). */
-  productCode?: string;
-  /** The term id. */
-  termId?: string;
-  /** The pricing property type (e.g., Consumption, Reservation, Entitlement). */
-  type?: string;
-}
-export const OfferingProperties_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meterType: S.optional(S.String),
-    billingMeterId: S.optional(S.String),
-    offeringId: S.optional(S.String),
-    productCode: S.optional(S.String),
-    termId: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OfferingProperties_2",
-}) as any as S.Schema<OfferingProperties_2>;
-
-/** Offering properties such as: product code (UPN), term id, meter type, offering id. */
-export type SkusGetByBillingAccountResponseOfferingPropertiesList =
-  Array<OfferingProperties_2>;
-export const SkusGetByBillingAccountResponseOfferingPropertiesList =
-  /*@__PURE__*/ S.Array(
-    OfferingProperties_2,
-  ) as any as S.Schema<SkusGetByBillingAccountResponseOfferingPropertiesList>;
-
-/** AAD SKU identifiers. */
-export type SkuAlternateIdsAadSkuIdList = Array<string>;
-export const SkuAlternateIdsAadSkuIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsAadSkuIdList>;
-
-/** Legacy offer GUID identifiers. */
-export type SkuAlternateIdsLegacyOfferGuidList = Array<string>;
-export const SkuAlternateIdsLegacyOfferGuidList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsLegacyOfferGuidList>;
-
-/** Applicable promotion identifiers. */
-export type SkuAlternateIdsApplicablePromotionList = Array<string>;
-export const SkuAlternateIdsApplicablePromotionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsApplicablePromotionList>;
-
-/** Add-on parent identifiers. */
-export type SkuAlternateIdsAddOnParentList = Array<string>;
-export const SkuAlternateIdsAddOnParentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsAddOnParentList>;
-
-/** Applicable future price concession identifiers. */
-export type SkuAlternateIdsApplicableFuturePriceConcessionList = Array<string>;
-export const SkuAlternateIdsApplicableFuturePriceConcessionList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SkuAlternateIdsApplicableFuturePriceConcessionList>;
-
-/** Benefit SKU identifiers. */
-export type SkuAlternateIdsBenefitSkuList = Array<string>;
-export const SkuAlternateIdsBenefitSkuList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsBenefitSkuList>;
-
-/** Included in bundle identifiers. */
-export type SkuAlternateIdsIncludedInBundleList = Array<string>;
-export const SkuAlternateIdsIncludedInBundleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsIncludedInBundleList>;
-
-/** Associated SKU identifiers. */
-export type SkuAlternateIdsAssociatedSkuList = Array<string>;
-export const SkuAlternateIdsAssociatedSkuList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsAssociatedSkuList>;
-
-/** Applicable promotion product identifiers. */
-export type ProductAlternateIdsApplicablePromotionList = Array<string>;
-export const ProductAlternateIdsApplicablePromotionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsApplicablePromotionList>;
-
-/** Add-on parent product identifiers. */
-export type ProductAlternateIdsAddOnParentList = Array<string>;
-export const ProductAlternateIdsAddOnParentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsAddOnParentList>;
-
-/** Applicable future price concession product identifiers. */
-export type ProductAlternateIdsApplicableFuturePriceConcessionList =
-  Array<string>;
-export const ProductAlternateIdsApplicableFuturePriceConcessionList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProductAlternateIdsApplicableFuturePriceConcessionList>;
-
-/** Benefit SKU product identifiers. */
-export type ProductAlternateIdsBenefitSkuList = Array<string>;
-export const ProductAlternateIdsBenefitSkuList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsBenefitSkuList>;
-
-/** Included in bundle product identifiers. */
-export type ProductAlternateIdsIncludedInBundleList = Array<string>;
-export const ProductAlternateIdsIncludedInBundleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsIncludedInBundleList>;
-
-/** Associated SKU product identifiers. */
-export type ProductAlternateIdsAssociatedSkuList = Array<string>;
-export const ProductAlternateIdsAssociatedSkuList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsAssociatedSkuList>;
-
-/** Product-level alternate ids (product id without SKU id), used for OData lookup on SKUs of a specific product. */
-export interface ProductAlternateIds {
-  /** Applicable promotion product identifiers. */
-  applicablePromotion?: ProductAlternateIdsApplicablePromotionList;
-  /** Add-on parent product identifiers. */
-  addOnParent?: ProductAlternateIdsAddOnParentList;
-  /** Applicable future price concession product identifiers. */
-  applicableFuturePriceConcession?: ProductAlternateIdsApplicableFuturePriceConcessionList;
-  /** Benefit SKU product identifiers. */
-  benefitSku?: ProductAlternateIdsBenefitSkuList;
-  /** Included in bundle product identifiers. */
-  includedInBundle?: ProductAlternateIdsIncludedInBundleList;
-  /** Associated SKU product identifiers. */
-  associatedSku?: ProductAlternateIdsAssociatedSkuList;
-}
-export const ProductAlternateIds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicablePromotion: S.optional(ProductAlternateIdsApplicablePromotionList),
-    addOnParent: S.optional(ProductAlternateIdsAddOnParentList),
-    applicableFuturePriceConcession: S.optional(
-      ProductAlternateIdsApplicableFuturePriceConcessionList,
-    ),
-    benefitSku: S.optional(ProductAlternateIdsBenefitSkuList),
-    includedInBundle: S.optional(ProductAlternateIdsIncludedInBundleList),
-    associatedSku: S.optional(ProductAlternateIdsAssociatedSkuList),
-  }),
-).annotate({
-  identifier: "ProductAlternateIds",
-}) as any as S.Schema<ProductAlternateIds>;
-
-/** Alternate ids for the SKU. */
-export interface SkuAlternateIds {
-  /** AAD SKU identifiers. */
-  aadSkuId?: SkuAlternateIdsAadSkuIdList;
-  /** Legacy offer GUID identifiers. */
-  legacyOfferGuid?: SkuAlternateIdsLegacyOfferGuidList;
-  /** Applicable promotion identifiers. */
-  applicablePromotion?: SkuAlternateIdsApplicablePromotionList;
-  /** Add-on parent identifiers. */
-  addOnParent?: SkuAlternateIdsAddOnParentList;
-  /** Applicable future price concession identifiers. */
-  applicableFuturePriceConcession?: SkuAlternateIdsApplicableFuturePriceConcessionList;
-  /** Benefit SKU identifiers. */
-  benefitSku?: SkuAlternateIdsBenefitSkuList;
-  /** Included in bundle identifiers. */
-  includedInBundle?: SkuAlternateIdsIncludedInBundleList;
-  /** Associated SKU identifiers. */
-  associatedSku?: SkuAlternateIdsAssociatedSkuList;
-  /** Product-level alternate ids (product id without SKU id), used for OData lookup on SKUs of a specific product. */
-  products?: ProductAlternateIds;
-}
-export const SkuAlternateIds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aadSkuId: S.optional(SkuAlternateIdsAadSkuIdList),
-    legacyOfferGuid: S.optional(SkuAlternateIdsLegacyOfferGuidList),
-    applicablePromotion: S.optional(SkuAlternateIdsApplicablePromotionList),
-    addOnParent: S.optional(SkuAlternateIdsAddOnParentList),
-    applicableFuturePriceConcession: S.optional(
-      SkuAlternateIdsApplicableFuturePriceConcessionList,
-    ),
-    benefitSku: S.optional(SkuAlternateIdsBenefitSkuList),
-    includedInBundle: S.optional(SkuAlternateIdsIncludedInBundleList),
-    associatedSku: S.optional(SkuAlternateIdsAssociatedSkuList),
-    products: S.optional(ProductAlternateIds),
-  }),
-).annotate({
-  identifier: "SkuAlternateIds",
-}) as any as S.Schema<SkuAlternateIds>;
-
-/** Category IDs for this SKU. */
-export type SkusGetByBillingAccountResponseCategoryIdsList = Array<string>;
-export const SkusGetByBillingAccountResponseCategoryIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SkusGetByBillingAccountResponseCategoryIdsList>;
-
-/** Pricing audiences for the SKU. */
-export type SkusGetByBillingAccountResponsePricingAudiencesList = Array<string>;
-export const SkusGetByBillingAccountResponsePricingAudiencesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SkusGetByBillingAccountResponsePricingAudiencesList>;
-
-/** Retail price with currency */
-export type Price_3 = Price_2;
-export const Price_3 = Price_2;
-
-/** Included quantity properties for a meter */
-export type IncludedQuantityProperty_3 = IncludedQuantityProperty_2;
-export const IncludedQuantityProperty_3 = IncludedQuantityProperty_2;
-
-/** Included quantity properties */
-export type MeterIncludedQuantityPropertiesList_3 =
-  Array<IncludedQuantityProperty_2>;
-export const MeterIncludedQuantityPropertiesList_3 = /*@__PURE__*/ S.Array(
-  IncludedQuantityProperty_2,
-) as any as S.Schema<MeterIncludedQuantityPropertiesList_3>;
-
-/** Applicable billing meter information */
-export interface Meter_3 {
-  /** Meter id */
-  meterId?: string;
-  /** Compute part number */
-  partNumber?: string;
-  /** Consumption resource id */
-  consumptionResourceId?: string;
-  /** Retail price with currency */
-  price?: Price_2;
-  /** Type of this meter */
-  type?: string;
-  /** Included quantity properties */
-  includedQuantityProperties?: MeterIncludedQuantityPropertiesList_3;
-}
-export const Meter_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meterId: S.optional(S.String),
-    partNumber: S.optional(S.String),
-    consumptionResourceId: S.optional(S.String),
-    price: S.optional(Price_2),
-    type: S.optional(S.String),
-    includedQuantityProperties: S.optional(
-      MeterIncludedQuantityPropertiesList_3,
-    ),
-  }),
-).annotate({ identifier: "Meter_3" }) as any as S.Schema<Meter_3>;
-
-/** Term description parameters */
-export type TermDescriptionParameter_3 = TermDescriptionParameter_2;
-export const TermDescriptionParameter_3 = TermDescriptionParameter_2;
-
-/** Term description parameters */
-export type TermTermDescriptionParametersList_3 =
-  Array<TermDescriptionParameter_2>;
-export const TermTermDescriptionParametersList_3 = /*@__PURE__*/ S.Array(
-  TermDescriptionParameter_2,
-) as any as S.Schema<TermTermDescriptionParametersList_3>;
-
-/** Proration policy */
-export type ProrationPolicy_3 = ProrationPolicy_2;
-export const ProrationPolicy_3 = ProrationPolicy_2;
-
-/** Renew Billing Plan */
-export type BillingPlan_3 = BillingPlan_2;
-export const BillingPlan_3 = BillingPlan_2;
-
-/** Defines the lifecycle management policy for the term */
-export type LifecyclePolicy_2 = LifecyclePolicy;
-export const LifecyclePolicy_2 = LifecyclePolicy;
-
-/** Applicable term */
-export interface Term_3 {
-  /** Term description parameters */
-  termDescriptionParameters?: TermTermDescriptionParametersList_3;
-  /** Term id */
-  termId?: string;
-  /** Term unit */
-  termUnit?: string;
-  /** Defines the rules for calculating prorated charges or refunds for a subscription. */
-  prorationPolicy?: ProrationPolicy_2;
-  /** Term description */
-  termDescription?: string;
-  /** Retail price with currency */
-  price?: Price_2;
-  /** Renew term id */
-  renewTermId?: string;
-  /** Renew term units */
-  renewTermUnits?: string;
-  /** Billing Plan */
-  billingPlan?: BillingPlan_2;
-  /** Renew Billing Plan */
-  renewToTermBillingPlan?: string;
-  /** Indicates if autorenew is enabled */
-  isAutorenewable?: boolean;
-  /** Defines the lifecycle management policy for the term */
-  lifecyclePolicy?: LifecyclePolicy;
-  /** Product code for this term */
-  productCode?: string;
-  /** Term state */
-  state?: string;
-  /** Term Actions */
-  actions?: TermActionsList;
-}
-export const Term_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    termDescriptionParameters: S.optional(TermTermDescriptionParametersList_3),
-    termId: S.optional(S.String),
-    termUnit: S.optional(S.String),
-    prorationPolicy: S.optional(ProrationPolicy_2),
-    termDescription: S.optional(S.String),
-    price: S.optional(Price_2),
-    renewTermId: S.optional(S.String),
-    renewTermUnits: S.optional(S.String),
-    billingPlan: S.optional(BillingPlan_2),
-    renewToTermBillingPlan: S.optional(S.String),
-    isAutorenewable: S.optional(S.Boolean),
-    lifecyclePolicy: S.optional(LifecyclePolicy),
-    productCode: S.optional(S.String),
-    state: S.optional(S.String),
-    actions: S.optional(TermActionsList),
-  }),
-).annotate({ identifier: "Term_3" }) as any as S.Schema<Term_3>;
-
-/** List of applicable terms */
-export type AvailabilityTermsList_2 = Array<Term_3>;
-export const AvailabilityTermsList_2 = /*@__PURE__*/ S.Array(
-  Term_3,
-) as any as S.Schema<AvailabilityTermsList_2>;
-
-/** Availability for a given plan */
-export interface Availability_2 {
-  /** The document id */
-  id?: string;
-  /** List of allowed actions */
-  actions?: AvailabilityActionsList;
-  /** Applicable billing meter information */
-  meter?: Meter_3;
-  /** Specifies the distribution channel and customer segment for product pricing and availability. Possible values:\n- `Direct-Commercial` - Available through direct Azure Marketplace purchases for commercial customers without intermediaries like partners or resellers\n- `Partner-Commercial` - Available through Cloud Solution Provider partner channel for reseller distribution */
-  pricingAudience: string;
-  /** List of applicable terms */
-  terms?: AvailabilityTermsList_2;
-  /** A value indicating whether it has free trials */
-  hasFreeTrials: boolean;
-  /** Consumption unit type */
-  consumptionUnitType?: string;
-  /** Display rank */
-  displayRank: number;
-}
-export const Availability_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    actions: S.optional(AvailabilityActionsList),
-    meter: S.optional(Meter_3),
-    pricingAudience: S.String,
-    terms: S.optional(AvailabilityTermsList_2),
-    hasFreeTrials: S.Boolean,
-    consumptionUnitType: S.optional(S.String),
-    displayRank: S.Number,
-  }),
-).annotate({ identifier: "Availability_2" }) as any as S.Schema<Availability_2>;
-
-/** Availabilities for this SKU. */
-export type SkusGetByBillingAccountResponseAvailabilitiesList =
-  Array<Availability_2>;
-export const SkusGetByBillingAccountResponseAvailabilitiesList =
-  /*@__PURE__*/ S.Array(
-    Availability_2,
-  ) as any as S.Schema<SkusGetByBillingAccountResponseAvailabilitiesList>;
-
-export interface SkusGetByBillingAccountResponse {
-  /** The unique id of the product. */
-  productId: string;
-  /** Product display name. */
-  productDisplayName?: string;
-  /** The product description text. */
-  productDescription?: string;
-  /** The service family of the product, such as 'Compute'. */
-  serviceFamily?: string;
-  /** The service name of the product, such as 'Virtual Machines'. */
-  service?: string;
-  /** Publisher id. */
-  publisherId?: string;
-  /** Identifies the publisher relationship to Microsoft for support and partnership classification.\n- `Microsoft` - First-party Microsoft product with direct Microsoft support and development\n- `ThirdParty` - Independent software vendor product with publisher-provided support and maintenance */
-  publisherType?: string;
-  /** Offer type. */
-  productType?: string;
-  /** Product sub type. */
-  productSubType?: string;
-  /** Product summary. */
-  summary?: string;
-  /** The product attributes. */
-  productAttributes?: SkusGetByBillingAccountResponseProductAttributesList;
-  /** SKU name. */
-  skuName: string;
-  /** SKU id. */
-  skuId: string;
-  /** SKU type. */
-  skuType: string;
-  /** Language code for the SKU content. */
-  language: string;
-  /** SKU description localized. */
-  skuDescription: string;
-  /** SKU title localized. */
-  skuTitle: string;
-  /** Latest update date of the SKU. */
-  lastModifiedDateTime?: string;
-  /** Location (region). */
-  location: string;
-  /** The ARM region name. */
-  armRegionName?: string;
-  /** The cloud, such as 'Global'. */
-  cloud: string;
-  /** The location type, such as 'Region'. */
-  locationType: string;
-  /** The region. */
-  region?: string;
-  /** The SKU group id. */
-  skuGroupId?: string;
-  /** The zone, such as 'Zone 1'. */
-  zone?: string;
-  /** The feature. */
-  feature?: string;
-  /** The service type. */
-  serviceType?: string;
-  /** Minimum order quantity. */
-  minQuantity?: number;
-  /** Maximum order quantity. */
-  maxQuantity?: number;
-  /** Controls plan availability and partner access within the Microsoft Cloud Solution Provider (CSP) program.\n- `OptIn` - Enables all authorized Cloud Solution Provider partners to resell and deploy the product to customers\n- `OptOut` - Excluded from Cloud Solution Provider program, available only through direct channels\n- `SelectiveOptIn` - Available only to selected Cloud Solution Provider partners for resale and customer deployment */
-  cspState?: string;
-  /** A value indicating whether the SKU supports reservations. */
-  hasRi?: boolean;
-  /** The SKU attributes. */
-  skuAttributes?: SkusGetByBillingAccountResponseSkuAttributesList;
-  /** The SKU properties. */
-  skuProperties?: SkuProperties_2;
-  /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
-  offeringProperties?: SkusGetByBillingAccountResponseOfferingPropertiesList;
-  /** Alternate ids for the SKU. */
-  alternateIds?: SkuAlternateIds;
-  /** Offering type of product family Offers. */
-  offeringType?: string;
-  /** Category IDs for this SKU. */
-  categoryIds?: SkusGetByBillingAccountResponseCategoryIdsList;
-  /** Pricing audiences for the SKU. */
-  pricingAudiences?: SkusGetByBillingAccountResponsePricingAudiencesList;
-  /** Availabilities for this SKU. */
-  availabilities?: SkusGetByBillingAccountResponseAvailabilitiesList;
-}
-export const SkusGetByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String,
-    productDisplayName: S.optional(S.String),
-    productDescription: S.optional(S.String),
-    serviceFamily: S.optional(S.String),
-    service: S.optional(S.String),
-    publisherId: S.optional(S.String),
-    publisherType: S.optional(S.String),
-    productType: S.optional(S.String),
-    productSubType: S.optional(S.String),
-    summary: S.optional(S.String),
-    productAttributes: S.optional(
-      SkusGetByBillingAccountResponseProductAttributesList,
-    ),
-    skuName: S.String,
-    skuId: S.String,
-    skuType: S.String,
-    language: S.String,
-    skuDescription: S.String,
-    skuTitle: S.String,
-    lastModifiedDateTime: S.optional(S.String),
-    location: S.String,
-    armRegionName: S.optional(S.String),
-    cloud: S.String,
-    locationType: S.String,
-    region: S.optional(S.String),
-    skuGroupId: S.optional(S.String),
-    zone: S.optional(S.String),
-    feature: S.optional(S.String),
-    serviceType: S.optional(S.String),
-    minQuantity: S.optional(S.Number),
-    maxQuantity: S.optional(S.Number),
-    cspState: S.optional(S.String),
-    hasRi: S.optional(S.Boolean),
-    skuAttributes: S.optional(SkusGetByBillingAccountResponseSkuAttributesList),
-    skuProperties: S.optional(SkuProperties_2),
-    offeringProperties: S.optional(
-      SkusGetByBillingAccountResponseOfferingPropertiesList,
-    ),
-    alternateIds: S.optional(SkuAlternateIds),
-    offeringType: S.optional(S.String),
-    categoryIds: S.optional(SkusGetByBillingAccountResponseCategoryIdsList),
-    pricingAudiences: S.optional(
-      SkusGetByBillingAccountResponsePricingAudiencesList,
-    ),
-    availabilities: S.optional(
-      SkusGetByBillingAccountResponseAvailabilitiesList,
-    ),
-  }),
-).annotate({
-  identifier: "SkusGetByBillingAccountResponse",
-}) as any as S.Schema<SkusGetByBillingAccountResponse>;
-
-export interface SkusGetByBillingProfileRequest {
-  /** The ID of the target billing account. */
-  billingAccountId: string;
-  /** The ID of the target billing profile. */
-  billingProfileId: string;
-  /** The ID of the SKU */
-  skuId: string;
-  /** Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'. */
-  language?: string;
-  /** Include stop-sold SKUs in the response. Default is false. */
-  includeStopSold?: boolean;
-  /** Include availabilities whose start date is in the future. Default is false. */
-  includeFutureAvailabilities?: boolean;
-}
-export const SkusGetByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-    skuId: S.String.pipe(T.Label()),
-    language: S.optional(S.String.pipe(T.Query())),
-    includeStopSold: S.optional(S.Boolean.pipe(T.Query())),
-    includeFutureAvailabilities: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus/{skuId}",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "SkusGetByBillingProfileRequest",
-}) as any as S.Schema<SkusGetByBillingProfileRequest>;
-
-/** The product attributes. */
-export type SkusGetByBillingProfileResponseProductAttributesList =
-  Array<Attribute_2>;
-export const SkusGetByBillingProfileResponseProductAttributesList =
-  /*@__PURE__*/ S.Array(
-    Attribute_2,
-  ) as any as S.Schema<SkusGetByBillingProfileResponseProductAttributesList>;
-
-/** The SKU attributes. */
-export type SkusGetByBillingProfileResponseSkuAttributesList =
-  Array<Attribute_2>;
-export const SkusGetByBillingProfileResponseSkuAttributesList =
-  /*@__PURE__*/ S.Array(
-    Attribute_2,
-  ) as any as S.Schema<SkusGetByBillingProfileResponseSkuAttributesList>;
-
-/** Offering properties such as: product code (UPN), term id, meter type, offering id. */
-export type SkusGetByBillingProfileResponseOfferingPropertiesList =
-  Array<OfferingProperties_2>;
-export const SkusGetByBillingProfileResponseOfferingPropertiesList =
-  /*@__PURE__*/ S.Array(
-    OfferingProperties_2,
-  ) as any as S.Schema<SkusGetByBillingProfileResponseOfferingPropertiesList>;
-
-/** Category IDs for this SKU. */
-export type SkusGetByBillingProfileResponseCategoryIdsList = Array<string>;
-export const SkusGetByBillingProfileResponseCategoryIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SkusGetByBillingProfileResponseCategoryIdsList>;
-
-/** Pricing audiences for the SKU. */
-export type SkusGetByBillingProfileResponsePricingAudiencesList = Array<string>;
-export const SkusGetByBillingProfileResponsePricingAudiencesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SkusGetByBillingProfileResponsePricingAudiencesList>;
-
-/** Availabilities for this SKU. */
-export type SkusGetByBillingProfileResponseAvailabilitiesList =
-  Array<Availability_2>;
-export const SkusGetByBillingProfileResponseAvailabilitiesList =
-  /*@__PURE__*/ S.Array(
-    Availability_2,
-  ) as any as S.Schema<SkusGetByBillingProfileResponseAvailabilitiesList>;
-
-export interface SkusGetByBillingProfileResponse {
-  /** The unique id of the product. */
-  productId: string;
-  /** Product display name. */
-  productDisplayName?: string;
-  /** The product description text. */
-  productDescription?: string;
-  /** The service family of the product, such as 'Compute'. */
-  serviceFamily?: string;
-  /** The service name of the product, such as 'Virtual Machines'. */
-  service?: string;
-  /** Publisher id. */
-  publisherId?: string;
-  /** Identifies the publisher relationship to Microsoft for support and partnership classification.\n- `Microsoft` - First-party Microsoft product with direct Microsoft support and development\n- `ThirdParty` - Independent software vendor product with publisher-provided support and maintenance */
-  publisherType?: string;
-  /** Offer type. */
-  productType?: string;
-  /** Product sub type. */
-  productSubType?: string;
-  /** Product summary. */
-  summary?: string;
-  /** The product attributes. */
-  productAttributes?: SkusGetByBillingProfileResponseProductAttributesList;
-  /** SKU name. */
-  skuName: string;
-  /** SKU id. */
-  skuId: string;
-  /** SKU type. */
-  skuType: string;
-  /** Language code for the SKU content. */
-  language: string;
-  /** SKU description localized. */
-  skuDescription: string;
-  /** SKU title localized. */
-  skuTitle: string;
-  /** Latest update date of the SKU. */
-  lastModifiedDateTime?: string;
-  /** Location (region). */
-  location: string;
-  /** The ARM region name. */
-  armRegionName?: string;
-  /** The cloud, such as 'Global'. */
-  cloud: string;
-  /** The location type, such as 'Region'. */
-  locationType: string;
-  /** The region. */
-  region?: string;
-  /** The SKU group id. */
-  skuGroupId?: string;
-  /** The zone, such as 'Zone 1'. */
-  zone?: string;
-  /** The feature. */
-  feature?: string;
-  /** The service type. */
-  serviceType?: string;
-  /** Minimum order quantity. */
-  minQuantity?: number;
-  /** Maximum order quantity. */
-  maxQuantity?: number;
-  /** Controls plan availability and partner access within the Microsoft Cloud Solution Provider (CSP) program.\n- `OptIn` - Enables all authorized Cloud Solution Provider partners to resell and deploy the product to customers\n- `OptOut` - Excluded from Cloud Solution Provider program, available only through direct channels\n- `SelectiveOptIn` - Available only to selected Cloud Solution Provider partners for resale and customer deployment */
-  cspState?: string;
-  /** A value indicating whether the SKU supports reservations. */
-  hasRi?: boolean;
-  /** The SKU attributes. */
-  skuAttributes?: SkusGetByBillingProfileResponseSkuAttributesList;
-  /** The SKU properties. */
-  skuProperties?: SkuProperties_2;
-  /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
-  offeringProperties?: SkusGetByBillingProfileResponseOfferingPropertiesList;
-  /** Alternate ids for the SKU. */
-  alternateIds?: SkuAlternateIds;
-  /** Offering type of product family Offers. */
-  offeringType?: string;
-  /** Category IDs for this SKU. */
-  categoryIds?: SkusGetByBillingProfileResponseCategoryIdsList;
-  /** Pricing audiences for the SKU. */
-  pricingAudiences?: SkusGetByBillingProfileResponsePricingAudiencesList;
-  /** Availabilities for this SKU. */
-  availabilities?: SkusGetByBillingProfileResponseAvailabilitiesList;
-}
-export const SkusGetByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String,
-    productDisplayName: S.optional(S.String),
-    productDescription: S.optional(S.String),
-    serviceFamily: S.optional(S.String),
-    service: S.optional(S.String),
-    publisherId: S.optional(S.String),
-    publisherType: S.optional(S.String),
-    productType: S.optional(S.String),
-    productSubType: S.optional(S.String),
-    summary: S.optional(S.String),
-    productAttributes: S.optional(
-      SkusGetByBillingProfileResponseProductAttributesList,
-    ),
-    skuName: S.String,
-    skuId: S.String,
-    skuType: S.String,
-    language: S.String,
-    skuDescription: S.String,
-    skuTitle: S.String,
-    lastModifiedDateTime: S.optional(S.String),
-    location: S.String,
-    armRegionName: S.optional(S.String),
-    cloud: S.String,
-    locationType: S.String,
-    region: S.optional(S.String),
-    skuGroupId: S.optional(S.String),
-    zone: S.optional(S.String),
-    feature: S.optional(S.String),
-    serviceType: S.optional(S.String),
-    minQuantity: S.optional(S.Number),
-    maxQuantity: S.optional(S.Number),
-    cspState: S.optional(S.String),
-    hasRi: S.optional(S.Boolean),
-    skuAttributes: S.optional(SkusGetByBillingProfileResponseSkuAttributesList),
-    skuProperties: S.optional(SkuProperties_2),
-    offeringProperties: S.optional(
-      SkusGetByBillingProfileResponseOfferingPropertiesList,
-    ),
-    alternateIds: S.optional(SkuAlternateIds),
-    offeringType: S.optional(S.String),
-    categoryIds: S.optional(SkusGetByBillingProfileResponseCategoryIdsList),
-    pricingAudiences: S.optional(
-      SkusGetByBillingProfileResponsePricingAudiencesList,
-    ),
-    availabilities: S.optional(
-      SkusGetByBillingProfileResponseAvailabilitiesList,
-    ),
-  }),
-).annotate({
-  identifier: "SkusGetByBillingProfileResponse",
-}) as any as S.Schema<SkusGetByBillingProfileResponse>;
-
-export type SkusListByBillingAccountRequestLocationsList = Array<string>;
-export const SkusListByBillingAccountRequestLocationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SkusListByBillingAccountRequestLocationsList>;
-
-export interface SkusListByBillingAccountRequest {
-  /** The ID of the target billing account. */
-  billingAccountId: string;
-  /** The service family to filter by, such as 'Compute'. */
-  serviceFamily: string;
-  /** The service to filter by, such as 'Virtual Machines'. */
-  service: string;
-  /** Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'. */
-  language?: string;
-  /** Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/. */
-  locations?: SkusListByBillingAccountRequestLocationsList;
-  /** Filters the results, based on a Boolean condition. Example: $filter=serviceFamily eq 'Compute'. Fields that can be filtered by are: - `productId` - `serviceFamily` - `service` - `skuId` - `skuName` - `skuType` - `armRegionName` - `location` - `publisherId` - `productType` */
-  _filter?: string;
-  /** Selects which properties to include in the results. Example: $select=skuName,skuId */
-  _select?: string;
-  /** Expands related entities inline. */
-  _expand?: string;
-  /** Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are: - `lastModifiedDateTime` - `skuName` - `skuId` - `productId` - `serviceFamily` - `service` */
-  _orderBy?: string;
-}
-export const SkusListByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    serviceFamily: S.String.pipe(T.Query()),
-    service: S.String.pipe(T.Query()),
-    language: S.optional(S.String.pipe(T.Query())),
-    locations: S.optional(
-      SkusListByBillingAccountRequestLocationsList.pipe(T.Query()),
-    ),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _select: S.optional(S.String.pipe(T.Query("$select"))),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-    _orderBy: S.optional(S.String.pipe(T.Query("$orderBy"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "SkusListByBillingAccountRequest",
-}) as any as S.Schema<SkusListByBillingAccountRequest>;
-
-/** The product attributes. */
-export type SkuSummaryProductAttributesList = Array<Attribute_2>;
-export const SkuSummaryProductAttributesList = /*@__PURE__*/ S.Array(
-  Attribute_2,
-) as any as S.Schema<SkuSummaryProductAttributesList>;
-
-/** The SKU attributes. */
-export type SkuSummarySkuAttributesList = Array<Attribute_2>;
-export const SkuSummarySkuAttributesList = /*@__PURE__*/ S.Array(
-  Attribute_2,
-) as any as S.Schema<SkuSummarySkuAttributesList>;
-
-/** Offering properties such as: product code (UPN), term id, meter type, offering id. */
-export type SkuSummaryOfferingPropertiesList = Array<OfferingProperties_2>;
-export const SkuSummaryOfferingPropertiesList = /*@__PURE__*/ S.Array(
-  OfferingProperties_2,
-) as any as S.Schema<SkuSummaryOfferingPropertiesList>;
-
-/** Category IDs for this SKU. */
-export type SkuSummaryCategoryIdsList = Array<string>;
-export const SkuSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSummaryCategoryIdsList>;
-
-/** Pricing audiences for the SKU. */
-export type SkuSummaryPricingAudiencesList = Array<string>;
-export const SkuSummaryPricingAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSummaryPricingAudiencesList>;
-
-/** Summary description of the SKU. */
-export interface SkuSummary {
-  /** The unique id of the product. */
-  productId: string;
-  /** Product display name. */
-  productDisplayName?: string;
-  /** The product description text. */
-  productDescription?: string;
-  /** The service family of the product, such as 'Compute'. */
-  serviceFamily?: string;
-  /** The service name of the product, such as 'Virtual Machines'. */
-  service?: string;
-  /** Publisher id. */
-  publisherId?: string;
-  /** Identifies the publisher relationship to Microsoft for support and partnership classification.\n- `Microsoft` - First-party Microsoft product with direct Microsoft support and development\n- `ThirdParty` - Independent software vendor product with publisher-provided support and maintenance */
-  publisherType?: string;
-  /** Offer type. */
-  productType?: string;
-  /** Product sub type. */
-  productSubType?: string;
-  /** Product summary. */
-  summary?: string;
-  /** The product attributes. */
-  productAttributes?: SkuSummaryProductAttributesList;
-  /** SKU name. */
-  skuName: string;
-  /** SKU id. */
-  skuId: string;
-  /** SKU type. */
-  skuType: string;
-  /** Language code for the SKU content. */
-  language: string;
-  /** SKU description localized. */
-  skuDescription: string;
-  /** SKU title localized. */
-  skuTitle: string;
-  /** Latest update date of the SKU. */
-  lastModifiedDateTime?: string;
-  /** Location (region). */
-  location: string;
-  /** The ARM region name. */
-  armRegionName?: string;
-  /** The cloud, such as 'Global'. */
-  cloud: string;
-  /** The location type, such as 'Region'. */
-  locationType: string;
-  /** The region. */
-  region?: string;
-  /** The SKU group id. */
-  skuGroupId?: string;
-  /** The zone, such as 'Zone 1'. */
-  zone?: string;
-  /** The feature. */
-  feature?: string;
-  /** The service type. */
-  serviceType?: string;
-  /** Minimum order quantity. */
-  minQuantity?: number;
-  /** Maximum order quantity. */
-  maxQuantity?: number;
-  /** Controls plan availability and partner access within the Microsoft Cloud Solution Provider (CSP) program.\n- `OptIn` - Enables all authorized Cloud Solution Provider partners to resell and deploy the product to customers\n- `OptOut` - Excluded from Cloud Solution Provider program, available only through direct channels\n- `SelectiveOptIn` - Available only to selected Cloud Solution Provider partners for resale and customer deployment */
-  cspState?: string;
-  /** A value indicating whether the SKU supports reservations. */
-  hasRi?: boolean;
-  /** The SKU attributes. */
-  skuAttributes?: SkuSummarySkuAttributesList;
-  /** The SKU properties. */
-  skuProperties?: SkuProperties_2;
-  /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
-  offeringProperties?: SkuSummaryOfferingPropertiesList;
-  /** Alternate ids for the SKU. */
-  alternateIds?: SkuAlternateIds;
-  /** Offering type of product family Offers. */
-  offeringType?: string;
-  /** Category IDs for this SKU. */
-  categoryIds?: SkuSummaryCategoryIdsList;
-  /** Pricing audiences for the SKU. */
-  pricingAudiences?: SkuSummaryPricingAudiencesList;
-}
-export const SkuSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String,
-    productDisplayName: S.optional(S.String),
-    productDescription: S.optional(S.String),
-    serviceFamily: S.optional(S.String),
-    service: S.optional(S.String),
-    publisherId: S.optional(S.String),
-    publisherType: S.optional(S.String),
-    productType: S.optional(S.String),
-    productSubType: S.optional(S.String),
-    summary: S.optional(S.String),
-    productAttributes: S.optional(SkuSummaryProductAttributesList),
-    skuName: S.String,
-    skuId: S.String,
-    skuType: S.String,
-    language: S.String,
-    skuDescription: S.String,
-    skuTitle: S.String,
-    lastModifiedDateTime: S.optional(S.String),
-    location: S.String,
-    armRegionName: S.optional(S.String),
-    cloud: S.String,
-    locationType: S.String,
-    region: S.optional(S.String),
-    skuGroupId: S.optional(S.String),
-    zone: S.optional(S.String),
-    feature: S.optional(S.String),
-    serviceType: S.optional(S.String),
-    minQuantity: S.optional(S.Number),
-    maxQuantity: S.optional(S.Number),
-    cspState: S.optional(S.String),
-    hasRi: S.optional(S.Boolean),
-    skuAttributes: S.optional(SkuSummarySkuAttributesList),
-    skuProperties: S.optional(SkuProperties_2),
-    offeringProperties: S.optional(SkuSummaryOfferingPropertiesList),
-    alternateIds: S.optional(SkuAlternateIds),
-    offeringType: S.optional(S.String),
-    categoryIds: S.optional(SkuSummaryCategoryIdsList),
-    pricingAudiences: S.optional(SkuSummaryPricingAudiencesList),
-  }),
-).annotate({ identifier: "SkuSummary" }) as any as S.Schema<SkuSummary>;
-
-/** The SkuSummary items on this page */
-export type SkuSummaryListResultValueList = Array<SkuSummary>;
-export const SkuSummaryListResultValueList = /*@__PURE__*/ S.Array(
-  SkuSummary,
-) as any as S.Schema<SkuSummaryListResultValueList>;
-
-/** The response of a SkuSummary list operation. */
-export interface SkuSummaryListResult {
-  /** The SkuSummary items on this page */
-  value: SkuSummaryListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const SkuSummaryListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: SkuSummaryListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SkuSummaryListResult",
-}) as any as S.Schema<SkuSummaryListResult>;
-
-export type SkusListByBillingProfileRequestLocationsList = Array<string>;
-export const SkusListByBillingProfileRequestLocationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SkusListByBillingProfileRequestLocationsList>;
-
-export interface SkusListByBillingProfileRequest {
-  /** The ID of the target billing account. */
-  billingAccountId: string;
-  /** The ID of the target billing profile. */
-  billingProfileId: string;
-  /** The service family to filter by, such as 'Compute'. */
-  serviceFamily: string;
-  /** The service to filter by, such as 'Virtual Machines'. */
-  service: string;
-  /** Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'. */
-  language?: string;
-  /** Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/. */
-  locations?: SkusListByBillingProfileRequestLocationsList;
-  /** Filters the results, based on a Boolean condition. Example: $filter=serviceFamily eq 'Compute'. Fields that can be filtered by are: - `productId` - `serviceFamily` - `service` - `skuId` - `skuName` - `skuType` - `armRegionName` - `location` - `publisherId` - `productType` */
-  _filter?: string;
-  /** Selects which properties to include in the results. Example: $select=skuName,skuId */
-  _select?: string;
-  /** Expands related entities inline. */
-  _expand?: string;
-  /** Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are: - `lastModifiedDateTime` - `skuName` - `skuId` - `productId` - `serviceFamily` - `service` */
-  _orderBy?: string;
-}
-export const SkusListByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-    serviceFamily: S.String.pipe(T.Query()),
-    service: S.String.pipe(T.Query()),
-    language: S.optional(S.String.pipe(T.Query())),
-    locations: S.optional(
-      SkusListByBillingProfileRequestLocationsList.pipe(T.Query()),
-    ),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _select: S.optional(S.String.pipe(T.Query("$select"))),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-    _orderBy: S.optional(S.String.pipe(T.Query("$orderBy"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "SkusListByBillingProfileRequest",
-}) as any as S.Schema<SkusListByBillingProfileRequest>;
-
 export type CreateApiKeyPostError = AzureOpError;
 /** Generates an API key, granting access to the full range of Marketplace Catalog APIs. Please note that this API is currently in a preview state and requires sign-up to the 'Discovery Api Key Early Access' preview feature using a valid Azure subscription. For more information on this process please see the documentation for Marketplace Catalog APIs [here](https://learn.microsoft.com/en-us/rest/api/marketplacecatalog/dataplane/products/get?view=rest-marketplacecatalog-dataplane-2023-05-01-preview&tabs=HTTP) */
 export const CreateApiKeyPost: API.OperationMethod<
@@ -5773,21 +5773,6 @@ export const CreateApiKeyPost: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApiKeyPostRequest,
   output: ApiKey,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EdgeZonesProductsListError = AzureOpError;
-/** Get a list of edge zone products */
-export const EdgeZonesProductsList: API.OperationMethod<
-  EdgeZonesProductsListRequest,
-  PageResultOfCatalogItem,
-  EdgeZonesProductsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EdgeZonesProductsListRequest,
-  output: PageResultOfCatalogItem,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5808,16 +5793,91 @@ export const GetApiKeysList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
-/** Lists all of the available Microsoft.Marketplace REST API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
+export type GetSkusByBillingAccountError = AzureOpError;
+/** Gets a single SKU with availabilities for the given billing account. Returns full SKU details (including availabilities) for the SKU identified by the composite `productId/skuId`, scoped to the given billing account. The caller must have billing account permissions. Supports both EA (legacy) and Modern (MCA) billing account ID formats. */
+export const GetSkusByBillingAccount: API.OperationMethod<
+  GetSkusByBillingAccountRequest,
+  GetSkusByBillingAccountResponse,
+  GetSkusByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
+  input: GetSkusByBillingAccountRequest,
+  output: GetSkusByBillingAccountResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSkusByBillingProfileError = AzureOpError;
+/** Gets a single SKU with availabilities for the given billing account and billing profile. Same as the billing-account-only variant, but additionally scopes the hydration claims to a specific billing profile. Only meaningful for Modern (MCA) billing accounts; for EA billing accounts the billing profile is ignored. */
+export const GetSkusByBillingProfile: API.OperationMethod<
+  GetSkusByBillingProfileRequest,
+  GetSkusByBillingProfileResponse,
+  GetSkusByBillingProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSkusByBillingProfileRequest,
+  output: GetSkusByBillingProfileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEdgeZoneProductsError = AzureOpError;
+/** Get a list of edge zone products */
+export const ListEdgeZoneProducts: API.OperationMethod<
+  ListEdgeZoneProductsRequest,
+  PageResultOfCatalogItem,
+  ListEdgeZoneProductsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEdgeZoneProductsRequest,
+  output: PageResultOfCatalogItem,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists all of the available Microsoft.Marketplace REST API operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSkusByBillingAccountError = AzureOpError;
+/** Lists SKUs for billing account. */
+export const ListSkusByBillingAccount: API.OperationMethod<
+  ListSkusByBillingAccountRequest,
+  SkuSummaryListResult,
+  ListSkusByBillingAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSkusByBillingAccountRequest,
+  output: SkuSummaryListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSkusByBillingProfileError = AzureOpError;
+/** Lists SKUs for billing profile. */
+export const ListSkusByBillingProfile: API.OperationMethod<
+  ListSkusByBillingProfileRequest,
+  SkuSummaryListResult,
+  ListSkusByBillingProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSkusByBillingProfileRequest,
+  output: SkuSummaryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5968,66 +6028,6 @@ export const SearchPostArm: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchPostArmRequest,
   output: SearchResponseDto,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusGetByBillingAccountError = AzureOpError;
-/** Gets a single SKU with availabilities for the given billing account. Returns full SKU details (including availabilities) for the SKU identified by the composite `productId/skuId`, scoped to the given billing account. The caller must have billing account permissions. Supports both EA (legacy) and Modern (MCA) billing account ID formats. */
-export const SkusGetByBillingAccount: API.OperationMethod<
-  SkusGetByBillingAccountRequest,
-  SkusGetByBillingAccountResponse,
-  SkusGetByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusGetByBillingAccountRequest,
-  output: SkusGetByBillingAccountResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusGetByBillingProfileError = AzureOpError;
-/** Gets a single SKU with availabilities for the given billing account and billing profile. Same as the billing-account-only variant, but additionally scopes the hydration claims to a specific billing profile. Only meaningful for Modern (MCA) billing accounts; for EA billing accounts the billing profile is ignored. */
-export const SkusGetByBillingProfile: API.OperationMethod<
-  SkusGetByBillingProfileRequest,
-  SkusGetByBillingProfileResponse,
-  SkusGetByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusGetByBillingProfileRequest,
-  output: SkusGetByBillingProfileResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusListByBillingAccountError = AzureOpError;
-/** Lists SKUs for billing account. */
-export const SkusListByBillingAccount: API.OperationMethod<
-  SkusListByBillingAccountRequest,
-  SkuSummaryListResult,
-  SkusListByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusListByBillingAccountRequest,
-  output: SkuSummaryListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusListByBillingProfileError = AzureOpError;
-/** Lists SKUs for billing profile. */
-export const SkusListByBillingProfile: API.OperationMethod<
-  SkusListByBillingProfileRequest,
-  SkuSummaryListResult,
-  SkusListByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusListByBillingProfileRequest,
-  output: SkuSummaryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

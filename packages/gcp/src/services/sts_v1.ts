@@ -150,11 +150,11 @@ export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest =
     identifier: "GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest",
   }) as any as S.Schema<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>;
 
-export interface GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest {
+export interface GetOpenidConfigurationOrganizationsLocationsWorkloadIdentityPoolsWellKnownRequest {
   /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest =
+export const GetOpenidConfigurationOrganizationsLocationsWorkloadIdentityPoolsWellKnownRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -167,8 +167,8 @@ export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
     ),
   ).annotate({
     identifier:
-      "GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest",
-  }) as any as S.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+      "GetOpenidConfigurationOrganizationsLocationsWorkloadIdentityPoolsWellKnownRequest",
+  }) as any as S.Schema<GetOpenidConfigurationOrganizationsLocationsWorkloadIdentityPoolsWellKnownRequest>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
@@ -207,11 +207,11 @@ export const GoogleIdentityStsV1OpenIdProviderConfig = /*@__PURE__*/ S.suspend(
   identifier: "GoogleIdentityStsV1OpenIdProviderConfig",
 }) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>;
 
-export interface GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest {
+export interface GetOpenidConfigurationProjectsLocationsWorkloadIdentityPoolsWellKnownRequest {
   /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest =
+export const GetOpenidConfigurationProjectsLocationsWorkloadIdentityPoolsWellKnownRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -224,8 +224,8 @@ export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_k
     ),
   ).annotate({
     identifier:
-      "GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest",
-  }) as any as S.Schema<GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+      "GetOpenidConfigurationProjectsLocationsWorkloadIdentityPoolsWellKnownRequest",
+  }) as any as S.Schema<GetOpenidConfigurationProjectsLocationsWorkloadIdentityPoolsWellKnownRequest>;
 
 /** Request message for ExchangeToken. */
 export interface GoogleIdentityStsV1ExchangeTokenRequest {
@@ -339,38 +339,38 @@ export const getJwksProjectsLocationsWorkloadIdentityPoolsOpenid: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError =
+export type GetOpenidConfigurationOrganizationsLocationsWorkloadIdentityPoolsWellKnownError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). */
-export const getOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<
-  GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest,
+export const getOpenidConfigurationOrganizationsLocationsWorkloadIdentityPoolsWellKnown: API.OperationMethod<
+  GetOpenidConfigurationOrganizationsLocationsWorkloadIdentityPoolsWellKnownRequest,
   GoogleIdentityStsV1OpenIdProviderConfig,
-  GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError,
+  GetOpenidConfigurationOrganizationsLocationsWorkloadIdentityPoolsWellKnownError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input:
-    GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest,
+    GetOpenidConfigurationOrganizationsLocationsWorkloadIdentityPoolsWellKnownRequest,
   output: GoogleIdentityStsV1OpenIdProviderConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError =
+export type GetOpenidConfigurationProjectsLocationsWorkloadIdentityPoolsWellKnownError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). */
-export const getOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<
-  GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest,
+export const getOpenidConfigurationProjectsLocationsWorkloadIdentityPoolsWellKnown: API.OperationMethod<
+  GetOpenidConfigurationProjectsLocationsWorkloadIdentityPoolsWellKnownRequest,
   GoogleIdentityStsV1OpenIdProviderConfig,
-  GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError,
+  GetOpenidConfigurationProjectsLocationsWorkloadIdentityPoolsWellKnownError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input:
-    GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest,
+    GetOpenidConfigurationProjectsLocationsWorkloadIdentityPoolsWellKnownRequest,
   output: GoogleIdentityStsV1OpenIdProviderConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,

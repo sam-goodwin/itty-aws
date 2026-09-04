@@ -108,7 +108,7 @@ export const WizardSessionsCreateRequestErrorMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<WizardSessionsCreateRequestErrorMap>;
 
-export interface WizardSessionsCreateRequest {
+export interface CreateWizardSessionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Populated while the wizard is blocked on a question in the terminal. Null/absent means no input is pending; a push without it clears the previous prompt. */
@@ -131,7 +131,7 @@ export interface WizardSessionsCreateRequest {
   /** Populated when run_phase='error'. Shape: { type: string, message: string }. */
   error?: WizardSessionsCreateRequestErrorMap | null;
 }
-export const WizardSessionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateWizardSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pending_input: S.optional(S.NullOr(PendingInput)),
@@ -152,8 +152,8 @@ export const WizardSessionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WizardSessionsCreateRequest",
-}) as any as S.Schema<WizardSessionsCreateRequest>;
+  identifier: "CreateWizardSessionRequest",
+}) as any as S.Schema<CreateWizardSessionRequest>;
 
 export type WizardSessionDTOTasksList = Array<WizardTaskDTO>;
 export const WizardSessionDTOTasksList = /*@__PURE__*/ S.Array(
@@ -232,6 +232,58 @@ export const WizardSessionDTO = /*@__PURE__*/ S.suspend(() =>
   identifier: "WizardSessionDTO",
 }) as any as S.Schema<WizardSessionDTO>;
 
+export interface ListWizardSessionsRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** Filter to a single skill within the workflow (e.g. 'nextjs'). */
+  skill_id?: string;
+  /** Filter to a single workflow (e.g. 'onboarding'). */
+  workflow_id?: string;
+}
+export const ListWizardSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    skill_id: S.optional(S.String.pipe(T.Query())),
+    workflow_id: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/wizard/sessions/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListWizardSessionsRequest",
+}) as any as S.Schema<ListWizardSessionsRequest>;
+
+export type PaginatedWizardSessionDTOListResultsList = Array<WizardSessionDTO>;
+export const PaginatedWizardSessionDTOListResultsList = /*@__PURE__*/ S.Array(
+  WizardSessionDTO,
+) as any as S.Schema<PaginatedWizardSessionDTOListResultsList>;
+
+export interface PaginatedWizardSessionDTOList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedWizardSessionDTOListResultsList;
+}
+export const PaginatedWizardSessionDTOList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedWizardSessionDTOListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedWizardSessionDTOList",
+}) as any as S.Schema<PaginatedWizardSessionDTOList>;
+
 export interface WizardSessionsLatestRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -255,58 +307,6 @@ export const WizardSessionsLatestRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WizardSessionsLatestRetrieveRequest",
 }) as any as S.Schema<WizardSessionsLatestRetrieveRequest>;
-
-export interface WizardSessionsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** Filter to a single skill within the workflow (e.g. 'nextjs'). */
-  skill_id?: string;
-  /** Filter to a single workflow (e.g. 'onboarding'). */
-  workflow_id?: string;
-}
-export const WizardSessionsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    skill_id: S.optional(S.String.pipe(T.Query())),
-    workflow_id: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/wizard/sessions/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WizardSessionsListRequest",
-}) as any as S.Schema<WizardSessionsListRequest>;
-
-export type PaginatedWizardSessionDTOListResultsList = Array<WizardSessionDTO>;
-export const PaginatedWizardSessionDTOListResultsList = /*@__PURE__*/ S.Array(
-  WizardSessionDTO,
-) as any as S.Schema<PaginatedWizardSessionDTOListResultsList>;
-
-export interface PaginatedWizardSessionDTOList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedWizardSessionDTOListResultsList;
-}
-export const PaginatedWizardSessionDTOList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedWizardSessionDTOListResultsList,
-  }),
-).annotate({
-  identifier: "PaginatedWizardSessionDTOList",
-}) as any as S.Schema<PaginatedWizardSessionDTOList>;
 
 export interface WizardSessionsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -357,17 +357,32 @@ export const WizardSessionsStreamRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "WizardSessionsStreamRetrieveResponse",
 }) as any as S.Schema<WizardSessionsStreamRetrieveResponse>;
 
-export type WizardSessionsCreateError = Forbidden | PosthogOpError;
+export type CreateWizardSessionError = Forbidden | PosthogOpError;
 /** Upsert a wizard session. The `session_id` key is the idempotency anchor — reposting the same `session_id` replaces the existing row. Returns 201 on create, 200 on update. */
-export const wizardSessionsCreate: API.OperationMethod<
-  WizardSessionsCreateRequest,
+export const createWizardSession: API.OperationMethod<
+  CreateWizardSessionRequest,
   WizardSessionDTO,
-  WizardSessionsCreateError,
+  CreateWizardSessionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WizardSessionsCreateRequest,
+  input: CreateWizardSessionRequest,
   output: WizardSessionDTO,
   errors: [Forbidden],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListWizardSessionsError = PosthogOpError;
+/** List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=<id> and ?skill_id=<id>. */
+export const listWizardSessions: API.OperationMethod<
+  ListWizardSessionsRequest,
+  PaginatedWizardSessionDTOList,
+  ListWizardSessionsError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWizardSessionsRequest,
+  output: PaginatedWizardSessionDTOList,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -382,21 +397,6 @@ export const wizardSessionsLatestRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WizardSessionsLatestRetrieveRequest,
   output: WizardSessionDTO,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WizardSessionsListError = PosthogOpError;
-/** List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=<id> and ?skill_id=<id>. */
-export const wizardSessionsList: API.OperationMethod<
-  WizardSessionsListRequest,
-  PaginatedWizardSessionDTOList,
-  WizardSessionsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WizardSessionsListRequest,
-  output: PaginatedWizardSessionDTOList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

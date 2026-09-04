@@ -11415,7 +11415,7 @@
         }
       }
     },
-    "com.gcp.gkehub_v1#GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest": {
+    "com.gcp.gkehub_v1#GenerateMembershipRbacRoleBindingYamlProjectsLocationsMembershipsRbacrolebindingsRequest": {
       "type": "structure",
       "members": {
         "rbacrolebindingId": {
@@ -11442,10 +11442,10 @@
         }
       }
     },
-    "com.gcp.gkehub_v1#GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindings": {
+    "com.gcp.gkehub_v1#GenerateMembershipRbacRoleBindingYamlProjectsLocationsMembershipsRbacrolebindings": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.gkehub_v1#GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest"
+        "target": "com.gcp.gkehub_v1#GenerateMembershipRbacRoleBindingYamlProjectsLocationsMembershipsRbacrolebindingsRequest"
       },
       "output": {
         "target": "com.gcp.gkehub_v1#GenerateMembershipRBACRoleBindingYAMLResponse"

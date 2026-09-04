@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.task_channels#TaskChannelsListRequest": {
+    "com.posthog.task_channels#ListTaskChannelsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -245,10 +245,10 @@
       },
       "traits": {}
     },
-    "com.posthog.task_channels#TaskChannelsList": {
+    "com.posthog.task_channels#ListTaskChannels": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsListRequest"
+        "target": "com.posthog.task_channels#ListTaskChannelsRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#PaginatedChannelDTOList"
@@ -262,7 +262,7 @@
         "smithy.api#documentation": "List channels\n\nAll live public channels plus the requester's personal #me channel when it exists, sorted by name. Listing does not provision; call provision_defaults to create the default channels."
       }
     },
-    "com.posthog.task_channels#TaskChannelsCreateRequest": {
+    "com.posthog.task_channels#CreateTaskChannelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -291,10 +291,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.task_channels#TaskChannelsCreate": {
+    "com.posthog.task_channels#CreateTaskChannel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsCreateRequest"
+        "target": "com.posthog.task_channels#CreateTaskChannelRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#ChannelDTO"
@@ -308,7 +308,7 @@
         "smithy.api#documentation": "Resolve or create a public channel\n\nReturns the existing public channel with the (normalized) name, creating it if needed. A channel created here is starred for the requester unless star is false. The general name returns the team's general space; names that read as a private space (\"me\", \"personal\") are rejected."
       }
     },
-    "com.posthog.task_channels#TaskChannelsFeedListRequest": {
+    "com.posthog.task_channels#ListTaskChannelFeedRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -448,10 +448,10 @@
       },
       "traits": {}
     },
-    "com.posthog.task_channels#TaskChannelsFeedList": {
+    "com.posthog.task_channels#ListTaskChannelFeed": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsFeedListRequest"
+        "target": "com.posthog.task_channels#ListTaskChannelFeedRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#PaginatedChannelFeedMessageDTOList"
@@ -485,7 +485,7 @@
         "smithy.api#documentation": "* `context_created` - context_created\n* `context_md_building` - context_md_building"
       }
     },
-    "com.posthog.task_channels#TaskChannelsFeedCreateRequest": {
+    "com.posthog.task_channels#CreateTaskChannelFeedRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -527,10 +527,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.task_channels#TaskChannelsFeedCreate": {
+    "com.posthog.task_channels#CreateTaskChannelFeed": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsFeedCreateRequest"
+        "target": "com.posthog.task_channels#CreateTaskChannelFeedRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#ChannelFeedMessageDTO"
@@ -593,7 +593,7 @@
         "smithy.api#documentation": "GitHub repositories inherited by new tasks in this channel."
       }
     },
-    "com.posthog.task_channels#TaskChannelsPartialUpdateRequest": {
+    "com.posthog.task_channels#UpdateTaskChannelPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -635,10 +635,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.task_channels#TaskChannelsPartialUpdate": {
+    "com.posthog.task_channels#UpdateTaskChannelPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsPartialUpdateRequest"
+        "target": "com.posthog.task_channels#UpdateTaskChannelPartialRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#ChannelDTO"
@@ -752,7 +752,7 @@
         "smithy.api#documentation": "Get the channel's CONTEXT.md generation task\n\nAPI for task channels — the shared feeds tasks are kicked off in. The\nprovision_defaults action get-or-creates the requester's personal \"#me\" channel and\nthe team's shared \"#general\" channel; creation is resolve-or-create by normalized\nname so clients can map channel-like surfaces onto backend channels."
       }
     },
-    "com.posthog.task_channels#TaskChannelsContextGenerationUpdateRequest": {
+    "com.posthog.task_channels#UpdateTaskChannelContextGenerationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -782,10 +782,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.task_channels#TaskChannelsContextGenerationUpdate": {
+    "com.posthog.task_channels#UpdateTaskChannelContextGeneration": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsContextGenerationUpdateRequest"
+        "target": "com.posthog.task_channels#UpdateTaskChannelContextGenerationRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#ChannelContextGeneration"
@@ -877,7 +877,7 @@
         "smithy.api#documentation": "Get channel instructions\n\nThe channel's latest CONTEXT.md instructions. A channel with no published instructions reads as a blank version 0 — publish against base_version 0 to create version 1."
       }
     },
-    "com.posthog.task_channels#TaskChannelsInstructionsUpdateRequest": {
+    "com.posthog.task_channels#UpdateTaskChannelInstructionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -914,10 +914,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.task_channels#TaskChannelsInstructionsUpdate": {
+    "com.posthog.task_channels#UpdateTaskChannelInstruction": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsInstructionsUpdateRequest"
+        "target": "com.posthog.task_channels#UpdateTaskChannelInstructionRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#ChannelInstructionsDTO"
@@ -931,7 +931,7 @@
         "smithy.api#documentation": "Publish channel instructions\n\nPublish a new version of the channel's CONTEXT.md instructions. Pass base_version (the version you read) so a concurrent edit is rejected with 409 instead of overwritten."
       }
     },
-    "com.posthog.task_channels#TaskChannelsInstructionsPartialUpdateRequest": {
+    "com.posthog.task_channels#UpdateTaskChannelInstructionPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -967,10 +967,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.task_channels#TaskChannelsInstructionsPartialUpdate": {
+    "com.posthog.task_channels#UpdateTaskChannelInstructionPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsInstructionsPartialUpdateRequest"
+        "target": "com.posthog.task_channels#UpdateTaskChannelInstructionPartialRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#ChannelInstructionsDTO"
@@ -1101,7 +1101,7 @@
         "smithy.api#documentation": "List channel instruction versions\n\nAPI for task channels — the shared feeds tasks are kicked off in. The\nprovision_defaults action get-or-creates the requester's personal \"#me\" channel and\nthe team's shared \"#general\" channel; creation is resolve-or-create by normalized\nname so clients can map channel-like surfaces onto backend channels."
       }
     },
-    "com.posthog.task_channels#TaskChannelsStarCreateRequest": {
+    "com.posthog.task_channels#CreateTaskChannelStarRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1130,10 +1130,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.task_channels#TaskChannelsStarCreate": {
+    "com.posthog.task_channels#CreateTaskChannelStar": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsStarCreateRequest"
+        "target": "com.posthog.task_channels#CreateTaskChannelStarRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1147,7 +1147,7 @@
         "smithy.api#documentation": "Star or unstar a channel for the requesting user\n\nAPI for task channels — the shared feeds tasks are kicked off in. The\nprovision_defaults action get-or-creates the requester's personal \"#me\" channel and\nthe team's shared \"#general\" channel; creation is resolve-or-create by normalized\nname so clients can map channel-like surfaces onto backend channels."
       }
     },
-    "com.posthog.task_channels#TaskChannelsOnboardingSessionCreateRequest": {
+    "com.posthog.task_channels#CreateTaskChannelOnboardingSessionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1178,10 +1178,10 @@
         "smithy.api#documentation": "The first-run session that was started for the requester."
       }
     },
-    "com.posthog.task_channels#TaskChannelsOnboardingSessionCreate": {
+    "com.posthog.task_channels#CreateTaskChannelOnboardingSession": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsOnboardingSessionCreateRequest"
+        "target": "com.posthog.task_channels#CreateTaskChannelOnboardingSessionRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#OnboardingSession"
@@ -1227,7 +1227,7 @@
         "smithy.api#documentation": "Signal sources the onboarding flow is watching."
       }
     },
-    "com.posthog.task_channels#TaskChannelsOnboardingSessionTestCreateRequest": {
+    "com.posthog.task_channels#CreateTaskChannelOnboardingSessionTestRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1313,10 +1313,10 @@
         "smithy.api#documentation": "The first-run session that was started for the requester."
       }
     },
-    "com.posthog.task_channels#TaskChannelsOnboardingSessionTestCreate": {
+    "com.posthog.task_channels#CreateTaskChannelOnboardingSessionTest": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsOnboardingSessionTestCreateRequest"
+        "target": "com.posthog.task_channels#CreateTaskChannelOnboardingSessionTestRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#OnboardingSessionTestResponse"
@@ -1330,7 +1330,7 @@
         "smithy.api#documentation": "Start a test first-run onboarding session\n\nFeature-flagged test path that creates a repeatable session from explicit prompt-building inputs, in the requester's personal space."
       }
     },
-    "com.posthog.task_channels#TaskChannelsProvisionDefaultsCreateRequest": {
+    "com.posthog.task_channels#CreateTaskChannelProvisionDefaultRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1384,10 +1384,10 @@
         "smithy.api#documentation": "The full channel list after provisioning, same shape as the list endpoint."
       }
     },
-    "com.posthog.task_channels#TaskChannelsProvisionDefaultsCreate": {
+    "com.posthog.task_channels#CreateTaskChannelProvisionDefault": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsProvisionDefaultsCreateRequest"
+        "target": "com.posthog.task_channels#CreateTaskChannelProvisionDefaultRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#ProvisionedChannels"
@@ -1401,7 +1401,7 @@
         "smithy.api#documentation": "Provision default channels\n\nGet-or-create the requester's personal #me channel and the team's shared #general channel, and report which of the two this call created. Idempotent."
       }
     },
-    "com.posthog.task_channels#TaskChannelsTeachingCanvasTestCreateRequest": {
+    "com.posthog.task_channels#CreateTaskChannelTeachingCanvaTestRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1437,10 +1437,10 @@
       },
       "traits": {}
     },
-    "com.posthog.task_channels#TaskChannelsTeachingCanvasTestCreate": {
+    "com.posthog.task_channels#CreateTaskChannelTeachingCanvaTest": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.task_channels#TaskChannelsTeachingCanvasTestCreateRequest"
+        "target": "com.posthog.task_channels#CreateTaskChannelTeachingCanvaTestRequest"
       },
       "output": {
         "target": "com.posthog.task_channels#TeachingCanvas"
@@ -1472,22 +1472,22 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.task_channels#TaskChannelsList"
+          "target": "com.posthog.task_channels#ListTaskChannels"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsCreate"
+          "target": "com.posthog.task_channels#CreateTaskChannel"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsFeedList"
+          "target": "com.posthog.task_channels#ListTaskChannelFeed"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsFeedCreate"
+          "target": "com.posthog.task_channels#CreateTaskChannelFeed"
         },
         {
           "target": "com.posthog.task_channels#TaskChannelsRetrieve"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsPartialUpdate"
+          "target": "com.posthog.task_channels#UpdateTaskChannelPartial"
         },
         {
           "target": "com.posthog.task_channels#TaskChannelsDestroy"
@@ -1496,16 +1496,16 @@
           "target": "com.posthog.task_channels#TaskChannelsContextGenerationRetrieve"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsContextGenerationUpdate"
+          "target": "com.posthog.task_channels#UpdateTaskChannelContextGeneration"
         },
         {
           "target": "com.posthog.task_channels#TaskChannelsInstructionsRetrieve"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsInstructionsUpdate"
+          "target": "com.posthog.task_channels#UpdateTaskChannelInstruction"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsInstructionsPartialUpdate"
+          "target": "com.posthog.task_channels#UpdateTaskChannelInstructionPartial"
         },
         {
           "target": "com.posthog.task_channels#TaskChannelsInstructionsDestroy"
@@ -1514,19 +1514,19 @@
           "target": "com.posthog.task_channels#TaskChannelsInstructionsVersionsRetrieve"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsStarCreate"
+          "target": "com.posthog.task_channels#CreateTaskChannelStar"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsOnboardingSessionCreate"
+          "target": "com.posthog.task_channels#CreateTaskChannelOnboardingSession"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsOnboardingSessionTestCreate"
+          "target": "com.posthog.task_channels#CreateTaskChannelOnboardingSessionTest"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsProvisionDefaultsCreate"
+          "target": "com.posthog.task_channels#CreateTaskChannelProvisionDefault"
         },
         {
-          "target": "com.posthog.task_channels#TaskChannelsTeachingCanvasTestCreate"
+          "target": "com.posthog.task_channels#CreateTaskChannelTeachingCanvaTest"
         }
       ],
       "traits": {

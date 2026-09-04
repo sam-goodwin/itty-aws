@@ -8339,7 +8339,7 @@
         "smithy.api#documentation": "Export access report\n\nExport a report of all access requests for a gated repository"
       }
     },
-    "com.huggingface.models#CancelAccessRequestRequest": {
+    "com.huggingface.models#RequestCancelAccessRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -8361,10 +8361,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.huggingface.models#CancelAccessRequest": {
+    "com.huggingface.models#RequestCancelAccess": {
       "type": "operation",
       "input": {
-        "target": "com.huggingface.models#CancelAccessRequestRequest"
+        "target": "com.huggingface.models#RequestCancelAccessRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8943,7 +8943,7 @@
       },
       "traits": {}
     },
-    "com.huggingface.models#HandleAccessRequestRequest": {
+    "com.huggingface.models#RequestHandleAccessRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -8986,10 +8986,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.huggingface.models#HandleAccessRequest": {
+    "com.huggingface.models#RequestHandleAccess": {
       "type": "operation",
       "input": {
-        "target": "com.huggingface.models#HandleAccessRequestRequest"
+        "target": "com.huggingface.models#RequestHandleAccessRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9323,13 +9323,13 @@
           "target": "com.huggingface.models#ExportAccessReport"
         },
         {
-          "target": "com.huggingface.models#CancelAccessRequest"
+          "target": "com.huggingface.models#RequestCancelAccess"
         },
         {
           "target": "com.huggingface.models#ListAccessRequests"
         },
         {
-          "target": "com.huggingface.models#HandleAccessRequest"
+          "target": "com.huggingface.models#RequestHandleAccess"
         },
         {
           "target": "com.huggingface.models#BatchHandleAccessRequests"

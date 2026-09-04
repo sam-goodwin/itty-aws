@@ -14382,7 +14382,7 @@
         "smithy.api#documentation": "Fetch upgrade information of a specific node pool."
       }
     },
-    "com.gcp.container_v1beta1#GetOpenid_configurationProjectsLocationsClustersWell_knownRequest": {
+    "com.gcp.container_v1beta1#GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -14395,10 +14395,10 @@
         }
       }
     },
-    "com.gcp.container_v1beta1#GetOpenid_configurationProjectsLocationsClustersWell_known": {
+    "com.gcp.container_v1beta1#GetOpenidConfigurationProjectsLocationsClustersWellKnown": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.container_v1beta1#GetOpenid_configurationProjectsLocationsClustersWell_knownRequest"
+        "target": "com.gcp.container_v1beta1#GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest"
       },
       "output": {
         "target": "com.gcp.container_v1beta1#GetOpenIDConfigResponse"

@@ -149,52 +149,6 @@ export const GoogleFirebaseAppdistroV1BatchAddTestersResponse =
     identifier: "GoogleFirebaseAppdistroV1BatchAddTestersResponse",
   }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchAddTestersResponse>;
 
-/** The request message for `BatchDeleteReleases`. */
-export interface GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
-  /** Required. The names of the release resources to delete. Format: `projects/{project_number}/apps/{app}/releases/{release}` A maximum of 100 releases can be deleted per request. */
-  names?: StringList;
-}
-export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      names: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest",
-  }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest>;
-
-export interface BatchDeleteProjectsAppsReleasesRequest {
-  /** Required. The name of the app resource, which is the parent of the release resources. Format: `projects/{project_number}/apps/{app}` */
-  parent: string;
-  /** Request body */
-  body?: GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest;
-}
-export const BatchDeleteProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/releases:batchDelete",
-        baseUrl: "https://firebaseappdistribution.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BatchDeleteProjectsAppsReleasesRequest",
-}) as any as S.Schema<BatchDeleteProjectsAppsReleasesRequest>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
-
 /** The request message for `BatchJoinGroup` */
 export interface GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   /** Indicates whether to create tester resources based on `emails` if they don't exist yet. */
@@ -234,6 +188,14 @@ export const BatchJoinProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchJoinProjectsGroupsRequest",
 }) as any as S.Schema<BatchJoinProjectsGroupsRequest>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface GoogleProtobufEmpty {}
+export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobufEmpty",
+}) as any as S.Schema<GoogleProtobufEmpty>;
 
 /** Request message for `BatchLeaveGroup` */
 export interface GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
@@ -403,6 +365,43 @@ export const CreateProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProjectsGroupsRequest",
 }) as any as S.Schema<CreateProjectsGroupsRequest>;
+
+/** The request message for `BatchDeleteReleases`. */
+export interface GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
+  /** Required. The names of the release resources to delete. Format: `projects/{project_number}/apps/{app}/releases/{release}` A maximum of 100 releases can be deleted per request. */
+  names?: StringList;
+}
+export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      names: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest>;
+
+export interface DeleteBatchProjectAppReleaseRequest {
+  /** Required. The name of the app resource, which is the parent of the release resources. Format: `projects/{project_number}/apps/{app}` */
+  parent: string;
+  /** Request body */
+  body?: GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest;
+}
+export const DeleteBatchProjectAppReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/releases:batchDelete",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBatchProjectAppReleaseRequest",
+}) as any as S.Schema<DeleteBatchProjectAppReleaseRequest>;
 
 export interface DeleteProjectsAppsReleasesFeedbackReportsRequest {
   /** Required. The name of the feedback report to delete. Format: projects/{project_number}/apps/{app}/releases/{release}/feedbackReports/{feedback_report} */
@@ -1621,26 +1620,6 @@ export const batchAddProjectsTesters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteProjectsAppsReleasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes releases. A maximum of 100 releases can be deleted per request. */
-export const batchDeleteProjectsAppsReleases: API.OperationMethod<
-  BatchDeleteProjectsAppsReleasesRequest,
-  GoogleProtobufEmpty,
-  BatchDeleteProjectsAppsReleasesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteProjectsAppsReleasesRequest,
-  output: GoogleProtobufEmpty,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BatchJoinProjectsGroupsError =
   | NotFound
   | Forbidden
@@ -1736,6 +1715,26 @@ export const createProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsGroupsRequest,
   output: GoogleFirebaseAppdistroV1Group,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchProjectAppReleaseError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes releases. A maximum of 100 releases can be deleted per request. */
+export const deleteBatchProjectAppRelease: API.OperationMethod<
+  DeleteBatchProjectAppReleaseRequest,
+  GoogleProtobufEmpty,
+  DeleteBatchProjectAppReleaseError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchProjectAppReleaseRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

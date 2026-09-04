@@ -65,193 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type GoogleCloudSecuritycenterV1ResourceValueConfigResourceValueEnum =
-  | "RESOURCE_VALUE_UNSPECIFIED"
-  | "HIGH"
-  | "MEDIUM"
-  | "LOW"
-  | "NONE";
-export const GoogleCloudSecuritycenterV1ResourceValueConfigResourceValueEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudSecuritycenterV1ResourceValueConfigCloudProviderEnum =
-  | "CLOUD_PROVIDER_UNSPECIFIED"
-  | "GOOGLE_CLOUD_PLATFORM"
-  | "AMAZON_WEB_SERVICES"
-  | "MICROSOFT_AZURE";
-export const GoogleCloudSecuritycenterV1ResourceValueConfigCloudProviderEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingHighSensitivityMappingEnum =
-  | "RESOURCE_VALUE_UNSPECIFIED"
-  | "HIGH"
-  | "MEDIUM"
-  | "LOW"
-  | "NONE";
-export const GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingHighSensitivityMappingEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingMediumSensitivityMappingEnum =
-  | "RESOURCE_VALUE_UNSPECIFIED"
-  | "HIGH"
-  | "MEDIUM"
-  | "LOW"
-  | "NONE";
-export const GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingMediumSensitivityMappingEnum =
-  /*@__PURE__*/ S.String;
-
-export interface GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping {
-  highSensitivityMapping?:
-    | GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingHighSensitivityMappingEnum
-    | (string & {});
-  mediumSensitivityMapping?:
-    | GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingMediumSensitivityMappingEnum
-    | (string & {});
-}
-export const GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      highSensitivityMapping: S.optional(
-        GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingHighSensitivityMappingEnum,
-      ),
-      mediumSensitivityMapping: S.optional(
-        GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingMediumSensitivityMappingEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping",
-  }) as any as S.Schema<GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping>;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
-export interface GoogleCloudSecuritycenterV1ResourceValueConfig {
-  resourceValue?:
-    | GoogleCloudSecuritycenterV1ResourceValueConfigResourceValueEnum
-    | (string & {});
-  cloudProvider?:
-    | GoogleCloudSecuritycenterV1ResourceValueConfigCloudProviderEnum
-    | (string & {});
-  scope?: string;
-  description?: string;
-  sensitiveDataProtectionMapping?: GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping;
-  tagValues?: StringList;
-  name?: string;
-  resourceLabelsSelector?: StringMap;
-  resourceType?: string;
-  createTime?: string;
-  updateTime?: string;
-}
-export const GoogleCloudSecuritycenterV1ResourceValueConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceValue: S.optional(
-        GoogleCloudSecuritycenterV1ResourceValueConfigResourceValueEnum,
-      ),
-      cloudProvider: S.optional(
-        GoogleCloudSecuritycenterV1ResourceValueConfigCloudProviderEnum,
-      ),
-      scope: S.optional(S.String),
-      description: S.optional(S.String),
-      sensitiveDataProtectionMapping: S.optional(
-        GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping,
-      ),
-      tagValues: S.optional(StringList),
-      name: S.optional(S.String),
-      resourceLabelsSelector: S.optional(StringMap),
-      resourceType: S.optional(S.String),
-      createTime: S.optional(S.String),
-      updateTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudSecuritycenterV1ResourceValueConfig",
-  }) as any as S.Schema<GoogleCloudSecuritycenterV1ResourceValueConfig>;
-
-export interface CreateResourceValueConfigRequest {
-  resourceValueConfig?: GoogleCloudSecuritycenterV1ResourceValueConfig;
-  parent?: string;
-}
-export const CreateResourceValueConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceValueConfig: S.optional(
-      GoogleCloudSecuritycenterV1ResourceValueConfig,
-    ),
-    parent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateResourceValueConfigRequest",
-}) as any as S.Schema<CreateResourceValueConfigRequest>;
-
-export type CreateResourceValueConfigRequestList =
-  Array<CreateResourceValueConfigRequest>;
-export const CreateResourceValueConfigRequestList = /*@__PURE__*/ S.Array(
-  CreateResourceValueConfigRequest,
-) as any as S.Schema<CreateResourceValueConfigRequestList>;
-
-export interface BatchCreateResourceValueConfigsRequest {
-  requests?: CreateResourceValueConfigRequestList;
-}
-export const BatchCreateResourceValueConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requests: S.optional(CreateResourceValueConfigRequestList),
-    }),
-).annotate({
-  identifier: "BatchCreateResourceValueConfigsRequest",
-}) as any as S.Schema<BatchCreateResourceValueConfigsRequest>;
-
-export interface BatchCreateOrganizationsResourceValueConfigsRequest {
-  parent: string;
-  /** Request body */
-  body?: BatchCreateResourceValueConfigsRequest;
-}
-export const BatchCreateOrganizationsResourceValueConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        BatchCreateResourceValueConfigsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/resourceValueConfigs:batchCreate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchCreateOrganizationsResourceValueConfigsRequest",
-  }) as any as S.Schema<BatchCreateOrganizationsResourceValueConfigsRequest>;
-
-export type GoogleCloudSecuritycenterV1ResourceValueConfigList =
-  Array<GoogleCloudSecuritycenterV1ResourceValueConfig>;
-export const GoogleCloudSecuritycenterV1ResourceValueConfigList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudSecuritycenterV1ResourceValueConfig,
-  ) as any as S.Schema<GoogleCloudSecuritycenterV1ResourceValueConfigList>;
-
-export interface BatchCreateResourceValueConfigsResponse {
-  resourceValueConfigs?: GoogleCloudSecuritycenterV1ResourceValueConfigList;
-}
-export const BatchCreateResourceValueConfigsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceValueConfigs: S.optional(
-        GoogleCloudSecuritycenterV1ResourceValueConfigList,
-      ),
-    }),
-).annotate({
-  identifier: "BatchCreateResourceValueConfigsResponse",
-}) as any as S.Schema<BatchCreateResourceValueConfigsResponse>;
-
 export type BulkMuteFindingsRequestMuteStateEnum =
   | "MUTE_STATE_UNSPECIFIED"
   | "MUTED"
@@ -397,6 +210,193 @@ export interface Empty {}
 export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
+
+export type GoogleCloudSecuritycenterV1ResourceValueConfigResourceValueEnum =
+  | "RESOURCE_VALUE_UNSPECIFIED"
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | "NONE";
+export const GoogleCloudSecuritycenterV1ResourceValueConfigResourceValueEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudSecuritycenterV1ResourceValueConfigCloudProviderEnum =
+  | "CLOUD_PROVIDER_UNSPECIFIED"
+  | "GOOGLE_CLOUD_PLATFORM"
+  | "AMAZON_WEB_SERVICES"
+  | "MICROSOFT_AZURE";
+export const GoogleCloudSecuritycenterV1ResourceValueConfigCloudProviderEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingHighSensitivityMappingEnum =
+  | "RESOURCE_VALUE_UNSPECIFIED"
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | "NONE";
+export const GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingHighSensitivityMappingEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingMediumSensitivityMappingEnum =
+  | "RESOURCE_VALUE_UNSPECIFIED"
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | "NONE";
+export const GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingMediumSensitivityMappingEnum =
+  /*@__PURE__*/ S.String;
+
+export interface GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping {
+  highSensitivityMapping?:
+    | GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingHighSensitivityMappingEnum
+    | (string & {});
+  mediumSensitivityMapping?:
+    | GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingMediumSensitivityMappingEnum
+    | (string & {});
+}
+export const GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      highSensitivityMapping: S.optional(
+        GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingHighSensitivityMappingEnum,
+      ),
+      mediumSensitivityMapping: S.optional(
+        GoogleCloudSecuritycenterV1SensitiveDataProtectionMappingMediumSensitivityMappingEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping",
+  }) as any as S.Schema<GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping>;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
+export interface GoogleCloudSecuritycenterV1ResourceValueConfig {
+  resourceValue?:
+    | GoogleCloudSecuritycenterV1ResourceValueConfigResourceValueEnum
+    | (string & {});
+  cloudProvider?:
+    | GoogleCloudSecuritycenterV1ResourceValueConfigCloudProviderEnum
+    | (string & {});
+  scope?: string;
+  description?: string;
+  sensitiveDataProtectionMapping?: GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping;
+  tagValues?: StringList;
+  name?: string;
+  resourceLabelsSelector?: StringMap;
+  resourceType?: string;
+  createTime?: string;
+  updateTime?: string;
+}
+export const GoogleCloudSecuritycenterV1ResourceValueConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceValue: S.optional(
+        GoogleCloudSecuritycenterV1ResourceValueConfigResourceValueEnum,
+      ),
+      cloudProvider: S.optional(
+        GoogleCloudSecuritycenterV1ResourceValueConfigCloudProviderEnum,
+      ),
+      scope: S.optional(S.String),
+      description: S.optional(S.String),
+      sensitiveDataProtectionMapping: S.optional(
+        GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping,
+      ),
+      tagValues: S.optional(StringList),
+      name: S.optional(S.String),
+      resourceLabelsSelector: S.optional(StringMap),
+      resourceType: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudSecuritycenterV1ResourceValueConfig",
+  }) as any as S.Schema<GoogleCloudSecuritycenterV1ResourceValueConfig>;
+
+export interface CreateResourceValueConfigRequest {
+  resourceValueConfig?: GoogleCloudSecuritycenterV1ResourceValueConfig;
+  parent?: string;
+}
+export const CreateResourceValueConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceValueConfig: S.optional(
+      GoogleCloudSecuritycenterV1ResourceValueConfig,
+    ),
+    parent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResourceValueConfigRequest",
+}) as any as S.Schema<CreateResourceValueConfigRequest>;
+
+export type CreateResourceValueConfigRequestList =
+  Array<CreateResourceValueConfigRequest>;
+export const CreateResourceValueConfigRequestList = /*@__PURE__*/ S.Array(
+  CreateResourceValueConfigRequest,
+) as any as S.Schema<CreateResourceValueConfigRequestList>;
+
+export interface BatchCreateResourceValueConfigsRequest {
+  requests?: CreateResourceValueConfigRequestList;
+}
+export const BatchCreateResourceValueConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requests: S.optional(CreateResourceValueConfigRequestList),
+    }),
+).annotate({
+  identifier: "BatchCreateResourceValueConfigsRequest",
+}) as any as S.Schema<BatchCreateResourceValueConfigsRequest>;
+
+export interface CreateBatchOrganizationResourceValueConfigRequest {
+  parent: string;
+  /** Request body */
+  body?: BatchCreateResourceValueConfigsRequest;
+}
+export const CreateBatchOrganizationResourceValueConfigRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        BatchCreateResourceValueConfigsRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/resourceValueConfigs:batchCreate",
+        baseUrl: "https://securitycenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateBatchOrganizationResourceValueConfigRequest",
+  }) as any as S.Schema<CreateBatchOrganizationResourceValueConfigRequest>;
+
+export type GoogleCloudSecuritycenterV1ResourceValueConfigList =
+  Array<GoogleCloudSecuritycenterV1ResourceValueConfig>;
+export const GoogleCloudSecuritycenterV1ResourceValueConfigList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudSecuritycenterV1ResourceValueConfig,
+  ) as any as S.Schema<GoogleCloudSecuritycenterV1ResourceValueConfigList>;
+
+export interface BatchCreateResourceValueConfigsResponse {
+  resourceValueConfigs?: GoogleCloudSecuritycenterV1ResourceValueConfigList;
+}
+export const BatchCreateResourceValueConfigsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resourceValueConfigs: S.optional(
+        GoogleCloudSecuritycenterV1ResourceValueConfigList,
+      ),
+    }),
+).annotate({
+  identifier: "BatchCreateResourceValueConfigsResponse",
+}) as any as S.Schema<BatchCreateResourceValueConfigsResponse>;
 
 export interface GoogleCloudSecuritycenterV1BigQueryExport {
   mostRecentEditor?: string;
@@ -8390,25 +8390,6 @@ export const ValidateCustomModuleProjectsEventThreatDetectionSettingsRequest =
       "ValidateCustomModuleProjectsEventThreatDetectionSettingsRequest",
   }) as any as S.Schema<ValidateCustomModuleProjectsEventThreatDetectionSettingsRequest>;
 
-export type BatchCreateOrganizationsResourceValueConfigsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-export const batchCreateOrganizationsResourceValueConfigs: API.OperationMethod<
-  BatchCreateOrganizationsResourceValueConfigsRequest,
-  BatchCreateResourceValueConfigsResponse,
-  BatchCreateOrganizationsResourceValueConfigsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateOrganizationsResourceValueConfigsRequest,
-  output: BatchCreateResourceValueConfigsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BulkMuteFoldersFindingsError =
   | NotFound
   | Forbidden
@@ -8480,6 +8461,25 @@ export const cancelOrganizationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelOrganizationsOperationsRequest,
   output: Empty,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchOrganizationResourceValueConfigError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+export const createBatchOrganizationResourceValueConfig: API.OperationMethod<
+  CreateBatchOrganizationResourceValueConfigRequest,
+  BatchCreateResourceValueConfigsResponse,
+  CreateBatchOrganizationResourceValueConfigError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchOrganizationResourceValueConfigRequest,
+  output: BatchCreateResourceValueConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

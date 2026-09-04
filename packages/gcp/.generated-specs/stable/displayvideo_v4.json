@@ -37077,7 +37077,7 @@
         "smithy.api#documentation": "Creates a new campaign. Returns the newly created campaign if successful."
       }
     },
-    "com.gcp.displayvideo_v4#BulkCreateAdvertisersAdAssetsRequest": {
+    "com.gcp.displayvideo_v4#CreateBulkAdvertiserAdAssetRequest": {
       "type": "structure",
       "members": {
         "advertiserId": {
@@ -37097,10 +37097,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v4#BulkCreateAdvertisersAdAssets": {
+    "com.gcp.displayvideo_v4#CreateBulkAdvertiserAdAsset": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v4#BulkCreateAdvertisersAdAssetsRequest"
+        "target": "com.gcp.displayvideo_v4#CreateBulkAdvertiserAdAssetRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v4#BulkCreateAdAssetsResponse"
@@ -39033,7 +39033,7 @@
         }
       }
     },
-    "com.gcp.displayvideo_v4#BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest": {
+    "com.gcp.displayvideo_v4#ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -39081,10 +39081,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v4#BulkListAssignedTargetingOptionsAdvertisersLineItems": {
+    "com.gcp.displayvideo_v4#ListBulkAssignedTargetingOptionAdvertiserLineItems": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v4#BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest"
+        "target": "com.gcp.displayvideo_v4#ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v4#BulkListAssignedTargetingOptionsResponse"
@@ -39394,7 +39394,7 @@
         "smithy.api#documentation": "Creates a new line item. Returns the newly created line item if successful. YouTube & Partners line items cannot be created or updated using the API."
       }
     },
-    "com.gcp.displayvideo_v4#BulkUpdateAdvertisersLineItemsRequest": {
+    "com.gcp.displayvideo_v4#UpdateBulkAdvertiserLineItemRequest": {
       "type": "structure",
       "members": {
         "advertiserId": {
@@ -39414,10 +39414,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v4#BulkUpdateAdvertisersLineItems": {
+    "com.gcp.displayvideo_v4#UpdateBulkAdvertiserLineItem": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v4#BulkUpdateAdvertisersLineItemsRequest"
+        "target": "com.gcp.displayvideo_v4#UpdateBulkAdvertiserLineItemRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v4#BulkUpdateLineItemsResponse"
@@ -42838,7 +42838,7 @@
         "smithy.api#documentation": "Bulk edits targeting options for multiple ad groups. The same set of delete and create requests will be applied to all specified ad groups. Specifically, the operation will delete the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group, and then create the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand Gen ad groups."
       }
     },
-    "com.gcp.displayvideo_v4#BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest": {
+    "com.gcp.displayvideo_v4#ListBulkAssignedTargetingOptionAdvertiserAdGroupsRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -42886,10 +42886,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v4#BulkListAssignedTargetingOptionsAdvertisersAdGroups": {
+    "com.gcp.displayvideo_v4#ListBulkAssignedTargetingOptionAdvertiserAdGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v4#BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest"
+        "target": "com.gcp.displayvideo_v4#ListBulkAssignedTargetingOptionAdvertiserAdGroupsRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v4#BulkListAdGroupAssignedTargetingOptionsResponse"

@@ -5700,7 +5700,7 @@
         "smithy.api#documentation": "Create a database."
       }
     },
-    "com.gcp.firestore_v1#BulkDeleteDocumentsProjectsDatabasesRequest": {
+    "com.gcp.firestore_v1#DeleteBulkDocumentProjectDatabaseRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -5720,10 +5720,10 @@
         }
       }
     },
-    "com.gcp.firestore_v1#BulkDeleteDocumentsProjectsDatabases": {
+    "com.gcp.firestore_v1#DeleteBulkDocumentProjectDatabase": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firestore_v1#BulkDeleteDocumentsProjectsDatabasesRequest"
+        "target": "com.gcp.firestore_v1#DeleteBulkDocumentProjectDatabaseRequest"
       },
       "output": {
         "target": "com.gcp.firestore_v1#GoogleLongrunningOperation"
@@ -7126,7 +7126,7 @@
         "smithy.api#documentation": "Lists all the collection IDs underneath a document."
       }
     },
-    "com.gcp.firestore_v1#BatchGetProjectsDatabasesDocumentsRequest": {
+    "com.gcp.firestore_v1#GetBatchProjectDatabaseDocumentRequest": {
       "type": "structure",
       "members": {
         "database": {
@@ -7146,10 +7146,10 @@
         }
       }
     },
-    "com.gcp.firestore_v1#BatchGetProjectsDatabasesDocuments": {
+    "com.gcp.firestore_v1#GetBatchProjectDatabaseDocument": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firestore_v1#BatchGetProjectsDatabasesDocumentsRequest"
+        "target": "com.gcp.firestore_v1#GetBatchProjectDatabaseDocumentRequest"
       },
       "output": {
         "target": "com.gcp.firestore_v1#BatchGetDocumentsResponse"

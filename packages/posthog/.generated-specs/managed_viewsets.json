@@ -97,7 +97,7 @@
         "smithy.api#documentation": "* `revenue_analytics` - Revenue Analytics\n* `engineering_analytics` - Engineering Analytics"
       }
     },
-    "com.posthog.managed_viewsets#ManagedViewsetsUpdateRequest": {
+    "com.posthog.managed_viewsets#UpdateManagedViewsetRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -120,10 +120,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.managed_viewsets#ManagedViewsetsUpdate": {
+    "com.posthog.managed_viewsets#UpdateManagedViewset": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.managed_viewsets#ManagedViewsetsUpdateRequest"
+        "target": "com.posthog.managed_viewsets#UpdateManagedViewsetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -145,7 +145,7 @@
           "target": "com.posthog.managed_viewsets#ManagedViewsetsRetrieve"
         },
         {
-          "target": "com.posthog.managed_viewsets#ManagedViewsetsUpdate"
+          "target": "com.posthog.managed_viewsets#UpdateManagedViewset"
         }
       ],
       "traits": {

@@ -8277,7 +8277,7 @@
       },
       "traits": {}
     },
-    "com.axiom.api#GetAPITokensResponse": {
+    "com.axiom.api#GetApiTokensResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -8292,13 +8292,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.axiom.api#GetAPITokens": {
+    "com.axiom.api#GetApiTokens": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.axiom.api#GetAPITokensResponse"
+        "target": "com.axiom.api#GetApiTokensResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8309,7 +8309,7 @@
         "smithy.api#documentation": "Get API tokens"
       }
     },
-    "com.axiom.api#CreateAPITokenRequest": {
+    "com.axiom.api#CreateApiTokenRequest": {
       "type": "structure",
       "members": {
         "datasetCapabilities": {
@@ -8346,7 +8346,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.axiom.api#CreateAPITokenResponse": {
+    "com.axiom.api#CreateApiTokenResponse": {
       "type": "structure",
       "members": {
         "datasetCapabilities": {
@@ -8402,13 +8402,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.axiom.api#CreateAPIToken": {
+    "com.axiom.api#CreateApiToken": {
       "type": "operation",
       "input": {
-        "target": "com.axiom.api#CreateAPITokenRequest"
+        "target": "com.axiom.api#CreateApiTokenRequest"
       },
       "output": {
-        "target": "com.axiom.api#CreateAPITokenResponse"
+        "target": "com.axiom.api#CreateApiTokenResponse"
       },
       "errors": [
         {
@@ -8424,7 +8424,7 @@
         "smithy.api#documentation": "Create API token"
       }
     },
-    "com.axiom.api#GetAPITokenRequest": {
+    "com.axiom.api#GetApiTokenRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -8439,10 +8439,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.axiom.api#GetAPIToken": {
+    "com.axiom.api#GetApiToken": {
       "type": "operation",
       "input": {
-        "target": "com.axiom.api#GetAPITokenRequest"
+        "target": "com.axiom.api#GetApiTokenRequest"
       },
       "output": {
         "target": "com.axiom.api#APIToken"
@@ -8461,7 +8461,7 @@
         "smithy.api#documentation": "Get API token by ID"
       }
     },
-    "com.axiom.api#DeleteAPITokenRequest": {
+    "com.axiom.api#DeleteApiTokenRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -8476,10 +8476,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.axiom.api#DeleteAPIToken": {
+    "com.axiom.api#DeleteApiToken": {
       "type": "operation",
       "input": {
-        "target": "com.axiom.api#DeleteAPITokenRequest"
+        "target": "com.axiom.api#DeleteApiTokenRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -12105,16 +12105,16 @@
           "target": "com.axiom.api#DeleteStarred"
         },
         {
-          "target": "com.axiom.api#GetAPITokens"
+          "target": "com.axiom.api#GetApiTokens"
         },
         {
-          "target": "com.axiom.api#CreateAPIToken"
+          "target": "com.axiom.api#CreateApiToken"
         },
         {
-          "target": "com.axiom.api#GetAPIToken"
+          "target": "com.axiom.api#GetApiToken"
         },
         {
-          "target": "com.axiom.api#DeleteAPIToken"
+          "target": "com.axiom.api#DeleteApiToken"
         },
         {
           "target": "com.axiom.api#RegenerateAPIToken"

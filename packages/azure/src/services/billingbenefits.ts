@@ -12,376 +12,6 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ApplicableMaccsListRequest {
-  /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
-  billingAccountId: string;
-}
-export const ApplicableMaccsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.BillingBenefits/applicableMaccs",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ApplicableMaccsListRequest",
-}) as any as S.Schema<ApplicableMaccsListRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** Provisioning state for billing benefit resources. Includes the standard terminal states (Succeeded, Failed, Canceled) plus benefit-specific transition states. */
-export type BenefitProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Pending";
-export const BenefitProvisioningState = /*@__PURE__*/ S.String;
-
-/** Represents the current status of the MACC. */
-export type MaccStatus =
-  | "Unknown"
-  | "Scheduled"
-  | "Active"
-  | "Pending"
-  | "Failed"
-  | "Canceled"
-  | "Completed"
-  | "Stopped"
-  | "PendingSettlement"
-  | "ShortfallCharged"
-  | "ShortfallWaived";
-export const MaccStatus = /*@__PURE__*/ S.String;
-
-/** Represents type of the object being operated on. Possible values are primary or contributor. */
-export type MaccEntityType = "Primary" | "Contributor";
-export const MaccEntityType = /*@__PURE__*/ S.String;
-
-/** Grain. */
-export type CommitmentGrain = "Hourly" | "FullTerm" | "Unknown";
-export const CommitmentGrain = /*@__PURE__*/ S.String;
-
-/** Commitment towards the benefit. */
-export interface Commitment {
-  /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
-  currencyCode?: string;
-  amount?: number;
-  /** The grain of the commitment. */
-  grain?: CommitmentGrain | (string & {});
-}
-export const Commitment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String),
-    amount: S.optional(S.Number),
-    grain: S.optional(CommitmentGrain),
-  }),
-).annotate({ identifier: "Commitment" }) as any as S.Schema<Commitment>;
-
-/** Represents the enablement status of a feature or settings. */
-export type EnablementMode = "Unknown" | "Enabled" | "Disabled";
-export const EnablementMode = /*@__PURE__*/ S.String;
-
-/** Optional field to record suppression reason for automatic shortfall. */
-export interface AutomaticShortfallSuppressReason {
-  /** Code for the suppression reason. */
-  code?: string;
-  /** Message for suppression reason. */
-  message?: string;
-}
-export const AutomaticShortfallSuppressReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutomaticShortfallSuppressReason",
-}) as any as S.Schema<AutomaticShortfallSuppressReason>;
-
-/** MACC shortfall */
-export interface Shortfall {
-  /** Represents catalog UPN. */
-  productCode?: string;
-  /** Shortfall amount with grain. */
-  charge?: Commitment;
-  /** Start DateTime. */
-  startAt?: string;
-  /** End DateTime in UTC. */
-  endAt?: string;
-  /** Fully-qualified resource identifier of the credits associated with the shortfall. */
-  resourceId?: string;
-  /** Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created. */
-  balanceVersion?: number;
-  /** This is an identifier of the shortfall which will not change for its lifetime. */
-  systemId?: string;
-}
-export const Shortfall = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productCode: S.optional(S.String),
-    charge: S.optional(Commitment),
-    startAt: S.optional(S.String),
-    endAt: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    balanceVersion: S.optional(S.Number),
-    systemId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Shortfall" }) as any as S.Schema<Shortfall>;
-
-export interface Price {
-  /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
-  currencyCode?: string;
-  amount?: number;
-}
-export const Price = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String),
-    amount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
-
-/** Represents the current status of the Milestone. */
-export type MaccMilestoneStatus =
-  | "Unknown"
-  | "Scheduled"
-  | "Active"
-  | "Pending"
-  | "Failed"
-  | "Completed"
-  | "Canceled"
-  | "Removed"
-  | "PendingSettlement"
-  | "ShortfallCharged"
-  | "ShortfallWaived";
-export const MaccMilestoneStatus = /*@__PURE__*/ S.String;
-
-/** MACC milestone represents interim targets within the period of MACC. */
-export interface MaccMilestone {
-  /** Globally unique identifier for the milestone. Format: {guid} */
-  milestoneId?: string;
-  /** Commitment associated with this milestone. */
-  commitment?: Price;
-  /** End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z. */
-  endAt?: string;
-  /** Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met. */
-  automaticShortfall?: EnablementMode | (string & {});
-  /** Optional field to record suppression reason for automatic shortfall. */
-  automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
-  /** Represents the current status of the Milestone. */
-  status?: MaccMilestoneStatus | (string & {});
-  /** Details of the shortfall associated with this milestone. */
-  shortfall?: Shortfall;
-}
-export const MaccMilestone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    milestoneId: S.optional(S.String),
-    commitment: S.optional(Price),
-    endAt: S.optional(S.String),
-    automaticShortfall: S.optional(EnablementMode),
-    automaticShortfallSuppressReason: S.optional(
-      AutomaticShortfallSuppressReason,
-    ),
-    status: S.optional(MaccMilestoneStatus),
-    shortfall: S.optional(Shortfall),
-  }),
-).annotate({ identifier: "MaccMilestone" }) as any as S.Schema<MaccMilestone>;
-
-/** List of milestones associated with this MACC. */
-export type MaccModelPropertiesMilestonesList = Array<MaccMilestone>;
-export const MaccModelPropertiesMilestonesList = /*@__PURE__*/ S.Array(
-  MaccMilestone,
-) as any as S.Schema<MaccModelPropertiesMilestonesList>;
-
-/** Common product detail properties shared across all benefit resources */
-export interface ProductDetailsBase {
-  /** SKU title of the product */
-  skuTitle?: string;
-  /** The product family, for example "Azure" or "M365". */
-  productFamily?: string;
-  /** The type of the product. */
-  productType?: string;
-}
-export const ProductDetailsBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skuTitle: S.optional(S.String),
-    productFamily: S.optional(S.String),
-    productType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductDetailsBase",
-}) as any as S.Schema<ProductDetailsBase>;
-
-/** List of applied scope types supported for benefit resources. */
-export type BenefitAppliedScopeType =
-  | "BillingAccount"
-  | "BillingProfile"
-  | "Customer";
-export const BenefitAppliedScopeType = /*@__PURE__*/ S.String;
-
-/** MACC properties */
-export interface MaccModelProperties {
-  /** Provisioning state of MACC as assigned by RPaaS. This indicates the last operation's status. For all practical purposes, this can be ignored. For current status of MACC resource, refer to MaccStatus. */
-  provisioningState?: BenefitProvisioningState;
-  /** Represents the current status of the MACC. */
-  status?: MaccStatus;
-  /** Represents type of the object being operated on. Possible values are primary or contributor. */
-  entityType: MaccEntityType;
-  /** Display name */
-  displayName?: string;
-  /** Represents catalog UPN. */
-  productCode?: string;
-  /** Fully-qualified identifier of the billing account where the MACC is applied. Present only for Enterprise Agreement customers. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId} */
-  billingAccountResourceId?: string;
-  /** Commitment towards the benefit. */
-  commitment?: Commitment;
-  /** Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z. */
-  startAt?: string;
-  /** Must be end of month. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z. */
-  endAt?: string;
-  /** This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC. */
-  systemId?: string;
-  /** Setting this to 'Enable' enables automatic shortfall charging when commitment is not met. */
-  automaticShortfall?: EnablementMode;
-  /** Optional field to record suppression reason for automatic shortfall. */
-  automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
-  /** MACC shortfall */
-  shortfall?: Shortfall;
-  /** List of milestones associated with this MACC. */
-  milestones?: MaccModelPropertiesMilestonesList;
-  /** This is the resource identifier of either the primary MACC or the contributor. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
-  resourceId?: string;
-  /** Setting this to true means multi-entity. */
-  allowContributors?: boolean;
-  /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
-  primaryResourceId?: string;
-  /** Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
-  primaryBillingAccountResourceId?: string;
-  /** Product details including SKU title, product family, and product type. */
-  productDetails?: ProductDetailsBase;
-  /** Type of the applied scope for the MACC. */
-  appliedScopeType?: BenefitAppliedScopeType;
-  /** Invitation identifier */
-  invitationId?: string;
-  /** Amount of benefit that has been consumed */
-  consumed?: Price;
-}
-export const MaccModelProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(BenefitProvisioningState),
-    status: S.optional(MaccStatus),
-    entityType: MaccEntityType,
-    displayName: S.optional(S.String),
-    productCode: S.optional(S.String),
-    billingAccountResourceId: S.optional(S.String),
-    commitment: S.optional(Commitment),
-    startAt: S.optional(S.String),
-    endAt: S.optional(S.String),
-    systemId: S.optional(S.String),
-    automaticShortfall: S.optional(EnablementMode),
-    automaticShortfallSuppressReason: S.optional(
-      AutomaticShortfallSuppressReason,
-    ),
-    shortfall: S.optional(Shortfall),
-    milestones: S.optional(MaccModelPropertiesMilestonesList),
-    resourceId: S.optional(S.String),
-    allowContributors: S.optional(S.Boolean),
-    primaryResourceId: S.optional(S.String),
-    primaryBillingAccountResourceId: S.optional(S.String),
-    productDetails: S.optional(ProductDetailsBase),
-    appliedScopeType: S.optional(BenefitAppliedScopeType),
-    invitationId: S.optional(S.String),
-    consumed: S.optional(Price),
-  }),
-).annotate({
-  identifier: "MaccModelProperties",
-}) as any as S.Schema<MaccModelProperties>;
-
-/** Applicable MACC. */
-export interface ApplicableMacc {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Applicable MACC properties */
-  properties?: MaccModelProperties;
-}
-export const ApplicableMacc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MaccModelProperties),
-  }),
-).annotate({ identifier: "ApplicableMacc" }) as any as S.Schema<ApplicableMacc>;
-
-/** List Applicable MACCs. */
-export type ApplicableMaccListValueList = Array<ApplicableMacc>;
-export const ApplicableMaccListValueList = /*@__PURE__*/ S.Array(
-  ApplicableMacc,
-) as any as S.Schema<ApplicableMaccListValueList>;
-
-/** Applicable MACC list */
-export interface ApplicableMaccList {
-  /** List Applicable MACCs. */
-  value?: ApplicableMaccListValueList;
-  /** Url to get the next page. */
-  nextLink?: string;
-}
-export const ApplicableMaccList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ApplicableMaccListValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicableMaccList",
-}) as any as S.Schema<ApplicableMaccList>;
-
 /** Represents benefit model type for validation. Includes all resource types plus legacy singular-form values used by the validate API. */
 export type BenefitType =
   | "Maccs"
@@ -478,601 +108,6 @@ export const BenefitValidateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BenefitValidateResponse",
 }) as any as S.Schema<BenefitValidateResponse>;
 
-export interface BillingAccountCatalogGroupsOpsGetRequest {
-  /** The name of the billing account. */
-  billingAccountName: string;
-  /** The name of the CatalogGroup */
-  catalogGroupName: string;
-}
-export const BillingAccountCatalogGroupsOpsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccountName: S.String.pipe(T.Label()),
-      catalogGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.BillingBenefits/catalogGroups/{catalogGroupName}",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "BillingAccountCatalogGroupsOpsGetRequest",
-}) as any as S.Schema<BillingAccountCatalogGroupsOpsGetRequest>;
-
-/** The top-level ARM resource type for a billing benefit (e.g., maccs, credits, savingsPlans, reservations). */
-export type ResourceType =
-  | "Maccs"
-  | "Credits"
-  | "ConditionalCredits"
-  | "Discounts"
-  | "FreeServices"
-  | "SavingsPlans"
-  | "Reservations";
-export const ResourceType = /*@__PURE__*/ S.String;
-
-/** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
-export type CatalogGroupPropertiesKeywordsList = Array<string>;
-export const CatalogGroupPropertiesKeywordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogGroupPropertiesKeywordsList>;
-
-/** A key-value pair representing a capability of the catalog group (for example, exchange or renewal support). */
-export interface CatalogGroupCapability {
-  /** The capability name (e.g., SelfServiceExchange, Renewability). */
-  name: string;
-  /** The capability value (e.g., Supported, Not Supported). */
-  value: string;
-}
-export const CatalogGroupCapability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "CatalogGroupCapability",
-}) as any as S.Schema<CatalogGroupCapability>;
-
-/** Capabilities of the catalog group as key-value pairs. Omitted when a benefit type has no defined capabilities. */
-export type CatalogGroupPropertiesCapabilitiesList =
-  Array<CatalogGroupCapability>;
-export const CatalogGroupPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
-  CatalogGroupCapability,
-) as any as S.Schema<CatalogGroupPropertiesCapabilitiesList>;
-
-/** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
-export type CatalogGroupPropertiesDisclaimersList = Array<string>;
-export const CatalogGroupPropertiesDisclaimersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogGroupPropertiesDisclaimersList>;
-
-/** Properties of a catalog group. */
-export interface CatalogGroupProperties {
-  /** The top-level benefit resource type (e.g., maccs, credits, conditionalCredits, discounts, savingsPlans, reservations). */
-  benefitResourceType: ResourceType;
-  /** Display name for the catalog group. */
-  displayName?: string;
-  /** Short description of the catalog group. */
-  shortDescription?: string;
-  /** Long description of the catalog group. */
-  longDescription?: string;
-  /** Link to learn more about this catalog group. Uses the forward-link format https://go.microsoft.com/fwlink/?linkid=<linkId>. */
-  learnMoreLink?: string;
-  /** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
-  keywords?: CatalogGroupPropertiesKeywordsList;
-  /** The benefit type's icon as JSON-escaped SVG markup. After parsing, the value is a complete `<svg>…</svg>` element. */
-  icon?: string;
-  /** Capabilities of the catalog group as key-value pairs. Omitted when a benefit type has no defined capabilities. */
-  capabilities?: CatalogGroupPropertiesCapabilitiesList;
-  /** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
-  disclaimers?: CatalogGroupPropertiesDisclaimersList;
-}
-export const CatalogGroupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    benefitResourceType: ResourceType,
-    displayName: S.optional(S.String),
-    shortDescription: S.optional(S.String),
-    longDescription: S.optional(S.String),
-    learnMoreLink: S.optional(S.String),
-    keywords: S.optional(CatalogGroupPropertiesKeywordsList),
-    icon: S.optional(S.String),
-    capabilities: S.optional(CatalogGroupPropertiesCapabilitiesList),
-    disclaimers: S.optional(CatalogGroupPropertiesDisclaimersList),
-  }),
-).annotate({
-  identifier: "CatalogGroupProperties",
-}) as any as S.Schema<CatalogGroupProperties>;
-
-export interface BillingAccountCatalogGroupsOpsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: CatalogGroupProperties;
-}
-export const BillingAccountCatalogGroupsOpsGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(CatalogGroupProperties),
-    }),
-  ).annotate({
-    identifier: "BillingAccountCatalogGroupsOpsGetResponse",
-  }) as any as S.Schema<BillingAccountCatalogGroupsOpsGetResponse>;
-
-export interface BillingAccountCatalogGroupsOpsListRequest {
-  /** The name of the billing account. */
-  billingAccountName: string;
-  /** OData filter expression to narrow the list of catalog groups. */
-  _filter?: string;
-}
-export const BillingAccountCatalogGroupsOpsListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.BillingBenefits/catalogGroups",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "BillingAccountCatalogGroupsOpsListRequest",
-  }) as any as S.Schema<BillingAccountCatalogGroupsOpsListRequest>;
-
-/** A catalog group represents a BenefitResourceType + Namespace grouping used for benefit SKU discovery. */
-export interface CatalogGroup {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: CatalogGroupProperties;
-}
-export const CatalogGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CatalogGroupProperties),
-  }),
-).annotate({ identifier: "CatalogGroup" }) as any as S.Schema<CatalogGroup>;
-
-/** The CatalogGroup items on this page */
-export type CatalogGroupListResultValueList = Array<CatalogGroup>;
-export const CatalogGroupListResultValueList = /*@__PURE__*/ S.Array(
-  CatalogGroup,
-) as any as S.Schema<CatalogGroupListResultValueList>;
-
-/** The response of a CatalogGroup list operation. */
-export interface CatalogGroupListResult {
-  /** The CatalogGroup items on this page */
-  value: CatalogGroupListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const CatalogGroupListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: CatalogGroupListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CatalogGroupListResult",
-}) as any as S.Schema<CatalogGroupListResult>;
-
-export interface BillingProfileCatalogGroupsOpsGetRequest {
-  /** The name of the billing account. */
-  billingAccountName: string;
-  /** The name of the billing profile. */
-  billingProfileName: string;
-  /** The name of the CatalogGroup */
-  catalogGroupName: string;
-}
-export const BillingProfileCatalogGroupsOpsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccountName: S.String.pipe(T.Label()),
-      billingProfileName: S.String.pipe(T.Label()),
-      catalogGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.BillingBenefits/catalogGroups/{catalogGroupName}",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "BillingProfileCatalogGroupsOpsGetRequest",
-}) as any as S.Schema<BillingProfileCatalogGroupsOpsGetRequest>;
-
-export interface BillingProfileCatalogGroupsOpsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: CatalogGroupProperties;
-}
-export const BillingProfileCatalogGroupsOpsGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(CatalogGroupProperties),
-    }),
-  ).annotate({
-    identifier: "BillingProfileCatalogGroupsOpsGetResponse",
-  }) as any as S.Schema<BillingProfileCatalogGroupsOpsGetResponse>;
-
-export interface BillingProfileCatalogGroupsOpsListRequest {
-  /** The name of the billing account. */
-  billingAccountName: string;
-  /** The name of the billing profile. */
-  billingProfileName: string;
-  /** OData filter expression to narrow the list of catalog groups. */
-  _filter?: string;
-}
-export const BillingProfileCatalogGroupsOpsListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountName: S.String.pipe(T.Label()),
-      billingProfileName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.BillingBenefits/catalogGroups",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "BillingProfileCatalogGroupsOpsListRequest",
-  }) as any as S.Schema<BillingProfileCatalogGroupsOpsListRequest>;
-
-export interface ConditionalCreditContributorsGetFromPrimaryRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the conditional credit */
-  conditionalCreditName: string;
-  /** Unique name of contributor in the format {contributorCloudSubId}_{resourceGroupName}_{nameInContributorTenant}. */
-  contributorName: string;
-}
-export const ConditionalCreditContributorsGetFromPrimaryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      conditionalCreditName: S.String.pipe(T.Label()),
-      contributorName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}/contributors/{contributorName}",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConditionalCreditContributorsGetFromPrimaryRequest",
-  }) as any as S.Schema<ConditionalCreditContributorsGetFromPrimaryRequest>;
-
-/** Type of conditional credit entity */
-export type ConditionalCreditEntityType = "Primary" | "Contributor";
-export const ConditionalCreditEntityType = /*@__PURE__*/ S.String;
-
-/** The status of the conditional credit */
-export type ConditionalCreditStatus =
-  | "Unknown"
-  | "Scheduled"
-  | "Active"
-  | "Pending"
-  | "Failed"
-  | "Canceled"
-  | "Completed"
-  | "Stopped"
-  | "PendingSettlement";
-export const ConditionalCreditStatus = /*@__PURE__*/ S.String;
-
-/** Current status of the milestone */
-export type MilestoneStatus =
-  | "Unknown"
-  | "Scheduled"
-  | "Active"
-  | "Pending"
-  | "Failed"
-  | "Completed"
-  | "Canceled"
-  | "Removed"
-  | "PendingSettlement"
-  | "Missed";
-export const MilestoneStatus = /*@__PURE__*/ S.String;
-
-/** Represent benefit term in ISO 8601 format. */
-export type Term = "P1M" | "P1Y" | "P3Y" | "P5Y";
-export const Term = /*@__PURE__*/ S.String;
-
-/** Award details for milestone completion */
-export interface Award {
-  /** Credit amount to be awarded */
-  credit?: Commitment;
-  /** Start date when the credit becomes effective */
-  startAt?: string;
-  /** End date when the credit expires */
-  endAt?: string;
-  /** Resource ID for the awarded credit. */
-  resourceId?: string;
-  /** This is the globally unique identifier of the credit which will not change for its lifetime. */
-  systemId?: string;
-  /** Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created. */
-  balanceVersion?: number;
-  /** Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y. */
-  duration?: Term;
-}
-export const Award = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credit: S.optional(Commitment),
-    startAt: S.optional(S.String),
-    endAt: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    systemId: S.optional(S.String),
-    balanceVersion: S.optional(S.Number),
-    duration: S.optional(Term),
-  }),
-).annotate({ identifier: "Award" }) as any as S.Schema<Award>;
-
-/** Base milestone definition for conditional credits */
-export interface ConditionalCreditMilestoneBase {
-  /** Unique identifier for the milestone */
-  milestoneId?: string;
-  /** Display name for the milestone */
-  name?: string;
-  /** Current status of the milestone */
-  status?: MilestoneStatus;
-  /** End date for this milestone */
-  endAt?: string;
-  /** Spend target for this milestone */
-  spendTarget?: Price;
-  /** Award details for this milestone (only present for primary conditional credits) */
-  award?: Award;
-}
-export const ConditionalCreditMilestoneBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    milestoneId: S.optional(S.String),
-    name: S.optional(S.String),
-    status: S.optional(MilestoneStatus),
-    endAt: S.optional(S.String),
-    spendTarget: S.optional(Price),
-    award: S.optional(Award),
-  }),
-).annotate({
-  identifier: "ConditionalCreditMilestoneBase",
-}) as any as S.Schema<ConditionalCreditMilestoneBase>;
-
-/** List of milestones copied from primary conditional credit (excludes award details) */
-export type ContributorConditionalCreditPropertiesMilestonesList =
-  Array<ConditionalCreditMilestoneBase>;
-export const ContributorConditionalCreditPropertiesMilestonesList =
-  /*@__PURE__*/ S.Array(
-    ConditionalCreditMilestoneBase,
-  ) as any as S.Schema<ContributorConditionalCreditPropertiesMilestonesList>;
-
-/** Properties for contributor conditional credit. */
-export interface ContributorConditionalCreditProperties {
-  /** Type of conditional credit entity */
-  entityType: ConditionalCreditEntityType;
-  /** Display name for the conditional credit */
-  displayName?: string;
-  /** The billing account resource ID */
-  billingAccountResourceId?: string;
-  /** The provisioning state of the resource */
-  provisioningState?: BenefitProvisioningState;
-  /** The status of the conditional credit */
-  status?: ConditionalCreditStatus;
-  /** Start date of the conditional credit */
-  startAt?: string;
-  /** End date of the conditional credit (derived from last milestone) */
-  endAt?: string;
-  /** Product code for the conditional credit */
-  productCode?: string;
-  /** Fully-qualified identifier of the benefit under applicable benefit list. */
-  benefitResourceId?: string;
-  /** Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}. */
-  resourceId?: string;
-  /** Product details including SKU title, product family, and product type. */
-  productDetails?: ProductDetailsBase;
-  /** Type of the applied scope for the conditional credit. */
-  appliedScopeType?: BenefitAppliedScopeType;
-  /** Invitation identifier */
-  invitationId?: string;
-  /** Amount of benefit that has been consumed */
-  consumed?: Price;
-  /** Resource ID of the primary conditional credit (required for contributors) */
-  primaryResourceId?: string;
-  /** System identifier shared between primary and contributor conditional credits representing the same conditional credit program */
-  systemId?: string;
-  /** List of milestones copied from primary conditional credit (excludes award details) */
-  milestones?: ContributorConditionalCreditPropertiesMilestonesList;
-  /** Fully-qualified billing account resource identifier of the primary CACO. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
-  primaryBillingAccountResourceId?: string;
-}
-export const ContributorConditionalCreditProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      entityType: ConditionalCreditEntityType,
-      displayName: S.optional(S.String),
-      billingAccountResourceId: S.optional(S.String),
-      provisioningState: S.optional(BenefitProvisioningState),
-      status: S.optional(ConditionalCreditStatus),
-      startAt: S.optional(S.String),
-      endAt: S.optional(S.String),
-      productCode: S.optional(S.String),
-      benefitResourceId: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      productDetails: S.optional(ProductDetailsBase),
-      appliedScopeType: S.optional(BenefitAppliedScopeType),
-      invitationId: S.optional(S.String),
-      consumed: S.optional(Price),
-      primaryResourceId: S.optional(S.String),
-      systemId: S.optional(S.String),
-      milestones: S.optional(
-        ContributorConditionalCreditPropertiesMilestonesList,
-      ),
-      primaryBillingAccountResourceId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ContributorConditionalCreditProperties",
-}) as any as S.Schema<ContributorConditionalCreditProperties>;
-
-export interface ConditionalCreditContributorsGetFromPrimaryResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Conditional credit contributor properties */
-  properties?: ContributorConditionalCreditProperties;
-}
-export const ConditionalCreditContributorsGetFromPrimaryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ContributorConditionalCreditProperties),
-    }),
-  ).annotate({
-    identifier: "ConditionalCreditContributorsGetFromPrimaryResponse",
-  }) as any as S.Schema<ConditionalCreditContributorsGetFromPrimaryResponse>;
-
-export interface ConditionalCreditContributorsListFromApplicableConditionalCreditRequest {
-  /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
-  billingAccountId: string;
-  /** System ID of the primary MACC. */
-  systemId: string;
-}
-export const ConditionalCreditContributorsListFromApplicableConditionalCreditRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountId: S.String.pipe(T.Label()),
-      systemId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.BillingBenefits/applicableConditionalCredits/{systemId}/providers/microsoft.BillingBenefits/applicableContributors",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ConditionalCreditContributorsListFromApplicableConditionalCreditRequest",
-  }) as any as S.Schema<ConditionalCreditContributorsListFromApplicableConditionalCreditRequest>;
-
-/** Conditional credit contributor */
-export interface ConditionalCreditContributor {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Conditional credit contributor properties */
-  properties?: ContributorConditionalCreditProperties;
-}
-export const ConditionalCreditContributor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ContributorConditionalCreditProperties),
-  }),
-).annotate({
-  identifier: "ConditionalCreditContributor",
-}) as any as S.Schema<ConditionalCreditContributor>;
-
-/** The ConditionalCreditContributor items on this page */
-export type ConditionalCreditContributorListValueList =
-  Array<ConditionalCreditContributor>;
-export const ConditionalCreditContributorListValueList = /*@__PURE__*/ S.Array(
-  ConditionalCreditContributor,
-) as any as S.Schema<ConditionalCreditContributorListValueList>;
-
-/** Conditional credit contributor list */
-export interface ConditionalCreditContributorList {
-  /** The ConditionalCreditContributor items on this page */
-  value: ConditionalCreditContributorListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ConditionalCreditContributorList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ConditionalCreditContributorListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConditionalCreditContributorList",
-}) as any as S.Schema<ConditionalCreditContributorList>;
-
-export interface ConditionalCreditContributorsListFromPrimaryRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the conditional credit */
-  conditionalCreditName: string;
-}
-export const ConditionalCreditContributorsListFromPrimaryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      conditionalCreditName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}/contributors",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConditionalCreditContributorsListFromPrimaryRequest",
-  }) as any as S.Schema<ConditionalCreditContributorsListFromPrimaryRequest>;
-
 export interface ConditionalCreditsCancelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1098,6 +133,48 @@ export const ConditionalCreditsCancelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConditionalCreditsCancelRequest",
 }) as any as S.Schema<ConditionalCreditsCancelRequest>;
 
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type ConditionalCreditsCancelResponseTagsMap = {
   [key: string]: string | undefined;
@@ -1106,6 +183,69 @@ export const ConditionalCreditsCancelResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ConditionalCreditsCancelResponseTagsMap>;
+
+/** Type of conditional credit entity */
+export type ConditionalCreditEntityType = "Primary" | "Contributor";
+export const ConditionalCreditEntityType = /*@__PURE__*/ S.String;
+
+/** Provisioning state for billing benefit resources. Includes the standard terminal states (Succeeded, Failed, Canceled) plus benefit-specific transition states. */
+export type BenefitProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Pending";
+export const BenefitProvisioningState = /*@__PURE__*/ S.String;
+
+/** The status of the conditional credit */
+export type ConditionalCreditStatus =
+  | "Unknown"
+  | "Scheduled"
+  | "Active"
+  | "Pending"
+  | "Failed"
+  | "Canceled"
+  | "Completed"
+  | "Stopped"
+  | "PendingSettlement";
+export const ConditionalCreditStatus = /*@__PURE__*/ S.String;
+
+/** Common product detail properties shared across all benefit resources */
+export interface ProductDetailsBase {
+  /** SKU title of the product */
+  skuTitle?: string;
+  /** The product family, for example "Azure" or "M365". */
+  productFamily?: string;
+  /** The type of the product. */
+  productType?: string;
+}
+export const ProductDetailsBase = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skuTitle: S.optional(S.String),
+    productFamily: S.optional(S.String),
+    productType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProductDetailsBase",
+}) as any as S.Schema<ProductDetailsBase>;
+
+/** List of applied scope types supported for benefit resources. */
+export type BenefitAppliedScopeType =
+  | "BillingAccount"
+  | "BillingProfile"
+  | "Customer";
+export const BenefitAppliedScopeType = /*@__PURE__*/ S.String;
+
+export interface Price {
+  /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
+  currencyCode?: string;
+  amount?: number;
+}
+export const Price = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    amount: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 /** Properties belonging to conditional credits. */
 export interface ConditionalCreditProperties {
@@ -1541,927 +681,12 @@ export const ConditionalCreditsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ConditionalCreditsCreateOrUpdateResponse",
 }) as any as S.Schema<ConditionalCreditsCreateOrUpdateResponse>;
 
-export interface ConditionalCreditsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the conditional credit */
-  conditionalCreditName: string;
-}
-export const ConditionalCreditsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    conditionalCreditName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConditionalCreditsDeleteRequest",
-}) as any as S.Schema<ConditionalCreditsDeleteRequest>;
-
-export interface ConditionalCreditsDeleteResponse {}
-export const ConditionalCreditsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConditionalCreditsDeleteResponse",
-}) as any as S.Schema<ConditionalCreditsDeleteResponse>;
-
-export interface ConditionalCreditsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the conditional credit */
-  conditionalCreditName: string;
-}
-export const ConditionalCreditsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    conditionalCreditName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConditionalCreditsGetRequest",
-}) as any as S.Schema<ConditionalCreditsGetRequest>;
-
 /** Resource tags. */
-export type ConditionalCreditsGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ConditionalCreditsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+export type CreditsCreateRequestTagsMap = { [key: string]: string | undefined };
+export const CreditsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<ConditionalCreditsGetResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface ConditionalCreditsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap;
-}
-export const ConditionalCreditsGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(
-        ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap,
-      ),
-    }),
-).annotate({
-  identifier: "ConditionalCreditsGetResponseIdentity",
-}) as any as S.Schema<ConditionalCreditsGetResponseIdentity>;
-
-export interface ConditionalCreditsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ConditionalCreditsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Conditional credit properties */
-  properties?: ConditionalCreditProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ConditionalCreditsGetResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const ConditionalCreditsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ConditionalCreditsGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ConditionalCreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ConditionalCreditsGetResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "ConditionalCreditsGetResponse",
-}) as any as S.Schema<ConditionalCreditsGetResponse>;
-
-export interface ConditionalCreditsListByResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const ConditionalCreditsListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConditionalCreditsListByResourceGroupRequest",
-  }) as any as S.Schema<ConditionalCreditsListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type ConditionalCreditTagsMap = { [key: string]: string | undefined };
-export const ConditionalCreditTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConditionalCreditTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type ConditionalCreditIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const ConditionalCreditIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<ConditionalCreditIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface ConditionalCreditIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: ConditionalCreditIdentityUserAssignedIdentitiesMap;
-}
-export const ConditionalCreditIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ConditionalCreditIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ConditionalCreditIdentity",
-}) as any as S.Schema<ConditionalCreditIdentity>;
-
-/** Resource definition for Conditional Credits. */
-export interface ConditionalCredit {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ConditionalCreditTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Conditional credit properties */
-  properties?: ConditionalCreditProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ConditionalCreditIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const ConditionalCredit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ConditionalCreditTagsMap),
-    location: S.String,
-    properties: S.optional(ConditionalCreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ConditionalCreditIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "ConditionalCredit",
-}) as any as S.Schema<ConditionalCredit>;
-
-/** The ConditionalCredit items on this page */
-export type ConditionalCreditListValueList = Array<ConditionalCredit>;
-export const ConditionalCreditListValueList = /*@__PURE__*/ S.Array(
-  ConditionalCredit,
-) as any as S.Schema<ConditionalCreditListValueList>;
-
-/** List of applicable conditional credits */
-export interface ConditionalCreditList {
-  /** The ConditionalCredit items on this page */
-  value: ConditionalCreditListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ConditionalCreditList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ConditionalCreditListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConditionalCreditList",
-}) as any as S.Schema<ConditionalCreditList>;
-
-export interface ConditionalCreditsListBySubscriptionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const ConditionalCreditsListBySubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BillingBenefits/conditionalCredits",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConditionalCreditsListBySubscriptionRequest",
-  }) as any as S.Schema<ConditionalCreditsListBySubscriptionRequest>;
-
-export interface ConditionalCreditsScopeListRequest {
-  /** The scope at which the benefits are listed. */
-  scope: string;
-}
-export const ConditionalCreditsScopeListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.BillingBenefits/applicableConditionalCredits",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConditionalCreditsScopeListRequest",
-}) as any as S.Schema<ConditionalCreditsScopeListRequest>;
-
-/** Award details for milestone completion */
-export interface AwardInput {
-  /** Credit amount to be awarded */
-  credit?: Commitment;
-  /** Start date when the credit becomes effective */
-  startAt?: string;
-  /** End date when the credit expires */
-  endAt?: string;
-  /** Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y. */
-  duration?: Term | (string & {});
-}
-export const AwardInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credit: S.optional(Commitment),
-    startAt: S.optional(S.String),
-    endAt: S.optional(S.String),
-    duration: S.optional(Term),
-  }),
-).annotate({ identifier: "AwardInput" }) as any as S.Schema<AwardInput>;
-
-/** Milestone definition within a conditional credit */
-export interface ConditionalCreditMilestoneInput {
-  /** Unique identifier for the milestone */
-  milestoneId?: string;
-  /** Display name for the milestone */
-  name?: string;
-  /** Current status of the milestone */
-  status?: MilestoneStatus | (string & {});
-  /** End date for this milestone */
-  endAt?: string;
-  /** Spend target for this milestone */
-  spendTarget?: Price;
-  /** Award details for this milestone (only present for primary conditional credits) */
-  award?: AwardInput;
-}
-export const ConditionalCreditMilestoneInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    milestoneId: S.optional(S.String),
-    name: S.optional(S.String),
-    status: S.optional(MilestoneStatus),
-    endAt: S.optional(S.String),
-    spendTarget: S.optional(Price),
-    award: S.optional(AwardInput),
-  }),
-).annotate({
-  identifier: "ConditionalCreditMilestoneInput",
-}) as any as S.Schema<ConditionalCreditMilestoneInput>;
-
-/** Updated milestones list (only applicable for primary conditional credits) */
-export type ConditionalCreditPatchRequestPropertiesInputMilestonesList =
-  Array<ConditionalCreditMilestoneInput>;
-export const ConditionalCreditPatchRequestPropertiesInputMilestonesList =
-  /*@__PURE__*/ S.Array(
-    ConditionalCreditMilestoneInput,
-  ) as any as S.Schema<ConditionalCreditPatchRequestPropertiesInputMilestonesList>;
-
-/** Conditional credit patch request properties */
-export interface ConditionalCreditPatchRequestPropertiesInput {
-  /** Display name for the conditional credit */
-  displayName?: string;
-  /** End DateTime in UTC. */
-  endAt?: string;
-  /** Whether this conditional credit allows contributor billing accounts */
-  allowContributors?: EnablementMode | (string & {});
-  /** Updated milestones list (only applicable for primary conditional credits) */
-  milestones?: ConditionalCreditPatchRequestPropertiesInputMilestonesList;
-}
-export const ConditionalCreditPatchRequestPropertiesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      endAt: S.optional(S.String),
-      allowContributors: S.optional(EnablementMode),
-      milestones: S.optional(
-        ConditionalCreditPatchRequestPropertiesInputMilestonesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConditionalCreditPatchRequestPropertiesInput",
-  }) as any as S.Schema<ConditionalCreditPatchRequestPropertiesInput>;
-
-/** Resource tags. */
-export type ConditionalCreditsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ConditionalCreditsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConditionalCreditsUpdateRequestTagsMap>;
-
-export interface ConditionalCreditsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the conditional credit */
-  conditionalCreditName: string;
-  /** Conditional credit patch request properties */
-  properties?: ConditionalCreditPatchRequestPropertiesInput;
-  /** Resource tags. */
-  tags?: ConditionalCreditsUpdateRequestTagsMap;
-}
-export const ConditionalCreditsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    conditionalCreditName: S.String.pipe(T.Label()),
-    properties: S.optional(ConditionalCreditPatchRequestPropertiesInput),
-    tags: S.optional(ConditionalCreditsUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConditionalCreditsUpdateRequest",
-}) as any as S.Schema<ConditionalCreditsUpdateRequest>;
-
-/** Resource tags. */
-export type ConditionalCreditsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ConditionalCreditsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConditionalCreditsUpdateResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap =
-  { [key: string]: UserAssignedIdentity | undefined };
-export const ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface ConditionalCreditsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap;
-}
-export const ConditionalCreditsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(
-        ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap,
-      ),
-    }),
-).annotate({
-  identifier: "ConditionalCreditsUpdateResponseIdentity",
-}) as any as S.Schema<ConditionalCreditsUpdateResponseIdentity>;
-
-export interface ConditionalCreditsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ConditionalCreditsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Conditional credit properties */
-  properties?: ConditionalCreditProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ConditionalCreditsUpdateResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const ConditionalCreditsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ConditionalCreditsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ConditionalCreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ConditionalCreditsUpdateResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "ConditionalCreditsUpdateResponse",
-}) as any as S.Schema<ConditionalCreditsUpdateResponse>;
-
-export interface ConditionalCreditTransactionsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the conditional credit */
-  conditionalCreditName: string;
-  /** Name of the transaction */
-  transactionName: string;
-}
-export const ConditionalCreditTransactionsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      conditionalCreditName: S.String.pipe(T.Label()),
-      transactionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}/transactions/{transactionName}",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "ConditionalCreditTransactionsGetRequest",
-}) as any as S.Schema<ConditionalCreditTransactionsGetRequest>;
-
-/** The type of charge for a transaction. */
-export type TransactionChargeType = "Usage" | "Purchase" | "Refund";
-export const TransactionChargeType = /*@__PURE__*/ S.String;
-
-/** Billing lifecycle status of a transaction. */
-export type TransactionBillingStatus = "Open" | "Closed";
-export const TransactionBillingStatus = /*@__PURE__*/ S.String;
-
-/** Product details for a transaction */
-export interface TransactionProductDetails {
-  /** SKU title of the product */
-  skuTitle?: string;
-  /** The product family, for example "Azure" or "M365". */
-  productFamily?: string;
-  /** The type of the product. */
-  productType?: string;
-  /** Grouping of Azure services by core function (e.g., Compute, Databases). */
-  serviceFamily?: string;
-  /** The publisher type of the product, for example "Microsoft" for first-party or a third-party publisher name. Additional values may be introduced in the future. */
-  publisherType?: string;
-}
-export const TransactionProductDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skuTitle: S.optional(S.String),
-    productFamily: S.optional(S.String),
-    productType: S.optional(S.String),
-    serviceFamily: S.optional(S.String),
-    publisherType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TransactionProductDetails",
-}) as any as S.Schema<TransactionProductDetails>;
-
-/** Properties of a transaction */
-export interface TransactionProperties {
-  /** Provisioning state of the transaction as assigned by RPaaS. This indicates the last operation's status. */
-  provisioningState?: BenefitProvisioningState;
-  /** This is the DateTime when the transaction occurred. */
-  date?: string;
-  /** The type of charge for this transaction. */
-  chargeType?: TransactionChargeType;
-  /** Billing lifecycle status of this transaction. */
-  billingStatus?: TransactionBillingStatus;
-  /** Fully-qualified identifier of the invoice. */
-  invoiceResourceId?: string;
-  /** Transaction amount in billing currency. */
-  amountInBillingCurrency?: Price;
-  /** Transaction amount in pricing currency. */
-  amountInPricingCurrency?: Price;
-  /** Catalog UPN for the product associated with this transaction. */
-  productCode?: string;
-  /** Product details including SKU title, SKU properties, product family, type, and publisher type. */
-  productDetails?: TransactionProductDetails;
-}
-export const TransactionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(BenefitProvisioningState),
-    date: S.optional(S.String),
-    chargeType: S.optional(TransactionChargeType),
-    billingStatus: S.optional(TransactionBillingStatus),
-    invoiceResourceId: S.optional(S.String),
-    amountInBillingCurrency: S.optional(Price),
-    amountInPricingCurrency: S.optional(Price),
-    productCode: S.optional(S.String),
-    productDetails: S.optional(TransactionProductDetails),
-  }),
-).annotate({
-  identifier: "TransactionProperties",
-}) as any as S.Schema<TransactionProperties>;
-
-export interface ConditionalCreditTransactionsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Transaction properties */
-  properties?: TransactionProperties;
-}
-export const ConditionalCreditTransactionsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(TransactionProperties),
-    }),
-).annotate({
-  identifier: "ConditionalCreditTransactionsGetResponse",
-}) as any as S.Schema<ConditionalCreditTransactionsGetResponse>;
-
-export interface ConditionalCreditTransactionsListByParentRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the conditional credit */
-  conditionalCreditName: string;
-}
-export const ConditionalCreditTransactionsListByParentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      conditionalCreditName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}/transactions",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConditionalCreditTransactionsListByParentRequest",
-  }) as any as S.Schema<ConditionalCreditTransactionsListByParentRequest>;
-
-/** Transaction resource definition for ConditionalCredits */
-export interface ConditionalCreditTransaction {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Transaction properties */
-  properties?: TransactionProperties;
-}
-export const ConditionalCreditTransaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TransactionProperties),
-  }),
-).annotate({
-  identifier: "ConditionalCreditTransaction",
-}) as any as S.Schema<ConditionalCreditTransaction>;
-
-/** The ConditionalCreditTransaction items on this page */
-export type ConditionalCreditTransactionsListValueList =
-  Array<ConditionalCreditTransaction>;
-export const ConditionalCreditTransactionsListValueList = /*@__PURE__*/ S.Array(
-  ConditionalCreditTransaction,
-) as any as S.Schema<ConditionalCreditTransactionsListValueList>;
-
-/** List of conditional credit transactions */
-export interface ConditionalCreditTransactionsList {
-  /** The ConditionalCreditTransaction items on this page */
-  value: ConditionalCreditTransactionsListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ConditionalCreditTransactionsList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ConditionalCreditTransactionsListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConditionalCreditTransactionsList",
-}) as any as S.Schema<ConditionalCreditTransactionsList>;
-
-export interface ContributorsGetFromPrimaryRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of primary MACC. */
-  maccName: string;
-  /** Unique name of contributor in the format {contributorCloudSubId}_{resourceGroupName}_{nameInContributorTenant}. */
-  contributorName: string;
-}
-export const ContributorsGetFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    maccName: S.String.pipe(T.Label()),
-    contributorName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}/contributors/{contributorName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ContributorsGetFromPrimaryRequest",
-}) as any as S.Schema<ContributorsGetFromPrimaryRequest>;
-
-export interface ContributorsGetFromPrimaryResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** MACC contributor properties */
-  properties?: MaccModelProperties;
-}
-export const ContributorsGetFromPrimaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MaccModelProperties),
-  }),
-).annotate({
-  identifier: "ContributorsGetFromPrimaryResponse",
-}) as any as S.Schema<ContributorsGetFromPrimaryResponse>;
-
-export interface ContributorsListFromApplicableMaccRequest {
-  /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
-  billingAccountId: string;
-  /** System ID of the primary MACC. */
-  systemId: string;
-}
-export const ContributorsListFromApplicableMaccRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountId: S.String.pipe(T.Label()),
-      systemId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.BillingBenefits/applicableMaccs/{systemId}/providers/microsoft.BillingBenefits/applicableContributors",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ContributorsListFromApplicableMaccRequest",
-  }) as any as S.Schema<ContributorsListFromApplicableMaccRequest>;
-
-/** MACC contributor */
-export interface Contributor {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** MACC contributor properties */
-  properties?: MaccModelProperties;
-}
-export const Contributor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MaccModelProperties),
-  }),
-).annotate({ identifier: "Contributor" }) as any as S.Schema<Contributor>;
-
-/** The Contributor items on this page */
-export type ContributorListValueList = Array<Contributor>;
-export const ContributorListValueList = /*@__PURE__*/ S.Array(
-  Contributor,
-) as any as S.Schema<ContributorListValueList>;
-
-/** Contributor list */
-export interface ContributorList {
-  /** The Contributor items on this page */
-  value: ContributorListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ContributorList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ContributorListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContributorList",
-}) as any as S.Schema<ContributorList>;
-
-export interface ContributorsListFromPrimaryRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of primary MACC. */
-  maccName: string;
-}
-export const ContributorsListFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    maccName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}/contributors",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ContributorsListFromPrimaryRequest",
-}) as any as S.Schema<ContributorsListFromPrimaryRequest>;
-
-export interface CreditsCancelRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the credit */
-  creditName: string;
-}
-export const CreditsCancelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    creditName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/cancel",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "CreditsCancelRequest",
-}) as any as S.Schema<CreditsCancelRequest>;
-
-/** Resource tags. */
-export type CreditsCancelResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const CreditsCancelResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreditsCancelResponseTagsMap>;
-
-/** Status of the credit */
-export type CreditStatus =
-  | "Unknown"
-  | "Pending"
-  | "Active"
-  | "Succeeded"
-  | "Canceled"
-  | "Failed"
-  | "Expired"
-  | "Exhausted"
-  | "NotStarted";
-export const CreditStatus = /*@__PURE__*/ S.String;
+) as any as S.Schema<CreditsCreateRequestTagsMap>;
 
 /** The reason for the credit. Not required if not applicable. */
 export interface CreditReason {
@@ -2476,6 +701,26 @@ export const CreditReason = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
   }),
 ).annotate({ identifier: "CreditReason" }) as any as S.Schema<CreditReason>;
+
+/** Grain. */
+export type CommitmentGrain = "Hourly" | "FullTerm" | "Unknown";
+export const CommitmentGrain = /*@__PURE__*/ S.String;
+
+/** Commitment towards the benefit. */
+export interface Commitment {
+  /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
+  currencyCode?: string;
+  amount?: number;
+  /** The grain of the commitment. */
+  grain?: CommitmentGrain | (string & {});
+}
+export const Commitment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    amount: S.optional(S.Number),
+    grain: S.optional(CommitmentGrain),
+  }),
+).annotate({ identifier: "Commitment" }) as any as S.Schema<Commitment>;
 
 /** Redemption policy of the Credit */
 export type CreditRedemptionPolicy =
@@ -2545,6 +790,162 @@ export const CreditBreakdownItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreditBreakdownItem",
 }) as any as S.Schema<CreditBreakdownItem>;
+
+/** Credit line-items/milestones/no-charge services breakdown */
+export type CreditPropertiesInputBreakdownList = Array<CreditBreakdownItem>;
+export const CreditPropertiesInputBreakdownList = /*@__PURE__*/ S.Array(
+  CreditBreakdownItem,
+) as any as S.Schema<CreditPropertiesInputBreakdownList>;
+
+/** Properties of a credit */
+export interface CreditPropertiesInput {
+  /** Product UPN for the credit type */
+  productCode?: string;
+  /** Display name */
+  displayName?: string;
+  /** The reason for the credit. Not required if not applicable. */
+  reason?: CreditReason;
+  /** The entire investment amount for the credit contract, including currency and amount */
+  credit?: Commitment;
+  /** Start DateTime. */
+  startAt?: string;
+  /** End DateTime in UTC. */
+  endAt?: string;
+  /** Credit breakdown item representing a milestone, line-item, or no-charge service */
+  policies?: CreditPolicies;
+  /** Fully-qualified identifier of the billing account where the benefit is applied. Present only for Enterprise Agreement customers. */
+  billingAccountResourceId?: string;
+  /** Credit line-items/milestones/no-charge services breakdown */
+  breakdown?: CreditPropertiesInputBreakdownList;
+  /** System identifier */
+  systemId?: string;
+  /** Unique identifier (UUID) of the funding lot assigned by the benefit publisher. Used in credit transfer scenarios to trace the originating credit lot. */
+  fundingSystemId?: string;
+  /** Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}. */
+  resourceId?: string;
+  /** Invitation identifier */
+  invitationId?: string;
+  /** Type of the applied scope for the credit. */
+  appliedScopeType?: BenefitAppliedScopeType | (string & {});
+}
+export const CreditPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productCode: S.optional(S.String),
+    displayName: S.optional(S.String),
+    reason: S.optional(CreditReason),
+    credit: S.optional(Commitment),
+    startAt: S.optional(S.String),
+    endAt: S.optional(S.String),
+    policies: S.optional(CreditPolicies),
+    billingAccountResourceId: S.optional(S.String),
+    breakdown: S.optional(CreditPropertiesInputBreakdownList),
+    systemId: S.optional(S.String),
+    fundingSystemId: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    invitationId: S.optional(S.String),
+    appliedScopeType: S.optional(BenefitAppliedScopeType),
+  }),
+).annotate({
+  identifier: "CreditPropertiesInput",
+}) as any as S.Schema<CreditPropertiesInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type CreditsCreateRequestIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const CreditsCreateRequestIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<CreditsCreateRequestIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface CreditsCreateRequestIdentity {
+  type: ManagedServiceIdentityType | (string & {});
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: CreditsCreateRequestIdentityUserAssignedIdentitiesMap;
+}
+export const CreditsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      CreditsCreateRequestIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "CreditsCreateRequestIdentity",
+}) as any as S.Schema<CreditsCreateRequestIdentity>;
+
+export interface CreateCreditRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the credit */
+  creditName: string;
+  /** Resource tags. */
+  tags?: CreditsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Credit properties */
+  properties?: CreditPropertiesInput;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: CreditsCreateRequestIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateCreditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    creditName: S.String.pipe(T.Label()),
+    tags: S.optional(CreditsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(CreditPropertiesInput),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    identity: S.optional(CreditsCreateRequestIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCreditRequest",
+}) as any as S.Schema<CreateCreditRequest>;
+
+/** Resource tags. */
+export type CreditsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CreditsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreditsCreateResponseTagsMap>;
+
+/** Status of the credit */
+export type CreditStatus =
+  | "Unknown"
+  | "Pending"
+  | "Active"
+  | "Succeeded"
+  | "Canceled"
+  | "Failed"
+  | "Expired"
+  | "Exhausted"
+  | "NotStarted";
+export const CreditStatus = /*@__PURE__*/ S.String;
 
 /** Credit line-items/milestones/no-charge services breakdown */
 export type CreditPropertiesBreakdownList = Array<CreditBreakdownItem>;
@@ -2659,6 +1060,1767 @@ export const CreditProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreditProperties",
 }) as any as S.Schema<CreditProperties>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type CreditsCreateResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const CreditsCreateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<CreditsCreateResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface CreditsCreateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: CreditsCreateResponseIdentityUserAssignedIdentitiesMap;
+}
+export const CreditsCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      CreditsCreateResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "CreditsCreateResponseIdentity",
+}) as any as S.Schema<CreditsCreateResponseIdentity>;
+
+export interface CreateCreditResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: CreditsCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Credit properties */
+  properties?: CreditProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: CreditsCreateResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateCreditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(CreditsCreateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(CreditProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(CreditsCreateResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "CreateCreditResponse",
+}) as any as S.Schema<CreateCreditResponse>;
+
+/** Resource tags. */
+export type DiscountsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiscountsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiscountsCreateRequestTagsMap>;
+
+/** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
+export type DiscountEntityType = "Primary" | "Affiliate";
+export const DiscountEntityType = /*@__PURE__*/ S.String;
+
+/** Properties belonging to discounts. */
+export interface DiscountPropertiesInput {
+  /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
+  entityType: DiscountEntityType | (string & {});
+  /** This is the catalog UPN for the product. */
+  productCode: string;
+  /** Start date of the discount. Value is the date the discount started or will start in the future. */
+  startAt: string;
+  /** End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate. */
+  endAt?: string;
+  /** This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount. */
+  systemId?: string;
+  /** Invitation identifier */
+  invitationId?: string;
+  /** This defines a user friendly display name for the discount. */
+  displayName?: string;
+  /** List of applied scopes supported for discounts. */
+  appliedScopeType?: BenefitAppliedScopeType | (string & {});
+}
+export const DiscountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entityType: DiscountEntityType,
+    productCode: S.String,
+    startAt: S.String,
+    endAt: S.optional(S.String),
+    systemId: S.optional(S.String),
+    invitationId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    appliedScopeType: S.optional(BenefitAppliedScopeType),
+  }),
+).annotate({
+  identifier: "DiscountPropertiesInput",
+}) as any as S.Schema<DiscountPropertiesInput>;
+
+/** User assigned identity properties */
+export type ManagedServiceIdentityInputUserAssignedIdentitiesValue =
+  UserAssignedIdentityInput;
+export const ManagedServiceIdentityInputUserAssignedIdentitiesValue =
+  UserAssignedIdentityInput;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ManagedServiceIdentityInput {
+  /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+  type: ManagedServiceIdentityType | (string & {});
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
+}
+export const ManagedServiceIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      ManagedServiceIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ManagedServiceIdentityInput",
+}) as any as S.Schema<ManagedServiceIdentityInput>;
+
+export interface CreateDiscountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the discount */
+  discountName: string;
+  /** Resource tags. */
+  tags?: DiscountsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Discount properties */
+  properties?: DiscountPropertiesInput;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ManagedServiceIdentityInput;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    discountName: S.String.pipe(T.Label()),
+    tags: S.optional(DiscountsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(DiscountPropertiesInput),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    identity: S.optional(ManagedServiceIdentityInput),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateDiscountRequest",
+}) as any as S.Schema<CreateDiscountRequest>;
+
+/** Resource tags. */
+export type DiscountsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiscountsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiscountsCreateResponseTagsMap>;
+
+/** Represents the current status of the discount. */
+export type DiscountStatus =
+  | "Active"
+  | "Pending"
+  | "Failed"
+  | "Canceled"
+  | "Expired";
+export const DiscountStatus = /*@__PURE__*/ S.String;
+
+/** Properties belonging to discounts. */
+export interface DiscountProperties {
+  /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
+  entityType: DiscountEntityType;
+  /** This is the catalog UPN for the product. */
+  productCode: string;
+  /** Start date of the discount. Value is the date the discount started or will start in the future. */
+  startAt: string;
+  /** End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate. */
+  endAt?: string;
+  /** This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount. */
+  systemId?: string;
+  /** The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled. */
+  provisioningState?: BenefitProvisioningState;
+  /** Fully-qualified identifier of the billing account where the benefit is applied. */
+  billingAccountResourceId?: string;
+  /** Fully-qualified identifier of the billing profile where the benefit is applied. */
+  billingProfileResourceId?: string;
+  /** Customer resource id where the benefit is scoped to. */
+  customerResourceId?: string;
+  /** Invitation identifier */
+  invitationId?: string;
+  /** This defines a user friendly display name for the discount. */
+  displayName?: string;
+  /** Represents the current status of the discount. */
+  status?: DiscountStatus;
+  /** Fully-qualified identifier of the benefit under applicable benefit list. */
+  benefitResourceId?: string;
+  /** List of applied scopes supported for discounts. */
+  appliedScopeType?: BenefitAppliedScopeType;
+  /** Product details including SKU title, product family, and product type. */
+  productDetails?: ProductDetailsBase;
+}
+export const DiscountProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entityType: DiscountEntityType,
+    productCode: S.String,
+    startAt: S.String,
+    endAt: S.optional(S.String),
+    systemId: S.optional(S.String),
+    provisioningState: S.optional(BenefitProvisioningState),
+    billingAccountResourceId: S.optional(S.String),
+    billingProfileResourceId: S.optional(S.String),
+    customerResourceId: S.optional(S.String),
+    invitationId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    status: S.optional(DiscountStatus),
+    benefitResourceId: S.optional(S.String),
+    appliedScopeType: S.optional(BenefitAppliedScopeType),
+    productDetails: S.optional(ProductDetailsBase),
+  }),
+).annotate({
+  identifier: "DiscountProperties",
+}) as any as S.Schema<DiscountProperties>;
+
+/** User assigned identity properties */
+export type ManagedServiceIdentityUserAssignedIdentitiesValue =
+  UserAssignedIdentity;
+export const ManagedServiceIdentityUserAssignedIdentitiesValue =
+  UserAssignedIdentity;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ManagedServiceIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const ManagedServiceIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<ManagedServiceIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ManagedServiceIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ManagedServiceIdentityUserAssignedIdentitiesMap;
+}
+export const ManagedServiceIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      ManagedServiceIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ManagedServiceIdentity",
+}) as any as S.Schema<ManagedServiceIdentity>;
+
+export interface CreateDiscountResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DiscountsCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Discount properties */
+  properties?: DiscountProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ManagedServiceIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateDiscountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(DiscountsCreateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(DiscountProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(ManagedServiceIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "CreateDiscountResponse",
+}) as any as S.Schema<CreateDiscountResponse>;
+
+/** Resource tags. */
+export type FreeServicesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FreeServicesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FreeServicesCreateRequestTagsMap>;
+
+/** Status of the free services */
+export type FreeServicesStatus =
+  | "Unknown"
+  | "Pending"
+  | "Active"
+  | "Canceled"
+  | "Completed";
+export const FreeServicesStatus = /*@__PURE__*/ S.String;
+
+/** Properties of free services */
+export interface FreeServicesPropertiesInput {
+  /** This is the catalog UPN for the product. */
+  productCode?: string;
+  /** Display name */
+  displayName?: string;
+  /** Current status of the free services */
+  status?: FreeServicesStatus | (string & {});
+  /** Date and time when the free services become active */
+  startAt?: string;
+  /** Expiration date and time of the free services */
+  endAt?: string;
+  /** Invitation identifier */
+  invitationId?: string;
+  /** This is the globally unique identifier of the free services which will not change for its lifetime. Generated by the benefit publisher. */
+  systemId?: string;
+}
+export const FreeServicesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productCode: S.optional(S.String),
+    displayName: S.optional(S.String),
+    status: S.optional(FreeServicesStatus),
+    startAt: S.optional(S.String),
+    endAt: S.optional(S.String),
+    invitationId: S.optional(S.String),
+    systemId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FreeServicesPropertiesInput",
+}) as any as S.Schema<FreeServicesPropertiesInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface FreeServicesCreateRequestIdentity {
+  type: ManagedServiceIdentityType | (string & {});
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap;
+}
+export const FreeServicesCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "FreeServicesCreateRequestIdentity",
+}) as any as S.Schema<FreeServicesCreateRequestIdentity>;
+
+export interface CreateFreeServiceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the free service */
+  freeServiceName: string;
+  /** Resource tags. */
+  tags?: FreeServicesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Free services properties */
+  properties?: FreeServicesPropertiesInput;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: FreeServicesCreateRequestIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    freeServiceName: S.String.pipe(T.Label()),
+    tags: S.optional(FreeServicesCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(FreeServicesPropertiesInput),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    identity: S.optional(FreeServicesCreateRequestIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/freeServices/{freeServiceName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateFreeServiceRequest",
+}) as any as S.Schema<CreateFreeServiceRequest>;
+
+/** Resource tags. */
+export type FreeServicesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FreeServicesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FreeServicesCreateResponseTagsMap>;
+
+/** Properties of free services */
+export interface FreeServicesProperties {
+  /** This is the catalog UPN for the product. */
+  productCode?: string;
+  /** Display name */
+  displayName?: string;
+  /** Current status of the free services */
+  status?: FreeServicesStatus;
+  /** Date and time when the free services become active */
+  startAt?: string;
+  /** Expiration date and time of the free services */
+  endAt?: string;
+  /** Provisioning state of Free Services as assigned by RPaaS. This indicates the last operation's status. For all practical purposes, this can be ignored. For current status of Free Services resource, refer to FreeServicesStatus. */
+  provisioningState?: BenefitProvisioningState;
+  /** Fully-qualified identifier of the billing account where the benefit is applied. */
+  billingAccountResourceId?: string;
+  /** Fully-qualified identifier of the billing profile where the benefit is applied. */
+  billingProfileResourceId?: string;
+  /** Customer resource id where the benefit is scoped to. */
+  customerResourceId?: string;
+  /** Invitation identifier */
+  invitationId?: string;
+  /** This is the globally unique identifier of the free services which will not change for its lifetime. Generated by the benefit publisher. */
+  systemId?: string;
+  /** Product details including SKU title, product family, and product type. */
+  productDetails?: ProductDetailsBase;
+}
+export const FreeServicesProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productCode: S.optional(S.String),
+    displayName: S.optional(S.String),
+    status: S.optional(FreeServicesStatus),
+    startAt: S.optional(S.String),
+    endAt: S.optional(S.String),
+    provisioningState: S.optional(BenefitProvisioningState),
+    billingAccountResourceId: S.optional(S.String),
+    billingProfileResourceId: S.optional(S.String),
+    customerResourceId: S.optional(S.String),
+    invitationId: S.optional(S.String),
+    systemId: S.optional(S.String),
+    productDetails: S.optional(ProductDetailsBase),
+  }),
+).annotate({
+  identifier: "FreeServicesProperties",
+}) as any as S.Schema<FreeServicesProperties>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface FreeServicesCreateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap;
+}
+export const FreeServicesCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "FreeServicesCreateResponseIdentity",
+}) as any as S.Schema<FreeServicesCreateResponseIdentity>;
+
+export interface CreateFreeServiceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: FreeServicesCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Free services properties */
+  properties?: FreeServicesProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: FreeServicesCreateResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(FreeServicesCreateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(FreeServicesProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(FreeServicesCreateResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "CreateFreeServiceResponse",
+}) as any as S.Schema<CreateFreeServiceResponse>;
+
+/** Resource tags. */
+export type MaccsCreateRequestTagsMap = { [key: string]: string | undefined };
+export const MaccsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MaccsCreateRequestTagsMap>;
+
+/** Represents the current status of the MACC. */
+export type MaccStatus =
+  | "Unknown"
+  | "Scheduled"
+  | "Active"
+  | "Pending"
+  | "Failed"
+  | "Canceled"
+  | "Completed"
+  | "Stopped"
+  | "PendingSettlement"
+  | "ShortfallCharged"
+  | "ShortfallWaived";
+export const MaccStatus = /*@__PURE__*/ S.String;
+
+/** Represents type of the object being operated on. Possible values are primary or contributor. */
+export type MaccEntityType = "Primary" | "Contributor";
+export const MaccEntityType = /*@__PURE__*/ S.String;
+
+/** Represents the enablement status of a feature or settings. */
+export type EnablementMode = "Unknown" | "Enabled" | "Disabled";
+export const EnablementMode = /*@__PURE__*/ S.String;
+
+/** Optional field to record suppression reason for automatic shortfall. */
+export interface AutomaticShortfallSuppressReason {
+  /** Code for the suppression reason. */
+  code?: string;
+  /** Message for suppression reason. */
+  message?: string;
+}
+export const AutomaticShortfallSuppressReason = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AutomaticShortfallSuppressReason",
+}) as any as S.Schema<AutomaticShortfallSuppressReason>;
+
+/** MACC shortfall */
+export interface Shortfall {
+  /** Represents catalog UPN. */
+  productCode?: string;
+  /** Shortfall amount with grain. */
+  charge?: Commitment;
+  /** Start DateTime. */
+  startAt?: string;
+  /** End DateTime in UTC. */
+  endAt?: string;
+  /** Fully-qualified resource identifier of the credits associated with the shortfall. */
+  resourceId?: string;
+  /** Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created. */
+  balanceVersion?: number;
+  /** This is an identifier of the shortfall which will not change for its lifetime. */
+  systemId?: string;
+}
+export const Shortfall = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productCode: S.optional(S.String),
+    charge: S.optional(Commitment),
+    startAt: S.optional(S.String),
+    endAt: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    balanceVersion: S.optional(S.Number),
+    systemId: S.optional(S.String),
+  }),
+).annotate({ identifier: "Shortfall" }) as any as S.Schema<Shortfall>;
+
+/** Represents the current status of the Milestone. */
+export type MaccMilestoneStatus =
+  | "Unknown"
+  | "Scheduled"
+  | "Active"
+  | "Pending"
+  | "Failed"
+  | "Completed"
+  | "Canceled"
+  | "Removed"
+  | "PendingSettlement"
+  | "ShortfallCharged"
+  | "ShortfallWaived";
+export const MaccMilestoneStatus = /*@__PURE__*/ S.String;
+
+/** MACC milestone represents interim targets within the period of MACC. */
+export interface MaccMilestone {
+  /** Globally unique identifier for the milestone. Format: {guid} */
+  milestoneId?: string;
+  /** Commitment associated with this milestone. */
+  commitment?: Price;
+  /** End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z. */
+  endAt?: string;
+  /** Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met. */
+  automaticShortfall?: EnablementMode | (string & {});
+  /** Optional field to record suppression reason for automatic shortfall. */
+  automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
+  /** Represents the current status of the Milestone. */
+  status?: MaccMilestoneStatus | (string & {});
+  /** Details of the shortfall associated with this milestone. */
+  shortfall?: Shortfall;
+}
+export const MaccMilestone = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    milestoneId: S.optional(S.String),
+    commitment: S.optional(Price),
+    endAt: S.optional(S.String),
+    automaticShortfall: S.optional(EnablementMode),
+    automaticShortfallSuppressReason: S.optional(
+      AutomaticShortfallSuppressReason,
+    ),
+    status: S.optional(MaccMilestoneStatus),
+    shortfall: S.optional(Shortfall),
+  }),
+).annotate({ identifier: "MaccMilestone" }) as any as S.Schema<MaccMilestone>;
+
+/** List of milestones associated with this MACC. */
+export type MaccModelPropertiesInputMilestonesList = Array<MaccMilestone>;
+export const MaccModelPropertiesInputMilestonesList = /*@__PURE__*/ S.Array(
+  MaccMilestone,
+) as any as S.Schema<MaccModelPropertiesInputMilestonesList>;
+
+/** MACC properties */
+export interface MaccModelPropertiesInput {
+  /** Represents the current status of the MACC. */
+  status?: MaccStatus | (string & {});
+  /** Represents type of the object being operated on. Possible values are primary or contributor. */
+  entityType: MaccEntityType | (string & {});
+  /** Display name */
+  displayName?: string;
+  /** Represents catalog UPN. */
+  productCode?: string;
+  /** Fully-qualified identifier of the billing account where the MACC is applied. Present only for Enterprise Agreement customers. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId} */
+  billingAccountResourceId?: string;
+  /** Commitment towards the benefit. */
+  commitment?: Commitment;
+  /** Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z. */
+  startAt?: string;
+  /** Must be end of month. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z. */
+  endAt?: string;
+  /** This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC. */
+  systemId?: string;
+  /** Setting this to 'Enable' enables automatic shortfall charging when commitment is not met. */
+  automaticShortfall?: EnablementMode | (string & {});
+  /** Optional field to record suppression reason for automatic shortfall. */
+  automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
+  /** MACC shortfall */
+  shortfall?: Shortfall;
+  /** List of milestones associated with this MACC. */
+  milestones?: MaccModelPropertiesInputMilestonesList;
+  /** This is the resource identifier of either the primary MACC or the contributor. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
+  resourceId?: string;
+  /** Setting this to true means multi-entity. */
+  allowContributors?: boolean;
+  /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
+  primaryResourceId?: string;
+  /** Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
+  primaryBillingAccountResourceId?: string;
+  /** Type of the applied scope for the MACC. */
+  appliedScopeType?: BenefitAppliedScopeType | (string & {});
+  /** Invitation identifier */
+  invitationId?: string;
+}
+export const MaccModelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(MaccStatus),
+    entityType: MaccEntityType,
+    displayName: S.optional(S.String),
+    productCode: S.optional(S.String),
+    billingAccountResourceId: S.optional(S.String),
+    commitment: S.optional(Commitment),
+    startAt: S.optional(S.String),
+    endAt: S.optional(S.String),
+    systemId: S.optional(S.String),
+    automaticShortfall: S.optional(EnablementMode),
+    automaticShortfallSuppressReason: S.optional(
+      AutomaticShortfallSuppressReason,
+    ),
+    shortfall: S.optional(Shortfall),
+    milestones: S.optional(MaccModelPropertiesInputMilestonesList),
+    resourceId: S.optional(S.String),
+    allowContributors: S.optional(S.Boolean),
+    primaryResourceId: S.optional(S.String),
+    primaryBillingAccountResourceId: S.optional(S.String),
+    appliedScopeType: S.optional(BenefitAppliedScopeType),
+    invitationId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaccModelPropertiesInput",
+}) as any as S.Schema<MaccModelPropertiesInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type MaccsCreateRequestIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const MaccsCreateRequestIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<MaccsCreateRequestIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface MaccsCreateRequestIdentity {
+  type: ManagedServiceIdentityType | (string & {});
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: MaccsCreateRequestIdentityUserAssignedIdentitiesMap;
+}
+export const MaccsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      MaccsCreateRequestIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "MaccsCreateRequestIdentity",
+}) as any as S.Schema<MaccsCreateRequestIdentity>;
+
+export interface CreateMaccRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of primary MACC. */
+  maccName: string;
+  /** Resource tags. */
+  tags?: MaccsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** MACC properties */
+  properties?: MaccModelPropertiesInput;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: MaccsCreateRequestIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateMaccRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    maccName: S.String.pipe(T.Label()),
+    tags: S.optional(MaccsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(MaccModelPropertiesInput),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    identity: S.optional(MaccsCreateRequestIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateMaccRequest",
+}) as any as S.Schema<CreateMaccRequest>;
+
+/** Resource tags. */
+export type MaccsCreateResponseTagsMap = { [key: string]: string | undefined };
+export const MaccsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MaccsCreateResponseTagsMap>;
+
+/** List of milestones associated with this MACC. */
+export type MaccModelPropertiesMilestonesList = Array<MaccMilestone>;
+export const MaccModelPropertiesMilestonesList = /*@__PURE__*/ S.Array(
+  MaccMilestone,
+) as any as S.Schema<MaccModelPropertiesMilestonesList>;
+
+/** MACC properties */
+export interface MaccModelProperties {
+  /** Provisioning state of MACC as assigned by RPaaS. This indicates the last operation's status. For all practical purposes, this can be ignored. For current status of MACC resource, refer to MaccStatus. */
+  provisioningState?: BenefitProvisioningState;
+  /** Represents the current status of the MACC. */
+  status?: MaccStatus;
+  /** Represents type of the object being operated on. Possible values are primary or contributor. */
+  entityType: MaccEntityType;
+  /** Display name */
+  displayName?: string;
+  /** Represents catalog UPN. */
+  productCode?: string;
+  /** Fully-qualified identifier of the billing account where the MACC is applied. Present only for Enterprise Agreement customers. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId} */
+  billingAccountResourceId?: string;
+  /** Commitment towards the benefit. */
+  commitment?: Commitment;
+  /** Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z. */
+  startAt?: string;
+  /** Must be end of month. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z. */
+  endAt?: string;
+  /** This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC. */
+  systemId?: string;
+  /** Setting this to 'Enable' enables automatic shortfall charging when commitment is not met. */
+  automaticShortfall?: EnablementMode;
+  /** Optional field to record suppression reason for automatic shortfall. */
+  automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
+  /** MACC shortfall */
+  shortfall?: Shortfall;
+  /** List of milestones associated with this MACC. */
+  milestones?: MaccModelPropertiesMilestonesList;
+  /** This is the resource identifier of either the primary MACC or the contributor. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
+  resourceId?: string;
+  /** Setting this to true means multi-entity. */
+  allowContributors?: boolean;
+  /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
+  primaryResourceId?: string;
+  /** Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
+  primaryBillingAccountResourceId?: string;
+  /** Product details including SKU title, product family, and product type. */
+  productDetails?: ProductDetailsBase;
+  /** Type of the applied scope for the MACC. */
+  appliedScopeType?: BenefitAppliedScopeType;
+  /** Invitation identifier */
+  invitationId?: string;
+  /** Amount of benefit that has been consumed */
+  consumed?: Price;
+}
+export const MaccModelProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(BenefitProvisioningState),
+    status: S.optional(MaccStatus),
+    entityType: MaccEntityType,
+    displayName: S.optional(S.String),
+    productCode: S.optional(S.String),
+    billingAccountResourceId: S.optional(S.String),
+    commitment: S.optional(Commitment),
+    startAt: S.optional(S.String),
+    endAt: S.optional(S.String),
+    systemId: S.optional(S.String),
+    automaticShortfall: S.optional(EnablementMode),
+    automaticShortfallSuppressReason: S.optional(
+      AutomaticShortfallSuppressReason,
+    ),
+    shortfall: S.optional(Shortfall),
+    milestones: S.optional(MaccModelPropertiesMilestonesList),
+    resourceId: S.optional(S.String),
+    allowContributors: S.optional(S.Boolean),
+    primaryResourceId: S.optional(S.String),
+    primaryBillingAccountResourceId: S.optional(S.String),
+    productDetails: S.optional(ProductDetailsBase),
+    appliedScopeType: S.optional(BenefitAppliedScopeType),
+    invitationId: S.optional(S.String),
+    consumed: S.optional(Price),
+  }),
+).annotate({
+  identifier: "MaccModelProperties",
+}) as any as S.Schema<MaccModelProperties>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type MaccsCreateResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const MaccsCreateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<MaccsCreateResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface MaccsCreateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: MaccsCreateResponseIdentityUserAssignedIdentitiesMap;
+}
+export const MaccsCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      MaccsCreateResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "MaccsCreateResponseIdentity",
+}) as any as S.Schema<MaccsCreateResponseIdentity>;
+
+export interface CreateMaccResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: MaccsCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** MACC properties */
+  properties?: MaccModelProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: MaccsCreateResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateMaccResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(MaccsCreateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(MaccModelProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(MaccsCreateResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "CreateMaccResponse",
+}) as any as S.Schema<CreateMaccResponse>;
+
+export interface ResourceSku {
+  name?: string;
+}
+export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
+
+/** Represent benefit term in ISO 8601 format. */
+export type Term = "P1M" | "P1Y" | "P3Y" | "P5Y";
+export const Term = /*@__PURE__*/ S.String;
+
+/** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
+export type BillingPlan = "P1M";
+export const BillingPlan = /*@__PURE__*/ S.String;
+
+/** Type of the Applied Scope. */
+export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
+export const AppliedScopeType = /*@__PURE__*/ S.String;
+
+/** Properties specific to applied scope type. Not required if not applicable. */
+export interface AppliedScopeProperties {
+  /** Tenant ID where the benefit is applied. */
+  tenantId?: string;
+  /** Fully-qualified identifier of the management group where the benefit must be applied. */
+  managementGroupId?: string;
+  /** Fully-qualified identifier of the subscription. */
+  subscriptionId?: string;
+  /** Fully-qualified identifier of the resource group. */
+  resourceGroupId?: string;
+  /** Display name */
+  displayName?: string;
+  /** A filter string passed to downstream services to categorize and apply usage benefits to specific resource models. Expected format: "key/value" (e.g., "contractId/2025 H2CPU"). The value is not validated by BillingBenefits and is forwarded as-is. */
+  benefitFilter?: string;
+}
+export const AppliedScopeProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantId: S.optional(S.String),
+    managementGroupId: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    resourceGroupId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    benefitFilter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppliedScopeProperties",
+}) as any as S.Schema<AppliedScopeProperties>;
+
+/** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
+export type RenewAction = "CreateNew" | "RenewExisting";
+export const RenewAction = /*@__PURE__*/ S.String;
+
+/** The type of the resource that is being reserved. */
+export type ReservedResourceType =
+  | "VirtualMachines"
+  | "SqlDatabases"
+  | "SuseLinux"
+  | "CosmosDb"
+  | "RedHat"
+  | "SqlDataWarehouse"
+  | "VMwareCloudSimple"
+  | "RedHatOsa"
+  | "Databricks"
+  | "AppService"
+  | "ManagedDisk"
+  | "BlockBlob"
+  | "RedisCache"
+  | "AzureDataExplorer"
+  | "MySql"
+  | "MariaDb"
+  | "PostgreSql"
+  | "DedicatedHost"
+  | "SapHana"
+  | "SqlAzureHybridBenefit"
+  | "AVS"
+  | "DataFactory"
+  | "NetAppStorage"
+  | "AzureFiles"
+  | "SqlEdge"
+  | "VirtualMachineSoftware";
+export const ReservedResourceType = /*@__PURE__*/ S.String;
+
+/** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
+export type InstanceFlexibility = "On" | "Off";
+export const InstanceFlexibility = /*@__PURE__*/ S.String;
+
+/** Properties specific to each reserved resource type. Not required if not applicable. */
+export interface ReservationOrderAliasRequestPropertiesReservedResourceProperties {
+  /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
+  instanceFlexibility?: InstanceFlexibility | (string & {});
+}
+export const ReservationOrderAliasRequestPropertiesReservedResourceProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      instanceFlexibility: S.optional(InstanceFlexibility),
+    }),
+  ).annotate({
+    identifier:
+      "ReservationOrderAliasRequestPropertiesReservedResourceProperties",
+  }) as any as S.Schema<ReservationOrderAliasRequestPropertiesReservedResourceProperties>;
+
+/** Reservation properties */
+export interface ReservationOrderAliasRequestProperties {
+  /** Display name */
+  displayName?: string;
+  /** Subscription that will be charged for purchasing the benefit */
+  billingScopeId?: string;
+  /** Represent benefit term in ISO 8601 format. */
+  term?: Term | (string & {});
+  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
+  billingPlan?: BillingPlan | (string & {});
+  /** Type of the Applied Scope. */
+  appliedScopeType?: AppliedScopeType | (string & {});
+  /** Properties specific to applied scope type. Not required if not applicable. */
+  appliedScopeProperties?: AppliedScopeProperties;
+  /** Total Quantity of the SKUs purchased in the Reservation. */
+  quantity?: number;
+  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
+  renew?: boolean;
+  /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
+  renewAction?: RenewAction | (string & {});
+  /** The type of the resource that is being reserved. */
+  reservedResourceType?: ReservedResourceType | (string & {});
+  /** This is the date-time when the Azure Hybrid Benefit needs to be reviewed. */
+  reviewDateTime?: string;
+  /** This is the DateTime when the reservation benefit started. */
+  benefitStartTime?: string;
+  /** Properties specific to each reserved resource type. Not required if not applicable. */
+  reservedResourceProperties?: ReservationOrderAliasRequestPropertiesReservedResourceProperties;
+}
+export const ReservationOrderAliasRequestProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      displayName: S.optional(S.String),
+      billingScopeId: S.optional(S.String),
+      term: S.optional(Term),
+      billingPlan: S.optional(BillingPlan),
+      appliedScopeType: S.optional(AppliedScopeType),
+      appliedScopeProperties: S.optional(AppliedScopeProperties),
+      quantity: S.optional(S.Number),
+      renew: S.optional(S.Boolean),
+      renewAction: S.optional(RenewAction),
+      reservedResourceType: S.optional(ReservedResourceType),
+      reviewDateTime: S.optional(S.String),
+      benefitStartTime: S.optional(S.String),
+      reservedResourceProperties: S.optional(
+        ReservationOrderAliasRequestPropertiesReservedResourceProperties,
+      ),
+    }),
+).annotate({
+  identifier: "ReservationOrderAliasRequestProperties",
+}) as any as S.Schema<ReservationOrderAliasRequestProperties>;
+
+export interface CreateReservationOrderAliaRequest {
+  /** Name of the reservation order alias */
+  reservationOrderAliasName: string;
+  /** Reservation order SKU */
+  sku: ResourceSku;
+  /** The Azure Region where the reservation benefits are applied to. */
+  location?: string;
+  /** Reservation order alias request properties */
+  properties?: ReservationOrderAliasRequestProperties;
+}
+export const CreateReservationOrderAliaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reservationOrderAliasName: S.String.pipe(T.Label()),
+    sku: ResourceSku,
+    location: S.optional(S.String),
+    properties: S.optional(ReservationOrderAliasRequestProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateReservationOrderAliaRequest",
+}) as any as S.Schema<CreateReservationOrderAliaRequest>;
+
+/** Provisioning state */
+export type ProvisioningState =
+  | "Creating"
+  | "PendingBilling"
+  | "ConfirmedBilling"
+  | "Created"
+  | "Succeeded"
+  | "Cancelled"
+  | "Expired"
+  | "Failed";
+export const ProvisioningState = /*@__PURE__*/ S.String;
+
+/** Properties specific to each reserved resource type. Not required if not applicable. */
+export interface ReservationOrderAliasResponsePropertiesReservedResourceProperties {
+  /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
+  instanceFlexibility?: InstanceFlexibility;
+}
+export const ReservationOrderAliasResponsePropertiesReservedResourceProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      instanceFlexibility: S.optional(InstanceFlexibility),
+    }),
+  ).annotate({
+    identifier:
+      "ReservationOrderAliasResponsePropertiesReservedResourceProperties",
+  }) as any as S.Schema<ReservationOrderAliasResponsePropertiesReservedResourceProperties>;
+
+/** Reservation properties */
+export interface ReservationOrderAliasResponseProperties {
+  /** Display name */
+  displayName?: string;
+  /** Identifier of the reservation order created */
+  reservationOrderId?: string;
+  /** Provisioning state */
+  provisioningState?: ProvisioningState;
+  /** Subscription that will be charged for purchasing the benefit */
+  billingScopeId?: string;
+  /** Represent benefit term in ISO 8601 format. */
+  term?: Term;
+  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
+  billingPlan?: BillingPlan;
+  /** Type of the Applied Scope. */
+  appliedScopeType?: AppliedScopeType;
+  /** Properties specific to applied scope type. Not required if not applicable. */
+  appliedScopeProperties?: AppliedScopeProperties;
+  /** Total Quantity of the SKUs purchased in the Reservation. */
+  quantity?: number;
+  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
+  renew?: boolean;
+  /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
+  renewAction?: RenewAction;
+  /** This is the date-time when the reservation was renewed. */
+  renewalPurchaseDateTime?: string;
+  /** The type of the resource that is being reserved. */
+  reservedResourceType?: ReservedResourceType;
+  /** This is the date-time when the Reservation needs to be reviewed. */
+  reviewDateTime?: string;
+  /** This is the DateTime when the reservation benefit started. */
+  benefitStartTime?: string;
+  /** Properties specific to each reserved resource type. Not required if not applicable. */
+  reservedResourceProperties?: ReservationOrderAliasResponsePropertiesReservedResourceProperties;
+}
+export const ReservationOrderAliasResponseProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      displayName: S.optional(S.String),
+      reservationOrderId: S.optional(S.String),
+      provisioningState: S.optional(ProvisioningState),
+      billingScopeId: S.optional(S.String),
+      term: S.optional(Term),
+      billingPlan: S.optional(BillingPlan),
+      appliedScopeType: S.optional(AppliedScopeType),
+      appliedScopeProperties: S.optional(AppliedScopeProperties),
+      quantity: S.optional(S.Number),
+      renew: S.optional(S.Boolean),
+      renewAction: S.optional(RenewAction),
+      renewalPurchaseDateTime: S.optional(S.String),
+      reservedResourceType: S.optional(ReservedResourceType),
+      reviewDateTime: S.optional(S.String),
+      benefitStartTime: S.optional(S.String),
+      reservedResourceProperties: S.optional(
+        ReservationOrderAliasResponsePropertiesReservedResourceProperties,
+      ),
+    }),
+).annotate({
+  identifier: "ReservationOrderAliasResponseProperties",
+}) as any as S.Schema<ReservationOrderAliasResponseProperties>;
+
+export interface CreateReservationOrderAliaResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Reservation order alias response properties */
+  properties?: ReservationOrderAliasResponseProperties;
+  /** Reservation order SKU */
+  sku: ResourceSku;
+  /** The Azure Region where the reserved resource lives. */
+  location?: string;
+}
+export const CreateReservationOrderAliaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ReservationOrderAliasResponseProperties),
+    sku: ResourceSku,
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateReservationOrderAliaResponse",
+}) as any as S.Schema<CreateReservationOrderAliaResponse>;
+
+/** Savings plan properties */
+export interface SavingsPlanOrderAliasPropertiesInput {
+  /** Display name */
+  displayName?: string;
+  /** Subscription that will be charged for purchasing the benefit */
+  billingScopeId?: string;
+  /** Represent benefit term in ISO 8601 format. */
+  term?: Term | (string & {});
+  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
+  billingPlan?: BillingPlan | (string & {});
+  /** Type of the Applied Scope. */
+  appliedScopeType?: AppliedScopeType | (string & {});
+  /** Properties specific to applied scope type. Not required if not applicable. */
+  appliedScopeProperties?: AppliedScopeProperties;
+  /** Commitment towards the benefit. */
+  commitment?: Commitment;
+  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
+  renew?: boolean;
+}
+export const SavingsPlanOrderAliasPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      displayName: S.optional(S.String),
+      billingScopeId: S.optional(S.String),
+      term: S.optional(Term),
+      billingPlan: S.optional(BillingPlan),
+      appliedScopeType: S.optional(AppliedScopeType),
+      appliedScopeProperties: S.optional(AppliedScopeProperties),
+      commitment: S.optional(Commitment),
+      renew: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "SavingsPlanOrderAliasPropertiesInput",
+}) as any as S.Schema<SavingsPlanOrderAliasPropertiesInput>;
+
+export interface CreateSavingPlanOrderAliaRequest {
+  /** Name of the savings plan order alias */
+  savingsPlanOrderAliasName: string;
+  /** Savings plan order alias properties */
+  properties?: SavingsPlanOrderAliasPropertiesInput;
+  /** Savings plan SKU */
+  sku: ResourceSku;
+  /** Resource provider kind */
+  kind?: string;
+}
+export const CreateSavingPlanOrderAliaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    savingsPlanOrderAliasName: S.String.pipe(T.Label()),
+    properties: S.optional(SavingsPlanOrderAliasPropertiesInput),
+    sku: ResourceSku,
+    kind: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSavingPlanOrderAliaRequest",
+}) as any as S.Schema<CreateSavingPlanOrderAliaRequest>;
+
+/** Savings plan properties */
+export interface SavingsPlanOrderAliasProperties {
+  /** Display name */
+  displayName?: string;
+  /** Identifier of the savings plan created */
+  savingsPlanOrderId?: string;
+  /** Provisioning state */
+  provisioningState?: ProvisioningState;
+  /** Subscription that will be charged for purchasing the benefit */
+  billingScopeId?: string;
+  /** Represent benefit term in ISO 8601 format. */
+  term?: Term;
+  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
+  billingPlan?: BillingPlan;
+  /** Type of the Applied Scope. */
+  appliedScopeType?: AppliedScopeType;
+  /** Properties specific to applied scope type. Not required if not applicable. */
+  appliedScopeProperties?: AppliedScopeProperties;
+  /** Commitment towards the benefit. */
+  commitment?: Commitment;
+  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
+  renew?: boolean;
+}
+export const SavingsPlanOrderAliasProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    savingsPlanOrderId: S.optional(S.String),
+    provisioningState: S.optional(ProvisioningState),
+    billingScopeId: S.optional(S.String),
+    term: S.optional(Term),
+    billingPlan: S.optional(BillingPlan),
+    appliedScopeType: S.optional(AppliedScopeType),
+    appliedScopeProperties: S.optional(AppliedScopeProperties),
+    commitment: S.optional(Commitment),
+    renew: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SavingsPlanOrderAliasProperties",
+}) as any as S.Schema<SavingsPlanOrderAliasProperties>;
+
+export interface CreateSavingPlanOrderAliaResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Savings plan order alias properties */
+  properties?: SavingsPlanOrderAliasProperties;
+  /** Savings plan SKU */
+  sku: ResourceSku;
+  /** Resource provider kind */
+  kind?: string;
+}
+export const CreateSavingPlanOrderAliaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SavingsPlanOrderAliasProperties),
+    sku: ResourceSku,
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateSavingPlanOrderAliaResponse",
+}) as any as S.Schema<CreateSavingPlanOrderAliaResponse>;
+
+/** Resource tags. */
+export type SourcesCreateRequestTagsMap = { [key: string]: string | undefined };
+export const SourcesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SourcesCreateRequestTagsMap>;
+
+/** Properties of a credit source */
+export interface CreditSourcePropertiesInput {
+  /** The uri of the resource impacted which lead to the grant of the credit. */
+  sourceResourceId?: string;
+  /** The billing period of the impact for the resource. Format YYYYMM */
+  impactedBillingPeriod?: string;
+  /** Commitment towards the benefit. */
+  credit?: Commitment;
+}
+export const CreditSourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceResourceId: S.optional(S.String),
+    impactedBillingPeriod: S.optional(S.String),
+    credit: S.optional(Commitment),
+  }),
+).annotate({
+  identifier: "CreditSourcePropertiesInput",
+}) as any as S.Schema<CreditSourcePropertiesInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type SourcesCreateRequestIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const SourcesCreateRequestIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<SourcesCreateRequestIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface SourcesCreateRequestIdentity {
+  type: ManagedServiceIdentityType | (string & {});
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: SourcesCreateRequestIdentityUserAssignedIdentitiesMap;
+}
+export const SourcesCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      SourcesCreateRequestIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "SourcesCreateRequestIdentity",
+}) as any as S.Schema<SourcesCreateRequestIdentity>;
+
+export interface CreateSourceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the credit */
+  creditName: string;
+  /** Name of the credit source */
+  sourceName: string;
+  /** Resource tags. */
+  tags?: SourcesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Credit source properties */
+  properties?: CreditSourcePropertiesInput;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: SourcesCreateRequestIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateSourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    creditName: S.String.pipe(T.Label()),
+    sourceName: S.String.pipe(T.Label()),
+    tags: S.optional(SourcesCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(CreditSourcePropertiesInput),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    identity: S.optional(SourcesCreateRequestIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/sources/{sourceName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSourceRequest",
+}) as any as S.Schema<CreateSourceRequest>;
+
+/** Resource tags. */
+export type SourcesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SourcesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SourcesCreateResponseTagsMap>;
+
+/** Properties of a credit source */
+export interface CreditSourceProperties {
+  /** Status of the credit */
+  status?: CreditStatus;
+  /** The uri of the resource impacted which lead to the grant of the credit. */
+  sourceResourceId?: string;
+  /** The billing period of the impact for the resource. Format YYYYMM */
+  impactedBillingPeriod?: string;
+  /** Commitment towards the benefit. */
+  credit?: Commitment;
+}
+export const CreditSourceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(CreditStatus),
+    sourceResourceId: S.optional(S.String),
+    impactedBillingPeriod: S.optional(S.String),
+    credit: S.optional(Commitment),
+  }),
+).annotate({
+  identifier: "CreditSourceProperties",
+}) as any as S.Schema<CreditSourceProperties>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type SourcesCreateResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const SourcesCreateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<SourcesCreateResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface SourcesCreateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: SourcesCreateResponseIdentityUserAssignedIdentitiesMap;
+}
+export const SourcesCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      SourcesCreateResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "SourcesCreateResponseIdentity",
+}) as any as S.Schema<SourcesCreateResponseIdentity>;
+
+export interface CreateSourceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SourcesCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Credit source properties */
+  properties?: CreditSourceProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: SourcesCreateResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreateSourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SourcesCreateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(CreditSourceProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(SourcesCreateResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "CreateSourceResponse",
+}) as any as S.Schema<CreateSourceResponse>;
+
+export interface CreditsCancelRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the credit */
+  creditName: string;
+}
+export const CreditsCancelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    creditName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/cancel",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreditsCancelRequest",
+}) as any as S.Schema<CreditsCancelRequest>;
+
+/** Resource tags. */
+export type CreditsCancelResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CreditsCancelResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreditsCancelResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreditsCancelResponseIdentityUserAssignedIdentitiesMap = {
@@ -2776,238 +2938,39 @@ export const CreditsChangeSponsorResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreditsChangeSponsorResponse",
 }) as any as S.Schema<CreditsChangeSponsorResponse>;
 
-/** Resource tags. */
-export type CreditsCreateRequestTagsMap = { [key: string]: string | undefined };
-export const CreditsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreditsCreateRequestTagsMap>;
-
-/** Credit line-items/milestones/no-charge services breakdown */
-export type CreditPropertiesInputBreakdownList = Array<CreditBreakdownItem>;
-export const CreditPropertiesInputBreakdownList = /*@__PURE__*/ S.Array(
-  CreditBreakdownItem,
-) as any as S.Schema<CreditPropertiesInputBreakdownList>;
-
-/** Properties of a credit */
-export interface CreditPropertiesInput {
-  /** Product UPN for the credit type */
-  productCode?: string;
-  /** Display name */
-  displayName?: string;
-  /** The reason for the credit. Not required if not applicable. */
-  reason?: CreditReason;
-  /** The entire investment amount for the credit contract, including currency and amount */
-  credit?: Commitment;
-  /** Start DateTime. */
-  startAt?: string;
-  /** End DateTime in UTC. */
-  endAt?: string;
-  /** Credit breakdown item representing a milestone, line-item, or no-charge service */
-  policies?: CreditPolicies;
-  /** Fully-qualified identifier of the billing account where the benefit is applied. Present only for Enterprise Agreement customers. */
-  billingAccountResourceId?: string;
-  /** Credit line-items/milestones/no-charge services breakdown */
-  breakdown?: CreditPropertiesInputBreakdownList;
-  /** System identifier */
-  systemId?: string;
-  /** Unique identifier (UUID) of the funding lot assigned by the benefit publisher. Used in credit transfer scenarios to trace the originating credit lot. */
-  fundingSystemId?: string;
-  /** Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}. */
-  resourceId?: string;
-  /** Invitation identifier */
-  invitationId?: string;
-  /** Type of the applied scope for the credit. */
-  appliedScopeType?: BenefitAppliedScopeType | (string & {});
-}
-export const CreditPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productCode: S.optional(S.String),
-    displayName: S.optional(S.String),
-    reason: S.optional(CreditReason),
-    credit: S.optional(Commitment),
-    startAt: S.optional(S.String),
-    endAt: S.optional(S.String),
-    policies: S.optional(CreditPolicies),
-    billingAccountResourceId: S.optional(S.String),
-    breakdown: S.optional(CreditPropertiesInputBreakdownList),
-    systemId: S.optional(S.String),
-    fundingSystemId: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    invitationId: S.optional(S.String),
-    appliedScopeType: S.optional(BenefitAppliedScopeType),
-  }),
-).annotate({
-  identifier: "CreditPropertiesInput",
-}) as any as S.Schema<CreditPropertiesInput>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type CreditsCreateRequestIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
-};
-export const CreditsCreateRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentityInput,
-  ) as any as S.Schema<CreditsCreateRequestIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface CreditsCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: CreditsCreateRequestIdentityUserAssignedIdentitiesMap;
-}
-export const CreditsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      CreditsCreateRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "CreditsCreateRequestIdentity",
-}) as any as S.Schema<CreditsCreateRequestIdentity>;
-
-export interface CreditsCreateRequest {
+export interface DeleteConditionalCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** Name of the credit */
-  creditName: string;
-  /** Resource tags. */
-  tags?: CreditsCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Credit properties */
-  properties?: CreditPropertiesInput;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: CreditsCreateRequestIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
+  /** Name of the conditional credit */
+  conditionalCreditName: string;
 }
-export const CreditsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
-    creditName: S.String.pipe(T.Label()),
-    tags: S.optional(CreditsCreateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(CreditPropertiesInput),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    identity: S.optional(CreditsCreateRequestIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
+    conditionalCreditName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}",
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}",
       code: 200,
       apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
-  identifier: "CreditsCreateRequest",
-}) as any as S.Schema<CreditsCreateRequest>;
+  identifier: "DeleteConditionalCreditRequest",
+}) as any as S.Schema<DeleteConditionalCreditRequest>;
 
-/** Resource tags. */
-export type CreditsCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const CreditsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreditsCreateResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type CreditsCreateResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const CreditsCreateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<CreditsCreateResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface CreditsCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: CreditsCreateResponseIdentityUserAssignedIdentitiesMap;
-}
-export const CreditsCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      CreditsCreateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
+export interface DeleteConditionalCreditResponse {}
+export const DeleteConditionalCreditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "CreditsCreateResponseIdentity",
-}) as any as S.Schema<CreditsCreateResponseIdentity>;
+  identifier: "DeleteConditionalCreditResponse",
+}) as any as S.Schema<DeleteConditionalCreditResponse>;
 
-export interface CreditsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: CreditsCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Credit properties */
-  properties?: CreditProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: CreditsCreateResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const CreditsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CreditsCreateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(CreditsCreateResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "CreditsCreateResponse",
-}) as any as S.Schema<CreditsCreateResponse>;
-
-export interface CreditsDeleteRequest {
+export interface DeleteCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -3015,7 +2978,7 @@ export interface CreditsDeleteRequest {
   /** Name of the credit */
   creditName: string;
 }
-export const CreditsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3029,17 +2992,904 @@ export const CreditsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreditsDeleteRequest",
-}) as any as S.Schema<CreditsDeleteRequest>;
+  identifier: "DeleteCreditRequest",
+}) as any as S.Schema<DeleteCreditRequest>;
 
-export interface CreditsDeleteResponse {}
-export const CreditsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteCreditResponse {}
+export const DeleteCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "CreditsDeleteResponse",
-}) as any as S.Schema<CreditsDeleteResponse>;
+  identifier: "DeleteCreditResponse",
+}) as any as S.Schema<DeleteCreditResponse>;
 
-export interface CreditsGetRequest {
+export interface DeleteDiscountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the discount */
+  discountName: string;
+}
+export const DeleteDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    discountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDiscountRequest",
+}) as any as S.Schema<DeleteDiscountRequest>;
+
+export interface DeleteDiscountResponse {}
+export const DeleteDiscountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDiscountResponse",
+}) as any as S.Schema<DeleteDiscountResponse>;
+
+export interface DeleteFreeServiceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the free service */
+  freeServiceName: string;
+}
+export const DeleteFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    freeServiceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/freeServices/{freeServiceName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteFreeServiceRequest",
+}) as any as S.Schema<DeleteFreeServiceRequest>;
+
+export interface DeleteFreeServiceResponse {}
+export const DeleteFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteFreeServiceResponse",
+}) as any as S.Schema<DeleteFreeServiceResponse>;
+
+export interface DeleteMaccRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of primary MACC. */
+  maccName: string;
+}
+export const DeleteMaccRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    maccName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMaccRequest",
+}) as any as S.Schema<DeleteMaccRequest>;
+
+export interface DeleteMaccResponse {}
+export const DeleteMaccResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteMaccResponse",
+}) as any as S.Schema<DeleteMaccResponse>;
+
+export interface DeleteSourceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the credit */
+  creditName: string;
+  /** Name of the credit source */
+  sourceName: string;
+}
+export const DeleteSourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    creditName: S.String.pipe(T.Label()),
+    sourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/sources/{sourceName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSourceRequest",
+}) as any as S.Schema<DeleteSourceRequest>;
+
+export interface DeleteSourceResponse {}
+export const DeleteSourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSourceResponse",
+}) as any as S.Schema<DeleteSourceResponse>;
+
+export interface DiscountsCancelRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the discount */
+  discountName: string;
+}
+export const DiscountsCancelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    discountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}/cancel",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DiscountsCancelRequest",
+}) as any as S.Schema<DiscountsCancelRequest>;
+
+/** Resource tags. */
+export type DiscountsCancelResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiscountsCancelResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiscountsCancelResponseTagsMap>;
+
+export interface DiscountsCancelResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DiscountsCancelResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Discount properties */
+  properties?: DiscountProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ManagedServiceIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const DiscountsCancelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(DiscountsCancelResponseTagsMap),
+    location: S.String,
+    properties: S.optional(DiscountProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(ManagedServiceIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "DiscountsCancelResponse",
+}) as any as S.Schema<DiscountsCancelResponse>;
+
+export interface GetBillingAccountCatalogGroupOpsRequest {
+  /** The name of the billing account. */
+  billingAccountName: string;
+  /** The name of the CatalogGroup */
+  catalogGroupName: string;
+}
+export const GetBillingAccountCatalogGroupOpsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingAccountName: S.String.pipe(T.Label()),
+      catalogGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.BillingBenefits/catalogGroups/{catalogGroupName}",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetBillingAccountCatalogGroupOpsRequest",
+}) as any as S.Schema<GetBillingAccountCatalogGroupOpsRequest>;
+
+/** The top-level ARM resource type for a billing benefit (e.g., maccs, credits, savingsPlans, reservations). */
+export type ResourceType =
+  | "Maccs"
+  | "Credits"
+  | "ConditionalCredits"
+  | "Discounts"
+  | "FreeServices"
+  | "SavingsPlans"
+  | "Reservations";
+export const ResourceType = /*@__PURE__*/ S.String;
+
+/** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
+export type CatalogGroupPropertiesKeywordsList = Array<string>;
+export const CatalogGroupPropertiesKeywordsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CatalogGroupPropertiesKeywordsList>;
+
+/** A key-value pair representing a capability of the catalog group (for example, exchange or renewal support). */
+export interface CatalogGroupCapability {
+  /** The capability name (e.g., SelfServiceExchange, Renewability). */
+  name: string;
+  /** The capability value (e.g., Supported, Not Supported). */
+  value: string;
+}
+export const CatalogGroupCapability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.String,
+  }),
+).annotate({
+  identifier: "CatalogGroupCapability",
+}) as any as S.Schema<CatalogGroupCapability>;
+
+/** Capabilities of the catalog group as key-value pairs. Omitted when a benefit type has no defined capabilities. */
+export type CatalogGroupPropertiesCapabilitiesList =
+  Array<CatalogGroupCapability>;
+export const CatalogGroupPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
+  CatalogGroupCapability,
+) as any as S.Schema<CatalogGroupPropertiesCapabilitiesList>;
+
+/** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
+export type CatalogGroupPropertiesDisclaimersList = Array<string>;
+export const CatalogGroupPropertiesDisclaimersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CatalogGroupPropertiesDisclaimersList>;
+
+/** Properties of a catalog group. */
+export interface CatalogGroupProperties {
+  /** The top-level benefit resource type (e.g., maccs, credits, conditionalCredits, discounts, savingsPlans, reservations). */
+  benefitResourceType: ResourceType;
+  /** Display name for the catalog group. */
+  displayName?: string;
+  /** Short description of the catalog group. */
+  shortDescription?: string;
+  /** Long description of the catalog group. */
+  longDescription?: string;
+  /** Link to learn more about this catalog group. Uses the forward-link format https://go.microsoft.com/fwlink/?linkid=<linkId>. */
+  learnMoreLink?: string;
+  /** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
+  keywords?: CatalogGroupPropertiesKeywordsList;
+  /** The benefit type's icon as JSON-escaped SVG markup. After parsing, the value is a complete `<svg>…</svg>` element. */
+  icon?: string;
+  /** Capabilities of the catalog group as key-value pairs. Omitted when a benefit type has no defined capabilities. */
+  capabilities?: CatalogGroupPropertiesCapabilitiesList;
+  /** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
+  disclaimers?: CatalogGroupPropertiesDisclaimersList;
+}
+export const CatalogGroupProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    benefitResourceType: ResourceType,
+    displayName: S.optional(S.String),
+    shortDescription: S.optional(S.String),
+    longDescription: S.optional(S.String),
+    learnMoreLink: S.optional(S.String),
+    keywords: S.optional(CatalogGroupPropertiesKeywordsList),
+    icon: S.optional(S.String),
+    capabilities: S.optional(CatalogGroupPropertiesCapabilitiesList),
+    disclaimers: S.optional(CatalogGroupPropertiesDisclaimersList),
+  }),
+).annotate({
+  identifier: "CatalogGroupProperties",
+}) as any as S.Schema<CatalogGroupProperties>;
+
+export interface GetBillingAccountCatalogGroupOpsResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: CatalogGroupProperties;
+}
+export const GetBillingAccountCatalogGroupOpsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(CatalogGroupProperties),
+    }),
+).annotate({
+  identifier: "GetBillingAccountCatalogGroupOpsResponse",
+}) as any as S.Schema<GetBillingAccountCatalogGroupOpsResponse>;
+
+export interface GetBillingProfileCatalogGroupOpsRequest {
+  /** The name of the billing account. */
+  billingAccountName: string;
+  /** The name of the billing profile. */
+  billingProfileName: string;
+  /** The name of the CatalogGroup */
+  catalogGroupName: string;
+}
+export const GetBillingProfileCatalogGroupOpsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingAccountName: S.String.pipe(T.Label()),
+      billingProfileName: S.String.pipe(T.Label()),
+      catalogGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.BillingBenefits/catalogGroups/{catalogGroupName}",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetBillingProfileCatalogGroupOpsRequest",
+}) as any as S.Schema<GetBillingProfileCatalogGroupOpsRequest>;
+
+export interface GetBillingProfileCatalogGroupOpsResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: CatalogGroupProperties;
+}
+export const GetBillingProfileCatalogGroupOpsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(CatalogGroupProperties),
+    }),
+).annotate({
+  identifier: "GetBillingProfileCatalogGroupOpsResponse",
+}) as any as S.Schema<GetBillingProfileCatalogGroupOpsResponse>;
+
+export interface GetConditionalCreditRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the conditional credit */
+  conditionalCreditName: string;
+}
+export const GetConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    conditionalCreditName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetConditionalCreditRequest",
+}) as any as S.Schema<GetConditionalCreditRequest>;
+
+/** Resource tags. */
+export type ConditionalCreditsGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConditionalCreditsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConditionalCreditsGetResponseTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ConditionalCreditsGetResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap;
+}
+export const ConditionalCreditsGetResponseIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      principalId: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(
+        ConditionalCreditsGetResponseIdentityUserAssignedIdentitiesMap,
+      ),
+    }),
+).annotate({
+  identifier: "ConditionalCreditsGetResponseIdentity",
+}) as any as S.Schema<ConditionalCreditsGetResponseIdentity>;
+
+export interface GetConditionalCreditResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ConditionalCreditsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Conditional credit properties */
+  properties?: ConditionalCreditProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ConditionalCreditsGetResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const GetConditionalCreditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ConditionalCreditsGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ConditionalCreditProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(ConditionalCreditsGetResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "GetConditionalCreditResponse",
+}) as any as S.Schema<GetConditionalCreditResponse>;
+
+export interface GetConditionalCreditContributorFromPrimaryRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the conditional credit */
+  conditionalCreditName: string;
+  /** Unique name of contributor in the format {contributorCloudSubId}_{resourceGroupName}_{nameInContributorTenant}. */
+  contributorName: string;
+}
+export const GetConditionalCreditContributorFromPrimaryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      conditionalCreditName: S.String.pipe(T.Label()),
+      contributorName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}/contributors/{contributorName}",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConditionalCreditContributorFromPrimaryRequest",
+  }) as any as S.Schema<GetConditionalCreditContributorFromPrimaryRequest>;
+
+/** Current status of the milestone */
+export type MilestoneStatus =
+  | "Unknown"
+  | "Scheduled"
+  | "Active"
+  | "Pending"
+  | "Failed"
+  | "Completed"
+  | "Canceled"
+  | "Removed"
+  | "PendingSettlement"
+  | "Missed";
+export const MilestoneStatus = /*@__PURE__*/ S.String;
+
+/** Award details for milestone completion */
+export interface Award {
+  /** Credit amount to be awarded */
+  credit?: Commitment;
+  /** Start date when the credit becomes effective */
+  startAt?: string;
+  /** End date when the credit expires */
+  endAt?: string;
+  /** Resource ID for the awarded credit. */
+  resourceId?: string;
+  /** This is the globally unique identifier of the credit which will not change for its lifetime. */
+  systemId?: string;
+  /** Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created. */
+  balanceVersion?: number;
+  /** Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y. */
+  duration?: Term;
+}
+export const Award = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    credit: S.optional(Commitment),
+    startAt: S.optional(S.String),
+    endAt: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    systemId: S.optional(S.String),
+    balanceVersion: S.optional(S.Number),
+    duration: S.optional(Term),
+  }),
+).annotate({ identifier: "Award" }) as any as S.Schema<Award>;
+
+/** Base milestone definition for conditional credits */
+export interface ConditionalCreditMilestoneBase {
+  /** Unique identifier for the milestone */
+  milestoneId?: string;
+  /** Display name for the milestone */
+  name?: string;
+  /** Current status of the milestone */
+  status?: MilestoneStatus;
+  /** End date for this milestone */
+  endAt?: string;
+  /** Spend target for this milestone */
+  spendTarget?: Price;
+  /** Award details for this milestone (only present for primary conditional credits) */
+  award?: Award;
+}
+export const ConditionalCreditMilestoneBase = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    milestoneId: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.optional(MilestoneStatus),
+    endAt: S.optional(S.String),
+    spendTarget: S.optional(Price),
+    award: S.optional(Award),
+  }),
+).annotate({
+  identifier: "ConditionalCreditMilestoneBase",
+}) as any as S.Schema<ConditionalCreditMilestoneBase>;
+
+/** List of milestones copied from primary conditional credit (excludes award details) */
+export type ContributorConditionalCreditPropertiesMilestonesList =
+  Array<ConditionalCreditMilestoneBase>;
+export const ContributorConditionalCreditPropertiesMilestonesList =
+  /*@__PURE__*/ S.Array(
+    ConditionalCreditMilestoneBase,
+  ) as any as S.Schema<ContributorConditionalCreditPropertiesMilestonesList>;
+
+/** Properties for contributor conditional credit. */
+export interface ContributorConditionalCreditProperties {
+  /** Type of conditional credit entity */
+  entityType: ConditionalCreditEntityType;
+  /** Display name for the conditional credit */
+  displayName?: string;
+  /** The billing account resource ID */
+  billingAccountResourceId?: string;
+  /** The provisioning state of the resource */
+  provisioningState?: BenefitProvisioningState;
+  /** The status of the conditional credit */
+  status?: ConditionalCreditStatus;
+  /** Start date of the conditional credit */
+  startAt?: string;
+  /** End date of the conditional credit (derived from last milestone) */
+  endAt?: string;
+  /** Product code for the conditional credit */
+  productCode?: string;
+  /** Fully-qualified identifier of the benefit under applicable benefit list. */
+  benefitResourceId?: string;
+  /** Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}. */
+  resourceId?: string;
+  /** Product details including SKU title, product family, and product type. */
+  productDetails?: ProductDetailsBase;
+  /** Type of the applied scope for the conditional credit. */
+  appliedScopeType?: BenefitAppliedScopeType;
+  /** Invitation identifier */
+  invitationId?: string;
+  /** Amount of benefit that has been consumed */
+  consumed?: Price;
+  /** Resource ID of the primary conditional credit (required for contributors) */
+  primaryResourceId?: string;
+  /** System identifier shared between primary and contributor conditional credits representing the same conditional credit program */
+  systemId?: string;
+  /** List of milestones copied from primary conditional credit (excludes award details) */
+  milestones?: ContributorConditionalCreditPropertiesMilestonesList;
+  /** Fully-qualified billing account resource identifier of the primary CACO. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
+  primaryBillingAccountResourceId?: string;
+}
+export const ContributorConditionalCreditProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      entityType: ConditionalCreditEntityType,
+      displayName: S.optional(S.String),
+      billingAccountResourceId: S.optional(S.String),
+      provisioningState: S.optional(BenefitProvisioningState),
+      status: S.optional(ConditionalCreditStatus),
+      startAt: S.optional(S.String),
+      endAt: S.optional(S.String),
+      productCode: S.optional(S.String),
+      benefitResourceId: S.optional(S.String),
+      resourceId: S.optional(S.String),
+      productDetails: S.optional(ProductDetailsBase),
+      appliedScopeType: S.optional(BenefitAppliedScopeType),
+      invitationId: S.optional(S.String),
+      consumed: S.optional(Price),
+      primaryResourceId: S.optional(S.String),
+      systemId: S.optional(S.String),
+      milestones: S.optional(
+        ContributorConditionalCreditPropertiesMilestonesList,
+      ),
+      primaryBillingAccountResourceId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ContributorConditionalCreditProperties",
+}) as any as S.Schema<ContributorConditionalCreditProperties>;
+
+export interface GetConditionalCreditContributorFromPrimaryResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Conditional credit contributor properties */
+  properties?: ContributorConditionalCreditProperties;
+}
+export const GetConditionalCreditContributorFromPrimaryResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(ContributorConditionalCreditProperties),
+    }),
+  ).annotate({
+    identifier: "GetConditionalCreditContributorFromPrimaryResponse",
+  }) as any as S.Schema<GetConditionalCreditContributorFromPrimaryResponse>;
+
+export interface GetConditionalCreditTransactionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the conditional credit */
+  conditionalCreditName: string;
+  /** Name of the transaction */
+  transactionName: string;
+}
+export const GetConditionalCreditTransactionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      conditionalCreditName: S.String.pipe(T.Label()),
+      transactionName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}/transactions/{transactionName}",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetConditionalCreditTransactionRequest",
+}) as any as S.Schema<GetConditionalCreditTransactionRequest>;
+
+/** The type of charge for a transaction. */
+export type TransactionChargeType = "Usage" | "Purchase" | "Refund";
+export const TransactionChargeType = /*@__PURE__*/ S.String;
+
+/** Billing lifecycle status of a transaction. */
+export type TransactionBillingStatus = "Open" | "Closed";
+export const TransactionBillingStatus = /*@__PURE__*/ S.String;
+
+/** Product details for a transaction */
+export interface TransactionProductDetails {
+  /** SKU title of the product */
+  skuTitle?: string;
+  /** The product family, for example "Azure" or "M365". */
+  productFamily?: string;
+  /** The type of the product. */
+  productType?: string;
+  /** Grouping of Azure services by core function (e.g., Compute, Databases). */
+  serviceFamily?: string;
+  /** The publisher type of the product, for example "Microsoft" for first-party or a third-party publisher name. Additional values may be introduced in the future. */
+  publisherType?: string;
+}
+export const TransactionProductDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skuTitle: S.optional(S.String),
+    productFamily: S.optional(S.String),
+    productType: S.optional(S.String),
+    serviceFamily: S.optional(S.String),
+    publisherType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TransactionProductDetails",
+}) as any as S.Schema<TransactionProductDetails>;
+
+/** Properties of a transaction */
+export interface TransactionProperties {
+  /** Provisioning state of the transaction as assigned by RPaaS. This indicates the last operation's status. */
+  provisioningState?: BenefitProvisioningState;
+  /** This is the DateTime when the transaction occurred. */
+  date?: string;
+  /** The type of charge for this transaction. */
+  chargeType?: TransactionChargeType;
+  /** Billing lifecycle status of this transaction. */
+  billingStatus?: TransactionBillingStatus;
+  /** Fully-qualified identifier of the invoice. */
+  invoiceResourceId?: string;
+  /** Transaction amount in billing currency. */
+  amountInBillingCurrency?: Price;
+  /** Transaction amount in pricing currency. */
+  amountInPricingCurrency?: Price;
+  /** Catalog UPN for the product associated with this transaction. */
+  productCode?: string;
+  /** Product details including SKU title, SKU properties, product family, type, and publisher type. */
+  productDetails?: TransactionProductDetails;
+}
+export const TransactionProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(BenefitProvisioningState),
+    date: S.optional(S.String),
+    chargeType: S.optional(TransactionChargeType),
+    billingStatus: S.optional(TransactionBillingStatus),
+    invoiceResourceId: S.optional(S.String),
+    amountInBillingCurrency: S.optional(Price),
+    amountInPricingCurrency: S.optional(Price),
+    productCode: S.optional(S.String),
+    productDetails: S.optional(TransactionProductDetails),
+  }),
+).annotate({
+  identifier: "TransactionProperties",
+}) as any as S.Schema<TransactionProperties>;
+
+export interface GetConditionalCreditTransactionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Transaction properties */
+  properties?: TransactionProperties;
+}
+export const GetConditionalCreditTransactionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(TransactionProperties),
+    }),
+).annotate({
+  identifier: "GetConditionalCreditTransactionResponse",
+}) as any as S.Schema<GetConditionalCreditTransactionResponse>;
+
+export interface GetContributorFromPrimaryRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of primary MACC. */
+  maccName: string;
+  /** Unique name of contributor in the format {contributorCloudSubId}_{resourceGroupName}_{nameInContributorTenant}. */
+  contributorName: string;
+}
+export const GetContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    maccName: S.String.pipe(T.Label()),
+    contributorName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}/contributors/{contributorName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetContributorFromPrimaryRequest",
+}) as any as S.Schema<GetContributorFromPrimaryRequest>;
+
+export interface GetContributorFromPrimaryResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** MACC contributor properties */
+  properties?: MaccModelProperties;
+}
+export const GetContributorFromPrimaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(MaccModelProperties),
+  }),
+).annotate({
+  identifier: "GetContributorFromPrimaryResponse",
+}) as any as S.Schema<GetContributorFromPrimaryResponse>;
+
+export interface GetCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -3047,7 +3897,7 @@ export interface CreditsGetRequest {
   /** Name of the credit */
   creditName: string;
 }
-export const CreditsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3061,8 +3911,8 @@ export const CreditsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreditsGetRequest",
-}) as any as S.Schema<CreditsGetRequest>;
+  identifier: "GetCreditRequest",
+}) as any as S.Schema<GetCreditRequest>;
 
 /** Resource tags. */
 export type CreditsGetResponseTagsMap = { [key: string]: string | undefined };
@@ -3104,7 +3954,7 @@ export const CreditsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreditsGetResponseIdentity",
 }) as any as S.Schema<CreditsGetResponseIdentity>;
 
-export interface CreditsGetResponse {
+export interface GetCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -3132,7 +3982,7 @@ export interface CreditsGetResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreditsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3149,14 +3999,1692 @@ export const CreditsGetResponse = /*@__PURE__*/ S.suspend(() =>
     plan: S.optional(Plan),
   }),
 ).annotate({
-  identifier: "CreditsGetResponse",
-}) as any as S.Schema<CreditsGetResponse>;
+  identifier: "GetCreditResponse",
+}) as any as S.Schema<GetCreditResponse>;
 
-export interface CreditsListApplicableRequest {
+export interface GetCreditTransactionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the credit */
+  creditName: string;
+  /** Name of the transaction */
+  transactionName: string;
+}
+export const GetCreditTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    creditName: S.String.pipe(T.Label()),
+    transactionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/transactions/{transactionName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetCreditTransactionRequest",
+}) as any as S.Schema<GetCreditTransactionRequest>;
+
+export interface GetCreditTransactionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Transaction properties */
+  properties?: TransactionProperties;
+}
+export const GetCreditTransactionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(TransactionProperties),
+  }),
+).annotate({
+  identifier: "GetCreditTransactionResponse",
+}) as any as S.Schema<GetCreditTransactionResponse>;
+
+export interface GetDiscountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the discount */
+  discountName: string;
+}
+export const GetDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    discountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetDiscountRequest",
+}) as any as S.Schema<GetDiscountRequest>;
+
+/** Resource tags. */
+export type DiscountGetResponseTagsMap = { [key: string]: string | undefined };
+export const DiscountGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiscountGetResponseTagsMap>;
+
+export interface GetDiscountResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DiscountGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Discount properties */
+  properties?: DiscountProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ManagedServiceIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const GetDiscountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(DiscountGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(DiscountProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(ManagedServiceIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "GetDiscountResponse",
+}) as any as S.Schema<GetDiscountResponse>;
+
+export interface GetFreeServiceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the free service */
+  freeServiceName: string;
+}
+export const GetFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    freeServiceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/freeServices/{freeServiceName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetFreeServiceRequest",
+}) as any as S.Schema<GetFreeServiceRequest>;
+
+/** Resource tags. */
+export type FreeServicesGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FreeServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FreeServicesGetResponseTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type FreeServicesGetResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const FreeServicesGetResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<FreeServicesGetResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface FreeServicesGetResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: FreeServicesGetResponseIdentityUserAssignedIdentitiesMap;
+}
+export const FreeServicesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      FreeServicesGetResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "FreeServicesGetResponseIdentity",
+}) as any as S.Schema<FreeServicesGetResponseIdentity>;
+
+export interface GetFreeServiceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: FreeServicesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Free services properties */
+  properties?: FreeServicesProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: FreeServicesGetResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const GetFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(FreeServicesGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(FreeServicesProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(FreeServicesGetResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "GetFreeServiceResponse",
+}) as any as S.Schema<GetFreeServiceResponse>;
+
+export interface GetMaccRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of primary MACC. */
+  maccName: string;
+}
+export const GetMaccRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    maccName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({ identifier: "GetMaccRequest" }) as any as S.Schema<GetMaccRequest>;
+
+/** Resource tags. */
+export type MaccsGetResponseTagsMap = { [key: string]: string | undefined };
+export const MaccsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MaccsGetResponseTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type MaccsGetResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const MaccsGetResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<MaccsGetResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface MaccsGetResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: MaccsGetResponseIdentityUserAssignedIdentitiesMap;
+}
+export const MaccsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      MaccsGetResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "MaccsGetResponseIdentity",
+}) as any as S.Schema<MaccsGetResponseIdentity>;
+
+export interface GetMaccResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: MaccsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** MACC properties */
+  properties?: MaccModelProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: MaccsGetResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const GetMaccResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(MaccsGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(MaccModelProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(MaccsGetResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "GetMaccResponse",
+}) as any as S.Schema<GetMaccResponse>;
+
+export interface GetMaccTransactionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of primary MACC. */
+  maccName: string;
+  /** Name of the transaction */
+  transactionName: string;
+}
+export const GetMaccTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    maccName: S.String.pipe(T.Label()),
+    transactionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}/transactions/{transactionName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetMaccTransactionRequest",
+}) as any as S.Schema<GetMaccTransactionRequest>;
+
+export interface GetMaccTransactionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Transaction properties */
+  properties?: TransactionProperties;
+}
+export const GetMaccTransactionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(TransactionProperties),
+  }),
+).annotate({
+  identifier: "GetMaccTransactionResponse",
+}) as any as S.Schema<GetMaccTransactionResponse>;
+
+export interface GetReservationOrderAliaRequest {
+  /** Name of the reservation order alias */
+  reservationOrderAliasName: string;
+}
+export const GetReservationOrderAliaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reservationOrderAliasName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetReservationOrderAliaRequest",
+}) as any as S.Schema<GetReservationOrderAliaRequest>;
+
+export interface GetReservationOrderAliaResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Reservation order alias response properties */
+  properties?: ReservationOrderAliasResponseProperties;
+  /** Reservation order SKU */
+  sku: ResourceSku;
+  /** The Azure Region where the reserved resource lives. */
+  location?: string;
+}
+export const GetReservationOrderAliaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ReservationOrderAliasResponseProperties),
+    sku: ResourceSku,
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetReservationOrderAliaResponse",
+}) as any as S.Schema<GetReservationOrderAliaResponse>;
+
+export interface GetSavingPlanRequest {
+  /** Order ID of the savings plan */
+  savingsPlanOrderId: string;
+  /** ID of the savings plan */
+  savingsPlanId: string;
+  /** May be used to expand the detail information of some properties. */
+  _expand?: string;
+}
+export const GetSavingPlanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    savingsPlanOrderId: S.String.pipe(T.Label()),
+    savingsPlanId: S.String.pipe(T.Label()),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSavingPlanRequest",
+}) as any as S.Schema<GetSavingPlanRequest>;
+
+export interface ExtendedStatusInfo {
+  /** Status code providing additional information. */
+  statusCode?: string;
+  /** The message giving detailed information about the status code. */
+  message?: string;
+}
+export const ExtendedStatusInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    statusCode: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExtendedStatusInfo",
+}) as any as S.Schema<ExtendedStatusInfo>;
+
+/** The aggregate values of savings plan utilization */
+export interface UtilizationAggregates {
+  /** The grain of the aggregate */
+  grain?: number;
+  /** The grain unit of the aggregate */
+  grainUnit?: string;
+  /** The aggregate value */
+  value?: number;
+  /** The aggregate value unit */
+  valueUnit?: string;
+}
+export const UtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    grain: S.optional(S.Number),
+    grainUnit: S.optional(S.String),
+    value: S.optional(S.Number),
+    valueUnit: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UtilizationAggregates",
+}) as any as S.Schema<UtilizationAggregates>;
+
+/** The array of aggregates of a savings plan's utilization */
+export type UtilizationAggregatesList = Array<UtilizationAggregates>;
+export const UtilizationAggregatesList = /*@__PURE__*/ S.Array(
+  UtilizationAggregates,
+) as any as S.Schema<UtilizationAggregatesList>;
+
+/** Savings plan utilization */
+export interface Utilization {
+  /** The number of days trend for a savings plan */
+  trend?: string;
+  /** The array of aggregates of a savings plan's utilization */
+  aggregates?: UtilizationAggregatesList;
+}
+export const Utilization = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trend: S.optional(S.String),
+    aggregates: S.optional(UtilizationAggregatesList),
+  }),
+).annotate({ identifier: "Utilization" }) as any as S.Schema<Utilization>;
+
+export interface PurchaseRequestProperties {
+  /** Friendly name of the savings plan */
+  displayName?: string;
+  /** Subscription that will be charged for purchasing the benefit */
+  billingScopeId?: string;
+  /** Represent benefit term in ISO 8601 format. */
+  term?: Term;
+  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
+  billingPlan?: BillingPlan;
+  /** Type of the Applied Scope. */
+  appliedScopeType?: AppliedScopeType;
+  /** Commitment towards the benefit. */
+  commitment?: Commitment;
+  /** DateTime of the savings plan starts providing benefit from. */
+  effectiveDateTime?: string;
+  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
+  renew?: boolean;
+  /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
+  renewAction?: RenewAction;
+  /** Properties specific to applied scope type. Not required if not applicable. */
+  appliedScopeProperties?: AppliedScopeProperties;
+}
+export const PurchaseRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    billingScopeId: S.optional(S.String),
+    term: S.optional(Term),
+    billingPlan: S.optional(BillingPlan),
+    appliedScopeType: S.optional(AppliedScopeType),
+    commitment: S.optional(Commitment),
+    effectiveDateTime: S.optional(S.String),
+    renew: S.optional(S.Boolean),
+    renewAction: S.optional(RenewAction),
+    appliedScopeProperties: S.optional(AppliedScopeProperties),
+  }),
+).annotate({
+  identifier: "PurchaseRequestProperties",
+}) as any as S.Schema<PurchaseRequestProperties>;
+
+export interface PurchaseRequest {
+  /** The SKU to be applied for this resource */
+  sku?: ResourceSku;
+  properties?: PurchaseRequestProperties;
+}
+export const PurchaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sku: S.optional(ResourceSku),
+    properties: S.optional(PurchaseRequestProperties),
+  }),
+).annotate({
+  identifier: "PurchaseRequest",
+}) as any as S.Schema<PurchaseRequest>;
+
+export interface RenewProperties {
+  purchaseProperties?: PurchaseRequest;
+}
+export const RenewProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    purchaseProperties: S.optional(PurchaseRequest),
+  }),
+).annotate({
+  identifier: "RenewProperties",
+}) as any as S.Schema<RenewProperties>;
+
+/** Savings plan properties */
+export interface SavingsPlanModelProperties {
+  /** Display name */
+  displayName?: string;
+  /** Provisioning state */
+  provisioningState?: ProvisioningState;
+  /** The provisioning state of the savings plan for display, e.g. Succeeded */
+  displayProvisioningState?: string;
+  /** Subscription that will be charged for purchasing the benefit */
+  billingScopeId?: string;
+  /** Fully-qualified identifier of the billing profile where the benefit is applied. Present only for Field-led or Customer-led customers. */
+  billingProfileId?: string;
+  /** Fully-qualified identifier of the customer where the savings plan is applied. Present only for Partner-led customers. */
+  customerId?: string;
+  /** Fully-qualified identifier of the billing account where the benefit is applied. Present only for Enterprise Agreement customers. */
+  billingAccountId?: string;
+  /** Represent benefit term in ISO 8601 format. */
+  term?: Term;
+  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
+  billingPlan?: BillingPlan;
+  /** Type of the Applied Scope. */
+  appliedScopeType?: AppliedScopeType;
+  /** The applied scope type of the savings plan for display, e.g. Shared */
+  userFriendlyAppliedScopeType?: string;
+  /** Properties specific to applied scope type. Not required if not applicable. */
+  appliedScopeProperties?: AppliedScopeProperties;
+  /** Commitment towards the benefit. */
+  commitment?: Commitment;
+  /** DateTime of the savings plan starts providing benefit from. */
+  effectiveDateTime?: string;
+  /** Expiry date time */
+  expiryDateTime?: string;
+  /** Date time when the savings plan was purchased */
+  purchaseDateTime?: string;
+  /** This is the DateTime when the savings plan benefit started. */
+  benefitStartTime?: string;
+  extendedStatusInfo?: ExtendedStatusInfo;
+  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
+  renew?: boolean;
+  /** Savings plan utilization */
+  utilization?: Utilization;
+  /** SavingsPlan Id of the SavingsPlan from which this SavingsPlan is renewed. */
+  renewSource?: string;
+  /** SavingsPlan Id of the SavingsPlan which is purchased because of renew. */
+  renewDestination?: string;
+  renewProperties?: RenewProperties;
+}
+export const SavingsPlanModelProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    provisioningState: S.optional(ProvisioningState),
+    displayProvisioningState: S.optional(S.String),
+    billingScopeId: S.optional(S.String),
+    billingProfileId: S.optional(S.String),
+    customerId: S.optional(S.String),
+    billingAccountId: S.optional(S.String),
+    term: S.optional(Term),
+    billingPlan: S.optional(BillingPlan),
+    appliedScopeType: S.optional(AppliedScopeType),
+    userFriendlyAppliedScopeType: S.optional(S.String),
+    appliedScopeProperties: S.optional(AppliedScopeProperties),
+    commitment: S.optional(Commitment),
+    effectiveDateTime: S.optional(S.String),
+    expiryDateTime: S.optional(S.String),
+    purchaseDateTime: S.optional(S.String),
+    benefitStartTime: S.optional(S.String),
+    extendedStatusInfo: S.optional(ExtendedStatusInfo),
+    renew: S.optional(S.Boolean),
+    utilization: S.optional(Utilization),
+    renewSource: S.optional(S.String),
+    renewDestination: S.optional(S.String),
+    renewProperties: S.optional(RenewProperties),
+  }),
+).annotate({
+  identifier: "SavingsPlanModelProperties",
+}) as any as S.Schema<SavingsPlanModelProperties>;
+
+export interface GetSavingPlanResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Savings plan properties */
+  properties?: SavingsPlanModelProperties;
+  /** Savings plan SKU */
+  sku: ResourceSku;
+}
+export const GetSavingPlanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SavingsPlanModelProperties),
+    sku: ResourceSku,
+  }),
+).annotate({
+  identifier: "GetSavingPlanResponse",
+}) as any as S.Schema<GetSavingPlanResponse>;
+
+export interface GetSavingPlanOrderRequest {
+  /** Order ID of the savings plan */
+  savingsPlanOrderId: string;
+  /** May be used to expand the detail information of some properties. */
+  _expand?: string;
+}
+export const GetSavingPlanOrderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    savingsPlanOrderId: S.String.pipe(T.Label()),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSavingPlanOrderRequest",
+}) as any as S.Schema<GetSavingPlanOrderRequest>;
+
+/** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
+export type PaymentStatus = "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
+export const PaymentStatus = /*@__PURE__*/ S.String;
+
+/** Information about payment related to a savings plan order. */
+export interface PaymentDetail {
+  /** Date when the payment needs to be done. */
+  dueDate?: string;
+  /** Date when the transaction is completed. Is null when it is scheduled. */
+  paymentDate?: string;
+  /** Amount in pricing currency. Tax not included. */
+  pricingCurrencyTotal?: Price;
+  /** Amount charged in Billing currency. Tax not included. Is null for future payments */
+  billingCurrencyTotal?: Price;
+  /** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
+  status?: PaymentStatus;
+  extendedStatusInfo?: ExtendedStatusInfo;
+  /** Billing account */
+  billingAccount?: string;
+}
+export const PaymentDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dueDate: S.optional(S.String),
+    paymentDate: S.optional(S.String),
+    pricingCurrencyTotal: S.optional(Price),
+    billingCurrencyTotal: S.optional(Price),
+    status: S.optional(PaymentStatus),
+    extendedStatusInfo: S.optional(ExtendedStatusInfo),
+    billingAccount: S.optional(S.String),
+  }),
+).annotate({ identifier: "PaymentDetail" }) as any as S.Schema<PaymentDetail>;
+
+export type BillingPlanInformationTransactionsList = Array<PaymentDetail>;
+export const BillingPlanInformationTransactionsList = /*@__PURE__*/ S.Array(
+  PaymentDetail,
+) as any as S.Schema<BillingPlanInformationTransactionsList>;
+
+/** Information describing the type of billing plan for this savings plan. */
+export interface BillingPlanInformation {
+  /** Amount of money to be paid for the Order. Tax is not included. */
+  pricingCurrencyTotal?: Price;
+  /** Date when the billing plan has started. */
+  startDate?: string;
+  /** For recurring billing plans, indicates the date when next payment will be processed. Null when total is paid off. */
+  nextPaymentDueDate?: string;
+  transactions?: BillingPlanInformationTransactionsList;
+}
+export const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pricingCurrencyTotal: S.optional(Price),
+    startDate: S.optional(S.String),
+    nextPaymentDueDate: S.optional(S.String),
+    transactions: S.optional(BillingPlanInformationTransactionsList),
+  }),
+).annotate({
+  identifier: "BillingPlanInformation",
+}) as any as S.Schema<BillingPlanInformation>;
+
+export type SavingsPlanOrderModelPropertiesSavingsPlansList = Array<string>;
+export const SavingsPlanOrderModelPropertiesSavingsPlansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SavingsPlanOrderModelPropertiesSavingsPlansList>;
+
+/** Savings plan order properties */
+export interface SavingsPlanOrderModelProperties {
+  /** Display name */
+  displayName?: string;
+  /** Provisioning state */
+  provisioningState?: ProvisioningState;
+  /** Subscription that will be charged for purchasing the benefit */
+  billingScopeId?: string;
+  /** Fully-qualified identifier of the billing profile where the benefit is applied. Present only for Field-led or Customer-led customers. */
+  billingProfileId?: string;
+  /** Fully-qualified identifier of the customer where the savings plan is applied. Present only for Partner-led customers. */
+  customerId?: string;
+  /** Fully-qualified identifier of the billing account where the benefit is applied. Present only for Enterprise Agreement customers. */
+  billingAccountId?: string;
+  /** Represent benefit term in ISO 8601 format. */
+  term?: Term;
+  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
+  billingPlan?: BillingPlan;
+  /** Expiry date time */
+  expiryDateTime?: string;
+  /** This is the DateTime when the savings plan benefit started. */
+  benefitStartTime?: string;
+  /** Information describing the type of billing plan for this savings plan. */
+  planInformation?: BillingPlanInformation;
+  savingsPlans?: SavingsPlanOrderModelPropertiesSavingsPlansList;
+  extendedStatusInfo?: ExtendedStatusInfo;
+}
+export const SavingsPlanOrderModelProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    provisioningState: S.optional(ProvisioningState),
+    billingScopeId: S.optional(S.String),
+    billingProfileId: S.optional(S.String),
+    customerId: S.optional(S.String),
+    billingAccountId: S.optional(S.String),
+    term: S.optional(Term),
+    billingPlan: S.optional(BillingPlan),
+    expiryDateTime: S.optional(S.String),
+    benefitStartTime: S.optional(S.String),
+    planInformation: S.optional(BillingPlanInformation),
+    savingsPlans: S.optional(SavingsPlanOrderModelPropertiesSavingsPlansList),
+    extendedStatusInfo: S.optional(ExtendedStatusInfo),
+  }),
+).annotate({
+  identifier: "SavingsPlanOrderModelProperties",
+}) as any as S.Schema<SavingsPlanOrderModelProperties>;
+
+export interface GetSavingPlanOrderResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Savings plan order properties */
+  properties?: SavingsPlanOrderModelProperties;
+  /** Savings plan SKU */
+  sku: ResourceSku;
+}
+export const GetSavingPlanOrderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SavingsPlanOrderModelProperties),
+    sku: ResourceSku,
+  }),
+).annotate({
+  identifier: "GetSavingPlanOrderResponse",
+}) as any as S.Schema<GetSavingPlanOrderResponse>;
+
+export interface GetSavingPlanOrderAliaRequest {
+  /** Name of the savings plan order alias */
+  savingsPlanOrderAliasName: string;
+}
+export const GetSavingPlanOrderAliaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    savingsPlanOrderAliasName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSavingPlanOrderAliaRequest",
+}) as any as S.Schema<GetSavingPlanOrderAliaRequest>;
+
+export interface GetSavingPlanOrderAliaResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Savings plan order alias properties */
+  properties?: SavingsPlanOrderAliasProperties;
+  /** Savings plan SKU */
+  sku: ResourceSku;
+  /** Resource provider kind */
+  kind?: string;
+}
+export const GetSavingPlanOrderAliaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SavingsPlanOrderAliasProperties),
+    sku: ResourceSku,
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetSavingPlanOrderAliaResponse",
+}) as any as S.Schema<GetSavingPlanOrderAliaResponse>;
+
+export interface GetSourceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the credit */
+  creditName: string;
+  /** Name of the credit source */
+  sourceName: string;
+}
+export const GetSourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    creditName: S.String.pipe(T.Label()),
+    sourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/sources/{sourceName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSourceRequest",
+}) as any as S.Schema<GetSourceRequest>;
+
+/** Resource tags. */
+export type SourcesGetResponseTagsMap = { [key: string]: string | undefined };
+export const SourcesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SourcesGetResponseTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type SourcesGetResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const SourcesGetResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<SourcesGetResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface SourcesGetResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: SourcesGetResponseIdentityUserAssignedIdentitiesMap;
+}
+export const SourcesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      SourcesGetResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "SourcesGetResponseIdentity",
+}) as any as S.Schema<SourcesGetResponseIdentity>;
+
+export interface GetSourceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SourcesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Credit source properties */
+  properties?: CreditSourceProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: SourcesGetResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const GetSourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SourcesGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(CreditSourceProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(SourcesGetResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "GetSourceResponse",
+}) as any as S.Schema<GetSourceResponse>;
+
+export interface GetSubscriptionCatalogGroupOpsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the CatalogGroup */
+  catalogGroupName: string;
+}
+export const GetSubscriptionCatalogGroupOpsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      catalogGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BillingBenefits/catalogGroups/{catalogGroupName}",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetSubscriptionCatalogGroupOpsRequest",
+}) as any as S.Schema<GetSubscriptionCatalogGroupOpsRequest>;
+
+export interface GetSubscriptionCatalogGroupOpsResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: CatalogGroupProperties;
+}
+export const GetSubscriptionCatalogGroupOpsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(CatalogGroupProperties),
+    }),
+).annotate({
+  identifier: "GetSubscriptionCatalogGroupOpsResponse",
+}) as any as S.Schema<GetSubscriptionCatalogGroupOpsResponse>;
+
+export interface ListApplicableMaccsRequest {
+  /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
+  billingAccountId: string;
+}
+export const ListApplicableMaccsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.BillingBenefits/applicableMaccs",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListApplicableMaccsRequest",
+}) as any as S.Schema<ListApplicableMaccsRequest>;
+
+/** Applicable MACC. */
+export interface ApplicableMacc {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Applicable MACC properties */
+  properties?: MaccModelProperties;
+}
+export const ApplicableMacc = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(MaccModelProperties),
+  }),
+).annotate({ identifier: "ApplicableMacc" }) as any as S.Schema<ApplicableMacc>;
+
+/** List Applicable MACCs. */
+export type ApplicableMaccListValueList = Array<ApplicableMacc>;
+export const ApplicableMaccListValueList = /*@__PURE__*/ S.Array(
+  ApplicableMacc,
+) as any as S.Schema<ApplicableMaccListValueList>;
+
+/** Applicable MACC list */
+export interface ApplicableMaccList {
+  /** List Applicable MACCs. */
+  value?: ApplicableMaccListValueList;
+  /** Url to get the next page. */
+  nextLink?: string;
+}
+export const ApplicableMaccList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ApplicableMaccListValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplicableMaccList",
+}) as any as S.Schema<ApplicableMaccList>;
+
+export interface ListBillingAccountCatalogGroupOpsRequest {
+  /** The name of the billing account. */
+  billingAccountName: string;
+  /** OData filter expression to narrow the list of catalog groups. */
+  _filter?: string;
+}
+export const ListBillingAccountCatalogGroupOpsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.BillingBenefits/catalogGroups",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListBillingAccountCatalogGroupOpsRequest",
+}) as any as S.Schema<ListBillingAccountCatalogGroupOpsRequest>;
+
+/** A catalog group represents a BenefitResourceType + Namespace grouping used for benefit SKU discovery. */
+export interface CatalogGroup {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: CatalogGroupProperties;
+}
+export const CatalogGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CatalogGroupProperties),
+  }),
+).annotate({ identifier: "CatalogGroup" }) as any as S.Schema<CatalogGroup>;
+
+/** The CatalogGroup items on this page */
+export type CatalogGroupListResultValueList = Array<CatalogGroup>;
+export const CatalogGroupListResultValueList = /*@__PURE__*/ S.Array(
+  CatalogGroup,
+) as any as S.Schema<CatalogGroupListResultValueList>;
+
+/** The response of a CatalogGroup list operation. */
+export interface CatalogGroupListResult {
+  /** The CatalogGroup items on this page */
+  value: CatalogGroupListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const CatalogGroupListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: CatalogGroupListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CatalogGroupListResult",
+}) as any as S.Schema<CatalogGroupListResult>;
+
+export interface ListBillingProfileCatalogGroupOpsRequest {
+  /** The name of the billing account. */
+  billingAccountName: string;
+  /** The name of the billing profile. */
+  billingProfileName: string;
+  /** OData filter expression to narrow the list of catalog groups. */
+  _filter?: string;
+}
+export const ListBillingProfileCatalogGroupOpsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingAccountName: S.String.pipe(T.Label()),
+      billingProfileName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.BillingBenefits/catalogGroups",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListBillingProfileCatalogGroupOpsRequest",
+}) as any as S.Schema<ListBillingProfileCatalogGroupOpsRequest>;
+
+export interface ListConditionalCreditByResourceGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListConditionalCreditByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConditionalCreditByResourceGroupRequest",
+  }) as any as S.Schema<ListConditionalCreditByResourceGroupRequest>;
+
+/** Resource tags. */
+export type ConditionalCreditTagsMap = { [key: string]: string | undefined };
+export const ConditionalCreditTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConditionalCreditTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ConditionalCreditIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const ConditionalCreditIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<ConditionalCreditIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ConditionalCreditIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ConditionalCreditIdentityUserAssignedIdentitiesMap;
+}
+export const ConditionalCreditIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      ConditionalCreditIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ConditionalCreditIdentity",
+}) as any as S.Schema<ConditionalCreditIdentity>;
+
+/** Resource definition for Conditional Credits. */
+export interface ConditionalCredit {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ConditionalCreditTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Conditional credit properties */
+  properties?: ConditionalCreditProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ConditionalCreditIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const ConditionalCredit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ConditionalCreditTagsMap),
+    location: S.String,
+    properties: S.optional(ConditionalCreditProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(ConditionalCreditIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "ConditionalCredit",
+}) as any as S.Schema<ConditionalCredit>;
+
+/** The ConditionalCredit items on this page */
+export type ConditionalCreditListValueList = Array<ConditionalCredit>;
+export const ConditionalCreditListValueList = /*@__PURE__*/ S.Array(
+  ConditionalCredit,
+) as any as S.Schema<ConditionalCreditListValueList>;
+
+/** List of applicable conditional credits */
+export interface ConditionalCreditList {
+  /** The ConditionalCredit items on this page */
+  value: ConditionalCreditListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ConditionalCreditList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ConditionalCreditListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConditionalCreditList",
+}) as any as S.Schema<ConditionalCreditList>;
+
+export interface ListConditionalCreditBySubscriptionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListConditionalCreditBySubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BillingBenefits/conditionalCredits",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConditionalCreditBySubscriptionRequest",
+  }) as any as S.Schema<ListConditionalCreditBySubscriptionRequest>;
+
+export interface ListConditionalCreditContributorFromApplicableConditionalCreditRequest {
+  /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
+  billingAccountId: string;
+  /** System ID of the primary MACC. */
+  systemId: string;
+}
+export const ListConditionalCreditContributorFromApplicableConditionalCreditRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      billingAccountId: S.String.pipe(T.Label()),
+      systemId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.BillingBenefits/applicableConditionalCredits/{systemId}/providers/microsoft.BillingBenefits/applicableContributors",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListConditionalCreditContributorFromApplicableConditionalCreditRequest",
+  }) as any as S.Schema<ListConditionalCreditContributorFromApplicableConditionalCreditRequest>;
+
+/** Conditional credit contributor */
+export interface ConditionalCreditContributor {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Conditional credit contributor properties */
+  properties?: ContributorConditionalCreditProperties;
+}
+export const ConditionalCreditContributor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ContributorConditionalCreditProperties),
+  }),
+).annotate({
+  identifier: "ConditionalCreditContributor",
+}) as any as S.Schema<ConditionalCreditContributor>;
+
+/** The ConditionalCreditContributor items on this page */
+export type ConditionalCreditContributorListValueList =
+  Array<ConditionalCreditContributor>;
+export const ConditionalCreditContributorListValueList = /*@__PURE__*/ S.Array(
+  ConditionalCreditContributor,
+) as any as S.Schema<ConditionalCreditContributorListValueList>;
+
+/** Conditional credit contributor list */
+export interface ConditionalCreditContributorList {
+  /** The ConditionalCreditContributor items on this page */
+  value: ConditionalCreditContributorListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ConditionalCreditContributorList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ConditionalCreditContributorListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConditionalCreditContributorList",
+}) as any as S.Schema<ConditionalCreditContributorList>;
+
+export interface ListConditionalCreditContributorFromPrimaryRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the conditional credit */
+  conditionalCreditName: string;
+}
+export const ListConditionalCreditContributorFromPrimaryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      conditionalCreditName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}/contributors",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConditionalCreditContributorFromPrimaryRequest",
+  }) as any as S.Schema<ListConditionalCreditContributorFromPrimaryRequest>;
+
+export interface ListConditionalCreditScopeRequest {
   /** The scope at which the benefits are listed. */
   scope: string;
 }
-export const CreditsListApplicableRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListConditionalCreditScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.BillingBenefits/applicableConditionalCredits",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListConditionalCreditScopeRequest",
+}) as any as S.Schema<ListConditionalCreditScopeRequest>;
+
+export interface ListConditionalCreditTransactionByParentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the conditional credit */
+  conditionalCreditName: string;
+}
+export const ListConditionalCreditTransactionByParentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      conditionalCreditName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}/transactions",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConditionalCreditTransactionByParentRequest",
+  }) as any as S.Schema<ListConditionalCreditTransactionByParentRequest>;
+
+/** Transaction resource definition for ConditionalCredits */
+export interface ConditionalCreditTransaction {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Transaction properties */
+  properties?: TransactionProperties;
+}
+export const ConditionalCreditTransaction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(TransactionProperties),
+  }),
+).annotate({
+  identifier: "ConditionalCreditTransaction",
+}) as any as S.Schema<ConditionalCreditTransaction>;
+
+/** The ConditionalCreditTransaction items on this page */
+export type ConditionalCreditTransactionsListValueList =
+  Array<ConditionalCreditTransaction>;
+export const ConditionalCreditTransactionsListValueList = /*@__PURE__*/ S.Array(
+  ConditionalCreditTransaction,
+) as any as S.Schema<ConditionalCreditTransactionsListValueList>;
+
+/** List of conditional credit transactions */
+export interface ConditionalCreditTransactionsList {
+  /** The ConditionalCreditTransaction items on this page */
+  value: ConditionalCreditTransactionsListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ConditionalCreditTransactionsList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ConditionalCreditTransactionsListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConditionalCreditTransactionsList",
+}) as any as S.Schema<ConditionalCreditTransactionsList>;
+
+export interface ListContributorFromApplicableMaccRequest {
+  /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
+  billingAccountId: string;
+  /** System ID of the primary MACC. */
+  systemId: string;
+}
+export const ListContributorFromApplicableMaccRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingAccountId: S.String.pipe(T.Label()),
+      systemId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.BillingBenefits/applicableMaccs/{systemId}/providers/microsoft.BillingBenefits/applicableContributors",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListContributorFromApplicableMaccRequest",
+}) as any as S.Schema<ListContributorFromApplicableMaccRequest>;
+
+/** MACC contributor */
+export interface Contributor {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** MACC contributor properties */
+  properties?: MaccModelProperties;
+}
+export const Contributor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(MaccModelProperties),
+  }),
+).annotate({ identifier: "Contributor" }) as any as S.Schema<Contributor>;
+
+/** The Contributor items on this page */
+export type ContributorListValueList = Array<Contributor>;
+export const ContributorListValueList = /*@__PURE__*/ S.Array(
+  Contributor,
+) as any as S.Schema<ContributorListValueList>;
+
+/** Contributor list */
+export interface ContributorList {
+  /** The Contributor items on this page */
+  value: ContributorListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ContributorList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ContributorListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContributorList",
+}) as any as S.Schema<ContributorList>;
+
+export interface ListContributorFromPrimaryRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of primary MACC. */
+  maccName: string;
+}
+export const ListContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    maccName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}/contributors",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListContributorFromPrimaryRequest",
+}) as any as S.Schema<ListContributorFromPrimaryRequest>;
+
+export interface ListCreditApplicableRequest {
+  /** The scope at which the benefits are listed. */
+  scope: string;
+}
+export const ListCreditApplicableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -3168,8 +5696,8 @@ export const CreditsListApplicableRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreditsListApplicableRequest",
-}) as any as S.Schema<CreditsListApplicableRequest>;
+  identifier: "ListCreditApplicableRequest",
+}) as any as S.Schema<ListCreditApplicableRequest>;
 
 /** Resource tags. */
 export type CreditTagsMap = { [key: string]: string | undefined };
@@ -3273,13 +5801,13 @@ export const CreditsList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreditsList" }) as any as S.Schema<CreditsList>;
 
-export interface CreditsListByResourceGroupRequest {
+export interface ListCreditByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const CreditsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListCreditByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3292,14 +5820,14 @@ export const CreditsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreditsListByResourceGroupRequest",
-}) as any as S.Schema<CreditsListByResourceGroupRequest>;
+  identifier: "ListCreditByResourceGroupRequest",
+}) as any as S.Schema<ListCreditByResourceGroupRequest>;
 
-export interface CreditsListBySubscriptionRequest {
+export interface ListCreditBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const CreditsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListCreditBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3311,215 +5839,10 @@ export const CreditsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreditsListBySubscriptionRequest",
-}) as any as S.Schema<CreditsListBySubscriptionRequest>;
+  identifier: "ListCreditBySubscriptionRequest",
+}) as any as S.Schema<ListCreditBySubscriptionRequest>;
 
-/** Resource tags */
-export type CreditsUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CreditsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreditsUpdateRequestTagsMap>;
-
-/** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
-export type CreditPatchPropertiesBreakdownList = Array<CreditBreakdownItem>;
-export const CreditPatchPropertiesBreakdownList = /*@__PURE__*/ S.Array(
-  CreditBreakdownItem,
-) as any as S.Schema<CreditPatchPropertiesBreakdownList>;
-
-/** Credit patch properties */
-export interface CreditPatchProperties {
-  /** The entire investment amount for the credit contract, including currency and amount. Only amount can be modified. */
-  credit?: Commitment;
-  /** End DateTime in UTC. */
-  endAt?: string;
-  /** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
-  breakdown?: CreditPatchPropertiesBreakdownList;
-}
-export const CreditPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credit: S.optional(Commitment),
-    endAt: S.optional(S.String),
-    breakdown: S.optional(CreditPatchPropertiesBreakdownList),
-  }),
-).annotate({
-  identifier: "CreditPatchProperties",
-}) as any as S.Schema<CreditPatchProperties>;
-
-export interface CreditsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the credit */
-  creditName: string;
-  /** Resource tags */
-  tags?: CreditsUpdateRequestTagsMap;
-  /** Credit patch properties */
-  properties?: CreditPatchProperties;
-}
-export const CreditsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    creditName: S.String.pipe(T.Label()),
-    tags: S.optional(CreditsUpdateRequestTagsMap),
-    properties: S.optional(CreditPatchProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "CreditsUpdateRequest",
-}) as any as S.Schema<CreditsUpdateRequest>;
-
-/** Resource tags. */
-export type CreditsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const CreditsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreditsUpdateResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type CreditsUpdateResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const CreditsUpdateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<CreditsUpdateResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface CreditsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: CreditsUpdateResponseIdentityUserAssignedIdentitiesMap;
-}
-export const CreditsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      CreditsUpdateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "CreditsUpdateResponseIdentity",
-}) as any as S.Schema<CreditsUpdateResponseIdentity>;
-
-export interface CreditsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: CreditsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Credit properties */
-  properties?: CreditProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: CreditsUpdateResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const CreditsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CreditsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CreditProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(CreditsUpdateResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "CreditsUpdateResponse",
-}) as any as S.Schema<CreditsUpdateResponse>;
-
-export interface CreditTransactionsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the credit */
-  creditName: string;
-  /** Name of the transaction */
-  transactionName: string;
-}
-export const CreditTransactionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    creditName: S.String.pipe(T.Label()),
-    transactionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/transactions/{transactionName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "CreditTransactionsGetRequest",
-}) as any as S.Schema<CreditTransactionsGetRequest>;
-
-export interface CreditTransactionsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Transaction properties */
-  properties?: TransactionProperties;
-}
-export const CreditTransactionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TransactionProperties),
-  }),
-).annotate({
-  identifier: "CreditTransactionsGetResponse",
-}) as any as S.Schema<CreditTransactionsGetResponse>;
-
-export interface CreditTransactionsListByParentRequest {
+export interface ListCreditTransactionByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -3527,7 +5850,7 @@ export interface CreditTransactionsListByParentRequest {
   /** Name of the credit */
   creditName: string;
 }
-export const CreditTransactionsListByParentRequest = /*@__PURE__*/ S.suspend(
+export const ListCreditTransactionByParentRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -3542,8 +5865,8 @@ export const CreditTransactionsListByParentRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "CreditTransactionsListByParentRequest",
-}) as any as S.Schema<CreditTransactionsListByParentRequest>;
+  identifier: "ListCreditTransactionByParentRequest",
+}) as any as S.Schema<ListCreditTransactionByParentRequest>;
 
 /** Transaction resource definition for Credits */
 export type CreditTransaction = ConditionalCreditTransaction;
@@ -3571,498 +5894,13 @@ export const TransactionsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransactionsList",
 }) as any as S.Schema<TransactionsList>;
 
-export interface DiscountGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the discount */
-  discountName: string;
-}
-export const DiscountGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    discountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "DiscountGetRequest",
-}) as any as S.Schema<DiscountGetRequest>;
-
-/** Resource tags. */
-export type DiscountGetResponseTagsMap = { [key: string]: string | undefined };
-export const DiscountGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiscountGetResponseTagsMap>;
-
-/** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
-export type DiscountEntityType = "Primary" | "Affiliate";
-export const DiscountEntityType = /*@__PURE__*/ S.String;
-
-/** Represents the current status of the discount. */
-export type DiscountStatus =
-  | "Active"
-  | "Pending"
-  | "Failed"
-  | "Canceled"
-  | "Expired";
-export const DiscountStatus = /*@__PURE__*/ S.String;
-
-/** Properties belonging to discounts. */
-export interface DiscountProperties {
-  /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
-  entityType: DiscountEntityType;
-  /** This is the catalog UPN for the product. */
-  productCode: string;
-  /** Start date of the discount. Value is the date the discount started or will start in the future. */
-  startAt: string;
-  /** End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate. */
-  endAt?: string;
-  /** This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount. */
-  systemId?: string;
-  /** The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled. */
-  provisioningState?: BenefitProvisioningState;
-  /** Fully-qualified identifier of the billing account where the benefit is applied. */
-  billingAccountResourceId?: string;
-  /** Fully-qualified identifier of the billing profile where the benefit is applied. */
-  billingProfileResourceId?: string;
-  /** Customer resource id where the benefit is scoped to. */
-  customerResourceId?: string;
-  /** Invitation identifier */
-  invitationId?: string;
-  /** This defines a user friendly display name for the discount. */
-  displayName?: string;
-  /** Represents the current status of the discount. */
-  status?: DiscountStatus;
-  /** Fully-qualified identifier of the benefit under applicable benefit list. */
-  benefitResourceId?: string;
-  /** List of applied scopes supported for discounts. */
-  appliedScopeType?: BenefitAppliedScopeType;
-  /** Product details including SKU title, product family, and product type. */
-  productDetails?: ProductDetailsBase;
-}
-export const DiscountProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityType: DiscountEntityType,
-    productCode: S.String,
-    startAt: S.String,
-    endAt: S.optional(S.String),
-    systemId: S.optional(S.String),
-    provisioningState: S.optional(BenefitProvisioningState),
-    billingAccountResourceId: S.optional(S.String),
-    billingProfileResourceId: S.optional(S.String),
-    customerResourceId: S.optional(S.String),
-    invitationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    status: S.optional(DiscountStatus),
-    benefitResourceId: S.optional(S.String),
-    appliedScopeType: S.optional(BenefitAppliedScopeType),
-    productDetails: S.optional(ProductDetailsBase),
-  }),
-).annotate({
-  identifier: "DiscountProperties",
-}) as any as S.Schema<DiscountProperties>;
-
-/** User assigned identity properties */
-export type ManagedServiceIdentityUserAssignedIdentitiesValue =
-  UserAssignedIdentity;
-export const ManagedServiceIdentityUserAssignedIdentitiesValue =
-  UserAssignedIdentity;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type ManagedServiceIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const ManagedServiceIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<ManagedServiceIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedServiceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: ManagedServiceIdentityUserAssignedIdentitiesMap;
-}
-export const ManagedServiceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ManagedServiceIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ManagedServiceIdentity",
-}) as any as S.Schema<ManagedServiceIdentity>;
-
-export interface DiscountGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DiscountGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Discount properties */
-  properties?: DiscountProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedServiceIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const DiscountGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DiscountGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DiscountProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "DiscountGetResponse",
-}) as any as S.Schema<DiscountGetResponse>;
-
-export interface DiscountsCancelRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the discount */
-  discountName: string;
-}
-export const DiscountsCancelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    discountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}/cancel",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "DiscountsCancelRequest",
-}) as any as S.Schema<DiscountsCancelRequest>;
-
-/** Resource tags. */
-export type DiscountsCancelResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DiscountsCancelResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiscountsCancelResponseTagsMap>;
-
-export interface DiscountsCancelResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DiscountsCancelResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Discount properties */
-  properties?: DiscountProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedServiceIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const DiscountsCancelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DiscountsCancelResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DiscountProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "DiscountsCancelResponse",
-}) as any as S.Schema<DiscountsCancelResponse>;
-
-/** Resource tags. */
-export type DiscountsCreateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DiscountsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiscountsCreateRequestTagsMap>;
-
-/** Properties belonging to discounts. */
-export interface DiscountPropertiesInput {
-  /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
-  entityType: DiscountEntityType | (string & {});
-  /** This is the catalog UPN for the product. */
-  productCode: string;
-  /** Start date of the discount. Value is the date the discount started or will start in the future. */
-  startAt: string;
-  /** End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate. */
-  endAt?: string;
-  /** This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount. */
-  systemId?: string;
-  /** Invitation identifier */
-  invitationId?: string;
-  /** This defines a user friendly display name for the discount. */
-  displayName?: string;
-  /** List of applied scopes supported for discounts. */
-  appliedScopeType?: BenefitAppliedScopeType | (string & {});
-}
-export const DiscountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityType: DiscountEntityType,
-    productCode: S.String,
-    startAt: S.String,
-    endAt: S.optional(S.String),
-    systemId: S.optional(S.String),
-    invitationId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    appliedScopeType: S.optional(BenefitAppliedScopeType),
-  }),
-).annotate({
-  identifier: "DiscountPropertiesInput",
-}) as any as S.Schema<DiscountPropertiesInput>;
-
-/** User assigned identity properties */
-export type ManagedServiceIdentityInputUserAssignedIdentitiesValue =
-  UserAssignedIdentityInput;
-export const ManagedServiceIdentityInputUserAssignedIdentitiesValue =
-  UserAssignedIdentityInput;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
-};
-export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentityInput,
-  ) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedServiceIdentityInput {
-  /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-  type: ManagedServiceIdentityType | (string & {});
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
-}
-export const ManagedServiceIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ManagedServiceIdentityInputUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ManagedServiceIdentityInput",
-}) as any as S.Schema<ManagedServiceIdentityInput>;
-
-export interface DiscountsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the discount */
-  discountName: string;
-  /** Resource tags. */
-  tags?: DiscountsCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Discount properties */
-  properties?: DiscountPropertiesInput;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedServiceIdentityInput;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const DiscountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    discountName: S.String.pipe(T.Label()),
-    tags: S.optional(DiscountsCreateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(DiscountPropertiesInput),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentityInput),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "DiscountsCreateRequest",
-}) as any as S.Schema<DiscountsCreateRequest>;
-
-/** Resource tags. */
-export type DiscountsCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DiscountsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiscountsCreateResponseTagsMap>;
-
-export interface DiscountsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DiscountsCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Discount properties */
-  properties?: DiscountProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedServiceIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const DiscountsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DiscountsCreateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DiscountProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "DiscountsCreateResponse",
-}) as any as S.Schema<DiscountsCreateResponse>;
-
-export interface DiscountsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the discount */
-  discountName: string;
-}
-export const DiscountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    discountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "DiscountsDeleteRequest",
-}) as any as S.Schema<DiscountsDeleteRequest>;
-
-export interface DiscountsDeleteResponse {}
-export const DiscountsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DiscountsDeleteResponse",
-}) as any as S.Schema<DiscountsDeleteResponse>;
-
-export interface DiscountsResourceGroupListRequest {
+export interface ListDiscountResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const DiscountsResourceGroupListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDiscountResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4075,8 +5913,8 @@ export const DiscountsResourceGroupListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DiscountsResourceGroupListRequest",
-}) as any as S.Schema<DiscountsResourceGroupListRequest>;
+  identifier: "ListDiscountResourceGroupRequest",
+}) as any as S.Schema<ListDiscountResourceGroupRequest>;
 
 /** Resource tags. */
 export type DiscountTagsMap = { [key: string]: string | undefined };
@@ -4152,11 +5990,11 @@ export const DiscountList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DiscountList" }) as any as S.Schema<DiscountList>;
 
-export interface DiscountsScopeListRequest {
+export interface ListDiscountScopeRequest {
   /** The scope at which the benefits are listed. */
   scope: string;
 }
-export const DiscountsScopeListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDiscountScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -4168,14 +6006,14 @@ export const DiscountsScopeListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DiscountsScopeListRequest",
-}) as any as S.Schema<DiscountsScopeListRequest>;
+  identifier: "ListDiscountScopeRequest",
+}) as any as S.Schema<ListDiscountScopeRequest>;
 
-export interface DiscountsSubscriptionListRequest {
+export interface ListDiscountSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const DiscountsSubscriptionListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDiscountSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4187,537 +6025,16 @@ export const DiscountsSubscriptionListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DiscountsSubscriptionListRequest",
-}) as any as S.Schema<DiscountsSubscriptionListRequest>;
+  identifier: "ListDiscountSubscriptionRequest",
+}) as any as S.Schema<ListDiscountSubscriptionRequest>;
 
-/** Discounts patch request properties */
-export interface DiscountPatchRequestProperties {
-  /** Display name */
-  displayName?: string;
-  /** End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate. */
-  endAt?: string;
-}
-export const DiscountPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    endAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DiscountPatchRequestProperties",
-}) as any as S.Schema<DiscountPatchRequestProperties>;
-
-/** Resource tags. */
-export type DiscountUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DiscountUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiscountUpdateRequestTagsMap>;
-
-export interface DiscountUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the discount */
-  discountName: string;
-  /** Discounts patch request properties */
-  properties?: DiscountPatchRequestProperties;
-  /** Resource tags. */
-  tags?: DiscountUpdateRequestTagsMap;
-}
-export const DiscountUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    discountName: S.String.pipe(T.Label()),
-    properties: S.optional(DiscountPatchRequestProperties),
-    tags: S.optional(DiscountUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "DiscountUpdateRequest",
-}) as any as S.Schema<DiscountUpdateRequest>;
-
-/** Resource tags. */
-export type DiscountUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DiscountUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiscountUpdateResponseTagsMap>;
-
-export interface DiscountUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DiscountUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Discount properties */
-  properties?: DiscountProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedServiceIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const DiscountUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DiscountUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DiscountProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "DiscountUpdateResponse",
-}) as any as S.Schema<DiscountUpdateResponse>;
-
-/** Resource tags. */
-export type FreeServicesCreateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const FreeServicesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FreeServicesCreateRequestTagsMap>;
-
-/** Status of the free services */
-export type FreeServicesStatus =
-  | "Unknown"
-  | "Pending"
-  | "Active"
-  | "Canceled"
-  | "Completed";
-export const FreeServicesStatus = /*@__PURE__*/ S.String;
-
-/** Properties of free services */
-export interface FreeServicesPropertiesInput {
-  /** This is the catalog UPN for the product. */
-  productCode?: string;
-  /** Display name */
-  displayName?: string;
-  /** Current status of the free services */
-  status?: FreeServicesStatus | (string & {});
-  /** Date and time when the free services become active */
-  startAt?: string;
-  /** Expiration date and time of the free services */
-  endAt?: string;
-  /** Invitation identifier */
-  invitationId?: string;
-  /** This is the globally unique identifier of the free services which will not change for its lifetime. Generated by the benefit publisher. */
-  systemId?: string;
-}
-export const FreeServicesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productCode: S.optional(S.String),
-    displayName: S.optional(S.String),
-    status: S.optional(FreeServicesStatus),
-    startAt: S.optional(S.String),
-    endAt: S.optional(S.String),
-    invitationId: S.optional(S.String),
-    systemId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FreeServicesPropertiesInput",
-}) as any as S.Schema<FreeServicesPropertiesInput>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
-};
-export const FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentityInput,
-  ) as any as S.Schema<FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface FreeServicesCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap;
-}
-export const FreeServicesCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "FreeServicesCreateRequestIdentity",
-}) as any as S.Schema<FreeServicesCreateRequestIdentity>;
-
-export interface FreeServicesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the free service */
-  freeServiceName: string;
-  /** Resource tags. */
-  tags?: FreeServicesCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Free services properties */
-  properties?: FreeServicesPropertiesInput;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FreeServicesCreateRequestIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const FreeServicesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    freeServiceName: S.String.pipe(T.Label()),
-    tags: S.optional(FreeServicesCreateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(FreeServicesPropertiesInput),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    identity: S.optional(FreeServicesCreateRequestIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/freeServices/{freeServiceName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "FreeServicesCreateRequest",
-}) as any as S.Schema<FreeServicesCreateRequest>;
-
-/** Resource tags. */
-export type FreeServicesCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const FreeServicesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FreeServicesCreateResponseTagsMap>;
-
-/** Properties of free services */
-export interface FreeServicesProperties {
-  /** This is the catalog UPN for the product. */
-  productCode?: string;
-  /** Display name */
-  displayName?: string;
-  /** Current status of the free services */
-  status?: FreeServicesStatus;
-  /** Date and time when the free services become active */
-  startAt?: string;
-  /** Expiration date and time of the free services */
-  endAt?: string;
-  /** Provisioning state of Free Services as assigned by RPaaS. This indicates the last operation's status. For all practical purposes, this can be ignored. For current status of Free Services resource, refer to FreeServicesStatus. */
-  provisioningState?: BenefitProvisioningState;
-  /** Fully-qualified identifier of the billing account where the benefit is applied. */
-  billingAccountResourceId?: string;
-  /** Fully-qualified identifier of the billing profile where the benefit is applied. */
-  billingProfileResourceId?: string;
-  /** Customer resource id where the benefit is scoped to. */
-  customerResourceId?: string;
-  /** Invitation identifier */
-  invitationId?: string;
-  /** This is the globally unique identifier of the free services which will not change for its lifetime. Generated by the benefit publisher. */
-  systemId?: string;
-  /** Product details including SKU title, product family, and product type. */
-  productDetails?: ProductDetailsBase;
-}
-export const FreeServicesProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productCode: S.optional(S.String),
-    displayName: S.optional(S.String),
-    status: S.optional(FreeServicesStatus),
-    startAt: S.optional(S.String),
-    endAt: S.optional(S.String),
-    provisioningState: S.optional(BenefitProvisioningState),
-    billingAccountResourceId: S.optional(S.String),
-    billingProfileResourceId: S.optional(S.String),
-    customerResourceId: S.optional(S.String),
-    invitationId: S.optional(S.String),
-    systemId: S.optional(S.String),
-    productDetails: S.optional(ProductDetailsBase),
-  }),
-).annotate({
-  identifier: "FreeServicesProperties",
-}) as any as S.Schema<FreeServicesProperties>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface FreeServicesCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap;
-}
-export const FreeServicesCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      FreeServicesCreateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "FreeServicesCreateResponseIdentity",
-}) as any as S.Schema<FreeServicesCreateResponseIdentity>;
-
-export interface FreeServicesCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: FreeServicesCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Free services properties */
-  properties?: FreeServicesProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FreeServicesCreateResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const FreeServicesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(FreeServicesCreateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(FreeServicesProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(FreeServicesCreateResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "FreeServicesCreateResponse",
-}) as any as S.Schema<FreeServicesCreateResponse>;
-
-export interface FreeServicesDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the free service */
-  freeServiceName: string;
-}
-export const FreeServicesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    freeServiceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/freeServices/{freeServiceName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "FreeServicesDeleteRequest",
-}) as any as S.Schema<FreeServicesDeleteRequest>;
-
-export interface FreeServicesDeleteResponse {}
-export const FreeServicesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FreeServicesDeleteResponse",
-}) as any as S.Schema<FreeServicesDeleteResponse>;
-
-export interface FreeServicesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the free service */
-  freeServiceName: string;
-}
-export const FreeServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    freeServiceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/freeServices/{freeServiceName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "FreeServicesGetRequest",
-}) as any as S.Schema<FreeServicesGetRequest>;
-
-/** Resource tags. */
-export type FreeServicesGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const FreeServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FreeServicesGetResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type FreeServicesGetResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const FreeServicesGetResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<FreeServicesGetResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface FreeServicesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: FreeServicesGetResponseIdentityUserAssignedIdentitiesMap;
-}
-export const FreeServicesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      FreeServicesGetResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "FreeServicesGetResponseIdentity",
-}) as any as S.Schema<FreeServicesGetResponseIdentity>;
-
-export interface FreeServicesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: FreeServicesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Free services properties */
-  properties?: FreeServicesProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FreeServicesGetResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const FreeServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(FreeServicesGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(FreeServicesProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(FreeServicesGetResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "FreeServicesGetResponse",
-}) as any as S.Schema<FreeServicesGetResponse>;
-
-export interface FreeServicesListByResourceGroupRequest {
+export interface ListFreeServiceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const FreeServicesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
+export const ListFreeServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -4731,8 +6048,8 @@ export const FreeServicesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "FreeServicesListByResourceGroupRequest",
-}) as any as S.Schema<FreeServicesListByResourceGroupRequest>;
+  identifier: "ListFreeServiceByResourceGroupRequest",
+}) as any as S.Schema<ListFreeServiceByResourceGroupRequest>;
 
 /** Resource tags. */
 export type FreeServicesTagsMap = { [key: string]: string | undefined };
@@ -4843,11 +6160,11 @@ export const FreeServicesList = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeServicesList",
 }) as any as S.Schema<FreeServicesList>;
 
-export interface FreeServicesListBySubscriptionRequest {
+export interface ListFreeServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const FreeServicesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
+export const ListFreeServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -4860,105 +6177,68 @@ export const FreeServicesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "FreeServicesListBySubscriptionRequest",
-}) as any as S.Schema<FreeServicesListBySubscriptionRequest>;
+  identifier: "ListFreeServiceBySubscriptionRequest",
+}) as any as S.Schema<ListFreeServiceBySubscriptionRequest>;
 
-/** Free services patch request properties */
-export interface FreeServicesPatchRequestProperties {
-  /** Updated expiration date and time of the free services */
-  endAt?: string;
-}
-export const FreeServicesPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FreeServicesPatchRequestProperties",
-}) as any as S.Schema<FreeServicesPatchRequestProperties>;
-
-/** Resource tags. */
-export type FreeServicesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const FreeServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FreeServicesUpdateRequestTagsMap>;
-
-export interface FreeServicesUpdateRequest {
+export interface ListMaccByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** Name of the free service */
-  freeServiceName: string;
-  /** Free services patch request properties */
-  properties?: FreeServicesPatchRequestProperties;
-  /** Resource tags. */
-  tags?: FreeServicesUpdateRequestTagsMap;
 }
-export const FreeServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMaccByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
-    freeServiceName: S.String.pipe(T.Label()),
-    properties: S.optional(FreeServicesPatchRequestProperties),
-    tags: S.optional(FreeServicesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/freeServices/{freeServiceName}",
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs",
       code: 200,
       apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
-  identifier: "FreeServicesUpdateRequest",
-}) as any as S.Schema<FreeServicesUpdateRequest>;
+  identifier: "ListMaccByResourceGroupRequest",
+}) as any as S.Schema<ListMaccByResourceGroupRequest>;
 
 /** Resource tags. */
-export type FreeServicesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const FreeServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export type MaccTagsMap = { [key: string]: string | undefined };
+export const MaccTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<FreeServicesUpdateResponseTagsMap>;
+) as any as S.Schema<MaccTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap = {
+export type MaccIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-export const FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap>;
+export const MaccIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentity,
+) as any as S.Schema<MaccIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FreeServicesUpdateResponseIdentity {
+export interface MaccIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
   principalId?: string;
   /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
   tenantId?: string;
   type: ManagedServiceIdentityType;
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap;
+  userAssignedIdentities?: MaccIdentityUserAssignedIdentitiesMap;
 }
-export const FreeServicesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+export const MaccIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
     type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap,
-    ),
+    userAssignedIdentities: S.optional(MaccIdentityUserAssignedIdentitiesMap),
   }),
-).annotate({
-  identifier: "FreeServicesUpdateResponseIdentity",
-}) as any as S.Schema<FreeServicesUpdateResponseIdentity>;
+).annotate({ identifier: "MaccIdentity" }) as any as S.Schema<MaccIdentity>;
 
-export interface FreeServicesUpdateResponse {
+/** Microsoft Azure Consumption Commitment. */
+export interface Macc {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4968,11 +6248,11 @@ export interface FreeServicesUpdateResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource tags. */
-  tags?: FreeServicesUpdateResponseTagsMap;
+  tags?: MaccTagsMap;
   /** The geo-location where the resource lives */
   location: string;
-  /** Free services properties */
-  properties?: FreeServicesProperties;
+  /** MACC properties */
+  properties?: MaccModelProperties;
   /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
   managedBy?: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
@@ -4980,31 +6260,675 @@ export interface FreeServicesUpdateResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FreeServicesUpdateResponseIdentity;
+  identity?: MaccIdentity;
   /** The resource model definition representing SKU */
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const FreeServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const Macc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    tags: S.optional(FreeServicesUpdateResponseTagsMap),
+    tags: S.optional(MaccTagsMap),
     location: S.String,
-    properties: S.optional(FreeServicesProperties),
+    properties: S.optional(MaccModelProperties),
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(FreeServicesUpdateResponseIdentity),
+    identity: S.optional(MaccIdentity),
     sku: S.optional(Sku),
     plan: S.optional(Plan),
   }),
+).annotate({ identifier: "Macc" }) as any as S.Schema<Macc>;
+
+/** The Macc items on this page */
+export type MaccListValueList = Array<Macc>;
+export const MaccListValueList = /*@__PURE__*/ S.Array(
+  Macc,
+) as any as S.Schema<MaccListValueList>;
+
+/** MACC list */
+export interface MaccList {
+  /** The Macc items on this page */
+  value: MaccListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const MaccList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: MaccListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "MaccList" }) as any as S.Schema<MaccList>;
+
+export interface ListMaccBySubscriptionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListMaccBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BillingBenefits/maccs",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
 ).annotate({
-  identifier: "FreeServicesUpdateResponse",
-}) as any as S.Schema<FreeServicesUpdateResponse>;
+  identifier: "ListMaccBySubscriptionRequest",
+}) as any as S.Schema<ListMaccBySubscriptionRequest>;
+
+export interface ListMaccTransactionByParentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of primary MACC. */
+  maccName: string;
+}
+export const ListMaccTransactionByParentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    maccName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}/transactions",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListMaccTransactionByParentRequest",
+}) as any as S.Schema<ListMaccTransactionByParentRequest>;
+
+/** Transaction resource definition for Maccs */
+export type MaccTransaction = ConditionalCreditTransaction;
+export const MaccTransaction = ConditionalCreditTransaction;
+
+/** The MaccTransaction items on this page */
+export type MaccTransactionsListValueList = Array<ConditionalCreditTransaction>;
+export const MaccTransactionsListValueList = /*@__PURE__*/ S.Array(
+  ConditionalCreditTransaction,
+) as any as S.Schema<MaccTransactionsListValueList>;
+
+/** List of Macc transactions */
+export interface MaccTransactionsList {
+  /** The MaccTransaction items on this page */
+  value: MaccTransactionsListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const MaccTransactionsList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: MaccTransactionsListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaccTransactionsList",
+}) as any as S.Schema<MaccTransactionsList>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.BillingBenefits/operations",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** Localized display information for this particular operation. */
+export interface OperationDisplay {
+  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
+  provider?: string;
+  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
+  resource?: string;
+  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
+  operation?: string;
+  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
+  description?: string;
+}
+export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationDisplay",
+}) as any as S.Schema<OperationDisplay>;
+
+/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+export type OperationOrigin = "user" | "system" | "user,system";
+export const OperationOrigin = /*@__PURE__*/ S.String;
+
+/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+export type OperationActionType = "Internal";
+export const OperationActionType = /*@__PURE__*/ S.String;
+
+/** Details of a REST API operation, returned from the Resource Provider Operations API */
+export interface Operation {
+  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
+  name?: string;
+  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
+  isDataAction?: boolean;
+  /** Localized display information for this particular operation. */
+  display?: OperationDisplay;
+  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+  origin?: OperationOrigin;
+  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+  actionType?: OperationActionType;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    isDataAction: S.optional(S.Boolean),
+    display: S.optional(OperationDisplay),
+    origin: S.optional(OperationOrigin),
+    actionType: S.optional(OperationActionType),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+/** List of operations supported by the resource provider */
+export type OperationsListResponseValueList = Array<Operation>;
+export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationsListResponseValueList>;
+
+export interface ListOperationsResponse {
+  /** List of operations supported by the resource provider */
+  value?: OperationsListResponseValueList;
+  /** URL to get the next set of operation list results (if there are any). */
+  nextLink?: string;
+}
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationsListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
+
+export interface ListSavingPlanRequest {
+  /** Order ID of the savings plan */
+  savingsPlanOrderId: string;
+}
+export const ListSavingPlanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    savingsPlanOrderId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSavingPlanRequest",
+}) as any as S.Schema<ListSavingPlanRequest>;
+
+/** Savings plan */
+export interface SavingsPlanModel {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Savings plan properties */
+  properties?: SavingsPlanModelProperties;
+  /** Savings plan SKU */
+  sku: ResourceSku;
+}
+export const SavingsPlanModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SavingsPlanModelProperties),
+    sku: ResourceSku,
+  }),
+).annotate({
+  identifier: "SavingsPlanModel",
+}) as any as S.Schema<SavingsPlanModel>;
+
+/** The SavingsPlanModel items on this page */
+export type SavingsPlanModelListValueList = Array<SavingsPlanModel>;
+export const SavingsPlanModelListValueList = /*@__PURE__*/ S.Array(
+  SavingsPlanModel,
+) as any as S.Schema<SavingsPlanModelListValueList>;
+
+/** Paged collection of SavingsPlanModel items */
+export interface SavingsPlanModelList {
+  /** The SavingsPlanModel items on this page */
+  value: SavingsPlanModelListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const SavingsPlanModelList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: SavingsPlanModelListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SavingsPlanModelList",
+}) as any as S.Schema<SavingsPlanModelList>;
+
+export interface ListSavingPlanAllRequest {
+  /** May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState} */
+  _filter?: string;
+  /** May be used to sort order by reservation properties. */
+  _orderby?: string;
+  /** To indicate whether to refresh the roll up counts of the savings plans group by provisioning states */
+  refreshSummary?: string;
+  /** The number of savings plans to skip from the list before returning results */
+  _skiptoken?: number;
+  /** The selected provisioning state */
+  selectedState?: string;
+  /** To number of savings plans to return */
+  take?: number;
+}
+export const ListSavingPlanAllRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+    refreshSummary: S.optional(S.String.pipe(T.Query())),
+    _skiptoken: S.optional(S.Number.pipe(T.Query("$skiptoken"))),
+    selectedState: S.optional(S.String.pipe(T.Query())),
+    take: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.BillingBenefits/savingsPlans",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSavingPlanAllRequest",
+}) as any as S.Schema<ListSavingPlanAllRequest>;
+
+/** The list of savings plans. */
+export type SavingsPlanModelListResultValueList = Array<SavingsPlanModel>;
+export const SavingsPlanModelListResultValueList = /*@__PURE__*/ S.Array(
+  SavingsPlanModel,
+) as any as S.Schema<SavingsPlanModelListResultValueList>;
+
+/** The roll up count summary of savings plans in each state */
+export interface SavingsPlanSummaryCount {
+  /** The number of savings plans in Succeeded state */
+  succeededCount?: number;
+  /** The number of savings plans in Failed state */
+  failedCount?: number;
+  /** The number of savings plans in Expiring state */
+  expiringCount?: number;
+  /** The number of savings plans in Expired state */
+  expiredCount?: number;
+  /** The number of savings plans in Pending state */
+  pendingCount?: number;
+  /** The number of savings plans in Cancelled state */
+  cancelledCount?: number;
+  /** The number of savings plans in Processing state */
+  processingCount?: number;
+  /** The number of savings plans in No Benefit state */
+  noBenefitCount?: number;
+  /** The number of savings plans in Warning state */
+  warningCount?: number;
+}
+export const SavingsPlanSummaryCount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    succeededCount: S.optional(S.Number),
+    failedCount: S.optional(S.Number),
+    expiringCount: S.optional(S.Number),
+    expiredCount: S.optional(S.Number),
+    pendingCount: S.optional(S.Number),
+    cancelledCount: S.optional(S.Number),
+    processingCount: S.optional(S.Number),
+    noBenefitCount: S.optional(S.Number),
+    warningCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SavingsPlanSummaryCount",
+}) as any as S.Schema<SavingsPlanSummaryCount>;
+
+/** Savings plans list summary */
+export interface SavingsPlanSummary {
+  /** This property has value 'summary' */
+  name?: string;
+  /** The roll up count summary of savings plans in each state */
+  value?: SavingsPlanSummaryCount;
+}
+export const SavingsPlanSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(SavingsPlanSummaryCount),
+  }),
+).annotate({
+  identifier: "SavingsPlanSummary",
+}) as any as S.Schema<SavingsPlanSummary>;
+
+/** The roll out count summary of the savings plans */
+export type SavingsPlanModelListResultAdditionalPropertiesList =
+  Array<SavingsPlanSummary>;
+export const SavingsPlanModelListResultAdditionalPropertiesList =
+  /*@__PURE__*/ S.Array(
+    SavingsPlanSummary,
+  ) as any as S.Schema<SavingsPlanModelListResultAdditionalPropertiesList>;
+
+/** Represents the result of listing savings plan models */
+export interface SavingsPlanModelListResult {
+  /** The list of savings plans. */
+  value?: SavingsPlanModelListResultValueList;
+  /** Url to get the next page. */
+  nextLink?: string;
+  /** The roll out count summary of the savings plans */
+  additionalProperties?: SavingsPlanModelListResultAdditionalPropertiesList;
+}
+export const SavingsPlanModelListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SavingsPlanModelListResultValueList),
+    nextLink: S.optional(S.String),
+    additionalProperties: S.optional(
+      SavingsPlanModelListResultAdditionalPropertiesList,
+    ),
+  }),
+).annotate({
+  identifier: "SavingsPlanModelListResult",
+}) as any as S.Schema<SavingsPlanModelListResult>;
+
+export interface ListSavingPlanOrderRequest {}
+export const ListSavingPlanOrderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrders",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSavingPlanOrderRequest",
+}) as any as S.Schema<ListSavingPlanOrderRequest>;
+
+/** Savings plan order */
+export interface SavingsPlanOrderModel {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Savings plan order properties */
+  properties?: SavingsPlanOrderModelProperties;
+  /** Savings plan SKU */
+  sku: ResourceSku;
+}
+export const SavingsPlanOrderModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SavingsPlanOrderModelProperties),
+    sku: ResourceSku,
+  }),
+).annotate({
+  identifier: "SavingsPlanOrderModel",
+}) as any as S.Schema<SavingsPlanOrderModel>;
+
+/** The SavingsPlanOrderModel items on this page */
+export type SavingsPlanOrderModelListValueList = Array<SavingsPlanOrderModel>;
+export const SavingsPlanOrderModelListValueList = /*@__PURE__*/ S.Array(
+  SavingsPlanOrderModel,
+) as any as S.Schema<SavingsPlanOrderModelListValueList>;
+
+/** Paged collection of SavingsPlanOrderModel items */
+export interface SavingsPlanOrderModelList {
+  /** The SavingsPlanOrderModel items on this page */
+  value: SavingsPlanOrderModelListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const SavingsPlanOrderModelList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: SavingsPlanOrderModelListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SavingsPlanOrderModelList",
+}) as any as S.Schema<SavingsPlanOrderModelList>;
+
+/** Request properties to list maccs under a billing account */
+export interface SellerResourceListRequestProperties {
+  /** Fully-qualified billing account resource identifier where the benefit is applied. Present only for Enterprise Agreement customers. */
+  billingAccountResourceId: string;
+  /** This is an OData expresssion to filter the list of MACCs based on the properties of MACC passed in the filter. */
+  _filter?: string;
+  /** Setting it to true will return the list of contributors associated with the MACC. */
+  contributors?: boolean;
+  /** Setting it to true will return the list of milestones associated with the MACC. */
+  milestones?: boolean;
+  /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
+  primaryResourceId?: string;
+}
+export const SellerResourceListRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountResourceId: S.String,
+    _filter: S.optional(S.String.pipe(T.Body("$filter"))),
+    contributors: S.optional(S.Boolean),
+    milestones: S.optional(S.Boolean),
+    primaryResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SellerResourceListRequestProperties",
+}) as any as S.Schema<SellerResourceListRequestProperties>;
+
+export interface ListSellerResourceRequest {
+  /** Request properties to list maccs under a billing account */
+  properties?: SellerResourceListRequestProperties;
+}
+export const ListSellerResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(SellerResourceListRequestProperties),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.BillingBenefits/listSellerResources",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSellerResourceRequest",
+}) as any as S.Schema<ListSellerResourceRequest>;
+
+export type SellerResourceListResponseBodyList = Array<Macc>;
+export const SellerResourceListResponseBodyList = /*@__PURE__*/ S.Array(
+  Macc,
+) as any as S.Schema<SellerResourceListResponseBodyList>;
+
+export type ListSellerResourceResponse = SellerResourceListResponseBodyList;
+export const ListSellerResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  SellerResourceListResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "ListSellerResourceResponse",
+}) as any as S.Schema<ListSellerResourceResponse>;
+
+export interface ListSourceByCreditRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the credit */
+  creditName: string;
+}
+export const ListSourceByCreditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    creditName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/sources",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSourceByCreditRequest",
+}) as any as S.Schema<ListSourceByCreditRequest>;
+
+/** Resource tags. */
+export type CreditSourceTagsMap = { [key: string]: string | undefined };
+export const CreditSourceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreditSourceTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type CreditSourceIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const CreditSourceIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<CreditSourceIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface CreditSourceIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: CreditSourceIdentityUserAssignedIdentitiesMap;
+}
+export const CreditSourceIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      CreditSourceIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "CreditSourceIdentity",
+}) as any as S.Schema<CreditSourceIdentity>;
+
+/** Credit source resource definition */
+export interface CreditSource {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: CreditSourceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Credit source properties */
+  properties?: CreditSourceProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: CreditSourceIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const CreditSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(CreditSourceTagsMap),
+    location: S.String,
+    properties: S.optional(CreditSourceProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(CreditSourceIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({ identifier: "CreditSource" }) as any as S.Schema<CreditSource>;
+
+/** The CreditSource items on this page */
+export type CreditSourcesListValueList = Array<CreditSource>;
+export const CreditSourcesListValueList = /*@__PURE__*/ S.Array(
+  CreditSource,
+) as any as S.Schema<CreditSourcesListValueList>;
+
+/** List of credit sources */
+export interface CreditSourcesList {
+  /** The CreditSource items on this page */
+  value: CreditSourcesListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const CreditSourcesList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: CreditSourcesListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreditSourcesList",
+}) as any as S.Schema<CreditSourcesList>;
+
+export interface ListSubscriptionCatalogGroupOpsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** OData filter expression to narrow the list of catalog groups. */
+  _filter?: string;
+}
+export const ListSubscriptionCatalogGroupOpsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BillingBenefits/catalogGroups",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListSubscriptionCatalogGroupOpsRequest",
+}) as any as S.Schema<ListSubscriptionCatalogGroupOpsRequest>;
 
 export interface MaccsCancelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5238,714 +7162,6 @@ export const MaccsChargeShortfallResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaccsChargeShortfallResponse",
 }) as any as S.Schema<MaccsChargeShortfallResponse>;
 
-/** Resource tags. */
-export type MaccsCreateRequestTagsMap = { [key: string]: string | undefined };
-export const MaccsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaccsCreateRequestTagsMap>;
-
-/** List of milestones associated with this MACC. */
-export type MaccModelPropertiesInputMilestonesList = Array<MaccMilestone>;
-export const MaccModelPropertiesInputMilestonesList = /*@__PURE__*/ S.Array(
-  MaccMilestone,
-) as any as S.Schema<MaccModelPropertiesInputMilestonesList>;
-
-/** MACC properties */
-export interface MaccModelPropertiesInput {
-  /** Represents the current status of the MACC. */
-  status?: MaccStatus | (string & {});
-  /** Represents type of the object being operated on. Possible values are primary or contributor. */
-  entityType: MaccEntityType | (string & {});
-  /** Display name */
-  displayName?: string;
-  /** Represents catalog UPN. */
-  productCode?: string;
-  /** Fully-qualified identifier of the billing account where the MACC is applied. Present only for Enterprise Agreement customers. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId} */
-  billingAccountResourceId?: string;
-  /** Commitment towards the benefit. */
-  commitment?: Commitment;
-  /** Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z. */
-  startAt?: string;
-  /** Must be end of month. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z. */
-  endAt?: string;
-  /** This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC. */
-  systemId?: string;
-  /** Setting this to 'Enable' enables automatic shortfall charging when commitment is not met. */
-  automaticShortfall?: EnablementMode | (string & {});
-  /** Optional field to record suppression reason for automatic shortfall. */
-  automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
-  /** MACC shortfall */
-  shortfall?: Shortfall;
-  /** List of milestones associated with this MACC. */
-  milestones?: MaccModelPropertiesInputMilestonesList;
-  /** This is the resource identifier of either the primary MACC or the contributor. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
-  resourceId?: string;
-  /** Setting this to true means multi-entity. */
-  allowContributors?: boolean;
-  /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
-  primaryResourceId?: string;
-  /** Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
-  primaryBillingAccountResourceId?: string;
-  /** Type of the applied scope for the MACC. */
-  appliedScopeType?: BenefitAppliedScopeType | (string & {});
-  /** Invitation identifier */
-  invitationId?: string;
-}
-export const MaccModelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(MaccStatus),
-    entityType: MaccEntityType,
-    displayName: S.optional(S.String),
-    productCode: S.optional(S.String),
-    billingAccountResourceId: S.optional(S.String),
-    commitment: S.optional(Commitment),
-    startAt: S.optional(S.String),
-    endAt: S.optional(S.String),
-    systemId: S.optional(S.String),
-    automaticShortfall: S.optional(EnablementMode),
-    automaticShortfallSuppressReason: S.optional(
-      AutomaticShortfallSuppressReason,
-    ),
-    shortfall: S.optional(Shortfall),
-    milestones: S.optional(MaccModelPropertiesInputMilestonesList),
-    resourceId: S.optional(S.String),
-    allowContributors: S.optional(S.Boolean),
-    primaryResourceId: S.optional(S.String),
-    primaryBillingAccountResourceId: S.optional(S.String),
-    appliedScopeType: S.optional(BenefitAppliedScopeType),
-    invitationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaccModelPropertiesInput",
-}) as any as S.Schema<MaccModelPropertiesInput>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type MaccsCreateRequestIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
-};
-export const MaccsCreateRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentityInput,
-  ) as any as S.Schema<MaccsCreateRequestIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface MaccsCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: MaccsCreateRequestIdentityUserAssignedIdentitiesMap;
-}
-export const MaccsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      MaccsCreateRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "MaccsCreateRequestIdentity",
-}) as any as S.Schema<MaccsCreateRequestIdentity>;
-
-export interface MaccsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of primary MACC. */
-  maccName: string;
-  /** Resource tags. */
-  tags?: MaccsCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** MACC properties */
-  properties?: MaccModelPropertiesInput;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MaccsCreateRequestIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const MaccsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    maccName: S.String.pipe(T.Label()),
-    tags: S.optional(MaccsCreateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(MaccModelPropertiesInput),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    identity: S.optional(MaccsCreateRequestIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MaccsCreateRequest",
-}) as any as S.Schema<MaccsCreateRequest>;
-
-/** Resource tags. */
-export type MaccsCreateResponseTagsMap = { [key: string]: string | undefined };
-export const MaccsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaccsCreateResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type MaccsCreateResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const MaccsCreateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<MaccsCreateResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface MaccsCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: MaccsCreateResponseIdentityUserAssignedIdentitiesMap;
-}
-export const MaccsCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      MaccsCreateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "MaccsCreateResponseIdentity",
-}) as any as S.Schema<MaccsCreateResponseIdentity>;
-
-export interface MaccsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: MaccsCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** MACC properties */
-  properties?: MaccModelProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MaccsCreateResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const MaccsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MaccsCreateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MaccModelProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(MaccsCreateResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "MaccsCreateResponse",
-}) as any as S.Schema<MaccsCreateResponse>;
-
-export interface MaccsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of primary MACC. */
-  maccName: string;
-}
-export const MaccsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    maccName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MaccsDeleteRequest",
-}) as any as S.Schema<MaccsDeleteRequest>;
-
-export interface MaccsDeleteResponse {}
-export const MaccsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MaccsDeleteResponse",
-}) as any as S.Schema<MaccsDeleteResponse>;
-
-export interface MaccsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of primary MACC. */
-  maccName: string;
-}
-export const MaccsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    maccName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MaccsGetRequest",
-}) as any as S.Schema<MaccsGetRequest>;
-
-/** Resource tags. */
-export type MaccsGetResponseTagsMap = { [key: string]: string | undefined };
-export const MaccsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaccsGetResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type MaccsGetResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const MaccsGetResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<MaccsGetResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface MaccsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: MaccsGetResponseIdentityUserAssignedIdentitiesMap;
-}
-export const MaccsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      MaccsGetResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "MaccsGetResponseIdentity",
-}) as any as S.Schema<MaccsGetResponseIdentity>;
-
-export interface MaccsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: MaccsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** MACC properties */
-  properties?: MaccModelProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MaccsGetResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const MaccsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MaccsGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MaccModelProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(MaccsGetResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "MaccsGetResponse",
-}) as any as S.Schema<MaccsGetResponse>;
-
-export interface MaccsListByResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const MaccsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MaccsListByResourceGroupRequest",
-}) as any as S.Schema<MaccsListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type MaccTagsMap = { [key: string]: string | undefined };
-export const MaccTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaccTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type MaccIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const MaccIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserAssignedIdentity,
-) as any as S.Schema<MaccIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface MaccIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: MaccIdentityUserAssignedIdentitiesMap;
-}
-export const MaccIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(MaccIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({ identifier: "MaccIdentity" }) as any as S.Schema<MaccIdentity>;
-
-/** Microsoft Azure Consumption Commitment. */
-export interface Macc {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: MaccTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** MACC properties */
-  properties?: MaccModelProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MaccIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const Macc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MaccTagsMap),
-    location: S.String,
-    properties: S.optional(MaccModelProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(MaccIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "Macc" }) as any as S.Schema<Macc>;
-
-/** The Macc items on this page */
-export type MaccListValueList = Array<Macc>;
-export const MaccListValueList = /*@__PURE__*/ S.Array(
-  Macc,
-) as any as S.Schema<MaccListValueList>;
-
-/** MACC list */
-export interface MaccList {
-  /** The Macc items on this page */
-  value: MaccListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const MaccList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: MaccListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "MaccList" }) as any as S.Schema<MaccList>;
-
-export interface MaccsListBySubscriptionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const MaccsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BillingBenefits/maccs",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MaccsListBySubscriptionRequest",
-}) as any as S.Schema<MaccsListBySubscriptionRequest>;
-
-/** List of milestones to update or add. */
-export type MaccPatchRequestPropertiesMilestonesList = Array<MaccMilestone>;
-export const MaccPatchRequestPropertiesMilestonesList = /*@__PURE__*/ S.Array(
-  MaccMilestone,
-) as any as S.Schema<MaccPatchRequestPropertiesMilestonesList>;
-
-/** Macc patch request properties */
-export interface MaccPatchRequestProperties {
-  /** Commitment towards the benefit. */
-  commitment?: Commitment;
-  /** End DateTime in UTC. */
-  endAt?: string;
-  /** Setting this to true means multi-entity. */
-  allowContributors?: boolean;
-  /** Represents the enablement status of a feature or settings. */
-  automaticShortfall?: EnablementMode | (string & {});
-  /** Optional field to record suppression reason for automatic shortfall. */
-  automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
-  /** Display name */
-  displayName?: string;
-  /** Represents the current status of the Milestone. */
-  status?: MaccMilestoneStatus | (string & {});
-  /** List of milestones to update or add. */
-  milestones?: MaccPatchRequestPropertiesMilestonesList;
-  /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
-  primaryResourceId?: string;
-  /** Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
-  primaryBillingAccountResourceId?: string;
-}
-export const MaccPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitment: S.optional(Commitment),
-    endAt: S.optional(S.String),
-    allowContributors: S.optional(S.Boolean),
-    automaticShortfall: S.optional(EnablementMode),
-    automaticShortfallSuppressReason: S.optional(
-      AutomaticShortfallSuppressReason,
-    ),
-    displayName: S.optional(S.String),
-    status: S.optional(MaccMilestoneStatus),
-    milestones: S.optional(MaccPatchRequestPropertiesMilestonesList),
-    primaryResourceId: S.optional(S.String),
-    primaryBillingAccountResourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaccPatchRequestProperties",
-}) as any as S.Schema<MaccPatchRequestProperties>;
-
-/** Resource tags. */
-export type MaccsUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const MaccsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaccsUpdateRequestTagsMap>;
-
-export interface MaccsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of primary MACC. */
-  maccName: string;
-  /** Macc patch request properties */
-  properties?: MaccPatchRequestProperties;
-  /** Resource tags. */
-  tags?: MaccsUpdateRequestTagsMap;
-}
-export const MaccsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    maccName: S.String.pipe(T.Label()),
-    properties: S.optional(MaccPatchRequestProperties),
-    tags: S.optional(MaccsUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MaccsUpdateRequest",
-}) as any as S.Schema<MaccsUpdateRequest>;
-
-/** Resource tags. */
-export type MaccsUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const MaccsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaccsUpdateResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type MaccsUpdateResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const MaccsUpdateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<MaccsUpdateResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface MaccsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: MaccsUpdateResponseIdentityUserAssignedIdentitiesMap;
-}
-export const MaccsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      MaccsUpdateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "MaccsUpdateResponseIdentity",
-}) as any as S.Schema<MaccsUpdateResponseIdentity>;
-
-export interface MaccsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: MaccsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** MACC properties */
-  properties?: MaccModelProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MaccsUpdateResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const MaccsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MaccsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MaccModelProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(MaccsUpdateResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "MaccsUpdateResponse",
-}) as any as S.Schema<MaccsUpdateResponse>;
-
 export interface MaccsWriteOffRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6061,1165 +7277,6 @@ export const MaccsWriteOffResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaccsWriteOffResponse",
 }) as any as S.Schema<MaccsWriteOffResponse>;
 
-export interface MaccTransactionsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of primary MACC. */
-  maccName: string;
-  /** Name of the transaction */
-  transactionName: string;
-}
-export const MaccTransactionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    maccName: S.String.pipe(T.Label()),
-    transactionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}/transactions/{transactionName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MaccTransactionsGetRequest",
-}) as any as S.Schema<MaccTransactionsGetRequest>;
-
-export interface MaccTransactionsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Transaction properties */
-  properties?: TransactionProperties;
-}
-export const MaccTransactionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TransactionProperties),
-  }),
-).annotate({
-  identifier: "MaccTransactionsGetResponse",
-}) as any as S.Schema<MaccTransactionsGetResponse>;
-
-export interface MaccTransactionsListByParentRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of primary MACC. */
-  maccName: string;
-}
-export const MaccTransactionsListByParentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    maccName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}/transactions",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MaccTransactionsListByParentRequest",
-}) as any as S.Schema<MaccTransactionsListByParentRequest>;
-
-/** Transaction resource definition for Maccs */
-export type MaccTransaction = ConditionalCreditTransaction;
-export const MaccTransaction = ConditionalCreditTransaction;
-
-/** The MaccTransaction items on this page */
-export type MaccTransactionsListValueList = Array<ConditionalCreditTransaction>;
-export const MaccTransactionsListValueList = /*@__PURE__*/ S.Array(
-  ConditionalCreditTransaction,
-) as any as S.Schema<MaccTransactionsListValueList>;
-
-/** List of Macc transactions */
-export interface MaccTransactionsList {
-  /** The MaccTransaction items on this page */
-  value: MaccTransactionsListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const MaccTransactionsList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: MaccTransactionsListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaccTransactionsList",
-}) as any as S.Schema<MaccTransactionsList>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.BillingBenefits/operations",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-/** Localized display information for this particular operation. */
-export interface OperationDisplay {
-  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
-  provider?: string;
-  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
-  resource?: string;
-  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
-  operation?: string;
-  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
-  description?: string;
-}
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationDisplay",
-}) as any as S.Schema<OperationDisplay>;
-
-/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = /*@__PURE__*/ S.String;
-
-/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
-export const OperationActionType = /*@__PURE__*/ S.String;
-
-/** Details of a REST API operation, returned from the Resource Provider Operations API */
-export interface Operation {
-  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
-  name?: string;
-  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
-  isDataAction?: boolean;
-  /** Localized display information for this particular operation. */
-  display?: OperationDisplay;
-  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-  origin?: OperationOrigin;
-  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-  actionType?: OperationActionType;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    isDataAction: S.optional(S.Boolean),
-    display: S.optional(OperationDisplay),
-    origin: S.optional(OperationOrigin),
-    actionType: S.optional(OperationActionType),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Array<Operation>;
-export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationsListResponseValueList>;
-
-export interface OperationsListResponse {
-  /** List of operations supported by the resource provider */
-  value?: OperationsListResponseValueList;
-  /** URL to get the next set of operation list results (if there are any). */
-  nextLink?: string;
-}
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationsListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
-
-export interface ResourceSku {
-  name?: string;
-}
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
-
-/** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-export type BillingPlan = "P1M";
-export const BillingPlan = /*@__PURE__*/ S.String;
-
-/** Type of the Applied Scope. */
-export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
-export const AppliedScopeType = /*@__PURE__*/ S.String;
-
-/** Properties specific to applied scope type. Not required if not applicable. */
-export interface AppliedScopeProperties {
-  /** Tenant ID where the benefit is applied. */
-  tenantId?: string;
-  /** Fully-qualified identifier of the management group where the benefit must be applied. */
-  managementGroupId?: string;
-  /** Fully-qualified identifier of the subscription. */
-  subscriptionId?: string;
-  /** Fully-qualified identifier of the resource group. */
-  resourceGroupId?: string;
-  /** Display name */
-  displayName?: string;
-  /** A filter string passed to downstream services to categorize and apply usage benefits to specific resource models. Expected format: "key/value" (e.g., "contractId/2025 H2CPU"). The value is not validated by BillingBenefits and is forwarded as-is. */
-  benefitFilter?: string;
-}
-export const AppliedScopeProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenantId: S.optional(S.String),
-    managementGroupId: S.optional(S.String),
-    subscriptionId: S.optional(S.String),
-    resourceGroupId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    benefitFilter: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppliedScopeProperties",
-}) as any as S.Schema<AppliedScopeProperties>;
-
-/** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
-export type RenewAction = "CreateNew" | "RenewExisting";
-export const RenewAction = /*@__PURE__*/ S.String;
-
-/** The type of the resource that is being reserved. */
-export type ReservedResourceType =
-  | "VirtualMachines"
-  | "SqlDatabases"
-  | "SuseLinux"
-  | "CosmosDb"
-  | "RedHat"
-  | "SqlDataWarehouse"
-  | "VMwareCloudSimple"
-  | "RedHatOsa"
-  | "Databricks"
-  | "AppService"
-  | "ManagedDisk"
-  | "BlockBlob"
-  | "RedisCache"
-  | "AzureDataExplorer"
-  | "MySql"
-  | "MariaDb"
-  | "PostgreSql"
-  | "DedicatedHost"
-  | "SapHana"
-  | "SqlAzureHybridBenefit"
-  | "AVS"
-  | "DataFactory"
-  | "NetAppStorage"
-  | "AzureFiles"
-  | "SqlEdge"
-  | "VirtualMachineSoftware";
-export const ReservedResourceType = /*@__PURE__*/ S.String;
-
-/** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
-export type InstanceFlexibility = "On" | "Off";
-export const InstanceFlexibility = /*@__PURE__*/ S.String;
-
-/** Properties specific to each reserved resource type. Not required if not applicable. */
-export interface ReservationOrderAliasRequestPropertiesReservedResourceProperties {
-  /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
-  instanceFlexibility?: InstanceFlexibility | (string & {});
-}
-export const ReservationOrderAliasRequestPropertiesReservedResourceProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceFlexibility: S.optional(InstanceFlexibility),
-    }),
-  ).annotate({
-    identifier:
-      "ReservationOrderAliasRequestPropertiesReservedResourceProperties",
-  }) as any as S.Schema<ReservationOrderAliasRequestPropertiesReservedResourceProperties>;
-
-/** Reservation properties */
-export interface ReservationOrderAliasRequestProperties {
-  /** Display name */
-  displayName?: string;
-  /** Subscription that will be charged for purchasing the benefit */
-  billingScopeId?: string;
-  /** Represent benefit term in ISO 8601 format. */
-  term?: Term | (string & {});
-  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan | (string & {});
-  /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType | (string & {});
-  /** Properties specific to applied scope type. Not required if not applicable. */
-  appliedScopeProperties?: AppliedScopeProperties;
-  /** Total Quantity of the SKUs purchased in the Reservation. */
-  quantity?: number;
-  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
-  renew?: boolean;
-  /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
-  renewAction?: RenewAction | (string & {});
-  /** The type of the resource that is being reserved. */
-  reservedResourceType?: ReservedResourceType | (string & {});
-  /** This is the date-time when the Azure Hybrid Benefit needs to be reviewed. */
-  reviewDateTime?: string;
-  /** This is the DateTime when the reservation benefit started. */
-  benefitStartTime?: string;
-  /** Properties specific to each reserved resource type. Not required if not applicable. */
-  reservedResourceProperties?: ReservationOrderAliasRequestPropertiesReservedResourceProperties;
-}
-export const ReservationOrderAliasRequestProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      billingScopeId: S.optional(S.String),
-      term: S.optional(Term),
-      billingPlan: S.optional(BillingPlan),
-      appliedScopeType: S.optional(AppliedScopeType),
-      appliedScopeProperties: S.optional(AppliedScopeProperties),
-      quantity: S.optional(S.Number),
-      renew: S.optional(S.Boolean),
-      renewAction: S.optional(RenewAction),
-      reservedResourceType: S.optional(ReservedResourceType),
-      reviewDateTime: S.optional(S.String),
-      benefitStartTime: S.optional(S.String),
-      reservedResourceProperties: S.optional(
-        ReservationOrderAliasRequestPropertiesReservedResourceProperties,
-      ),
-    }),
-).annotate({
-  identifier: "ReservationOrderAliasRequestProperties",
-}) as any as S.Schema<ReservationOrderAliasRequestProperties>;
-
-export interface ReservationOrderAliasCreateRequest {
-  /** Name of the reservation order alias */
-  reservationOrderAliasName: string;
-  /** Reservation order SKU */
-  sku: ResourceSku;
-  /** The Azure Region where the reservation benefits are applied to. */
-  location?: string;
-  /** Reservation order alias request properties */
-  properties?: ReservationOrderAliasRequestProperties;
-}
-export const ReservationOrderAliasCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reservationOrderAliasName: S.String.pipe(T.Label()),
-    sku: ResourceSku,
-    location: S.optional(S.String),
-    properties: S.optional(ReservationOrderAliasRequestProperties),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ReservationOrderAliasCreateRequest",
-}) as any as S.Schema<ReservationOrderAliasCreateRequest>;
-
-/** Provisioning state */
-export type ProvisioningState =
-  | "Creating"
-  | "PendingBilling"
-  | "ConfirmedBilling"
-  | "Created"
-  | "Succeeded"
-  | "Cancelled"
-  | "Expired"
-  | "Failed";
-export const ProvisioningState = /*@__PURE__*/ S.String;
-
-/** Properties specific to each reserved resource type. Not required if not applicable. */
-export interface ReservationOrderAliasResponsePropertiesReservedResourceProperties {
-  /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
-  instanceFlexibility?: InstanceFlexibility;
-}
-export const ReservationOrderAliasResponsePropertiesReservedResourceProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceFlexibility: S.optional(InstanceFlexibility),
-    }),
-  ).annotate({
-    identifier:
-      "ReservationOrderAliasResponsePropertiesReservedResourceProperties",
-  }) as any as S.Schema<ReservationOrderAliasResponsePropertiesReservedResourceProperties>;
-
-/** Reservation properties */
-export interface ReservationOrderAliasResponseProperties {
-  /** Display name */
-  displayName?: string;
-  /** Identifier of the reservation order created */
-  reservationOrderId?: string;
-  /** Provisioning state */
-  provisioningState?: ProvisioningState;
-  /** Subscription that will be charged for purchasing the benefit */
-  billingScopeId?: string;
-  /** Represent benefit term in ISO 8601 format. */
-  term?: Term;
-  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
-  /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
-  /** Properties specific to applied scope type. Not required if not applicable. */
-  appliedScopeProperties?: AppliedScopeProperties;
-  /** Total Quantity of the SKUs purchased in the Reservation. */
-  quantity?: number;
-  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
-  renew?: boolean;
-  /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
-  renewAction?: RenewAction;
-  /** This is the date-time when the reservation was renewed. */
-  renewalPurchaseDateTime?: string;
-  /** The type of the resource that is being reserved. */
-  reservedResourceType?: ReservedResourceType;
-  /** This is the date-time when the Reservation needs to be reviewed. */
-  reviewDateTime?: string;
-  /** This is the DateTime when the reservation benefit started. */
-  benefitStartTime?: string;
-  /** Properties specific to each reserved resource type. Not required if not applicable. */
-  reservedResourceProperties?: ReservationOrderAliasResponsePropertiesReservedResourceProperties;
-}
-export const ReservationOrderAliasResponseProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      reservationOrderId: S.optional(S.String),
-      provisioningState: S.optional(ProvisioningState),
-      billingScopeId: S.optional(S.String),
-      term: S.optional(Term),
-      billingPlan: S.optional(BillingPlan),
-      appliedScopeType: S.optional(AppliedScopeType),
-      appliedScopeProperties: S.optional(AppliedScopeProperties),
-      quantity: S.optional(S.Number),
-      renew: S.optional(S.Boolean),
-      renewAction: S.optional(RenewAction),
-      renewalPurchaseDateTime: S.optional(S.String),
-      reservedResourceType: S.optional(ReservedResourceType),
-      reviewDateTime: S.optional(S.String),
-      benefitStartTime: S.optional(S.String),
-      reservedResourceProperties: S.optional(
-        ReservationOrderAliasResponsePropertiesReservedResourceProperties,
-      ),
-    }),
-).annotate({
-  identifier: "ReservationOrderAliasResponseProperties",
-}) as any as S.Schema<ReservationOrderAliasResponseProperties>;
-
-export interface ReservationOrderAliasCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Reservation order alias response properties */
-  properties?: ReservationOrderAliasResponseProperties;
-  /** Reservation order SKU */
-  sku: ResourceSku;
-  /** The Azure Region where the reserved resource lives. */
-  location?: string;
-}
-export const ReservationOrderAliasCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReservationOrderAliasResponseProperties),
-    sku: ResourceSku,
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationOrderAliasCreateResponse",
-}) as any as S.Schema<ReservationOrderAliasCreateResponse>;
-
-export interface ReservationOrderAliasGetRequest {
-  /** Name of the reservation order alias */
-  reservationOrderAliasName: string;
-}
-export const ReservationOrderAliasGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reservationOrderAliasName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ReservationOrderAliasGetRequest",
-}) as any as S.Schema<ReservationOrderAliasGetRequest>;
-
-export interface ReservationOrderAliasGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Reservation order alias response properties */
-  properties?: ReservationOrderAliasResponseProperties;
-  /** Reservation order SKU */
-  sku: ResourceSku;
-  /** The Azure Region where the reserved resource lives. */
-  location?: string;
-}
-export const ReservationOrderAliasGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReservationOrderAliasResponseProperties),
-    sku: ResourceSku,
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationOrderAliasGetResponse",
-}) as any as S.Schema<ReservationOrderAliasGetResponse>;
-
-export interface SavingsPlanGetRequest {
-  /** Order ID of the savings plan */
-  savingsPlanOrderId: string;
-  /** ID of the savings plan */
-  savingsPlanId: string;
-  /** May be used to expand the detail information of some properties. */
-  _expand?: string;
-}
-export const SavingsPlanGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsPlanOrderId: S.String.pipe(T.Label()),
-    savingsPlanId: S.String.pipe(T.Label()),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SavingsPlanGetRequest",
-}) as any as S.Schema<SavingsPlanGetRequest>;
-
-export interface ExtendedStatusInfo {
-  /** Status code providing additional information. */
-  statusCode?: string;
-  /** The message giving detailed information about the status code. */
-  message?: string;
-}
-export const ExtendedStatusInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statusCode: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtendedStatusInfo",
-}) as any as S.Schema<ExtendedStatusInfo>;
-
-/** The aggregate values of savings plan utilization */
-export interface UtilizationAggregates {
-  /** The grain of the aggregate */
-  grain?: number;
-  /** The grain unit of the aggregate */
-  grainUnit?: string;
-  /** The aggregate value */
-  value?: number;
-  /** The aggregate value unit */
-  valueUnit?: string;
-}
-export const UtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grain: S.optional(S.Number),
-    grainUnit: S.optional(S.String),
-    value: S.optional(S.Number),
-    valueUnit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UtilizationAggregates",
-}) as any as S.Schema<UtilizationAggregates>;
-
-/** The array of aggregates of a savings plan's utilization */
-export type UtilizationAggregatesList = Array<UtilizationAggregates>;
-export const UtilizationAggregatesList = /*@__PURE__*/ S.Array(
-  UtilizationAggregates,
-) as any as S.Schema<UtilizationAggregatesList>;
-
-/** Savings plan utilization */
-export interface Utilization {
-  /** The number of days trend for a savings plan */
-  trend?: string;
-  /** The array of aggregates of a savings plan's utilization */
-  aggregates?: UtilizationAggregatesList;
-}
-export const Utilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trend: S.optional(S.String),
-    aggregates: S.optional(UtilizationAggregatesList),
-  }),
-).annotate({ identifier: "Utilization" }) as any as S.Schema<Utilization>;
-
-export interface PurchaseRequestProperties {
-  /** Friendly name of the savings plan */
-  displayName?: string;
-  /** Subscription that will be charged for purchasing the benefit */
-  billingScopeId?: string;
-  /** Represent benefit term in ISO 8601 format. */
-  term?: Term;
-  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
-  /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
-  /** Commitment towards the benefit. */
-  commitment?: Commitment;
-  /** DateTime of the savings plan starts providing benefit from. */
-  effectiveDateTime?: string;
-  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
-  renew?: boolean;
-  /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
-  renewAction?: RenewAction;
-  /** Properties specific to applied scope type. Not required if not applicable. */
-  appliedScopeProperties?: AppliedScopeProperties;
-}
-export const PurchaseRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    billingScopeId: S.optional(S.String),
-    term: S.optional(Term),
-    billingPlan: S.optional(BillingPlan),
-    appliedScopeType: S.optional(AppliedScopeType),
-    commitment: S.optional(Commitment),
-    effectiveDateTime: S.optional(S.String),
-    renew: S.optional(S.Boolean),
-    renewAction: S.optional(RenewAction),
-    appliedScopeProperties: S.optional(AppliedScopeProperties),
-  }),
-).annotate({
-  identifier: "PurchaseRequestProperties",
-}) as any as S.Schema<PurchaseRequestProperties>;
-
-export interface PurchaseRequest {
-  /** The SKU to be applied for this resource */
-  sku?: ResourceSku;
-  properties?: PurchaseRequestProperties;
-}
-export const PurchaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sku: S.optional(ResourceSku),
-    properties: S.optional(PurchaseRequestProperties),
-  }),
-).annotate({
-  identifier: "PurchaseRequest",
-}) as any as S.Schema<PurchaseRequest>;
-
-export interface RenewProperties {
-  purchaseProperties?: PurchaseRequest;
-}
-export const RenewProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purchaseProperties: S.optional(PurchaseRequest),
-  }),
-).annotate({
-  identifier: "RenewProperties",
-}) as any as S.Schema<RenewProperties>;
-
-/** Savings plan properties */
-export interface SavingsPlanModelProperties {
-  /** Display name */
-  displayName?: string;
-  /** Provisioning state */
-  provisioningState?: ProvisioningState;
-  /** The provisioning state of the savings plan for display, e.g. Succeeded */
-  displayProvisioningState?: string;
-  /** Subscription that will be charged for purchasing the benefit */
-  billingScopeId?: string;
-  /** Fully-qualified identifier of the billing profile where the benefit is applied. Present only for Field-led or Customer-led customers. */
-  billingProfileId?: string;
-  /** Fully-qualified identifier of the customer where the savings plan is applied. Present only for Partner-led customers. */
-  customerId?: string;
-  /** Fully-qualified identifier of the billing account where the benefit is applied. Present only for Enterprise Agreement customers. */
-  billingAccountId?: string;
-  /** Represent benefit term in ISO 8601 format. */
-  term?: Term;
-  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
-  /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
-  /** The applied scope type of the savings plan for display, e.g. Shared */
-  userFriendlyAppliedScopeType?: string;
-  /** Properties specific to applied scope type. Not required if not applicable. */
-  appliedScopeProperties?: AppliedScopeProperties;
-  /** Commitment towards the benefit. */
-  commitment?: Commitment;
-  /** DateTime of the savings plan starts providing benefit from. */
-  effectiveDateTime?: string;
-  /** Expiry date time */
-  expiryDateTime?: string;
-  /** Date time when the savings plan was purchased */
-  purchaseDateTime?: string;
-  /** This is the DateTime when the savings plan benefit started. */
-  benefitStartTime?: string;
-  extendedStatusInfo?: ExtendedStatusInfo;
-  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
-  renew?: boolean;
-  /** Savings plan utilization */
-  utilization?: Utilization;
-  /** SavingsPlan Id of the SavingsPlan from which this SavingsPlan is renewed. */
-  renewSource?: string;
-  /** SavingsPlan Id of the SavingsPlan which is purchased because of renew. */
-  renewDestination?: string;
-  renewProperties?: RenewProperties;
-}
-export const SavingsPlanModelProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState),
-    displayProvisioningState: S.optional(S.String),
-    billingScopeId: S.optional(S.String),
-    billingProfileId: S.optional(S.String),
-    customerId: S.optional(S.String),
-    billingAccountId: S.optional(S.String),
-    term: S.optional(Term),
-    billingPlan: S.optional(BillingPlan),
-    appliedScopeType: S.optional(AppliedScopeType),
-    userFriendlyAppliedScopeType: S.optional(S.String),
-    appliedScopeProperties: S.optional(AppliedScopeProperties),
-    commitment: S.optional(Commitment),
-    effectiveDateTime: S.optional(S.String),
-    expiryDateTime: S.optional(S.String),
-    purchaseDateTime: S.optional(S.String),
-    benefitStartTime: S.optional(S.String),
-    extendedStatusInfo: S.optional(ExtendedStatusInfo),
-    renew: S.optional(S.Boolean),
-    utilization: S.optional(Utilization),
-    renewSource: S.optional(S.String),
-    renewDestination: S.optional(S.String),
-    renewProperties: S.optional(RenewProperties),
-  }),
-).annotate({
-  identifier: "SavingsPlanModelProperties",
-}) as any as S.Schema<SavingsPlanModelProperties>;
-
-export interface SavingsPlanGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Savings plan properties */
-  properties?: SavingsPlanModelProperties;
-  /** Savings plan SKU */
-  sku: ResourceSku;
-}
-export const SavingsPlanGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SavingsPlanModelProperties),
-    sku: ResourceSku,
-  }),
-).annotate({
-  identifier: "SavingsPlanGetResponse",
-}) as any as S.Schema<SavingsPlanGetResponse>;
-
-export interface SavingsPlanListRequest {
-  /** Order ID of the savings plan */
-  savingsPlanOrderId: string;
-}
-export const SavingsPlanListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsPlanOrderId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SavingsPlanListRequest",
-}) as any as S.Schema<SavingsPlanListRequest>;
-
-/** Savings plan */
-export interface SavingsPlanModel {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Savings plan properties */
-  properties?: SavingsPlanModelProperties;
-  /** Savings plan SKU */
-  sku: ResourceSku;
-}
-export const SavingsPlanModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SavingsPlanModelProperties),
-    sku: ResourceSku,
-  }),
-).annotate({
-  identifier: "SavingsPlanModel",
-}) as any as S.Schema<SavingsPlanModel>;
-
-/** The SavingsPlanModel items on this page */
-export type SavingsPlanModelListValueList = Array<SavingsPlanModel>;
-export const SavingsPlanModelListValueList = /*@__PURE__*/ S.Array(
-  SavingsPlanModel,
-) as any as S.Schema<SavingsPlanModelListValueList>;
-
-/** Paged collection of SavingsPlanModel items */
-export interface SavingsPlanModelList {
-  /** The SavingsPlanModel items on this page */
-  value: SavingsPlanModelListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const SavingsPlanModelList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: SavingsPlanModelListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SavingsPlanModelList",
-}) as any as S.Schema<SavingsPlanModelList>;
-
-export interface SavingsPlanListAllRequest {
-  /** May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState} */
-  _filter?: string;
-  /** May be used to sort order by reservation properties. */
-  _orderby?: string;
-  /** To indicate whether to refresh the roll up counts of the savings plans group by provisioning states */
-  refreshSummary?: string;
-  /** The number of savings plans to skip from the list before returning results */
-  _skiptoken?: number;
-  /** The selected provisioning state */
-  selectedState?: string;
-  /** To number of savings plans to return */
-  take?: number;
-}
-export const SavingsPlanListAllRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-    refreshSummary: S.optional(S.String.pipe(T.Query())),
-    _skiptoken: S.optional(S.Number.pipe(T.Query("$skiptoken"))),
-    selectedState: S.optional(S.String.pipe(T.Query())),
-    take: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.BillingBenefits/savingsPlans",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SavingsPlanListAllRequest",
-}) as any as S.Schema<SavingsPlanListAllRequest>;
-
-/** The list of savings plans. */
-export type SavingsPlanModelListResultValueList = Array<SavingsPlanModel>;
-export const SavingsPlanModelListResultValueList = /*@__PURE__*/ S.Array(
-  SavingsPlanModel,
-) as any as S.Schema<SavingsPlanModelListResultValueList>;
-
-/** The roll up count summary of savings plans in each state */
-export interface SavingsPlanSummaryCount {
-  /** The number of savings plans in Succeeded state */
-  succeededCount?: number;
-  /** The number of savings plans in Failed state */
-  failedCount?: number;
-  /** The number of savings plans in Expiring state */
-  expiringCount?: number;
-  /** The number of savings plans in Expired state */
-  expiredCount?: number;
-  /** The number of savings plans in Pending state */
-  pendingCount?: number;
-  /** The number of savings plans in Cancelled state */
-  cancelledCount?: number;
-  /** The number of savings plans in Processing state */
-  processingCount?: number;
-  /** The number of savings plans in No Benefit state */
-  noBenefitCount?: number;
-  /** The number of savings plans in Warning state */
-  warningCount?: number;
-}
-export const SavingsPlanSummaryCount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    succeededCount: S.optional(S.Number),
-    failedCount: S.optional(S.Number),
-    expiringCount: S.optional(S.Number),
-    expiredCount: S.optional(S.Number),
-    pendingCount: S.optional(S.Number),
-    cancelledCount: S.optional(S.Number),
-    processingCount: S.optional(S.Number),
-    noBenefitCount: S.optional(S.Number),
-    warningCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SavingsPlanSummaryCount",
-}) as any as S.Schema<SavingsPlanSummaryCount>;
-
-/** Savings plans list summary */
-export interface SavingsPlanSummary {
-  /** This property has value 'summary' */
-  name?: string;
-  /** The roll up count summary of savings plans in each state */
-  value?: SavingsPlanSummaryCount;
-}
-export const SavingsPlanSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(SavingsPlanSummaryCount),
-  }),
-).annotate({
-  identifier: "SavingsPlanSummary",
-}) as any as S.Schema<SavingsPlanSummary>;
-
-/** The roll out count summary of the savings plans */
-export type SavingsPlanModelListResultAdditionalPropertiesList =
-  Array<SavingsPlanSummary>;
-export const SavingsPlanModelListResultAdditionalPropertiesList =
-  /*@__PURE__*/ S.Array(
-    SavingsPlanSummary,
-  ) as any as S.Schema<SavingsPlanModelListResultAdditionalPropertiesList>;
-
-/** Represents the result of listing savings plan models */
-export interface SavingsPlanModelListResult {
-  /** The list of savings plans. */
-  value?: SavingsPlanModelListResultValueList;
-  /** Url to get the next page. */
-  nextLink?: string;
-  /** The roll out count summary of the savings plans */
-  additionalProperties?: SavingsPlanModelListResultAdditionalPropertiesList;
-}
-export const SavingsPlanModelListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SavingsPlanModelListResultValueList),
-    nextLink: S.optional(S.String),
-    additionalProperties: S.optional(
-      SavingsPlanModelListResultAdditionalPropertiesList,
-    ),
-  }),
-).annotate({
-  identifier: "SavingsPlanModelListResult",
-}) as any as S.Schema<SavingsPlanModelListResult>;
-
-/** Savings plan properties */
-export interface SavingsPlanOrderAliasPropertiesInput {
-  /** Display name */
-  displayName?: string;
-  /** Subscription that will be charged for purchasing the benefit */
-  billingScopeId?: string;
-  /** Represent benefit term in ISO 8601 format. */
-  term?: Term | (string & {});
-  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan | (string & {});
-  /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType | (string & {});
-  /** Properties specific to applied scope type. Not required if not applicable. */
-  appliedScopeProperties?: AppliedScopeProperties;
-  /** Commitment towards the benefit. */
-  commitment?: Commitment;
-  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
-  renew?: boolean;
-}
-export const SavingsPlanOrderAliasPropertiesInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      billingScopeId: S.optional(S.String),
-      term: S.optional(Term),
-      billingPlan: S.optional(BillingPlan),
-      appliedScopeType: S.optional(AppliedScopeType),
-      appliedScopeProperties: S.optional(AppliedScopeProperties),
-      commitment: S.optional(Commitment),
-      renew: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "SavingsPlanOrderAliasPropertiesInput",
-}) as any as S.Schema<SavingsPlanOrderAliasPropertiesInput>;
-
-export interface SavingsPlanOrderAliasCreateRequest {
-  /** Name of the savings plan order alias */
-  savingsPlanOrderAliasName: string;
-  /** Savings plan order alias properties */
-  properties?: SavingsPlanOrderAliasPropertiesInput;
-  /** Savings plan SKU */
-  sku: ResourceSku;
-  /** Resource provider kind */
-  kind?: string;
-}
-export const SavingsPlanOrderAliasCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsPlanOrderAliasName: S.String.pipe(T.Label()),
-    properties: S.optional(SavingsPlanOrderAliasPropertiesInput),
-    sku: ResourceSku,
-    kind: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SavingsPlanOrderAliasCreateRequest",
-}) as any as S.Schema<SavingsPlanOrderAliasCreateRequest>;
-
-/** Savings plan properties */
-export interface SavingsPlanOrderAliasProperties {
-  /** Display name */
-  displayName?: string;
-  /** Identifier of the savings plan created */
-  savingsPlanOrderId?: string;
-  /** Provisioning state */
-  provisioningState?: ProvisioningState;
-  /** Subscription that will be charged for purchasing the benefit */
-  billingScopeId?: string;
-  /** Represent benefit term in ISO 8601 format. */
-  term?: Term;
-  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
-  /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
-  /** Properties specific to applied scope type. Not required if not applicable. */
-  appliedScopeProperties?: AppliedScopeProperties;
-  /** Commitment towards the benefit. */
-  commitment?: Commitment;
-  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
-  renew?: boolean;
-}
-export const SavingsPlanOrderAliasProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    savingsPlanOrderId: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState),
-    billingScopeId: S.optional(S.String),
-    term: S.optional(Term),
-    billingPlan: S.optional(BillingPlan),
-    appliedScopeType: S.optional(AppliedScopeType),
-    appliedScopeProperties: S.optional(AppliedScopeProperties),
-    commitment: S.optional(Commitment),
-    renew: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SavingsPlanOrderAliasProperties",
-}) as any as S.Schema<SavingsPlanOrderAliasProperties>;
-
-export interface SavingsPlanOrderAliasCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Savings plan order alias properties */
-  properties?: SavingsPlanOrderAliasProperties;
-  /** Savings plan SKU */
-  sku: ResourceSku;
-  /** Resource provider kind */
-  kind?: string;
-}
-export const SavingsPlanOrderAliasCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SavingsPlanOrderAliasProperties),
-    sku: ResourceSku,
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SavingsPlanOrderAliasCreateResponse",
-}) as any as S.Schema<SavingsPlanOrderAliasCreateResponse>;
-
-export interface SavingsPlanOrderAliasGetRequest {
-  /** Name of the savings plan order alias */
-  savingsPlanOrderAliasName: string;
-}
-export const SavingsPlanOrderAliasGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsPlanOrderAliasName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SavingsPlanOrderAliasGetRequest",
-}) as any as S.Schema<SavingsPlanOrderAliasGetRequest>;
-
-export interface SavingsPlanOrderAliasGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Savings plan order alias properties */
-  properties?: SavingsPlanOrderAliasProperties;
-  /** Savings plan SKU */
-  sku: ResourceSku;
-  /** Resource provider kind */
-  kind?: string;
-}
-export const SavingsPlanOrderAliasGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SavingsPlanOrderAliasProperties),
-    sku: ResourceSku,
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SavingsPlanOrderAliasGetResponse",
-}) as any as S.Schema<SavingsPlanOrderAliasGetResponse>;
-
 export interface SavingsPlanOrderElevateRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
@@ -7277,182 +7334,436 @@ export const RoleAssignmentEntity = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoleAssignmentEntity",
 }) as any as S.Schema<RoleAssignmentEntity>;
 
-export interface SavingsPlanOrderGetRequest {
-  /** Order ID of the savings plan */
-  savingsPlanOrderId: string;
-  /** May be used to expand the detail information of some properties. */
-  _expand?: string;
+/** Award details for milestone completion */
+export interface AwardInput {
+  /** Credit amount to be awarded */
+  credit?: Commitment;
+  /** Start date when the credit becomes effective */
+  startAt?: string;
+  /** End date when the credit expires */
+  endAt?: string;
+  /** Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y. */
+  duration?: Term | (string & {});
 }
-export const SavingsPlanOrderGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const AwardInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    savingsPlanOrderId: S.String.pipe(T.Label()),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    credit: S.optional(Commitment),
+    startAt: S.optional(S.String),
+    endAt: S.optional(S.String),
+    duration: S.optional(Term),
+  }),
+).annotate({ identifier: "AwardInput" }) as any as S.Schema<AwardInput>;
+
+/** Milestone definition within a conditional credit */
+export interface ConditionalCreditMilestoneInput {
+  /** Unique identifier for the milestone */
+  milestoneId?: string;
+  /** Display name for the milestone */
+  name?: string;
+  /** Current status of the milestone */
+  status?: MilestoneStatus | (string & {});
+  /** End date for this milestone */
+  endAt?: string;
+  /** Spend target for this milestone */
+  spendTarget?: Price;
+  /** Award details for this milestone (only present for primary conditional credits) */
+  award?: AwardInput;
+}
+export const ConditionalCreditMilestoneInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    milestoneId: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.optional(MilestoneStatus),
+    endAt: S.optional(S.String),
+    spendTarget: S.optional(Price),
+    award: S.optional(AwardInput),
+  }),
+).annotate({
+  identifier: "ConditionalCreditMilestoneInput",
+}) as any as S.Schema<ConditionalCreditMilestoneInput>;
+
+/** Updated milestones list (only applicable for primary conditional credits) */
+export type ConditionalCreditPatchRequestPropertiesInputMilestonesList =
+  Array<ConditionalCreditMilestoneInput>;
+export const ConditionalCreditPatchRequestPropertiesInputMilestonesList =
+  /*@__PURE__*/ S.Array(
+    ConditionalCreditMilestoneInput,
+  ) as any as S.Schema<ConditionalCreditPatchRequestPropertiesInputMilestonesList>;
+
+/** Conditional credit patch request properties */
+export interface ConditionalCreditPatchRequestPropertiesInput {
+  /** Display name for the conditional credit */
+  displayName?: string;
+  /** End DateTime in UTC. */
+  endAt?: string;
+  /** Whether this conditional credit allows contributor billing accounts */
+  allowContributors?: EnablementMode | (string & {});
+  /** Updated milestones list (only applicable for primary conditional credits) */
+  milestones?: ConditionalCreditPatchRequestPropertiesInputMilestonesList;
+}
+export const ConditionalCreditPatchRequestPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      displayName: S.optional(S.String),
+      endAt: S.optional(S.String),
+      allowContributors: S.optional(EnablementMode),
+      milestones: S.optional(
+        ConditionalCreditPatchRequestPropertiesInputMilestonesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ConditionalCreditPatchRequestPropertiesInput",
+  }) as any as S.Schema<ConditionalCreditPatchRequestPropertiesInput>;
+
+/** Resource tags. */
+export type ConditionalCreditsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConditionalCreditsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConditionalCreditsUpdateRequestTagsMap>;
+
+export interface UpdateConditionalCreditRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the conditional credit */
+  conditionalCreditName: string;
+  /** Conditional credit patch request properties */
+  properties?: ConditionalCreditPatchRequestPropertiesInput;
+  /** Resource tags. */
+  tags?: ConditionalCreditsUpdateRequestTagsMap;
+}
+export const UpdateConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    conditionalCreditName: S.String.pipe(T.Label()),
+    properties: S.optional(ConditionalCreditPatchRequestPropertiesInput),
+    tags: S.optional(ConditionalCreditsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/conditionalCredits/{conditionalCreditName}",
       code: 200,
       apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
-  identifier: "SavingsPlanOrderGetRequest",
-}) as any as S.Schema<SavingsPlanOrderGetRequest>;
+  identifier: "UpdateConditionalCreditRequest",
+}) as any as S.Schema<UpdateConditionalCreditRequest>;
 
-/** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
-export type PaymentStatus = "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
-export const PaymentStatus = /*@__PURE__*/ S.String;
+/** Resource tags. */
+export type ConditionalCreditsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConditionalCreditsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConditionalCreditsUpdateResponseTagsMap>;
 
-/** Information about payment related to a savings plan order. */
-export interface PaymentDetail {
-  /** Date when the payment needs to be done. */
-  dueDate?: string;
-  /** Date when the transaction is completed. Is null when it is scheduled. */
-  paymentDate?: string;
-  /** Amount in pricing currency. Tax not included. */
-  pricingCurrencyTotal?: Price;
-  /** Amount charged in Billing currency. Tax not included. Is null for future payments */
-  billingCurrencyTotal?: Price;
-  /** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
-  status?: PaymentStatus;
-  extendedStatusInfo?: ExtendedStatusInfo;
-  /** Billing account */
-  billingAccount?: string;
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap =
+  { [key: string]: UserAssignedIdentity | undefined };
+export const ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ConditionalCreditsUpdateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
-export const PaymentDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dueDate: S.optional(S.String),
-    paymentDate: S.optional(S.String),
-    pricingCurrencyTotal: S.optional(Price),
-    billingCurrencyTotal: S.optional(Price),
-    status: S.optional(PaymentStatus),
-    extendedStatusInfo: S.optional(ExtendedStatusInfo),
-    billingAccount: S.optional(S.String),
-  }),
-).annotate({ identifier: "PaymentDetail" }) as any as S.Schema<PaymentDetail>;
+export const ConditionalCreditsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      principalId: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(
+        ConditionalCreditsUpdateResponseIdentityUserAssignedIdentitiesMap,
+      ),
+    }),
+).annotate({
+  identifier: "ConditionalCreditsUpdateResponseIdentity",
+}) as any as S.Schema<ConditionalCreditsUpdateResponseIdentity>;
 
-export type BillingPlanInformationTransactionsList = Array<PaymentDetail>;
-export const BillingPlanInformationTransactionsList = /*@__PURE__*/ S.Array(
-  PaymentDetail,
-) as any as S.Schema<BillingPlanInformationTransactionsList>;
-
-/** Information describing the type of billing plan for this savings plan. */
-export interface BillingPlanInformation {
-  /** Amount of money to be paid for the Order. Tax is not included. */
-  pricingCurrencyTotal?: Price;
-  /** Date when the billing plan has started. */
-  startDate?: string;
-  /** For recurring billing plans, indicates the date when next payment will be processed. Null when total is paid off. */
-  nextPaymentDueDate?: string;
-  transactions?: BillingPlanInformationTransactionsList;
+export interface UpdateConditionalCreditResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ConditionalCreditsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Conditional credit properties */
+  properties?: ConditionalCreditProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ConditionalCreditsUpdateResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
 }
-export const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
+export const UpdateConditionalCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pricingCurrencyTotal: S.optional(Price),
-    startDate: S.optional(S.String),
-    nextPaymentDueDate: S.optional(S.String),
-    transactions: S.optional(BillingPlanInformationTransactionsList),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ConditionalCreditsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ConditionalCreditProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(ConditionalCreditsUpdateResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
   }),
 ).annotate({
-  identifier: "BillingPlanInformation",
-}) as any as S.Schema<BillingPlanInformation>;
+  identifier: "UpdateConditionalCreditResponse",
+}) as any as S.Schema<UpdateConditionalCreditResponse>;
 
-export type SavingsPlanOrderModelPropertiesSavingsPlansList = Array<string>;
-export const SavingsPlanOrderModelPropertiesSavingsPlansList =
-  /*@__PURE__*/ S.Array(
+/** Resource tags */
+export type CreditsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const CreditsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreditsUpdateRequestTagsMap>;
+
+/** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
+export type CreditPatchPropertiesBreakdownList = Array<CreditBreakdownItem>;
+export const CreditPatchPropertiesBreakdownList = /*@__PURE__*/ S.Array(
+  CreditBreakdownItem,
+) as any as S.Schema<CreditPatchPropertiesBreakdownList>;
+
+/** Credit patch properties */
+export interface CreditPatchProperties {
+  /** The entire investment amount for the credit contract, including currency and amount. Only amount can be modified. */
+  credit?: Commitment;
+  /** End DateTime in UTC. */
+  endAt?: string;
+  /** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
+  breakdown?: CreditPatchPropertiesBreakdownList;
+}
+export const CreditPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    credit: S.optional(Commitment),
+    endAt: S.optional(S.String),
+    breakdown: S.optional(CreditPatchPropertiesBreakdownList),
+  }),
+).annotate({
+  identifier: "CreditPatchProperties",
+}) as any as S.Schema<CreditPatchProperties>;
+
+export interface UpdateCreditRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the credit */
+  creditName: string;
+  /** Resource tags */
+  tags?: CreditsUpdateRequestTagsMap;
+  /** Credit patch properties */
+  properties?: CreditPatchProperties;
+}
+export const UpdateCreditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    creditName: S.String.pipe(T.Label()),
+    tags: S.optional(CreditsUpdateRequestTagsMap),
+    properties: S.optional(CreditPatchProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCreditRequest",
+}) as any as S.Schema<UpdateCreditRequest>;
+
+/** Resource tags. */
+export type CreditsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CreditsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreditsUpdateResponseTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type CreditsUpdateResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const CreditsUpdateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
     S.String,
-  ) as any as S.Schema<SavingsPlanOrderModelPropertiesSavingsPlansList>;
+    UserAssignedIdentity,
+  ) as any as S.Schema<CreditsUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
-/** Savings plan order properties */
-export interface SavingsPlanOrderModelProperties {
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface CreditsUpdateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: CreditsUpdateResponseIdentityUserAssignedIdentitiesMap;
+}
+export const CreditsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      CreditsUpdateResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "CreditsUpdateResponseIdentity",
+}) as any as S.Schema<CreditsUpdateResponseIdentity>;
+
+export interface UpdateCreditResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: CreditsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Credit properties */
+  properties?: CreditProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: CreditsUpdateResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const UpdateCreditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(CreditsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(CreditProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(CreditsUpdateResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "UpdateCreditResponse",
+}) as any as S.Schema<UpdateCreditResponse>;
+
+/** Discounts patch request properties */
+export interface DiscountPatchRequestProperties {
   /** Display name */
   displayName?: string;
-  /** Provisioning state */
-  provisioningState?: ProvisioningState;
-  /** Subscription that will be charged for purchasing the benefit */
-  billingScopeId?: string;
-  /** Fully-qualified identifier of the billing profile where the benefit is applied. Present only for Field-led or Customer-led customers. */
-  billingProfileId?: string;
-  /** Fully-qualified identifier of the customer where the savings plan is applied. Present only for Partner-led customers. */
-  customerId?: string;
-  /** Fully-qualified identifier of the billing account where the benefit is applied. Present only for Enterprise Agreement customers. */
-  billingAccountId?: string;
-  /** Represent benefit term in ISO 8601 format. */
-  term?: Term;
-  /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
-  /** Expiry date time */
-  expiryDateTime?: string;
-  /** This is the DateTime when the savings plan benefit started. */
-  benefitStartTime?: string;
-  /** Information describing the type of billing plan for this savings plan. */
-  planInformation?: BillingPlanInformation;
-  savingsPlans?: SavingsPlanOrderModelPropertiesSavingsPlansList;
-  extendedStatusInfo?: ExtendedStatusInfo;
+  /** End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate. */
+  endAt?: string;
 }
-export const SavingsPlanOrderModelProperties = /*@__PURE__*/ S.suspend(() =>
+export const DiscountPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState),
-    billingScopeId: S.optional(S.String),
-    billingProfileId: S.optional(S.String),
-    customerId: S.optional(S.String),
-    billingAccountId: S.optional(S.String),
-    term: S.optional(Term),
-    billingPlan: S.optional(BillingPlan),
-    expiryDateTime: S.optional(S.String),
-    benefitStartTime: S.optional(S.String),
-    planInformation: S.optional(BillingPlanInformation),
-    savingsPlans: S.optional(SavingsPlanOrderModelPropertiesSavingsPlansList),
-    extendedStatusInfo: S.optional(ExtendedStatusInfo),
+    endAt: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SavingsPlanOrderModelProperties",
-}) as any as S.Schema<SavingsPlanOrderModelProperties>;
+  identifier: "DiscountPatchRequestProperties",
+}) as any as S.Schema<DiscountPatchRequestProperties>;
 
-export interface SavingsPlanOrderGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Savings plan order properties */
-  properties?: SavingsPlanOrderModelProperties;
-  /** Savings plan SKU */
-  sku: ResourceSku;
+/** Resource tags. */
+export type DiscountUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiscountUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiscountUpdateRequestTagsMap>;
+
+export interface UpdateDiscountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the discount */
+  discountName: string;
+  /** Discounts patch request properties */
+  properties?: DiscountPatchRequestProperties;
+  /** Resource tags. */
+  tags?: DiscountUpdateRequestTagsMap;
 }
-export const SavingsPlanOrderGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SavingsPlanOrderModelProperties),
-    sku: ResourceSku,
-  }),
-).annotate({
-  identifier: "SavingsPlanOrderGetResponse",
-}) as any as S.Schema<SavingsPlanOrderGetResponse>;
-
-export interface SavingsPlanOrderListRequest {}
-export const SavingsPlanOrderListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    discountName: S.String.pipe(T.Label()),
+    properties: S.optional(DiscountPatchRequestProperties),
+    tags: S.optional(DiscountUpdateRequestTagsMap),
+  }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.BillingBenefits/savingsPlanOrders",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/discounts/{discountName}",
       code: 200,
       apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
-  identifier: "SavingsPlanOrderListRequest",
-}) as any as S.Schema<SavingsPlanOrderListRequest>;
+  identifier: "UpdateDiscountRequest",
+}) as any as S.Schema<UpdateDiscountRequest>;
 
-/** Savings plan order */
-export interface SavingsPlanOrderModel {
+/** Resource tags. */
+export type DiscountUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiscountUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiscountUpdateResponseTagsMap>;
+
+export interface UpdateDiscountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -7461,45 +7772,361 @@ export interface SavingsPlanOrderModel {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Savings plan order properties */
-  properties?: SavingsPlanOrderModelProperties;
-  /** Savings plan SKU */
-  sku: ResourceSku;
+  /** Resource tags. */
+  tags?: DiscountUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Discount properties */
+  properties?: DiscountProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ManagedServiceIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
 }
-export const SavingsPlanOrderModel = /*@__PURE__*/ S.suspend(() =>
+export const UpdateDiscountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(SavingsPlanOrderModelProperties),
-    sku: ResourceSku,
+    tags: S.optional(DiscountUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(DiscountProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(ManagedServiceIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
   }),
 ).annotate({
-  identifier: "SavingsPlanOrderModel",
-}) as any as S.Schema<SavingsPlanOrderModel>;
+  identifier: "UpdateDiscountResponse",
+}) as any as S.Schema<UpdateDiscountResponse>;
 
-/** The SavingsPlanOrderModel items on this page */
-export type SavingsPlanOrderModelListValueList = Array<SavingsPlanOrderModel>;
-export const SavingsPlanOrderModelListValueList = /*@__PURE__*/ S.Array(
-  SavingsPlanOrderModel,
-) as any as S.Schema<SavingsPlanOrderModelListValueList>;
-
-/** Paged collection of SavingsPlanOrderModel items */
-export interface SavingsPlanOrderModelList {
-  /** The SavingsPlanOrderModel items on this page */
-  value: SavingsPlanOrderModelListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
+/** Free services patch request properties */
+export interface FreeServicesPatchRequestProperties {
+  /** Updated expiration date and time of the free services */
+  endAt?: string;
 }
-export const SavingsPlanOrderModelList = /*@__PURE__*/ S.suspend(() =>
+export const FreeServicesPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: SavingsPlanOrderModelListValueList,
-    nextLink: S.optional(S.String),
+    endAt: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SavingsPlanOrderModelList",
-}) as any as S.Schema<SavingsPlanOrderModelList>;
+  identifier: "FreeServicesPatchRequestProperties",
+}) as any as S.Schema<FreeServicesPatchRequestProperties>;
+
+/** Resource tags. */
+export type FreeServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FreeServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FreeServicesUpdateRequestTagsMap>;
+
+export interface UpdateFreeServiceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the free service */
+  freeServiceName: string;
+  /** Free services patch request properties */
+  properties?: FreeServicesPatchRequestProperties;
+  /** Resource tags. */
+  tags?: FreeServicesUpdateRequestTagsMap;
+}
+export const UpdateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    freeServiceName: S.String.pipe(T.Label()),
+    properties: S.optional(FreeServicesPatchRequestProperties),
+    tags: S.optional(FreeServicesUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/freeServices/{freeServiceName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateFreeServiceRequest",
+}) as any as S.Schema<UpdateFreeServiceRequest>;
+
+/** Resource tags. */
+export type FreeServicesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FreeServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FreeServicesUpdateResponseTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface FreeServicesUpdateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap;
+}
+export const FreeServicesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      FreeServicesUpdateResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "FreeServicesUpdateResponseIdentity",
+}) as any as S.Schema<FreeServicesUpdateResponseIdentity>;
+
+export interface UpdateFreeServiceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: FreeServicesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Free services properties */
+  properties?: FreeServicesProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: FreeServicesUpdateResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const UpdateFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(FreeServicesUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(FreeServicesProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(FreeServicesUpdateResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "UpdateFreeServiceResponse",
+}) as any as S.Schema<UpdateFreeServiceResponse>;
+
+/** List of milestones to update or add. */
+export type MaccPatchRequestPropertiesMilestonesList = Array<MaccMilestone>;
+export const MaccPatchRequestPropertiesMilestonesList = /*@__PURE__*/ S.Array(
+  MaccMilestone,
+) as any as S.Schema<MaccPatchRequestPropertiesMilestonesList>;
+
+/** Macc patch request properties */
+export interface MaccPatchRequestProperties {
+  /** Commitment towards the benefit. */
+  commitment?: Commitment;
+  /** End DateTime in UTC. */
+  endAt?: string;
+  /** Setting this to true means multi-entity. */
+  allowContributors?: boolean;
+  /** Represents the enablement status of a feature or settings. */
+  automaticShortfall?: EnablementMode | (string & {});
+  /** Optional field to record suppression reason for automatic shortfall. */
+  automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
+  /** Display name */
+  displayName?: string;
+  /** Represents the current status of the Milestone. */
+  status?: MaccMilestoneStatus | (string & {});
+  /** List of milestones to update or add. */
+  milestones?: MaccPatchRequestPropertiesMilestonesList;
+  /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
+  primaryResourceId?: string;
+  /** Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
+  primaryBillingAccountResourceId?: string;
+}
+export const MaccPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    commitment: S.optional(Commitment),
+    endAt: S.optional(S.String),
+    allowContributors: S.optional(S.Boolean),
+    automaticShortfall: S.optional(EnablementMode),
+    automaticShortfallSuppressReason: S.optional(
+      AutomaticShortfallSuppressReason,
+    ),
+    displayName: S.optional(S.String),
+    status: S.optional(MaccMilestoneStatus),
+    milestones: S.optional(MaccPatchRequestPropertiesMilestonesList),
+    primaryResourceId: S.optional(S.String),
+    primaryBillingAccountResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaccPatchRequestProperties",
+}) as any as S.Schema<MaccPatchRequestProperties>;
+
+/** Resource tags. */
+export type MaccsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const MaccsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MaccsUpdateRequestTagsMap>;
+
+export interface UpdateMaccRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of primary MACC. */
+  maccName: string;
+  /** Macc patch request properties */
+  properties?: MaccPatchRequestProperties;
+  /** Resource tags. */
+  tags?: MaccsUpdateRequestTagsMap;
+}
+export const UpdateMaccRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    maccName: S.String.pipe(T.Label()),
+    properties: S.optional(MaccPatchRequestProperties),
+    tags: S.optional(MaccsUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMaccRequest",
+}) as any as S.Schema<UpdateMaccRequest>;
+
+/** Resource tags. */
+export type MaccsUpdateResponseTagsMap = { [key: string]: string | undefined };
+export const MaccsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MaccsUpdateResponseTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type MaccsUpdateResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const MaccsUpdateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<MaccsUpdateResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface MaccsUpdateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: MaccsUpdateResponseIdentityUserAssignedIdentitiesMap;
+}
+export const MaccsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      MaccsUpdateResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "MaccsUpdateResponseIdentity",
+}) as any as S.Schema<MaccsUpdateResponseIdentity>;
+
+export interface UpdateMaccResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: MaccsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** MACC properties */
+  properties?: MaccModelProperties;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: MaccsUpdateResponseIdentity;
+  /** The resource model definition representing SKU */
+  sku?: Sku;
+  /** Plan for the resource. */
+  plan?: Plan;
+}
+export const UpdateMaccResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(MaccsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(MaccModelProperties),
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    etag: S.optional(S.String),
+    identity: S.optional(MaccsUpdateResponseIdentity),
+    sku: S.optional(Sku),
+    plan: S.optional(Plan),
+  }),
+).annotate({
+  identifier: "UpdateMaccResponse",
+}) as any as S.Schema<UpdateMaccResponse>;
 
 export interface PurchaseRequestPropertiesInput {
   /** Friendly name of the savings plan */
@@ -7587,7 +8214,7 @@ export const SavingsPlanUpdateRequestPropertiesInput = /*@__PURE__*/ S.suspend(
   identifier: "SavingsPlanUpdateRequestPropertiesInput",
 }) as any as S.Schema<SavingsPlanUpdateRequestPropertiesInput>;
 
-export interface SavingsPlanUpdateRequest {
+export interface UpdateSavingPlanRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
   /** ID of the savings plan */
@@ -7595,7 +8222,7 @@ export interface SavingsPlanUpdateRequest {
   /** Savings plan patch request */
   properties?: SavingsPlanUpdateRequestPropertiesInput;
 }
-export const SavingsPlanUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSavingPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderId: S.String.pipe(T.Label()),
     savingsPlanId: S.String.pipe(T.Label()),
@@ -7609,10 +8236,10 @@ export const SavingsPlanUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SavingsPlanUpdateRequest",
-}) as any as S.Schema<SavingsPlanUpdateRequest>;
+  identifier: "UpdateSavingPlanRequest",
+}) as any as S.Schema<UpdateSavingPlanRequest>;
 
-export interface SavingsPlanUpdateResponse {
+export interface UpdateSavingPlanResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -7626,7 +8253,7 @@ export interface SavingsPlanUpdateResponse {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
-export const SavingsPlanUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSavingPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7636,8 +8263,8 @@ export const SavingsPlanUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     sku: ResourceSku,
   }),
 ).annotate({
-  identifier: "SavingsPlanUpdateResponse",
-}) as any as S.Schema<SavingsPlanUpdateResponse>;
+  identifier: "UpdateSavingPlanResponse",
+}) as any as S.Schema<UpdateSavingPlanResponse>;
 
 export type SavingsPlanValidateUpdateRequestBenefitsList =
   Array<SavingsPlanUpdateRequestPropertiesInput>;
@@ -7646,14 +8273,14 @@ export const SavingsPlanValidateUpdateRequestBenefitsList =
     SavingsPlanUpdateRequestPropertiesInput,
   ) as any as S.Schema<SavingsPlanValidateUpdateRequestBenefitsList>;
 
-export interface SavingsPlanValidateUpdateRequest {
+export interface UpdateSavingPlanValidateRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
   /** ID of the savings plan */
   savingsPlanId: string;
   benefits?: SavingsPlanValidateUpdateRequestBenefitsList;
 }
-export const SavingsPlanValidateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSavingPlanValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderId: S.String.pipe(T.Label()),
     savingsPlanId: S.String.pipe(T.Label()),
@@ -7667,8 +8294,8 @@ export const SavingsPlanValidateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SavingsPlanValidateUpdateRequest",
-}) as any as S.Schema<SavingsPlanValidateUpdateRequest>;
+  identifier: "UpdateSavingPlanValidateRequest",
+}) as any as S.Schema<UpdateSavingPlanValidateRequest>;
 
 /** Benefit scope response property */
 export interface SavingsPlanValidResponseProperty {
@@ -7709,564 +8336,6 @@ export const SavingsPlanValidateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavingsPlanValidateResponse",
 }) as any as S.Schema<SavingsPlanValidateResponse>;
 
-/** Request properties to list maccs under a billing account */
-export interface SellerResourceListRequestProperties {
-  /** Fully-qualified billing account resource identifier where the benefit is applied. Present only for Enterprise Agreement customers. */
-  billingAccountResourceId: string;
-  /** This is an OData expresssion to filter the list of MACCs based on the properties of MACC passed in the filter. */
-  _filter?: string;
-  /** Setting it to true will return the list of contributors associated with the MACC. */
-  contributors?: boolean;
-  /** Setting it to true will return the list of milestones associated with the MACC. */
-  milestones?: boolean;
-  /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
-  primaryResourceId?: string;
-}
-export const SellerResourceListRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountResourceId: S.String,
-    _filter: S.optional(S.String.pipe(T.Body("$filter"))),
-    contributors: S.optional(S.Boolean),
-    milestones: S.optional(S.Boolean),
-    primaryResourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SellerResourceListRequestProperties",
-}) as any as S.Schema<SellerResourceListRequestProperties>;
-
-export interface SellerResourceListRequest {
-  /** Request properties to list maccs under a billing account */
-  properties?: SellerResourceListRequestProperties;
-}
-export const SellerResourceListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(SellerResourceListRequestProperties),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/providers/Microsoft.BillingBenefits/listSellerResources",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SellerResourceListRequest",
-}) as any as S.Schema<SellerResourceListRequest>;
-
-export type SellerResourceListResponseBodyList = Array<Macc>;
-export const SellerResourceListResponseBodyList = /*@__PURE__*/ S.Array(
-  Macc,
-) as any as S.Schema<SellerResourceListResponseBodyList>;
-
-export type SellerResourceListResponse = SellerResourceListResponseBodyList;
-export const SellerResourceListResponse = /*@__PURE__*/ S.suspend(() =>
-  SellerResourceListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SellerResourceListResponse",
-}) as any as S.Schema<SellerResourceListResponse>;
-
-/** Resource tags. */
-export type SourcesCreateRequestTagsMap = { [key: string]: string | undefined };
-export const SourcesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SourcesCreateRequestTagsMap>;
-
-/** Properties of a credit source */
-export interface CreditSourcePropertiesInput {
-  /** The uri of the resource impacted which lead to the grant of the credit. */
-  sourceResourceId?: string;
-  /** The billing period of the impact for the resource. Format YYYYMM */
-  impactedBillingPeriod?: string;
-  /** Commitment towards the benefit. */
-  credit?: Commitment;
-}
-export const CreditSourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceResourceId: S.optional(S.String),
-    impactedBillingPeriod: S.optional(S.String),
-    credit: S.optional(Commitment),
-  }),
-).annotate({
-  identifier: "CreditSourcePropertiesInput",
-}) as any as S.Schema<CreditSourcePropertiesInput>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type SourcesCreateRequestIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
-};
-export const SourcesCreateRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentityInput,
-  ) as any as S.Schema<SourcesCreateRequestIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface SourcesCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: SourcesCreateRequestIdentityUserAssignedIdentitiesMap;
-}
-export const SourcesCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      SourcesCreateRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "SourcesCreateRequestIdentity",
-}) as any as S.Schema<SourcesCreateRequestIdentity>;
-
-export interface SourcesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the credit */
-  creditName: string;
-  /** Name of the credit source */
-  sourceName: string;
-  /** Resource tags. */
-  tags?: SourcesCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Credit source properties */
-  properties?: CreditSourcePropertiesInput;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SourcesCreateRequestIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const SourcesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    creditName: S.String.pipe(T.Label()),
-    sourceName: S.String.pipe(T.Label()),
-    tags: S.optional(SourcesCreateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(CreditSourcePropertiesInput),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    identity: S.optional(SourcesCreateRequestIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/sources/{sourceName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SourcesCreateRequest",
-}) as any as S.Schema<SourcesCreateRequest>;
-
-/** Resource tags. */
-export type SourcesCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SourcesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SourcesCreateResponseTagsMap>;
-
-/** Properties of a credit source */
-export interface CreditSourceProperties {
-  /** Status of the credit */
-  status?: CreditStatus;
-  /** The uri of the resource impacted which lead to the grant of the credit. */
-  sourceResourceId?: string;
-  /** The billing period of the impact for the resource. Format YYYYMM */
-  impactedBillingPeriod?: string;
-  /** Commitment towards the benefit. */
-  credit?: Commitment;
-}
-export const CreditSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(CreditStatus),
-    sourceResourceId: S.optional(S.String),
-    impactedBillingPeriod: S.optional(S.String),
-    credit: S.optional(Commitment),
-  }),
-).annotate({
-  identifier: "CreditSourceProperties",
-}) as any as S.Schema<CreditSourceProperties>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type SourcesCreateResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const SourcesCreateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<SourcesCreateResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface SourcesCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: SourcesCreateResponseIdentityUserAssignedIdentitiesMap;
-}
-export const SourcesCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      SourcesCreateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "SourcesCreateResponseIdentity",
-}) as any as S.Schema<SourcesCreateResponseIdentity>;
-
-export interface SourcesCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SourcesCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Credit source properties */
-  properties?: CreditSourceProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SourcesCreateResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const SourcesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SourcesCreateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CreditSourceProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(SourcesCreateResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "SourcesCreateResponse",
-}) as any as S.Schema<SourcesCreateResponse>;
-
-export interface SourcesDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the credit */
-  creditName: string;
-  /** Name of the credit source */
-  sourceName: string;
-}
-export const SourcesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    creditName: S.String.pipe(T.Label()),
-    sourceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/sources/{sourceName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SourcesDeleteRequest",
-}) as any as S.Schema<SourcesDeleteRequest>;
-
-export interface SourcesDeleteResponse {}
-export const SourcesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SourcesDeleteResponse",
-}) as any as S.Schema<SourcesDeleteResponse>;
-
-export interface SourcesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the credit */
-  creditName: string;
-  /** Name of the credit source */
-  sourceName: string;
-}
-export const SourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    creditName: S.String.pipe(T.Label()),
-    sourceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/sources/{sourceName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SourcesGetRequest",
-}) as any as S.Schema<SourcesGetRequest>;
-
-/** Resource tags. */
-export type SourcesGetResponseTagsMap = { [key: string]: string | undefined };
-export const SourcesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SourcesGetResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type SourcesGetResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const SourcesGetResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<SourcesGetResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface SourcesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: SourcesGetResponseIdentityUserAssignedIdentitiesMap;
-}
-export const SourcesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      SourcesGetResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "SourcesGetResponseIdentity",
-}) as any as S.Schema<SourcesGetResponseIdentity>;
-
-export interface SourcesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SourcesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Credit source properties */
-  properties?: CreditSourceProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SourcesGetResponseIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const SourcesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SourcesGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CreditSourceProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(SourcesGetResponseIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({
-  identifier: "SourcesGetResponse",
-}) as any as S.Schema<SourcesGetResponse>;
-
-export interface SourcesListByCreditRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the credit */
-  creditName: string;
-}
-export const SourcesListByCreditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    creditName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/credits/{creditName}/sources",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "SourcesListByCreditRequest",
-}) as any as S.Schema<SourcesListByCreditRequest>;
-
-/** Resource tags. */
-export type CreditSourceTagsMap = { [key: string]: string | undefined };
-export const CreditSourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreditSourceTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type CreditSourceIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const CreditSourceIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<CreditSourceIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface CreditSourceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: CreditSourceIdentityUserAssignedIdentitiesMap;
-}
-export const CreditSourceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      CreditSourceIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "CreditSourceIdentity",
-}) as any as S.Schema<CreditSourceIdentity>;
-
-/** Credit source resource definition */
-export interface CreditSource {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: CreditSourceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Credit source properties */
-  properties?: CreditSourceProperties;
-  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
-  managedBy?: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind?: string;
-  /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  etag?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: CreditSourceIdentity;
-  /** The resource model definition representing SKU */
-  sku?: Sku;
-  /** Plan for the resource. */
-  plan?: Plan;
-}
-export const CreditSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CreditSourceTagsMap),
-    location: S.String,
-    properties: S.optional(CreditSourceProperties),
-    managedBy: S.optional(S.String),
-    kind: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(CreditSourceIdentity),
-    sku: S.optional(Sku),
-    plan: S.optional(Plan),
-  }),
-).annotate({ identifier: "CreditSource" }) as any as S.Schema<CreditSource>;
-
-/** The CreditSource items on this page */
-export type CreditSourcesListValueList = Array<CreditSource>;
-export const CreditSourcesListValueList = /*@__PURE__*/ S.Array(
-  CreditSource,
-) as any as S.Schema<CreditSourcesListValueList>;
-
-/** List of credit sources */
-export interface CreditSourcesList {
-  /** The CreditSource items on this page */
-  value: CreditSourcesListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const CreditSourcesList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: CreditSourcesListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreditSourcesList",
-}) as any as S.Schema<CreditSourcesList>;
-
 /** Resource Tags */
 export type SourcesUpdateRequestTagsMap = { [key: string]: string | undefined };
 export const SourcesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
@@ -8274,7 +8343,7 @@ export const SourcesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SourcesUpdateRequestTagsMap>;
 
-export interface SourcesUpdateRequest {
+export interface UpdateSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -8286,7 +8355,7 @@ export interface SourcesUpdateRequest {
   /** Resource Tags */
   tags?: SourcesUpdateRequestTagsMap;
 }
-export const SourcesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8302,8 +8371,8 @@ export const SourcesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SourcesUpdateRequest",
-}) as any as S.Schema<SourcesUpdateRequest>;
+  identifier: "UpdateSourceRequest",
+}) as any as S.Schema<UpdateSourceRequest>;
 
 /** Resource tags. */
 export type SourcesUpdateResponseTagsMap = {
@@ -8347,7 +8416,7 @@ export const SourcesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourcesUpdateResponseIdentity",
 }) as any as S.Schema<SourcesUpdateResponseIdentity>;
 
-export interface SourcesUpdateResponse {
+export interface UpdateSourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -8375,7 +8444,7 @@ export interface SourcesUpdateResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const SourcesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8392,94 +8461,8 @@ export const SourcesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     plan: S.optional(Plan),
   }),
 ).annotate({
-  identifier: "SourcesUpdateResponse",
-}) as any as S.Schema<SourcesUpdateResponse>;
-
-export interface SubscriptionCatalogGroupsOpsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the CatalogGroup */
-  catalogGroupName: string;
-}
-export const SubscriptionCatalogGroupsOpsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      catalogGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BillingBenefits/catalogGroups/{catalogGroupName}",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "SubscriptionCatalogGroupsOpsGetRequest",
-}) as any as S.Schema<SubscriptionCatalogGroupsOpsGetRequest>;
-
-export interface SubscriptionCatalogGroupsOpsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: CatalogGroupProperties;
-}
-export const SubscriptionCatalogGroupsOpsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(CatalogGroupProperties),
-    }),
-).annotate({
-  identifier: "SubscriptionCatalogGroupsOpsGetResponse",
-}) as any as S.Schema<SubscriptionCatalogGroupsOpsGetResponse>;
-
-export interface SubscriptionCatalogGroupsOpsListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** OData filter expression to narrow the list of catalog groups. */
-  _filter?: string;
-}
-export const SubscriptionCatalogGroupsOpsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BillingBenefits/catalogGroups",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "SubscriptionCatalogGroupsOpsListRequest",
-}) as any as S.Schema<SubscriptionCatalogGroupsOpsListRequest>;
-
-export type ApplicableMaccsListError = AzureOpError;
-/** List maccs that are applicable for a given billing account. */
-export const ApplicableMaccsList: API.OperationMethod<
-  ApplicableMaccsListRequest,
-  ApplicableMaccList,
-  ApplicableMaccsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ApplicableMaccsListRequest,
-  output: ApplicableMaccList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+  identifier: "UpdateSourceResponse",
+}) as any as S.Schema<UpdateSourceResponse>;
 
 export type BenefitValidateError = AzureOpError;
 /** Validate savings plan purchase. */
@@ -8491,113 +8474,6 @@ export const BenefitValidate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: BenefitValidateRequest,
   output: BenefitValidateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BillingAccountCatalogGroupsOpsGetError = AzureOpError;
-/** Get a specific catalog group at the target scope. */
-export const BillingAccountCatalogGroupsOpsGet: API.OperationMethod<
-  BillingAccountCatalogGroupsOpsGetRequest,
-  BillingAccountCatalogGroupsOpsGetResponse,
-  BillingAccountCatalogGroupsOpsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingAccountCatalogGroupsOpsGetRequest,
-  output: BillingAccountCatalogGroupsOpsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BillingAccountCatalogGroupsOpsListError = AzureOpError;
-/** List catalog groups at the target scope. */
-export const BillingAccountCatalogGroupsOpsList: API.OperationMethod<
-  BillingAccountCatalogGroupsOpsListRequest,
-  CatalogGroupListResult,
-  BillingAccountCatalogGroupsOpsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingAccountCatalogGroupsOpsListRequest,
-  output: CatalogGroupListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BillingProfileCatalogGroupsOpsGetError = AzureOpError;
-/** Get a specific catalog group at the target scope. */
-export const BillingProfileCatalogGroupsOpsGet: API.OperationMethod<
-  BillingProfileCatalogGroupsOpsGetRequest,
-  BillingProfileCatalogGroupsOpsGetResponse,
-  BillingProfileCatalogGroupsOpsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingProfileCatalogGroupsOpsGetRequest,
-  output: BillingProfileCatalogGroupsOpsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BillingProfileCatalogGroupsOpsListError = AzureOpError;
-/** List catalog groups at the target scope. */
-export const BillingProfileCatalogGroupsOpsList: API.OperationMethod<
-  BillingProfileCatalogGroupsOpsListRequest,
-  CatalogGroupListResult,
-  BillingProfileCatalogGroupsOpsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingProfileCatalogGroupsOpsListRequest,
-  output: CatalogGroupListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConditionalCreditContributorsGetFromPrimaryError = AzureOpError;
-/** Get a conditional credit contributor for primary service admin */
-export const ConditionalCreditContributorsGetFromPrimary: API.OperationMethod<
-  ConditionalCreditContributorsGetFromPrimaryRequest,
-  ConditionalCreditContributorsGetFromPrimaryResponse,
-  ConditionalCreditContributorsGetFromPrimaryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditContributorsGetFromPrimaryRequest,
-  output: ConditionalCreditContributorsGetFromPrimaryResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConditionalCreditContributorsListFromApplicableConditionalCreditError =
-  AzureOpError;
-/** List contributors under applicable conditional credits for a given billing account. */
-export const ConditionalCreditContributorsListFromApplicableConditionalCredit: API.OperationMethod<
-  ConditionalCreditContributorsListFromApplicableConditionalCreditRequest,
-  ConditionalCreditContributorList,
-  ConditionalCreditContributorsListFromApplicableConditionalCreditError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    ConditionalCreditContributorsListFromApplicableConditionalCreditRequest,
-  output: ConditionalCreditContributorList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConditionalCreditContributorsListFromPrimaryError = AzureOpError;
-/** List contributors under a primary conditional credit for primary service admin */
-export const ConditionalCreditContributorsListFromPrimary: API.OperationMethod<
-  ConditionalCreditContributorsListFromPrimaryRequest,
-  ConditionalCreditContributorList,
-  ConditionalCreditContributorsListFromPrimaryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditContributorsListFromPrimaryRequest,
-  output: ConditionalCreditContributorList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8633,166 +8509,106 @@ export const ConditionalCreditsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConditionalCreditsDeleteError = AzureOpError;
-/** Delete a conditional credit. */
-export const ConditionalCreditsDelete: API.OperationMethod<
-  ConditionalCreditsDeleteRequest,
-  ConditionalCreditsDeleteResponse,
-  ConditionalCreditsDeleteError,
+export type CreateCreditError = AzureOpError;
+/** Create a credit. */
+export const CreateCredit: API.OperationMethod<
+  CreateCreditRequest,
+  CreateCreditResponse,
+  CreateCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditsDeleteRequest,
-  output: ConditionalCreditsDeleteResponse,
+  input: CreateCreditRequest,
+  output: CreateCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConditionalCreditsGetError = AzureOpError;
-/** Get a conditional credit. */
-export const ConditionalCreditsGet: API.OperationMethod<
-  ConditionalCreditsGetRequest,
-  ConditionalCreditsGetResponse,
-  ConditionalCreditsGetError,
+export type CreateDiscountError = AzureOpError;
+/** Create discount. */
+export const CreateDiscount: API.OperationMethod<
+  CreateDiscountRequest,
+  CreateDiscountResponse,
+  CreateDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditsGetRequest,
-  output: ConditionalCreditsGetResponse,
+  input: CreateDiscountRequest,
+  output: CreateDiscountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConditionalCreditsListByResourceGroupError = AzureOpError;
-/** List conditional credits by resource group. */
-export const ConditionalCreditsListByResourceGroup: API.OperationMethod<
-  ConditionalCreditsListByResourceGroupRequest,
-  ConditionalCreditList,
-  ConditionalCreditsListByResourceGroupError,
+export type CreateFreeServiceError = AzureOpError;
+/** This operation creates or updates free services in Azure */
+export const CreateFreeService: API.OperationMethod<
+  CreateFreeServiceRequest,
+  CreateFreeServiceResponse,
+  CreateFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditsListByResourceGroupRequest,
-  output: ConditionalCreditList,
+  input: CreateFreeServiceRequest,
+  output: CreateFreeServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConditionalCreditsListBySubscriptionError = AzureOpError;
-/** List conditional credits by subscription. */
-export const ConditionalCreditsListBySubscription: API.OperationMethod<
-  ConditionalCreditsListBySubscriptionRequest,
-  ConditionalCreditList,
-  ConditionalCreditsListBySubscriptionError,
+export type CreateMaccError = AzureOpError;
+/** Create MACC. */
+export const CreateMacc: API.OperationMethod<
+  CreateMaccRequest,
+  CreateMaccResponse,
+  CreateMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditsListBySubscriptionRequest,
-  output: ConditionalCreditList,
+  input: CreateMaccRequest,
+  output: CreateMaccResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConditionalCreditsScopeListError = AzureOpError;
-/** List conditional credits that are applicable for a given scope. Currently supported scopes: billing accounts */
-export const ConditionalCreditsScopeList: API.OperationMethod<
-  ConditionalCreditsScopeListRequest,
-  ConditionalCreditList,
-  ConditionalCreditsScopeListError,
+export type CreateReservationOrderAliaError = AzureOpError;
+/** Create a reservation order alias. */
+export const CreateReservationOrderAlia: API.OperationMethod<
+  CreateReservationOrderAliaRequest,
+  CreateReservationOrderAliaResponse,
+  CreateReservationOrderAliaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditsScopeListRequest,
-  output: ConditionalCreditList,
+  input: CreateReservationOrderAliaRequest,
+  output: CreateReservationOrderAliaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConditionalCreditsUpdateError = AzureOpError;
-/** Update a conditional credit. */
-export const ConditionalCreditsUpdate: API.OperationMethod<
-  ConditionalCreditsUpdateRequest,
-  ConditionalCreditsUpdateResponse,
-  ConditionalCreditsUpdateError,
+export type CreateSavingPlanOrderAliaError = AzureOpError;
+/** Create a savings plan. Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851 */
+export const CreateSavingPlanOrderAlia: API.OperationMethod<
+  CreateSavingPlanOrderAliaRequest,
+  CreateSavingPlanOrderAliaResponse,
+  CreateSavingPlanOrderAliaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditsUpdateRequest,
-  output: ConditionalCreditsUpdateResponse,
+  input: CreateSavingPlanOrderAliaRequest,
+  output: CreateSavingPlanOrderAliaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConditionalCreditTransactionsGetError = AzureOpError;
-/** Get a specific transaction for a conditional credit. */
-export const ConditionalCreditTransactionsGet: API.OperationMethod<
-  ConditionalCreditTransactionsGetRequest,
-  ConditionalCreditTransactionsGetResponse,
-  ConditionalCreditTransactionsGetError,
+export type CreateSourceError = AzureOpError;
+/** Create a credit source. */
+export const CreateSource: API.OperationMethod<
+  CreateSourceRequest,
+  CreateSourceResponse,
+  CreateSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditTransactionsGetRequest,
-  output: ConditionalCreditTransactionsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConditionalCreditTransactionsListByParentError = AzureOpError;
-/** List all transactions for a conditional credit. */
-export const ConditionalCreditTransactionsListByParent: API.OperationMethod<
-  ConditionalCreditTransactionsListByParentRequest,
-  ConditionalCreditTransactionsList,
-  ConditionalCreditTransactionsListByParentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalCreditTransactionsListByParentRequest,
-  output: ConditionalCreditTransactionsList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ContributorsGetFromPrimaryError = AzureOpError;
-/** Get a contributor for primary service admin */
-export const ContributorsGetFromPrimary: API.OperationMethod<
-  ContributorsGetFromPrimaryRequest,
-  ContributorsGetFromPrimaryResponse,
-  ContributorsGetFromPrimaryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ContributorsGetFromPrimaryRequest,
-  output: ContributorsGetFromPrimaryResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ContributorsListFromApplicableMaccError = AzureOpError;
-/** List contributors under applicable MACCs for a given billing account. */
-export const ContributorsListFromApplicableMacc: API.OperationMethod<
-  ContributorsListFromApplicableMaccRequest,
-  ContributorList,
-  ContributorsListFromApplicableMaccError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ContributorsListFromApplicableMaccRequest,
-  output: ContributorList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ContributorsListFromPrimaryError = AzureOpError;
-/** List contributors under a MACC for primary service admin */
-export const ContributorsListFromPrimary: API.OperationMethod<
-  ContributorsListFromPrimaryRequest,
-  ContributorList,
-  ContributorsListFromPrimaryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ContributorsListFromPrimaryRequest,
-  output: ContributorList,
+  input: CreateSourceRequest,
+  output: CreateSourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8828,151 +8644,91 @@ export const CreditsChangeSponsor: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreditsCreateError = AzureOpError;
-/** Create a credit. */
-export const CreditsCreate: API.OperationMethod<
-  CreditsCreateRequest,
-  CreditsCreateResponse,
-  CreditsCreateError,
+export type DeleteConditionalCreditError = AzureOpError;
+/** Delete a conditional credit. */
+export const DeleteConditionalCredit: API.OperationMethod<
+  DeleteConditionalCreditRequest,
+  DeleteConditionalCreditResponse,
+  DeleteConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreditsCreateRequest,
-  output: CreditsCreateResponse,
+  input: DeleteConditionalCreditRequest,
+  output: DeleteConditionalCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreditsDeleteError = AzureOpError;
+export type DeleteCreditError = AzureOpError;
 /** Delete a credit. */
-export const CreditsDelete: API.OperationMethod<
-  CreditsDeleteRequest,
-  CreditsDeleteResponse,
-  CreditsDeleteError,
+export const DeleteCredit: API.OperationMethod<
+  DeleteCreditRequest,
+  DeleteCreditResponse,
+  DeleteCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreditsDeleteRequest,
-  output: CreditsDeleteResponse,
+  input: DeleteCreditRequest,
+  output: DeleteCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreditsGetError = AzureOpError;
-/** Get a credit. */
-export const CreditsGet: API.OperationMethod<
-  CreditsGetRequest,
-  CreditsGetResponse,
-  CreditsGetError,
+export type DeleteDiscountError = AzureOpError;
+/** Delete discount. Clears the metadata from the user's view. */
+export const DeleteDiscount: API.OperationMethod<
+  DeleteDiscountRequest,
+  DeleteDiscountResponse,
+  DeleteDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreditsGetRequest,
-  output: CreditsGetResponse,
+  input: DeleteDiscountRequest,
+  output: DeleteDiscountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreditsListApplicableError = AzureOpError;
-/** List applicable credits for the provided scope. Currently supported scopes: BillingAccountResourceId */
-export const CreditsListApplicable: API.OperationMethod<
-  CreditsListApplicableRequest,
-  CreditsList,
-  CreditsListApplicableError,
+export type DeleteFreeServiceError = AzureOpError;
+/** This operation deletes free services from the subscription. Only free services that are in an expired or cancelled states can be deleted. */
+export const DeleteFreeService: API.OperationMethod<
+  DeleteFreeServiceRequest,
+  DeleteFreeServiceResponse,
+  DeleteFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreditsListApplicableRequest,
-  output: CreditsList,
+  input: DeleteFreeServiceRequest,
+  output: DeleteFreeServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreditsListByResourceGroupError = AzureOpError;
-/** List Credits under a resource group from primary service admin. */
-export const CreditsListByResourceGroup: API.OperationMethod<
-  CreditsListByResourceGroupRequest,
-  CreditsList,
-  CreditsListByResourceGroupError,
+export type DeleteMaccError = AzureOpError;
+/** Delete MACC. */
+export const DeleteMacc: API.OperationMethod<
+  DeleteMaccRequest,
+  DeleteMaccResponse,
+  DeleteMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreditsListByResourceGroupRequest,
-  output: CreditsList,
+  input: DeleteMaccRequest,
+  output: DeleteMaccResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreditsListBySubscriptionError = AzureOpError;
-/** List credits under a subscription from primary service tenant. */
-export const CreditsListBySubscription: API.OperationMethod<
-  CreditsListBySubscriptionRequest,
-  CreditsList,
-  CreditsListBySubscriptionError,
+export type DeleteSourceError = AzureOpError;
+/** Delete a credit source. */
+export const DeleteSource: API.OperationMethod<
+  DeleteSourceRequest,
+  DeleteSourceResponse,
+  DeleteSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreditsListBySubscriptionRequest,
-  output: CreditsList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CreditsUpdateError = AzureOpError;
-/** Update a credit. */
-export const CreditsUpdate: API.OperationMethod<
-  CreditsUpdateRequest,
-  CreditsUpdateResponse,
-  CreditsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreditsUpdateRequest,
-  output: CreditsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CreditTransactionsGetError = AzureOpError;
-/** Get a specific transaction for a credit. */
-export const CreditTransactionsGet: API.OperationMethod<
-  CreditTransactionsGetRequest,
-  CreditTransactionsGetResponse,
-  CreditTransactionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreditTransactionsGetRequest,
-  output: CreditTransactionsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CreditTransactionsListByParentError = AzureOpError;
-/** List all transactions for a credit. */
-export const CreditTransactionsListByParent: API.OperationMethod<
-  CreditTransactionsListByParentRequest,
-  TransactionsList,
-  CreditTransactionsListByParentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreditTransactionsListByParentRequest,
-  output: TransactionsList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DiscountGetError = AzureOpError;
-/** Get discount at resource group level */
-export const DiscountGet: API.OperationMethod<
-  DiscountGetRequest,
-  DiscountGetResponse,
-  DiscountGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DiscountGetRequest,
-  output: DiscountGetResponse,
+  input: DeleteSourceRequest,
+  output: DeleteSourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8993,181 +8749,722 @@ export const DiscountsCancel: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DiscountsCreateError = AzureOpError;
-/** Create discount. */
-export const DiscountsCreate: API.OperationMethod<
-  DiscountsCreateRequest,
-  DiscountsCreateResponse,
-  DiscountsCreateError,
+export type GetBillingAccountCatalogGroupOpsError = AzureOpError;
+/** Get a specific catalog group at the target scope. */
+export const GetBillingAccountCatalogGroupOps: API.OperationMethod<
+  GetBillingAccountCatalogGroupOpsRequest,
+  GetBillingAccountCatalogGroupOpsResponse,
+  GetBillingAccountCatalogGroupOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountsCreateRequest,
-  output: DiscountsCreateResponse,
+  input: GetBillingAccountCatalogGroupOpsRequest,
+  output: GetBillingAccountCatalogGroupOpsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DiscountsDeleteError = AzureOpError;
-/** Delete discount. Clears the metadata from the user's view. */
-export const DiscountsDelete: API.OperationMethod<
-  DiscountsDeleteRequest,
-  DiscountsDeleteResponse,
-  DiscountsDeleteError,
+export type GetBillingProfileCatalogGroupOpsError = AzureOpError;
+/** Get a specific catalog group at the target scope. */
+export const GetBillingProfileCatalogGroupOps: API.OperationMethod<
+  GetBillingProfileCatalogGroupOpsRequest,
+  GetBillingProfileCatalogGroupOpsResponse,
+  GetBillingProfileCatalogGroupOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountsDeleteRequest,
-  output: DiscountsDeleteResponse,
+  input: GetBillingProfileCatalogGroupOpsRequest,
+  output: GetBillingProfileCatalogGroupOpsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DiscountsResourceGroupListError = AzureOpError;
-/** List discounts at resource group level */
-export const DiscountsResourceGroupList: API.OperationMethod<
-  DiscountsResourceGroupListRequest,
-  DiscountList,
-  DiscountsResourceGroupListError,
+export type GetConditionalCreditError = AzureOpError;
+/** Get a conditional credit. */
+export const GetConditionalCredit: API.OperationMethod<
+  GetConditionalCreditRequest,
+  GetConditionalCreditResponse,
+  GetConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountsResourceGroupListRequest,
-  output: DiscountList,
+  input: GetConditionalCreditRequest,
+  output: GetConditionalCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DiscountsScopeListError = AzureOpError;
-/** List discounts that are applicable for a given scope. Currently supported scopes: billing accounts */
-export const DiscountsScopeList: API.OperationMethod<
-  DiscountsScopeListRequest,
-  DiscountList,
-  DiscountsScopeListError,
+export type GetConditionalCreditContributorFromPrimaryError = AzureOpError;
+/** Get a conditional credit contributor for primary service admin */
+export const GetConditionalCreditContributorFromPrimary: API.OperationMethod<
+  GetConditionalCreditContributorFromPrimaryRequest,
+  GetConditionalCreditContributorFromPrimaryResponse,
+  GetConditionalCreditContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountsScopeListRequest,
-  output: DiscountList,
+  input: GetConditionalCreditContributorFromPrimaryRequest,
+  output: GetConditionalCreditContributorFromPrimaryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DiscountsSubscriptionListError = AzureOpError;
-/** List discounts at subscription level */
-export const DiscountsSubscriptionList: API.OperationMethod<
-  DiscountsSubscriptionListRequest,
-  DiscountList,
-  DiscountsSubscriptionListError,
+export type GetConditionalCreditTransactionError = AzureOpError;
+/** Get a specific transaction for a conditional credit. */
+export const GetConditionalCreditTransaction: API.OperationMethod<
+  GetConditionalCreditTransactionRequest,
+  GetConditionalCreditTransactionResponse,
+  GetConditionalCreditTransactionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountsSubscriptionListRequest,
-  output: DiscountList,
+  input: GetConditionalCreditTransactionRequest,
+  output: GetConditionalCreditTransactionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DiscountUpdateError = AzureOpError;
-/** Update discounts */
-export const DiscountUpdate: API.OperationMethod<
-  DiscountUpdateRequest,
-  DiscountUpdateResponse,
-  DiscountUpdateError,
+export type GetContributorFromPrimaryError = AzureOpError;
+/** Get a contributor for primary service admin */
+export const GetContributorFromPrimary: API.OperationMethod<
+  GetContributorFromPrimaryRequest,
+  GetContributorFromPrimaryResponse,
+  GetContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DiscountUpdateRequest,
-  output: DiscountUpdateResponse,
+  input: GetContributorFromPrimaryRequest,
+  output: GetContributorFromPrimaryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FreeServicesCreateError = AzureOpError;
-/** This operation creates or updates free services in Azure */
-export const FreeServicesCreate: API.OperationMethod<
-  FreeServicesCreateRequest,
-  FreeServicesCreateResponse,
-  FreeServicesCreateError,
+export type GetCreditError = AzureOpError;
+/** Get a credit. */
+export const GetCredit: API.OperationMethod<
+  GetCreditRequest,
+  GetCreditResponse,
+  GetCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FreeServicesCreateRequest,
-  output: FreeServicesCreateResponse,
+  input: GetCreditRequest,
+  output: GetCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FreeServicesDeleteError = AzureOpError;
-/** This operation deletes free services from the subscription. Only free services that are in an expired or cancelled states can be deleted. */
-export const FreeServicesDelete: API.OperationMethod<
-  FreeServicesDeleteRequest,
-  FreeServicesDeleteResponse,
-  FreeServicesDeleteError,
+export type GetCreditTransactionError = AzureOpError;
+/** Get a specific transaction for a credit. */
+export const GetCreditTransaction: API.OperationMethod<
+  GetCreditTransactionRequest,
+  GetCreditTransactionResponse,
+  GetCreditTransactionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FreeServicesDeleteRequest,
-  output: FreeServicesDeleteResponse,
+  input: GetCreditTransactionRequest,
+  output: GetCreditTransactionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FreeServicesGetError = AzureOpError;
+export type GetDiscountError = AzureOpError;
+/** Get discount at resource group level */
+export const GetDiscount: API.OperationMethod<
+  GetDiscountRequest,
+  GetDiscountResponse,
+  GetDiscountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDiscountRequest,
+  output: GetDiscountResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetFreeServiceError = AzureOpError;
 /** This operation retrieves properties for free services. */
-export const FreeServicesGet: API.OperationMethod<
-  FreeServicesGetRequest,
-  FreeServicesGetResponse,
-  FreeServicesGetError,
+export const GetFreeService: API.OperationMethod<
+  GetFreeServiceRequest,
+  GetFreeServiceResponse,
+  GetFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FreeServicesGetRequest,
-  output: FreeServicesGetResponse,
+  input: GetFreeServiceRequest,
+  output: GetFreeServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FreeServicesListByResourceGroupError = AzureOpError;
+export type GetMaccError = AzureOpError;
+/** Get a MACC. */
+export const GetMacc: API.OperationMethod<
+  GetMaccRequest,
+  GetMaccResponse,
+  GetMaccError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMaccRequest,
+  output: GetMaccResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetMaccTransactionError = AzureOpError;
+/** Get a specific transaction for a MACC. */
+export const GetMaccTransaction: API.OperationMethod<
+  GetMaccTransactionRequest,
+  GetMaccTransactionResponse,
+  GetMaccTransactionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMaccTransactionRequest,
+  output: GetMaccTransactionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetReservationOrderAliaError = AzureOpError;
+/** Get a reservation order alias. */
+export const GetReservationOrderAlia: API.OperationMethod<
+  GetReservationOrderAliaRequest,
+  GetReservationOrderAliaResponse,
+  GetReservationOrderAliaError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetReservationOrderAliaRequest,
+  output: GetReservationOrderAliaResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSavingPlanError = AzureOpError;
+/** Get savings plan. */
+export const GetSavingPlan: API.OperationMethod<
+  GetSavingPlanRequest,
+  GetSavingPlanResponse,
+  GetSavingPlanError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSavingPlanRequest,
+  output: GetSavingPlanResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSavingPlanOrderError = AzureOpError;
+/** Get a savings plan order. */
+export const GetSavingPlanOrder: API.OperationMethod<
+  GetSavingPlanOrderRequest,
+  GetSavingPlanOrderResponse,
+  GetSavingPlanOrderError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSavingPlanOrderRequest,
+  output: GetSavingPlanOrderResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSavingPlanOrderAliaError = AzureOpError;
+/** Get a savings plan. */
+export const GetSavingPlanOrderAlia: API.OperationMethod<
+  GetSavingPlanOrderAliaRequest,
+  GetSavingPlanOrderAliaResponse,
+  GetSavingPlanOrderAliaError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSavingPlanOrderAliaRequest,
+  output: GetSavingPlanOrderAliaResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSourceError = AzureOpError;
+/** Get a credit source. */
+export const GetSource: API.OperationMethod<
+  GetSourceRequest,
+  GetSourceResponse,
+  GetSourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSourceRequest,
+  output: GetSourceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSubscriptionCatalogGroupOpsError = AzureOpError;
+/** Get a specific catalog group at the target scope. */
+export const GetSubscriptionCatalogGroupOps: API.OperationMethod<
+  GetSubscriptionCatalogGroupOpsRequest,
+  GetSubscriptionCatalogGroupOpsResponse,
+  GetSubscriptionCatalogGroupOpsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSubscriptionCatalogGroupOpsRequest,
+  output: GetSubscriptionCatalogGroupOpsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListApplicableMaccsError = AzureOpError;
+/** List maccs that are applicable for a given billing account. */
+export const ListApplicableMaccs: API.OperationMethod<
+  ListApplicableMaccsRequest,
+  ApplicableMaccList,
+  ListApplicableMaccsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListApplicableMaccsRequest,
+  output: ApplicableMaccList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBillingAccountCatalogGroupOpsError = AzureOpError;
+/** List catalog groups at the target scope. */
+export const ListBillingAccountCatalogGroupOps: API.OperationMethod<
+  ListBillingAccountCatalogGroupOpsRequest,
+  CatalogGroupListResult,
+  ListBillingAccountCatalogGroupOpsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBillingAccountCatalogGroupOpsRequest,
+  output: CatalogGroupListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBillingProfileCatalogGroupOpsError = AzureOpError;
+/** List catalog groups at the target scope. */
+export const ListBillingProfileCatalogGroupOps: API.OperationMethod<
+  ListBillingProfileCatalogGroupOpsRequest,
+  CatalogGroupListResult,
+  ListBillingProfileCatalogGroupOpsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBillingProfileCatalogGroupOpsRequest,
+  output: CatalogGroupListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConditionalCreditByResourceGroupError = AzureOpError;
+/** List conditional credits by resource group. */
+export const ListConditionalCreditByResourceGroup: API.OperationMethod<
+  ListConditionalCreditByResourceGroupRequest,
+  ConditionalCreditList,
+  ListConditionalCreditByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConditionalCreditByResourceGroupRequest,
+  output: ConditionalCreditList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConditionalCreditBySubscriptionError = AzureOpError;
+/** List conditional credits by subscription. */
+export const ListConditionalCreditBySubscription: API.OperationMethod<
+  ListConditionalCreditBySubscriptionRequest,
+  ConditionalCreditList,
+  ListConditionalCreditBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConditionalCreditBySubscriptionRequest,
+  output: ConditionalCreditList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConditionalCreditContributorFromApplicableConditionalCreditError =
+  AzureOpError;
+/** List contributors under applicable conditional credits for a given billing account. */
+export const ListConditionalCreditContributorFromApplicableConditionalCredit: API.OperationMethod<
+  ListConditionalCreditContributorFromApplicableConditionalCreditRequest,
+  ConditionalCreditContributorList,
+  ListConditionalCreditContributorFromApplicableConditionalCreditError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConditionalCreditContributorFromApplicableConditionalCreditRequest,
+  output: ConditionalCreditContributorList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConditionalCreditContributorFromPrimaryError = AzureOpError;
+/** List contributors under a primary conditional credit for primary service admin */
+export const ListConditionalCreditContributorFromPrimary: API.OperationMethod<
+  ListConditionalCreditContributorFromPrimaryRequest,
+  ConditionalCreditContributorList,
+  ListConditionalCreditContributorFromPrimaryError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConditionalCreditContributorFromPrimaryRequest,
+  output: ConditionalCreditContributorList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConditionalCreditScopeError = AzureOpError;
+/** List conditional credits that are applicable for a given scope. Currently supported scopes: billing accounts */
+export const ListConditionalCreditScope: API.OperationMethod<
+  ListConditionalCreditScopeRequest,
+  ConditionalCreditList,
+  ListConditionalCreditScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConditionalCreditScopeRequest,
+  output: ConditionalCreditList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConditionalCreditTransactionByParentError = AzureOpError;
+/** List all transactions for a conditional credit. */
+export const ListConditionalCreditTransactionByParent: API.OperationMethod<
+  ListConditionalCreditTransactionByParentRequest,
+  ConditionalCreditTransactionsList,
+  ListConditionalCreditTransactionByParentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConditionalCreditTransactionByParentRequest,
+  output: ConditionalCreditTransactionsList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListContributorFromApplicableMaccError = AzureOpError;
+/** List contributors under applicable MACCs for a given billing account. */
+export const ListContributorFromApplicableMacc: API.OperationMethod<
+  ListContributorFromApplicableMaccRequest,
+  ContributorList,
+  ListContributorFromApplicableMaccError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListContributorFromApplicableMaccRequest,
+  output: ContributorList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListContributorFromPrimaryError = AzureOpError;
+/** List contributors under a MACC for primary service admin */
+export const ListContributorFromPrimary: API.OperationMethod<
+  ListContributorFromPrimaryRequest,
+  ContributorList,
+  ListContributorFromPrimaryError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListContributorFromPrimaryRequest,
+  output: ContributorList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCreditApplicableError = AzureOpError;
+/** List applicable credits for the provided scope. Currently supported scopes: BillingAccountResourceId */
+export const ListCreditApplicable: API.OperationMethod<
+  ListCreditApplicableRequest,
+  CreditsList,
+  ListCreditApplicableError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCreditApplicableRequest,
+  output: CreditsList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCreditByResourceGroupError = AzureOpError;
+/** List Credits under a resource group from primary service admin. */
+export const ListCreditByResourceGroup: API.OperationMethod<
+  ListCreditByResourceGroupRequest,
+  CreditsList,
+  ListCreditByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCreditByResourceGroupRequest,
+  output: CreditsList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCreditBySubscriptionError = AzureOpError;
+/** List credits under a subscription from primary service tenant. */
+export const ListCreditBySubscription: API.OperationMethod<
+  ListCreditBySubscriptionRequest,
+  CreditsList,
+  ListCreditBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCreditBySubscriptionRequest,
+  output: CreditsList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCreditTransactionByParentError = AzureOpError;
+/** List all transactions for a credit. */
+export const ListCreditTransactionByParent: API.OperationMethod<
+  ListCreditTransactionByParentRequest,
+  TransactionsList,
+  ListCreditTransactionByParentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCreditTransactionByParentRequest,
+  output: TransactionsList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDiscountResourceGroupError = AzureOpError;
+/** List discounts at resource group level */
+export const ListDiscountResourceGroup: API.OperationMethod<
+  ListDiscountResourceGroupRequest,
+  DiscountList,
+  ListDiscountResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDiscountResourceGroupRequest,
+  output: DiscountList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDiscountScopeError = AzureOpError;
+/** List discounts that are applicable for a given scope. Currently supported scopes: billing accounts */
+export const ListDiscountScope: API.OperationMethod<
+  ListDiscountScopeRequest,
+  DiscountList,
+  ListDiscountScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDiscountScopeRequest,
+  output: DiscountList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDiscountSubscriptionError = AzureOpError;
+/** List discounts at subscription level */
+export const ListDiscountSubscription: API.OperationMethod<
+  ListDiscountSubscriptionRequest,
+  DiscountList,
+  ListDiscountSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDiscountSubscriptionRequest,
+  output: DiscountList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListFreeServiceByResourceGroupError = AzureOpError;
 /** This operation lists the free services that are available under the specified resource group. */
-export const FreeServicesListByResourceGroup: API.OperationMethod<
-  FreeServicesListByResourceGroupRequest,
+export const ListFreeServiceByResourceGroup: API.OperationMethod<
+  ListFreeServiceByResourceGroupRequest,
   FreeServicesList,
-  FreeServicesListByResourceGroupError,
+  ListFreeServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FreeServicesListByResourceGroupRequest,
+  input: ListFreeServiceByResourceGroupRequest,
   output: FreeServicesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FreeServicesListBySubscriptionError = AzureOpError;
+export type ListFreeServiceBySubscriptionError = AzureOpError;
 /** This operation lists free services that are available under the specified subscription. */
-export const FreeServicesListBySubscription: API.OperationMethod<
-  FreeServicesListBySubscriptionRequest,
+export const ListFreeServiceBySubscription: API.OperationMethod<
+  ListFreeServiceBySubscriptionRequest,
   FreeServicesList,
-  FreeServicesListBySubscriptionError,
+  ListFreeServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FreeServicesListBySubscriptionRequest,
+  input: ListFreeServiceBySubscriptionRequest,
   output: FreeServicesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FreeServicesUpdateError = AzureOpError;
-/** This operation updates free services in Azure. */
-export const FreeServicesUpdate: API.OperationMethod<
-  FreeServicesUpdateRequest,
-  FreeServicesUpdateResponse,
-  FreeServicesUpdateError,
+export type ListMaccByResourceGroupError = AzureOpError;
+/** List MACCs under a resource group for primary service admin. */
+export const ListMaccByResourceGroup: API.OperationMethod<
+  ListMaccByResourceGroupRequest,
+  MaccList,
+  ListMaccByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FreeServicesUpdateRequest,
-  output: FreeServicesUpdateResponse,
+  input: ListMaccByResourceGroupRequest,
+  output: MaccList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMaccBySubscriptionError = AzureOpError;
+/** List MACCs under a subscription from primary service tenant. */
+export const ListMaccBySubscription: API.OperationMethod<
+  ListMaccBySubscriptionRequest,
+  MaccList,
+  ListMaccBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMaccBySubscriptionRequest,
+  output: MaccList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMaccTransactionByParentError = AzureOpError;
+/** List all transactions for a MACC. */
+export const ListMaccTransactionByParent: API.OperationMethod<
+  ListMaccTransactionByParentRequest,
+  MaccTransactionsList,
+  ListMaccTransactionByParentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMaccTransactionByParentRequest,
+  output: MaccTransactionsList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** List the operations for the provider */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSavingPlanError = AzureOpError;
+/** List savings plans in an order. */
+export const ListSavingPlan: API.OperationMethod<
+  ListSavingPlanRequest,
+  SavingsPlanModelList,
+  ListSavingPlanError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSavingPlanRequest,
+  output: SavingsPlanModelList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSavingPlanAllError = AzureOpError;
+/** List savings plans. */
+export const ListSavingPlanAll: API.OperationMethod<
+  ListSavingPlanAllRequest,
+  SavingsPlanModelListResult,
+  ListSavingPlanAllError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSavingPlanAllRequest,
+  output: SavingsPlanModelListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSavingPlanOrderError = AzureOpError;
+/** List all Savings plan orders. */
+export const ListSavingPlanOrder: API.OperationMethod<
+  ListSavingPlanOrderRequest,
+  SavingsPlanOrderModelList,
+  ListSavingPlanOrderError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSavingPlanOrderRequest,
+  output: SavingsPlanOrderModelList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSellerResourceError = AzureOpError;
+/** List maccs by billing account */
+export const ListSellerResource: API.OperationMethod<
+  ListSellerResourceRequest,
+  ListSellerResourceResponse,
+  ListSellerResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSellerResourceRequest,
+  output: ListSellerResourceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSourceByCreditError = AzureOpError;
+/** List credit sources for a credit under a resource group from primary service admin. */
+export const ListSourceByCredit: API.OperationMethod<
+  ListSourceByCreditRequest,
+  CreditSourcesList,
+  ListSourceByCreditError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSourceByCreditRequest,
+  output: CreditSourcesList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSubscriptionCatalogGroupOpsError = AzureOpError;
+/** List catalog groups at the target scope. */
+export const ListSubscriptionCatalogGroupOps: API.OperationMethod<
+  ListSubscriptionCatalogGroupOpsRequest,
+  CatalogGroupListResult,
+  ListSubscriptionCatalogGroupOpsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSubscriptionCatalogGroupOpsRequest,
+  output: CatalogGroupListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9203,96 +9500,6 @@ export const MaccsChargeShortfall: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MaccsCreateError = AzureOpError;
-/** Create MACC. */
-export const MaccsCreate: API.OperationMethod<
-  MaccsCreateRequest,
-  MaccsCreateResponse,
-  MaccsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MaccsCreateRequest,
-  output: MaccsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MaccsDeleteError = AzureOpError;
-/** Delete MACC. */
-export const MaccsDelete: API.OperationMethod<
-  MaccsDeleteRequest,
-  MaccsDeleteResponse,
-  MaccsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MaccsDeleteRequest,
-  output: MaccsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MaccsGetError = AzureOpError;
-/** Get a MACC. */
-export const MaccsGet: API.OperationMethod<
-  MaccsGetRequest,
-  MaccsGetResponse,
-  MaccsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MaccsGetRequest,
-  output: MaccsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MaccsListByResourceGroupError = AzureOpError;
-/** List MACCs under a resource group for primary service admin. */
-export const MaccsListByResourceGroup: API.OperationMethod<
-  MaccsListByResourceGroupRequest,
-  MaccList,
-  MaccsListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MaccsListByResourceGroupRequest,
-  output: MaccList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MaccsListBySubscriptionError = AzureOpError;
-/** List MACCs under a subscription from primary service tenant. */
-export const MaccsListBySubscription: API.OperationMethod<
-  MaccsListBySubscriptionRequest,
-  MaccList,
-  MaccsListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MaccsListBySubscriptionRequest,
-  output: MaccList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MaccsUpdateError = AzureOpError;
-/** Update MACC. */
-export const MaccsUpdate: API.OperationMethod<
-  MaccsUpdateRequest,
-  MaccsUpdateResponse,
-  MaccsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MaccsUpdateRequest,
-  output: MaccsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type MaccsWriteOffError = AzureOpError;
 /** Operation to waive a customer's pending MACC balance (Shortfall) from their account, ensuring they are not charged for the outstanding amount. */
 export const MaccsWriteOff: API.OperationMethod<
@@ -9303,156 +9510,6 @@ export const MaccsWriteOff: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MaccsWriteOffRequest,
   output: MaccsWriteOffResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MaccTransactionsGetError = AzureOpError;
-/** Get a specific transaction for a MACC. */
-export const MaccTransactionsGet: API.OperationMethod<
-  MaccTransactionsGetRequest,
-  MaccTransactionsGetResponse,
-  MaccTransactionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MaccTransactionsGetRequest,
-  output: MaccTransactionsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MaccTransactionsListByParentError = AzureOpError;
-/** List all transactions for a MACC. */
-export const MaccTransactionsListByParent: API.OperationMethod<
-  MaccTransactionsListByParentRequest,
-  MaccTransactionsList,
-  MaccTransactionsListByParentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MaccTransactionsListByParentRequest,
-  output: MaccTransactionsList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationOrderAliasCreateError = AzureOpError;
-/** Create a reservation order alias. */
-export const ReservationOrderAliasCreate: API.OperationMethod<
-  ReservationOrderAliasCreateRequest,
-  ReservationOrderAliasCreateResponse,
-  ReservationOrderAliasCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationOrderAliasCreateRequest,
-  output: ReservationOrderAliasCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationOrderAliasGetError = AzureOpError;
-/** Get a reservation order alias. */
-export const ReservationOrderAliasGet: API.OperationMethod<
-  ReservationOrderAliasGetRequest,
-  ReservationOrderAliasGetResponse,
-  ReservationOrderAliasGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationOrderAliasGetRequest,
-  output: ReservationOrderAliasGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SavingsPlanGetError = AzureOpError;
-/** Get savings plan. */
-export const SavingsPlanGet: API.OperationMethod<
-  SavingsPlanGetRequest,
-  SavingsPlanGetResponse,
-  SavingsPlanGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SavingsPlanGetRequest,
-  output: SavingsPlanGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SavingsPlanListError = AzureOpError;
-/** List savings plans in an order. */
-export const SavingsPlanList: API.OperationMethod<
-  SavingsPlanListRequest,
-  SavingsPlanModelList,
-  SavingsPlanListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SavingsPlanListRequest,
-  output: SavingsPlanModelList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SavingsPlanListAllError = AzureOpError;
-/** List savings plans. */
-export const SavingsPlanListAll: API.OperationMethod<
-  SavingsPlanListAllRequest,
-  SavingsPlanModelListResult,
-  SavingsPlanListAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SavingsPlanListAllRequest,
-  output: SavingsPlanModelListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SavingsPlanOrderAliasCreateError = AzureOpError;
-/** Create a savings plan. Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851 */
-export const SavingsPlanOrderAliasCreate: API.OperationMethod<
-  SavingsPlanOrderAliasCreateRequest,
-  SavingsPlanOrderAliasCreateResponse,
-  SavingsPlanOrderAliasCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SavingsPlanOrderAliasCreateRequest,
-  output: SavingsPlanOrderAliasCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SavingsPlanOrderAliasGetError = AzureOpError;
-/** Get a savings plan. */
-export const SavingsPlanOrderAliasGet: API.OperationMethod<
-  SavingsPlanOrderAliasGetRequest,
-  SavingsPlanOrderAliasGetResponse,
-  SavingsPlanOrderAliasGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SavingsPlanOrderAliasGetRequest,
-  output: SavingsPlanOrderAliasGetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9473,181 +9530,121 @@ export const SavingsPlanOrderElevate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SavingsPlanOrderGetError = AzureOpError;
-/** Get a savings plan order. */
-export const SavingsPlanOrderGet: API.OperationMethod<
-  SavingsPlanOrderGetRequest,
-  SavingsPlanOrderGetResponse,
-  SavingsPlanOrderGetError,
+export type UpdateConditionalCreditError = AzureOpError;
+/** Update a conditional credit. */
+export const UpdateConditionalCredit: API.OperationMethod<
+  UpdateConditionalCreditRequest,
+  UpdateConditionalCreditResponse,
+  UpdateConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SavingsPlanOrderGetRequest,
-  output: SavingsPlanOrderGetResponse,
+  input: UpdateConditionalCreditRequest,
+  output: UpdateConditionalCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SavingsPlanOrderListError = AzureOpError;
-/** List all Savings plan orders. */
-export const SavingsPlanOrderList: API.OperationMethod<
-  SavingsPlanOrderListRequest,
-  SavingsPlanOrderModelList,
-  SavingsPlanOrderListError,
+export type UpdateCreditError = AzureOpError;
+/** Update a credit. */
+export const UpdateCredit: API.OperationMethod<
+  UpdateCreditRequest,
+  UpdateCreditResponse,
+  UpdateCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SavingsPlanOrderListRequest,
-  output: SavingsPlanOrderModelList,
+  input: UpdateCreditRequest,
+  output: UpdateCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SavingsPlanUpdateError = AzureOpError;
+export type UpdateDiscountError = AzureOpError;
+/** Update discounts */
+export const UpdateDiscount: API.OperationMethod<
+  UpdateDiscountRequest,
+  UpdateDiscountResponse,
+  UpdateDiscountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDiscountRequest,
+  output: UpdateDiscountResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateFreeServiceError = AzureOpError;
+/** This operation updates free services in Azure. */
+export const UpdateFreeService: API.OperationMethod<
+  UpdateFreeServiceRequest,
+  UpdateFreeServiceResponse,
+  UpdateFreeServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateFreeServiceRequest,
+  output: UpdateFreeServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateMaccError = AzureOpError;
+/** Update MACC. */
+export const UpdateMacc: API.OperationMethod<
+  UpdateMaccRequest,
+  UpdateMaccResponse,
+  UpdateMaccError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMaccRequest,
+  output: UpdateMaccResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSavingPlanError = AzureOpError;
 /** Update savings plan. */
-export const SavingsPlanUpdate: API.OperationMethod<
-  SavingsPlanUpdateRequest,
-  SavingsPlanUpdateResponse,
-  SavingsPlanUpdateError,
+export const UpdateSavingPlan: API.OperationMethod<
+  UpdateSavingPlanRequest,
+  UpdateSavingPlanResponse,
+  UpdateSavingPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SavingsPlanUpdateRequest,
-  output: SavingsPlanUpdateResponse,
+  input: UpdateSavingPlanRequest,
+  output: UpdateSavingPlanResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SavingsPlanValidateUpdateError = AzureOpError;
+export type UpdateSavingPlanValidateError = AzureOpError;
 /** Validate savings plan patch. */
-export const SavingsPlanValidateUpdate: API.OperationMethod<
-  SavingsPlanValidateUpdateRequest,
+export const UpdateSavingPlanValidate: API.OperationMethod<
+  UpdateSavingPlanValidateRequest,
   SavingsPlanValidateResponse,
-  SavingsPlanValidateUpdateError,
+  UpdateSavingPlanValidateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SavingsPlanValidateUpdateRequest,
+  input: UpdateSavingPlanValidateRequest,
   output: SavingsPlanValidateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SellerResourceListError = AzureOpError;
-/** List maccs by billing account */
-export const SellerResourceList: API.OperationMethod<
-  SellerResourceListRequest,
-  SellerResourceListResponse,
-  SellerResourceListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SellerResourceListRequest,
-  output: SellerResourceListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SourcesCreateError = AzureOpError;
-/** Create a credit source. */
-export const SourcesCreate: API.OperationMethod<
-  SourcesCreateRequest,
-  SourcesCreateResponse,
-  SourcesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SourcesCreateRequest,
-  output: SourcesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SourcesDeleteError = AzureOpError;
-/** Delete a credit source. */
-export const SourcesDelete: API.OperationMethod<
-  SourcesDeleteRequest,
-  SourcesDeleteResponse,
-  SourcesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SourcesDeleteRequest,
-  output: SourcesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SourcesGetError = AzureOpError;
-/** Get a credit source. */
-export const SourcesGet: API.OperationMethod<
-  SourcesGetRequest,
-  SourcesGetResponse,
-  SourcesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SourcesGetRequest,
-  output: SourcesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SourcesListByCreditError = AzureOpError;
-/** List credit sources for a credit under a resource group from primary service admin. */
-export const SourcesListByCredit: API.OperationMethod<
-  SourcesListByCreditRequest,
-  CreditSourcesList,
-  SourcesListByCreditError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SourcesListByCreditRequest,
-  output: CreditSourcesList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SourcesUpdateError = AzureOpError;
+export type UpdateSourceError = AzureOpError;
 /** Update a credit source. */
-export const SourcesUpdate: API.OperationMethod<
-  SourcesUpdateRequest,
-  SourcesUpdateResponse,
-  SourcesUpdateError,
+export const UpdateSource: API.OperationMethod<
+  UpdateSourceRequest,
+  UpdateSourceResponse,
+  UpdateSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SourcesUpdateRequest,
-  output: SourcesUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SubscriptionCatalogGroupsOpsGetError = AzureOpError;
-/** Get a specific catalog group at the target scope. */
-export const SubscriptionCatalogGroupsOpsGet: API.OperationMethod<
-  SubscriptionCatalogGroupsOpsGetRequest,
-  SubscriptionCatalogGroupsOpsGetResponse,
-  SubscriptionCatalogGroupsOpsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionCatalogGroupsOpsGetRequest,
-  output: SubscriptionCatalogGroupsOpsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SubscriptionCatalogGroupsOpsListError = AzureOpError;
-/** List catalog groups at the target scope. */
-export const SubscriptionCatalogGroupsOpsList: API.OperationMethod<
-  SubscriptionCatalogGroupsOpsListRequest,
-  CatalogGroupListResult,
-  SubscriptionCatalogGroupsOpsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionCatalogGroupsOpsListRequest,
-  output: CatalogGroupListResult,
+  input: UpdateSourceRequest,
+  output: UpdateSourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

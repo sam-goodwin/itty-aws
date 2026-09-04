@@ -70,39 +70,39 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-/** A request to perform batch delete on alerts. */
-export interface BatchDeleteAlertsRequest {
-  /** Required. The list of alert IDs to delete. */
+/** A request to perform batch undelete on alerts. */
+export interface BatchUndeleteAlertsRequest {
+  /** Required. The list of alert IDs to undelete. */
   alertId?: StringList;
   /** Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
-export const BatchDeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+export const BatchUndeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.optional(StringList),
     customerId: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "BatchDeleteAlertsRequest",
-}) as any as S.Schema<BatchDeleteAlertsRequest>;
+  identifier: "BatchUndeleteAlertsRequest",
+}) as any as S.Schema<BatchUndeleteAlertsRequest>;
 
-export interface BatchDeleteAlertsRequest_ {
+export interface BatchUndeleteAlertsRequest_ {
   /** Request body */
-  body?: BatchDeleteAlertsRequest;
+  body?: BatchUndeleteAlertsRequest;
 }
-export const BatchDeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
+export const BatchUndeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(BatchDeleteAlertsRequest.pipe(T.HttpBody())),
+    body: S.optional(BatchUndeleteAlertsRequest.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "v1beta1/alerts:batchDelete",
+      uri: "v1beta1/alerts:batchUndelete",
       baseUrl: "https://alertcenter.googleapis.com/",
     }),
   ),
 ).annotate({
-  identifier: "BatchDeleteAlertsRequest_",
-}) as any as S.Schema<BatchDeleteAlertsRequest_>;
+  identifier: "BatchUndeleteAlertsRequest_",
+}) as any as S.Schema<BatchUndeleteAlertsRequest_>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
 export const DocumentMap = /*@__PURE__*/ S.Record(
@@ -137,56 +137,6 @@ export const StatusMap = /*@__PURE__*/ S.Record(
   S.String,
   Status,
 ) as any as S.Schema<StatusMap>;
-
-/** Response to batch delete operation on alerts. */
-export interface BatchDeleteAlertsResponse {
-  /** The status details for each failed `alert_id`. */
-  failedAlertStatus?: StatusMap;
-  /** The successful list of alert IDs. */
-  successAlertIds?: StringList;
-}
-export const BatchDeleteAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failedAlertStatus: S.optional(StatusMap),
-    successAlertIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeleteAlertsResponse",
-}) as any as S.Schema<BatchDeleteAlertsResponse>;
-
-/** A request to perform batch undelete on alerts. */
-export interface BatchUndeleteAlertsRequest {
-  /** Required. The list of alert IDs to undelete. */
-  alertId?: StringList;
-  /** Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
-  customerId?: string;
-}
-export const BatchUndeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alertId: S.optional(StringList),
-    customerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchUndeleteAlertsRequest",
-}) as any as S.Schema<BatchUndeleteAlertsRequest>;
-
-export interface BatchUndeleteAlertsRequest_ {
-  /** Request body */
-  body?: BatchUndeleteAlertsRequest;
-}
-export const BatchUndeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(BatchUndeleteAlertsRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1beta1/alerts:batchUndelete",
-      baseUrl: "https://alertcenter.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchUndeleteAlertsRequest_",
-}) as any as S.Schema<BatchUndeleteAlertsRequest_>;
 
 /** Response to batch undelete operation on alerts. */
 export interface BatchUndeleteAlertsResponse {
@@ -287,6 +237,56 @@ export interface Empty {}
 export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
+
+/** A request to perform batch delete on alerts. */
+export interface DeleteBatchAlertRequest {
+  /** Required. The list of alert IDs to delete. */
+  alertId?: StringList;
+  /** Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
+  customerId?: string;
+}
+export const DeleteBatchAlertRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    alertId: S.optional(StringList),
+    customerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteBatchAlertRequest",
+}) as any as S.Schema<DeleteBatchAlertRequest>;
+
+export interface BatchDeleteAlertsRequest_ {
+  /** Request body */
+  body?: DeleteBatchAlertRequest;
+}
+export const BatchDeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(DeleteBatchAlertRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/alerts:batchDelete",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchDeleteAlertsRequest_",
+}) as any as S.Schema<BatchDeleteAlertsRequest_>;
+
+/** Response to batch delete operation on alerts. */
+export interface DeleteBatchAlertResponse {
+  /** The status details for each failed `alert_id`. */
+  failedAlertStatus?: StatusMap;
+  /** The successful list of alert IDs. */
+  successAlertIds?: StringList;
+}
+export const DeleteBatchAlertResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    failedAlertStatus: S.optional(StatusMap),
+    successAlertIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DeleteBatchAlertResponse",
+}) as any as S.Schema<DeleteBatchAlertResponse>;
 
 export interface GetAlertsRequest {
   /** Required. The identifier of the alert to retrieve. */
@@ -620,26 +620,6 @@ export const UpdateSettingsV1beta1Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSettingsV1beta1Request",
 }) as any as S.Schema<UpdateSettingsV1beta1Request>;
 
-export type BatchDeleteAlertsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Performs batch delete operation on alerts. */
-export const batchDeleteAlerts: API.OperationMethod<
-  BatchDeleteAlertsRequest_,
-  BatchDeleteAlertsResponse,
-  BatchDeleteAlertsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteAlertsRequest_,
-  output: BatchDeleteAlertsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BatchUndeleteAlertsError =
   | NotFound
   | Forbidden
@@ -695,6 +675,26 @@ export const deleteAlerts: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlertsRequest,
   output: Empty,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchAlertError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Performs batch delete operation on alerts. */
+export const deleteBatchAlert: API.OperationMethod<
+  BatchDeleteAlertsRequest_,
+  DeleteBatchAlertResponse,
+  DeleteBatchAlertError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: BatchDeleteAlertsRequest_,
+  output: DeleteBatchAlertResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

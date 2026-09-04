@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.business_knowledge#BusinessKnowledgeDocumentsWindowListRequest": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentWindowRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -113,7 +113,7 @@
       },
       "traits": {}
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeDocumentsWindowListResponse": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentWindowResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -128,13 +128,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeDocumentsWindowList": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentWindow": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeDocumentsWindowListRequest"
+        "target": "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentWindowRequest"
       },
       "output": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeDocumentsWindowListResponse"
+        "target": "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentWindowResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -145,7 +145,7 @@
         "smithy.api#documentation": "Read-only access to parsed knowledge documents. Exposes hybrid search\n(``search``) and a drill-down window (``window``) so an agent (PHAI or\nMCP) can find and explore business knowledge chunks."
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeDocumentsSearchListRequest": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentSearchRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -261,7 +261,7 @@
       },
       "traits": {}
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeDocumentsSearchListResponse": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentSearchResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -276,13 +276,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeDocumentsSearchList": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentSearch": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeDocumentsSearchListRequest"
+        "target": "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentSearchRequest"
       },
       "output": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeDocumentsSearchListResponse"
+        "target": "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentSearchResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -293,7 +293,7 @@
         "smithy.api#documentation": "Read-only access to parsed knowledge documents. Exposes hybrid search\n(``search``) and a drill-down window (``window``) so an agent (PHAI or\nMCP) can find and explore business knowledge chunks."
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsListRequest": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeGapSuggestionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -437,10 +437,10 @@
       },
       "traits": {}
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsList": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeGapSuggestions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsListRequest"
+        "target": "com.posthog.business_knowledge#ListBusinessKnowledgeGapSuggestionsRequest"
       },
       "output": {
         "target": "com.posthog.business_knowledge#PaginatedKnowledgeGapSuggestionList"
@@ -454,7 +454,7 @@
         "smithy.api#documentation": "Surfaces topics the support AI couldn't answer from the knowledge base.\n\nTwo list shapes controlled by the ``ticket_id`` query param:\n- **per-ticket** (``?ticket_id=<uuid>``): individual gap rows for that ticket.\n- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,\n  for the Business knowledge suggestions panel."
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsAcceptCreateRequest": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionAcceptRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -485,10 +485,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsAcceptCreate": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionAccept": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsAcceptCreateRequest"
+        "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionAcceptRequest"
       },
       "output": {
         "target": "com.posthog.business_knowledge#KnowledgeGapSuggestion"
@@ -502,7 +502,7 @@
         "smithy.api#documentation": "Surfaces topics the support AI couldn't answer from the knowledge base.\n\nTwo list shapes controlled by the ``ticket_id`` query param:\n- **per-ticket** (``?ticket_id=<uuid>``): individual gap rows for that ticket.\n- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,\n  for the Business knowledge suggestions panel."
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsDismissCreateRequest": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionDismissRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -526,10 +526,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsDismissCreate": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionDismiss": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsDismissCreateRequest"
+        "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionDismissRequest"
       },
       "output": {
         "target": "com.posthog.business_knowledge#KnowledgeGapSuggestion"
@@ -543,7 +543,7 @@
         "smithy.api#documentation": "Surfaces topics the support AI couldn't answer from the knowledge base.\n\nTwo list shapes controlled by the ``ticket_id`` query param:\n- **per-ticket** (``?ticket_id=<uuid>``): individual gap rows for that ticket.\n- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,\n  for the Business knowledge suggestions panel."
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionAcceptTopicRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -593,10 +593,10 @@
       },
       "traits": {}
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsAcceptTopicCreate": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionAcceptTopic": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest"
+        "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionAcceptTopicRequest"
       },
       "output": {
         "target": "com.posthog.business_knowledge#GapTopicActionResult"
@@ -610,7 +610,7 @@
         "smithy.api#documentation": "Accept all pending suggestions for a normalized topic cluster."
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsDismissTopicCreateRequest": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionDismissTopicRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -640,10 +640,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsDismissTopicCreate": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionDismissTopic": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsDismissTopicCreateRequest"
+        "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionDismissTopicRequest"
       },
       "output": {
         "target": "com.posthog.business_knowledge#GapTopicActionResult"
@@ -657,7 +657,7 @@
         "smithy.api#documentation": "Dismiss all pending suggestions for a normalized topic cluster."
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeSourcesListRequest": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeSourcesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1061,10 +1061,10 @@
       },
       "traits": {}
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeSourcesList": {
+    "com.posthog.business_knowledge#ListBusinessKnowledgeSources": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesListRequest"
+        "target": "com.posthog.business_knowledge#ListBusinessKnowledgeSourcesRequest"
       },
       "output": {
         "target": "com.posthog.business_knowledge#PaginatedKnowledgeSourceList"
@@ -1077,7 +1077,7 @@
         }
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeSourcesCreateRequest": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeSourceRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1113,10 +1113,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeSourcesCreate": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeSource": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesCreateRequest"
+        "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeSourceRequest"
       },
       "output": {
         "target": "com.posthog.business_knowledge#KnowledgeSource"
@@ -1169,7 +1169,7 @@
         }
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeSourcesPartialUpdateRequest": {
+    "com.posthog.business_knowledge#UpdateBusinessKnowledgeSourcePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1211,10 +1211,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeSourcesPartialUpdate": {
+    "com.posthog.business_knowledge#UpdateBusinessKnowledgeSourcePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesPartialUpdateRequest"
+        "target": "com.posthog.business_knowledge#UpdateBusinessKnowledgeSourcePartialRequest"
       },
       "output": {
         "target": "com.posthog.business_knowledge#KnowledgeSource"
@@ -1267,7 +1267,7 @@
         }
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeSourcesRefreshCreateRequest": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeSourceRefreshRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1291,10 +1291,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.business_knowledge#BusinessKnowledgeSourcesRefreshCreate": {
+    "com.posthog.business_knowledge#CreateBusinessKnowledgeSourceRefresh": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesRefreshCreateRequest"
+        "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeSourceRefreshRequest"
       },
       "output": {
         "target": "com.posthog.business_knowledge#KnowledgeSource"
@@ -1363,43 +1363,43 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeDocumentsWindowList"
+          "target": "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentWindow"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeDocumentsSearchList"
+          "target": "com.posthog.business_knowledge#ListBusinessKnowledgeDocumentSearch"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsList"
+          "target": "com.posthog.business_knowledge#ListBusinessKnowledgeGapSuggestions"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsAcceptCreate"
+          "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionAccept"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsDismissCreate"
+          "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionDismiss"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsAcceptTopicCreate"
+          "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionAcceptTopic"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeGapSuggestionsDismissTopicCreate"
+          "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeGapSuggestionDismissTopic"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesList"
+          "target": "com.posthog.business_knowledge#ListBusinessKnowledgeSources"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesCreate"
+          "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeSource"
         },
         {
           "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesRetrieve"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesPartialUpdate"
+          "target": "com.posthog.business_knowledge#UpdateBusinessKnowledgeSourcePartial"
         },
         {
           "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesDestroy"
         },
         {
-          "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesRefreshCreate"
+          "target": "com.posthog.business_knowledge#CreateBusinessKnowledgeSourceRefresh"
         },
         {
           "target": "com.posthog.business_knowledge#BusinessKnowledgeSourcesTextRetrieve"

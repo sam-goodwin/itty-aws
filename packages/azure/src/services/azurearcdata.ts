@@ -194,7 +194,7 @@ export const ActiveDirectoryConnectorPropertiesInput = /*@__PURE__*/ S.suspend(
   identifier: "ActiveDirectoryConnectorPropertiesInput",
 }) as any as S.Schema<ActiveDirectoryConnectorPropertiesInput>;
 
-export interface ActiveDirectoryConnectorsCreateRequest {
+export interface CreateActiveDirectoryConnectorRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -206,7 +206,7 @@ export interface ActiveDirectoryConnectorsCreateRequest {
   /** null */
   properties: ActiveDirectoryConnectorPropertiesInput;
 }
-export const ActiveDirectoryConnectorsCreateRequest = /*@__PURE__*/ S.suspend(
+export const CreateActiveDirectoryConnectorRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -223,8 +223,8 @@ export const ActiveDirectoryConnectorsCreateRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ActiveDirectoryConnectorsCreateRequest",
-}) as any as S.Schema<ActiveDirectoryConnectorsCreateRequest>;
+  identifier: "CreateActiveDirectoryConnectorRequest",
+}) as any as S.Schema<CreateActiveDirectoryConnectorRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType =
@@ -298,7 +298,7 @@ export const ActiveDirectoryConnectorProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActiveDirectoryConnectorProperties",
 }) as any as S.Schema<ActiveDirectoryConnectorProperties>;
 
-export interface ActiveDirectoryConnectorsCreateResponse {
+export interface CreateActiveDirectoryConnectorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -310,7 +310,7 @@ export interface ActiveDirectoryConnectorsCreateResponse {
   /** null */
   properties: ActiveDirectoryConnectorProperties;
 }
-export const ActiveDirectoryConnectorsCreateResponse = /*@__PURE__*/ S.suspend(
+export const CreateActiveDirectoryConnectorResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -320,884 +320,8 @@ export const ActiveDirectoryConnectorsCreateResponse = /*@__PURE__*/ S.suspend(
       properties: ActiveDirectoryConnectorProperties,
     }),
 ).annotate({
-  identifier: "ActiveDirectoryConnectorsCreateResponse",
-}) as any as S.Schema<ActiveDirectoryConnectorsCreateResponse>;
-
-export interface ActiveDirectoryConnectorsDeleteRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** The name of the data controller */
-  dataControllerName: string;
-  /** The name of the Active Directory connector instance */
-  activeDirectoryConnectorName: string;
-}
-export const ActiveDirectoryConnectorsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dataControllerName: S.String.pipe(T.Label()),
-      activeDirectoryConnectorName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "ActiveDirectoryConnectorsDeleteRequest",
-}) as any as S.Schema<ActiveDirectoryConnectorsDeleteRequest>;
-
-export interface ActiveDirectoryConnectorsDeleteResponse {}
-export const ActiveDirectoryConnectorsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ActiveDirectoryConnectorsDeleteResponse",
-}) as any as S.Schema<ActiveDirectoryConnectorsDeleteResponse>;
-
-export interface ActiveDirectoryConnectorsGetRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** The name of the data controller */
-  dataControllerName: string;
-  /** The name of the Active Directory connector instance */
-  activeDirectoryConnectorName: string;
-}
-export const ActiveDirectoryConnectorsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    dataControllerName: S.String.pipe(T.Label()),
-    activeDirectoryConnectorName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ActiveDirectoryConnectorsGetRequest",
-}) as any as S.Schema<ActiveDirectoryConnectorsGetRequest>;
-
-export interface ActiveDirectoryConnectorsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** null */
-  properties: ActiveDirectoryConnectorProperties;
-}
-export const ActiveDirectoryConnectorsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: ActiveDirectoryConnectorProperties,
-    }),
-).annotate({
-  identifier: "ActiveDirectoryConnectorsGetResponse",
-}) as any as S.Schema<ActiveDirectoryConnectorsGetResponse>;
-
-export interface ActiveDirectoryConnectorsListRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** The name of the data controller */
-  dataControllerName: string;
-}
-export const ActiveDirectoryConnectorsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dataControllerName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "ActiveDirectoryConnectorsListRequest",
-}) as any as S.Schema<ActiveDirectoryConnectorsListRequest>;
-
-/** Active directory connector resource */
-export interface ActiveDirectoryConnectorResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** null */
-  properties: ActiveDirectoryConnectorProperties;
-}
-export const ActiveDirectoryConnectorResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ActiveDirectoryConnectorProperties,
-  }),
-).annotate({
-  identifier: "ActiveDirectoryConnectorResource",
-}) as any as S.Schema<ActiveDirectoryConnectorResource>;
-
-/** Array of results. */
-export type ActiveDirectoryConnectorsListResponseValueList =
-  Array<ActiveDirectoryConnectorResource>;
-export const ActiveDirectoryConnectorsListResponseValueList =
-  /*@__PURE__*/ S.Array(
-    ActiveDirectoryConnectorResource,
-  ) as any as S.Schema<ActiveDirectoryConnectorsListResponseValueList>;
-
-export interface ActiveDirectoryConnectorsListResponse {
-  /** Array of results. */
-  value?: ActiveDirectoryConnectorsListResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const ActiveDirectoryConnectorsListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.optional(ActiveDirectoryConnectorsListResponseValueList),
-      nextLink: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ActiveDirectoryConnectorsListResponse",
-}) as any as S.Schema<ActiveDirectoryConnectorsListResponse>;
-
-export interface DataControllersDeleteDataControllerRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** The name of the data controller */
-  dataControllerName: string;
-}
-export const DataControllersDeleteDataControllerRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dataControllerName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "DataControllersDeleteDataControllerRequest",
-  }) as any as S.Schema<DataControllersDeleteDataControllerRequest>;
-
-export interface DataControllersDeleteDataControllerResponse {}
-export const DataControllersDeleteDataControllerResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DataControllersDeleteDataControllerResponse",
-  }) as any as S.Schema<DataControllersDeleteDataControllerResponse>;
-
-export interface DataControllersGetDataControllerRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** The name of the data controller */
-  dataControllerName: string;
-}
-export const DataControllersGetDataControllerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dataControllerName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "DataControllersGetDataControllerRequest",
-}) as any as S.Schema<DataControllersGetDataControllerRequest>;
-
-/** Resource tags. */
-export type DataControllersGetDataControllerResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DataControllersGetDataControllerResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataControllersGetDataControllerResponseTagsMap>;
-
-/** The type of extendedLocation. */
-export type ExtendedLocationType = "CustomLocation";
-export const ExtendedLocationType = /*@__PURE__*/ S.String;
-
-/** The complex type of the extended location. */
-export interface DataControllersGetDataControllerResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const DataControllersGetDataControllerResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "DataControllersGetDataControllerResponseExtendedLocation",
-  }) as any as S.Schema<DataControllersGetDataControllerResponseExtendedLocation>;
-
-/** The infrastructure the data controller is running on. */
-export type DataControllerPropertiesInfrastructure =
-  | "azure"
-  | "gcp"
-  | "aws"
-  | "alibaba"
-  | "onpremises"
-  | "other";
-export const DataControllerPropertiesInfrastructure = /*@__PURE__*/ S.String;
-
-/** Properties from the Kubernetes data controller */
-export interface OnPremiseProperty {
-  /** A globally unique ID identifying the associated Kubernetes cluster */
-  id: string;
-  /** Certificate that contains the Kubernetes cluster public key used to verify signing */
-  publicSigningKey: string;
-  /** Unique thumbprint returned to customer to verify the certificate being uploaded */
-  signingCertificateThumbprint?: string;
-}
-export const OnPremiseProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    publicSigningKey: S.String,
-    signingCertificateThumbprint: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OnPremiseProperty",
-}) as any as S.Schema<OnPremiseProperty>;
-
-/** Properties on upload watermark. Mostly timestamp for each upload data type */
-export interface UploadWatermark {
-  /** Last uploaded date for metrics from kubernetes cluster. Defaults to current date time */
-  metrics?: string;
-  /** Last uploaded date for logs from kubernetes cluster. Defaults to current date time */
-  logs?: string;
-  /** Last uploaded date for usages from kubernetes cluster. Defaults to current date time */
-  usages?: string;
-}
-export const UploadWatermark = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metrics: S.optional(S.String),
-    logs: S.optional(S.String),
-    usages: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadWatermark",
-}) as any as S.Schema<UploadWatermark>;
-
-/** Username and password for basic login authentication. */
-export type DataControllerPropertiesBasicLoginInformation =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-export const DataControllerPropertiesBasicLoginInformation =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-
-/** Username and password for basic login authentication. */
-export type DataControllerPropertiesMetricsDashboardCredential =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-export const DataControllerPropertiesMetricsDashboardCredential =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-
-/** Username and password for basic login authentication. */
-export type DataControllerPropertiesLogsDashboardCredential =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-export const DataControllerPropertiesLogsDashboardCredential =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-
-/** Log analytics workspace id and primary key */
-export interface LogAnalyticsWorkspaceConfig {
-  /** Azure Log Analytics workspace ID */
-  workspaceId?: string;
-  /** Primary key of the workspace */
-  primaryKey?: string;
-}
-export const LogAnalyticsWorkspaceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workspaceId: S.optional(S.String),
-    primaryKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LogAnalyticsWorkspaceConfig",
-}) as any as S.Schema<LogAnalyticsWorkspaceConfig>;
-
-/** Service principal for uploading billing, metrics and logs. */
-export interface UploadServicePrincipal {
-  /** Client ID of the service principal for uploading data. */
-  clientId?: string;
-  /** Tenant ID of the service principal. */
-  tenantId?: string;
-  /** Authority for the service principal. Example: https://login.microsoftonline.com/ */
-  authority?: string;
-  /** Secret of the service principal */
-  clientSecret?: string | Redacted.Redacted<string>;
-}
-export const UploadServicePrincipal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    authority: S.optional(S.String),
-    clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({
-  identifier: "UploadServicePrincipal",
-}) as any as S.Schema<UploadServicePrincipal>;
-
-/** The data controller properties. */
-export interface DataControllerProperties {
-  /** The infrastructure the data controller is running on. */
-  infrastructure?: DataControllerPropertiesInfrastructure;
-  onPremiseProperty?: OnPremiseProperty;
-  /** The raw kubernetes information */
-  k8sRaw?: unknown;
-  uploadWatermark?: UploadWatermark;
-  /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
-  lastUploadedDate?: string;
-  /** Username and password for basic login authentication. */
-  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-  /** Username and password for basic login authentication. */
-  metricsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-  /** Username and password for basic login authentication. */
-  logsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-  logAnalyticsWorkspaceConfig?: LogAnalyticsWorkspaceConfig;
-  /** Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity. */
-  uploadServicePrincipal?: UploadServicePrincipal;
-  /** The provisioning state of the Arc Data Controller resource. */
-  provisioningState?: string;
-  /** If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to. */
-  clusterId?: string;
-  /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
-  extensionId?: string;
-}
-export const DataControllerProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infrastructure: S.optional(DataControllerPropertiesInfrastructure),
-    onPremiseProperty: S.optional(OnPremiseProperty),
-    k8sRaw: S.optional(S.Unknown),
-    uploadWatermark: S.optional(UploadWatermark),
-    lastUploadedDate: S.optional(S.String),
-    basicLoginInformation: S.optional(
-      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-    ),
-    metricsDashboardCredential: S.optional(
-      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-    ),
-    logsDashboardCredential: S.optional(
-      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-    ),
-    logAnalyticsWorkspaceConfig: S.optional(LogAnalyticsWorkspaceConfig),
-    uploadServicePrincipal: S.optional(UploadServicePrincipal),
-    provisioningState: S.optional(S.String),
-    clusterId: S.optional(S.String),
-    extensionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataControllerProperties",
-}) as any as S.Schema<DataControllerProperties>;
-
-export interface DataControllersGetDataControllerResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DataControllersGetDataControllerResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** The data controller's properties */
-  properties: DataControllerProperties;
-}
-export const DataControllersGetDataControllerResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(DataControllersGetDataControllerResponseTagsMap),
-      location: S.String,
-      extendedLocation: S.optional(
-        DataControllersGetDataControllerResponseExtendedLocation,
-      ),
-      properties: DataControllerProperties,
-    }),
-).annotate({
-  identifier: "DataControllersGetDataControllerResponse",
-}) as any as S.Schema<DataControllersGetDataControllerResponse>;
-
-export interface DataControllersListInGroupRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-}
-export const DataControllersListInGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "DataControllersListInGroupRequest",
-}) as any as S.Schema<DataControllersListInGroupRequest>;
-
-/** Resource tags. */
-export type DataControllerResourceTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DataControllerResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataControllerResourceTagsMap>;
-
-/** The complex type of the extended location. */
-export type DataControllerResourceExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-export const DataControllerResourceExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-
-/** Data controller resource */
-export interface DataControllerResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DataControllerResourceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** The data controller's properties */
-  properties: DataControllerProperties;
-}
-export const DataControllerResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DataControllerResourceTagsMap),
-    location: S.String,
-    extendedLocation: S.optional(
-      DataControllersGetDataControllerResponseExtendedLocation,
-    ),
-    properties: DataControllerProperties,
-  }),
-).annotate({
-  identifier: "DataControllerResource",
-}) as any as S.Schema<DataControllerResource>;
-
-/** Array of results. */
-export type DataControllersListInGroupResponseValueList =
-  Array<DataControllerResource>;
-export const DataControllersListInGroupResponseValueList =
-  /*@__PURE__*/ S.Array(
-    DataControllerResource,
-  ) as any as S.Schema<DataControllersListInGroupResponseValueList>;
-
-export interface DataControllersListInGroupResponse {
-  /** Array of results. */
-  value?: DataControllersListInGroupResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const DataControllersListInGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DataControllersListInGroupResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataControllersListInGroupResponse",
-}) as any as S.Schema<DataControllersListInGroupResponse>;
-
-export interface DataControllersListInSubscriptionRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-}
-export const DataControllersListInSubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/dataControllers",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "DataControllersListInSubscriptionRequest",
-}) as any as S.Schema<DataControllersListInSubscriptionRequest>;
-
-/** Array of results. */
-export type DataControllersListInSubscriptionResponseValueList =
-  Array<DataControllerResource>;
-export const DataControllersListInSubscriptionResponseValueList =
-  /*@__PURE__*/ S.Array(
-    DataControllerResource,
-  ) as any as S.Schema<DataControllersListInSubscriptionResponseValueList>;
-
-export interface DataControllersListInSubscriptionResponse {
-  /** Array of results. */
-  value?: DataControllersListInSubscriptionResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const DataControllersListInSubscriptionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(DataControllersListInSubscriptionResponseValueList),
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DataControllersListInSubscriptionResponse",
-  }) as any as S.Schema<DataControllersListInSubscriptionResponse>;
-
-/** Resource tags */
-export type DataControllersPatchDataControllerRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DataControllersPatchDataControllerRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataControllersPatchDataControllerRequestTagsMap>;
-
-/** The infrastructure the data controller is running on. */
-export type DataControllerPropertiesInputInfrastructure =
-  | "azure"
-  | "gcp"
-  | "aws"
-  | "alibaba"
-  | "onpremises"
-  | "other";
-export const DataControllerPropertiesInputInfrastructure =
-  /*@__PURE__*/ S.String;
-
-/** Username and password for basic login authentication. */
-export type DataControllerPropertiesInputBasicLoginInformation =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-export const DataControllerPropertiesInputBasicLoginInformation =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-
-/** Username and password for basic login authentication. */
-export type DataControllerPropertiesInputMetricsDashboardCredential =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-export const DataControllerPropertiesInputMetricsDashboardCredential =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-
-/** Username and password for basic login authentication. */
-export type DataControllerPropertiesInputLogsDashboardCredential =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-export const DataControllerPropertiesInputLogsDashboardCredential =
-  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-
-/** The data controller properties. */
-export interface DataControllerPropertiesInput {
-  /** The infrastructure the data controller is running on. */
-  infrastructure?: DataControllerPropertiesInputInfrastructure | (string & {});
-  onPremiseProperty?: OnPremiseProperty;
-  /** The raw kubernetes information */
-  k8sRaw?: unknown;
-  uploadWatermark?: UploadWatermark;
-  /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
-  lastUploadedDate?: string;
-  /** Username and password for basic login authentication. */
-  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-  /** Username and password for basic login authentication. */
-  metricsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-  /** Username and password for basic login authentication. */
-  logsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
-  logAnalyticsWorkspaceConfig?: LogAnalyticsWorkspaceConfig;
-  /** Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity. */
-  uploadServicePrincipal?: UploadServicePrincipal;
-  /** If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to. */
-  clusterId?: string;
-  /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
-  extensionId?: string;
-}
-export const DataControllerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infrastructure: S.optional(DataControllerPropertiesInputInfrastructure),
-    onPremiseProperty: S.optional(OnPremiseProperty),
-    k8sRaw: S.optional(S.Unknown),
-    uploadWatermark: S.optional(UploadWatermark),
-    lastUploadedDate: S.optional(S.String),
-    basicLoginInformation: S.optional(
-      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-    ),
-    metricsDashboardCredential: S.optional(
-      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-    ),
-    logsDashboardCredential: S.optional(
-      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-    ),
-    logAnalyticsWorkspaceConfig: S.optional(LogAnalyticsWorkspaceConfig),
-    uploadServicePrincipal: S.optional(UploadServicePrincipal),
-    clusterId: S.optional(S.String),
-    extensionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataControllerPropertiesInput",
-}) as any as S.Schema<DataControllerPropertiesInput>;
-
-export interface DataControllersPatchDataControllerRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** The name of the data controller */
-  dataControllerName: string;
-  /** Resource tags */
-  tags?: DataControllersPatchDataControllerRequestTagsMap;
-  /** The data controller's properties */
-  properties?: DataControllerPropertiesInput;
-}
-export const DataControllersPatchDataControllerRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dataControllerName: S.String.pipe(T.Label()),
-      tags: S.optional(DataControllersPatchDataControllerRequestTagsMap),
-      properties: S.optional(DataControllerPropertiesInput),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "DataControllersPatchDataControllerRequest",
-  }) as any as S.Schema<DataControllersPatchDataControllerRequest>;
-
-/** Resource tags. */
-export type DataControllersPatchDataControllerResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DataControllersPatchDataControllerResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataControllersPatchDataControllerResponseTagsMap>;
-
-/** The complex type of the extended location. */
-export type DataControllersPatchDataControllerResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-export const DataControllersPatchDataControllerResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-
-export interface DataControllersPatchDataControllerResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DataControllersPatchDataControllerResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** The data controller's properties */
-  properties: DataControllerProperties;
-}
-export const DataControllersPatchDataControllerResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(DataControllersPatchDataControllerResponseTagsMap),
-      location: S.String,
-      extendedLocation: S.optional(
-        DataControllersGetDataControllerResponseExtendedLocation,
-      ),
-      properties: DataControllerProperties,
-    }),
-  ).annotate({
-    identifier: "DataControllersPatchDataControllerResponse",
-  }) as any as S.Schema<DataControllersPatchDataControllerResponse>;
-
-/** Resource tags. */
-export type DataControllersPutDataControllerRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DataControllersPutDataControllerRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataControllersPutDataControllerRequestTagsMap>;
-
-/** The complex type of the extended location. */
-export interface DataControllersPutDataControllerRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
-export const DataControllersPutDataControllerRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "DataControllersPutDataControllerRequestExtendedLocation",
-  }) as any as S.Schema<DataControllersPutDataControllerRequestExtendedLocation>;
-
-export interface DataControllersPutDataControllerRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** The name of the data controller */
-  dataControllerName: string;
-  /** Resource tags. */
-  tags?: DataControllersPutDataControllerRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersPutDataControllerRequestExtendedLocation;
-  /** The data controller's properties */
-  properties: DataControllerPropertiesInput;
-}
-export const DataControllersPutDataControllerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dataControllerName: S.String.pipe(T.Label()),
-      tags: S.optional(DataControllersPutDataControllerRequestTagsMap),
-      location: S.String,
-      extendedLocation: S.optional(
-        DataControllersPutDataControllerRequestExtendedLocation,
-      ),
-      properties: DataControllerPropertiesInput,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "DataControllersPutDataControllerRequest",
-}) as any as S.Schema<DataControllersPutDataControllerRequest>;
-
-/** Resource tags. */
-export type DataControllersPutDataControllerResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DataControllersPutDataControllerResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataControllersPutDataControllerResponseTagsMap>;
-
-/** The complex type of the extended location. */
-export type DataControllersPutDataControllerResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-export const DataControllersPutDataControllerResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-
-export interface DataControllersPutDataControllerResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DataControllersPutDataControllerResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** The data controller's properties */
-  properties: DataControllerProperties;
-}
-export const DataControllersPutDataControllerResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(DataControllersPutDataControllerResponseTagsMap),
-      location: S.String,
-      extendedLocation: S.optional(
-        DataControllersGetDataControllerResponseExtendedLocation,
-      ),
-      properties: DataControllerProperties,
-    }),
-).annotate({
-  identifier: "DataControllersPutDataControllerResponse",
-}) as any as S.Schema<DataControllersPutDataControllerResponse>;
+  identifier: "CreateActiveDirectoryConnectorResponse",
+}) as any as S.Schema<CreateActiveDirectoryConnectorResponse>;
 
 /** The partner sync mode of the SQL managed instance. */
 export type FailoverGroupSpecPartnerSyncMode = "async" | "sync";
@@ -1261,7 +385,7 @@ export const FailoverGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "FailoverGroupPropertiesInput",
 }) as any as S.Schema<FailoverGroupPropertiesInput>;
 
-export interface FailoverGroupsCreateRequest {
+export interface CreateFailoverGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -1273,7 +397,7 @@ export interface FailoverGroupsCreateRequest {
   /** null */
   properties: FailoverGroupPropertiesInput;
 }
-export const FailoverGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateFailoverGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1289,8 +413,8 @@ export const FailoverGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "FailoverGroupsCreateRequest",
-}) as any as S.Schema<FailoverGroupsCreateRequest>;
+  identifier: "CreateFailoverGroupRequest",
+}) as any as S.Schema<CreateFailoverGroupRequest>;
 
 /** The provisioning state of the failover group resource. */
 export type FailoverGroupPropertiesProvisioningState =
@@ -1322,7 +446,7 @@ export const FailoverGroupProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "FailoverGroupProperties",
 }) as any as S.Schema<FailoverGroupProperties>;
 
-export interface FailoverGroupsCreateResponse {
+export interface CreateFailoverGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1334,7 +458,7 @@ export interface FailoverGroupsCreateResponse {
   /** null */
   properties: FailoverGroupProperties;
 }
-export const FailoverGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateFailoverGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1343,257 +467,8 @@ export const FailoverGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: FailoverGroupProperties,
   }),
 ).annotate({
-  identifier: "FailoverGroupsCreateResponse",
-}) as any as S.Schema<FailoverGroupsCreateResponse>;
-
-export interface FailoverGroupsDeleteRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Managed Instance */
-  sqlManagedInstanceName: string;
-  /** The name of the Failover Group */
-  failoverGroupName: string;
-}
-export const FailoverGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlManagedInstanceName: S.String.pipe(T.Label()),
-    failoverGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "FailoverGroupsDeleteRequest",
-}) as any as S.Schema<FailoverGroupsDeleteRequest>;
-
-export interface FailoverGroupsDeleteResponse {}
-export const FailoverGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FailoverGroupsDeleteResponse",
-}) as any as S.Schema<FailoverGroupsDeleteResponse>;
-
-export interface FailoverGroupsGetRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Managed Instance */
-  sqlManagedInstanceName: string;
-  /** The name of the Failover Group */
-  failoverGroupName: string;
-}
-export const FailoverGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlManagedInstanceName: S.String.pipe(T.Label()),
-    failoverGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "FailoverGroupsGetRequest",
-}) as any as S.Schema<FailoverGroupsGetRequest>;
-
-export interface FailoverGroupsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** null */
-  properties: FailoverGroupProperties;
-}
-export const FailoverGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: FailoverGroupProperties,
-  }),
-).annotate({
-  identifier: "FailoverGroupsGetResponse",
-}) as any as S.Schema<FailoverGroupsGetResponse>;
-
-export interface FailoverGroupsListRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Managed Instance */
-  sqlManagedInstanceName: string;
-}
-export const FailoverGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlManagedInstanceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "FailoverGroupsListRequest",
-}) as any as S.Schema<FailoverGroupsListRequest>;
-
-/** A failover group resource. */
-export interface FailoverGroupResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** null */
-  properties: FailoverGroupProperties;
-}
-export const FailoverGroupResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: FailoverGroupProperties,
-  }),
-).annotate({
-  identifier: "FailoverGroupResource",
-}) as any as S.Schema<FailoverGroupResource>;
-
-/** Array of failover group results. */
-export type FailoverGroupsListResponseValueList = Array<FailoverGroupResource>;
-export const FailoverGroupsListResponseValueList = /*@__PURE__*/ S.Array(
-  FailoverGroupResource,
-) as any as S.Schema<FailoverGroupsListResponseValueList>;
-
-export interface FailoverGroupsListResponse {
-  /** Array of failover group results. */
-  value?: FailoverGroupsListResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const FailoverGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(FailoverGroupsListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FailoverGroupsListResponse",
-}) as any as S.Schema<FailoverGroupsListResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.AzureArcData/operations",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-/** Display metadata associated with the operation. */
-export interface OperationDisplay {
-  /** The localized friendly form of the resource provider name. */
-  provider: string;
-  /** The localized friendly form of the resource type related to this action/operation. */
-  resource: string;
-  /** The localized friendly name for the operation. */
-  operation: string;
-  /** The localized friendly description for the operation. */
-  description: string;
-}
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.String,
-    resource: S.String,
-    operation: S.String,
-    description: S.String,
-  }),
-).annotate({
-  identifier: "OperationDisplay",
-}) as any as S.Schema<OperationDisplay>;
-
-/** The intended executor of the operation. */
-export type OperationOrigin = "user" | "system";
-export const OperationOrigin = /*@__PURE__*/ S.String;
-
-/** Additional descriptions for the operation. */
-export type OperationPropertiesMap = { [key: string]: unknown | undefined };
-export const OperationPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationPropertiesMap>;
-
-/** Azure Data Services on Azure Arc operation definition. */
-export interface Operation {
-  /** The name of the operation being performed on this particular object. */
-  name: string;
-  /** The localized display information for this particular operation / action. */
-  display: OperationDisplay;
-  /** The intended executor of the operation. */
-  origin?: OperationOrigin;
-  /** Indicates whether the operation is a data action */
-  isDataAction: boolean;
-  /** Additional descriptions for the operation. */
-  properties?: OperationPropertiesMap;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    display: OperationDisplay,
-    origin: S.optional(OperationOrigin),
-    isDataAction: S.Boolean,
-    properties: S.optional(OperationPropertiesMap),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** Array of results. */
-export type OperationsListResponseValueList = Array<Operation>;
-export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationsListResponseValueList>;
-
-export interface OperationsListResponse {
-  /** Array of results. */
-  value?: OperationsListResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationsListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
+  identifier: "CreateFailoverGroupResponse",
+}) as any as S.Schema<CreateFailoverGroupResponse>;
 
 /** Resource tags. */
 export type PostgresInstancesCreateRequestTagsMap = {
@@ -1604,11 +479,26 @@ export const PostgresInstancesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<PostgresInstancesCreateRequestTagsMap>;
 
+/** The type of extendedLocation. */
+export type ExtendedLocationType = "CustomLocation";
+export const ExtendedLocationType = /*@__PURE__*/ S.String;
+
 /** The complex type of the extended location. */
-export type PostgresInstancesCreateRequestExtendedLocation =
-  DataControllersPutDataControllerRequestExtendedLocation;
+export interface PostgresInstancesCreateRequestExtendedLocation {
+  /** The name of the extended location. */
+  name?: string;
+  /** The type of the extended location. */
+  type?: ExtendedLocationType | (string & {});
+}
 export const PostgresInstancesCreateRequestExtendedLocation =
-  DataControllersPutDataControllerRequestExtendedLocation;
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(ExtendedLocationType),
+    }),
+  ).annotate({
+    identifier: "PostgresInstancesCreateRequestExtendedLocation",
+  }) as any as S.Schema<PostgresInstancesCreateRequestExtendedLocation>;
 
 /** Username and password for basic login authentication. */
 export type PostgresInstancePropertiesInputBasicLoginInformation =
@@ -1675,7 +565,7 @@ export const PostgresInstanceSku = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresInstanceSku",
 }) as any as S.Schema<PostgresInstanceSku>;
 
-export interface PostgresInstancesCreateRequest {
+export interface CreatePostgresInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -1687,13 +577,13 @@ export interface PostgresInstancesCreateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: DataControllersPutDataControllerRequestExtendedLocation;
+  extendedLocation?: PostgresInstancesCreateRequestExtendedLocation;
   /** null */
   properties: PostgresInstancePropertiesInput;
   /** Resource sku. */
   sku?: PostgresInstanceSku;
 }
-export const PostgresInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreatePostgresInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1701,7 +591,7 @@ export const PostgresInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PostgresInstancesCreateRequestTagsMap),
     location: S.String,
     extendedLocation: S.optional(
-      DataControllersPutDataControllerRequestExtendedLocation,
+      PostgresInstancesCreateRequestExtendedLocation,
     ),
     properties: PostgresInstancePropertiesInput,
     sku: S.optional(PostgresInstanceSku),
@@ -1714,8 +604,8 @@ export const PostgresInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PostgresInstancesCreateRequest",
-}) as any as S.Schema<PostgresInstancesCreateRequest>;
+  identifier: "CreatePostgresInstanceRequest",
+}) as any as S.Schema<CreatePostgresInstanceRequest>;
 
 /** Resource tags. */
 export type PostgresInstancesCreateResponseTagsMap = {
@@ -1727,10 +617,21 @@ export const PostgresInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PostgresInstancesCreateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export type PostgresInstancesCreateResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
+export interface PostgresInstancesCreateResponseExtendedLocation {
+  /** The name of the extended location. */
+  name?: string;
+  /** The type of the extended location. */
+  type?: ExtendedLocationType;
+}
 export const PostgresInstancesCreateResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(ExtendedLocationType),
+    }),
+  ).annotate({
+    identifier: "PostgresInstancesCreateResponseExtendedLocation",
+  }) as any as S.Schema<PostgresInstancesCreateResponseExtendedLocation>;
 
 /** Username and password for basic login authentication. */
 export type PostgresInstancePropertiesBasicLoginInformation =
@@ -1768,7 +669,7 @@ export const PostgresInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresInstanceProperties",
 }) as any as S.Schema<PostgresInstanceProperties>;
 
-export interface PostgresInstancesCreateResponse {
+export interface CreatePostgresInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1782,13 +683,13 @@ export interface PostgresInstancesCreateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
   /** null */
   properties: PostgresInstanceProperties;
   /** Resource sku. */
   sku?: PostgresInstanceSku;
 }
-export const PostgresInstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreatePostgresInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1797,355 +698,14 @@ export const PostgresInstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PostgresInstancesCreateResponseTagsMap),
     location: S.String,
     extendedLocation: S.optional(
-      DataControllersGetDataControllerResponseExtendedLocation,
+      PostgresInstancesCreateResponseExtendedLocation,
     ),
     properties: PostgresInstanceProperties,
     sku: S.optional(PostgresInstanceSku),
   }),
 ).annotate({
-  identifier: "PostgresInstancesCreateResponse",
-}) as any as S.Schema<PostgresInstancesCreateResponse>;
-
-export interface PostgresInstancesDeleteRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of Postgres Instance */
-  postgresInstanceName: string;
-}
-export const PostgresInstancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    postgresInstanceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "PostgresInstancesDeleteRequest",
-}) as any as S.Schema<PostgresInstancesDeleteRequest>;
-
-export interface PostgresInstancesDeleteResponse {}
-export const PostgresInstancesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PostgresInstancesDeleteResponse",
-}) as any as S.Schema<PostgresInstancesDeleteResponse>;
-
-export interface PostgresInstancesGetRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of Postgres Instance */
-  postgresInstanceName: string;
-}
-export const PostgresInstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    postgresInstanceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "PostgresInstancesGetRequest",
-}) as any as S.Schema<PostgresInstancesGetRequest>;
-
-/** Resource tags. */
-export type PostgresInstancesGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const PostgresInstancesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PostgresInstancesGetResponseTagsMap>;
-
-/** The complex type of the extended location. */
-export type PostgresInstancesGetResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-export const PostgresInstancesGetResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-
-export interface PostgresInstancesGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: PostgresInstancesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** null */
-  properties: PostgresInstanceProperties;
-  /** Resource sku. */
-  sku?: PostgresInstanceSku;
-}
-export const PostgresInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PostgresInstancesGetResponseTagsMap),
-    location: S.String,
-    extendedLocation: S.optional(
-      DataControllersGetDataControllerResponseExtendedLocation,
-    ),
-    properties: PostgresInstanceProperties,
-    sku: S.optional(PostgresInstanceSku),
-  }),
-).annotate({
-  identifier: "PostgresInstancesGetResponse",
-}) as any as S.Schema<PostgresInstancesGetResponse>;
-
-export interface PostgresInstancesListRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-}
-export const PostgresInstancesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/postgresInstances",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "PostgresInstancesListRequest",
-}) as any as S.Schema<PostgresInstancesListRequest>;
-
-/** Resource tags. */
-export type PostgresInstanceTagsMap = { [key: string]: string | undefined };
-export const PostgresInstanceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PostgresInstanceTagsMap>;
-
-/** The complex type of the extended location. */
-export type PostgresInstanceExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-export const PostgresInstanceExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-
-/** A Postgres Instance. */
-export interface PostgresInstance {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: PostgresInstanceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** null */
-  properties: PostgresInstanceProperties;
-  /** Resource sku. */
-  sku?: PostgresInstanceSku;
-}
-export const PostgresInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PostgresInstanceTagsMap),
-    location: S.String,
-    extendedLocation: S.optional(
-      DataControllersGetDataControllerResponseExtendedLocation,
-    ),
-    properties: PostgresInstanceProperties,
-    sku: S.optional(PostgresInstanceSku),
-  }),
-).annotate({
-  identifier: "PostgresInstance",
-}) as any as S.Schema<PostgresInstance>;
-
-/** Array of results. */
-export type PostgresInstancesListResponseValueList = Array<PostgresInstance>;
-export const PostgresInstancesListResponseValueList = /*@__PURE__*/ S.Array(
-  PostgresInstance,
-) as any as S.Schema<PostgresInstancesListResponseValueList>;
-
-export interface PostgresInstancesListResponse {
-  /** Array of results. */
-  value?: PostgresInstancesListResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const PostgresInstancesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PostgresInstancesListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostgresInstancesListResponse",
-}) as any as S.Schema<PostgresInstancesListResponse>;
-
-export interface PostgresInstancesListByResourceGroupRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-}
-export const PostgresInstancesListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PostgresInstancesListByResourceGroupRequest",
-  }) as any as S.Schema<PostgresInstancesListByResourceGroupRequest>;
-
-/** Array of results. */
-export type PostgresInstancesListByResourceGroupResponseValueList =
-  Array<PostgresInstance>;
-export const PostgresInstancesListByResourceGroupResponseValueList =
-  /*@__PURE__*/ S.Array(
-    PostgresInstance,
-  ) as any as S.Schema<PostgresInstancesListByResourceGroupResponseValueList>;
-
-export interface PostgresInstancesListByResourceGroupResponse {
-  /** Array of results. */
-  value?: PostgresInstancesListByResourceGroupResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const PostgresInstancesListByResourceGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(PostgresInstancesListByResourceGroupResponseValueList),
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PostgresInstancesListByResourceGroupResponse",
-  }) as any as S.Schema<PostgresInstancesListByResourceGroupResponse>;
-
-/** Resource tags. */
-export type PostgresInstancesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const PostgresInstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PostgresInstancesUpdateRequestTagsMap>;
-
-export interface PostgresInstancesUpdateRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of Postgres Instance */
-  postgresInstanceName: string;
-  /** Resource tags. */
-  tags?: PostgresInstancesUpdateRequestTagsMap;
-  properties?: PostgresInstancePropertiesInput;
-}
-export const PostgresInstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    postgresInstanceName: S.String.pipe(T.Label()),
-    tags: S.optional(PostgresInstancesUpdateRequestTagsMap),
-    properties: S.optional(PostgresInstancePropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "PostgresInstancesUpdateRequest",
-}) as any as S.Schema<PostgresInstancesUpdateRequest>;
-
-/** Resource tags. */
-export type PostgresInstancesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const PostgresInstancesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PostgresInstancesUpdateResponseTagsMap>;
-
-/** The complex type of the extended location. */
-export type PostgresInstancesUpdateResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-export const PostgresInstancesUpdateResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-
-export interface PostgresInstancesUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: PostgresInstancesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** null */
-  properties: PostgresInstanceProperties;
-  /** Resource sku. */
-  sku?: PostgresInstanceSku;
-}
-export const PostgresInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PostgresInstancesUpdateResponseTagsMap),
-    location: S.String,
-    extendedLocation: S.optional(
-      DataControllersGetDataControllerResponseExtendedLocation,
-    ),
-    properties: PostgresInstanceProperties,
-    sku: S.optional(PostgresInstanceSku),
-  }),
-).annotate({
-  identifier: "PostgresInstancesUpdateResponse",
-}) as any as S.Schema<PostgresInstancesUpdateResponse>;
+  identifier: "CreatePostgresInstanceResponse",
+}) as any as S.Schema<CreatePostgresInstanceResponse>;
 
 /** Resource tags. */
 export type SqlManagedInstancesCreateRequestTagsMap = {
@@ -2435,9 +995,9 @@ export const SqlManagedInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The complex type of the extended location. */
 export type SqlManagedInstancesCreateRequestExtendedLocation =
-  DataControllersPutDataControllerRequestExtendedLocation;
+  PostgresInstancesCreateRequestExtendedLocation;
 export const SqlManagedInstancesCreateRequestExtendedLocation =
-  DataControllersPutDataControllerRequestExtendedLocation;
+  PostgresInstancesCreateRequestExtendedLocation;
 
 /** The name of the SKU. */
 export type SqlManagedInstanceSkuName = "vCore";
@@ -2475,7 +1035,7 @@ export const SqlManagedInstanceSku = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlManagedInstanceSku",
 }) as any as S.Schema<SqlManagedInstanceSku>;
 
-export interface SqlManagedInstancesCreateRequest {
+export interface CreateSqlManagedInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -2489,11 +1049,11 @@ export interface SqlManagedInstancesCreateRequest {
   /** null */
   properties: SqlManagedInstancePropertiesInput;
   /** The complex type of the extended location. */
-  extendedLocation?: DataControllersPutDataControllerRequestExtendedLocation;
+  extendedLocation?: PostgresInstancesCreateRequestExtendedLocation;
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
-export const SqlManagedInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSqlManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2502,7 +1062,7 @@ export const SqlManagedInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: SqlManagedInstancePropertiesInput,
     extendedLocation: S.optional(
-      DataControllersPutDataControllerRequestExtendedLocation,
+      PostgresInstancesCreateRequestExtendedLocation,
     ),
     sku: S.optional(SqlManagedInstanceSku),
   }).pipe(
@@ -2514,8 +1074,8 @@ export const SqlManagedInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SqlManagedInstancesCreateRequest",
-}) as any as S.Schema<SqlManagedInstancesCreateRequest>;
+  identifier: "CreateSqlManagedInstanceRequest",
+}) as any as S.Schema<CreateSqlManagedInstanceRequest>;
 
 /** Resource tags. */
 export type SqlManagedInstancesCreateResponseTagsMap = {
@@ -2589,11 +1149,11 @@ export const SqlManagedInstanceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The complex type of the extended location. */
 export type SqlManagedInstancesCreateResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
+  PostgresInstancesCreateResponseExtendedLocation;
 export const SqlManagedInstancesCreateResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
+  PostgresInstancesCreateResponseExtendedLocation;
 
-export interface SqlManagedInstancesCreateResponse {
+export interface CreateSqlManagedInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2609,11 +1169,11 @@ export interface SqlManagedInstancesCreateResponse {
   /** null */
   properties: SqlManagedInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
-export const SqlManagedInstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateSqlManagedInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2623,415 +1183,23 @@ export const SqlManagedInstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: SqlManagedInstanceProperties,
     extendedLocation: S.optional(
-      DataControllersGetDataControllerResponseExtendedLocation,
+      PostgresInstancesCreateResponseExtendedLocation,
     ),
     sku: S.optional(SqlManagedInstanceSku),
   }),
 ).annotate({
-  identifier: "SqlManagedInstancesCreateResponse",
-}) as any as S.Schema<SqlManagedInstancesCreateResponse>;
-
-export interface SqlManagedInstancesDeleteRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Managed Instance */
-  sqlManagedInstanceName: string;
-}
-export const SqlManagedInstancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlManagedInstanceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlManagedInstancesDeleteRequest",
-}) as any as S.Schema<SqlManagedInstancesDeleteRequest>;
-
-export interface SqlManagedInstancesDeleteResponse {}
-export const SqlManagedInstancesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SqlManagedInstancesDeleteResponse",
-}) as any as S.Schema<SqlManagedInstancesDeleteResponse>;
-
-export interface SqlManagedInstancesGetRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Managed Instance */
-  sqlManagedInstanceName: string;
-}
-export const SqlManagedInstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlManagedInstanceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlManagedInstancesGetRequest",
-}) as any as S.Schema<SqlManagedInstancesGetRequest>;
+  identifier: "CreateSqlManagedInstanceResponse",
+}) as any as S.Schema<CreateSqlManagedInstanceResponse>;
 
 /** Resource tags. */
-export type SqlManagedInstancesGetResponseTagsMap = {
+export type SqlServerAvailabilityGroupsCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlManagedInstancesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlManagedInstancesGetResponseTagsMap>;
-
-/** The complex type of the extended location. */
-export type SqlManagedInstancesGetResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-export const SqlManagedInstancesGetResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-
-export interface SqlManagedInstancesGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlManagedInstancesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** null */
-  properties: SqlManagedInstanceProperties;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** Resource sku. */
-  sku?: SqlManagedInstanceSku;
-}
-export const SqlManagedInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlManagedInstancesGetResponseTagsMap),
-    location: S.String,
-    properties: SqlManagedInstanceProperties,
-    extendedLocation: S.optional(
-      DataControllersGetDataControllerResponseExtendedLocation,
-    ),
-    sku: S.optional(SqlManagedInstanceSku),
-  }),
-).annotate({
-  identifier: "SqlManagedInstancesGetResponse",
-}) as any as S.Schema<SqlManagedInstancesGetResponse>;
-
-export interface SqlManagedInstancesListRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-}
-export const SqlManagedInstancesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlManagedInstances",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlManagedInstancesListRequest",
-}) as any as S.Schema<SqlManagedInstancesListRequest>;
-
-/** Resource tags. */
-export type SqlManagedInstanceTagsMap = { [key: string]: string | undefined };
-export const SqlManagedInstanceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlManagedInstanceTagsMap>;
-
-/** The complex type of the extended location. */
-export type SqlManagedInstanceExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-export const SqlManagedInstanceExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-
-/** A SqlManagedInstance. */
-export interface SqlManagedInstance {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlManagedInstanceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** null */
-  properties: SqlManagedInstanceProperties;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** Resource sku. */
-  sku?: SqlManagedInstanceSku;
-}
-export const SqlManagedInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlManagedInstanceTagsMap),
-    location: S.String,
-    properties: SqlManagedInstanceProperties,
-    extendedLocation: S.optional(
-      DataControllersGetDataControllerResponseExtendedLocation,
-    ),
-    sku: S.optional(SqlManagedInstanceSku),
-  }),
-).annotate({
-  identifier: "SqlManagedInstance",
-}) as any as S.Schema<SqlManagedInstance>;
-
-/** Array of results. */
-export type SqlManagedInstancesListResponseValueList =
-  Array<SqlManagedInstance>;
-export const SqlManagedInstancesListResponseValueList = /*@__PURE__*/ S.Array(
-  SqlManagedInstance,
-) as any as S.Schema<SqlManagedInstancesListResponseValueList>;
-
-export interface SqlManagedInstancesListResponse {
-  /** Array of results. */
-  value?: SqlManagedInstancesListResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const SqlManagedInstancesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SqlManagedInstancesListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlManagedInstancesListResponse",
-}) as any as S.Schema<SqlManagedInstancesListResponse>;
-
-export interface SqlManagedInstancesListByResourceGroupRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-}
-export const SqlManagedInstancesListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlManagedInstancesListByResourceGroupRequest",
-  }) as any as S.Schema<SqlManagedInstancesListByResourceGroupRequest>;
-
-/** Array of results. */
-export type SqlManagedInstancesListByResourceGroupResponseValueList =
-  Array<SqlManagedInstance>;
-export const SqlManagedInstancesListByResourceGroupResponseValueList =
-  /*@__PURE__*/ S.Array(
-    SqlManagedInstance,
-  ) as any as S.Schema<SqlManagedInstancesListByResourceGroupResponseValueList>;
-
-export interface SqlManagedInstancesListByResourceGroupResponse {
-  /** Array of results. */
-  value?: SqlManagedInstancesListByResourceGroupResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const SqlManagedInstancesListByResourceGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(
-        SqlManagedInstancesListByResourceGroupResponseValueList,
-      ),
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SqlManagedInstancesListByResourceGroupResponse",
-  }) as any as S.Schema<SqlManagedInstancesListByResourceGroupResponse>;
-
-/** Resource tags. */
-export type SqlManagedInstancesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlManagedInstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlManagedInstancesUpdateRequestTagsMap>;
-
-export interface SqlManagedInstancesUpdateRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Managed Instance */
-  sqlManagedInstanceName: string;
-  /** Resource tags. */
-  tags?: SqlManagedInstancesUpdateRequestTagsMap;
-}
-export const SqlManagedInstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlManagedInstanceName: S.String.pipe(T.Label()),
-    tags: S.optional(SqlManagedInstancesUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlManagedInstancesUpdateRequest",
-}) as any as S.Schema<SqlManagedInstancesUpdateRequest>;
-
-/** Resource tags. */
-export type SqlManagedInstancesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlManagedInstancesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlManagedInstancesUpdateResponseTagsMap>;
-
-/** The complex type of the extended location. */
-export type SqlManagedInstancesUpdateResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-export const SqlManagedInstancesUpdateResponseExtendedLocation =
-  DataControllersGetDataControllerResponseExtendedLocation;
-
-export interface SqlManagedInstancesUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlManagedInstancesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** null */
-  properties: SqlManagedInstanceProperties;
-  /** The complex type of the extended location. */
-  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
-  /** Resource sku. */
-  sku?: SqlManagedInstanceSku;
-}
-export const SqlManagedInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlManagedInstancesUpdateResponseTagsMap),
-    location: S.String,
-    properties: SqlManagedInstanceProperties,
-    extendedLocation: S.optional(
-      DataControllersGetDataControllerResponseExtendedLocation,
-    ),
-    sku: S.optional(SqlManagedInstanceSku),
-  }),
-).annotate({
-  identifier: "SqlManagedInstancesUpdateResponse",
-}) as any as S.Schema<SqlManagedInstancesUpdateResponse>;
-
-/** List of database names. */
-export type SqlServerAvailabilityGroupsAddDatabasesRequestValuesList =
-  Array<string>;
-export const SqlServerAvailabilityGroupsAddDatabasesRequestValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesRequestValuesList>;
-
-export interface SqlServerAvailabilityGroupsAddDatabasesRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-  /** List of database names. */
-  values?: SqlServerAvailabilityGroupsAddDatabasesRequestValuesList;
-}
-export const SqlServerAvailabilityGroupsAddDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-      values: S.optional(
-        SqlServerAvailabilityGroupsAddDatabasesRequestValuesList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/addDatabases",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsAddDatabasesRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap =
+export const SqlServerAvailabilityGroupsCreateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap>;
-
-export type AvailabilityGroupInfoReplicationPartnerType =
-  | "SQLServer"
-  | "AzureSQLVM"
-  | "AzureSQLManagedInstance"
-  | "Unknown";
-export const AvailabilityGroupInfoReplicationPartnerType =
-  /*@__PURE__*/ S.String;
+  ) as any as S.Schema<SqlServerAvailabilityGroupsCreateRequestTagsMap>;
 
 export interface SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem {
   /** IPV4 address */
@@ -3091,6 +1259,335 @@ export const SqlAvailabilityGroupStaticIPListenerProperties =
   ).annotate({
     identifier: "SqlAvailabilityGroupStaticIPListenerProperties",
   }) as any as S.Schema<SqlAvailabilityGroupStaticIPListenerProperties>;
+
+/** The specifications of the availability group state */
+export interface AvailabilityGroupInfoInput {
+  /** User-defined failure condition level under which an automatic failover must be triggered. */
+  failureConditionLevel?: number;
+  /** Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding. */
+  healthCheckTimeout?: number;
+  /** Specifies whether this is a basic availability group. */
+  basicFeatures?: boolean;
+  /** Specifies whether DTC support has been enabled for this availability group. */
+  dtcSupport?: boolean;
+  /** Specifies whether the availability group supports failover for database health conditions. */
+  dbFailover?: boolean;
+  /** Specifies whether this is a distributed availability group. */
+  isDistributed?: boolean;
+  /** The number of secondary replicas that must be in a synchronized state for a commit to complete. */
+  requiredSynchronizedSecondariesToCommit?: number;
+  /** SQL Server availability group contained system databases. */
+  isContained?: boolean;
+  /** The listener for the sql server availability group */
+  listener?: SqlAvailabilityGroupStaticIPListenerProperties;
+}
+export const AvailabilityGroupInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    failureConditionLevel: S.optional(S.Number),
+    healthCheckTimeout: S.optional(S.Number),
+    basicFeatures: S.optional(S.Boolean),
+    dtcSupport: S.optional(S.Boolean),
+    dbFailover: S.optional(S.Boolean),
+    isDistributed: S.optional(S.Boolean),
+    requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
+    isContained: S.optional(S.Boolean),
+    listener: S.optional(SqlAvailabilityGroupStaticIPListenerProperties),
+  }),
+).annotate({
+  identifier: "AvailabilityGroupInfoInput",
+}) as any as S.Schema<AvailabilityGroupInfoInput>;
+
+/** The endpoint connection authentication type(s). */
+export type AvailabilityGroupConfigureInputEndpointAuthenticationMode =
+  | "Windows_NTLM"
+  | "Windows_Kerberos"
+  | "Windows_Negotiate"
+  | "Certificate"
+  | "Windows_NTLM_Certificate"
+  | "Windows_Kerberos_Certificate"
+  | "Windows_Negotiate_Certificate"
+  | "Certificate_Windows_NTLM"
+  | "Certificate_Windows_Kerberos"
+  | "Certificate_Windows_Negotiate";
+export const AvailabilityGroupConfigureInputEndpointAuthenticationMode =
+  /*@__PURE__*/ S.String;
+
+/** Property that determines whether a given availability replica can run in synchronous-commit mode */
+export type AvailabilityGroupConfigureInputAvailabilityMode =
+  | "SYNCHRONOUS_COMMIT"
+  | "ASYNCHRONOUS_COMMIT";
+export const AvailabilityGroupConfigureInputAvailabilityMode =
+  /*@__PURE__*/ S.String;
+
+/** Property to set the failover mode of the availability group replica */
+export type AvailabilityGroupConfigureInputFailoverMode =
+  | "AUTOMATIC"
+  | "MANUAL"
+  | "EXTERNAL"
+  | "NONE";
+export const AvailabilityGroupConfigureInputFailoverMode =
+  /*@__PURE__*/ S.String;
+
+/** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
+export type AvailabilityGroupConfigureInputPrimaryAllowConnections =
+  | "ALL"
+  | "READ_WRITE";
+export const AvailabilityGroupConfigureInputPrimaryAllowConnections =
+  /*@__PURE__*/ S.String;
+
+/** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
+export type AvailabilityGroupConfigureInputSecondaryAllowConnections =
+  | "NO"
+  | "ALL"
+  | "READ_ONLY";
+export const AvailabilityGroupConfigureInputSecondaryAllowConnections =
+  /*@__PURE__*/ S.String;
+
+/** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
+export type AvailabilityGroupConfigureInputSeedingMode = "AUTOMATIC" | "MANUAL";
+export const AvailabilityGroupConfigureInputSeedingMode =
+  /*@__PURE__*/ S.String;
+
+/** The specifications of the availability group replica configuration */
+export interface AvailabilityGroupConfigureInput {
+  /** Name of the mirroring endpoint URL */
+  endpointName?: string;
+  /** Mirroring endpoint URL of availability group replica */
+  endpointUrl?: string;
+  /** The endpoint connection authentication type(s). */
+  endpointAuthenticationMode?:
+    | AvailabilityGroupConfigureInputEndpointAuthenticationMode
+    | (string & {});
+  /** Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified. */
+  certificateName?: string;
+  /** The login which will connect to the mirroring endpoint. */
+  endpointConnectLogin?: string;
+  /** Property that determines whether a given availability replica can run in synchronous-commit mode */
+  availabilityMode?:
+    | AvailabilityGroupConfigureInputAvailabilityMode
+    | (string & {});
+  /** Property to set the failover mode of the availability group replica */
+  failoverMode?: AvailabilityGroupConfigureInputFailoverMode | (string & {});
+  /** The time-out period of availability group session replica, in seconds. */
+  sessionTimeout?: number;
+  /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
+  primaryAllowConnections?:
+    | AvailabilityGroupConfigureInputPrimaryAllowConnections
+    | (string & {});
+  /** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
+  secondaryAllowConnections?:
+    | AvailabilityGroupConfigureInputSecondaryAllowConnections
+    | (string & {});
+  /** Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group. */
+  backupPriority?: number;
+  /** Connectivity endpoint (URL) of the read only availability replica. */
+  readOnlyRoutingUrl?: string;
+  /** Connectivity endpoint (URL) of the read write availability replica. */
+  readWriteRoutingUrl?: string;
+  /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
+  seedingMode?: AvailabilityGroupConfigureInputSeedingMode | (string & {});
+}
+export const AvailabilityGroupConfigureInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointName: S.optional(S.String),
+    endpointUrl: S.optional(S.String),
+    endpointAuthenticationMode: S.optional(
+      AvailabilityGroupConfigureInputEndpointAuthenticationMode,
+    ),
+    certificateName: S.optional(S.String),
+    endpointConnectLogin: S.optional(S.String),
+    availabilityMode: S.optional(
+      AvailabilityGroupConfigureInputAvailabilityMode,
+    ),
+    failoverMode: S.optional(AvailabilityGroupConfigureInputFailoverMode),
+    sessionTimeout: S.optional(S.Number),
+    primaryAllowConnections: S.optional(
+      AvailabilityGroupConfigureInputPrimaryAllowConnections,
+    ),
+    secondaryAllowConnections: S.optional(
+      AvailabilityGroupConfigureInputSecondaryAllowConnections,
+    ),
+    backupPriority: S.optional(S.Number),
+    readOnlyRoutingUrl: S.optional(S.String),
+    readWriteRoutingUrl: S.optional(S.String),
+    seedingMode: S.optional(AvailabilityGroupConfigureInputSeedingMode),
+  }),
+).annotate({
+  identifier: "AvailabilityGroupConfigureInput",
+}) as any as S.Schema<AvailabilityGroupConfigureInput>;
+
+/** The specifications of the availability group state */
+export interface AvailabilityGroupStateInput {}
+export const AvailabilityGroupStateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AvailabilityGroupStateInput",
+}) as any as S.Schema<AvailabilityGroupStateInput>;
+
+/** The properties of Arc Sql availability group replica resource */
+export interface SqlAvailabilityGroupReplicaResourcePropertiesInput {
+  /** The replica name. */
+  replicaName?: string;
+  /** Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG. */
+  replicaResourceId?: string;
+  /** null */
+  configure?: AvailabilityGroupConfigureInput;
+  /** null */
+  state?: AvailabilityGroupStateInput;
+}
+export const SqlAvailabilityGroupReplicaResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      replicaName: S.optional(S.String),
+      replicaResourceId: S.optional(S.String),
+      configure: S.optional(AvailabilityGroupConfigureInput),
+      state: S.optional(AvailabilityGroupStateInput),
+    }),
+  ).annotate({
+    identifier: "SqlAvailabilityGroupReplicaResourcePropertiesInput",
+  }) as any as S.Schema<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
+
+/** Array of Availability Group Replicas. */
+export type SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList =
+  Array<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
+export const SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList =
+  /*@__PURE__*/ S.Array(
+    SqlAvailabilityGroupReplicaResourcePropertiesInput,
+  ) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList>;
+
+/** A list of Availability Group Replicas. */
+export interface SqlServerAvailabilityGroupResourcePropertiesInputReplicas {
+  /** Array of Availability Group Replicas. */
+  value?: SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList;
+}
+export const SqlServerAvailabilityGroupResourcePropertiesInputReplicas =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(
+        SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList,
+      ),
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupResourcePropertiesInputReplicas",
+  }) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputReplicas>;
+
+/** The properties of Arc Sql availability group database replica resource */
+export interface SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput {
+  /** the database name. */
+  databaseName?: string;
+}
+export const SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      databaseName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput",
+  }) as any as S.Schema<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
+
+/** Array of Availability Group Database Replicas. */
+export type SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList =
+  Array<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
+export const SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList =
+  /*@__PURE__*/ S.Array(
+    SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput,
+  ) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList>;
+
+/** A list of Availability Group Database Replicas. */
+export interface SqlServerAvailabilityGroupResourcePropertiesInputDatabases {
+  /** Array of Availability Group Database Replicas. */
+  value?: SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList;
+}
+export const SqlServerAvailabilityGroupResourcePropertiesInputDatabases =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(
+        SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList,
+      ),
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupResourcePropertiesInputDatabases",
+  }) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputDatabases>;
+
+/** The properties of Arc Sql Server availability group resource */
+export interface SqlServerAvailabilityGroupResourcePropertiesInput {
+  /** Availability Group Info */
+  info?: AvailabilityGroupInfoInput;
+  /** A list of Availability Group Replicas. */
+  replicas?: SqlServerAvailabilityGroupResourcePropertiesInputReplicas;
+  /** A list of Availability Group Database Replicas. */
+  databases?: SqlServerAvailabilityGroupResourcePropertiesInputDatabases;
+}
+export const SqlServerAvailabilityGroupResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      info: S.optional(AvailabilityGroupInfoInput),
+      replicas: S.optional(
+        SqlServerAvailabilityGroupResourcePropertiesInputReplicas,
+      ),
+      databases: S.optional(
+        SqlServerAvailabilityGroupResourcePropertiesInputDatabases,
+      ),
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupResourcePropertiesInput",
+  }) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInput>;
+
+export interface CreateSqlServerAvailabilityGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourcePropertiesInput;
+}
+export const CreateSqlServerAvailabilityGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+      tags: S.optional(SqlServerAvailabilityGroupsCreateRequestTagsMap),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourcePropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "CreateSqlServerAvailabilityGroupRequest",
+}) as any as S.Schema<CreateSqlServerAvailabilityGroupRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsCreateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsCreateResponseTagsMap>;
+
+export type AvailabilityGroupInfoReplicationPartnerType =
+  | "SQLServer"
+  | "AzureSQLVM"
+  | "AzureSQLManagedInstance"
+  | "Unknown";
+export const AvailabilityGroupInfoReplicationPartnerType =
+  /*@__PURE__*/ S.String;
 
 /** The specifications of the availability group state */
 export interface AvailabilityGroupInfo {
@@ -3476,369 +1973,7 @@ export const SqlServerAvailabilityGroupResourceProperties =
     identifier: "SqlServerAvailabilityGroupResourceProperties",
   }) as any as S.Schema<SqlServerAvailabilityGroupResourceProperties>;
 
-export interface SqlServerAvailabilityGroupsAddDatabasesResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourceProperties;
-}
-export const SqlServerAvailabilityGroupsAddDatabasesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsAddDatabasesResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesResponse>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsCreateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsCreateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsCreateRequestTagsMap>;
-
-/** The specifications of the availability group state */
-export interface AvailabilityGroupInfoInput {
-  /** User-defined failure condition level under which an automatic failover must be triggered. */
-  failureConditionLevel?: number;
-  /** Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding. */
-  healthCheckTimeout?: number;
-  /** Specifies whether this is a basic availability group. */
-  basicFeatures?: boolean;
-  /** Specifies whether DTC support has been enabled for this availability group. */
-  dtcSupport?: boolean;
-  /** Specifies whether the availability group supports failover for database health conditions. */
-  dbFailover?: boolean;
-  /** Specifies whether this is a distributed availability group. */
-  isDistributed?: boolean;
-  /** The number of secondary replicas that must be in a synchronized state for a commit to complete. */
-  requiredSynchronizedSecondariesToCommit?: number;
-  /** SQL Server availability group contained system databases. */
-  isContained?: boolean;
-  /** The listener for the sql server availability group */
-  listener?: SqlAvailabilityGroupStaticIPListenerProperties;
-}
-export const AvailabilityGroupInfoInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failureConditionLevel: S.optional(S.Number),
-    healthCheckTimeout: S.optional(S.Number),
-    basicFeatures: S.optional(S.Boolean),
-    dtcSupport: S.optional(S.Boolean),
-    dbFailover: S.optional(S.Boolean),
-    isDistributed: S.optional(S.Boolean),
-    requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
-    isContained: S.optional(S.Boolean),
-    listener: S.optional(SqlAvailabilityGroupStaticIPListenerProperties),
-  }),
-).annotate({
-  identifier: "AvailabilityGroupInfoInput",
-}) as any as S.Schema<AvailabilityGroupInfoInput>;
-
-/** The endpoint connection authentication type(s). */
-export type AvailabilityGroupConfigureInputEndpointAuthenticationMode =
-  | "Windows_NTLM"
-  | "Windows_Kerberos"
-  | "Windows_Negotiate"
-  | "Certificate"
-  | "Windows_NTLM_Certificate"
-  | "Windows_Kerberos_Certificate"
-  | "Windows_Negotiate_Certificate"
-  | "Certificate_Windows_NTLM"
-  | "Certificate_Windows_Kerberos"
-  | "Certificate_Windows_Negotiate";
-export const AvailabilityGroupConfigureInputEndpointAuthenticationMode =
-  /*@__PURE__*/ S.String;
-
-/** Property that determines whether a given availability replica can run in synchronous-commit mode */
-export type AvailabilityGroupConfigureInputAvailabilityMode =
-  | "SYNCHRONOUS_COMMIT"
-  | "ASYNCHRONOUS_COMMIT";
-export const AvailabilityGroupConfigureInputAvailabilityMode =
-  /*@__PURE__*/ S.String;
-
-/** Property to set the failover mode of the availability group replica */
-export type AvailabilityGroupConfigureInputFailoverMode =
-  | "AUTOMATIC"
-  | "MANUAL"
-  | "EXTERNAL"
-  | "NONE";
-export const AvailabilityGroupConfigureInputFailoverMode =
-  /*@__PURE__*/ S.String;
-
-/** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
-export type AvailabilityGroupConfigureInputPrimaryAllowConnections =
-  | "ALL"
-  | "READ_WRITE";
-export const AvailabilityGroupConfigureInputPrimaryAllowConnections =
-  /*@__PURE__*/ S.String;
-
-/** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
-export type AvailabilityGroupConfigureInputSecondaryAllowConnections =
-  | "NO"
-  | "ALL"
-  | "READ_ONLY";
-export const AvailabilityGroupConfigureInputSecondaryAllowConnections =
-  /*@__PURE__*/ S.String;
-
-/** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
-export type AvailabilityGroupConfigureInputSeedingMode = "AUTOMATIC" | "MANUAL";
-export const AvailabilityGroupConfigureInputSeedingMode =
-  /*@__PURE__*/ S.String;
-
-/** The specifications of the availability group replica configuration */
-export interface AvailabilityGroupConfigureInput {
-  /** Name of the mirroring endpoint URL */
-  endpointName?: string;
-  /** Mirroring endpoint URL of availability group replica */
-  endpointUrl?: string;
-  /** The endpoint connection authentication type(s). */
-  endpointAuthenticationMode?:
-    | AvailabilityGroupConfigureInputEndpointAuthenticationMode
-    | (string & {});
-  /** Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified. */
-  certificateName?: string;
-  /** The login which will connect to the mirroring endpoint. */
-  endpointConnectLogin?: string;
-  /** Property that determines whether a given availability replica can run in synchronous-commit mode */
-  availabilityMode?:
-    | AvailabilityGroupConfigureInputAvailabilityMode
-    | (string & {});
-  /** Property to set the failover mode of the availability group replica */
-  failoverMode?: AvailabilityGroupConfigureInputFailoverMode | (string & {});
-  /** The time-out period of availability group session replica, in seconds. */
-  sessionTimeout?: number;
-  /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
-  primaryAllowConnections?:
-    | AvailabilityGroupConfigureInputPrimaryAllowConnections
-    | (string & {});
-  /** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
-  secondaryAllowConnections?:
-    | AvailabilityGroupConfigureInputSecondaryAllowConnections
-    | (string & {});
-  /** Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group. */
-  backupPriority?: number;
-  /** Connectivity endpoint (URL) of the read only availability replica. */
-  readOnlyRoutingUrl?: string;
-  /** Connectivity endpoint (URL) of the read write availability replica. */
-  readWriteRoutingUrl?: string;
-  /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
-  seedingMode?: AvailabilityGroupConfigureInputSeedingMode | (string & {});
-}
-export const AvailabilityGroupConfigureInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpointName: S.optional(S.String),
-    endpointUrl: S.optional(S.String),
-    endpointAuthenticationMode: S.optional(
-      AvailabilityGroupConfigureInputEndpointAuthenticationMode,
-    ),
-    certificateName: S.optional(S.String),
-    endpointConnectLogin: S.optional(S.String),
-    availabilityMode: S.optional(
-      AvailabilityGroupConfigureInputAvailabilityMode,
-    ),
-    failoverMode: S.optional(AvailabilityGroupConfigureInputFailoverMode),
-    sessionTimeout: S.optional(S.Number),
-    primaryAllowConnections: S.optional(
-      AvailabilityGroupConfigureInputPrimaryAllowConnections,
-    ),
-    secondaryAllowConnections: S.optional(
-      AvailabilityGroupConfigureInputSecondaryAllowConnections,
-    ),
-    backupPriority: S.optional(S.Number),
-    readOnlyRoutingUrl: S.optional(S.String),
-    readWriteRoutingUrl: S.optional(S.String),
-    seedingMode: S.optional(AvailabilityGroupConfigureInputSeedingMode),
-  }),
-).annotate({
-  identifier: "AvailabilityGroupConfigureInput",
-}) as any as S.Schema<AvailabilityGroupConfigureInput>;
-
-/** The specifications of the availability group state */
-export interface AvailabilityGroupStateInput {}
-export const AvailabilityGroupStateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AvailabilityGroupStateInput",
-}) as any as S.Schema<AvailabilityGroupStateInput>;
-
-/** The properties of Arc Sql availability group replica resource */
-export interface SqlAvailabilityGroupReplicaResourcePropertiesInput {
-  /** The replica name. */
-  replicaName?: string;
-  /** Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG. */
-  replicaResourceId?: string;
-  /** null */
-  configure?: AvailabilityGroupConfigureInput;
-  /** null */
-  state?: AvailabilityGroupStateInput;
-}
-export const SqlAvailabilityGroupReplicaResourcePropertiesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      replicaName: S.optional(S.String),
-      replicaResourceId: S.optional(S.String),
-      configure: S.optional(AvailabilityGroupConfigureInput),
-      state: S.optional(AvailabilityGroupStateInput),
-    }),
-  ).annotate({
-    identifier: "SqlAvailabilityGroupReplicaResourcePropertiesInput",
-  }) as any as S.Schema<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
-
-/** Array of Availability Group Replicas. */
-export type SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList =
-  Array<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
-export const SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList =
-  /*@__PURE__*/ S.Array(
-    SqlAvailabilityGroupReplicaResourcePropertiesInput,
-  ) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList>;
-
-/** A list of Availability Group Replicas. */
-export interface SqlServerAvailabilityGroupResourcePropertiesInputReplicas {
-  /** Array of Availability Group Replicas. */
-  value?: SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList;
-}
-export const SqlServerAvailabilityGroupResourcePropertiesInputReplicas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(
-        SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList,
-      ),
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupResourcePropertiesInputReplicas",
-  }) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputReplicas>;
-
-/** The properties of Arc Sql availability group database replica resource */
-export interface SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput {
-  /** the database name. */
-  databaseName?: string;
-}
-export const SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      databaseName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput",
-  }) as any as S.Schema<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
-
-/** Array of Availability Group Database Replicas. */
-export type SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList =
-  Array<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
-export const SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList =
-  /*@__PURE__*/ S.Array(
-    SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput,
-  ) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList>;
-
-/** A list of Availability Group Database Replicas. */
-export interface SqlServerAvailabilityGroupResourcePropertiesInputDatabases {
-  /** Array of Availability Group Database Replicas. */
-  value?: SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList;
-}
-export const SqlServerAvailabilityGroupResourcePropertiesInputDatabases =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(
-        SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList,
-      ),
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupResourcePropertiesInputDatabases",
-  }) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputDatabases>;
-
-/** The properties of Arc Sql Server availability group resource */
-export interface SqlServerAvailabilityGroupResourcePropertiesInput {
-  /** Availability Group Info */
-  info?: AvailabilityGroupInfoInput;
-  /** A list of Availability Group Replicas. */
-  replicas?: SqlServerAvailabilityGroupResourcePropertiesInputReplicas;
-  /** A list of Availability Group Database Replicas. */
-  databases?: SqlServerAvailabilityGroupResourcePropertiesInputDatabases;
-}
-export const SqlServerAvailabilityGroupResourcePropertiesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      info: S.optional(AvailabilityGroupInfoInput),
-      replicas: S.optional(
-        SqlServerAvailabilityGroupResourcePropertiesInputReplicas,
-      ),
-      databases: S.optional(
-        SqlServerAvailabilityGroupResourcePropertiesInputDatabases,
-      ),
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupResourcePropertiesInput",
-  }) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInput>;
-
-export interface SqlServerAvailabilityGroupsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourcePropertiesInput;
-}
-export const SqlServerAvailabilityGroupsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-      tags: S.optional(SqlServerAvailabilityGroupsCreateRequestTagsMap),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourcePropertiesInput,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupsCreateRequest",
-}) as any as S.Schema<SqlServerAvailabilityGroupsCreateRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsCreateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsCreateResponseTagsMap>;
-
-export interface SqlServerAvailabilityGroupsCreateResponse {
+export interface CreateSqlServerAvailabilityGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -3854,8 +1989,8 @@ export interface SqlServerAvailabilityGroupsCreateResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const SqlServerAvailabilityGroupsCreateResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateSqlServerAvailabilityGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
@@ -3865,9 +2000,9 @@ export const SqlServerAvailabilityGroupsCreateResponse =
       location: S.String,
       properties: SqlServerAvailabilityGroupResourceProperties,
     }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsCreateResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsCreateResponse>;
+).annotate({
+  identifier: "CreateSqlServerAvailabilityGroupResponse",
+}) as any as S.Schema<CreateSqlServerAvailabilityGroupResponse>;
 
 /** The endpoint connection authentication type(s). */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode =
@@ -4068,7 +2203,7 @@ export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType =
   /*@__PURE__*/ S.String;
 
-export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest {
+export interface CreateSqlServerAvailabilityGroupAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -4108,7 +2243,7 @@ export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest {
   /** The listener for the sql server availability group */
   listener?: SqlAvailabilityGroupStaticIPListenerProperties;
 }
-export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest =
+export const CreateSqlServerAvailabilityGroupAvailabilityGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -4148,8 +2283,8 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest =
       }),
     ),
   ).annotate({
-    identifier: "SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest>;
+    identifier: "CreateSqlServerAvailabilityGroupAvailabilityGroupRequest",
+  }) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupRequest>;
 
 /** Resource tags. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupResponseTagsMap =
@@ -4160,7 +2295,7 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupResponseTagsMap =
     S.String,
   ) as any as S.Schema<SqlServerAvailabilityGroupsCreateAvailabilityGroupResponseTagsMap>;
 
-export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse {
+export interface CreateSqlServerAvailabilityGroupAvailabilityGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -4176,7 +2311,7 @@ export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse =
+export const CreateSqlServerAvailabilityGroupAvailabilityGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -4190,8 +2325,8 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse =
       properties: SqlServerAvailabilityGroupResourceProperties,
     }),
   ).annotate({
-    identifier: "SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse>;
+    identifier: "CreateSqlServerAvailabilityGroupAvailabilityGroupResponse",
+  }) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupResponse>;
 
 /** The availability mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
@@ -4275,7 +2410,7 @@ export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurat
       "DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration",
   }) as any as S.Schema<DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration>;
 
-export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRequest {
+export interface CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -4289,7 +2424,7 @@ export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRe
   /** The initial secondary availability group for the distributed availability group. */
   secondaryAvailabilityGroup?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration;
 }
-export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRequest =
+export const CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -4312,8 +2447,8 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupReques
     ),
   ).annotate({
     identifier:
-      "SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRequest>;
+      "CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest",
+  }) as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest>;
 
 /** Resource tags. */
 export type SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponseTagsMap =
@@ -4324,7 +2459,7 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRespon
     S.String,
   ) as any as S.Schema<SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponseTagsMap>;
 
-export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponse {
+export interface CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -4340,7 +2475,7 @@ export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRe
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponse =
+export const CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -4355,8 +2490,8 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRespon
     }),
   ).annotate({
     identifier:
-      "SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponse>;
+      "CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse",
+  }) as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse>;
 
 /** List of availability group replicas. */
 export type AvailabilityGroupCreateUpdateConfigurationReplicasList =
@@ -4517,7 +2652,7 @@ export const MiLinkCreateUpdateConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "MiLinkCreateUpdateConfiguration",
 }) as any as S.Schema<MiLinkCreateUpdateConfiguration>;
 
-export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest {
+export interface CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -4531,7 +2666,7 @@ export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest {
   /** The MI Link specific distributed availability group configuration. */
   miLinkConfiguration?: MiLinkCreateUpdateConfiguration;
 }
-export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest =
+export const CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -4551,8 +2686,8 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest =
       }),
     ),
   ).annotate({
-    identifier: "SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest>;
+    identifier: "CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest",
+  }) as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest>;
 
 /** Resource tags. */
 export type SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponseTagsMap =
@@ -4563,7 +2698,7 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponseTagsMap
     S.String,
   ) as any as S.Schema<SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponseTagsMap>;
 
-export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponse {
+export interface CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -4579,7 +2714,7 @@ export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponse =
+export const CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -4593,699 +2728,8 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponse =
       properties: SqlServerAvailabilityGroupResourceProperties,
     }),
   ).annotate({
-    identifier: "SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponse>;
-
-export interface SqlServerAvailabilityGroupsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-}
-export const SqlServerAvailabilityGroupsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupsDeleteRequest",
-}) as any as S.Schema<SqlServerAvailabilityGroupsDeleteRequest>;
-
-export interface SqlServerAvailabilityGroupsDeleteResponse {}
-export const SqlServerAvailabilityGroupsDeleteResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SqlServerAvailabilityGroupsDeleteResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsDeleteResponse>;
-
-export interface SqlServerAvailabilityGroupsDeleteMiLinkRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-}
-export const SqlServerAvailabilityGroupsDeleteMiLinkRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/deleteMiLink",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsDeleteMiLinkRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsDeleteMiLinkRequest>;
-
-export interface SqlServerAvailabilityGroupsDeleteMiLinkResponse {}
-export const SqlServerAvailabilityGroupsDeleteMiLinkResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SqlServerAvailabilityGroupsDeleteMiLinkResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsDeleteMiLinkResponse>;
-
-export interface SqlServerAvailabilityGroupsDetailViewRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-}
-export const SqlServerAvailabilityGroupsDetailViewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/getDetailView",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsDetailViewRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsDetailViewResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsDetailViewResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponseTagsMap>;
-
-export interface SqlServerAvailabilityGroupsDetailViewResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsDetailViewResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourceProperties;
-}
-export const SqlServerAvailabilityGroupsDetailViewResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(SqlServerAvailabilityGroupsDetailViewResponseTagsMap),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsDetailViewResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponse>;
-
-export interface SqlServerAvailabilityGroupsFailoverRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-}
-export const SqlServerAvailabilityGroupsFailoverRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/failover",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsFailoverRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsFailoverRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsFailoverResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsFailoverResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponseTagsMap>;
-
-export interface SqlServerAvailabilityGroupsFailoverResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsFailoverResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourceProperties;
-}
-export const SqlServerAvailabilityGroupsFailoverResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(SqlServerAvailabilityGroupsFailoverResponseTagsMap),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsFailoverResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponse>;
-
-export interface SqlServerAvailabilityGroupsFailoverMiLinkRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-  /** Azure resource id for the sql managed instance. */
-  managedInstanceId?: string;
-  /** Whether to perform a Force Failover as opposed to just a regular Failover. */
-  force?: boolean;
-}
-export const SqlServerAvailabilityGroupsFailoverMiLinkRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-      managedInstanceId: S.optional(S.String),
-      force: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/failoverMiLink",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsFailoverMiLinkRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap>;
-
-export interface SqlServerAvailabilityGroupsFailoverMiLinkResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourceProperties;
-}
-export const SqlServerAvailabilityGroupsFailoverMiLinkResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(
-        SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap,
-      ),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsFailoverMiLinkResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponse>;
-
-export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-}
-export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/forceFailoverAllowDataLoss",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap =
-  { [key: string]: string | undefined };
-export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap>;
-
-export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourceProperties;
-}
-export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(
-        SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap,
-      ),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse>;
-
-export interface SqlServerAvailabilityGroupsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-}
-export const SqlServerAvailabilityGroupsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupsGetRequest",
-}) as any as S.Schema<SqlServerAvailabilityGroupsGetRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsGetResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsGetResponseTagsMap>;
-
-export interface SqlServerAvailabilityGroupsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourceProperties;
-}
-export const SqlServerAvailabilityGroupsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(SqlServerAvailabilityGroupsGetResponseTagsMap),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupsGetResponse",
-}) as any as S.Schema<SqlServerAvailabilityGroupsGetResponse>;
-
-export interface SqlServerAvailabilityGroupsListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-}
-export const SqlServerAvailabilityGroupsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupsListRequest",
-}) as any as S.Schema<SqlServerAvailabilityGroupsListRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupResourceTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerAvailabilityGroupResourceTagsMap>;
-
-/** Arc Sql Server Availability Group */
-export interface SqlServerAvailabilityGroupResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupResourceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourceProperties;
-}
-export const SqlServerAvailabilityGroupResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerAvailabilityGroupResourceTagsMap),
-    location: S.String,
-    properties: SqlServerAvailabilityGroupResourceProperties,
-  }),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupResource",
-}) as any as S.Schema<SqlServerAvailabilityGroupResource>;
-
-/** Array of Arc Sql Server Availability Groups. */
-export type ArcSqlServerAvailabilityGroupListResultValueList =
-  Array<SqlServerAvailabilityGroupResource>;
-export const ArcSqlServerAvailabilityGroupListResultValueList =
-  /*@__PURE__*/ S.Array(
-    SqlServerAvailabilityGroupResource,
-  ) as any as S.Schema<ArcSqlServerAvailabilityGroupListResultValueList>;
-
-/** A list of Arc Sql Server Availability Groups. */
-export interface ArcSqlServerAvailabilityGroupListResult {
-  /** Array of Arc Sql Server Availability Groups. */
-  value?: ArcSqlServerAvailabilityGroupListResultValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const ArcSqlServerAvailabilityGroupListResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.optional(ArcSqlServerAvailabilityGroupListResultValueList),
-      nextLink: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ArcSqlServerAvailabilityGroupListResult",
-}) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>;
-
-/** List of database names. */
-export type SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList =
-  Array<string>;
-export const SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList>;
-
-export interface SqlServerAvailabilityGroupsRemoveDatabasesRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-  /** List of database names. */
-  values?: SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList;
-}
-export const SqlServerAvailabilityGroupsRemoveDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-      values: S.optional(
-        SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/removeDatabases",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsRemoveDatabasesRequest",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap>;
-
-export interface SqlServerAvailabilityGroupsRemoveDatabasesResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourceProperties;
-}
-export const SqlServerAvailabilityGroupsRemoveDatabasesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(
-        SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap,
-      ),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsRemoveDatabasesResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesResponse>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsUpdateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsUpdateRequestTagsMap>;
-
-export interface SqlServerAvailabilityGroupsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of SQL Availability Group */
-  availabilityGroupName: string;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsUpdateRequestTagsMap;
-  /** The Server Availability Group's properties */
-  properties?: SqlServerAvailabilityGroupResourcePropertiesInput;
-}
-export const SqlServerAvailabilityGroupsUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      availabilityGroupName: S.String.pipe(T.Label()),
-      tags: S.optional(SqlServerAvailabilityGroupsUpdateRequestTagsMap),
-      properties: S.optional(SqlServerAvailabilityGroupResourcePropertiesInput),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupsUpdateRequest",
-}) as any as S.Schema<SqlServerAvailabilityGroupsUpdateRequest>;
-
-/** Resource tags. */
-export type SqlServerAvailabilityGroupsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerAvailabilityGroupsUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsUpdateResponseTagsMap>;
-
-export interface SqlServerAvailabilityGroupsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerAvailabilityGroupsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server availability group */
-  properties: SqlServerAvailabilityGroupResourceProperties;
-}
-export const SqlServerAvailabilityGroupsUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(SqlServerAvailabilityGroupsUpdateResponseTagsMap),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsUpdateResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsUpdateResponse>;
+    identifier: "CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse",
+  }) as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse>;
 
 /** Resource tags. */
 export type SqlServerDatabasesCreateRequestTagsMap = {
@@ -5487,7 +2931,7 @@ export const SqlServerDatabaseResourcePropertiesInput = /*@__PURE__*/ S.suspend(
   identifier: "SqlServerDatabaseResourcePropertiesInput",
 }) as any as S.Schema<SqlServerDatabaseResourcePropertiesInput>;
 
-export interface SqlServerDatabasesCreateRequest {
+export interface CreateSqlServerDatabaseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -5503,7 +2947,7 @@ export interface SqlServerDatabasesCreateRequest {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourcePropertiesInput;
 }
-export const SqlServerDatabasesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSqlServerDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5521,8 +2965,8 @@ export const SqlServerDatabasesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SqlServerDatabasesCreateRequest",
-}) as any as S.Schema<SqlServerDatabasesCreateRequest>;
+  identifier: "CreateSqlServerDatabaseRequest",
+}) as any as S.Schema<CreateSqlServerDatabaseRequest>;
 
 /** Resource tags. */
 export type SqlServerDatabasesCreateResponseTagsMap = {
@@ -5906,7 +3350,7 @@ export const SqlServerDatabaseResourceProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerDatabaseResourceProperties",
 }) as any as S.Schema<SqlServerDatabaseResourceProperties>;
 
-export interface SqlServerDatabasesCreateResponse {
+export interface CreateSqlServerDatabaseResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -5922,7 +3366,7 @@ export interface SqlServerDatabasesCreateResponse {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourceProperties;
 }
-export const SqlServerDatabasesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateSqlServerDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5933,280 +3377,8 @@ export const SqlServerDatabasesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: SqlServerDatabaseResourceProperties,
   }),
 ).annotate({
-  identifier: "SqlServerDatabasesCreateResponse",
-}) as any as S.Schema<SqlServerDatabasesCreateResponse>;
-
-export interface SqlServerDatabasesDeleteRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of the database */
-  databaseName: string;
-}
-export const SqlServerDatabasesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerInstanceName: S.String.pipe(T.Label()),
-    databaseName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerDatabasesDeleteRequest",
-}) as any as S.Schema<SqlServerDatabasesDeleteRequest>;
-
-export interface SqlServerDatabasesDeleteResponse {}
-export const SqlServerDatabasesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SqlServerDatabasesDeleteResponse",
-}) as any as S.Schema<SqlServerDatabasesDeleteResponse>;
-
-export interface SqlServerDatabasesGetRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of the database */
-  databaseName: string;
-}
-export const SqlServerDatabasesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerInstanceName: S.String.pipe(T.Label()),
-    databaseName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerDatabasesGetRequest",
-}) as any as S.Schema<SqlServerDatabasesGetRequest>;
-
-/** Resource tags. */
-export type SqlServerDatabasesGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerDatabasesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerDatabasesGetResponseTagsMap>;
-
-export interface SqlServerDatabasesGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerDatabasesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server database */
-  properties: SqlServerDatabaseResourceProperties;
-}
-export const SqlServerDatabasesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerDatabasesGetResponseTagsMap),
-    location: S.String,
-    properties: SqlServerDatabaseResourceProperties,
-  }),
-).annotate({
-  identifier: "SqlServerDatabasesGetResponse",
-}) as any as S.Schema<SqlServerDatabasesGetResponse>;
-
-export interface SqlServerDatabasesListRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-}
-export const SqlServerDatabasesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerInstanceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerDatabasesListRequest",
-}) as any as S.Schema<SqlServerDatabasesListRequest>;
-
-/** Resource tags. */
-export type SqlServerDatabaseResourceTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerDatabaseResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerDatabaseResourceTagsMap>;
-
-/** Arc Sql Server database */
-export interface SqlServerDatabaseResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerDatabaseResourceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server database */
-  properties: SqlServerDatabaseResourceProperties;
-}
-export const SqlServerDatabaseResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerDatabaseResourceTagsMap),
-    location: S.String,
-    properties: SqlServerDatabaseResourceProperties,
-  }),
-).annotate({
-  identifier: "SqlServerDatabaseResource",
-}) as any as S.Schema<SqlServerDatabaseResource>;
-
-/** Array of Arc Sql Server database. */
-export type ArcSqlServerDatabaseListResultValueList =
-  Array<SqlServerDatabaseResource>;
-export const ArcSqlServerDatabaseListResultValueList = /*@__PURE__*/ S.Array(
-  SqlServerDatabaseResource,
-) as any as S.Schema<ArcSqlServerDatabaseListResultValueList>;
-
-/** A list of Arc Sql Server database. */
-export interface ArcSqlServerDatabaseListResult {
-  /** Array of Arc Sql Server database. */
-  value?: ArcSqlServerDatabaseListResultValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const ArcSqlServerDatabaseListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ArcSqlServerDatabaseListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ArcSqlServerDatabaseListResult",
-}) as any as S.Schema<ArcSqlServerDatabaseListResult>;
-
-/** Resource tags. */
-export type SqlServerDatabasesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerDatabasesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerDatabasesUpdateRequestTagsMap>;
-
-export interface SqlServerDatabasesUpdateRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  /** Name of the database */
-  databaseName: string;
-  /** Resource tags. */
-  tags?: SqlServerDatabasesUpdateRequestTagsMap;
-  /** The data controller's properties */
-  properties?: SqlServerDatabaseResourcePropertiesInput;
-}
-export const SqlServerDatabasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerInstanceName: S.String.pipe(T.Label()),
-    databaseName: S.String.pipe(T.Label()),
-    tags: S.optional(SqlServerDatabasesUpdateRequestTagsMap),
-    properties: S.optional(SqlServerDatabaseResourcePropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerDatabasesUpdateRequest",
-}) as any as S.Schema<SqlServerDatabasesUpdateRequest>;
-
-/** Resource tags. */
-export type SqlServerDatabasesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerDatabasesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerDatabasesUpdateResponseTagsMap>;
-
-export interface SqlServerDatabasesUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerDatabasesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of Arc Sql Server database */
-  properties: SqlServerDatabaseResourceProperties;
-}
-export const SqlServerDatabasesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerDatabasesUpdateResponseTagsMap),
-    location: S.String,
-    properties: SqlServerDatabaseResourceProperties,
-  }),
-).annotate({
-  identifier: "SqlServerDatabasesUpdateResponse",
-}) as any as S.Schema<SqlServerDatabasesUpdateResponse>;
+  identifier: "CreateSqlServerDatabaseResponse",
+}) as any as S.Schema<CreateSqlServerDatabaseResponse>;
 
 /** Resource tags. */
 export type SqlServerEsuLicensesCreateRequestTagsMap = {
@@ -6271,7 +3443,7 @@ export const SqlServerEsuLicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerEsuLicensePropertiesInput",
 }) as any as S.Schema<SqlServerEsuLicensePropertiesInput>;
 
-export interface SqlServerEsuLicensesCreateRequest {
+export interface CreateSqlServerEsuLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -6285,7 +3457,7 @@ export interface SqlServerEsuLicensesCreateRequest {
   /** SQL Server ESU license properties */
   properties: SqlServerEsuLicensePropertiesInput;
 }
-export const SqlServerEsuLicensesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSqlServerEsuLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6302,8 +3474,8 @@ export const SqlServerEsuLicensesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SqlServerEsuLicensesCreateRequest",
-}) as any as S.Schema<SqlServerEsuLicensesCreateRequest>;
+  identifier: "CreateSqlServerEsuLicenseRequest",
+}) as any as S.Schema<CreateSqlServerEsuLicenseRequest>;
 
 /** Resource tags. */
 export type SqlServerEsuLicensesCreateResponseTagsMap = {
@@ -6376,7 +3548,7 @@ export const SqlServerEsuLicenseProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerEsuLicenseProperties",
 }) as any as S.Schema<SqlServerEsuLicenseProperties>;
 
-export interface SqlServerEsuLicensesCreateResponse {
+export interface CreateSqlServerEsuLicenseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -6392,7 +3564,7 @@ export interface SqlServerEsuLicensesCreateResponse {
   /** SQL Server ESU license properties */
   properties: SqlServerEsuLicenseProperties;
 }
-export const SqlServerEsuLicensesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateSqlServerEsuLicenseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6403,347 +3575,8 @@ export const SqlServerEsuLicensesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: SqlServerEsuLicenseProperties,
   }),
 ).annotate({
-  identifier: "SqlServerEsuLicensesCreateResponse",
-}) as any as S.Schema<SqlServerEsuLicensesCreateResponse>;
-
-export interface SqlServerEsuLicensesDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of SQL Server ESU License */
-  sqlServerEsuLicenseName: string;
-}
-export const SqlServerEsuLicensesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerEsuLicenseName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerEsuLicensesDeleteRequest",
-}) as any as S.Schema<SqlServerEsuLicensesDeleteRequest>;
-
-export interface SqlServerEsuLicensesDeleteResponse {}
-export const SqlServerEsuLicensesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SqlServerEsuLicensesDeleteResponse",
-}) as any as S.Schema<SqlServerEsuLicensesDeleteResponse>;
-
-export interface SqlServerEsuLicensesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of SQL Server ESU License */
-  sqlServerEsuLicenseName: string;
-}
-export const SqlServerEsuLicensesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerEsuLicenseName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerEsuLicensesGetRequest",
-}) as any as S.Schema<SqlServerEsuLicensesGetRequest>;
-
-/** Resource tags. */
-export type SqlServerEsuLicensesGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerEsuLicensesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerEsuLicensesGetResponseTagsMap>;
-
-export interface SqlServerEsuLicensesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerEsuLicensesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** SQL Server ESU license properties */
-  properties: SqlServerEsuLicenseProperties;
-}
-export const SqlServerEsuLicensesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerEsuLicensesGetResponseTagsMap),
-    location: S.String,
-    properties: SqlServerEsuLicenseProperties,
-  }),
-).annotate({
-  identifier: "SqlServerEsuLicensesGetResponse",
-}) as any as S.Schema<SqlServerEsuLicensesGetResponse>;
-
-export interface SqlServerEsuLicensesListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const SqlServerEsuLicensesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerEsuLicensesListRequest",
-}) as any as S.Schema<SqlServerEsuLicensesListRequest>;
-
-/** Resource tags. */
-export type SqlServerEsuLicenseTagsMap = { [key: string]: string | undefined };
-export const SqlServerEsuLicenseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerEsuLicenseTagsMap>;
-
-/** Describe SQL Server ESU license resource. */
-export interface SqlServerEsuLicense {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerEsuLicenseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** SQL Server ESU license properties */
-  properties: SqlServerEsuLicenseProperties;
-}
-export const SqlServerEsuLicense = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerEsuLicenseTagsMap),
-    location: S.String,
-    properties: SqlServerEsuLicenseProperties,
-  }),
-).annotate({
-  identifier: "SqlServerEsuLicense",
-}) as any as S.Schema<SqlServerEsuLicense>;
-
-/** Array of results. */
-export type SqlServerEsuLicenseListResultValueList = Array<SqlServerEsuLicense>;
-export const SqlServerEsuLicenseListResultValueList = /*@__PURE__*/ S.Array(
-  SqlServerEsuLicense,
-) as any as S.Schema<SqlServerEsuLicenseListResultValueList>;
-
-/** A list of SQL Server ESU licenses. */
-export interface SqlServerEsuLicenseListResult {
-  /** Array of results. */
-  value?: SqlServerEsuLicenseListResultValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const SqlServerEsuLicenseListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SqlServerEsuLicenseListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlServerEsuLicenseListResult",
-}) as any as S.Schema<SqlServerEsuLicenseListResult>;
-
-export interface SqlServerEsuLicensesListByResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const SqlServerEsuLicensesListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerEsuLicensesListByResourceGroupRequest",
-  }) as any as S.Schema<SqlServerEsuLicensesListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type SqlServerEsuLicensesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerEsuLicensesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerEsuLicensesUpdateRequestTagsMap>;
-
-/** SQL Server ESU license type. */
-export type SqlServerEsuLicenseUpdatePropertiesInputBillingPlan = "PAYG";
-export const SqlServerEsuLicenseUpdatePropertiesInputBillingPlan =
-  /*@__PURE__*/ S.String;
-
-/** The SQL Server version the license covers. */
-export type SqlServerEsuLicenseUpdatePropertiesInputVersion =
-  | "SQL Server 2012"
-  | "SQL Server 2014";
-export const SqlServerEsuLicenseUpdatePropertiesInputVersion =
-  /*@__PURE__*/ S.String;
-
-/** The activation state of the license. */
-export type SqlServerEsuLicenseUpdatePropertiesInputActivationState =
-  | "Inactive"
-  | "Active"
-  | "Terminated";
-export const SqlServerEsuLicenseUpdatePropertiesInputActivationState =
-  /*@__PURE__*/ S.String;
-
-/** The Azure scope to which the license will apply. */
-export type SqlServerEsuLicenseUpdatePropertiesInputScopeType =
-  | "Tenant"
-  | "Subscription"
-  | "ResourceGroup";
-export const SqlServerEsuLicenseUpdatePropertiesInputScopeType =
-  /*@__PURE__*/ S.String;
-
-/** Properties of update SqlServerEsuLicense. */
-export interface SqlServerEsuLicenseUpdatePropertiesInput {
-  /** SQL Server ESU license type. */
-  billingPlan?:
-    | SqlServerEsuLicenseUpdatePropertiesInputBillingPlan
-    | (string & {});
-  /** The SQL Server version the license covers. */
-  version?: SqlServerEsuLicenseUpdatePropertiesInputVersion | (string & {});
-  /** The number of total cores of the license covers. */
-  physicalCores?: number;
-  /** The activation state of the license. */
-  activationState?:
-    | SqlServerEsuLicenseUpdatePropertiesInputActivationState
-    | (string & {});
-  /** The Azure scope to which the license will apply. */
-  scopeType?: SqlServerEsuLicenseUpdatePropertiesInputScopeType | (string & {});
-}
-export const SqlServerEsuLicenseUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingPlan: S.optional(
-        SqlServerEsuLicenseUpdatePropertiesInputBillingPlan,
-      ),
-      version: S.optional(SqlServerEsuLicenseUpdatePropertiesInputVersion),
-      physicalCores: S.optional(S.Number),
-      activationState: S.optional(
-        SqlServerEsuLicenseUpdatePropertiesInputActivationState,
-      ),
-      scopeType: S.optional(SqlServerEsuLicenseUpdatePropertiesInputScopeType),
-    }),
-).annotate({
-  identifier: "SqlServerEsuLicenseUpdatePropertiesInput",
-}) as any as S.Schema<SqlServerEsuLicenseUpdatePropertiesInput>;
-
-export interface SqlServerEsuLicensesUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of SQL Server ESU License */
-  sqlServerEsuLicenseName: string;
-  /** Resource tags. */
-  tags?: SqlServerEsuLicensesUpdateRequestTagsMap;
-  /** null */
-  properties?: SqlServerEsuLicenseUpdatePropertiesInput;
-}
-export const SqlServerEsuLicensesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerEsuLicenseName: S.String.pipe(T.Label()),
-    tags: S.optional(SqlServerEsuLicensesUpdateRequestTagsMap),
-    properties: S.optional(SqlServerEsuLicenseUpdatePropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerEsuLicensesUpdateRequest",
-}) as any as S.Schema<SqlServerEsuLicensesUpdateRequest>;
-
-/** Resource tags. */
-export type SqlServerEsuLicensesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerEsuLicensesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerEsuLicensesUpdateResponseTagsMap>;
-
-export interface SqlServerEsuLicensesUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerEsuLicensesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** SQL Server ESU license properties */
-  properties: SqlServerEsuLicenseProperties;
-}
-export const SqlServerEsuLicensesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerEsuLicensesUpdateResponseTagsMap),
-    location: S.String,
-    properties: SqlServerEsuLicenseProperties,
-  }),
-).annotate({
-  identifier: "SqlServerEsuLicensesUpdateResponse",
-}) as any as S.Schema<SqlServerEsuLicensesUpdateResponse>;
+  identifier: "CreateSqlServerEsuLicenseResponse",
+}) as any as S.Schema<CreateSqlServerEsuLicenseResponse>;
 
 /** Resource tags. */
 export type SqlServerInstancesCreateRequestTagsMap = {
@@ -7110,7 +3943,7 @@ export const SqlServerInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerInstancePropertiesInput",
 }) as any as S.Schema<SqlServerInstancePropertiesInput>;
 
-export interface SqlServerInstancesCreateRequest {
+export interface CreateSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -7124,7 +3957,7 @@ export interface SqlServerInstancesCreateRequest {
   /** null */
   properties?: SqlServerInstancePropertiesInput;
 }
-export const SqlServerInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSqlServerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7141,8 +3974,8 @@ export const SqlServerInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SqlServerInstancesCreateRequest",
-}) as any as S.Schema<SqlServerInstancesCreateRequest>;
+  identifier: "CreateSqlServerInstanceRequest",
+}) as any as S.Schema<CreateSqlServerInstanceRequest>;
 
 /** Resource tags. */
 export type SqlServerInstancesCreateResponseTagsMap = {
@@ -7994,7 +4827,7 @@ export const SqlServerInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerInstanceProperties",
 }) as any as S.Schema<SqlServerInstanceProperties>;
 
-export interface SqlServerInstancesCreateResponse {
+export interface CreateSqlServerInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -8010,7 +4843,7 @@ export interface SqlServerInstancesCreateResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-export const SqlServerInstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateSqlServerInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8021,10 +4854,941 @@ export const SqlServerInstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(SqlServerInstanceProperties),
   }),
 ).annotate({
-  identifier: "SqlServerInstancesCreateResponse",
-}) as any as S.Schema<SqlServerInstancesCreateResponse>;
+  identifier: "CreateSqlServerInstanceResponse",
+}) as any as S.Schema<CreateSqlServerInstanceResponse>;
 
-export interface SqlServerInstancesDeleteRequest {
+/** Resource tags. */
+export type SqlServerLicensesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerLicensesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerLicensesCreateRequestTagsMap>;
+
+/** SQL Server license type. */
+export type SqlServerLicensePropertiesInputBillingPlan = "PAYG" | "Paid";
+export const SqlServerLicensePropertiesInputBillingPlan =
+  /*@__PURE__*/ S.String;
+
+/** This property represents the choice between SQL Server Core and ESU licenses. */
+export type SqlServerLicensePropertiesInputLicenseCategory = "Core";
+export const SqlServerLicensePropertiesInputLicenseCategory =
+  /*@__PURE__*/ S.String;
+
+/** The activation state of the license. */
+export type SqlServerLicensePropertiesInputActivationState =
+  | "Activated"
+  | "Deactivated";
+export const SqlServerLicensePropertiesInputActivationState =
+  /*@__PURE__*/ S.String;
+
+/** The Azure scope to which the license will apply. */
+export type SqlServerLicensePropertiesInputScopeType =
+  | "Tenant"
+  | "Subscription"
+  | "ResourceGroup";
+export const SqlServerLicensePropertiesInputScopeType = /*@__PURE__*/ S.String;
+
+/** Properties of SQL Server License. */
+export interface SqlServerLicensePropertiesInput {
+  /** SQL Server license type. */
+  billingPlan: SqlServerLicensePropertiesInputBillingPlan | (string & {});
+  /** The number of total cores of the license covers. */
+  physicalCores: number;
+  /** This property represents the choice between SQL Server Core and ESU licenses. */
+  licenseCategory:
+    | SqlServerLicensePropertiesInputLicenseCategory
+    | (string & {});
+  /** The activation state of the license. */
+  activationState:
+    | SqlServerLicensePropertiesInputActivationState
+    | (string & {});
+  /** The Azure scope to which the license will apply. */
+  scopeType: SqlServerLicensePropertiesInputScopeType | (string & {});
+}
+export const SqlServerLicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingPlan: SqlServerLicensePropertiesInputBillingPlan,
+    physicalCores: S.Number,
+    licenseCategory: SqlServerLicensePropertiesInputLicenseCategory,
+    activationState: SqlServerLicensePropertiesInputActivationState,
+    scopeType: SqlServerLicensePropertiesInputScopeType,
+  }),
+).annotate({
+  identifier: "SqlServerLicensePropertiesInput",
+}) as any as S.Schema<SqlServerLicensePropertiesInput>;
+
+export interface CreateSqlServerLicenseRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server License */
+  sqlServerLicenseName: string;
+  /** Resource tags. */
+  tags?: SqlServerLicensesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** SQL Server license properties */
+  properties: SqlServerLicensePropertiesInput;
+}
+export const CreateSqlServerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerLicenseName: S.String.pipe(T.Label()),
+    tags: S.optional(SqlServerLicensesCreateRequestTagsMap),
+    location: S.String,
+    properties: SqlServerLicensePropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSqlServerLicenseRequest",
+}) as any as S.Schema<CreateSqlServerLicenseRequest>;
+
+/** Resource tags. */
+export type SqlServerLicensesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerLicensesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerLicensesCreateResponseTagsMap>;
+
+/** SQL Server license type. */
+export type SqlServerLicensePropertiesBillingPlan = "PAYG" | "Paid";
+export const SqlServerLicensePropertiesBillingPlan = /*@__PURE__*/ S.String;
+
+/** This property represents the choice between SQL Server Core and ESU licenses. */
+export type SqlServerLicensePropertiesLicenseCategory = "Core";
+export const SqlServerLicensePropertiesLicenseCategory = /*@__PURE__*/ S.String;
+
+/** The activation state of the license. */
+export type SqlServerLicensePropertiesActivationState =
+  | "Activated"
+  | "Deactivated";
+export const SqlServerLicensePropertiesActivationState = /*@__PURE__*/ S.String;
+
+/** The Azure scope to which the license will apply. */
+export type SqlServerLicensePropertiesScopeType =
+  | "Tenant"
+  | "Subscription"
+  | "ResourceGroup";
+export const SqlServerLicensePropertiesScopeType = /*@__PURE__*/ S.String;
+
+/** Properties of SQL Server License. */
+export interface SqlServerLicenseProperties {
+  /** SQL Server license type. */
+  billingPlan: SqlServerLicensePropertiesBillingPlan;
+  /** The number of total cores of the license covers. */
+  physicalCores: number;
+  /** This property represents the choice between SQL Server Core and ESU licenses. */
+  licenseCategory: SqlServerLicensePropertiesLicenseCategory;
+  /** The activation state of the license. */
+  activationState: SqlServerLicensePropertiesActivationState;
+  /** The Azure scope to which the license will apply. */
+  scopeType: SqlServerLicensePropertiesScopeType;
+  /** The timestamp of the most recent activation of the SqlServerLicense. */
+  lastActivatedAt?: string;
+  /** The timestamp of the most recent deactivation of the SqlServerLicense. */
+  lastDeactivatedAt?: string;
+  /** The tenantId the SQL Server license resource subscription resides in. */
+  tenantId?: string;
+}
+export const SqlServerLicenseProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingPlan: SqlServerLicensePropertiesBillingPlan,
+    physicalCores: S.Number,
+    licenseCategory: SqlServerLicensePropertiesLicenseCategory,
+    activationState: SqlServerLicensePropertiesActivationState,
+    scopeType: SqlServerLicensePropertiesScopeType,
+    lastActivatedAt: S.optional(S.String),
+    lastDeactivatedAt: S.optional(S.String),
+    tenantId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlServerLicenseProperties",
+}) as any as S.Schema<SqlServerLicenseProperties>;
+
+export interface CreateSqlServerLicenseResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerLicensesCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** SQL Server license properties */
+  properties: SqlServerLicenseProperties;
+}
+export const CreateSqlServerLicenseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerLicensesCreateResponseTagsMap),
+    location: S.String,
+    properties: SqlServerLicenseProperties,
+  }),
+).annotate({
+  identifier: "CreateSqlServerLicenseResponse",
+}) as any as S.Schema<CreateSqlServerLicenseResponse>;
+
+/** Resource tags */
+export type DataControllersPatchDataControllerRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DataControllersPatchDataControllerRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DataControllersPatchDataControllerRequestTagsMap>;
+
+/** The infrastructure the data controller is running on. */
+export type DataControllerPropertiesInputInfrastructure =
+  | "azure"
+  | "gcp"
+  | "aws"
+  | "alibaba"
+  | "onpremises"
+  | "other";
+export const DataControllerPropertiesInputInfrastructure =
+  /*@__PURE__*/ S.String;
+
+/** Properties from the Kubernetes data controller */
+export interface OnPremiseProperty {
+  /** A globally unique ID identifying the associated Kubernetes cluster */
+  id: string;
+  /** Certificate that contains the Kubernetes cluster public key used to verify signing */
+  publicSigningKey: string;
+  /** Unique thumbprint returned to customer to verify the certificate being uploaded */
+  signingCertificateThumbprint?: string;
+}
+export const OnPremiseProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    publicSigningKey: S.String,
+    signingCertificateThumbprint: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OnPremiseProperty",
+}) as any as S.Schema<OnPremiseProperty>;
+
+/** Properties on upload watermark. Mostly timestamp for each upload data type */
+export interface UploadWatermark {
+  /** Last uploaded date for metrics from kubernetes cluster. Defaults to current date time */
+  metrics?: string;
+  /** Last uploaded date for logs from kubernetes cluster. Defaults to current date time */
+  logs?: string;
+  /** Last uploaded date for usages from kubernetes cluster. Defaults to current date time */
+  usages?: string;
+}
+export const UploadWatermark = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metrics: S.optional(S.String),
+    logs: S.optional(S.String),
+    usages: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UploadWatermark",
+}) as any as S.Schema<UploadWatermark>;
+
+/** Username and password for basic login authentication. */
+export type DataControllerPropertiesInputBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+export const DataControllerPropertiesInputBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+
+/** Username and password for basic login authentication. */
+export type DataControllerPropertiesInputMetricsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+export const DataControllerPropertiesInputMetricsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+
+/** Username and password for basic login authentication. */
+export type DataControllerPropertiesInputLogsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+export const DataControllerPropertiesInputLogsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+
+/** Log analytics workspace id and primary key */
+export interface LogAnalyticsWorkspaceConfig {
+  /** Azure Log Analytics workspace ID */
+  workspaceId?: string;
+  /** Primary key of the workspace */
+  primaryKey?: string;
+}
+export const LogAnalyticsWorkspaceConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspaceId: S.optional(S.String),
+    primaryKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LogAnalyticsWorkspaceConfig",
+}) as any as S.Schema<LogAnalyticsWorkspaceConfig>;
+
+/** Service principal for uploading billing, metrics and logs. */
+export interface UploadServicePrincipal {
+  /** Client ID of the service principal for uploading data. */
+  clientId?: string;
+  /** Tenant ID of the service principal. */
+  tenantId?: string;
+  /** Authority for the service principal. Example: https://login.microsoftonline.com/ */
+  authority?: string;
+  /** Secret of the service principal */
+  clientSecret?: string | Redacted.Redacted<string>;
+}
+export const UploadServicePrincipal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    authority: S.optional(S.String),
+    clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }),
+).annotate({
+  identifier: "UploadServicePrincipal",
+}) as any as S.Schema<UploadServicePrincipal>;
+
+/** The data controller properties. */
+export interface DataControllerPropertiesInput {
+  /** The infrastructure the data controller is running on. */
+  infrastructure?: DataControllerPropertiesInputInfrastructure | (string & {});
+  onPremiseProperty?: OnPremiseProperty;
+  /** The raw kubernetes information */
+  k8sRaw?: unknown;
+  uploadWatermark?: UploadWatermark;
+  /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
+  lastUploadedDate?: string;
+  /** Username and password for basic login authentication. */
+  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+  /** Username and password for basic login authentication. */
+  metricsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+  /** Username and password for basic login authentication. */
+  logsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+  logAnalyticsWorkspaceConfig?: LogAnalyticsWorkspaceConfig;
+  /** Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity. */
+  uploadServicePrincipal?: UploadServicePrincipal;
+  /** If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to. */
+  clusterId?: string;
+  /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
+  extensionId?: string;
+}
+export const DataControllerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    infrastructure: S.optional(DataControllerPropertiesInputInfrastructure),
+    onPremiseProperty: S.optional(OnPremiseProperty),
+    k8sRaw: S.optional(S.Unknown),
+    uploadWatermark: S.optional(UploadWatermark),
+    lastUploadedDate: S.optional(S.String),
+    basicLoginInformation: S.optional(
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
+    ),
+    metricsDashboardCredential: S.optional(
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
+    ),
+    logsDashboardCredential: S.optional(
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
+    ),
+    logAnalyticsWorkspaceConfig: S.optional(LogAnalyticsWorkspaceConfig),
+    uploadServicePrincipal: S.optional(UploadServicePrincipal),
+    clusterId: S.optional(S.String),
+    extensionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataControllerPropertiesInput",
+}) as any as S.Schema<DataControllerPropertiesInput>;
+
+export interface DataControllersPatchDataControllerRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** The name of the data controller */
+  dataControllerName: string;
+  /** Resource tags */
+  tags?: DataControllersPatchDataControllerRequestTagsMap;
+  /** The data controller's properties */
+  properties?: DataControllerPropertiesInput;
+}
+export const DataControllersPatchDataControllerRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dataControllerName: S.String.pipe(T.Label()),
+      tags: S.optional(DataControllersPatchDataControllerRequestTagsMap),
+      properties: S.optional(DataControllerPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "DataControllersPatchDataControllerRequest",
+  }) as any as S.Schema<DataControllersPatchDataControllerRequest>;
+
+/** Resource tags. */
+export type DataControllersPatchDataControllerResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DataControllersPatchDataControllerResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DataControllersPatchDataControllerResponseTagsMap>;
+
+/** The complex type of the extended location. */
+export type DataControllersPatchDataControllerResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const DataControllersPatchDataControllerResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+/** The infrastructure the data controller is running on. */
+export type DataControllerPropertiesInfrastructure =
+  | "azure"
+  | "gcp"
+  | "aws"
+  | "alibaba"
+  | "onpremises"
+  | "other";
+export const DataControllerPropertiesInfrastructure = /*@__PURE__*/ S.String;
+
+/** Username and password for basic login authentication. */
+export type DataControllerPropertiesBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+export const DataControllerPropertiesBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+
+/** Username and password for basic login authentication. */
+export type DataControllerPropertiesMetricsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+export const DataControllerPropertiesMetricsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+
+/** Username and password for basic login authentication. */
+export type DataControllerPropertiesLogsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+export const DataControllerPropertiesLogsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+
+/** The data controller properties. */
+export interface DataControllerProperties {
+  /** The infrastructure the data controller is running on. */
+  infrastructure?: DataControllerPropertiesInfrastructure;
+  onPremiseProperty?: OnPremiseProperty;
+  /** The raw kubernetes information */
+  k8sRaw?: unknown;
+  uploadWatermark?: UploadWatermark;
+  /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
+  lastUploadedDate?: string;
+  /** Username and password for basic login authentication. */
+  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+  /** Username and password for basic login authentication. */
+  metricsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+  /** Username and password for basic login authentication. */
+  logsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+  logAnalyticsWorkspaceConfig?: LogAnalyticsWorkspaceConfig;
+  /** Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity. */
+  uploadServicePrincipal?: UploadServicePrincipal;
+  /** The provisioning state of the Arc Data Controller resource. */
+  provisioningState?: string;
+  /** If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to. */
+  clusterId?: string;
+  /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
+  extensionId?: string;
+}
+export const DataControllerProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    infrastructure: S.optional(DataControllerPropertiesInfrastructure),
+    onPremiseProperty: S.optional(OnPremiseProperty),
+    k8sRaw: S.optional(S.Unknown),
+    uploadWatermark: S.optional(UploadWatermark),
+    lastUploadedDate: S.optional(S.String),
+    basicLoginInformation: S.optional(
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
+    ),
+    metricsDashboardCredential: S.optional(
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
+    ),
+    logsDashboardCredential: S.optional(
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
+    ),
+    logAnalyticsWorkspaceConfig: S.optional(LogAnalyticsWorkspaceConfig),
+    uploadServicePrincipal: S.optional(UploadServicePrincipal),
+    provisioningState: S.optional(S.String),
+    clusterId: S.optional(S.String),
+    extensionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataControllerProperties",
+}) as any as S.Schema<DataControllerProperties>;
+
+export interface DataControllersPatchDataControllerResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DataControllersPatchDataControllerResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** The data controller's properties */
+  properties: DataControllerProperties;
+}
+export const DataControllersPatchDataControllerResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(DataControllersPatchDataControllerResponseTagsMap),
+      location: S.String,
+      extendedLocation: S.optional(
+        PostgresInstancesCreateResponseExtendedLocation,
+      ),
+      properties: DataControllerProperties,
+    }),
+  ).annotate({
+    identifier: "DataControllersPatchDataControllerResponse",
+  }) as any as S.Schema<DataControllersPatchDataControllerResponse>;
+
+/** Resource tags. */
+export type DataControllersPutDataControllerRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DataControllersPutDataControllerRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DataControllersPutDataControllerRequestTagsMap>;
+
+/** The complex type of the extended location. */
+export type DataControllersPutDataControllerRequestExtendedLocation =
+  PostgresInstancesCreateRequestExtendedLocation;
+export const DataControllersPutDataControllerRequestExtendedLocation =
+  PostgresInstancesCreateRequestExtendedLocation;
+
+export interface DataControllersPutDataControllerRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** The name of the data controller */
+  dataControllerName: string;
+  /** Resource tags. */
+  tags?: DataControllersPutDataControllerRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateRequestExtendedLocation;
+  /** The data controller's properties */
+  properties: DataControllerPropertiesInput;
+}
+export const DataControllersPutDataControllerRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dataControllerName: S.String.pipe(T.Label()),
+      tags: S.optional(DataControllersPutDataControllerRequestTagsMap),
+      location: S.String,
+      extendedLocation: S.optional(
+        PostgresInstancesCreateRequestExtendedLocation,
+      ),
+      properties: DataControllerPropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "DataControllersPutDataControllerRequest",
+}) as any as S.Schema<DataControllersPutDataControllerRequest>;
+
+/** Resource tags. */
+export type DataControllersPutDataControllerResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DataControllersPutDataControllerResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DataControllersPutDataControllerResponseTagsMap>;
+
+/** The complex type of the extended location. */
+export type DataControllersPutDataControllerResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const DataControllersPutDataControllerResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+export interface DataControllersPutDataControllerResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DataControllersPutDataControllerResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** The data controller's properties */
+  properties: DataControllerProperties;
+}
+export const DataControllersPutDataControllerResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(DataControllersPutDataControllerResponseTagsMap),
+      location: S.String,
+      extendedLocation: S.optional(
+        PostgresInstancesCreateResponseExtendedLocation,
+      ),
+      properties: DataControllerProperties,
+    }),
+).annotate({
+  identifier: "DataControllersPutDataControllerResponse",
+}) as any as S.Schema<DataControllersPutDataControllerResponse>;
+
+export interface DeleteActiveDirectoryConnectorRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** The name of the data controller */
+  dataControllerName: string;
+  /** The name of the Active Directory connector instance */
+  activeDirectoryConnectorName: string;
+}
+export const DeleteActiveDirectoryConnectorRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dataControllerName: S.String.pipe(T.Label()),
+      activeDirectoryConnectorName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteActiveDirectoryConnectorRequest",
+}) as any as S.Schema<DeleteActiveDirectoryConnectorRequest>;
+
+export interface DeleteActiveDirectoryConnectorResponse {}
+export const DeleteActiveDirectoryConnectorResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteActiveDirectoryConnectorResponse",
+}) as any as S.Schema<DeleteActiveDirectoryConnectorResponse>;
+
+export interface DeleteDataControllerDataControllerRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** The name of the data controller */
+  dataControllerName: string;
+}
+export const DeleteDataControllerDataControllerRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dataControllerName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteDataControllerDataControllerRequest",
+  }) as any as S.Schema<DeleteDataControllerDataControllerRequest>;
+
+export interface DeleteDataControllerDataControllerResponse {}
+export const DeleteDataControllerDataControllerResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteDataControllerDataControllerResponse",
+  }) as any as S.Schema<DeleteDataControllerDataControllerResponse>;
+
+export interface DeleteFailoverGroupRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Managed Instance */
+  sqlManagedInstanceName: string;
+  /** The name of the Failover Group */
+  failoverGroupName: string;
+}
+export const DeleteFailoverGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlManagedInstanceName: S.String.pipe(T.Label()),
+    failoverGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteFailoverGroupRequest",
+}) as any as S.Schema<DeleteFailoverGroupRequest>;
+
+export interface DeleteFailoverGroupResponse {}
+export const DeleteFailoverGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteFailoverGroupResponse",
+}) as any as S.Schema<DeleteFailoverGroupResponse>;
+
+export interface DeletePostgresInstanceRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of Postgres Instance */
+  postgresInstanceName: string;
+}
+export const DeletePostgresInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    postgresInstanceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePostgresInstanceRequest",
+}) as any as S.Schema<DeletePostgresInstanceRequest>;
+
+export interface DeletePostgresInstanceResponse {}
+export const DeletePostgresInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePostgresInstanceResponse",
+}) as any as S.Schema<DeletePostgresInstanceResponse>;
+
+export interface DeleteSqlManagedInstanceRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Managed Instance */
+  sqlManagedInstanceName: string;
+}
+export const DeleteSqlManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlManagedInstanceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSqlManagedInstanceRequest",
+}) as any as S.Schema<DeleteSqlManagedInstanceRequest>;
+
+export interface DeleteSqlManagedInstanceResponse {}
+export const DeleteSqlManagedInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSqlManagedInstanceResponse",
+}) as any as S.Schema<DeleteSqlManagedInstanceResponse>;
+
+export interface DeleteSqlServerAvailabilityGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+}
+export const DeleteSqlServerAvailabilityGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSqlServerAvailabilityGroupRequest",
+}) as any as S.Schema<DeleteSqlServerAvailabilityGroupRequest>;
+
+export interface DeleteSqlServerAvailabilityGroupResponse {}
+export const DeleteSqlServerAvailabilityGroupResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteSqlServerAvailabilityGroupResponse",
+}) as any as S.Schema<DeleteSqlServerAvailabilityGroupResponse>;
+
+export interface DeleteSqlServerAvailabilityGroupMiLinkRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+}
+export const DeleteSqlServerAvailabilityGroupMiLinkRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/deleteMiLink",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteSqlServerAvailabilityGroupMiLinkRequest",
+  }) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkRequest>;
+
+export interface DeleteSqlServerAvailabilityGroupMiLinkResponse {}
+export const DeleteSqlServerAvailabilityGroupMiLinkResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteSqlServerAvailabilityGroupMiLinkResponse",
+  }) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkResponse>;
+
+export interface DeleteSqlServerDatabaseRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of the database */
+  databaseName: string;
+}
+export const DeleteSqlServerDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerInstanceName: S.String.pipe(T.Label()),
+    databaseName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSqlServerDatabaseRequest",
+}) as any as S.Schema<DeleteSqlServerDatabaseRequest>;
+
+export interface DeleteSqlServerDatabaseResponse {}
+export const DeleteSqlServerDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSqlServerDatabaseResponse",
+}) as any as S.Schema<DeleteSqlServerDatabaseResponse>;
+
+export interface DeleteSqlServerEsuLicenseRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of SQL Server ESU License */
+  sqlServerEsuLicenseName: string;
+}
+export const DeleteSqlServerEsuLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerEsuLicenseName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSqlServerEsuLicenseRequest",
+}) as any as S.Schema<DeleteSqlServerEsuLicenseRequest>;
+
+export interface DeleteSqlServerEsuLicenseResponse {}
+export const DeleteSqlServerEsuLicenseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSqlServerEsuLicenseResponse",
+}) as any as S.Schema<DeleteSqlServerEsuLicenseResponse>;
+
+export interface DeleteSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -8032,7 +5796,7 @@ export interface SqlServerInstancesDeleteRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-export const SqlServerInstancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSqlServerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8046,17 +5810,588 @@ export const SqlServerInstancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SqlServerInstancesDeleteRequest",
-}) as any as S.Schema<SqlServerInstancesDeleteRequest>;
+  identifier: "DeleteSqlServerInstanceRequest",
+}) as any as S.Schema<DeleteSqlServerInstanceRequest>;
 
-export interface SqlServerInstancesDeleteResponse {}
-export const SqlServerInstancesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteSqlServerInstanceResponse {}
+export const DeleteSqlServerInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "SqlServerInstancesDeleteResponse",
-}) as any as S.Schema<SqlServerInstancesDeleteResponse>;
+  identifier: "DeleteSqlServerInstanceResponse",
+}) as any as S.Schema<DeleteSqlServerInstanceResponse>;
 
-export interface SqlServerInstancesGetRequest {
+export interface DeleteSqlServerLicenseRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server License */
+  sqlServerLicenseName: string;
+}
+export const DeleteSqlServerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerLicenseName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSqlServerLicenseRequest",
+}) as any as S.Schema<DeleteSqlServerLicenseRequest>;
+
+export interface DeleteSqlServerLicenseResponse {}
+export const DeleteSqlServerLicenseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSqlServerLicenseResponse",
+}) as any as S.Schema<DeleteSqlServerLicenseResponse>;
+
+export interface GetActiveDirectoryConnectorRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** The name of the data controller */
+  dataControllerName: string;
+  /** The name of the Active Directory connector instance */
+  activeDirectoryConnectorName: string;
+}
+export const GetActiveDirectoryConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    dataControllerName: S.String.pipe(T.Label()),
+    activeDirectoryConnectorName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetActiveDirectoryConnectorRequest",
+}) as any as S.Schema<GetActiveDirectoryConnectorRequest>;
+
+export interface GetActiveDirectoryConnectorResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** null */
+  properties: ActiveDirectoryConnectorProperties;
+}
+export const GetActiveDirectoryConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: ActiveDirectoryConnectorProperties,
+  }),
+).annotate({
+  identifier: "GetActiveDirectoryConnectorResponse",
+}) as any as S.Schema<GetActiveDirectoryConnectorResponse>;
+
+export interface GetDataControllerDataControllerRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** The name of the data controller */
+  dataControllerName: string;
+}
+export const GetDataControllerDataControllerRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dataControllerName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetDataControllerDataControllerRequest",
+}) as any as S.Schema<GetDataControllerDataControllerRequest>;
+
+/** Resource tags. */
+export type DataControllersGetDataControllerResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DataControllersGetDataControllerResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DataControllersGetDataControllerResponseTagsMap>;
+
+/** The complex type of the extended location. */
+export type DataControllersGetDataControllerResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const DataControllersGetDataControllerResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+export interface GetDataControllerDataControllerResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DataControllersGetDataControllerResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** The data controller's properties */
+  properties: DataControllerProperties;
+}
+export const GetDataControllerDataControllerResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(DataControllersGetDataControllerResponseTagsMap),
+      location: S.String,
+      extendedLocation: S.optional(
+        PostgresInstancesCreateResponseExtendedLocation,
+      ),
+      properties: DataControllerProperties,
+    }),
+).annotate({
+  identifier: "GetDataControllerDataControllerResponse",
+}) as any as S.Schema<GetDataControllerDataControllerResponse>;
+
+export interface GetFailoverGroupRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Managed Instance */
+  sqlManagedInstanceName: string;
+  /** The name of the Failover Group */
+  failoverGroupName: string;
+}
+export const GetFailoverGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlManagedInstanceName: S.String.pipe(T.Label()),
+    failoverGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetFailoverGroupRequest",
+}) as any as S.Schema<GetFailoverGroupRequest>;
+
+export interface GetFailoverGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** null */
+  properties: FailoverGroupProperties;
+}
+export const GetFailoverGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: FailoverGroupProperties,
+  }),
+).annotate({
+  identifier: "GetFailoverGroupResponse",
+}) as any as S.Schema<GetFailoverGroupResponse>;
+
+export interface GetPostgresInstanceRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of Postgres Instance */
+  postgresInstanceName: string;
+}
+export const GetPostgresInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    postgresInstanceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetPostgresInstanceRequest",
+}) as any as S.Schema<GetPostgresInstanceRequest>;
+
+/** Resource tags. */
+export type PostgresInstancesGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PostgresInstancesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PostgresInstancesGetResponseTagsMap>;
+
+/** The complex type of the extended location. */
+export type PostgresInstancesGetResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const PostgresInstancesGetResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+export interface GetPostgresInstanceResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: PostgresInstancesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** null */
+  properties: PostgresInstanceProperties;
+  /** Resource sku. */
+  sku?: PostgresInstanceSku;
+}
+export const GetPostgresInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(PostgresInstancesGetResponseTagsMap),
+    location: S.String,
+    extendedLocation: S.optional(
+      PostgresInstancesCreateResponseExtendedLocation,
+    ),
+    properties: PostgresInstanceProperties,
+    sku: S.optional(PostgresInstanceSku),
+  }),
+).annotate({
+  identifier: "GetPostgresInstanceResponse",
+}) as any as S.Schema<GetPostgresInstanceResponse>;
+
+export interface GetSqlManagedInstanceRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Managed Instance */
+  sqlManagedInstanceName: string;
+}
+export const GetSqlManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlManagedInstanceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSqlManagedInstanceRequest",
+}) as any as S.Schema<GetSqlManagedInstanceRequest>;
+
+/** Resource tags. */
+export type SqlManagedInstancesGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlManagedInstancesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlManagedInstancesGetResponseTagsMap>;
+
+/** The complex type of the extended location. */
+export type SqlManagedInstancesGetResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const SqlManagedInstancesGetResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+export interface GetSqlManagedInstanceResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlManagedInstancesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** null */
+  properties: SqlManagedInstanceProperties;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** Resource sku. */
+  sku?: SqlManagedInstanceSku;
+}
+export const GetSqlManagedInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlManagedInstancesGetResponseTagsMap),
+    location: S.String,
+    properties: SqlManagedInstanceProperties,
+    extendedLocation: S.optional(
+      PostgresInstancesCreateResponseExtendedLocation,
+    ),
+    sku: S.optional(SqlManagedInstanceSku),
+  }),
+).annotate({
+  identifier: "GetSqlManagedInstanceResponse",
+}) as any as S.Schema<GetSqlManagedInstanceResponse>;
+
+export interface GetSqlServerAvailabilityGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+}
+export const GetSqlServerAvailabilityGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetSqlServerAvailabilityGroupRequest",
+}) as any as S.Schema<GetSqlServerAvailabilityGroupRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsGetResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsGetResponseTagsMap>;
+
+export interface GetSqlServerAvailabilityGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourceProperties;
+}
+export const GetSqlServerAvailabilityGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(SqlServerAvailabilityGroupsGetResponseTagsMap),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourceProperties,
+    }),
+).annotate({
+  identifier: "GetSqlServerAvailabilityGroupResponse",
+}) as any as S.Schema<GetSqlServerAvailabilityGroupResponse>;
+
+export interface GetSqlServerDatabaseRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of the database */
+  databaseName: string;
+}
+export const GetSqlServerDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerInstanceName: S.String.pipe(T.Label()),
+    databaseName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSqlServerDatabaseRequest",
+}) as any as S.Schema<GetSqlServerDatabaseRequest>;
+
+/** Resource tags. */
+export type SqlServerDatabasesGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerDatabasesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerDatabasesGetResponseTagsMap>;
+
+export interface GetSqlServerDatabaseResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerDatabasesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server database */
+  properties: SqlServerDatabaseResourceProperties;
+}
+export const GetSqlServerDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerDatabasesGetResponseTagsMap),
+    location: S.String,
+    properties: SqlServerDatabaseResourceProperties,
+  }),
+).annotate({
+  identifier: "GetSqlServerDatabaseResponse",
+}) as any as S.Schema<GetSqlServerDatabaseResponse>;
+
+export interface GetSqlServerEsuLicenseRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of SQL Server ESU License */
+  sqlServerEsuLicenseName: string;
+}
+export const GetSqlServerEsuLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerEsuLicenseName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSqlServerEsuLicenseRequest",
+}) as any as S.Schema<GetSqlServerEsuLicenseRequest>;
+
+/** Resource tags. */
+export type SqlServerEsuLicensesGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerEsuLicensesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerEsuLicensesGetResponseTagsMap>;
+
+export interface GetSqlServerEsuLicenseResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerEsuLicensesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** SQL Server ESU license properties */
+  properties: SqlServerEsuLicenseProperties;
+}
+export const GetSqlServerEsuLicenseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerEsuLicensesGetResponseTagsMap),
+    location: S.String,
+    properties: SqlServerEsuLicenseProperties,
+  }),
+).annotate({
+  identifier: "GetSqlServerEsuLicenseResponse",
+}) as any as S.Schema<GetSqlServerEsuLicenseResponse>;
+
+export interface GetSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -8064,7 +6399,7 @@ export interface SqlServerInstancesGetRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-export const SqlServerInstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSqlServerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8078,8 +6413,8 @@ export const SqlServerInstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SqlServerInstancesGetRequest",
-}) as any as S.Schema<SqlServerInstancesGetRequest>;
+  identifier: "GetSqlServerInstanceRequest",
+}) as any as S.Schema<GetSqlServerInstanceRequest>;
 
 /** Resource tags. */
 export type SqlServerInstancesGetResponseTagsMap = {
@@ -8090,7 +6425,7 @@ export const SqlServerInstancesGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SqlServerInstancesGetResponseTagsMap>;
 
-export interface SqlServerInstancesGetResponse {
+export interface GetSqlServerInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -8106,7 +6441,7 @@ export interface SqlServerInstancesGetResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-export const SqlServerInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSqlServerInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8117,8 +6452,8 @@ export const SqlServerInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(SqlServerInstanceProperties),
   }),
 ).annotate({
-  identifier: "SqlServerInstancesGetResponse",
-}) as any as S.Schema<SqlServerInstancesGetResponse>;
+  identifier: "GetSqlServerInstanceResponse",
+}) as any as S.Schema<GetSqlServerInstanceResponse>;
 
 /** Filter retrieval based on availability group type. */
 export type AvailabilityGroupTypeFilter =
@@ -8134,7 +6469,7 @@ export type ReplicationPartnerType =
   | "Unknown";
 export const ReplicationPartnerType = /*@__PURE__*/ S.String;
 
-export interface SqlServerInstancesGetAllAvailabilityGroupsRequest {
+export interface GetSqlServerInstanceAllAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -8144,7 +6479,7 @@ export interface SqlServerInstancesGetAllAvailabilityGroupsRequest {
   availabilityGroupTypeFilter?: AvailabilityGroupTypeFilter | (string & {});
   replicationPartnerTypeFilter?: ReplicationPartnerType | (string & {});
 }
-export const SqlServerInstancesGetAllAvailabilityGroupsRequest =
+export const GetSqlServerInstanceAllAvailabilityGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -8161,8 +6496,73 @@ export const SqlServerInstancesGetAllAvailabilityGroupsRequest =
       }),
     ),
   ).annotate({
-    identifier: "SqlServerInstancesGetAllAvailabilityGroupsRequest",
-  }) as any as S.Schema<SqlServerInstancesGetAllAvailabilityGroupsRequest>;
+    identifier: "GetSqlServerInstanceAllAvailabilityGroupRequest",
+  }) as any as S.Schema<GetSqlServerInstanceAllAvailabilityGroupRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupResourceTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupResourceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerAvailabilityGroupResourceTagsMap>;
+
+/** Arc Sql Server Availability Group */
+export interface SqlServerAvailabilityGroupResource {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupResourceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourceProperties;
+}
+export const SqlServerAvailabilityGroupResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerAvailabilityGroupResourceTagsMap),
+    location: S.String,
+    properties: SqlServerAvailabilityGroupResourceProperties,
+  }),
+).annotate({
+  identifier: "SqlServerAvailabilityGroupResource",
+}) as any as S.Schema<SqlServerAvailabilityGroupResource>;
+
+/** Array of Arc Sql Server Availability Groups. */
+export type ArcSqlServerAvailabilityGroupListResultValueList =
+  Array<SqlServerAvailabilityGroupResource>;
+export const ArcSqlServerAvailabilityGroupListResultValueList =
+  /*@__PURE__*/ S.Array(
+    SqlServerAvailabilityGroupResource,
+  ) as any as S.Schema<ArcSqlServerAvailabilityGroupListResultValueList>;
+
+/** A list of Arc Sql Server Availability Groups. */
+export interface ArcSqlServerAvailabilityGroupListResult {
+  /** Array of Arc Sql Server Availability Groups. */
+  value?: ArcSqlServerAvailabilityGroupListResultValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ArcSqlServerAvailabilityGroupListResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: S.optional(ArcSqlServerAvailabilityGroupListResultValueList),
+      nextLink: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ArcSqlServerAvailabilityGroupListResult",
+}) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>;
 
 /** The report type that needs to be fetched. If not specified, the default is AssessmentSummary. */
 export type SqlServerInstancesGetBestPracticesAssessmentRequestReportType =
@@ -8171,7 +6571,7 @@ export type SqlServerInstancesGetBestPracticesAssessmentRequestReportType =
 export const SqlServerInstancesGetBestPracticesAssessmentRequestReportType =
   /*@__PURE__*/ S.String;
 
-export interface SqlServerInstancesGetBestPracticesAssessmentRequest {
+export interface GetSqlServerInstanceBestPracticeAssessmentRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -8187,7 +6587,7 @@ export interface SqlServerInstancesGetBestPracticesAssessmentRequest {
   /** The opaque token to use to skip to a specific page of the report. If not specified, the first page will be returned. */
   skipToken?: string;
 }
-export const SqlServerInstancesGetBestPracticesAssessmentRequest =
+export const GetSqlServerInstanceBestPracticeAssessmentRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -8207,8 +6607,8 @@ export const SqlServerInstancesGetBestPracticesAssessmentRequest =
       }),
     ),
   ).annotate({
-    identifier: "SqlServerInstancesGetBestPracticesAssessmentRequest",
-  }) as any as S.Schema<SqlServerInstancesGetBestPracticesAssessmentRequest>;
+    identifier: "GetSqlServerInstanceBestPracticeAssessmentRequest",
+  }) as any as S.Schema<GetSqlServerInstanceBestPracticeAssessmentRequest>;
 
 /** The type of the result column. */
 export type SqlServerInstanceBpaColumnType =
@@ -8260,7 +6660,7 @@ export const SqlServerInstancesGetBestPracticesAssessmentResponseRowsList =
     SqlServerInstanceBpaRow,
   ) as any as S.Schema<SqlServerInstancesGetBestPracticesAssessmentResponseRowsList>;
 
-export interface SqlServerInstancesGetBestPracticesAssessmentResponse {
+export interface GetSqlServerInstanceBestPracticeAssessmentResponse {
   /** The SQL best practices assessment response columns. */
   columns: SqlServerInstancesGetBestPracticesAssessmentResponseColumnsList;
   /** An array of results of the SQL best practices assessment response. */
@@ -8268,7 +6668,7 @@ export interface SqlServerInstancesGetBestPracticesAssessmentResponse {
   /** The link to the next page of the best practices assessment response for the SQL Server instance. Null, if no more pages are available. */
   nextLink?: string;
 }
-export const SqlServerInstancesGetBestPracticesAssessmentResponse =
+export const GetSqlServerInstanceBestPracticeAssessmentResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       columns: SqlServerInstancesGetBestPracticesAssessmentResponseColumnsList,
@@ -8276,10 +6676,10 @@ export const SqlServerInstancesGetBestPracticesAssessmentResponse =
       nextLink: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "SqlServerInstancesGetBestPracticesAssessmentResponse",
-  }) as any as S.Schema<SqlServerInstancesGetBestPracticesAssessmentResponse>;
+    identifier: "GetSqlServerInstanceBestPracticeAssessmentResponse",
+  }) as any as S.Schema<GetSqlServerInstanceBestPracticeAssessmentResponse>;
 
-export interface SqlServerInstancesGetJobsStatusRequest {
+export interface GetSqlServerInstanceJobStatusRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -8291,7 +6691,7 @@ export interface SqlServerInstancesGetJobsStatusRequest {
   /** The type of the job to retrieve the status for. */
   jobType?: string;
 }
-export const SqlServerInstancesGetJobsStatusRequest = /*@__PURE__*/ S.suspend(
+export const GetSqlServerInstanceJobStatusRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -8308,8 +6708,8 @@ export const SqlServerInstancesGetJobsStatusRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "SqlServerInstancesGetJobsStatusRequest",
-}) as any as S.Schema<SqlServerInstancesGetJobsStatusRequest>;
+  identifier: "GetSqlServerInstanceJobStatusRequest",
+}) as any as S.Schema<GetSqlServerInstanceJobStatusRequest>;
 
 /** The status of the job. */
 export type SqlServerInstanceJobStatusJobStatus =
@@ -8452,11 +6852,11 @@ export const SqlServerInstancesGetJobsStatusResponseJobsStatusList =
     SqlServerInstanceJobStatus,
   ) as any as S.Schema<SqlServerInstancesGetJobsStatusResponseJobsStatusList>;
 
-export interface SqlServerInstancesGetJobsStatusResponse {
+export interface GetSqlServerInstanceJobStatusResponse {
   /** The list of jobs status running on the SQL Server instance. */
   jobsStatus?: SqlServerInstancesGetJobsStatusResponseJobsStatusList;
 }
-export const SqlServerInstancesGetJobsStatusResponse = /*@__PURE__*/ S.suspend(
+export const GetSqlServerInstanceJobStatusResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       jobsStatus: S.optional(
@@ -8464,8 +6864,8 @@ export const SqlServerInstancesGetJobsStatusResponse = /*@__PURE__*/ S.suspend(
       ),
     }),
 ).annotate({
-  identifier: "SqlServerInstancesGetJobsStatusResponse",
-}) as any as S.Schema<SqlServerInstancesGetJobsStatusResponse>;
+  identifier: "GetSqlServerInstanceJobStatusResponse",
+}) as any as S.Schema<GetSqlServerInstanceJobStatusResponse>;
 
 /** The aggregation type to use for the numerical columns in the dataset. */
 export type SqlServerInstancesGetTelemetryRequestAggregationType =
@@ -8485,7 +6885,7 @@ export const SqlServerInstancesGetTelemetryRequestDatabaseNamesList =
     S.String,
   ) as any as S.Schema<SqlServerInstancesGetTelemetryRequestDatabaseNamesList>;
 
-export interface SqlServerInstancesGetTelemetryRequest {
+export interface GetSqlServerInstanceTelemetryRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -8507,7 +6907,7 @@ export interface SqlServerInstancesGetTelemetryRequest {
   /** The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned. */
   databaseNames?: SqlServerInstancesGetTelemetryRequestDatabaseNamesList;
 }
-export const SqlServerInstancesGetTelemetryRequest = /*@__PURE__*/ S.suspend(
+export const GetSqlServerInstanceTelemetryRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -8532,8 +6932,8 @@ export const SqlServerInstancesGetTelemetryRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "SqlServerInstancesGetTelemetryRequest",
-}) as any as S.Schema<SqlServerInstancesGetTelemetryRequest>;
+  identifier: "GetSqlServerInstanceTelemetryRequest",
+}) as any as S.Schema<GetSqlServerInstanceTelemetryRequest>;
 
 /** The type of the telemetry column. */
 export type SqlServerInstanceTelemetryColumnType =
@@ -8585,7 +6985,7 @@ export const SqlServerInstancesGetTelemetryResponseRowsList =
     SqlServerInstanceTelemetryRow,
   ) as any as S.Schema<SqlServerInstancesGetTelemetryResponseRowsList>;
 
-export interface SqlServerInstancesGetTelemetryResponse {
+export interface GetSqlServerInstanceTelemetryResponse {
   /** The columns of the result telemetry table for the SQL Server instance. */
   columns: SqlServerInstancesGetTelemetryResponseColumnsList;
   /** A list of rows from the result telemetry table for the SQL Server instance. */
@@ -8593,7 +6993,7 @@ export interface SqlServerInstancesGetTelemetryResponse {
   /** The link to the next section of rows of the telemetry response for the SQL Server instance. Null if no more sections are available. */
   nextLink?: string;
 }
-export const SqlServerInstancesGetTelemetryResponse = /*@__PURE__*/ S.suspend(
+export const GetSqlServerInstanceTelemetryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       columns: SqlServerInstancesGetTelemetryResponseColumnsList,
@@ -8601,27 +7001,969 @@ export const SqlServerInstancesGetTelemetryResponse = /*@__PURE__*/ S.suspend(
       nextLink: S.optional(S.String),
     }),
 ).annotate({
-  identifier: "SqlServerInstancesGetTelemetryResponse",
-}) as any as S.Schema<SqlServerInstancesGetTelemetryResponse>;
+  identifier: "GetSqlServerInstanceTelemetryResponse",
+}) as any as S.Schema<GetSqlServerInstanceTelemetryResponse>;
 
-export interface SqlServerInstancesListRequest {
+export interface GetSqlServerLicenseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server License */
+  sqlServerLicenseName: string;
 }
-export const SqlServerInstancesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSqlServerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerLicenseName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerInstances",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
       code: 200,
       apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
-  identifier: "SqlServerInstancesListRequest",
-}) as any as S.Schema<SqlServerInstancesListRequest>;
+  identifier: "GetSqlServerLicenseRequest",
+}) as any as S.Schema<GetSqlServerLicenseRequest>;
+
+/** Resource tags. */
+export type SqlServerLicensesGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerLicensesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerLicensesGetResponseTagsMap>;
+
+export interface GetSqlServerLicenseResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerLicensesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** SQL Server license properties */
+  properties: SqlServerLicenseProperties;
+}
+export const GetSqlServerLicenseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerLicensesGetResponseTagsMap),
+    location: S.String,
+    properties: SqlServerLicenseProperties,
+  }),
+).annotate({
+  identifier: "GetSqlServerLicenseResponse",
+}) as any as S.Schema<GetSqlServerLicenseResponse>;
+
+export interface ListActiveDirectoryConnectorsRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** The name of the data controller */
+  dataControllerName: string;
+}
+export const ListActiveDirectoryConnectorsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dataControllerName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListActiveDirectoryConnectorsRequest",
+}) as any as S.Schema<ListActiveDirectoryConnectorsRequest>;
+
+/** Active directory connector resource */
+export interface ActiveDirectoryConnectorResource {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** null */
+  properties: ActiveDirectoryConnectorProperties;
+}
+export const ActiveDirectoryConnectorResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: ActiveDirectoryConnectorProperties,
+  }),
+).annotate({
+  identifier: "ActiveDirectoryConnectorResource",
+}) as any as S.Schema<ActiveDirectoryConnectorResource>;
+
+/** Array of results. */
+export type ActiveDirectoryConnectorsListResponseValueList =
+  Array<ActiveDirectoryConnectorResource>;
+export const ActiveDirectoryConnectorsListResponseValueList =
+  /*@__PURE__*/ S.Array(
+    ActiveDirectoryConnectorResource,
+  ) as any as S.Schema<ActiveDirectoryConnectorsListResponseValueList>;
+
+export interface ListActiveDirectoryConnectorsResponse {
+  /** Array of results. */
+  value?: ActiveDirectoryConnectorsListResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListActiveDirectoryConnectorsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: S.optional(ActiveDirectoryConnectorsListResponseValueList),
+      nextLink: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListActiveDirectoryConnectorsResponse",
+}) as any as S.Schema<ListActiveDirectoryConnectorsResponse>;
+
+export interface ListDataControllerInGroupRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+}
+export const ListDataControllerInGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListDataControllerInGroupRequest",
+}) as any as S.Schema<ListDataControllerInGroupRequest>;
+
+/** Resource tags. */
+export type DataControllerResourceTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DataControllerResourceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DataControllerResourceTagsMap>;
+
+/** The complex type of the extended location. */
+export type DataControllerResourceExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const DataControllerResourceExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+/** Data controller resource */
+export interface DataControllerResource {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DataControllerResourceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** The data controller's properties */
+  properties: DataControllerProperties;
+}
+export const DataControllerResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(DataControllerResourceTagsMap),
+    location: S.String,
+    extendedLocation: S.optional(
+      PostgresInstancesCreateResponseExtendedLocation,
+    ),
+    properties: DataControllerProperties,
+  }),
+).annotate({
+  identifier: "DataControllerResource",
+}) as any as S.Schema<DataControllerResource>;
+
+/** Array of results. */
+export type DataControllersListInGroupResponseValueList =
+  Array<DataControllerResource>;
+export const DataControllersListInGroupResponseValueList =
+  /*@__PURE__*/ S.Array(
+    DataControllerResource,
+  ) as any as S.Schema<DataControllersListInGroupResponseValueList>;
+
+export interface ListDataControllerInGroupResponse {
+  /** Array of results. */
+  value?: DataControllersListInGroupResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListDataControllerInGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(DataControllersListInGroupResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDataControllerInGroupResponse",
+}) as any as S.Schema<ListDataControllerInGroupResponse>;
+
+export interface ListDataControllerInSubscriptionRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+}
+export const ListDataControllerInSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/dataControllers",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListDataControllerInSubscriptionRequest",
+}) as any as S.Schema<ListDataControllerInSubscriptionRequest>;
+
+/** Array of results. */
+export type DataControllersListInSubscriptionResponseValueList =
+  Array<DataControllerResource>;
+export const DataControllersListInSubscriptionResponseValueList =
+  /*@__PURE__*/ S.Array(
+    DataControllerResource,
+  ) as any as S.Schema<DataControllersListInSubscriptionResponseValueList>;
+
+export interface ListDataControllerInSubscriptionResponse {
+  /** Array of results. */
+  value?: DataControllersListInSubscriptionResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListDataControllerInSubscriptionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: S.optional(DataControllersListInSubscriptionResponseValueList),
+      nextLink: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListDataControllerInSubscriptionResponse",
+}) as any as S.Schema<ListDataControllerInSubscriptionResponse>;
+
+export interface ListFailoverGroupsRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Managed Instance */
+  sqlManagedInstanceName: string;
+}
+export const ListFailoverGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlManagedInstanceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListFailoverGroupsRequest",
+}) as any as S.Schema<ListFailoverGroupsRequest>;
+
+/** A failover group resource. */
+export interface FailoverGroupResource {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** null */
+  properties: FailoverGroupProperties;
+}
+export const FailoverGroupResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: FailoverGroupProperties,
+  }),
+).annotate({
+  identifier: "FailoverGroupResource",
+}) as any as S.Schema<FailoverGroupResource>;
+
+/** Array of failover group results. */
+export type FailoverGroupsListResponseValueList = Array<FailoverGroupResource>;
+export const FailoverGroupsListResponseValueList = /*@__PURE__*/ S.Array(
+  FailoverGroupResource,
+) as any as S.Schema<FailoverGroupsListResponseValueList>;
+
+export interface ListFailoverGroupsResponse {
+  /** Array of failover group results. */
+  value?: FailoverGroupsListResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListFailoverGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(FailoverGroupsListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFailoverGroupsResponse",
+}) as any as S.Schema<ListFailoverGroupsResponse>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.AzureArcData/operations",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** Display metadata associated with the operation. */
+export interface OperationDisplay {
+  /** The localized friendly form of the resource provider name. */
+  provider: string;
+  /** The localized friendly form of the resource type related to this action/operation. */
+  resource: string;
+  /** The localized friendly name for the operation. */
+  operation: string;
+  /** The localized friendly description for the operation. */
+  description: string;
+}
+export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.String,
+    resource: S.String,
+    operation: S.String,
+    description: S.String,
+  }),
+).annotate({
+  identifier: "OperationDisplay",
+}) as any as S.Schema<OperationDisplay>;
+
+/** The intended executor of the operation. */
+export type OperationOrigin = "user" | "system";
+export const OperationOrigin = /*@__PURE__*/ S.String;
+
+/** Additional descriptions for the operation. */
+export type OperationPropertiesMap = { [key: string]: unknown | undefined };
+export const OperationPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<OperationPropertiesMap>;
+
+/** Azure Data Services on Azure Arc operation definition. */
+export interface Operation {
+  /** The name of the operation being performed on this particular object. */
+  name: string;
+  /** The localized display information for this particular operation / action. */
+  display: OperationDisplay;
+  /** The intended executor of the operation. */
+  origin?: OperationOrigin;
+  /** Indicates whether the operation is a data action */
+  isDataAction: boolean;
+  /** Additional descriptions for the operation. */
+  properties?: OperationPropertiesMap;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    display: OperationDisplay,
+    origin: S.optional(OperationOrigin),
+    isDataAction: S.Boolean,
+    properties: S.optional(OperationPropertiesMap),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+/** Array of results. */
+export type OperationsListResponseValueList = Array<Operation>;
+export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationsListResponseValueList>;
+
+export interface ListOperationsResponse {
+  /** Array of results. */
+  value?: OperationsListResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationsListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
+
+export interface ListPostgresInstanceByResourceGroupRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+}
+export const ListPostgresInstanceByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPostgresInstanceByResourceGroupRequest",
+  }) as any as S.Schema<ListPostgresInstanceByResourceGroupRequest>;
+
+/** Resource tags. */
+export type PostgresInstanceTagsMap = { [key: string]: string | undefined };
+export const PostgresInstanceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PostgresInstanceTagsMap>;
+
+/** The complex type of the extended location. */
+export type PostgresInstanceExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const PostgresInstanceExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+/** A Postgres Instance. */
+export interface PostgresInstance {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: PostgresInstanceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** null */
+  properties: PostgresInstanceProperties;
+  /** Resource sku. */
+  sku?: PostgresInstanceSku;
+}
+export const PostgresInstance = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(PostgresInstanceTagsMap),
+    location: S.String,
+    extendedLocation: S.optional(
+      PostgresInstancesCreateResponseExtendedLocation,
+    ),
+    properties: PostgresInstanceProperties,
+    sku: S.optional(PostgresInstanceSku),
+  }),
+).annotate({
+  identifier: "PostgresInstance",
+}) as any as S.Schema<PostgresInstance>;
+
+/** Array of results. */
+export type PostgresInstancesListByResourceGroupResponseValueList =
+  Array<PostgresInstance>;
+export const PostgresInstancesListByResourceGroupResponseValueList =
+  /*@__PURE__*/ S.Array(
+    PostgresInstance,
+  ) as any as S.Schema<PostgresInstancesListByResourceGroupResponseValueList>;
+
+export interface ListPostgresInstanceByResourceGroupResponse {
+  /** Array of results. */
+  value?: PostgresInstancesListByResourceGroupResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListPostgresInstanceByResourceGroupResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(PostgresInstancesListByResourceGroupResponseValueList),
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListPostgresInstanceByResourceGroupResponse",
+  }) as any as S.Schema<ListPostgresInstanceByResourceGroupResponse>;
+
+export interface ListPostgresInstancesRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+}
+export const ListPostgresInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/postgresInstances",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListPostgresInstancesRequest",
+}) as any as S.Schema<ListPostgresInstancesRequest>;
+
+/** Array of results. */
+export type PostgresInstancesListResponseValueList = Array<PostgresInstance>;
+export const PostgresInstancesListResponseValueList = /*@__PURE__*/ S.Array(
+  PostgresInstance,
+) as any as S.Schema<PostgresInstancesListResponseValueList>;
+
+export interface ListPostgresInstancesResponse {
+  /** Array of results. */
+  value?: PostgresInstancesListResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListPostgresInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(PostgresInstancesListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPostgresInstancesResponse",
+}) as any as S.Schema<ListPostgresInstancesResponse>;
+
+export interface ListSqlManagedInstanceByResourceGroupRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+}
+export const ListSqlManagedInstanceByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSqlManagedInstanceByResourceGroupRequest",
+  }) as any as S.Schema<ListSqlManagedInstanceByResourceGroupRequest>;
+
+/** Resource tags. */
+export type SqlManagedInstanceTagsMap = { [key: string]: string | undefined };
+export const SqlManagedInstanceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlManagedInstanceTagsMap>;
+
+/** The complex type of the extended location. */
+export type SqlManagedInstanceExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const SqlManagedInstanceExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+/** A SqlManagedInstance. */
+export interface SqlManagedInstance {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlManagedInstanceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** null */
+  properties: SqlManagedInstanceProperties;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** Resource sku. */
+  sku?: SqlManagedInstanceSku;
+}
+export const SqlManagedInstance = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlManagedInstanceTagsMap),
+    location: S.String,
+    properties: SqlManagedInstanceProperties,
+    extendedLocation: S.optional(
+      PostgresInstancesCreateResponseExtendedLocation,
+    ),
+    sku: S.optional(SqlManagedInstanceSku),
+  }),
+).annotate({
+  identifier: "SqlManagedInstance",
+}) as any as S.Schema<SqlManagedInstance>;
+
+/** Array of results. */
+export type SqlManagedInstancesListByResourceGroupResponseValueList =
+  Array<SqlManagedInstance>;
+export const SqlManagedInstancesListByResourceGroupResponseValueList =
+  /*@__PURE__*/ S.Array(
+    SqlManagedInstance,
+  ) as any as S.Schema<SqlManagedInstancesListByResourceGroupResponseValueList>;
+
+export interface ListSqlManagedInstanceByResourceGroupResponse {
+  /** Array of results. */
+  value?: SqlManagedInstancesListByResourceGroupResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListSqlManagedInstanceByResourceGroupResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(
+        SqlManagedInstancesListByResourceGroupResponseValueList,
+      ),
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListSqlManagedInstanceByResourceGroupResponse",
+  }) as any as S.Schema<ListSqlManagedInstanceByResourceGroupResponse>;
+
+export interface ListSqlManagedInstancesRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+}
+export const ListSqlManagedInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlManagedInstances",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSqlManagedInstancesRequest",
+}) as any as S.Schema<ListSqlManagedInstancesRequest>;
+
+/** Array of results. */
+export type SqlManagedInstancesListResponseValueList =
+  Array<SqlManagedInstance>;
+export const SqlManagedInstancesListResponseValueList = /*@__PURE__*/ S.Array(
+  SqlManagedInstance,
+) as any as S.Schema<SqlManagedInstancesListResponseValueList>;
+
+export interface ListSqlManagedInstancesResponse {
+  /** Array of results. */
+  value?: SqlManagedInstancesListResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListSqlManagedInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SqlManagedInstancesListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSqlManagedInstancesResponse",
+}) as any as S.Schema<ListSqlManagedInstancesResponse>;
+
+export interface ListSqlServerAvailabilityGroupsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+}
+export const ListSqlServerAvailabilityGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListSqlServerAvailabilityGroupsRequest",
+}) as any as S.Schema<ListSqlServerAvailabilityGroupsRequest>;
+
+export interface ListSqlServerDatabasesRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+}
+export const ListSqlServerDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerInstanceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSqlServerDatabasesRequest",
+}) as any as S.Schema<ListSqlServerDatabasesRequest>;
+
+/** Resource tags. */
+export type SqlServerDatabaseResourceTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerDatabaseResourceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerDatabaseResourceTagsMap>;
+
+/** Arc Sql Server database */
+export interface SqlServerDatabaseResource {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerDatabaseResourceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server database */
+  properties: SqlServerDatabaseResourceProperties;
+}
+export const SqlServerDatabaseResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerDatabaseResourceTagsMap),
+    location: S.String,
+    properties: SqlServerDatabaseResourceProperties,
+  }),
+).annotate({
+  identifier: "SqlServerDatabaseResource",
+}) as any as S.Schema<SqlServerDatabaseResource>;
+
+/** Array of Arc Sql Server database. */
+export type ArcSqlServerDatabaseListResultValueList =
+  Array<SqlServerDatabaseResource>;
+export const ArcSqlServerDatabaseListResultValueList = /*@__PURE__*/ S.Array(
+  SqlServerDatabaseResource,
+) as any as S.Schema<ArcSqlServerDatabaseListResultValueList>;
+
+/** A list of Arc Sql Server database. */
+export interface ArcSqlServerDatabaseListResult {
+  /** Array of Arc Sql Server database. */
+  value?: ArcSqlServerDatabaseListResultValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ArcSqlServerDatabaseListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ArcSqlServerDatabaseListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ArcSqlServerDatabaseListResult",
+}) as any as S.Schema<ArcSqlServerDatabaseListResult>;
+
+export interface ListSqlServerEsuLicenseByResourceGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListSqlServerEsuLicenseByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSqlServerEsuLicenseByResourceGroupRequest",
+  }) as any as S.Schema<ListSqlServerEsuLicenseByResourceGroupRequest>;
+
+/** Resource tags. */
+export type SqlServerEsuLicenseTagsMap = { [key: string]: string | undefined };
+export const SqlServerEsuLicenseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerEsuLicenseTagsMap>;
+
+/** Describe SQL Server ESU license resource. */
+export interface SqlServerEsuLicense {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerEsuLicenseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** SQL Server ESU license properties */
+  properties: SqlServerEsuLicenseProperties;
+}
+export const SqlServerEsuLicense = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerEsuLicenseTagsMap),
+    location: S.String,
+    properties: SqlServerEsuLicenseProperties,
+  }),
+).annotate({
+  identifier: "SqlServerEsuLicense",
+}) as any as S.Schema<SqlServerEsuLicense>;
+
+/** Array of results. */
+export type SqlServerEsuLicenseListResultValueList = Array<SqlServerEsuLicense>;
+export const SqlServerEsuLicenseListResultValueList = /*@__PURE__*/ S.Array(
+  SqlServerEsuLicense,
+) as any as S.Schema<SqlServerEsuLicenseListResultValueList>;
+
+/** A list of SQL Server ESU licenses. */
+export interface SqlServerEsuLicenseListResult {
+  /** Array of results. */
+  value?: SqlServerEsuLicenseListResultValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const SqlServerEsuLicenseListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SqlServerEsuLicenseListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlServerEsuLicenseListResult",
+}) as any as S.Schema<SqlServerEsuLicenseListResult>;
+
+export interface ListSqlServerEsuLicensesRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListSqlServerEsuLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSqlServerEsuLicensesRequest",
+}) as any as S.Schema<ListSqlServerEsuLicensesRequest>;
+
+export interface ListSqlServerInstanceByResourceGroupRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+}
+export const ListSqlServerInstanceByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSqlServerInstanceByResourceGroupRequest",
+  }) as any as S.Schema<ListSqlServerInstanceByResourceGroupRequest>;
 
 /** Resource tags. */
 export type SqlServerInstanceTagsMap = { [key: string]: string | undefined };
@@ -8662,50 +8004,6 @@ export const SqlServerInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlServerInstance>;
 
 /** Array of results. */
-export type SqlServerInstancesListResponseValueList = Array<SqlServerInstance>;
-export const SqlServerInstancesListResponseValueList = /*@__PURE__*/ S.Array(
-  SqlServerInstance,
-) as any as S.Schema<SqlServerInstancesListResponseValueList>;
-
-export interface SqlServerInstancesListResponse {
-  /** Array of results. */
-  value?: SqlServerInstancesListResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const SqlServerInstancesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SqlServerInstancesListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlServerInstancesListResponse",
-}) as any as S.Schema<SqlServerInstancesListResponse>;
-
-export interface SqlServerInstancesListByResourceGroupRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-}
-export const SqlServerInstancesListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerInstancesListByResourceGroupRequest",
-  }) as any as S.Schema<SqlServerInstancesListByResourceGroupRequest>;
-
-/** Array of results. */
 export type SqlServerInstancesListByResourceGroupResponseValueList =
   Array<SqlServerInstance>;
 export const SqlServerInstancesListByResourceGroupResponseValueList =
@@ -8713,21 +8011,643 @@ export const SqlServerInstancesListByResourceGroupResponseValueList =
     SqlServerInstance,
   ) as any as S.Schema<SqlServerInstancesListByResourceGroupResponseValueList>;
 
-export interface SqlServerInstancesListByResourceGroupResponse {
+export interface ListSqlServerInstanceByResourceGroupResponse {
   /** Array of results. */
   value?: SqlServerInstancesListByResourceGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const SqlServerInstancesListByResourceGroupResponse =
+export const ListSqlServerInstanceByResourceGroupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.optional(SqlServerInstancesListByResourceGroupResponseValueList),
       nextLink: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "SqlServerInstancesListByResourceGroupResponse",
-  }) as any as S.Schema<SqlServerInstancesListByResourceGroupResponse>;
+    identifier: "ListSqlServerInstanceByResourceGroupResponse",
+  }) as any as S.Schema<ListSqlServerInstanceByResourceGroupResponse>;
+
+export interface ListSqlServerInstancesRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+}
+export const ListSqlServerInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerInstances",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSqlServerInstancesRequest",
+}) as any as S.Schema<ListSqlServerInstancesRequest>;
+
+/** Array of results. */
+export type SqlServerInstancesListResponseValueList = Array<SqlServerInstance>;
+export const SqlServerInstancesListResponseValueList = /*@__PURE__*/ S.Array(
+  SqlServerInstance,
+) as any as S.Schema<SqlServerInstancesListResponseValueList>;
+
+export interface ListSqlServerInstancesResponse {
+  /** Array of results. */
+  value?: SqlServerInstancesListResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListSqlServerInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SqlServerInstancesListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSqlServerInstancesResponse",
+}) as any as S.Schema<ListSqlServerInstancesResponse>;
+
+export interface ListSqlServerLicenseByResourceGroupRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+}
+export const ListSqlServerLicenseByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSqlServerLicenseByResourceGroupRequest",
+  }) as any as S.Schema<ListSqlServerLicenseByResourceGroupRequest>;
+
+/** Resource tags. */
+export type SqlServerLicenseTagsMap = { [key: string]: string | undefined };
+export const SqlServerLicenseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerLicenseTagsMap>;
+
+/** Describe SQL Server license resource. */
+export interface SqlServerLicense {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerLicenseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** SQL Server license properties */
+  properties: SqlServerLicenseProperties;
+}
+export const SqlServerLicense = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerLicenseTagsMap),
+    location: S.String,
+    properties: SqlServerLicenseProperties,
+  }),
+).annotate({
+  identifier: "SqlServerLicense",
+}) as any as S.Schema<SqlServerLicense>;
+
+/** Array of results. */
+export type SqlServerLicensesListByResourceGroupResponseValueList =
+  Array<SqlServerLicense>;
+export const SqlServerLicensesListByResourceGroupResponseValueList =
+  /*@__PURE__*/ S.Array(
+    SqlServerLicense,
+  ) as any as S.Schema<SqlServerLicensesListByResourceGroupResponseValueList>;
+
+export interface ListSqlServerLicenseByResourceGroupResponse {
+  /** Array of results. */
+  value?: SqlServerLicensesListByResourceGroupResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListSqlServerLicenseByResourceGroupResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(SqlServerLicensesListByResourceGroupResponseValueList),
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListSqlServerLicenseByResourceGroupResponse",
+  }) as any as S.Schema<ListSqlServerLicenseByResourceGroupResponse>;
+
+export interface ListSqlServerLicensesRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+}
+export const ListSqlServerLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerLicenses",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSqlServerLicensesRequest",
+}) as any as S.Schema<ListSqlServerLicensesRequest>;
+
+/** Array of results. */
+export type SqlServerLicensesListResponseValueList = Array<SqlServerLicense>;
+export const SqlServerLicensesListResponseValueList = /*@__PURE__*/ S.Array(
+  SqlServerLicense,
+) as any as S.Schema<SqlServerLicensesListResponseValueList>;
+
+export interface ListSqlServerLicensesResponse {
+  /** Array of results. */
+  value?: SqlServerLicensesListResponseValueList;
+  /** Link to retrieve next page of results. */
+  nextLink?: string;
+}
+export const ListSqlServerLicensesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SqlServerLicensesListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSqlServerLicensesResponse",
+}) as any as S.Schema<ListSqlServerLicensesResponse>;
+
+/** List of database names. */
+export type SqlServerAvailabilityGroupsAddDatabasesRequestValuesList =
+  Array<string>;
+export const SqlServerAvailabilityGroupsAddDatabasesRequestValuesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesRequestValuesList>;
+
+export interface SqlServerAvailabilityGroupsAddDatabasesRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+  /** List of database names. */
+  values?: SqlServerAvailabilityGroupsAddDatabasesRequestValuesList;
+}
+export const SqlServerAvailabilityGroupsAddDatabasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+      values: S.optional(
+        SqlServerAvailabilityGroupsAddDatabasesRequestValuesList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/addDatabases",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsAddDatabasesRequest",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap>;
+
+export interface SqlServerAvailabilityGroupsAddDatabasesResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourceProperties;
+}
+export const SqlServerAvailabilityGroupsAddDatabasesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(SqlServerAvailabilityGroupsAddDatabasesResponseTagsMap),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourceProperties,
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsAddDatabasesResponse",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesResponse>;
+
+export interface SqlServerAvailabilityGroupsDetailViewRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+}
+export const SqlServerAvailabilityGroupsDetailViewRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/getDetailView",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsDetailViewRequest",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsDetailViewResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsDetailViewResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponseTagsMap>;
+
+export interface SqlServerAvailabilityGroupsDetailViewResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsDetailViewResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourceProperties;
+}
+export const SqlServerAvailabilityGroupsDetailViewResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(SqlServerAvailabilityGroupsDetailViewResponseTagsMap),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourceProperties,
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsDetailViewResponse",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponse>;
+
+export interface SqlServerAvailabilityGroupsFailoverRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+}
+export const SqlServerAvailabilityGroupsFailoverRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/failover",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsFailoverRequest",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsFailoverRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsFailoverResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsFailoverResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponseTagsMap>;
+
+export interface SqlServerAvailabilityGroupsFailoverResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsFailoverResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourceProperties;
+}
+export const SqlServerAvailabilityGroupsFailoverResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(SqlServerAvailabilityGroupsFailoverResponseTagsMap),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourceProperties,
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsFailoverResponse",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponse>;
+
+export interface SqlServerAvailabilityGroupsFailoverMiLinkRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+  /** Azure resource id for the sql managed instance. */
+  managedInstanceId?: string;
+  /** Whether to perform a Force Failover as opposed to just a regular Failover. */
+  force?: boolean;
+}
+export const SqlServerAvailabilityGroupsFailoverMiLinkRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+      managedInstanceId: S.optional(S.String),
+      force: S.optional(S.Boolean),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/failoverMiLink",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsFailoverMiLinkRequest",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap>;
+
+export interface SqlServerAvailabilityGroupsFailoverMiLinkResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourceProperties;
+}
+export const SqlServerAvailabilityGroupsFailoverMiLinkResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(
+        SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap,
+      ),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourceProperties,
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsFailoverMiLinkResponse",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponse>;
+
+export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+}
+export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/forceFailoverAllowDataLoss",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap =
+  { [key: string]: string | undefined };
+export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap>;
+
+export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourceProperties;
+}
+export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(
+        SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap,
+      ),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourceProperties,
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse>;
+
+/** List of database names. */
+export type SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList =
+  Array<string>;
+export const SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList>;
+
+export interface SqlServerAvailabilityGroupsRemoveDatabasesRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+  /** List of database names. */
+  values?: SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList;
+}
+export const SqlServerAvailabilityGroupsRemoveDatabasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+      values: S.optional(
+        SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/removeDatabases",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsRemoveDatabasesRequest",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap>;
+
+export interface SqlServerAvailabilityGroupsRemoveDatabasesResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourceProperties;
+}
+export const SqlServerAvailabilityGroupsRemoveDatabasesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(
+        SqlServerAvailabilityGroupsRemoveDatabasesResponseTagsMap,
+      ),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourceProperties,
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupsRemoveDatabasesResponse",
+  }) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesResponse>;
 
 export interface SqlServerInstancesPostUpgradeRequest {
   /** The ID of the Azure subscription */
@@ -9173,6 +9093,497 @@ export const SqlServerInstancesRunMigrationAssessmentResponse =
   }) as any as S.Schema<SqlServerInstancesRunMigrationAssessmentResponse>;
 
 /** Resource tags. */
+export type PostgresInstancesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PostgresInstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PostgresInstancesUpdateRequestTagsMap>;
+
+export interface UpdatePostgresInstanceRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of Postgres Instance */
+  postgresInstanceName: string;
+  /** Resource tags. */
+  tags?: PostgresInstancesUpdateRequestTagsMap;
+  properties?: PostgresInstancePropertiesInput;
+}
+export const UpdatePostgresInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    postgresInstanceName: S.String.pipe(T.Label()),
+    tags: S.optional(PostgresInstancesUpdateRequestTagsMap),
+    properties: S.optional(PostgresInstancePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePostgresInstanceRequest",
+}) as any as S.Schema<UpdatePostgresInstanceRequest>;
+
+/** Resource tags. */
+export type PostgresInstancesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PostgresInstancesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PostgresInstancesUpdateResponseTagsMap>;
+
+/** The complex type of the extended location. */
+export type PostgresInstancesUpdateResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const PostgresInstancesUpdateResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+export interface UpdatePostgresInstanceResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: PostgresInstancesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** null */
+  properties: PostgresInstanceProperties;
+  /** Resource sku. */
+  sku?: PostgresInstanceSku;
+}
+export const UpdatePostgresInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(PostgresInstancesUpdateResponseTagsMap),
+    location: S.String,
+    extendedLocation: S.optional(
+      PostgresInstancesCreateResponseExtendedLocation,
+    ),
+    properties: PostgresInstanceProperties,
+    sku: S.optional(PostgresInstanceSku),
+  }),
+).annotate({
+  identifier: "UpdatePostgresInstanceResponse",
+}) as any as S.Schema<UpdatePostgresInstanceResponse>;
+
+/** Resource tags. */
+export type SqlManagedInstancesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlManagedInstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlManagedInstancesUpdateRequestTagsMap>;
+
+export interface UpdateSqlManagedInstanceRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Managed Instance */
+  sqlManagedInstanceName: string;
+  /** Resource tags. */
+  tags?: SqlManagedInstancesUpdateRequestTagsMap;
+}
+export const UpdateSqlManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlManagedInstanceName: S.String.pipe(T.Label()),
+    tags: S.optional(SqlManagedInstancesUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSqlManagedInstanceRequest",
+}) as any as S.Schema<UpdateSqlManagedInstanceRequest>;
+
+/** Resource tags. */
+export type SqlManagedInstancesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlManagedInstancesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlManagedInstancesUpdateResponseTagsMap>;
+
+/** The complex type of the extended location. */
+export type SqlManagedInstancesUpdateResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+export const SqlManagedInstancesUpdateResponseExtendedLocation =
+  PostgresInstancesCreateResponseExtendedLocation;
+
+export interface UpdateSqlManagedInstanceResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlManagedInstancesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** null */
+  properties: SqlManagedInstanceProperties;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  /** Resource sku. */
+  sku?: SqlManagedInstanceSku;
+}
+export const UpdateSqlManagedInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlManagedInstancesUpdateResponseTagsMap),
+    location: S.String,
+    properties: SqlManagedInstanceProperties,
+    extendedLocation: S.optional(
+      PostgresInstancesCreateResponseExtendedLocation,
+    ),
+    sku: S.optional(SqlManagedInstanceSku),
+  }),
+).annotate({
+  identifier: "UpdateSqlManagedInstanceResponse",
+}) as any as S.Schema<UpdateSqlManagedInstanceResponse>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsUpdateRequestTagsMap>;
+
+export interface UpdateSqlServerAvailabilityGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of SQL Availability Group */
+  availabilityGroupName: string;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsUpdateRequestTagsMap;
+  /** The Server Availability Group's properties */
+  properties?: SqlServerAvailabilityGroupResourcePropertiesInput;
+}
+export const UpdateSqlServerAvailabilityGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      availabilityGroupName: S.String.pipe(T.Label()),
+      tags: S.optional(SqlServerAvailabilityGroupsUpdateRequestTagsMap),
+      properties: S.optional(SqlServerAvailabilityGroupResourcePropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateSqlServerAvailabilityGroupRequest",
+}) as any as S.Schema<UpdateSqlServerAvailabilityGroupRequest>;
+
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsUpdateResponseTagsMap>;
+
+export interface UpdateSqlServerAvailabilityGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourceProperties;
+}
+export const UpdateSqlServerAvailabilityGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(SqlServerAvailabilityGroupsUpdateResponseTagsMap),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourceProperties,
+    }),
+).annotate({
+  identifier: "UpdateSqlServerAvailabilityGroupResponse",
+}) as any as S.Schema<UpdateSqlServerAvailabilityGroupResponse>;
+
+/** Resource tags. */
+export type SqlServerDatabasesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerDatabasesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerDatabasesUpdateRequestTagsMap>;
+
+export interface UpdateSqlServerDatabaseRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Name of the database */
+  databaseName: string;
+  /** Resource tags. */
+  tags?: SqlServerDatabasesUpdateRequestTagsMap;
+  /** The data controller's properties */
+  properties?: SqlServerDatabaseResourcePropertiesInput;
+}
+export const UpdateSqlServerDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerInstanceName: S.String.pipe(T.Label()),
+    databaseName: S.String.pipe(T.Label()),
+    tags: S.optional(SqlServerDatabasesUpdateRequestTagsMap),
+    properties: S.optional(SqlServerDatabaseResourcePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSqlServerDatabaseRequest",
+}) as any as S.Schema<UpdateSqlServerDatabaseRequest>;
+
+/** Resource tags. */
+export type SqlServerDatabasesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerDatabasesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerDatabasesUpdateResponseTagsMap>;
+
+export interface UpdateSqlServerDatabaseResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerDatabasesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server database */
+  properties: SqlServerDatabaseResourceProperties;
+}
+export const UpdateSqlServerDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerDatabasesUpdateResponseTagsMap),
+    location: S.String,
+    properties: SqlServerDatabaseResourceProperties,
+  }),
+).annotate({
+  identifier: "UpdateSqlServerDatabaseResponse",
+}) as any as S.Schema<UpdateSqlServerDatabaseResponse>;
+
+/** Resource tags. */
+export type SqlServerEsuLicensesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerEsuLicensesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerEsuLicensesUpdateRequestTagsMap>;
+
+/** SQL Server ESU license type. */
+export type SqlServerEsuLicenseUpdatePropertiesInputBillingPlan = "PAYG";
+export const SqlServerEsuLicenseUpdatePropertiesInputBillingPlan =
+  /*@__PURE__*/ S.String;
+
+/** The SQL Server version the license covers. */
+export type SqlServerEsuLicenseUpdatePropertiesInputVersion =
+  | "SQL Server 2012"
+  | "SQL Server 2014";
+export const SqlServerEsuLicenseUpdatePropertiesInputVersion =
+  /*@__PURE__*/ S.String;
+
+/** The activation state of the license. */
+export type SqlServerEsuLicenseUpdatePropertiesInputActivationState =
+  | "Inactive"
+  | "Active"
+  | "Terminated";
+export const SqlServerEsuLicenseUpdatePropertiesInputActivationState =
+  /*@__PURE__*/ S.String;
+
+/** The Azure scope to which the license will apply. */
+export type SqlServerEsuLicenseUpdatePropertiesInputScopeType =
+  | "Tenant"
+  | "Subscription"
+  | "ResourceGroup";
+export const SqlServerEsuLicenseUpdatePropertiesInputScopeType =
+  /*@__PURE__*/ S.String;
+
+/** Properties of update SqlServerEsuLicense. */
+export interface SqlServerEsuLicenseUpdatePropertiesInput {
+  /** SQL Server ESU license type. */
+  billingPlan?:
+    | SqlServerEsuLicenseUpdatePropertiesInputBillingPlan
+    | (string & {});
+  /** The SQL Server version the license covers. */
+  version?: SqlServerEsuLicenseUpdatePropertiesInputVersion | (string & {});
+  /** The number of total cores of the license covers. */
+  physicalCores?: number;
+  /** The activation state of the license. */
+  activationState?:
+    | SqlServerEsuLicenseUpdatePropertiesInputActivationState
+    | (string & {});
+  /** The Azure scope to which the license will apply. */
+  scopeType?: SqlServerEsuLicenseUpdatePropertiesInputScopeType | (string & {});
+}
+export const SqlServerEsuLicenseUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingPlan: S.optional(
+        SqlServerEsuLicenseUpdatePropertiesInputBillingPlan,
+      ),
+      version: S.optional(SqlServerEsuLicenseUpdatePropertiesInputVersion),
+      physicalCores: S.optional(S.Number),
+      activationState: S.optional(
+        SqlServerEsuLicenseUpdatePropertiesInputActivationState,
+      ),
+      scopeType: S.optional(SqlServerEsuLicenseUpdatePropertiesInputScopeType),
+    }),
+).annotate({
+  identifier: "SqlServerEsuLicenseUpdatePropertiesInput",
+}) as any as S.Schema<SqlServerEsuLicenseUpdatePropertiesInput>;
+
+export interface UpdateSqlServerEsuLicenseRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of SQL Server ESU License */
+  sqlServerEsuLicenseName: string;
+  /** Resource tags. */
+  tags?: SqlServerEsuLicensesUpdateRequestTagsMap;
+  /** null */
+  properties?: SqlServerEsuLicenseUpdatePropertiesInput;
+}
+export const UpdateSqlServerEsuLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerEsuLicenseName: S.String.pipe(T.Label()),
+    tags: S.optional(SqlServerEsuLicensesUpdateRequestTagsMap),
+    properties: S.optional(SqlServerEsuLicenseUpdatePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSqlServerEsuLicenseRequest",
+}) as any as S.Schema<UpdateSqlServerEsuLicenseRequest>;
+
+/** Resource tags. */
+export type SqlServerEsuLicensesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerEsuLicensesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerEsuLicensesUpdateResponseTagsMap>;
+
+export interface UpdateSqlServerEsuLicenseResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlServerEsuLicensesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** SQL Server ESU license properties */
+  properties: SqlServerEsuLicenseProperties;
+}
+export const UpdateSqlServerEsuLicenseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlServerEsuLicensesUpdateResponseTagsMap),
+    location: S.String,
+    properties: SqlServerEsuLicenseProperties,
+  }),
+).annotate({
+  identifier: "UpdateSqlServerEsuLicenseResponse",
+}) as any as S.Schema<UpdateSqlServerEsuLicenseResponse>;
+
+/** Resource tags. */
 export type SqlServerInstancesUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
@@ -9290,7 +9701,7 @@ export const SqlServerInstanceUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
   identifier: "SqlServerInstanceUpdatePropertiesInput",
 }) as any as S.Schema<SqlServerInstanceUpdatePropertiesInput>;
 
-export interface SqlServerInstancesUpdateRequest {
+export interface UpdateSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -9302,7 +9713,7 @@ export interface SqlServerInstancesUpdateRequest {
   /** null */
   properties?: SqlServerInstanceUpdatePropertiesInput;
 }
-export const SqlServerInstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSqlServerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9318,8 +9729,8 @@ export const SqlServerInstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SqlServerInstancesUpdateRequest",
-}) as any as S.Schema<SqlServerInstancesUpdateRequest>;
+  identifier: "UpdateSqlServerInstanceRequest",
+}) as any as S.Schema<UpdateSqlServerInstanceRequest>;
 
 /** Resource tags. */
 export type SqlServerInstancesUpdateResponseTagsMap = {
@@ -9330,7 +9741,7 @@ export const SqlServerInstancesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SqlServerInstancesUpdateResponseTagsMap>;
 
-export interface SqlServerInstancesUpdateResponse {
+export interface UpdateSqlServerInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -9346,7 +9757,7 @@ export interface SqlServerInstancesUpdateResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-export const SqlServerInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSqlServerInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9357,419 +9768,8 @@ export const SqlServerInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(SqlServerInstanceProperties),
   }),
 ).annotate({
-  identifier: "SqlServerInstancesUpdateResponse",
-}) as any as S.Schema<SqlServerInstancesUpdateResponse>;
-
-/** Resource tags. */
-export type SqlServerLicensesCreateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerLicensesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerLicensesCreateRequestTagsMap>;
-
-/** SQL Server license type. */
-export type SqlServerLicensePropertiesInputBillingPlan = "PAYG" | "Paid";
-export const SqlServerLicensePropertiesInputBillingPlan =
-  /*@__PURE__*/ S.String;
-
-/** This property represents the choice between SQL Server Core and ESU licenses. */
-export type SqlServerLicensePropertiesInputLicenseCategory = "Core";
-export const SqlServerLicensePropertiesInputLicenseCategory =
-  /*@__PURE__*/ S.String;
-
-/** The activation state of the license. */
-export type SqlServerLicensePropertiesInputActivationState =
-  | "Activated"
-  | "Deactivated";
-export const SqlServerLicensePropertiesInputActivationState =
-  /*@__PURE__*/ S.String;
-
-/** The Azure scope to which the license will apply. */
-export type SqlServerLicensePropertiesInputScopeType =
-  | "Tenant"
-  | "Subscription"
-  | "ResourceGroup";
-export const SqlServerLicensePropertiesInputScopeType = /*@__PURE__*/ S.String;
-
-/** Properties of SQL Server License. */
-export interface SqlServerLicensePropertiesInput {
-  /** SQL Server license type. */
-  billingPlan: SqlServerLicensePropertiesInputBillingPlan | (string & {});
-  /** The number of total cores of the license covers. */
-  physicalCores: number;
-  /** This property represents the choice between SQL Server Core and ESU licenses. */
-  licenseCategory:
-    | SqlServerLicensePropertiesInputLicenseCategory
-    | (string & {});
-  /** The activation state of the license. */
-  activationState:
-    | SqlServerLicensePropertiesInputActivationState
-    | (string & {});
-  /** The Azure scope to which the license will apply. */
-  scopeType: SqlServerLicensePropertiesInputScopeType | (string & {});
-}
-export const SqlServerLicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingPlan: SqlServerLicensePropertiesInputBillingPlan,
-    physicalCores: S.Number,
-    licenseCategory: SqlServerLicensePropertiesInputLicenseCategory,
-    activationState: SqlServerLicensePropertiesInputActivationState,
-    scopeType: SqlServerLicensePropertiesInputScopeType,
-  }),
-).annotate({
-  identifier: "SqlServerLicensePropertiesInput",
-}) as any as S.Schema<SqlServerLicensePropertiesInput>;
-
-export interface SqlServerLicensesCreateRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server License */
-  sqlServerLicenseName: string;
-  /** Resource tags. */
-  tags?: SqlServerLicensesCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** SQL Server license properties */
-  properties: SqlServerLicensePropertiesInput;
-}
-export const SqlServerLicensesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerLicenseName: S.String.pipe(T.Label()),
-    tags: S.optional(SqlServerLicensesCreateRequestTagsMap),
-    location: S.String,
-    properties: SqlServerLicensePropertiesInput,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerLicensesCreateRequest",
-}) as any as S.Schema<SqlServerLicensesCreateRequest>;
-
-/** Resource tags. */
-export type SqlServerLicensesCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerLicensesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerLicensesCreateResponseTagsMap>;
-
-/** SQL Server license type. */
-export type SqlServerLicensePropertiesBillingPlan = "PAYG" | "Paid";
-export const SqlServerLicensePropertiesBillingPlan = /*@__PURE__*/ S.String;
-
-/** This property represents the choice between SQL Server Core and ESU licenses. */
-export type SqlServerLicensePropertiesLicenseCategory = "Core";
-export const SqlServerLicensePropertiesLicenseCategory = /*@__PURE__*/ S.String;
-
-/** The activation state of the license. */
-export type SqlServerLicensePropertiesActivationState =
-  | "Activated"
-  | "Deactivated";
-export const SqlServerLicensePropertiesActivationState = /*@__PURE__*/ S.String;
-
-/** The Azure scope to which the license will apply. */
-export type SqlServerLicensePropertiesScopeType =
-  | "Tenant"
-  | "Subscription"
-  | "ResourceGroup";
-export const SqlServerLicensePropertiesScopeType = /*@__PURE__*/ S.String;
-
-/** Properties of SQL Server License. */
-export interface SqlServerLicenseProperties {
-  /** SQL Server license type. */
-  billingPlan: SqlServerLicensePropertiesBillingPlan;
-  /** The number of total cores of the license covers. */
-  physicalCores: number;
-  /** This property represents the choice between SQL Server Core and ESU licenses. */
-  licenseCategory: SqlServerLicensePropertiesLicenseCategory;
-  /** The activation state of the license. */
-  activationState: SqlServerLicensePropertiesActivationState;
-  /** The Azure scope to which the license will apply. */
-  scopeType: SqlServerLicensePropertiesScopeType;
-  /** The timestamp of the most recent activation of the SqlServerLicense. */
-  lastActivatedAt?: string;
-  /** The timestamp of the most recent deactivation of the SqlServerLicense. */
-  lastDeactivatedAt?: string;
-  /** The tenantId the SQL Server license resource subscription resides in. */
-  tenantId?: string;
-}
-export const SqlServerLicenseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingPlan: SqlServerLicensePropertiesBillingPlan,
-    physicalCores: S.Number,
-    licenseCategory: SqlServerLicensePropertiesLicenseCategory,
-    activationState: SqlServerLicensePropertiesActivationState,
-    scopeType: SqlServerLicensePropertiesScopeType,
-    lastActivatedAt: S.optional(S.String),
-    lastDeactivatedAt: S.optional(S.String),
-    tenantId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlServerLicenseProperties",
-}) as any as S.Schema<SqlServerLicenseProperties>;
-
-export interface SqlServerLicensesCreateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerLicensesCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** SQL Server license properties */
-  properties: SqlServerLicenseProperties;
-}
-export const SqlServerLicensesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerLicensesCreateResponseTagsMap),
-    location: S.String,
-    properties: SqlServerLicenseProperties,
-  }),
-).annotate({
-  identifier: "SqlServerLicensesCreateResponse",
-}) as any as S.Schema<SqlServerLicensesCreateResponse>;
-
-export interface SqlServerLicensesDeleteRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server License */
-  sqlServerLicenseName: string;
-}
-export const SqlServerLicensesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerLicenseName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerLicensesDeleteRequest",
-}) as any as S.Schema<SqlServerLicensesDeleteRequest>;
-
-export interface SqlServerLicensesDeleteResponse {}
-export const SqlServerLicensesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SqlServerLicensesDeleteResponse",
-}) as any as S.Schema<SqlServerLicensesDeleteResponse>;
-
-export interface SqlServerLicensesGetRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server License */
-  sqlServerLicenseName: string;
-}
-export const SqlServerLicensesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerLicenseName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerLicensesGetRequest",
-}) as any as S.Schema<SqlServerLicensesGetRequest>;
-
-/** Resource tags. */
-export type SqlServerLicensesGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlServerLicensesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerLicensesGetResponseTagsMap>;
-
-export interface SqlServerLicensesGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerLicensesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** SQL Server license properties */
-  properties: SqlServerLicenseProperties;
-}
-export const SqlServerLicensesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerLicensesGetResponseTagsMap),
-    location: S.String,
-    properties: SqlServerLicenseProperties,
-  }),
-).annotate({
-  identifier: "SqlServerLicensesGetResponse",
-}) as any as S.Schema<SqlServerLicensesGetResponse>;
-
-export interface SqlServerLicensesListRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-}
-export const SqlServerLicensesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerLicenses",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerLicensesListRequest",
-}) as any as S.Schema<SqlServerLicensesListRequest>;
-
-/** Resource tags. */
-export type SqlServerLicenseTagsMap = { [key: string]: string | undefined };
-export const SqlServerLicenseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerLicenseTagsMap>;
-
-/** Describe SQL Server license resource. */
-export interface SqlServerLicense {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlServerLicenseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** SQL Server license properties */
-  properties: SqlServerLicenseProperties;
-}
-export const SqlServerLicense = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerLicenseTagsMap),
-    location: S.String,
-    properties: SqlServerLicenseProperties,
-  }),
-).annotate({
-  identifier: "SqlServerLicense",
-}) as any as S.Schema<SqlServerLicense>;
-
-/** Array of results. */
-export type SqlServerLicensesListResponseValueList = Array<SqlServerLicense>;
-export const SqlServerLicensesListResponseValueList = /*@__PURE__*/ S.Array(
-  SqlServerLicense,
-) as any as S.Schema<SqlServerLicensesListResponseValueList>;
-
-export interface SqlServerLicensesListResponse {
-  /** Array of results. */
-  value?: SqlServerLicensesListResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const SqlServerLicensesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SqlServerLicensesListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlServerLicensesListResponse",
-}) as any as S.Schema<SqlServerLicensesListResponse>;
-
-export interface SqlServerLicensesListByResourceGroupRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-}
-export const SqlServerLicensesListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerLicensesListByResourceGroupRequest",
-  }) as any as S.Schema<SqlServerLicensesListByResourceGroupRequest>;
-
-/** Array of results. */
-export type SqlServerLicensesListByResourceGroupResponseValueList =
-  Array<SqlServerLicense>;
-export const SqlServerLicensesListByResourceGroupResponseValueList =
-  /*@__PURE__*/ S.Array(
-    SqlServerLicense,
-  ) as any as S.Schema<SqlServerLicensesListByResourceGroupResponseValueList>;
-
-export interface SqlServerLicensesListByResourceGroupResponse {
-  /** Array of results. */
-  value?: SqlServerLicensesListByResourceGroupResponseValueList;
-  /** Link to retrieve next page of results. */
-  nextLink?: string;
-}
-export const SqlServerLicensesListByResourceGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(SqlServerLicensesListByResourceGroupResponseValueList),
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SqlServerLicensesListByResourceGroupResponse",
-  }) as any as S.Schema<SqlServerLicensesListByResourceGroupResponse>;
+  identifier: "UpdateSqlServerInstanceResponse",
+}) as any as S.Schema<UpdateSqlServerInstanceResponse>;
 
 /** Resource tags. */
 export type SqlServerLicensesUpdateRequestTagsMap = {
@@ -9841,7 +9841,7 @@ export const SqlServerLicenseUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
   identifier: "SqlServerLicenseUpdatePropertiesInput",
 }) as any as S.Schema<SqlServerLicenseUpdatePropertiesInput>;
 
-export interface SqlServerLicensesUpdateRequest {
+export interface UpdateSqlServerLicenseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
@@ -9853,7 +9853,7 @@ export interface SqlServerLicensesUpdateRequest {
   /** null */
   properties?: SqlServerLicenseUpdatePropertiesInput;
 }
-export const SqlServerLicensesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSqlServerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9869,8 +9869,8 @@ export const SqlServerLicensesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SqlServerLicensesUpdateRequest",
-}) as any as S.Schema<SqlServerLicensesUpdateRequest>;
+  identifier: "UpdateSqlServerLicenseRequest",
+}) as any as S.Schema<UpdateSqlServerLicenseRequest>;
 
 /** Resource tags. */
 export type SqlServerLicensesUpdateResponseTagsMap = {
@@ -9881,7 +9881,7 @@ export const SqlServerLicensesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SqlServerLicensesUpdateResponseTagsMap>;
 
-export interface SqlServerLicensesUpdateResponse {
+export interface UpdateSqlServerLicenseResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -9897,7 +9897,7 @@ export interface SqlServerLicensesUpdateResponse {
   /** SQL Server license properties */
   properties: SqlServerLicenseProperties;
 }
-export const SqlServerLicensesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSqlServerLicenseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9908,124 +9908,187 @@ export const SqlServerLicensesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: SqlServerLicenseProperties,
   }),
 ).annotate({
-  identifier: "SqlServerLicensesUpdateResponse",
-}) as any as S.Schema<SqlServerLicensesUpdateResponse>;
+  identifier: "UpdateSqlServerLicenseResponse",
+}) as any as S.Schema<UpdateSqlServerLicenseResponse>;
 
-export type ActiveDirectoryConnectorsCreateError = AzureOpError;
+export type CreateActiveDirectoryConnectorError = AzureOpError;
 /** Creates or replaces an Active Directory connector resource. */
-export const ActiveDirectoryConnectorsCreate: API.OperationMethod<
-  ActiveDirectoryConnectorsCreateRequest,
-  ActiveDirectoryConnectorsCreateResponse,
-  ActiveDirectoryConnectorsCreateError,
+export const CreateActiveDirectoryConnector: API.OperationMethod<
+  CreateActiveDirectoryConnectorRequest,
+  CreateActiveDirectoryConnectorResponse,
+  CreateActiveDirectoryConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActiveDirectoryConnectorsCreateRequest,
-  output: ActiveDirectoryConnectorsCreateResponse,
+  input: CreateActiveDirectoryConnectorRequest,
+  output: CreateActiveDirectoryConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ActiveDirectoryConnectorsDeleteError = AzureOpError;
-/** Deletes an Active Directory connector resource */
-export const ActiveDirectoryConnectorsDelete: API.OperationMethod<
-  ActiveDirectoryConnectorsDeleteRequest,
-  ActiveDirectoryConnectorsDeleteResponse,
-  ActiveDirectoryConnectorsDeleteError,
+export type CreateFailoverGroupError = AzureOpError;
+/** Creates or replaces a failover group resource. */
+export const CreateFailoverGroup: API.OperationMethod<
+  CreateFailoverGroupRequest,
+  CreateFailoverGroupResponse,
+  CreateFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActiveDirectoryConnectorsDeleteRequest,
-  output: ActiveDirectoryConnectorsDeleteResponse,
+  input: CreateFailoverGroupRequest,
+  output: CreateFailoverGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ActiveDirectoryConnectorsGetError = AzureOpError;
-/** Retrieves an Active Directory connector resource */
-export const ActiveDirectoryConnectorsGet: API.OperationMethod<
-  ActiveDirectoryConnectorsGetRequest,
-  ActiveDirectoryConnectorsGetResponse,
-  ActiveDirectoryConnectorsGetError,
+export type CreatePostgresInstanceError = AzureOpError;
+/** Creates or replaces a postgres Instance resource */
+export const CreatePostgresInstance: API.OperationMethod<
+  CreatePostgresInstanceRequest,
+  CreatePostgresInstanceResponse,
+  CreatePostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActiveDirectoryConnectorsGetRequest,
-  output: ActiveDirectoryConnectorsGetResponse,
+  input: CreatePostgresInstanceRequest,
+  output: CreatePostgresInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ActiveDirectoryConnectorsListError = AzureOpError;
-/** List the active directory connectors associated with the given data controller. */
-export const ActiveDirectoryConnectorsList: API.OperationMethod<
-  ActiveDirectoryConnectorsListRequest,
-  ActiveDirectoryConnectorsListResponse,
-  ActiveDirectoryConnectorsListError,
+export type CreateSqlManagedInstanceError = AzureOpError;
+/** Creates or replaces a SQL Managed Instance resource */
+export const CreateSqlManagedInstance: API.OperationMethod<
+  CreateSqlManagedInstanceRequest,
+  CreateSqlManagedInstanceResponse,
+  CreateSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActiveDirectoryConnectorsListRequest,
-  output: ActiveDirectoryConnectorsListResponse,
+  input: CreateSqlManagedInstanceRequest,
+  output: CreateSqlManagedInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DataControllersDeleteDataControllerError = AzureOpError;
-/** Deletes a dataController resource */
-export const DataControllersDeleteDataController: API.OperationMethod<
-  DataControllersDeleteDataControllerRequest,
-  DataControllersDeleteDataControllerResponse,
-  DataControllersDeleteDataControllerError,
+export type CreateSqlServerAvailabilityGroupError = AzureOpError;
+/** Creates or replaces an Arc Sql Server Availability Group. */
+export const CreateSqlServerAvailabilityGroup: API.OperationMethod<
+  CreateSqlServerAvailabilityGroupRequest,
+  CreateSqlServerAvailabilityGroupResponse,
+  CreateSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataControllersDeleteDataControllerRequest,
-  output: DataControllersDeleteDataControllerResponse,
+  input: CreateSqlServerAvailabilityGroupRequest,
+  output: CreateSqlServerAvailabilityGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DataControllersGetDataControllerError = AzureOpError;
-/** Retrieves a dataController resource */
-export const DataControllersGetDataController: API.OperationMethod<
-  DataControllersGetDataControllerRequest,
-  DataControllersGetDataControllerResponse,
-  DataControllersGetDataControllerError,
+export type CreateSqlServerAvailabilityGroupAvailabilityGroupError =
+  AzureOpError;
+/** Create a SQL Server availability group */
+export const CreateSqlServerAvailabilityGroupAvailabilityGroup: API.OperationMethod<
+  CreateSqlServerAvailabilityGroupAvailabilityGroupRequest,
+  CreateSqlServerAvailabilityGroupAvailabilityGroupResponse,
+  CreateSqlServerAvailabilityGroupAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataControllersGetDataControllerRequest,
-  output: DataControllersGetDataControllerResponse,
+  input: CreateSqlServerAvailabilityGroupAvailabilityGroupRequest,
+  output: CreateSqlServerAvailabilityGroupAvailabilityGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DataControllersListInGroupError = AzureOpError;
-/** List dataController resources in the resource group */
-export const DataControllersListInGroup: API.OperationMethod<
-  DataControllersListInGroupRequest,
-  DataControllersListInGroupResponse,
-  DataControllersListInGroupError,
+export type CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupError =
+  AzureOpError;
+/** Create a SQL Server distributed availability group */
+export const CreateSqlServerAvailabilityGroupDistributedAvailabilityGroup: API.OperationMethod<
+  CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest,
+  CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse,
+  CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataControllersListInGroupRequest,
-  output: DataControllersListInGroupResponse,
+  input: CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest,
+  output: CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DataControllersListInSubscriptionError = AzureOpError;
-/** List dataController resources in the subscription */
-export const DataControllersListInSubscription: API.OperationMethod<
-  DataControllersListInSubscriptionRequest,
-  DataControllersListInSubscriptionResponse,
-  DataControllersListInSubscriptionError,
+export type CreateSqlServerAvailabilityGroupManagedInstanceLinkError =
+  AzureOpError;
+/** Create an Managed Instance Link */
+export const CreateSqlServerAvailabilityGroupManagedInstanceLink: API.OperationMethod<
+  CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest,
+  CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse,
+  CreateSqlServerAvailabilityGroupManagedInstanceLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataControllersListInSubscriptionRequest,
-  output: DataControllersListInSubscriptionResponse,
+  input: CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest,
+  output: CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSqlServerDatabaseError = AzureOpError;
+/** Creates or replaces an Arc Sql Server Database. */
+export const CreateSqlServerDatabase: API.OperationMethod<
+  CreateSqlServerDatabaseRequest,
+  CreateSqlServerDatabaseResponse,
+  CreateSqlServerDatabaseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSqlServerDatabaseRequest,
+  output: CreateSqlServerDatabaseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSqlServerEsuLicenseError = AzureOpError;
+/** Creates or replaces a SQL Server ESU license resource */
+export const CreateSqlServerEsuLicense: API.OperationMethod<
+  CreateSqlServerEsuLicenseRequest,
+  CreateSqlServerEsuLicenseResponse,
+  CreateSqlServerEsuLicenseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSqlServerEsuLicenseRequest,
+  output: CreateSqlServerEsuLicenseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSqlServerInstanceError = AzureOpError;
+/** Creates or replaces a SQL Server Instance resource */
+export const CreateSqlServerInstance: API.OperationMethod<
+  CreateSqlServerInstanceRequest,
+  CreateSqlServerInstanceResponse,
+  CreateSqlServerInstanceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSqlServerInstanceRequest,
+  output: CreateSqlServerInstanceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSqlServerLicenseError = AzureOpError;
+/** Creates or replaces a SQL Server license resource */
+export const CreateSqlServerLicense: API.OperationMethod<
+  CreateSqlServerLicenseRequest,
+  CreateSqlServerLicenseResponse,
+  CreateSqlServerLicenseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSqlServerLicenseRequest,
+  output: CreateSqlServerLicenseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10061,256 +10124,631 @@ export const DataControllersPutDataController: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FailoverGroupsCreateError = AzureOpError;
-/** Creates or replaces a failover group resource. */
-export const FailoverGroupsCreate: API.OperationMethod<
-  FailoverGroupsCreateRequest,
-  FailoverGroupsCreateResponse,
-  FailoverGroupsCreateError,
+export type DeleteActiveDirectoryConnectorError = AzureOpError;
+/** Deletes an Active Directory connector resource */
+export const DeleteActiveDirectoryConnector: API.OperationMethod<
+  DeleteActiveDirectoryConnectorRequest,
+  DeleteActiveDirectoryConnectorResponse,
+  DeleteActiveDirectoryConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FailoverGroupsCreateRequest,
-  output: FailoverGroupsCreateResponse,
+  input: DeleteActiveDirectoryConnectorRequest,
+  output: DeleteActiveDirectoryConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FailoverGroupsDeleteError = AzureOpError;
+export type DeleteDataControllerDataControllerError = AzureOpError;
+/** Deletes a dataController resource */
+export const DeleteDataControllerDataController: API.OperationMethod<
+  DeleteDataControllerDataControllerRequest,
+  DeleteDataControllerDataControllerResponse,
+  DeleteDataControllerDataControllerError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDataControllerDataControllerRequest,
+  output: DeleteDataControllerDataControllerResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteFailoverGroupError = AzureOpError;
 /** Deletes a failover group resource */
-export const FailoverGroupsDelete: API.OperationMethod<
-  FailoverGroupsDeleteRequest,
-  FailoverGroupsDeleteResponse,
-  FailoverGroupsDeleteError,
+export const DeleteFailoverGroup: API.OperationMethod<
+  DeleteFailoverGroupRequest,
+  DeleteFailoverGroupResponse,
+  DeleteFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FailoverGroupsDeleteRequest,
-  output: FailoverGroupsDeleteResponse,
+  input: DeleteFailoverGroupRequest,
+  output: DeleteFailoverGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FailoverGroupsGetError = AzureOpError;
-/** Retrieves a failover group resource */
-export const FailoverGroupsGet: API.OperationMethod<
-  FailoverGroupsGetRequest,
-  FailoverGroupsGetResponse,
-  FailoverGroupsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FailoverGroupsGetRequest,
-  output: FailoverGroupsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FailoverGroupsListError = AzureOpError;
-/** List the failover groups associated with the given sql managed instance. */
-export const FailoverGroupsList: API.OperationMethod<
-  FailoverGroupsListRequest,
-  FailoverGroupsListResponse,
-  FailoverGroupsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FailoverGroupsListRequest,
-  output: FailoverGroupsListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** Lists all of the available Azure Data Services on Azure Arc API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PostgresInstancesCreateError = AzureOpError;
-/** Creates or replaces a postgres Instance resource */
-export const PostgresInstancesCreate: API.OperationMethod<
-  PostgresInstancesCreateRequest,
-  PostgresInstancesCreateResponse,
-  PostgresInstancesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PostgresInstancesCreateRequest,
-  output: PostgresInstancesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PostgresInstancesDeleteError = AzureOpError;
+export type DeletePostgresInstanceError = AzureOpError;
 /** Deletes a postgres Instance resource */
-export const PostgresInstancesDelete: API.OperationMethod<
-  PostgresInstancesDeleteRequest,
-  PostgresInstancesDeleteResponse,
-  PostgresInstancesDeleteError,
+export const DeletePostgresInstance: API.OperationMethod<
+  DeletePostgresInstanceRequest,
+  DeletePostgresInstanceResponse,
+  DeletePostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostgresInstancesDeleteRequest,
-  output: PostgresInstancesDeleteResponse,
+  input: DeletePostgresInstanceRequest,
+  output: DeletePostgresInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type PostgresInstancesGetError = AzureOpError;
-/** Retrieves a postgres Instance resource */
-export const PostgresInstancesGet: API.OperationMethod<
-  PostgresInstancesGetRequest,
-  PostgresInstancesGetResponse,
-  PostgresInstancesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PostgresInstancesGetRequest,
-  output: PostgresInstancesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PostgresInstancesListError = AzureOpError;
-/** List postgres Instance resources in the subscription */
-export const PostgresInstancesList: API.OperationMethod<
-  PostgresInstancesListRequest,
-  PostgresInstancesListResponse,
-  PostgresInstancesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PostgresInstancesListRequest,
-  output: PostgresInstancesListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PostgresInstancesListByResourceGroupError = AzureOpError;
-/** List postgres Instance resources in the resource group Get a postgres Instances list by Resource group name. */
-export const PostgresInstancesListByResourceGroup: API.OperationMethod<
-  PostgresInstancesListByResourceGroupRequest,
-  PostgresInstancesListByResourceGroupResponse,
-  PostgresInstancesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PostgresInstancesListByResourceGroupRequest,
-  output: PostgresInstancesListByResourceGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PostgresInstancesUpdateError = AzureOpError;
-/** Updates a postgres Instance resource */
-export const PostgresInstancesUpdate: API.OperationMethod<
-  PostgresInstancesUpdateRequest,
-  PostgresInstancesUpdateResponse,
-  PostgresInstancesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PostgresInstancesUpdateRequest,
-  output: PostgresInstancesUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlManagedInstancesCreateError = AzureOpError;
-/** Creates or replaces a SQL Managed Instance resource */
-export const SqlManagedInstancesCreate: API.OperationMethod<
-  SqlManagedInstancesCreateRequest,
-  SqlManagedInstancesCreateResponse,
-  SqlManagedInstancesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlManagedInstancesCreateRequest,
-  output: SqlManagedInstancesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlManagedInstancesDeleteError = AzureOpError;
+export type DeleteSqlManagedInstanceError = AzureOpError;
 /** Deletes a SQL Managed Instance resource */
-export const SqlManagedInstancesDelete: API.OperationMethod<
-  SqlManagedInstancesDeleteRequest,
-  SqlManagedInstancesDeleteResponse,
-  SqlManagedInstancesDeleteError,
+export const DeleteSqlManagedInstance: API.OperationMethod<
+  DeleteSqlManagedInstanceRequest,
+  DeleteSqlManagedInstanceResponse,
+  DeleteSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlManagedInstancesDeleteRequest,
-  output: SqlManagedInstancesDeleteResponse,
+  input: DeleteSqlManagedInstanceRequest,
+  output: DeleteSqlManagedInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SqlManagedInstancesGetError = AzureOpError;
+export type DeleteSqlServerAvailabilityGroupError = AzureOpError;
+/** Deletes an Arc Sql Server availability group resource. */
+export const DeleteSqlServerAvailabilityGroup: API.OperationMethod<
+  DeleteSqlServerAvailabilityGroupRequest,
+  DeleteSqlServerAvailabilityGroupResponse,
+  DeleteSqlServerAvailabilityGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSqlServerAvailabilityGroupRequest,
+  output: DeleteSqlServerAvailabilityGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSqlServerAvailabilityGroupMiLinkError = AzureOpError;
+/** Deletes the MI Link between an Azure Arc-enabled SQL Server and an Azure SQL Managed Instance. */
+export const DeleteSqlServerAvailabilityGroupMiLink: API.OperationMethod<
+  DeleteSqlServerAvailabilityGroupMiLinkRequest,
+  DeleteSqlServerAvailabilityGroupMiLinkResponse,
+  DeleteSqlServerAvailabilityGroupMiLinkError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSqlServerAvailabilityGroupMiLinkRequest,
+  output: DeleteSqlServerAvailabilityGroupMiLinkResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSqlServerDatabaseError = AzureOpError;
+/** Deletes an Arc Sql Server database resource. */
+export const DeleteSqlServerDatabase: API.OperationMethod<
+  DeleteSqlServerDatabaseRequest,
+  DeleteSqlServerDatabaseResponse,
+  DeleteSqlServerDatabaseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSqlServerDatabaseRequest,
+  output: DeleteSqlServerDatabaseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSqlServerEsuLicenseError = AzureOpError;
+/** Deletes a SQL Server ESU license resource */
+export const DeleteSqlServerEsuLicense: API.OperationMethod<
+  DeleteSqlServerEsuLicenseRequest,
+  DeleteSqlServerEsuLicenseResponse,
+  DeleteSqlServerEsuLicenseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSqlServerEsuLicenseRequest,
+  output: DeleteSqlServerEsuLicenseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSqlServerInstanceError = AzureOpError;
+/** Deletes a SQL Server Instance resource */
+export const DeleteSqlServerInstance: API.OperationMethod<
+  DeleteSqlServerInstanceRequest,
+  DeleteSqlServerInstanceResponse,
+  DeleteSqlServerInstanceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSqlServerInstanceRequest,
+  output: DeleteSqlServerInstanceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSqlServerLicenseError = AzureOpError;
+/** Deletes a SQL Server license resource */
+export const DeleteSqlServerLicense: API.OperationMethod<
+  DeleteSqlServerLicenseRequest,
+  DeleteSqlServerLicenseResponse,
+  DeleteSqlServerLicenseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSqlServerLicenseRequest,
+  output: DeleteSqlServerLicenseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetActiveDirectoryConnectorError = AzureOpError;
+/** Retrieves an Active Directory connector resource */
+export const GetActiveDirectoryConnector: API.OperationMethod<
+  GetActiveDirectoryConnectorRequest,
+  GetActiveDirectoryConnectorResponse,
+  GetActiveDirectoryConnectorError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetActiveDirectoryConnectorRequest,
+  output: GetActiveDirectoryConnectorResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDataControllerDataControllerError = AzureOpError;
+/** Retrieves a dataController resource */
+export const GetDataControllerDataController: API.OperationMethod<
+  GetDataControllerDataControllerRequest,
+  GetDataControllerDataControllerResponse,
+  GetDataControllerDataControllerError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDataControllerDataControllerRequest,
+  output: GetDataControllerDataControllerResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetFailoverGroupError = AzureOpError;
+/** Retrieves a failover group resource */
+export const GetFailoverGroup: API.OperationMethod<
+  GetFailoverGroupRequest,
+  GetFailoverGroupResponse,
+  GetFailoverGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetFailoverGroupRequest,
+  output: GetFailoverGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPostgresInstanceError = AzureOpError;
+/** Retrieves a postgres Instance resource */
+export const GetPostgresInstance: API.OperationMethod<
+  GetPostgresInstanceRequest,
+  GetPostgresInstanceResponse,
+  GetPostgresInstanceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPostgresInstanceRequest,
+  output: GetPostgresInstanceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSqlManagedInstanceError = AzureOpError;
 /** Retrieves a SQL Managed Instance resource */
-export const SqlManagedInstancesGet: API.OperationMethod<
-  SqlManagedInstancesGetRequest,
-  SqlManagedInstancesGetResponse,
-  SqlManagedInstancesGetError,
+export const GetSqlManagedInstance: API.OperationMethod<
+  GetSqlManagedInstanceRequest,
+  GetSqlManagedInstanceResponse,
+  GetSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlManagedInstancesGetRequest,
-  output: SqlManagedInstancesGetResponse,
+  input: GetSqlManagedInstanceRequest,
+  output: GetSqlManagedInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SqlManagedInstancesListError = AzureOpError;
-/** List sqlManagedInstance resources in the subscription */
-export const SqlManagedInstancesList: API.OperationMethod<
-  SqlManagedInstancesListRequest,
-  SqlManagedInstancesListResponse,
-  SqlManagedInstancesListError,
+export type GetSqlServerAvailabilityGroupError = AzureOpError;
+/** Retrieves an Arc Sql Server availability group. */
+export const GetSqlServerAvailabilityGroup: API.OperationMethod<
+  GetSqlServerAvailabilityGroupRequest,
+  GetSqlServerAvailabilityGroupResponse,
+  GetSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlManagedInstancesListRequest,
-  output: SqlManagedInstancesListResponse,
+  input: GetSqlServerAvailabilityGroupRequest,
+  output: GetSqlServerAvailabilityGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SqlManagedInstancesListByResourceGroupError = AzureOpError;
+export type GetSqlServerDatabaseError = AzureOpError;
+/** Retrieves an Arc Sql Server database. */
+export const GetSqlServerDatabase: API.OperationMethod<
+  GetSqlServerDatabaseRequest,
+  GetSqlServerDatabaseResponse,
+  GetSqlServerDatabaseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSqlServerDatabaseRequest,
+  output: GetSqlServerDatabaseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSqlServerEsuLicenseError = AzureOpError;
+/** Retrieves a SQL Server ESU license resource */
+export const GetSqlServerEsuLicense: API.OperationMethod<
+  GetSqlServerEsuLicenseRequest,
+  GetSqlServerEsuLicenseResponse,
+  GetSqlServerEsuLicenseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSqlServerEsuLicenseRequest,
+  output: GetSqlServerEsuLicenseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSqlServerInstanceError = AzureOpError;
+/** Retrieves a SQL Server Instance resource */
+export const GetSqlServerInstance: API.OperationMethod<
+  GetSqlServerInstanceRequest,
+  GetSqlServerInstanceResponse,
+  GetSqlServerInstanceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSqlServerInstanceRequest,
+  output: GetSqlServerInstanceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSqlServerInstanceAllAvailabilityGroupError = AzureOpError;
+/** Retrieves full properties of all the Availability Groups in a SQL Server instance. */
+export const GetSqlServerInstanceAllAvailabilityGroup: API.OperationMethod<
+  GetSqlServerInstanceAllAvailabilityGroupRequest,
+  ArcSqlServerAvailabilityGroupListResult,
+  GetSqlServerInstanceAllAvailabilityGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSqlServerInstanceAllAvailabilityGroupRequest,
+  output: ArcSqlServerAvailabilityGroupListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSqlServerInstanceBestPracticeAssessmentError = AzureOpError;
+/** Retrieves SQL best practices assessment results for the SQL Server instance. */
+export const GetSqlServerInstanceBestPracticeAssessment: API.OperationMethod<
+  GetSqlServerInstanceBestPracticeAssessmentRequest,
+  GetSqlServerInstanceBestPracticeAssessmentResponse,
+  GetSqlServerInstanceBestPracticeAssessmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSqlServerInstanceBestPracticeAssessmentRequest,
+  output: GetSqlServerInstanceBestPracticeAssessmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSqlServerInstanceJobStatusError = AzureOpError;
+/** Gets jobs status details for sql arc resource */
+export const GetSqlServerInstanceJobStatus: API.OperationMethod<
+  GetSqlServerInstanceJobStatusRequest,
+  GetSqlServerInstanceJobStatusResponse,
+  GetSqlServerInstanceJobStatusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSqlServerInstanceJobStatusRequest,
+  output: GetSqlServerInstanceJobStatusResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSqlServerInstanceTelemetryError = AzureOpError;
+/** Retrieves SQL Server instance telemetry */
+export const GetSqlServerInstanceTelemetry: API.OperationMethod<
+  GetSqlServerInstanceTelemetryRequest,
+  GetSqlServerInstanceTelemetryResponse,
+  GetSqlServerInstanceTelemetryError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSqlServerInstanceTelemetryRequest,
+  output: GetSqlServerInstanceTelemetryResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSqlServerLicenseError = AzureOpError;
+/** Retrieves a SQL Server license resource */
+export const GetSqlServerLicense: API.OperationMethod<
+  GetSqlServerLicenseRequest,
+  GetSqlServerLicenseResponse,
+  GetSqlServerLicenseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSqlServerLicenseRequest,
+  output: GetSqlServerLicenseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListActiveDirectoryConnectorsError = AzureOpError;
+/** List the active directory connectors associated with the given data controller. */
+export const ListActiveDirectoryConnectors: API.OperationMethod<
+  ListActiveDirectoryConnectorsRequest,
+  ListActiveDirectoryConnectorsResponse,
+  ListActiveDirectoryConnectorsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListActiveDirectoryConnectorsRequest,
+  output: ListActiveDirectoryConnectorsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDataControllerInGroupError = AzureOpError;
+/** List dataController resources in the resource group */
+export const ListDataControllerInGroup: API.OperationMethod<
+  ListDataControllerInGroupRequest,
+  ListDataControllerInGroupResponse,
+  ListDataControllerInGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDataControllerInGroupRequest,
+  output: ListDataControllerInGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDataControllerInSubscriptionError = AzureOpError;
+/** List dataController resources in the subscription */
+export const ListDataControllerInSubscription: API.OperationMethod<
+  ListDataControllerInSubscriptionRequest,
+  ListDataControllerInSubscriptionResponse,
+  ListDataControllerInSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDataControllerInSubscriptionRequest,
+  output: ListDataControllerInSubscriptionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListFailoverGroupsError = AzureOpError;
+/** List the failover groups associated with the given sql managed instance. */
+export const ListFailoverGroups: API.OperationMethod<
+  ListFailoverGroupsRequest,
+  ListFailoverGroupsResponse,
+  ListFailoverGroupsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListFailoverGroupsRequest,
+  output: ListFailoverGroupsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists all of the available Azure Data Services on Azure Arc API operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPostgresInstanceByResourceGroupError = AzureOpError;
+/** List postgres Instance resources in the resource group Get a postgres Instances list by Resource group name. */
+export const ListPostgresInstanceByResourceGroup: API.OperationMethod<
+  ListPostgresInstanceByResourceGroupRequest,
+  ListPostgresInstanceByResourceGroupResponse,
+  ListPostgresInstanceByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPostgresInstanceByResourceGroupRequest,
+  output: ListPostgresInstanceByResourceGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPostgresInstancesError = AzureOpError;
+/** List postgres Instance resources in the subscription */
+export const ListPostgresInstances: API.OperationMethod<
+  ListPostgresInstancesRequest,
+  ListPostgresInstancesResponse,
+  ListPostgresInstancesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPostgresInstancesRequest,
+  output: ListPostgresInstancesResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlManagedInstanceByResourceGroupError = AzureOpError;
 /** List sqlManagedInstance resources in the resource group Gets all sqlManagedInstances in a resource group. */
-export const SqlManagedInstancesListByResourceGroup: API.OperationMethod<
-  SqlManagedInstancesListByResourceGroupRequest,
-  SqlManagedInstancesListByResourceGroupResponse,
-  SqlManagedInstancesListByResourceGroupError,
+export const ListSqlManagedInstanceByResourceGroup: API.OperationMethod<
+  ListSqlManagedInstanceByResourceGroupRequest,
+  ListSqlManagedInstanceByResourceGroupResponse,
+  ListSqlManagedInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlManagedInstancesListByResourceGroupRequest,
-  output: SqlManagedInstancesListByResourceGroupResponse,
+  input: ListSqlManagedInstanceByResourceGroupRequest,
+  output: ListSqlManagedInstanceByResourceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SqlManagedInstancesUpdateError = AzureOpError;
-/** Updates a SQL Managed Instance resource */
-export const SqlManagedInstancesUpdate: API.OperationMethod<
-  SqlManagedInstancesUpdateRequest,
-  SqlManagedInstancesUpdateResponse,
-  SqlManagedInstancesUpdateError,
+export type ListSqlManagedInstancesError = AzureOpError;
+/** List sqlManagedInstance resources in the subscription */
+export const ListSqlManagedInstances: API.OperationMethod<
+  ListSqlManagedInstancesRequest,
+  ListSqlManagedInstancesResponse,
+  ListSqlManagedInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlManagedInstancesUpdateRequest,
-  output: SqlManagedInstancesUpdateResponse,
+  input: ListSqlManagedInstancesRequest,
+  output: ListSqlManagedInstancesResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlServerAvailabilityGroupsError = AzureOpError;
+/** List the availability group associated with the given Arc Sql Server. */
+export const ListSqlServerAvailabilityGroups: API.OperationMethod<
+  ListSqlServerAvailabilityGroupsRequest,
+  ArcSqlServerAvailabilityGroupListResult,
+  ListSqlServerAvailabilityGroupsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlServerAvailabilityGroupsRequest,
+  output: ArcSqlServerAvailabilityGroupListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlServerDatabasesError = AzureOpError;
+/** List the databases associated with the given Arc Sql Server. */
+export const ListSqlServerDatabases: API.OperationMethod<
+  ListSqlServerDatabasesRequest,
+  ArcSqlServerDatabaseListResult,
+  ListSqlServerDatabasesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlServerDatabasesRequest,
+  output: ArcSqlServerDatabaseListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlServerEsuLicenseByResourceGroupError = AzureOpError;
+/** List sqlServerEsuLicense resources in the resource group Gets all sqlServerEsuLicenses in a resource group. */
+export const ListSqlServerEsuLicenseByResourceGroup: API.OperationMethod<
+  ListSqlServerEsuLicenseByResourceGroupRequest,
+  SqlServerEsuLicenseListResult,
+  ListSqlServerEsuLicenseByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlServerEsuLicenseByResourceGroupRequest,
+  output: SqlServerEsuLicenseListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlServerEsuLicensesError = AzureOpError;
+/** List sqlServerEsuLicense resources in the subscription */
+export const ListSqlServerEsuLicenses: API.OperationMethod<
+  ListSqlServerEsuLicensesRequest,
+  SqlServerEsuLicenseListResult,
+  ListSqlServerEsuLicensesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlServerEsuLicensesRequest,
+  output: SqlServerEsuLicenseListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlServerInstanceByResourceGroupError = AzureOpError;
+/** List sqlServerInstance resources in the resource group Gets all sqlServerInstances in a resource group. */
+export const ListSqlServerInstanceByResourceGroup: API.OperationMethod<
+  ListSqlServerInstanceByResourceGroupRequest,
+  ListSqlServerInstanceByResourceGroupResponse,
+  ListSqlServerInstanceByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlServerInstanceByResourceGroupRequest,
+  output: ListSqlServerInstanceByResourceGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlServerInstancesError = AzureOpError;
+/** List sqlServerInstance resources in the subscription */
+export const ListSqlServerInstances: API.OperationMethod<
+  ListSqlServerInstancesRequest,
+  ListSqlServerInstancesResponse,
+  ListSqlServerInstancesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlServerInstancesRequest,
+  output: ListSqlServerInstancesResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlServerLicenseByResourceGroupError = AzureOpError;
+/** List sqlServerLicense resources in the resource group Gets all sqlServerLicenses in a resource group. */
+export const ListSqlServerLicenseByResourceGroup: API.OperationMethod<
+  ListSqlServerLicenseByResourceGroupRequest,
+  ListSqlServerLicenseByResourceGroupResponse,
+  ListSqlServerLicenseByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlServerLicenseByResourceGroupRequest,
+  output: ListSqlServerLicenseByResourceGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlServerLicensesError = AzureOpError;
+/** List sqlServerLicense resources in the subscription */
+export const ListSqlServerLicenses: API.OperationMethod<
+  ListSqlServerLicensesRequest,
+  ListSqlServerLicensesResponse,
+  ListSqlServerLicensesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlServerLicensesRequest,
+  output: ListSqlServerLicensesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10326,99 +10764,6 @@ export const SqlServerAvailabilityGroupsAddDatabases: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SqlServerAvailabilityGroupsAddDatabasesRequest,
   output: SqlServerAvailabilityGroupsAddDatabasesResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerAvailabilityGroupsCreateError = AzureOpError;
-/** Creates or replaces an Arc Sql Server Availability Group. */
-export const SqlServerAvailabilityGroupsCreate: API.OperationMethod<
-  SqlServerAvailabilityGroupsCreateRequest,
-  SqlServerAvailabilityGroupsCreateResponse,
-  SqlServerAvailabilityGroupsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsCreateRequest,
-  output: SqlServerAvailabilityGroupsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerAvailabilityGroupsCreateAvailabilityGroupError =
-  AzureOpError;
-/** Create a SQL Server availability group */
-export const SqlServerAvailabilityGroupsCreateAvailabilityGroup: API.OperationMethod<
-  SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest,
-  SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse,
-  SqlServerAvailabilityGroupsCreateAvailabilityGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest,
-  output: SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupError =
-  AzureOpError;
-/** Create a SQL Server distributed availability group */
-export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroup: API.OperationMethod<
-  SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRequest,
-  SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponse,
-  SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRequest,
-  output: SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerAvailabilityGroupsCreateManagedInstanceLinkError =
-  AzureOpError;
-/** Create an Managed Instance Link */
-export const SqlServerAvailabilityGroupsCreateManagedInstanceLink: API.OperationMethod<
-  SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest,
-  SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponse,
-  SqlServerAvailabilityGroupsCreateManagedInstanceLinkError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest,
-  output: SqlServerAvailabilityGroupsCreateManagedInstanceLinkResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerAvailabilityGroupsDeleteError = AzureOpError;
-/** Deletes an Arc Sql Server availability group resource. */
-export const SqlServerAvailabilityGroupsDelete: API.OperationMethod<
-  SqlServerAvailabilityGroupsDeleteRequest,
-  SqlServerAvailabilityGroupsDeleteResponse,
-  SqlServerAvailabilityGroupsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsDeleteRequest,
-  output: SqlServerAvailabilityGroupsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerAvailabilityGroupsDeleteMiLinkError = AzureOpError;
-/** Deletes the MI Link between an Azure Arc-enabled SQL Server and an Azure SQL Managed Instance. */
-export const SqlServerAvailabilityGroupsDeleteMiLink: API.OperationMethod<
-  SqlServerAvailabilityGroupsDeleteMiLinkRequest,
-  SqlServerAvailabilityGroupsDeleteMiLinkResponse,
-  SqlServerAvailabilityGroupsDeleteMiLinkError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsDeleteMiLinkRequest,
-  output: SqlServerAvailabilityGroupsDeleteMiLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10485,36 +10830,6 @@ export const SqlServerAvailabilityGroupsForceFailoverAllowDataLoss: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type SqlServerAvailabilityGroupsGetError = AzureOpError;
-/** Retrieves an Arc Sql Server availability group. */
-export const SqlServerAvailabilityGroupsGet: API.OperationMethod<
-  SqlServerAvailabilityGroupsGetRequest,
-  SqlServerAvailabilityGroupsGetResponse,
-  SqlServerAvailabilityGroupsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsGetRequest,
-  output: SqlServerAvailabilityGroupsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerAvailabilityGroupsListError = AzureOpError;
-/** List the availability group associated with the given Arc Sql Server. */
-export const SqlServerAvailabilityGroupsList: API.OperationMethod<
-  SqlServerAvailabilityGroupsListRequest,
-  ArcSqlServerAvailabilityGroupListResult,
-  SqlServerAvailabilityGroupsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsListRequest,
-  output: ArcSqlServerAvailabilityGroupListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SqlServerAvailabilityGroupsRemoveDatabasesError = AzureOpError;
 /** Request removing database(s) from an existing availability group. */
 export const SqlServerAvailabilityGroupsRemoveDatabases: API.OperationMethod<
@@ -10525,321 +10840,6 @@ export const SqlServerAvailabilityGroupsRemoveDatabases: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SqlServerAvailabilityGroupsRemoveDatabasesRequest,
   output: SqlServerAvailabilityGroupsRemoveDatabasesResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerAvailabilityGroupsUpdateError = AzureOpError;
-/** Updates an existing Availability Group. */
-export const SqlServerAvailabilityGroupsUpdate: API.OperationMethod<
-  SqlServerAvailabilityGroupsUpdateRequest,
-  SqlServerAvailabilityGroupsUpdateResponse,
-  SqlServerAvailabilityGroupsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsUpdateRequest,
-  output: SqlServerAvailabilityGroupsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerDatabasesCreateError = AzureOpError;
-/** Creates or replaces an Arc Sql Server Database. */
-export const SqlServerDatabasesCreate: API.OperationMethod<
-  SqlServerDatabasesCreateRequest,
-  SqlServerDatabasesCreateResponse,
-  SqlServerDatabasesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerDatabasesCreateRequest,
-  output: SqlServerDatabasesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerDatabasesDeleteError = AzureOpError;
-/** Deletes an Arc Sql Server database resource. */
-export const SqlServerDatabasesDelete: API.OperationMethod<
-  SqlServerDatabasesDeleteRequest,
-  SqlServerDatabasesDeleteResponse,
-  SqlServerDatabasesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerDatabasesDeleteRequest,
-  output: SqlServerDatabasesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerDatabasesGetError = AzureOpError;
-/** Retrieves an Arc Sql Server database. */
-export const SqlServerDatabasesGet: API.OperationMethod<
-  SqlServerDatabasesGetRequest,
-  SqlServerDatabasesGetResponse,
-  SqlServerDatabasesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerDatabasesGetRequest,
-  output: SqlServerDatabasesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerDatabasesListError = AzureOpError;
-/** List the databases associated with the given Arc Sql Server. */
-export const SqlServerDatabasesList: API.OperationMethod<
-  SqlServerDatabasesListRequest,
-  ArcSqlServerDatabaseListResult,
-  SqlServerDatabasesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerDatabasesListRequest,
-  output: ArcSqlServerDatabaseListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerDatabasesUpdateError = AzureOpError;
-/** Updates an existing database. */
-export const SqlServerDatabasesUpdate: API.OperationMethod<
-  SqlServerDatabasesUpdateRequest,
-  SqlServerDatabasesUpdateResponse,
-  SqlServerDatabasesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerDatabasesUpdateRequest,
-  output: SqlServerDatabasesUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerEsuLicensesCreateError = AzureOpError;
-/** Creates or replaces a SQL Server ESU license resource */
-export const SqlServerEsuLicensesCreate: API.OperationMethod<
-  SqlServerEsuLicensesCreateRequest,
-  SqlServerEsuLicensesCreateResponse,
-  SqlServerEsuLicensesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerEsuLicensesCreateRequest,
-  output: SqlServerEsuLicensesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerEsuLicensesDeleteError = AzureOpError;
-/** Deletes a SQL Server ESU license resource */
-export const SqlServerEsuLicensesDelete: API.OperationMethod<
-  SqlServerEsuLicensesDeleteRequest,
-  SqlServerEsuLicensesDeleteResponse,
-  SqlServerEsuLicensesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerEsuLicensesDeleteRequest,
-  output: SqlServerEsuLicensesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerEsuLicensesGetError = AzureOpError;
-/** Retrieves a SQL Server ESU license resource */
-export const SqlServerEsuLicensesGet: API.OperationMethod<
-  SqlServerEsuLicensesGetRequest,
-  SqlServerEsuLicensesGetResponse,
-  SqlServerEsuLicensesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerEsuLicensesGetRequest,
-  output: SqlServerEsuLicensesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerEsuLicensesListError = AzureOpError;
-/** List sqlServerEsuLicense resources in the subscription */
-export const SqlServerEsuLicensesList: API.OperationMethod<
-  SqlServerEsuLicensesListRequest,
-  SqlServerEsuLicenseListResult,
-  SqlServerEsuLicensesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerEsuLicensesListRequest,
-  output: SqlServerEsuLicenseListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerEsuLicensesListByResourceGroupError = AzureOpError;
-/** List sqlServerEsuLicense resources in the resource group Gets all sqlServerEsuLicenses in a resource group. */
-export const SqlServerEsuLicensesListByResourceGroup: API.OperationMethod<
-  SqlServerEsuLicensesListByResourceGroupRequest,
-  SqlServerEsuLicenseListResult,
-  SqlServerEsuLicensesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerEsuLicensesListByResourceGroupRequest,
-  output: SqlServerEsuLicenseListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerEsuLicensesUpdateError = AzureOpError;
-/** Updates a SQL Server ESU license resource */
-export const SqlServerEsuLicensesUpdate: API.OperationMethod<
-  SqlServerEsuLicensesUpdateRequest,
-  SqlServerEsuLicensesUpdateResponse,
-  SqlServerEsuLicensesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerEsuLicensesUpdateRequest,
-  output: SqlServerEsuLicensesUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerInstancesCreateError = AzureOpError;
-/** Creates or replaces a SQL Server Instance resource */
-export const SqlServerInstancesCreate: API.OperationMethod<
-  SqlServerInstancesCreateRequest,
-  SqlServerInstancesCreateResponse,
-  SqlServerInstancesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesCreateRequest,
-  output: SqlServerInstancesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerInstancesDeleteError = AzureOpError;
-/** Deletes a SQL Server Instance resource */
-export const SqlServerInstancesDelete: API.OperationMethod<
-  SqlServerInstancesDeleteRequest,
-  SqlServerInstancesDeleteResponse,
-  SqlServerInstancesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesDeleteRequest,
-  output: SqlServerInstancesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerInstancesGetError = AzureOpError;
-/** Retrieves a SQL Server Instance resource */
-export const SqlServerInstancesGet: API.OperationMethod<
-  SqlServerInstancesGetRequest,
-  SqlServerInstancesGetResponse,
-  SqlServerInstancesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesGetRequest,
-  output: SqlServerInstancesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerInstancesGetAllAvailabilityGroupsError = AzureOpError;
-/** Retrieves full properties of all the Availability Groups in a SQL Server instance. */
-export const SqlServerInstancesGetAllAvailabilityGroups: API.OperationMethod<
-  SqlServerInstancesGetAllAvailabilityGroupsRequest,
-  ArcSqlServerAvailabilityGroupListResult,
-  SqlServerInstancesGetAllAvailabilityGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesGetAllAvailabilityGroupsRequest,
-  output: ArcSqlServerAvailabilityGroupListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerInstancesGetBestPracticesAssessmentError = AzureOpError;
-/** Retrieves SQL best practices assessment results for the SQL Server instance. */
-export const SqlServerInstancesGetBestPracticesAssessment: API.OperationMethod<
-  SqlServerInstancesGetBestPracticesAssessmentRequest,
-  SqlServerInstancesGetBestPracticesAssessmentResponse,
-  SqlServerInstancesGetBestPracticesAssessmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesGetBestPracticesAssessmentRequest,
-  output: SqlServerInstancesGetBestPracticesAssessmentResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerInstancesGetJobsStatusError = AzureOpError;
-/** Gets jobs status details for sql arc resource */
-export const SqlServerInstancesGetJobsStatus: API.OperationMethod<
-  SqlServerInstancesGetJobsStatusRequest,
-  SqlServerInstancesGetJobsStatusResponse,
-  SqlServerInstancesGetJobsStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesGetJobsStatusRequest,
-  output: SqlServerInstancesGetJobsStatusResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerInstancesGetTelemetryError = AzureOpError;
-/** Retrieves SQL Server instance telemetry */
-export const SqlServerInstancesGetTelemetry: API.OperationMethod<
-  SqlServerInstancesGetTelemetryRequest,
-  SqlServerInstancesGetTelemetryResponse,
-  SqlServerInstancesGetTelemetryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesGetTelemetryRequest,
-  output: SqlServerInstancesGetTelemetryResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerInstancesListError = AzureOpError;
-/** List sqlServerInstance resources in the subscription */
-export const SqlServerInstancesList: API.OperationMethod<
-  SqlServerInstancesListRequest,
-  SqlServerInstancesListResponse,
-  SqlServerInstancesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesListRequest,
-  output: SqlServerInstancesListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerInstancesListByResourceGroupError = AzureOpError;
-/** List sqlServerInstance resources in the resource group Gets all sqlServerInstances in a resource group. */
-export const SqlServerInstancesListByResourceGroup: API.OperationMethod<
-  SqlServerInstancesListByResourceGroupRequest,
-  SqlServerInstancesListByResourceGroupResponse,
-  SqlServerInstancesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesListByResourceGroupRequest,
-  output: SqlServerInstancesListByResourceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10921,106 +10921,106 @@ export const SqlServerInstancesRunMigrationAssessment: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SqlServerInstancesUpdateError = AzureOpError;
+export type UpdatePostgresInstanceError = AzureOpError;
+/** Updates a postgres Instance resource */
+export const UpdatePostgresInstance: API.OperationMethod<
+  UpdatePostgresInstanceRequest,
+  UpdatePostgresInstanceResponse,
+  UpdatePostgresInstanceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePostgresInstanceRequest,
+  output: UpdatePostgresInstanceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSqlManagedInstanceError = AzureOpError;
+/** Updates a SQL Managed Instance resource */
+export const UpdateSqlManagedInstance: API.OperationMethod<
+  UpdateSqlManagedInstanceRequest,
+  UpdateSqlManagedInstanceResponse,
+  UpdateSqlManagedInstanceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSqlManagedInstanceRequest,
+  output: UpdateSqlManagedInstanceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSqlServerAvailabilityGroupError = AzureOpError;
+/** Updates an existing Availability Group. */
+export const UpdateSqlServerAvailabilityGroup: API.OperationMethod<
+  UpdateSqlServerAvailabilityGroupRequest,
+  UpdateSqlServerAvailabilityGroupResponse,
+  UpdateSqlServerAvailabilityGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSqlServerAvailabilityGroupRequest,
+  output: UpdateSqlServerAvailabilityGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSqlServerDatabaseError = AzureOpError;
+/** Updates an existing database. */
+export const UpdateSqlServerDatabase: API.OperationMethod<
+  UpdateSqlServerDatabaseRequest,
+  UpdateSqlServerDatabaseResponse,
+  UpdateSqlServerDatabaseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSqlServerDatabaseRequest,
+  output: UpdateSqlServerDatabaseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSqlServerEsuLicenseError = AzureOpError;
+/** Updates a SQL Server ESU license resource */
+export const UpdateSqlServerEsuLicense: API.OperationMethod<
+  UpdateSqlServerEsuLicenseRequest,
+  UpdateSqlServerEsuLicenseResponse,
+  UpdateSqlServerEsuLicenseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSqlServerEsuLicenseRequest,
+  output: UpdateSqlServerEsuLicenseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSqlServerInstanceError = AzureOpError;
 /** Updates a SQL Server Instance resource */
-export const SqlServerInstancesUpdate: API.OperationMethod<
-  SqlServerInstancesUpdateRequest,
-  SqlServerInstancesUpdateResponse,
-  SqlServerInstancesUpdateError,
+export const UpdateSqlServerInstance: API.OperationMethod<
+  UpdateSqlServerInstanceRequest,
+  UpdateSqlServerInstanceResponse,
+  UpdateSqlServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesUpdateRequest,
-  output: SqlServerInstancesUpdateResponse,
+  input: UpdateSqlServerInstanceRequest,
+  output: UpdateSqlServerInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SqlServerLicensesCreateError = AzureOpError;
-/** Creates or replaces a SQL Server license resource */
-export const SqlServerLicensesCreate: API.OperationMethod<
-  SqlServerLicensesCreateRequest,
-  SqlServerLicensesCreateResponse,
-  SqlServerLicensesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerLicensesCreateRequest,
-  output: SqlServerLicensesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerLicensesDeleteError = AzureOpError;
-/** Deletes a SQL Server license resource */
-export const SqlServerLicensesDelete: API.OperationMethod<
-  SqlServerLicensesDeleteRequest,
-  SqlServerLicensesDeleteResponse,
-  SqlServerLicensesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerLicensesDeleteRequest,
-  output: SqlServerLicensesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerLicensesGetError = AzureOpError;
-/** Retrieves a SQL Server license resource */
-export const SqlServerLicensesGet: API.OperationMethod<
-  SqlServerLicensesGetRequest,
-  SqlServerLicensesGetResponse,
-  SqlServerLicensesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerLicensesGetRequest,
-  output: SqlServerLicensesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerLicensesListError = AzureOpError;
-/** List sqlServerLicense resources in the subscription */
-export const SqlServerLicensesList: API.OperationMethod<
-  SqlServerLicensesListRequest,
-  SqlServerLicensesListResponse,
-  SqlServerLicensesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerLicensesListRequest,
-  output: SqlServerLicensesListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerLicensesListByResourceGroupError = AzureOpError;
-/** List sqlServerLicense resources in the resource group Gets all sqlServerLicenses in a resource group. */
-export const SqlServerLicensesListByResourceGroup: API.OperationMethod<
-  SqlServerLicensesListByResourceGroupRequest,
-  SqlServerLicensesListByResourceGroupResponse,
-  SqlServerLicensesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerLicensesListByResourceGroupRequest,
-  output: SqlServerLicensesListByResourceGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlServerLicensesUpdateError = AzureOpError;
+export type UpdateSqlServerLicenseError = AzureOpError;
 /** Updates a SQL Server license resource */
-export const SqlServerLicensesUpdate: API.OperationMethod<
-  SqlServerLicensesUpdateRequest,
-  SqlServerLicensesUpdateResponse,
-  SqlServerLicensesUpdateError,
+export const UpdateSqlServerLicense: API.OperationMethod<
+  UpdateSqlServerLicenseRequest,
+  UpdateSqlServerLicenseResponse,
+  UpdateSqlServerLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerLicensesUpdateRequest,
-  output: SqlServerLicensesUpdateResponse,
+  input: UpdateSqlServerLicenseRequest,
+  output: UpdateSqlServerLicenseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

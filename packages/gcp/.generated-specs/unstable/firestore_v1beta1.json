@@ -4546,7 +4546,7 @@
         "smithy.api#documentation": "Commits a transaction, while optionally updating documents."
       }
     },
-    "com.gcp.firestore_v1beta1#BatchGetProjectsDatabasesDocumentsRequest": {
+    "com.gcp.firestore_v1beta1#GetBatchProjectDatabaseDocumentRequest": {
       "type": "structure",
       "members": {
         "database": {
@@ -4566,10 +4566,10 @@
         }
       }
     },
-    "com.gcp.firestore_v1beta1#BatchGetProjectsDatabasesDocuments": {
+    "com.gcp.firestore_v1beta1#GetBatchProjectDatabaseDocument": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firestore_v1beta1#BatchGetProjectsDatabasesDocumentsRequest"
+        "target": "com.gcp.firestore_v1beta1#GetBatchProjectDatabaseDocumentRequest"
       },
       "output": {
         "target": "com.gcp.firestore_v1beta1#BatchGetDocumentsResponse"

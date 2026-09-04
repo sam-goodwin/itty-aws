@@ -106,7 +106,7 @@
         "smithy.api#documentation": "Returns the event filter config for the team, or null if not yet created."
       }
     },
-    "com.posthog.event_filter#EventFilterCreateRequest": {
+    "com.posthog.event_filter#CreateEventFilterRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -137,10 +137,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.event_filter#EventFilterCreate": {
+    "com.posthog.event_filter#CreateEventFilter": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.event_filter#EventFilterCreateRequest"
+        "target": "com.posthog.event_filter#CreateEventFilterRequest"
       },
       "output": {
         "target": "com.posthog.event_filter#EventFilterConfig"
@@ -292,7 +292,7 @@
           "target": "com.posthog.event_filter#EventFilterRetrieve"
         },
         {
-          "target": "com.posthog.event_filter#EventFilterCreate"
+          "target": "com.posthog.event_filter#CreateEventFilter"
         },
         {
           "target": "com.posthog.event_filter#EventFilterMetricsRetrieve"

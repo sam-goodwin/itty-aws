@@ -13,267 +13,38 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ActivityGetRequest {
+/** Gets or sets the agent registration key name - primary or secondary. */
+export type AgentRegistrationKeyName = "primary" | "secondary";
+export const AgentRegistrationKeyName = /*@__PURE__*/ S.String;
+
+export interface AgentRegistrationInformationRegenerateKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The module name. */
-  moduleName: string;
-  /** The name of activity. */
-  activityName: string;
+  /** Gets or sets the agent registration key name - primary or secondary. */
+  keyName: AgentRegistrationKeyName | (string & {});
 }
-export const ActivityGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    moduleName: S.String.pipe(T.Label()),
-    activityName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities/{activityName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ActivityGetRequest",
-}) as any as S.Schema<ActivityGetRequest>;
-
-/** Definition of the activity parameter validation set. */
-export interface ActivityParameterValidationSet {
-  /** Gets or sets the name of the activity parameter validation set member. */
-  memberValue?: string;
-}
-export const ActivityParameterValidationSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memberValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActivityParameterValidationSet",
-}) as any as S.Schema<ActivityParameterValidationSet>;
-
-/** Gets or sets the validation set of activity parameter. */
-export type ActivityParameterValidationSetList =
-  Array<ActivityParameterValidationSet>;
-export const ActivityParameterValidationSetList = /*@__PURE__*/ S.Array(
-  ActivityParameterValidationSet,
-) as any as S.Schema<ActivityParameterValidationSetList>;
-
-/** Definition of the activity parameter. */
-export interface ActivityParameter {
-  /** Gets or sets the name of the activity parameter. */
-  name?: string;
-  /** Gets or sets the type of the activity parameter. */
-  type?: string;
-  /** Gets or sets a Boolean value that indicates true if the parameter is required. If the value is false, the parameter is optional. */
-  isMandatory?: boolean;
-  /** Gets or sets a Boolean value that indicates true if the parameter is dynamic. */
-  isDynamic?: boolean;
-  /** Gets or sets the position of the activity parameter. */
-  position?: number;
-  /** Gets or sets a Boolean value that indicates true if the parameter can take values from the incoming pipeline objects. This setting is used if the cmdlet must access the complete input object. false indicates that the parameter cannot take values from the complete input object. */
-  valueFromPipeline?: boolean;
-  /** Gets or sets a Boolean value that indicates true if the parameter can be filled from a property of the incoming pipeline object that has the same name as this parameter. false indicates that the parameter cannot be filled from the incoming pipeline object property with the same name. */
-  valueFromPipelineByPropertyName?: boolean;
-  /** Gets or sets a Boolean value that indicates true if the cmdlet parameter accepts all the remaining command-line arguments that are associated with this parameter in the form of an array. false if the cmdlet parameter does not accept all the remaining argument values. */
-  valueFromRemainingArguments?: boolean;
-  /** Gets or sets the description of the activity parameter. */
-  description?: string;
-  /** Gets or sets the validation set of activity parameter. */
-  validationSet?: ActivityParameterValidationSetList;
-}
-export const ActivityParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    isMandatory: S.optional(S.Boolean),
-    isDynamic: S.optional(S.Boolean),
-    position: S.optional(S.Number),
-    valueFromPipeline: S.optional(S.Boolean),
-    valueFromPipelineByPropertyName: S.optional(S.Boolean),
-    valueFromRemainingArguments: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    validationSet: S.optional(ActivityParameterValidationSetList),
-  }),
-).annotate({
-  identifier: "ActivityParameter",
-}) as any as S.Schema<ActivityParameter>;
-
-/** Gets or sets the parameters of the activity parameter set. */
-export type ActivityParameterSetParametersList = Array<ActivityParameter>;
-export const ActivityParameterSetParametersList = /*@__PURE__*/ S.Array(
-  ActivityParameter,
-) as any as S.Schema<ActivityParameterSetParametersList>;
-
-/** Definition of the activity parameter set. */
-export interface ActivityParameterSet {
-  /** Gets or sets the name of the activity parameter set. */
-  name?: string;
-  /** Gets or sets the parameters of the activity parameter set. */
-  parameters?: ActivityParameterSetParametersList;
-}
-export const ActivityParameterSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    parameters: S.optional(ActivityParameterSetParametersList),
-  }),
-).annotate({
-  identifier: "ActivityParameterSet",
-}) as any as S.Schema<ActivityParameterSet>;
-
-/** Gets or sets the parameter sets of the activity. */
-export type ActivityPropertiesParameterSetsList = Array<ActivityParameterSet>;
-export const ActivityPropertiesParameterSetsList = /*@__PURE__*/ S.Array(
-  ActivityParameterSet,
-) as any as S.Schema<ActivityPropertiesParameterSetsList>;
-
-/** Definition of the activity output type. */
-export interface ActivityOutputType {
-  /** Gets or sets the name of the activity output type. */
-  name?: string;
-  /** Gets or sets the type of the activity output type. */
-  type?: string;
-}
-export const ActivityOutputType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActivityOutputType",
-}) as any as S.Schema<ActivityOutputType>;
-
-/** Gets or sets the output types of the activity. */
-export type ActivityPropertiesOutputTypesList = Array<ActivityOutputType>;
-export const ActivityPropertiesOutputTypesList = /*@__PURE__*/ S.Array(
-  ActivityOutputType,
-) as any as S.Schema<ActivityPropertiesOutputTypesList>;
-
-/** Properties of the activity. */
-export interface ActivityProperties {
-  /** Gets or sets the user name of the activity. */
-  definition?: string;
-  /** Gets or sets the parameter sets of the activity. */
-  parameterSets?: ActivityPropertiesParameterSetsList;
-  /** Gets or sets the output types of the activity. */
-  outputTypes?: ActivityPropertiesOutputTypesList;
-  /** Gets or sets the creation time. */
-  creationTime?: string;
-  /** Gets or sets the last modified time. */
-  lastModifiedTime?: string;
-  /** Gets or sets the description. */
-  description?: string;
-}
-export const ActivityProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: S.optional(S.String),
-    parameterSets: S.optional(ActivityPropertiesParameterSetsList),
-    outputTypes: S.optional(ActivityPropertiesOutputTypesList),
-    creationTime: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActivityProperties",
-}) as any as S.Schema<ActivityProperties>;
-
-/** Definition of the activity. */
-export interface Activity {
-  /** Gets or sets the id of the resource. */
-  id?: string;
-  /** Gets the name of the activity. */
-  name?: string;
-  /** Gets or sets the properties of the activity. */
-  properties?: ActivityProperties;
-}
-export const Activity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    properties: S.optional(ActivityProperties),
-  }),
-).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
-
-export interface ActivityListByModuleRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The module name. */
-  moduleName: string;
-}
-export const ActivityListByModuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    moduleName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ActivityListByModuleRequest",
-}) as any as S.Schema<ActivityListByModuleRequest>;
-
-/** The Activity items on this page */
-export type ActivityListResultValueList = Array<Activity>;
-export const ActivityListResultValueList = /*@__PURE__*/ S.Array(
-  Activity,
-) as any as S.Schema<ActivityListResultValueList>;
-
-/** The response model for the list activity operation. */
-export interface ActivityListResult {
-  /** The Activity items on this page */
-  value: ActivityListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ActivityListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ActivityListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActivityListResult",
-}) as any as S.Schema<ActivityListResult>;
-
-export interface AgentRegistrationInformationGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const AgentRegistrationInformationGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
+export const AgentRegistrationInformationRegenerateKeyRequest =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       automationAccountName: S.String.pipe(T.Label()),
+      keyName: AgentRegistrationKeyName,
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation",
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation/regenerateKey",
         code: 200,
         apiVersion: "2024-10-23",
       }),
     ),
-).annotate({
-  identifier: "AgentRegistrationInformationGetRequest",
-}) as any as S.Schema<AgentRegistrationInformationGetRequest>;
+  ).annotate({
+    identifier: "AgentRegistrationInformationRegenerateKeyRequest",
+  }) as any as S.Schema<AgentRegistrationInformationRegenerateKeyRequest>;
 
 /** Definition of the agent registration keys. */
 export interface AgentRegistrationKeys {
@@ -312,39 +83,6 @@ export const AgentRegistration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AgentRegistration",
 }) as any as S.Schema<AgentRegistration>;
-
-/** Gets or sets the agent registration key name - primary or secondary. */
-export type AgentRegistrationKeyName = "primary" | "secondary";
-export const AgentRegistrationKeyName = /*@__PURE__*/ S.String;
-
-export interface AgentRegistrationInformationRegenerateKeyRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** Gets or sets the agent registration key name - primary or secondary. */
-  keyName: AgentRegistrationKeyName | (string & {});
-}
-export const AgentRegistrationInformationRegenerateKeyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      keyName: AgentRegistrationKeyName,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation/regenerateKey",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "AgentRegistrationInformationRegenerateKeyRequest",
-  }) as any as S.Schema<AgentRegistrationInformationRegenerateKeyRequest>;
 
 /** Gets or sets the SKU name of the account. */
 export type SkuNameEnum = "Free" | "Basic";
@@ -812,412 +550,6 @@ export const AutomationAccountCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "AutomationAccountCreateOrUpdateResponse",
 }) as any as S.Schema<AutomationAccountCreateOrUpdateResponse>;
 
-export interface AutomationAccountDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const AutomationAccountDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "AutomationAccountDeleteRequest",
-}) as any as S.Schema<AutomationAccountDeleteRequest>;
-
-export interface AutomationAccountDeleteResponse {}
-export const AutomationAccountDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AutomationAccountDeleteResponse",
-}) as any as S.Schema<AutomationAccountDeleteResponse>;
-
-export interface AutomationAccountGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const AutomationAccountGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "AutomationAccountGetRequest",
-}) as any as S.Schema<AutomationAccountGetRequest>;
-
-/** Resource tags. */
-export type AutomationAccountGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AutomationAccountGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutomationAccountGetResponseTagsMap>;
-
-export interface AutomationAccountGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AutomationAccountGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the automation account properties. */
-  properties?: AutomationAccountProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-  /** Identity for the resource. */
-  identity?: Identity;
-}
-export const AutomationAccountGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AutomationAccountGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AutomationAccountProperties),
-    etag: S.optional(S.String),
-    identity: S.optional(Identity),
-  }),
-).annotate({
-  identifier: "AutomationAccountGetResponse",
-}) as any as S.Schema<AutomationAccountGetResponse>;
-
-export interface AutomationAccountListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const AutomationAccountListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "AutomationAccountListRequest",
-}) as any as S.Schema<AutomationAccountListRequest>;
-
-/** Resource tags. */
-export type AutomationAccountTagsMap = { [key: string]: string | undefined };
-export const AutomationAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutomationAccountTagsMap>;
-
-/** Definition of the automation account type. */
-export interface AutomationAccount {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AutomationAccountTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the automation account properties. */
-  properties?: AutomationAccountProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-  /** Identity for the resource. */
-  identity?: Identity;
-}
-export const AutomationAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AutomationAccountTagsMap),
-    location: S.String,
-    properties: S.optional(AutomationAccountProperties),
-    etag: S.optional(S.String),
-    identity: S.optional(Identity),
-  }),
-).annotate({
-  identifier: "AutomationAccount",
-}) as any as S.Schema<AutomationAccount>;
-
-/** The AutomationAccount items on this page */
-export type AutomationAccountListResultValueList = Array<AutomationAccount>;
-export const AutomationAccountListResultValueList = /*@__PURE__*/ S.Array(
-  AutomationAccount,
-) as any as S.Schema<AutomationAccountListResultValueList>;
-
-/** The response of a AutomationAccount list operation. */
-export interface AutomationAccountListResult {
-  /** The AutomationAccount items on this page */
-  value: AutomationAccountListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const AutomationAccountListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: AutomationAccountListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutomationAccountListResult",
-}) as any as S.Schema<AutomationAccountListResult>;
-
-export interface AutomationAccountListByResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const AutomationAccountListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "AutomationAccountListByResourceGroupRequest",
-  }) as any as S.Schema<AutomationAccountListByResourceGroupRequest>;
-
-export interface AutomationAccountListDeletedRunbooksRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const AutomationAccountListDeletedRunbooksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listDeletedRunbooks",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "AutomationAccountListDeletedRunbooksRequest",
-  }) as any as S.Schema<AutomationAccountListDeletedRunbooksRequest>;
-
-/** Definition of the deleted runbook property. */
-export interface DeletedRunbookProperties {
-  /** Gets or sets the Runbook Id. */
-  runbookId?: string;
-  /** Type of the runbook. */
-  runbookType?: string;
-  /** Gets or sets runtime of the runbook. */
-  runtime?: string;
-  /** Environment of the runbook. */
-  runtimeEnvironment?: string | null;
-  /** Gets or sets the creation time. */
-  creationTime?: string;
-  /** Gets or sets the last modified time. */
-  deletionTime?: string;
-}
-export const DeletedRunbookProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runbookId: S.optional(S.String),
-    runbookType: S.optional(S.String),
-    runtime: S.optional(S.String),
-    runtimeEnvironment: S.optional(S.NullOr(S.String)),
-    creationTime: S.optional(S.String),
-    deletionTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletedRunbookProperties",
-}) as any as S.Schema<DeletedRunbookProperties>;
-
-/** Definition of deleted runbook. */
-export interface DeletedRunbook {
-  /** Gets or sets the runbook properties. */
-  properties?: DeletedRunbookProperties;
-  /** The resource id. */
-  id?: string;
-  /** Gets or sets name of the resource. */
-  name?: string;
-  /** Gets or sets the location of the resource. */
-  location?: string;
-}
-export const DeletedRunbook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(DeletedRunbookProperties),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeletedRunbook" }) as any as S.Schema<DeletedRunbook>;
-
-/** The DeletedRunbook items on this page */
-export type DeletedRunbookListResultValueList = Array<DeletedRunbook>;
-export const DeletedRunbookListResultValueList = /*@__PURE__*/ S.Array(
-  DeletedRunbook,
-) as any as S.Schema<DeletedRunbookListResultValueList>;
-
-/** The response model for the list deleted runbook. */
-export interface DeletedRunbookListResult {
-  /** The DeletedRunbook items on this page */
-  value: DeletedRunbookListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const DeletedRunbookListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: DeletedRunbookListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletedRunbookListResult",
-}) as any as S.Schema<DeletedRunbookListResult>;
-
-/** The parameters supplied to the update account properties. */
-export type AutomationAccountUpdateProperties =
-  AutomationAccountCreateOrUpdateProperties;
-export const AutomationAccountUpdateProperties =
-  AutomationAccountCreateOrUpdateProperties;
-
-/** Gets or sets the tags attached to the resource. */
-export type AutomationAccountUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AutomationAccountUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutomationAccountUpdateRequestTagsMap>;
-
-export interface AutomationAccountUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** Gets or sets account update properties. */
-  properties?: AutomationAccountCreateOrUpdateProperties;
-  /** Gets or sets the name of the resource. */
-  name?: string;
-  /** Gets or sets the location of the resource. */
-  location?: string;
-  /** Sets the identity property for automation account */
-  identity?: IdentityInput;
-  /** Gets or sets the tags attached to the resource. */
-  tags?: AutomationAccountUpdateRequestTagsMap;
-}
-export const AutomationAccountUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    properties: S.optional(AutomationAccountCreateOrUpdateProperties),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    identity: S.optional(IdentityInput),
-    tags: S.optional(AutomationAccountUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "AutomationAccountUpdateRequest",
-}) as any as S.Schema<AutomationAccountUpdateRequest>;
-
-/** Resource tags. */
-export type AutomationAccountUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AutomationAccountUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutomationAccountUpdateResponseTagsMap>;
-
-export interface AutomationAccountUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AutomationAccountUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the automation account properties. */
-  properties?: AutomationAccountProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-  /** Identity for the resource. */
-  identity?: Identity;
-}
-export const AutomationAccountUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AutomationAccountUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AutomationAccountProperties),
-    etag: S.optional(S.String),
-    identity: S.optional(Identity),
-  }),
-).annotate({
-  identifier: "AutomationAccountUpdateResponse",
-}) as any as S.Schema<AutomationAccountUpdateResponse>;
-
 /** The properties of the create certificate operation. */
 export interface CertificateCreateOrUpdateProperties {
   /** Gets or sets the base64 encoded value of the certificate. */
@@ -1325,235 +657,6 @@ export const CertificateCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CertificateCreateOrUpdateResponse",
 }) as any as S.Schema<CertificateCreateOrUpdateResponse>;
-
-export interface CertificateDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of certificate. */
-  certificateName: string;
-}
-export const CertificateDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    certificateName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "CertificateDeleteRequest",
-}) as any as S.Schema<CertificateDeleteRequest>;
-
-export interface CertificateDeleteResponse {}
-export const CertificateDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CertificateDeleteResponse",
-}) as any as S.Schema<CertificateDeleteResponse>;
-
-export interface CertificateGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of certificate. */
-  certificateName: string;
-}
-export const CertificateGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    certificateName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "CertificateGetRequest",
-}) as any as S.Schema<CertificateGetRequest>;
-
-export interface CertificateGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the certificate. */
-  properties?: CertificateProperties;
-}
-export const CertificateGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CertificateProperties),
-  }),
-).annotate({
-  identifier: "CertificateGetResponse",
-}) as any as S.Schema<CertificateGetResponse>;
-
-export interface CertificateListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const CertificateListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "CertificateListByAutomationAccountRequest",
-  }) as any as S.Schema<CertificateListByAutomationAccountRequest>;
-
-/** Definition of the certificate. */
-export interface Certificate {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the certificate. */
-  properties?: CertificateProperties;
-}
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CertificateProperties),
-  }),
-).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
-
-/** The Certificate items on this page */
-export type CertificateListResultValueList = Array<Certificate>;
-export const CertificateListResultValueList = /*@__PURE__*/ S.Array(
-  Certificate,
-) as any as S.Schema<CertificateListResultValueList>;
-
-/** The response of a Certificate list operation. */
-export interface CertificateListResult {
-  /** The Certificate items on this page */
-  value: CertificateListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const CertificateListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: CertificateListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateListResult",
-}) as any as S.Schema<CertificateListResult>;
-
-/** The properties of the update certificate operation */
-export interface CertificateUpdateProperties {
-  /** Gets or sets the description of the certificate. */
-  description?: string;
-}
-export const CertificateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateUpdateProperties",
-}) as any as S.Schema<CertificateUpdateProperties>;
-
-export interface CertificateUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of certificate. */
-  certificateName: string;
-  /** Gets or sets the name of the certificate. */
-  name?: string;
-  /** Gets or sets the properties of the certificate. */
-  properties?: CertificateUpdateProperties;
-}
-export const CertificateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    certificateName: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    properties: S.optional(CertificateUpdateProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "CertificateUpdateRequest",
-}) as any as S.Schema<CertificateUpdateRequest>;
-
-export interface CertificateUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the certificate. */
-  properties?: CertificateProperties;
-}
-export const CertificateUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CertificateProperties),
-  }),
-).annotate({
-  identifier: "CertificateUpdateResponse",
-}) as any as S.Schema<CertificateUpdateResponse>;
 
 /** The connection type property associated with the entity. */
 export interface ConnectionTypeAssociationProperty {
@@ -1693,164 +796,6 @@ export const ConnectionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectionCreateOrUpdateResponse",
 }) as any as S.Schema<ConnectionCreateOrUpdateResponse>;
-
-export interface ConnectionDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of connection. */
-  connectionName: string;
-}
-export const ConnectionDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    connectionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectionDeleteRequest",
-}) as any as S.Schema<ConnectionDeleteRequest>;
-
-export interface ConnectionDeleteResponse {}
-export const ConnectionDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConnectionDeleteResponse",
-}) as any as S.Schema<ConnectionDeleteResponse>;
-
-export interface ConnectionGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of connection. */
-  connectionName: string;
-}
-export const ConnectionGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    connectionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectionGetRequest",
-}) as any as S.Schema<ConnectionGetRequest>;
-
-export interface ConnectionGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the connection. */
-  properties?: ConnectionProperties;
-}
-export const ConnectionGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConnectionProperties),
-  }),
-).annotate({
-  identifier: "ConnectionGetResponse",
-}) as any as S.Schema<ConnectionGetResponse>;
-
-export interface ConnectionListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const ConnectionListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "ConnectionListByAutomationAccountRequest",
-}) as any as S.Schema<ConnectionListByAutomationAccountRequest>;
-
-/** Definition of the connection. */
-export interface Connection {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the connection. */
-  properties?: ConnectionProperties;
-}
-export const Connection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConnectionProperties),
-  }),
-).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
-
-/** The Connection items on this page */
-export type ConnectionListResultValueList = Array<Connection>;
-export const ConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  Connection,
-) as any as S.Schema<ConnectionListResultValueList>;
-
-/** The response of a Connection list operation. */
-export interface ConnectionListResult {
-  /** The Connection items on this page */
-  value: ConnectionListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ConnectionListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ConnectionListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectionListResult",
-}) as any as S.Schema<ConnectionListResult>;
 
 /** Definition of the connection fields. */
 export interface FieldDefinition {
@@ -1993,250 +938,6 @@ export const ConnectionTypeCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ConnectionTypeCreateOrUpdateResponse",
 }) as any as S.Schema<ConnectionTypeCreateOrUpdateResponse>;
 
-export interface ConnectionTypeDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of connection type. */
-  connectionTypeName: string;
-}
-export const ConnectionTypeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    connectionTypeName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectionTypeDeleteRequest",
-}) as any as S.Schema<ConnectionTypeDeleteRequest>;
-
-export interface ConnectionTypeDeleteResponse {}
-export const ConnectionTypeDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConnectionTypeDeleteResponse",
-}) as any as S.Schema<ConnectionTypeDeleteResponse>;
-
-export interface ConnectionTypeGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of connection type. */
-  connectionTypeName: string;
-}
-export const ConnectionTypeGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    connectionTypeName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectionTypeGetRequest",
-}) as any as S.Schema<ConnectionTypeGetRequest>;
-
-export interface ConnectionTypeGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the connection type. */
-  properties?: ConnectionTypeProperties;
-}
-export const ConnectionTypeGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConnectionTypeProperties),
-  }),
-).annotate({
-  identifier: "ConnectionTypeGetResponse",
-}) as any as S.Schema<ConnectionTypeGetResponse>;
-
-export interface ConnectionTypeListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const ConnectionTypeListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConnectionTypeListByAutomationAccountRequest",
-  }) as any as S.Schema<ConnectionTypeListByAutomationAccountRequest>;
-
-/** Definition of the connection type. */
-export interface ConnectionType {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the connection type. */
-  properties?: ConnectionTypeProperties;
-}
-export const ConnectionType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConnectionTypeProperties),
-  }),
-).annotate({ identifier: "ConnectionType" }) as any as S.Schema<ConnectionType>;
-
-/** The ConnectionType items on this page */
-export type ConnectionTypeListResultValueList = Array<ConnectionType>;
-export const ConnectionTypeListResultValueList = /*@__PURE__*/ S.Array(
-  ConnectionType,
-) as any as S.Schema<ConnectionTypeListResultValueList>;
-
-/** The response of a ConnectionType list operation. */
-export interface ConnectionTypeListResult {
-  /** The ConnectionType items on this page */
-  value: ConnectionTypeListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ConnectionTypeListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ConnectionTypeListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectionTypeListResult",
-}) as any as S.Schema<ConnectionTypeListResult>;
-
-/** Gets or sets the field definition values of the connection. */
-export type ConnectionUpdatePropertiesFieldDefinitionValuesMap = {
-  [key: string]: string | undefined;
-};
-export const ConnectionUpdatePropertiesFieldDefinitionValuesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConnectionUpdatePropertiesFieldDefinitionValuesMap>;
-
-/** The properties of the update connection operation. */
-export interface ConnectionUpdateProperties {
-  /** Gets or sets the description of the connection. */
-  description?: string;
-  /** Gets or sets the field definition values of the connection. */
-  fieldDefinitionValues?: ConnectionUpdatePropertiesFieldDefinitionValuesMap;
-}
-export const ConnectionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    fieldDefinitionValues: S.optional(
-      ConnectionUpdatePropertiesFieldDefinitionValuesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ConnectionUpdateProperties",
-}) as any as S.Schema<ConnectionUpdateProperties>;
-
-export interface ConnectionUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of connection. */
-  connectionName: string;
-  /** Gets or sets the name of the connection. */
-  name?: string;
-  /** Gets or sets the properties of the connection. */
-  properties?: ConnectionUpdateProperties;
-}
-export const ConnectionUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    connectionName: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    properties: S.optional(ConnectionUpdateProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectionUpdateRequest",
-}) as any as S.Schema<ConnectionUpdateRequest>;
-
-export interface ConnectionUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the connection. */
-  properties?: ConnectionProperties;
-}
-export const ConnectionUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConnectionProperties),
-  }),
-).annotate({
-  identifier: "ConnectionUpdateResponse",
-}) as any as S.Schema<ConnectionUpdateResponse>;
-
 /** Runbook Type */
 export type GraphRunbookType = "GraphPowerShell" | "GraphPowerShellWorkflow";
 export const GraphRunbookType = /*@__PURE__*/ S.String;
@@ -2306,6 +1007,904 @@ export const GraphicalRunbookContent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GraphicalRunbookContent",
 }) as any as S.Schema<GraphicalRunbookContent>;
+
+/** The parameters supplied to the create or update hybrid runbook worker operation. */
+export interface HybridRunbookWorkerCreateOrUpdateParameters {
+  /** Azure Resource Manager Id for a virtual machine. */
+  vmResourceId?: string;
+}
+export const HybridRunbookWorkerCreateOrUpdateParameters =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      vmResourceId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "HybridRunbookWorkerCreateOrUpdateParameters",
+  }) as any as S.Schema<HybridRunbookWorkerCreateOrUpdateParameters>;
+
+export interface CreateHybridRunbookWorkerRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The hybrid runbook worker group name */
+  hybridRunbookWorkerGroupName: string;
+  /** The hybrid runbook worker id */
+  hybridRunbookWorkerId: string;
+  /** Gets or sets hybrid runbook worker group create or update properties. */
+  properties?: HybridRunbookWorkerCreateOrUpdateParameters;
+}
+export const CreateHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+    hybridRunbookWorkerId: S.String.pipe(T.Label()),
+    properties: S.optional(HybridRunbookWorkerCreateOrUpdateParameters),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "CreateHybridRunbookWorkerRequest",
+}) as any as S.Schema<CreateHybridRunbookWorkerRequest>;
+
+/** Resource tags. */
+export type HybridRunbookWorkersCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HybridRunbookWorkersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HybridRunbookWorkersCreateResponseTagsMap>;
+
+/** Type of the HybridWorker. */
+export type WorkerType = "HybridV1" | "HybridV2";
+export const WorkerType = /*@__PURE__*/ S.String;
+
+/** Definition of hybrid runbook worker property. */
+export interface HybridRunbookWorkerProperties {
+  /** Gets or sets the assigned machine IP address. */
+  ip?: string;
+  /** Gets or sets the registration time of the worker machine. */
+  registeredDateTime?: string;
+  /** Last Heartbeat from the Worker */
+  lastSeenDateTime?: string;
+  /** Azure Resource Manager Id for a virtual machine. */
+  vmResourceId?: string;
+  /** Type of the HybridWorker. */
+  workerType?: WorkerType;
+  /** Name of the HybridWorker. */
+  workerName?: string;
+}
+export const HybridRunbookWorkerProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ip: S.optional(S.String),
+    registeredDateTime: S.optional(S.String),
+    lastSeenDateTime: S.optional(S.String),
+    vmResourceId: S.optional(S.String),
+    workerType: S.optional(WorkerType),
+    workerName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HybridRunbookWorkerProperties",
+}) as any as S.Schema<HybridRunbookWorkerProperties>;
+
+export interface CreateHybridRunbookWorkerResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: HybridRunbookWorkersCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the hybrid worker group properties. */
+  properties?: HybridRunbookWorkerProperties;
+}
+export const CreateHybridRunbookWorkerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(HybridRunbookWorkersCreateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(HybridRunbookWorkerProperties),
+  }),
+).annotate({
+  identifier: "CreateHybridRunbookWorkerResponse",
+}) as any as S.Schema<CreateHybridRunbookWorkerResponse>;
+
+/** Definition of RunAs credential to use for hybrid worker. */
+export interface RunAsCredentialAssociationProperty {
+  /** Gets or sets the name of the credential. */
+  name?: string;
+}
+export const RunAsCredentialAssociationProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunAsCredentialAssociationProperty",
+}) as any as S.Schema<RunAsCredentialAssociationProperty>;
+
+/** The hybrid runbook worker group properties. */
+export interface HybridRunbookWorkerGroupCreateOrUpdateProperties {
+  /** Sets the credential of a worker group. */
+  credential?: RunAsCredentialAssociationProperty;
+}
+export const HybridRunbookWorkerGroupCreateOrUpdateProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      credential: S.optional(RunAsCredentialAssociationProperty),
+    }),
+  ).annotate({
+    identifier: "HybridRunbookWorkerGroupCreateOrUpdateProperties",
+  }) as any as S.Schema<HybridRunbookWorkerGroupCreateOrUpdateProperties>;
+
+export interface CreateHybridRunbookWorkerGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The hybrid runbook worker group name */
+  hybridRunbookWorkerGroupName: string;
+  /** Gets or sets hybrid runbook worker group create or update properties. */
+  properties?: HybridRunbookWorkerGroupCreateOrUpdateProperties;
+  /** Gets or sets the name of the resource. */
+  name?: string;
+}
+export const CreateHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+      properties: S.optional(HybridRunbookWorkerGroupCreateOrUpdateProperties),
+      name: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "CreateHybridRunbookWorkerGroupRequest",
+}) as any as S.Schema<CreateHybridRunbookWorkerGroupRequest>;
+
+/** Resource tags. */
+export type HybridRunbookWorkerGroupCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HybridRunbookWorkerGroupCreateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<HybridRunbookWorkerGroupCreateResponseTagsMap>;
+
+/** Type of the HybridWorkerGroup. */
+export type GroupTypeEnum = "User" | "System";
+export const GroupTypeEnum = /*@__PURE__*/ S.String;
+
+/** Definition of hybrid runbook worker group property. */
+export interface HybridRunbookWorkerGroupProperties {
+  /** Type of the HybridWorkerGroup. */
+  groupType?: GroupTypeEnum;
+  /** Sets the credential of a worker group. */
+  credential?: RunAsCredentialAssociationProperty;
+}
+export const HybridRunbookWorkerGroupProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupType: S.optional(GroupTypeEnum),
+    credential: S.optional(RunAsCredentialAssociationProperty),
+  }),
+).annotate({
+  identifier: "HybridRunbookWorkerGroupProperties",
+}) as any as S.Schema<HybridRunbookWorkerGroupProperties>;
+
+export interface CreateHybridRunbookWorkerGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: HybridRunbookWorkerGroupCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the hybrid worker group properties. */
+  properties?: HybridRunbookWorkerGroupProperties;
+}
+export const CreateHybridRunbookWorkerGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(HybridRunbookWorkerGroupCreateResponseTagsMap),
+      location: S.String,
+      properties: S.optional(HybridRunbookWorkerGroupProperties),
+    }),
+).annotate({
+  identifier: "CreateHybridRunbookWorkerGroupResponse",
+}) as any as S.Schema<CreateHybridRunbookWorkerGroupResponse>;
+
+/** The runbook property associated with the entity. */
+export interface RunbookAssociationProperty {
+  /** Gets or sets the name of the runbook. */
+  name?: string;
+}
+export const RunbookAssociationProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunbookAssociationProperty",
+}) as any as S.Schema<RunbookAssociationProperty>;
+
+/** Gets or sets the parameters of the job. */
+export type JobCreatePropertiesParametersMap = {
+  [key: string]: string | undefined;
+};
+export const JobCreatePropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<JobCreatePropertiesParametersMap>;
+
+export interface JobCreateProperties {
+  /** Gets or sets the runbook. */
+  runbook?: RunbookAssociationProperty;
+  /** Gets or sets the parameters of the job. */
+  parameters?: JobCreatePropertiesParametersMap;
+  /** Gets or sets the runOn which specifies the group name where the job is to be executed. */
+  runOn?: string;
+}
+export const JobCreateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runbook: S.optional(RunbookAssociationProperty),
+    parameters: S.optional(JobCreatePropertiesParametersMap),
+    runOn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JobCreateProperties",
+}) as any as S.Schema<JobCreateProperties>;
+
+export interface CreateJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The job name. */
+  jobName: string;
+  /** Gets or sets the list of job properties. */
+  properties: JobCreateProperties;
+}
+export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    jobName: S.String.pipe(T.Label()),
+    properties: JobCreateProperties,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "CreateJobRequest",
+}) as any as S.Schema<CreateJobRequest>;
+
+/** The runbook property associated with the entity. */
+export interface JobRuntimeEnvironment {
+  /** Name of Runtime Environment. */
+  runtimeEnvironmentName?: string;
+}
+export const JobRuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runtimeEnvironmentName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JobRuntimeEnvironment",
+}) as any as S.Schema<JobRuntimeEnvironment>;
+
+/** Gets or sets the status of the job. */
+export type JobStatus =
+  | "New"
+  | "Activating"
+  | "Running"
+  | "Completed"
+  | "Failed"
+  | "Stopped"
+  | "Blocked"
+  | "Suspended"
+  | "Disconnected"
+  | "Suspending"
+  | "Stopping"
+  | "Resuming"
+  | "Removing";
+export const JobStatus = /*@__PURE__*/ S.String;
+
+/** Gets or sets the parameters of the job. */
+export type JobPropertiesParametersMap = { [key: string]: string | undefined };
+export const JobPropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<JobPropertiesParametersMap>;
+
+/** The provisioning state of the resource. */
+export type JobProvisioningState =
+  | "Failed"
+  | "Succeeded"
+  | "Suspended"
+  | "Processing";
+export const JobProvisioningState = /*@__PURE__*/ S.String;
+
+/** Definition of job properties. */
+export interface JobProperties {
+  /** Gets or sets the runbook. */
+  runbook?: RunbookAssociationProperty;
+  /** Gets or sets the job started by. */
+  startedBy?: string;
+  /** Gets or sets the runOn which specifies the group name where the job is to be executed. */
+  runOn?: string;
+  /** Runtime Environment Property */
+  jobRuntimeEnvironment?: JobRuntimeEnvironment;
+  /** Gets or sets the id of the job. */
+  jobId?: string;
+  /** Gets or sets the creation time of the job. */
+  creationTime?: string;
+  /** Gets or sets the status of the job. */
+  status?: JobStatus;
+  /** Gets or sets the status details of the job. */
+  statusDetails?: string;
+  /** Gets or sets the start time of the job. */
+  startTime?: string | null;
+  /** Gets or sets the end time of the job. */
+  endTime?: string | null;
+  /** Gets or sets the exception of the job. */
+  exception?: string;
+  /** Gets or sets the last modified time of the job. */
+  lastModifiedTime?: string | null;
+  /** Gets or sets the last status modified time of the job. */
+  lastStatusModifiedTime?: string | null;
+  /** Gets or sets the parameters of the job. */
+  parameters?: JobPropertiesParametersMap;
+  /** The current provisioning state of the job. */
+  provisioningState?: JobProvisioningState;
+}
+export const JobProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runbook: S.optional(RunbookAssociationProperty),
+    startedBy: S.optional(S.String),
+    runOn: S.optional(S.String),
+    jobRuntimeEnvironment: S.optional(JobRuntimeEnvironment),
+    jobId: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    status: S.optional(JobStatus),
+    statusDetails: S.optional(S.String),
+    startTime: S.optional(S.NullOr(S.String)),
+    endTime: S.optional(S.NullOr(S.String)),
+    exception: S.optional(S.String),
+    lastModifiedTime: S.optional(S.NullOr(S.String)),
+    lastStatusModifiedTime: S.optional(S.NullOr(S.String)),
+    parameters: S.optional(JobPropertiesParametersMap),
+    provisioningState: S.optional(JobProvisioningState),
+  }),
+).annotate({ identifier: "JobProperties" }) as any as S.Schema<JobProperties>;
+
+export interface CreateJobResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the job. */
+  properties?: JobProperties;
+}
+export const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(JobProperties),
+  }),
+).annotate({
+  identifier: "CreateJobResponse",
+}) as any as S.Schema<CreateJobResponse>;
+
+/** The schedule property associated with the entity. */
+export interface ScheduleAssociationProperty {
+  /** Gets or sets the name of the Schedule. */
+  name?: string;
+}
+export const ScheduleAssociationProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScheduleAssociationProperty",
+}) as any as S.Schema<ScheduleAssociationProperty>;
+
+/** Gets or sets a list of job properties. */
+export type JobScheduleCreatePropertiesParametersMap = {
+  [key: string]: string | undefined;
+};
+export const JobScheduleCreatePropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<JobScheduleCreatePropertiesParametersMap>;
+
+/** The parameters supplied to the create job schedule operation. */
+export interface JobScheduleCreateProperties {
+  /** Gets or sets the schedule. */
+  schedule: ScheduleAssociationProperty;
+  /** Gets or sets the runbook. */
+  runbook: RunbookAssociationProperty;
+  /** Gets or sets the hybrid worker group that the scheduled job should run on. */
+  runOn?: string;
+  /** Gets or sets a list of job properties. */
+  parameters?: JobScheduleCreatePropertiesParametersMap;
+}
+export const JobScheduleCreateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schedule: ScheduleAssociationProperty,
+    runbook: RunbookAssociationProperty,
+    runOn: S.optional(S.String),
+    parameters: S.optional(JobScheduleCreatePropertiesParametersMap),
+  }),
+).annotate({
+  identifier: "JobScheduleCreateProperties",
+}) as any as S.Schema<JobScheduleCreateProperties>;
+
+export interface CreateJobScheduleRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The job schedule name. */
+  jobScheduleId: string;
+  /** Gets or sets the list of job schedule properties. */
+  properties: JobScheduleCreateProperties;
+}
+export const CreateJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    jobScheduleId: S.String.pipe(T.Label()),
+    properties: JobScheduleCreateProperties,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "CreateJobScheduleRequest",
+}) as any as S.Schema<CreateJobScheduleRequest>;
+
+/** Gets or sets the parameters of the job schedule. */
+export type JobSchedulePropertiesParametersMap = {
+  [key: string]: string | undefined;
+};
+export const JobSchedulePropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<JobSchedulePropertiesParametersMap>;
+
+/** Definition of job schedule parameters. */
+export interface JobScheduleProperties {
+  /** Gets or sets the id of job schedule. */
+  jobScheduleId?: string;
+  /** Gets or sets the schedule. */
+  schedule?: ScheduleAssociationProperty;
+  /** Gets or sets the runbook. */
+  runbook?: RunbookAssociationProperty;
+  /** Gets or sets the hybrid worker group that the scheduled job should run on. */
+  runOn?: string;
+  /** Gets or sets the parameters of the job schedule. */
+  parameters?: JobSchedulePropertiesParametersMap;
+}
+export const JobScheduleProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobScheduleId: S.optional(S.String),
+    schedule: S.optional(ScheduleAssociationProperty),
+    runbook: S.optional(RunbookAssociationProperty),
+    runOn: S.optional(S.String),
+    parameters: S.optional(JobSchedulePropertiesParametersMap),
+  }),
+).annotate({
+  identifier: "JobScheduleProperties",
+}) as any as S.Schema<JobScheduleProperties>;
+
+export interface CreateJobScheduleResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the job schedule. */
+  properties?: JobScheduleProperties;
+}
+export const CreateJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(JobScheduleProperties),
+  }),
+).annotate({
+  identifier: "CreateJobScheduleResponse",
+}) as any as S.Schema<CreateJobScheduleResponse>;
+
+/** Resource tags. */
+export type RuntimeEnvironmentsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RuntimeEnvironmentsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RuntimeEnvironmentsCreateRequestTagsMap>;
+
+/** Runtime properties. */
+export interface RuntimeProperties {
+  /** Language of Runtime Environment */
+  language?: string;
+  /** Version of Language */
+  version?: string;
+}
+export const RuntimeProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    language: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RuntimeProperties",
+}) as any as S.Schema<RuntimeProperties>;
+
+/** List of Default packages for Environment */
+export type RuntimeEnvironmentPropertiesDefaultPackagesMap = {
+  [key: string]: string | undefined;
+};
+export const RuntimeEnvironmentPropertiesDefaultPackagesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<RuntimeEnvironmentPropertiesDefaultPackagesMap>;
+
+/** Runtime Environment properties. */
+export interface RuntimeEnvironmentProperties {
+  /** Runtime properties. */
+  runtime?: RuntimeProperties;
+  /** List of Default packages for Environment */
+  defaultPackages?: RuntimeEnvironmentPropertiesDefaultPackagesMap;
+  /** Gets or sets the description. */
+  description?: string;
+}
+export const RuntimeEnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runtime: S.optional(RuntimeProperties),
+    defaultPackages: S.optional(RuntimeEnvironmentPropertiesDefaultPackagesMap),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RuntimeEnvironmentProperties",
+}) as any as S.Schema<RuntimeEnvironmentProperties>;
+
+export interface CreateRuntimeEnvironmentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the Runtime Environment. */
+  runtimeEnvironmentName: string;
+  /** Resource tags. */
+  tags?: RuntimeEnvironmentsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the Runtime Environment properties. */
+  properties?: RuntimeEnvironmentProperties;
+}
+export const CreateRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runtimeEnvironmentName: S.String.pipe(T.Label()),
+    tags: S.optional(RuntimeEnvironmentsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(RuntimeEnvironmentProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "CreateRuntimeEnvironmentRequest",
+}) as any as S.Schema<CreateRuntimeEnvironmentRequest>;
+
+/** Resource tags. */
+export type RuntimeEnvironmentsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RuntimeEnvironmentsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RuntimeEnvironmentsCreateResponseTagsMap>;
+
+export interface CreateRuntimeEnvironmentResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: RuntimeEnvironmentsCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the Runtime Environment properties. */
+  properties?: RuntimeEnvironmentProperties;
+}
+export const CreateRuntimeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(RuntimeEnvironmentsCreateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(RuntimeEnvironmentProperties),
+  }),
+).annotate({
+  identifier: "CreateRuntimeEnvironmentResponse",
+}) as any as S.Schema<CreateRuntimeEnvironmentResponse>;
+
+/** Definition of create source control sync job properties. */
+export interface SourceControlSyncJobCreateProperties {
+  /** The commit id of the source control sync job. If not syncing to a commitId, enter an empty string. */
+  commitId: string;
+}
+export const SourceControlSyncJobCreateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      commitId: S.String,
+    }),
+).annotate({
+  identifier: "SourceControlSyncJobCreateProperties",
+}) as any as S.Schema<SourceControlSyncJobCreateProperties>;
+
+export interface CreateSourceControlSyncJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of source control. */
+  sourceControlName: string;
+  /** The source control sync job id. */
+  sourceControlSyncJobId: string;
+  /** The properties of the source control sync job. */
+  properties: SourceControlSyncJobCreateProperties;
+}
+export const CreateSourceControlSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    sourceControlName: S.String.pipe(T.Label()),
+    sourceControlSyncJobId: S.String.pipe(T.Label()),
+    properties: SourceControlSyncJobCreateProperties,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSourceControlSyncJobRequest",
+}) as any as S.Schema<CreateSourceControlSyncJobRequest>;
+
+/** The provisioning state of the job. */
+export type ProvisioningState = "Completed" | "Failed" | "Running";
+export const ProvisioningState = /*@__PURE__*/ S.String;
+
+/** The sync type. */
+export type SyncType = "PartialSync" | "FullSync";
+export const SyncType = /*@__PURE__*/ S.String;
+
+/** Definition of source control sync job properties. */
+export interface SourceControlSyncJobProperties {
+  /** The source control sync job id. */
+  sourceControlSyncJobId?: string;
+  /** The creation time of the job. */
+  creationTime?: string;
+  /** The provisioning state of the job. */
+  provisioningState?: ProvisioningState;
+  /** The start time of the job. */
+  startTime?: string | null;
+  /** The end time of the job. */
+  endTime?: string | null;
+  /** The sync type. */
+  syncType?: SyncType;
+}
+export const SourceControlSyncJobProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceControlSyncJobId: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    provisioningState: S.optional(ProvisioningState),
+    startTime: S.optional(S.NullOr(S.String)),
+    endTime: S.optional(S.NullOr(S.String)),
+    syncType: S.optional(SyncType),
+  }),
+).annotate({
+  identifier: "SourceControlSyncJobProperties",
+}) as any as S.Schema<SourceControlSyncJobProperties>;
+
+/** Definition of the source control sync job. */
+export interface SourceControlSyncJob {
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  /** Resource id. */
+  id?: string;
+  /** The properties of the source control sync job. */
+  properties?: SourceControlSyncJobProperties;
+}
+export const SourceControlSyncJob = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    id: S.optional(S.String),
+    properties: S.optional(SourceControlSyncJobProperties),
+  }),
+).annotate({
+  identifier: "SourceControlSyncJob",
+}) as any as S.Schema<SourceControlSyncJob>;
+
+/** Gets or sets the parameters of the test job. */
+export type TestJobCreateRequestParametersMap = {
+  [key: string]: string | undefined;
+};
+export const TestJobCreateRequestParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<TestJobCreateRequestParametersMap>;
+
+export interface CreateTestJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+  /** Gets or sets the parameters of the test job. */
+  parameters?: TestJobCreateRequestParametersMap;
+  /** Gets or sets the runOn which specifies the group name where the job is to be executed. */
+  runOn?: string;
+  /** The runtime Environment Name on which job needs to be tested */
+  runtimeEnvironment?: string;
+}
+export const CreateTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+    parameters: S.optional(TestJobCreateRequestParametersMap),
+    runOn: S.optional(S.String),
+    runtimeEnvironment: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "CreateTestJobRequest",
+}) as any as S.Schema<CreateTestJobRequest>;
+
+/** Gets or sets the parameters of the test job. */
+export type TestJobParametersMap = { [key: string]: string | undefined };
+export const TestJobParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<TestJobParametersMap>;
+
+/** Definition of the test job. */
+export interface TestJob {
+  /** Gets or sets the creation time of the test job. */
+  creationTime?: string;
+  /** Gets or sets the status of the test job. */
+  status?: string;
+  /** Gets or sets the status details of the test job. */
+  statusDetails?: string;
+  /** Gets or sets the runOn which specifies the group name where the job is to be executed. */
+  runOn?: string;
+  /** Gets or sets the start time of the test job. */
+  startTime?: string | null;
+  /** Gets or sets the end time of the test job. */
+  endTime?: string | null;
+  /** Gets or sets the exception of the test job. */
+  exception?: string;
+  /** Gets or sets the last modified time of the test job. */
+  lastModifiedTime?: string;
+  /** Gets or sets the last status modified time of the test job. */
+  lastStatusModifiedTime?: string | null;
+  /** Gets or sets the parameters of the test job. */
+  parameters?: TestJobParametersMap;
+  /** The activity-level tracing options of the runbook. */
+  logActivityTrace?: number;
+}
+export const TestJob = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    creationTime: S.optional(S.String),
+    status: S.optional(S.String),
+    statusDetails: S.optional(S.String),
+    runOn: S.optional(S.String),
+    startTime: S.optional(S.NullOr(S.String)),
+    endTime: S.optional(S.NullOr(S.String)),
+    exception: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+    lastStatusModifiedTime: S.optional(S.NullOr(S.String)),
+    parameters: S.optional(TestJobParametersMap),
+    logActivityTrace: S.optional(S.Number),
+  }),
+).annotate({ identifier: "TestJob" }) as any as S.Schema<TestJob>;
 
 /** The properties of the create credential operation. */
 export interface CredentialCreateOrUpdateProperties {
@@ -2406,7 +2005,144 @@ export const CredentialCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CredentialCreateOrUpdateResponse",
 }) as any as S.Schema<CredentialCreateOrUpdateResponse>;
 
-export interface CredentialDeleteRequest {
+export interface DeleteAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const DeleteAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAutomationAccountRequest",
+}) as any as S.Schema<DeleteAutomationAccountRequest>;
+
+export interface DeleteAutomationAccountResponse {}
+export const DeleteAutomationAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAutomationAccountResponse",
+}) as any as S.Schema<DeleteAutomationAccountResponse>;
+
+export interface DeleteCertificateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of certificate. */
+  certificateName: string;
+}
+export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    certificateName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCertificateRequest",
+}) as any as S.Schema<DeleteCertificateRequest>;
+
+export interface DeleteCertificateResponse {}
+export const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteCertificateResponse",
+}) as any as S.Schema<DeleteCertificateResponse>;
+
+export interface DeleteConnectionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of connection. */
+  connectionName: string;
+}
+export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    connectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteConnectionRequest",
+}) as any as S.Schema<DeleteConnectionRequest>;
+
+export interface DeleteConnectionResponse {}
+export const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConnectionResponse",
+}) as any as S.Schema<DeleteConnectionResponse>;
+
+export interface DeleteConnectionTypeRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of connection type. */
+  connectionTypeName: string;
+}
+export const DeleteConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    connectionTypeName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteConnectionTypeRequest",
+}) as any as S.Schema<DeleteConnectionTypeRequest>;
+
+export interface DeleteConnectionTypeResponse {}
+export const DeleteConnectionTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConnectionTypeResponse",
+}) as any as S.Schema<DeleteConnectionTypeResponse>;
+
+export interface DeleteCredentialRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2416,7 +2152,7 @@ export interface CredentialDeleteRequest {
   /** The name of credential. */
   credentialName: string;
 }
-export const CredentialDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2431,303 +2167,653 @@ export const CredentialDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CredentialDeleteRequest",
-}) as any as S.Schema<CredentialDeleteRequest>;
+  identifier: "DeleteCredentialRequest",
+}) as any as S.Schema<DeleteCredentialRequest>;
 
-export interface CredentialDeleteResponse {}
-export const CredentialDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteCredentialResponse {}
+export const DeleteCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "CredentialDeleteResponse",
-}) as any as S.Schema<CredentialDeleteResponse>;
+  identifier: "DeleteCredentialResponse",
+}) as any as S.Schema<DeleteCredentialResponse>;
 
-export interface CredentialGetRequest {
+export interface DeleteDscConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The name of credential. */
-  credentialName: string;
+  /** The configuration name. */
+  configurationName: string;
 }
-export const CredentialGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    credentialName: S.String.pipe(T.Label()),
+    configurationName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "CredentialGetRequest",
-}) as any as S.Schema<CredentialGetRequest>;
+  identifier: "DeleteDscConfigurationRequest",
+}) as any as S.Schema<DeleteDscConfigurationRequest>;
 
-export interface CredentialGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the credential. */
-  properties?: CredentialProperties;
-}
-export const CredentialGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CredentialProperties),
-  }),
+export interface DeleteDscConfigurationResponse {}
+export const DeleteDscConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "CredentialGetResponse",
-}) as any as S.Schema<CredentialGetResponse>;
+  identifier: "DeleteDscConfigurationResponse",
+}) as any as S.Schema<DeleteDscConfigurationResponse>;
 
-export interface CredentialListByAutomationAccountRequest {
+export interface DeleteDscNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
+  /** The node id. */
+  nodeId: string;
 }
-export const CredentialListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+export const DeleteDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    nodeId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDscNodeRequest",
+}) as any as S.Schema<DeleteDscNodeRequest>;
+
+export interface DeleteDscNodeResponse {}
+export const DeleteDscNodeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDscNodeResponse",
+}) as any as S.Schema<DeleteDscNodeResponse>;
+
+export interface DeleteDscNodeConfigurationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The Dsc node configuration name. */
+  nodeConfigurationName: string;
+}
+export const DeleteDscNodeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    nodeConfigurationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDscNodeConfigurationRequest",
+}) as any as S.Schema<DeleteDscNodeConfigurationRequest>;
+
+export interface DeleteDscNodeConfigurationResponse {}
+export const DeleteDscNodeConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDscNodeConfigurationResponse",
+}) as any as S.Schema<DeleteDscNodeConfigurationResponse>;
+
+export interface DeleteHybridRunbookWorkerRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The hybrid runbook worker group name */
+  hybridRunbookWorkerGroupName: string;
+  /** The hybrid runbook worker id */
+  hybridRunbookWorkerId: string;
+}
+export const DeleteHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+    hybridRunbookWorkerId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteHybridRunbookWorkerRequest",
+}) as any as S.Schema<DeleteHybridRunbookWorkerRequest>;
+
+export interface DeleteHybridRunbookWorkerResponse {}
+export const DeleteHybridRunbookWorkerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteHybridRunbookWorkerResponse",
+}) as any as S.Schema<DeleteHybridRunbookWorkerResponse>;
+
+export interface DeleteHybridRunbookWorkerGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The hybrid runbook worker group name */
+  hybridRunbookWorkerGroupName: string;
+}
+export const DeleteHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       automationAccountName: S.String.pipe(T.Label()),
+      hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials",
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
         code: 200,
         apiVersion: "2024-10-23",
       }),
     ),
 ).annotate({
-  identifier: "CredentialListByAutomationAccountRequest",
-}) as any as S.Schema<CredentialListByAutomationAccountRequest>;
+  identifier: "DeleteHybridRunbookWorkerGroupRequest",
+}) as any as S.Schema<DeleteHybridRunbookWorkerGroupRequest>;
 
-/** Definition of the credential. */
-export interface Credential {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the credential. */
-  properties?: CredentialProperties;
-}
-export const Credential = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CredentialProperties),
-  }),
-).annotate({ identifier: "Credential" }) as any as S.Schema<Credential>;
-
-/** The Credential items on this page */
-export type CredentialListResultValueList = Array<Credential>;
-export const CredentialListResultValueList = /*@__PURE__*/ S.Array(
-  Credential,
-) as any as S.Schema<CredentialListResultValueList>;
-
-/** The response of a Credential list operation. */
-export interface CredentialListResult {
-  /** The Credential items on this page */
-  value: CredentialListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const CredentialListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: CredentialListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
+export interface DeleteHybridRunbookWorkerGroupResponse {}
+export const DeleteHybridRunbookWorkerGroupResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
 ).annotate({
-  identifier: "CredentialListResult",
-}) as any as S.Schema<CredentialListResult>;
+  identifier: "DeleteHybridRunbookWorkerGroupResponse",
+}) as any as S.Schema<DeleteHybridRunbookWorkerGroupResponse>;
 
-/** The properties of the Update credential */
-export interface CredentialUpdateProperties {
-  /** Gets or sets the user name of the credential. */
-  userName?: string;
-  /** Gets or sets the password of the credential. */
-  password?: string | Redacted.Redacted<string>;
-  /** Gets or sets the description of the credential. */
-  description?: string;
-}
-export const CredentialUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userName: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CredentialUpdateProperties",
-}) as any as S.Schema<CredentialUpdateProperties>;
-
-export interface CredentialUpdateRequest {
+export interface DeleteJobScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The name of credential. */
-  credentialName: string;
-  /** Gets or sets the name of the credential. */
-  name?: string;
-  /** Gets or sets the properties of the variable. */
-  properties?: CredentialUpdateProperties;
+  /** The job schedule name. */
+  jobScheduleId: string;
 }
-export const CredentialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    credentialName: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    properties: S.optional(CredentialUpdateProperties),
+    jobScheduleId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "CredentialUpdateRequest",
-}) as any as S.Schema<CredentialUpdateRequest>;
+  identifier: "DeleteJobScheduleRequest",
+}) as any as S.Schema<DeleteJobScheduleRequest>;
 
-export interface CredentialUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the credential. */
-  properties?: CredentialProperties;
-}
-export const CredentialUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CredentialProperties),
-  }),
+export interface DeleteJobScheduleResponse {}
+export const DeleteJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "CredentialUpdateResponse",
-}) as any as S.Schema<CredentialUpdateResponse>;
+  identifier: "DeleteJobScheduleResponse",
+}) as any as S.Schema<DeleteJobScheduleResponse>;
 
-export interface DeletedAutomationAccountsListBySubscriptionRequest {
+export interface DeleteModuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The module name. */
+  moduleName: string;
 }
-export const DeletedAutomationAccountsListBySubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteModuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    moduleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteModuleRequest",
+}) as any as S.Schema<DeleteModuleRequest>;
+
+export interface DeleteModuleResponse {}
+export const DeleteModuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteModuleResponse",
+}) as any as S.Schema<DeleteModuleResponse>;
+
+export interface DeletePackageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the Runtime Environment. */
+  runtimeEnvironmentName: string;
+  /** The Package name. */
+  packageName: string;
+}
+export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runtimeEnvironmentName: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePackageRequest",
+}) as any as S.Schema<DeletePackageRequest>;
+
+export interface DeletePackageResponse {}
+export const DeletePackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePackageResponse",
+}) as any as S.Schema<DeletePackageResponse>;
+
+export interface DeletePrivateEndpointConnectionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the private endpoint connection. */
+  privateEndpointConnectionName: string;
+}
+export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/deletedAutomationAccounts",
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
         apiVersion: "2024-10-23",
       }),
     ),
-  ).annotate({
-    identifier: "DeletedAutomationAccountsListBySubscriptionRequest",
-  }) as any as S.Schema<DeletedAutomationAccountsListBySubscriptionRequest>;
-
-/** Definition of the deleted automation account properties. */
-export interface DeletedAutomationAccountProperties {
-  /** Gets or sets the Automation Account Resource Id. */
-  automationAccountResourceId?: string;
-  /** Gets or sets the Automation Account Id. */
-  automationAccountId?: string;
-  /** Gets or sets the location of the resource. */
-  location?: string;
-  /** Gets the deletion time. */
-  deletionTime?: string;
-}
-export const DeletedAutomationAccountProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    automationAccountResourceId: S.optional(S.String),
-    automationAccountId: S.optional(S.String),
-    location: S.optional(S.String),
-    deletionTime: S.optional(S.String),
-  }),
 ).annotate({
-  identifier: "DeletedAutomationAccountProperties",
-}) as any as S.Schema<DeletedAutomationAccountProperties>;
+  identifier: "DeletePrivateEndpointConnectionRequest",
+}) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
-/** Definition of the deleted automation account type. */
-export interface DeletedAutomationAccount {
-  /** Gets or sets the automation account properties. */
-  properties?: DeletedAutomationAccountProperties;
-  /** The resource id. */
-  id?: string;
-  /** Gets or sets name of the resource. */
-  name?: string;
-  /** The resource type. */
-  type?: string;
-  /** Gets or sets the location of the resource. */
-  location?: string;
-}
-export const DeletedAutomationAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(DeletedAutomationAccountProperties),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
+export interface DeletePrivateEndpointConnectionResponse {}
+export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
 ).annotate({
-  identifier: "DeletedAutomationAccount",
-}) as any as S.Schema<DeletedAutomationAccount>;
+  identifier: "DeletePrivateEndpointConnectionResponse",
+}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
-/** Gets or sets the list of deleted automation accounts. */
-export type DeletedAutomationAccountListResultValueList =
-  Array<DeletedAutomationAccount>;
-export const DeletedAutomationAccountListResultValueList =
-  /*@__PURE__*/ S.Array(
-    DeletedAutomationAccount,
-  ) as any as S.Schema<DeletedAutomationAccountListResultValueList>;
-
-/** The response model for the list deleted automation account. */
-export interface DeletedAutomationAccountListResult {
-  /** Gets or sets the list of deleted automation accounts. */
-  value?: DeletedAutomationAccountListResultValueList;
+export interface DeletePython2PackageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The python package name. */
+  packageName: string;
 }
-export const DeletedAutomationAccountListResult = /*@__PURE__*/ S.suspend(() =>
+export const DeletePython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: S.optional(DeletedAutomationAccountListResultValueList),
-  }),
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
 ).annotate({
-  identifier: "DeletedAutomationAccountListResult",
-}) as any as S.Schema<DeletedAutomationAccountListResult>;
+  identifier: "DeletePython2PackageRequest",
+}) as any as S.Schema<DeletePython2PackageRequest>;
+
+export interface DeletePython2PackageResponse {}
+export const DeletePython2PackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePython2PackageResponse",
+}) as any as S.Schema<DeletePython2PackageResponse>;
+
+export interface DeletePython3PackageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The python package name. */
+  packageName: string;
+}
+export const DeletePython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePython3PackageRequest",
+}) as any as S.Schema<DeletePython3PackageRequest>;
+
+export interface DeletePython3PackageResponse {}
+export const DeletePython3PackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePython3PackageResponse",
+}) as any as S.Schema<DeletePython3PackageResponse>;
+
+export interface DeleteRunbookRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+}
+export const DeleteRunbookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRunbookRequest",
+}) as any as S.Schema<DeleteRunbookRequest>;
+
+export interface DeleteRunbookResponse {}
+export const DeleteRunbookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRunbookResponse",
+}) as any as S.Schema<DeleteRunbookResponse>;
+
+export interface DeleteRuntimeEnvironmentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the Runtime Environment. */
+  runtimeEnvironmentName: string;
+}
+export const DeleteRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runtimeEnvironmentName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRuntimeEnvironmentRequest",
+}) as any as S.Schema<DeleteRuntimeEnvironmentRequest>;
+
+export interface DeleteRuntimeEnvironmentResponse {}
+export const DeleteRuntimeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRuntimeEnvironmentResponse",
+}) as any as S.Schema<DeleteRuntimeEnvironmentResponse>;
+
+export interface DeleteScheduleRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The schedule name. */
+  scheduleName: string;
+}
+export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    scheduleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteScheduleRequest",
+}) as any as S.Schema<DeleteScheduleRequest>;
+
+export interface DeleteScheduleResponse {}
+export const DeleteScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteScheduleResponse",
+}) as any as S.Schema<DeleteScheduleResponse>;
+
+export interface DeleteSourceControlRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of source control. */
+  sourceControlName: string;
+}
+export const DeleteSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    sourceControlName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSourceControlRequest",
+}) as any as S.Schema<DeleteSourceControlRequest>;
+
+export interface DeleteSourceControlResponse {}
+export const DeleteSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSourceControlResponse",
+}) as any as S.Schema<DeleteSourceControlResponse>;
+
+export interface DeleteVariableRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of variable. */
+  variableName: string;
+}
+export const DeleteVariableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    variableName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteVariableRequest",
+}) as any as S.Schema<DeleteVariableRequest>;
+
+export interface DeleteVariableResponse {}
+export const DeleteVariableResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteVariableResponse",
+}) as any as S.Schema<DeleteVariableResponse>;
+
+export interface DeleteWatcherRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The watcher name. */
+  watcherName: string;
+}
+export const DeleteWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    watcherName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteWatcherRequest",
+}) as any as S.Schema<DeleteWatcherRequest>;
+
+export interface DeleteWatcherResponse {}
+export const DeleteWatcherResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteWatcherResponse",
+}) as any as S.Schema<DeleteWatcherResponse>;
+
+export interface DeleteWebhookRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The webhook name. */
+  webhookName: string;
+}
+export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    webhookName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteWebhookRequest",
+}) as any as S.Schema<DeleteWebhookRequest>;
+
+export interface DeleteWebhookResponse {}
+export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteWebhookResponse",
+}) as any as S.Schema<DeleteWebhookResponse>;
 
 /** Definition of the runbook property type. */
 export interface ContentHash {
@@ -2980,338 +3066,6 @@ export const DscConfigurationCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "DscConfigurationCreateOrUpdateResponse",
 }) as any as S.Schema<DscConfigurationCreateOrUpdateResponse>;
 
-export interface DscConfigurationDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The configuration name. */
-  configurationName: string;
-}
-export const DscConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    configurationName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "DscConfigurationDeleteRequest",
-}) as any as S.Schema<DscConfigurationDeleteRequest>;
-
-export interface DscConfigurationDeleteResponse {}
-export const DscConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DscConfigurationDeleteResponse",
-}) as any as S.Schema<DscConfigurationDeleteResponse>;
-
-export interface DscConfigurationGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The configuration name. */
-  configurationName: string;
-}
-export const DscConfigurationGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    configurationName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "DscConfigurationGetRequest",
-}) as any as S.Schema<DscConfigurationGetRequest>;
-
-/** Resource tags. */
-export type DscConfigurationGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DscConfigurationGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DscConfigurationGetResponseTagsMap>;
-
-export interface DscConfigurationGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DscConfigurationGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the configuration properties. */
-  properties?: DscConfigurationProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const DscConfigurationGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DscConfigurationGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DscConfigurationProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DscConfigurationGetResponse",
-}) as any as S.Schema<DscConfigurationGetResponse>;
-
-export interface DscConfigurationGetContentRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The configuration name. */
-  configurationName: string;
-}
-export const DscConfigurationGetContentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    configurationName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "DscConfigurationGetContentRequest",
-}) as any as S.Schema<DscConfigurationGetContentRequest>;
-
-export type DscConfigurationGetContentResponse = string;
-export const DscConfigurationGetContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DscConfigurationGetContentResponse",
-}) as any as S.Schema<DscConfigurationGetContentResponse>;
-
-export interface DscConfigurationListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-  /** The number of rows to skip. */
-  _skip?: number;
-  /** The number of rows to take. */
-  _top?: number;
-  /** Return total rows. */
-  _inlinecount?: string;
-}
-export const DscConfigurationListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "DscConfigurationListByAutomationAccountRequest",
-  }) as any as S.Schema<DscConfigurationListByAutomationAccountRequest>;
-
-/** Resource tags. */
-export type DscConfigurationTagsMap = { [key: string]: string | undefined };
-export const DscConfigurationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DscConfigurationTagsMap>;
-
-/** Definition of the configuration type. */
-export interface DscConfiguration {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DscConfigurationTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the configuration properties. */
-  properties?: DscConfigurationProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const DscConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DscConfigurationTagsMap),
-    location: S.String,
-    properties: S.optional(DscConfigurationProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DscConfiguration",
-}) as any as S.Schema<DscConfiguration>;
-
-/** Gets or sets a list of configurations. */
-export type DscConfigurationListResultValueList = Array<DscConfiguration>;
-export const DscConfigurationListResultValueList = /*@__PURE__*/ S.Array(
-  DscConfiguration,
-) as any as S.Schema<DscConfigurationListResultValueList>;
-
-/** The response model for the list configuration operation. */
-export interface DscConfigurationListResult {
-  /** Gets or sets a list of configurations. */
-  value?: DscConfigurationListResultValueList;
-  /** Gets or sets the next link. */
-  nextLink?: string;
-  /** Gets the total number of configurations matching filter criteria. */
-  totalCount?: number;
-}
-export const DscConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DscConfigurationListResultValueList),
-    nextLink: S.optional(S.String),
-    totalCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DscConfigurationListResult",
-}) as any as S.Schema<DscConfigurationListResult>;
-
-/** Gets or sets the tags attached to the resource. */
-export type DscConfigurationUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DscConfigurationUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DscConfigurationUpdateRequestTagsMap>;
-
-export interface DscConfigurationUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The configuration name. */
-  configurationName: string;
-  /** Gets or sets configuration create or update properties. */
-  properties?: DscConfigurationCreateOrUpdateProperties;
-  /** Gets or sets name of the resource. */
-  name?: string;
-  /** Gets or sets the tags attached to the resource. */
-  tags?: DscConfigurationUpdateRequestTagsMap;
-}
-export const DscConfigurationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    configurationName: S.String.pipe(T.Label()),
-    properties: S.optional(DscConfigurationCreateOrUpdateProperties),
-    name: S.optional(S.String),
-    tags: S.optional(DscConfigurationUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "DscConfigurationUpdateRequest",
-}) as any as S.Schema<DscConfigurationUpdateRequest>;
-
-/** Resource tags. */
-export type DscConfigurationUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DscConfigurationUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DscConfigurationUpdateResponseTagsMap>;
-
-export interface DscConfigurationUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DscConfigurationUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the configuration properties. */
-  properties?: DscConfigurationProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const DscConfigurationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DscConfigurationUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DscConfigurationProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DscConfigurationUpdateResponse",
-}) as any as S.Schema<DscConfigurationUpdateResponse>;
-
 /** The Dsc configuration property associated with the entity. */
 export interface DscConfigurationAssociationProperty {
   /** Gets or sets the name of the Dsc configuration. */
@@ -3401,161 +3155,285 @@ export const DscNodeConfigurationCreateOrUpdateResponse =
     identifier: "DscNodeConfigurationCreateOrUpdateResponse",
   }) as any as S.Schema<DscNodeConfigurationCreateOrUpdateResponse>;
 
-export interface DscNodeConfigurationDeleteRequest {
+export interface GenerateWebhookUriRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The Dsc node configuration name. */
-  nodeConfigurationName: string;
 }
-export const DscNodeConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const GenerateWebhookUriRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    nodeConfigurationName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/generateUri",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "DscNodeConfigurationDeleteRequest",
-}) as any as S.Schema<DscNodeConfigurationDeleteRequest>;
+  identifier: "GenerateWebhookUriRequest",
+}) as any as S.Schema<GenerateWebhookUriRequest>;
 
-export interface DscNodeConfigurationDeleteResponse {}
-export const DscNodeConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+export type GenerateWebhookUriResponse = string;
+export const GenerateWebhookUriResponse = /*@__PURE__*/ S.suspend(() =>
+  S.String.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "DscNodeConfigurationDeleteResponse",
-}) as any as S.Schema<DscNodeConfigurationDeleteResponse>;
+  identifier: "GenerateWebhookUriResponse",
+}) as any as S.Schema<GenerateWebhookUriResponse>;
 
-export interface DscNodeConfigurationGetRequest {
+export interface GetActivityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The Dsc node configuration name. */
-  nodeConfigurationName: string;
+  /** The module name. */
+  moduleName: string;
+  /** The name of activity. */
+  activityName: string;
 }
-export const DscNodeConfigurationGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    nodeConfigurationName: S.String.pipe(T.Label()),
+    moduleName: S.String.pipe(T.Label()),
+    activityName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities/{activityName}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "DscNodeConfigurationGetRequest",
-}) as any as S.Schema<DscNodeConfigurationGetRequest>;
+  identifier: "GetActivityRequest",
+}) as any as S.Schema<GetActivityRequest>;
 
-/** Properties for the DscNodeConfiguration */
-export interface DscNodeConfigurationProperties {
-  /** Gets or sets the last modified time. */
-  lastModifiedTime?: string;
-  /** Gets or sets creation time. */
-  creationTime?: string;
-  /** Gets or sets the configuration of the node. */
-  configuration?: DscConfigurationAssociationProperty;
-  /** Source of node configuration. */
-  source?: string;
-  /** Number of nodes with this node configuration assigned */
-  nodeCount?: number;
-  /** If a new build version of NodeConfiguration is required. */
-  incrementNodeConfigurationBuild?: boolean;
+/** Definition of the activity parameter validation set. */
+export interface ActivityParameterValidationSet {
+  /** Gets or sets the name of the activity parameter validation set member. */
+  memberValue?: string;
 }
-export const DscNodeConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+export const ActivityParameterValidationSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastModifiedTime: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    configuration: S.optional(DscConfigurationAssociationProperty),
-    source: S.optional(S.String),
-    nodeCount: S.optional(S.Number),
-    incrementNodeConfigurationBuild: S.optional(S.Boolean),
+    memberValue: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DscNodeConfigurationProperties",
-}) as any as S.Schema<DscNodeConfigurationProperties>;
+  identifier: "ActivityParameterValidationSet",
+}) as any as S.Schema<ActivityParameterValidationSet>;
 
-export interface DscNodeConfigurationGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
+/** Gets or sets the validation set of activity parameter. */
+export type ActivityParameterValidationSetList =
+  Array<ActivityParameterValidationSet>;
+export const ActivityParameterValidationSetList = /*@__PURE__*/ S.Array(
+  ActivityParameterValidationSet,
+) as any as S.Schema<ActivityParameterValidationSetList>;
+
+/** Definition of the activity parameter. */
+export interface ActivityParameter {
+  /** Gets or sets the name of the activity parameter. */
   name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  /** Gets or sets the type of the activity parameter. */
   type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the configuration properties. */
-  properties?: DscNodeConfigurationProperties;
+  /** Gets or sets a Boolean value that indicates true if the parameter is required. If the value is false, the parameter is optional. */
+  isMandatory?: boolean;
+  /** Gets or sets a Boolean value that indicates true if the parameter is dynamic. */
+  isDynamic?: boolean;
+  /** Gets or sets the position of the activity parameter. */
+  position?: number;
+  /** Gets or sets a Boolean value that indicates true if the parameter can take values from the incoming pipeline objects. This setting is used if the cmdlet must access the complete input object. false indicates that the parameter cannot take values from the complete input object. */
+  valueFromPipeline?: boolean;
+  /** Gets or sets a Boolean value that indicates true if the parameter can be filled from a property of the incoming pipeline object that has the same name as this parameter. false indicates that the parameter cannot be filled from the incoming pipeline object property with the same name. */
+  valueFromPipelineByPropertyName?: boolean;
+  /** Gets or sets a Boolean value that indicates true if the cmdlet parameter accepts all the remaining command-line arguments that are associated with this parameter in the form of an array. false if the cmdlet parameter does not accept all the remaining argument values. */
+  valueFromRemainingArguments?: boolean;
+  /** Gets or sets the description of the activity parameter. */
+  description?: string;
+  /** Gets or sets the validation set of activity parameter. */
+  validationSet?: ActivityParameterValidationSetList;
 }
-export const DscNodeConfigurationGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const ActivityParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    isMandatory: S.optional(S.Boolean),
+    isDynamic: S.optional(S.Boolean),
+    position: S.optional(S.Number),
+    valueFromPipeline: S.optional(S.Boolean),
+    valueFromPipelineByPropertyName: S.optional(S.Boolean),
+    valueFromRemainingArguments: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    validationSet: S.optional(ActivityParameterValidationSetList),
+  }),
+).annotate({
+  identifier: "ActivityParameter",
+}) as any as S.Schema<ActivityParameter>;
+
+/** Gets or sets the parameters of the activity parameter set. */
+export type ActivityParameterSetParametersList = Array<ActivityParameter>;
+export const ActivityParameterSetParametersList = /*@__PURE__*/ S.Array(
+  ActivityParameter,
+) as any as S.Schema<ActivityParameterSetParametersList>;
+
+/** Definition of the activity parameter set. */
+export interface ActivityParameterSet {
+  /** Gets or sets the name of the activity parameter set. */
+  name?: string;
+  /** Gets or sets the parameters of the activity parameter set. */
+  parameters?: ActivityParameterSetParametersList;
+}
+export const ActivityParameterSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    parameters: S.optional(ActivityParameterSetParametersList),
+  }),
+).annotate({
+  identifier: "ActivityParameterSet",
+}) as any as S.Schema<ActivityParameterSet>;
+
+/** Gets or sets the parameter sets of the activity. */
+export type ActivityPropertiesParameterSetsList = Array<ActivityParameterSet>;
+export const ActivityPropertiesParameterSetsList = /*@__PURE__*/ S.Array(
+  ActivityParameterSet,
+) as any as S.Schema<ActivityPropertiesParameterSetsList>;
+
+/** Definition of the activity output type. */
+export interface ActivityOutputType {
+  /** Gets or sets the name of the activity output type. */
+  name?: string;
+  /** Gets or sets the type of the activity output type. */
+  type?: string;
+}
+export const ActivityOutputType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ActivityOutputType",
+}) as any as S.Schema<ActivityOutputType>;
+
+/** Gets or sets the output types of the activity. */
+export type ActivityPropertiesOutputTypesList = Array<ActivityOutputType>;
+export const ActivityPropertiesOutputTypesList = /*@__PURE__*/ S.Array(
+  ActivityOutputType,
+) as any as S.Schema<ActivityPropertiesOutputTypesList>;
+
+/** Properties of the activity. */
+export interface ActivityProperties {
+  /** Gets or sets the user name of the activity. */
+  definition?: string;
+  /** Gets or sets the parameter sets of the activity. */
+  parameterSets?: ActivityPropertiesParameterSetsList;
+  /** Gets or sets the output types of the activity. */
+  outputTypes?: ActivityPropertiesOutputTypesList;
+  /** Gets or sets the creation time. */
+  creationTime?: string;
+  /** Gets or sets the last modified time. */
+  lastModifiedTime?: string;
+  /** Gets or sets the description. */
+  description?: string;
+}
+export const ActivityProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    definition: S.optional(S.String),
+    parameterSets: S.optional(ActivityPropertiesParameterSetsList),
+    outputTypes: S.optional(ActivityPropertiesOutputTypesList),
+    creationTime: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ActivityProperties",
+}) as any as S.Schema<ActivityProperties>;
+
+/** Definition of the activity. */
+export interface Activity {
+  /** Gets or sets the id of the resource. */
+  id?: string;
+  /** Gets the name of the activity. */
+  name?: string;
+  /** Gets or sets the properties of the activity. */
+  properties?: ActivityProperties;
+}
+export const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DscNodeConfigurationProperties),
+    properties: S.optional(ActivityProperties),
   }),
-).annotate({
-  identifier: "DscNodeConfigurationGetResponse",
-}) as any as S.Schema<DscNodeConfigurationGetResponse>;
+).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
-export interface DscNodeConfigurationListByAutomationAccountRequest {
+export interface GetAgentRegistrationInformationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-  /** The number of rows to skip. */
-  _skip?: number;
-  /** The number of rows to take. */
-  _top?: number;
-  /** Return total rows. */
-  _inlinecount?: string;
 }
-export const DscNodeConfigurationListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetAgentRegistrationInformationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       automationAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
     }).pipe(
       T.Http({
         method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation",
         code: 200,
         apiVersion: "2024-10-23",
       }),
     ),
-  ).annotate({
-    identifier: "DscNodeConfigurationListByAutomationAccountRequest",
-  }) as any as S.Schema<DscNodeConfigurationListByAutomationAccountRequest>;
+).annotate({
+  identifier: "GetAgentRegistrationInformationRequest",
+}) as any as S.Schema<GetAgentRegistrationInformationRequest>;
 
-/** Definition of the dsc node configuration. */
-export interface DscNodeConfiguration {
+export interface GetAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const GetAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetAutomationAccountRequest",
+}) as any as S.Schema<GetAutomationAccountRequest>;
+
+/** Resource tags. */
+export type AutomationAccountGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutomationAccountGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutomationAccountGetResponseTagsMap>;
+
+export interface GetAutomationAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -3564,83 +3442,347 @@ export interface DscNodeConfiguration {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Gets or sets the configuration properties. */
-  properties?: DscNodeConfigurationProperties;
+  /** Resource tags. */
+  tags?: AutomationAccountGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the automation account properties. */
+  properties?: AutomationAccountProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+  /** Identity for the resource. */
+  identity?: Identity;
 }
-export const DscNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
+export const GetAutomationAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(DscNodeConfigurationProperties),
+    tags: S.optional(AutomationAccountGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(AutomationAccountProperties),
+    etag: S.optional(S.String),
+    identity: S.optional(Identity),
   }),
 ).annotate({
-  identifier: "DscNodeConfiguration",
-}) as any as S.Schema<DscNodeConfiguration>;
+  identifier: "GetAutomationAccountResponse",
+}) as any as S.Schema<GetAutomationAccountResponse>;
 
-/** Gets or sets a list of Dsc node configurations. */
-export type DscNodeConfigurationListResultValueList =
-  Array<DscNodeConfiguration>;
-export const DscNodeConfigurationListResultValueList = /*@__PURE__*/ S.Array(
-  DscNodeConfiguration,
-) as any as S.Schema<DscNodeConfigurationListResultValueList>;
-
-/** The response model for the list job operation. */
-export interface DscNodeConfigurationListResult {
-  /** Gets or sets a list of Dsc node configurations. */
-  value?: DscNodeConfigurationListResultValueList;
-  /** Gets or sets the next link. */
-  nextLink?: string;
-  /** Gets or sets the total rows in query. */
-  totalCount?: number;
-}
-export const DscNodeConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DscNodeConfigurationListResultValueList),
-    nextLink: S.optional(S.String),
-    totalCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DscNodeConfigurationListResult",
-}) as any as S.Schema<DscNodeConfigurationListResult>;
-
-export interface DscNodeDeleteRequest {
+export interface GetCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The node id. */
-  nodeId: string;
+  /** The name of certificate. */
+  certificateName: string;
 }
-export const DscNodeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    nodeId: S.String.pipe(T.Label()),
+    certificateName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "DscNodeDeleteRequest",
-}) as any as S.Schema<DscNodeDeleteRequest>;
+  identifier: "GetCertificateRequest",
+}) as any as S.Schema<GetCertificateRequest>;
 
-export interface DscNodeDeleteResponse {}
-export const DscNodeDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+export interface GetCertificateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the certificate. */
+  properties?: CertificateProperties;
+}
+export const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CertificateProperties),
+  }),
 ).annotate({
-  identifier: "DscNodeDeleteResponse",
-}) as any as S.Schema<DscNodeDeleteResponse>;
+  identifier: "GetCertificateResponse",
+}) as any as S.Schema<GetCertificateResponse>;
 
-export interface DscNodeGetRequest {
+export interface GetConnectionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of connection. */
+  connectionName: string;
+}
+export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    connectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetConnectionRequest",
+}) as any as S.Schema<GetConnectionRequest>;
+
+export interface GetConnectionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the connection. */
+  properties?: ConnectionProperties;
+}
+export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ConnectionProperties),
+  }),
+).annotate({
+  identifier: "GetConnectionResponse",
+}) as any as S.Schema<GetConnectionResponse>;
+
+export interface GetConnectionTypeRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of connection type. */
+  connectionTypeName: string;
+}
+export const GetConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    connectionTypeName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetConnectionTypeRequest",
+}) as any as S.Schema<GetConnectionTypeRequest>;
+
+export interface GetConnectionTypeResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the connection type. */
+  properties?: ConnectionTypeProperties;
+}
+export const GetConnectionTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ConnectionTypeProperties),
+  }),
+).annotate({
+  identifier: "GetConnectionTypeResponse",
+}) as any as S.Schema<GetConnectionTypeResponse>;
+
+export interface GetCredentialRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of credential. */
+  credentialName: string;
+}
+export const GetCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    credentialName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetCredentialRequest",
+}) as any as S.Schema<GetCredentialRequest>;
+
+export interface GetCredentialResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the credential. */
+  properties?: CredentialProperties;
+}
+export const GetCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CredentialProperties),
+  }),
+).annotate({
+  identifier: "GetCredentialResponse",
+}) as any as S.Schema<GetCredentialResponse>;
+
+export interface GetDscConfigurationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The configuration name. */
+  configurationName: string;
+}
+export const GetDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    configurationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetDscConfigurationRequest",
+}) as any as S.Schema<GetDscConfigurationRequest>;
+
+/** Resource tags. */
+export type DscConfigurationGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DscConfigurationGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DscConfigurationGetResponseTagsMap>;
+
+export interface GetDscConfigurationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DscConfigurationGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the configuration properties. */
+  properties?: DscConfigurationProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const GetDscConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(DscConfigurationGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(DscConfigurationProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetDscConfigurationResponse",
+}) as any as S.Schema<GetDscConfigurationResponse>;
+
+export interface GetDscConfigurationContentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The configuration name. */
+  configurationName: string;
+}
+export const GetDscConfigurationContentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    configurationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetDscConfigurationContentRequest",
+}) as any as S.Schema<GetDscConfigurationContentRequest>;
+
+export type GetDscConfigurationContentResponse = string;
+export const GetDscConfigurationContentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.String.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "GetDscConfigurationContentResponse",
+}) as any as S.Schema<GetDscConfigurationContentResponse>;
+
+export interface GetDscNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -3650,7 +3792,7 @@ export interface DscNodeGetRequest {
   /** The node id. */
   nodeId: string;
 }
-export const DscNodeGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3665,8 +3807,8 @@ export const DscNodeGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DscNodeGetRequest",
-}) as any as S.Schema<DscNodeGetRequest>;
+  identifier: "GetDscNodeRequest",
+}) as any as S.Schema<GetDscNodeRequest>;
 
 /** The dsc node configuration property associated with the entity. */
 export interface DscNodeConfigurationAssociationProperty {
@@ -3748,7 +3890,7 @@ export const DscNodeProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DscNodeProperties",
 }) as any as S.Schema<DscNodeProperties>;
 
-export interface DscNodeGetResponse {
+export interface GetDscNodeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -3760,7 +3902,7 @@ export interface DscNodeGetResponse {
   /** The properties of a DscNode. */
   properties?: DscNodeProperties;
 }
-export const DscNodeGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetDscNodeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3769,138 +3911,66 @@ export const DscNodeGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(DscNodeProperties),
   }),
 ).annotate({
-  identifier: "DscNodeGetResponse",
-}) as any as S.Schema<DscNodeGetResponse>;
+  identifier: "GetDscNodeResponse",
+}) as any as S.Schema<GetDscNodeResponse>;
 
-export interface DscNodeListByAutomationAccountRequest {
+export interface GetDscNodeConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-  /** The number of rows to skip. */
-  _skip?: number;
-  /** The number of rows to take. */
-  _top?: number;
-  /** Return total rows. */
-  _inlinecount?: string;
+  /** The Dsc node configuration name. */
+  nodeConfigurationName: string;
 }
-export const DscNodeListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "DscNodeListByAutomationAccountRequest",
-}) as any as S.Schema<DscNodeListByAutomationAccountRequest>;
-
-/** Definition of a DscNode */
-export interface DscNode {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of a DscNode. */
-  properties?: DscNodeProperties;
-}
-export const DscNode = /*@__PURE__*/ S.suspend(() =>
+export const GetDscNodeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DscNodeProperties),
-  }),
-).annotate({ identifier: "DscNode" }) as any as S.Schema<DscNode>;
-
-/** Gets or sets a list of dsc nodes. */
-export type DscNodeListResultValueList = Array<DscNode>;
-export const DscNodeListResultValueList = /*@__PURE__*/ S.Array(
-  DscNode,
-) as any as S.Schema<DscNodeListResultValueList>;
-
-/** The response model for the list dsc nodes operation. */
-export interface DscNodeListResult {
-  /** Gets or sets a list of dsc nodes. */
-  value?: DscNodeListResultValueList;
-  /** Gets or sets the next link. */
-  nextLink?: string;
-  /** Gets the total number of nodes matching filter criteria. */
-  totalCount?: number;
-}
-export const DscNodeListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DscNodeListResultValueList),
-    nextLink: S.optional(S.String),
-    totalCount: S.optional(S.Number),
-  }),
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    nodeConfigurationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
 ).annotate({
-  identifier: "DscNodeListResult",
-}) as any as S.Schema<DscNodeListResult>;
+  identifier: "GetDscNodeConfigurationRequest",
+}) as any as S.Schema<GetDscNodeConfigurationRequest>;
 
-export interface DscNodeUpdateParametersProperties {
+/** Properties for the DscNodeConfiguration */
+export interface DscNodeConfigurationProperties {
+  /** Gets or sets the last modified time. */
+  lastModifiedTime?: string;
+  /** Gets or sets creation time. */
+  creationTime?: string;
   /** Gets or sets the configuration of the node. */
-  nodeConfiguration?: DscNodeConfigurationAssociationProperty;
+  configuration?: DscConfigurationAssociationProperty;
+  /** Source of node configuration. */
+  source?: string;
+  /** Number of nodes with this node configuration assigned */
+  nodeCount?: number;
+  /** If a new build version of NodeConfiguration is required. */
+  incrementNodeConfigurationBuild?: boolean;
 }
-export const DscNodeUpdateParametersProperties = /*@__PURE__*/ S.suspend(() =>
+export const DscNodeConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nodeConfiguration: S.optional(DscNodeConfigurationAssociationProperty),
+    lastModifiedTime: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    configuration: S.optional(DscConfigurationAssociationProperty),
+    source: S.optional(S.String),
+    nodeCount: S.optional(S.Number),
+    incrementNodeConfigurationBuild: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "DscNodeUpdateParametersProperties",
-}) as any as S.Schema<DscNodeUpdateParametersProperties>;
+  identifier: "DscNodeConfigurationProperties",
+}) as any as S.Schema<DscNodeConfigurationProperties>;
 
-export interface DscNodeUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The node id. */
-  nodeId: string;
-  properties?: DscNodeUpdateParametersProperties;
-}
-export const DscNodeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    nodeId: S.String.pipe(T.Label()),
-    properties: S.optional(DscNodeUpdateParametersProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "DscNodeUpdateRequest",
-}) as any as S.Schema<DscNodeUpdateRequest>;
-
-export interface DscNodeUpdateResponse {
+export interface GetDscNodeConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -3909,603 +3979,22 @@ export interface DscNodeUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of a DscNode. */
-  properties?: DscNodeProperties;
+  /** Gets or sets the configuration properties. */
+  properties?: DscNodeConfigurationProperties;
 }
-export const DscNodeUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetDscNodeConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(DscNodeProperties),
+    properties: S.optional(DscNodeConfigurationProperties),
   }),
 ).annotate({
-  identifier: "DscNodeUpdateResponse",
-}) as any as S.Schema<DscNodeUpdateResponse>;
+  identifier: "GetDscNodeConfigurationResponse",
+}) as any as S.Schema<GetDscNodeConfigurationResponse>;
 
-export interface FieldsListByTypeRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The module name. */
-  moduleName: string;
-  /** The name of type. */
-  typeName: string;
-}
-export const FieldsListByTypeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    moduleName: S.String.pipe(T.Label()),
-    typeName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/types/{typeName}/fields",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "FieldsListByTypeRequest",
-}) as any as S.Schema<FieldsListByTypeRequest>;
-
-/** Information about a field of a type. */
-export interface TypeField {
-  /** Gets or sets the name of the field. */
-  name?: string;
-  /** Gets or sets the type of the field. */
-  type?: string;
-}
-export const TypeField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "TypeField" }) as any as S.Schema<TypeField>;
-
-/** Gets or sets a list of fields. */
-export type TypeFieldListResultValueList = Array<TypeField>;
-export const TypeFieldListResultValueList = /*@__PURE__*/ S.Array(
-  TypeField,
-) as any as S.Schema<TypeFieldListResultValueList>;
-
-/** The response model for the list fields operation. */
-export interface TypeFieldListResult {
-  /** Gets or sets a list of fields. */
-  value?: TypeFieldListResultValueList;
-  nextLink?: string;
-}
-export const TypeFieldListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(TypeFieldListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypeFieldListResult",
-}) as any as S.Schema<TypeFieldListResult>;
-
-/** Definition of RunAs credential to use for hybrid worker. */
-export interface RunAsCredentialAssociationProperty {
-  /** Gets or sets the name of the credential. */
-  name?: string;
-}
-export const RunAsCredentialAssociationProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunAsCredentialAssociationProperty",
-}) as any as S.Schema<RunAsCredentialAssociationProperty>;
-
-/** The hybrid runbook worker group properties. */
-export interface HybridRunbookWorkerGroupCreateOrUpdateProperties {
-  /** Sets the credential of a worker group. */
-  credential?: RunAsCredentialAssociationProperty;
-}
-export const HybridRunbookWorkerGroupCreateOrUpdateProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      credential: S.optional(RunAsCredentialAssociationProperty),
-    }),
-  ).annotate({
-    identifier: "HybridRunbookWorkerGroupCreateOrUpdateProperties",
-  }) as any as S.Schema<HybridRunbookWorkerGroupCreateOrUpdateProperties>;
-
-export interface HybridRunbookWorkerGroupCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The hybrid runbook worker group name */
-  hybridRunbookWorkerGroupName: string;
-  /** Gets or sets hybrid runbook worker group create or update properties. */
-  properties?: HybridRunbookWorkerGroupCreateOrUpdateProperties;
-  /** Gets or sets the name of the resource. */
-  name?: string;
-}
-export const HybridRunbookWorkerGroupCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-      properties: S.optional(HybridRunbookWorkerGroupCreateOrUpdateProperties),
-      name: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupCreateRequest",
-}) as any as S.Schema<HybridRunbookWorkerGroupCreateRequest>;
-
-/** Resource tags. */
-export type HybridRunbookWorkerGroupCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const HybridRunbookWorkerGroupCreateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HybridRunbookWorkerGroupCreateResponseTagsMap>;
-
-/** Type of the HybridWorkerGroup. */
-export type GroupTypeEnum = "User" | "System";
-export const GroupTypeEnum = /*@__PURE__*/ S.String;
-
-/** Definition of hybrid runbook worker group property. */
-export interface HybridRunbookWorkerGroupProperties {
-  /** Type of the HybridWorkerGroup. */
-  groupType?: GroupTypeEnum;
-  /** Sets the credential of a worker group. */
-  credential?: RunAsCredentialAssociationProperty;
-}
-export const HybridRunbookWorkerGroupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupType: S.optional(GroupTypeEnum),
-    credential: S.optional(RunAsCredentialAssociationProperty),
-  }),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupProperties",
-}) as any as S.Schema<HybridRunbookWorkerGroupProperties>;
-
-export interface HybridRunbookWorkerGroupCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: HybridRunbookWorkerGroupCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the hybrid worker group properties. */
-  properties?: HybridRunbookWorkerGroupProperties;
-}
-export const HybridRunbookWorkerGroupCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(HybridRunbookWorkerGroupCreateResponseTagsMap),
-      location: S.String,
-      properties: S.optional(HybridRunbookWorkerGroupProperties),
-    }),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupCreateResponse",
-}) as any as S.Schema<HybridRunbookWorkerGroupCreateResponse>;
-
-export interface HybridRunbookWorkerGroupDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The hybrid runbook worker group name */
-  hybridRunbookWorkerGroupName: string;
-}
-export const HybridRunbookWorkerGroupDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupDeleteRequest",
-}) as any as S.Schema<HybridRunbookWorkerGroupDeleteRequest>;
-
-export interface HybridRunbookWorkerGroupDeleteResponse {}
-export const HybridRunbookWorkerGroupDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupDeleteResponse",
-}) as any as S.Schema<HybridRunbookWorkerGroupDeleteResponse>;
-
-export interface HybridRunbookWorkerGroupGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The hybrid runbook worker group name */
-  hybridRunbookWorkerGroupName: string;
-}
-export const HybridRunbookWorkerGroupGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupGetRequest",
-}) as any as S.Schema<HybridRunbookWorkerGroupGetRequest>;
-
-/** Resource tags. */
-export type HybridRunbookWorkerGroupGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const HybridRunbookWorkerGroupGetResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HybridRunbookWorkerGroupGetResponseTagsMap>;
-
-export interface HybridRunbookWorkerGroupGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: HybridRunbookWorkerGroupGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the hybrid worker group properties. */
-  properties?: HybridRunbookWorkerGroupProperties;
-}
-export const HybridRunbookWorkerGroupGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(HybridRunbookWorkerGroupGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(HybridRunbookWorkerGroupProperties),
-  }),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupGetResponse",
-}) as any as S.Schema<HybridRunbookWorkerGroupGetResponse>;
-
-export interface HybridRunbookWorkerGroupListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const HybridRunbookWorkerGroupListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "HybridRunbookWorkerGroupListByAutomationAccountRequest",
-  }) as any as S.Schema<HybridRunbookWorkerGroupListByAutomationAccountRequest>;
-
-/** Resource tags. */
-export type HybridRunbookWorkerGroupTagsMap = {
-  [key: string]: string | undefined;
-};
-export const HybridRunbookWorkerGroupTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HybridRunbookWorkerGroupTagsMap>;
-
-/** Definition of hybrid runbook worker group. */
-export interface HybridRunbookWorkerGroup {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: HybridRunbookWorkerGroupTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the hybrid worker group properties. */
-  properties?: HybridRunbookWorkerGroupProperties;
-}
-export const HybridRunbookWorkerGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(HybridRunbookWorkerGroupTagsMap),
-    location: S.String,
-    properties: S.optional(HybridRunbookWorkerGroupProperties),
-  }),
-).annotate({
-  identifier: "HybridRunbookWorkerGroup",
-}) as any as S.Schema<HybridRunbookWorkerGroup>;
-
-/** The HybridRunbookWorkerGroup items on this page */
-export type HybridRunbookWorkerGroupsListResultValueList =
-  Array<HybridRunbookWorkerGroup>;
-export const HybridRunbookWorkerGroupsListResultValueList =
-  /*@__PURE__*/ S.Array(
-    HybridRunbookWorkerGroup,
-  ) as any as S.Schema<HybridRunbookWorkerGroupsListResultValueList>;
-
-/** The response of a HybridRunbookWorkerGroup list operation. */
-export interface HybridRunbookWorkerGroupsListResult {
-  /** The HybridRunbookWorkerGroup items on this page */
-  value: HybridRunbookWorkerGroupsListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const HybridRunbookWorkerGroupsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: HybridRunbookWorkerGroupsListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupsListResult",
-}) as any as S.Schema<HybridRunbookWorkerGroupsListResult>;
-
-export interface HybridRunbookWorkerGroupUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The hybrid runbook worker group name */
-  hybridRunbookWorkerGroupName: string;
-  /** Gets or sets hybrid runbook worker group create or update properties. */
-  properties?: HybridRunbookWorkerGroupCreateOrUpdateProperties;
-  /** Gets or sets the name of the resource. */
-  name?: string;
-}
-export const HybridRunbookWorkerGroupUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-      properties: S.optional(HybridRunbookWorkerGroupCreateOrUpdateProperties),
-      name: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupUpdateRequest",
-}) as any as S.Schema<HybridRunbookWorkerGroupUpdateRequest>;
-
-/** Resource tags. */
-export type HybridRunbookWorkerGroupUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const HybridRunbookWorkerGroupUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HybridRunbookWorkerGroupUpdateResponseTagsMap>;
-
-export interface HybridRunbookWorkerGroupUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: HybridRunbookWorkerGroupUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the hybrid worker group properties. */
-  properties?: HybridRunbookWorkerGroupProperties;
-}
-export const HybridRunbookWorkerGroupUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(HybridRunbookWorkerGroupUpdateResponseTagsMap),
-      location: S.String,
-      properties: S.optional(HybridRunbookWorkerGroupProperties),
-    }),
-).annotate({
-  identifier: "HybridRunbookWorkerGroupUpdateResponse",
-}) as any as S.Schema<HybridRunbookWorkerGroupUpdateResponse>;
-
-/** The parameters supplied to the create or update hybrid runbook worker operation. */
-export interface HybridRunbookWorkerCreateOrUpdateParameters {
-  /** Azure Resource Manager Id for a virtual machine. */
-  vmResourceId?: string;
-}
-export const HybridRunbookWorkerCreateOrUpdateParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      vmResourceId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "HybridRunbookWorkerCreateOrUpdateParameters",
-  }) as any as S.Schema<HybridRunbookWorkerCreateOrUpdateParameters>;
-
-export interface HybridRunbookWorkersCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The hybrid runbook worker group name */
-  hybridRunbookWorkerGroupName: string;
-  /** The hybrid runbook worker id */
-  hybridRunbookWorkerId: string;
-  /** Gets or sets hybrid runbook worker group create or update properties. */
-  properties?: HybridRunbookWorkerCreateOrUpdateParameters;
-}
-export const HybridRunbookWorkersCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-    hybridRunbookWorkerId: S.String.pipe(T.Label()),
-    properties: S.optional(HybridRunbookWorkerCreateOrUpdateParameters),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "HybridRunbookWorkersCreateRequest",
-}) as any as S.Schema<HybridRunbookWorkersCreateRequest>;
-
-/** Resource tags. */
-export type HybridRunbookWorkersCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const HybridRunbookWorkersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HybridRunbookWorkersCreateResponseTagsMap>;
-
-/** Type of the HybridWorker. */
-export type WorkerType = "HybridV1" | "HybridV2";
-export const WorkerType = /*@__PURE__*/ S.String;
-
-/** Definition of hybrid runbook worker property. */
-export interface HybridRunbookWorkerProperties {
-  /** Gets or sets the assigned machine IP address. */
-  ip?: string;
-  /** Gets or sets the registration time of the worker machine. */
-  registeredDateTime?: string;
-  /** Last Heartbeat from the Worker */
-  lastSeenDateTime?: string;
-  /** Azure Resource Manager Id for a virtual machine. */
-  vmResourceId?: string;
-  /** Type of the HybridWorker. */
-  workerType?: WorkerType;
-  /** Name of the HybridWorker. */
-  workerName?: string;
-}
-export const HybridRunbookWorkerProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ip: S.optional(S.String),
-    registeredDateTime: S.optional(S.String),
-    lastSeenDateTime: S.optional(S.String),
-    vmResourceId: S.optional(S.String),
-    workerType: S.optional(WorkerType),
-    workerName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HybridRunbookWorkerProperties",
-}) as any as S.Schema<HybridRunbookWorkerProperties>;
-
-export interface HybridRunbookWorkersCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: HybridRunbookWorkersCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the hybrid worker group properties. */
-  properties?: HybridRunbookWorkerProperties;
-}
-export const HybridRunbookWorkersCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(HybridRunbookWorkersCreateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(HybridRunbookWorkerProperties),
-  }),
-).annotate({
-  identifier: "HybridRunbookWorkersCreateResponse",
-}) as any as S.Schema<HybridRunbookWorkersCreateResponse>;
-
-export interface HybridRunbookWorkersDeleteRequest {
+export interface GetHybridRunbookWorkerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -4517,45 +4006,7 @@ export interface HybridRunbookWorkersDeleteRequest {
   /** The hybrid runbook worker id */
   hybridRunbookWorkerId: string;
 }
-export const HybridRunbookWorkersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-    hybridRunbookWorkerId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "HybridRunbookWorkersDeleteRequest",
-}) as any as S.Schema<HybridRunbookWorkersDeleteRequest>;
-
-export interface HybridRunbookWorkersDeleteResponse {}
-export const HybridRunbookWorkersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "HybridRunbookWorkersDeleteResponse",
-}) as any as S.Schema<HybridRunbookWorkersDeleteResponse>;
-
-export interface HybridRunbookWorkersGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The hybrid runbook worker group name */
-  hybridRunbookWorkerGroupName: string;
-  /** The hybrid runbook worker id */
-  hybridRunbookWorkerId: string;
-}
-export const HybridRunbookWorkersGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4571,8 +4022,8 @@ export const HybridRunbookWorkersGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HybridRunbookWorkersGetRequest",
-}) as any as S.Schema<HybridRunbookWorkersGetRequest>;
+  identifier: "GetHybridRunbookWorkerRequest",
+}) as any as S.Schema<GetHybridRunbookWorkerRequest>;
 
 /** Resource tags. */
 export type HybridRunbookWorkersGetResponseTagsMap = {
@@ -4583,7 +4034,7 @@ export const HybridRunbookWorkersGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<HybridRunbookWorkersGetResponseTagsMap>;
 
-export interface HybridRunbookWorkersGetResponse {
+export interface GetHybridRunbookWorkerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4599,7 +4050,7 @@ export interface HybridRunbookWorkersGetResponse {
   /** Gets or sets the hybrid worker group properties. */
   properties?: HybridRunbookWorkerProperties;
 }
-export const HybridRunbookWorkersGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetHybridRunbookWorkerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4610,10 +4061,10 @@ export const HybridRunbookWorkersGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(HybridRunbookWorkerProperties),
   }),
 ).annotate({
-  identifier: "HybridRunbookWorkersGetResponse",
-}) as any as S.Schema<HybridRunbookWorkersGetResponse>;
+  identifier: "GetHybridRunbookWorkerResponse",
+}) as any as S.Schema<GetHybridRunbookWorkerResponse>;
 
-export interface HybridRunbookWorkersListByHybridRunbookWorkerGroupRequest {
+export interface GetHybridRunbookWorkerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -4622,38 +4073,36 @@ export interface HybridRunbookWorkersListByHybridRunbookWorkerGroupRequest {
   automationAccountName: string;
   /** The hybrid runbook worker group name */
   hybridRunbookWorkerGroupName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
 }
-export const HybridRunbookWorkersListByHybridRunbookWorkerGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "HybridRunbookWorkersListByHybridRunbookWorkerGroupRequest",
-  }) as any as S.Schema<HybridRunbookWorkersListByHybridRunbookWorkerGroupRequest>;
+export const GetHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetHybridRunbookWorkerGroupRequest",
+}) as any as S.Schema<GetHybridRunbookWorkerGroupRequest>;
 
 /** Resource tags. */
-export type HybridRunbookWorkerTagsMap = { [key: string]: string | undefined };
-export const HybridRunbookWorkerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HybridRunbookWorkerTagsMap>;
+export type HybridRunbookWorkerGroupGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HybridRunbookWorkerGroupGetResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<HybridRunbookWorkerGroupGetResponseTagsMap>;
 
-/** Definition of hybrid runbook worker. */
-export interface HybridRunbookWorker {
+export interface GetHybridRunbookWorkerGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4663,354 +4112,27 @@ export interface HybridRunbookWorker {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource tags. */
-  tags?: HybridRunbookWorkerTagsMap;
+  tags?: HybridRunbookWorkerGroupGetResponseTagsMap;
   /** The geo-location where the resource lives */
   location: string;
   /** Gets or sets the hybrid worker group properties. */
-  properties?: HybridRunbookWorkerProperties;
+  properties?: HybridRunbookWorkerGroupProperties;
 }
-export const HybridRunbookWorker = /*@__PURE__*/ S.suspend(() =>
+export const GetHybridRunbookWorkerGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    tags: S.optional(HybridRunbookWorkerTagsMap),
+    tags: S.optional(HybridRunbookWorkerGroupGetResponseTagsMap),
     location: S.String,
-    properties: S.optional(HybridRunbookWorkerProperties),
+    properties: S.optional(HybridRunbookWorkerGroupProperties),
   }),
 ).annotate({
-  identifier: "HybridRunbookWorker",
-}) as any as S.Schema<HybridRunbookWorker>;
+  identifier: "GetHybridRunbookWorkerGroupResponse",
+}) as any as S.Schema<GetHybridRunbookWorkerGroupResponse>;
 
-/** The HybridRunbookWorker items on this page */
-export type HybridRunbookWorkersListResultValueList =
-  Array<HybridRunbookWorker>;
-export const HybridRunbookWorkersListResultValueList = /*@__PURE__*/ S.Array(
-  HybridRunbookWorker,
-) as any as S.Schema<HybridRunbookWorkersListResultValueList>;
-
-/** The response of a HybridRunbookWorker list operation. */
-export interface HybridRunbookWorkersListResult {
-  /** The HybridRunbookWorker items on this page */
-  value: HybridRunbookWorkersListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const HybridRunbookWorkersListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: HybridRunbookWorkersListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HybridRunbookWorkersListResult",
-}) as any as S.Schema<HybridRunbookWorkersListResult>;
-
-export interface HybridRunbookWorkersMoveRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The hybrid runbook worker group name */
-  hybridRunbookWorkerGroupName: string;
-  /** The hybrid runbook worker id */
-  hybridRunbookWorkerId: string;
-}
-export const HybridRunbookWorkersMoveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-    hybridRunbookWorkerId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}/move",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "HybridRunbookWorkersMoveRequest",
-}) as any as S.Schema<HybridRunbookWorkersMoveRequest>;
-
-export interface HybridRunbookWorkersMoveResponse {}
-export const HybridRunbookWorkersMoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "HybridRunbookWorkersMoveResponse",
-}) as any as S.Schema<HybridRunbookWorkersMoveResponse>;
-
-export interface HybridRunbookWorkersPatchRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The hybrid runbook worker group name */
-  hybridRunbookWorkerGroupName: string;
-  /** The hybrid runbook worker id */
-  hybridRunbookWorkerId: string;
-  /** Gets or sets hybrid runbook worker group create or update properties. */
-  properties?: HybridRunbookWorkerCreateOrUpdateParameters;
-}
-export const HybridRunbookWorkersPatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-    hybridRunbookWorkerId: S.String.pipe(T.Label()),
-    properties: S.optional(HybridRunbookWorkerCreateOrUpdateParameters),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "HybridRunbookWorkersPatchRequest",
-}) as any as S.Schema<HybridRunbookWorkersPatchRequest>;
-
-/** Resource tags. */
-export type HybridRunbookWorkersPatchResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const HybridRunbookWorkersPatchResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HybridRunbookWorkersPatchResponseTagsMap>;
-
-export interface HybridRunbookWorkersPatchResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: HybridRunbookWorkersPatchResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the hybrid worker group properties. */
-  properties?: HybridRunbookWorkerProperties;
-}
-export const HybridRunbookWorkersPatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(HybridRunbookWorkersPatchResponseTagsMap),
-    location: S.String,
-    properties: S.optional(HybridRunbookWorkerProperties),
-  }),
-).annotate({
-  identifier: "HybridRunbookWorkersPatchResponse",
-}) as any as S.Schema<HybridRunbookWorkersPatchResponse>;
-
-/** The runbook property associated with the entity. */
-export interface RunbookAssociationProperty {
-  /** Gets or sets the name of the runbook. */
-  name?: string;
-}
-export const RunbookAssociationProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunbookAssociationProperty",
-}) as any as S.Schema<RunbookAssociationProperty>;
-
-/** Gets or sets the parameters of the job. */
-export type JobCreatePropertiesParametersMap = {
-  [key: string]: string | undefined;
-};
-export const JobCreatePropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JobCreatePropertiesParametersMap>;
-
-export interface JobCreateProperties {
-  /** Gets or sets the runbook. */
-  runbook?: RunbookAssociationProperty;
-  /** Gets or sets the parameters of the job. */
-  parameters?: JobCreatePropertiesParametersMap;
-  /** Gets or sets the runOn which specifies the group name where the job is to be executed. */
-  runOn?: string;
-}
-export const JobCreateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runbook: S.optional(RunbookAssociationProperty),
-    parameters: S.optional(JobCreatePropertiesParametersMap),
-    runOn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JobCreateProperties",
-}) as any as S.Schema<JobCreateProperties>;
-
-export interface JobCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The job name. */
-  jobName: string;
-  /** Gets or sets the list of job properties. */
-  properties: JobCreateProperties;
-}
-export const JobCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    jobName: S.String.pipe(T.Label()),
-    properties: JobCreateProperties,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "JobCreateRequest",
-}) as any as S.Schema<JobCreateRequest>;
-
-/** The runbook property associated with the entity. */
-export interface JobRuntimeEnvironment {
-  /** Name of Runtime Environment. */
-  runtimeEnvironmentName?: string;
-}
-export const JobRuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtimeEnvironmentName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JobRuntimeEnvironment",
-}) as any as S.Schema<JobRuntimeEnvironment>;
-
-/** Gets or sets the status of the job. */
-export type JobStatus =
-  | "New"
-  | "Activating"
-  | "Running"
-  | "Completed"
-  | "Failed"
-  | "Stopped"
-  | "Blocked"
-  | "Suspended"
-  | "Disconnected"
-  | "Suspending"
-  | "Stopping"
-  | "Resuming"
-  | "Removing";
-export const JobStatus = /*@__PURE__*/ S.String;
-
-/** Gets or sets the parameters of the job. */
-export type JobPropertiesParametersMap = { [key: string]: string | undefined };
-export const JobPropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JobPropertiesParametersMap>;
-
-/** The provisioning state of the resource. */
-export type JobProvisioningState =
-  | "Failed"
-  | "Succeeded"
-  | "Suspended"
-  | "Processing";
-export const JobProvisioningState = /*@__PURE__*/ S.String;
-
-/** Definition of job properties. */
-export interface JobProperties {
-  /** Gets or sets the runbook. */
-  runbook?: RunbookAssociationProperty;
-  /** Gets or sets the job started by. */
-  startedBy?: string;
-  /** Gets or sets the runOn which specifies the group name where the job is to be executed. */
-  runOn?: string;
-  /** Runtime Environment Property */
-  jobRuntimeEnvironment?: JobRuntimeEnvironment;
-  /** Gets or sets the id of the job. */
-  jobId?: string;
-  /** Gets or sets the creation time of the job. */
-  creationTime?: string;
-  /** Gets or sets the status of the job. */
-  status?: JobStatus;
-  /** Gets or sets the status details of the job. */
-  statusDetails?: string;
-  /** Gets or sets the start time of the job. */
-  startTime?: string | null;
-  /** Gets or sets the end time of the job. */
-  endTime?: string | null;
-  /** Gets or sets the exception of the job. */
-  exception?: string;
-  /** Gets or sets the last modified time of the job. */
-  lastModifiedTime?: string | null;
-  /** Gets or sets the last status modified time of the job. */
-  lastStatusModifiedTime?: string | null;
-  /** Gets or sets the parameters of the job. */
-  parameters?: JobPropertiesParametersMap;
-  /** The current provisioning state of the job. */
-  provisioningState?: JobProvisioningState;
-}
-export const JobProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runbook: S.optional(RunbookAssociationProperty),
-    startedBy: S.optional(S.String),
-    runOn: S.optional(S.String),
-    jobRuntimeEnvironment: S.optional(JobRuntimeEnvironment),
-    jobId: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    status: S.optional(JobStatus),
-    statusDetails: S.optional(S.String),
-    startTime: S.optional(S.NullOr(S.String)),
-    endTime: S.optional(S.NullOr(S.String)),
-    exception: S.optional(S.String),
-    lastModifiedTime: S.optional(S.NullOr(S.String)),
-    lastStatusModifiedTime: S.optional(S.NullOr(S.String)),
-    parameters: S.optional(JobPropertiesParametersMap),
-    provisioningState: S.optional(JobProvisioningState),
-  }),
-).annotate({ identifier: "JobProperties" }) as any as S.Schema<JobProperties>;
-
-export interface JobCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the job. */
-  properties?: JobProperties;
-}
-export const JobCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-  }),
-).annotate({
-  identifier: "JobCreateResponse",
-}) as any as S.Schema<JobCreateResponse>;
-
-export interface JobGetRequest {
+export interface GetJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5020,7 +4142,7 @@ export interface JobGetRequest {
   /** The job name. */
   jobName: string;
 }
-export const JobGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5034,9 +4156,9 @@ export const JobGetRequest = /*@__PURE__*/ S.suspend(() =>
       apiVersion: "2024-10-23",
     }),
   ),
-).annotate({ identifier: "JobGetRequest" }) as any as S.Schema<JobGetRequest>;
+).annotate({ identifier: "GetJobRequest" }) as any as S.Schema<GetJobRequest>;
 
-export interface JobGetResponse {
+export interface GetJobResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -5048,7 +4170,7 @@ export interface JobGetResponse {
   /** The properties of the job. */
   properties?: JobProperties;
 }
-export const JobGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5056,9 +4178,9 @@ export const JobGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(JobProperties),
   }),
-).annotate({ identifier: "JobGetResponse" }) as any as S.Schema<JobGetResponse>;
+).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
 
-export interface JobGetOutputRequest {
+export interface GetJobOutputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5068,7 +4190,7 @@ export interface JobGetOutputRequest {
   /** The job name. */
   jobName: string;
 }
-export const JobGetOutputRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetJobOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5083,17 +4205,17 @@ export const JobGetOutputRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "JobGetOutputRequest",
-}) as any as S.Schema<JobGetOutputRequest>;
+  identifier: "GetJobOutputRequest",
+}) as any as S.Schema<GetJobOutputRequest>;
 
-export type JobGetOutputResponse = string;
-export const JobGetOutputResponse = /*@__PURE__*/ S.suspend(() =>
+export type GetJobOutputResponse = string;
+export const GetJobOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "JobGetOutputResponse",
-}) as any as S.Schema<JobGetOutputResponse>;
+  identifier: "GetJobOutputResponse",
+}) as any as S.Schema<GetJobOutputResponse>;
 
-export interface JobGetRunbookContentRequest {
+export interface GetJobRunbookContentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5103,7 +4225,7 @@ export interface JobGetRunbookContentRequest {
   /** The job name. */
   jobName: string;
 }
-export const JobGetRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetJobRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5118,303 +4240,17 @@ export const JobGetRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "JobGetRunbookContentRequest",
-}) as any as S.Schema<JobGetRunbookContentRequest>;
+  identifier: "GetJobRunbookContentRequest",
+}) as any as S.Schema<GetJobRunbookContentRequest>;
 
-export type JobGetRunbookContentResponse = string;
-export const JobGetRunbookContentResponse = /*@__PURE__*/ S.suspend(() =>
+export type GetJobRunbookContentResponse = string;
+export const GetJobRunbookContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "JobGetRunbookContentResponse",
-}) as any as S.Schema<JobGetRunbookContentResponse>;
+  identifier: "GetJobRunbookContentResponse",
+}) as any as S.Schema<GetJobRunbookContentResponse>;
 
-export interface JobListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const JobListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "JobListByAutomationAccountRequest",
-}) as any as S.Schema<JobListByAutomationAccountRequest>;
-
-/** Job collection item properties. */
-export interface JobCollectionItemProperties {
-  /** The runbook association. */
-  runbook?: RunbookAssociationProperty;
-  /** The id of the job. */
-  jobId?: string;
-  /** Gets or sets the job started by. */
-  startedBy?: string | null;
-  /** The creation time of the job. */
-  creationTime?: string;
-  /** The status of the job. */
-  status?: JobStatus;
-  /** The start time of the job. */
-  startTime?: string | null;
-  /** The end time of the job. */
-  endTime?: string | null;
-  /** The last modified time of the job. */
-  lastModifiedTime?: string | null;
-  /** The provisioning state of a resource. */
-  provisioningState?: string;
-  /** Runtime Environment Property */
-  jobRuntimeEnvironment?: JobRuntimeEnvironment;
-  /** Specifies the runOn group name where the job was executed. */
-  runOn?: string;
-}
-export const JobCollectionItemProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runbook: S.optional(RunbookAssociationProperty),
-    jobId: S.optional(S.String),
-    startedBy: S.optional(S.NullOr(S.String)),
-    creationTime: S.optional(S.String),
-    status: S.optional(JobStatus),
-    startTime: S.optional(S.NullOr(S.String)),
-    endTime: S.optional(S.NullOr(S.String)),
-    lastModifiedTime: S.optional(S.NullOr(S.String)),
-    provisioningState: S.optional(S.String),
-    jobRuntimeEnvironment: S.optional(JobRuntimeEnvironment),
-    runOn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JobCollectionItemProperties",
-}) as any as S.Schema<JobCollectionItemProperties>;
-
-/** Job collection item properties. */
-export interface JobCollectionItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Job properties. */
-  properties: JobCollectionItemProperties;
-}
-export const JobCollectionItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: JobCollectionItemProperties,
-  }),
-).annotate({
-  identifier: "JobCollectionItem",
-}) as any as S.Schema<JobCollectionItem>;
-
-/** The JobCollectionItem items on this page */
-export type JobListResultV2ValueList = Array<JobCollectionItem>;
-export const JobListResultV2ValueList = /*@__PURE__*/ S.Array(
-  JobCollectionItem,
-) as any as S.Schema<JobListResultV2ValueList>;
-
-/** The response model for the list job operation. */
-export interface JobListResultV2 {
-  /** The JobCollectionItem items on this page */
-  value: JobListResultV2ValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const JobListResultV2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: JobListResultV2ValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JobListResultV2",
-}) as any as S.Schema<JobListResultV2>;
-
-export interface JobResumeRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The job name. */
-  jobName: string;
-}
-export const JobResumeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    jobName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/resume",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "JobResumeRequest",
-}) as any as S.Schema<JobResumeRequest>;
-
-export interface JobResumeResponse {}
-export const JobResumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "JobResumeResponse",
-}) as any as S.Schema<JobResumeResponse>;
-
-/** The schedule property associated with the entity. */
-export interface ScheduleAssociationProperty {
-  /** Gets or sets the name of the Schedule. */
-  name?: string;
-}
-export const ScheduleAssociationProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScheduleAssociationProperty",
-}) as any as S.Schema<ScheduleAssociationProperty>;
-
-/** Gets or sets a list of job properties. */
-export type JobScheduleCreatePropertiesParametersMap = {
-  [key: string]: string | undefined;
-};
-export const JobScheduleCreatePropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JobScheduleCreatePropertiesParametersMap>;
-
-/** The parameters supplied to the create job schedule operation. */
-export interface JobScheduleCreateProperties {
-  /** Gets or sets the schedule. */
-  schedule: ScheduleAssociationProperty;
-  /** Gets or sets the runbook. */
-  runbook: RunbookAssociationProperty;
-  /** Gets or sets the hybrid worker group that the scheduled job should run on. */
-  runOn?: string;
-  /** Gets or sets a list of job properties. */
-  parameters?: JobScheduleCreatePropertiesParametersMap;
-}
-export const JobScheduleCreateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schedule: ScheduleAssociationProperty,
-    runbook: RunbookAssociationProperty,
-    runOn: S.optional(S.String),
-    parameters: S.optional(JobScheduleCreatePropertiesParametersMap),
-  }),
-).annotate({
-  identifier: "JobScheduleCreateProperties",
-}) as any as S.Schema<JobScheduleCreateProperties>;
-
-export interface JobScheduleCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The job schedule name. */
-  jobScheduleId: string;
-  /** Gets or sets the list of job schedule properties. */
-  properties: JobScheduleCreateProperties;
-}
-export const JobScheduleCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    jobScheduleId: S.String.pipe(T.Label()),
-    properties: JobScheduleCreateProperties,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "JobScheduleCreateRequest",
-}) as any as S.Schema<JobScheduleCreateRequest>;
-
-/** Gets or sets the parameters of the job schedule. */
-export type JobSchedulePropertiesParametersMap = {
-  [key: string]: string | undefined;
-};
-export const JobSchedulePropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JobSchedulePropertiesParametersMap>;
-
-/** Definition of job schedule parameters. */
-export interface JobScheduleProperties {
-  /** Gets or sets the id of job schedule. */
-  jobScheduleId?: string;
-  /** Gets or sets the schedule. */
-  schedule?: ScheduleAssociationProperty;
-  /** Gets or sets the runbook. */
-  runbook?: RunbookAssociationProperty;
-  /** Gets or sets the hybrid worker group that the scheduled job should run on. */
-  runOn?: string;
-  /** Gets or sets the parameters of the job schedule. */
-  parameters?: JobSchedulePropertiesParametersMap;
-}
-export const JobScheduleProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobScheduleId: S.optional(S.String),
-    schedule: S.optional(ScheduleAssociationProperty),
-    runbook: S.optional(RunbookAssociationProperty),
-    runOn: S.optional(S.String),
-    parameters: S.optional(JobSchedulePropertiesParametersMap),
-  }),
-).annotate({
-  identifier: "JobScheduleProperties",
-}) as any as S.Schema<JobScheduleProperties>;
-
-export interface JobScheduleCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the job schedule. */
-  properties?: JobScheduleProperties;
-}
-export const JobScheduleCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobScheduleProperties),
-  }),
-).annotate({
-  identifier: "JobScheduleCreateResponse",
-}) as any as S.Schema<JobScheduleCreateResponse>;
-
-export interface JobScheduleDeleteRequest {
+export interface GetJobScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5424,42 +4260,7 @@ export interface JobScheduleDeleteRequest {
   /** The job schedule name. */
   jobScheduleId: string;
 }
-export const JobScheduleDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    jobScheduleId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "JobScheduleDeleteRequest",
-}) as any as S.Schema<JobScheduleDeleteRequest>;
-
-export interface JobScheduleDeleteResponse {}
-export const JobScheduleDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "JobScheduleDeleteResponse",
-}) as any as S.Schema<JobScheduleDeleteResponse>;
-
-export interface JobScheduleGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The job schedule name. */
-  jobScheduleId: string;
-}
-export const JobScheduleGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5474,10 +4275,10 @@ export const JobScheduleGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "JobScheduleGetRequest",
-}) as any as S.Schema<JobScheduleGetRequest>;
+  identifier: "GetJobScheduleRequest",
+}) as any as S.Schema<GetJobScheduleRequest>;
 
-export interface JobScheduleGetResponse {
+export interface GetJobScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -5489,7 +4290,7 @@ export interface JobScheduleGetResponse {
   /** Gets or sets the properties of the job schedule. */
   properties?: JobScheduleProperties;
 }
-export const JobScheduleGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5498,117 +4299,10 @@ export const JobScheduleGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(JobScheduleProperties),
   }),
 ).annotate({
-  identifier: "JobScheduleGetResponse",
-}) as any as S.Schema<JobScheduleGetResponse>;
+  identifier: "GetJobScheduleResponse",
+}) as any as S.Schema<GetJobScheduleResponse>;
 
-export interface JobScheduleListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const JobScheduleListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "JobScheduleListByAutomationAccountRequest",
-  }) as any as S.Schema<JobScheduleListByAutomationAccountRequest>;
-
-/** Definition of the job schedule. */
-export interface JobSchedule {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the job schedule. */
-  properties?: JobScheduleProperties;
-}
-export const JobSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobScheduleProperties),
-  }),
-).annotate({ identifier: "JobSchedule" }) as any as S.Schema<JobSchedule>;
-
-/** The JobSchedule items on this page */
-export type JobScheduleListResultValueList = Array<JobSchedule>;
-export const JobScheduleListResultValueList = /*@__PURE__*/ S.Array(
-  JobSchedule,
-) as any as S.Schema<JobScheduleListResultValueList>;
-
-/** The response of a JobSchedule list operation. */
-export interface JobScheduleListResult {
-  /** The JobSchedule items on this page */
-  value: JobScheduleListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const JobScheduleListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: JobScheduleListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JobScheduleListResult",
-}) as any as S.Schema<JobScheduleListResult>;
-
-export interface JobStopRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The job name. */
-  jobName: string;
-}
-export const JobStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    jobName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/stop",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({ identifier: "JobStopRequest" }) as any as S.Schema<JobStopRequest>;
-
-export interface JobStopResponse {}
-export const JobStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "JobStopResponse",
-}) as any as S.Schema<JobStopResponse>;
-
-export interface JobStreamGetRequest {
+export interface GetJobStreamRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5620,7 +4314,7 @@ export interface JobStreamGetRequest {
   /** The job stream id. */
   jobStreamId: string;
 }
-export const JobStreamGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetJobStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5636,8 +4330,8 @@ export const JobStreamGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "JobStreamGetRequest",
-}) as any as S.Schema<JobStreamGetRequest>;
+  identifier: "GetJobStreamRequest",
+}) as any as S.Schema<GetJobStreamRequest>;
 
 /** Gets or sets the stream type. */
 export type JobStreamType =
@@ -5701,95 +4395,7 @@ export const JobStream = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobStream" }) as any as S.Schema<JobStream>;
 
-export interface JobStreamListByJobRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The job name. */
-  jobName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const JobStreamListByJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    jobName: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "JobStreamListByJobRequest",
-}) as any as S.Schema<JobStreamListByJobRequest>;
-
-/** The JobStream items on this page */
-export type JobStreamListResultValueList = Array<JobStream>;
-export const JobStreamListResultValueList = /*@__PURE__*/ S.Array(
-  JobStream,
-) as any as S.Schema<JobStreamListResultValueList>;
-
-/** The response model for the list job stream operation. */
-export interface JobStreamListResult {
-  /** The JobStream items on this page */
-  value: JobStreamListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const JobStreamListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: JobStreamListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JobStreamListResult",
-}) as any as S.Schema<JobStreamListResult>;
-
-export interface JobSuspendRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The job name. */
-  jobName: string;
-}
-export const JobSuspendRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    jobName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/suspend",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "JobSuspendRequest",
-}) as any as S.Schema<JobSuspendRequest>;
-
-export interface JobSuspendResponse {}
-export const JobSuspendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "JobSuspendResponse",
-}) as any as S.Schema<JobSuspendResponse>;
-
-export interface KeysListByAutomationAccountRequest {
+export interface GetLinkedWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5797,73 +4403,7 @@ export interface KeysListByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const KeysListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listKeys",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "KeysListByAutomationAccountRequest",
-}) as any as S.Schema<KeysListByAutomationAccountRequest>;
-
-/** Automation key name. */
-export type AutomationKeyName = "Primary" | "Secondary";
-export const AutomationKeyName = /*@__PURE__*/ S.String;
-
-/** Automation key permissions. */
-export type AutomationKeyPermissions = "Read" | "Full";
-export const AutomationKeyPermissions = /*@__PURE__*/ S.String;
-
-/** Automation key which is used to register a DSC Node */
-export interface Key {
-  /** Automation key name. */
-  KeyName?: AutomationKeyName;
-  /** Automation key permissions. */
-  Permissions?: AutomationKeyPermissions;
-  /** Value of the Automation Key used for registration. */
-  Value?: string;
-}
-export const Key = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    KeyName: S.optional(AutomationKeyName),
-    Permissions: S.optional(AutomationKeyPermissions),
-    Value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
-
-/** Lists the automation keys. */
-export type KeyListResultKeysList = Array<Key>;
-export const KeyListResultKeysList = /*@__PURE__*/ S.Array(
-  Key,
-) as any as S.Schema<KeyListResultKeysList>;
-
-export interface KeyListResult {
-  /** Lists the automation keys. */
-  keys?: KeyListResultKeysList;
-}
-export const KeyListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: S.optional(KeyListResultKeysList),
-  }),
-).annotate({ identifier: "KeyListResult" }) as any as S.Schema<KeyListResult>;
-
-export interface LinkedWorkspaceGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const LinkedWorkspaceGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetLinkedWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5877,8 +4417,8 @@ export const LinkedWorkspaceGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "LinkedWorkspaceGetRequest",
-}) as any as S.Schema<LinkedWorkspaceGetRequest>;
+  identifier: "GetLinkedWorkspaceRequest",
+}) as any as S.Schema<GetLinkedWorkspaceRequest>;
 
 /** Definition of the linked workspace. */
 export interface LinkedWorkspace {
@@ -5893,46 +4433,7 @@ export const LinkedWorkspace = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinkedWorkspace",
 }) as any as S.Schema<LinkedWorkspace>;
 
-/** Definition of the content link. */
-export interface ContentLink {
-  /** Gets or sets the uri of content. */
-  uri?: string;
-  /** Gets or sets the hash. */
-  contentHash?: ContentHash;
-  /** Gets or sets the version of the content. */
-  version?: string;
-}
-export const ContentLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    contentHash: S.optional(ContentHash),
-    version: S.optional(S.String),
-  }),
-).annotate({ identifier: "ContentLink" }) as any as S.Schema<ContentLink>;
-
-/** The parameters supplied to the create or update module properties. */
-export interface ModuleCreateOrUpdateProperties {
-  /** Gets or sets the module content link. */
-  contentLink: ContentLink;
-}
-export const ModuleCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentLink: ContentLink,
-  }),
-).annotate({
-  identifier: "ModuleCreateOrUpdateProperties",
-}) as any as S.Schema<ModuleCreateOrUpdateProperties>;
-
-/** Gets or sets the tags attached to the resource. */
-export type ModuleCreateOrUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ModuleCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModuleCreateOrUpdateRequestTagsMap>;
-
-export interface ModuleCreateOrUpdateRequest {
+export interface GetModuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5941,45 +4442,31 @@ export interface ModuleCreateOrUpdateRequest {
   automationAccountName: string;
   /** The module name. */
   moduleName: string;
-  /** Gets or sets the module create properties. */
-  properties: ModuleCreateOrUpdateProperties;
-  /** Gets or sets name of the resource. */
-  name?: string;
-  /** Gets or sets the location of the resource. */
-  location?: string;
-  /** Gets or sets the tags attached to the resource. */
-  tags?: ModuleCreateOrUpdateRequestTagsMap;
 }
-export const ModuleCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetModuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
     moduleName: S.String.pipe(T.Label()),
-    properties: ModuleCreateOrUpdateProperties,
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(ModuleCreateOrUpdateRequestTagsMap),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "ModuleCreateOrUpdateRequest",
-}) as any as S.Schema<ModuleCreateOrUpdateRequest>;
+  identifier: "GetModuleRequest",
+}) as any as S.Schema<GetModuleRequest>;
 
 /** Resource tags. */
-export type ModuleCreateOrUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ModuleCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export type ModuleGetResponseTagsMap = { [key: string]: string | undefined };
+export const ModuleGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<ModuleCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<ModuleGetResponseTagsMap>;
 
 /** Gets or sets the provisioning state of the module. */
 export type ModuleProvisioningState =
@@ -6000,6 +4487,23 @@ export type ModuleProvisioningState =
   | "Canceled"
   | "Updating";
 export const ModuleProvisioningState = /*@__PURE__*/ S.String;
+
+/** Definition of the content link. */
+export interface ContentLink {
+  /** Gets or sets the uri of content. */
+  uri?: string;
+  /** Gets or sets the hash. */
+  contentHash?: ContentHash;
+  /** Gets or sets the version of the content. */
+  version?: string;
+}
+export const ContentLink = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.optional(S.String),
+    contentHash: S.optional(ContentHash),
+    version: S.optional(S.String),
+  }),
+).annotate({ identifier: "ContentLink" }) as any as S.Schema<ContentLink>;
 
 /** Definition of the module error info type. */
 export interface ModuleErrorInfo {
@@ -6060,110 +4564,7 @@ export const ModuleProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModuleProperties",
 }) as any as S.Schema<ModuleProperties>;
 
-export interface ModuleCreateOrUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ModuleCreateOrUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the module properties. */
-  properties?: ModuleProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const ModuleCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ModuleCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ModuleProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ModuleCreateOrUpdateResponse",
-}) as any as S.Schema<ModuleCreateOrUpdateResponse>;
-
-export interface ModuleDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The module name. */
-  moduleName: string;
-}
-export const ModuleDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    moduleName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ModuleDeleteRequest",
-}) as any as S.Schema<ModuleDeleteRequest>;
-
-export interface ModuleDeleteResponse {}
-export const ModuleDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ModuleDeleteResponse",
-}) as any as S.Schema<ModuleDeleteResponse>;
-
-export interface ModuleGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The module name. */
-  moduleName: string;
-}
-export const ModuleGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    moduleName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ModuleGetRequest",
-}) as any as S.Schema<ModuleGetRequest>;
-
-/** Resource tags. */
-export type ModuleGetResponseTagsMap = { [key: string]: string | undefined };
-export const ModuleGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModuleGetResponseTagsMap>;
-
-export interface ModuleGetResponse {
+export interface GetModuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -6181,7 +4582,7 @@ export interface ModuleGetResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const ModuleGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetModuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6193,196 +4594,15 @@ export const ModuleGetResponse = /*@__PURE__*/ S.suspend(() =>
     etag: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "ModuleGetResponse",
-}) as any as S.Schema<ModuleGetResponse>;
-
-export interface ModuleListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const ModuleListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "ModuleListByAutomationAccountRequest",
-}) as any as S.Schema<ModuleListByAutomationAccountRequest>;
-
-/** Resource tags. */
-export type ModuleTagsMap = { [key: string]: string | undefined };
-export const ModuleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModuleTagsMap>;
-
-/** Definition of the module type. */
-export interface Module {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ModuleTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the module properties. */
-  properties?: ModuleProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const Module = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ModuleTagsMap),
-    location: S.String,
-    properties: S.optional(ModuleProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Module" }) as any as S.Schema<Module>;
-
-/** The Module items on this page */
-export type ModuleListResultValueList = Array<Module>;
-export const ModuleListResultValueList = /*@__PURE__*/ S.Array(
-  Module,
-) as any as S.Schema<ModuleListResultValueList>;
-
-/** The response of a Module list operation. */
-export interface ModuleListResult {
-  /** The Module items on this page */
-  value: ModuleListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ModuleListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ModuleListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ModuleListResult",
-}) as any as S.Schema<ModuleListResult>;
-
-/** The parameters supplied to the update properties. */
-export interface ModuleUpdateProperties {
-  /** Gets or sets the module content link. */
-  contentLink?: ContentLink;
-}
-export const ModuleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentLink: S.optional(ContentLink),
-  }),
-).annotate({
-  identifier: "ModuleUpdateProperties",
-}) as any as S.Schema<ModuleUpdateProperties>;
-
-/** Gets or sets the tags attached to the resource. */
-export type ModuleUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ModuleUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModuleUpdateRequestTagsMap>;
-
-export interface ModuleUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The module name. */
-  moduleName: string;
-  /** Gets or sets the module update properties. */
-  properties?: ModuleUpdateProperties;
-  /** Gets or sets the tags attached to the resource. */
-  tags?: ModuleUpdateRequestTagsMap;
-}
-export const ModuleUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    moduleName: S.String.pipe(T.Label()),
-    properties: S.optional(ModuleUpdateProperties),
-    tags: S.optional(ModuleUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ModuleUpdateRequest",
-}) as any as S.Schema<ModuleUpdateRequest>;
-
-/** Resource tags. */
-export type ModuleUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ModuleUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModuleUpdateResponseTagsMap>;
-
-export interface ModuleUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ModuleUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the module properties. */
-  properties?: ModuleProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const ModuleUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ModuleUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ModuleProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ModuleUpdateResponse",
-}) as any as S.Schema<ModuleUpdateResponse>;
+  identifier: "GetModuleResponse",
+}) as any as S.Schema<GetModuleResponse>;
 
 export type NodeCountInformationGetRequestCountType =
   | "status"
   | "nodeconfiguration";
 export const NodeCountInformationGetRequestCountType = /*@__PURE__*/ S.String;
 
-export interface NodeCountInformationGetRequest {
+export interface GetNodeCountInformationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -6392,7 +4612,7 @@ export interface NodeCountInformationGetRequest {
   /** The type of counts to retrieve */
   countType: NodeCountInformationGetRequestCountType | (string & {});
 }
-export const NodeCountInformationGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetNodeCountInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6407,8 +4627,8 @@ export const NodeCountInformationGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "NodeCountInformationGetRequest",
-}) as any as S.Schema<NodeCountInformationGetRequest>;
+  identifier: "GetNodeCountInformationRequest",
+}) as any as S.Schema<GetNodeCountInformationRequest>;
 
 export interface NodeCountProperties {
   /** Gets the count for the name */
@@ -6455,7 +4675,7 @@ export const NodeCounts = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeCounts" }) as any as S.Schema<NodeCounts>;
 
-export interface NodeReportsGetRequest {
+export interface GetNodeReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -6467,7 +4687,7 @@ export interface NodeReportsGetRequest {
   /** The report id. */
   reportId: string;
 }
-export const NodeReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetNodeReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6483,8 +4703,8 @@ export const NodeReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "NodeReportsGetRequest",
-}) as any as S.Schema<NodeReportsGetRequest>;
+  identifier: "GetNodeReportRequest",
+}) as any as S.Schema<GetNodeReportRequest>;
 
 /** Definition of the dsc node report error type. */
 export interface DscReportError {
@@ -6691,7 +4911,7 @@ export const DscNodeReport = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DscNodeReport" }) as any as S.Schema<DscNodeReport>;
 
-export interface NodeReportsGetContentRequest {
+export interface GetNodeReportContentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -6703,7 +4923,7 @@ export interface NodeReportsGetContentRequest {
   /** The report id. */
   reportId: string;
 }
-export const NodeReportsGetContentRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetNodeReportContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6719,17 +4939,3187 @@ export const NodeReportsGetContentRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "NodeReportsGetContentRequest",
-}) as any as S.Schema<NodeReportsGetContentRequest>;
+  identifier: "GetNodeReportContentRequest",
+}) as any as S.Schema<GetNodeReportContentRequest>;
 
-export type NodeReportsGetContentResponse = string;
-export const NodeReportsGetContentResponse = /*@__PURE__*/ S.suspend(() =>
+export type GetNodeReportContentResponse = string;
+export const GetNodeReportContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "NodeReportsGetContentResponse",
-}) as any as S.Schema<NodeReportsGetContentResponse>;
+  identifier: "GetNodeReportContentResponse",
+}) as any as S.Schema<GetNodeReportContentResponse>;
 
-export interface NodeReportsListByNodeRequest {
+export interface GetPackageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the Runtime Environment. */
+  runtimeEnvironmentName: string;
+  /** The Package name. */
+  packageName: string;
+}
+export const GetPackageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runtimeEnvironmentName: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetPackageRequest",
+}) as any as S.Schema<GetPackageRequest>;
+
+/** Resource tags. */
+export type PackageGetResponseTagsMap = { [key: string]: string | undefined };
+export const PackageGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PackageGetResponseTagsMap>;
+
+/** Gets or sets the provisioning state of the Package. */
+export type PackageProvisioningState =
+  | "Created"
+  | "Creating"
+  | "StartingImportModuleRunbook"
+  | "RunningImportModuleRunbook"
+  | "ContentRetrieved"
+  | "ContentDownloaded"
+  | "ContentValidated"
+  | "ConnectionTypeImported"
+  | "ContentStored"
+  | "ModuleDataStored"
+  | "ActivitiesStored"
+  | "ModuleImportRunbookComplete"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Updating";
+export const PackageProvisioningState = /*@__PURE__*/ S.String;
+
+/** Definition of the package error info type. */
+export interface PackageErrorInfo {
+  /** Package import error code. */
+  code?: string;
+  /** Package import error message. */
+  message?: string;
+}
+export const PackageErrorInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PackageErrorInfo",
+}) as any as S.Schema<PackageErrorInfo>;
+
+/** The type of identity that created the resource. */
+export type PackagePropertiesAllOfCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const PackagePropertiesAllOfCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type PackagePropertiesAllOfLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const PackagePropertiesAllOfLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface PackagePropertiesAllOf {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: PackagePropertiesAllOfCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: PackagePropertiesAllOfLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const PackagePropertiesAllOf = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(PackagePropertiesAllOfCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(PackagePropertiesAllOfLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PackagePropertiesAllOf",
+}) as any as S.Schema<PackagePropertiesAllOf>;
+
+/** Definition of the package property type. */
+export interface PackageProperties {
+  /** Gets or sets the isGlobal flag of the package. */
+  default?: boolean;
+  /** Gets or sets the version of the Package. */
+  version?: string;
+  /** Gets or sets the size in bytes of the Package. */
+  sizeInBytes?: number;
+  /** Gets or sets the provisioning state of the Package. */
+  provisioningState?: PackageProvisioningState;
+  /** Gets or sets the contentLink of the Package. */
+  contentLink?: ContentLink;
+  /** Gets or sets the error info of the Package. */
+  error?: PackageErrorInfo;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  allOf?: PackagePropertiesAllOf;
+}
+export const PackageProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    default: S.optional(S.Boolean),
+    version: S.optional(S.String),
+    sizeInBytes: S.optional(S.Number),
+    provisioningState: S.optional(PackageProvisioningState),
+    contentLink: S.optional(ContentLink),
+    error: S.optional(PackageErrorInfo),
+    allOf: S.optional(PackagePropertiesAllOf),
+  }),
+).annotate({
+  identifier: "PackageProperties",
+}) as any as S.Schema<PackageProperties>;
+
+export interface GetPackageResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: PackageGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the Package properties. */
+  properties?: PackageProperties;
+}
+export const GetPackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(PackageGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(PackageProperties),
+  }),
+).annotate({
+  identifier: "GetPackageResponse",
+}) as any as S.Schema<GetPackageResponse>;
+
+export interface GetPrivateEndpointConnectionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the private endpoint connection. */
+  privateEndpointConnectionName: string;
+}
+export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    privateEndpointConnectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetPrivateEndpointConnectionRequest",
+}) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
+export interface GetPrivateEndpointConnectionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(PrivateEndpointConnectionProperties),
+    }),
+).annotate({
+  identifier: "GetPrivateEndpointConnectionResponse",
+}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
+export interface GetPython2PackageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The python package name. */
+  packageName: string;
+}
+export const GetPython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetPython2PackageRequest",
+}) as any as S.Schema<GetPython2PackageRequest>;
+
+/** Resource tags. */
+export type Python2PackageGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const Python2PackageGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<Python2PackageGetResponseTagsMap>;
+
+export interface GetPython2PackageResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: Python2PackageGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the module properties. */
+  properties?: ModuleProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const GetPython2PackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(Python2PackageGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ModuleProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetPython2PackageResponse",
+}) as any as S.Schema<GetPython2PackageResponse>;
+
+export interface GetPython3PackageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The python package name. */
+  packageName: string;
+}
+export const GetPython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetPython3PackageRequest",
+}) as any as S.Schema<GetPython3PackageRequest>;
+
+/** Resource tags. */
+export type Python3PackageGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const Python3PackageGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<Python3PackageGetResponseTagsMap>;
+
+export interface GetPython3PackageResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: Python3PackageGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the module properties. */
+  properties?: ModuleProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const GetPython3PackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(Python3PackageGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ModuleProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetPython3PackageResponse",
+}) as any as S.Schema<GetPython3PackageResponse>;
+
+export interface GetRunbookRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+}
+export const GetRunbookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetRunbookRequest",
+}) as any as S.Schema<GetRunbookRequest>;
+
+/** Resource tags. */
+export type RunbookGetResponseTagsMap = { [key: string]: string | undefined };
+export const RunbookGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RunbookGetResponseTagsMap>;
+
+/** Gets or sets the type of the runbook. */
+export type RunbookTypeEnum =
+  | "Script"
+  | "Graph"
+  | "PowerShellWorkflow"
+  | "PowerShell"
+  | "GraphPowerShellWorkflow"
+  | "GraphPowerShell"
+  | "Python2"
+  | "Python3"
+  | "Python"
+  | "PowerShell72";
+export const RunbookTypeEnum = /*@__PURE__*/ S.String;
+
+/** Gets or sets the state of the runbook. */
+export type RunbookState = "New" | "Edit" | "Published";
+export const RunbookState = /*@__PURE__*/ S.String;
+
+/** Definition of the runbook parameter type. */
+export type RunbookParameter = DscConfigurationParameter;
+export const RunbookParameter = DscConfigurationParameter;
+
+/** Gets or sets the runbook parameters. */
+export type RunbookPropertiesParametersMap = {
+  [key: string]: DscConfigurationParameter | undefined;
+};
+export const RunbookPropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DscConfigurationParameter,
+) as any as S.Schema<RunbookPropertiesParametersMap>;
+
+/** Gets or sets the runbook output types. */
+export type RunbookPropertiesOutputTypesList = Array<string>;
+export const RunbookPropertiesOutputTypesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RunbookPropertiesOutputTypesList>;
+
+/** Gets or sets the runbook draft parameters. */
+export type RunbookDraftParametersMap = {
+  [key: string]: DscConfigurationParameter | undefined;
+};
+export const RunbookDraftParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DscConfigurationParameter,
+) as any as S.Schema<RunbookDraftParametersMap>;
+
+/** Gets or sets the runbook output types. */
+export type RunbookDraftOutputTypesList = Array<string>;
+export const RunbookDraftOutputTypesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RunbookDraftOutputTypesList>;
+
+export interface RunbookDraft {
+  /** Gets or sets whether runbook is in edit mode. */
+  inEdit?: boolean;
+  /** Gets or sets the draft runbook content link. */
+  draftContentLink?: ContentLink;
+  /** Gets or sets the creation time of the runbook draft. */
+  creationTime?: string;
+  /** Gets or sets the last modified time of the runbook draft. */
+  lastModifiedTime?: string;
+  /** Gets or sets the runbook draft parameters. */
+  parameters?: RunbookDraftParametersMap;
+  /** Gets or sets the runbook output types. */
+  outputTypes?: RunbookDraftOutputTypesList;
+}
+export const RunbookDraft = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inEdit: S.optional(S.Boolean),
+    draftContentLink: S.optional(ContentLink),
+    creationTime: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+    parameters: S.optional(RunbookDraftParametersMap),
+    outputTypes: S.optional(RunbookDraftOutputTypesList),
+  }),
+).annotate({ identifier: "RunbookDraft" }) as any as S.Schema<RunbookDraft>;
+
+/** Gets or sets the provisioning state of the runbook. */
+export type RunbookPropertiesProvisioningState = "Succeeded";
+export const RunbookPropertiesProvisioningState = /*@__PURE__*/ S.String;
+
+/** Definition of the runbook property type. */
+export interface RunbookProperties {
+  /** Runtime Environment of the runbook execution. */
+  runtimeEnvironment?: string;
+  /** Gets or sets the type of the runbook. */
+  runbookType?: RunbookTypeEnum;
+  /** Gets or sets the published runbook content link. */
+  publishContentLink?: ContentLink;
+  /** Gets or sets the state of the runbook. */
+  state?: RunbookState;
+  /** Gets or sets verbose log option. */
+  logVerbose?: boolean;
+  /** Gets or sets progress log option. */
+  logProgress?: boolean;
+  /** Gets or sets the option to log activity trace of the runbook. */
+  logActivityTrace?: number;
+  /** Gets or sets the job count of the runbook. */
+  jobCount?: number;
+  /** Gets or sets the runbook parameters. */
+  parameters?: RunbookPropertiesParametersMap;
+  /** Gets or sets the runbook output types. */
+  outputTypes?: RunbookPropertiesOutputTypesList;
+  /** Gets or sets the draft runbook properties. */
+  draft?: RunbookDraft;
+  /** Gets or sets the provisioning state of the runbook. */
+  provisioningState?: RunbookPropertiesProvisioningState;
+  /** Gets or sets the last modified by. */
+  lastModifiedBy?: string;
+  /** Gets or sets the creation time. */
+  creationTime?: string;
+  /** Gets or sets the last modified time. */
+  lastModifiedTime?: string;
+  /** Gets or sets the description. */
+  description?: string;
+}
+export const RunbookProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runtimeEnvironment: S.optional(S.String),
+    runbookType: S.optional(RunbookTypeEnum),
+    publishContentLink: S.optional(ContentLink),
+    state: S.optional(RunbookState),
+    logVerbose: S.optional(S.Boolean),
+    logProgress: S.optional(S.Boolean),
+    logActivityTrace: S.optional(S.Number),
+    jobCount: S.optional(S.Number),
+    parameters: S.optional(RunbookPropertiesParametersMap),
+    outputTypes: S.optional(RunbookPropertiesOutputTypesList),
+    draft: S.optional(RunbookDraft),
+    provisioningState: S.optional(RunbookPropertiesProvisioningState),
+    lastModifiedBy: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunbookProperties",
+}) as any as S.Schema<RunbookProperties>;
+
+export interface GetRunbookResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: RunbookGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the runbook properties. */
+  properties?: RunbookProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const GetRunbookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(RunbookGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(RunbookProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetRunbookResponse",
+}) as any as S.Schema<GetRunbookResponse>;
+
+export interface GetRunbookContentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+}
+export const GetRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/content",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetRunbookContentRequest",
+}) as any as S.Schema<GetRunbookContentRequest>;
+
+export type GetRunbookContentResponse = string;
+export const GetRunbookContentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.String.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "GetRunbookContentResponse",
+}) as any as S.Schema<GetRunbookContentResponse>;
+
+export interface GetRunbookDraftRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+}
+export const GetRunbookDraftRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetRunbookDraftRequest",
+}) as any as S.Schema<GetRunbookDraftRequest>;
+
+export interface GetRunbookDraftContentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+}
+export const GetRunbookDraftContentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetRunbookDraftContentRequest",
+}) as any as S.Schema<GetRunbookDraftContentRequest>;
+
+export type GetRunbookDraftContentResponse = string;
+export const GetRunbookDraftContentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.String.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "GetRunbookDraftContentResponse",
+}) as any as S.Schema<GetRunbookDraftContentResponse>;
+
+export interface GetRuntimeEnvironmentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the Runtime Environment. */
+  runtimeEnvironmentName: string;
+}
+export const GetRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runtimeEnvironmentName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetRuntimeEnvironmentRequest",
+}) as any as S.Schema<GetRuntimeEnvironmentRequest>;
+
+/** Resource tags. */
+export type RuntimeEnvironmentsGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RuntimeEnvironmentsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RuntimeEnvironmentsGetResponseTagsMap>;
+
+export interface GetRuntimeEnvironmentResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: RuntimeEnvironmentsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the Runtime Environment properties. */
+  properties?: RuntimeEnvironmentProperties;
+}
+export const GetRuntimeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(RuntimeEnvironmentsGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(RuntimeEnvironmentProperties),
+  }),
+).annotate({
+  identifier: "GetRuntimeEnvironmentResponse",
+}) as any as S.Schema<GetRuntimeEnvironmentResponse>;
+
+export interface GetScheduleRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The schedule name. */
+  scheduleName: string;
+}
+export const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    scheduleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetScheduleRequest",
+}) as any as S.Schema<GetScheduleRequest>;
+
+/** Gets or sets the frequency of the schedule. */
+export type ScheduleFrequency =
+  | "OneTime"
+  | "Day"
+  | "Hour"
+  | "Week"
+  | "Month"
+  | "Minute";
+export const ScheduleFrequency = /*@__PURE__*/ S.String;
+
+/** Days of the week that the job should execute on. */
+export type AdvancedScheduleWeekDaysList = Array<string>;
+export const AdvancedScheduleWeekDaysList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AdvancedScheduleWeekDaysList>;
+
+/** Days of the month that the job should execute on. Must be between 1 and 31. */
+export type AdvancedScheduleMonthDaysList = Array<number>;
+export const AdvancedScheduleMonthDaysList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<AdvancedScheduleMonthDaysList>;
+
+/** Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+export type ScheduleDay =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+export const ScheduleDay = /*@__PURE__*/ S.String;
+
+/** The properties of the create advanced schedule monthly occurrence. */
+export interface AdvancedScheduleMonthlyOccurrence {
+  /** Occurrence of the week within the month. Must be between 1 and 5 */
+  occurrence?: number;
+  /** Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+  day?: ScheduleDay | (string & {});
+}
+export const AdvancedScheduleMonthlyOccurrence = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    occurrence: S.optional(S.Number),
+    day: S.optional(ScheduleDay),
+  }),
+).annotate({
+  identifier: "AdvancedScheduleMonthlyOccurrence",
+}) as any as S.Schema<AdvancedScheduleMonthlyOccurrence>;
+
+/** Occurrences of days within a month. */
+export type AdvancedScheduleMonthlyOccurrencesList =
+  Array<AdvancedScheduleMonthlyOccurrence>;
+export const AdvancedScheduleMonthlyOccurrencesList = /*@__PURE__*/ S.Array(
+  AdvancedScheduleMonthlyOccurrence,
+) as any as S.Schema<AdvancedScheduleMonthlyOccurrencesList>;
+
+/** The properties of the create Advanced Schedule. */
+export interface AdvancedSchedule {
+  /** Days of the week that the job should execute on. */
+  weekDays?: AdvancedScheduleWeekDaysList;
+  /** Days of the month that the job should execute on. Must be between 1 and 31. */
+  monthDays?: AdvancedScheduleMonthDaysList;
+  /** Occurrences of days within a month. */
+  monthlyOccurrences?: AdvancedScheduleMonthlyOccurrencesList;
+}
+export const AdvancedSchedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    weekDays: S.optional(AdvancedScheduleWeekDaysList),
+    monthDays: S.optional(AdvancedScheduleMonthDaysList),
+    monthlyOccurrences: S.optional(AdvancedScheduleMonthlyOccurrencesList),
+  }),
+).annotate({
+  identifier: "AdvancedSchedule",
+}) as any as S.Schema<AdvancedSchedule>;
+
+/** Definition of schedule parameters. */
+export interface ScheduleProperties {
+  /** Gets or sets the start time of the schedule. */
+  startTime?: string;
+  /** Gets the start time's offset in minutes. */
+  startTimeOffsetMinutes?: number;
+  /** Gets or sets the end time of the schedule. */
+  expiryTime?: string | null;
+  /** Gets or sets the expiry time's offset in minutes. */
+  expiryTimeOffsetMinutes?: number;
+  /** Gets or sets a value indicating whether this schedule is enabled. */
+  isEnabled?: boolean;
+  /** Gets or sets the next run time of the schedule. */
+  nextRun?: string | null;
+  /** Gets or sets the next run time's offset in minutes. */
+  nextRunOffsetMinutes?: number;
+  /** Gets or sets the interval of the schedule. */
+  interval?: unknown;
+  /** Gets or sets the frequency of the schedule. */
+  frequency?: ScheduleFrequency;
+  /** Gets or sets the time zone of the schedule. */
+  timeZone?: string;
+  /** Gets or sets the advanced schedule. */
+  advancedSchedule?: AdvancedSchedule;
+  /** Gets or sets the creation time. */
+  creationTime?: string;
+  /** Gets or sets the last modified time. */
+  lastModifiedTime?: string;
+  /** Gets or sets the description. */
+  description?: string;
+}
+export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTime: S.optional(S.String),
+    startTimeOffsetMinutes: S.optional(S.Number),
+    expiryTime: S.optional(S.NullOr(S.String)),
+    expiryTimeOffsetMinutes: S.optional(S.Number),
+    isEnabled: S.optional(S.Boolean),
+    nextRun: S.optional(S.NullOr(S.String)),
+    nextRunOffsetMinutes: S.optional(S.Number),
+    interval: S.optional(S.Unknown),
+    frequency: S.optional(ScheduleFrequency),
+    timeZone: S.optional(S.String),
+    advancedSchedule: S.optional(AdvancedSchedule),
+    creationTime: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScheduleProperties",
+}) as any as S.Schema<ScheduleProperties>;
+
+export interface GetScheduleResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the schedule. */
+  properties?: ScheduleProperties;
+}
+export const GetScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ScheduleProperties),
+  }),
+).annotate({
+  identifier: "GetScheduleResponse",
+}) as any as S.Schema<GetScheduleResponse>;
+
+export interface GetSourceControlRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of source control. */
+  sourceControlName: string;
+}
+export const GetSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    sourceControlName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetSourceControlRequest",
+}) as any as S.Schema<GetSourceControlRequest>;
+
+/** The source type. Must be one of VsoGit, VsoTfvc, GitHub. */
+export type SourceType = "VsoGit" | "VsoTfvc" | "GitHub";
+export const SourceType = /*@__PURE__*/ S.String;
+
+/** Definition of the source control properties */
+export interface SourceControlProperties {
+  /** The repo url of the source control. */
+  repoUrl?: string;
+  /** The repo branch of the source control. Include branch as empty string for VsoTfvc. */
+  branch?: string;
+  /** The folder path of the source control. */
+  folderPath?: string;
+  /** The auto sync of the source control. Default is false. */
+  autoSync?: boolean;
+  /** The auto publish of the source control. Default is true. */
+  publishRunbook?: boolean;
+  /** The source type. Must be one of VsoGit, VsoTfvc, GitHub. */
+  sourceType?: SourceType;
+  /** The description. */
+  description?: string;
+  /** The creation time. */
+  creationTime?: string;
+  /** The last modified time. */
+  lastModifiedTime?: string;
+}
+export const SourceControlProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repoUrl: S.optional(S.String),
+    branch: S.optional(S.String),
+    folderPath: S.optional(S.String),
+    autoSync: S.optional(S.Boolean),
+    publishRunbook: S.optional(S.Boolean),
+    sourceType: S.optional(SourceType),
+    description: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SourceControlProperties",
+}) as any as S.Schema<SourceControlProperties>;
+
+export interface GetSourceControlResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the source control. */
+  properties?: SourceControlProperties;
+}
+export const GetSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SourceControlProperties),
+  }),
+).annotate({
+  identifier: "GetSourceControlResponse",
+}) as any as S.Schema<GetSourceControlResponse>;
+
+export interface GetSourceControlSyncJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of source control. */
+  sourceControlName: string;
+  /** The source control sync job id. */
+  sourceControlSyncJobId: string;
+}
+export const GetSourceControlSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    sourceControlName: S.String.pipe(T.Label()),
+    sourceControlSyncJobId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetSourceControlSyncJobRequest",
+}) as any as S.Schema<GetSourceControlSyncJobRequest>;
+
+/** Definition of source control sync job properties. */
+export interface SourceControlSyncJobByIdProperties {
+  /** The source control sync job id. */
+  sourceControlSyncJobId?: string;
+  /** The creation time of the job. */
+  creationTime?: string;
+  /** The provisioning state of the job. */
+  provisioningState?: ProvisioningState;
+  /** The start time of the job. */
+  startTime?: string | null;
+  /** The end time of the job. */
+  endTime?: string | null;
+  /** The sync type. */
+  syncType?: SyncType;
+  /** The exceptions that occurred while running the sync job. */
+  exception?: string;
+}
+export const SourceControlSyncJobByIdProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceControlSyncJobId: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    provisioningState: S.optional(ProvisioningState),
+    startTime: S.optional(S.NullOr(S.String)),
+    endTime: S.optional(S.NullOr(S.String)),
+    syncType: S.optional(SyncType),
+    exception: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SourceControlSyncJobByIdProperties",
+}) as any as S.Schema<SourceControlSyncJobByIdProperties>;
+
+/** Definition of the source control sync job. */
+export interface SourceControlSyncJobById {
+  /** The id of the job. */
+  id?: string;
+  /** The properties of the source control sync job. */
+  properties?: SourceControlSyncJobByIdProperties;
+}
+export const SourceControlSyncJobById = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    properties: S.optional(SourceControlSyncJobByIdProperties),
+  }),
+).annotate({
+  identifier: "SourceControlSyncJobById",
+}) as any as S.Schema<SourceControlSyncJobById>;
+
+export interface GetSourceControlSyncJobStreamRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of source control. */
+  sourceControlName: string;
+  /** The source control sync job id. */
+  sourceControlSyncJobId: string;
+  /** The id of the sync job stream. */
+  streamId: string;
+}
+export const GetSourceControlSyncJobStreamRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      sourceControlName: S.String.pipe(T.Label()),
+      sourceControlSyncJobId: S.String.pipe(T.Label()),
+      streamId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams/{streamId}",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "GetSourceControlSyncJobStreamRequest",
+}) as any as S.Schema<GetSourceControlSyncJobStreamRequest>;
+
+/** The type of the sync job stream. */
+export type StreamType = "Error" | "Output";
+export const StreamType = /*@__PURE__*/ S.String;
+
+/** The values of the job stream. */
+export type SourceControlSyncJobStreamByIdPropertiesValueMap = {
+  [key: string]: unknown | undefined;
+};
+export const SourceControlSyncJobStreamByIdPropertiesValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SourceControlSyncJobStreamByIdPropertiesValueMap>;
+
+/** Definition of source control sync job stream by id properties. */
+export interface SourceControlSyncJobStreamByIdProperties {
+  /** The sync job stream id. */
+  sourceControlSyncJobStreamId?: string;
+  /** The summary of the sync job stream. */
+  summary?: string;
+  /** The time of the sync job stream. */
+  time?: string | null;
+  /** The type of the sync job stream. */
+  streamType?: StreamType;
+  /** The text of the sync job stream. */
+  streamText?: string;
+  /** The values of the job stream. */
+  value?: SourceControlSyncJobStreamByIdPropertiesValueMap;
+}
+export const SourceControlSyncJobStreamByIdProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sourceControlSyncJobStreamId: S.optional(S.String),
+      summary: S.optional(S.String),
+      time: S.optional(S.NullOr(S.String)),
+      streamType: S.optional(StreamType),
+      streamText: S.optional(S.String),
+      value: S.optional(SourceControlSyncJobStreamByIdPropertiesValueMap),
+    }),
+).annotate({
+  identifier: "SourceControlSyncJobStreamByIdProperties",
+}) as any as S.Schema<SourceControlSyncJobStreamByIdProperties>;
+
+/** Definition of the source control sync job stream by id. */
+export interface SourceControlSyncJobStreamById {
+  /** Resource id. */
+  id?: string;
+  /** The properties of the source control sync job stream. */
+  properties?: SourceControlSyncJobStreamByIdProperties;
+}
+export const SourceControlSyncJobStreamById = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    properties: S.optional(SourceControlSyncJobStreamByIdProperties),
+  }),
+).annotate({
+  identifier: "SourceControlSyncJobStreamById",
+}) as any as S.Schema<SourceControlSyncJobStreamById>;
+
+export interface GetTestJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+}
+export const GetTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetTestJobRequest",
+}) as any as S.Schema<GetTestJobRequest>;
+
+export interface GetTestJobStreamRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+  /** The job stream id. */
+  jobStreamId: string;
+}
+export const GetTestJobStreamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+    jobStreamId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams/{jobStreamId}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetTestJobStreamRequest",
+}) as any as S.Schema<GetTestJobStreamRequest>;
+
+export interface GetVariableRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of variable. */
+  variableName: string;
+}
+export const GetVariableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    variableName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetVariableRequest",
+}) as any as S.Schema<GetVariableRequest>;
+
+/** Definition of the variable properties */
+export interface VariableProperties {
+  /** Gets or sets the value of the variable. */
+  value?: string;
+  /** Gets or sets the encrypted flag of the variable. */
+  isEncrypted?: boolean | null;
+  /** Gets or sets the creation time. */
+  creationTime?: string;
+  /** Gets or sets the last modified time. */
+  lastModifiedTime?: string;
+  /** Gets or sets the description. */
+  description?: string;
+}
+export const VariableProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    isEncrypted: S.optional(S.NullOr(S.Boolean)),
+    creationTime: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VariableProperties",
+}) as any as S.Schema<VariableProperties>;
+
+export interface GetVariableResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the variable. */
+  properties?: VariableProperties;
+}
+export const GetVariableResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(VariableProperties),
+  }),
+).annotate({
+  identifier: "GetVariableResponse",
+}) as any as S.Schema<GetVariableResponse>;
+
+export interface GetWatcherRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The watcher name. */
+  watcherName: string;
+}
+export const GetWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    watcherName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetWatcherRequest",
+}) as any as S.Schema<GetWatcherRequest>;
+
+/** Gets or sets the parameters of the script. */
+export type WatcherPropertiesScriptParametersMap = {
+  [key: string]: string | undefined;
+};
+export const WatcherPropertiesScriptParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WatcherPropertiesScriptParametersMap>;
+
+/** Definition of the watcher properties */
+export interface WatcherProperties {
+  /** Gets or sets the frequency at which the watcher is invoked. */
+  executionFrequencyInSeconds?: number;
+  /** Gets or sets the name of the script the watcher is attached to, i.e. the name of an existing runbook. */
+  scriptName?: string;
+  /** Gets or sets the parameters of the script. */
+  scriptParameters?: WatcherPropertiesScriptParametersMap;
+  /** Gets or sets the name of the hybrid worker group the watcher will run on. */
+  scriptRunOn?: string;
+  /** Gets the current status of the watcher. */
+  status?: string;
+  /** Gets or sets the creation time. */
+  creationTime?: string;
+  /** Gets or sets the last modified time. */
+  lastModifiedTime?: string;
+  /** Details of the user who last modified the watcher. */
+  lastModifiedBy?: string;
+  /** Gets or sets the description. */
+  description?: string;
+}
+export const WatcherProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionFrequencyInSeconds: S.optional(S.Number),
+    scriptName: S.optional(S.String),
+    scriptParameters: S.optional(WatcherPropertiesScriptParametersMap),
+    scriptRunOn: S.optional(S.String),
+    status: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WatcherProperties",
+}) as any as S.Schema<WatcherProperties>;
+
+/** Resource tags. */
+export type WatcherGetResponseTagsMap = { [key: string]: string | undefined };
+export const WatcherGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WatcherGetResponseTagsMap>;
+
+export interface GetWatcherResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the watcher properties. */
+  properties?: WatcherProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: WatcherGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+}
+export const GetWatcherResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(WatcherProperties),
+    etag: S.optional(S.String),
+    tags: S.optional(WatcherGetResponseTagsMap),
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetWatcherResponse",
+}) as any as S.Schema<GetWatcherResponse>;
+
+export interface GetWebhookRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The webhook name. */
+  webhookName: string;
+}
+export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    webhookName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "GetWebhookRequest",
+}) as any as S.Schema<GetWebhookRequest>;
+
+/** Gets or sets the parameters of the job that is created when the webhook calls the runbook it is associated with. */
+export type WebhookPropertiesParametersMap = {
+  [key: string]: string | undefined;
+};
+export const WebhookPropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WebhookPropertiesParametersMap>;
+
+/** Definition of the webhook properties */
+export interface WebhookProperties {
+  /** Gets or sets the value of the enabled flag of the webhook. */
+  isEnabled?: boolean;
+  /** Gets or sets the webhook uri. */
+  uri?: string;
+  /** Gets or sets the expiry time. */
+  expiryTime?: string;
+  /** Gets or sets the last invoked time. */
+  lastInvokedTime?: string | null;
+  /** Gets or sets the parameters of the job that is created when the webhook calls the runbook it is associated with. */
+  parameters?: WebhookPropertiesParametersMap;
+  /** Gets or sets the runbook the webhook is associated with. */
+  runbook?: RunbookAssociationProperty;
+  /** Gets or sets the name of the hybrid worker group the webhook job will run on. */
+  runOn?: string;
+  /** Gets or sets the creation time. */
+  creationTime?: string;
+  /** Gets or sets the last modified time. */
+  lastModifiedTime?: string;
+  /** Details of the user who last modified the Webhook */
+  lastModifiedBy?: string;
+  /** Gets or sets the description. */
+  description?: string;
+}
+export const WebhookProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isEnabled: S.optional(S.Boolean),
+    uri: S.optional(S.String),
+    expiryTime: S.optional(S.String),
+    lastInvokedTime: S.optional(S.NullOr(S.String)),
+    parameters: S.optional(WebhookPropertiesParametersMap),
+    runbook: S.optional(RunbookAssociationProperty),
+    runOn: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WebhookProperties",
+}) as any as S.Schema<WebhookProperties>;
+
+export interface GetWebhookResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the webhook properties. */
+  properties?: WebhookProperties;
+}
+export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(WebhookProperties),
+  }),
+).annotate({
+  identifier: "GetWebhookResponse",
+}) as any as S.Schema<GetWebhookResponse>;
+
+export interface HybridRunbookWorkersMoveRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The hybrid runbook worker group name */
+  hybridRunbookWorkerGroupName: string;
+  /** The hybrid runbook worker id */
+  hybridRunbookWorkerId: string;
+}
+export const HybridRunbookWorkersMoveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+    hybridRunbookWorkerId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}/move",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "HybridRunbookWorkersMoveRequest",
+}) as any as S.Schema<HybridRunbookWorkersMoveRequest>;
+
+export interface HybridRunbookWorkersMoveResponse {}
+export const HybridRunbookWorkersMoveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "HybridRunbookWorkersMoveResponse",
+}) as any as S.Schema<HybridRunbookWorkersMoveResponse>;
+
+export interface JobResumeRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The job name. */
+  jobName: string;
+}
+export const JobResumeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    jobName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/resume",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "JobResumeRequest",
+}) as any as S.Schema<JobResumeRequest>;
+
+export interface JobResumeResponse {}
+export const JobResumeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "JobResumeResponse",
+}) as any as S.Schema<JobResumeResponse>;
+
+export interface ListActivityByModuleRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The module name. */
+  moduleName: string;
+}
+export const ListActivityByModuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    moduleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "ListActivityByModuleRequest",
+}) as any as S.Schema<ListActivityByModuleRequest>;
+
+/** The Activity items on this page */
+export type ActivityListResultValueList = Array<Activity>;
+export const ActivityListResultValueList = /*@__PURE__*/ S.Array(
+  Activity,
+) as any as S.Schema<ActivityListResultValueList>;
+
+/** The response model for the list activity operation. */
+export interface ActivityListResult {
+  /** The Activity items on this page */
+  value: ActivityListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ActivityListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ActivityListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ActivityListResult",
+}) as any as S.Schema<ActivityListResult>;
+
+export interface ListAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "ListAutomationAccountRequest",
+}) as any as S.Schema<ListAutomationAccountRequest>;
+
+/** Resource tags. */
+export type AutomationAccountTagsMap = { [key: string]: string | undefined };
+export const AutomationAccountTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutomationAccountTagsMap>;
+
+/** Definition of the automation account type. */
+export interface AutomationAccount {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AutomationAccountTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the automation account properties. */
+  properties?: AutomationAccountProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+  /** Identity for the resource. */
+  identity?: Identity;
+}
+export const AutomationAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AutomationAccountTagsMap),
+    location: S.String,
+    properties: S.optional(AutomationAccountProperties),
+    etag: S.optional(S.String),
+    identity: S.optional(Identity),
+  }),
+).annotate({
+  identifier: "AutomationAccount",
+}) as any as S.Schema<AutomationAccount>;
+
+/** The AutomationAccount items on this page */
+export type AutomationAccountListResultValueList = Array<AutomationAccount>;
+export const AutomationAccountListResultValueList = /*@__PURE__*/ S.Array(
+  AutomationAccount,
+) as any as S.Schema<AutomationAccountListResultValueList>;
+
+/** The response of a AutomationAccount list operation. */
+export interface ListAutomationAccountResult {
+  /** The AutomationAccount items on this page */
+  value: AutomationAccountListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ListAutomationAccountResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: AutomationAccountListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAutomationAccountResult",
+}) as any as S.Schema<ListAutomationAccountResult>;
+
+export interface ListAutomationAccountByResourceGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListAutomationAccountByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAutomationAccountByResourceGroupRequest",
+  }) as any as S.Schema<ListAutomationAccountByResourceGroupRequest>;
+
+export interface ListAutomationAccountDeletedRunbooksRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListAutomationAccountDeletedRunbooksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listDeletedRunbooks",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAutomationAccountDeletedRunbooksRequest",
+  }) as any as S.Schema<ListAutomationAccountDeletedRunbooksRequest>;
+
+/** Definition of the deleted runbook property. */
+export interface DeletedRunbookProperties {
+  /** Gets or sets the Runbook Id. */
+  runbookId?: string;
+  /** Type of the runbook. */
+  runbookType?: string;
+  /** Gets or sets runtime of the runbook. */
+  runtime?: string;
+  /** Environment of the runbook. */
+  runtimeEnvironment?: string | null;
+  /** Gets or sets the creation time. */
+  creationTime?: string;
+  /** Gets or sets the last modified time. */
+  deletionTime?: string;
+}
+export const DeletedRunbookProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runbookId: S.optional(S.String),
+    runbookType: S.optional(S.String),
+    runtime: S.optional(S.String),
+    runtimeEnvironment: S.optional(S.NullOr(S.String)),
+    creationTime: S.optional(S.String),
+    deletionTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletedRunbookProperties",
+}) as any as S.Schema<DeletedRunbookProperties>;
+
+/** Definition of deleted runbook. */
+export interface DeletedRunbook {
+  /** Gets or sets the runbook properties. */
+  properties?: DeletedRunbookProperties;
+  /** The resource id. */
+  id?: string;
+  /** Gets or sets name of the resource. */
+  name?: string;
+  /** Gets or sets the location of the resource. */
+  location?: string;
+}
+export const DeletedRunbook = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(DeletedRunbookProperties),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
+).annotate({ identifier: "DeletedRunbook" }) as any as S.Schema<DeletedRunbook>;
+
+/** The DeletedRunbook items on this page */
+export type DeletedRunbookListResultValueList = Array<DeletedRunbook>;
+export const DeletedRunbookListResultValueList = /*@__PURE__*/ S.Array(
+  DeletedRunbook,
+) as any as S.Schema<DeletedRunbookListResultValueList>;
+
+/** The response model for the list deleted runbook. */
+export interface DeletedRunbookListResult {
+  /** The DeletedRunbook items on this page */
+  value: DeletedRunbookListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const DeletedRunbookListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: DeletedRunbookListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletedRunbookListResult",
+}) as any as S.Schema<DeletedRunbookListResult>;
+
+export interface ListCertificateByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListCertificateByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListCertificateByAutomationAccountRequest",
+  }) as any as S.Schema<ListCertificateByAutomationAccountRequest>;
+
+/** Definition of the certificate. */
+export interface Certificate {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the certificate. */
+  properties?: CertificateProperties;
+}
+export const Certificate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CertificateProperties),
+  }),
+).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
+
+/** The Certificate items on this page */
+export type CertificateListResultValueList = Array<Certificate>;
+export const CertificateListResultValueList = /*@__PURE__*/ S.Array(
+  Certificate,
+) as any as S.Schema<CertificateListResultValueList>;
+
+/** The response of a Certificate list operation. */
+export interface CertificateListResult {
+  /** The Certificate items on this page */
+  value: CertificateListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const CertificateListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: CertificateListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificateListResult",
+}) as any as S.Schema<CertificateListResult>;
+
+export interface ListConnectionByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListConnectionByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListConnectionByAutomationAccountRequest",
+}) as any as S.Schema<ListConnectionByAutomationAccountRequest>;
+
+/** Definition of the connection. */
+export interface Connection {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the connection. */
+  properties?: ConnectionProperties;
+}
+export const Connection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ConnectionProperties),
+  }),
+).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
+
+/** The Connection items on this page */
+export type ConnectionListResultValueList = Array<Connection>;
+export const ConnectionListResultValueList = /*@__PURE__*/ S.Array(
+  Connection,
+) as any as S.Schema<ConnectionListResultValueList>;
+
+/** The response of a Connection list operation. */
+export interface ConnectionListResult {
+  /** The Connection items on this page */
+  value: ConnectionListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ConnectionListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectionListResult",
+}) as any as S.Schema<ConnectionListResult>;
+
+export interface ListConnectionTypeByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListConnectionTypeByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConnectionTypeByAutomationAccountRequest",
+  }) as any as S.Schema<ListConnectionTypeByAutomationAccountRequest>;
+
+/** Definition of the connection type. */
+export interface ConnectionType {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the connection type. */
+  properties?: ConnectionTypeProperties;
+}
+export const ConnectionType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ConnectionTypeProperties),
+  }),
+).annotate({ identifier: "ConnectionType" }) as any as S.Schema<ConnectionType>;
+
+/** The ConnectionType items on this page */
+export type ConnectionTypeListResultValueList = Array<ConnectionType>;
+export const ConnectionTypeListResultValueList = /*@__PURE__*/ S.Array(
+  ConnectionType,
+) as any as S.Schema<ConnectionTypeListResultValueList>;
+
+/** The response of a ConnectionType list operation. */
+export interface ConnectionTypeListResult {
+  /** The ConnectionType items on this page */
+  value: ConnectionTypeListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ConnectionTypeListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ConnectionTypeListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectionTypeListResult",
+}) as any as S.Schema<ConnectionTypeListResult>;
+
+export interface ListCredentialByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListCredentialByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListCredentialByAutomationAccountRequest",
+}) as any as S.Schema<ListCredentialByAutomationAccountRequest>;
+
+/** Definition of the credential. */
+export interface Credential {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the credential. */
+  properties?: CredentialProperties;
+}
+export const Credential = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CredentialProperties),
+  }),
+).annotate({ identifier: "Credential" }) as any as S.Schema<Credential>;
+
+/** The Credential items on this page */
+export type CredentialListResultValueList = Array<Credential>;
+export const CredentialListResultValueList = /*@__PURE__*/ S.Array(
+  Credential,
+) as any as S.Schema<CredentialListResultValueList>;
+
+/** The response of a Credential list operation. */
+export interface CredentialListResult {
+  /** The Credential items on this page */
+  value: CredentialListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const CredentialListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: CredentialListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CredentialListResult",
+}) as any as S.Schema<CredentialListResult>;
+
+export interface ListDeletedAutomationAccountBySubscriptionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListDeletedAutomationAccountBySubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/deletedAutomationAccounts",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListDeletedAutomationAccountBySubscriptionRequest",
+  }) as any as S.Schema<ListDeletedAutomationAccountBySubscriptionRequest>;
+
+/** Definition of the deleted automation account properties. */
+export interface DeletedAutomationAccountProperties {
+  /** Gets or sets the Automation Account Resource Id. */
+  automationAccountResourceId?: string;
+  /** Gets or sets the Automation Account Id. */
+  automationAccountId?: string;
+  /** Gets or sets the location of the resource. */
+  location?: string;
+  /** Gets the deletion time. */
+  deletionTime?: string;
+}
+export const DeletedAutomationAccountProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    automationAccountResourceId: S.optional(S.String),
+    automationAccountId: S.optional(S.String),
+    location: S.optional(S.String),
+    deletionTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletedAutomationAccountProperties",
+}) as any as S.Schema<DeletedAutomationAccountProperties>;
+
+/** Definition of the deleted automation account type. */
+export interface DeletedAutomationAccount {
+  /** Gets or sets the automation account properties. */
+  properties?: DeletedAutomationAccountProperties;
+  /** The resource id. */
+  id?: string;
+  /** Gets or sets name of the resource. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
+  /** Gets or sets the location of the resource. */
+  location?: string;
+}
+export const DeletedAutomationAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(DeletedAutomationAccountProperties),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletedAutomationAccount",
+}) as any as S.Schema<DeletedAutomationAccount>;
+
+/** Gets or sets the list of deleted automation accounts. */
+export type DeletedAutomationAccountListResultValueList =
+  Array<DeletedAutomationAccount>;
+export const DeletedAutomationAccountListResultValueList =
+  /*@__PURE__*/ S.Array(
+    DeletedAutomationAccount,
+  ) as any as S.Schema<DeletedAutomationAccountListResultValueList>;
+
+/** The response model for the list deleted automation account. */
+export interface DeletedAutomationAccountListResult {
+  /** Gets or sets the list of deleted automation accounts. */
+  value?: DeletedAutomationAccountListResultValueList;
+}
+export const DeletedAutomationAccountListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(DeletedAutomationAccountListResultValueList),
+  }),
+).annotate({
+  identifier: "DeletedAutomationAccountListResult",
+}) as any as S.Schema<DeletedAutomationAccountListResult>;
+
+export interface ListDscConfigurationByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+  /** The number of rows to skip. */
+  _skip?: number;
+  /** The number of rows to take. */
+  _top?: number;
+  /** Return total rows. */
+  _inlinecount?: string;
+}
+export const ListDscConfigurationByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListDscConfigurationByAutomationAccountRequest",
+  }) as any as S.Schema<ListDscConfigurationByAutomationAccountRequest>;
+
+/** Resource tags. */
+export type DscConfigurationTagsMap = { [key: string]: string | undefined };
+export const DscConfigurationTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DscConfigurationTagsMap>;
+
+/** Definition of the configuration type. */
+export interface DscConfiguration {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DscConfigurationTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the configuration properties. */
+  properties?: DscConfigurationProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const DscConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(DscConfigurationTagsMap),
+    location: S.String,
+    properties: S.optional(DscConfigurationProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DscConfiguration",
+}) as any as S.Schema<DscConfiguration>;
+
+/** Gets or sets a list of configurations. */
+export type DscConfigurationListResultValueList = Array<DscConfiguration>;
+export const DscConfigurationListResultValueList = /*@__PURE__*/ S.Array(
+  DscConfiguration,
+) as any as S.Schema<DscConfigurationListResultValueList>;
+
+/** The response model for the list configuration operation. */
+export interface DscConfigurationListResult {
+  /** Gets or sets a list of configurations. */
+  value?: DscConfigurationListResultValueList;
+  /** Gets or sets the next link. */
+  nextLink?: string;
+  /** Gets the total number of configurations matching filter criteria. */
+  totalCount?: number;
+}
+export const DscConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(DscConfigurationListResultValueList),
+    nextLink: S.optional(S.String),
+    totalCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DscConfigurationListResult",
+}) as any as S.Schema<DscConfigurationListResult>;
+
+export interface ListDscNodeByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+  /** The number of rows to skip. */
+  _skip?: number;
+  /** The number of rows to take. */
+  _top?: number;
+  /** Return total rows. */
+  _inlinecount?: string;
+}
+export const ListDscNodeByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListDscNodeByAutomationAccountRequest",
+}) as any as S.Schema<ListDscNodeByAutomationAccountRequest>;
+
+/** Definition of a DscNode */
+export interface DscNode {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of a DscNode. */
+  properties?: DscNodeProperties;
+}
+export const DscNode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DscNodeProperties),
+  }),
+).annotate({ identifier: "DscNode" }) as any as S.Schema<DscNode>;
+
+/** Gets or sets a list of dsc nodes. */
+export type DscNodeListResultValueList = Array<DscNode>;
+export const DscNodeListResultValueList = /*@__PURE__*/ S.Array(
+  DscNode,
+) as any as S.Schema<DscNodeListResultValueList>;
+
+/** The response model for the list dsc nodes operation. */
+export interface DscNodeListResult {
+  /** Gets or sets a list of dsc nodes. */
+  value?: DscNodeListResultValueList;
+  /** Gets or sets the next link. */
+  nextLink?: string;
+  /** Gets the total number of nodes matching filter criteria. */
+  totalCount?: number;
+}
+export const DscNodeListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(DscNodeListResultValueList),
+    nextLink: S.optional(S.String),
+    totalCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DscNodeListResult",
+}) as any as S.Schema<DscNodeListResult>;
+
+export interface ListDscNodeConfigurationByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+  /** The number of rows to skip. */
+  _skip?: number;
+  /** The number of rows to take. */
+  _top?: number;
+  /** Return total rows. */
+  _inlinecount?: string;
+}
+export const ListDscNodeConfigurationByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListDscNodeConfigurationByAutomationAccountRequest",
+  }) as any as S.Schema<ListDscNodeConfigurationByAutomationAccountRequest>;
+
+/** Definition of the dsc node configuration. */
+export interface DscNodeConfiguration {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the configuration properties. */
+  properties?: DscNodeConfigurationProperties;
+}
+export const DscNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DscNodeConfigurationProperties),
+  }),
+).annotate({
+  identifier: "DscNodeConfiguration",
+}) as any as S.Schema<DscNodeConfiguration>;
+
+/** Gets or sets a list of Dsc node configurations. */
+export type DscNodeConfigurationListResultValueList =
+  Array<DscNodeConfiguration>;
+export const DscNodeConfigurationListResultValueList = /*@__PURE__*/ S.Array(
+  DscNodeConfiguration,
+) as any as S.Schema<DscNodeConfigurationListResultValueList>;
+
+/** The response model for the list job operation. */
+export interface DscNodeConfigurationListResult {
+  /** Gets or sets a list of Dsc node configurations. */
+  value?: DscNodeConfigurationListResultValueList;
+  /** Gets or sets the next link. */
+  nextLink?: string;
+  /** Gets or sets the total rows in query. */
+  totalCount?: number;
+}
+export const DscNodeConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(DscNodeConfigurationListResultValueList),
+    nextLink: S.optional(S.String),
+    totalCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DscNodeConfigurationListResult",
+}) as any as S.Schema<DscNodeConfigurationListResult>;
+
+export interface ListFieldByTypeRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The module name. */
+  moduleName: string;
+  /** The name of type. */
+  typeName: string;
+}
+export const ListFieldByTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    moduleName: S.String.pipe(T.Label()),
+    typeName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/types/{typeName}/fields",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "ListFieldByTypeRequest",
+}) as any as S.Schema<ListFieldByTypeRequest>;
+
+/** Information about a field of a type. */
+export interface TypeField {
+  /** Gets or sets the name of the field. */
+  name?: string;
+  /** Gets or sets the type of the field. */
+  type?: string;
+}
+export const TypeField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({ identifier: "TypeField" }) as any as S.Schema<TypeField>;
+
+/** Gets or sets a list of fields. */
+export type TypeFieldListResultValueList = Array<TypeField>;
+export const TypeFieldListResultValueList = /*@__PURE__*/ S.Array(
+  TypeField,
+) as any as S.Schema<TypeFieldListResultValueList>;
+
+/** The response model for the list fields operation. */
+export interface TypeFieldListResult {
+  /** Gets or sets a list of fields. */
+  value?: TypeFieldListResultValueList;
+  nextLink?: string;
+}
+export const TypeFieldListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(TypeFieldListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TypeFieldListResult",
+}) as any as S.Schema<TypeFieldListResult>;
+
+export interface ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The hybrid runbook worker group name */
+  hybridRunbookWorkerGroupName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest",
+  }) as any as S.Schema<ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest>;
+
+/** Resource tags. */
+export type HybridRunbookWorkerTagsMap = { [key: string]: string | undefined };
+export const HybridRunbookWorkerTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HybridRunbookWorkerTagsMap>;
+
+/** Definition of hybrid runbook worker. */
+export interface HybridRunbookWorker {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: HybridRunbookWorkerTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the hybrid worker group properties. */
+  properties?: HybridRunbookWorkerProperties;
+}
+export const HybridRunbookWorker = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(HybridRunbookWorkerTagsMap),
+    location: S.String,
+    properties: S.optional(HybridRunbookWorkerProperties),
+  }),
+).annotate({
+  identifier: "HybridRunbookWorker",
+}) as any as S.Schema<HybridRunbookWorker>;
+
+/** The HybridRunbookWorker items on this page */
+export type HybridRunbookWorkersListResultValueList =
+  Array<HybridRunbookWorker>;
+export const HybridRunbookWorkersListResultValueList = /*@__PURE__*/ S.Array(
+  HybridRunbookWorker,
+) as any as S.Schema<HybridRunbookWorkersListResultValueList>;
+
+/** The response of a HybridRunbookWorker list operation. */
+export interface HybridRunbookWorkersListResult {
+  /** The HybridRunbookWorker items on this page */
+  value: HybridRunbookWorkersListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const HybridRunbookWorkersListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: HybridRunbookWorkersListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HybridRunbookWorkersListResult",
+}) as any as S.Schema<HybridRunbookWorkersListResult>;
+
+export interface ListHybridRunbookWorkerGroupByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListHybridRunbookWorkerGroupByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListHybridRunbookWorkerGroupByAutomationAccountRequest",
+  }) as any as S.Schema<ListHybridRunbookWorkerGroupByAutomationAccountRequest>;
+
+/** Resource tags. */
+export type HybridRunbookWorkerGroupTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HybridRunbookWorkerGroupTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HybridRunbookWorkerGroupTagsMap>;
+
+/** Definition of hybrid runbook worker group. */
+export interface HybridRunbookWorkerGroup {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: HybridRunbookWorkerGroupTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the hybrid worker group properties. */
+  properties?: HybridRunbookWorkerGroupProperties;
+}
+export const HybridRunbookWorkerGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(HybridRunbookWorkerGroupTagsMap),
+    location: S.String,
+    properties: S.optional(HybridRunbookWorkerGroupProperties),
+  }),
+).annotate({
+  identifier: "HybridRunbookWorkerGroup",
+}) as any as S.Schema<HybridRunbookWorkerGroup>;
+
+/** The HybridRunbookWorkerGroup items on this page */
+export type HybridRunbookWorkerGroupsListResultValueList =
+  Array<HybridRunbookWorkerGroup>;
+export const HybridRunbookWorkerGroupsListResultValueList =
+  /*@__PURE__*/ S.Array(
+    HybridRunbookWorkerGroup,
+  ) as any as S.Schema<HybridRunbookWorkerGroupsListResultValueList>;
+
+/** The response of a HybridRunbookWorkerGroup list operation. */
+export interface HybridRunbookWorkerGroupsListResult {
+  /** The HybridRunbookWorkerGroup items on this page */
+  value: HybridRunbookWorkerGroupsListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const HybridRunbookWorkerGroupsListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: HybridRunbookWorkerGroupsListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HybridRunbookWorkerGroupsListResult",
+}) as any as S.Schema<HybridRunbookWorkerGroupsListResult>;
+
+export interface ListJobByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListJobByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "ListJobByAutomationAccountRequest",
+}) as any as S.Schema<ListJobByAutomationAccountRequest>;
+
+/** Job collection item properties. */
+export interface JobCollectionItemProperties {
+  /** The runbook association. */
+  runbook?: RunbookAssociationProperty;
+  /** The id of the job. */
+  jobId?: string;
+  /** Gets or sets the job started by. */
+  startedBy?: string | null;
+  /** The creation time of the job. */
+  creationTime?: string;
+  /** The status of the job. */
+  status?: JobStatus;
+  /** The start time of the job. */
+  startTime?: string | null;
+  /** The end time of the job. */
+  endTime?: string | null;
+  /** The last modified time of the job. */
+  lastModifiedTime?: string | null;
+  /** The provisioning state of a resource. */
+  provisioningState?: string;
+  /** Runtime Environment Property */
+  jobRuntimeEnvironment?: JobRuntimeEnvironment;
+  /** Specifies the runOn group name where the job was executed. */
+  runOn?: string;
+}
+export const JobCollectionItemProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runbook: S.optional(RunbookAssociationProperty),
+    jobId: S.optional(S.String),
+    startedBy: S.optional(S.NullOr(S.String)),
+    creationTime: S.optional(S.String),
+    status: S.optional(JobStatus),
+    startTime: S.optional(S.NullOr(S.String)),
+    endTime: S.optional(S.NullOr(S.String)),
+    lastModifiedTime: S.optional(S.NullOr(S.String)),
+    provisioningState: S.optional(S.String),
+    jobRuntimeEnvironment: S.optional(JobRuntimeEnvironment),
+    runOn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JobCollectionItemProperties",
+}) as any as S.Schema<JobCollectionItemProperties>;
+
+/** Job collection item properties. */
+export interface JobCollectionItem {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Job properties. */
+  properties: JobCollectionItemProperties;
+}
+export const JobCollectionItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: JobCollectionItemProperties,
+  }),
+).annotate({
+  identifier: "JobCollectionItem",
+}) as any as S.Schema<JobCollectionItem>;
+
+/** The JobCollectionItem items on this page */
+export type JobListResultV2ValueList = Array<JobCollectionItem>;
+export const JobListResultV2ValueList = /*@__PURE__*/ S.Array(
+  JobCollectionItem,
+) as any as S.Schema<JobListResultV2ValueList>;
+
+/** The response model for the list job operation. */
+export interface JobListResultV2 {
+  /** The JobCollectionItem items on this page */
+  value: JobListResultV2ValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const JobListResultV2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: JobListResultV2ValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JobListResultV2",
+}) as any as S.Schema<JobListResultV2>;
+
+export interface ListJobScheduleByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListJobScheduleByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListJobScheduleByAutomationAccountRequest",
+  }) as any as S.Schema<ListJobScheduleByAutomationAccountRequest>;
+
+/** Definition of the job schedule. */
+export interface JobSchedule {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the job schedule. */
+  properties?: JobScheduleProperties;
+}
+export const JobSchedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(JobScheduleProperties),
+  }),
+).annotate({ identifier: "JobSchedule" }) as any as S.Schema<JobSchedule>;
+
+/** The JobSchedule items on this page */
+export type JobScheduleListResultValueList = Array<JobSchedule>;
+export const JobScheduleListResultValueList = /*@__PURE__*/ S.Array(
+  JobSchedule,
+) as any as S.Schema<JobScheduleListResultValueList>;
+
+/** The response of a JobSchedule list operation. */
+export interface JobScheduleListResult {
+  /** The JobSchedule items on this page */
+  value: JobScheduleListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const JobScheduleListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: JobScheduleListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JobScheduleListResult",
+}) as any as S.Schema<JobScheduleListResult>;
+
+export interface ListJobStreamByJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The job name. */
+  jobName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListJobStreamByJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    jobName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "ListJobStreamByJobRequest",
+}) as any as S.Schema<ListJobStreamByJobRequest>;
+
+/** The JobStream items on this page */
+export type JobStreamListResultValueList = Array<JobStream>;
+export const JobStreamListResultValueList = /*@__PURE__*/ S.Array(
+  JobStream,
+) as any as S.Schema<JobStreamListResultValueList>;
+
+/** The response model for the list job stream operation. */
+export interface JobStreamListResult {
+  /** The JobStream items on this page */
+  value: JobStreamListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const JobStreamListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: JobStreamListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JobStreamListResult",
+}) as any as S.Schema<JobStreamListResult>;
+
+export interface ListKeyByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListKeyByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listKeys",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "ListKeyByAutomationAccountRequest",
+}) as any as S.Schema<ListKeyByAutomationAccountRequest>;
+
+/** Automation key name. */
+export type AutomationKeyName = "Primary" | "Secondary";
+export const AutomationKeyName = /*@__PURE__*/ S.String;
+
+/** Automation key permissions. */
+export type AutomationKeyPermissions = "Read" | "Full";
+export const AutomationKeyPermissions = /*@__PURE__*/ S.String;
+
+/** Automation key which is used to register a DSC Node */
+export interface Key {
+  /** Automation key name. */
+  KeyName?: AutomationKeyName;
+  /** Automation key permissions. */
+  Permissions?: AutomationKeyPermissions;
+  /** Value of the Automation Key used for registration. */
+  Value?: string;
+}
+export const Key = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyName: S.optional(AutomationKeyName),
+    Permissions: S.optional(AutomationKeyPermissions),
+    Value: S.optional(S.String),
+  }),
+).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
+
+/** Lists the automation keys. */
+export type KeyListResultKeysList = Array<Key>;
+export const KeyListResultKeysList = /*@__PURE__*/ S.Array(
+  Key,
+) as any as S.Schema<KeyListResultKeysList>;
+
+export interface KeyListResult {
+  /** Lists the automation keys. */
+  keys?: KeyListResultKeysList;
+}
+export const KeyListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keys: S.optional(KeyListResultKeysList),
+  }),
+).annotate({ identifier: "KeyListResult" }) as any as S.Schema<KeyListResult>;
+
+export interface ListModuleByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListModuleByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListModuleByAutomationAccountRequest",
+}) as any as S.Schema<ListModuleByAutomationAccountRequest>;
+
+/** Resource tags. */
+export type ModuleTagsMap = { [key: string]: string | undefined };
+export const ModuleTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ModuleTagsMap>;
+
+/** Definition of the module type. */
+export interface Module {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ModuleTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the module properties. */
+  properties?: ModuleProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const Module = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ModuleTagsMap),
+    location: S.String,
+    properties: S.optional(ModuleProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({ identifier: "Module" }) as any as S.Schema<Module>;
+
+/** The Module items on this page */
+export type ModuleListResultValueList = Array<Module>;
+export const ModuleListResultValueList = /*@__PURE__*/ S.Array(
+  Module,
+) as any as S.Schema<ModuleListResultValueList>;
+
+/** The response of a Module list operation. */
+export interface ModuleListResult {
+  /** The Module items on this page */
+  value: ModuleListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ModuleListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ModuleListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ModuleListResult",
+}) as any as S.Schema<ModuleListResult>;
+
+export interface ListNodeReportByNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -6741,7 +8131,7 @@ export interface NodeReportsListByNodeRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const NodeReportsListByNodeRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListNodeReportByNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6757,8 +8147,8 @@ export const NodeReportsListByNodeRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "NodeReportsListByNodeRequest",
-}) as any as S.Schema<NodeReportsListByNodeRequest>;
+  identifier: "ListNodeReportByNodeRequest",
+}) as any as S.Schema<ListNodeReportByNodeRequest>;
 
 /** The DscNodeReport items on this page */
 export type DscNodeReportListResultValueList = Array<DscNodeReport>;
@@ -6782,7 +8172,7 @@ export const DscNodeReportListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DscNodeReportListResult",
 }) as any as S.Schema<DscNodeReportListResult>;
 
-export interface ObjectDataTypesListFieldsByModuleAndTypeRequest {
+export interface ListObjectDataTypeFieldByModuleAndTypeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -6794,7 +8184,7 @@ export interface ObjectDataTypesListFieldsByModuleAndTypeRequest {
   /** The name of type. */
   typeName: string;
 }
-export const ObjectDataTypesListFieldsByModuleAndTypeRequest =
+export const ListObjectDataTypeFieldByModuleAndTypeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -6811,10 +8201,10 @@ export const ObjectDataTypesListFieldsByModuleAndTypeRequest =
       }),
     ),
   ).annotate({
-    identifier: "ObjectDataTypesListFieldsByModuleAndTypeRequest",
-  }) as any as S.Schema<ObjectDataTypesListFieldsByModuleAndTypeRequest>;
+    identifier: "ListObjectDataTypeFieldByModuleAndTypeRequest",
+  }) as any as S.Schema<ListObjectDataTypeFieldByModuleAndTypeRequest>;
 
-export interface ObjectDataTypesListFieldsByTypeRequest {
+export interface ListObjectDataTypeFieldByTypeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -6824,7 +8214,7 @@ export interface ObjectDataTypesListFieldsByTypeRequest {
   /** The name of type. */
   typeName: string;
 }
-export const ObjectDataTypesListFieldsByTypeRequest = /*@__PURE__*/ S.suspend(
+export const ListObjectDataTypeFieldByTypeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -6840,11 +8230,11 @@ export const ObjectDataTypesListFieldsByTypeRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ObjectDataTypesListFieldsByTypeRequest",
-}) as any as S.Schema<ObjectDataTypesListFieldsByTypeRequest>;
+  identifier: "ListObjectDataTypeFieldByTypeRequest",
+}) as any as S.Schema<ListObjectDataTypeFieldByTypeRequest>;
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -6854,8 +8244,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Provider, Resource and Operation values */
 export interface OperationDisplay {
@@ -7040,6 +8430,1197 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+export interface ListPackageByRuntimeEnvironmentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the Runtime Environment. */
+  runtimeEnvironmentName: string;
+}
+export const ListPackageByRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      runtimeEnvironmentName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListPackageByRuntimeEnvironmentRequest",
+}) as any as S.Schema<ListPackageByRuntimeEnvironmentRequest>;
+
+/** Resource tags. */
+export type PackageTagsMap = { [key: string]: string | undefined };
+export const PackageTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PackageTagsMap>;
+
+/** Definition of the Package type. */
+export interface Package {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: PackageTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the Package properties. */
+  properties?: PackageProperties;
+}
+export const Package = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(PackageTagsMap),
+    location: S.String,
+    properties: S.optional(PackageProperties),
+  }),
+).annotate({ identifier: "Package" }) as any as S.Schema<Package>;
+
+/** The Package items on this page */
+export type PackageListResultValueList = Array<Package>;
+export const PackageListResultValueList = /*@__PURE__*/ S.Array(
+  Package,
+) as any as S.Schema<PackageListResultValueList>;
+
+/** The response of a Package list operation. */
+export interface PackageListResult {
+  /** The Package items on this page */
+  value: PackageListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const PackageListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: PackageListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PackageListResult",
+}) as any as S.Schema<PackageListResult>;
+
+export interface ListPrivateEndpointConnectionByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListPrivateEndpointConnectionByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPrivateEndpointConnectionByAutomationAccountRequest",
+  }) as any as S.Schema<ListPrivateEndpointConnectionByAutomationAccountRequest>;
+
+/** Array of private endpoint connections */
+export type PrivateEndpointConnectionListResultValueList =
+  Array<PrivateEndpointConnection>;
+export const PrivateEndpointConnectionListResultValueList =
+  /*@__PURE__*/ S.Array(
+    PrivateEndpointConnection,
+  ) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
+/** A list of private endpoint connections */
+export interface PrivateEndpointConnectionListResult {
+  /** Array of private endpoint connections */
+  value?: PrivateEndpointConnectionListResultValueList;
+  nextLink?: string;
+}
+export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(PrivateEndpointConnectionListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnectionListResult",
+}) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
+export interface ListPython2PackageByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListPython2PackageByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPython2PackageByAutomationAccountRequest",
+  }) as any as S.Schema<ListPython2PackageByAutomationAccountRequest>;
+
+export interface ListPython3PackageByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListPython3PackageByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPython3PackageByAutomationAccountRequest",
+  }) as any as S.Schema<ListPython3PackageByAutomationAccountRequest>;
+
+export interface ListRunbookByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListRunbookByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListRunbookByAutomationAccountRequest",
+}) as any as S.Schema<ListRunbookByAutomationAccountRequest>;
+
+/** Resource tags. */
+export type RunbookTagsMap = { [key: string]: string | undefined };
+export const RunbookTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RunbookTagsMap>;
+
+/** Definition of the runbook type. */
+export interface Runbook {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: RunbookTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the runbook properties. */
+  properties?: RunbookProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const Runbook = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(RunbookTagsMap),
+    location: S.String,
+    properties: S.optional(RunbookProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({ identifier: "Runbook" }) as any as S.Schema<Runbook>;
+
+/** The Runbook items on this page */
+export type RunbookListResultValueList = Array<Runbook>;
+export const RunbookListResultValueList = /*@__PURE__*/ S.Array(
+  Runbook,
+) as any as S.Schema<RunbookListResultValueList>;
+
+/** The response of a Runbook list operation. */
+export interface RunbookListResult {
+  /** The Runbook items on this page */
+  value: RunbookListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const RunbookListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: RunbookListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunbookListResult",
+}) as any as S.Schema<RunbookListResult>;
+
+export interface ListRuntimeEnvironmentByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListRuntimeEnvironmentByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListRuntimeEnvironmentByAutomationAccountRequest",
+  }) as any as S.Schema<ListRuntimeEnvironmentByAutomationAccountRequest>;
+
+/** Resource tags. */
+export type RuntimeEnvironmentTagsMap = { [key: string]: string | undefined };
+export const RuntimeEnvironmentTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RuntimeEnvironmentTagsMap>;
+
+/** Definition of the Runtime Environment type. */
+export interface RuntimeEnvironment {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: RuntimeEnvironmentTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the Runtime Environment properties. */
+  properties?: RuntimeEnvironmentProperties;
+}
+export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(RuntimeEnvironmentTagsMap),
+    location: S.String,
+    properties: S.optional(RuntimeEnvironmentProperties),
+  }),
+).annotate({
+  identifier: "RuntimeEnvironment",
+}) as any as S.Schema<RuntimeEnvironment>;
+
+/** The RuntimeEnvironment items on this page */
+export type RuntimeEnvironmentListResultValueList = Array<RuntimeEnvironment>;
+export const RuntimeEnvironmentListResultValueList = /*@__PURE__*/ S.Array(
+  RuntimeEnvironment,
+) as any as S.Schema<RuntimeEnvironmentListResultValueList>;
+
+/** The response of a RuntimeEnvironment list operation. */
+export interface RuntimeEnvironmentListResult {
+  /** The RuntimeEnvironment items on this page */
+  value: RuntimeEnvironmentListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const RuntimeEnvironmentListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: RuntimeEnvironmentListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RuntimeEnvironmentListResult",
+}) as any as S.Schema<RuntimeEnvironmentListResult>;
+
+export interface ListScheduleByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListScheduleByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListScheduleByAutomationAccountRequest",
+}) as any as S.Schema<ListScheduleByAutomationAccountRequest>;
+
+/** Definition of the schedule. */
+export interface Schedule {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the schedule. */
+  properties?: ScheduleProperties;
+}
+export const Schedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ScheduleProperties),
+  }),
+).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
+
+/** The Schedule items on this page */
+export type ScheduleListResultValueList = Array<Schedule>;
+export const ScheduleListResultValueList = /*@__PURE__*/ S.Array(
+  Schedule,
+) as any as S.Schema<ScheduleListResultValueList>;
+
+/** The response of a Schedule list operation. */
+export interface ScheduleListResult {
+  /** The Schedule items on this page */
+  value: ScheduleListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ScheduleListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ScheduleListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScheduleListResult",
+}) as any as S.Schema<ScheduleListResult>;
+
+export interface ListSourceControlByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListSourceControlByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSourceControlByAutomationAccountRequest",
+  }) as any as S.Schema<ListSourceControlByAutomationAccountRequest>;
+
+/** Definition of the source control. */
+export interface SourceControl {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the source control. */
+  properties?: SourceControlProperties;
+}
+export const SourceControl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SourceControlProperties),
+  }),
+).annotate({ identifier: "SourceControl" }) as any as S.Schema<SourceControl>;
+
+/** The SourceControl items on this page */
+export type SourceControlListResultValueList = Array<SourceControl>;
+export const SourceControlListResultValueList = /*@__PURE__*/ S.Array(
+  SourceControl,
+) as any as S.Schema<SourceControlListResultValueList>;
+
+/** The response of a SourceControl list operation. */
+export interface SourceControlListResult {
+  /** The SourceControl items on this page */
+  value: SourceControlListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const SourceControlListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: SourceControlListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SourceControlListResult",
+}) as any as S.Schema<SourceControlListResult>;
+
+export interface ListSourceControlSyncJobByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of source control. */
+  sourceControlName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListSourceControlSyncJobByAutomationAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      sourceControlName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSourceControlSyncJobByAutomationAccountRequest",
+  }) as any as S.Schema<ListSourceControlSyncJobByAutomationAccountRequest>;
+
+/** The SourceControlSyncJob items on this page */
+export type SourceControlSyncJobListResultValueList =
+  Array<SourceControlSyncJob>;
+export const SourceControlSyncJobListResultValueList = /*@__PURE__*/ S.Array(
+  SourceControlSyncJob,
+) as any as S.Schema<SourceControlSyncJobListResultValueList>;
+
+/** The response of a SourceControlSyncJob list operation. */
+export interface SourceControlSyncJobListResult {
+  /** The SourceControlSyncJob items on this page */
+  value: SourceControlSyncJobListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const SourceControlSyncJobListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: SourceControlSyncJobListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SourceControlSyncJobListResult",
+}) as any as S.Schema<SourceControlSyncJobListResult>;
+
+export interface SourceControlSyncJobStreamsListBySyncJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of source control. */
+  sourceControlName: string;
+  /** The source control sync job id. */
+  sourceControlSyncJobId: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const SourceControlSyncJobStreamsListBySyncJobRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      sourceControlName: S.String.pipe(T.Label()),
+      sourceControlSyncJobId: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+  ).annotate({
+    identifier: "SourceControlSyncJobStreamsListBySyncJobRequest",
+  }) as any as S.Schema<SourceControlSyncJobStreamsListBySyncJobRequest>;
+
+/** Definition of source control sync job stream properties. */
+export interface SourceControlSyncJobStreamProperties {
+  /** The sync job stream id. */
+  sourceControlSyncJobStreamId?: string;
+  /** The summary of the sync job stream. */
+  summary?: string;
+  /** The time of the sync job stream. */
+  time?: string | null;
+  /** The type of the sync job stream. */
+  streamType?: StreamType;
+}
+export const SourceControlSyncJobStreamProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sourceControlSyncJobStreamId: S.optional(S.String),
+      summary: S.optional(S.String),
+      time: S.optional(S.NullOr(S.String)),
+      streamType: S.optional(StreamType),
+    }),
+).annotate({
+  identifier: "SourceControlSyncJobStreamProperties",
+}) as any as S.Schema<SourceControlSyncJobStreamProperties>;
+
+/** Definition of the source control sync job stream. */
+export interface SourceControlSyncJobStream {
+  /** Resource id. */
+  id?: string;
+  /** The properties of the source control sync job stream. */
+  properties?: SourceControlSyncJobStreamProperties;
+}
+export const SourceControlSyncJobStream = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    properties: S.optional(SourceControlSyncJobStreamProperties),
+  }),
+).annotate({
+  identifier: "SourceControlSyncJobStream",
+}) as any as S.Schema<SourceControlSyncJobStream>;
+
+/** The SourceControlSyncJobStream items on this page */
+export type SourceControlSyncJobStreamsListBySyncJobValueList =
+  Array<SourceControlSyncJobStream>;
+export const SourceControlSyncJobStreamsListBySyncJobValueList =
+  /*@__PURE__*/ S.Array(
+    SourceControlSyncJobStream,
+  ) as any as S.Schema<SourceControlSyncJobStreamsListBySyncJobValueList>;
+
+/** The response model for the list source control sync job streams operation. */
+export interface SourceControlSyncJobStreamsListBySyncJob {
+  /** The SourceControlSyncJobStream items on this page */
+  value: SourceControlSyncJobStreamsListBySyncJobValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const SourceControlSyncJobStreamsListBySyncJob = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: SourceControlSyncJobStreamsListBySyncJobValueList,
+      nextLink: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SourceControlSyncJobStreamsListBySyncJob",
+}) as any as S.Schema<SourceControlSyncJobStreamsListBySyncJob>;
+
+export interface ListStatisticByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListStatisticByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/statistics",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListStatisticByAutomationAccountRequest",
+}) as any as S.Schema<ListStatisticByAutomationAccountRequest>;
+
+/** Definition of the statistic. */
+export interface Statistics {
+  /** Gets the property value of the statistic. */
+  counterProperty?: string;
+  /** Gets the value of the statistic. */
+  counterValue?: number;
+  /** Gets the startTime of the statistic. */
+  startTime?: string;
+  /** Gets the endTime of the statistic. */
+  endTime?: string | null;
+  /** Gets the id. */
+  id?: string;
+}
+export const Statistics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    counterProperty: S.optional(S.String),
+    counterValue: S.optional(S.Number),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.String),
+  }),
+).annotate({ identifier: "Statistics" }) as any as S.Schema<Statistics>;
+
+/** Gets or sets a list of statistics. */
+export type StatisticsListResultValueList = Array<Statistics>;
+export const StatisticsListResultValueList = /*@__PURE__*/ S.Array(
+  Statistics,
+) as any as S.Schema<StatisticsListResultValueList>;
+
+/** The response model for the list statistics operation. */
+export interface StatisticsListResult {
+  /** Gets or sets a list of statistics. */
+  value?: StatisticsListResultValueList;
+  nextLink?: string;
+}
+export const StatisticsListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(StatisticsListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StatisticsListResult",
+}) as any as S.Schema<StatisticsListResult>;
+
+export interface ListTestJobStreamByTestJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListTestJobStreamByTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "ListTestJobStreamByTestJobRequest",
+}) as any as S.Schema<ListTestJobStreamByTestJobRequest>;
+
+export interface ListUsageByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListUsageByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/usages",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "ListUsageByAutomationAccountRequest",
+}) as any as S.Schema<ListUsageByAutomationAccountRequest>;
+
+/** Definition of usage counter name. */
+export interface UsageCounterName {
+  /** Gets or sets the usage counter name. */
+  value?: string;
+  /** Gets or sets the localized usage counter name. */
+  localizedValue?: string;
+}
+export const UsageCounterName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    localizedValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UsageCounterName",
+}) as any as S.Schema<UsageCounterName>;
+
+/** Definition of Usage. */
+export interface Usage {
+  /** Gets or sets the id of the resource. */
+  id?: string;
+  /** Gets or sets the usage counter name. */
+  name?: UsageCounterName;
+  /** Gets or sets the usage unit name. */
+  unit?: string;
+  /** Gets or sets the current usage value. */
+  currentValue?: number;
+  /** Gets or sets max limit. -1 for unlimited */
+  limit?: number;
+  /** Gets or sets the throttle status. */
+  throttleStatus?: string;
+}
+export const Usage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(UsageCounterName),
+    unit: S.optional(S.String),
+    currentValue: S.optional(S.Number),
+    limit: S.optional(S.Number),
+    throttleStatus: S.optional(S.String),
+  }),
+).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
+
+/** Gets or sets usage. */
+export type UsageListResultValueList = Array<Usage>;
+export const UsageListResultValueList = /*@__PURE__*/ S.Array(
+  Usage,
+) as any as S.Schema<UsageListResultValueList>;
+
+/** The response model for the get usage operation. */
+export interface UsageListResult {
+  /** Gets or sets usage. */
+  value?: UsageListResultValueList;
+  nextLink?: string;
+}
+export const UsageListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(UsageListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UsageListResult",
+}) as any as S.Schema<UsageListResult>;
+
+export interface ListVariableByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+}
+export const ListVariableByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListVariableByAutomationAccountRequest",
+}) as any as S.Schema<ListVariableByAutomationAccountRequest>;
+
+/** Definition of the variable. */
+export interface Variable {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the variable. */
+  properties?: VariableProperties;
+}
+export const Variable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(VariableProperties),
+  }),
+).annotate({ identifier: "Variable" }) as any as S.Schema<Variable>;
+
+/** The Variable items on this page */
+export type VariableListResultValueList = Array<Variable>;
+export const VariableListResultValueList = /*@__PURE__*/ S.Array(
+  Variable,
+) as any as S.Schema<VariableListResultValueList>;
+
+/** The response of a Variable list operation. */
+export interface VariableListResult {
+  /** The Variable items on this page */
+  value: VariableListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const VariableListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: VariableListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VariableListResult",
+}) as any as S.Schema<VariableListResult>;
+
+export interface ListWatcherByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListWatcherByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListWatcherByAutomationAccountRequest",
+}) as any as S.Schema<ListWatcherByAutomationAccountRequest>;
+
+/** Resource tags. */
+export type WatcherTagsMap = { [key: string]: string | undefined };
+export const WatcherTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WatcherTagsMap>;
+
+/** Definition of the watcher type. */
+export interface Watcher {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the watcher properties. */
+  properties?: WatcherProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: WatcherTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+}
+export const Watcher = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(WatcherProperties),
+    etag: S.optional(S.String),
+    tags: S.optional(WatcherTagsMap),
+    location: S.optional(S.String),
+  }),
+).annotate({ identifier: "Watcher" }) as any as S.Schema<Watcher>;
+
+/** The Watcher items on this page */
+export type WatcherListResultValueList = Array<Watcher>;
+export const WatcherListResultValueList = /*@__PURE__*/ S.Array(
+  Watcher,
+) as any as S.Schema<WatcherListResultValueList>;
+
+/** The response of a Watcher list operation. */
+export interface WatcherListResult {
+  /** The Watcher items on this page */
+  value: WatcherListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const WatcherListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: WatcherListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WatcherListResult",
+}) as any as S.Schema<WatcherListResult>;
+
+export interface ListWebhookByAutomationAccountRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The filter to apply on the operation. */
+  _filter?: string;
+}
+export const ListWebhookByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      automationAccountName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks",
+        code: 200,
+        apiVersion: "2024-10-23",
+      }),
+    ),
+).annotate({
+  identifier: "ListWebhookByAutomationAccountRequest",
+}) as any as S.Schema<ListWebhookByAutomationAccountRequest>;
+
+/** Definition of the webhook type. */
+export interface Webhook {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the webhook properties. */
+  properties?: WebhookProperties;
+}
+export const Webhook = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(WebhookProperties),
+  }),
+).annotate({ identifier: "Webhook" }) as any as S.Schema<Webhook>;
+
+/** The Webhook items on this page */
+export type WebhookListResultValueList = Array<Webhook>;
+export const WebhookListResultValueList = /*@__PURE__*/ S.Array(
+  Webhook,
+) as any as S.Schema<WebhookListResultValueList>;
+
+/** The response of a Webhook list operation. */
+export interface WebhookListResult {
+  /** The Webhook items on this page */
+  value: WebhookListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const WebhookListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: WebhookListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WebhookListResult",
+}) as any as S.Schema<WebhookListResult>;
+
+/** The parameters supplied to the create or update module properties. */
+export interface ModuleCreateOrUpdateProperties {
+  /** Gets or sets the module content link. */
+  contentLink: ContentLink;
+}
+export const ModuleCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentLink: ContentLink,
+  }),
+).annotate({
+  identifier: "ModuleCreateOrUpdateProperties",
+}) as any as S.Schema<ModuleCreateOrUpdateProperties>;
+
+/** Gets or sets the tags attached to the resource. */
+export type ModuleCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ModuleCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ModuleCreateOrUpdateRequestTagsMap>;
+
+export interface ModuleCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The module name. */
+  moduleName: string;
+  /** Gets or sets the module create properties. */
+  properties: ModuleCreateOrUpdateProperties;
+  /** Gets or sets name of the resource. */
+  name?: string;
+  /** Gets or sets the location of the resource. */
+  location?: string;
+  /** Gets or sets the tags attached to the resource. */
+  tags?: ModuleCreateOrUpdateRequestTagsMap;
+}
+export const ModuleCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    moduleName: S.String.pipe(T.Label()),
+    properties: ModuleCreateOrUpdateProperties,
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    tags: S.optional(ModuleCreateOrUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "ModuleCreateOrUpdateRequest",
+}) as any as S.Schema<ModuleCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type ModuleCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ModuleCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ModuleCreateOrUpdateResponseTagsMap>;
+
+export interface ModuleCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ModuleCreateOrUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the module properties. */
+  properties?: ModuleProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const ModuleCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ModuleCreateOrUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ModuleProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ModuleCreateOrUpdateResponse",
+}) as any as S.Schema<ModuleCreateOrUpdateResponse>;
+
 /** The parameters supplied to the create or update package properties. */
 export interface PackageCreateOrUpdateProperties {
   /** Gets or sets the package content link. */
@@ -7124,117 +9705,6 @@ export const PackageCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<PackageCreateOrUpdateResponseTagsMap>;
 
-/** Gets or sets the provisioning state of the Package. */
-export type PackageProvisioningState =
-  | "Created"
-  | "Creating"
-  | "StartingImportModuleRunbook"
-  | "RunningImportModuleRunbook"
-  | "ContentRetrieved"
-  | "ContentDownloaded"
-  | "ContentValidated"
-  | "ConnectionTypeImported"
-  | "ContentStored"
-  | "ModuleDataStored"
-  | "ActivitiesStored"
-  | "ModuleImportRunbookComplete"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Updating";
-export const PackageProvisioningState = /*@__PURE__*/ S.String;
-
-/** Definition of the package error info type. */
-export interface PackageErrorInfo {
-  /** Package import error code. */
-  code?: string;
-  /** Package import error message. */
-  message?: string;
-}
-export const PackageErrorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PackageErrorInfo",
-}) as any as S.Schema<PackageErrorInfo>;
-
-/** The type of identity that created the resource. */
-export type PackagePropertiesAllOfCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const PackagePropertiesAllOfCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type PackagePropertiesAllOfLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const PackagePropertiesAllOfLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface PackagePropertiesAllOf {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: PackagePropertiesAllOfCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: PackagePropertiesAllOfLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const PackagePropertiesAllOf = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PackagePropertiesAllOfCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PackagePropertiesAllOfLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PackagePropertiesAllOf",
-}) as any as S.Schema<PackagePropertiesAllOf>;
-
-/** Definition of the package property type. */
-export interface PackageProperties {
-  /** Gets or sets the isGlobal flag of the package. */
-  default?: boolean;
-  /** Gets or sets the version of the Package. */
-  version?: string;
-  /** Gets or sets the size in bytes of the Package. */
-  sizeInBytes?: number;
-  /** Gets or sets the provisioning state of the Package. */
-  provisioningState?: PackageProvisioningState;
-  /** Gets or sets the contentLink of the Package. */
-  contentLink?: ContentLink;
-  /** Gets or sets the error info of the Package. */
-  error?: PackageErrorInfo;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  allOf?: PackagePropertiesAllOf;
-}
-export const PackageProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default: S.optional(S.Boolean),
-    version: S.optional(S.String),
-    sizeInBytes: S.optional(S.Number),
-    provisioningState: S.optional(PackageProvisioningState),
-    contentLink: S.optional(ContentLink),
-    error: S.optional(PackageErrorInfo),
-    allOf: S.optional(PackagePropertiesAllOf),
-  }),
-).annotate({
-  identifier: "PackageProperties",
-}) as any as S.Schema<PackageProperties>;
-
 export interface PackageCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7265,284 +9735,50 @@ export const PackageCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PackageCreateOrUpdateResponse",
 }) as any as S.Schema<PackageCreateOrUpdateResponse>;
 
-export interface PackageDeleteRequest {
+export interface PatchHybridRunbookWorkerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The name of the Runtime Environment. */
-  runtimeEnvironmentName: string;
-  /** The Package name. */
-  packageName: string;
+  /** The hybrid runbook worker group name */
+  hybridRunbookWorkerGroupName: string;
+  /** The hybrid runbook worker id */
+  hybridRunbookWorkerId: string;
+  /** Gets or sets hybrid runbook worker group create or update properties. */
+  properties?: HybridRunbookWorkerCreateOrUpdateParameters;
 }
-export const PackageDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const PatchHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    runtimeEnvironmentName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "PackageDeleteRequest",
-}) as any as S.Schema<PackageDeleteRequest>;
-
-export interface PackageDeleteResponse {}
-export const PackageDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PackageDeleteResponse",
-}) as any as S.Schema<PackageDeleteResponse>;
-
-export interface PackageGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of the Runtime Environment. */
-  runtimeEnvironmentName: string;
-  /** The Package name. */
-  packageName: string;
-}
-export const PackageGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runtimeEnvironmentName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "PackageGetRequest",
-}) as any as S.Schema<PackageGetRequest>;
-
-/** Resource tags. */
-export type PackageGetResponseTagsMap = { [key: string]: string | undefined };
-export const PackageGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PackageGetResponseTagsMap>;
-
-export interface PackageGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: PackageGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the Package properties. */
-  properties?: PackageProperties;
-}
-export const PackageGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PackageGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PackageProperties),
-  }),
-).annotate({
-  identifier: "PackageGetResponse",
-}) as any as S.Schema<PackageGetResponse>;
-
-export interface PackageListByRuntimeEnvironmentRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of the Runtime Environment. */
-  runtimeEnvironmentName: string;
-}
-export const PackageListByRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      runtimeEnvironmentName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "PackageListByRuntimeEnvironmentRequest",
-}) as any as S.Schema<PackageListByRuntimeEnvironmentRequest>;
-
-/** Resource tags. */
-export type PackageTagsMap = { [key: string]: string | undefined };
-export const PackageTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PackageTagsMap>;
-
-/** Definition of the Package type. */
-export interface Package {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: PackageTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the Package properties. */
-  properties?: PackageProperties;
-}
-export const Package = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PackageTagsMap),
-    location: S.String,
-    properties: S.optional(PackageProperties),
-  }),
-).annotate({ identifier: "Package" }) as any as S.Schema<Package>;
-
-/** The Package items on this page */
-export type PackageListResultValueList = Array<Package>;
-export const PackageListResultValueList = /*@__PURE__*/ S.Array(
-  Package,
-) as any as S.Schema<PackageListResultValueList>;
-
-/** The response of a Package list operation. */
-export interface PackageListResult {
-  /** The Package items on this page */
-  value: PackageListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const PackageListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: PackageListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PackageListResult",
-}) as any as S.Schema<PackageListResult>;
-
-/** The parameters supplied to the update properties. */
-export interface PackageUpdateProperties {
-  /** Gets or sets the package content link. */
-  contentLink?: ContentLink;
-}
-export const PackageUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentLink: S.optional(ContentLink),
-  }),
-).annotate({
-  identifier: "PackageUpdateProperties",
-}) as any as S.Schema<PackageUpdateProperties>;
-
-/** Resource tags. */
-export type PackageUpdateRequestAllOfTagsMap = {
-  [key: string]: string | undefined;
-};
-export const PackageUpdateRequestAllOfTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PackageUpdateRequestAllOfTagsMap>;
-
-/** The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location' */
-export interface PackageUpdateRequestAllOf {
-  /** Resource tags. */
-  tags?: PackageUpdateRequestAllOfTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-}
-export const PackageUpdateRequestAllOf = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(PackageUpdateRequestAllOfTagsMap),
-    location: S.String,
-  }),
-).annotate({
-  identifier: "PackageUpdateRequestAllOf",
-}) as any as S.Schema<PackageUpdateRequestAllOf>;
-
-export interface PackageUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of the Runtime Environment. */
-  runtimeEnvironmentName: string;
-  /** The Package name. */
-  packageName: string;
-  /** Gets or sets the package update properties. */
-  properties?: PackageUpdateProperties;
-  /** The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location' */
-  allOf?: PackageUpdateRequestAllOf;
-}
-export const PackageUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runtimeEnvironmentName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    properties: S.optional(PackageUpdateProperties),
-    allOf: S.optional(PackageUpdateRequestAllOf),
+    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+    hybridRunbookWorkerId: S.String.pipe(T.Label()),
+    properties: S.optional(HybridRunbookWorkerCreateOrUpdateParameters),
   }).pipe(
     T.Http({
       method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "PackageUpdateRequest",
-}) as any as S.Schema<PackageUpdateRequest>;
+  identifier: "PatchHybridRunbookWorkerRequest",
+}) as any as S.Schema<PatchHybridRunbookWorkerRequest>;
 
 /** Resource tags. */
-export type PackageUpdateResponseTagsMap = {
+export type HybridRunbookWorkersPatchResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PackageUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const HybridRunbookWorkersPatchResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<PackageUpdateResponseTagsMap>;
+) as any as S.Schema<HybridRunbookWorkersPatchResponseTagsMap>;
 
-export interface PackageUpdateResponse {
+export interface PatchHybridRunbookWorkerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -7552,25 +9788,25 @@ export interface PackageUpdateResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource tags. */
-  tags?: PackageUpdateResponseTagsMap;
+  tags?: HybridRunbookWorkersPatchResponseTagsMap;
   /** The geo-location where the resource lives */
   location: string;
-  /** Gets or sets the Package properties. */
-  properties?: PackageProperties;
+  /** Gets or sets the hybrid worker group properties. */
+  properties?: HybridRunbookWorkerProperties;
 }
-export const PackageUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PatchHybridRunbookWorkerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    tags: S.optional(PackageUpdateResponseTagsMap),
+    tags: S.optional(HybridRunbookWorkersPatchResponseTagsMap),
     location: S.String,
-    properties: S.optional(PackageProperties),
+    properties: S.optional(HybridRunbookWorkerProperties),
   }),
 ).annotate({
-  identifier: "PackageUpdateResponse",
-}) as any as S.Schema<PackageUpdateResponse>;
+  identifier: "PatchHybridRunbookWorkerResponse",
+}) as any as S.Schema<PatchHybridRunbookWorkerResponse>;
 
 /** Gets the groupIds. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
@@ -7677,145 +9913,6 @@ export const PrivateEndpointConnectionsCreateOrUpdateResponse =
   ).annotate({
     identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
   }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
-
-export interface PrivateEndpointConnectionsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of the private endpoint connection. */
-  privateEndpointConnectionName: string;
-}
-export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsDeleteRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsDeleteRequest>;
-
-export interface PrivateEndpointConnectionsDeleteResponse {}
-export const PrivateEndpointConnectionsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointConnectionsDeleteResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsDeleteResponse>;
-
-export interface PrivateEndpointConnectionsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of the private endpoint connection. */
-  privateEndpointConnectionName: string;
-}
-export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsGetRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsGetRequest>;
-
-export interface PrivateEndpointConnectionsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
-export const PrivateEndpointConnectionsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsGetResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsGetResponse>;
-
-export interface PrivateEndpointConnectionsListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const PrivateEndpointConnectionsListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsListByAutomationAccountRequest",
-  }) as any as S.Schema<PrivateEndpointConnectionsListByAutomationAccountRequest>;
-
-/** Array of private endpoint connections */
-export type PrivateEndpointConnectionListResultValueList =
-  Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
-/** A list of private endpoint connections */
-export interface PrivateEndpointConnectionListResult {
-  /** Array of private endpoint connections */
-  value?: PrivateEndpointConnectionListResultValueList;
-  nextLink?: string;
-}
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PrivateEndpointConnectionListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionListResult",
-}) as any as S.Schema<PrivateEndpointConnectionListResult>;
 
 export interface PrivateLinkResourcesAutomationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8006,219 +10103,6 @@ export const Python2PackageCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "Python2PackageCreateOrUpdateResponse",
 }) as any as S.Schema<Python2PackageCreateOrUpdateResponse>;
 
-export interface Python2PackageDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The python package name. */
-  packageName: string;
-}
-export const Python2PackageDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "Python2PackageDeleteRequest",
-}) as any as S.Schema<Python2PackageDeleteRequest>;
-
-export interface Python2PackageDeleteResponse {}
-export const Python2PackageDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "Python2PackageDeleteResponse",
-}) as any as S.Schema<Python2PackageDeleteResponse>;
-
-export interface Python2PackageGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The python package name. */
-  packageName: string;
-}
-export const Python2PackageGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "Python2PackageGetRequest",
-}) as any as S.Schema<Python2PackageGetRequest>;
-
-/** Resource tags. */
-export type Python2PackageGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const Python2PackageGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Python2PackageGetResponseTagsMap>;
-
-export interface Python2PackageGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: Python2PackageGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the module properties. */
-  properties?: ModuleProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const Python2PackageGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(Python2PackageGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ModuleProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Python2PackageGetResponse",
-}) as any as S.Schema<Python2PackageGetResponse>;
-
-export interface Python2PackageListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const Python2PackageListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "Python2PackageListByAutomationAccountRequest",
-  }) as any as S.Schema<Python2PackageListByAutomationAccountRequest>;
-
-/** Gets or sets the tags attached to the resource. */
-export type Python2PackageUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const Python2PackageUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Python2PackageUpdateRequestTagsMap>;
-
-export interface Python2PackageUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The python package name. */
-  packageName: string;
-  /** Gets or sets the tags attached to the resource. */
-  tags?: Python2PackageUpdateRequestTagsMap;
-}
-export const Python2PackageUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    tags: S.optional(Python2PackageUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "Python2PackageUpdateRequest",
-}) as any as S.Schema<Python2PackageUpdateRequest>;
-
-/** Resource tags. */
-export type Python2PackageUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const Python2PackageUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Python2PackageUpdateResponseTagsMap>;
-
-export interface Python2PackageUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: Python2PackageUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the module properties. */
-  properties?: ModuleProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const Python2PackageUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(Python2PackageUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ModuleProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Python2PackageUpdateResponse",
-}) as any as S.Schema<Python2PackageUpdateResponse>;
-
 /** Gets or sets the tags attached to the resource. */
 export type Python3PackageCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -8306,277 +10190,6 @@ export const Python3PackageCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "Python3PackageCreateOrUpdateResponse",
 }) as any as S.Schema<Python3PackageCreateOrUpdateResponse>;
-
-export interface Python3PackageDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The python package name. */
-  packageName: string;
-}
-export const Python3PackageDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "Python3PackageDeleteRequest",
-}) as any as S.Schema<Python3PackageDeleteRequest>;
-
-export interface Python3PackageDeleteResponse {}
-export const Python3PackageDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "Python3PackageDeleteResponse",
-}) as any as S.Schema<Python3PackageDeleteResponse>;
-
-export interface Python3PackageGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The python package name. */
-  packageName: string;
-}
-export const Python3PackageGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "Python3PackageGetRequest",
-}) as any as S.Schema<Python3PackageGetRequest>;
-
-/** Resource tags. */
-export type Python3PackageGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const Python3PackageGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Python3PackageGetResponseTagsMap>;
-
-export interface Python3PackageGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: Python3PackageGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the module properties. */
-  properties?: ModuleProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const Python3PackageGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(Python3PackageGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ModuleProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Python3PackageGetResponse",
-}) as any as S.Schema<Python3PackageGetResponse>;
-
-export interface Python3PackageListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const Python3PackageListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "Python3PackageListByAutomationAccountRequest",
-  }) as any as S.Schema<Python3PackageListByAutomationAccountRequest>;
-
-/** Gets or sets the tags attached to the resource. */
-export type Python3PackageUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const Python3PackageUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Python3PackageUpdateRequestTagsMap>;
-
-export interface Python3PackageUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The python package name. */
-  packageName: string;
-  /** Gets or sets the tags attached to the resource. */
-  tags?: Python3PackageUpdateRequestTagsMap;
-}
-export const Python3PackageUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    packageName: S.String.pipe(T.Label()),
-    tags: S.optional(Python3PackageUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "Python3PackageUpdateRequest",
-}) as any as S.Schema<Python3PackageUpdateRequest>;
-
-/** Resource tags. */
-export type Python3PackageUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const Python3PackageUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Python3PackageUpdateResponseTagsMap>;
-
-export interface Python3PackageUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: Python3PackageUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the module properties. */
-  properties?: ModuleProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const Python3PackageUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(Python3PackageUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ModuleProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Python3PackageUpdateResponse",
-}) as any as S.Schema<Python3PackageUpdateResponse>;
-
-/** Gets or sets the type of the runbook. */
-export type RunbookTypeEnum =
-  | "Script"
-  | "Graph"
-  | "PowerShellWorkflow"
-  | "PowerShell"
-  | "GraphPowerShellWorkflow"
-  | "GraphPowerShell"
-  | "Python2"
-  | "Python3"
-  | "Python"
-  | "PowerShell72";
-export const RunbookTypeEnum = /*@__PURE__*/ S.String;
-
-/** Definition of the runbook parameter type. */
-export type RunbookParameter = DscConfigurationParameter;
-export const RunbookParameter = DscConfigurationParameter;
-
-/** Gets or sets the runbook draft parameters. */
-export type RunbookDraftParametersMap = {
-  [key: string]: DscConfigurationParameter | undefined;
-};
-export const RunbookDraftParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DscConfigurationParameter,
-) as any as S.Schema<RunbookDraftParametersMap>;
-
-/** Gets or sets the runbook output types. */
-export type RunbookDraftOutputTypesList = Array<string>;
-export const RunbookDraftOutputTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunbookDraftOutputTypesList>;
-
-export interface RunbookDraft {
-  /** Gets or sets whether runbook is in edit mode. */
-  inEdit?: boolean;
-  /** Gets or sets the draft runbook content link. */
-  draftContentLink?: ContentLink;
-  /** Gets or sets the creation time of the runbook draft. */
-  creationTime?: string;
-  /** Gets or sets the last modified time of the runbook draft. */
-  lastModifiedTime?: string;
-  /** Gets or sets the runbook draft parameters. */
-  parameters?: RunbookDraftParametersMap;
-  /** Gets or sets the runbook output types. */
-  outputTypes?: RunbookDraftOutputTypesList;
-}
-export const RunbookDraft = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inEdit: S.optional(S.Boolean),
-    draftContentLink: S.optional(ContentLink),
-    creationTime: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-    parameters: S.optional(RunbookDraftParametersMap),
-    outputTypes: S.optional(RunbookDraftOutputTypesList),
-  }),
-).annotate({ identifier: "RunbookDraft" }) as any as S.Schema<RunbookDraft>;
 
 /** The parameters supplied to the create or update runbook properties. */
 export interface RunbookCreateOrUpdateProperties {
@@ -8670,87 +10283,6 @@ export const RunbookCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<RunbookCreateOrUpdateResponseTagsMap>;
 
-/** Gets or sets the state of the runbook. */
-export type RunbookState = "New" | "Edit" | "Published";
-export const RunbookState = /*@__PURE__*/ S.String;
-
-/** Gets or sets the runbook parameters. */
-export type RunbookPropertiesParametersMap = {
-  [key: string]: DscConfigurationParameter | undefined;
-};
-export const RunbookPropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DscConfigurationParameter,
-) as any as S.Schema<RunbookPropertiesParametersMap>;
-
-/** Gets or sets the runbook output types. */
-export type RunbookPropertiesOutputTypesList = Array<string>;
-export const RunbookPropertiesOutputTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunbookPropertiesOutputTypesList>;
-
-/** Gets or sets the provisioning state of the runbook. */
-export type RunbookPropertiesProvisioningState = "Succeeded";
-export const RunbookPropertiesProvisioningState = /*@__PURE__*/ S.String;
-
-/** Definition of the runbook property type. */
-export interface RunbookProperties {
-  /** Runtime Environment of the runbook execution. */
-  runtimeEnvironment?: string;
-  /** Gets or sets the type of the runbook. */
-  runbookType?: RunbookTypeEnum;
-  /** Gets or sets the published runbook content link. */
-  publishContentLink?: ContentLink;
-  /** Gets or sets the state of the runbook. */
-  state?: RunbookState;
-  /** Gets or sets verbose log option. */
-  logVerbose?: boolean;
-  /** Gets or sets progress log option. */
-  logProgress?: boolean;
-  /** Gets or sets the option to log activity trace of the runbook. */
-  logActivityTrace?: number;
-  /** Gets or sets the job count of the runbook. */
-  jobCount?: number;
-  /** Gets or sets the runbook parameters. */
-  parameters?: RunbookPropertiesParametersMap;
-  /** Gets or sets the runbook output types. */
-  outputTypes?: RunbookPropertiesOutputTypesList;
-  /** Gets or sets the draft runbook properties. */
-  draft?: RunbookDraft;
-  /** Gets or sets the provisioning state of the runbook. */
-  provisioningState?: RunbookPropertiesProvisioningState;
-  /** Gets or sets the last modified by. */
-  lastModifiedBy?: string;
-  /** Gets or sets the creation time. */
-  creationTime?: string;
-  /** Gets or sets the last modified time. */
-  lastModifiedTime?: string;
-  /** Gets or sets the description. */
-  description?: string;
-}
-export const RunbookProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtimeEnvironment: S.optional(S.String),
-    runbookType: S.optional(RunbookTypeEnum),
-    publishContentLink: S.optional(ContentLink),
-    state: S.optional(RunbookState),
-    logVerbose: S.optional(S.Boolean),
-    logProgress: S.optional(S.Boolean),
-    logActivityTrace: S.optional(S.Number),
-    jobCount: S.optional(S.Number),
-    parameters: S.optional(RunbookPropertiesParametersMap),
-    outputTypes: S.optional(RunbookPropertiesOutputTypesList),
-    draft: S.optional(RunbookDraft),
-    provisioningState: S.optional(RunbookPropertiesProvisioningState),
-    lastModifiedBy: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunbookProperties",
-}) as any as S.Schema<RunbookProperties>;
-
 export interface RunbookCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8783,104 +10315,6 @@ export const RunbookCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RunbookCreateOrUpdateResponse",
 }) as any as S.Schema<RunbookCreateOrUpdateResponse>;
-
-export interface RunbookDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
-}
-export const RunbookDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RunbookDeleteRequest",
-}) as any as S.Schema<RunbookDeleteRequest>;
-
-export interface RunbookDeleteResponse {}
-export const RunbookDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunbookDeleteResponse",
-}) as any as S.Schema<RunbookDeleteResponse>;
-
-export interface RunbookDraftGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
-}
-export const RunbookDraftGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RunbookDraftGetRequest",
-}) as any as S.Schema<RunbookDraftGetRequest>;
-
-export interface RunbookDraftGetContentRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
-}
-export const RunbookDraftGetContentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RunbookDraftGetContentRequest",
-}) as any as S.Schema<RunbookDraftGetContentRequest>;
-
-export type RunbookDraftGetContentResponse = string;
-export const RunbookDraftGetContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RunbookDraftGetContentResponse",
-}) as any as S.Schema<RunbookDraftGetContentResponse>;
 
 export interface RunbookDraftReplaceContentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9011,196 +10445,6 @@ export const RunbookDraftUndoEditResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunbookDraftUndoEditResult",
 }) as any as S.Schema<RunbookDraftUndoEditResult>;
 
-export interface RunbookGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
-}
-export const RunbookGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RunbookGetRequest",
-}) as any as S.Schema<RunbookGetRequest>;
-
-/** Resource tags. */
-export type RunbookGetResponseTagsMap = { [key: string]: string | undefined };
-export const RunbookGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RunbookGetResponseTagsMap>;
-
-export interface RunbookGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: RunbookGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the runbook properties. */
-  properties?: RunbookProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const RunbookGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RunbookGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RunbookProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunbookGetResponse",
-}) as any as S.Schema<RunbookGetResponse>;
-
-export interface RunbookGetContentRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
-}
-export const RunbookGetContentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/content",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RunbookGetContentRequest",
-}) as any as S.Schema<RunbookGetContentRequest>;
-
-export type RunbookGetContentResponse = string;
-export const RunbookGetContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RunbookGetContentResponse",
-}) as any as S.Schema<RunbookGetContentResponse>;
-
-export interface RunbookListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const RunbookListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "RunbookListByAutomationAccountRequest",
-}) as any as S.Schema<RunbookListByAutomationAccountRequest>;
-
-/** Resource tags. */
-export type RunbookTagsMap = { [key: string]: string | undefined };
-export const RunbookTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RunbookTagsMap>;
-
-/** Definition of the runbook type. */
-export interface Runbook {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: RunbookTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the runbook properties. */
-  properties?: RunbookProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const Runbook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RunbookTagsMap),
-    location: S.String,
-    properties: S.optional(RunbookProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Runbook" }) as any as S.Schema<Runbook>;
-
-/** The Runbook items on this page */
-export type RunbookListResultValueList = Array<Runbook>;
-export const RunbookListResultValueList = /*@__PURE__*/ S.Array(
-  Runbook,
-) as any as S.Schema<RunbookListResultValueList>;
-
-/** The response of a Runbook list operation. */
-export interface RunbookListResult {
-  /** The Runbook items on this page */
-  value: RunbookListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const RunbookListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: RunbookListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunbookListResult",
-}) as any as S.Schema<RunbookListResult>;
-
 export interface RunbookPublishRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9235,605 +10479,6 @@ export const RunbookPublishResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RunbookPublishResponse",
 }) as any as S.Schema<RunbookPublishResponse>;
-
-/** The parameters supplied to the update runbook properties. */
-export interface RunbookUpdateProperties {
-  /** Gets or sets the description of the runbook. */
-  description?: string;
-  /** Gets or sets verbose log option. */
-  logVerbose?: boolean;
-  /** Gets or sets progress log option. */
-  logProgress?: boolean;
-  /** Gets or sets the activity-level tracing options of the runbook. */
-  logActivityTrace?: number;
-}
-export const RunbookUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    logVerbose: S.optional(S.Boolean),
-    logProgress: S.optional(S.Boolean),
-    logActivityTrace: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RunbookUpdateProperties",
-}) as any as S.Schema<RunbookUpdateProperties>;
-
-/** Gets or sets the tags attached to the resource. */
-export type RunbookUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const RunbookUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RunbookUpdateRequestTagsMap>;
-
-export interface RunbookUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
-  /** Gets or sets the runbook update properties. */
-  properties?: RunbookUpdateProperties;
-  /** Gets or sets the name of the resource. */
-  name?: string;
-  /** Gets or sets the location of the resource. */
-  location?: string;
-  /** Gets or sets the tags attached to the resource. */
-  tags?: RunbookUpdateRequestTagsMap;
-}
-export const RunbookUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
-    properties: S.optional(RunbookUpdateProperties),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(RunbookUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RunbookUpdateRequest",
-}) as any as S.Schema<RunbookUpdateRequest>;
-
-/** Resource tags. */
-export type RunbookUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const RunbookUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RunbookUpdateResponseTagsMap>;
-
-export interface RunbookUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: RunbookUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the runbook properties. */
-  properties?: RunbookProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-}
-export const RunbookUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RunbookUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RunbookProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunbookUpdateResponse",
-}) as any as S.Schema<RunbookUpdateResponse>;
-
-/** Resource tags. */
-export type RuntimeEnvironmentsCreateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const RuntimeEnvironmentsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RuntimeEnvironmentsCreateRequestTagsMap>;
-
-/** Runtime properties. */
-export interface RuntimeProperties {
-  /** Language of Runtime Environment */
-  language?: string;
-  /** Version of Language */
-  version?: string;
-}
-export const RuntimeProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    language: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RuntimeProperties",
-}) as any as S.Schema<RuntimeProperties>;
-
-/** List of Default packages for Environment */
-export type RuntimeEnvironmentPropertiesDefaultPackagesMap = {
-  [key: string]: string | undefined;
-};
-export const RuntimeEnvironmentPropertiesDefaultPackagesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<RuntimeEnvironmentPropertiesDefaultPackagesMap>;
-
-/** Runtime Environment properties. */
-export interface RuntimeEnvironmentProperties {
-  /** Runtime properties. */
-  runtime?: RuntimeProperties;
-  /** List of Default packages for Environment */
-  defaultPackages?: RuntimeEnvironmentPropertiesDefaultPackagesMap;
-  /** Gets or sets the description. */
-  description?: string;
-}
-export const RuntimeEnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtime: S.optional(RuntimeProperties),
-    defaultPackages: S.optional(RuntimeEnvironmentPropertiesDefaultPackagesMap),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RuntimeEnvironmentProperties",
-}) as any as S.Schema<RuntimeEnvironmentProperties>;
-
-export interface RuntimeEnvironmentsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of the Runtime Environment. */
-  runtimeEnvironmentName: string;
-  /** Resource tags. */
-  tags?: RuntimeEnvironmentsCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the Runtime Environment properties. */
-  properties?: RuntimeEnvironmentProperties;
-}
-export const RuntimeEnvironmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runtimeEnvironmentName: S.String.pipe(T.Label()),
-    tags: S.optional(RuntimeEnvironmentsCreateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(RuntimeEnvironmentProperties),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RuntimeEnvironmentsCreateRequest",
-}) as any as S.Schema<RuntimeEnvironmentsCreateRequest>;
-
-/** Resource tags. */
-export type RuntimeEnvironmentsCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const RuntimeEnvironmentsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RuntimeEnvironmentsCreateResponseTagsMap>;
-
-export interface RuntimeEnvironmentsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: RuntimeEnvironmentsCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the Runtime Environment properties. */
-  properties?: RuntimeEnvironmentProperties;
-}
-export const RuntimeEnvironmentsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RuntimeEnvironmentsCreateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RuntimeEnvironmentProperties),
-  }),
-).annotate({
-  identifier: "RuntimeEnvironmentsCreateResponse",
-}) as any as S.Schema<RuntimeEnvironmentsCreateResponse>;
-
-export interface RuntimeEnvironmentsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of the Runtime Environment. */
-  runtimeEnvironmentName: string;
-}
-export const RuntimeEnvironmentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runtimeEnvironmentName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RuntimeEnvironmentsDeleteRequest",
-}) as any as S.Schema<RuntimeEnvironmentsDeleteRequest>;
-
-export interface RuntimeEnvironmentsDeleteResponse {}
-export const RuntimeEnvironmentsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RuntimeEnvironmentsDeleteResponse",
-}) as any as S.Schema<RuntimeEnvironmentsDeleteResponse>;
-
-export interface RuntimeEnvironmentsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of the Runtime Environment. */
-  runtimeEnvironmentName: string;
-}
-export const RuntimeEnvironmentsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runtimeEnvironmentName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RuntimeEnvironmentsGetRequest",
-}) as any as S.Schema<RuntimeEnvironmentsGetRequest>;
-
-/** Resource tags. */
-export type RuntimeEnvironmentsGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const RuntimeEnvironmentsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RuntimeEnvironmentsGetResponseTagsMap>;
-
-export interface RuntimeEnvironmentsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: RuntimeEnvironmentsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the Runtime Environment properties. */
-  properties?: RuntimeEnvironmentProperties;
-}
-export const RuntimeEnvironmentsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RuntimeEnvironmentsGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RuntimeEnvironmentProperties),
-  }),
-).annotate({
-  identifier: "RuntimeEnvironmentsGetResponse",
-}) as any as S.Schema<RuntimeEnvironmentsGetResponse>;
-
-export interface RuntimeEnvironmentsListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const RuntimeEnvironmentsListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "RuntimeEnvironmentsListByAutomationAccountRequest",
-  }) as any as S.Schema<RuntimeEnvironmentsListByAutomationAccountRequest>;
-
-/** Resource tags. */
-export type RuntimeEnvironmentTagsMap = { [key: string]: string | undefined };
-export const RuntimeEnvironmentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RuntimeEnvironmentTagsMap>;
-
-/** Definition of the Runtime Environment type. */
-export interface RuntimeEnvironment {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: RuntimeEnvironmentTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the Runtime Environment properties. */
-  properties?: RuntimeEnvironmentProperties;
-}
-export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RuntimeEnvironmentTagsMap),
-    location: S.String,
-    properties: S.optional(RuntimeEnvironmentProperties),
-  }),
-).annotate({
-  identifier: "RuntimeEnvironment",
-}) as any as S.Schema<RuntimeEnvironment>;
-
-/** The RuntimeEnvironment items on this page */
-export type RuntimeEnvironmentListResultValueList = Array<RuntimeEnvironment>;
-export const RuntimeEnvironmentListResultValueList = /*@__PURE__*/ S.Array(
-  RuntimeEnvironment,
-) as any as S.Schema<RuntimeEnvironmentListResultValueList>;
-
-/** The response of a RuntimeEnvironment list operation. */
-export interface RuntimeEnvironmentListResult {
-  /** The RuntimeEnvironment items on this page */
-  value: RuntimeEnvironmentListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const RuntimeEnvironmentListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: RuntimeEnvironmentListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RuntimeEnvironmentListResult",
-}) as any as S.Schema<RuntimeEnvironmentListResult>;
-
-/** List of Default packages for Environment */
-export type RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap = {
-  [key: string]: string | undefined;
-};
-export const RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap>;
-
-/** Gets or sets Runtime update properties. */
-export interface RuntimeEnvironmentUpdateProperties {
-  /** List of Default packages for Environment */
-  defaultPackages?: RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap;
-}
-export const RuntimeEnvironmentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPackages: S.optional(
-      RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap,
-    ),
-  }),
-).annotate({
-  identifier: "RuntimeEnvironmentUpdateProperties",
-}) as any as S.Schema<RuntimeEnvironmentUpdateProperties>;
-
-export interface RuntimeEnvironmentsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of the Runtime Environment. */
-  runtimeEnvironmentName: string;
-  /** Gets or sets Runtime update properties. */
-  properties?: RuntimeEnvironmentUpdateProperties;
-}
-export const RuntimeEnvironmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runtimeEnvironmentName: S.String.pipe(T.Label()),
-    properties: S.optional(RuntimeEnvironmentUpdateProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "RuntimeEnvironmentsUpdateRequest",
-}) as any as S.Schema<RuntimeEnvironmentsUpdateRequest>;
-
-/** Resource tags. */
-export type RuntimeEnvironmentsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const RuntimeEnvironmentsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RuntimeEnvironmentsUpdateResponseTagsMap>;
-
-export interface RuntimeEnvironmentsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: RuntimeEnvironmentsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Gets or sets the Runtime Environment properties. */
-  properties?: RuntimeEnvironmentProperties;
-}
-export const RuntimeEnvironmentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RuntimeEnvironmentsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RuntimeEnvironmentProperties),
-  }),
-).annotate({
-  identifier: "RuntimeEnvironmentsUpdateResponse",
-}) as any as S.Schema<RuntimeEnvironmentsUpdateResponse>;
-
-/** Gets or sets the frequency of the schedule. */
-export type ScheduleFrequency =
-  | "OneTime"
-  | "Day"
-  | "Hour"
-  | "Week"
-  | "Month"
-  | "Minute";
-export const ScheduleFrequency = /*@__PURE__*/ S.String;
-
-/** Days of the week that the job should execute on. */
-export type AdvancedScheduleWeekDaysList = Array<string>;
-export const AdvancedScheduleWeekDaysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdvancedScheduleWeekDaysList>;
-
-/** Days of the month that the job should execute on. Must be between 1 and 31. */
-export type AdvancedScheduleMonthDaysList = Array<number>;
-export const AdvancedScheduleMonthDaysList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AdvancedScheduleMonthDaysList>;
-
-/** Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-export type ScheduleDay =
-  | "Monday"
-  | "Tuesday"
-  | "Wednesday"
-  | "Thursday"
-  | "Friday"
-  | "Saturday"
-  | "Sunday";
-export const ScheduleDay = /*@__PURE__*/ S.String;
-
-/** The properties of the create advanced schedule monthly occurrence. */
-export interface AdvancedScheduleMonthlyOccurrence {
-  /** Occurrence of the week within the month. Must be between 1 and 5 */
-  occurrence?: number;
-  /** Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-  day?: ScheduleDay | (string & {});
-}
-export const AdvancedScheduleMonthlyOccurrence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    occurrence: S.optional(S.Number),
-    day: S.optional(ScheduleDay),
-  }),
-).annotate({
-  identifier: "AdvancedScheduleMonthlyOccurrence",
-}) as any as S.Schema<AdvancedScheduleMonthlyOccurrence>;
-
-/** Occurrences of days within a month. */
-export type AdvancedScheduleMonthlyOccurrencesList =
-  Array<AdvancedScheduleMonthlyOccurrence>;
-export const AdvancedScheduleMonthlyOccurrencesList = /*@__PURE__*/ S.Array(
-  AdvancedScheduleMonthlyOccurrence,
-) as any as S.Schema<AdvancedScheduleMonthlyOccurrencesList>;
-
-/** The properties of the create Advanced Schedule. */
-export interface AdvancedSchedule {
-  /** Days of the week that the job should execute on. */
-  weekDays?: AdvancedScheduleWeekDaysList;
-  /** Days of the month that the job should execute on. Must be between 1 and 31. */
-  monthDays?: AdvancedScheduleMonthDaysList;
-  /** Occurrences of days within a month. */
-  monthlyOccurrences?: AdvancedScheduleMonthlyOccurrencesList;
-}
-export const AdvancedSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    weekDays: S.optional(AdvancedScheduleWeekDaysList),
-    monthDays: S.optional(AdvancedScheduleMonthDaysList),
-    monthlyOccurrences: S.optional(AdvancedScheduleMonthlyOccurrencesList),
-  }),
-).annotate({
-  identifier: "AdvancedSchedule",
-}) as any as S.Schema<AdvancedSchedule>;
 
 /** The parameters supplied to the create or update schedule operation. */
 export interface ScheduleCreateOrUpdateProperties {
@@ -9900,58 +10545,6 @@ export const ScheduleCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduleCreateOrUpdateRequest",
 }) as any as S.Schema<ScheduleCreateOrUpdateRequest>;
 
-/** Definition of schedule parameters. */
-export interface ScheduleProperties {
-  /** Gets or sets the start time of the schedule. */
-  startTime?: string;
-  /** Gets the start time's offset in minutes. */
-  startTimeOffsetMinutes?: number;
-  /** Gets or sets the end time of the schedule. */
-  expiryTime?: string | null;
-  /** Gets or sets the expiry time's offset in minutes. */
-  expiryTimeOffsetMinutes?: number;
-  /** Gets or sets a value indicating whether this schedule is enabled. */
-  isEnabled?: boolean;
-  /** Gets or sets the next run time of the schedule. */
-  nextRun?: string | null;
-  /** Gets or sets the next run time's offset in minutes. */
-  nextRunOffsetMinutes?: number;
-  /** Gets or sets the interval of the schedule. */
-  interval?: unknown;
-  /** Gets or sets the frequency of the schedule. */
-  frequency?: ScheduleFrequency;
-  /** Gets or sets the time zone of the schedule. */
-  timeZone?: string;
-  /** Gets or sets the advanced schedule. */
-  advancedSchedule?: AdvancedSchedule;
-  /** Gets or sets the creation time. */
-  creationTime?: string;
-  /** Gets or sets the last modified time. */
-  lastModifiedTime?: string;
-  /** Gets or sets the description. */
-  description?: string;
-}
-export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    startTimeOffsetMinutes: S.optional(S.Number),
-    expiryTime: S.optional(S.NullOr(S.String)),
-    expiryTimeOffsetMinutes: S.optional(S.Number),
-    isEnabled: S.optional(S.Boolean),
-    nextRun: S.optional(S.NullOr(S.String)),
-    nextRunOffsetMinutes: S.optional(S.Number),
-    interval: S.optional(S.Unknown),
-    frequency: S.optional(ScheduleFrequency),
-    timeZone: S.optional(S.String),
-    advancedSchedule: S.optional(AdvancedSchedule),
-    creationTime: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScheduleProperties",
-}) as any as S.Schema<ScheduleProperties>;
-
 export interface ScheduleCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -9975,238 +10568,6 @@ export const ScheduleCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScheduleCreateOrUpdateResponse",
 }) as any as S.Schema<ScheduleCreateOrUpdateResponse>;
-
-export interface ScheduleDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The schedule name. */
-  scheduleName: string;
-}
-export const ScheduleDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    scheduleName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ScheduleDeleteRequest",
-}) as any as S.Schema<ScheduleDeleteRequest>;
-
-export interface ScheduleDeleteResponse {}
-export const ScheduleDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ScheduleDeleteResponse",
-}) as any as S.Schema<ScheduleDeleteResponse>;
-
-export interface ScheduleGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The schedule name. */
-  scheduleName: string;
-}
-export const ScheduleGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    scheduleName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ScheduleGetRequest",
-}) as any as S.Schema<ScheduleGetRequest>;
-
-export interface ScheduleGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the schedule. */
-  properties?: ScheduleProperties;
-}
-export const ScheduleGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduleProperties),
-  }),
-).annotate({
-  identifier: "ScheduleGetResponse",
-}) as any as S.Schema<ScheduleGetResponse>;
-
-export interface ScheduleListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const ScheduleListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "ScheduleListByAutomationAccountRequest",
-}) as any as S.Schema<ScheduleListByAutomationAccountRequest>;
-
-/** Definition of the schedule. */
-export interface Schedule {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the schedule. */
-  properties?: ScheduleProperties;
-}
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduleProperties),
-  }),
-).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
-
-/** The Schedule items on this page */
-export type ScheduleListResultValueList = Array<Schedule>;
-export const ScheduleListResultValueList = /*@__PURE__*/ S.Array(
-  Schedule,
-) as any as S.Schema<ScheduleListResultValueList>;
-
-/** The response of a Schedule list operation. */
-export interface ScheduleListResult {
-  /** The Schedule items on this page */
-  value: ScheduleListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ScheduleListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ScheduleListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScheduleListResult",
-}) as any as S.Schema<ScheduleListResult>;
-
-/** The parameters supplied to the update schedule operation. */
-export interface ScheduleUpdateProperties {
-  /** Gets or sets the description of the schedule. */
-  description?: string;
-  /** Gets or sets a value indicating whether this schedule is enabled. */
-  isEnabled?: boolean;
-}
-export const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    isEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ScheduleUpdateProperties",
-}) as any as S.Schema<ScheduleUpdateProperties>;
-
-export interface ScheduleUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The schedule name. */
-  scheduleName: string;
-  /** Gets or sets the name of the Schedule. */
-  name?: string;
-  /** Gets or sets the list of schedule properties. */
-  properties?: ScheduleUpdateProperties;
-}
-export const ScheduleUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    scheduleName: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    properties: S.optional(ScheduleUpdateProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "ScheduleUpdateRequest",
-}) as any as S.Schema<ScheduleUpdateRequest>;
-
-export interface ScheduleUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the schedule. */
-  properties?: ScheduleProperties;
-}
-export const ScheduleUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduleProperties),
-  }),
-).annotate({
-  identifier: "ScheduleUpdateResponse",
-}) as any as S.Schema<ScheduleUpdateResponse>;
 
 export interface SoftwareUpdateConfigurationMachineRunsGetByIdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11319,10 +11680,6 @@ export const SoftwareUpdateConfigurationListResult = /*@__PURE__*/ S.suspend(
   identifier: "SoftwareUpdateConfigurationListResult",
 }) as any as S.Schema<SoftwareUpdateConfigurationListResult>;
 
-/** The source type. Must be one of VsoGit, VsoTfvc, GitHub. */
-export type SourceType = "VsoGit" | "VsoTfvc" | "GitHub";
-export const SourceType = /*@__PURE__*/ S.String;
-
 /** The token type. Must be either PersonalAccessToken or Oauth. */
 export type TokenType = "PersonalAccessToken" | "Oauth";
 export const TokenType = /*@__PURE__*/ S.String;
@@ -11412,43 +11769,6 @@ export const SourceControlCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceControlCreateOrUpdateRequest",
 }) as any as S.Schema<SourceControlCreateOrUpdateRequest>;
 
-/** Definition of the source control properties */
-export interface SourceControlProperties {
-  /** The repo url of the source control. */
-  repoUrl?: string;
-  /** The repo branch of the source control. Include branch as empty string for VsoTfvc. */
-  branch?: string;
-  /** The folder path of the source control. */
-  folderPath?: string;
-  /** The auto sync of the source control. Default is false. */
-  autoSync?: boolean;
-  /** The auto publish of the source control. Default is true. */
-  publishRunbook?: boolean;
-  /** The source type. Must be one of VsoGit, VsoTfvc, GitHub. */
-  sourceType?: SourceType;
-  /** The description. */
-  description?: string;
-  /** The creation time. */
-  creationTime?: string;
-  /** The last modified time. */
-  lastModifiedTime?: string;
-}
-export const SourceControlProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repoUrl: S.optional(S.String),
-    branch: S.optional(S.String),
-    folderPath: S.optional(S.String),
-    autoSync: S.optional(S.Boolean),
-    publishRunbook: S.optional(S.Boolean),
-    sourceType: S.optional(SourceType),
-    description: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SourceControlProperties",
-}) as any as S.Schema<SourceControlProperties>;
-
 export interface SourceControlCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11473,850 +11793,75 @@ export const SourceControlCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceControlCreateOrUpdateResponse",
 }) as any as S.Schema<SourceControlCreateOrUpdateResponse>;
 
-export interface SourceControlDeleteRequest {
+export interface StartWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The name of source control. */
-  sourceControlName: string;
+  /** The watcher name. */
+  watcherName: string;
 }
-export const SourceControlDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const StartWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    sourceControlName: S.String.pipe(T.Label()),
+    watcherName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}/start",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "SourceControlDeleteRequest",
-}) as any as S.Schema<SourceControlDeleteRequest>;
+  identifier: "StartWatcherRequest",
+}) as any as S.Schema<StartWatcherRequest>;
 
-export interface SourceControlDeleteResponse {}
-export const SourceControlDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface StartWatcherResponse {}
+export const StartWatcherResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "SourceControlDeleteResponse",
-}) as any as S.Schema<SourceControlDeleteResponse>;
+  identifier: "StartWatcherResponse",
+}) as any as S.Schema<StartWatcherResponse>;
 
-export interface SourceControlGetRequest {
+export interface StopJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The name of source control. */
-  sourceControlName: string;
+  /** The job name. */
+  jobName: string;
 }
-export const SourceControlGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const StopJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    sourceControlName: S.String.pipe(T.Label()),
+    jobName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/stop",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
+).annotate({ identifier: "StopJobRequest" }) as any as S.Schema<StopJobRequest>;
+
+export interface StopJobResponse {}
+export const StopJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "SourceControlGetRequest",
-}) as any as S.Schema<SourceControlGetRequest>;
+  identifier: "StopJobResponse",
+}) as any as S.Schema<StopJobResponse>;
 
-export interface SourceControlGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the source control. */
-  properties?: SourceControlProperties;
-}
-export const SourceControlGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SourceControlProperties),
-  }),
-).annotate({
-  identifier: "SourceControlGetResponse",
-}) as any as S.Schema<SourceControlGetResponse>;
-
-export interface SourceControlListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const SourceControlListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "SourceControlListByAutomationAccountRequest",
-  }) as any as S.Schema<SourceControlListByAutomationAccountRequest>;
-
-/** Definition of the source control. */
-export interface SourceControl {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the source control. */
-  properties?: SourceControlProperties;
-}
-export const SourceControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SourceControlProperties),
-  }),
-).annotate({ identifier: "SourceControl" }) as any as S.Schema<SourceControl>;
-
-/** The SourceControl items on this page */
-export type SourceControlListResultValueList = Array<SourceControl>;
-export const SourceControlListResultValueList = /*@__PURE__*/ S.Array(
-  SourceControl,
-) as any as S.Schema<SourceControlListResultValueList>;
-
-/** The response of a SourceControl list operation. */
-export interface SourceControlListResult {
-  /** The SourceControl items on this page */
-  value: SourceControlListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const SourceControlListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: SourceControlListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SourceControlListResult",
-}) as any as S.Schema<SourceControlListResult>;
-
-/** Definition of create source control sync job properties. */
-export interface SourceControlSyncJobCreateProperties {
-  /** The commit id of the source control sync job. If not syncing to a commitId, enter an empty string. */
-  commitId: string;
-}
-export const SourceControlSyncJobCreateProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      commitId: S.String,
-    }),
-).annotate({
-  identifier: "SourceControlSyncJobCreateProperties",
-}) as any as S.Schema<SourceControlSyncJobCreateProperties>;
-
-export interface SourceControlSyncJobCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of source control. */
-  sourceControlName: string;
-  /** The source control sync job id. */
-  sourceControlSyncJobId: string;
-  /** The properties of the source control sync job. */
-  properties: SourceControlSyncJobCreateProperties;
-}
-export const SourceControlSyncJobCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    sourceControlName: S.String.pipe(T.Label()),
-    sourceControlSyncJobId: S.String.pipe(T.Label()),
-    properties: SourceControlSyncJobCreateProperties,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "SourceControlSyncJobCreateRequest",
-}) as any as S.Schema<SourceControlSyncJobCreateRequest>;
-
-/** The provisioning state of the job. */
-export type ProvisioningState = "Completed" | "Failed" | "Running";
-export const ProvisioningState = /*@__PURE__*/ S.String;
-
-/** The sync type. */
-export type SyncType = "PartialSync" | "FullSync";
-export const SyncType = /*@__PURE__*/ S.String;
-
-/** Definition of source control sync job properties. */
-export interface SourceControlSyncJobProperties {
-  /** The source control sync job id. */
-  sourceControlSyncJobId?: string;
-  /** The creation time of the job. */
-  creationTime?: string;
-  /** The provisioning state of the job. */
-  provisioningState?: ProvisioningState;
-  /** The start time of the job. */
-  startTime?: string | null;
-  /** The end time of the job. */
-  endTime?: string | null;
-  /** The sync type. */
-  syncType?: SyncType;
-}
-export const SourceControlSyncJobProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceControlSyncJobId: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState),
-    startTime: S.optional(S.NullOr(S.String)),
-    endTime: S.optional(S.NullOr(S.String)),
-    syncType: S.optional(SyncType),
-  }),
-).annotate({
-  identifier: "SourceControlSyncJobProperties",
-}) as any as S.Schema<SourceControlSyncJobProperties>;
-
-/** Definition of the source control sync job. */
-export interface SourceControlSyncJob {
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  /** Resource id. */
-  id?: string;
-  /** The properties of the source control sync job. */
-  properties?: SourceControlSyncJobProperties;
-}
-export const SourceControlSyncJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    id: S.optional(S.String),
-    properties: S.optional(SourceControlSyncJobProperties),
-  }),
-).annotate({
-  identifier: "SourceControlSyncJob",
-}) as any as S.Schema<SourceControlSyncJob>;
-
-export interface SourceControlSyncJobGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of source control. */
-  sourceControlName: string;
-  /** The source control sync job id. */
-  sourceControlSyncJobId: string;
-}
-export const SourceControlSyncJobGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    sourceControlName: S.String.pipe(T.Label()),
-    sourceControlSyncJobId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "SourceControlSyncJobGetRequest",
-}) as any as S.Schema<SourceControlSyncJobGetRequest>;
-
-/** Definition of source control sync job properties. */
-export interface SourceControlSyncJobByIdProperties {
-  /** The source control sync job id. */
-  sourceControlSyncJobId?: string;
-  /** The creation time of the job. */
-  creationTime?: string;
-  /** The provisioning state of the job. */
-  provisioningState?: ProvisioningState;
-  /** The start time of the job. */
-  startTime?: string | null;
-  /** The end time of the job. */
-  endTime?: string | null;
-  /** The sync type. */
-  syncType?: SyncType;
-  /** The exceptions that occurred while running the sync job. */
-  exception?: string;
-}
-export const SourceControlSyncJobByIdProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceControlSyncJobId: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState),
-    startTime: S.optional(S.NullOr(S.String)),
-    endTime: S.optional(S.NullOr(S.String)),
-    syncType: S.optional(SyncType),
-    exception: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SourceControlSyncJobByIdProperties",
-}) as any as S.Schema<SourceControlSyncJobByIdProperties>;
-
-/** Definition of the source control sync job. */
-export interface SourceControlSyncJobById {
-  /** The id of the job. */
-  id?: string;
-  /** The properties of the source control sync job. */
-  properties?: SourceControlSyncJobByIdProperties;
-}
-export const SourceControlSyncJobById = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    properties: S.optional(SourceControlSyncJobByIdProperties),
-  }),
-).annotate({
-  identifier: "SourceControlSyncJobById",
-}) as any as S.Schema<SourceControlSyncJobById>;
-
-export interface SourceControlSyncJobListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of source control. */
-  sourceControlName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const SourceControlSyncJobListByAutomationAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      sourceControlName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "SourceControlSyncJobListByAutomationAccountRequest",
-  }) as any as S.Schema<SourceControlSyncJobListByAutomationAccountRequest>;
-
-/** The SourceControlSyncJob items on this page */
-export type SourceControlSyncJobListResultValueList =
-  Array<SourceControlSyncJob>;
-export const SourceControlSyncJobListResultValueList = /*@__PURE__*/ S.Array(
-  SourceControlSyncJob,
-) as any as S.Schema<SourceControlSyncJobListResultValueList>;
-
-/** The response of a SourceControlSyncJob list operation. */
-export interface SourceControlSyncJobListResult {
-  /** The SourceControlSyncJob items on this page */
-  value: SourceControlSyncJobListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const SourceControlSyncJobListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: SourceControlSyncJobListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SourceControlSyncJobListResult",
-}) as any as S.Schema<SourceControlSyncJobListResult>;
-
-export interface SourceControlSyncJobStreamsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of source control. */
-  sourceControlName: string;
-  /** The source control sync job id. */
-  sourceControlSyncJobId: string;
-  /** The id of the sync job stream. */
-  streamId: string;
-}
-export const SourceControlSyncJobStreamsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      sourceControlName: S.String.pipe(T.Label()),
-      sourceControlSyncJobId: S.String.pipe(T.Label()),
-      streamId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams/{streamId}",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "SourceControlSyncJobStreamsGetRequest",
-}) as any as S.Schema<SourceControlSyncJobStreamsGetRequest>;
-
-/** The type of the sync job stream. */
-export type StreamType = "Error" | "Output";
-export const StreamType = /*@__PURE__*/ S.String;
-
-/** The values of the job stream. */
-export type SourceControlSyncJobStreamByIdPropertiesValueMap = {
-  [key: string]: unknown | undefined;
-};
-export const SourceControlSyncJobStreamByIdPropertiesValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SourceControlSyncJobStreamByIdPropertiesValueMap>;
-
-/** Definition of source control sync job stream by id properties. */
-export interface SourceControlSyncJobStreamByIdProperties {
-  /** The sync job stream id. */
-  sourceControlSyncJobStreamId?: string;
-  /** The summary of the sync job stream. */
-  summary?: string;
-  /** The time of the sync job stream. */
-  time?: string | null;
-  /** The type of the sync job stream. */
-  streamType?: StreamType;
-  /** The text of the sync job stream. */
-  streamText?: string;
-  /** The values of the job stream. */
-  value?: SourceControlSyncJobStreamByIdPropertiesValueMap;
-}
-export const SourceControlSyncJobStreamByIdProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sourceControlSyncJobStreamId: S.optional(S.String),
-      summary: S.optional(S.String),
-      time: S.optional(S.NullOr(S.String)),
-      streamType: S.optional(StreamType),
-      streamText: S.optional(S.String),
-      value: S.optional(SourceControlSyncJobStreamByIdPropertiesValueMap),
-    }),
-).annotate({
-  identifier: "SourceControlSyncJobStreamByIdProperties",
-}) as any as S.Schema<SourceControlSyncJobStreamByIdProperties>;
-
-/** Definition of the source control sync job stream by id. */
-export interface SourceControlSyncJobStreamById {
-  /** Resource id. */
-  id?: string;
-  /** The properties of the source control sync job stream. */
-  properties?: SourceControlSyncJobStreamByIdProperties;
-}
-export const SourceControlSyncJobStreamById = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    properties: S.optional(SourceControlSyncJobStreamByIdProperties),
-  }),
-).annotate({
-  identifier: "SourceControlSyncJobStreamById",
-}) as any as S.Schema<SourceControlSyncJobStreamById>;
-
-export interface SourceControlSyncJobStreamsListBySyncJobRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of source control. */
-  sourceControlName: string;
-  /** The source control sync job id. */
-  sourceControlSyncJobId: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const SourceControlSyncJobStreamsListBySyncJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      sourceControlName: S.String.pipe(T.Label()),
-      sourceControlSyncJobId: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-  ).annotate({
-    identifier: "SourceControlSyncJobStreamsListBySyncJobRequest",
-  }) as any as S.Schema<SourceControlSyncJobStreamsListBySyncJobRequest>;
-
-/** Definition of source control sync job stream properties. */
-export interface SourceControlSyncJobStreamProperties {
-  /** The sync job stream id. */
-  sourceControlSyncJobStreamId?: string;
-  /** The summary of the sync job stream. */
-  summary?: string;
-  /** The time of the sync job stream. */
-  time?: string | null;
-  /** The type of the sync job stream. */
-  streamType?: StreamType;
-}
-export const SourceControlSyncJobStreamProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sourceControlSyncJobStreamId: S.optional(S.String),
-      summary: S.optional(S.String),
-      time: S.optional(S.NullOr(S.String)),
-      streamType: S.optional(StreamType),
-    }),
-).annotate({
-  identifier: "SourceControlSyncJobStreamProperties",
-}) as any as S.Schema<SourceControlSyncJobStreamProperties>;
-
-/** Definition of the source control sync job stream. */
-export interface SourceControlSyncJobStream {
-  /** Resource id. */
-  id?: string;
-  /** The properties of the source control sync job stream. */
-  properties?: SourceControlSyncJobStreamProperties;
-}
-export const SourceControlSyncJobStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    properties: S.optional(SourceControlSyncJobStreamProperties),
-  }),
-).annotate({
-  identifier: "SourceControlSyncJobStream",
-}) as any as S.Schema<SourceControlSyncJobStream>;
-
-/** The SourceControlSyncJobStream items on this page */
-export type SourceControlSyncJobStreamsListBySyncJobValueList =
-  Array<SourceControlSyncJobStream>;
-export const SourceControlSyncJobStreamsListBySyncJobValueList =
-  /*@__PURE__*/ S.Array(
-    SourceControlSyncJobStream,
-  ) as any as S.Schema<SourceControlSyncJobStreamsListBySyncJobValueList>;
-
-/** The response model for the list source control sync job streams operation. */
-export interface SourceControlSyncJobStreamsListBySyncJob {
-  /** The SourceControlSyncJobStream items on this page */
-  value: SourceControlSyncJobStreamsListBySyncJobValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const SourceControlSyncJobStreamsListBySyncJob = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: SourceControlSyncJobStreamsListBySyncJobValueList,
-      nextLink: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SourceControlSyncJobStreamsListBySyncJob",
-}) as any as S.Schema<SourceControlSyncJobStreamsListBySyncJob>;
-
-/** The properties of the update source control */
-export interface SourceControlUpdateProperties {
-  /** The repo branch of the source control. */
-  branch?: string;
-  /** The folder path of the source control. Path must be relative. */
-  folderPath?: string;
-  /** The auto sync of the source control. Default is false. */
-  autoSync?: boolean;
-  /** The auto publish of the source control. Default is true. */
-  publishRunbook?: boolean;
-  /** The authorization token for the repo of the source control. */
-  securityToken?: SourceControlSecurityTokenProperties;
-  /** The user description of the source control. */
-  description?: string;
-}
-export const SourceControlUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.String),
-    folderPath: S.optional(S.String),
-    autoSync: S.optional(S.Boolean),
-    publishRunbook: S.optional(S.Boolean),
-    securityToken: S.optional(SourceControlSecurityTokenProperties),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SourceControlUpdateProperties",
-}) as any as S.Schema<SourceControlUpdateProperties>;
-
-export interface SourceControlUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of source control. */
-  sourceControlName: string;
-  /** The value of the source control. */
-  properties?: SourceControlUpdateProperties;
-}
-export const SourceControlUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    sourceControlName: S.String.pipe(T.Label()),
-    properties: S.optional(SourceControlUpdateProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "SourceControlUpdateRequest",
-}) as any as S.Schema<SourceControlUpdateRequest>;
-
-export interface SourceControlUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the source control. */
-  properties?: SourceControlProperties;
-}
-export const SourceControlUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SourceControlProperties),
-  }),
-).annotate({
-  identifier: "SourceControlUpdateResponse",
-}) as any as S.Schema<SourceControlUpdateResponse>;
-
-export interface StatisticsListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const StatisticsListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/statistics",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "StatisticsListByAutomationAccountRequest",
-}) as any as S.Schema<StatisticsListByAutomationAccountRequest>;
-
-/** Definition of the statistic. */
-export interface Statistics {
-  /** Gets the property value of the statistic. */
-  counterProperty?: string;
-  /** Gets the value of the statistic. */
-  counterValue?: number;
-  /** Gets the startTime of the statistic. */
-  startTime?: string;
-  /** Gets the endTime of the statistic. */
-  endTime?: string | null;
-  /** Gets the id. */
-  id?: string;
-}
-export const Statistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    counterProperty: S.optional(S.String),
-    counterValue: S.optional(S.Number),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.NullOr(S.String)),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "Statistics" }) as any as S.Schema<Statistics>;
-
-/** Gets or sets a list of statistics. */
-export type StatisticsListResultValueList = Array<Statistics>;
-export const StatisticsListResultValueList = /*@__PURE__*/ S.Array(
-  Statistics,
-) as any as S.Schema<StatisticsListResultValueList>;
-
-/** The response model for the list statistics operation. */
-export interface StatisticsListResult {
-  /** Gets or sets a list of statistics. */
-  value?: StatisticsListResultValueList;
-  nextLink?: string;
-}
-export const StatisticsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(StatisticsListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StatisticsListResult",
-}) as any as S.Schema<StatisticsListResult>;
-
-/** Gets or sets the parameters of the test job. */
-export type TestJobCreateRequestParametersMap = {
-  [key: string]: string | undefined;
-};
-export const TestJobCreateRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TestJobCreateRequestParametersMap>;
-
-export interface TestJobCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
-  /** Gets or sets the parameters of the test job. */
-  parameters?: TestJobCreateRequestParametersMap;
-  /** Gets or sets the runOn which specifies the group name where the job is to be executed. */
-  runOn?: string;
-  /** The runtime Environment Name on which job needs to be tested */
-  runtimeEnvironment?: string;
-}
-export const TestJobCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
-    parameters: S.optional(TestJobCreateRequestParametersMap),
-    runOn: S.optional(S.String),
-    runtimeEnvironment: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "TestJobCreateRequest",
-}) as any as S.Schema<TestJobCreateRequest>;
-
-/** Gets or sets the parameters of the test job. */
-export type TestJobParametersMap = { [key: string]: string | undefined };
-export const TestJobParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TestJobParametersMap>;
-
-/** Definition of the test job. */
-export interface TestJob {
-  /** Gets or sets the creation time of the test job. */
-  creationTime?: string;
-  /** Gets or sets the status of the test job. */
-  status?: string;
-  /** Gets or sets the status details of the test job. */
-  statusDetails?: string;
-  /** Gets or sets the runOn which specifies the group name where the job is to be executed. */
-  runOn?: string;
-  /** Gets or sets the start time of the test job. */
-  startTime?: string | null;
-  /** Gets or sets the end time of the test job. */
-  endTime?: string | null;
-  /** Gets or sets the exception of the test job. */
-  exception?: string;
-  /** Gets or sets the last modified time of the test job. */
-  lastModifiedTime?: string;
-  /** Gets or sets the last status modified time of the test job. */
-  lastStatusModifiedTime?: string | null;
-  /** Gets or sets the parameters of the test job. */
-  parameters?: TestJobParametersMap;
-  /** The activity-level tracing options of the runbook. */
-  logActivityTrace?: number;
-}
-export const TestJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTime: S.optional(S.String),
-    status: S.optional(S.String),
-    statusDetails: S.optional(S.String),
-    runOn: S.optional(S.String),
-    startTime: S.optional(S.NullOr(S.String)),
-    endTime: S.optional(S.NullOr(S.String)),
-    exception: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-    lastStatusModifiedTime: S.optional(S.NullOr(S.String)),
-    parameters: S.optional(TestJobParametersMap),
-    logActivityTrace: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TestJob" }) as any as S.Schema<TestJob>;
-
-export interface TestJobGetRequest {
+export interface StopTestJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -12326,7 +11871,7 @@ export interface TestJobGetRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const TestJobGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const StopTestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12334,15 +11879,127 @@ export const TestJobGetRequest = /*@__PURE__*/ S.suspend(() =>
     runbookName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/stop",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "TestJobGetRequest",
-}) as any as S.Schema<TestJobGetRequest>;
+  identifier: "StopTestJobRequest",
+}) as any as S.Schema<StopTestJobRequest>;
+
+export interface StopTestJobResponse {}
+export const StopTestJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StopTestJobResponse",
+}) as any as S.Schema<StopTestJobResponse>;
+
+export interface StopWatcherRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The watcher name. */
+  watcherName: string;
+}
+export const StopWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    watcherName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}/stop",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "StopWatcherRequest",
+}) as any as S.Schema<StopWatcherRequest>;
+
+export interface StopWatcherResponse {}
+export const StopWatcherResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StopWatcherResponse",
+}) as any as S.Schema<StopWatcherResponse>;
+
+export interface SuspendJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The job name. */
+  jobName: string;
+}
+export const SuspendJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    jobName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/suspend",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "SuspendJobRequest",
+}) as any as S.Schema<SuspendJobRequest>;
+
+export interface SuspendJobResponse {}
+export const SuspendJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SuspendJobResponse",
+}) as any as S.Schema<SuspendJobResponse>;
+
+export interface SuspendTestJobRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+}
+export const SuspendTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/suspend",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "SuspendTestJobRequest",
+}) as any as S.Schema<SuspendTestJobRequest>;
+
+export interface SuspendTestJobResponse {}
+export const SuspendTestJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SuspendTestJobResponse",
+}) as any as S.Schema<SuspendTestJobResponse>;
 
 export interface TestJobResumeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12379,226 +12036,1556 @@ export const TestJobResumeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestJobResumeResponse",
 }) as any as S.Schema<TestJobResumeResponse>;
 
-export interface TestJobStopRequest {
+/** The parameters supplied to the update account properties. */
+export type AutomationAccountUpdateProperties =
+  AutomationAccountCreateOrUpdateProperties;
+export const AutomationAccountUpdateProperties =
+  AutomationAccountCreateOrUpdateProperties;
+
+/** Gets or sets the tags attached to the resource. */
+export type AutomationAccountUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutomationAccountUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutomationAccountUpdateRequestTagsMap>;
+
+export interface UpdateAutomationAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
+  /** Gets or sets account update properties. */
+  properties?: AutomationAccountCreateOrUpdateProperties;
+  /** Gets or sets the name of the resource. */
+  name?: string;
+  /** Gets or sets the location of the resource. */
+  location?: string;
+  /** Sets the identity property for automation account */
+  identity?: IdentityInput;
+  /** Gets or sets the tags attached to the resource. */
+  tags?: AutomationAccountUpdateRequestTagsMap;
 }
-export const TestJobStopRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
+    properties: S.optional(AutomationAccountCreateOrUpdateProperties),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    identity: S.optional(IdentityInput),
+    tags: S.optional(AutomationAccountUpdateRequestTagsMap),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/stop",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "TestJobStopRequest",
-}) as any as S.Schema<TestJobStopRequest>;
+  identifier: "UpdateAutomationAccountRequest",
+}) as any as S.Schema<UpdateAutomationAccountRequest>;
 
-export interface TestJobStopResponse {}
-export const TestJobStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+/** Resource tags. */
+export type AutomationAccountUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutomationAccountUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutomationAccountUpdateResponseTagsMap>;
+
+export interface UpdateAutomationAccountResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AutomationAccountUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the automation account properties. */
+  properties?: AutomationAccountProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+  /** Identity for the resource. */
+  identity?: Identity;
+}
+export const UpdateAutomationAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AutomationAccountUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(AutomationAccountProperties),
+    etag: S.optional(S.String),
+    identity: S.optional(Identity),
+  }),
 ).annotate({
-  identifier: "TestJobStopResponse",
-}) as any as S.Schema<TestJobStopResponse>;
+  identifier: "UpdateAutomationAccountResponse",
+}) as any as S.Schema<UpdateAutomationAccountResponse>;
 
-export interface TestJobStreamsGetRequest {
+/** The properties of the update certificate operation */
+export interface CertificateUpdateProperties {
+  /** Gets or sets the description of the certificate. */
+  description?: string;
+}
+export const CertificateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificateUpdateProperties",
+}) as any as S.Schema<CertificateUpdateProperties>;
+
+export interface UpdateCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
-  /** The job stream id. */
-  jobStreamId: string;
+  /** The name of certificate. */
+  certificateName: string;
+  /** Gets or sets the name of the certificate. */
+  name?: string;
+  /** Gets or sets the properties of the certificate. */
+  properties?: CertificateUpdateProperties;
 }
-export const TestJobStreamsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
-    jobStreamId: S.String.pipe(T.Label()),
+    certificateName: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    properties: S.optional(CertificateUpdateProperties),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams/{jobStreamId}",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "TestJobStreamsGetRequest",
-}) as any as S.Schema<TestJobStreamsGetRequest>;
+  identifier: "UpdateCertificateRequest",
+}) as any as S.Schema<UpdateCertificateRequest>;
 
-export interface TestJobStreamsListByTestJobRequest {
+export interface UpdateCertificateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the certificate. */
+  properties?: CertificateProperties;
+}
+export const UpdateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CertificateProperties),
+  }),
+).annotate({
+  identifier: "UpdateCertificateResponse",
+}) as any as S.Schema<UpdateCertificateResponse>;
+
+/** Gets or sets the field definition values of the connection. */
+export type ConnectionUpdatePropertiesFieldDefinitionValuesMap = {
+  [key: string]: string | undefined;
+};
+export const ConnectionUpdatePropertiesFieldDefinitionValuesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConnectionUpdatePropertiesFieldDefinitionValuesMap>;
+
+/** The properties of the update connection operation. */
+export interface ConnectionUpdateProperties {
+  /** Gets or sets the description of the connection. */
+  description?: string;
+  /** Gets or sets the field definition values of the connection. */
+  fieldDefinitionValues?: ConnectionUpdatePropertiesFieldDefinitionValuesMap;
+}
+export const ConnectionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    fieldDefinitionValues: S.optional(
+      ConnectionUpdatePropertiesFieldDefinitionValuesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ConnectionUpdateProperties",
+}) as any as S.Schema<ConnectionUpdateProperties>;
+
+export interface UpdateConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
+  /** The name of connection. */
+  connectionName: string;
+  /** Gets or sets the name of the connection. */
+  name?: string;
+  /** Gets or sets the properties of the connection. */
+  properties?: ConnectionUpdateProperties;
 }
-export const TestJobStreamsListByTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    connectionName: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    properties: S.optional(ConnectionUpdateProperties),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "TestJobStreamsListByTestJobRequest",
-}) as any as S.Schema<TestJobStreamsListByTestJobRequest>;
+  identifier: "UpdateConnectionRequest",
+}) as any as S.Schema<UpdateConnectionRequest>;
 
-export interface TestJobSuspendRequest {
+export interface UpdateConnectionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the connection. */
+  properties?: ConnectionProperties;
+}
+export const UpdateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ConnectionProperties),
+  }),
+).annotate({
+  identifier: "UpdateConnectionResponse",
+}) as any as S.Schema<UpdateConnectionResponse>;
+
+/** The properties of the Update credential */
+export interface CredentialUpdateProperties {
+  /** Gets or sets the user name of the credential. */
+  userName?: string;
+  /** Gets or sets the password of the credential. */
+  password?: string | Redacted.Redacted<string>;
+  /** Gets or sets the description of the credential. */
+  description?: string;
+}
+export const CredentialUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userName: S.optional(S.String),
+    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CredentialUpdateProperties",
+}) as any as S.Schema<CredentialUpdateProperties>;
+
+export interface UpdateCredentialRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
-  /** The runbook name. */
-  runbookName: string;
+  /** The name of credential. */
+  credentialName: string;
+  /** Gets or sets the name of the credential. */
+  name?: string;
+  /** Gets or sets the properties of the variable. */
+  properties?: CredentialUpdateProperties;
 }
-export const TestJobSuspendRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    runbookName: S.String.pipe(T.Label()),
+    credentialName: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    properties: S.optional(CredentialUpdateProperties),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/suspend",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
       code: 200,
       apiVersion: "2024-10-23",
     }),
   ),
 ).annotate({
-  identifier: "TestJobSuspendRequest",
-}) as any as S.Schema<TestJobSuspendRequest>;
+  identifier: "UpdateCredentialRequest",
+}) as any as S.Schema<UpdateCredentialRequest>;
 
-export interface TestJobSuspendResponse {}
-export const TestJobSuspendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+export interface UpdateCredentialResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the credential. */
+  properties?: CredentialProperties;
+}
+export const UpdateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CredentialProperties),
+  }),
 ).annotate({
-  identifier: "TestJobSuspendResponse",
-}) as any as S.Schema<TestJobSuspendResponse>;
+  identifier: "UpdateCredentialResponse",
+}) as any as S.Schema<UpdateCredentialResponse>;
 
-export interface UsagesListByAutomationAccountRequest {
+/** Gets or sets the tags attached to the resource. */
+export type DscConfigurationUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DscConfigurationUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DscConfigurationUpdateRequestTagsMap>;
+
+export interface UpdateDscConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The name of the automation account. */
   automationAccountName: string;
+  /** The configuration name. */
+  configurationName: string;
+  /** Gets or sets configuration create or update properties. */
+  properties?: DscConfigurationCreateOrUpdateProperties;
+  /** Gets or sets name of the resource. */
+  name?: string;
+  /** Gets or sets the tags attached to the resource. */
+  tags?: DscConfigurationUpdateRequestTagsMap;
 }
-export const UsagesListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
+export const UpdateDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    configurationName: S.String.pipe(T.Label()),
+    properties: S.optional(DscConfigurationCreateOrUpdateProperties),
+    name: S.optional(S.String),
+    tags: S.optional(DscConfigurationUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateDscConfigurationRequest",
+}) as any as S.Schema<UpdateDscConfigurationRequest>;
+
+/** Resource tags. */
+export type DscConfigurationUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DscConfigurationUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DscConfigurationUpdateResponseTagsMap>;
+
+export interface UpdateDscConfigurationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DscConfigurationUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the configuration properties. */
+  properties?: DscConfigurationProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const UpdateDscConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(DscConfigurationUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(DscConfigurationProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateDscConfigurationResponse",
+}) as any as S.Schema<UpdateDscConfigurationResponse>;
+
+export interface DscNodeUpdateParametersProperties {
+  /** Gets or sets the configuration of the node. */
+  nodeConfiguration?: DscNodeConfigurationAssociationProperty;
+}
+export const DscNodeUpdateParametersProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeConfiguration: S.optional(DscNodeConfigurationAssociationProperty),
+  }),
+).annotate({
+  identifier: "DscNodeUpdateParametersProperties",
+}) as any as S.Schema<DscNodeUpdateParametersProperties>;
+
+export interface UpdateDscNodeRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The node id. */
+  nodeId: string;
+  properties?: DscNodeUpdateParametersProperties;
+}
+export const UpdateDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    nodeId: S.String.pipe(T.Label()),
+    properties: S.optional(DscNodeUpdateParametersProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateDscNodeRequest",
+}) as any as S.Schema<UpdateDscNodeRequest>;
+
+export interface UpdateDscNodeResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of a DscNode. */
+  properties?: DscNodeProperties;
+}
+export const UpdateDscNodeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DscNodeProperties),
+  }),
+).annotate({
+  identifier: "UpdateDscNodeResponse",
+}) as any as S.Schema<UpdateDscNodeResponse>;
+
+export interface UpdateHybridRunbookWorkerGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The hybrid runbook worker group name */
+  hybridRunbookWorkerGroupName: string;
+  /** Gets or sets hybrid runbook worker group create or update properties. */
+  properties?: HybridRunbookWorkerGroupCreateOrUpdateProperties;
+  /** Gets or sets the name of the resource. */
+  name?: string;
+}
+export const UpdateHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       automationAccountName: S.String.pipe(T.Label()),
+      hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+      properties: S.optional(HybridRunbookWorkerGroupCreateOrUpdateProperties),
+      name: S.optional(S.String),
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/usages",
+        method: "PATCH",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
         code: 200,
         apiVersion: "2024-10-23",
       }),
     ),
 ).annotate({
-  identifier: "UsagesListByAutomationAccountRequest",
-}) as any as S.Schema<UsagesListByAutomationAccountRequest>;
+  identifier: "UpdateHybridRunbookWorkerGroupRequest",
+}) as any as S.Schema<UpdateHybridRunbookWorkerGroupRequest>;
 
-/** Definition of usage counter name. */
-export interface UsageCounterName {
-  /** Gets or sets the usage counter name. */
-  value?: string;
-  /** Gets or sets the localized usage counter name. */
-  localizedValue?: string;
+/** Resource tags. */
+export type HybridRunbookWorkerGroupUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HybridRunbookWorkerGroupUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<HybridRunbookWorkerGroupUpdateResponseTagsMap>;
+
+export interface UpdateHybridRunbookWorkerGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: HybridRunbookWorkerGroupUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the hybrid worker group properties. */
+  properties?: HybridRunbookWorkerGroupProperties;
 }
-export const UsageCounterName = /*@__PURE__*/ S.suspend(() =>
+export const UpdateHybridRunbookWorkerGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(HybridRunbookWorkerGroupUpdateResponseTagsMap),
+      location: S.String,
+      properties: S.optional(HybridRunbookWorkerGroupProperties),
+    }),
+).annotate({
+  identifier: "UpdateHybridRunbookWorkerGroupResponse",
+}) as any as S.Schema<UpdateHybridRunbookWorkerGroupResponse>;
+
+/** The parameters supplied to the update properties. */
+export interface ModuleUpdateProperties {
+  /** Gets or sets the module content link. */
+  contentLink?: ContentLink;
+}
+export const ModuleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: S.optional(S.String),
-    localizedValue: S.optional(S.String),
+    contentLink: S.optional(ContentLink),
   }),
 ).annotate({
-  identifier: "UsageCounterName",
-}) as any as S.Schema<UsageCounterName>;
+  identifier: "ModuleUpdateProperties",
+}) as any as S.Schema<ModuleUpdateProperties>;
 
-/** Definition of Usage. */
-export interface Usage {
-  /** Gets or sets the id of the resource. */
-  id?: string;
-  /** Gets or sets the usage counter name. */
-  name?: UsageCounterName;
-  /** Gets or sets the usage unit name. */
-  unit?: string;
-  /** Gets or sets the current usage value. */
-  currentValue?: number;
-  /** Gets or sets max limit. -1 for unlimited */
-  limit?: number;
-  /** Gets or sets the throttle status. */
-  throttleStatus?: string;
+/** Gets or sets the tags attached to the resource. */
+export type ModuleUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const ModuleUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ModuleUpdateRequestTagsMap>;
+
+export interface UpdateModuleRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The module name. */
+  moduleName: string;
+  /** Gets or sets the module update properties. */
+  properties?: ModuleUpdateProperties;
+  /** Gets or sets the tags attached to the resource. */
+  tags?: ModuleUpdateRequestTagsMap;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+export const UpdateModuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    moduleName: S.String.pipe(T.Label()),
+    properties: S.optional(ModuleUpdateProperties),
+    tags: S.optional(ModuleUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateModuleRequest",
+}) as any as S.Schema<UpdateModuleRequest>;
+
+/** Resource tags. */
+export type ModuleUpdateResponseTagsMap = { [key: string]: string | undefined };
+export const ModuleUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ModuleUpdateResponseTagsMap>;
+
+export interface UpdateModuleResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ModuleUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the module properties. */
+  properties?: ModuleProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const UpdateModuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    name: S.optional(UsageCounterName),
-    unit: S.optional(S.String),
-    currentValue: S.optional(S.Number),
-    limit: S.optional(S.Number),
-    throttleStatus: S.optional(S.String),
-  }),
-).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
-
-/** Gets or sets usage. */
-export type UsageListResultValueList = Array<Usage>;
-export const UsageListResultValueList = /*@__PURE__*/ S.Array(
-  Usage,
-) as any as S.Schema<UsageListResultValueList>;
-
-/** The response model for the get usage operation. */
-export interface UsageListResult {
-  /** Gets or sets usage. */
-  value?: UsageListResultValueList;
-  nextLink?: string;
-}
-export const UsageListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UsageListResultValueList),
-    nextLink: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ModuleUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ModuleProperties),
+    etag: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "UsageListResult",
-}) as any as S.Schema<UsageListResult>;
+  identifier: "UpdateModuleResponse",
+}) as any as S.Schema<UpdateModuleResponse>;
+
+/** The parameters supplied to the update properties. */
+export interface PackageUpdateProperties {
+  /** Gets or sets the package content link. */
+  contentLink?: ContentLink;
+}
+export const PackageUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentLink: S.optional(ContentLink),
+  }),
+).annotate({
+  identifier: "PackageUpdateProperties",
+}) as any as S.Schema<PackageUpdateProperties>;
+
+/** Resource tags. */
+export type PackageUpdateRequestAllOfTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PackageUpdateRequestAllOfTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PackageUpdateRequestAllOfTagsMap>;
+
+/** The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location' */
+export interface PackageUpdateRequestAllOf {
+  /** Resource tags. */
+  tags?: PackageUpdateRequestAllOfTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+}
+export const PackageUpdateRequestAllOf = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tags: S.optional(PackageUpdateRequestAllOfTagsMap),
+    location: S.String,
+  }),
+).annotate({
+  identifier: "PackageUpdateRequestAllOf",
+}) as any as S.Schema<PackageUpdateRequestAllOf>;
+
+export interface UpdatePackageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the Runtime Environment. */
+  runtimeEnvironmentName: string;
+  /** The Package name. */
+  packageName: string;
+  /** Gets or sets the package update properties. */
+  properties?: PackageUpdateProperties;
+  /** The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location' */
+  allOf?: PackageUpdateRequestAllOf;
+}
+export const UpdatePackageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runtimeEnvironmentName: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+    properties: S.optional(PackageUpdateProperties),
+    allOf: S.optional(PackageUpdateRequestAllOf),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePackageRequest",
+}) as any as S.Schema<UpdatePackageRequest>;
+
+/** Resource tags. */
+export type PackageUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PackageUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PackageUpdateResponseTagsMap>;
+
+export interface UpdatePackageResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: PackageUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the Package properties. */
+  properties?: PackageProperties;
+}
+export const UpdatePackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(PackageUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(PackageProperties),
+  }),
+).annotate({
+  identifier: "UpdatePackageResponse",
+}) as any as S.Schema<UpdatePackageResponse>;
+
+/** Gets or sets the tags attached to the resource. */
+export type Python2PackageUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const Python2PackageUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<Python2PackageUpdateRequestTagsMap>;
+
+export interface UpdatePython2PackageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The python package name. */
+  packageName: string;
+  /** Gets or sets the tags attached to the resource. */
+  tags?: Python2PackageUpdateRequestTagsMap;
+}
+export const UpdatePython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+    tags: S.optional(Python2PackageUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePython2PackageRequest",
+}) as any as S.Schema<UpdatePython2PackageRequest>;
+
+/** Resource tags. */
+export type Python2PackageUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const Python2PackageUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<Python2PackageUpdateResponseTagsMap>;
+
+export interface UpdatePython2PackageResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: Python2PackageUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the module properties. */
+  properties?: ModuleProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const UpdatePython2PackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(Python2PackageUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ModuleProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdatePython2PackageResponse",
+}) as any as S.Schema<UpdatePython2PackageResponse>;
+
+/** Gets or sets the tags attached to the resource. */
+export type Python3PackageUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const Python3PackageUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<Python3PackageUpdateRequestTagsMap>;
+
+export interface UpdatePython3PackageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The python package name. */
+  packageName: string;
+  /** Gets or sets the tags attached to the resource. */
+  tags?: Python3PackageUpdateRequestTagsMap;
+}
+export const UpdatePython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+    tags: S.optional(Python3PackageUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePython3PackageRequest",
+}) as any as S.Schema<UpdatePython3PackageRequest>;
+
+/** Resource tags. */
+export type Python3PackageUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const Python3PackageUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<Python3PackageUpdateResponseTagsMap>;
+
+export interface UpdatePython3PackageResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: Python3PackageUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the module properties. */
+  properties?: ModuleProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const UpdatePython3PackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(Python3PackageUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ModuleProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdatePython3PackageResponse",
+}) as any as S.Schema<UpdatePython3PackageResponse>;
+
+/** The parameters supplied to the update runbook properties. */
+export interface RunbookUpdateProperties {
+  /** Gets or sets the description of the runbook. */
+  description?: string;
+  /** Gets or sets verbose log option. */
+  logVerbose?: boolean;
+  /** Gets or sets progress log option. */
+  logProgress?: boolean;
+  /** Gets or sets the activity-level tracing options of the runbook. */
+  logActivityTrace?: number;
+}
+export const RunbookUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    logVerbose: S.optional(S.Boolean),
+    logProgress: S.optional(S.Boolean),
+    logActivityTrace: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RunbookUpdateProperties",
+}) as any as S.Schema<RunbookUpdateProperties>;
+
+/** Gets or sets the tags attached to the resource. */
+export type RunbookUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const RunbookUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RunbookUpdateRequestTagsMap>;
+
+export interface UpdateRunbookRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The runbook name. */
+  runbookName: string;
+  /** Gets or sets the runbook update properties. */
+  properties?: RunbookUpdateProperties;
+  /** Gets or sets the name of the resource. */
+  name?: string;
+  /** Gets or sets the location of the resource. */
+  location?: string;
+  /** Gets or sets the tags attached to the resource. */
+  tags?: RunbookUpdateRequestTagsMap;
+}
+export const UpdateRunbookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runbookName: S.String.pipe(T.Label()),
+    properties: S.optional(RunbookUpdateProperties),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    tags: S.optional(RunbookUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateRunbookRequest",
+}) as any as S.Schema<UpdateRunbookRequest>;
+
+/** Resource tags. */
+export type RunbookUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RunbookUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RunbookUpdateResponseTagsMap>;
+
+export interface UpdateRunbookResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: RunbookUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the runbook properties. */
+  properties?: RunbookProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+}
+export const UpdateRunbookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(RunbookUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(RunbookProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateRunbookResponse",
+}) as any as S.Schema<UpdateRunbookResponse>;
+
+/** List of Default packages for Environment */
+export type RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap = {
+  [key: string]: string | undefined;
+};
+export const RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap>;
+
+/** Gets or sets Runtime update properties. */
+export interface RuntimeEnvironmentUpdateProperties {
+  /** List of Default packages for Environment */
+  defaultPackages?: RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap;
+}
+export const RuntimeEnvironmentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPackages: S.optional(
+      RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap,
+    ),
+  }),
+).annotate({
+  identifier: "RuntimeEnvironmentUpdateProperties",
+}) as any as S.Schema<RuntimeEnvironmentUpdateProperties>;
+
+export interface UpdateRuntimeEnvironmentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of the Runtime Environment. */
+  runtimeEnvironmentName: string;
+  /** Gets or sets Runtime update properties. */
+  properties?: RuntimeEnvironmentUpdateProperties;
+}
+export const UpdateRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    runtimeEnvironmentName: S.String.pipe(T.Label()),
+    properties: S.optional(RuntimeEnvironmentUpdateProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateRuntimeEnvironmentRequest",
+}) as any as S.Schema<UpdateRuntimeEnvironmentRequest>;
+
+/** Resource tags. */
+export type RuntimeEnvironmentsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RuntimeEnvironmentsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RuntimeEnvironmentsUpdateResponseTagsMap>;
+
+export interface UpdateRuntimeEnvironmentResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: RuntimeEnvironmentsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Gets or sets the Runtime Environment properties. */
+  properties?: RuntimeEnvironmentProperties;
+}
+export const UpdateRuntimeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(RuntimeEnvironmentsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(RuntimeEnvironmentProperties),
+  }),
+).annotate({
+  identifier: "UpdateRuntimeEnvironmentResponse",
+}) as any as S.Schema<UpdateRuntimeEnvironmentResponse>;
+
+/** The parameters supplied to the update schedule operation. */
+export interface ScheduleUpdateProperties {
+  /** Gets or sets the description of the schedule. */
+  description?: string;
+  /** Gets or sets a value indicating whether this schedule is enabled. */
+  isEnabled?: boolean;
+}
+export const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    isEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ScheduleUpdateProperties",
+}) as any as S.Schema<ScheduleUpdateProperties>;
+
+export interface UpdateScheduleRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The schedule name. */
+  scheduleName: string;
+  /** Gets or sets the name of the Schedule. */
+  name?: string;
+  /** Gets or sets the list of schedule properties. */
+  properties?: ScheduleUpdateProperties;
+}
+export const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    scheduleName: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    properties: S.optional(ScheduleUpdateProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateScheduleRequest",
+}) as any as S.Schema<UpdateScheduleRequest>;
+
+export interface UpdateScheduleResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the schedule. */
+  properties?: ScheduleProperties;
+}
+export const UpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ScheduleProperties),
+  }),
+).annotate({
+  identifier: "UpdateScheduleResponse",
+}) as any as S.Schema<UpdateScheduleResponse>;
+
+/** The properties of the update source control */
+export interface SourceControlUpdateProperties {
+  /** The repo branch of the source control. */
+  branch?: string;
+  /** The folder path of the source control. Path must be relative. */
+  folderPath?: string;
+  /** The auto sync of the source control. Default is false. */
+  autoSync?: boolean;
+  /** The auto publish of the source control. Default is true. */
+  publishRunbook?: boolean;
+  /** The authorization token for the repo of the source control. */
+  securityToken?: SourceControlSecurityTokenProperties;
+  /** The user description of the source control. */
+  description?: string;
+}
+export const SourceControlUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.optional(S.String),
+    folderPath: S.optional(S.String),
+    autoSync: S.optional(S.Boolean),
+    publishRunbook: S.optional(S.Boolean),
+    securityToken: S.optional(SourceControlSecurityTokenProperties),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SourceControlUpdateProperties",
+}) as any as S.Schema<SourceControlUpdateProperties>;
+
+export interface UpdateSourceControlRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of source control. */
+  sourceControlName: string;
+  /** The value of the source control. */
+  properties?: SourceControlUpdateProperties;
+}
+export const UpdateSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    sourceControlName: S.String.pipe(T.Label()),
+    properties: S.optional(SourceControlUpdateProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSourceControlRequest",
+}) as any as S.Schema<UpdateSourceControlRequest>;
+
+export interface UpdateSourceControlResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the source control. */
+  properties?: SourceControlProperties;
+}
+export const UpdateSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SourceControlProperties),
+  }),
+).annotate({
+  identifier: "UpdateSourceControlResponse",
+}) as any as S.Schema<UpdateSourceControlResponse>;
+
+/** The properties of the update variable */
+export interface VariableUpdateProperties {
+  /** Gets or sets the value of the variable. */
+  value?: string;
+  /** Gets or sets the description of the variable. */
+  description?: string;
+}
+export const VariableUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VariableUpdateProperties",
+}) as any as S.Schema<VariableUpdateProperties>;
+
+export interface UpdateVariableRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The name of variable. */
+  variableName: string;
+  /** Gets or sets the name of the variable. */
+  name?: string;
+  /** Gets or sets the value of the variable. */
+  properties?: VariableUpdateProperties;
+}
+export const UpdateVariableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    variableName: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    properties: S.optional(VariableUpdateProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateVariableRequest",
+}) as any as S.Schema<UpdateVariableRequest>;
+
+export interface UpdateVariableResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the properties of the variable. */
+  properties?: VariableProperties;
+}
+export const UpdateVariableResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(VariableProperties),
+  }),
+).annotate({
+  identifier: "UpdateVariableResponse",
+}) as any as S.Schema<UpdateVariableResponse>;
+
+/** The properties of the update watcher operation. */
+export interface WatcherUpdateProperties {
+  /** Gets or sets the frequency at which the watcher is invoked. */
+  executionFrequencyInSeconds?: number;
+}
+export const WatcherUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionFrequencyInSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "WatcherUpdateProperties",
+}) as any as S.Schema<WatcherUpdateProperties>;
+
+export interface UpdateWatcherRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The watcher name. */
+  watcherName: string;
+  /** Gets or sets the watcher update properties. */
+  properties?: WatcherUpdateProperties;
+  /** Gets or sets the name of the resource. */
+  name?: string;
+}
+export const UpdateWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    watcherName: S.String.pipe(T.Label()),
+    properties: S.optional(WatcherUpdateProperties),
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateWatcherRequest",
+}) as any as S.Schema<UpdateWatcherRequest>;
+
+/** Resource tags. */
+export type WatcherUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WatcherUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WatcherUpdateResponseTagsMap>;
+
+export interface UpdateWatcherResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the watcher properties. */
+  properties?: WatcherProperties;
+  /** Gets or sets the etag of the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: WatcherUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+}
+export const UpdateWatcherResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(WatcherProperties),
+    etag: S.optional(S.String),
+    tags: S.optional(WatcherUpdateResponseTagsMap),
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateWatcherResponse",
+}) as any as S.Schema<UpdateWatcherResponse>;
+
+/** Gets or sets the parameters of the job. */
+export type WebhookUpdatePropertiesParametersMap = {
+  [key: string]: string | undefined;
+};
+export const WebhookUpdatePropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WebhookUpdatePropertiesParametersMap>;
+
+/** The properties of the update webhook. */
+export interface WebhookUpdateProperties {
+  /** Gets or sets the value of the enabled flag of webhook. */
+  isEnabled?: boolean;
+  /** Gets or sets the name of the hybrid worker group the webhook job will run on. */
+  runOn?: string;
+  /** Gets or sets the parameters of the job. */
+  parameters?: WebhookUpdatePropertiesParametersMap;
+  /** Gets or sets the description of the webhook. */
+  description?: string;
+}
+export const WebhookUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isEnabled: S.optional(S.Boolean),
+    runOn: S.optional(S.String),
+    parameters: S.optional(WebhookUpdatePropertiesParametersMap),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WebhookUpdateProperties",
+}) as any as S.Schema<WebhookUpdateProperties>;
+
+export interface UpdateWebhookRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the automation account. */
+  automationAccountName: string;
+  /** The webhook name. */
+  webhookName: string;
+  /** Gets or sets the name of the webhook. */
+  name?: string;
+  /** Gets or sets the value of the webhook. */
+  properties?: WebhookUpdateProperties;
+}
+export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    webhookName: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    properties: S.optional(WebhookUpdateProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateWebhookRequest",
+}) as any as S.Schema<UpdateWebhookRequest>;
+
+export interface UpdateWebhookResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Gets or sets the webhook properties. */
+  properties?: WebhookProperties;
+}
+export const UpdateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(WebhookProperties),
+  }),
+).annotate({
+  identifier: "UpdateWebhookResponse",
+}) as any as S.Schema<UpdateWebhookResponse>;
 
 /** The properties of the create variable operation. */
 export interface VariableCreateOrUpdateProperties {
@@ -12653,31 +13640,6 @@ export const VariableCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VariableCreateOrUpdateRequest",
 }) as any as S.Schema<VariableCreateOrUpdateRequest>;
 
-/** Definition of the variable properties */
-export interface VariableProperties {
-  /** Gets or sets the value of the variable. */
-  value?: string;
-  /** Gets or sets the encrypted flag of the variable. */
-  isEncrypted?: boolean | null;
-  /** Gets or sets the creation time. */
-  creationTime?: string;
-  /** Gets or sets the last modified time. */
-  lastModifiedTime?: string;
-  /** Gets or sets the description. */
-  description?: string;
-}
-export const VariableProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    isEncrypted: S.optional(S.NullOr(S.Boolean)),
-    creationTime: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VariableProperties",
-}) as any as S.Schema<VariableProperties>;
-
 export interface VariableCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -12701,238 +13663,6 @@ export const VariableCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VariableCreateOrUpdateResponse",
 }) as any as S.Schema<VariableCreateOrUpdateResponse>;
-
-export interface VariableDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of variable. */
-  variableName: string;
-}
-export const VariableDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    variableName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "VariableDeleteRequest",
-}) as any as S.Schema<VariableDeleteRequest>;
-
-export interface VariableDeleteResponse {}
-export const VariableDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VariableDeleteResponse",
-}) as any as S.Schema<VariableDeleteResponse>;
-
-export interface VariableGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of variable. */
-  variableName: string;
-}
-export const VariableGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    variableName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "VariableGetRequest",
-}) as any as S.Schema<VariableGetRequest>;
-
-export interface VariableGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the variable. */
-  properties?: VariableProperties;
-}
-export const VariableGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VariableProperties),
-  }),
-).annotate({
-  identifier: "VariableGetResponse",
-}) as any as S.Schema<VariableGetResponse>;
-
-export interface VariableListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const VariableListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "VariableListByAutomationAccountRequest",
-}) as any as S.Schema<VariableListByAutomationAccountRequest>;
-
-/** Definition of the variable. */
-export interface Variable {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the variable. */
-  properties?: VariableProperties;
-}
-export const Variable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VariableProperties),
-  }),
-).annotate({ identifier: "Variable" }) as any as S.Schema<Variable>;
-
-/** The Variable items on this page */
-export type VariableListResultValueList = Array<Variable>;
-export const VariableListResultValueList = /*@__PURE__*/ S.Array(
-  Variable,
-) as any as S.Schema<VariableListResultValueList>;
-
-/** The response of a Variable list operation. */
-export interface VariableListResult {
-  /** The Variable items on this page */
-  value: VariableListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const VariableListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: VariableListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VariableListResult",
-}) as any as S.Schema<VariableListResult>;
-
-/** The properties of the update variable */
-export interface VariableUpdateProperties {
-  /** Gets or sets the value of the variable. */
-  value?: string;
-  /** Gets or sets the description of the variable. */
-  description?: string;
-}
-export const VariableUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VariableUpdateProperties",
-}) as any as S.Schema<VariableUpdateProperties>;
-
-export interface VariableUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The name of variable. */
-  variableName: string;
-  /** Gets or sets the name of the variable. */
-  name?: string;
-  /** Gets or sets the value of the variable. */
-  properties?: VariableUpdateProperties;
-}
-export const VariableUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    variableName: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    properties: S.optional(VariableUpdateProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "VariableUpdateRequest",
-}) as any as S.Schema<VariableUpdateRequest>;
-
-export interface VariableUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the properties of the variable. */
-  properties?: VariableProperties;
-}
-export const VariableUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VariableProperties),
-  }),
-).annotate({
-  identifier: "VariableUpdateResponse",
-}) as any as S.Schema<VariableUpdateResponse>;
 
 /** Gets or sets the parameters of the script. */
 export type WatcherPropertiesInputScriptParametersMap = {
@@ -13017,52 +13747,6 @@ export const WatcherCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatcherCreateOrUpdateRequest",
 }) as any as S.Schema<WatcherCreateOrUpdateRequest>;
 
-/** Gets or sets the parameters of the script. */
-export type WatcherPropertiesScriptParametersMap = {
-  [key: string]: string | undefined;
-};
-export const WatcherPropertiesScriptParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WatcherPropertiesScriptParametersMap>;
-
-/** Definition of the watcher properties */
-export interface WatcherProperties {
-  /** Gets or sets the frequency at which the watcher is invoked. */
-  executionFrequencyInSeconds?: number;
-  /** Gets or sets the name of the script the watcher is attached to, i.e. the name of an existing runbook. */
-  scriptName?: string;
-  /** Gets or sets the parameters of the script. */
-  scriptParameters?: WatcherPropertiesScriptParametersMap;
-  /** Gets or sets the name of the hybrid worker group the watcher will run on. */
-  scriptRunOn?: string;
-  /** Gets the current status of the watcher. */
-  status?: string;
-  /** Gets or sets the creation time. */
-  creationTime?: string;
-  /** Gets or sets the last modified time. */
-  lastModifiedTime?: string;
-  /** Details of the user who last modified the watcher. */
-  lastModifiedBy?: string;
-  /** Gets or sets the description. */
-  description?: string;
-}
-export const WatcherProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionFrequencyInSeconds: S.optional(S.Number),
-    scriptName: S.optional(S.String),
-    scriptParameters: S.optional(WatcherPropertiesScriptParametersMap),
-    scriptRunOn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WatcherProperties",
-}) as any as S.Schema<WatcherProperties>;
-
 /** Resource tags. */
 export type WatcherCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -13104,358 +13788,6 @@ export const WatcherCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WatcherCreateOrUpdateResponse",
 }) as any as S.Schema<WatcherCreateOrUpdateResponse>;
-
-export interface WatcherDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The watcher name. */
-  watcherName: string;
-}
-export const WatcherDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    watcherName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "WatcherDeleteRequest",
-}) as any as S.Schema<WatcherDeleteRequest>;
-
-export interface WatcherDeleteResponse {}
-export const WatcherDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WatcherDeleteResponse",
-}) as any as S.Schema<WatcherDeleteResponse>;
-
-export interface WatcherGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The watcher name. */
-  watcherName: string;
-}
-export const WatcherGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    watcherName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "WatcherGetRequest",
-}) as any as S.Schema<WatcherGetRequest>;
-
-/** Resource tags. */
-export type WatcherGetResponseTagsMap = { [key: string]: string | undefined };
-export const WatcherGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WatcherGetResponseTagsMap>;
-
-export interface WatcherGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the watcher properties. */
-  properties?: WatcherProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: WatcherGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location?: string;
-}
-export const WatcherGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WatcherProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(WatcherGetResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WatcherGetResponse",
-}) as any as S.Schema<WatcherGetResponse>;
-
-export interface WatcherListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const WatcherListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "WatcherListByAutomationAccountRequest",
-}) as any as S.Schema<WatcherListByAutomationAccountRequest>;
-
-/** Resource tags. */
-export type WatcherTagsMap = { [key: string]: string | undefined };
-export const WatcherTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WatcherTagsMap>;
-
-/** Definition of the watcher type. */
-export interface Watcher {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the watcher properties. */
-  properties?: WatcherProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: WatcherTagsMap;
-  /** The geo-location where the resource lives */
-  location?: string;
-}
-export const Watcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WatcherProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(WatcherTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Watcher" }) as any as S.Schema<Watcher>;
-
-/** The Watcher items on this page */
-export type WatcherListResultValueList = Array<Watcher>;
-export const WatcherListResultValueList = /*@__PURE__*/ S.Array(
-  Watcher,
-) as any as S.Schema<WatcherListResultValueList>;
-
-/** The response of a Watcher list operation. */
-export interface WatcherListResult {
-  /** The Watcher items on this page */
-  value: WatcherListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const WatcherListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: WatcherListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WatcherListResult",
-}) as any as S.Schema<WatcherListResult>;
-
-export interface WatcherStartRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The watcher name. */
-  watcherName: string;
-}
-export const WatcherStartRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    watcherName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}/start",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "WatcherStartRequest",
-}) as any as S.Schema<WatcherStartRequest>;
-
-export interface WatcherStartResponse {}
-export const WatcherStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WatcherStartResponse",
-}) as any as S.Schema<WatcherStartResponse>;
-
-export interface WatcherStopRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The watcher name. */
-  watcherName: string;
-}
-export const WatcherStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    watcherName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}/stop",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "WatcherStopRequest",
-}) as any as S.Schema<WatcherStopRequest>;
-
-export interface WatcherStopResponse {}
-export const WatcherStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WatcherStopResponse",
-}) as any as S.Schema<WatcherStopResponse>;
-
-/** The properties of the update watcher operation. */
-export interface WatcherUpdateProperties {
-  /** Gets or sets the frequency at which the watcher is invoked. */
-  executionFrequencyInSeconds?: number;
-}
-export const WatcherUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionFrequencyInSeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WatcherUpdateProperties",
-}) as any as S.Schema<WatcherUpdateProperties>;
-
-export interface WatcherUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The watcher name. */
-  watcherName: string;
-  /** Gets or sets the watcher update properties. */
-  properties?: WatcherUpdateProperties;
-  /** Gets or sets the name of the resource. */
-  name?: string;
-}
-export const WatcherUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    watcherName: S.String.pipe(T.Label()),
-    properties: S.optional(WatcherUpdateProperties),
-    name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "WatcherUpdateRequest",
-}) as any as S.Schema<WatcherUpdateRequest>;
-
-/** Resource tags. */
-export type WatcherUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const WatcherUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WatcherUpdateResponseTagsMap>;
-
-export interface WatcherUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the watcher properties. */
-  properties?: WatcherProperties;
-  /** Gets or sets the etag of the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: WatcherUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location?: string;
-}
-export const WatcherUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WatcherProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(WatcherUpdateResponseTagsMap),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WatcherUpdateResponse",
-}) as any as S.Schema<WatcherUpdateResponse>;
 
 /** Gets or sets the parameters of the job. */
 export type WebhookCreateOrUpdatePropertiesParametersMap = {
@@ -13529,58 +13861,6 @@ export const WebhookCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebhookCreateOrUpdateRequest",
 }) as any as S.Schema<WebhookCreateOrUpdateRequest>;
 
-/** Gets or sets the parameters of the job that is created when the webhook calls the runbook it is associated with. */
-export type WebhookPropertiesParametersMap = {
-  [key: string]: string | undefined;
-};
-export const WebhookPropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebhookPropertiesParametersMap>;
-
-/** Definition of the webhook properties */
-export interface WebhookProperties {
-  /** Gets or sets the value of the enabled flag of the webhook. */
-  isEnabled?: boolean;
-  /** Gets or sets the webhook uri. */
-  uri?: string;
-  /** Gets or sets the expiry time. */
-  expiryTime?: string;
-  /** Gets or sets the last invoked time. */
-  lastInvokedTime?: string | null;
-  /** Gets or sets the parameters of the job that is created when the webhook calls the runbook it is associated with. */
-  parameters?: WebhookPropertiesParametersMap;
-  /** Gets or sets the runbook the webhook is associated with. */
-  runbook?: RunbookAssociationProperty;
-  /** Gets or sets the name of the hybrid worker group the webhook job will run on. */
-  runOn?: string;
-  /** Gets or sets the creation time. */
-  creationTime?: string;
-  /** Gets or sets the last modified time. */
-  lastModifiedTime?: string;
-  /** Details of the user who last modified the Webhook */
-  lastModifiedBy?: string;
-  /** Gets or sets the description. */
-  description?: string;
-}
-export const WebhookProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isEnabled: S.optional(S.Boolean),
-    uri: S.optional(S.String),
-    expiryTime: S.optional(S.String),
-    lastInvokedTime: S.optional(S.NullOr(S.String)),
-    parameters: S.optional(WebhookPropertiesParametersMap),
-    runbook: S.optional(RunbookAssociationProperty),
-    runOn: S.optional(S.String),
-    creationTime: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebhookProperties",
-}) as any as S.Schema<WebhookProperties>;
-
 export interface WebhookCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -13604,333 +13884,6 @@ export const WebhookCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WebhookCreateOrUpdateResponse",
 }) as any as S.Schema<WebhookCreateOrUpdateResponse>;
-
-export interface WebhookDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The webhook name. */
-  webhookName: string;
-}
-export const WebhookDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    webhookName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "WebhookDeleteRequest",
-}) as any as S.Schema<WebhookDeleteRequest>;
-
-export interface WebhookDeleteResponse {}
-export const WebhookDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WebhookDeleteResponse",
-}) as any as S.Schema<WebhookDeleteResponse>;
-
-export interface WebhookGenerateUriRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-}
-export const WebhookGenerateUriRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/generateUri",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "WebhookGenerateUriRequest",
-}) as any as S.Schema<WebhookGenerateUriRequest>;
-
-export type WebhookGenerateUriResponse = string;
-export const WebhookGenerateUriResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "WebhookGenerateUriResponse",
-}) as any as S.Schema<WebhookGenerateUriResponse>;
-
-export interface WebhookGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The webhook name. */
-  webhookName: string;
-}
-export const WebhookGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    webhookName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "WebhookGetRequest",
-}) as any as S.Schema<WebhookGetRequest>;
-
-export interface WebhookGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the webhook properties. */
-  properties?: WebhookProperties;
-}
-export const WebhookGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WebhookProperties),
-  }),
-).annotate({
-  identifier: "WebhookGetResponse",
-}) as any as S.Schema<WebhookGetResponse>;
-
-export interface WebhookListByAutomationAccountRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The filter to apply on the operation. */
-  _filter?: string;
-}
-export const WebhookListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
-).annotate({
-  identifier: "WebhookListByAutomationAccountRequest",
-}) as any as S.Schema<WebhookListByAutomationAccountRequest>;
-
-/** Definition of the webhook type. */
-export interface Webhook {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the webhook properties. */
-  properties?: WebhookProperties;
-}
-export const Webhook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WebhookProperties),
-  }),
-).annotate({ identifier: "Webhook" }) as any as S.Schema<Webhook>;
-
-/** The Webhook items on this page */
-export type WebhookListResultValueList = Array<Webhook>;
-export const WebhookListResultValueList = /*@__PURE__*/ S.Array(
-  Webhook,
-) as any as S.Schema<WebhookListResultValueList>;
-
-/** The response of a Webhook list operation. */
-export interface WebhookListResult {
-  /** The Webhook items on this page */
-  value: WebhookListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const WebhookListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: WebhookListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebhookListResult",
-}) as any as S.Schema<WebhookListResult>;
-
-/** Gets or sets the parameters of the job. */
-export type WebhookUpdatePropertiesParametersMap = {
-  [key: string]: string | undefined;
-};
-export const WebhookUpdatePropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebhookUpdatePropertiesParametersMap>;
-
-/** The properties of the update webhook. */
-export interface WebhookUpdateProperties {
-  /** Gets or sets the value of the enabled flag of webhook. */
-  isEnabled?: boolean;
-  /** Gets or sets the name of the hybrid worker group the webhook job will run on. */
-  runOn?: string;
-  /** Gets or sets the parameters of the job. */
-  parameters?: WebhookUpdatePropertiesParametersMap;
-  /** Gets or sets the description of the webhook. */
-  description?: string;
-}
-export const WebhookUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isEnabled: S.optional(S.Boolean),
-    runOn: S.optional(S.String),
-    parameters: S.optional(WebhookUpdatePropertiesParametersMap),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebhookUpdateProperties",
-}) as any as S.Schema<WebhookUpdateProperties>;
-
-export interface WebhookUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the automation account. */
-  automationAccountName: string;
-  /** The webhook name. */
-  webhookName: string;
-  /** Gets or sets the name of the webhook. */
-  name?: string;
-  /** Gets or sets the value of the webhook. */
-  properties?: WebhookUpdateProperties;
-}
-export const WebhookUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    automationAccountName: S.String.pipe(T.Label()),
-    webhookName: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    properties: S.optional(WebhookUpdateProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
-      code: 200,
-      apiVersion: "2024-10-23",
-    }),
-  ),
-).annotate({
-  identifier: "WebhookUpdateRequest",
-}) as any as S.Schema<WebhookUpdateRequest>;
-
-export interface WebhookUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Gets or sets the webhook properties. */
-  properties?: WebhookProperties;
-}
-export const WebhookUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WebhookProperties),
-  }),
-).annotate({
-  identifier: "WebhookUpdateResponse",
-}) as any as S.Schema<WebhookUpdateResponse>;
-
-export type ActivityGetError = AzureOpError;
-/** Retrieve the activity in the module identified by module name and activity name. */
-export const ActivityGet: API.OperationMethod<
-  ActivityGetRequest,
-  Activity,
-  ActivityGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ActivityGetRequest,
-  output: Activity,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ActivityListByModuleError = AzureOpError;
-/** Retrieve a list of activities in the module identified by module name. */
-export const ActivityListByModule: API.OperationMethod<
-  ActivityListByModuleRequest,
-  ActivityListResult,
-  ActivityListByModuleError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ActivityListByModuleRequest,
-  output: ActivityListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AgentRegistrationInformationGetError = AzureOpError;
-/** Retrieve the automation agent registration information. */
-export const AgentRegistrationInformationGet: API.OperationMethod<
-  AgentRegistrationInformationGetRequest,
-  AgentRegistration,
-  AgentRegistrationInformationGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentRegistrationInformationGetRequest,
-  output: AgentRegistration,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
 
 export type AgentRegistrationInformationRegenerateKeyError = AzureOpError;
 /** Regenerate a primary or secondary agent registration key */
@@ -13962,96 +13915,6 @@ export const AutomationAccountCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AutomationAccountDeleteError = AzureOpError;
-/** Delete an automation account. */
-export const AutomationAccountDelete: API.OperationMethod<
-  AutomationAccountDeleteRequest,
-  AutomationAccountDeleteResponse,
-  AutomationAccountDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutomationAccountDeleteRequest,
-  output: AutomationAccountDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AutomationAccountGetError = AzureOpError;
-/** Get information about an Automation Account. */
-export const AutomationAccountGet: API.OperationMethod<
-  AutomationAccountGetRequest,
-  AutomationAccountGetResponse,
-  AutomationAccountGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutomationAccountGetRequest,
-  output: AutomationAccountGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AutomationAccountListError = AzureOpError;
-/** Lists the Automation Accounts within an Azure subscription. Retrieve a list of accounts within a given subscription. */
-export const AutomationAccountList: API.OperationMethod<
-  AutomationAccountListRequest,
-  AutomationAccountListResult,
-  AutomationAccountListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutomationAccountListRequest,
-  output: AutomationAccountListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AutomationAccountListByResourceGroupError = AzureOpError;
-/** Retrieve a list of accounts within a given resource group. */
-export const AutomationAccountListByResourceGroup: API.OperationMethod<
-  AutomationAccountListByResourceGroupRequest,
-  AutomationAccountListResult,
-  AutomationAccountListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutomationAccountListByResourceGroupRequest,
-  output: AutomationAccountListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AutomationAccountListDeletedRunbooksError = AzureOpError;
-/** Retrieve the deleted runbooks for an automation account. */
-export const AutomationAccountListDeletedRunbooks: API.OperationMethod<
-  AutomationAccountListDeletedRunbooksRequest,
-  DeletedRunbookListResult,
-  AutomationAccountListDeletedRunbooksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutomationAccountListDeletedRunbooksRequest,
-  output: DeletedRunbookListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AutomationAccountUpdateError = AzureOpError;
-/** Update an automation account. */
-export const AutomationAccountUpdate: API.OperationMethod<
-  AutomationAccountUpdateRequest,
-  AutomationAccountUpdateResponse,
-  AutomationAccountUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutomationAccountUpdateRequest,
-  output: AutomationAccountUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CertificateCreateOrUpdateError = AzureOpError;
 /** Create a certificate. */
 export const CertificateCreateOrUpdate: API.OperationMethod<
@@ -14062,66 +13925,6 @@ export const CertificateCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificateCreateOrUpdateRequest,
   output: CertificateCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CertificateDeleteError = AzureOpError;
-/** Delete the certificate. */
-export const CertificateDelete: API.OperationMethod<
-  CertificateDeleteRequest,
-  CertificateDeleteResponse,
-  CertificateDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CertificateDeleteRequest,
-  output: CertificateDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CertificateGetError = AzureOpError;
-/** Retrieve the certificate identified by certificate name. */
-export const CertificateGet: API.OperationMethod<
-  CertificateGetRequest,
-  CertificateGetResponse,
-  CertificateGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CertificateGetRequest,
-  output: CertificateGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CertificateListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of certificates. */
-export const CertificateListByAutomationAccount: API.OperationMethod<
-  CertificateListByAutomationAccountRequest,
-  CertificateListResult,
-  CertificateListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CertificateListByAutomationAccountRequest,
-  output: CertificateListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CertificateUpdateError = AzureOpError;
-/** Update a certificate. */
-export const CertificateUpdate: API.OperationMethod<
-  CertificateUpdateRequest,
-  CertificateUpdateResponse,
-  CertificateUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CertificateUpdateRequest,
-  output: CertificateUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14142,51 +13945,6 @@ export const ConnectionCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConnectionDeleteError = AzureOpError;
-/** Delete the connection. */
-export const ConnectionDelete: API.OperationMethod<
-  ConnectionDeleteRequest,
-  ConnectionDeleteResponse,
-  ConnectionDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionDeleteRequest,
-  output: ConnectionDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectionGetError = AzureOpError;
-/** Retrieve the connection identified by connection name. */
-export const ConnectionGet: API.OperationMethod<
-  ConnectionGetRequest,
-  ConnectionGetResponse,
-  ConnectionGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionGetRequest,
-  output: ConnectionGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectionListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of connections. */
-export const ConnectionListByAutomationAccount: API.OperationMethod<
-  ConnectionListByAutomationAccountRequest,
-  ConnectionListResult,
-  ConnectionListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionListByAutomationAccountRequest,
-  output: ConnectionListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ConnectionTypeCreateOrUpdateError = AzureOpError;
 /** Create a connection type. */
 export const ConnectionTypeCreateOrUpdate: API.OperationMethod<
@@ -14197,66 +13955,6 @@ export const ConnectionTypeCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ConnectionTypeCreateOrUpdateRequest,
   output: ConnectionTypeCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectionTypeDeleteError = AzureOpError;
-/** Delete the connection type. */
-export const ConnectionTypeDelete: API.OperationMethod<
-  ConnectionTypeDeleteRequest,
-  ConnectionTypeDeleteResponse,
-  ConnectionTypeDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionTypeDeleteRequest,
-  output: ConnectionTypeDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectionTypeGetError = AzureOpError;
-/** Retrieve the connection type identified by connection type name. */
-export const ConnectionTypeGet: API.OperationMethod<
-  ConnectionTypeGetRequest,
-  ConnectionTypeGetResponse,
-  ConnectionTypeGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionTypeGetRequest,
-  output: ConnectionTypeGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectionTypeListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of connection types. */
-export const ConnectionTypeListByAutomationAccount: API.OperationMethod<
-  ConnectionTypeListByAutomationAccountRequest,
-  ConnectionTypeListResult,
-  ConnectionTypeListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionTypeListByAutomationAccountRequest,
-  output: ConnectionTypeListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectionUpdateError = AzureOpError;
-/** Update a connection. */
-export const ConnectionUpdate: API.OperationMethod<
-  ConnectionUpdateRequest,
-  ConnectionUpdateResponse,
-  ConnectionUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionUpdateRequest,
-  output: ConnectionUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14277,6 +13975,111 @@ export const ConvertGraphRunbookContent: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateHybridRunbookWorkerError = AzureOpError;
+/** Create a hybrid runbook worker. */
+export const CreateHybridRunbookWorker: API.OperationMethod<
+  CreateHybridRunbookWorkerRequest,
+  CreateHybridRunbookWorkerResponse,
+  CreateHybridRunbookWorkerError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateHybridRunbookWorkerRequest,
+  output: CreateHybridRunbookWorkerResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateHybridRunbookWorkerGroupError = AzureOpError;
+/** Create a hybrid runbook worker group. */
+export const CreateHybridRunbookWorkerGroup: API.OperationMethod<
+  CreateHybridRunbookWorkerGroupRequest,
+  CreateHybridRunbookWorkerGroupResponse,
+  CreateHybridRunbookWorkerGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateHybridRunbookWorkerGroupRequest,
+  output: CreateHybridRunbookWorkerGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateJobError = AzureOpError;
+/** Create a job of the runbook. */
+export const CreateJob: API.OperationMethod<
+  CreateJobRequest,
+  CreateJobResponse,
+  CreateJobError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateJobRequest,
+  output: CreateJobResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateJobScheduleError = AzureOpError;
+/** Create a job schedule. */
+export const CreateJobSchedule: API.OperationMethod<
+  CreateJobScheduleRequest,
+  CreateJobScheduleResponse,
+  CreateJobScheduleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateJobScheduleRequest,
+  output: CreateJobScheduleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateRuntimeEnvironmentError = AzureOpError;
+/** Create or update Runtime Environment */
+export const CreateRuntimeEnvironment: API.OperationMethod<
+  CreateRuntimeEnvironmentRequest,
+  CreateRuntimeEnvironmentResponse,
+  CreateRuntimeEnvironmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateRuntimeEnvironmentRequest,
+  output: CreateRuntimeEnvironmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSourceControlSyncJobError = AzureOpError;
+/** Creates the sync job for a source control. */
+export const CreateSourceControlSyncJob: API.OperationMethod<
+  CreateSourceControlSyncJobRequest,
+  SourceControlSyncJob,
+  CreateSourceControlSyncJobError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSourceControlSyncJobRequest,
+  output: SourceControlSyncJob,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateTestJobError = AzureOpError;
+/** Create a test job of the runbook. */
+export const CreateTestJob: API.OperationMethod<
+  CreateTestJobRequest,
+  TestJob,
+  CreateTestJobError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTestJobRequest,
+  output: TestJob,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CredentialCreateOrUpdateError = AzureOpError;
 /** Create a credential. */
 export const CredentialCreateOrUpdate: API.OperationMethod<
@@ -14292,76 +14095,346 @@ export const CredentialCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CredentialDeleteError = AzureOpError;
+export type DeleteAutomationAccountError = AzureOpError;
+/** Delete an automation account. */
+export const DeleteAutomationAccount: API.OperationMethod<
+  DeleteAutomationAccountRequest,
+  DeleteAutomationAccountResponse,
+  DeleteAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAutomationAccountRequest,
+  output: DeleteAutomationAccountResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCertificateError = AzureOpError;
+/** Delete the certificate. */
+export const DeleteCertificate: API.OperationMethod<
+  DeleteCertificateRequest,
+  DeleteCertificateResponse,
+  DeleteCertificateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCertificateRequest,
+  output: DeleteCertificateResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConnectionError = AzureOpError;
+/** Delete the connection. */
+export const DeleteConnection: API.OperationMethod<
+  DeleteConnectionRequest,
+  DeleteConnectionResponse,
+  DeleteConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConnectionRequest,
+  output: DeleteConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConnectionTypeError = AzureOpError;
+/** Delete the connection type. */
+export const DeleteConnectionType: API.OperationMethod<
+  DeleteConnectionTypeRequest,
+  DeleteConnectionTypeResponse,
+  DeleteConnectionTypeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConnectionTypeRequest,
+  output: DeleteConnectionTypeResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCredentialError = AzureOpError;
 /** Delete the credential. */
-export const CredentialDelete: API.OperationMethod<
-  CredentialDeleteRequest,
-  CredentialDeleteResponse,
-  CredentialDeleteError,
+export const DeleteCredential: API.OperationMethod<
+  DeleteCredentialRequest,
+  DeleteCredentialResponse,
+  DeleteCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CredentialDeleteRequest,
-  output: CredentialDeleteResponse,
+  input: DeleteCredentialRequest,
+  output: DeleteCredentialResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CredentialGetError = AzureOpError;
-/** Retrieve the credential identified by credential name. */
-export const CredentialGet: API.OperationMethod<
-  CredentialGetRequest,
-  CredentialGetResponse,
-  CredentialGetError,
+export type DeleteDscConfigurationError = AzureOpError;
+/** Delete the dsc configuration identified by configuration name. */
+export const DeleteDscConfiguration: API.OperationMethod<
+  DeleteDscConfigurationRequest,
+  DeleteDscConfigurationResponse,
+  DeleteDscConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CredentialGetRequest,
-  output: CredentialGetResponse,
+  input: DeleteDscConfigurationRequest,
+  output: DeleteDscConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CredentialListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of credentials. */
-export const CredentialListByAutomationAccount: API.OperationMethod<
-  CredentialListByAutomationAccountRequest,
-  CredentialListResult,
-  CredentialListByAutomationAccountError,
+export type DeleteDscNodeError = AzureOpError;
+/** Delete the dsc node identified by node id. */
+export const DeleteDscNode: API.OperationMethod<
+  DeleteDscNodeRequest,
+  DeleteDscNodeResponse,
+  DeleteDscNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CredentialListByAutomationAccountRequest,
-  output: CredentialListResult,
+  input: DeleteDscNodeRequest,
+  output: DeleteDscNodeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CredentialUpdateError = AzureOpError;
-/** Update a credential. */
-export const CredentialUpdate: API.OperationMethod<
-  CredentialUpdateRequest,
-  CredentialUpdateResponse,
-  CredentialUpdateError,
+export type DeleteDscNodeConfigurationError = AzureOpError;
+/** Delete the Dsc node configurations by node configuration. */
+export const DeleteDscNodeConfiguration: API.OperationMethod<
+  DeleteDscNodeConfigurationRequest,
+  DeleteDscNodeConfigurationResponse,
+  DeleteDscNodeConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CredentialUpdateRequest,
-  output: CredentialUpdateResponse,
+  input: DeleteDscNodeConfigurationRequest,
+  output: DeleteDscNodeConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeletedAutomationAccountsListBySubscriptionError = AzureOpError;
-/** Retrieve deleted automation account. */
-export const DeletedAutomationAccountsListBySubscription: API.OperationMethod<
-  DeletedAutomationAccountsListBySubscriptionRequest,
-  DeletedAutomationAccountListResult,
-  DeletedAutomationAccountsListBySubscriptionError,
+export type DeleteHybridRunbookWorkerError = AzureOpError;
+/** Delete a hybrid runbook worker. */
+export const DeleteHybridRunbookWorker: API.OperationMethod<
+  DeleteHybridRunbookWorkerRequest,
+  DeleteHybridRunbookWorkerResponse,
+  DeleteHybridRunbookWorkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletedAutomationAccountsListBySubscriptionRequest,
-  output: DeletedAutomationAccountListResult,
+  input: DeleteHybridRunbookWorkerRequest,
+  output: DeleteHybridRunbookWorkerResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteHybridRunbookWorkerGroupError = AzureOpError;
+/** Delete a hybrid runbook worker group. */
+export const DeleteHybridRunbookWorkerGroup: API.OperationMethod<
+  DeleteHybridRunbookWorkerGroupRequest,
+  DeleteHybridRunbookWorkerGroupResponse,
+  DeleteHybridRunbookWorkerGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteHybridRunbookWorkerGroupRequest,
+  output: DeleteHybridRunbookWorkerGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteJobScheduleError = AzureOpError;
+/** Delete the job schedule identified by job schedule name. */
+export const DeleteJobSchedule: API.OperationMethod<
+  DeleteJobScheduleRequest,
+  DeleteJobScheduleResponse,
+  DeleteJobScheduleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteJobScheduleRequest,
+  output: DeleteJobScheduleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteModuleError = AzureOpError;
+/** Delete the module by name. */
+export const DeleteModule: API.OperationMethod<
+  DeleteModuleRequest,
+  DeleteModuleResponse,
+  DeleteModuleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteModuleRequest,
+  output: DeleteModuleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePackageError = AzureOpError;
+/** Delete the package by name. */
+export const DeletePackage: API.OperationMethod<
+  DeletePackageRequest,
+  DeletePackageResponse,
+  DeletePackageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePackageRequest,
+  output: DeletePackageResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePrivateEndpointConnectionError = AzureOpError;
+/** Deletes a private endpoint connection with a given name. */
+export const DeletePrivateEndpointConnection: API.OperationMethod<
+  DeletePrivateEndpointConnectionRequest,
+  DeletePrivateEndpointConnectionResponse,
+  DeletePrivateEndpointConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePython2PackageError = AzureOpError;
+/** Delete the python 2 package by name. */
+export const DeletePython2Package: API.OperationMethod<
+  DeletePython2PackageRequest,
+  DeletePython2PackageResponse,
+  DeletePython2PackageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePython2PackageRequest,
+  output: DeletePython2PackageResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePython3PackageError = AzureOpError;
+/** Delete the python 3 package by name. */
+export const DeletePython3Package: API.OperationMethod<
+  DeletePython3PackageRequest,
+  DeletePython3PackageResponse,
+  DeletePython3PackageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePython3PackageRequest,
+  output: DeletePython3PackageResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRunbookError = AzureOpError;
+/** Delete the runbook by name. */
+export const DeleteRunbook: API.OperationMethod<
+  DeleteRunbookRequest,
+  DeleteRunbookResponse,
+  DeleteRunbookError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRunbookRequest,
+  output: DeleteRunbookResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRuntimeEnvironmentError = AzureOpError;
+/** Delete the Runtime Environment. */
+export const DeleteRuntimeEnvironment: API.OperationMethod<
+  DeleteRuntimeEnvironmentRequest,
+  DeleteRuntimeEnvironmentResponse,
+  DeleteRuntimeEnvironmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRuntimeEnvironmentRequest,
+  output: DeleteRuntimeEnvironmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteScheduleError = AzureOpError;
+/** Delete the schedule identified by schedule name. */
+export const DeleteSchedule: API.OperationMethod<
+  DeleteScheduleRequest,
+  DeleteScheduleResponse,
+  DeleteScheduleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteScheduleRequest,
+  output: DeleteScheduleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSourceControlError = AzureOpError;
+/** Delete the source control. */
+export const DeleteSourceControl: API.OperationMethod<
+  DeleteSourceControlRequest,
+  DeleteSourceControlResponse,
+  DeleteSourceControlError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSourceControlRequest,
+  output: DeleteSourceControlResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteVariableError = AzureOpError;
+/** Delete the variable. */
+export const DeleteVariable: API.OperationMethod<
+  DeleteVariableRequest,
+  DeleteVariableResponse,
+  DeleteVariableError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteVariableRequest,
+  output: DeleteVariableResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteWatcherError = AzureOpError;
+/** Delete the watcher by name. */
+export const DeleteWatcher: API.OperationMethod<
+  DeleteWatcherRequest,
+  DeleteWatcherResponse,
+  DeleteWatcherError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteWatcherRequest,
+  output: DeleteWatcherResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteWebhookError = AzureOpError;
+/** Delete the webhook by name. */
+export const DeleteWebhook: API.OperationMethod<
+  DeleteWebhookRequest,
+  DeleteWebhookResponse,
+  DeleteWebhookError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteWebhookRequest,
+  output: DeleteWebhookResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14382,81 +14455,6 @@ export const DscConfigurationCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DscConfigurationDeleteError = AzureOpError;
-/** Delete the dsc configuration identified by configuration name. */
-export const DscConfigurationDelete: API.OperationMethod<
-  DscConfigurationDeleteRequest,
-  DscConfigurationDeleteResponse,
-  DscConfigurationDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DscConfigurationDeleteRequest,
-  output: DscConfigurationDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DscConfigurationGetError = AzureOpError;
-/** Retrieve the configuration identified by configuration name. */
-export const DscConfigurationGet: API.OperationMethod<
-  DscConfigurationGetRequest,
-  DscConfigurationGetResponse,
-  DscConfigurationGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DscConfigurationGetRequest,
-  output: DscConfigurationGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DscConfigurationGetContentError = AzureOpError;
-/** Retrieve the configuration script identified by configuration name. */
-export const DscConfigurationGetContent: API.OperationMethod<
-  DscConfigurationGetContentRequest,
-  DscConfigurationGetContentResponse,
-  DscConfigurationGetContentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DscConfigurationGetContentRequest,
-  output: DscConfigurationGetContentResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DscConfigurationListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of configurations. */
-export const DscConfigurationListByAutomationAccount: API.OperationMethod<
-  DscConfigurationListByAutomationAccountRequest,
-  DscConfigurationListResult,
-  DscConfigurationListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DscConfigurationListByAutomationAccountRequest,
-  output: DscConfigurationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DscConfigurationUpdateError = AzureOpError;
-/** Create the configuration identified by configuration name. */
-export const DscConfigurationUpdate: API.OperationMethod<
-  DscConfigurationUpdateRequest,
-  DscConfigurationUpdateResponse,
-  DscConfigurationUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DscConfigurationUpdateRequest,
-  output: DscConfigurationUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DscNodeConfigurationCreateOrUpdateError = AzureOpError;
 /** Create the node configuration identified by node configuration name. */
 export const DscNodeConfigurationCreateOrUpdate: API.OperationMethod<
@@ -14472,257 +14470,631 @@ export const DscNodeConfigurationCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DscNodeConfigurationDeleteError = AzureOpError;
-/** Delete the Dsc node configurations by node configuration. */
-export const DscNodeConfigurationDelete: API.OperationMethod<
-  DscNodeConfigurationDeleteRequest,
-  DscNodeConfigurationDeleteResponse,
-  DscNodeConfigurationDeleteError,
+export type GenerateWebhookUriError = AzureOpError;
+/** Generates a Uri for use in creating a webhook. */
+export const GenerateWebhookUri: API.OperationMethod<
+  GenerateWebhookUriRequest,
+  GenerateWebhookUriResponse,
+  GenerateWebhookUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DscNodeConfigurationDeleteRequest,
-  output: DscNodeConfigurationDeleteResponse,
+  input: GenerateWebhookUriRequest,
+  output: GenerateWebhookUriResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DscNodeConfigurationGetError = AzureOpError;
-/** Retrieve the Dsc node configurations by node configuration. */
-export const DscNodeConfigurationGet: API.OperationMethod<
-  DscNodeConfigurationGetRequest,
-  DscNodeConfigurationGetResponse,
-  DscNodeConfigurationGetError,
+export type GetActivityError = AzureOpError;
+/** Retrieve the activity in the module identified by module name and activity name. */
+export const GetActivity: API.OperationMethod<
+  GetActivityRequest,
+  Activity,
+  GetActivityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DscNodeConfigurationGetRequest,
-  output: DscNodeConfigurationGetResponse,
+  input: GetActivityRequest,
+  output: Activity,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DscNodeConfigurationListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of dsc node configurations. */
-export const DscNodeConfigurationListByAutomationAccount: API.OperationMethod<
-  DscNodeConfigurationListByAutomationAccountRequest,
-  DscNodeConfigurationListResult,
-  DscNodeConfigurationListByAutomationAccountError,
+export type GetAgentRegistrationInformationError = AzureOpError;
+/** Retrieve the automation agent registration information. */
+export const GetAgentRegistrationInformation: API.OperationMethod<
+  GetAgentRegistrationInformationRequest,
+  AgentRegistration,
+  GetAgentRegistrationInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DscNodeConfigurationListByAutomationAccountRequest,
-  output: DscNodeConfigurationListResult,
+  input: GetAgentRegistrationInformationRequest,
+  output: AgentRegistration,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DscNodeDeleteError = AzureOpError;
-/** Delete the dsc node identified by node id. */
-export const DscNodeDelete: API.OperationMethod<
-  DscNodeDeleteRequest,
-  DscNodeDeleteResponse,
-  DscNodeDeleteError,
+export type GetAutomationAccountError = AzureOpError;
+/** Get information about an Automation Account. */
+export const GetAutomationAccount: API.OperationMethod<
+  GetAutomationAccountRequest,
+  GetAutomationAccountResponse,
+  GetAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DscNodeDeleteRequest,
-  output: DscNodeDeleteResponse,
+  input: GetAutomationAccountRequest,
+  output: GetAutomationAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DscNodeGetError = AzureOpError;
+export type GetCertificateError = AzureOpError;
+/** Retrieve the certificate identified by certificate name. */
+export const GetCertificate: API.OperationMethod<
+  GetCertificateRequest,
+  GetCertificateResponse,
+  GetCertificateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCertificateRequest,
+  output: GetCertificateResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConnectionError = AzureOpError;
+/** Retrieve the connection identified by connection name. */
+export const GetConnection: API.OperationMethod<
+  GetConnectionRequest,
+  GetConnectionResponse,
+  GetConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectionRequest,
+  output: GetConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConnectionTypeError = AzureOpError;
+/** Retrieve the connection type identified by connection type name. */
+export const GetConnectionType: API.OperationMethod<
+  GetConnectionTypeRequest,
+  GetConnectionTypeResponse,
+  GetConnectionTypeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectionTypeRequest,
+  output: GetConnectionTypeResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetCredentialError = AzureOpError;
+/** Retrieve the credential identified by credential name. */
+export const GetCredential: API.OperationMethod<
+  GetCredentialRequest,
+  GetCredentialResponse,
+  GetCredentialError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCredentialRequest,
+  output: GetCredentialResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDscConfigurationError = AzureOpError;
+/** Retrieve the configuration identified by configuration name. */
+export const GetDscConfiguration: API.OperationMethod<
+  GetDscConfigurationRequest,
+  GetDscConfigurationResponse,
+  GetDscConfigurationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDscConfigurationRequest,
+  output: GetDscConfigurationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDscConfigurationContentError = AzureOpError;
+/** Retrieve the configuration script identified by configuration name. */
+export const GetDscConfigurationContent: API.OperationMethod<
+  GetDscConfigurationContentRequest,
+  GetDscConfigurationContentResponse,
+  GetDscConfigurationContentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDscConfigurationContentRequest,
+  output: GetDscConfigurationContentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDscNodeError = AzureOpError;
 /** Retrieve the dsc node identified by node id. */
-export const DscNodeGet: API.OperationMethod<
-  DscNodeGetRequest,
-  DscNodeGetResponse,
-  DscNodeGetError,
+export const GetDscNode: API.OperationMethod<
+  GetDscNodeRequest,
+  GetDscNodeResponse,
+  GetDscNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DscNodeGetRequest,
-  output: DscNodeGetResponse,
+  input: GetDscNodeRequest,
+  output: GetDscNodeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DscNodeListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of dsc nodes. */
-export const DscNodeListByAutomationAccount: API.OperationMethod<
-  DscNodeListByAutomationAccountRequest,
-  DscNodeListResult,
-  DscNodeListByAutomationAccountError,
+export type GetDscNodeConfigurationError = AzureOpError;
+/** Retrieve the Dsc node configurations by node configuration. */
+export const GetDscNodeConfiguration: API.OperationMethod<
+  GetDscNodeConfigurationRequest,
+  GetDscNodeConfigurationResponse,
+  GetDscNodeConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DscNodeListByAutomationAccountRequest,
-  output: DscNodeListResult,
+  input: GetDscNodeConfigurationRequest,
+  output: GetDscNodeConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DscNodeUpdateError = AzureOpError;
-/** Update the dsc node. */
-export const DscNodeUpdate: API.OperationMethod<
-  DscNodeUpdateRequest,
-  DscNodeUpdateResponse,
-  DscNodeUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DscNodeUpdateRequest,
-  output: DscNodeUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FieldsListByTypeError = AzureOpError;
-/** Retrieve a list of fields of a given type identified by module name. */
-export const FieldsListByType: API.OperationMethod<
-  FieldsListByTypeRequest,
-  TypeFieldListResult,
-  FieldsListByTypeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FieldsListByTypeRequest,
-  output: TypeFieldListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HybridRunbookWorkerGroupCreateError = AzureOpError;
-/** Create a hybrid runbook worker group. */
-export const HybridRunbookWorkerGroupCreate: API.OperationMethod<
-  HybridRunbookWorkerGroupCreateRequest,
-  HybridRunbookWorkerGroupCreateResponse,
-  HybridRunbookWorkerGroupCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkerGroupCreateRequest,
-  output: HybridRunbookWorkerGroupCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HybridRunbookWorkerGroupDeleteError = AzureOpError;
-/** Delete a hybrid runbook worker group. */
-export const HybridRunbookWorkerGroupDelete: API.OperationMethod<
-  HybridRunbookWorkerGroupDeleteRequest,
-  HybridRunbookWorkerGroupDeleteResponse,
-  HybridRunbookWorkerGroupDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkerGroupDeleteRequest,
-  output: HybridRunbookWorkerGroupDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HybridRunbookWorkerGroupGetError = AzureOpError;
-/** Retrieve a hybrid runbook worker group. */
-export const HybridRunbookWorkerGroupGet: API.OperationMethod<
-  HybridRunbookWorkerGroupGetRequest,
-  HybridRunbookWorkerGroupGetResponse,
-  HybridRunbookWorkerGroupGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkerGroupGetRequest,
-  output: HybridRunbookWorkerGroupGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HybridRunbookWorkerGroupListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of hybrid runbook worker groups. */
-export const HybridRunbookWorkerGroupListByAutomationAccount: API.OperationMethod<
-  HybridRunbookWorkerGroupListByAutomationAccountRequest,
-  HybridRunbookWorkerGroupsListResult,
-  HybridRunbookWorkerGroupListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkerGroupListByAutomationAccountRequest,
-  output: HybridRunbookWorkerGroupsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HybridRunbookWorkerGroupUpdateError = AzureOpError;
-/** Update a hybrid runbook worker group. */
-export const HybridRunbookWorkerGroupUpdate: API.OperationMethod<
-  HybridRunbookWorkerGroupUpdateRequest,
-  HybridRunbookWorkerGroupUpdateResponse,
-  HybridRunbookWorkerGroupUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkerGroupUpdateRequest,
-  output: HybridRunbookWorkerGroupUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HybridRunbookWorkersCreateError = AzureOpError;
-/** Create a hybrid runbook worker. */
-export const HybridRunbookWorkersCreate: API.OperationMethod<
-  HybridRunbookWorkersCreateRequest,
-  HybridRunbookWorkersCreateResponse,
-  HybridRunbookWorkersCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkersCreateRequest,
-  output: HybridRunbookWorkersCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HybridRunbookWorkersDeleteError = AzureOpError;
-/** Delete a hybrid runbook worker. */
-export const HybridRunbookWorkersDelete: API.OperationMethod<
-  HybridRunbookWorkersDeleteRequest,
-  HybridRunbookWorkersDeleteResponse,
-  HybridRunbookWorkersDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkersDeleteRequest,
-  output: HybridRunbookWorkersDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HybridRunbookWorkersGetError = AzureOpError;
+export type GetHybridRunbookWorkerError = AzureOpError;
 /** Retrieve a hybrid runbook worker. */
-export const HybridRunbookWorkersGet: API.OperationMethod<
-  HybridRunbookWorkersGetRequest,
-  HybridRunbookWorkersGetResponse,
-  HybridRunbookWorkersGetError,
+export const GetHybridRunbookWorker: API.OperationMethod<
+  GetHybridRunbookWorkerRequest,
+  GetHybridRunbookWorkerResponse,
+  GetHybridRunbookWorkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkersGetRequest,
-  output: HybridRunbookWorkersGetResponse,
+  input: GetHybridRunbookWorkerRequest,
+  output: GetHybridRunbookWorkerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type HybridRunbookWorkersListByHybridRunbookWorkerGroupError =
-  AzureOpError;
-/** Retrieve a list of hybrid runbook workers. */
-export const HybridRunbookWorkersListByHybridRunbookWorkerGroup: API.OperationMethod<
-  HybridRunbookWorkersListByHybridRunbookWorkerGroupRequest,
-  HybridRunbookWorkersListResult,
-  HybridRunbookWorkersListByHybridRunbookWorkerGroupError,
+export type GetHybridRunbookWorkerGroupError = AzureOpError;
+/** Retrieve a hybrid runbook worker group. */
+export const GetHybridRunbookWorkerGroup: API.OperationMethod<
+  GetHybridRunbookWorkerGroupRequest,
+  GetHybridRunbookWorkerGroupResponse,
+  GetHybridRunbookWorkerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkersListByHybridRunbookWorkerGroupRequest,
-  output: HybridRunbookWorkersListResult,
+  input: GetHybridRunbookWorkerGroupRequest,
+  output: GetHybridRunbookWorkerGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetJobError = AzureOpError;
+/** Retrieve the job identified by job name. */
+export const GetJob: API.OperationMethod<
+  GetJobRequest,
+  GetJobResponse,
+  GetJobError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetJobRequest,
+  output: GetJobResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetJobOutputError = AzureOpError;
+/** Retrieve the job output identified by job name. */
+export const GetJobOutput: API.OperationMethod<
+  GetJobOutputRequest,
+  GetJobOutputResponse,
+  GetJobOutputError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetJobOutputRequest,
+  output: GetJobOutputResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetJobRunbookContentError = AzureOpError;
+/** Retrieve the runbook content of the job identified by job name. */
+export const GetJobRunbookContent: API.OperationMethod<
+  GetJobRunbookContentRequest,
+  GetJobRunbookContentResponse,
+  GetJobRunbookContentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetJobRunbookContentRequest,
+  output: GetJobRunbookContentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetJobScheduleError = AzureOpError;
+/** Retrieve the job schedule identified by job schedule name. */
+export const GetJobSchedule: API.OperationMethod<
+  GetJobScheduleRequest,
+  GetJobScheduleResponse,
+  GetJobScheduleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetJobScheduleRequest,
+  output: GetJobScheduleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetJobStreamError = AzureOpError;
+/** Retrieve the job stream identified by job stream id. */
+export const GetJobStream: API.OperationMethod<
+  GetJobStreamRequest,
+  JobStream,
+  GetJobStreamError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetJobStreamRequest,
+  output: JobStream,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetLinkedWorkspaceError = AzureOpError;
+/** Retrieve the linked workspace for the account id. */
+export const GetLinkedWorkspace: API.OperationMethod<
+  GetLinkedWorkspaceRequest,
+  LinkedWorkspace,
+  GetLinkedWorkspaceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLinkedWorkspaceRequest,
+  output: LinkedWorkspace,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetModuleError = AzureOpError;
+/** Retrieve the module identified by module name. */
+export const GetModule: API.OperationMethod<
+  GetModuleRequest,
+  GetModuleResponse,
+  GetModuleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetModuleRequest,
+  output: GetModuleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetNodeCountInformationError = AzureOpError;
+/** Retrieve counts for Dsc Nodes. */
+export const GetNodeCountInformation: API.OperationMethod<
+  GetNodeCountInformationRequest,
+  NodeCounts,
+  GetNodeCountInformationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetNodeCountInformationRequest,
+  output: NodeCounts,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetNodeReportError = AzureOpError;
+/** Retrieve the Dsc node report data by node id and report id. */
+export const GetNodeReport: API.OperationMethod<
+  GetNodeReportRequest,
+  DscNodeReport,
+  GetNodeReportError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetNodeReportRequest,
+  output: DscNodeReport,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetNodeReportContentError = AzureOpError;
+/** Retrieve the Dsc node reports by node id and report id. */
+export const GetNodeReportContent: API.OperationMethod<
+  GetNodeReportContentRequest,
+  GetNodeReportContentResponse,
+  GetNodeReportContentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetNodeReportContentRequest,
+  output: GetNodeReportContentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPackageError = AzureOpError;
+/** Retrieve the Package identified by Package name. */
+export const GetPackage: API.OperationMethod<
+  GetPackageRequest,
+  GetPackageResponse,
+  GetPackageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPackageRequest,
+  output: GetPackageResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPrivateEndpointConnectionError = AzureOpError;
+/** Gets a private endpoint connection. */
+export const GetPrivateEndpointConnection: API.OperationMethod<
+  GetPrivateEndpointConnectionRequest,
+  GetPrivateEndpointConnectionResponse,
+  GetPrivateEndpointConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPython2PackageError = AzureOpError;
+/** Retrieve the python 2 package identified by package name. */
+export const GetPython2Package: API.OperationMethod<
+  GetPython2PackageRequest,
+  GetPython2PackageResponse,
+  GetPython2PackageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPython2PackageRequest,
+  output: GetPython2PackageResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPython3PackageError = AzureOpError;
+/** Retrieve the python 3 package identified by package name. */
+export const GetPython3Package: API.OperationMethod<
+  GetPython3PackageRequest,
+  GetPython3PackageResponse,
+  GetPython3PackageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPython3PackageRequest,
+  output: GetPython3PackageResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRunbookError = AzureOpError;
+/** Retrieve the runbook identified by runbook name. */
+export const GetRunbook: API.OperationMethod<
+  GetRunbookRequest,
+  GetRunbookResponse,
+  GetRunbookError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRunbookRequest,
+  output: GetRunbookResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRunbookContentError = AzureOpError;
+/** Retrieve the content of runbook identified by runbook name. */
+export const GetRunbookContent: API.OperationMethod<
+  GetRunbookContentRequest,
+  GetRunbookContentResponse,
+  GetRunbookContentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRunbookContentRequest,
+  output: GetRunbookContentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRunbookDraftError = AzureOpError;
+/** Retrieve the runbook draft identified by runbook name. */
+export const GetRunbookDraft: API.OperationMethod<
+  GetRunbookDraftRequest,
+  RunbookDraft,
+  GetRunbookDraftError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRunbookDraftRequest,
+  output: RunbookDraft,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRunbookDraftContentError = AzureOpError;
+/** Retrieve the content of runbook draft identified by runbook name. */
+export const GetRunbookDraftContent: API.OperationMethod<
+  GetRunbookDraftContentRequest,
+  GetRunbookDraftContentResponse,
+  GetRunbookDraftContentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRunbookDraftContentRequest,
+  output: GetRunbookDraftContentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRuntimeEnvironmentError = AzureOpError;
+/** Get information about the Runtime Environment */
+export const GetRuntimeEnvironment: API.OperationMethod<
+  GetRuntimeEnvironmentRequest,
+  GetRuntimeEnvironmentResponse,
+  GetRuntimeEnvironmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRuntimeEnvironmentRequest,
+  output: GetRuntimeEnvironmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetScheduleError = AzureOpError;
+/** Retrieve the schedule identified by schedule name. */
+export const GetSchedule: API.OperationMethod<
+  GetScheduleRequest,
+  GetScheduleResponse,
+  GetScheduleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetScheduleRequest,
+  output: GetScheduleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSourceControlError = AzureOpError;
+/** Retrieve the source control identified by source control name. */
+export const GetSourceControl: API.OperationMethod<
+  GetSourceControlRequest,
+  GetSourceControlResponse,
+  GetSourceControlError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSourceControlRequest,
+  output: GetSourceControlResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSourceControlSyncJobError = AzureOpError;
+/** Retrieve the source control sync job identified by job id. */
+export const GetSourceControlSyncJob: API.OperationMethod<
+  GetSourceControlSyncJobRequest,
+  SourceControlSyncJobById,
+  GetSourceControlSyncJobError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSourceControlSyncJobRequest,
+  output: SourceControlSyncJobById,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSourceControlSyncJobStreamError = AzureOpError;
+/** Retrieve a sync job stream identified by stream id. */
+export const GetSourceControlSyncJobStream: API.OperationMethod<
+  GetSourceControlSyncJobStreamRequest,
+  SourceControlSyncJobStreamById,
+  GetSourceControlSyncJobStreamError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSourceControlSyncJobStreamRequest,
+  output: SourceControlSyncJobStreamById,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetTestJobError = AzureOpError;
+/** Retrieve the test job for the specified runbook. */
+export const GetTestJob: API.OperationMethod<
+  GetTestJobRequest,
+  TestJob,
+  GetTestJobError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTestJobRequest,
+  output: TestJob,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetTestJobStreamError = AzureOpError;
+/** Retrieve a test job stream of the test job identified by runbook name and stream id. */
+export const GetTestJobStream: API.OperationMethod<
+  GetTestJobStreamRequest,
+  JobStream,
+  GetTestJobStreamError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTestJobStreamRequest,
+  output: JobStream,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetVariableError = AzureOpError;
+/** Retrieve the variable identified by variable name. */
+export const GetVariable: API.OperationMethod<
+  GetVariableRequest,
+  GetVariableResponse,
+  GetVariableError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetVariableRequest,
+  output: GetVariableResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetWatcherError = AzureOpError;
+/** Retrieve the watcher identified by watcher name. */
+export const GetWatcher: API.OperationMethod<
+  GetWatcherRequest,
+  GetWatcherResponse,
+  GetWatcherError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWatcherRequest,
+  output: GetWatcherResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetWebhookError = AzureOpError;
+/** Retrieve the webhook identified by webhook name. */
+export const GetWebhook: API.OperationMethod<
+  GetWebhookRequest,
+  GetWebhookResponse,
+  GetWebhookError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWebhookRequest,
+  output: GetWebhookResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -14743,96 +15115,6 @@ export const HybridRunbookWorkersMove: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HybridRunbookWorkersPatchError = AzureOpError;
-/** Update a hybrid runbook worker. */
-export const HybridRunbookWorkersPatch: API.OperationMethod<
-  HybridRunbookWorkersPatchRequest,
-  HybridRunbookWorkersPatchResponse,
-  HybridRunbookWorkersPatchError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HybridRunbookWorkersPatchRequest,
-  output: HybridRunbookWorkersPatchResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type JobCreateError = AzureOpError;
-/** Create a job of the runbook. */
-export const JobCreate: API.OperationMethod<
-  JobCreateRequest,
-  JobCreateResponse,
-  JobCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JobCreateRequest,
-  output: JobCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type JobGetError = AzureOpError;
-/** Retrieve the job identified by job name. */
-export const JobGet: API.OperationMethod<
-  JobGetRequest,
-  JobGetResponse,
-  JobGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JobGetRequest,
-  output: JobGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type JobGetOutputError = AzureOpError;
-/** Retrieve the job output identified by job name. */
-export const JobGetOutput: API.OperationMethod<
-  JobGetOutputRequest,
-  JobGetOutputResponse,
-  JobGetOutputError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JobGetOutputRequest,
-  output: JobGetOutputResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type JobGetRunbookContentError = AzureOpError;
-/** Retrieve the runbook content of the job identified by job name. */
-export const JobGetRunbookContent: API.OperationMethod<
-  JobGetRunbookContentRequest,
-  JobGetRunbookContentResponse,
-  JobGetRunbookContentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JobGetRunbookContentRequest,
-  output: JobGetRunbookContentResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type JobListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of jobs. */
-export const JobListByAutomationAccount: API.OperationMethod<
-  JobListByAutomationAccountRequest,
-  JobListResultV2,
-  JobListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JobListByAutomationAccountRequest,
-  output: JobListResultV2,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type JobResumeError = AzureOpError;
 /** Resume the job identified by jobName. */
 export const JobResume: API.OperationMethod<
@@ -14848,151 +15130,603 @@ export const JobResume: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type JobScheduleCreateError = AzureOpError;
-/** Create a job schedule. */
-export const JobScheduleCreate: API.OperationMethod<
-  JobScheduleCreateRequest,
-  JobScheduleCreateResponse,
-  JobScheduleCreateError,
+export type ListActivityByModuleError = AzureOpError;
+/** Retrieve a list of activities in the module identified by module name. */
+export const ListActivityByModule: API.OperationMethod<
+  ListActivityByModuleRequest,
+  ActivityListResult,
+  ListActivityByModuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobScheduleCreateRequest,
-  output: JobScheduleCreateResponse,
+  input: ListActivityByModuleRequest,
+  output: ActivityListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type JobScheduleDeleteError = AzureOpError;
-/** Delete the job schedule identified by job schedule name. */
-export const JobScheduleDelete: API.OperationMethod<
-  JobScheduleDeleteRequest,
-  JobScheduleDeleteResponse,
-  JobScheduleDeleteError,
+export type ListAutomationAccountError = AzureOpError;
+/** Lists the Automation Accounts within an Azure subscription. Retrieve a list of accounts within a given subscription. */
+export const ListAutomationAccount: API.OperationMethod<
+  ListAutomationAccountRequest,
+  ListAutomationAccountResult,
+  ListAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobScheduleDeleteRequest,
-  output: JobScheduleDeleteResponse,
+  input: ListAutomationAccountRequest,
+  output: ListAutomationAccountResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type JobScheduleGetError = AzureOpError;
-/** Retrieve the job schedule identified by job schedule name. */
-export const JobScheduleGet: API.OperationMethod<
-  JobScheduleGetRequest,
-  JobScheduleGetResponse,
-  JobScheduleGetError,
+export type ListAutomationAccountByResourceGroupError = AzureOpError;
+/** Retrieve a list of accounts within a given resource group. */
+export const ListAutomationAccountByResourceGroup: API.OperationMethod<
+  ListAutomationAccountByResourceGroupRequest,
+  ListAutomationAccountResult,
+  ListAutomationAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobScheduleGetRequest,
-  output: JobScheduleGetResponse,
+  input: ListAutomationAccountByResourceGroupRequest,
+  output: ListAutomationAccountResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type JobScheduleListByAutomationAccountError = AzureOpError;
+export type ListAutomationAccountDeletedRunbooksError = AzureOpError;
+/** Retrieve the deleted runbooks for an automation account. */
+export const ListAutomationAccountDeletedRunbooks: API.OperationMethod<
+  ListAutomationAccountDeletedRunbooksRequest,
+  DeletedRunbookListResult,
+  ListAutomationAccountDeletedRunbooksError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAutomationAccountDeletedRunbooksRequest,
+  output: DeletedRunbookListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCertificateByAutomationAccountError = AzureOpError;
+/** Retrieve a list of certificates. */
+export const ListCertificateByAutomationAccount: API.OperationMethod<
+  ListCertificateByAutomationAccountRequest,
+  CertificateListResult,
+  ListCertificateByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCertificateByAutomationAccountRequest,
+  output: CertificateListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConnectionByAutomationAccountError = AzureOpError;
+/** Retrieve a list of connections. */
+export const ListConnectionByAutomationAccount: API.OperationMethod<
+  ListConnectionByAutomationAccountRequest,
+  ConnectionListResult,
+  ListConnectionByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectionByAutomationAccountRequest,
+  output: ConnectionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConnectionTypeByAutomationAccountError = AzureOpError;
+/** Retrieve a list of connection types. */
+export const ListConnectionTypeByAutomationAccount: API.OperationMethod<
+  ListConnectionTypeByAutomationAccountRequest,
+  ConnectionTypeListResult,
+  ListConnectionTypeByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectionTypeByAutomationAccountRequest,
+  output: ConnectionTypeListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCredentialByAutomationAccountError = AzureOpError;
+/** Retrieve a list of credentials. */
+export const ListCredentialByAutomationAccount: API.OperationMethod<
+  ListCredentialByAutomationAccountRequest,
+  CredentialListResult,
+  ListCredentialByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCredentialByAutomationAccountRequest,
+  output: CredentialListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDeletedAutomationAccountBySubscriptionError = AzureOpError;
+/** Retrieve deleted automation account. */
+export const ListDeletedAutomationAccountBySubscription: API.OperationMethod<
+  ListDeletedAutomationAccountBySubscriptionRequest,
+  DeletedAutomationAccountListResult,
+  ListDeletedAutomationAccountBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDeletedAutomationAccountBySubscriptionRequest,
+  output: DeletedAutomationAccountListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDscConfigurationByAutomationAccountError = AzureOpError;
+/** Retrieve a list of configurations. */
+export const ListDscConfigurationByAutomationAccount: API.OperationMethod<
+  ListDscConfigurationByAutomationAccountRequest,
+  DscConfigurationListResult,
+  ListDscConfigurationByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDscConfigurationByAutomationAccountRequest,
+  output: DscConfigurationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDscNodeByAutomationAccountError = AzureOpError;
+/** Retrieve a list of dsc nodes. */
+export const ListDscNodeByAutomationAccount: API.OperationMethod<
+  ListDscNodeByAutomationAccountRequest,
+  DscNodeListResult,
+  ListDscNodeByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDscNodeByAutomationAccountRequest,
+  output: DscNodeListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDscNodeConfigurationByAutomationAccountError = AzureOpError;
+/** Retrieve a list of dsc node configurations. */
+export const ListDscNodeConfigurationByAutomationAccount: API.OperationMethod<
+  ListDscNodeConfigurationByAutomationAccountRequest,
+  DscNodeConfigurationListResult,
+  ListDscNodeConfigurationByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDscNodeConfigurationByAutomationAccountRequest,
+  output: DscNodeConfigurationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListFieldByTypeError = AzureOpError;
+/** Retrieve a list of fields of a given type identified by module name. */
+export const ListFieldByType: API.OperationMethod<
+  ListFieldByTypeRequest,
+  TypeFieldListResult,
+  ListFieldByTypeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListFieldByTypeRequest,
+  output: TypeFieldListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListHybridRunbookWorkerByHybridRunbookWorkerGroupError =
+  AzureOpError;
+/** Retrieve a list of hybrid runbook workers. */
+export const ListHybridRunbookWorkerByHybridRunbookWorkerGroup: API.OperationMethod<
+  ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest,
+  HybridRunbookWorkersListResult,
+  ListHybridRunbookWorkerByHybridRunbookWorkerGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest,
+  output: HybridRunbookWorkersListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListHybridRunbookWorkerGroupByAutomationAccountError = AzureOpError;
+/** Retrieve a list of hybrid runbook worker groups. */
+export const ListHybridRunbookWorkerGroupByAutomationAccount: API.OperationMethod<
+  ListHybridRunbookWorkerGroupByAutomationAccountRequest,
+  HybridRunbookWorkerGroupsListResult,
+  ListHybridRunbookWorkerGroupByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHybridRunbookWorkerGroupByAutomationAccountRequest,
+  output: HybridRunbookWorkerGroupsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListJobByAutomationAccountError = AzureOpError;
+/** Retrieve a list of jobs. */
+export const ListJobByAutomationAccount: API.OperationMethod<
+  ListJobByAutomationAccountRequest,
+  JobListResultV2,
+  ListJobByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListJobByAutomationAccountRequest,
+  output: JobListResultV2,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListJobScheduleByAutomationAccountError = AzureOpError;
 /** Retrieve a list of job schedules. */
-export const JobScheduleListByAutomationAccount: API.OperationMethod<
-  JobScheduleListByAutomationAccountRequest,
+export const ListJobScheduleByAutomationAccount: API.OperationMethod<
+  ListJobScheduleByAutomationAccountRequest,
   JobScheduleListResult,
-  JobScheduleListByAutomationAccountError,
+  ListJobScheduleByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobScheduleListByAutomationAccountRequest,
+  input: ListJobScheduleByAutomationAccountRequest,
   output: JobScheduleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type JobStopError = AzureOpError;
-/** Stop the job identified by jobName. */
-export const JobStop: API.OperationMethod<
-  JobStopRequest,
-  JobStopResponse,
-  JobStopError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JobStopRequest,
-  output: JobStopResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type JobStreamGetError = AzureOpError;
-/** Retrieve the job stream identified by job stream id. */
-export const JobStreamGet: API.OperationMethod<
-  JobStreamGetRequest,
-  JobStream,
-  JobStreamGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JobStreamGetRequest,
-  output: JobStream,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type JobStreamListByJobError = AzureOpError;
+export type ListJobStreamByJobError = AzureOpError;
 /** Retrieve a list of jobs streams identified by job name. */
-export const JobStreamListByJob: API.OperationMethod<
-  JobStreamListByJobRequest,
+export const ListJobStreamByJob: API.OperationMethod<
+  ListJobStreamByJobRequest,
   JobStreamListResult,
-  JobStreamListByJobError,
+  ListJobStreamByJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobStreamListByJobRequest,
+  input: ListJobStreamByJobRequest,
   output: JobStreamListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type JobSuspendError = AzureOpError;
-/** Suspend the job identified by job name. */
-export const JobSuspend: API.OperationMethod<
-  JobSuspendRequest,
-  JobSuspendResponse,
-  JobSuspendError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JobSuspendRequest,
-  output: JobSuspendResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type KeysListByAutomationAccountError = AzureOpError;
+export type ListKeyByAutomationAccountError = AzureOpError;
 /** Retrieve the automation keys for an account. */
-export const KeysListByAutomationAccount: API.OperationMethod<
-  KeysListByAutomationAccountRequest,
+export const ListKeyByAutomationAccount: API.OperationMethod<
+  ListKeyByAutomationAccountRequest,
   KeyListResult,
-  KeysListByAutomationAccountError,
+  ListKeyByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysListByAutomationAccountRequest,
+  input: ListKeyByAutomationAccountRequest,
   output: KeyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LinkedWorkspaceGetError = AzureOpError;
-/** Retrieve the linked workspace for the account id. */
-export const LinkedWorkspaceGet: API.OperationMethod<
-  LinkedWorkspaceGetRequest,
-  LinkedWorkspace,
-  LinkedWorkspaceGetError,
+export type ListModuleByAutomationAccountError = AzureOpError;
+/** Retrieve a list of modules. */
+export const ListModuleByAutomationAccount: API.OperationMethod<
+  ListModuleByAutomationAccountRequest,
+  ModuleListResult,
+  ListModuleByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinkedWorkspaceGetRequest,
-  output: LinkedWorkspace,
+  input: ListModuleByAutomationAccountRequest,
+  output: ModuleListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListNodeReportByNodeError = AzureOpError;
+/** Retrieve the Dsc node report list by node id. */
+export const ListNodeReportByNode: API.OperationMethod<
+  ListNodeReportByNodeRequest,
+  DscNodeReportListResult,
+  ListNodeReportByNodeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListNodeReportByNodeRequest,
+  output: DscNodeReportListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListObjectDataTypeFieldByModuleAndTypeError = AzureOpError;
+/** Retrieve a list of fields of a given type identified by module name. */
+export const ListObjectDataTypeFieldByModuleAndType: API.OperationMethod<
+  ListObjectDataTypeFieldByModuleAndTypeRequest,
+  TypeFieldListResult,
+  ListObjectDataTypeFieldByModuleAndTypeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListObjectDataTypeFieldByModuleAndTypeRequest,
+  output: TypeFieldListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListObjectDataTypeFieldByTypeError = AzureOpError;
+/** Retrieve a list of fields of a given type across all accessible modules. */
+export const ListObjectDataTypeFieldByType: API.OperationMethod<
+  ListObjectDataTypeFieldByTypeRequest,
+  TypeFieldListResult,
+  ListObjectDataTypeFieldByTypeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListObjectDataTypeFieldByTypeRequest,
+  output: TypeFieldListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists all of the available Automation REST API operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  OperationListResult,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: OperationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPackageByRuntimeEnvironmentError = AzureOpError;
+/** Retrieve the a list of Packages */
+export const ListPackageByRuntimeEnvironment: API.OperationMethod<
+  ListPackageByRuntimeEnvironmentRequest,
+  PackageListResult,
+  ListPackageByRuntimeEnvironmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPackageByRuntimeEnvironmentRequest,
+  output: PackageListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPrivateEndpointConnectionByAutomationAccountError =
+  AzureOpError;
+/** List all private endpoint connections on a Automation account. */
+export const ListPrivateEndpointConnectionByAutomationAccount: API.OperationMethod<
+  ListPrivateEndpointConnectionByAutomationAccountRequest,
+  PrivateEndpointConnectionListResult,
+  ListPrivateEndpointConnectionByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPrivateEndpointConnectionByAutomationAccountRequest,
+  output: PrivateEndpointConnectionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPython2PackageByAutomationAccountError = AzureOpError;
+/** Retrieve a list of python 2 packages. */
+export const ListPython2PackageByAutomationAccount: API.OperationMethod<
+  ListPython2PackageByAutomationAccountRequest,
+  ModuleListResult,
+  ListPython2PackageByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPython2PackageByAutomationAccountRequest,
+  output: ModuleListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPython3PackageByAutomationAccountError = AzureOpError;
+/** Retrieve a list of python 3 packages. */
+export const ListPython3PackageByAutomationAccount: API.OperationMethod<
+  ListPython3PackageByAutomationAccountRequest,
+  ModuleListResult,
+  ListPython3PackageByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPython3PackageByAutomationAccountRequest,
+  output: ModuleListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRunbookByAutomationAccountError = AzureOpError;
+/** Retrieve a list of runbooks. */
+export const ListRunbookByAutomationAccount: API.OperationMethod<
+  ListRunbookByAutomationAccountRequest,
+  RunbookListResult,
+  ListRunbookByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRunbookByAutomationAccountRequest,
+  output: RunbookListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRuntimeEnvironmentByAutomationAccountError = AzureOpError;
+/** Retrieve a list of RuntimeEnvironments. */
+export const ListRuntimeEnvironmentByAutomationAccount: API.OperationMethod<
+  ListRuntimeEnvironmentByAutomationAccountRequest,
+  RuntimeEnvironmentListResult,
+  ListRuntimeEnvironmentByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRuntimeEnvironmentByAutomationAccountRequest,
+  output: RuntimeEnvironmentListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListScheduleByAutomationAccountError = AzureOpError;
+/** Retrieve a list of schedules. */
+export const ListScheduleByAutomationAccount: API.OperationMethod<
+  ListScheduleByAutomationAccountRequest,
+  ScheduleListResult,
+  ListScheduleByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListScheduleByAutomationAccountRequest,
+  output: ScheduleListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSourceControlByAutomationAccountError = AzureOpError;
+/** Retrieve a list of source controls. */
+export const ListSourceControlByAutomationAccount: API.OperationMethod<
+  ListSourceControlByAutomationAccountRequest,
+  SourceControlListResult,
+  ListSourceControlByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSourceControlByAutomationAccountRequest,
+  output: SourceControlListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSourceControlSyncJobByAutomationAccountError = AzureOpError;
+/** Retrieve a list of source control sync jobs. */
+export const ListSourceControlSyncJobByAutomationAccount: API.OperationMethod<
+  ListSourceControlSyncJobByAutomationAccountRequest,
+  SourceControlSyncJobListResult,
+  ListSourceControlSyncJobByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSourceControlSyncJobByAutomationAccountRequest,
+  output: SourceControlSyncJobListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSourceControlSyncJobStreamBySyncJob2Error = AzureOpError;
+/** Retrieve a list of sync job streams identified by sync job id. */
+export const ListSourceControlSyncJobStreamBySyncJob2: API.OperationMethod<
+  SourceControlSyncJobStreamsListBySyncJobRequest,
+  SourceControlSyncJobStreamsListBySyncJob,
+  ListSourceControlSyncJobStreamBySyncJob2Error,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SourceControlSyncJobStreamsListBySyncJobRequest,
+  output: SourceControlSyncJobStreamsListBySyncJob,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListStatisticByAutomationAccountError = AzureOpError;
+/** Retrieve the statistics for the account. */
+export const ListStatisticByAutomationAccount: API.OperationMethod<
+  ListStatisticByAutomationAccountRequest,
+  StatisticsListResult,
+  ListStatisticByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListStatisticByAutomationAccountRequest,
+  output: StatisticsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListTestJobStreamByTestJobError = AzureOpError;
+/** Retrieve a list of test job streams identified by runbook name. */
+export const ListTestJobStreamByTestJob: API.OperationMethod<
+  ListTestJobStreamByTestJobRequest,
+  JobStreamListResult,
+  ListTestJobStreamByTestJobError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTestJobStreamByTestJobRequest,
+  output: JobStreamListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListUsageByAutomationAccountError = AzureOpError;
+/** Retrieve the usage for the account id. */
+export const ListUsageByAutomationAccount: API.OperationMethod<
+  ListUsageByAutomationAccountRequest,
+  UsageListResult,
+  ListUsageByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListUsageByAutomationAccountRequest,
+  output: UsageListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListVariableByAutomationAccountError = AzureOpError;
+/** Retrieve a list of variables. */
+export const ListVariableByAutomationAccount: API.OperationMethod<
+  ListVariableByAutomationAccountRequest,
+  VariableListResult,
+  ListVariableByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListVariableByAutomationAccountRequest,
+  output: VariableListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListWatcherByAutomationAccountError = AzureOpError;
+/** Retrieve a list of watchers. */
+export const ListWatcherByAutomationAccount: API.OperationMethod<
+  ListWatcherByAutomationAccountRequest,
+  WatcherListResult,
+  ListWatcherByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWatcherByAutomationAccountRequest,
+  output: WatcherListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListWebhookByAutomationAccountError = AzureOpError;
+/** Retrieve a list of webhooks. */
+export const ListWebhookByAutomationAccount: API.OperationMethod<
+  ListWebhookByAutomationAccountRequest,
+  WebhookListResult,
+  ListWebhookByAutomationAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWebhookByAutomationAccountRequest,
+  output: WebhookListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15013,171 +15747,6 @@ export const ModuleCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ModuleDeleteError = AzureOpError;
-/** Delete the module by name. */
-export const ModuleDelete: API.OperationMethod<
-  ModuleDeleteRequest,
-  ModuleDeleteResponse,
-  ModuleDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ModuleDeleteRequest,
-  output: ModuleDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ModuleGetError = AzureOpError;
-/** Retrieve the module identified by module name. */
-export const ModuleGet: API.OperationMethod<
-  ModuleGetRequest,
-  ModuleGetResponse,
-  ModuleGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ModuleGetRequest,
-  output: ModuleGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ModuleListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of modules. */
-export const ModuleListByAutomationAccount: API.OperationMethod<
-  ModuleListByAutomationAccountRequest,
-  ModuleListResult,
-  ModuleListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ModuleListByAutomationAccountRequest,
-  output: ModuleListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ModuleUpdateError = AzureOpError;
-/** Update the module identified by module name. */
-export const ModuleUpdate: API.OperationMethod<
-  ModuleUpdateRequest,
-  ModuleUpdateResponse,
-  ModuleUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ModuleUpdateRequest,
-  output: ModuleUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NodeCountInformationGetError = AzureOpError;
-/** Retrieve counts for Dsc Nodes. */
-export const NodeCountInformationGet: API.OperationMethod<
-  NodeCountInformationGetRequest,
-  NodeCounts,
-  NodeCountInformationGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NodeCountInformationGetRequest,
-  output: NodeCounts,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NodeReportsGetError = AzureOpError;
-/** Retrieve the Dsc node report data by node id and report id. */
-export const NodeReportsGet: API.OperationMethod<
-  NodeReportsGetRequest,
-  DscNodeReport,
-  NodeReportsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NodeReportsGetRequest,
-  output: DscNodeReport,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NodeReportsGetContentError = AzureOpError;
-/** Retrieve the Dsc node reports by node id and report id. */
-export const NodeReportsGetContent: API.OperationMethod<
-  NodeReportsGetContentRequest,
-  NodeReportsGetContentResponse,
-  NodeReportsGetContentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NodeReportsGetContentRequest,
-  output: NodeReportsGetContentResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NodeReportsListByNodeError = AzureOpError;
-/** Retrieve the Dsc node report list by node id. */
-export const NodeReportsListByNode: API.OperationMethod<
-  NodeReportsListByNodeRequest,
-  DscNodeReportListResult,
-  NodeReportsListByNodeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NodeReportsListByNodeRequest,
-  output: DscNodeReportListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ObjectDataTypesListFieldsByModuleAndTypeError = AzureOpError;
-/** Retrieve a list of fields of a given type identified by module name. */
-export const ObjectDataTypesListFieldsByModuleAndType: API.OperationMethod<
-  ObjectDataTypesListFieldsByModuleAndTypeRequest,
-  TypeFieldListResult,
-  ObjectDataTypesListFieldsByModuleAndTypeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ObjectDataTypesListFieldsByModuleAndTypeRequest,
-  output: TypeFieldListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ObjectDataTypesListFieldsByTypeError = AzureOpError;
-/** Retrieve a list of fields of a given type across all accessible modules. */
-export const ObjectDataTypesListFieldsByType: API.OperationMethod<
-  ObjectDataTypesListFieldsByTypeRequest,
-  TypeFieldListResult,
-  ObjectDataTypesListFieldsByTypeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ObjectDataTypesListFieldsByTypeRequest,
-  output: TypeFieldListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** Lists all of the available Automation REST API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationListResult,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PackageCreateOrUpdateError = AzureOpError;
 /** Create or update the package identified by package name. */
 export const PackageCreateOrUpdate: API.OperationMethod<
@@ -15193,61 +15762,16 @@ export const PackageCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PackageDeleteError = AzureOpError;
-/** Delete the package by name. */
-export const PackageDelete: API.OperationMethod<
-  PackageDeleteRequest,
-  PackageDeleteResponse,
-  PackageDeleteError,
+export type PatchHybridRunbookWorkerError = AzureOpError;
+/** Update a hybrid runbook worker. */
+export const PatchHybridRunbookWorker: API.OperationMethod<
+  PatchHybridRunbookWorkerRequest,
+  PatchHybridRunbookWorkerResponse,
+  PatchHybridRunbookWorkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PackageDeleteRequest,
-  output: PackageDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PackageGetError = AzureOpError;
-/** Retrieve the Package identified by Package name. */
-export const PackageGet: API.OperationMethod<
-  PackageGetRequest,
-  PackageGetResponse,
-  PackageGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PackageGetRequest,
-  output: PackageGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PackageListByRuntimeEnvironmentError = AzureOpError;
-/** Retrieve the a list of Packages */
-export const PackageListByRuntimeEnvironment: API.OperationMethod<
-  PackageListByRuntimeEnvironmentRequest,
-  PackageListResult,
-  PackageListByRuntimeEnvironmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PackageListByRuntimeEnvironmentRequest,
-  output: PackageListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PackageUpdateError = AzureOpError;
-/** Update the Package identified by Package name. */
-export const PackageUpdate: API.OperationMethod<
-  PackageUpdateRequest,
-  PackageUpdateResponse,
-  PackageUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PackageUpdateRequest,
-  output: PackageUpdateResponse,
+  input: PatchHybridRunbookWorkerRequest,
+  output: PatchHybridRunbookWorkerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15263,52 +15787,6 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PrivateEndpointConnectionsCreateOrUpdateRequest,
   output: PrivateEndpointConnectionsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateEndpointConnectionsDeleteError = AzureOpError;
-/** Deletes a private endpoint connection with a given name. */
-export const PrivateEndpointConnectionsDelete: API.OperationMethod<
-  PrivateEndpointConnectionsDeleteRequest,
-  PrivateEndpointConnectionsDeleteResponse,
-  PrivateEndpointConnectionsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsDeleteRequest,
-  output: PrivateEndpointConnectionsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateEndpointConnectionsGetError = AzureOpError;
-/** Gets a private endpoint connection. */
-export const PrivateEndpointConnectionsGet: API.OperationMethod<
-  PrivateEndpointConnectionsGetRequest,
-  PrivateEndpointConnectionsGetResponse,
-  PrivateEndpointConnectionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsGetRequest,
-  output: PrivateEndpointConnectionsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateEndpointConnectionsListByAutomationAccountError =
-  AzureOpError;
-/** List all private endpoint connections on a Automation account. */
-export const PrivateEndpointConnectionsListByAutomationAccount: API.OperationMethod<
-  PrivateEndpointConnectionsListByAutomationAccountRequest,
-  PrivateEndpointConnectionListResult,
-  PrivateEndpointConnectionsListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsListByAutomationAccountRequest,
-  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15344,66 +15822,6 @@ export const Python2PackageCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Python2PackageDeleteError = AzureOpError;
-/** Delete the python 2 package by name. */
-export const Python2PackageDelete: API.OperationMethod<
-  Python2PackageDeleteRequest,
-  Python2PackageDeleteResponse,
-  Python2PackageDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Python2PackageDeleteRequest,
-  output: Python2PackageDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type Python2PackageGetError = AzureOpError;
-/** Retrieve the python 2 package identified by package name. */
-export const Python2PackageGet: API.OperationMethod<
-  Python2PackageGetRequest,
-  Python2PackageGetResponse,
-  Python2PackageGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Python2PackageGetRequest,
-  output: Python2PackageGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type Python2PackageListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of python 2 packages. */
-export const Python2PackageListByAutomationAccount: API.OperationMethod<
-  Python2PackageListByAutomationAccountRequest,
-  ModuleListResult,
-  Python2PackageListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Python2PackageListByAutomationAccountRequest,
-  output: ModuleListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type Python2PackageUpdateError = AzureOpError;
-/** Update the python 2 package identified by package name. */
-export const Python2PackageUpdate: API.OperationMethod<
-  Python2PackageUpdateRequest,
-  Python2PackageUpdateResponse,
-  Python2PackageUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Python2PackageUpdateRequest,
-  output: Python2PackageUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type Python3PackageCreateOrUpdateError = AzureOpError;
 /** Create or Update the python 3 package identified by package name. */
 export const Python3PackageCreateOrUpdate: API.OperationMethod<
@@ -15419,66 +15837,6 @@ export const Python3PackageCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Python3PackageDeleteError = AzureOpError;
-/** Delete the python 3 package by name. */
-export const Python3PackageDelete: API.OperationMethod<
-  Python3PackageDeleteRequest,
-  Python3PackageDeleteResponse,
-  Python3PackageDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Python3PackageDeleteRequest,
-  output: Python3PackageDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type Python3PackageGetError = AzureOpError;
-/** Retrieve the python 3 package identified by package name. */
-export const Python3PackageGet: API.OperationMethod<
-  Python3PackageGetRequest,
-  Python3PackageGetResponse,
-  Python3PackageGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Python3PackageGetRequest,
-  output: Python3PackageGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type Python3PackageListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of python 3 packages. */
-export const Python3PackageListByAutomationAccount: API.OperationMethod<
-  Python3PackageListByAutomationAccountRequest,
-  ModuleListResult,
-  Python3PackageListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Python3PackageListByAutomationAccountRequest,
-  output: ModuleListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type Python3PackageUpdateError = AzureOpError;
-/** Update the python 3 package identified by package name. */
-export const Python3PackageUpdate: API.OperationMethod<
-  Python3PackageUpdateRequest,
-  Python3PackageUpdateResponse,
-  Python3PackageUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Python3PackageUpdateRequest,
-  output: Python3PackageUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RunbookCreateOrUpdateError = AzureOpError;
 /** Create the runbook identified by runbook name. */
 export const RunbookCreateOrUpdate: API.OperationMethod<
@@ -15489,51 +15847,6 @@ export const RunbookCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RunbookCreateOrUpdateRequest,
   output: RunbookCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RunbookDeleteError = AzureOpError;
-/** Delete the runbook by name. */
-export const RunbookDelete: API.OperationMethod<
-  RunbookDeleteRequest,
-  RunbookDeleteResponse,
-  RunbookDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RunbookDeleteRequest,
-  output: RunbookDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RunbookDraftGetError = AzureOpError;
-/** Retrieve the runbook draft identified by runbook name. */
-export const RunbookDraftGet: API.OperationMethod<
-  RunbookDraftGetRequest,
-  RunbookDraft,
-  RunbookDraftGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RunbookDraftGetRequest,
-  output: RunbookDraft,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RunbookDraftGetContentError = AzureOpError;
-/** Retrieve the content of runbook draft identified by runbook name. */
-export const RunbookDraftGetContent: API.OperationMethod<
-  RunbookDraftGetContentRequest,
-  RunbookDraftGetContentResponse,
-  RunbookDraftGetContentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RunbookDraftGetContentRequest,
-  output: RunbookDraftGetContentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15569,51 +15882,6 @@ export const RunbookDraftUndoEdit: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunbookGetError = AzureOpError;
-/** Retrieve the runbook identified by runbook name. */
-export const RunbookGet: API.OperationMethod<
-  RunbookGetRequest,
-  RunbookGetResponse,
-  RunbookGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RunbookGetRequest,
-  output: RunbookGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RunbookGetContentError = AzureOpError;
-/** Retrieve the content of runbook identified by runbook name. */
-export const RunbookGetContent: API.OperationMethod<
-  RunbookGetContentRequest,
-  RunbookGetContentResponse,
-  RunbookGetContentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RunbookGetContentRequest,
-  output: RunbookGetContentResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RunbookListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of runbooks. */
-export const RunbookListByAutomationAccount: API.OperationMethod<
-  RunbookListByAutomationAccountRequest,
-  RunbookListResult,
-  RunbookListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RunbookListByAutomationAccountRequest,
-  output: RunbookListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RunbookPublishError = AzureOpError;
 /** Publish runbook draft. */
 export const RunbookPublish: API.OperationMethod<
@@ -15629,96 +15897,6 @@ export const RunbookPublish: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunbookUpdateError = AzureOpError;
-/** Update the runbook identified by runbook name. */
-export const RunbookUpdate: API.OperationMethod<
-  RunbookUpdateRequest,
-  RunbookUpdateResponse,
-  RunbookUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RunbookUpdateRequest,
-  output: RunbookUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuntimeEnvironmentsCreateError = AzureOpError;
-/** Create or update Runtime Environment */
-export const RuntimeEnvironmentsCreate: API.OperationMethod<
-  RuntimeEnvironmentsCreateRequest,
-  RuntimeEnvironmentsCreateResponse,
-  RuntimeEnvironmentsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuntimeEnvironmentsCreateRequest,
-  output: RuntimeEnvironmentsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuntimeEnvironmentsDeleteError = AzureOpError;
-/** Delete the Runtime Environment. */
-export const RuntimeEnvironmentsDelete: API.OperationMethod<
-  RuntimeEnvironmentsDeleteRequest,
-  RuntimeEnvironmentsDeleteResponse,
-  RuntimeEnvironmentsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuntimeEnvironmentsDeleteRequest,
-  output: RuntimeEnvironmentsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuntimeEnvironmentsGetError = AzureOpError;
-/** Get information about the Runtime Environment */
-export const RuntimeEnvironmentsGet: API.OperationMethod<
-  RuntimeEnvironmentsGetRequest,
-  RuntimeEnvironmentsGetResponse,
-  RuntimeEnvironmentsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuntimeEnvironmentsGetRequest,
-  output: RuntimeEnvironmentsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuntimeEnvironmentsListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of RuntimeEnvironments. */
-export const RuntimeEnvironmentsListByAutomationAccount: API.OperationMethod<
-  RuntimeEnvironmentsListByAutomationAccountRequest,
-  RuntimeEnvironmentListResult,
-  RuntimeEnvironmentsListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuntimeEnvironmentsListByAutomationAccountRequest,
-  output: RuntimeEnvironmentListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuntimeEnvironmentsUpdateError = AzureOpError;
-/** Update an Runtime Environment. */
-export const RuntimeEnvironmentsUpdate: API.OperationMethod<
-  RuntimeEnvironmentsUpdateRequest,
-  RuntimeEnvironmentsUpdateResponse,
-  RuntimeEnvironmentsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuntimeEnvironmentsUpdateRequest,
-  output: RuntimeEnvironmentsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ScheduleCreateOrUpdateError = AzureOpError;
 /** Create a schedule. */
 export const ScheduleCreateOrUpdate: API.OperationMethod<
@@ -15729,66 +15907,6 @@ export const ScheduleCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ScheduleCreateOrUpdateRequest,
   output: ScheduleCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduleDeleteError = AzureOpError;
-/** Delete the schedule identified by schedule name. */
-export const ScheduleDelete: API.OperationMethod<
-  ScheduleDeleteRequest,
-  ScheduleDeleteResponse,
-  ScheduleDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduleDeleteRequest,
-  output: ScheduleDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduleGetError = AzureOpError;
-/** Retrieve the schedule identified by schedule name. */
-export const ScheduleGet: API.OperationMethod<
-  ScheduleGetRequest,
-  ScheduleGetResponse,
-  ScheduleGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduleGetRequest,
-  output: ScheduleGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduleListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of schedules. */
-export const ScheduleListByAutomationAccount: API.OperationMethod<
-  ScheduleListByAutomationAccountRequest,
-  ScheduleListResult,
-  ScheduleListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduleListByAutomationAccountRequest,
-  output: ScheduleListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduleUpdateError = AzureOpError;
-/** Update the schedule identified by schedule name. */
-export const ScheduleUpdate: API.OperationMethod<
-  ScheduleUpdateRequest,
-  ScheduleUpdateResponse,
-  ScheduleUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduleUpdateRequest,
-  output: ScheduleUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15929,181 +16047,91 @@ export const SourceControlCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SourceControlDeleteError = AzureOpError;
-/** Delete the source control. */
-export const SourceControlDelete: API.OperationMethod<
-  SourceControlDeleteRequest,
-  SourceControlDeleteResponse,
-  SourceControlDeleteError,
+export type StartWatcherError = AzureOpError;
+/** Resume the watcher identified by watcher name. */
+export const StartWatcher: API.OperationMethod<
+  StartWatcherRequest,
+  StartWatcherResponse,
+  StartWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlDeleteRequest,
-  output: SourceControlDeleteResponse,
+  input: StartWatcherRequest,
+  output: StartWatcherResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SourceControlGetError = AzureOpError;
-/** Retrieve the source control identified by source control name. */
-export const SourceControlGet: API.OperationMethod<
-  SourceControlGetRequest,
-  SourceControlGetResponse,
-  SourceControlGetError,
+export type StopJobError = AzureOpError;
+/** Stop the job identified by jobName. */
+export const StopJob: API.OperationMethod<
+  StopJobRequest,
+  StopJobResponse,
+  StopJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlGetRequest,
-  output: SourceControlGetResponse,
+  input: StopJobRequest,
+  output: StopJobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SourceControlListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of source controls. */
-export const SourceControlListByAutomationAccount: API.OperationMethod<
-  SourceControlListByAutomationAccountRequest,
-  SourceControlListResult,
-  SourceControlListByAutomationAccountError,
+export type StopTestJobError = AzureOpError;
+/** Stop the test job. */
+export const StopTestJob: API.OperationMethod<
+  StopTestJobRequest,
+  StopTestJobResponse,
+  StopTestJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlListByAutomationAccountRequest,
-  output: SourceControlListResult,
+  input: StopTestJobRequest,
+  output: StopTestJobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SourceControlSyncJobCreateError = AzureOpError;
-/** Creates the sync job for a source control. */
-export const SourceControlSyncJobCreate: API.OperationMethod<
-  SourceControlSyncJobCreateRequest,
-  SourceControlSyncJob,
-  SourceControlSyncJobCreateError,
+export type StopWatcherError = AzureOpError;
+/** Resume the watcher identified by watcher name. */
+export const StopWatcher: API.OperationMethod<
+  StopWatcherRequest,
+  StopWatcherResponse,
+  StopWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlSyncJobCreateRequest,
-  output: SourceControlSyncJob,
+  input: StopWatcherRequest,
+  output: StopWatcherResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SourceControlSyncJobGetError = AzureOpError;
-/** Retrieve the source control sync job identified by job id. */
-export const SourceControlSyncJobGet: API.OperationMethod<
-  SourceControlSyncJobGetRequest,
-  SourceControlSyncJobById,
-  SourceControlSyncJobGetError,
+export type SuspendJobError = AzureOpError;
+/** Suspend the job identified by job name. */
+export const SuspendJob: API.OperationMethod<
+  SuspendJobRequest,
+  SuspendJobResponse,
+  SuspendJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlSyncJobGetRequest,
-  output: SourceControlSyncJobById,
+  input: SuspendJobRequest,
+  output: SuspendJobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SourceControlSyncJobListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of source control sync jobs. */
-export const SourceControlSyncJobListByAutomationAccount: API.OperationMethod<
-  SourceControlSyncJobListByAutomationAccountRequest,
-  SourceControlSyncJobListResult,
-  SourceControlSyncJobListByAutomationAccountError,
+export type SuspendTestJobError = AzureOpError;
+/** Suspend the test job. */
+export const SuspendTestJob: API.OperationMethod<
+  SuspendTestJobRequest,
+  SuspendTestJobResponse,
+  SuspendTestJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlSyncJobListByAutomationAccountRequest,
-  output: SourceControlSyncJobListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SourceControlSyncJobStreamsGetError = AzureOpError;
-/** Retrieve a sync job stream identified by stream id. */
-export const SourceControlSyncJobStreamsGet: API.OperationMethod<
-  SourceControlSyncJobStreamsGetRequest,
-  SourceControlSyncJobStreamById,
-  SourceControlSyncJobStreamsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlSyncJobStreamsGetRequest,
-  output: SourceControlSyncJobStreamById,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SourceControlSyncJobStreamsListBySyncJob2Error = AzureOpError;
-/** Retrieve a list of sync job streams identified by sync job id. */
-export const SourceControlSyncJobStreamsListBySyncJob2: API.OperationMethod<
-  SourceControlSyncJobStreamsListBySyncJobRequest,
-  SourceControlSyncJobStreamsListBySyncJob,
-  SourceControlSyncJobStreamsListBySyncJob2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlSyncJobStreamsListBySyncJobRequest,
-  output: SourceControlSyncJobStreamsListBySyncJob,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SourceControlUpdateError = AzureOpError;
-/** Update a source control. */
-export const SourceControlUpdate: API.OperationMethod<
-  SourceControlUpdateRequest,
-  SourceControlUpdateResponse,
-  SourceControlUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SourceControlUpdateRequest,
-  output: SourceControlUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type StatisticsListByAutomationAccountError = AzureOpError;
-/** Retrieve the statistics for the account. */
-export const StatisticsListByAutomationAccount: API.OperationMethod<
-  StatisticsListByAutomationAccountRequest,
-  StatisticsListResult,
-  StatisticsListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StatisticsListByAutomationAccountRequest,
-  output: StatisticsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TestJobCreateError = AzureOpError;
-/** Create a test job of the runbook. */
-export const TestJobCreate: API.OperationMethod<
-  TestJobCreateRequest,
-  TestJob,
-  TestJobCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TestJobCreateRequest,
-  output: TestJob,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TestJobGetError = AzureOpError;
-/** Retrieve the test job for the specified runbook. */
-export const TestJobGet: API.OperationMethod<
-  TestJobGetRequest,
-  TestJob,
-  TestJobGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TestJobGetRequest,
-  output: TestJob,
+  input: SuspendTestJobRequest,
+  output: SuspendTestJobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16124,76 +16152,271 @@ export const TestJobResume: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestJobStopError = AzureOpError;
-/** Stop the test job. */
-export const TestJobStop: API.OperationMethod<
-  TestJobStopRequest,
-  TestJobStopResponse,
-  TestJobStopError,
+export type UpdateAutomationAccountError = AzureOpError;
+/** Update an automation account. */
+export const UpdateAutomationAccount: API.OperationMethod<
+  UpdateAutomationAccountRequest,
+  UpdateAutomationAccountResponse,
+  UpdateAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestJobStopRequest,
-  output: TestJobStopResponse,
+  input: UpdateAutomationAccountRequest,
+  output: UpdateAutomationAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type TestJobStreamsGetError = AzureOpError;
-/** Retrieve a test job stream of the test job identified by runbook name and stream id. */
-export const TestJobStreamsGet: API.OperationMethod<
-  TestJobStreamsGetRequest,
-  JobStream,
-  TestJobStreamsGetError,
+export type UpdateCertificateError = AzureOpError;
+/** Update a certificate. */
+export const UpdateCertificate: API.OperationMethod<
+  UpdateCertificateRequest,
+  UpdateCertificateResponse,
+  UpdateCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestJobStreamsGetRequest,
-  output: JobStream,
+  input: UpdateCertificateRequest,
+  output: UpdateCertificateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type TestJobStreamsListByTestJobError = AzureOpError;
-/** Retrieve a list of test job streams identified by runbook name. */
-export const TestJobStreamsListByTestJob: API.OperationMethod<
-  TestJobStreamsListByTestJobRequest,
-  JobStreamListResult,
-  TestJobStreamsListByTestJobError,
+export type UpdateConnectionError = AzureOpError;
+/** Update a connection. */
+export const UpdateConnection: API.OperationMethod<
+  UpdateConnectionRequest,
+  UpdateConnectionResponse,
+  UpdateConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestJobStreamsListByTestJobRequest,
-  output: JobStreamListResult,
+  input: UpdateConnectionRequest,
+  output: UpdateConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type TestJobSuspendError = AzureOpError;
-/** Suspend the test job. */
-export const TestJobSuspend: API.OperationMethod<
-  TestJobSuspendRequest,
-  TestJobSuspendResponse,
-  TestJobSuspendError,
+export type UpdateCredentialError = AzureOpError;
+/** Update a credential. */
+export const UpdateCredential: API.OperationMethod<
+  UpdateCredentialRequest,
+  UpdateCredentialResponse,
+  UpdateCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestJobSuspendRequest,
-  output: TestJobSuspendResponse,
+  input: UpdateCredentialRequest,
+  output: UpdateCredentialResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type UsagesListByAutomationAccountError = AzureOpError;
-/** Retrieve the usage for the account id. */
-export const UsagesListByAutomationAccount: API.OperationMethod<
-  UsagesListByAutomationAccountRequest,
-  UsageListResult,
-  UsagesListByAutomationAccountError,
+export type UpdateDscConfigurationError = AzureOpError;
+/** Create the configuration identified by configuration name. */
+export const UpdateDscConfiguration: API.OperationMethod<
+  UpdateDscConfigurationRequest,
+  UpdateDscConfigurationResponse,
+  UpdateDscConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsagesListByAutomationAccountRequest,
-  output: UsageListResult,
+  input: UpdateDscConfigurationRequest,
+  output: UpdateDscConfigurationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateDscNodeError = AzureOpError;
+/** Update the dsc node. */
+export const UpdateDscNode: API.OperationMethod<
+  UpdateDscNodeRequest,
+  UpdateDscNodeResponse,
+  UpdateDscNodeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDscNodeRequest,
+  output: UpdateDscNodeResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateHybridRunbookWorkerGroupError = AzureOpError;
+/** Update a hybrid runbook worker group. */
+export const UpdateHybridRunbookWorkerGroup: API.OperationMethod<
+  UpdateHybridRunbookWorkerGroupRequest,
+  UpdateHybridRunbookWorkerGroupResponse,
+  UpdateHybridRunbookWorkerGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHybridRunbookWorkerGroupRequest,
+  output: UpdateHybridRunbookWorkerGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateModuleError = AzureOpError;
+/** Update the module identified by module name. */
+export const UpdateModule: API.OperationMethod<
+  UpdateModuleRequest,
+  UpdateModuleResponse,
+  UpdateModuleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateModuleRequest,
+  output: UpdateModuleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdatePackageError = AzureOpError;
+/** Update the Package identified by Package name. */
+export const UpdatePackage: API.OperationMethod<
+  UpdatePackageRequest,
+  UpdatePackageResponse,
+  UpdatePackageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePackageRequest,
+  output: UpdatePackageResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdatePython2PackageError = AzureOpError;
+/** Update the python 2 package identified by package name. */
+export const UpdatePython2Package: API.OperationMethod<
+  UpdatePython2PackageRequest,
+  UpdatePython2PackageResponse,
+  UpdatePython2PackageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePython2PackageRequest,
+  output: UpdatePython2PackageResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdatePython3PackageError = AzureOpError;
+/** Update the python 3 package identified by package name. */
+export const UpdatePython3Package: API.OperationMethod<
+  UpdatePython3PackageRequest,
+  UpdatePython3PackageResponse,
+  UpdatePython3PackageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePython3PackageRequest,
+  output: UpdatePython3PackageResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateRunbookError = AzureOpError;
+/** Update the runbook identified by runbook name. */
+export const UpdateRunbook: API.OperationMethod<
+  UpdateRunbookRequest,
+  UpdateRunbookResponse,
+  UpdateRunbookError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRunbookRequest,
+  output: UpdateRunbookResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateRuntimeEnvironmentError = AzureOpError;
+/** Update an Runtime Environment. */
+export const UpdateRuntimeEnvironment: API.OperationMethod<
+  UpdateRuntimeEnvironmentRequest,
+  UpdateRuntimeEnvironmentResponse,
+  UpdateRuntimeEnvironmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRuntimeEnvironmentRequest,
+  output: UpdateRuntimeEnvironmentResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateScheduleError = AzureOpError;
+/** Update the schedule identified by schedule name. */
+export const UpdateSchedule: API.OperationMethod<
+  UpdateScheduleRequest,
+  UpdateScheduleResponse,
+  UpdateScheduleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateScheduleRequest,
+  output: UpdateScheduleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSourceControlError = AzureOpError;
+/** Update a source control. */
+export const UpdateSourceControl: API.OperationMethod<
+  UpdateSourceControlRequest,
+  UpdateSourceControlResponse,
+  UpdateSourceControlError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSourceControlRequest,
+  output: UpdateSourceControlResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateVariableError = AzureOpError;
+/** Update a variable. */
+export const UpdateVariable: API.OperationMethod<
+  UpdateVariableRequest,
+  UpdateVariableResponse,
+  UpdateVariableError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateVariableRequest,
+  output: UpdateVariableResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateWatcherError = AzureOpError;
+/** Update the watcher identified by watcher name. */
+export const UpdateWatcher: API.OperationMethod<
+  UpdateWatcherRequest,
+  UpdateWatcherResponse,
+  UpdateWatcherError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWatcherRequest,
+  output: UpdateWatcherResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateWebhookError = AzureOpError;
+/** Update the webhook identified by webhook name. */
+export const UpdateWebhook: API.OperationMethod<
+  UpdateWebhookRequest,
+  UpdateWebhookResponse,
+  UpdateWebhookError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWebhookRequest,
+  output: UpdateWebhookResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16214,66 +16437,6 @@ export const VariableCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VariableDeleteError = AzureOpError;
-/** Delete the variable. */
-export const VariableDelete: API.OperationMethod<
-  VariableDeleteRequest,
-  VariableDeleteResponse,
-  VariableDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VariableDeleteRequest,
-  output: VariableDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VariableGetError = AzureOpError;
-/** Retrieve the variable identified by variable name. */
-export const VariableGet: API.OperationMethod<
-  VariableGetRequest,
-  VariableGetResponse,
-  VariableGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VariableGetRequest,
-  output: VariableGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VariableListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of variables. */
-export const VariableListByAutomationAccount: API.OperationMethod<
-  VariableListByAutomationAccountRequest,
-  VariableListResult,
-  VariableListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VariableListByAutomationAccountRequest,
-  output: VariableListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VariableUpdateError = AzureOpError;
-/** Update a variable. */
-export const VariableUpdate: API.OperationMethod<
-  VariableUpdateRequest,
-  VariableUpdateResponse,
-  VariableUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VariableUpdateRequest,
-  output: VariableUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type WatcherCreateOrUpdateError = AzureOpError;
 /** Create the watcher identified by watcher name. */
 export const WatcherCreateOrUpdate: API.OperationMethod<
@@ -16289,96 +16452,6 @@ export const WatcherCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatcherDeleteError = AzureOpError;
-/** Delete the watcher by name. */
-export const WatcherDelete: API.OperationMethod<
-  WatcherDeleteRequest,
-  WatcherDeleteResponse,
-  WatcherDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WatcherDeleteRequest,
-  output: WatcherDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WatcherGetError = AzureOpError;
-/** Retrieve the watcher identified by watcher name. */
-export const WatcherGet: API.OperationMethod<
-  WatcherGetRequest,
-  WatcherGetResponse,
-  WatcherGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WatcherGetRequest,
-  output: WatcherGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WatcherListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of watchers. */
-export const WatcherListByAutomationAccount: API.OperationMethod<
-  WatcherListByAutomationAccountRequest,
-  WatcherListResult,
-  WatcherListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WatcherListByAutomationAccountRequest,
-  output: WatcherListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WatcherStartError = AzureOpError;
-/** Resume the watcher identified by watcher name. */
-export const WatcherStart: API.OperationMethod<
-  WatcherStartRequest,
-  WatcherStartResponse,
-  WatcherStartError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WatcherStartRequest,
-  output: WatcherStartResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WatcherStopError = AzureOpError;
-/** Resume the watcher identified by watcher name. */
-export const WatcherStop: API.OperationMethod<
-  WatcherStopRequest,
-  WatcherStopResponse,
-  WatcherStopError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WatcherStopRequest,
-  output: WatcherStopResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WatcherUpdateError = AzureOpError;
-/** Update the watcher identified by watcher name. */
-export const WatcherUpdate: API.OperationMethod<
-  WatcherUpdateRequest,
-  WatcherUpdateResponse,
-  WatcherUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WatcherUpdateRequest,
-  output: WatcherUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type WebhookCreateOrUpdateError = AzureOpError;
 /** Create the webhook identified by webhook name. */
 export const WebhookCreateOrUpdate: API.OperationMethod<
@@ -16389,81 +16462,6 @@ export const WebhookCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WebhookCreateOrUpdateRequest,
   output: WebhookCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WebhookDeleteError = AzureOpError;
-/** Delete the webhook by name. */
-export const WebhookDelete: API.OperationMethod<
-  WebhookDeleteRequest,
-  WebhookDeleteResponse,
-  WebhookDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhookDeleteRequest,
-  output: WebhookDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WebhookGenerateUriError = AzureOpError;
-/** Generates a Uri for use in creating a webhook. */
-export const WebhookGenerateUri: API.OperationMethod<
-  WebhookGenerateUriRequest,
-  WebhookGenerateUriResponse,
-  WebhookGenerateUriError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhookGenerateUriRequest,
-  output: WebhookGenerateUriResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WebhookGetError = AzureOpError;
-/** Retrieve the webhook identified by webhook name. */
-export const WebhookGet: API.OperationMethod<
-  WebhookGetRequest,
-  WebhookGetResponse,
-  WebhookGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhookGetRequest,
-  output: WebhookGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WebhookListByAutomationAccountError = AzureOpError;
-/** Retrieve a list of webhooks. */
-export const WebhookListByAutomationAccount: API.OperationMethod<
-  WebhookListByAutomationAccountRequest,
-  WebhookListResult,
-  WebhookListByAutomationAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhookListByAutomationAccountRequest,
-  output: WebhookListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WebhookUpdateError = AzureOpError;
-/** Update the webhook identified by webhook name. */
-export const WebhookUpdate: API.OperationMethod<
-  WebhookUpdateRequest,
-  WebhookUpdateResponse,
-  WebhookUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhookUpdateRequest,
-  output: WebhookUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

@@ -4705,7 +4705,7 @@
         "smithy.api#documentation": "Batch creates pull request comments. This function is used to create multiple PullRequestComments for code review. There needs to be exactly one PullRequestComment of type Review, and at most 100 PullRequestComments of type Code per request. The Position of the code comments must be unique within the request."
       }
     },
-    "com.gcp.securesourcemanager_v1#ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest": {
+    "com.gcp.securesourcemanager_v1#RequestResolveProjectLocationRepositoryPullRequestPullCommentRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4725,10 +4725,10 @@
         }
       }
     },
-    "com.gcp.securesourcemanager_v1#ResolveProjectsLocationsRepositoriesPullRequestsPullRequestComments": {
+    "com.gcp.securesourcemanager_v1#RequestResolveProjectLocationRepositoryPullRequestPullComment": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.securesourcemanager_v1#ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest"
+        "target": "com.gcp.securesourcemanager_v1#RequestResolveProjectLocationRepositoryPullRequestPullCommentRequest"
       },
       "output": {
         "target": "com.gcp.securesourcemanager_v1#Operation"
@@ -4792,7 +4792,7 @@
         "smithy.api#documentation": "Gets a pull request comment."
       }
     },
-    "com.gcp.securesourcemanager_v1#UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest": {
+    "com.gcp.securesourcemanager_v1#RequestUnresolveProjectLocationRepositoryPullRequestPullCommentRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4812,10 +4812,10 @@
         }
       }
     },
-    "com.gcp.securesourcemanager_v1#UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestComments": {
+    "com.gcp.securesourcemanager_v1#RequestUnresolveProjectLocationRepositoryPullRequestPullComment": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.securesourcemanager_v1#UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest"
+        "target": "com.gcp.securesourcemanager_v1#RequestUnresolveProjectLocationRepositoryPullRequestPullCommentRequest"
       },
       "output": {
         "target": "com.gcp.securesourcemanager_v1#Operation"

@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.endpoints#EndpointsListRequest": {
+    "com.posthog.endpoints#ListEndpointsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -509,10 +509,10 @@
       },
       "traits": {}
     },
-    "com.posthog.endpoints#EndpointsList": {
+    "com.posthog.endpoints#ListEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.endpoints#EndpointsListRequest"
+        "target": "com.posthog.endpoints#ListEndpointsRequest"
       },
       "output": {
         "target": "com.posthog.endpoints#PaginatedEndpointResponseList"
@@ -567,7 +567,7 @@
         "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required."
       }
     },
-    "com.posthog.endpoints#EndpointsCreateRequest": {
+    "com.posthog.endpoints#CreateEndpointRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -666,10 +666,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.endpoints#EndpointsCreate": {
+    "com.posthog.endpoints#CreateEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.endpoints#EndpointsCreateRequest"
+        "target": "com.posthog.endpoints#CreateEndpointRequest"
       },
       "output": {
         "target": "com.posthog.endpoints#EndpointResponse"
@@ -1003,7 +1003,7 @@
         "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required."
       }
     },
-    "com.posthog.endpoints#EndpointsUpdateRequest": {
+    "com.posthog.endpoints#UpdateEndpointRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1102,10 +1102,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.endpoints#EndpointsUpdate": {
+    "com.posthog.endpoints#UpdateEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.endpoints#EndpointsUpdateRequest"
+        "target": "com.posthog.endpoints#UpdateEndpointRequest"
       },
       "output": {
         "target": "com.posthog.endpoints#EndpointResponse"
@@ -1160,7 +1160,7 @@
         "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required."
       }
     },
-    "com.posthog.endpoints#EndpointsPartialUpdateRequest": {
+    "com.posthog.endpoints#UpdateEndpointPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1259,10 +1259,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.endpoints#EndpointsPartialUpdate": {
+    "com.posthog.endpoints#UpdateEndpointPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.endpoints#EndpointsPartialUpdateRequest"
+        "target": "com.posthog.endpoints#UpdateEndpointPartialRequest"
       },
       "output": {
         "target": "com.posthog.endpoints#EndpointResponse"
@@ -1428,7 +1428,7 @@
         "smithy.api#documentation": "Per-column bucket function overrides, e.g. {\"timestamp\": \"hour\"}"
       }
     },
-    "com.posthog.endpoints#EndpointsMaterializationPreviewCreateRequest": {
+    "com.posthog.endpoints#CreateEndpointMaterializationPreviewRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1461,10 +1461,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.endpoints#EndpointsMaterializationPreviewCreate": {
+    "com.posthog.endpoints#CreateEndpointMaterializationPreview": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.endpoints#EndpointsMaterializationPreviewCreateRequest"
+        "target": "com.posthog.endpoints#CreateEndpointMaterializationPreviewRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1537,7 +1537,7 @@
         "smithy.api#documentation": "Get materialization status for an endpoint. Supports ?version=N query param."
       }
     },
-    "com.posthog.endpoints#EndpointsMaterializationSuggestionCreateRequest": {
+    "com.posthog.endpoints#CreateEndpointMaterializationSuggestionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1652,10 +1652,10 @@
         "smithy.api#documentation": "* `ok` - ok\n* `cannot_fix` - cannot_fix\n* `invalid` - invalid\n* `model_error` - model_error"
       }
     },
-    "com.posthog.endpoints#EndpointsMaterializationSuggestionCreate": {
+    "com.posthog.endpoints#CreateEndpointMaterializationSuggestion": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.endpoints#EndpointsMaterializationSuggestionCreateRequest"
+        "target": "com.posthog.endpoints#CreateEndpointMaterializationSuggestionRequest"
       },
       "output": {
         "target": "com.posthog.endpoints#EndpointMaterializationSuggestion"
@@ -4358,7 +4358,7 @@
       },
       "traits": {}
     },
-    "com.posthog.endpoints#EndpointsRunCreateRequest": {
+    "com.posthog.endpoints#CreateEndpointRunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4435,10 +4435,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.endpoints#EndpointsRunCreate": {
+    "com.posthog.endpoints#CreateEndpointRun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.endpoints#EndpointsRunCreateRequest"
+        "target": "com.posthog.endpoints#CreateEndpointRunRequest"
       },
       "output": {
         "target": "com.posthog.endpoints#EndpointRunResponse"
@@ -4463,7 +4463,7 @@
         "smithy.api#documentation": "Execute endpoint with optional materialization. Supports version parameter, runs latest version if not set."
       }
     },
-    "com.posthog.endpoints#EndpointsVersionsListRequest": {
+    "com.posthog.endpoints#ListEndpointVersionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4543,10 +4543,10 @@
       },
       "traits": {}
     },
-    "com.posthog.endpoints#EndpointsVersionsList": {
+    "com.posthog.endpoints#ListEndpointVersions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.endpoints#EndpointsVersionsListRequest"
+        "target": "com.posthog.endpoints#ListEndpointVersionsRequest"
       },
       "output": {
         "target": "com.posthog.endpoints#PaginatedEndpointVersionResponseList"
@@ -4578,7 +4578,7 @@
       },
       "traits": {}
     },
-    "com.posthog.endpoints#EndpointsLastExecutionTimesCreateRequest": {
+    "com.posthog.endpoints#CreateEndpointLastExecutionTimeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4739,10 +4739,10 @@
       },
       "traits": {}
     },
-    "com.posthog.endpoints#EndpointsLastExecutionTimesCreate": {
+    "com.posthog.endpoints#CreateEndpointLastExecutionTime": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.endpoints#EndpointsLastExecutionTimesCreateRequest"
+        "target": "com.posthog.endpoints#CreateEndpointLastExecutionTimeRequest"
       },
       "output": {
         "target": "com.posthog.endpoints#QueryStatusResponse"
@@ -4866,19 +4866,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.endpoints#EndpointsList"
+          "target": "com.posthog.endpoints#ListEndpoints"
         },
         {
-          "target": "com.posthog.endpoints#EndpointsCreate"
+          "target": "com.posthog.endpoints#CreateEndpoint"
         },
         {
           "target": "com.posthog.endpoints#EndpointsRetrieve"
         },
         {
-          "target": "com.posthog.endpoints#EndpointsUpdate"
+          "target": "com.posthog.endpoints#UpdateEndpoint"
         },
         {
-          "target": "com.posthog.endpoints#EndpointsPartialUpdate"
+          "target": "com.posthog.endpoints#UpdateEndpointPartial"
         },
         {
           "target": "com.posthog.endpoints#EndpointsDestroy"
@@ -4887,13 +4887,13 @@
           "target": "com.posthog.endpoints#EndpointsLogsRetrieve"
         },
         {
-          "target": "com.posthog.endpoints#EndpointsMaterializationPreviewCreate"
+          "target": "com.posthog.endpoints#CreateEndpointMaterializationPreview"
         },
         {
           "target": "com.posthog.endpoints#EndpointsMaterializationStatusRetrieve"
         },
         {
-          "target": "com.posthog.endpoints#EndpointsMaterializationSuggestionCreate"
+          "target": "com.posthog.endpoints#CreateEndpointMaterializationSuggestion"
         },
         {
           "target": "com.posthog.endpoints#EndpointsOpenapiSpecRetrieve"
@@ -4902,13 +4902,13 @@
           "target": "com.posthog.endpoints#EndpointsRunRetrieve"
         },
         {
-          "target": "com.posthog.endpoints#EndpointsRunCreate"
+          "target": "com.posthog.endpoints#CreateEndpointRun"
         },
         {
-          "target": "com.posthog.endpoints#EndpointsVersionsList"
+          "target": "com.posthog.endpoints#ListEndpointVersions"
         },
         {
-          "target": "com.posthog.endpoints#EndpointsLastExecutionTimesCreate"
+          "target": "com.posthog.endpoints#CreateEndpointLastExecutionTime"
         },
         {
           "target": "com.posthog.endpoints#EndpointsMaterializationConditionsRetrieve"

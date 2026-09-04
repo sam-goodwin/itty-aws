@@ -260,7 +260,7 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_requests#FeatureRequestsListRequest": {
+    "com.posthog.feature_requests#ListFeatureRequestsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -821,10 +821,10 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_requests#FeatureRequestsList": {
+    "com.posthog.feature_requests#ListFeatureRequests": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsListRequest"
+        "target": "com.posthog.feature_requests#ListFeatureRequestsRequest"
       },
       "output": {
         "target": "com.posthog.feature_requests#PaginatedFeatureRequestList"
@@ -899,7 +899,7 @@
         "smithy.api#documentation": "Uploaded image IDs from this project to attach in display order."
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsCreateRequest": {
+    "com.posthog.feature_requests#CreateFeatureRequestRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -956,10 +956,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsCreate": {
+    "com.posthog.feature_requests#CreateFeatureRequest": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsCreateRequest"
+        "target": "com.posthog.feature_requests#CreateFeatureRequestRequest"
       },
       "output": {
         "target": "com.posthog.feature_requests#FeatureRequest"
@@ -1029,7 +1029,7 @@
         "smithy.api#documentation": "One or more product area IDs. Existing inactive areas can remain linked."
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsUpdateRequest": {
+    "com.posthog.feature_requests#UpdateFeatureRequestRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1102,10 +1102,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsUpdate": {
+    "com.posthog.feature_requests#UpdateFeatureRequest": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsUpdateRequest"
+        "target": "com.posthog.feature_requests#UpdateFeatureRequestRequest"
       },
       "output": {
         "target": "com.posthog.feature_requests#FeatureRequest"
@@ -1136,7 +1136,7 @@
         "smithy.api#documentation": "One or more product area IDs. Existing inactive areas can remain linked."
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsPartialUpdateRequest": {
+    "com.posthog.feature_requests#UpdateFeatureRequestPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1208,10 +1208,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsPartialUpdate": {
+    "com.posthog.feature_requests#UpdateFeatureRequestPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsPartialUpdateRequest"
+        "target": "com.posthog.feature_requests#UpdateFeatureRequestPartialRequest"
       },
       "output": {
         "target": "com.posthog.feature_requests#FeatureRequest"
@@ -1224,7 +1224,7 @@
         }
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsAddAccountCreateRequest": {
+    "com.posthog.feature_requests#CreateFeatureRequestAddAccountRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1268,10 +1268,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsAddAccountCreate": {
+    "com.posthog.feature_requests#CreateFeatureRequestAddAccount": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsAddAccountCreateRequest"
+        "target": "com.posthog.feature_requests#CreateFeatureRequestAddAccountRequest"
       },
       "output": {
         "target": "com.posthog.feature_requests#FeatureRequest"
@@ -1293,7 +1293,7 @@
         "smithy.api#documentation": "Uploaded image IDs from this project to attach in display order."
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsAddEvidenceCreateRequest": {
+    "com.posthog.feature_requests#CreateFeatureRequestAddEvidenceRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1368,10 +1368,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsAddEvidenceCreate": {
+    "com.posthog.feature_requests#CreateFeatureRequestAddEvidence": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsAddEvidenceCreateRequest"
+        "target": "com.posthog.feature_requests#CreateFeatureRequestAddEvidenceRequest"
       },
       "output": {
         "target": "com.posthog.feature_requests#FeatureRequest"
@@ -1384,7 +1384,7 @@
         }
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsArchiveCreateRequest": {
+    "com.posthog.feature_requests#CreateFeatureRequestArchiveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1414,10 +1414,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsArchiveCreate": {
+    "com.posthog.feature_requests#CreateFeatureRequestArchive": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsArchiveCreateRequest"
+        "target": "com.posthog.feature_requests#CreateFeatureRequestArchiveRequest"
       },
       "output": {
         "target": "com.posthog.feature_requests#FeatureRequest"
@@ -1430,7 +1430,7 @@
         }
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsHistoryListRequest": {
+    "com.posthog.feature_requests#ListFeatureRequestHistoryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1895,7 +1895,7 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_requests#FeatureRequestsHistoryListResponse": {
+    "com.posthog.feature_requests#ListFeatureRequestHistoryResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1910,13 +1910,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsHistoryList": {
+    "com.posthog.feature_requests#ListFeatureRequestHistory": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsHistoryListRequest"
+        "target": "com.posthog.feature_requests#ListFeatureRequestHistoryRequest"
       },
       "output": {
-        "target": "com.posthog.feature_requests#FeatureRequestsHistoryListResponse"
+        "target": "com.posthog.feature_requests#ListFeatureRequestHistoryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1926,7 +1926,7 @@
         }
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsRemoveEvidenceCreateRequest": {
+    "com.posthog.feature_requests#CreateFeatureRequestRemoveEvidenceRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1963,10 +1963,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsRemoveEvidenceCreate": {
+    "com.posthog.feature_requests#CreateFeatureRequestRemoveEvidence": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsRemoveEvidenceCreateRequest"
+        "target": "com.posthog.feature_requests#CreateFeatureRequestRemoveEvidenceRequest"
       },
       "output": {
         "target": "com.posthog.feature_requests#FeatureRequest"
@@ -2025,7 +2025,7 @@
         }
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsStatusHistoryListRequest": {
+    "com.posthog.feature_requests#ListFeatureRequestStatusHistoryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2113,7 +2113,7 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_requests#FeatureRequestsStatusHistoryListResponse": {
+    "com.posthog.feature_requests#ListFeatureRequestStatusHistoryResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2128,13 +2128,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.feature_requests#FeatureRequestsStatusHistoryList": {
+    "com.posthog.feature_requests#ListFeatureRequestStatusHistory": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_requests#FeatureRequestsStatusHistoryListRequest"
+        "target": "com.posthog.feature_requests#ListFeatureRequestStatusHistoryRequest"
       },
       "output": {
-        "target": "com.posthog.feature_requests#FeatureRequestsStatusHistoryListResponse"
+        "target": "com.posthog.feature_requests#ListFeatureRequestStatusHistoryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2249,40 +2249,40 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsList"
+          "target": "com.posthog.feature_requests#ListFeatureRequests"
         },
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsCreate"
+          "target": "com.posthog.feature_requests#CreateFeatureRequest"
         },
         {
           "target": "com.posthog.feature_requests#FeatureRequestsRetrieve"
         },
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsUpdate"
+          "target": "com.posthog.feature_requests#UpdateFeatureRequest"
         },
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsPartialUpdate"
+          "target": "com.posthog.feature_requests#UpdateFeatureRequestPartial"
         },
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsAddAccountCreate"
+          "target": "com.posthog.feature_requests#CreateFeatureRequestAddAccount"
         },
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsAddEvidenceCreate"
+          "target": "com.posthog.feature_requests#CreateFeatureRequestAddEvidence"
         },
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsArchiveCreate"
+          "target": "com.posthog.feature_requests#CreateFeatureRequestArchive"
         },
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsHistoryList"
+          "target": "com.posthog.feature_requests#ListFeatureRequestHistory"
         },
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsRemoveEvidenceCreate"
+          "target": "com.posthog.feature_requests#CreateFeatureRequestRemoveEvidence"
         },
         {
           "target": "com.posthog.feature_requests#FeatureRequestsRestoreCreate"
         },
         {
-          "target": "com.posthog.feature_requests#FeatureRequestsStatusHistoryList"
+          "target": "com.posthog.feature_requests#ListFeatureRequestStatusHistory"
         },
         {
           "target": "com.posthog.feature_requests#FeatureRequestsUpdateEvidenceCreate"

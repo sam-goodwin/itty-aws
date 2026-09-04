@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsListRequest": {
+    "com.posthog.experiment_saved_metrics#ListExperimentSavedMetricsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -292,10 +292,10 @@
       },
       "traits": {}
     },
-    "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsList": {
+    "com.posthog.experiment_saved_metrics#ListExperimentSavedMetrics": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsListRequest"
+        "target": "com.posthog.experiment_saved_metrics#ListExperimentSavedMetricsRequest"
       },
       "output": {
         "target": "com.posthog.experiment_saved_metrics#PaginatedExperimentSavedMetricList"
@@ -326,7 +326,7 @@
       },
       "traits": {}
     },
-    "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsCreateRequest": {
+    "com.posthog.experiment_saved_metrics#CreateExperimentSavedMetricRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -364,10 +364,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsCreate": {
+    "com.posthog.experiment_saved_metrics#CreateExperimentSavedMetric": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsCreateRequest"
+        "target": "com.posthog.experiment_saved_metrics#CreateExperimentSavedMetricRequest"
       },
       "output": {
         "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetric"
@@ -446,7 +446,7 @@
       },
       "traits": {}
     },
-    "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsUpdateRequest": {
+    "com.posthog.experiment_saved_metrics#UpdateExperimentSavedMetricRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -492,10 +492,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsUpdate": {
+    "com.posthog.experiment_saved_metrics#UpdateExperimentSavedMetric": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsUpdateRequest"
+        "target": "com.posthog.experiment_saved_metrics#UpdateExperimentSavedMetricRequest"
       },
       "output": {
         "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetric"
@@ -526,7 +526,7 @@
       },
       "traits": {}
     },
-    "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsPartialUpdateRequest": {
+    "com.posthog.experiment_saved_metrics#UpdateExperimentSavedMetricPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -572,10 +572,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsPartialUpdate": {
+    "com.posthog.experiment_saved_metrics#UpdateExperimentSavedMetricPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsPartialUpdateRequest"
+        "target": "com.posthog.experiment_saved_metrics#UpdateExperimentSavedMetricPartialRequest"
       },
       "output": {
         "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetric"
@@ -691,19 +691,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsList"
+          "target": "com.posthog.experiment_saved_metrics#ListExperimentSavedMetrics"
         },
         {
-          "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsCreate"
+          "target": "com.posthog.experiment_saved_metrics#CreateExperimentSavedMetric"
         },
         {
           "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsRetrieve"
         },
         {
-          "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsUpdate"
+          "target": "com.posthog.experiment_saved_metrics#UpdateExperimentSavedMetric"
         },
         {
-          "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsPartialUpdate"
+          "target": "com.posthog.experiment_saved_metrics#UpdateExperimentSavedMetricPartial"
         },
         {
           "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsDestroy"

@@ -4418,7 +4418,7 @@
         "smithy.api#documentation": "Updates an existing calendar on the user's calendar list."
       }
     },
-    "com.gcp.calendar_v3#InsertCalendarListRequest": {
+    "com.gcp.calendar_v3#ListInsertCalendarRequest": {
       "type": "structure",
       "members": {
         "colorRgbFormat": {
@@ -4437,10 +4437,10 @@
         }
       }
     },
-    "com.gcp.calendar_v3#InsertCalendarList": {
+    "com.gcp.calendar_v3#ListInsertCalendar": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.calendar_v3#InsertCalendarListRequest"
+        "target": "com.gcp.calendar_v3#ListInsertCalendarRequest"
       },
       "output": {
         "target": "com.gcp.calendar_v3#CalendarListEntry"
@@ -4502,7 +4502,7 @@
         }
       }
     },
-    "com.gcp.calendar_v3#WatchCalendarListRequest": {
+    "com.gcp.calendar_v3#ListWatchCalendarRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -4563,10 +4563,10 @@
         }
       }
     },
-    "com.gcp.calendar_v3#WatchCalendarList": {
+    "com.gcp.calendar_v3#ListWatchCalendar": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.calendar_v3#WatchCalendarListRequest"
+        "target": "com.gcp.calendar_v3#ListWatchCalendarRequest"
       },
       "output": {
         "target": "com.gcp.calendar_v3#Channel"

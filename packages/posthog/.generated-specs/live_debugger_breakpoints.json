@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsListRequest": {
+    "com.posthog.live_debugger_breakpoints#ListLiveDebuggerBreakpointsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -126,10 +126,10 @@
       },
       "traits": {}
     },
-    "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsList": {
+    "com.posthog.live_debugger_breakpoints#ListLiveDebuggerBreakpoints": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsListRequest"
+        "target": "com.posthog.live_debugger_breakpoints#ListLiveDebuggerBreakpointsRequest"
       },
       "output": {
         "target": "com.posthog.live_debugger_breakpoints#PaginatedLiveDebuggerBreakpointList"
@@ -154,7 +154,7 @@
         "smithy.api#documentation": "Create, Read, Update and Delete breakpoints for live debugging."
       }
     },
-    "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsCreateRequest": {
+    "com.posthog.live_debugger_breakpoints#CreateLiveDebuggerBreakpointRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -191,10 +191,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsCreate": {
+    "com.posthog.live_debugger_breakpoints#CreateLiveDebuggerBreakpoint": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsCreateRequest"
+        "target": "com.posthog.live_debugger_breakpoints#CreateLiveDebuggerBreakpointRequest"
       },
       "output": {
         "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpoint"
@@ -268,7 +268,7 @@
         "smithy.api#documentation": "Create, Read, Update and Delete breakpoints for live debugging."
       }
     },
-    "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsUpdateRequest": {
+    "com.posthog.live_debugger_breakpoints#UpdateLiveDebuggerBreakpointRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -313,10 +313,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsUpdate": {
+    "com.posthog.live_debugger_breakpoints#UpdateLiveDebuggerBreakpoint": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsUpdateRequest"
+        "target": "com.posthog.live_debugger_breakpoints#UpdateLiveDebuggerBreakpointRequest"
       },
       "output": {
         "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpoint"
@@ -341,7 +341,7 @@
         "smithy.api#documentation": "Create, Read, Update and Delete breakpoints for live debugging."
       }
     },
-    "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsPartialUpdateRequest": {
+    "com.posthog.live_debugger_breakpoints#UpdateLiveDebuggerBreakpointPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -386,10 +386,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsPartialUpdate": {
+    "com.posthog.live_debugger_breakpoints#UpdateLiveDebuggerBreakpointPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsPartialUpdateRequest"
+        "target": "com.posthog.live_debugger_breakpoints#UpdateLiveDebuggerBreakpointPartialRequest"
       },
       "output": {
         "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpoint"
@@ -818,19 +818,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsList"
+          "target": "com.posthog.live_debugger_breakpoints#ListLiveDebuggerBreakpoints"
         },
         {
-          "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsCreate"
+          "target": "com.posthog.live_debugger_breakpoints#CreateLiveDebuggerBreakpoint"
         },
         {
           "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsRetrieve"
         },
         {
-          "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsUpdate"
+          "target": "com.posthog.live_debugger_breakpoints#UpdateLiveDebuggerBreakpoint"
         },
         {
-          "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsPartialUpdate"
+          "target": "com.posthog.live_debugger_breakpoints#UpdateLiveDebuggerBreakpointPartial"
         },
         {
           "target": "com.posthog.live_debugger_breakpoints#LiveDebuggerBreakpointsDestroy"

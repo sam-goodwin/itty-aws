@@ -2220,7 +2220,7 @@
         }
       }
     },
-    "com.gcp.cloudsupport_v2beta#ShowFeedCasesRequest": {
+    "com.gcp.cloudsupport_v2beta#GetFeedCasesRequest": {
       "type": "structure",
       "members": {
         "orderBy": {
@@ -2254,10 +2254,10 @@
         }
       }
     },
-    "com.gcp.cloudsupport_v2beta#ShowFeedCases": {
+    "com.gcp.cloudsupport_v2beta#GetFeedCases": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudsupport_v2beta#ShowFeedCasesRequest"
+        "target": "com.gcp.cloudsupport_v2beta#GetFeedCasesRequest"
       },
       "output": {
         "target": "com.gcp.cloudsupport_v2beta#ShowFeedResponse"

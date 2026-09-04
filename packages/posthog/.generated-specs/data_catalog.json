@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.data_catalog#DataCatalogCertificationsListRequest": {
+    "com.posthog.data_catalog#ListDataCatalogCertificationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -315,10 +315,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_catalog#DataCatalogCertificationsList": {
+    "com.posthog.data_catalog#ListDataCatalogCertifications": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogCertificationsListRequest"
+        "target": "com.posthog.data_catalog#ListDataCatalogCertificationsRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#PaginatedDataCatalogCertificationList"
@@ -352,7 +352,7 @@
         "smithy.api#documentation": "* `certified` - certified\n* `deprecated` - deprecated"
       }
     },
-    "com.posthog.data_catalog#DataCatalogCertificationsCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogCertificationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -404,10 +404,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogCertificationsCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogCertification": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogCertificationsCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogCertificationRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogCertification"
@@ -503,7 +503,7 @@
         "smithy.api#documentation": "Trust marks on warehouse tables and views. Reads exclude soft-deleted targets."
       }
     },
-    "com.posthog.data_catalog#DataCatalogCertificationsCertifyCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogCertificationCertifyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -527,10 +527,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogCertificationsCertifyCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogCertificationCertify": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogCertificationsCertifyCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogCertificationCertifyRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogCertification"
@@ -544,7 +544,7 @@
         "smithy.api#documentation": "Mark the target as certified (prefer this source)."
       }
     },
-    "com.posthog.data_catalog#DataCatalogCertificationsDeprecateCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogCertificationDeprecateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -568,10 +568,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogCertificationsDeprecateCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogCertificationDeprecate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogCertificationsDeprecateCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogCertificationDeprecateRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogCertification"
@@ -585,7 +585,7 @@
         "smithy.api#documentation": "Mark the target as deprecated (avoid this source)."
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsListRequest": {
+    "com.posthog.data_catalog#ListDataCatalogMetricsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -841,10 +841,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_catalog#DataCatalogMetricsList": {
+    "com.posthog.data_catalog#ListDataCatalogMetrics": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogMetricsListRequest"
+        "target": "com.posthog.data_catalog#ListDataCatalogMetricsRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#PaginatedDataCatalogMetricList"
@@ -870,7 +870,7 @@
         "smithy.api#documentation": "Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical."
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogMetricRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -951,10 +951,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogMetric": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogMetricsCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogMetricRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogMetric"
@@ -1020,7 +1020,7 @@
         "smithy.api#documentation": "Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical."
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsUpdateRequest": {
+    "com.posthog.data_catalog#UpdateDataCatalogMetricRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1101,10 +1101,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsUpdate": {
+    "com.posthog.data_catalog#UpdateDataCatalogMetric": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogMetricsUpdateRequest"
+        "target": "com.posthog.data_catalog#UpdateDataCatalogMetricRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogMetric"
@@ -1130,7 +1130,7 @@
         "smithy.api#documentation": "Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical."
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsPartialUpdateRequest": {
+    "com.posthog.data_catalog#UpdateDataCatalogMetricPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1210,10 +1210,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsPartialUpdate": {
+    "com.posthog.data_catalog#UpdateDataCatalogMetricPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogMetricsPartialUpdateRequest"
+        "target": "com.posthog.data_catalog#UpdateDataCatalogMetricPartialRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogMetric"
@@ -1267,7 +1267,7 @@
         "smithy.api#documentation": "CRUD for catalog metrics, addressed by their ``name`` (e.g. /metrics/mrr/)."
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsApproveCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogMetricApproveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1290,10 +1290,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsApproveCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogMetricApprove": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogMetricsApproveCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogMetricApproveRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogMetric"
@@ -1307,7 +1307,7 @@
         "smithy.api#documentation": "Bless a metric as canonical. Returns 409 while the metric is drifted from its insight."
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsRefreshFromInsightCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogMetricRefreshFromInsightRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1330,10 +1330,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsRefreshFromInsightCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogMetricRefreshFromInsight": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogMetricsRefreshFromInsightCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogMetricRefreshFromInsightRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogMetric"
@@ -1445,7 +1445,7 @@
         "smithy.api#documentation": "* `second` - second\n* `minute` - minute\n* `hour` - hour\n* `day` - day\n* `week` - week\n* `month` - month\n* `quarter` - quarter\n* `year` - year"
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsRunCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogMetricRunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1575,10 +1575,10 @@
         "smithy.api#documentation": "Normalized envelope returned by the metric-run endpoint."
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsRunCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogMetricRun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogMetricsRunCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogMetricRunRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogMetricRun"
@@ -1606,7 +1606,7 @@
         "smithy.api#documentation": "Names of the metrics to act on, at most 100. Duplicates are collapsed."
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsBulkApproveCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogMetricBulkApproveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1691,10 +1691,10 @@
         "smithy.api#documentation": "Requested metrics that were not approved, with reasons."
       }
     },
-    "com.posthog.data_catalog#DataCatalogMetricsBulkApproveCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogMetricBulkApprove": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogMetricsBulkApproveCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogMetricBulkApproveRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogMetricBulkApprove"
@@ -1797,7 +1797,7 @@
         "smithy.api#documentation": "Delete many metrics, freeing their names for reuse. Unknown metrics are skipped."
       }
     },
-    "com.posthog.data_catalog#DataCatalogRelationshipProposalsListRequest": {
+    "com.posthog.data_catalog#ListDataCatalogRelationshipProposalsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1993,10 +1993,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_catalog#DataCatalogRelationshipProposalsList": {
+    "com.posthog.data_catalog#ListDataCatalogRelationshipProposals": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogRelationshipProposalsListRequest"
+        "target": "com.posthog.data_catalog#ListDataCatalogRelationshipProposalsRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#PaginatedDataCatalogRelationshipProposalList"
@@ -2010,7 +2010,7 @@
         "smithy.api#documentation": "Reviewed join facts. Accepting one promotes it to a real DataWarehouseJoin; rejections persist."
       }
     },
-    "com.posthog.data_catalog#DataCatalogRelationshipProposalsCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2086,10 +2086,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogRelationshipProposalsCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogRelationshipProposal": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogRelationshipProposalsCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogRelationshipProposal"
@@ -2144,7 +2144,7 @@
         "smithy.api#documentation": "Reviewed join facts. Accepting one promotes it to a real DataWarehouseJoin; rejections persist."
       }
     },
-    "com.posthog.data_catalog#DataCatalogRelationshipProposalsAcceptCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalAcceptRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2168,10 +2168,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogRelationshipProposalsAcceptCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalAccept": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogRelationshipProposalsAcceptCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalAcceptRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogRelationshipProposal"
@@ -2185,7 +2185,7 @@
         "smithy.api#documentation": "Promote the proposal to a real warehouse join after re-validating and probing it."
       }
     },
-    "com.posthog.data_catalog#DataCatalogRelationshipProposalsRejectCreateRequest": {
+    "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalRejectRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2215,10 +2215,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_catalog#DataCatalogRelationshipProposalsRejectCreate": {
+    "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalReject": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_catalog#DataCatalogRelationshipProposalsRejectCreateRequest"
+        "target": "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalRejectRequest"
       },
       "output": {
         "target": "com.posthog.data_catalog#DataCatalogRelationshipProposal"
@@ -2250,10 +2250,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.data_catalog#DataCatalogCertificationsList"
+          "target": "com.posthog.data_catalog#ListDataCatalogCertifications"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogCertificationsCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogCertification"
         },
         {
           "target": "com.posthog.data_catalog#DataCatalogCertificationsRetrieve"
@@ -2262,58 +2262,58 @@
           "target": "com.posthog.data_catalog#DataCatalogCertificationsDestroy"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogCertificationsCertifyCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogCertificationCertify"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogCertificationsDeprecateCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogCertificationDeprecate"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogMetricsList"
+          "target": "com.posthog.data_catalog#ListDataCatalogMetrics"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogMetricsCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogMetric"
         },
         {
           "target": "com.posthog.data_catalog#DataCatalogMetricsRetrieve"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogMetricsUpdate"
+          "target": "com.posthog.data_catalog#UpdateDataCatalogMetric"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogMetricsPartialUpdate"
+          "target": "com.posthog.data_catalog#UpdateDataCatalogMetricPartial"
         },
         {
           "target": "com.posthog.data_catalog#DataCatalogMetricsDestroy"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogMetricsApproveCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogMetricApprove"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogMetricsRefreshFromInsightCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogMetricRefreshFromInsight"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogMetricsRunCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogMetricRun"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogMetricsBulkApproveCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogMetricBulkApprove"
         },
         {
           "target": "com.posthog.data_catalog#DataCatalogMetricsBulkDeleteCreate"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogRelationshipProposalsList"
+          "target": "com.posthog.data_catalog#ListDataCatalogRelationshipProposals"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogRelationshipProposalsCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogRelationshipProposal"
         },
         {
           "target": "com.posthog.data_catalog#DataCatalogRelationshipProposalsRetrieve"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogRelationshipProposalsAcceptCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalAccept"
         },
         {
-          "target": "com.posthog.data_catalog#DataCatalogRelationshipProposalsRejectCreate"
+          "target": "com.posthog.data_catalog#CreateDataCatalogRelationshipProposalReject"
         }
       ],
       "traits": {

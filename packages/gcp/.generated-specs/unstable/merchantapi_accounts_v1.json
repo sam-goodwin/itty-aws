@@ -8090,7 +8090,7 @@
         }
       }
     },
-    "com.gcp.merchantapi_accounts_v1#BatchDeleteAccountsRegionsRequest": {
+    "com.gcp.merchantapi_accounts_v1#DeleteBatchAccountRegionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -8110,10 +8110,10 @@
         }
       }
     },
-    "com.gcp.merchantapi_accounts_v1#BatchDeleteAccountsRegions": {
+    "com.gcp.merchantapi_accounts_v1#DeleteBatchAccountRegion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.merchantapi_accounts_v1#BatchDeleteAccountsRegionsRequest"
+        "target": "com.gcp.merchantapi_accounts_v1#DeleteBatchAccountRegionRequest"
       },
       "output": {
         "target": "com.gcp.merchantapi_accounts_v1#Empty"
@@ -8140,7 +8140,7 @@
         "smithy.api#documentation": "Deletes multiple regions by name from your Merchant Center account. Executing this method requires admin access."
       }
     },
-    "com.gcp.merchantapi_accounts_v1#BatchCreateAccountsRegionsRequest": {
+    "com.gcp.merchantapi_accounts_v1#CreateBatchAccountRegionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -8160,10 +8160,10 @@
         }
       }
     },
-    "com.gcp.merchantapi_accounts_v1#BatchCreateAccountsRegions": {
+    "com.gcp.merchantapi_accounts_v1#CreateBatchAccountRegion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.merchantapi_accounts_v1#BatchCreateAccountsRegionsRequest"
+        "target": "com.gcp.merchantapi_accounts_v1#CreateBatchAccountRegionRequest"
       },
       "output": {
         "target": "com.gcp.merchantapi_accounts_v1#BatchCreateRegionsResponse"
@@ -8282,7 +8282,7 @@
         "smithy.api#documentation": "Retrieves a region defined in your Merchant Center account."
       }
     },
-    "com.gcp.merchantapi_accounts_v1#BatchUpdateAccountsRegionsRequest": {
+    "com.gcp.merchantapi_accounts_v1#UpdateBatchAccountRegionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -8302,10 +8302,10 @@
         }
       }
     },
-    "com.gcp.merchantapi_accounts_v1#BatchUpdateAccountsRegions": {
+    "com.gcp.merchantapi_accounts_v1#UpdateBatchAccountRegion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.merchantapi_accounts_v1#BatchUpdateAccountsRegionsRequest"
+        "target": "com.gcp.merchantapi_accounts_v1#UpdateBatchAccountRegionRequest"
       },
       "output": {
         "target": "com.gcp.merchantapi_accounts_v1#BatchUpdateRegionsResponse"

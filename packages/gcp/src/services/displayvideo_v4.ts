@@ -120,124 +120,6 @@ export const AuditAdvertiserResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuditAdvertiserResponse",
 }) as any as S.Schema<AuditAdvertiserResponse>;
 
-export type AdAssetAdAssetTypeEnum =
-  | "AD_ASSET_TYPE_UNSPECIFIED"
-  | "AD_ASSET_TYPE_IMAGE"
-  | "AD_ASSET_TYPE_YOUTUBE_VIDEO";
-export const AdAssetAdAssetTypeEnum = /*@__PURE__*/ S.String;
-
-export type AdAssetEntityStatusEnum =
-  | "ENTITY_STATUS_UNSPECIFIED"
-  | "ENTITY_STATUS_ACTIVE"
-  | "ENTITY_STATUS_ARCHIVED"
-  | "ENTITY_STATUS_DRAFT"
-  | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const AdAssetEntityStatusEnum = /*@__PURE__*/ S.String;
-
-/** Data for a YouTube video ad asset. */
-export interface YoutubeVideoAsset {
-  /** Required. The YouTube video id of the asset. This is the 11 char string value used in the YouTube video URL. */
-  youtubeVideoId?: string;
-}
-export const YoutubeVideoAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    youtubeVideoId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "YoutubeVideoAsset",
-}) as any as S.Schema<YoutubeVideoAsset>;
-
-export type AdAssetSyntheticContentAttestationStatusEnum =
-  | "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED"
-  | "NOT_SYNTHETIC"
-  | "IS_SYNTHETIC";
-export const AdAssetSyntheticContentAttestationStatusEnum =
-  /*@__PURE__*/ S.String;
-
-/** A single ad asset. */
-export interface AdAsset {
-  /** Required. The type of the ad asset. */
-  adAssetType?: AdAssetAdAssetTypeEnum | (string & {});
-  /** Output only. The entity status of the ad asset. */
-  entityStatus?: AdAssetEntityStatusEnum | (string & {});
-  /** Youtube video asset data. */
-  youtubeVideoAsset?: YoutubeVideoAsset;
-  /** Output only. The ID of the ad asset. Referred to as the asset ID when assigned to an ad. */
-  adAssetId?: string;
-  /** Identifier. The resource name of the ad asset. */
-  name?: string;
-  /** Optional. Whether to add a label to the asset as created or edited using AI when served in regions with local AI labeling regulations. */
-  syntheticContentAttestationStatus?:
-    | AdAssetSyntheticContentAttestationStatusEnum
-    | (string & {});
-}
-export const AdAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adAssetType: S.optional(AdAssetAdAssetTypeEnum),
-    entityStatus: S.optional(AdAssetEntityStatusEnum),
-    youtubeVideoAsset: S.optional(YoutubeVideoAsset),
-    adAssetId: S.optional(S.String),
-    name: S.optional(S.String),
-    syntheticContentAttestationStatus: S.optional(
-      AdAssetSyntheticContentAttestationStatusEnum,
-    ),
-  }),
-).annotate({ identifier: "AdAsset" }) as any as S.Schema<AdAsset>;
-
-export type AdAssetList = Array<AdAsset>;
-export const AdAssetList = /*@__PURE__*/ S.Array(
-  AdAsset,
-) as any as S.Schema<AdAssetList>;
-
-/** A request message for BulkCreateAdAssets. */
-export interface BulkCreateAdAssetsRequest {
-  /** Required. Ad assets to create. Only supports assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
-  adAssets?: AdAssetList;
-}
-export const BulkCreateAdAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adAssets: S.optional(AdAssetList),
-  }),
-).annotate({
-  identifier: "BulkCreateAdAssetsRequest",
-}) as any as S.Schema<BulkCreateAdAssetsRequest>;
-
-export interface BulkCreateAdvertisersAdAssetsRequest {
-  /** Required. The ID of the advertiser these ad assets belong to. */
-  advertiserId: string;
-  /** Request body */
-  body?: BulkCreateAdAssetsRequest;
-}
-export const BulkCreateAdvertisersAdAssetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      advertiserId: S.String.pipe(T.Label()),
-      body: S.optional(BulkCreateAdAssetsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v4/advertisers/{+advertiserId}/adAssets:bulkCreate",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BulkCreateAdvertisersAdAssetsRequest",
-}) as any as S.Schema<BulkCreateAdvertisersAdAssetsRequest>;
-
-/** A response message for BulkCreateAdAssets. */
-export interface BulkCreateAdAssetsResponse {
-  /** The created ad assets. */
-  adAssets?: AdAssetList;
-}
-export const BulkCreateAdAssetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adAssets: S.optional(AdAssetList),
-  }),
-).annotate({
-  identifier: "BulkCreateAdAssetsResponse",
-}) as any as S.Schema<BulkCreateAdAssetsResponse>;
-
 /** A single site. Sites are apps or websites belonging to a channel. */
 export interface Site {
   /** Required. The app ID or URL of the site. Must be UTF-8 encoded with a maximum length of 240 bytes. */
@@ -3656,1231 +3538,6 @@ export const BulkEditPartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(
   identifier: "BulkEditPartnersChannelsSitesRequest",
 }) as any as S.Schema<BulkEditPartnersChannelsSitesRequest>;
 
-export interface BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest {
-  /** Optional. A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned. */
-  pageToken?: string;
-  /** Optional. Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
-  pageSize?: number;
-  /** Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`: `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
-  filter?: string;
-  /** Required. The IDs of the ad groups to list assigned targeting options for. */
-  adGroupIds?: StringList;
-  /** Optional. Field by which to sort the list. Acceptable values are: * `adGroupId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. */
-  orderBy?: string;
-  /** Required. The ID of the advertiser the line items belongs to. */
-  advertiserId: string;
-}
-export const BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      adGroupIds: S.optional(StringList.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      advertiserId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v4/advertisers/{+advertiserId}/adGroups:bulkListAssignedTargetingOptions",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest",
-  }) as any as S.Schema<BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest>;
-
-/** Wrapper object associating an AssignedTargetingOption resource and the ad group it is assigned to. */
-export interface AdGroupAssignedTargetingOption {
-  /** The ID of the ad group the assigned targeting option is assigned to. */
-  adGroupId?: string;
-  /** The assigned targeting option resource. */
-  assignedTargetingOption?: AssignedTargetingOption;
-}
-export const AdGroupAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adGroupId: S.optional(S.String),
-    assignedTargetingOption: S.optional(AssignedTargetingOption),
-  }),
-).annotate({
-  identifier: "AdGroupAssignedTargetingOption",
-}) as any as S.Schema<AdGroupAssignedTargetingOption>;
-
-export type AdGroupAssignedTargetingOptionList =
-  Array<AdGroupAssignedTargetingOption>;
-export const AdGroupAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
-  AdGroupAssignedTargetingOption,
-) as any as S.Schema<AdGroupAssignedTargetingOptionList>;
-
-export interface BulkListAdGroupAssignedTargetingOptionsResponse {
-  /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more AdGroupAssignedTargetingOption resources to return. */
-  nextPageToken?: string;
-  /** The list of wrapper objects, each providing an assigned targeting option and the ad group it is assigned to. This list will be absent if empty. */
-  adGroupAssignedTargetingOptions?: AdGroupAssignedTargetingOptionList;
-}
-export const BulkListAdGroupAssignedTargetingOptionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      adGroupAssignedTargetingOptions: S.optional(
-        AdGroupAssignedTargetingOptionList,
-      ),
-    }),
-  ).annotate({
-    identifier: "BulkListAdGroupAssignedTargetingOptionsResponse",
-  }) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsResponse>;
-
-export interface BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest {
-  /** Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR` on the same field. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`: `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="TARGETING_TYPE_CHANNEL"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
-  filter?: string;
-  /** Field by which to sort the list. Acceptable values are: * `lineItemId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. */
-  orderBy?: string;
-  /** Required. The IDs of the line items to list assigned targeting options for. */
-  lineItemIds?: StringList;
-  /** A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAssignedTargetingOptions` method. If not specified, the first page of results will be returned. */
-  pageToken?: string;
-  /** Required. The ID of the advertiser the line items belongs to. */
-  advertiserId: string;
-  /** Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
-  pageSize?: number;
-}
-export const BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      lineItemIds: S.optional(StringList.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      advertiserId: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v4/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest",
-  }) as any as S.Schema<BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest>;
-
-/** Wrapper object associating an assigned_targeting_option resource and the line item it is assigned to. */
-export interface LineItemAssignedTargetingOption {
-  /** The ID of the line item the assigned targeting option is assigned to. */
-  lineItemId?: string;
-  /** The assigned targeting option resource. */
-  assignedTargetingOption?: AssignedTargetingOption;
-}
-export const LineItemAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lineItemId: S.optional(S.String),
-    assignedTargetingOption: S.optional(AssignedTargetingOption),
-  }),
-).annotate({
-  identifier: "LineItemAssignedTargetingOption",
-}) as any as S.Schema<LineItemAssignedTargetingOption>;
-
-export type LineItemAssignedTargetingOptionList =
-  Array<LineItemAssignedTargetingOption>;
-export const LineItemAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
-  LineItemAssignedTargetingOption,
-) as any as S.Schema<LineItemAssignedTargetingOptionList>;
-
-export interface BulkListAssignedTargetingOptionsResponse {
-  /** The list of wrapper objects, each providing an assigned targeting option and the line item it is assigned to. This list will be absent if empty. */
-  lineItemAssignedTargetingOptions?: LineItemAssignedTargetingOptionList;
-  /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more line_item_assigned_targeting_options to return. */
-  nextPageToken?: string;
-}
-export const BulkListAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      lineItemAssignedTargetingOptions: S.optional(
-        LineItemAssignedTargetingOptionList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "BulkListAssignedTargetingOptionsResponse",
-}) as any as S.Schema<BulkListAssignedTargetingOptionsResponse>;
-
-export type FrequencyCapTimeUnitEnum =
-  | "TIME_UNIT_UNSPECIFIED"
-  | "TIME_UNIT_LIFETIME"
-  | "TIME_UNIT_MONTHS"
-  | "TIME_UNIT_WEEKS"
-  | "TIME_UNIT_DAYS"
-  | "TIME_UNIT_HOURS"
-  | "TIME_UNIT_MINUTES";
-export const FrequencyCapTimeUnitEnum = /*@__PURE__*/ S.String;
-
-/** Settings that control the number of times a user may be shown with the same ad during a given time period. */
-export interface FrequencyCap {
-  /** Whether unlimited frequency capping is applied. When this field is set to `true`, the remaining frequency cap fields are not applicable. */
-  unlimited?: boolean;
-  /** The maximum number of times a user may be shown the same ad during this period. Must be greater than 0. Required when unlimited is `false` and max_views is not set. */
-  maxImpressions?: number;
-  /** The time unit in which the frequency cap will be applied. Required when unlimited is `false`. */
-  timeUnit?: FrequencyCapTimeUnitEnum | (string & {});
-  /** Optional. The maximum number of times a user may click-through or fully view an ad during this period until it is no longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources. Required when unlimited is `false` and max_impressions is not set. */
-  maxViews?: number;
-  /** The number of time_unit the frequency cap will last. Required when unlimited is `false`. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_MONTHS` - must be 1 * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59 */
-  timeUnitCount?: number;
-}
-export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unlimited: S.optional(S.Boolean),
-    maxImpressions: S.optional(S.Number),
-    timeUnit: S.optional(FrequencyCapTimeUnitEnum),
-    maxViews: S.optional(S.Number),
-    timeUnitCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "FrequencyCap" }) as any as S.Schema<FrequencyCap>;
-
-export type LineItemBudgetBudgetUnitEnum =
-  | "BUDGET_UNIT_UNSPECIFIED"
-  | "BUDGET_UNIT_CURRENCY"
-  | "BUDGET_UNIT_IMPRESSIONS";
-export const LineItemBudgetBudgetUnitEnum = /*@__PURE__*/ S.String;
-
-export type LineItemBudgetBudgetAllocationTypeEnum =
-  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNSPECIFIED"
-  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC"
-  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED"
-  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED";
-export const LineItemBudgetBudgetAllocationTypeEnum = /*@__PURE__*/ S.String;
-
-/** Settings that control how budget is allocated. */
-export interface LineItemBudget {
-  /** Output only. The budget unit specifies whether the budget is currency based or impression based. This value is inherited from the parent insertion order. */
-  budgetUnit?: LineItemBudgetBudgetUnitEnum | (string & {});
-  /** The maximum budget amount the line item will spend. Must be greater than 0. When budget_allocation_type is: * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`, this field is immutable and is set by the system. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`, if budget_unit is: - `BUDGET_UNIT_CURRENCY`, this field represents maximum budget amount to spend, in micros of the advertiser's currency. For example, 1500000 represents 1.5 standard units of the currency. - `BUDGET_UNIT_IMPRESSIONS`, this field represents the maximum number of impressions to serve. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this field is not applicable and will be ignored by the system. */
-  maxAmount?: string;
-  /** Required. The type of the budget allocation. `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when automatic budget allocation is enabled for the parent insertion order. This field must be set to `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED` for Demand Gen line items. */
-  budgetAllocationType?: LineItemBudgetBudgetAllocationTypeEnum | (string & {});
-}
-export const LineItemBudget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    budgetUnit: S.optional(LineItemBudgetBudgetUnitEnum),
-    maxAmount: S.optional(S.String),
-    budgetAllocationType: S.optional(LineItemBudgetBudgetAllocationTypeEnum),
-  }),
-).annotate({ identifier: "LineItemBudget" }) as any as S.Schema<LineItemBudget>;
-
-export type LineItemReservationTypeEnum =
-  | "RESERVATION_TYPE_UNSPECIFIED"
-  | "RESERVATION_TYPE_NOT_GUARANTEED"
-  | "RESERVATION_TYPE_PROGRAMMATIC_GUARANTEED"
-  | "RESERVATION_TYPE_TAG_GUARANTEED"
-  | "RESERVATION_TYPE_PETRA_VIRAL"
-  | "RESERVATION_TYPE_INSTANT_RESERVE";
-export const LineItemReservationTypeEnum = /*@__PURE__*/ S.String;
-
-export type LineItemWarningMessagesItemEnum =
-  | "LINE_ITEM_WARNING_MESSAGE_UNSPECIFIED"
-  | "INVALID_FLIGHT_DATES"
-  | "EXPIRED"
-  | "PENDING_FLIGHT"
-  | "ALL_PARTNER_ENABLED_EXCHANGES_NEGATIVELY_TARGETED"
-  | "INVALID_INVENTORY_SOURCE"
-  | "APP_INVENTORY_INVALID_SITE_TARGETING"
-  | "APP_INVENTORY_INVALID_AUDIENCE_LISTS"
-  | "NO_VALID_CREATIVE"
-  | "PARENT_INSERTION_ORDER_PAUSED"
-  | "PARENT_INSERTION_ORDER_EXPIRED";
-export const LineItemWarningMessagesItemEnum = /*@__PURE__*/ S.String;
-
-export type LineItemWarningMessagesItemEnumList = Array<
-  LineItemWarningMessagesItemEnum | (string & {})
->;
-export const LineItemWarningMessagesItemEnumList = /*@__PURE__*/ S.Array(
-  LineItemWarningMessagesItemEnum,
-) as any as S.Schema<LineItemWarningMessagesItemEnumList>;
-
-export type YoutubeAndPartnersBiddingStrategyTypeEnum =
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_UNSPECIFIED"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_LIFT"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPV"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE";
-export const YoutubeAndPartnersBiddingStrategyTypeEnum = /*@__PURE__*/ S.String;
-
-export type YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum =
-  | "BIDDING_SOURCE_UNSPECIFIED"
-  | "BIDDING_SOURCE_LINE_ITEM"
-  | "BIDDING_SOURCE_AD_GROUP";
-export const YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum =
-  /*@__PURE__*/ S.String;
-
-/** Settings that control the bid strategy for YouTube and Partners resources. */
-export interface YoutubeAndPartnersBiddingStrategy {
-  /** The type of the bidding strategy. */
-  type?: YoutubeAndPartnersBiddingStrategyTypeEnum | (string & {});
-  /** Output only. Source of the effective target CPA value for ad group. */
-  adGroupEffectiveTargetCpaSource?:
-    | YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum
-    | (string & {});
-  /** Output only. The effective target CPA for ad group, in micros of advertiser's currency. */
-  adGroupEffectiveTargetCpaValue?: string;
-  /** The value used by the bidding strategy. When the bidding strategy is assigned at the line item level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding strategy is assigned at the ad group level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` If not using an applicable strategy, the value of this field will be 0. */
-  value?: string;
-}
-export const YoutubeAndPartnersBiddingStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(YoutubeAndPartnersBiddingStrategyTypeEnum),
-    adGroupEffectiveTargetCpaSource: S.optional(
-      YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum,
-    ),
-    adGroupEffectiveTargetCpaValue: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "YoutubeAndPartnersBiddingStrategy",
-}) as any as S.Schema<YoutubeAndPartnersBiddingStrategy>;
-
-export type DemandGenBiddingStrategyTypeEnum =
-  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_UNSPECIFIED"
-  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA"
-  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS"
-  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS"
-  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE"
-  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CLICKS"
-  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC";
-export const DemandGenBiddingStrategyTypeEnum = /*@__PURE__*/ S.String;
-
-export type DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum =
-  | "BIDDING_SOURCE_UNSPECIFIED"
-  | "BIDDING_SOURCE_LINE_ITEM"
-  | "BIDDING_SOURCE_AD_GROUP";
-export const DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum =
-  /*@__PURE__*/ S.String;
-
-/** Settings that control the bid strategy for Demand Gen resources. */
-export interface DemandGenBiddingStrategy {
-  /** Optional. The type of the bidding strategy. This can only be set when assigned to a line item. Ad groups will inherit this value from their line item. */
-  type?: DemandGenBiddingStrategyTypeEnum | (string & {});
-  /** Optional. The value used by the bidding strategy. This can be set when assigned to line items or ad groups. This field is only applicable for the following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros of the advertiser's currency or ROAS value. For example, 1000000 represents 1.0 standard units of the currency or 100% ROAS value. If not using an applicable strategy, the value of this field will be 0. */
-  value?: string;
-  /** Output only. The value effectively used by the bidding strategy. This field will be the same as value if set. If value is not set and the strategy is assigned to an ad group, this field will be inherited from the line item's bidding strategy. If type is not `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` or `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS`, this field will be 0. */
-  effectiveBiddingValue?: string;
-  /** Output only. Source of the effective bidding value. */
-  effectiveBiddingValueSource?:
-    | DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum
-    | (string & {});
-}
-export const DemandGenBiddingStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(DemandGenBiddingStrategyTypeEnum),
-    value: S.optional(S.String),
-    effectiveBiddingValue: S.optional(S.String),
-    effectiveBiddingValueSource: S.optional(
-      DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum,
-    ),
-  }),
-).annotate({
-  identifier: "DemandGenBiddingStrategy",
-}) as any as S.Schema<DemandGenBiddingStrategy>;
-
-export type PerformanceGoalBidStrategyPerformanceGoalTypeEnum =
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH";
-export const PerformanceGoalBidStrategyPerformanceGoalTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** A strategy that automatically adjusts the bid to meet or beat a specified performance goal. */
-export interface PerformanceGoalBidStrategy {
-  /** The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater than or equal to a billable unit of the given currency. Not applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example, 1500000 represents 1.5 standard units of the currency. */
-  maxAverageCpmBidAmountMicros?: string;
-  /** The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom bidding algorithm that uses floodlight activities not identified in floodlightActivityConfigs will return an error. */
-  customBiddingAlgorithmId?: string;
-  /** Required. The performance goal the bidding strategy will attempt to meet or beat, in micros of the advertiser's currency or in micro of the ROAS (Return On Advertising Spend) value which is also based on advertiser's currency. Must be greater than or equal to a billable unit of the given currency and smaller or equal to upper bounds. Each performance_goal_type has its upper bound: * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, upper bound is 10000.00 USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is 1000.00 USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is 1000.00 and lower bound is 0.01. Example: If set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will be based on the probability that each available impression will be viewable. For example, if viewable CPM target is $2 and an impression is 40% likely to be viewable, the bid price will be $0.80 CPM (40% of $2). For example, 1500000 represents 1.5 standard units of the currency or ROAS value. */
-  performanceGoalAmountMicros?: string;
-  /** Required. The type of the performance goal that the bidding strategy will try to meet or beat. For line item level usage, the value must be one of: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. */
-  performanceGoalType?:
-    | PerformanceGoalBidStrategyPerformanceGoalTypeEnum
-    | (string & {});
-}
-export const PerformanceGoalBidStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxAverageCpmBidAmountMicros: S.optional(S.String),
-    customBiddingAlgorithmId: S.optional(S.String),
-    performanceGoalAmountMicros: S.optional(S.String),
-    performanceGoalType: S.optional(
-      PerformanceGoalBidStrategyPerformanceGoalTypeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "PerformanceGoalBidStrategy",
-}) as any as S.Schema<PerformanceGoalBidStrategy>;
-
-export type MaximizeSpendBidStrategyPerformanceGoalTypeEnum =
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH";
-export const MaximizeSpendBidStrategyPerformanceGoalTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** A strategy that automatically adjusts the bid to optimize a specified performance goal while spending the full budget. */
-export interface MaximizeSpendBidStrategy {
-  /** The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater than or equal to a billable unit of the given currency. For example, 1500000 represents 1.5 standard units of the currency. */
-  maxAverageCpmBidAmountMicros?: string;
-  /** Whether the strategy takes deal floor prices into account. */
-  raiseBidForDeals?: boolean;
-  /** The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom bidding algorithm that uses floodlight activities not identified in floodlightActivityConfigs will return an error. */
-  customBiddingAlgorithmId?: string;
-  /** Required. The type of the performance goal that the bidding strategy tries to minimize while spending the full budget. `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for this strategy. */
-  performanceGoalType?:
-    | MaximizeSpendBidStrategyPerformanceGoalTypeEnum
-    | (string & {});
-}
-export const MaximizeSpendBidStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxAverageCpmBidAmountMicros: S.optional(S.String),
-    raiseBidForDeals: S.optional(S.Boolean),
-    customBiddingAlgorithmId: S.optional(S.String),
-    performanceGoalType: S.optional(
-      MaximizeSpendBidStrategyPerformanceGoalTypeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "MaximizeSpendBidStrategy",
-}) as any as S.Schema<MaximizeSpendBidStrategy>;
-
-/** A strategy that uses a fixed bidding price. */
-export interface FixedBidStrategy {
-  /** The fixed bid amount, in micros of the advertiser's currency. For insertion order entity, bid_amount_micros should be set as 0. For line item entity, bid_amount_micros must be greater than or equal to billable unit of the given currency and smaller than or equal to the upper limit 1000000000. For example, 1500000 represents 1.5 standard units of the currency. */
-  bidAmountMicros?: string;
-}
-export const FixedBidStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bidAmountMicros: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FixedBidStrategy",
-}) as any as S.Schema<FixedBidStrategy>;
-
-/** Settings that control the bid strategy. Bid strategy determines the bid price. */
-export interface BiddingStrategy {
-  /** A bid strategy used by YouTube and Partners resources. It can only be used for a YouTube and Partners line item or ad group entity. */
-  youtubeAndPartnersBid?: YoutubeAndPartnersBiddingStrategy;
-  /** A bid strategy used by Demand Gen resources. It can only be used for a Demand Gen line item or ad group entity. */
-  demandGenBid?: DemandGenBiddingStrategy;
-  /** A strategy that automatically adjusts the bid to meet or beat a specified performance goal. It is to be used only for a line item entity. */
-  performanceGoalAutoBid?: PerformanceGoalBidStrategy;
-  /** A strategy that automatically adjusts the bid to optimize to your performance goal while spending the full budget. At insertion order level, the markup_type of line items cannot be set to `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`. In addition, the performance_goal_type value assigned to an insertion order determines the possible line_item_type values available for line items under that insertion order: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, and `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` only allow for `LINE_ITEM_TYPE_DISPLAY_DEFAULT` or `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` and `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` only allow for `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH` only allows for `LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP` line items. */
-  maximizeSpendAutoBid?: MaximizeSpendBidStrategy;
-  /** A strategy that uses a fixed bid price. */
-  fixedBid?: FixedBidStrategy;
-}
-export const BiddingStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    youtubeAndPartnersBid: S.optional(YoutubeAndPartnersBiddingStrategy),
-    demandGenBid: S.optional(DemandGenBiddingStrategy),
-    performanceGoalAutoBid: S.optional(PerformanceGoalBidStrategy),
-    maximizeSpendAutoBid: S.optional(MaximizeSpendBidStrategy),
-    fixedBid: S.optional(FixedBidStrategy),
-  }),
-).annotate({
-  identifier: "BiddingStrategy",
-}) as any as S.Schema<BiddingStrategy>;
-
-/** Settings that control the behavior of a single Floodlight activity config. */
-export interface TrackingFloodlightActivityConfig {
-  /** Required. The number of days after an ad has been clicked in which a conversion may be counted. Must be between 0 and 90 inclusive. */
-  postClickLookbackWindowDays?: number;
-  /** Required. The number of days after an ad has been viewed in which a conversion may be counted. Must be between 0 and 90 inclusive. */
-  postViewLookbackWindowDays?: number;
-  /** Required. The ID of the Floodlight activity. */
-  floodlightActivityId?: string;
-}
-export const TrackingFloodlightActivityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    postClickLookbackWindowDays: S.optional(S.Number),
-    postViewLookbackWindowDays: S.optional(S.Number),
-    floodlightActivityId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TrackingFloodlightActivityConfig",
-}) as any as S.Schema<TrackingFloodlightActivityConfig>;
-
-export type TrackingFloodlightActivityConfigList =
-  Array<TrackingFloodlightActivityConfig>;
-export const TrackingFloodlightActivityConfigList = /*@__PURE__*/ S.Array(
-  TrackingFloodlightActivityConfig,
-) as any as S.Schema<TrackingFloodlightActivityConfigList>;
-
-/** Settings that control how conversions are counted. All post-click conversions will be counted. A percentage value can be set for post-view conversions counting. */
-export interface ConversionCountingConfig {
-  /** The Floodlight activity configs used to track conversions. The number of conversions counted is the sum of all of the conversions counted by all of the Floodlight activity IDs specified in this field. This field can't be updated if a custom bidding algorithm is assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request, the floodlight activities must match the ones used by the custom bidding algorithm. */
-  floodlightActivityConfigs?: TrackingFloodlightActivityConfigList;
-  /** Optional. The attribution model to use for conversion measurement. This attribution model will determine how conversions are counted. The Primary model can be set by you for a floodlight config or group. More details [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items. */
-  primaryAttributionModelId?: string;
-  /** The percentage of post-view conversions to count, in millis (1/1000 of a percent). Must be between 0 and 100000 inclusive. For example, to track 50% of the post-click conversions, set a value of 50000. */
-  postViewCountPercentageMillis?: string;
-}
-export const ConversionCountingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    floodlightActivityConfigs: S.optional(TrackingFloodlightActivityConfigList),
-    primaryAttributionModelId: S.optional(S.String),
-    postViewCountPercentageMillis: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConversionCountingConfig",
-}) as any as S.Schema<ConversionCountingConfig>;
-
-export type ThirdPartyVendorConfigVendorEnum =
-  | "THIRD_PARTY_VENDOR_UNSPECIFIED"
-  | "THIRD_PARTY_VENDOR_MOAT"
-  | "THIRD_PARTY_VENDOR_DOUBLE_VERIFY"
-  | "THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE"
-  | "THIRD_PARTY_VENDOR_COMSCORE"
-  | "THIRD_PARTY_VENDOR_TELEMETRY"
-  | "THIRD_PARTY_VENDOR_MEETRICS"
-  | "THIRD_PARTY_VENDOR_ZEFR"
-  | "THIRD_PARTY_VENDOR_NIELSEN"
-  | "THIRD_PARTY_VENDOR_KANTAR"
-  | "THIRD_PARTY_VENDOR_DYNATA"
-  | "THIRD_PARTY_VENDOR_TRANSUNION"
-  | "THIRD_PARTY_VENDOR_ORIGIN"
-  | "THIRD_PARTY_VENDOR_GEMIUS"
-  | "THIRD_PARTY_VENDOR_MEDIA_SCOPE"
-  | "THIRD_PARTY_VENDOR_AUDIENCE_PROJECT"
-  | "THIRD_PARTY_VENDOR_VIDEO_AMP"
-  | "THIRD_PARTY_VENDOR_ISPOT_TV"
-  | "THIRD_PARTY_VENDOR_INTAGE"
-  | "THIRD_PARTY_VENDOR_MACROMILL"
-  | "THIRD_PARTY_VENDOR_VIDEO_RESEARCH";
-export const ThirdPartyVendorConfigVendorEnum = /*@__PURE__*/ S.String;
-
-/** Settings that control how third-party measurement vendors are configured. */
-export interface ThirdPartyVendorConfig {
-  /** The third-party measurement vendor. */
-  vendor?: ThirdPartyVendorConfigVendorEnum | (string & {});
-  /** The ID used by the platform of the third-party vendor to identify the line item. */
-  placementId?: string;
-}
-export const ThirdPartyVendorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vendor: S.optional(ThirdPartyVendorConfigVendorEnum),
-    placementId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ThirdPartyVendorConfig",
-}) as any as S.Schema<ThirdPartyVendorConfig>;
-
-export type ThirdPartyVendorConfigList = Array<ThirdPartyVendorConfig>;
-export const ThirdPartyVendorConfigList = /*@__PURE__*/ S.Array(
-  ThirdPartyVendorConfig,
-) as any as S.Schema<ThirdPartyVendorConfigList>;
-
-/** Settings that control what third-party vendors are measuring specific line item metrics. */
-export interface ThirdPartyMeasurementConfigs {
-  /** Optional. The third-party vendors measuring brand safety. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_ZEFR` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` */
-  brandSafetyVendorConfigs?: ThirdPartyVendorConfigList;
-  /** Optional. The third-party vendors measuring viewability. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_MOAT` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS` */
-  viewabilityVendorConfigs?: ThirdPartyVendorConfigList;
-  /** Optional. The third-party vendors measuring reach. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV` * `THIRD_PARTY_VENDOR_GEMIUS` */
-  reachVendorConfigs?: ThirdPartyVendorConfigList;
-  /** Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_MACROMILL` */
-  brandLiftVendorConfigs?: ThirdPartyVendorConfigList;
-}
-export const ThirdPartyMeasurementConfigs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brandSafetyVendorConfigs: S.optional(ThirdPartyVendorConfigList),
-    viewabilityVendorConfigs: S.optional(ThirdPartyVendorConfigList),
-    reachVendorConfigs: S.optional(ThirdPartyVendorConfigList),
-    brandLiftVendorConfigs: S.optional(ThirdPartyVendorConfigList),
-  }),
-).annotate({
-  identifier: "ThirdPartyMeasurementConfigs",
-}) as any as S.Schema<ThirdPartyMeasurementConfigs>;
-
-/** Settings for Demand Gen line items. */
-export interface DemandGenSettings {
-  /** Optional. Immutable. Whether location and language targeting can be set at the line item level. Otherwise, relevant targeting types must be assigned directly to ad groups. */
-  geoLanguageTargetingEnabled?: boolean;
-  /** Optional. The third party measurement settings for the Demand Gen line item. */
-  thirdPartyMeasurementConfigs?: ThirdPartyMeasurementConfigs;
-  /** Optional. The ID of the Merchant Center account used to provide a product feed. This Merchant Center account must already be linked to the advertiser. */
-  linkedMerchantId?: string;
-}
-export const DemandGenSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geoLanguageTargetingEnabled: S.optional(S.Boolean),
-    thirdPartyMeasurementConfigs: S.optional(ThirdPartyMeasurementConfigs),
-    linkedMerchantId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DemandGenSettings",
-}) as any as S.Schema<DemandGenSettings>;
-
-export type PacingPacingPeriodEnum =
-  | "PACING_PERIOD_UNSPECIFIED"
-  | "PACING_PERIOD_DAILY"
-  | "PACING_PERIOD_FLIGHT";
-export const PacingPacingPeriodEnum = /*@__PURE__*/ S.String;
-
-export type PacingPacingTypeEnum =
-  | "PACING_TYPE_UNSPECIFIED"
-  | "PACING_TYPE_AHEAD"
-  | "PACING_TYPE_ASAP"
-  | "PACING_TYPE_EVEN";
-export const PacingPacingTypeEnum = /*@__PURE__*/ S.String;
-
-/** Settings that control the rate at which a budget is spent. */
-export interface Pacing {
-  /** Required. The time period in which the pacing budget will be spent. When automatic budget allocation is enabled at the insertion order via automationType, this field is output only and defaults to `PACING_PERIOD_FLIGHT`. */
-  pacingPeriod?: PacingPacingPeriodEnum | (string & {});
-  /** Maximum number of impressions to serve every day. Applicable when the budget is impression based. Must be greater than 0. */
-  dailyMaxImpressions?: string;
-  /** Maximum currency amount to spend every day in micros of advertiser's currency. Applicable when the budget is currency based. Must be greater than 0. For example, for 1.5 standard unit of the currency, set this field to 1500000. The value assigned will be rounded to whole billable units for the relevant currency by the following rules: any positive value less than a single billable unit will be rounded up to one billable unit and any value larger than a single billable unit will be rounded down to the nearest billable value. For example, if the currency's billable unit is 0.01, and this field is set to 10257770, it will round down to 10250000, a value of 10.25. If set to 505, it will round up to 10000, a value of 0.01. */
-  dailyMaxMicros?: string;
-  /** Required. The type of pacing that defines how the budget amount will be spent across the pacing_period. `PACING_TYPE_ASAP` is not compatible with pacing_period `PACING_PERIOD_FLIGHT` for insertion orders. */
-  pacingType?: PacingPacingTypeEnum | (string & {});
-}
-export const Pacing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pacingPeriod: S.optional(PacingPacingPeriodEnum),
-    dailyMaxImpressions: S.optional(S.String),
-    dailyMaxMicros: S.optional(S.String),
-    pacingType: S.optional(PacingPacingTypeEnum),
-  }),
-).annotate({ identifier: "Pacing" }) as any as S.Schema<Pacing>;
-
-export type PartnerRevenueModelMarkupTypeEnum =
-  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_UNSPECIFIED"
-  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM"
-  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP"
-  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP";
-export const PartnerRevenueModelMarkupTypeEnum = /*@__PURE__*/ S.String;
-
-/** Settings that control how partner revenue is calculated. */
-export interface PartnerRevenueModel {
-  /** Required. The markup type of the partner revenue model. This field must be set to `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP` for Demand Gen line items. */
-  markupType?: PartnerRevenueModelMarkupTypeEnum | (string & {});
-  /** Required. The markup amount of the partner revenue model. Must be greater than or equal to 0. * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM markup in micros of advertiser's currency. For example, 1500000 represents 1.5 standard units of the currency. * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP`, this field represents the media cost percent markup in millis. For example, 100 represents 0.1% (decimal 0.001). * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`, this field represents the total media cost percent markup in millis. For example, 100 represents 0.1% (decimal 0.001). */
-  markupAmount?: string;
-}
-export const PartnerRevenueModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    markupType: S.optional(PartnerRevenueModelMarkupTypeEnum),
-    markupAmount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerRevenueModel",
-}) as any as S.Schema<PartnerRevenueModel>;
-
-export type MobileAppPlatformEnum = "PLATFORM_UNSPECIFIED" | "IOS" | "ANDROID";
-export const MobileAppPlatformEnum = /*@__PURE__*/ S.String;
-
-/** A mobile app promoted by a mobile app install line item. */
-export interface MobileApp {
-  /** Output only. The app name. */
-  displayName?: string;
-  /** Output only. The app publisher. */
-  publisher?: string;
-  /** Output only. The app platform. */
-  platform?: MobileAppPlatformEnum | (string & {});
-  /** Required. The ID of the app provided by the platform store. Android apps are identified by the bundle ID used by Android's Play store, such as `com.google.android.gm`. iOS apps are identified by a nine-digit app ID used by Apple's App store, such as `422689480`. */
-  appId?: string;
-}
-export const MobileApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    publisher: S.optional(S.String),
-    platform: S.optional(MobileAppPlatformEnum),
-    appId: S.optional(S.String),
-  }),
-).annotate({ identifier: "MobileApp" }) as any as S.Schema<MobileApp>;
-
-/** Integration details of an entry. */
-export interface IntegrationDetails {
-  /** An external identifier to be associated with the entry. The integration code will show up together with the entry in many places in the system, for example, reporting. Must be UTF-8 encoded with a length of no more than 500 characters. */
-  integrationCode?: string;
-  /** Additional details of the entry in string format. Must be UTF-8 encoded with a length of no more than 1000 characters. */
-  details?: string;
-}
-export const IntegrationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationCode: S.optional(S.String),
-    details: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IntegrationDetails",
-}) as any as S.Schema<IntegrationDetails>;
-
-export type LineItemContainsEuPoliticalAdsEnum =
-  | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
-  | "CONTAINS_EU_POLITICAL_ADVERTISING"
-  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
-export const LineItemContainsEuPoliticalAdsEnum = /*@__PURE__*/ S.String;
-
-export type LineItemLineItemTypeEnum =
-  | "LINE_ITEM_TYPE_UNSPECIFIED"
-  | "LINE_ITEM_TYPE_DISPLAY_DEFAULT"
-  | "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL"
-  | "LINE_ITEM_TYPE_VIDEO_DEFAULT"
-  | "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL"
-  | "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INVENTORY"
-  | "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INVENTORY"
-  | "LINE_ITEM_TYPE_AUDIO_DEFAULT"
-  | "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_ACTION"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_AUDIO"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_REACH"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_SIMPLE"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE_OVER_THE_TOP"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_REACH_OVER_THE_TOP"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_SIMPLE_OVER_THE_TOP"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_TARGET_FREQUENCY"
-  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIEW"
-  | "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME"
-  | "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME"
-  | "LINE_ITEM_TYPE_DEMAND_GEN";
-export const LineItemLineItemTypeEnum = /*@__PURE__*/ S.String;
-
-export type VideoAdSequenceSettingsMinimumDurationEnum =
-  | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_UNSPECIFIED"
-  | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_WEEK"
-  | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_MONTH";
-export const VideoAdSequenceSettingsMinimumDurationEnum =
-  /*@__PURE__*/ S.String;
-
-export type VideoAdSequenceStepInteractionTypeEnum =
-  | "INTERACTION_TYPE_UNSPECIFIED"
-  | "INTERACTION_TYPE_PAID_VIEW"
-  | "INTERACTION_TYPE_SKIP"
-  | "INTERACTION_TYPE_IMPRESSION"
-  | "INTERACTION_TYPE_ENGAGED_IMPRESSION";
-export const VideoAdSequenceStepInteractionTypeEnum = /*@__PURE__*/ S.String;
-
-/** The detail of a single step in a VideoAdSequence. */
-export interface VideoAdSequenceStep {
-  /** The ID of the corresponding ad group of the step. */
-  adGroupId?: string;
-  /** The interaction on the previous step that will lead the viewer to this step. The first step does not have interaction_type. */
-  interactionType?: VideoAdSequenceStepInteractionTypeEnum | (string & {});
-  /** The ID of the previous step. The first step does not have previous step. */
-  previousStepId?: string;
-  /** The ID of the step. */
-  stepId?: string;
-}
-export const VideoAdSequenceStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adGroupId: S.optional(S.String),
-    interactionType: S.optional(VideoAdSequenceStepInteractionTypeEnum),
-    previousStepId: S.optional(S.String),
-    stepId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VideoAdSequenceStep",
-}) as any as S.Schema<VideoAdSequenceStep>;
-
-export type VideoAdSequenceStepList = Array<VideoAdSequenceStep>;
-export const VideoAdSequenceStepList = /*@__PURE__*/ S.Array(
-  VideoAdSequenceStep,
-) as any as S.Schema<VideoAdSequenceStepList>;
-
-/** Settings related to VideoAdSequence. */
-export interface VideoAdSequenceSettings {
-  /** The minimum time interval before the same user sees this sequence again. */
-  minimumDuration?: VideoAdSequenceSettingsMinimumDurationEnum | (string & {});
-  /** The steps of which the sequence consists. */
-  steps?: VideoAdSequenceStepList;
-}
-export const VideoAdSequenceSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimumDuration: S.optional(VideoAdSequenceSettingsMinimumDurationEnum),
-    steps: S.optional(VideoAdSequenceStepList),
-  }),
-).annotate({
-  identifier: "VideoAdSequenceSettings",
-}) as any as S.Schema<VideoAdSequenceSettings>;
-
-export type YoutubeAndPartnersSettingsEffectiveContentCategoryEnum =
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED"
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
-export const YoutubeAndPartnersSettingsEffectiveContentCategoryEnum =
-  /*@__PURE__*/ S.String;
-
-export type YoutubeAndPartnersSettingsContentCategoryEnum =
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED"
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
-export const YoutubeAndPartnersSettingsContentCategoryEnum =
-  /*@__PURE__*/ S.String;
-
-/** The video ad inventory control used in certain YouTube line item types. */
-export interface VideoAdInventoryControl {
-  /** Optional. Indicates whether ads can serve as non-skippable in-stream format. */
-  allowNonSkippableInStream?: boolean;
-  /** Optional. Whether ads can serve as shorts format. */
-  allowShorts?: boolean;
-  /** Optional. Whether ads can serve as in-feed format. */
-  allowInFeed?: boolean;
-  /** Optional. Whether ads can serve as in-stream format. */
-  allowInStream?: boolean;
-}
-export const VideoAdInventoryControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowNonSkippableInStream: S.optional(S.Boolean),
-    allowShorts: S.optional(S.Boolean),
-    allowInFeed: S.optional(S.Boolean),
-    allowInStream: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VideoAdInventoryControl",
-}) as any as S.Schema<VideoAdInventoryControl>;
-
-/** Settings that control what YouTube related inventories the YouTube and Partners line item will target. */
-export interface YoutubeAndPartnersInventorySourceConfig {
-  /** Optional. Whether to target inventory in video apps available with Google TV. */
-  includeGoogleTv?: boolean;
-  /** Optional. Whether to target inventory on YouTube. This includes both search, channels and videos. */
-  includeYoutube?: boolean;
-  /** Whether to target inventory on a collection of partner sites and apps that follow the same brand safety standards as YouTube. */
-  includeYoutubeVideoPartners?: boolean;
-}
-export const YoutubeAndPartnersInventorySourceConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      includeGoogleTv: S.optional(S.Boolean),
-      includeYoutube: S.optional(S.Boolean),
-      includeYoutubeVideoPartners: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "YoutubeAndPartnersInventorySourceConfig",
-}) as any as S.Schema<YoutubeAndPartnersInventorySourceConfig>;
-
-export type TargetFrequencyTimeUnitEnum =
-  | "TIME_UNIT_UNSPECIFIED"
-  | "TIME_UNIT_LIFETIME"
-  | "TIME_UNIT_MONTHS"
-  | "TIME_UNIT_WEEKS"
-  | "TIME_UNIT_DAYS"
-  | "TIME_UNIT_HOURS"
-  | "TIME_UNIT_MINUTES";
-export const TargetFrequencyTimeUnitEnum = /*@__PURE__*/ S.String;
-
-/** Setting that controls the average number of times the ads will show to the same person over a certain period of time. */
-export interface TargetFrequency {
-  /** The number of time_unit the target frequency will last. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_WEEKS` - must be 1 */
-  timeUnitCount?: number;
-  /** The target number of times, on average, the ads will be shown to the same person in the timespan dictated by time_unit and time_unit_count. */
-  targetCount?: string;
-  /** The unit of time in which the target frequency will be applied. The following time unit is applicable: * `TIME_UNIT_WEEKS` */
-  timeUnit?: TargetFrequencyTimeUnitEnum | (string & {});
-}
-export const TargetFrequency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeUnitCount: S.optional(S.Number),
-    targetCount: S.optional(S.String),
-    timeUnit: S.optional(TargetFrequencyTimeUnitEnum),
-  }),
-).annotate({
-  identifier: "TargetFrequency",
-}) as any as S.Schema<TargetFrequency>;
-
-/** Settings for YouTube and Partners line items. */
-export interface YoutubeAndPartnersSettings {
-  /** Optional. The third-party measurement configs of the line item. */
-  thirdPartyMeasurementConfigs?: ThirdPartyMeasurementConfigs;
-  /** Optional. The settings related to VideoAdSequence. */
-  videoAdSequenceSettings?: VideoAdSequenceSettings;
-  /** Optional. The ID of the form to generate leads. */
-  leadFormId?: string;
-  /** The view frequency cap settings of the line item. The max_views field in this settings object must be used if assigning a limited cap. */
-  viewFrequencyCap?: FrequencyCap;
-  /** Output only. The content category which takes effect when serving the line item. When content category is set in both line item and advertiser, the stricter one will take effect when serving the line item. New line items will only inherit the advertiser level setting. */
-  effectiveContentCategory?:
-    | YoutubeAndPartnersSettingsEffectiveContentCategoryEnum
-    | (string & {});
-  /** Output only. The kind of content on which the YouTube and Partners ads will be shown. *Warning*: This field will be removed in the near future. Use effective_content_category instead. */
-  contentCategory?:
-    | YoutubeAndPartnersSettingsContentCategoryEnum
-    | (string & {});
-  /** Optional. The ID of the Merchant Center account used to provide a product feed. This Merchant Center account must already be linked to the advertiser. */
-  linkedMerchantId?: string;
-  /** Optional. The settings to control which inventory is allowed for this line item. */
-  videoAdInventoryControl?: VideoAdInventoryControl;
-  /** Settings that control what YouTube and Partners inventories the line item will target. */
-  inventorySourceSettings?: YoutubeAndPartnersInventorySourceConfig;
-  /** Optional. The average number of times you want ads from this line item to show to the same person over a certain period of time. */
-  targetFrequency?: TargetFrequency;
-  /** Optional. The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app on mobile devices. */
-  relatedVideoIds?: StringList;
-}
-export const YoutubeAndPartnersSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thirdPartyMeasurementConfigs: S.optional(ThirdPartyMeasurementConfigs),
-    videoAdSequenceSettings: S.optional(VideoAdSequenceSettings),
-    leadFormId: S.optional(S.String),
-    viewFrequencyCap: S.optional(FrequencyCap),
-    effectiveContentCategory: S.optional(
-      YoutubeAndPartnersSettingsEffectiveContentCategoryEnum,
-    ),
-    contentCategory: S.optional(YoutubeAndPartnersSettingsContentCategoryEnum),
-    linkedMerchantId: S.optional(S.String),
-    videoAdInventoryControl: S.optional(VideoAdInventoryControl),
-    inventorySourceSettings: S.optional(
-      YoutubeAndPartnersInventorySourceConfig,
-    ),
-    targetFrequency: S.optional(TargetFrequency),
-    relatedVideoIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "YoutubeAndPartnersSettings",
-}) as any as S.Schema<YoutubeAndPartnersSettings>;
-
-export type LineItemEntityStatusEnum =
-  | "ENTITY_STATUS_UNSPECIFIED"
-  | "ENTITY_STATUS_ACTIVE"
-  | "ENTITY_STATUS_ARCHIVED"
-  | "ENTITY_STATUS_DRAFT"
-  | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const LineItemEntityStatusEnum = /*@__PURE__*/ S.String;
-
-export type PartnerCostInvoiceTypeEnum =
-  | "PARTNER_COST_INVOICE_TYPE_UNSPECIFIED"
-  | "PARTNER_COST_INVOICE_TYPE_DV360"
-  | "PARTNER_COST_INVOICE_TYPE_PARTNER";
-export const PartnerCostInvoiceTypeEnum = /*@__PURE__*/ S.String;
-
-export type PartnerCostCostTypeEnum =
-  | "PARTNER_COST_TYPE_UNSPECIFIED"
-  | "PARTNER_COST_TYPE_ADLOOX"
-  | "PARTNER_COST_TYPE_ADLOOX_PREBID"
-  | "PARTNER_COST_TYPE_ADSAFE"
-  | "PARTNER_COST_TYPE_ADXPOSE"
-  | "PARTNER_COST_TYPE_AGGREGATE_KNOWLEDGE"
-  | "PARTNER_COST_TYPE_AGENCY_TRADING_DESK"
-  | "PARTNER_COST_TYPE_DV360_FEE"
-  | "PARTNER_COST_TYPE_COMSCORE_VCE"
-  | "PARTNER_COST_TYPE_DATA_MANAGEMENT_PLATFORM"
-  | "PARTNER_COST_TYPE_DEFAULT"
-  | "PARTNER_COST_TYPE_DOUBLE_VERIFY"
-  | "PARTNER_COST_TYPE_DOUBLE_VERIFY_PREBID"
-  | "PARTNER_COST_TYPE_EVIDON"
-  | "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_VIDEO"
-  | "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_PREBID"
-  | "PARTNER_COST_TYPE_MEDIA_COST_DATA"
-  | "PARTNER_COST_TYPE_MOAT_VIDEO"
-  | "PARTNER_COST_TYPE_NIELSEN_DAR"
-  | "PARTNER_COST_TYPE_SHOP_LOCAL"
-  | "PARTNER_COST_TYPE_TERACENT"
-  | "PARTNER_COST_TYPE_THIRD_PARTY_AD_SERVER"
-  | "PARTNER_COST_TYPE_TRUST_METRICS"
-  | "PARTNER_COST_TYPE_VIZU"
-  | "PARTNER_COST_TYPE_CUSTOM_FEE_1"
-  | "PARTNER_COST_TYPE_CUSTOM_FEE_2"
-  | "PARTNER_COST_TYPE_CUSTOM_FEE_3"
-  | "PARTNER_COST_TYPE_CUSTOM_FEE_4"
-  | "PARTNER_COST_TYPE_CUSTOM_FEE_5"
-  | "PARTNER_COST_TYPE_SCIBIDS_FEE";
-export const PartnerCostCostTypeEnum = /*@__PURE__*/ S.String;
-
-export type PartnerCostFeeTypeEnum =
-  | "PARTNER_COST_FEE_TYPE_UNSPECIFIED"
-  | "PARTNER_COST_FEE_TYPE_CPM_FEE"
-  | "PARTNER_COST_FEE_TYPE_MEDIA_FEE";
-export const PartnerCostFeeTypeEnum = /*@__PURE__*/ S.String;
-
-/** Settings that control a partner cost. A partner cost is any type of expense involved in running a campaign, other than the costs of purchasing impressions (which is called the media cost) and using third-party audience segment data (data fee). Some examples of partner costs include the fees for using DV360, a third-party ad server, or a third-party ad serving verification service. */
-export interface PartnerCost {
-  /** The media fee percentage in millis (1/1000 of a percent). Applicable when the fee_type is `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be greater than or equal to 0. For example: 100 represents 0.1%. */
-  feePercentageMillis?: string;
-  /** The invoice type for this partner cost. * Required when cost_type is one of: - `PARTNER_COST_TYPE_ADLOOX` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` - `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types. */
-  invoiceType?: PartnerCostInvoiceTypeEnum | (string & {});
-  /** The CPM fee amount in micros of advertiser's currency. Applicable when the fee_type is `PARTNER_FEE_TYPE_CPM_FEE`. Must be greater than or equal to 0. For example, for 1.5 standard unit of the advertiser's currency, set this field to 1500000. */
-  feeAmount?: string;
-  /** Required. The type of the partner cost. */
-  costType?: PartnerCostCostTypeEnum | (string & {});
-  /** Required. The fee type for this partner cost. */
-  feeType?: PartnerCostFeeTypeEnum | (string & {});
-}
-export const PartnerCost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    feePercentageMillis: S.optional(S.String),
-    invoiceType: S.optional(PartnerCostInvoiceTypeEnum),
-    feeAmount: S.optional(S.String),
-    costType: S.optional(PartnerCostCostTypeEnum),
-    feeType: S.optional(PartnerCostFeeTypeEnum),
-  }),
-).annotate({ identifier: "PartnerCost" }) as any as S.Schema<PartnerCost>;
-
-export type PartnerCostList = Array<PartnerCost>;
-export const PartnerCostList = /*@__PURE__*/ S.Array(
-  PartnerCost,
-) as any as S.Schema<PartnerCostList>;
-
-export type TargetingExpansionConfigAudienceExpansionLevelEnum =
-  | "UNKNOWN"
-  | "NO_REACH"
-  | "LEAST_REACH"
-  | "MID_REACH"
-  | "MOST_REACH";
-export const TargetingExpansionConfigAudienceExpansionLevelEnum =
-  /*@__PURE__*/ S.String;
-
-/** Settings that control the [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of the line item. */
-export interface TargetingExpansionConfig {
-  /** Optional. Whether to exclude demographic expansion for Optimized Targeting. This field can only be set for Demand Gen ad groups. */
-  excludeDemographicExpansion?: boolean;
-  /** Output only. Whether to exclude seed list for audience expansion. This field only applies to YouTube and Partners line item and ad group resources. */
-  audienceExpansionSeedListExcluded?: boolean;
-  /** Output only. Magnitude of expansion for eligible first-party user lists under this ad group. This field only applies to YouTube and Partners line item and ad group resources. */
-  audienceExpansionLevel?:
-    | TargetingExpansionConfigAudienceExpansionLevelEnum
-    | (string & {});
-  /** Required. Whether to enable Optimized Targeting for the line item. Optimized targeting is not compatible with all bid strategies. Attempting to set this field to `true` for a line item using the BiddingStrategy field fixed_bid or one of the following combinations of BiddingStrategy fields and BiddingStrategyPerformanceGoalType will result in an error: maximize_auto_spend_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` performance_goal_auto_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` This also applies if the line item inherits one of the above bid strategies from the parent insertion order. Bid strategies set at the insertion order-level will be inherited by their line items if the `InsertionOrder` budget field automationType is set to `INSERTION_ORDER_AUTOMATION_TYPE_BUDGET` or `INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET`. */
-  enableOptimizedTargeting?: boolean;
-}
-export const TargetingExpansionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    excludeDemographicExpansion: S.optional(S.Boolean),
-    audienceExpansionSeedListExcluded: S.optional(S.Boolean),
-    audienceExpansionLevel: S.optional(
-      TargetingExpansionConfigAudienceExpansionLevelEnum,
-    ),
-    enableOptimizedTargeting: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TargetingExpansionConfig",
-}) as any as S.Schema<TargetingExpansionConfig>;
-
-/** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
-export interface Displayvideo_Date {
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-}
-export const Displayvideo_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    day: S.optional(S.Number),
-    year: S.optional(S.Number),
-    month: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "Displayvideo_Date",
-}) as any as S.Schema<Displayvideo_Date>;
-
-/** A date range. */
-export interface DateRange {
-  /** The lower bound of the date range, inclusive. Must specify a positive value for `year`, `month`, and `day`. */
-  startDate?: Displayvideo_Date;
-  /** The upper bound of the date range, inclusive. Must specify a positive value for `year`, `month`, and `day`. */
-  endDate?: Displayvideo_Date;
-}
-export const DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startDate: S.optional(Displayvideo_Date),
-    endDate: S.optional(Displayvideo_Date),
-  }),
-).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
-
-export type LineItemFlightFlightDateTypeEnum =
-  | "LINE_ITEM_FLIGHT_DATE_TYPE_UNSPECIFIED"
-  | "LINE_ITEM_FLIGHT_DATE_TYPE_INHERITED"
-  | "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM";
-export const LineItemFlightFlightDateTypeEnum = /*@__PURE__*/ S.String;
-
-/** Settings that control the active duration of a line item. */
-export interface LineItemFlight {
-  /** The flight start and end dates of the line item. They are resolved relative to the parent advertiser's time zone. * Required when flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM`. Output only otherwise. * When creating a new flight, both `start_date` and `end_date` must be in the future. * An existing flight with a `start_date` in the past has a mutable `end_date` but an immutable `start_date`. * `end_date` must be the `start_date` or later, both before the year 2037. */
-  dateRange?: DateRange;
-  /** Required. The type of the line item's flight dates. */
-  flightDateType?: LineItemFlightFlightDateTypeEnum | (string & {});
-}
-export const LineItemFlight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateRange: S.optional(DateRange),
-    flightDateType: S.optional(LineItemFlightFlightDateTypeEnum),
-  }),
-).annotate({ identifier: "LineItemFlight" }) as any as S.Schema<LineItemFlight>;
-
-/** A single line item. */
-export interface LineItem {
-  /** The IDs of the creatives associated with the line item. */
-  creativeIds?: StringList;
-  /** Optional. Required if the line item type is not `LINE_ITEM_TYPE_DEMAND_GEN`. The impression frequency cap settings of the line item. The max_impressions field in this settings object must be used if assigning a limited cap. */
-  frequencyCap?: FrequencyCap;
-  /** Required. The budget allocation setting of the line item. */
-  budget?: LineItemBudget;
-  /** Output only. The reservation type of the line item. */
-  reservationType?: LineItemReservationTypeEnum | (string & {});
-  /** Optional. Whether to enable DV360's bid optimization for fixed bid line items. By default, DV360 optimizes your fixed bid by automatically lowering bids for impressions that are less likely to perform well. This optimization is enabled by default (value is true). When this field is set to `false`, this optimization is disabled, and the bid will not be lowered for any reason. This setting only applies to line items with a `bidding_strategy` of type `FIXED_BID`. */
-  optimizeFixedBidding?: boolean;
-  /** Output only. The warning messages generated by the line item. These warnings do not block saving the line item, but some may block the line item from running. */
-  warningMessages?: LineItemWarningMessagesItemEnumList;
-  /** Required. The bidding strategy of the line item. */
-  bidStrategy?: BiddingStrategy;
-  /** The conversion tracking setting of the line item. */
-  conversionCounting?: ConversionCountingConfig;
-  /** Output only. The unique ID of the advertiser the line item belongs to. */
-  advertiserId?: string;
-  /** Optional. Settings specific to Demand Gen line items. Only applicable to Demand Gen line items. */
-  demandGenSettings?: DemandGenSettings;
-  /** Required. The budget spending speed setting of the line item. */
-  pacing?: Pacing;
-  /** Output only. The unique ID of the campaign that the line item belongs to. */
-  campaignId?: string;
-  /** Required. The partner revenue model setting of the line item. */
-  partnerRevenueModel?: PartnerRevenueModel;
-  /** Required. The display name of the line item. Must be UTF-8 encoded with a maximum size of 240 bytes. */
-  displayName?: string;
-  /** The mobile app promoted by the line item. This is applicable only when line_item_type is either `LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL` or `LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL`. */
-  mobileApp?: MobileApp;
-  /** Integration details of the line item. */
-  integrationDetails?: IntegrationDetails;
-  /** Whether this line item will serve European Union political ads. If contains_eu_political_ads has been set to `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not otherwise specified. This field can then be updated using the UI, API, or Structured Data Files. This field must be assigned when creating a new line item. Otherwise, **the `advertisers.lineItems.create` request will fail**. */
-  containsEuPoliticalAds?: LineItemContainsEuPoliticalAdsEnum | (string & {});
-  /** Output only. The unique ID of the line item. Assigned by the system. */
-  lineItemId?: string;
-  /** Required. Immutable. The type of the line item. */
-  lineItemType?: LineItemLineItemTypeEnum | (string & {});
-  /** Output only. Settings specific to YouTube and Partners line items. */
-  youtubeAndPartnersSettings?: YoutubeAndPartnersSettings;
-  /** Required. Controls whether or not the line item can spend its budget and bid on inventory. * For CreateLineItem method, only `ENTITY_STATUS_DRAFT` is allowed. To activate a line item, use UpdateLineItem method and update the status to `ENTITY_STATUS_ACTIVE` after creation. * A line item cannot be changed back to `ENTITY_STATUS_DRAFT` status from any other status. * If the line item's parent insertion order is not active, the line item can't spend its budget even if its own status is `ENTITY_STATUS_ACTIVE`. */
-  entityStatus?: LineItemEntityStatusEnum | (string & {});
-  /** Required. Immutable. The unique ID of the insertion order that the line item belongs to. */
-  insertionOrderId?: string;
-  /** The partner costs associated with the line item. If absent or empty in CreateLineItem method, the newly created line item will inherit partner costs from its parent insertion order. */
-  partnerCosts?: PartnerCostList;
-  /** The [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of the line item. This config is only applicable for display, video, or audio line items that use automated bidding and positively target eligible audience lists. */
-  targetingExpansion?: TargetingExpansionConfig;
-  /** Whether to exclude new exchanges from automatically being targeted by the line item. This field is false by default. */
-  excludeNewExchanges?: boolean;
-  /** Output only. The timestamp when the line item was last updated. Assigned by the system. */
-  updateTime?: string;
-  /** Output only. The resource name of the line item. */
-  name?: string;
-  /** Required. The start and end time of the line item's flight. */
-  flight?: LineItemFlight;
-}
-export const LineItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creativeIds: S.optional(StringList),
-    frequencyCap: S.optional(FrequencyCap),
-    budget: S.optional(LineItemBudget),
-    reservationType: S.optional(LineItemReservationTypeEnum),
-    optimizeFixedBidding: S.optional(S.Boolean),
-    warningMessages: S.optional(LineItemWarningMessagesItemEnumList),
-    bidStrategy: S.optional(BiddingStrategy),
-    conversionCounting: S.optional(ConversionCountingConfig),
-    advertiserId: S.optional(S.String),
-    demandGenSettings: S.optional(DemandGenSettings),
-    pacing: S.optional(Pacing),
-    campaignId: S.optional(S.String),
-    partnerRevenueModel: S.optional(PartnerRevenueModel),
-    displayName: S.optional(S.String),
-    mobileApp: S.optional(MobileApp),
-    integrationDetails: S.optional(IntegrationDetails),
-    containsEuPoliticalAds: S.optional(LineItemContainsEuPoliticalAdsEnum),
-    lineItemId: S.optional(S.String),
-    lineItemType: S.optional(LineItemLineItemTypeEnum),
-    youtubeAndPartnersSettings: S.optional(YoutubeAndPartnersSettings),
-    entityStatus: S.optional(LineItemEntityStatusEnum),
-    insertionOrderId: S.optional(S.String),
-    partnerCosts: S.optional(PartnerCostList),
-    targetingExpansion: S.optional(TargetingExpansionConfig),
-    excludeNewExchanges: S.optional(S.Boolean),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    flight: S.optional(LineItemFlight),
-  }),
-).annotate({ identifier: "LineItem" }) as any as S.Schema<LineItem>;
-
-/** Request message for LineItemService.BulkUpdateLineItems. */
-export interface BulkUpdateLineItemsRequest {
-  /** Required. A line item object containing the fields to be updated and the new values to assign to all line items specified in line_item_ids." */
-  targetLineItem?: LineItem;
-  /** Required. A field mask identifying which fields to update. Only the following fields are currently supported: * entityStatus * containsEuPoliticalAds */
-  updateMask?: string;
-  /** Required. IDs of line items to update. */
-  lineItemIds?: StringList;
-}
-export const BulkUpdateLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetLineItem: S.optional(LineItem),
-    updateMask: S.optional(S.String),
-    lineItemIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BulkUpdateLineItemsRequest",
-}) as any as S.Schema<BulkUpdateLineItemsRequest>;
-
-export interface BulkUpdateAdvertisersLineItemsRequest {
-  /** Required. The ID of the advertiser this line item belongs to. */
-  advertiserId: string;
-  /** Request body */
-  body?: BulkUpdateLineItemsRequest;
-}
-export const BulkUpdateAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      advertiserId: S.String.pipe(T.Label()),
-      body: S.optional(BulkUpdateLineItemsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v4/advertisers/{+advertiserId}/lineItems:bulkUpdate",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BulkUpdateAdvertisersLineItemsRequest",
-}) as any as S.Schema<BulkUpdateAdvertisersLineItemsRequest>;
-
-/** Response message for LineItemService.BulkUpdateLineItems. */
-export interface BulkUpdateLineItemsResponse {
-  /** The IDs of line items that failed to update. */
-  failedLineItemIds?: StringList;
-  /** The IDs of line items that are skipped for updates. For example, unnecessary mutates that will result in effectively no changes to line items will be skipped and corresponding line item IDs can be tracked here. */
-  skippedLineItemIds?: StringList;
-  /** The IDs of successfully updated line items. */
-  updatedLineItemIds?: StringList;
-  /** Errors returned by line items that failed to update. */
-  errors?: StatusList;
-}
-export const BulkUpdateLineItemsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failedLineItemIds: S.optional(StringList),
-    skippedLineItemIds: S.optional(StringList),
-    updatedLineItemIds: S.optional(StringList),
-    errors: S.optional(StatusList),
-  }),
-).annotate({
-  identifier: "BulkUpdateLineItemsResponse",
-}) as any as S.Schema<BulkUpdateLineItemsResponse>;
-
 export type AdvertiserEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -5014,6 +3671,22 @@ export const AdvertiserAdServerConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdvertiserAdServerConfig",
 }) as any as S.Schema<AdvertiserAdServerConfig>;
+
+/** Integration details of an entry. */
+export interface IntegrationDetails {
+  /** An external identifier to be associated with the entry. The integration code will show up together with the entry in many places in the system, for example, reporting. Must be UTF-8 encoded with a length of no more than 500 characters. */
+  integrationCode?: string;
+  /** Additional details of the entry in string format. Must be UTF-8 encoded with a length of no more than 1000 characters. */
+  details?: string;
+}
+export const IntegrationDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrationCode: S.optional(S.String),
+    details: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IntegrationDetails",
+}) as any as S.Schema<IntegrationDetails>;
 
 /** Targeting settings related to ad serving of an advertiser. */
 export interface AdvertiserTargetingConfig {
@@ -5164,6 +3837,71 @@ export const CreateAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAdvertisersRequest",
 }) as any as S.Schema<CreateAdvertisersRequest>;
+
+export type AdAssetAdAssetTypeEnum =
+  | "AD_ASSET_TYPE_UNSPECIFIED"
+  | "AD_ASSET_TYPE_IMAGE"
+  | "AD_ASSET_TYPE_YOUTUBE_VIDEO";
+export const AdAssetAdAssetTypeEnum = /*@__PURE__*/ S.String;
+
+export type AdAssetEntityStatusEnum =
+  | "ENTITY_STATUS_UNSPECIFIED"
+  | "ENTITY_STATUS_ACTIVE"
+  | "ENTITY_STATUS_ARCHIVED"
+  | "ENTITY_STATUS_DRAFT"
+  | "ENTITY_STATUS_PAUSED"
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+export const AdAssetEntityStatusEnum = /*@__PURE__*/ S.String;
+
+/** Data for a YouTube video ad asset. */
+export interface YoutubeVideoAsset {
+  /** Required. The YouTube video id of the asset. This is the 11 char string value used in the YouTube video URL. */
+  youtubeVideoId?: string;
+}
+export const YoutubeVideoAsset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    youtubeVideoId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "YoutubeVideoAsset",
+}) as any as S.Schema<YoutubeVideoAsset>;
+
+export type AdAssetSyntheticContentAttestationStatusEnum =
+  | "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED"
+  | "NOT_SYNTHETIC"
+  | "IS_SYNTHETIC";
+export const AdAssetSyntheticContentAttestationStatusEnum =
+  /*@__PURE__*/ S.String;
+
+/** A single ad asset. */
+export interface AdAsset {
+  /** Required. The type of the ad asset. */
+  adAssetType?: AdAssetAdAssetTypeEnum | (string & {});
+  /** Output only. The entity status of the ad asset. */
+  entityStatus?: AdAssetEntityStatusEnum | (string & {});
+  /** Youtube video asset data. */
+  youtubeVideoAsset?: YoutubeVideoAsset;
+  /** Output only. The ID of the ad asset. Referred to as the asset ID when assigned to an ad. */
+  adAssetId?: string;
+  /** Identifier. The resource name of the ad asset. */
+  name?: string;
+  /** Optional. Whether to add a label to the asset as created or edited using AI when served in regions with local AI labeling regulations. */
+  syntheticContentAttestationStatus?:
+    | AdAssetSyntheticContentAttestationStatusEnum
+    | (string & {});
+}
+export const AdAsset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adAssetType: S.optional(AdAssetAdAssetTypeEnum),
+    entityStatus: S.optional(AdAssetEntityStatusEnum),
+    youtubeVideoAsset: S.optional(YoutubeVideoAsset),
+    adAssetId: S.optional(S.String),
+    name: S.optional(S.String),
+    syntheticContentAttestationStatus: S.optional(
+      AdAssetSyntheticContentAttestationStatusEnum,
+    ),
+  }),
+).annotate({ identifier: "AdAsset" }) as any as S.Schema<AdAsset>;
 
 /** A request message for CreateAdAsset. */
 export interface CreateAdAssetRequest {
@@ -6465,6 +5203,247 @@ export type AdGroupAdGroupFormatEnum =
   | "AD_GROUP_FORMAT_DEMAND_GEN";
 export const AdGroupAdGroupFormatEnum = /*@__PURE__*/ S.String;
 
+export type TargetingExpansionConfigAudienceExpansionLevelEnum =
+  | "UNKNOWN"
+  | "NO_REACH"
+  | "LEAST_REACH"
+  | "MID_REACH"
+  | "MOST_REACH";
+export const TargetingExpansionConfigAudienceExpansionLevelEnum =
+  /*@__PURE__*/ S.String;
+
+/** Settings that control the [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of the line item. */
+export interface TargetingExpansionConfig {
+  /** Optional. Whether to exclude demographic expansion for Optimized Targeting. This field can only be set for Demand Gen ad groups. */
+  excludeDemographicExpansion?: boolean;
+  /** Output only. Whether to exclude seed list for audience expansion. This field only applies to YouTube and Partners line item and ad group resources. */
+  audienceExpansionSeedListExcluded?: boolean;
+  /** Output only. Magnitude of expansion for eligible first-party user lists under this ad group. This field only applies to YouTube and Partners line item and ad group resources. */
+  audienceExpansionLevel?:
+    | TargetingExpansionConfigAudienceExpansionLevelEnum
+    | (string & {});
+  /** Required. Whether to enable Optimized Targeting for the line item. Optimized targeting is not compatible with all bid strategies. Attempting to set this field to `true` for a line item using the BiddingStrategy field fixed_bid or one of the following combinations of BiddingStrategy fields and BiddingStrategyPerformanceGoalType will result in an error: maximize_auto_spend_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` performance_goal_auto_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` This also applies if the line item inherits one of the above bid strategies from the parent insertion order. Bid strategies set at the insertion order-level will be inherited by their line items if the `InsertionOrder` budget field automationType is set to `INSERTION_ORDER_AUTOMATION_TYPE_BUDGET` or `INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET`. */
+  enableOptimizedTargeting?: boolean;
+}
+export const TargetingExpansionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    excludeDemographicExpansion: S.optional(S.Boolean),
+    audienceExpansionSeedListExcluded: S.optional(S.Boolean),
+    audienceExpansionLevel: S.optional(
+      TargetingExpansionConfigAudienceExpansionLevelEnum,
+    ),
+    enableOptimizedTargeting: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "TargetingExpansionConfig",
+}) as any as S.Schema<TargetingExpansionConfig>;
+
+export type YoutubeAndPartnersBiddingStrategyTypeEnum =
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_UNSPECIFIED"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_LIFT"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPV"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS"
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE";
+export const YoutubeAndPartnersBiddingStrategyTypeEnum = /*@__PURE__*/ S.String;
+
+export type YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum =
+  | "BIDDING_SOURCE_UNSPECIFIED"
+  | "BIDDING_SOURCE_LINE_ITEM"
+  | "BIDDING_SOURCE_AD_GROUP";
+export const YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum =
+  /*@__PURE__*/ S.String;
+
+/** Settings that control the bid strategy for YouTube and Partners resources. */
+export interface YoutubeAndPartnersBiddingStrategy {
+  /** The type of the bidding strategy. */
+  type?: YoutubeAndPartnersBiddingStrategyTypeEnum | (string & {});
+  /** Output only. Source of the effective target CPA value for ad group. */
+  adGroupEffectiveTargetCpaSource?:
+    | YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum
+    | (string & {});
+  /** Output only. The effective target CPA for ad group, in micros of advertiser's currency. */
+  adGroupEffectiveTargetCpaValue?: string;
+  /** The value used by the bidding strategy. When the bidding strategy is assigned at the line item level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding strategy is assigned at the ad group level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` If not using an applicable strategy, the value of this field will be 0. */
+  value?: string;
+}
+export const YoutubeAndPartnersBiddingStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(YoutubeAndPartnersBiddingStrategyTypeEnum),
+    adGroupEffectiveTargetCpaSource: S.optional(
+      YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum,
+    ),
+    adGroupEffectiveTargetCpaValue: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "YoutubeAndPartnersBiddingStrategy",
+}) as any as S.Schema<YoutubeAndPartnersBiddingStrategy>;
+
+export type DemandGenBiddingStrategyTypeEnum =
+  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_UNSPECIFIED"
+  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA"
+  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS"
+  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS"
+  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE"
+  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CLICKS"
+  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC";
+export const DemandGenBiddingStrategyTypeEnum = /*@__PURE__*/ S.String;
+
+export type DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum =
+  | "BIDDING_SOURCE_UNSPECIFIED"
+  | "BIDDING_SOURCE_LINE_ITEM"
+  | "BIDDING_SOURCE_AD_GROUP";
+export const DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum =
+  /*@__PURE__*/ S.String;
+
+/** Settings that control the bid strategy for Demand Gen resources. */
+export interface DemandGenBiddingStrategy {
+  /** Optional. The type of the bidding strategy. This can only be set when assigned to a line item. Ad groups will inherit this value from their line item. */
+  type?: DemandGenBiddingStrategyTypeEnum | (string & {});
+  /** Optional. The value used by the bidding strategy. This can be set when assigned to line items or ad groups. This field is only applicable for the following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros of the advertiser's currency or ROAS value. For example, 1000000 represents 1.0 standard units of the currency or 100% ROAS value. If not using an applicable strategy, the value of this field will be 0. */
+  value?: string;
+  /** Output only. The value effectively used by the bidding strategy. This field will be the same as value if set. If value is not set and the strategy is assigned to an ad group, this field will be inherited from the line item's bidding strategy. If type is not `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` or `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS`, this field will be 0. */
+  effectiveBiddingValue?: string;
+  /** Output only. Source of the effective bidding value. */
+  effectiveBiddingValueSource?:
+    | DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum
+    | (string & {});
+}
+export const DemandGenBiddingStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(DemandGenBiddingStrategyTypeEnum),
+    value: S.optional(S.String),
+    effectiveBiddingValue: S.optional(S.String),
+    effectiveBiddingValueSource: S.optional(
+      DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum,
+    ),
+  }),
+).annotate({
+  identifier: "DemandGenBiddingStrategy",
+}) as any as S.Schema<DemandGenBiddingStrategy>;
+
+export type PerformanceGoalBidStrategyPerformanceGoalTypeEnum =
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH";
+export const PerformanceGoalBidStrategyPerformanceGoalTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** A strategy that automatically adjusts the bid to meet or beat a specified performance goal. */
+export interface PerformanceGoalBidStrategy {
+  /** The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater than or equal to a billable unit of the given currency. Not applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example, 1500000 represents 1.5 standard units of the currency. */
+  maxAverageCpmBidAmountMicros?: string;
+  /** The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom bidding algorithm that uses floodlight activities not identified in floodlightActivityConfigs will return an error. */
+  customBiddingAlgorithmId?: string;
+  /** Required. The performance goal the bidding strategy will attempt to meet or beat, in micros of the advertiser's currency or in micro of the ROAS (Return On Advertising Spend) value which is also based on advertiser's currency. Must be greater than or equal to a billable unit of the given currency and smaller or equal to upper bounds. Each performance_goal_type has its upper bound: * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, upper bound is 10000.00 USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is 1000.00 USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is 1000.00 and lower bound is 0.01. Example: If set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will be based on the probability that each available impression will be viewable. For example, if viewable CPM target is $2 and an impression is 40% likely to be viewable, the bid price will be $0.80 CPM (40% of $2). For example, 1500000 represents 1.5 standard units of the currency or ROAS value. */
+  performanceGoalAmountMicros?: string;
+  /** Required. The type of the performance goal that the bidding strategy will try to meet or beat. For line item level usage, the value must be one of: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. */
+  performanceGoalType?:
+    | PerformanceGoalBidStrategyPerformanceGoalTypeEnum
+    | (string & {});
+}
+export const PerformanceGoalBidStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxAverageCpmBidAmountMicros: S.optional(S.String),
+    customBiddingAlgorithmId: S.optional(S.String),
+    performanceGoalAmountMicros: S.optional(S.String),
+    performanceGoalType: S.optional(
+      PerformanceGoalBidStrategyPerformanceGoalTypeEnum,
+    ),
+  }),
+).annotate({
+  identifier: "PerformanceGoalBidStrategy",
+}) as any as S.Schema<PerformanceGoalBidStrategy>;
+
+export type MaximizeSpendBidStrategyPerformanceGoalTypeEnum =
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED"
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH";
+export const MaximizeSpendBidStrategyPerformanceGoalTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** A strategy that automatically adjusts the bid to optimize a specified performance goal while spending the full budget. */
+export interface MaximizeSpendBidStrategy {
+  /** The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater than or equal to a billable unit of the given currency. For example, 1500000 represents 1.5 standard units of the currency. */
+  maxAverageCpmBidAmountMicros?: string;
+  /** Whether the strategy takes deal floor prices into account. */
+  raiseBidForDeals?: boolean;
+  /** The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom bidding algorithm that uses floodlight activities not identified in floodlightActivityConfigs will return an error. */
+  customBiddingAlgorithmId?: string;
+  /** Required. The type of the performance goal that the bidding strategy tries to minimize while spending the full budget. `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for this strategy. */
+  performanceGoalType?:
+    | MaximizeSpendBidStrategyPerformanceGoalTypeEnum
+    | (string & {});
+}
+export const MaximizeSpendBidStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxAverageCpmBidAmountMicros: S.optional(S.String),
+    raiseBidForDeals: S.optional(S.Boolean),
+    customBiddingAlgorithmId: S.optional(S.String),
+    performanceGoalType: S.optional(
+      MaximizeSpendBidStrategyPerformanceGoalTypeEnum,
+    ),
+  }),
+).annotate({
+  identifier: "MaximizeSpendBidStrategy",
+}) as any as S.Schema<MaximizeSpendBidStrategy>;
+
+/** A strategy that uses a fixed bidding price. */
+export interface FixedBidStrategy {
+  /** The fixed bid amount, in micros of the advertiser's currency. For insertion order entity, bid_amount_micros should be set as 0. For line item entity, bid_amount_micros must be greater than or equal to billable unit of the given currency and smaller than or equal to the upper limit 1000000000. For example, 1500000 represents 1.5 standard units of the currency. */
+  bidAmountMicros?: string;
+}
+export const FixedBidStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bidAmountMicros: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FixedBidStrategy",
+}) as any as S.Schema<FixedBidStrategy>;
+
+/** Settings that control the bid strategy. Bid strategy determines the bid price. */
+export interface BiddingStrategy {
+  /** A bid strategy used by YouTube and Partners resources. It can only be used for a YouTube and Partners line item or ad group entity. */
+  youtubeAndPartnersBid?: YoutubeAndPartnersBiddingStrategy;
+  /** A bid strategy used by Demand Gen resources. It can only be used for a Demand Gen line item or ad group entity. */
+  demandGenBid?: DemandGenBiddingStrategy;
+  /** A strategy that automatically adjusts the bid to meet or beat a specified performance goal. It is to be used only for a line item entity. */
+  performanceGoalAutoBid?: PerformanceGoalBidStrategy;
+  /** A strategy that automatically adjusts the bid to optimize to your performance goal while spending the full budget. At insertion order level, the markup_type of line items cannot be set to `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`. In addition, the performance_goal_type value assigned to an insertion order determines the possible line_item_type values available for line items under that insertion order: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, and `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` only allow for `LINE_ITEM_TYPE_DISPLAY_DEFAULT` or `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` and `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` only allow for `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH` only allows for `LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP` line items. */
+  maximizeSpendAutoBid?: MaximizeSpendBidStrategy;
+  /** A strategy that uses a fixed bid price. */
+  fixedBid?: FixedBidStrategy;
+}
+export const BiddingStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    youtubeAndPartnersBid: S.optional(YoutubeAndPartnersBiddingStrategy),
+    demandGenBid: S.optional(DemandGenBiddingStrategy),
+    performanceGoalAutoBid: S.optional(PerformanceGoalBidStrategy),
+    maximizeSpendAutoBid: S.optional(MaximizeSpendBidStrategy),
+    fixedBid: S.optional(FixedBidStrategy),
+  }),
+).annotate({
+  identifier: "BiddingStrategy",
+}) as any as S.Schema<BiddingStrategy>;
+
 /** The inventory control of the ad group. */
 export interface SelectedInventories {
   /** Whether the ad group is opted-in to Gmail inventory. */
@@ -6991,6 +5970,39 @@ export const CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsR
       "CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest",
   }) as any as S.Schema<CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest>;
 
+export type FrequencyCapTimeUnitEnum =
+  | "TIME_UNIT_UNSPECIFIED"
+  | "TIME_UNIT_LIFETIME"
+  | "TIME_UNIT_MONTHS"
+  | "TIME_UNIT_WEEKS"
+  | "TIME_UNIT_DAYS"
+  | "TIME_UNIT_HOURS"
+  | "TIME_UNIT_MINUTES";
+export const FrequencyCapTimeUnitEnum = /*@__PURE__*/ S.String;
+
+/** Settings that control the number of times a user may be shown with the same ad during a given time period. */
+export interface FrequencyCap {
+  /** Whether unlimited frequency capping is applied. When this field is set to `true`, the remaining frequency cap fields are not applicable. */
+  unlimited?: boolean;
+  /** The maximum number of times a user may be shown the same ad during this period. Must be greater than 0. Required when unlimited is `false` and max_views is not set. */
+  maxImpressions?: number;
+  /** The time unit in which the frequency cap will be applied. Required when unlimited is `false`. */
+  timeUnit?: FrequencyCapTimeUnitEnum | (string & {});
+  /** Optional. The maximum number of times a user may click-through or fully view an ad during this period until it is no longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources. Required when unlimited is `false` and max_impressions is not set. */
+  maxViews?: number;
+  /** The number of time_unit the frequency cap will last. Required when unlimited is `false`. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_MONTHS` - must be 1 * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59 */
+  timeUnitCount?: number;
+}
+export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    unlimited: S.optional(S.Boolean),
+    maxImpressions: S.optional(S.Number),
+    timeUnit: S.optional(FrequencyCapTimeUnitEnum),
+    maxViews: S.optional(S.Number),
+    timeUnitCount: S.optional(S.Number),
+  }),
+).annotate({ identifier: "FrequencyCap" }) as any as S.Schema<FrequencyCap>;
+
 export type CampaignGoalCampaignGoalTypeEnum =
   | "CAMPAIGN_GOAL_TYPE_UNSPECIFIED"
   | "CAMPAIGN_GOAL_TYPE_APP_INSTALL"
@@ -7053,6 +6065,39 @@ export const CampaignGoal = /*@__PURE__*/ S.suspend(() =>
     performanceGoal: S.optional(PerformanceGoal),
   }),
 ).annotate({ identifier: "CampaignGoal" }) as any as S.Schema<CampaignGoal>;
+
+/** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
+export interface Displayvideo_Date {
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
+}
+export const Displayvideo_Date = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Displayvideo_Date",
+}) as any as S.Schema<Displayvideo_Date>;
+
+/** A date range. */
+export interface DateRange {
+  /** The lower bound of the date range, inclusive. Must specify a positive value for `year`, `month`, and `day`. */
+  startDate?: Displayvideo_Date;
+  /** The upper bound of the date range, inclusive. Must specify a positive value for `year`, `month`, and `day`. */
+  endDate?: Displayvideo_Date;
+}
+export const DateRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startDate: S.optional(Displayvideo_Date),
+    endDate: S.optional(Displayvideo_Date),
+  }),
+).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
 
 /** Settings that track the planned spend and duration of a campaign. */
 export interface CampaignFlight {
@@ -8099,6 +7144,39 @@ export type InsertionOrderInsertionOrderTypeEnum =
   | "OVER_THE_TOP";
 export const InsertionOrderInsertionOrderTypeEnum = /*@__PURE__*/ S.String;
 
+export type PacingPacingPeriodEnum =
+  | "PACING_PERIOD_UNSPECIFIED"
+  | "PACING_PERIOD_DAILY"
+  | "PACING_PERIOD_FLIGHT";
+export const PacingPacingPeriodEnum = /*@__PURE__*/ S.String;
+
+export type PacingPacingTypeEnum =
+  | "PACING_TYPE_UNSPECIFIED"
+  | "PACING_TYPE_AHEAD"
+  | "PACING_TYPE_ASAP"
+  | "PACING_TYPE_EVEN";
+export const PacingPacingTypeEnum = /*@__PURE__*/ S.String;
+
+/** Settings that control the rate at which a budget is spent. */
+export interface Pacing {
+  /** Required. The time period in which the pacing budget will be spent. When automatic budget allocation is enabled at the insertion order via automationType, this field is output only and defaults to `PACING_PERIOD_FLIGHT`. */
+  pacingPeriod?: PacingPacingPeriodEnum | (string & {});
+  /** Maximum number of impressions to serve every day. Applicable when the budget is impression based. Must be greater than 0. */
+  dailyMaxImpressions?: string;
+  /** Maximum currency amount to spend every day in micros of advertiser's currency. Applicable when the budget is currency based. Must be greater than 0. For example, for 1.5 standard unit of the currency, set this field to 1500000. The value assigned will be rounded to whole billable units for the relevant currency by the following rules: any positive value less than a single billable unit will be rounded up to one billable unit and any value larger than a single billable unit will be rounded down to the nearest billable value. For example, if the currency's billable unit is 0.01, and this field is set to 10257770, it will round down to 10250000, a value of 10.25. If set to 505, it will round up to 10000, a value of 0.01. */
+  dailyMaxMicros?: string;
+  /** Required. The type of pacing that defines how the budget amount will be spent across the pacing_period. `PACING_TYPE_ASAP` is not compatible with pacing_period `PACING_PERIOD_FLIGHT` for insertion orders. */
+  pacingType?: PacingPacingTypeEnum | (string & {});
+}
+export const Pacing = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pacingPeriod: S.optional(PacingPacingPeriodEnum),
+    dailyMaxImpressions: S.optional(S.String),
+    dailyMaxMicros: S.optional(S.String),
+    pacingType: S.optional(PacingPacingTypeEnum),
+  }),
+).annotate({ identifier: "Pacing" }) as any as S.Schema<Pacing>;
+
 export type InsertionOrderReservationTypeEnum =
   | "RESERVATION_TYPE_UNSPECIFIED"
   | "RESERVATION_TYPE_NOT_GUARANTEED"
@@ -8116,6 +7194,79 @@ export type InsertionOrderOptimizationObjectiveEnum =
   | "CUSTOM"
   | "NO_OBJECTIVE";
 export const InsertionOrderOptimizationObjectiveEnum = /*@__PURE__*/ S.String;
+
+export type PartnerCostInvoiceTypeEnum =
+  | "PARTNER_COST_INVOICE_TYPE_UNSPECIFIED"
+  | "PARTNER_COST_INVOICE_TYPE_DV360"
+  | "PARTNER_COST_INVOICE_TYPE_PARTNER";
+export const PartnerCostInvoiceTypeEnum = /*@__PURE__*/ S.String;
+
+export type PartnerCostCostTypeEnum =
+  | "PARTNER_COST_TYPE_UNSPECIFIED"
+  | "PARTNER_COST_TYPE_ADLOOX"
+  | "PARTNER_COST_TYPE_ADLOOX_PREBID"
+  | "PARTNER_COST_TYPE_ADSAFE"
+  | "PARTNER_COST_TYPE_ADXPOSE"
+  | "PARTNER_COST_TYPE_AGGREGATE_KNOWLEDGE"
+  | "PARTNER_COST_TYPE_AGENCY_TRADING_DESK"
+  | "PARTNER_COST_TYPE_DV360_FEE"
+  | "PARTNER_COST_TYPE_COMSCORE_VCE"
+  | "PARTNER_COST_TYPE_DATA_MANAGEMENT_PLATFORM"
+  | "PARTNER_COST_TYPE_DEFAULT"
+  | "PARTNER_COST_TYPE_DOUBLE_VERIFY"
+  | "PARTNER_COST_TYPE_DOUBLE_VERIFY_PREBID"
+  | "PARTNER_COST_TYPE_EVIDON"
+  | "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_VIDEO"
+  | "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_PREBID"
+  | "PARTNER_COST_TYPE_MEDIA_COST_DATA"
+  | "PARTNER_COST_TYPE_MOAT_VIDEO"
+  | "PARTNER_COST_TYPE_NIELSEN_DAR"
+  | "PARTNER_COST_TYPE_SHOP_LOCAL"
+  | "PARTNER_COST_TYPE_TERACENT"
+  | "PARTNER_COST_TYPE_THIRD_PARTY_AD_SERVER"
+  | "PARTNER_COST_TYPE_TRUST_METRICS"
+  | "PARTNER_COST_TYPE_VIZU"
+  | "PARTNER_COST_TYPE_CUSTOM_FEE_1"
+  | "PARTNER_COST_TYPE_CUSTOM_FEE_2"
+  | "PARTNER_COST_TYPE_CUSTOM_FEE_3"
+  | "PARTNER_COST_TYPE_CUSTOM_FEE_4"
+  | "PARTNER_COST_TYPE_CUSTOM_FEE_5"
+  | "PARTNER_COST_TYPE_SCIBIDS_FEE";
+export const PartnerCostCostTypeEnum = /*@__PURE__*/ S.String;
+
+export type PartnerCostFeeTypeEnum =
+  | "PARTNER_COST_FEE_TYPE_UNSPECIFIED"
+  | "PARTNER_COST_FEE_TYPE_CPM_FEE"
+  | "PARTNER_COST_FEE_TYPE_MEDIA_FEE";
+export const PartnerCostFeeTypeEnum = /*@__PURE__*/ S.String;
+
+/** Settings that control a partner cost. A partner cost is any type of expense involved in running a campaign, other than the costs of purchasing impressions (which is called the media cost) and using third-party audience segment data (data fee). Some examples of partner costs include the fees for using DV360, a third-party ad server, or a third-party ad serving verification service. */
+export interface PartnerCost {
+  /** The media fee percentage in millis (1/1000 of a percent). Applicable when the fee_type is `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be greater than or equal to 0. For example: 100 represents 0.1%. */
+  feePercentageMillis?: string;
+  /** The invoice type for this partner cost. * Required when cost_type is one of: - `PARTNER_COST_TYPE_ADLOOX` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` - `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types. */
+  invoiceType?: PartnerCostInvoiceTypeEnum | (string & {});
+  /** The CPM fee amount in micros of advertiser's currency. Applicable when the fee_type is `PARTNER_FEE_TYPE_CPM_FEE`. Must be greater than or equal to 0. For example, for 1.5 standard unit of the advertiser's currency, set this field to 1500000. */
+  feeAmount?: string;
+  /** Required. The type of the partner cost. */
+  costType?: PartnerCostCostTypeEnum | (string & {});
+  /** Required. The fee type for this partner cost. */
+  feeType?: PartnerCostFeeTypeEnum | (string & {});
+}
+export const PartnerCost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    feePercentageMillis: S.optional(S.String),
+    invoiceType: S.optional(PartnerCostInvoiceTypeEnum),
+    feeAmount: S.optional(S.String),
+    costType: S.optional(PartnerCostCostTypeEnum),
+    feeType: S.optional(PartnerCostFeeTypeEnum),
+  }),
+).annotate({ identifier: "PartnerCost" }) as any as S.Schema<PartnerCost>;
+
+export type PartnerCostList = Array<PartnerCost>;
+export const PartnerCostList = /*@__PURE__*/ S.Array(
+  PartnerCost,
+) as any as S.Schema<PartnerCostList>;
 
 export type InsertionOrderBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
@@ -8268,6 +7419,591 @@ export const CreateAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateAdvertisersInsertionOrdersRequest",
 }) as any as S.Schema<CreateAdvertisersInsertionOrdersRequest>;
+
+export type LineItemBudgetBudgetUnitEnum =
+  | "BUDGET_UNIT_UNSPECIFIED"
+  | "BUDGET_UNIT_CURRENCY"
+  | "BUDGET_UNIT_IMPRESSIONS";
+export const LineItemBudgetBudgetUnitEnum = /*@__PURE__*/ S.String;
+
+export type LineItemBudgetBudgetAllocationTypeEnum =
+  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNSPECIFIED"
+  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC"
+  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED"
+  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED";
+export const LineItemBudgetBudgetAllocationTypeEnum = /*@__PURE__*/ S.String;
+
+/** Settings that control how budget is allocated. */
+export interface LineItemBudget {
+  /** Output only. The budget unit specifies whether the budget is currency based or impression based. This value is inherited from the parent insertion order. */
+  budgetUnit?: LineItemBudgetBudgetUnitEnum | (string & {});
+  /** The maximum budget amount the line item will spend. Must be greater than 0. When budget_allocation_type is: * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`, this field is immutable and is set by the system. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`, if budget_unit is: - `BUDGET_UNIT_CURRENCY`, this field represents maximum budget amount to spend, in micros of the advertiser's currency. For example, 1500000 represents 1.5 standard units of the currency. - `BUDGET_UNIT_IMPRESSIONS`, this field represents the maximum number of impressions to serve. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this field is not applicable and will be ignored by the system. */
+  maxAmount?: string;
+  /** Required. The type of the budget allocation. `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when automatic budget allocation is enabled for the parent insertion order. This field must be set to `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED` for Demand Gen line items. */
+  budgetAllocationType?: LineItemBudgetBudgetAllocationTypeEnum | (string & {});
+}
+export const LineItemBudget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    budgetUnit: S.optional(LineItemBudgetBudgetUnitEnum),
+    maxAmount: S.optional(S.String),
+    budgetAllocationType: S.optional(LineItemBudgetBudgetAllocationTypeEnum),
+  }),
+).annotate({ identifier: "LineItemBudget" }) as any as S.Schema<LineItemBudget>;
+
+export type LineItemReservationTypeEnum =
+  | "RESERVATION_TYPE_UNSPECIFIED"
+  | "RESERVATION_TYPE_NOT_GUARANTEED"
+  | "RESERVATION_TYPE_PROGRAMMATIC_GUARANTEED"
+  | "RESERVATION_TYPE_TAG_GUARANTEED"
+  | "RESERVATION_TYPE_PETRA_VIRAL"
+  | "RESERVATION_TYPE_INSTANT_RESERVE";
+export const LineItemReservationTypeEnum = /*@__PURE__*/ S.String;
+
+export type LineItemWarningMessagesItemEnum =
+  | "LINE_ITEM_WARNING_MESSAGE_UNSPECIFIED"
+  | "INVALID_FLIGHT_DATES"
+  | "EXPIRED"
+  | "PENDING_FLIGHT"
+  | "ALL_PARTNER_ENABLED_EXCHANGES_NEGATIVELY_TARGETED"
+  | "INVALID_INVENTORY_SOURCE"
+  | "APP_INVENTORY_INVALID_SITE_TARGETING"
+  | "APP_INVENTORY_INVALID_AUDIENCE_LISTS"
+  | "NO_VALID_CREATIVE"
+  | "PARENT_INSERTION_ORDER_PAUSED"
+  | "PARENT_INSERTION_ORDER_EXPIRED";
+export const LineItemWarningMessagesItemEnum = /*@__PURE__*/ S.String;
+
+export type LineItemWarningMessagesItemEnumList = Array<
+  LineItemWarningMessagesItemEnum | (string & {})
+>;
+export const LineItemWarningMessagesItemEnumList = /*@__PURE__*/ S.Array(
+  LineItemWarningMessagesItemEnum,
+) as any as S.Schema<LineItemWarningMessagesItemEnumList>;
+
+/** Settings that control the behavior of a single Floodlight activity config. */
+export interface TrackingFloodlightActivityConfig {
+  /** Required. The number of days after an ad has been clicked in which a conversion may be counted. Must be between 0 and 90 inclusive. */
+  postClickLookbackWindowDays?: number;
+  /** Required. The number of days after an ad has been viewed in which a conversion may be counted. Must be between 0 and 90 inclusive. */
+  postViewLookbackWindowDays?: number;
+  /** Required. The ID of the Floodlight activity. */
+  floodlightActivityId?: string;
+}
+export const TrackingFloodlightActivityConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    postClickLookbackWindowDays: S.optional(S.Number),
+    postViewLookbackWindowDays: S.optional(S.Number),
+    floodlightActivityId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TrackingFloodlightActivityConfig",
+}) as any as S.Schema<TrackingFloodlightActivityConfig>;
+
+export type TrackingFloodlightActivityConfigList =
+  Array<TrackingFloodlightActivityConfig>;
+export const TrackingFloodlightActivityConfigList = /*@__PURE__*/ S.Array(
+  TrackingFloodlightActivityConfig,
+) as any as S.Schema<TrackingFloodlightActivityConfigList>;
+
+/** Settings that control how conversions are counted. All post-click conversions will be counted. A percentage value can be set for post-view conversions counting. */
+export interface ConversionCountingConfig {
+  /** The Floodlight activity configs used to track conversions. The number of conversions counted is the sum of all of the conversions counted by all of the Floodlight activity IDs specified in this field. This field can't be updated if a custom bidding algorithm is assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request, the floodlight activities must match the ones used by the custom bidding algorithm. */
+  floodlightActivityConfigs?: TrackingFloodlightActivityConfigList;
+  /** Optional. The attribution model to use for conversion measurement. This attribution model will determine how conversions are counted. The Primary model can be set by you for a floodlight config or group. More details [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items. */
+  primaryAttributionModelId?: string;
+  /** The percentage of post-view conversions to count, in millis (1/1000 of a percent). Must be between 0 and 100000 inclusive. For example, to track 50% of the post-click conversions, set a value of 50000. */
+  postViewCountPercentageMillis?: string;
+}
+export const ConversionCountingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    floodlightActivityConfigs: S.optional(TrackingFloodlightActivityConfigList),
+    primaryAttributionModelId: S.optional(S.String),
+    postViewCountPercentageMillis: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConversionCountingConfig",
+}) as any as S.Schema<ConversionCountingConfig>;
+
+export type ThirdPartyVendorConfigVendorEnum =
+  | "THIRD_PARTY_VENDOR_UNSPECIFIED"
+  | "THIRD_PARTY_VENDOR_MOAT"
+  | "THIRD_PARTY_VENDOR_DOUBLE_VERIFY"
+  | "THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE"
+  | "THIRD_PARTY_VENDOR_COMSCORE"
+  | "THIRD_PARTY_VENDOR_TELEMETRY"
+  | "THIRD_PARTY_VENDOR_MEETRICS"
+  | "THIRD_PARTY_VENDOR_ZEFR"
+  | "THIRD_PARTY_VENDOR_NIELSEN"
+  | "THIRD_PARTY_VENDOR_KANTAR"
+  | "THIRD_PARTY_VENDOR_DYNATA"
+  | "THIRD_PARTY_VENDOR_TRANSUNION"
+  | "THIRD_PARTY_VENDOR_ORIGIN"
+  | "THIRD_PARTY_VENDOR_GEMIUS"
+  | "THIRD_PARTY_VENDOR_MEDIA_SCOPE"
+  | "THIRD_PARTY_VENDOR_AUDIENCE_PROJECT"
+  | "THIRD_PARTY_VENDOR_VIDEO_AMP"
+  | "THIRD_PARTY_VENDOR_ISPOT_TV"
+  | "THIRD_PARTY_VENDOR_INTAGE"
+  | "THIRD_PARTY_VENDOR_MACROMILL"
+  | "THIRD_PARTY_VENDOR_VIDEO_RESEARCH";
+export const ThirdPartyVendorConfigVendorEnum = /*@__PURE__*/ S.String;
+
+/** Settings that control how third-party measurement vendors are configured. */
+export interface ThirdPartyVendorConfig {
+  /** The third-party measurement vendor. */
+  vendor?: ThirdPartyVendorConfigVendorEnum | (string & {});
+  /** The ID used by the platform of the third-party vendor to identify the line item. */
+  placementId?: string;
+}
+export const ThirdPartyVendorConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vendor: S.optional(ThirdPartyVendorConfigVendorEnum),
+    placementId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ThirdPartyVendorConfig",
+}) as any as S.Schema<ThirdPartyVendorConfig>;
+
+export type ThirdPartyVendorConfigList = Array<ThirdPartyVendorConfig>;
+export const ThirdPartyVendorConfigList = /*@__PURE__*/ S.Array(
+  ThirdPartyVendorConfig,
+) as any as S.Schema<ThirdPartyVendorConfigList>;
+
+/** Settings that control what third-party vendors are measuring specific line item metrics. */
+export interface ThirdPartyMeasurementConfigs {
+  /** Optional. The third-party vendors measuring brand safety. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_ZEFR` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` */
+  brandSafetyVendorConfigs?: ThirdPartyVendorConfigList;
+  /** Optional. The third-party vendors measuring viewability. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_MOAT` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS` */
+  viewabilityVendorConfigs?: ThirdPartyVendorConfigList;
+  /** Optional. The third-party vendors measuring reach. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV` * `THIRD_PARTY_VENDOR_GEMIUS` */
+  reachVendorConfigs?: ThirdPartyVendorConfigList;
+  /** Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_MACROMILL` */
+  brandLiftVendorConfigs?: ThirdPartyVendorConfigList;
+}
+export const ThirdPartyMeasurementConfigs = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    brandSafetyVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+    viewabilityVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+    reachVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+    brandLiftVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+  }),
+).annotate({
+  identifier: "ThirdPartyMeasurementConfigs",
+}) as any as S.Schema<ThirdPartyMeasurementConfigs>;
+
+/** Settings for Demand Gen line items. */
+export interface DemandGenSettings {
+  /** Optional. Immutable. Whether location and language targeting can be set at the line item level. Otherwise, relevant targeting types must be assigned directly to ad groups. */
+  geoLanguageTargetingEnabled?: boolean;
+  /** Optional. The third party measurement settings for the Demand Gen line item. */
+  thirdPartyMeasurementConfigs?: ThirdPartyMeasurementConfigs;
+  /** Optional. The ID of the Merchant Center account used to provide a product feed. This Merchant Center account must already be linked to the advertiser. */
+  linkedMerchantId?: string;
+}
+export const DemandGenSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    geoLanguageTargetingEnabled: S.optional(S.Boolean),
+    thirdPartyMeasurementConfigs: S.optional(ThirdPartyMeasurementConfigs),
+    linkedMerchantId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DemandGenSettings",
+}) as any as S.Schema<DemandGenSettings>;
+
+export type PartnerRevenueModelMarkupTypeEnum =
+  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_UNSPECIFIED"
+  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM"
+  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP"
+  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP";
+export const PartnerRevenueModelMarkupTypeEnum = /*@__PURE__*/ S.String;
+
+/** Settings that control how partner revenue is calculated. */
+export interface PartnerRevenueModel {
+  /** Required. The markup type of the partner revenue model. This field must be set to `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP` for Demand Gen line items. */
+  markupType?: PartnerRevenueModelMarkupTypeEnum | (string & {});
+  /** Required. The markup amount of the partner revenue model. Must be greater than or equal to 0. * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM markup in micros of advertiser's currency. For example, 1500000 represents 1.5 standard units of the currency. * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP`, this field represents the media cost percent markup in millis. For example, 100 represents 0.1% (decimal 0.001). * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`, this field represents the total media cost percent markup in millis. For example, 100 represents 0.1% (decimal 0.001). */
+  markupAmount?: string;
+}
+export const PartnerRevenueModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    markupType: S.optional(PartnerRevenueModelMarkupTypeEnum),
+    markupAmount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PartnerRevenueModel",
+}) as any as S.Schema<PartnerRevenueModel>;
+
+export type MobileAppPlatformEnum = "PLATFORM_UNSPECIFIED" | "IOS" | "ANDROID";
+export const MobileAppPlatformEnum = /*@__PURE__*/ S.String;
+
+/** A mobile app promoted by a mobile app install line item. */
+export interface MobileApp {
+  /** Output only. The app name. */
+  displayName?: string;
+  /** Output only. The app publisher. */
+  publisher?: string;
+  /** Output only. The app platform. */
+  platform?: MobileAppPlatformEnum | (string & {});
+  /** Required. The ID of the app provided by the platform store. Android apps are identified by the bundle ID used by Android's Play store, such as `com.google.android.gm`. iOS apps are identified by a nine-digit app ID used by Apple's App store, such as `422689480`. */
+  appId?: string;
+}
+export const MobileApp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    publisher: S.optional(S.String),
+    platform: S.optional(MobileAppPlatformEnum),
+    appId: S.optional(S.String),
+  }),
+).annotate({ identifier: "MobileApp" }) as any as S.Schema<MobileApp>;
+
+export type LineItemContainsEuPoliticalAdsEnum =
+  | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
+  | "CONTAINS_EU_POLITICAL_ADVERTISING"
+  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
+export const LineItemContainsEuPoliticalAdsEnum = /*@__PURE__*/ S.String;
+
+export type LineItemLineItemTypeEnum =
+  | "LINE_ITEM_TYPE_UNSPECIFIED"
+  | "LINE_ITEM_TYPE_DISPLAY_DEFAULT"
+  | "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL"
+  | "LINE_ITEM_TYPE_VIDEO_DEFAULT"
+  | "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL"
+  | "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INVENTORY"
+  | "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INVENTORY"
+  | "LINE_ITEM_TYPE_AUDIO_DEFAULT"
+  | "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_ACTION"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_AUDIO"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_REACH"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_SIMPLE"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE_OVER_THE_TOP"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_REACH_OVER_THE_TOP"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_SIMPLE_OVER_THE_TOP"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_TARGET_FREQUENCY"
+  | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIEW"
+  | "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME"
+  | "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME"
+  | "LINE_ITEM_TYPE_DEMAND_GEN";
+export const LineItemLineItemTypeEnum = /*@__PURE__*/ S.String;
+
+export type VideoAdSequenceSettingsMinimumDurationEnum =
+  | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_UNSPECIFIED"
+  | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_WEEK"
+  | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_MONTH";
+export const VideoAdSequenceSettingsMinimumDurationEnum =
+  /*@__PURE__*/ S.String;
+
+export type VideoAdSequenceStepInteractionTypeEnum =
+  | "INTERACTION_TYPE_UNSPECIFIED"
+  | "INTERACTION_TYPE_PAID_VIEW"
+  | "INTERACTION_TYPE_SKIP"
+  | "INTERACTION_TYPE_IMPRESSION"
+  | "INTERACTION_TYPE_ENGAGED_IMPRESSION";
+export const VideoAdSequenceStepInteractionTypeEnum = /*@__PURE__*/ S.String;
+
+/** The detail of a single step in a VideoAdSequence. */
+export interface VideoAdSequenceStep {
+  /** The ID of the corresponding ad group of the step. */
+  adGroupId?: string;
+  /** The interaction on the previous step that will lead the viewer to this step. The first step does not have interaction_type. */
+  interactionType?: VideoAdSequenceStepInteractionTypeEnum | (string & {});
+  /** The ID of the previous step. The first step does not have previous step. */
+  previousStepId?: string;
+  /** The ID of the step. */
+  stepId?: string;
+}
+export const VideoAdSequenceStep = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adGroupId: S.optional(S.String),
+    interactionType: S.optional(VideoAdSequenceStepInteractionTypeEnum),
+    previousStepId: S.optional(S.String),
+    stepId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VideoAdSequenceStep",
+}) as any as S.Schema<VideoAdSequenceStep>;
+
+export type VideoAdSequenceStepList = Array<VideoAdSequenceStep>;
+export const VideoAdSequenceStepList = /*@__PURE__*/ S.Array(
+  VideoAdSequenceStep,
+) as any as S.Schema<VideoAdSequenceStepList>;
+
+/** Settings related to VideoAdSequence. */
+export interface VideoAdSequenceSettings {
+  /** The minimum time interval before the same user sees this sequence again. */
+  minimumDuration?: VideoAdSequenceSettingsMinimumDurationEnum | (string & {});
+  /** The steps of which the sequence consists. */
+  steps?: VideoAdSequenceStepList;
+}
+export const VideoAdSequenceSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimumDuration: S.optional(VideoAdSequenceSettingsMinimumDurationEnum),
+    steps: S.optional(VideoAdSequenceStepList),
+  }),
+).annotate({
+  identifier: "VideoAdSequenceSettings",
+}) as any as S.Schema<VideoAdSequenceSettings>;
+
+export type YoutubeAndPartnersSettingsEffectiveContentCategoryEnum =
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED"
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
+export const YoutubeAndPartnersSettingsEffectiveContentCategoryEnum =
+  /*@__PURE__*/ S.String;
+
+export type YoutubeAndPartnersSettingsContentCategoryEnum =
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED"
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
+export const YoutubeAndPartnersSettingsContentCategoryEnum =
+  /*@__PURE__*/ S.String;
+
+/** The video ad inventory control used in certain YouTube line item types. */
+export interface VideoAdInventoryControl {
+  /** Optional. Indicates whether ads can serve as non-skippable in-stream format. */
+  allowNonSkippableInStream?: boolean;
+  /** Optional. Whether ads can serve as shorts format. */
+  allowShorts?: boolean;
+  /** Optional. Whether ads can serve as in-feed format. */
+  allowInFeed?: boolean;
+  /** Optional. Whether ads can serve as in-stream format. */
+  allowInStream?: boolean;
+}
+export const VideoAdInventoryControl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowNonSkippableInStream: S.optional(S.Boolean),
+    allowShorts: S.optional(S.Boolean),
+    allowInFeed: S.optional(S.Boolean),
+    allowInStream: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VideoAdInventoryControl",
+}) as any as S.Schema<VideoAdInventoryControl>;
+
+/** Settings that control what YouTube related inventories the YouTube and Partners line item will target. */
+export interface YoutubeAndPartnersInventorySourceConfig {
+  /** Optional. Whether to target inventory in video apps available with Google TV. */
+  includeGoogleTv?: boolean;
+  /** Optional. Whether to target inventory on YouTube. This includes both search, channels and videos. */
+  includeYoutube?: boolean;
+  /** Whether to target inventory on a collection of partner sites and apps that follow the same brand safety standards as YouTube. */
+  includeYoutubeVideoPartners?: boolean;
+}
+export const YoutubeAndPartnersInventorySourceConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      includeGoogleTv: S.optional(S.Boolean),
+      includeYoutube: S.optional(S.Boolean),
+      includeYoutubeVideoPartners: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "YoutubeAndPartnersInventorySourceConfig",
+}) as any as S.Schema<YoutubeAndPartnersInventorySourceConfig>;
+
+export type TargetFrequencyTimeUnitEnum =
+  | "TIME_UNIT_UNSPECIFIED"
+  | "TIME_UNIT_LIFETIME"
+  | "TIME_UNIT_MONTHS"
+  | "TIME_UNIT_WEEKS"
+  | "TIME_UNIT_DAYS"
+  | "TIME_UNIT_HOURS"
+  | "TIME_UNIT_MINUTES";
+export const TargetFrequencyTimeUnitEnum = /*@__PURE__*/ S.String;
+
+/** Setting that controls the average number of times the ads will show to the same person over a certain period of time. */
+export interface TargetFrequency {
+  /** The number of time_unit the target frequency will last. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_WEEKS` - must be 1 */
+  timeUnitCount?: number;
+  /** The target number of times, on average, the ads will be shown to the same person in the timespan dictated by time_unit and time_unit_count. */
+  targetCount?: string;
+  /** The unit of time in which the target frequency will be applied. The following time unit is applicable: * `TIME_UNIT_WEEKS` */
+  timeUnit?: TargetFrequencyTimeUnitEnum | (string & {});
+}
+export const TargetFrequency = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeUnitCount: S.optional(S.Number),
+    targetCount: S.optional(S.String),
+    timeUnit: S.optional(TargetFrequencyTimeUnitEnum),
+  }),
+).annotate({
+  identifier: "TargetFrequency",
+}) as any as S.Schema<TargetFrequency>;
+
+/** Settings for YouTube and Partners line items. */
+export interface YoutubeAndPartnersSettings {
+  /** Optional. The third-party measurement configs of the line item. */
+  thirdPartyMeasurementConfigs?: ThirdPartyMeasurementConfigs;
+  /** Optional. The settings related to VideoAdSequence. */
+  videoAdSequenceSettings?: VideoAdSequenceSettings;
+  /** Optional. The ID of the form to generate leads. */
+  leadFormId?: string;
+  /** The view frequency cap settings of the line item. The max_views field in this settings object must be used if assigning a limited cap. */
+  viewFrequencyCap?: FrequencyCap;
+  /** Output only. The content category which takes effect when serving the line item. When content category is set in both line item and advertiser, the stricter one will take effect when serving the line item. New line items will only inherit the advertiser level setting. */
+  effectiveContentCategory?:
+    | YoutubeAndPartnersSettingsEffectiveContentCategoryEnum
+    | (string & {});
+  /** Output only. The kind of content on which the YouTube and Partners ads will be shown. *Warning*: This field will be removed in the near future. Use effective_content_category instead. */
+  contentCategory?:
+    | YoutubeAndPartnersSettingsContentCategoryEnum
+    | (string & {});
+  /** Optional. The ID of the Merchant Center account used to provide a product feed. This Merchant Center account must already be linked to the advertiser. */
+  linkedMerchantId?: string;
+  /** Optional. The settings to control which inventory is allowed for this line item. */
+  videoAdInventoryControl?: VideoAdInventoryControl;
+  /** Settings that control what YouTube and Partners inventories the line item will target. */
+  inventorySourceSettings?: YoutubeAndPartnersInventorySourceConfig;
+  /** Optional. The average number of times you want ads from this line item to show to the same person over a certain period of time. */
+  targetFrequency?: TargetFrequency;
+  /** Optional. The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app on mobile devices. */
+  relatedVideoIds?: StringList;
+}
+export const YoutubeAndPartnersSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    thirdPartyMeasurementConfigs: S.optional(ThirdPartyMeasurementConfigs),
+    videoAdSequenceSettings: S.optional(VideoAdSequenceSettings),
+    leadFormId: S.optional(S.String),
+    viewFrequencyCap: S.optional(FrequencyCap),
+    effectiveContentCategory: S.optional(
+      YoutubeAndPartnersSettingsEffectiveContentCategoryEnum,
+    ),
+    contentCategory: S.optional(YoutubeAndPartnersSettingsContentCategoryEnum),
+    linkedMerchantId: S.optional(S.String),
+    videoAdInventoryControl: S.optional(VideoAdInventoryControl),
+    inventorySourceSettings: S.optional(
+      YoutubeAndPartnersInventorySourceConfig,
+    ),
+    targetFrequency: S.optional(TargetFrequency),
+    relatedVideoIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "YoutubeAndPartnersSettings",
+}) as any as S.Schema<YoutubeAndPartnersSettings>;
+
+export type LineItemEntityStatusEnum =
+  | "ENTITY_STATUS_UNSPECIFIED"
+  | "ENTITY_STATUS_ACTIVE"
+  | "ENTITY_STATUS_ARCHIVED"
+  | "ENTITY_STATUS_DRAFT"
+  | "ENTITY_STATUS_PAUSED"
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+export const LineItemEntityStatusEnum = /*@__PURE__*/ S.String;
+
+export type LineItemFlightFlightDateTypeEnum =
+  | "LINE_ITEM_FLIGHT_DATE_TYPE_UNSPECIFIED"
+  | "LINE_ITEM_FLIGHT_DATE_TYPE_INHERITED"
+  | "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM";
+export const LineItemFlightFlightDateTypeEnum = /*@__PURE__*/ S.String;
+
+/** Settings that control the active duration of a line item. */
+export interface LineItemFlight {
+  /** The flight start and end dates of the line item. They are resolved relative to the parent advertiser's time zone. * Required when flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM`. Output only otherwise. * When creating a new flight, both `start_date` and `end_date` must be in the future. * An existing flight with a `start_date` in the past has a mutable `end_date` but an immutable `start_date`. * `end_date` must be the `start_date` or later, both before the year 2037. */
+  dateRange?: DateRange;
+  /** Required. The type of the line item's flight dates. */
+  flightDateType?: LineItemFlightFlightDateTypeEnum | (string & {});
+}
+export const LineItemFlight = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dateRange: S.optional(DateRange),
+    flightDateType: S.optional(LineItemFlightFlightDateTypeEnum),
+  }),
+).annotate({ identifier: "LineItemFlight" }) as any as S.Schema<LineItemFlight>;
+
+/** A single line item. */
+export interface LineItem {
+  /** The IDs of the creatives associated with the line item. */
+  creativeIds?: StringList;
+  /** Optional. Required if the line item type is not `LINE_ITEM_TYPE_DEMAND_GEN`. The impression frequency cap settings of the line item. The max_impressions field in this settings object must be used if assigning a limited cap. */
+  frequencyCap?: FrequencyCap;
+  /** Required. The budget allocation setting of the line item. */
+  budget?: LineItemBudget;
+  /** Output only. The reservation type of the line item. */
+  reservationType?: LineItemReservationTypeEnum | (string & {});
+  /** Optional. Whether to enable DV360's bid optimization for fixed bid line items. By default, DV360 optimizes your fixed bid by automatically lowering bids for impressions that are less likely to perform well. This optimization is enabled by default (value is true). When this field is set to `false`, this optimization is disabled, and the bid will not be lowered for any reason. This setting only applies to line items with a `bidding_strategy` of type `FIXED_BID`. */
+  optimizeFixedBidding?: boolean;
+  /** Output only. The warning messages generated by the line item. These warnings do not block saving the line item, but some may block the line item from running. */
+  warningMessages?: LineItemWarningMessagesItemEnumList;
+  /** Required. The bidding strategy of the line item. */
+  bidStrategy?: BiddingStrategy;
+  /** The conversion tracking setting of the line item. */
+  conversionCounting?: ConversionCountingConfig;
+  /** Output only. The unique ID of the advertiser the line item belongs to. */
+  advertiserId?: string;
+  /** Optional. Settings specific to Demand Gen line items. Only applicable to Demand Gen line items. */
+  demandGenSettings?: DemandGenSettings;
+  /** Required. The budget spending speed setting of the line item. */
+  pacing?: Pacing;
+  /** Output only. The unique ID of the campaign that the line item belongs to. */
+  campaignId?: string;
+  /** Required. The partner revenue model setting of the line item. */
+  partnerRevenueModel?: PartnerRevenueModel;
+  /** Required. The display name of the line item. Must be UTF-8 encoded with a maximum size of 240 bytes. */
+  displayName?: string;
+  /** The mobile app promoted by the line item. This is applicable only when line_item_type is either `LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL` or `LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL`. */
+  mobileApp?: MobileApp;
+  /** Integration details of the line item. */
+  integrationDetails?: IntegrationDetails;
+  /** Whether this line item will serve European Union political ads. If contains_eu_political_ads has been set to `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not otherwise specified. This field can then be updated using the UI, API, or Structured Data Files. This field must be assigned when creating a new line item. Otherwise, **the `advertisers.lineItems.create` request will fail**. */
+  containsEuPoliticalAds?: LineItemContainsEuPoliticalAdsEnum | (string & {});
+  /** Output only. The unique ID of the line item. Assigned by the system. */
+  lineItemId?: string;
+  /** Required. Immutable. The type of the line item. */
+  lineItemType?: LineItemLineItemTypeEnum | (string & {});
+  /** Output only. Settings specific to YouTube and Partners line items. */
+  youtubeAndPartnersSettings?: YoutubeAndPartnersSettings;
+  /** Required. Controls whether or not the line item can spend its budget and bid on inventory. * For CreateLineItem method, only `ENTITY_STATUS_DRAFT` is allowed. To activate a line item, use UpdateLineItem method and update the status to `ENTITY_STATUS_ACTIVE` after creation. * A line item cannot be changed back to `ENTITY_STATUS_DRAFT` status from any other status. * If the line item's parent insertion order is not active, the line item can't spend its budget even if its own status is `ENTITY_STATUS_ACTIVE`. */
+  entityStatus?: LineItemEntityStatusEnum | (string & {});
+  /** Required. Immutable. The unique ID of the insertion order that the line item belongs to. */
+  insertionOrderId?: string;
+  /** The partner costs associated with the line item. If absent or empty in CreateLineItem method, the newly created line item will inherit partner costs from its parent insertion order. */
+  partnerCosts?: PartnerCostList;
+  /** The [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of the line item. This config is only applicable for display, video, or audio line items that use automated bidding and positively target eligible audience lists. */
+  targetingExpansion?: TargetingExpansionConfig;
+  /** Whether to exclude new exchanges from automatically being targeted by the line item. This field is false by default. */
+  excludeNewExchanges?: boolean;
+  /** Output only. The timestamp when the line item was last updated. Assigned by the system. */
+  updateTime?: string;
+  /** Output only. The resource name of the line item. */
+  name?: string;
+  /** Required. The start and end time of the line item's flight. */
+  flight?: LineItemFlight;
+}
+export const LineItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    creativeIds: S.optional(StringList),
+    frequencyCap: S.optional(FrequencyCap),
+    budget: S.optional(LineItemBudget),
+    reservationType: S.optional(LineItemReservationTypeEnum),
+    optimizeFixedBidding: S.optional(S.Boolean),
+    warningMessages: S.optional(LineItemWarningMessagesItemEnumList),
+    bidStrategy: S.optional(BiddingStrategy),
+    conversionCounting: S.optional(ConversionCountingConfig),
+    advertiserId: S.optional(S.String),
+    demandGenSettings: S.optional(DemandGenSettings),
+    pacing: S.optional(Pacing),
+    campaignId: S.optional(S.String),
+    partnerRevenueModel: S.optional(PartnerRevenueModel),
+    displayName: S.optional(S.String),
+    mobileApp: S.optional(MobileApp),
+    integrationDetails: S.optional(IntegrationDetails),
+    containsEuPoliticalAds: S.optional(LineItemContainsEuPoliticalAdsEnum),
+    lineItemId: S.optional(S.String),
+    lineItemType: S.optional(LineItemLineItemTypeEnum),
+    youtubeAndPartnersSettings: S.optional(YoutubeAndPartnersSettings),
+    entityStatus: S.optional(LineItemEntityStatusEnum),
+    insertionOrderId: S.optional(S.String),
+    partnerCosts: S.optional(PartnerCostList),
+    targetingExpansion: S.optional(TargetingExpansionConfig),
+    excludeNewExchanges: S.optional(S.Boolean),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    flight: S.optional(LineItemFlight),
+  }),
+).annotate({ identifier: "LineItem" }) as any as S.Schema<LineItem>;
 
 export interface CreateAdvertisersLineItemsRequest {
   /** Output only. The unique ID of the advertiser the line item belongs to. */
@@ -8657,6 +8393,58 @@ export const CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
     identifier:
       "CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
   }) as any as S.Schema<CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+
+export type AdAssetList = Array<AdAsset>;
+export const AdAssetList = /*@__PURE__*/ S.Array(
+  AdAsset,
+) as any as S.Schema<AdAssetList>;
+
+/** A request message for BulkCreateAdAssets. */
+export interface BulkCreateAdAssetsRequest {
+  /** Required. Ad assets to create. Only supports assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
+  adAssets?: AdAssetList;
+}
+export const BulkCreateAdAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adAssets: S.optional(AdAssetList),
+  }),
+).annotate({
+  identifier: "BulkCreateAdAssetsRequest",
+}) as any as S.Schema<BulkCreateAdAssetsRequest>;
+
+export interface CreateBulkAdvertiserAdAssetRequest {
+  /** Required. The ID of the advertiser these ad assets belong to. */
+  advertiserId: string;
+  /** Request body */
+  body?: BulkCreateAdAssetsRequest;
+}
+export const CreateBulkAdvertiserAdAssetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advertiserId: S.String.pipe(T.Label()),
+    body: S.optional(BulkCreateAdAssetsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/advertisers/{+advertiserId}/adAssets:bulkCreate",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateBulkAdvertiserAdAssetRequest",
+}) as any as S.Schema<CreateBulkAdvertiserAdAssetRequest>;
+
+/** A response message for BulkCreateAdAssets. */
+export interface BulkCreateAdAssetsResponse {
+  /** The created ad assets. */
+  adAssets?: AdAssetList;
+}
+export const BulkCreateAdAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adAssets: S.optional(AdAssetList),
+  }),
+).annotate({
+  identifier: "BulkCreateAdAssetsResponse",
+}) as any as S.Schema<BulkCreateAdAssetsResponse>;
 
 export type CustomBiddingAlgorithmThirdPartyOptimizationPartnerEnum =
   | "UNKNOWN"
@@ -16056,6 +15844,154 @@ export const BulkListAdvertiserAssignedTargetingOptionsResponse =
     identifier: "BulkListAdvertiserAssignedTargetingOptionsResponse",
   }) as any as S.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse>;
 
+export interface ListBulkAssignedTargetingOptionAdvertiserAdGroupsRequest {
+  /** Optional. A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned. */
+  pageToken?: string;
+  /** Optional. Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
+  pageSize?: number;
+  /** Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`: `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
+  filter?: string;
+  /** Required. The IDs of the ad groups to list assigned targeting options for. */
+  adGroupIds?: StringList;
+  /** Optional. Field by which to sort the list. Acceptable values are: * `adGroupId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. */
+  orderBy?: string;
+  /** Required. The ID of the advertiser the line items belongs to. */
+  advertiserId: string;
+}
+export const ListBulkAssignedTargetingOptionAdvertiserAdGroupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      adGroupIds: S.optional(StringList.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      advertiserId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v4/advertisers/{+advertiserId}/adGroups:bulkListAssignedTargetingOptions",
+        baseUrl: "https://displayvideo.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListBulkAssignedTargetingOptionAdvertiserAdGroupsRequest",
+  }) as any as S.Schema<ListBulkAssignedTargetingOptionAdvertiserAdGroupsRequest>;
+
+/** Wrapper object associating an AssignedTargetingOption resource and the ad group it is assigned to. */
+export interface AdGroupAssignedTargetingOption {
+  /** The ID of the ad group the assigned targeting option is assigned to. */
+  adGroupId?: string;
+  /** The assigned targeting option resource. */
+  assignedTargetingOption?: AssignedTargetingOption;
+}
+export const AdGroupAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adGroupId: S.optional(S.String),
+    assignedTargetingOption: S.optional(AssignedTargetingOption),
+  }),
+).annotate({
+  identifier: "AdGroupAssignedTargetingOption",
+}) as any as S.Schema<AdGroupAssignedTargetingOption>;
+
+export type AdGroupAssignedTargetingOptionList =
+  Array<AdGroupAssignedTargetingOption>;
+export const AdGroupAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
+  AdGroupAssignedTargetingOption,
+) as any as S.Schema<AdGroupAssignedTargetingOptionList>;
+
+export interface BulkListAdGroupAssignedTargetingOptionsResponse {
+  /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more AdGroupAssignedTargetingOption resources to return. */
+  nextPageToken?: string;
+  /** The list of wrapper objects, each providing an assigned targeting option and the ad group it is assigned to. This list will be absent if empty. */
+  adGroupAssignedTargetingOptions?: AdGroupAssignedTargetingOptionList;
+}
+export const BulkListAdGroupAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      adGroupAssignedTargetingOptions: S.optional(
+        AdGroupAssignedTargetingOptionList,
+      ),
+    }),
+  ).annotate({
+    identifier: "BulkListAdGroupAssignedTargetingOptionsResponse",
+  }) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsResponse>;
+
+export interface ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest {
+  /** Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR` on the same field. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`: `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="TARGETING_TYPE_CHANNEL"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
+  filter?: string;
+  /** Field by which to sort the list. Acceptable values are: * `lineItemId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. */
+  orderBy?: string;
+  /** Required. The IDs of the line items to list assigned targeting options for. */
+  lineItemIds?: StringList;
+  /** A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAssignedTargetingOptions` method. If not specified, the first page of results will be returned. */
+  pageToken?: string;
+  /** Required. The ID of the advertiser the line items belongs to. */
+  advertiserId: string;
+  /** Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
+  pageSize?: number;
+}
+export const ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      lineItemIds: S.optional(StringList.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      advertiserId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v4/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions",
+        baseUrl: "https://displayvideo.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest",
+  }) as any as S.Schema<ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest>;
+
+/** Wrapper object associating an assigned_targeting_option resource and the line item it is assigned to. */
+export interface LineItemAssignedTargetingOption {
+  /** The ID of the line item the assigned targeting option is assigned to. */
+  lineItemId?: string;
+  /** The assigned targeting option resource. */
+  assignedTargetingOption?: AssignedTargetingOption;
+}
+export const LineItemAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lineItemId: S.optional(S.String),
+    assignedTargetingOption: S.optional(AssignedTargetingOption),
+  }),
+).annotate({
+  identifier: "LineItemAssignedTargetingOption",
+}) as any as S.Schema<LineItemAssignedTargetingOption>;
+
+export type LineItemAssignedTargetingOptionList =
+  Array<LineItemAssignedTargetingOption>;
+export const LineItemAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
+  LineItemAssignedTargetingOption,
+) as any as S.Schema<LineItemAssignedTargetingOptionList>;
+
+export interface BulkListAssignedTargetingOptionsResponse {
+  /** The list of wrapper objects, each providing an assigned targeting option and the line item it is assigned to. This list will be absent if empty. */
+  lineItemAssignedTargetingOptions?: LineItemAssignedTargetingOptionList;
+  /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more line_item_assigned_targeting_options to return. */
+  nextPageToken?: string;
+}
+export const BulkListAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      lineItemAssignedTargetingOptions: S.optional(
+        LineItemAssignedTargetingOptionList,
+      ),
+      nextPageToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "BulkListAssignedTargetingOptionsResponse",
+}) as any as S.Schema<BulkListAssignedTargetingOptionsResponse>;
+
 export interface ListCombinedAudiencesRequest {
   /** Allows filtering by combined audience fields. Supported syntax: * Filter expressions for combined audiences can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All combined audiences for which the display name contains "Google": `displayName : "Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
@@ -18589,6 +18525,68 @@ export const SearchTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchTargetingOptionsResponse",
 }) as any as S.Schema<SearchTargetingOptionsResponse>;
 
+/** Request message for LineItemService.BulkUpdateLineItems. */
+export interface BulkUpdateLineItemsRequest {
+  /** Required. A line item object containing the fields to be updated and the new values to assign to all line items specified in line_item_ids." */
+  targetLineItem?: LineItem;
+  /** Required. A field mask identifying which fields to update. Only the following fields are currently supported: * entityStatus * containsEuPoliticalAds */
+  updateMask?: string;
+  /** Required. IDs of line items to update. */
+  lineItemIds?: StringList;
+}
+export const BulkUpdateLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetLineItem: S.optional(LineItem),
+    updateMask: S.optional(S.String),
+    lineItemIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BulkUpdateLineItemsRequest",
+}) as any as S.Schema<BulkUpdateLineItemsRequest>;
+
+export interface UpdateBulkAdvertiserLineItemRequest {
+  /** Required. The ID of the advertiser this line item belongs to. */
+  advertiserId: string;
+  /** Request body */
+  body?: BulkUpdateLineItemsRequest;
+}
+export const UpdateBulkAdvertiserLineItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advertiserId: S.String.pipe(T.Label()),
+    body: S.optional(BulkUpdateLineItemsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/advertisers/{+advertiserId}/lineItems:bulkUpdate",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBulkAdvertiserLineItemRequest",
+}) as any as S.Schema<UpdateBulkAdvertiserLineItemRequest>;
+
+/** Response message for LineItemService.BulkUpdateLineItems. */
+export interface BulkUpdateLineItemsResponse {
+  /** The IDs of line items that failed to update. */
+  failedLineItemIds?: StringList;
+  /** The IDs of line items that are skipped for updates. For example, unnecessary mutates that will result in effectively no changes to line items will be skipped and corresponding line item IDs can be tracked here. */
+  skippedLineItemIds?: StringList;
+  /** The IDs of successfully updated line items. */
+  updatedLineItemIds?: StringList;
+  /** Errors returned by line items that failed to update. */
+  errors?: StatusList;
+}
+export const BulkUpdateLineItemsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    failedLineItemIds: S.optional(StringList),
+    skippedLineItemIds: S.optional(StringList),
+    updatedLineItemIds: S.optional(StringList),
+    errors: S.optional(StatusList),
+  }),
+).annotate({
+  identifier: "BulkUpdateLineItemsResponse",
+}) as any as S.Schema<BulkUpdateLineItemsResponse>;
+
 export type UploadAdAssetRequestAdAssetTypeEnum =
   | "AD_ASSET_TYPE_UNSPECIFIED"
   | "AD_ASSET_TYPE_IMAGE"
@@ -18792,26 +18790,6 @@ export const auditAdvertisers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BulkCreateAdvertisersAdAssetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates multiple ad assets in a single request. Returns the newly-created ad assets if successful. Only supports the creation of assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
-export const bulkCreateAdvertisersAdAssets: API.OperationMethod<
-  BulkCreateAdvertisersAdAssetsRequest,
-  BulkCreateAdAssetsResponse,
-  BulkCreateAdvertisersAdAssetsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateAdvertisersAdAssetsRequest,
-  output: BulkCreateAdAssetsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BulkEditAdvertisersChannelsSitesError =
   | NotFound
   | Forbidden
@@ -18967,72 +18945,6 @@ export const bulkEditPartnersChannelsSites: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: BulkEditPartnersChannelsSitesRequest,
   output: BulkEditSitesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BulkListAssignedTargetingOptionsAdvertisersAdGroupsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Lists assigned targeting options for multiple ad groups across targeting types. Inherited assigned targeting options are not included. */
-export const bulkListAssignedTargetingOptionsAdvertisersAdGroups: API.PaginatedOperationMethod<
-  BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest,
-  BulkListAdGroupAssignedTargetingOptionsResponse,
-  BulkListAssignedTargetingOptionsAdvertisersAdGroupsError,
-  GcpOpContext,
-  BulkListAdGroupAssignedTargetingOptionsResponse
-> = /*@__PURE__*/ API.makePaginated(() => ({
-  input: BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest,
-  output: BulkListAdGroupAssignedTargetingOptionsResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
-})) as any;
-
-export type BulkListAssignedTargetingOptionsAdvertisersLineItemsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Lists assigned targeting options for multiple line items across targeting types. */
-export const bulkListAssignedTargetingOptionsAdvertisersLineItems: API.PaginatedOperationMethod<
-  BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest,
-  BulkListAssignedTargetingOptionsResponse,
-  BulkListAssignedTargetingOptionsAdvertisersLineItemsError,
-  GcpOpContext,
-  BulkListAssignedTargetingOptionsResponse
-> = /*@__PURE__*/ API.makePaginated(() => ({
-  input: BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest,
-  output: BulkListAssignedTargetingOptionsResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
-})) as any;
-
-export type BulkUpdateAdvertisersLineItemsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API. */
-export const bulkUpdateAdvertisersLineItems: API.OperationMethod<
-  BulkUpdateAdvertisersLineItemsRequest,
-  BulkUpdateLineItemsResponse,
-  BulkUpdateAdvertisersLineItemsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkUpdateAdvertisersLineItemsRequest,
-  output: BulkUpdateLineItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -19416,6 +19328,26 @@ export const createAdvertisersTargetingTypesAssignedTargetingOptions: API.Operat
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
   output: AssignedTargetingOption,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBulkAdvertiserAdAssetError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates multiple ad assets in a single request. Returns the newly-created ad assets if successful. Only supports the creation of assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
+export const createBulkAdvertiserAdAsset: API.OperationMethod<
+  CreateBulkAdvertiserAdAssetRequest,
+  BulkCreateAdAssetsResponse,
+  CreateBulkAdvertiserAdAssetError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBulkAdvertiserAdAssetRequest,
+  output: BulkCreateAdAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -21254,6 +21186,52 @@ export const listAssignedTargetingOptionsAdvertisers: API.PaginatedOperationMeth
   } as const,
 })) as any;
 
+export type ListBulkAssignedTargetingOptionAdvertiserAdGroupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Lists assigned targeting options for multiple ad groups across targeting types. Inherited assigned targeting options are not included. */
+export const listBulkAssignedTargetingOptionAdvertiserAdGroups: API.PaginatedOperationMethod<
+  ListBulkAssignedTargetingOptionAdvertiserAdGroupsRequest,
+  BulkListAdGroupAssignedTargetingOptionsResponse,
+  ListBulkAssignedTargetingOptionAdvertiserAdGroupsError,
+  GcpOpContext,
+  BulkListAdGroupAssignedTargetingOptionsResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListBulkAssignedTargetingOptionAdvertiserAdGroupsRequest,
+  output: BulkListAdGroupAssignedTargetingOptionsResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
+})) as any;
+
+export type ListBulkAssignedTargetingOptionAdvertiserLineItemsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Lists assigned targeting options for multiple line items across targeting types. */
+export const listBulkAssignedTargetingOptionAdvertiserLineItems: API.PaginatedOperationMethod<
+  ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest,
+  BulkListAssignedTargetingOptionsResponse,
+  ListBulkAssignedTargetingOptionAdvertiserLineItemsError,
+  GcpOpContext,
+  BulkListAssignedTargetingOptionsResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest,
+  output: BulkListAssignedTargetingOptionsResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
+})) as any;
+
 export type ListCombinedAudiencesError = NotFound | Forbidden | GcpOpError;
 /** Lists combined audiences. The order is defined by the order_by parameter. */
 export const listCombinedAudiences: API.PaginatedOperationMethod<
@@ -22188,6 +22166,26 @@ export const searchTargetingTypesTargetingOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchTargetingTypesTargetingOptionsRequest,
   output: SearchTargetingOptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBulkAdvertiserLineItemError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API. */
+export const updateBulkAdvertiserLineItem: API.OperationMethod<
+  UpdateBulkAdvertiserLineItemRequest,
+  BulkUpdateLineItemsResponse,
+  UpdateBulkAdvertiserLineItemError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBulkAdvertiserLineItemRequest,
+  output: BulkUpdateLineItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

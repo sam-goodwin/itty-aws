@@ -169,7 +169,7 @@
         "smithy.api#documentation": "Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged."
       }
     },
-    "com.posthog.user_home_settings#UserHomeSettingsPartialUpdateRequest": {
+    "com.posthog.user_home_settings#UpdateUserHomeSettingPartialRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -197,10 +197,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.user_home_settings#UserHomeSettingsPartialUpdate": {
+    "com.posthog.user_home_settings#UpdateUserHomeSettingPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.user_home_settings#UserHomeSettingsPartialUpdateRequest"
+        "target": "com.posthog.user_home_settings#UpdateUserHomeSettingPartialRequest"
       },
       "output": {
         "target": "com.posthog.user_home_settings#PinnedSceneTabs"
@@ -272,7 +272,7 @@
           "target": "com.posthog.user_home_settings#UserHomeSettingsRetrieve"
         },
         {
-          "target": "com.posthog.user_home_settings#UserHomeSettingsPartialUpdate"
+          "target": "com.posthog.user_home_settings#UpdateUserHomeSettingPartial"
         }
       ],
       "traits": {

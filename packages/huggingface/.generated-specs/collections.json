@@ -21380,7 +21380,7 @@
       },
       "traits": {}
     },
-    "com.huggingface.collections#BatchUpdateItemsRequest": {
+    "com.huggingface.collections#UpdateBatchItemRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -21415,10 +21415,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.huggingface.collections#BatchUpdateItems": {
+    "com.huggingface.collections#UpdateBatchItem": {
       "type": "operation",
       "input": {
-        "target": "com.huggingface.collections#BatchUpdateItemsRequest"
+        "target": "com.huggingface.collections#UpdateBatchItemRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -21497,7 +21497,7 @@
       },
       "traits": {}
     },
-    "com.huggingface.collections#BatchUpdateItemsBySlugRequest": {
+    "com.huggingface.collections#UpdateBatchItemBySlugRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -21525,10 +21525,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.huggingface.collections#BatchUpdateItemsBySlug": {
+    "com.huggingface.collections#UpdateBatchItemBySlug": {
       "type": "operation",
       "input": {
-        "target": "com.huggingface.collections#BatchUpdateItemsBySlugRequest"
+        "target": "com.huggingface.collections#UpdateBatchItemBySlugRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -29291,10 +29291,10 @@
           "target": "com.huggingface.collections#AddItemBySlug"
         },
         {
-          "target": "com.huggingface.collections#BatchUpdateItems"
+          "target": "com.huggingface.collections#UpdateBatchItem"
         },
         {
-          "target": "com.huggingface.collections#BatchUpdateItemsBySlug"
+          "target": "com.huggingface.collections#UpdateBatchItemBySlug"
         },
         {
           "target": "com.huggingface.collections#UpdateItem"

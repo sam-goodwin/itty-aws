@@ -4592,7 +4592,7 @@
         "smithy.api#documentation": "Retrieves details of a cluster."
       }
     },
-    "com.gcp.androidenterprise_v1#AcknowledgeNotificationSetEnterprisesRequest": {
+    "com.gcp.androidenterprise_v1#SetAcknowledgeNotificationEnterpriseRequest": {
       "type": "structure",
       "members": {
         "notificationSetId": {
@@ -4604,10 +4604,10 @@
         }
       }
     },
-    "com.gcp.androidenterprise_v1#AcknowledgeNotificationSetEnterprises": {
+    "com.gcp.androidenterprise_v1#SetAcknowledgeNotificationEnterprise": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidenterprise_v1#AcknowledgeNotificationSetEnterprisesRequest"
+        "target": "com.gcp.androidenterprise_v1#SetAcknowledgeNotificationEnterpriseRequest"
       },
       "errors": [
         {
@@ -5265,7 +5265,7 @@
         }
       }
     },
-    "com.gcp.androidenterprise_v1#PullNotificationSetEnterprisesRequest": {
+    "com.gcp.androidenterprise_v1#SetPullNotificationEnterpriseRequest": {
       "type": "structure",
       "members": {
         "requestMode": {
@@ -5277,10 +5277,10 @@
         }
       }
     },
-    "com.gcp.androidenterprise_v1#PullNotificationSetEnterprises": {
+    "com.gcp.androidenterprise_v1#SetPullNotificationEnterprise": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidenterprise_v1#PullNotificationSetEnterprisesRequest"
+        "target": "com.gcp.androidenterprise_v1#SetPullNotificationEnterpriseRequest"
       },
       "output": {
         "target": "com.gcp.androidenterprise_v1#NotificationSet"

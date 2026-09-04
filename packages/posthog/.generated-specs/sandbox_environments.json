@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.sandbox_environments#SandboxListRequest": {
+    "com.posthog.sandbox_environments#ListSandboxRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -287,10 +287,10 @@
       },
       "traits": {}
     },
-    "com.posthog.sandbox_environments#SandboxList": {
+    "com.posthog.sandbox_environments#ListSandbox": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.sandbox_environments#SandboxListRequest"
+        "target": "com.posthog.sandbox_environments#ListSandboxRequest"
       },
       "output": {
         "target": "com.posthog.sandbox_environments#PaginatedSandboxEnvironmentDTOList"
@@ -359,7 +359,7 @@
         "smithy.api#documentation": "Repositories this environment applies to (format: org/repo)."
       }
     },
-    "com.posthog.sandbox_environments#SandboxCreateRequest": {
+    "com.posthog.sandbox_environments#CreateSandboxRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -425,10 +425,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.sandbox_environments#SandboxCreate": {
+    "com.posthog.sandbox_environments#CreateSandbox": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.sandbox_environments#SandboxCreateRequest"
+        "target": "com.posthog.sandbox_environments#CreateSandboxRequest"
       },
       "output": {
         "target": "com.posthog.sandbox_environments#SandboxEnvironmentDTO"
@@ -519,7 +519,7 @@
         "smithy.api#documentation": "Repositories this environment applies to (format: org/repo)."
       }
     },
-    "com.posthog.sandbox_environments#SandboxPartialUpdateRequest": {
+    "com.posthog.sandbox_environments#UpdateSandboxPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -591,10 +591,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.sandbox_environments#SandboxPartialUpdate": {
+    "com.posthog.sandbox_environments#UpdateSandboxPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.sandbox_environments#SandboxPartialUpdateRequest"
+        "target": "com.posthog.sandbox_environments#UpdateSandboxPartialRequest"
       },
       "output": {
         "target": "com.posthog.sandbox_environments#SandboxEnvironmentDTO"
@@ -711,16 +711,16 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.sandbox_environments#SandboxList"
+          "target": "com.posthog.sandbox_environments#ListSandbox"
         },
         {
-          "target": "com.posthog.sandbox_environments#SandboxCreate"
+          "target": "com.posthog.sandbox_environments#CreateSandbox"
         },
         {
           "target": "com.posthog.sandbox_environments#SandboxRetrieve"
         },
         {
-          "target": "com.posthog.sandbox_environments#SandboxPartialUpdate"
+          "target": "com.posthog.sandbox_environments#UpdateSandboxPartial"
         },
         {
           "target": "com.posthog.sandbox_environments#SandboxDestroy"

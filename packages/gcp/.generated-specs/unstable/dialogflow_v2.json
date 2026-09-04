@@ -18518,7 +18518,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsAgentIntentsRequest": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectAgentIntentRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -18537,10 +18537,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsAgentIntents": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectAgentIntent": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchDeleteProjectsAgentIntentsRequest"
+        "target": "com.gcp.dialogflow_v2#DeleteBatchProjectAgentIntentRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -18767,7 +18767,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsAgentIntentsRequest": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectAgentIntentRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -18786,10 +18786,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsAgentIntents": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectAgentIntent": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchUpdateProjectsAgentIntentsRequest"
+        "target": "com.gcp.dialogflow_v2#UpdateBatchProjectAgentIntentRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -18959,7 +18959,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsAgentEntityTypesRequest": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectAgentEntityTypeRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -18978,10 +18978,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsAgentEntityTypes": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectAgentEntityType": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchUpdateProjectsAgentEntityTypesRequest"
+        "target": "com.gcp.dialogflow_v2#UpdateBatchProjectAgentEntityTypeRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -19105,7 +19105,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsAgentEntityTypesRequest": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectAgentEntityTypeRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -19124,10 +19124,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsAgentEntityTypes": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectAgentEntityType": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchDeleteProjectsAgentEntityTypesRequest"
+        "target": "com.gcp.dialogflow_v2#DeleteBatchProjectAgentEntityTypeRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -19308,7 +19308,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchCreateProjectsAgentEntityTypesEntitiesRequest": {
+    "com.gcp.dialogflow_v2#CreateBatchProjectAgentEntityTypeEntityRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -19327,10 +19327,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchCreateProjectsAgentEntityTypesEntities": {
+    "com.gcp.dialogflow_v2#CreateBatchProjectAgentEntityTypeEntity": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchCreateProjectsAgentEntityTypesEntitiesRequest"
+        "target": "com.gcp.dialogflow_v2#CreateBatchProjectAgentEntityTypeEntityRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -19356,7 +19356,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsAgentEntityTypesEntitiesRequest": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectAgentEntityTypeEntityRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -19375,10 +19375,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsAgentEntityTypesEntities": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectAgentEntityTypeEntity": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchDeleteProjectsAgentEntityTypesEntitiesRequest"
+        "target": "com.gcp.dialogflow_v2#DeleteBatchProjectAgentEntityTypeEntityRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -19404,7 +19404,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsAgentEntityTypesEntitiesRequest": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectAgentEntityTypeEntityRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -19423,10 +19423,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsAgentEntityTypesEntities": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectAgentEntityTypeEntity": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchUpdateProjectsAgentEntityTypesEntitiesRequest"
+        "target": "com.gcp.dialogflow_v2#UpdateBatchProjectAgentEntityTypeEntityRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -26060,7 +26060,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsLocationsAgentIntentsRequest": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectLocationAgentIntentRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -26079,10 +26079,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsLocationsAgentIntents": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectLocationAgentIntent": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchDeleteProjectsLocationsAgentIntentsRequest"
+        "target": "com.gcp.dialogflow_v2#DeleteBatchProjectLocationAgentIntentRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -26191,7 +26191,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsLocationsAgentIntentsRequest": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectLocationAgentIntentRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -26210,10 +26210,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsLocationsAgentIntents": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectLocationAgentIntent": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchUpdateProjectsLocationsAgentIntentsRequest"
+        "target": "com.gcp.dialogflow_v2#UpdateBatchProjectLocationAgentIntentRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -27649,7 +27649,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsLocationsAgentEntityTypesRequest": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectLocationAgentEntityTypeRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -27668,10 +27668,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsLocationsAgentEntityTypes": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectLocationAgentEntityType": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchDeleteProjectsLocationsAgentEntityTypesRequest"
+        "target": "com.gcp.dialogflow_v2#DeleteBatchProjectLocationAgentEntityTypeRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -27855,7 +27855,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsLocationsAgentEntityTypesRequest": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectLocationAgentEntityTypeRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -27874,10 +27874,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsLocationsAgentEntityTypes": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectLocationAgentEntityType": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchUpdateProjectsLocationsAgentEntityTypesRequest"
+        "target": "com.gcp.dialogflow_v2#UpdateBatchProjectLocationAgentEntityTypeRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -27998,7 +27998,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsLocationsAgentEntityTypesEntitiesRequest": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectLocationAgentEntityTypeEntityRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -28017,10 +28017,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchUpdateProjectsLocationsAgentEntityTypesEntities": {
+    "com.gcp.dialogflow_v2#UpdateBatchProjectLocationAgentEntityTypeEntity": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchUpdateProjectsLocationsAgentEntityTypesEntitiesRequest"
+        "target": "com.gcp.dialogflow_v2#UpdateBatchProjectLocationAgentEntityTypeEntityRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -28046,7 +28046,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchCreateProjectsLocationsAgentEntityTypesEntitiesRequest": {
+    "com.gcp.dialogflow_v2#CreateBatchProjectLocationAgentEntityTypeEntityRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -28065,10 +28065,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchCreateProjectsLocationsAgentEntityTypesEntities": {
+    "com.gcp.dialogflow_v2#CreateBatchProjectLocationAgentEntityTypeEntity": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchCreateProjectsLocationsAgentEntityTypesEntitiesRequest"
+        "target": "com.gcp.dialogflow_v2#CreateBatchProjectLocationAgentEntityTypeEntityRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"
@@ -28094,7 +28094,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsLocationsAgentEntityTypesEntitiesRequest": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectLocationAgentEntityTypeEntityRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -28113,10 +28113,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v2#BatchDeleteProjectsLocationsAgentEntityTypesEntities": {
+    "com.gcp.dialogflow_v2#DeleteBatchProjectLocationAgentEntityTypeEntity": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v2#BatchDeleteProjectsLocationsAgentEntityTypesEntitiesRequest"
+        "target": "com.gcp.dialogflow_v2#DeleteBatchProjectLocationAgentEntityTypeEntityRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v2#GoogleLongrunningOperation"

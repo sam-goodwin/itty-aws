@@ -383,72 +383,7 @@ export const OrganizationTeamMembership = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationTeamMembership",
 }) as any as S.Schema<OrganizationTeamMembership>;
 
-export interface CancelBouncerResizeRequestRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** The name of the bouncer */
-  bouncer: string;
-}
-export const CancelBouncerResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    bouncer: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}/resizes",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CancelBouncerResizeRequestRequest",
-}) as any as S.Schema<CancelBouncerResizeRequestRequest>;
-
-export interface CancelBouncerResizeRequestResponse {}
-export const CancelBouncerResizeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelBouncerResizeRequestResponse",
-}) as any as S.Schema<CancelBouncerResizeRequestResponse>;
-
-export interface CancelBranchChangeRequestRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-}
-export const CancelBranchChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/resizes",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CancelBranchChangeRequestRequest",
-}) as any as S.Schema<CancelBranchChangeRequestRequest>;
-
-export interface CancelBranchChangeRequestResponse {}
-export const CancelBranchChangeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelBranchChangeRequestResponse",
-}) as any as S.Schema<CancelBranchChangeRequestResponse>;
-
-export interface CancelDeployRequestRequest {
+export interface CheckDeployRequestStorageRequest {
   /** The name of the deploy request's organization */
   organization: string;
   /** The name of the deploy request's database */
@@ -456,7 +391,104 @@ export interface CancelDeployRequestRequest {
   /** The number of the deploy request */
   number: number;
 }
-export const CancelDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
+export const CheckDeployRequestStorageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    number: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/storage-check",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CheckDeployRequestStorageRequest",
+}) as any as S.Schema<CheckDeployRequestStorageRequest>;
+
+export interface CheckDeployRequestStorageResponseStorageReportValueValue {
+  /** Current storage used in bytes */
+  used?: number;
+  /** Total storage capacity in bytes */
+  capacity?: number;
+  /** Remaining storage available in bytes */
+  remaining?: number;
+  /** Percentage of storage capacity currently used */
+  percentage_used?: number;
+  /** Estimated additional storage needed for this deployment in bytes */
+  storage_needed?: number;
+  /** Whether this shard has enough remaining storage for the deployment */
+  has_enough?: boolean;
+}
+export const CheckDeployRequestStorageResponseStorageReportValueValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      used: S.optional(S.Number),
+      capacity: S.optional(S.Number),
+      remaining: S.optional(S.Number),
+      percentage_used: S.optional(S.Number),
+      storage_needed: S.optional(S.Number),
+      has_enough: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "CheckDeployRequestStorageResponseStorageReportValueValue",
+  }) as any as S.Schema<CheckDeployRequestStorageResponseStorageReportValueValue>;
+
+/** Per-shard storage details. Keys are shard names. */
+export type CheckDeployRequestStorageResponseStorageReportValueMap = {
+  [key: string]:
+    | CheckDeployRequestStorageResponseStorageReportValueValue
+    | undefined;
+};
+export const CheckDeployRequestStorageResponseStorageReportValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    CheckDeployRequestStorageResponseStorageReportValueValue,
+  ) as any as S.Schema<CheckDeployRequestStorageResponseStorageReportValueMap>;
+
+/** Per-keyspace and per-shard storage report. Keys are keyspace names. */
+export type CheckDeployRequestStorageResponseStorageReportMap = {
+  [key: string]:
+    | CheckDeployRequestStorageResponseStorageReportValueMap
+    | undefined;
+};
+export const CheckDeployRequestStorageResponseStorageReportMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    CheckDeployRequestStorageResponseStorageReportValueMap,
+  ) as any as S.Schema<CheckDeployRequestStorageResponseStorageReportMap>;
+
+export interface CheckDeployRequestStorageResponse {
+  /** Whether the cluster has enough storage to safely deploy */
+  enough_storage: boolean;
+  /** Whether the target branch cluster can be upgraded for more storage */
+  upgradeable: boolean;
+  /** Total estimated bytes of additional storage needed for the deployment */
+  storage_bytes_needed: number;
+  /** Per-keyspace and per-shard storage report. Keys are keyspace names. */
+  storage_report: CheckDeployRequestStorageResponseStorageReportMap;
+}
+export const CheckDeployRequestStorageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enough_storage: S.Boolean,
+    upgradeable: S.Boolean,
+    storage_bytes_needed: S.Number,
+    storage_report: CheckDeployRequestStorageResponseStorageReportMap,
+  }),
+).annotate({
+  identifier: "CheckDeployRequestStorageResponse",
+}) as any as S.Schema<CheckDeployRequestStorageResponse>;
+
+export interface CompleteErroredDeployRequest {
+  /** The name of the deploy request's organization */
+  organization: string;
+  /** The name of the deploy request's database */
+  database: string;
+  /** The number of the deploy request */
+  number: number;
+}
+export const CompleteErroredDeployRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
@@ -464,13 +496,13 @@ export const CancelDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/cancel",
+      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/complete-deploy",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "CancelDeployRequestRequest",
-}) as any as S.Schema<CancelDeployRequestRequest>;
+  identifier: "CompleteErroredDeployRequest",
+}) as any as S.Schema<CompleteErroredDeployRequest>;
 
 export type DatabaseDeployRequestActor = OrganizationTeamMembershipActor;
 export const DatabaseDeployRequestActor = OrganizationTeamMembershipActor;
@@ -1082,216 +1114,6 @@ export const DatabaseDeployRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabaseDeployRequest",
 }) as any as S.Schema<DatabaseDeployRequest>;
-
-export interface CancelKeyspaceResizeRequestRequest {
-  /** The name of the organization the branch belongs to */
-  organization: string;
-  /** The name of the database the branch belongs to */
-  database: string;
-  /** The name of the branch */
-  branch: string;
-  /** The name of the keyspace */
-  keyspace: string;
-}
-export const CancelKeyspaceResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    keyspace: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/resizes",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CancelKeyspaceResizeRequestRequest",
-}) as any as S.Schema<CancelKeyspaceResizeRequestRequest>;
-
-export interface CancelKeyspaceResizeRequestResponse {}
-export const CancelKeyspaceResizeRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelKeyspaceResizeRequestResponse",
-}) as any as S.Schema<CancelKeyspaceResizeRequestResponse>;
-
-export interface CheckDeployRequestStorageRequest {
-  /** The name of the deploy request's organization */
-  organization: string;
-  /** The name of the deploy request's database */
-  database: string;
-  /** The number of the deploy request */
-  number: number;
-}
-export const CheckDeployRequestStorageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    number: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/storage-check",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CheckDeployRequestStorageRequest",
-}) as any as S.Schema<CheckDeployRequestStorageRequest>;
-
-export interface CheckDeployRequestStorageResponseStorageReportValueValue {
-  /** Current storage used in bytes */
-  used?: number;
-  /** Total storage capacity in bytes */
-  capacity?: number;
-  /** Remaining storage available in bytes */
-  remaining?: number;
-  /** Percentage of storage capacity currently used */
-  percentage_used?: number;
-  /** Estimated additional storage needed for this deployment in bytes */
-  storage_needed?: number;
-  /** Whether this shard has enough remaining storage for the deployment */
-  has_enough?: boolean;
-}
-export const CheckDeployRequestStorageResponseStorageReportValueValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      used: S.optional(S.Number),
-      capacity: S.optional(S.Number),
-      remaining: S.optional(S.Number),
-      percentage_used: S.optional(S.Number),
-      storage_needed: S.optional(S.Number),
-      has_enough: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CheckDeployRequestStorageResponseStorageReportValueValue",
-  }) as any as S.Schema<CheckDeployRequestStorageResponseStorageReportValueValue>;
-
-/** Per-shard storage details. Keys are shard names. */
-export type CheckDeployRequestStorageResponseStorageReportValueMap = {
-  [key: string]:
-    | CheckDeployRequestStorageResponseStorageReportValueValue
-    | undefined;
-};
-export const CheckDeployRequestStorageResponseStorageReportValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CheckDeployRequestStorageResponseStorageReportValueValue,
-  ) as any as S.Schema<CheckDeployRequestStorageResponseStorageReportValueMap>;
-
-/** Per-keyspace and per-shard storage report. Keys are keyspace names. */
-export type CheckDeployRequestStorageResponseStorageReportMap = {
-  [key: string]:
-    | CheckDeployRequestStorageResponseStorageReportValueMap
-    | undefined;
-};
-export const CheckDeployRequestStorageResponseStorageReportMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CheckDeployRequestStorageResponseStorageReportValueMap,
-  ) as any as S.Schema<CheckDeployRequestStorageResponseStorageReportMap>;
-
-export interface CheckDeployRequestStorageResponse {
-  /** Whether the cluster has enough storage to safely deploy */
-  enough_storage: boolean;
-  /** Whether the target branch cluster can be upgraded for more storage */
-  upgradeable: boolean;
-  /** Total estimated bytes of additional storage needed for the deployment */
-  storage_bytes_needed: number;
-  /** Per-keyspace and per-shard storage report. Keys are keyspace names. */
-  storage_report: CheckDeployRequestStorageResponseStorageReportMap;
-}
-export const CheckDeployRequestStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enough_storage: S.Boolean,
-    upgradeable: S.Boolean,
-    storage_bytes_needed: S.Number,
-    storage_report: CheckDeployRequestStorageResponseStorageReportMap,
-  }),
-).annotate({
-  identifier: "CheckDeployRequestStorageResponse",
-}) as any as S.Schema<CheckDeployRequestStorageResponse>;
-
-/** The deploy request will be updated to this state */
-export type CloseDeployRequestRequestState = "closed";
-export const CloseDeployRequestRequestState = /*@__PURE__*/ S.String;
-
-export interface CloseDeployRequestRequest {
-  /** The name of the deploy request's organization */
-  organization: string;
-  /** The name of the deploy request's database */
-  database: string;
-  /** The number of the deploy request */
-  number: number;
-  /** The deploy request will be updated to this state */
-  state?: CloseDeployRequestRequestState | (string & {});
-}
-export const CloseDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    number: S.Number.pipe(T.Label()),
-    state: S.optional(CloseDeployRequestRequestState),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CloseDeployRequestRequest",
-}) as any as S.Schema<CloseDeployRequestRequest>;
-
-export interface CompleteErroredDeployRequest {
-  /** The name of the deploy request's organization */
-  organization: string;
-  /** The name of the deploy request's database */
-  database: string;
-  /** The number of the deploy request */
-  number: number;
-}
-export const CompleteErroredDeployRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    number: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/complete-deploy",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CompleteErroredDeployRequest",
-}) as any as S.Schema<CompleteErroredDeployRequest>;
-
-export interface CompleteGatedDeployRequestRequest {
-  /** The name of the deploy request's organization */
-  organization: string;
-  /** The name of the deploy request's database */
-  database: string;
-  /** The number of the deploy request */
-  number: number;
-}
-export const CompleteGatedDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    number: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/apply-deploy",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CompleteGatedDeployRequestRequest",
-}) as any as S.Schema<CompleteGatedDeployRequestRequest>;
 
 export interface CompleteRevertRequest {
   /** The name of the deploy request's organization */
@@ -5900,30 +5722,6 @@ export const EnableSafeMigrationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnableSafeMigrationsRequest",
 }) as any as S.Schema<EnableSafeMigrationsRequest>;
-
-export interface ForceCutoverDeployRequestRequest {
-  /** The name of the deploy request's organization */
-  organization: string;
-  /** The name of the deploy request's database */
-  database: string;
-  /** The number of the deploy request */
-  number: number;
-}
-export const ForceCutoverDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    number: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/force-cutover",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ForceCutoverDeployRequestRequest",
-}) as any as S.Schema<ForceCutoverDeployRequestRequest>;
 
 export interface GetBackupRequest {
   /** The name of the organization the branch belongs to */
@@ -19888,33 +19686,6 @@ export const PromoteBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PromoteBranchRequest",
 }) as any as S.Schema<PromoteBranchRequest>;
 
-export interface QueueDeployRequestRequest {
-  /** The name of the deploy request's organization */
-  organization: string;
-  /** The name of the deploy request's database */
-  database: string;
-  /** The number of the deploy request */
-  number: number;
-  /** Whether or not to deploy the request with instant DDL. Defaults to false. */
-  instant_ddl?: boolean;
-}
-export const QueueDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    number: S.Number.pipe(T.Label()),
-    instant_ddl: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/deploy",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "QueueDeployRequestRequest",
-}) as any as S.Schema<QueueDeployRequestRequest>;
-
 export interface ReassignRoleObjectsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -20074,6 +19845,305 @@ export const RenewRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RenewRoleRequest",
 }) as any as S.Schema<RenewRoleRequest>;
 
+export interface RequestCancelBouncerResizeRequest {
+  /** Organization name slug from `list_organizations`. Example: `acme`. */
+  organization: string;
+  /** Database name slug from `list_databases`. Example: `app-db`. */
+  database: string;
+  /** Branch name from `list_branches`. Example: `main`. */
+  branch: string;
+  /** The name of the bouncer */
+  bouncer: string;
+}
+export const RequestCancelBouncerResizeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    branch: S.String.pipe(T.Label()),
+    bouncer: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}/resizes",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestCancelBouncerResizeRequest",
+}) as any as S.Schema<RequestCancelBouncerResizeRequest>;
+
+export interface RequestCancelBouncerResizeResponse {}
+export const RequestCancelBouncerResizeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RequestCancelBouncerResizeResponse",
+}) as any as S.Schema<RequestCancelBouncerResizeResponse>;
+
+export interface RequestCancelBranchChangeRequest {
+  /** Organization name slug from `list_organizations`. Example: `acme`. */
+  organization: string;
+  /** Database name slug from `list_databases`. Example: `app-db`. */
+  database: string;
+  /** Branch name from `list_branches`. Example: `main`. */
+  branch: string;
+}
+export const RequestCancelBranchChangeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    branch: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/resizes",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestCancelBranchChangeRequest",
+}) as any as S.Schema<RequestCancelBranchChangeRequest>;
+
+export interface RequestCancelBranchChangeResponse {}
+export const RequestCancelBranchChangeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RequestCancelBranchChangeResponse",
+}) as any as S.Schema<RequestCancelBranchChangeResponse>;
+
+export interface RequestCancelDeployRequest {
+  /** The name of the deploy request's organization */
+  organization: string;
+  /** The name of the deploy request's database */
+  database: string;
+  /** The number of the deploy request */
+  number: number;
+}
+export const RequestCancelDeployRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    number: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/cancel",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestCancelDeployRequest",
+}) as any as S.Schema<RequestCancelDeployRequest>;
+
+export interface RequestCancelKeyspaceResizeRequest {
+  /** The name of the organization the branch belongs to */
+  organization: string;
+  /** The name of the database the branch belongs to */
+  database: string;
+  /** The name of the branch */
+  branch: string;
+  /** The name of the keyspace */
+  keyspace: string;
+}
+export const RequestCancelKeyspaceResizeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    branch: S.String.pipe(T.Label()),
+    keyspace: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/resizes",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestCancelKeyspaceResizeRequest",
+}) as any as S.Schema<RequestCancelKeyspaceResizeRequest>;
+
+export interface RequestCancelKeyspaceResizeResponse {}
+export const RequestCancelKeyspaceResizeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RequestCancelKeyspaceResizeResponse",
+}) as any as S.Schema<RequestCancelKeyspaceResizeResponse>;
+
+/** The deploy request will be updated to this state */
+export type CloseDeployRequestRequestState = "closed";
+export const CloseDeployRequestRequestState = /*@__PURE__*/ S.String;
+
+export interface RequestCloseDeployRequest {
+  /** The name of the deploy request's organization */
+  organization: string;
+  /** The name of the deploy request's database */
+  database: string;
+  /** The number of the deploy request */
+  number: number;
+  /** The deploy request will be updated to this state */
+  state?: CloseDeployRequestRequestState | (string & {});
+}
+export const RequestCloseDeployRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    number: S.Number.pipe(T.Label()),
+    state: S.optional(CloseDeployRequestRequestState),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestCloseDeployRequest",
+}) as any as S.Schema<RequestCloseDeployRequest>;
+
+export interface RequestCompleteGatedDeployRequest {
+  /** The name of the deploy request's organization */
+  organization: string;
+  /** The name of the deploy request's database */
+  database: string;
+  /** The number of the deploy request */
+  number: number;
+}
+export const RequestCompleteGatedDeployRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    number: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/apply-deploy",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestCompleteGatedDeployRequest",
+}) as any as S.Schema<RequestCompleteGatedDeployRequest>;
+
+export interface RequestForceCutoverDeployRequest {
+  /** The name of the deploy request's organization */
+  organization: string;
+  /** The name of the deploy request's database */
+  database: string;
+  /** The number of the deploy request */
+  number: number;
+}
+export const RequestForceCutoverDeployRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    number: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/force-cutover",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestForceCutoverDeployRequest",
+}) as any as S.Schema<RequestForceCutoverDeployRequest>;
+
+export interface RequestQueueDeployRequest {
+  /** The name of the deploy request's organization */
+  organization: string;
+  /** The name of the deploy request's database */
+  database: string;
+  /** The number of the deploy request */
+  number: number;
+  /** Whether or not to deploy the request with instant DDL. Defaults to false. */
+  instant_ddl?: boolean;
+}
+export const RequestQueueDeployRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    number: S.Number.pipe(T.Label()),
+    instant_ddl: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/deploy",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestQueueDeployRequest",
+}) as any as S.Schema<RequestQueueDeployRequest>;
+
+/** Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`) */
+export type ReviewDeployRequestRequestState = "commented" | "approved";
+export const ReviewDeployRequestRequestState = /*@__PURE__*/ S.String;
+
+export interface RequestReviewDeployRequest {
+  /** The name of the organization the deploy request belongs to */
+  organization: string;
+  /** The name of the database the deploy request belongs to */
+  database: string;
+  /** The number of the deploy request */
+  number: number;
+  /** Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`) */
+  state?: ReviewDeployRequestRequestState | (string & {});
+  /** Deploy request review comments */
+  body?: string;
+}
+export const RequestReviewDeployRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String.pipe(T.Label()),
+    database: S.String.pipe(T.Label()),
+    number: S.Number.pipe(T.Label()),
+    state: S.optional(ReviewDeployRequestRequestState),
+    body: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/reviews",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestReviewDeployRequest",
+}) as any as S.Schema<RequestReviewDeployRequest>;
+
+/** Whether the review is a comment or approval */
+export type DeployRequestReviewState = "commented" | "approved";
+export const DeployRequestReviewState = /*@__PURE__*/ S.String;
+
+export type DeployRequestReviewActor = OrganizationTeamMembershipActor;
+export const DeployRequestReviewActor = OrganizationTeamMembershipActor;
+
+export interface DeployRequestReview {
+  /** The ID of the review */
+  id: string;
+  /** The text body of the review */
+  body: string;
+  /** The HTML body of the review */
+  html_body: string;
+  /** Whether the review is a comment or approval */
+  state: DeployRequestReviewState;
+  /** When the review was created */
+  created_at: string;
+  /** When the review was last updated */
+  updated_at: string;
+  actor: OrganizationTeamMembershipActor;
+}
+export const DeployRequestReview = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    body: S.String,
+    html_body: S.String,
+    state: DeployRequestReviewState,
+    created_at: S.String,
+    updated_at: S.String,
+    actor: OrganizationTeamMembershipActor,
+  }),
+).annotate({
+  identifier: "DeployRequestReview",
+}) as any as S.Schema<DeployRequestReview>;
+
 export interface ResetDefaultRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -20124,76 +20194,6 @@ export const ResetRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResetRoleRequest",
 }) as any as S.Schema<ResetRoleRequest>;
-
-/** Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`) */
-export type ReviewDeployRequestRequestState = "commented" | "approved";
-export const ReviewDeployRequestRequestState = /*@__PURE__*/ S.String;
-
-export interface ReviewDeployRequestRequest {
-  /** The name of the organization the deploy request belongs to */
-  organization: string;
-  /** The name of the database the deploy request belongs to */
-  database: string;
-  /** The number of the deploy request */
-  number: number;
-  /** Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`) */
-  state?: ReviewDeployRequestRequestState | (string & {});
-  /** Deploy request review comments */
-  body?: string;
-}
-export const ReviewDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    number: S.Number.pipe(T.Label()),
-    state: S.optional(ReviewDeployRequestRequestState),
-    body: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/reviews",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ReviewDeployRequestRequest",
-}) as any as S.Schema<ReviewDeployRequestRequest>;
-
-/** Whether the review is a comment or approval */
-export type DeployRequestReviewState = "commented" | "approved";
-export const DeployRequestReviewState = /*@__PURE__*/ S.String;
-
-export type DeployRequestReviewActor = OrganizationTeamMembershipActor;
-export const DeployRequestReviewActor = OrganizationTeamMembershipActor;
-
-export interface DeployRequestReview {
-  /** The ID of the review */
-  id: string;
-  /** The text body of the review */
-  body: string;
-  /** The HTML body of the review */
-  html_body: string;
-  /** Whether the review is a comment or approval */
-  state: DeployRequestReviewState;
-  /** When the review was created */
-  created_at: string;
-  /** When the review was last updated */
-  updated_at: string;
-  actor: OrganizationTeamMembershipActor;
-}
-export const DeployRequestReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    body: S.String,
-    html_body: S.String,
-    state: DeployRequestReviewState,
-    created_at: S.String,
-    updated_at: S.String,
-    actor: OrganizationTeamMembershipActor,
-  }),
-).annotate({
-  identifier: "DeployRequestReview",
-}) as any as S.Schema<DeployRequestReview>;
 
 export interface RunBranchMaintenanceRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -21642,79 +21642,6 @@ export const addOrganizationTeamMember: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelBouncerResizeRequestError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** Cancel a resize request */
-export const cancelBouncerResizeRequest: API.OperationMethod<
-  CancelBouncerResizeRequestRequest,
-  CancelBouncerResizeRequestResponse,
-  CancelBouncerResizeRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CancelBouncerResizeRequestRequest,
-  output: CancelBouncerResizeRequestResponse,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CancelBranchChangeRequestError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** Cancel a change request */
-export const cancelBranchChangeRequest: API.OperationMethod<
-  CancelBranchChangeRequestRequest,
-  CancelBranchChangeRequestResponse,
-  CancelBranchChangeRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CancelBranchChangeRequestRequest,
-  output: CancelBranchChangeRequestResponse,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CancelDeployRequestError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** Cancel a queued deploy request */
-export const cancelDeployRequest: API.OperationMethod<
-  CancelDeployRequestRequest,
-  DatabaseDeployRequest,
-  CancelDeployRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CancelDeployRequestRequest,
-  output: DatabaseDeployRequest,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CancelKeyspaceResizeRequestError =
-  | Forbidden
-  | NotFound
-  | UnprocessableEntity
-  | PlanetScaleOpError;
-/** Cancel a queued keyspace resize request Cancels a queued resize of a branch keyspace. */
-export const cancelKeyspaceResizeRequest: API.OperationMethod<
-  CancelKeyspaceResizeRequestRequest,
-  CancelKeyspaceResizeRequestResponse,
-  CancelKeyspaceResizeRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CancelKeyspaceResizeRequestRequest,
-  output: CancelKeyspaceResizeRequestResponse,
-  errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CheckDeployRequestStorageError =
   | Forbidden
   | NotFound
@@ -21733,21 +21660,6 @@ export const checkDeployRequestStorage: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CloseDeployRequestError = Forbidden | NotFound | PlanetScaleOpError;
-/** Close a deploy request */
-export const closeDeployRequest: API.OperationMethod<
-  CloseDeployRequestRequest,
-  DatabaseDeployRequest,
-  CloseDeployRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloseDeployRequestRequest,
-  output: DatabaseDeployRequest,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CompleteErroredDeployError =
   | Forbidden
   | NotFound
@@ -21760,24 +21672,6 @@ export const completeErroredDeploy: API.OperationMethod<
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CompleteErroredDeployRequest,
-  output: DatabaseDeployRequest,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CompleteGatedDeployRequestError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** Complete a gated deploy request */
-export const completeGatedDeployRequest: API.OperationMethod<
-  CompleteGatedDeployRequestRequest,
-  DatabaseDeployRequest,
-  CompleteGatedDeployRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CompleteGatedDeployRequestRequest,
   output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
@@ -22663,24 +22557,6 @@ export const enableSafeMigrations: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableSafeMigrationsRequest,
   output: DatabaseBranch,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ForceCutoverDeployRequestError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** Enable force cutover for a deploy request */
-export const forceCutoverDeployRequest: API.OperationMethod<
-  ForceCutoverDeployRequestRequest,
-  DatabaseDeployRequest,
-  ForceCutoverDeployRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ForceCutoverDeployRequestRequest,
-  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -25038,21 +24914,6 @@ export const promoteBranch: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueueDeployRequestError = Forbidden | NotFound | PlanetScaleOpError;
-/** Queue a deploy request */
-export const queueDeployRequest: API.OperationMethod<
-  QueueDeployRequestRequest,
-  DatabaseDeployRequest,
-  QueueDeployRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueueDeployRequestRequest,
-  output: DatabaseDeployRequest,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ReassignRoleObjectsError =
   | Forbidden
   | NotFound
@@ -25145,6 +25006,163 @@ export const renewRole: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type RequestCancelBouncerResizeError =
+  | Forbidden
+  | NotFound
+  | PlanetScaleOpError;
+/** Cancel a resize request */
+export const requestCancelBouncerResize: API.OperationMethod<
+  RequestCancelBouncerResizeRequest,
+  RequestCancelBouncerResizeResponse,
+  RequestCancelBouncerResizeError,
+  PlanetScaleOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestCancelBouncerResizeRequest,
+  output: RequestCancelBouncerResizeResponse,
+  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
+  protocol: PlanetScaleProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestCancelBranchChangeError =
+  | Forbidden
+  | NotFound
+  | PlanetScaleOpError;
+/** Cancel a change request */
+export const requestCancelBranchChange: API.OperationMethod<
+  RequestCancelBranchChangeRequest,
+  RequestCancelBranchChangeResponse,
+  RequestCancelBranchChangeError,
+  PlanetScaleOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestCancelBranchChangeRequest,
+  output: RequestCancelBranchChangeResponse,
+  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
+  protocol: PlanetScaleProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestCancelDeployError =
+  | Forbidden
+  | NotFound
+  | PlanetScaleOpError;
+/** Cancel a queued deploy request */
+export const requestCancelDeploy: API.OperationMethod<
+  RequestCancelDeployRequest,
+  DatabaseDeployRequest,
+  RequestCancelDeployError,
+  PlanetScaleOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestCancelDeployRequest,
+  output: DatabaseDeployRequest,
+  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
+  protocol: PlanetScaleProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestCancelKeyspaceResizeError =
+  | Forbidden
+  | NotFound
+  | UnprocessableEntity
+  | PlanetScaleOpError;
+/** Cancel a queued keyspace resize request Cancels a queued resize of a branch keyspace. */
+export const requestCancelKeyspaceResize: API.OperationMethod<
+  RequestCancelKeyspaceResizeRequest,
+  RequestCancelKeyspaceResizeResponse,
+  RequestCancelKeyspaceResizeError,
+  PlanetScaleOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestCancelKeyspaceResizeRequest,
+  output: RequestCancelKeyspaceResizeResponse,
+  errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
+  protocol: PlanetScaleProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestCloseDeployError = Forbidden | NotFound | PlanetScaleOpError;
+/** Close a deploy request */
+export const requestCloseDeploy: API.OperationMethod<
+  RequestCloseDeployRequest,
+  DatabaseDeployRequest,
+  RequestCloseDeployError,
+  PlanetScaleOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestCloseDeployRequest,
+  output: DatabaseDeployRequest,
+  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
+  protocol: PlanetScaleProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestCompleteGatedDeployError =
+  | Forbidden
+  | NotFound
+  | PlanetScaleOpError;
+/** Complete a gated deploy request */
+export const requestCompleteGatedDeploy: API.OperationMethod<
+  RequestCompleteGatedDeployRequest,
+  DatabaseDeployRequest,
+  RequestCompleteGatedDeployError,
+  PlanetScaleOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestCompleteGatedDeployRequest,
+  output: DatabaseDeployRequest,
+  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
+  protocol: PlanetScaleProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestForceCutoverDeployError =
+  | Forbidden
+  | NotFound
+  | PlanetScaleOpError;
+/** Enable force cutover for a deploy request */
+export const requestForceCutoverDeploy: API.OperationMethod<
+  RequestForceCutoverDeployRequest,
+  DatabaseDeployRequest,
+  RequestForceCutoverDeployError,
+  PlanetScaleOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestForceCutoverDeployRequest,
+  output: DatabaseDeployRequest,
+  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
+  protocol: PlanetScaleProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestQueueDeployError = Forbidden | NotFound | PlanetScaleOpError;
+/** Queue a deploy request */
+export const requestQueueDeploy: API.OperationMethod<
+  RequestQueueDeployRequest,
+  DatabaseDeployRequest,
+  RequestQueueDeployError,
+  PlanetScaleOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestQueueDeployRequest,
+  output: DatabaseDeployRequest,
+  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
+  protocol: PlanetScaleProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestReviewDeployError =
+  | Forbidden
+  | NotFound
+  | PlanetScaleOpError;
+/** Review a deploy request Review a deploy request by either approving or commenting on the deploy request */
+export const requestReviewDeploy: API.OperationMethod<
+  RequestReviewDeployRequest,
+  DeployRequestReview,
+  RequestReviewDeployError,
+  PlanetScaleOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestReviewDeployRequest,
+  output: DeployRequestReview,
+  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
+  protocol: PlanetScaleProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ResetDefaultRoleError = Forbidden | NotFound | PlanetScaleOpError;
 /** Reset default credentials */
 export const resetDefaultRole: API.OperationMethod<
@@ -25170,24 +25188,6 @@ export const resetRole: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetRoleRequest,
   output: PostgresRole,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReviewDeployRequestError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** Review a deploy request Review a deploy request by either approving or commenting on the deploy request */
-export const reviewDeployRequest: API.OperationMethod<
-  ReviewDeployRequestRequest,
-  DeployRequestReview,
-  ReviewDeployRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReviewDeployRequestRequest,
-  output: DeployRequestReview,
   errors: [Forbidden, NotFound, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -25826,25 +25826,10 @@ export const workflowSwitchReplicas: API.OperationMethod<
 // `<Op>Input` / `<Op>Output`.
 export type AddOrganizationTeamMemberInput = AddOrganizationTeamMemberRequest;
 export type AddOrganizationTeamMemberOutput = OrganizationTeamMembership;
-export type CancelBouncerResizeRequestInput = CancelBouncerResizeRequestRequest;
-export type CancelBouncerResizeRequestOutput =
-  CancelBouncerResizeRequestResponse;
-export type CancelBranchChangeRequestInput = CancelBranchChangeRequestRequest;
-export type CancelBranchChangeRequestOutput = CancelBranchChangeRequestResponse;
-export type CancelDeployRequestInput = CancelDeployRequestRequest;
-export type CancelDeployRequestOutput = DatabaseDeployRequest;
-export type CancelKeyspaceResizeRequestInput =
-  CancelKeyspaceResizeRequestRequest;
-export type CancelKeyspaceResizeRequestOutput =
-  CancelKeyspaceResizeRequestResponse;
 export type CheckDeployRequestStorageInput = CheckDeployRequestStorageRequest;
 export type CheckDeployRequestStorageOutput = CheckDeployRequestStorageResponse;
-export type CloseDeployRequestInput = CloseDeployRequestRequest;
-export type CloseDeployRequestOutput = DatabaseDeployRequest;
 export type CompleteErroredDeployInput = CompleteErroredDeployRequest;
 export type CompleteErroredDeployOutput = DatabaseDeployRequest;
-export type CompleteGatedDeployRequestInput = CompleteGatedDeployRequestRequest;
-export type CompleteGatedDeployRequestOutput = DatabaseDeployRequest;
 export type CompleteRevertInput = CompleteRevertRequest;
 export type CompleteRevertOutput = DatabaseDeployRequest;
 export type ConfigureOrganizationSsoInput = ConfigureOrganizationSsoRequest;
@@ -25959,8 +25944,6 @@ export type EnableOrganizationSsoDirectoryOutput =
   EnableOrganizationSsoDirectoryResponse;
 export type EnableSafeMigrationsInput = EnableSafeMigrationsRequest;
 export type EnableSafeMigrationsOutput = DatabaseBranch;
-export type ForceCutoverDeployRequestInput = ForceCutoverDeployRequestRequest;
-export type ForceCutoverDeployRequestOutput = DatabaseDeployRequest;
 export type GetBackupInput = GetBackupRequest;
 export type GetBackupOutput = Backup;
 export type GetBackupPolicyInput = GetBackupPolicyRequest;
@@ -26198,8 +26181,6 @@ export type ListWorkflowsInput = ListWorkflowsRequest;
 export type ListWorkflowsOutput = PaginatedWorkflow;
 export type PromoteBranchInput = PromoteBranchRequest;
 export type PromoteBranchOutput = DatabaseBranch;
-export type QueueDeployRequestInput = QueueDeployRequestRequest;
-export type QueueDeployRequestOutput = DatabaseDeployRequest;
 export type ReassignRoleObjectsInput = ReassignRoleObjectsRequest;
 export type ReassignRoleObjectsOutput = ReassignRoleObjectsResponse;
 export type RemoveOrganizationMemberInput = RemoveOrganizationMemberRequest;
@@ -26212,12 +26193,31 @@ export type RenewPasswordInput = RenewPasswordRequest;
 export type RenewPasswordOutput = DatabaseBranchPasswordWithSecret;
 export type RenewRoleInput = RenewRoleRequest;
 export type RenewRoleOutput = PostgresRole;
+export type RequestCancelBouncerResizeInput = RequestCancelBouncerResizeRequest;
+export type RequestCancelBouncerResizeOutput =
+  RequestCancelBouncerResizeResponse;
+export type RequestCancelBranchChangeInput = RequestCancelBranchChangeRequest;
+export type RequestCancelBranchChangeOutput = RequestCancelBranchChangeResponse;
+export type RequestCancelDeployInput = RequestCancelDeployRequest;
+export type RequestCancelDeployOutput = DatabaseDeployRequest;
+export type RequestCancelKeyspaceResizeInput =
+  RequestCancelKeyspaceResizeRequest;
+export type RequestCancelKeyspaceResizeOutput =
+  RequestCancelKeyspaceResizeResponse;
+export type RequestCloseDeployInput = RequestCloseDeployRequest;
+export type RequestCloseDeployOutput = DatabaseDeployRequest;
+export type RequestCompleteGatedDeployInput = RequestCompleteGatedDeployRequest;
+export type RequestCompleteGatedDeployOutput = DatabaseDeployRequest;
+export type RequestForceCutoverDeployInput = RequestForceCutoverDeployRequest;
+export type RequestForceCutoverDeployOutput = DatabaseDeployRequest;
+export type RequestQueueDeployInput = RequestQueueDeployRequest;
+export type RequestQueueDeployOutput = DatabaseDeployRequest;
+export type RequestReviewDeployInput = RequestReviewDeployRequest;
+export type RequestReviewDeployOutput = DeployRequestReview;
 export type ResetDefaultRoleInput = ResetDefaultRoleRequest;
 export type ResetDefaultRoleOutput = PostgresRole;
 export type ResetRoleInput = ResetRoleRequest;
 export type ResetRoleOutput = PostgresRole;
-export type ReviewDeployRequestInput = ReviewDeployRequestRequest;
-export type ReviewDeployRequestOutput = DeployRequestReview;
 export type RunBranchMaintenanceInput = RunBranchMaintenanceRequest;
 export type RunBranchMaintenanceOutput = RunBranchMaintenanceResponse;
 export type SkipRevertPeriodInput = SkipRevertPeriodRequest;

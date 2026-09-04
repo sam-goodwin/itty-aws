@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.compute#VirtualMachineBulkOperationsBulkStart": {
+    "com.azure.compute#StartVirtualMachineBulkOperationBulk": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineBulkOperationsBulkStartRequest"
+        "target": "com.azure.compute#StartVirtualMachineBulkOperationBulkRequest"
       },
       "output": {
         "target": "com.azure.compute#StartResourceOperationResponse"
@@ -445,7 +445,7 @@
         "smithy.api#documentation": "Type of operation performed on the resources"
       }
     },
-    "com.azure.compute#VirtualMachineBulkOperationsBulkStartRequest": {
+    "com.azure.compute#StartVirtualMachineBulkOperationBulkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -638,10 +638,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineBulkOperationsBulkGetOperationsStatus": {
+    "com.azure.compute#GetVirtualMachineBulkOperationBulkOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineBulkOperationsBulkGetOperationsStatusRequest"
+        "target": "com.azure.compute#GetVirtualMachineBulkOperationBulkOperationStatusRequest"
       },
       "output": {
         "target": "com.azure.compute#GetOperationStatusResponse"
@@ -681,7 +681,7 @@
         "smithy.api#documentation": "An array of resource operations based on their operation ids"
       }
     },
-    "com.azure.compute#VirtualMachineBulkOperationsBulkGetOperationsStatusRequest": {
+    "com.azure.compute#GetVirtualMachineBulkOperationBulkOperationStatusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -729,10 +729,10 @@
         "smithy.api#documentation": "The list of operation ids to get the status of"
       }
     },
-    "com.azure.compute#VirtualMachineBulkOperationsBulkDelete": {
+    "com.azure.compute#DeleteVirtualMachineBulkOperationBulk": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineBulkOperationsBulkDeleteRequest"
+        "target": "com.azure.compute#DeleteVirtualMachineBulkOperationBulkRequest"
       },
       "output": {
         "target": "com.azure.compute#DeleteResourceOperationResponse"
@@ -792,7 +792,7 @@
         "smithy.api#documentation": "The results from the delete request if no errors exist"
       }
     },
-    "com.azure.compute#VirtualMachineBulkOperationsBulkDeleteRequest": {
+    "com.azure.compute#DeleteVirtualMachineBulkOperationBulkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1044,13 +1044,13 @@
         "smithy.api#documentation": "The list of operation ids to cancel operations on"
       }
     },
-    "com.azure.compute#OperationsList": {
+    "com.azure.compute#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.compute#OperationsListResponse"
+        "target": "com.azure.compute#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1063,7 +1063,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-06"
       }
     },
-    "com.azure.compute#OperationsListResponse": {
+    "com.azure.compute#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -1202,10 +1202,10 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.compute#VirtualMachinesListAvailableSizes": {
+    "com.azure.compute#ListVirtualMachineAvailableSizes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesListAvailableSizesRequest"
+        "target": "com.azure.compute#ListVirtualMachineAvailableSizesRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineSizeListResult"
@@ -1294,7 +1294,7 @@
         "smithy.api#documentation": "Describes the properties of a VM size."
       }
     },
-    "com.azure.compute#VirtualMachinesListAvailableSizesRequest": {
+    "com.azure.compute#ListVirtualMachineAvailableSizesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1326,10 +1326,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachinesStart": {
+    "com.azure.compute#StartVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesStartRequest"
+        "target": "com.azure.compute#StartVirtualMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1345,7 +1345,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachinesStartRequest": {
+    "com.azure.compute#StartVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1428,10 +1428,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsDelete": {
+    "com.azure.compute#DeleteVirtualMachineRunCommand": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsDeleteRequest"
+        "target": "com.azure.compute#DeleteVirtualMachineRunCommandRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1447,7 +1447,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsDeleteRequest": {
+    "com.azure.compute#DeleteVirtualMachineRunCommandRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1487,13 +1487,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsUpdate": {
+    "com.azure.compute#UpdateVirtualMachineRunCommand": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsUpdateRequest"
+        "target": "com.azure.compute#UpdateVirtualMachineRunCommandRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsUpdateResponse"
+        "target": "com.azure.compute#UpdateVirtualMachineRunCommandResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1506,7 +1506,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsUpdateResponse": {
+    "com.azure.compute#UpdateVirtualMachineRunCommandResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2073,7 +2073,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsUpdateRequest": {
+    "com.azure.compute#UpdateVirtualMachineRunCommandRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2389,13 +2389,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsGetByVirtualMachine": {
+    "com.azure.compute#GetVirtualMachineRunCommandByVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsGetByVirtualMachineRequest"
+        "target": "com.azure.compute#GetVirtualMachineRunCommandByVirtualMachineRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsGetByVirtualMachineResponse"
+        "target": "com.azure.compute#GetVirtualMachineRunCommandByVirtualMachineResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2408,7 +2408,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsGetByVirtualMachineResponse": {
+    "com.azure.compute#GetVirtualMachineRunCommandByVirtualMachineResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2471,7 +2471,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsGetByVirtualMachineRequest": {
+    "com.azure.compute#GetVirtualMachineRunCommandByVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2518,13 +2518,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsListByVirtualMachine": {
+    "com.azure.compute#ListVirtualMachineRunCommandByVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsListByVirtualMachineRequest"
+        "target": "com.azure.compute#ListVirtualMachineRunCommandByVirtualMachineRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsListResult"
+        "target": "com.azure.compute#ListVirtualMachineRunCommandsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -2537,7 +2537,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsListResult": {
+    "com.azure.compute#ListVirtualMachineRunCommandsResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -2630,7 +2630,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsListByVirtualMachineRequest": {
+    "com.azure.compute#ListVirtualMachineRunCommandByVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2856,10 +2856,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachinesRestart": {
+    "com.azure.compute#RestartVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesRestartRequest"
+        "target": "com.azure.compute#RestartVirtualMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2875,7 +2875,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachinesRestartRequest": {
+    "com.azure.compute#RestartVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3208,10 +3208,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachinesMigrateToVMScaleSet": {
+    "com.azure.compute#SetVirtualMachineMigrateToVmScale": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesMigrateToVMScaleSetRequest"
+        "target": "com.azure.compute#SetVirtualMachineMigrateToVmScaleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3227,7 +3227,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachinesMigrateToVMScaleSetRequest": {
+    "com.azure.compute#SetVirtualMachineMigrateToVmScaleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4964,10 +4964,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsDelete": {
+    "com.azure.compute#DeleteVirtualMachineExtension": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineExtensionsDeleteRequest"
+        "target": "com.azure.compute#DeleteVirtualMachineExtensionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4983,7 +4983,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsDeleteRequest": {
+    "com.azure.compute#DeleteVirtualMachineExtensionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5023,13 +5023,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsUpdate": {
+    "com.azure.compute#UpdateVirtualMachineExtension": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineExtensionsUpdateRequest"
+        "target": "com.azure.compute#UpdateVirtualMachineExtensionRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineExtensionsUpdateResponse"
+        "target": "com.azure.compute#UpdateVirtualMachineExtensionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5042,7 +5042,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsUpdateResponse": {
+    "com.azure.compute#UpdateVirtualMachineExtensionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5200,7 +5200,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsUpdateRequest": {
+    "com.azure.compute#UpdateVirtualMachineExtensionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5574,13 +5574,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsGet": {
+    "com.azure.compute#GetVirtualMachineExtension": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineExtensionsGetRequest"
+        "target": "com.azure.compute#GetVirtualMachineExtensionRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineExtensionsGetResponse"
+        "target": "com.azure.compute#GetVirtualMachineExtensionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5593,7 +5593,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsGetResponse": {
+    "com.azure.compute#GetVirtualMachineExtensionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5656,7 +5656,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsGetRequest": {
+    "com.azure.compute#GetVirtualMachineExtensionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5703,13 +5703,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsList": {
+    "com.azure.compute#ListVirtualMachineExtensions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineExtensionsListRequest"
+        "target": "com.azure.compute#ListVirtualMachineExtensionsRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineExtensionsListResult"
+        "target": "com.azure.compute#ListVirtualMachineExtensionsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -5722,7 +5722,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsListResult": {
+    "com.azure.compute#ListVirtualMachineExtensionsResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -5808,7 +5808,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineExtensionsListRequest": {
+    "com.azure.compute#ListVirtualMachineExtensionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5847,10 +5847,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsDelete": {
+    "com.azure.compute#DeleteVirtualMachineDiagnosticRunCommand": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsDeleteRequest"
+        "target": "com.azure.compute#DeleteVirtualMachineDiagnosticRunCommandRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5866,7 +5866,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsDeleteRequest": {
+    "com.azure.compute#DeleteVirtualMachineDiagnosticRunCommandRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5906,13 +5906,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsUpdate": {
+    "com.azure.compute#UpdateVirtualMachineDiagnosticRunCommand": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsUpdateRequest"
+        "target": "com.azure.compute#UpdateVirtualMachineDiagnosticRunCommandRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsUpdateResponse"
+        "target": "com.azure.compute#UpdateVirtualMachineDiagnosticRunCommandResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5925,7 +5925,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsUpdateResponse": {
+    "com.azure.compute#UpdateVirtualMachineDiagnosticRunCommandResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5988,7 +5988,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsUpdateRequest": {
+    "com.azure.compute#UpdateVirtualMachineDiagnosticRunCommandRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6205,13 +6205,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsGetByVirtualMachine": {
+    "com.azure.compute#GetVirtualMachineDiagnosticRunCommandByVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsGetByVirtualMachineRequest"
+        "target": "com.azure.compute#GetVirtualMachineDiagnosticRunCommandByVirtualMachineRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsGetByVirtualMachineResponse"
+        "target": "com.azure.compute#GetVirtualMachineDiagnosticRunCommandByVirtualMachineResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6224,7 +6224,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsGetByVirtualMachineResponse": {
+    "com.azure.compute#GetVirtualMachineDiagnosticRunCommandByVirtualMachineResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6287,7 +6287,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsGetByVirtualMachineRequest": {
+    "com.azure.compute#GetVirtualMachineDiagnosticRunCommandByVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6334,10 +6334,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsDiagnosticListByVirtualMachine": {
+    "com.azure.compute#ListVirtualMachineDiagnosticRunCommandDiagnosticByVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsDiagnosticListByVirtualMachineRequest"
+        "target": "com.azure.compute#ListVirtualMachineDiagnosticRunCommandDiagnosticByVirtualMachineRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsListResult"
@@ -6446,7 +6446,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineDiagnosticRunCommandsDiagnosticListByVirtualMachineRequest": {
+    "com.azure.compute#ListVirtualMachineDiagnosticRunCommandDiagnosticByVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8028,10 +8028,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachinesDelete": {
+    "com.azure.compute#DeleteVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesDeleteRequest"
+        "target": "com.azure.compute#DeleteVirtualMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8047,7 +8047,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachinesDeleteRequest": {
+    "com.azure.compute#DeleteVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8086,13 +8086,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachinesUpdate": {
+    "com.azure.compute#UpdateVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesUpdateRequest"
+        "target": "com.azure.compute#UpdateVirtualMachineRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachinesUpdateResponse"
+        "target": "com.azure.compute#UpdateVirtualMachineResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8105,7 +8105,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachinesUpdateResponse": {
+    "com.azure.compute#UpdateVirtualMachineResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11900,7 +11900,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachinesUpdateRequest": {
+    "com.azure.compute#UpdateVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12741,13 +12741,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachinesGet": {
+    "com.azure.compute#GetVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesGetRequest"
+        "target": "com.azure.compute#GetVirtualMachineRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachinesGetResponse"
+        "target": "com.azure.compute#GetVirtualMachineResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12760,7 +12760,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachinesGetResponse": {
+    "com.azure.compute#GetVirtualMachineResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12909,7 +12909,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachinesGetRequest": {
+    "com.azure.compute#GetVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12972,10 +12972,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachinesList": {
+    "com.azure.compute#ListVirtualMachines": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesListRequest"
+        "target": "com.azure.compute#ListVirtualMachinesRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineListResult"
@@ -13170,7 +13170,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachinesListRequest": {
+    "com.azure.compute#ListVirtualMachinesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13279,10 +13279,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsSimulateEviction": {
+    "com.azure.compute#SetVirtualMachineScaleVMsSimulateEviction": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsSimulateEvictionRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsSimulateEvictionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -13298,7 +13298,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsSimulateEvictionRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsSimulateEvictionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13863,7 +13863,7 @@
         "target": "com.azure.compute#VirtualMachineScaleSetVMRunCommandsListRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsListResult"
+        "target": "com.azure.compute#ListVirtualMachineRunCommandsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -13923,10 +13923,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsRunCommand": {
+    "com.azure.compute#SetVirtualMachineScaleVMsRunCommand": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsRunCommandRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsRunCommandRequest"
       },
       "output": {
         "target": "com.azure.compute#RunCommandResult"
@@ -13942,7 +13942,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsRunCommandRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsRunCommandRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14019,10 +14019,10 @@
         "smithy.api#documentation": "Optional. The script to be executed.  When this value is given, the given script will override the default script of the command."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsRetrieveBootDiagnosticsData": {
+    "com.azure.compute#SetVirtualMachineScaleVMsRetrieveBootDiagnosticData": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsRetrieveBootDiagnosticDataRequest"
       },
       "output": {
         "target": "com.azure.compute#RetrieveBootDiagnosticsDataResult"
@@ -14038,7 +14038,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsRetrieveBootDiagnosticDataRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14144,10 +14144,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsReimageAll": {
+    "com.azure.compute#SetVirtualMachineScaleVMsReimageAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsReimageAllRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsReimageAllRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14163,7 +14163,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsReimageAllRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsReimageAllRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14203,10 +14203,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsReimage": {
+    "com.azure.compute#SetVirtualMachineScaleVMsReimage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsReimageRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsReimageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14222,7 +14222,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsReimageRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsReimageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14286,10 +14286,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsRedeploy": {
+    "com.azure.compute#SetVirtualMachineScaleVMsRedeploy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsRedeployRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsRedeployRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14305,7 +14305,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsRedeployRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsRedeployRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14345,10 +14345,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsPowerOff": {
+    "com.azure.compute#SetVirtualMachineScaleVMsPowerOff": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsPowerOffRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsPowerOffRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14364,7 +14364,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsPowerOffRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsPowerOffRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14411,10 +14411,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsPerformMaintenance": {
+    "com.azure.compute#SetVirtualMachineScaleVMsPerformMaintenance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsPerformMaintenanceRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsPerformMaintenanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14430,7 +14430,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsPerformMaintenanceRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsPerformMaintenanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15811,10 +15811,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsDeallocate": {
+    "com.azure.compute#SetVirtualMachineScaleVMsDeallocate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsDeallocateRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsDeallocateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15830,7 +15830,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsDeallocateRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsDeallocateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15870,10 +15870,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsAttachDetachDataDisks": {
+    "com.azure.compute#SetVirtualMachineScaleVMsAttachDetachDataDisk": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsAttachDetachDataDisksRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsAttachDetachDataDiskRequest"
       },
       "output": {
         "target": "com.azure.compute#StorageProfile"
@@ -15889,7 +15889,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsAttachDetachDataDisksRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsAttachDetachDataDiskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15959,10 +15959,10 @@
         "smithy.api#documentation": "The list of managed data disks to be attached."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsApproveRollingUpgrade": {
+    "com.azure.compute#SetVirtualMachineScaleVMsApproveRollingUpgrade": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetVMsApproveRollingUpgradeRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleVMsApproveRollingUpgradeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15978,7 +15978,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetVMsApproveRollingUpgradeRequest": {
+    "com.azure.compute#SetVirtualMachineScaleVMsApproveRollingUpgradeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17600,10 +17600,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsStart": {
+    "com.azure.compute#StartVirtualMachineScaleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsStartRequest"
+        "target": "com.azure.compute#StartVirtualMachineScaleSetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17619,7 +17619,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsStartRequest": {
+    "com.azure.compute#StartVirtualMachineScaleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17666,10 +17666,10 @@
         "smithy.api#documentation": "The virtual machine scale set instance ids. Omitting the virtual machine scale set instance ids will result in the operation being performed on all virtual machines in the virtual machine scale set."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsListSkus": {
+    "com.azure.compute#ListVirtualMachineScaleSetSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsListSkusRequest"
+        "target": "com.azure.compute#ListVirtualMachineScaleSetSkusRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineScaleSetListSkusResult"
@@ -17793,7 +17793,7 @@
         "smithy.api#documentation": "The scale type applicable to the sku."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsListSkusRequest": {
+    "com.azure.compute#ListVirtualMachineScaleSetSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17825,10 +17825,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsSetOrchestrationServiceState": {
+    "com.azure.compute#SetVirtualMachineScaleSetOrchestrationServiceState": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsSetOrchestrationServiceStateRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleSetOrchestrationServiceStateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17844,7 +17844,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsSetOrchestrationServiceStateRequest": {
+    "com.azure.compute#SetVirtualMachineScaleSetOrchestrationServiceStateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18379,10 +18379,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetRollingUpgradesCancel": {
+    "com.azure.compute#SetVirtualMachineScaleRollingUpgradeCancel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetRollingUpgradesCancelRequest"
+        "target": "com.azure.compute#SetVirtualMachineScaleRollingUpgradeCancelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -18398,7 +18398,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetRollingUpgradesCancelRequest": {
+    "com.azure.compute#SetVirtualMachineScaleRollingUpgradeCancelRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18430,10 +18430,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsRestart": {
+    "com.azure.compute#RestartVirtualMachineScaleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsRestartRequest"
+        "target": "com.azure.compute#RestartVirtualMachineScaleSetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -18449,7 +18449,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsRestartRequest": {
+    "com.azure.compute#RestartVirtualMachineScaleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18908,10 +18908,10 @@
         "smithy.api#documentation": "The virtual machine scale set instance ids. Omitting the virtual machine scale set instance ids will result in the operation being performed on all virtual machines in the virtual machine scale set."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsGetOSUpgradeHistory": {
+    "com.azure.compute#GetVirtualMachineScaleSetOsUpgradeHistory": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsGetOSUpgradeHistoryRequest"
+        "target": "com.azure.compute#GetVirtualMachineScaleSetOsUpgradeHistoryRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineScaleSetListOSUpgradeHistory"
@@ -19237,7 +19237,7 @@
         "smithy.api#documentation": "Code indicating the current status of the upgrade."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsGetOSUpgradeHistoryRequest": {
+    "com.azure.compute#GetVirtualMachineScaleSetOsUpgradeHistoryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19393,10 +19393,10 @@
         "smithy.api#documentation": "The virtual machine scale set instance ids to be migrated to the target availability zone."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsUpdateInstances": {
+    "com.azure.compute#UpdateVirtualMachineScaleSetInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsUpdateInstancesRequest"
+        "target": "com.azure.compute#UpdateVirtualMachineScaleSetInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19412,7 +19412,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsUpdateInstancesRequest": {
+    "com.azure.compute#UpdateVirtualMachineScaleSetInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20005,10 +20005,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsGetInstanceView": {
+    "com.azure.compute#GetVirtualMachineScaleSetInstanceView": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsGetInstanceViewRequest"
+        "target": "com.azure.compute#GetVirtualMachineScaleSetInstanceViewRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineScaleSetInstanceView"
@@ -20233,7 +20233,7 @@
         "smithy.api#documentation": "The extensions information."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsGetInstanceViewRequest": {
+    "com.azure.compute#GetVirtualMachineScaleSetInstanceViewRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20265,10 +20265,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalk": {
+    "com.azure.compute#UpdateVirtualMachineScaleSetForceRecoveryServiceFabricPlatformDomainWalk": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkRequest"
+        "target": "com.azure.compute#UpdateVirtualMachineScaleSetForceRecoveryServiceFabricPlatformDomainWalkRequest"
       },
       "output": {
         "target": "com.azure.compute#RecoveryWalkResponse"
@@ -20304,7 +20304,7 @@
         "smithy.api#documentation": "Response after calling a manual recovery walk"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkRequest": {
+    "com.azure.compute#UpdateVirtualMachineScaleSetForceRecoveryServiceFabricPlatformDomainWalkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21051,10 +21051,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsDeleteInstances": {
+    "com.azure.compute#DeleteVirtualMachineScaleSetInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsDeleteInstancesRequest"
+        "target": "com.azure.compute#DeleteVirtualMachineScaleSetInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -21070,7 +21070,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsDeleteInstancesRequest": {
+    "com.azure.compute#DeleteVirtualMachineScaleSetInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21321,10 +21321,10 @@
         "smithy.api#documentation": "The virtual machine scale set instance ids. Omitting the virtual machine scale set instance ids will result in the operation being performed on all virtual machines in the virtual machine scale set."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsDelete": {
+    "com.azure.compute#DeleteVirtualMachineScaleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsDeleteRequest"
+        "target": "com.azure.compute#DeleteVirtualMachineScaleSetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -21340,7 +21340,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsDeleteRequest": {
+    "com.azure.compute#DeleteVirtualMachineScaleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21379,13 +21379,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsUpdate": {
+    "com.azure.compute#UpdateVirtualMachineScaleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsUpdateRequest"
+        "target": "com.azure.compute#UpdateVirtualMachineScaleSetRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsUpdateResponse"
+        "target": "com.azure.compute#UpdateVirtualMachineScaleSetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21398,7 +21398,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsUpdateResponse": {
+    "com.azure.compute#UpdateVirtualMachineScaleSetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -23036,7 +23036,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsUpdateRequest": {
+    "com.azure.compute#UpdateVirtualMachineScaleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -24689,13 +24689,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsGet": {
+    "com.azure.compute#GetVirtualMachineScaleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsGetRequest"
+        "target": "com.azure.compute#GetVirtualMachineScaleSetRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsGetResponse"
+        "target": "com.azure.compute#GetVirtualMachineScaleSetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -24708,7 +24708,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsGetResponse": {
+    "com.azure.compute#GetVirtualMachineScaleSetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -24842,7 +24842,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsGetRequest": {
+    "com.azure.compute#GetVirtualMachineScaleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -24893,10 +24893,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineScaleSetsList": {
+    "com.azure.compute#ListVirtualMachineScaleSets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsListRequest"
+        "target": "com.azure.compute#ListVirtualMachineScaleSetsRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineScaleSetListResult"
@@ -25076,7 +25076,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsListRequest": {
+    "com.azure.compute#ListVirtualMachineScaleSetsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25100,10 +25100,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#SshPublicKeysGenerateKeyPair": {
+    "com.azure.compute#GenerateSshPublicKeyKeyPair": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#SshPublicKeysGenerateKeyPairRequest"
+        "target": "com.azure.compute#GenerateSshPublicKeyKeyPairRequest"
       },
       "output": {
         "target": "com.azure.compute#SshPublicKeyGenerateKeyPairResult"
@@ -25149,7 +25149,7 @@
         "smithy.api#documentation": "Response from generation of an SSH key pair."
       }
     },
-    "com.azure.compute#SshPublicKeysGenerateKeyPairRequest": {
+    "com.azure.compute#GenerateSshPublicKeyKeyPairRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25207,10 +25207,10 @@
         "smithy.api#documentation": "The encryption type of the SSH keys to be generated. See SshEncryptionTypes for possible set of values. If not provided, will default to RSA"
       }
     },
-    "com.azure.compute#SshPublicKeysDelete": {
+    "com.azure.compute#DeleteSshPublicKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#SshPublicKeysDeleteRequest"
+        "target": "com.azure.compute#DeleteSshPublicKeyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -25226,7 +25226,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#SshPublicKeysDeleteRequest": {
+    "com.azure.compute#DeleteSshPublicKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25258,13 +25258,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#SshPublicKeysUpdate": {
+    "com.azure.compute#UpdateSshPublicKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#SshPublicKeysUpdateRequest"
+        "target": "com.azure.compute#UpdateSshPublicKeyRequest"
       },
       "output": {
-        "target": "com.azure.compute#SshPublicKeysUpdateResponse"
+        "target": "com.azure.compute#UpdateSshPublicKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25277,7 +25277,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#SshPublicKeysUpdateResponse": {
+    "com.azure.compute#UpdateSshPublicKeyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -25354,7 +25354,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#SshPublicKeysUpdateRequest": {
+    "com.azure.compute#UpdateSshPublicKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25410,13 +25410,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.compute#SshPublicKeysCreate": {
+    "com.azure.compute#CreateSshPublicKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#SshPublicKeysCreateRequest"
+        "target": "com.azure.compute#CreateSshPublicKeyRequest"
       },
       "output": {
-        "target": "com.azure.compute#SshPublicKeysCreateResponse"
+        "target": "com.azure.compute#CreateSshPublicKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25429,7 +25429,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#SshPublicKeysCreateResponse": {
+    "com.azure.compute#CreateSshPublicKeyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -25492,7 +25492,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#SshPublicKeysCreateRequest": {
+    "com.azure.compute#CreateSshPublicKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25555,13 +25555,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#SshPublicKeysGet": {
+    "com.azure.compute#GetSshPublicKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#SshPublicKeysGetRequest"
+        "target": "com.azure.compute#GetSshPublicKeyRequest"
       },
       "output": {
-        "target": "com.azure.compute#SshPublicKeysGetResponse"
+        "target": "com.azure.compute#GetSshPublicKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25574,7 +25574,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#SshPublicKeysGetResponse": {
+    "com.azure.compute#GetSshPublicKeyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -25637,7 +25637,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#SshPublicKeysGetRequest": {
+    "com.azure.compute#GetSshPublicKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -25669,10 +25669,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#SshPublicKeysListByResourceGroup": {
+    "com.azure.compute#ListSshPublicKeyByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#SshPublicKeysListByResourceGroupRequest"
+        "target": "com.azure.compute#ListSshPublicKeyByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.compute#SshPublicKeysGroupListResult"
@@ -25781,7 +25781,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#SshPublicKeysListByResourceGroupRequest": {
+    "com.azure.compute#ListSshPublicKeyByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -27515,10 +27515,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsDelete": {
+    "com.azure.compute#DeleteProximityPlacementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ProximityPlacementGroupsDeleteRequest"
+        "target": "com.azure.compute#DeleteProximityPlacementGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -27534,7 +27534,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsDeleteRequest": {
+    "com.azure.compute#DeleteProximityPlacementGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -27566,13 +27566,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsUpdate": {
+    "com.azure.compute#UpdateProximityPlacementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ProximityPlacementGroupsUpdateRequest"
+        "target": "com.azure.compute#UpdateProximityPlacementGroupRequest"
       },
       "output": {
-        "target": "com.azure.compute#ProximityPlacementGroupsUpdateResponse"
+        "target": "com.azure.compute#UpdateProximityPlacementGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -27585,7 +27585,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsUpdateResponse": {
+    "com.azure.compute#UpdateProximityPlacementGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -27795,7 +27795,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsUpdateRequest": {
+    "com.azure.compute#UpdateProximityPlacementGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -28046,13 +28046,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsGet": {
+    "com.azure.compute#GetProximityPlacementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ProximityPlacementGroupsGetRequest"
+        "target": "com.azure.compute#GetProximityPlacementGroupRequest"
       },
       "output": {
-        "target": "com.azure.compute#ProximityPlacementGroupsGetResponse"
+        "target": "com.azure.compute#GetProximityPlacementGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -28065,7 +28065,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsGetResponse": {
+    "com.azure.compute#GetProximityPlacementGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -28143,7 +28143,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsGetRequest": {
+    "com.azure.compute#GetProximityPlacementGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -28182,10 +28182,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsListByResourceGroup": {
+    "com.azure.compute#ListProximityPlacementGroupByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ProximityPlacementGroupsListByResourceGroupRequest"
+        "target": "com.azure.compute#ListProximityPlacementGroupByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.compute#ProximityPlacementGroupListResult"
@@ -28309,7 +28309,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsListByResourceGroupRequest": {
+    "com.azure.compute#ListProximityPlacementGroupByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -28333,10 +28333,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#InterconnectBlocksDelete": {
+    "com.azure.compute#DeleteInterconnectBlock": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#InterconnectBlocksDeleteRequest"
+        "target": "com.azure.compute#DeleteInterconnectBlockRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -28352,7 +28352,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#InterconnectBlocksDeleteRequest": {
+    "com.azure.compute#DeleteInterconnectBlockRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -28384,13 +28384,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#InterconnectBlocksUpdate": {
+    "com.azure.compute#UpdateInterconnectBlock": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#InterconnectBlocksUpdateRequest"
+        "target": "com.azure.compute#UpdateInterconnectBlockRequest"
       },
       "output": {
-        "target": "com.azure.compute#InterconnectBlocksUpdateResponse"
+        "target": "com.azure.compute#UpdateInterconnectBlockResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -28403,7 +28403,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#InterconnectBlocksUpdateResponse": {
+    "com.azure.compute#UpdateInterconnectBlockResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -28595,7 +28595,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#InterconnectBlocksUpdateRequest": {
+    "com.azure.compute#UpdateInterconnectBlockRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -28867,13 +28867,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#InterconnectBlocksGet": {
+    "com.azure.compute#GetInterconnectBlock": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#InterconnectBlocksGetRequest"
+        "target": "com.azure.compute#GetInterconnectBlockRequest"
       },
       "output": {
-        "target": "com.azure.compute#InterconnectBlocksGetResponse"
+        "target": "com.azure.compute#GetInterconnectBlockResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -28886,7 +28886,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#InterconnectBlocksGetResponse": {
+    "com.azure.compute#GetInterconnectBlockResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -28977,7 +28977,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#InterconnectBlocksGetRequest": {
+    "com.azure.compute#GetInterconnectBlockRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -29028,10 +29028,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#InterconnectBlocksListByResourceGroup": {
+    "com.azure.compute#ListInterconnectBlockByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#InterconnectBlocksListByResourceGroupRequest"
+        "target": "com.azure.compute#ListInterconnectBlockByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.compute#InterconnectBlockListResult"
@@ -29168,7 +29168,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#InterconnectBlocksListByResourceGroupRequest": {
+    "com.azure.compute#ListInterconnectBlockByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -29192,10 +29192,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ImagesDelete": {
+    "com.azure.compute#DeleteImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ImagesDeleteRequest"
+        "target": "com.azure.compute#DeleteImageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -29211,7 +29211,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#ImagesDeleteRequest": {
+    "com.azure.compute#DeleteImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -29243,13 +29243,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ImagesUpdate": {
+    "com.azure.compute#UpdateImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ImagesUpdateRequest"
+        "target": "com.azure.compute#UpdateImageRequest"
       },
       "output": {
-        "target": "com.azure.compute#ImagesUpdateResponse"
+        "target": "com.azure.compute#UpdateImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -29262,7 +29262,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#ImagesUpdateResponse": {
+    "com.azure.compute#UpdateImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -29604,7 +29604,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#ImagesUpdateRequest": {
+    "com.azure.compute#UpdateImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -29892,13 +29892,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#ImagesGet": {
+    "com.azure.compute#GetImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ImagesGetRequest"
+        "target": "com.azure.compute#GetImageRequest"
       },
       "output": {
-        "target": "com.azure.compute#ImagesGetResponse"
+        "target": "com.azure.compute#GetImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -29911,7 +29911,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#ImagesGetResponse": {
+    "com.azure.compute#GetImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -30000,7 +30000,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#ImagesGetRequest": {
+    "com.azure.compute#GetImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -30039,10 +30039,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ImagesListByResourceGroup": {
+    "com.azure.compute#ListImageByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ImagesListByResourceGroupRequest"
+        "target": "com.azure.compute#ListImageByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.compute#ImageListResult"
@@ -30177,7 +30177,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#ImagesListByResourceGroupRequest": {
+    "com.azure.compute#ListImageByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -30201,10 +30201,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#DedicatedHostsRestart": {
+    "com.azure.compute#RestartDedicatedHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostsRestartRequest"
+        "target": "com.azure.compute#RestartDedicatedHostRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -30220,7 +30220,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#DedicatedHostsRestartRequest": {
+    "com.azure.compute#RestartDedicatedHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -30319,10 +30319,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#DedicatedHostsListAvailableSizes": {
+    "com.azure.compute#ListDedicatedHostAvailableSizes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostsListAvailableSizesRequest"
+        "target": "com.azure.compute#ListDedicatedHostAvailableSizesRequest"
       },
       "output": {
         "target": "com.azure.compute#DedicatedHostSizeListResult"
@@ -30367,7 +30367,7 @@
         "smithy.api#documentation": "The list of dedicated host sizes."
       }
     },
-    "com.azure.compute#DedicatedHostsListAvailableSizesRequest": {
+    "com.azure.compute#ListDedicatedHostAvailableSizesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -30407,10 +30407,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#DedicatedHostsDelete": {
+    "com.azure.compute#DeleteDedicatedHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostsDeleteRequest"
+        "target": "com.azure.compute#DeleteDedicatedHostRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -30426,7 +30426,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#DedicatedHostsDeleteRequest": {
+    "com.azure.compute#DeleteDedicatedHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -30466,13 +30466,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#DedicatedHostsUpdate": {
+    "com.azure.compute#UpdateDedicatedHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostsUpdateRequest"
+        "target": "com.azure.compute#UpdateDedicatedHostRequest"
       },
       "output": {
-        "target": "com.azure.compute#DedicatedHostsUpdateResponse"
+        "target": "com.azure.compute#UpdateDedicatedHostResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -30485,7 +30485,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#DedicatedHostsUpdateResponse": {
+    "com.azure.compute#UpdateDedicatedHostResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -30742,7 +30742,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#DedicatedHostsUpdateRequest": {
+    "com.azure.compute#UpdateDedicatedHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -31005,13 +31005,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#DedicatedHostsGet": {
+    "com.azure.compute#GetDedicatedHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostsGetRequest"
+        "target": "com.azure.compute#GetDedicatedHostRequest"
       },
       "output": {
-        "target": "com.azure.compute#DedicatedHostsGetResponse"
+        "target": "com.azure.compute#GetDedicatedHostResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -31024,7 +31024,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#DedicatedHostsGetResponse": {
+    "com.azure.compute#GetDedicatedHostResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -31094,7 +31094,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#DedicatedHostsGetRequest": {
+    "com.azure.compute#GetDedicatedHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -31165,10 +31165,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#DedicatedHostsListByHostGroup": {
+    "com.azure.compute#ListDedicatedHostByHostGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostsListByHostGroupRequest"
+        "target": "com.azure.compute#ListDedicatedHostByHostGroupRequest"
       },
       "output": {
         "target": "com.azure.compute#DedicatedHostListResult"
@@ -31284,7 +31284,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#DedicatedHostsListByHostGroupRequest": {
+    "com.azure.compute#ListDedicatedHostByHostGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -31316,10 +31316,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#DedicatedHostGroupsDelete": {
+    "com.azure.compute#DeleteDedicatedHostGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostGroupsDeleteRequest"
+        "target": "com.azure.compute#DeleteDedicatedHostGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -31335,7 +31335,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#DedicatedHostGroupsDeleteRequest": {
+    "com.azure.compute#DeleteDedicatedHostGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -31367,13 +31367,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#DedicatedHostGroupsUpdate": {
+    "com.azure.compute#UpdateDedicatedHostGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostGroupsUpdateRequest"
+        "target": "com.azure.compute#UpdateDedicatedHostGroupRequest"
       },
       "output": {
-        "target": "com.azure.compute#DedicatedHostGroupsUpdateResponse"
+        "target": "com.azure.compute#UpdateDedicatedHostGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -31386,7 +31386,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#DedicatedHostGroupsUpdateResponse": {
+    "com.azure.compute#UpdateDedicatedHostGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -31600,7 +31600,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#DedicatedHostGroupsUpdateRequest": {
+    "com.azure.compute#UpdateDedicatedHostGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -31873,13 +31873,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#DedicatedHostGroupsGet": {
+    "com.azure.compute#GetDedicatedHostGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostGroupsGetRequest"
+        "target": "com.azure.compute#GetDedicatedHostGroupRequest"
       },
       "output": {
-        "target": "com.azure.compute#DedicatedHostGroupsGetResponse"
+        "target": "com.azure.compute#GetDedicatedHostGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -31892,7 +31892,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#DedicatedHostGroupsGetResponse": {
+    "com.azure.compute#GetDedicatedHostGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -31970,7 +31970,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#DedicatedHostGroupsGetRequest": {
+    "com.azure.compute#GetDedicatedHostGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32033,10 +32033,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#DedicatedHostGroupsListByResourceGroup": {
+    "com.azure.compute#ListDedicatedHostGroupByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostGroupsListByResourceGroupRequest"
+        "target": "com.azure.compute#ListDedicatedHostGroupByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.compute#DedicatedHostGroupListResult"
@@ -32160,7 +32160,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#DedicatedHostGroupsListByResourceGroupRequest": {
+    "com.azure.compute#ListDedicatedHostGroupByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32184,10 +32184,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#CapacityReservationsDelete": {
+    "com.azure.compute#DeleteCapacityReservation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#CapacityReservationsDeleteRequest"
+        "target": "com.azure.compute#DeleteCapacityReservationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -32203,7 +32203,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#CapacityReservationsDeleteRequest": {
+    "com.azure.compute#DeleteCapacityReservationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32243,13 +32243,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#CapacityReservationsUpdate": {
+    "com.azure.compute#UpdateCapacityReservation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#CapacityReservationsUpdateRequest"
+        "target": "com.azure.compute#UpdateCapacityReservationRequest"
       },
       "output": {
-        "target": "com.azure.compute#CapacityReservationsUpdateResponse"
+        "target": "com.azure.compute#UpdateCapacityReservationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32262,7 +32262,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#CapacityReservationsUpdateResponse": {
+    "com.azure.compute#UpdateCapacityReservationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -32614,7 +32614,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#CapacityReservationsUpdateRequest": {
+    "com.azure.compute#UpdateCapacityReservationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -32921,13 +32921,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#CapacityReservationsGet": {
+    "com.azure.compute#GetCapacityReservation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#CapacityReservationsGetRequest"
+        "target": "com.azure.compute#GetCapacityReservationRequest"
       },
       "output": {
-        "target": "com.azure.compute#CapacityReservationsGetResponse"
+        "target": "com.azure.compute#GetCapacityReservationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32940,7 +32940,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#CapacityReservationsGetResponse": {
+    "com.azure.compute#GetCapacityReservationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -33025,7 +33025,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#CapacityReservationsGetRequest": {
+    "com.azure.compute#GetCapacityReservationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33084,10 +33084,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#CapacityReservationsListByCapacityReservationGroup": {
+    "com.azure.compute#ListCapacityReservationByCapacityReservationGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#CapacityReservationsListByCapacityReservationGroupRequest"
+        "target": "com.azure.compute#ListCapacityReservationByCapacityReservationGroupRequest"
       },
       "output": {
         "target": "com.azure.compute#CapacityReservationListResult"
@@ -33218,7 +33218,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#CapacityReservationsListByCapacityReservationGroupRequest": {
+    "com.azure.compute#ListCapacityReservationByCapacityReservationGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33275,10 +33275,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#CapacityReservationGroupsDelete": {
+    "com.azure.compute#DeleteCapacityReservationGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#CapacityReservationGroupsDeleteRequest"
+        "target": "com.azure.compute#DeleteCapacityReservationGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -33294,7 +33294,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#CapacityReservationGroupsDeleteRequest": {
+    "com.azure.compute#DeleteCapacityReservationGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33326,13 +33326,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#CapacityReservationGroupsUpdate": {
+    "com.azure.compute#UpdateCapacityReservationGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#CapacityReservationGroupsUpdateRequest"
+        "target": "com.azure.compute#UpdateCapacityReservationGroupRequest"
       },
       "output": {
-        "target": "com.azure.compute#CapacityReservationGroupsUpdateResponse"
+        "target": "com.azure.compute#UpdateCapacityReservationGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -33345,7 +33345,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#CapacityReservationGroupsUpdateResponse": {
+    "com.azure.compute#UpdateCapacityReservationGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -33651,7 +33651,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#CapacityReservationGroupsUpdateRequest": {
+    "com.azure.compute#UpdateCapacityReservationGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -33902,13 +33902,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#CapacityReservationGroupsGet": {
+    "com.azure.compute#GetCapacityReservationGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#CapacityReservationGroupsGetRequest"
+        "target": "com.azure.compute#GetCapacityReservationGroupRequest"
       },
       "output": {
-        "target": "com.azure.compute#CapacityReservationGroupsGetResponse"
+        "target": "com.azure.compute#GetCapacityReservationGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -33921,7 +33921,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#CapacityReservationGroupsGetResponse": {
+    "com.azure.compute#GetCapacityReservationGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -33999,7 +33999,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#CapacityReservationGroupsGetRequest": {
+    "com.azure.compute#GetCapacityReservationGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34050,10 +34050,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#CapacityReservationGroupsListByResourceGroup": {
+    "com.azure.compute#ListCapacityReservationGroupByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#CapacityReservationGroupsListByResourceGroupRequest"
+        "target": "com.azure.compute#ListCapacityReservationGroupByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.compute#CapacityReservationGroupListResult"
@@ -34177,7 +34177,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#CapacityReservationGroupsListByResourceGroupRequest": {
+    "com.azure.compute#ListCapacityReservationGroupByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34226,10 +34226,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#AvailabilitySetsListAvailableSizes": {
+    "com.azure.compute#ListAvailabilitySetAvailableSizes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#AvailabilitySetsListAvailableSizesRequest"
+        "target": "com.azure.compute#ListAvailabilitySetAvailableSizesRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineSizeListResult"
@@ -34245,7 +34245,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#AvailabilitySetsListAvailableSizesRequest": {
+    "com.azure.compute#ListAvailabilitySetAvailableSizesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34277,10 +34277,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#AvailabilitySetsValidateMigrationToVirtualMachineScaleSet": {
+    "com.azure.compute#SetAvailabilitySetValidateMigrationToVirtualMachineScale": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#AvailabilitySetsValidateMigrationToVirtualMachineScaleSetRequest"
+        "target": "com.azure.compute#SetAvailabilitySetValidateMigrationToVirtualMachineScaleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -34296,7 +34296,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#AvailabilitySetsValidateMigrationToVirtualMachineScaleSetRequest": {
+    "com.azure.compute#SetAvailabilitySetValidateMigrationToVirtualMachineScaleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34415,10 +34415,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#AvailabilitySetsConvertToVirtualMachineScaleSet": {
+    "com.azure.compute#SetAvailabilitySetConvertToVirtualMachineScale": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#AvailabilitySetsConvertToVirtualMachineScaleSetRequest"
+        "target": "com.azure.compute#SetAvailabilitySetConvertToVirtualMachineScaleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -34434,7 +34434,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#AvailabilitySetsConvertToVirtualMachineScaleSetRequest": {
+    "com.azure.compute#SetAvailabilitySetConvertToVirtualMachineScaleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34472,10 +34472,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#AvailabilitySetsCancelMigrationToVirtualMachineScaleSet": {
+    "com.azure.compute#SetAvailabilitySetCancelMigrationToVirtualMachineScale": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#AvailabilitySetsCancelMigrationToVirtualMachineScaleSetRequest"
+        "target": "com.azure.compute#SetAvailabilitySetCancelMigrationToVirtualMachineScaleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -34491,7 +34491,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#AvailabilitySetsCancelMigrationToVirtualMachineScaleSetRequest": {
+    "com.azure.compute#SetAvailabilitySetCancelMigrationToVirtualMachineScaleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34523,10 +34523,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#AvailabilitySetsDelete": {
+    "com.azure.compute#DeleteAvailabilitySet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#AvailabilitySetsDeleteRequest"
+        "target": "com.azure.compute#DeleteAvailabilitySetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -34542,7 +34542,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#AvailabilitySetsDeleteRequest": {
+    "com.azure.compute#DeleteAvailabilitySetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -34574,13 +34574,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#AvailabilitySetsUpdate": {
+    "com.azure.compute#UpdateAvailabilitySet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#AvailabilitySetsUpdateRequest"
+        "target": "com.azure.compute#UpdateAvailabilitySetRequest"
       },
       "output": {
-        "target": "com.azure.compute#AvailabilitySetsUpdateResponse"
+        "target": "com.azure.compute#UpdateAvailabilitySetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -34593,7 +34593,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#AvailabilitySetsUpdateResponse": {
+    "com.azure.compute#UpdateAvailabilitySetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -34809,7 +34809,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#AvailabilitySetsUpdateRequest": {
+    "com.azure.compute#UpdateAvailabilitySetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35096,13 +35096,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#AvailabilitySetsGet": {
+    "com.azure.compute#GetAvailabilitySet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#AvailabilitySetsGetRequest"
+        "target": "com.azure.compute#GetAvailabilitySetRequest"
       },
       "output": {
-        "target": "com.azure.compute#AvailabilitySetsGetResponse"
+        "target": "com.azure.compute#GetAvailabilitySetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35115,7 +35115,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#AvailabilitySetsGetResponse": {
+    "com.azure.compute#GetAvailabilitySetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -35184,7 +35184,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#AvailabilitySetsGetRequest": {
+    "com.azure.compute#GetAvailabilitySetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35216,10 +35216,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#AvailabilitySetsList": {
+    "com.azure.compute#ListAvailabilitySets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#AvailabilitySetsListRequest"
+        "target": "com.azure.compute#ListAvailabilitySetsRequest"
       },
       "output": {
         "target": "com.azure.compute#AvailabilitySetListResult"
@@ -35334,7 +35334,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#AvailabilitySetsListRequest": {
+    "com.azure.compute#ListAvailabilitySetsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35358,10 +35358,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachinesListAll": {
+    "com.azure.compute#ListVirtualMachineAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesListAllRequest"
+        "target": "com.azure.compute#ListVirtualMachineAllRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineListResult"
@@ -35377,7 +35377,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachinesListAllRequest": {
+    "com.azure.compute#ListVirtualMachineAllRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35426,10 +35426,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineScaleSetsListAll": {
+    "com.azure.compute#ListVirtualMachineScaleSetAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsListAllRequest"
+        "target": "com.azure.compute#ListVirtualMachineScaleSetAllRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineScaleSetListWithLinkResult"
@@ -35475,7 +35475,7 @@
         "smithy.api#documentation": "The list of virtual machine scale sets."
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsListAllRequest": {
+    "com.azure.compute#ListVirtualMachineScaleSetAllRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35491,10 +35491,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#SshPublicKeysListBySubscription": {
+    "com.azure.compute#ListSshPublicKeyBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#SshPublicKeysListBySubscriptionRequest"
+        "target": "com.azure.compute#ListSshPublicKeyBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.compute#SshPublicKeysGroupListResult"
@@ -35510,7 +35510,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#SshPublicKeysListBySubscriptionRequest": {
+    "com.azure.compute#ListSshPublicKeyBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35561,10 +35561,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsListBySubscription": {
+    "com.azure.compute#ListProximityPlacementGroupBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ProximityPlacementGroupsListBySubscriptionRequest"
+        "target": "com.azure.compute#ListProximityPlacementGroupBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.compute#ProximityPlacementGroupListResult"
@@ -35580,7 +35580,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#ProximityPlacementGroupsListBySubscriptionRequest": {
+    "com.azure.compute#ListProximityPlacementGroupBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35596,10 +35596,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineSizesList": {
+    "com.azure.compute#ListVirtualMachineSizes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineSizesListRequest"
+        "target": "com.azure.compute#ListVirtualMachineSizesRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineSizeListResult"
@@ -35615,7 +35615,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineSizesListRequest": {
+    "com.azure.compute#ListVirtualMachineSizesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35639,10 +35639,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachinesListByLocation": {
+    "com.azure.compute#ListVirtualMachineByLocation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachinesListByLocationRequest"
+        "target": "com.azure.compute#ListVirtualMachineByLocationRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineListResult"
@@ -35658,7 +35658,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachinesListByLocationRequest": {
+    "com.azure.compute#ListVirtualMachineByLocationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35682,10 +35682,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsListByLocation": {
+    "com.azure.compute#ListVirtualMachineScaleSetByLocation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineScaleSetsListByLocationRequest"
+        "target": "com.azure.compute#ListVirtualMachineScaleSetByLocationRequest"
       },
       "output": {
         "target": "com.azure.compute#VirtualMachineScaleSetListResult"
@@ -35701,7 +35701,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineScaleSetsListByLocationRequest": {
+    "com.azure.compute#ListVirtualMachineScaleSetByLocationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35725,10 +35725,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#UsageList": {
+    "com.azure.compute#ListUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#UsageListRequest"
+        "target": "com.azure.compute#ListUsageRequest"
       },
       "output": {
         "target": "com.azure.compute#ListUsagesResult"
@@ -35844,7 +35844,7 @@
         "smithy.api#documentation": "An enum describing the unit of usage measurement."
       }
     },
-    "com.azure.compute#UsageListRequest": {
+    "com.azure.compute#ListUsageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -35868,13 +35868,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsGet": {
+    "com.azure.compute#GetVirtualMachineRunCommand": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsGetRequest"
+        "target": "com.azure.compute#GetVirtualMachineRunCommandRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsGetResponse"
+        "target": "com.azure.compute#GetVirtualMachineRunCommandResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35887,7 +35887,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsGetResponse": {
+    "com.azure.compute#GetVirtualMachineRunCommandResponse": {
       "type": "structure",
       "members": {
         "_schema": {
@@ -35996,7 +35996,7 @@
         "smithy.api#documentation": "The script to be executed."
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsGetRequest": {
+    "com.azure.compute#GetVirtualMachineRunCommandRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36028,10 +36028,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsList": {
+    "com.azure.compute#ListVirtualMachineRunCommands": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineRunCommandsListRequest"
+        "target": "com.azure.compute#ListVirtualMachineRunCommandsRequest"
       },
       "output": {
         "target": "com.azure.compute#RunCommandListResult"
@@ -36121,7 +36121,7 @@
         "smithy.api#documentation": "Describes the properties of a Run Command metadata."
       }
     },
-    "com.azure.compute#VirtualMachineRunCommandsListRequest": {
+    "com.azure.compute#ListVirtualMachineRunCommandsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36145,13 +36145,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesGet": {
+    "com.azure.compute#GetVirtualMachineImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesGetRequest"
+        "target": "com.azure.compute#GetVirtualMachineImageRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesGetResponse"
+        "target": "com.azure.compute#GetVirtualMachineImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36164,7 +36164,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesGetResponse": {
+    "com.azure.compute#GetVirtualMachineImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -36562,7 +36562,7 @@
         "smithy.api#documentation": "Specifies the tags that are assigned to the virtual machine. For more information about using tags, see [Using tags to organize your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md)."
       }
     },
-    "com.azure.compute#VirtualMachineImagesGetRequest": {
+    "com.azure.compute#GetVirtualMachineImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36618,13 +36618,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesList": {
+    "com.azure.compute#ListVirtualMachineImages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesListRequest"
+        "target": "com.azure.compute#ListVirtualMachineImagesRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesListResponse"
+        "target": "com.azure.compute#ListVirtualMachineImagesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36637,7 +36637,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesListResponse": {
+    "com.azure.compute#ListVirtualMachineImagesResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -36731,7 +36731,7 @@
         "smithy.api#documentation": "Specifies the tags that are assigned to the virtual machine. For more information about using tags, see [Using tags to organize your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md)."
       }
     },
-    "com.azure.compute#VirtualMachineImagesListRequest": {
+    "com.azure.compute#ListVirtualMachineImagesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36798,13 +36798,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesListSkus": {
+    "com.azure.compute#ListVirtualMachineImageSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesListSkusRequest"
+        "target": "com.azure.compute#ListVirtualMachineImageSkusRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesListSkusResponse"
+        "target": "com.azure.compute#ListVirtualMachineImageSkusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36817,7 +36817,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesListSkusResponse": {
+    "com.azure.compute#ListVirtualMachineImageSkusResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -36839,7 +36839,7 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineImagesListSkusRequest": {
+    "com.azure.compute#ListVirtualMachineImageSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36879,13 +36879,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesListOffers": {
+    "com.azure.compute#ListVirtualMachineImageOffers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesListOffersRequest"
+        "target": "com.azure.compute#ListVirtualMachineImageOffersRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesListOffersResponse"
+        "target": "com.azure.compute#ListVirtualMachineImageOffersResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36898,7 +36898,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesListOffersResponse": {
+    "com.azure.compute#ListVirtualMachineImageOffersResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -36920,7 +36920,7 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineImagesListOffersRequest": {
+    "com.azure.compute#ListVirtualMachineImageOffersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -36952,13 +36952,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineExtensionImagesGet": {
+    "com.azure.compute#GetVirtualMachineExtensionImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineExtensionImagesGetRequest"
+        "target": "com.azure.compute#GetVirtualMachineExtensionImageRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineExtensionImagesGetResponse"
+        "target": "com.azure.compute#GetVirtualMachineExtensionImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36971,7 +36971,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineExtensionImagesGetResponse": {
+    "com.azure.compute#GetVirtualMachineExtensionImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -37245,7 +37245,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineExtensionImagesGetRequest": {
+    "com.azure.compute#GetVirtualMachineExtensionImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -37290,13 +37290,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineExtensionImagesListVersions": {
+    "com.azure.compute#ListVirtualMachineExtensionImageVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineExtensionImagesListVersionsRequest"
+        "target": "com.azure.compute#ListVirtualMachineExtensionImageVersionsRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineExtensionImagesListVersionsResponse"
+        "target": "com.azure.compute#ListVirtualMachineExtensionImageVersionsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37309,7 +37309,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineExtensionImagesListVersionsResponse": {
+    "com.azure.compute#ListVirtualMachineExtensionImageVersionsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -37394,7 +37394,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.compute#VirtualMachineExtensionImagesListVersionsRequest": {
+    "com.azure.compute#ListVirtualMachineExtensionImageVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -37470,13 +37470,13 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineExtensionImagesListTypes": {
+    "com.azure.compute#ListVirtualMachineExtensionImageTypes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineExtensionImagesListTypesRequest"
+        "target": "com.azure.compute#ListVirtualMachineExtensionImageTypesRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineExtensionImagesListTypesResponse"
+        "target": "com.azure.compute#ListVirtualMachineExtensionImageTypesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37489,7 +37489,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineExtensionImagesListTypesResponse": {
+    "com.azure.compute#ListVirtualMachineExtensionImageTypesResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -37511,7 +37511,7 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineExtensionImagesListTypesRequest": {
+    "com.azure.compute#ListVirtualMachineExtensionImageTypesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -37542,13 +37542,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesListPublishers": {
+    "com.azure.compute#ListVirtualMachineImagePublishers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesListPublishersRequest"
+        "target": "com.azure.compute#ListVirtualMachineImagePublishersRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesListPublishersResponse"
+        "target": "com.azure.compute#ListVirtualMachineImagePublishersResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37561,7 +37561,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesListPublishersResponse": {
+    "com.azure.compute#ListVirtualMachineImagePublishersResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -37583,7 +37583,7 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineImagesListPublishersRequest": {
+    "com.azure.compute#ListVirtualMachineImagePublishersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -37729,10 +37729,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#LogAnalyticsExportRequestRateByInterval": {
+    "com.azure.compute#RequestLogAnalyticExportRateByInterval": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#LogAnalyticsExportRequestRateByIntervalRequest"
+        "target": "com.azure.compute#RequestLogAnalyticExportRateByIntervalRequest"
       },
       "output": {
         "target": "com.azure.compute#LogAnalyticsOperationResult"
@@ -37748,7 +37748,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#LogAnalyticsExportRequestRateByIntervalRequest": {
+    "com.azure.compute#RequestLogAnalyticExportRateByIntervalRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -37862,10 +37862,10 @@
         "smithy.api#documentation": "Interval value in minutes used to create LogAnalytics call rate logs."
       }
     },
-    "com.azure.compute#VirtualMachineImagesListByEdgeZone": {
+    "com.azure.compute#ListVirtualMachineImageByEdgeZone": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesListByEdgeZoneRequest"
+        "target": "com.azure.compute#ListVirtualMachineImageByEdgeZoneRequest"
       },
       "output": {
         "target": "com.azure.compute#VmImagesInEdgeZoneListResult"
@@ -37910,7 +37910,7 @@
         "smithy.api#documentation": "The list of VMImages in EdgeZone"
       }
     },
-    "com.azure.compute#VirtualMachineImagesListByEdgeZoneRequest": {
+    "com.azure.compute#ListVirtualMachineImageByEdgeZoneRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -37942,13 +37942,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneGet": {
+    "com.azure.compute#GetVirtualMachineImageEdgeZone": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneGetRequest"
+        "target": "com.azure.compute#GetVirtualMachineImageEdgeZoneRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneGetResponse"
+        "target": "com.azure.compute#GetVirtualMachineImageEdgeZoneResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37961,7 +37961,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneGetResponse": {
+    "com.azure.compute#GetVirtualMachineImageEdgeZoneResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -38039,7 +38039,7 @@
         "smithy.api#documentation": "Specifies the tags that are assigned to the virtual machine. For more information about using tags, see [Using tags to organize your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md)."
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneGetRequest": {
+    "com.azure.compute#GetVirtualMachineImageEdgeZoneRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38103,13 +38103,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneList": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZone": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListRequest"
+        "target": "com.azure.compute#ListVirtualMachineImageEdgeZoneRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListResponse"
+        "target": "com.azure.compute#ListVirtualMachineImageEdgeZoneResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -38122,7 +38122,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListResponse": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZoneResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -38144,7 +38144,7 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListRequest": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZoneRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38221,13 +38221,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListSkus": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZoneSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListSkusRequest"
+        "target": "com.azure.compute#ListVirtualMachineImageEdgeZoneSkusRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListSkusResponse"
+        "target": "com.azure.compute#ListVirtualMachineImageEdgeZoneSkusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -38240,7 +38240,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListSkusResponse": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZoneSkusResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -38262,7 +38262,7 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListSkusRequest": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZoneSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38310,13 +38310,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListOffers": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZoneOffers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListOffersRequest"
+        "target": "com.azure.compute#ListVirtualMachineImageEdgeZoneOffersRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListOffersResponse"
+        "target": "com.azure.compute#ListVirtualMachineImageEdgeZoneOffersResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -38329,7 +38329,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListOffersResponse": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZoneOffersResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -38351,7 +38351,7 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListOffersRequest": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZoneOffersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38391,13 +38391,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListPublishers": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZonePublishers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListPublishersRequest"
+        "target": "com.azure.compute#ListVirtualMachineImageEdgeZonePublishersRequest"
       },
       "output": {
-        "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListPublishersResponse"
+        "target": "com.azure.compute#ListVirtualMachineImageEdgeZonePublishersResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -38410,7 +38410,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListPublishersResponse": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZonePublishersResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -38432,7 +38432,7 @@
       },
       "traits": {}
     },
-    "com.azure.compute#VirtualMachineImagesEdgeZoneListPublishersRequest": {
+    "com.azure.compute#ListVirtualMachineImageEdgeZonePublishersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38464,10 +38464,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#InterconnectBlocksListBySubscription": {
+    "com.azure.compute#ListInterconnectBlockBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#InterconnectBlocksListBySubscriptionRequest"
+        "target": "com.azure.compute#ListInterconnectBlockBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.compute#InterconnectBlockListResult"
@@ -38483,7 +38483,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#InterconnectBlocksListBySubscriptionRequest": {
+    "com.azure.compute#ListInterconnectBlockBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38499,10 +38499,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ImagesList": {
+    "com.azure.compute#ListImages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ImagesListRequest"
+        "target": "com.azure.compute#ListImagesRequest"
       },
       "output": {
         "target": "com.azure.compute#ImageListResult"
@@ -38518,7 +38518,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#ImagesListRequest": {
+    "com.azure.compute#ListImagesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38534,10 +38534,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#DedicatedHostGroupsListBySubscription": {
+    "com.azure.compute#ListDedicatedHostGroupBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#DedicatedHostGroupsListBySubscriptionRequest"
+        "target": "com.azure.compute#ListDedicatedHostGroupBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.compute#DedicatedHostGroupListResult"
@@ -38553,7 +38553,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#DedicatedHostGroupsListBySubscriptionRequest": {
+    "com.azure.compute#ListDedicatedHostGroupBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38569,10 +38569,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#CapacityReservationGroupsListBySubscription": {
+    "com.azure.compute#ListCapacityReservationGroupBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#CapacityReservationGroupsListBySubscriptionRequest"
+        "target": "com.azure.compute#ListCapacityReservationGroupBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.compute#CapacityReservationGroupListResult"
@@ -38588,7 +38588,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#CapacityReservationGroupsListBySubscriptionRequest": {
+    "com.azure.compute#ListCapacityReservationGroupBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38660,10 +38660,10 @@
       },
       "traits": {}
     },
-    "com.azure.compute#AvailabilitySetsListBySubscription": {
+    "com.azure.compute#ListAvailabilitySetBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#AvailabilitySetsListBySubscriptionRequest"
+        "target": "com.azure.compute#ListAvailabilitySetBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.compute#AvailabilitySetListResult"
@@ -38679,7 +38679,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.compute#AvailabilitySetsListBySubscriptionRequest": {
+    "com.azure.compute#ListAvailabilitySetBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -38904,13 +38904,13 @@
         "smithy.api#documentation": "The desired regions"
       }
     },
-    "com.azure.compute#SpotPlacementScoresGet": {
+    "com.azure.compute#GetSpotPlacementScore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#SpotPlacementScoresGetRequest"
+        "target": "com.azure.compute#GetSpotPlacementScoreRequest"
       },
       "output": {
-        "target": "com.azure.compute#SpotPlacementScoresGetResponse"
+        "target": "com.azure.compute#GetSpotPlacementScoreResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -38923,7 +38923,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-05"
       }
     },
-    "com.azure.compute#SpotPlacementScoresGetResponse": {
+    "com.azure.compute#GetSpotPlacementScoreResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -38984,7 +38984,7 @@
         "smithy.api#documentation": "Describes what are the supported resource types for a diagnostic."
       }
     },
-    "com.azure.compute#SpotPlacementScoresGetRequest": {
+    "com.azure.compute#GetSpotPlacementScoreRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -39008,10 +39008,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ContainerServicesListByResourceGroup": {
+    "com.azure.compute#ListContainerServiceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ContainerServicesListByResourceGroupRequest"
+        "target": "com.azure.compute#ListContainerServiceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.compute#ContainerServiceListResult"
@@ -39772,7 +39772,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.compute#ContainerServicesListByResourceGroupRequest": {
+    "com.azure.compute#ListContainerServiceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -39796,10 +39796,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ContainerServicesDelete": {
+    "com.azure.compute#DeleteContainerService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ContainerServicesDeleteRequest"
+        "target": "com.azure.compute#DeleteContainerServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -39815,7 +39815,7 @@
         "com.distilled.openapi#apiVersion": "2017-01-31"
       }
     },
-    "com.azure.compute#ContainerServicesDeleteRequest": {
+    "com.azure.compute#DeleteContainerServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -40449,13 +40449,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.compute#ContainerServicesGet": {
+    "com.azure.compute#GetContainerService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ContainerServicesGetRequest"
+        "target": "com.azure.compute#GetContainerServiceRequest"
       },
       "output": {
-        "target": "com.azure.compute#ContainerServicesGetResponse"
+        "target": "com.azure.compute#GetContainerServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -40468,7 +40468,7 @@
         "com.distilled.openapi#apiVersion": "2017-01-31"
       }
     },
-    "com.azure.compute#ContainerServicesGetResponse": {
+    "com.azure.compute#GetContainerServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -40522,7 +40522,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.compute#ContainerServicesGetRequest": {
+    "com.azure.compute#GetContainerServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -40554,10 +40554,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.compute#ContainerServicesList": {
+    "com.azure.compute#ListContainerServices": {
       "type": "operation",
       "input": {
-        "target": "com.azure.compute#ContainerServicesListRequest"
+        "target": "com.azure.compute#ListContainerServicesRequest"
       },
       "output": {
         "target": "com.azure.compute#ContainerServiceListResult"
@@ -40573,7 +40573,7 @@
         "com.distilled.openapi#apiVersion": "2017-01-31"
       }
     },
-    "com.azure.compute#ContainerServicesListRequest": {
+    "com.azure.compute#ListContainerServicesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -40594,16 +40594,16 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.compute#VirtualMachineBulkOperationsBulkStart"
+          "target": "com.azure.compute#StartVirtualMachineBulkOperationBulk"
         },
         {
           "target": "com.azure.compute#VirtualMachineBulkOperationsBulkHibernate"
         },
         {
-          "target": "com.azure.compute#VirtualMachineBulkOperationsBulkGetOperationsStatus"
+          "target": "com.azure.compute#GetVirtualMachineBulkOperationBulkOperationStatus"
         },
         {
-          "target": "com.azure.compute#VirtualMachineBulkOperationsBulkDelete"
+          "target": "com.azure.compute#DeleteVirtualMachineBulkOperationBulk"
         },
         {
           "target": "com.azure.compute#VirtualMachineBulkOperationsBulkDeallocate"
@@ -40612,31 +40612,31 @@
           "target": "com.azure.compute#VirtualMachineBulkOperationsBulkCancel"
         },
         {
-          "target": "com.azure.compute#OperationsList"
+          "target": "com.azure.compute#ListOperations"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesListAvailableSizes"
+          "target": "com.azure.compute#ListVirtualMachineAvailableSizes"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesStart"
+          "target": "com.azure.compute#StartVirtualMachine"
         },
         {
           "target": "com.azure.compute#VirtualMachinesSimulateEviction"
         },
         {
-          "target": "com.azure.compute#VirtualMachineRunCommandsDelete"
+          "target": "com.azure.compute#DeleteVirtualMachineRunCommand"
         },
         {
-          "target": "com.azure.compute#VirtualMachineRunCommandsUpdate"
+          "target": "com.azure.compute#UpdateVirtualMachineRunCommand"
         },
         {
           "target": "com.azure.compute#VirtualMachineRunCommandsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#VirtualMachineRunCommandsGetByVirtualMachine"
+          "target": "com.azure.compute#GetVirtualMachineRunCommandByVirtualMachine"
         },
         {
-          "target": "com.azure.compute#VirtualMachineRunCommandsListByVirtualMachine"
+          "target": "com.azure.compute#ListVirtualMachineRunCommandByVirtualMachine"
         },
         {
           "target": "com.azure.compute#VirtualMachinesRunCommand"
@@ -40645,7 +40645,7 @@
           "target": "com.azure.compute#VirtualMachinesRetrieveBootDiagnosticsData"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesRestart"
+          "target": "com.azure.compute#RestartVirtualMachine"
         },
         {
           "target": "com.azure.compute#VirtualMachinesReimage"
@@ -40663,7 +40663,7 @@
           "target": "com.azure.compute#VirtualMachinesPerformMaintenance"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesMigrateToVMScaleSet"
+          "target": "com.azure.compute#SetVirtualMachineMigrateToVmScale"
         },
         {
           "target": "com.azure.compute#VirtualMachinesInstanceView"
@@ -40675,34 +40675,34 @@
           "target": "com.azure.compute#VirtualMachinesGeneralize"
         },
         {
-          "target": "com.azure.compute#VirtualMachineExtensionsDelete"
+          "target": "com.azure.compute#DeleteVirtualMachineExtension"
         },
         {
-          "target": "com.azure.compute#VirtualMachineExtensionsUpdate"
+          "target": "com.azure.compute#UpdateVirtualMachineExtension"
         },
         {
           "target": "com.azure.compute#VirtualMachineExtensionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#VirtualMachineExtensionsGet"
+          "target": "com.azure.compute#GetVirtualMachineExtension"
         },
         {
-          "target": "com.azure.compute#VirtualMachineExtensionsList"
+          "target": "com.azure.compute#ListVirtualMachineExtensions"
         },
         {
-          "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsDelete"
+          "target": "com.azure.compute#DeleteVirtualMachineDiagnosticRunCommand"
         },
         {
-          "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsUpdate"
+          "target": "com.azure.compute#UpdateVirtualMachineDiagnosticRunCommand"
         },
         {
           "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsGetByVirtualMachine"
+          "target": "com.azure.compute#GetVirtualMachineDiagnosticRunCommandByVirtualMachine"
         },
         {
-          "target": "com.azure.compute#VirtualMachineDiagnosticRunCommandsDiagnosticListByVirtualMachine"
+          "target": "com.azure.compute#ListVirtualMachineDiagnosticRunCommandDiagnosticByVirtualMachine"
         },
         {
           "target": "com.azure.compute#VirtualMachinesDeallocate"
@@ -40720,25 +40720,25 @@
           "target": "com.azure.compute#VirtualMachinesAssessPatches"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesDelete"
+          "target": "com.azure.compute#DeleteVirtualMachine"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesUpdate"
+          "target": "com.azure.compute#UpdateVirtualMachine"
         },
         {
           "target": "com.azure.compute#VirtualMachinesCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesGet"
+          "target": "com.azure.compute#GetVirtualMachine"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesList"
+          "target": "com.azure.compute#ListVirtualMachines"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetVMsStart"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsSimulateEviction"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsSimulateEviction"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetVMRunCommandsDelete"
@@ -40756,28 +40756,28 @@
           "target": "com.azure.compute#VirtualMachineScaleSetVMRunCommandsList"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsRunCommand"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsRunCommand"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsRetrieveBootDiagnosticsData"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsRetrieveBootDiagnosticData"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetVMsRestart"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsReimageAll"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsReimageAll"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsReimage"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsReimage"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsRedeploy"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsRedeploy"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsPowerOff"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsPowerOff"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsPerformMaintenance"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsPerformMaintenance"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetVMsGetInstanceView"
@@ -40813,13 +40813,13 @@
           "target": "com.azure.compute#VirtualMachineScaleSetVMDiagnosticRunCommandsList"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsDeallocate"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsDeallocate"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsAttachDetachDataDisks"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsAttachDetachDataDisk"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetVMsApproveRollingUpgrade"
+          "target": "com.azure.compute#SetVirtualMachineScaleVMsApproveRollingUpgrade"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetVMsDelete"
@@ -40834,13 +40834,13 @@
           "target": "com.azure.compute#VirtualMachineScaleSetVMsList"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsStart"
+          "target": "com.azure.compute#StartVirtualMachineScaleSet"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsListSkus"
+          "target": "com.azure.compute#ListVirtualMachineScaleSetSkus"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsSetOrchestrationServiceState"
+          "target": "com.azure.compute#SetVirtualMachineScaleSetOrchestrationServiceState"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetsScaleOut"
@@ -40849,10 +40849,10 @@
           "target": "com.azure.compute#VirtualMachineScaleSetRollingUpgradesGetLatest"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetRollingUpgradesCancel"
+          "target": "com.azure.compute#SetVirtualMachineScaleRollingUpgradeCancel"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsRestart"
+          "target": "com.azure.compute#RestartVirtualMachineScaleSet"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetsReimageAll"
@@ -40873,7 +40873,7 @@
           "target": "com.azure.compute#VirtualMachineScaleSetsPerformMaintenance"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsGetOSUpgradeHistory"
+          "target": "com.azure.compute#GetVirtualMachineScaleSetOsUpgradeHistory"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetRollingUpgradesStartOSUpgrade"
@@ -40882,7 +40882,7 @@
           "target": "com.azure.compute#VirtualMachineScaleSetsMigrateVMAvailabilityZone"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsUpdateInstances"
+          "target": "com.azure.compute#UpdateVirtualMachineScaleSetInstance"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetLifeCycleHookEventsUpdate"
@@ -40894,10 +40894,10 @@
           "target": "com.azure.compute#VirtualMachineScaleSetLifeCycleHookEventsList"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsGetInstanceView"
+          "target": "com.azure.compute#GetVirtualMachineScaleSetInstanceView"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalk"
+          "target": "com.azure.compute#UpdateVirtualMachineScaleSetForceRecoveryServiceFabricPlatformDomainWalk"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetExtensionsDelete"
@@ -40918,7 +40918,7 @@
           "target": "com.azure.compute#VirtualMachineScaleSetRollingUpgradesStartExtensionUpgrade"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsDeleteInstances"
+          "target": "com.azure.compute#DeleteVirtualMachineScaleSetInstance"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetsDeallocate"
@@ -40930,37 +40930,37 @@
           "target": "com.azure.compute#VirtualMachineScaleSetsApproveRollingUpgrade"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsDelete"
+          "target": "com.azure.compute#DeleteVirtualMachineScaleSet"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsUpdate"
+          "target": "com.azure.compute#UpdateVirtualMachineScaleSet"
         },
         {
           "target": "com.azure.compute#VirtualMachineScaleSetsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsGet"
+          "target": "com.azure.compute#GetVirtualMachineScaleSet"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsList"
+          "target": "com.azure.compute#ListVirtualMachineScaleSets"
         },
         {
-          "target": "com.azure.compute#SshPublicKeysGenerateKeyPair"
+          "target": "com.azure.compute#GenerateSshPublicKeyKeyPair"
         },
         {
-          "target": "com.azure.compute#SshPublicKeysDelete"
+          "target": "com.azure.compute#DeleteSshPublicKey"
         },
         {
-          "target": "com.azure.compute#SshPublicKeysUpdate"
+          "target": "com.azure.compute#UpdateSshPublicKey"
         },
         {
-          "target": "com.azure.compute#SshPublicKeysCreate"
+          "target": "com.azure.compute#CreateSshPublicKey"
         },
         {
-          "target": "com.azure.compute#SshPublicKeysGet"
+          "target": "com.azure.compute#GetSshPublicKey"
         },
         {
-          "target": "com.azure.compute#SshPublicKeysListByResourceGroup"
+          "target": "com.azure.compute#ListSshPublicKeyByResourceGroup"
         },
         {
           "target": "com.azure.compute#RestorePointsDelete"
@@ -40987,265 +40987,265 @@
           "target": "com.azure.compute#RestorePointCollectionsList"
         },
         {
-          "target": "com.azure.compute#ProximityPlacementGroupsDelete"
+          "target": "com.azure.compute#DeleteProximityPlacementGroup"
         },
         {
-          "target": "com.azure.compute#ProximityPlacementGroupsUpdate"
+          "target": "com.azure.compute#UpdateProximityPlacementGroup"
         },
         {
           "target": "com.azure.compute#ProximityPlacementGroupsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#ProximityPlacementGroupsGet"
+          "target": "com.azure.compute#GetProximityPlacementGroup"
         },
         {
-          "target": "com.azure.compute#ProximityPlacementGroupsListByResourceGroup"
+          "target": "com.azure.compute#ListProximityPlacementGroupByResourceGroup"
         },
         {
-          "target": "com.azure.compute#InterconnectBlocksDelete"
+          "target": "com.azure.compute#DeleteInterconnectBlock"
         },
         {
-          "target": "com.azure.compute#InterconnectBlocksUpdate"
+          "target": "com.azure.compute#UpdateInterconnectBlock"
         },
         {
           "target": "com.azure.compute#InterconnectBlocksCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#InterconnectBlocksGet"
+          "target": "com.azure.compute#GetInterconnectBlock"
         },
         {
-          "target": "com.azure.compute#InterconnectBlocksListByResourceGroup"
+          "target": "com.azure.compute#ListInterconnectBlockByResourceGroup"
         },
         {
-          "target": "com.azure.compute#ImagesDelete"
+          "target": "com.azure.compute#DeleteImage"
         },
         {
-          "target": "com.azure.compute#ImagesUpdate"
+          "target": "com.azure.compute#UpdateImage"
         },
         {
           "target": "com.azure.compute#ImagesCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#ImagesGet"
+          "target": "com.azure.compute#GetImage"
         },
         {
-          "target": "com.azure.compute#ImagesListByResourceGroup"
+          "target": "com.azure.compute#ListImageByResourceGroup"
         },
         {
-          "target": "com.azure.compute#DedicatedHostsRestart"
+          "target": "com.azure.compute#RestartDedicatedHost"
         },
         {
           "target": "com.azure.compute#DedicatedHostsRedeploy"
         },
         {
-          "target": "com.azure.compute#DedicatedHostsListAvailableSizes"
+          "target": "com.azure.compute#ListDedicatedHostAvailableSizes"
         },
         {
-          "target": "com.azure.compute#DedicatedHostsDelete"
+          "target": "com.azure.compute#DeleteDedicatedHost"
         },
         {
-          "target": "com.azure.compute#DedicatedHostsUpdate"
+          "target": "com.azure.compute#UpdateDedicatedHost"
         },
         {
           "target": "com.azure.compute#DedicatedHostsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#DedicatedHostsGet"
+          "target": "com.azure.compute#GetDedicatedHost"
         },
         {
-          "target": "com.azure.compute#DedicatedHostsListByHostGroup"
+          "target": "com.azure.compute#ListDedicatedHostByHostGroup"
         },
         {
-          "target": "com.azure.compute#DedicatedHostGroupsDelete"
+          "target": "com.azure.compute#DeleteDedicatedHostGroup"
         },
         {
-          "target": "com.azure.compute#DedicatedHostGroupsUpdate"
+          "target": "com.azure.compute#UpdateDedicatedHostGroup"
         },
         {
           "target": "com.azure.compute#DedicatedHostGroupsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#DedicatedHostGroupsGet"
+          "target": "com.azure.compute#GetDedicatedHostGroup"
         },
         {
-          "target": "com.azure.compute#DedicatedHostGroupsListByResourceGroup"
+          "target": "com.azure.compute#ListDedicatedHostGroupByResourceGroup"
         },
         {
-          "target": "com.azure.compute#CapacityReservationsDelete"
+          "target": "com.azure.compute#DeleteCapacityReservation"
         },
         {
-          "target": "com.azure.compute#CapacityReservationsUpdate"
+          "target": "com.azure.compute#UpdateCapacityReservation"
         },
         {
           "target": "com.azure.compute#CapacityReservationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#CapacityReservationsGet"
+          "target": "com.azure.compute#GetCapacityReservation"
         },
         {
-          "target": "com.azure.compute#CapacityReservationsListByCapacityReservationGroup"
+          "target": "com.azure.compute#ListCapacityReservationByCapacityReservationGroup"
         },
         {
-          "target": "com.azure.compute#CapacityReservationGroupsDelete"
+          "target": "com.azure.compute#DeleteCapacityReservationGroup"
         },
         {
-          "target": "com.azure.compute#CapacityReservationGroupsUpdate"
+          "target": "com.azure.compute#UpdateCapacityReservationGroup"
         },
         {
           "target": "com.azure.compute#CapacityReservationGroupsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#CapacityReservationGroupsGet"
+          "target": "com.azure.compute#GetCapacityReservationGroup"
         },
         {
-          "target": "com.azure.compute#CapacityReservationGroupsListByResourceGroup"
+          "target": "com.azure.compute#ListCapacityReservationGroupByResourceGroup"
         },
         {
-          "target": "com.azure.compute#AvailabilitySetsListAvailableSizes"
+          "target": "com.azure.compute#ListAvailabilitySetAvailableSizes"
         },
         {
-          "target": "com.azure.compute#AvailabilitySetsValidateMigrationToVirtualMachineScaleSet"
+          "target": "com.azure.compute#SetAvailabilitySetValidateMigrationToVirtualMachineScale"
         },
         {
           "target": "com.azure.compute#AvailabilitySetsStartMigrationToVirtualMachineScaleSet"
         },
         {
-          "target": "com.azure.compute#AvailabilitySetsConvertToVirtualMachineScaleSet"
+          "target": "com.azure.compute#SetAvailabilitySetConvertToVirtualMachineScale"
         },
         {
-          "target": "com.azure.compute#AvailabilitySetsCancelMigrationToVirtualMachineScaleSet"
+          "target": "com.azure.compute#SetAvailabilitySetCancelMigrationToVirtualMachineScale"
         },
         {
-          "target": "com.azure.compute#AvailabilitySetsDelete"
+          "target": "com.azure.compute#DeleteAvailabilitySet"
         },
         {
-          "target": "com.azure.compute#AvailabilitySetsUpdate"
+          "target": "com.azure.compute#UpdateAvailabilitySet"
         },
         {
           "target": "com.azure.compute#AvailabilitySetsCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#AvailabilitySetsGet"
+          "target": "com.azure.compute#GetAvailabilitySet"
         },
         {
-          "target": "com.azure.compute#AvailabilitySetsList"
+          "target": "com.azure.compute#ListAvailabilitySets"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesListAll"
+          "target": "com.azure.compute#ListVirtualMachineAll"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsListAll"
+          "target": "com.azure.compute#ListVirtualMachineScaleSetAll"
         },
         {
-          "target": "com.azure.compute#SshPublicKeysListBySubscription"
+          "target": "com.azure.compute#ListSshPublicKeyBySubscription"
         },
         {
           "target": "com.azure.compute#RestorePointCollectionsListAll"
         },
         {
-          "target": "com.azure.compute#ProximityPlacementGroupsListBySubscription"
+          "target": "com.azure.compute#ListProximityPlacementGroupBySubscription"
         },
         {
-          "target": "com.azure.compute#VirtualMachineSizesList"
+          "target": "com.azure.compute#ListVirtualMachineSizes"
         },
         {
-          "target": "com.azure.compute#VirtualMachinesListByLocation"
+          "target": "com.azure.compute#ListVirtualMachineByLocation"
         },
         {
-          "target": "com.azure.compute#VirtualMachineScaleSetsListByLocation"
+          "target": "com.azure.compute#ListVirtualMachineScaleSetByLocation"
         },
         {
-          "target": "com.azure.compute#UsageList"
+          "target": "com.azure.compute#ListUsage"
         },
         {
-          "target": "com.azure.compute#VirtualMachineRunCommandsGet"
+          "target": "com.azure.compute#GetVirtualMachineRunCommand"
         },
         {
-          "target": "com.azure.compute#VirtualMachineRunCommandsList"
+          "target": "com.azure.compute#ListVirtualMachineRunCommands"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesGet"
+          "target": "com.azure.compute#GetVirtualMachineImage"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesList"
+          "target": "com.azure.compute#ListVirtualMachineImages"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesListSkus"
+          "target": "com.azure.compute#ListVirtualMachineImageSkus"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesListOffers"
+          "target": "com.azure.compute#ListVirtualMachineImageOffers"
         },
         {
-          "target": "com.azure.compute#VirtualMachineExtensionImagesGet"
+          "target": "com.azure.compute#GetVirtualMachineExtensionImage"
         },
         {
-          "target": "com.azure.compute#VirtualMachineExtensionImagesListVersions"
+          "target": "com.azure.compute#ListVirtualMachineExtensionImageVersions"
         },
         {
-          "target": "com.azure.compute#VirtualMachineExtensionImagesListTypes"
+          "target": "com.azure.compute#ListVirtualMachineExtensionImageTypes"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesListPublishers"
+          "target": "com.azure.compute#ListVirtualMachineImagePublishers"
         },
         {
           "target": "com.azure.compute#LogAnalyticsExportThrottledRequests"
         },
         {
-          "target": "com.azure.compute#LogAnalyticsExportRequestRateByInterval"
+          "target": "com.azure.compute#RequestLogAnalyticExportRateByInterval"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesListByEdgeZone"
+          "target": "com.azure.compute#ListVirtualMachineImageByEdgeZone"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesEdgeZoneGet"
+          "target": "com.azure.compute#GetVirtualMachineImageEdgeZone"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesEdgeZoneList"
+          "target": "com.azure.compute#ListVirtualMachineImageEdgeZone"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListSkus"
+          "target": "com.azure.compute#ListVirtualMachineImageEdgeZoneSkus"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListOffers"
+          "target": "com.azure.compute#ListVirtualMachineImageEdgeZoneOffers"
         },
         {
-          "target": "com.azure.compute#VirtualMachineImagesEdgeZoneListPublishers"
+          "target": "com.azure.compute#ListVirtualMachineImageEdgeZonePublishers"
         },
         {
-          "target": "com.azure.compute#InterconnectBlocksListBySubscription"
+          "target": "com.azure.compute#ListInterconnectBlockBySubscription"
         },
         {
-          "target": "com.azure.compute#ImagesList"
+          "target": "com.azure.compute#ListImages"
         },
         {
-          "target": "com.azure.compute#DedicatedHostGroupsListBySubscription"
+          "target": "com.azure.compute#ListDedicatedHostGroupBySubscription"
         },
         {
-          "target": "com.azure.compute#CapacityReservationGroupsListBySubscription"
+          "target": "com.azure.compute#ListCapacityReservationGroupBySubscription"
         },
         {
-          "target": "com.azure.compute#AvailabilitySetsListBySubscription"
+          "target": "com.azure.compute#ListAvailabilitySetBySubscription"
         },
         {
           "target": "com.azure.compute#SpotPlacementScoresPost"
         },
         {
-          "target": "com.azure.compute#SpotPlacementScoresGet"
+          "target": "com.azure.compute#GetSpotPlacementScore"
         },
         {
-          "target": "com.azure.compute#ContainerServicesListByResourceGroup"
+          "target": "com.azure.compute#ListContainerServiceByResourceGroup"
         },
         {
-          "target": "com.azure.compute#ContainerServicesDelete"
+          "target": "com.azure.compute#DeleteContainerService"
         },
         {
           "target": "com.azure.compute#ContainerServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.compute#ContainerServicesGet"
+          "target": "com.azure.compute#GetContainerService"
         },
         {
-          "target": "com.azure.compute#ContainerServicesList"
+          "target": "com.azure.compute#ListContainerServices"
         }
       ],
       "traits": {

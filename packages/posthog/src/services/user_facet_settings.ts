@@ -44,14 +44,14 @@ export const UserFacetSettingsPartialUpdateRequestCustomFacetsList =
     UserFacetSettingsEntry,
   ) as any as S.Schema<UserFacetSettingsPartialUpdateRequestCustomFacetsList>;
 
-export interface UserFacetSettingsPartialUpdateRequest {
+export interface UpdateUserFacetSettingPartialRequest {
   uuid: string;
   /** Which product's custom facets to read or update. */
   product: UserFacetSettingsPartialUpdateRequestProduct | (string & {});
   /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
   custom_facets?: UserFacetSettingsPartialUpdateRequestCustomFacetsList;
 }
-export const UserFacetSettingsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
+export const UpdateUserFacetSettingPartialRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       uuid: S.String.pipe(T.Label()),
@@ -67,8 +67,8 @@ export const UserFacetSettingsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "UserFacetSettingsPartialUpdateRequest",
-}) as any as S.Schema<UserFacetSettingsPartialUpdateRequest>;
+  identifier: "UpdateUserFacetSettingPartialRequest",
+}) as any as S.Schema<UpdateUserFacetSettingPartialRequest>;
 
 /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
 export type UserFacetSettingsCustomFacetsList = Array<UserFacetSettingsEntry>;
@@ -111,15 +111,15 @@ export const UserFacetSettingsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserFacetSettingsRetrieveRequest",
 }) as any as S.Schema<UserFacetSettingsRetrieveRequest>;
 
-export type UserFacetSettingsPartialUpdateError = PosthogOpError;
+export type UpdateUserFacetSettingPartialError = PosthogOpError;
 /** Replace the authenticated user's custom facets for a product, within the current team. Pass `@me` as the UUID. */
-export const userFacetSettingsPartialUpdate: API.OperationMethod<
-  UserFacetSettingsPartialUpdateRequest,
+export const updateUserFacetSettingPartial: API.OperationMethod<
+  UpdateUserFacetSettingPartialRequest,
   UserFacetSettings2,
-  UserFacetSettingsPartialUpdateError,
+  UpdateUserFacetSettingPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserFacetSettingsPartialUpdateRequest,
+  input: UpdateUserFacetSettingPartialRequest,
   output: UserFacetSettings2,
   errors: [],
   protocol: PosthogProtocol,

@@ -7447,7 +7447,7 @@
         "smithy.api#documentation": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service."
       }
     },
-    "com.gcp.appengine_v1beta#BatchUpdateAppsFirewallIngressRulesRequest": {
+    "com.gcp.appengine_v1beta#UpdateBatchAppFirewallIngressRuleRequest": {
       "type": "structure",
       "members": {
         "appsId": {
@@ -7467,10 +7467,10 @@
         }
       }
     },
-    "com.gcp.appengine_v1beta#BatchUpdateAppsFirewallIngressRules": {
+    "com.gcp.appengine_v1beta#UpdateBatchAppFirewallIngressRule": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.appengine_v1beta#BatchUpdateAppsFirewallIngressRulesRequest"
+        "target": "com.gcp.appengine_v1beta#UpdateBatchAppFirewallIngressRuleRequest"
       },
       "output": {
         "target": "com.gcp.appengine_v1beta#BatchUpdateIngressRulesResponse"

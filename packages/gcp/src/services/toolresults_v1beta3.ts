@@ -261,7 +261,7 @@ export const BatchCreatePerfSamplesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreatePerfSamplesRequest",
 }) as any as S.Schema<BatchCreatePerfSamplesRequest>;
 
-export interface BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest {
+export interface CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleRequest {
   /** A tool results execution ID. */
   executionId: string;
   /** A sample series id */
@@ -275,7 +275,7 @@ export interface BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamp
   /** Request body */
   body?: BatchCreatePerfSamplesRequest;
 }
-export const BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest =
+export const CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       executionId: S.String.pipe(T.Label()),
@@ -293,8 +293,8 @@ export const BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesR
     ),
   ).annotate({
     identifier:
-      "BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest",
-  }) as any as S.Schema<BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
+      "CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleRequest",
+  }) as any as S.Schema<CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleRequest>;
 
 export interface BatchCreatePerfSamplesResponse {
   perfSamples?: PerfSampleList;
@@ -2687,21 +2687,20 @@ export const accessibilityClustersProjectsHistoriesExecutionsSteps: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError =
+export type CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates a batch of PerfSamples - a client can submit multiple batches of Perf Samples through repeated calls to this method in order to split up a large request payload - duplicates and existing timestamp entries will be ignored. - the batch operation may partially succeed - the set of elements successfully inserted is returned in the response (omits items which already existed in the database). May return any of the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does not exist */
-export const batchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.OperationMethod<
-  BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
+export const createBatchProjectHistoryExecutionStepPerfSampleSerySample: API.OperationMethod<
+  CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleRequest,
   BatchCreatePerfSamplesResponse,
-  BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError,
+  CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
+  input: CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleRequest,
   output: BatchCreatePerfSamplesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,

@@ -1140,7 +1140,7 @@
         "smithy.api#documentation": "Sync"
       }
     },
-    "com.cloudflare.autorag#JobsGetRequest": {
+    "com.cloudflare.autorag#GetJobRequest": {
       "type": "structure",
       "members": {
         "account_id": {
@@ -1187,7 +1187,7 @@
         }
       }
     },
-    "com.cloudflare.autorag#JobsGetResponse": {
+    "com.cloudflare.autorag#GetJobResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1220,13 +1220,13 @@
         "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
-    "com.cloudflare.autorag#JobsGet": {
+    "com.cloudflare.autorag#GetJob": {
       "type": "operation",
       "input": {
-        "target": "com.cloudflare.autorag#JobsGetRequest"
+        "target": "com.cloudflare.autorag#GetJobRequest"
       },
       "output": {
-        "target": "com.cloudflare.autorag#JobsGetResponse"
+        "target": "com.cloudflare.autorag#GetJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1238,7 +1238,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.autorag#JobsListRequest": {
+    "com.cloudflare.autorag#ListJobsRequest": {
       "type": "structure",
       "members": {
         "account_id": {
@@ -1325,7 +1325,7 @@
         "target": "com.cloudflare.autorag#JobsListResultItem"
       }
     },
-    "com.cloudflare.autorag#JobsListResponse": {
+    "com.cloudflare.autorag#ListJobsResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -1340,13 +1340,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.cloudflare.autorag#JobsList": {
+    "com.cloudflare.autorag#ListJobs": {
       "type": "operation",
       "input": {
-        "target": "com.cloudflare.autorag#JobsListRequest"
+        "target": "com.cloudflare.autorag#ListJobsRequest"
       },
       "output": {
-        "target": "com.cloudflare.autorag#JobsListResponse"
+        "target": "com.cloudflare.autorag#ListJobsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1485,10 +1485,10 @@
           "target": "com.cloudflare.autorag#Sync"
         },
         {
-          "target": "com.cloudflare.autorag#JobsGet"
+          "target": "com.cloudflare.autorag#GetJob"
         },
         {
-          "target": "com.cloudflare.autorag#JobsList"
+          "target": "com.cloudflare.autorag#ListJobs"
         },
         {
           "target": "com.cloudflare.autorag#JobsLogs"

@@ -73,45 +73,6 @@ export const JsSnippetResolveRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsSnippetResolveRetrieveResponse",
 }) as any as S.Schema<JsSnippetResolveRetrieveResponse>;
 
-export interface JsSnippetVersionPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Version pin: null for latest, "1.358.0" for exact, "1" for major, "1.358" for minor */
-  js_snippet_version?: string | null;
-}
-export const JsSnippetVersionPartialUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      js_snippet_version: S.optional(S.NullOr(S.String)),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/js-snippet/version/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "JsSnippetVersionPartialUpdateRequest",
-}) as any as S.Schema<JsSnippetVersionPartialUpdateRequest>;
-
-export type JsSnippetVersionPartialUpdateResponseBodyMap = {
-  [key: string]: unknown | undefined;
-};
-export const JsSnippetVersionPartialUpdateResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<JsSnippetVersionPartialUpdateResponseBodyMap>;
-
-export type JsSnippetVersionPartialUpdateResponse =
-  JsSnippetVersionPartialUpdateResponseBodyMap;
-export const JsSnippetVersionPartialUpdateResponse = /*@__PURE__*/ S.suspend(
-  () => JsSnippetVersionPartialUpdateResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "JsSnippetVersionPartialUpdateResponse",
-}) as any as S.Schema<JsSnippetVersionPartialUpdateResponse>;
-
 export interface JsSnippetVersionRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -146,6 +107,45 @@ export const JsSnippetVersionRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsSnippetVersionRetrieveResponse",
 }) as any as S.Schema<JsSnippetVersionRetrieveResponse>;
 
+export interface UpdateJsSnippetVersionPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Version pin: null for latest, "1.358.0" for exact, "1" for major, "1.358" for minor */
+  js_snippet_version?: string | null;
+}
+export const UpdateJsSnippetVersionPartialRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      js_snippet_version: S.optional(S.NullOr(S.String)),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/projects/{project_id}/js-snippet/version/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UpdateJsSnippetVersionPartialRequest",
+}) as any as S.Schema<UpdateJsSnippetVersionPartialRequest>;
+
+export type JsSnippetVersionPartialUpdateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const JsSnippetVersionPartialUpdateResponseBodyMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<JsSnippetVersionPartialUpdateResponseBodyMap>;
+
+export type UpdateJsSnippetVersionPartialResponse =
+  JsSnippetVersionPartialUpdateResponseBodyMap;
+export const UpdateJsSnippetVersionPartialResponse = /*@__PURE__*/ S.suspend(
+  () => JsSnippetVersionPartialUpdateResponseBodyMap.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "UpdateJsSnippetVersionPartialResponse",
+}) as any as S.Schema<UpdateJsSnippetVersionPartialResponse>;
+
 export type JsSnippetResolveRetrieveError =
   | Forbidden
   | NotFound
@@ -164,25 +164,6 @@ export const jsSnippetResolveRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type JsSnippetVersionPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Update the team's version pin. */
-export const jsSnippetVersionPartialUpdate: API.OperationMethod<
-  JsSnippetVersionPartialUpdateRequest,
-  JsSnippetVersionPartialUpdateResponse,
-  JsSnippetVersionPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JsSnippetVersionPartialUpdateRequest,
-  output: JsSnippetVersionPartialUpdateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type JsSnippetVersionRetrieveError =
   | Forbidden
   | NotFound
@@ -197,6 +178,25 @@ export const jsSnippetVersionRetrieve: API.OperationMethod<
   input: JsSnippetVersionRetrieveRequest,
   output: JsSnippetVersionRetrieveResponse,
   errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateJsSnippetVersionPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Update the team's version pin. */
+export const updateJsSnippetVersionPartial: API.OperationMethod<
+  UpdateJsSnippetVersionPartialRequest,
+  UpdateJsSnippetVersionPartialResponse,
+  UpdateJsSnippetVersionPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateJsSnippetVersionPartialRequest,
+  output: UpdateJsSnippetVersionPartialResponse,
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

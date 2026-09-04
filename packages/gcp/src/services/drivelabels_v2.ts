@@ -65,263 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** Deletes a label permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
-export interface GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest {
-  /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
-  useAdminAccess?: boolean;
-  /** Required. Label permission resource name. */
-  name?: string;
-}
-export const GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      useAdminAccess: S.optional(S.Boolean),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest",
-  }) as any as S.Schema<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest>;
-
-export type GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList =
-  Array<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest>;
-export const GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest,
-  ) as any as S.Schema<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList>;
-
-/** Deletes one or more label permissions. */
-export interface GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest {
-  /** Required. The request message specifying the resources to update. */
-  requests?: GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList;
-  /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. If this is set, the `use_admin_access` field in the `DeleteLabelPermissionRequest` messages must either be empty or match this field. */
-  useAdminAccess?: boolean;
-}
-export const GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(
-        GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList,
-      ),
-      useAdminAccess: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest",
-  }) as any as S.Schema<GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest>;
-
-export interface BatchDeleteLabelsPermissionsRequest {
-  /** Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
-  parent: string;
-  /** Request body */
-  body?: GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest;
-}
-export const BatchDeleteLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.pipe(
-        T.HttpBody(),
-      ),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/{+parent}/permissions:batchDelete",
-      baseUrl: "https://drivelabels.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchDeleteLabelsPermissionsRequest",
-}) as any as S.Schema<BatchDeleteLabelsPermissionsRequest>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
-
-export interface BatchDeleteLabelsRevisionsPermissionsRequest {
-  /** Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
-  parent: string;
-  /** Request body */
-  body?: GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest;
-}
-export const BatchDeleteLabelsRevisionsPermissionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/permissions:batchDelete",
-        baseUrl: "https://drivelabels.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeleteLabelsRevisionsPermissionsRequest",
-  }) as any as S.Schema<BatchDeleteLabelsRevisionsPermissionsRequest>;
-
-export type GoogleAppsDriveLabelsV2LabelPermissionRoleEnum =
-  | "LABEL_ROLE_UNSPECIFIED"
-  | "READER"
-  | "APPLIER"
-  | "ORGANIZER"
-  | "EDITOR";
-export const GoogleAppsDriveLabelsV2LabelPermissionRoleEnum =
-  /*@__PURE__*/ S.String;
-
-/** The permission that applies to a principal (user, group, audience) on a label. */
-export interface GoogleAppsDriveLabelsV2LabelPermission {
-  /** Group resource name. */
-  group?: string;
-  /** Specifies the email address for a user or group principal. Not populated for audience principals. User and group permissions may only be inserted using an email address. On update requests, if email address is specified, no principal should be specified. */
-  email?: string;
-  /** Person resource name. */
-  person?: string;
-  /** Resource name of this permission. */
-  name?: string;
-  /** The role the principal should have. */
-  role?: GoogleAppsDriveLabelsV2LabelPermissionRoleEnum | (string & {});
-  /** Audience to grant a role to. The magic value of `audiences/default` may be used to apply the role to the default audience in the context of the organization that owns the label. */
-  audience?: string;
-}
-export const GoogleAppsDriveLabelsV2LabelPermission = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      group: S.optional(S.String),
-      email: S.optional(S.String),
-      person: S.optional(S.String),
-      name: S.optional(S.String),
-      role: S.optional(GoogleAppsDriveLabelsV2LabelPermissionRoleEnum),
-      audience: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAppsDriveLabelsV2LabelPermission",
-}) as any as S.Schema<GoogleAppsDriveLabelsV2LabelPermission>;
-
-/** Updates a label permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
-export interface GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest {
-  /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
-  useAdminAccess?: boolean;
-  /** Required. The permission to create or update on the label. */
-  labelPermission?: GoogleAppsDriveLabelsV2LabelPermission;
-  /** Required. The parent label resource name. */
-  parent?: string;
-}
-export const GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      useAdminAccess: S.optional(S.Boolean),
-      labelPermission: S.optional(GoogleAppsDriveLabelsV2LabelPermission),
-      parent: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest",
-  }) as any as S.Schema<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest>;
-
-export type GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList =
-  Array<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest>;
-export const GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest,
-  ) as any as S.Schema<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList>;
-
-/** Updates one or more label permissions. */
-export interface GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest {
-  /** Required. The request message specifying the resources to update. */
-  requests?: GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList;
-  /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. If this is set, the `use_admin_access` field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
-  useAdminAccess?: boolean;
-}
-export const GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(
-        GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList,
-      ),
-      useAdminAccess: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest",
-  }) as any as S.Schema<GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest>;
-
-export interface BatchUpdateLabelsPermissionsRequest {
-  /** Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
-  parent: string;
-  /** Request body */
-  body?: GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest;
-}
-export const BatchUpdateLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(
-      GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.pipe(
-        T.HttpBody(),
-      ),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v2/{+parent}/permissions:batchUpdate",
-      baseUrl: "https://drivelabels.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchUpdateLabelsPermissionsRequest",
-}) as any as S.Schema<BatchUpdateLabelsPermissionsRequest>;
-
-export type GoogleAppsDriveLabelsV2LabelPermissionList =
-  Array<GoogleAppsDriveLabelsV2LabelPermission>;
-export const GoogleAppsDriveLabelsV2LabelPermissionList = /*@__PURE__*/ S.Array(
-  GoogleAppsDriveLabelsV2LabelPermission,
-) as any as S.Schema<GoogleAppsDriveLabelsV2LabelPermissionList>;
-
-/** Response for updating one or more label permissions. */
-export interface GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse {
-  /** Required. Permissions updated. */
-  permissions?: GoogleAppsDriveLabelsV2LabelPermissionList;
-}
-export const GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissions: S.optional(GoogleAppsDriveLabelsV2LabelPermissionList),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse",
-  }) as any as S.Schema<GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse>;
-
-export interface BatchUpdateLabelsRevisionsPermissionsRequest {
-  /** Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
-  parent: string;
-  /** Request body */
-  body?: GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest;
-}
-export const BatchUpdateLabelsRevisionsPermissionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/permissions:batchUpdate",
-        baseUrl: "https://drivelabels.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateLabelsRevisionsPermissionsRequest",
-  }) as any as S.Schema<BatchUpdateLabelsRevisionsPermissionsRequest>;
-
 /** The UI display hints for rendering the label. */
 export interface GoogleAppsDriveLabelsV2LabelDisplayHints {
   /** The order to display labels in a list. */
@@ -1191,6 +934,44 @@ export const CreateLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLabelsRequest",
 }) as any as S.Schema<CreateLabelsRequest>;
 
+export type GoogleAppsDriveLabelsV2LabelPermissionRoleEnum =
+  | "LABEL_ROLE_UNSPECIFIED"
+  | "READER"
+  | "APPLIER"
+  | "ORGANIZER"
+  | "EDITOR";
+export const GoogleAppsDriveLabelsV2LabelPermissionRoleEnum =
+  /*@__PURE__*/ S.String;
+
+/** The permission that applies to a principal (user, group, audience) on a label. */
+export interface GoogleAppsDriveLabelsV2LabelPermission {
+  /** Group resource name. */
+  group?: string;
+  /** Specifies the email address for a user or group principal. Not populated for audience principals. User and group permissions may only be inserted using an email address. On update requests, if email address is specified, no principal should be specified. */
+  email?: string;
+  /** Person resource name. */
+  person?: string;
+  /** Resource name of this permission. */
+  name?: string;
+  /** The role the principal should have. */
+  role?: GoogleAppsDriveLabelsV2LabelPermissionRoleEnum | (string & {});
+  /** Audience to grant a role to. The magic value of `audiences/default` may be used to apply the role to the default audience in the context of the organization that owns the label. */
+  audience?: string;
+}
+export const GoogleAppsDriveLabelsV2LabelPermission = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      group: S.optional(S.String),
+      email: S.optional(S.String),
+      person: S.optional(S.String),
+      name: S.optional(S.String),
+      role: S.optional(GoogleAppsDriveLabelsV2LabelPermissionRoleEnum),
+      audience: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2LabelPermission",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2LabelPermission>;
+
 export interface CreateLabelsPermissionsRequest {
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
   useAdminAccess?: boolean;
@@ -1241,6 +1022,108 @@ export const CreateLabelsRevisionsPermissionsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateLabelsRevisionsPermissionsRequest",
 }) as any as S.Schema<CreateLabelsRevisionsPermissionsRequest>;
+
+/** Deletes a label permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
+export interface GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest {
+  /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
+  useAdminAccess?: boolean;
+  /** Required. Label permission resource name. */
+  name?: string;
+}
+export const GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      useAdminAccess: S.optional(S.Boolean),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest>;
+
+export type GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList =
+  Array<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest>;
+export const GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest,
+  ) as any as S.Schema<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList>;
+
+/** Deletes one or more label permissions. */
+export interface GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest {
+  /** Required. The request message specifying the resources to update. */
+  requests?: GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList;
+  /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. If this is set, the `use_admin_access` field in the `DeleteLabelPermissionRequest` messages must either be empty or match this field. */
+  useAdminAccess?: boolean;
+}
+export const GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList,
+      ),
+      useAdminAccess: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest>;
+
+export interface DeleteBatchLabelPermissionRequest {
+  /** Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
+  parent: string;
+  /** Request body */
+  body?: GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest;
+}
+export const DeleteBatchLabelPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+parent}/permissions:batchDelete",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBatchLabelPermissionRequest",
+}) as any as S.Schema<DeleteBatchLabelPermissionRequest>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface GoogleProtobufEmpty {}
+export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobufEmpty",
+}) as any as S.Schema<GoogleProtobufEmpty>;
+
+export interface DeleteBatchLabelRevisionPermissionRequest {
+  /** Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
+  parent: string;
+  /** Request body */
+  body?: GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest;
+}
+export const DeleteBatchLabelRevisionPermissionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+parent}/permissions:batchDelete",
+        baseUrl: "https://drivelabels.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBatchLabelRevisionPermissionRequest",
+  }) as any as S.Schema<DeleteBatchLabelRevisionPermissionRequest>;
 
 export interface DeleteLabelsRequest {
   /** The revision ID of the label that the write request will be applied to. If this isn't the latest revision of the label, the request will not be processed and will return a 400 Bad Request error. */
@@ -2494,6 +2377,12 @@ export const ListLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLabelsPermissionsRequest",
 }) as any as S.Schema<ListLabelsPermissionsRequest>;
 
+export type GoogleAppsDriveLabelsV2LabelPermissionList =
+  Array<GoogleAppsDriveLabelsV2LabelPermission>;
+export const GoogleAppsDriveLabelsV2LabelPermissionList = /*@__PURE__*/ S.Array(
+  GoogleAppsDriveLabelsV2LabelPermission,
+) as any as S.Schema<GoogleAppsDriveLabelsV2LabelPermissionList>;
+
 /** Response for listing the permissions on a label. */
 export interface GoogleAppsDriveLabelsV2ListLabelPermissionsResponse {
   /** Label permissions. */
@@ -2591,6 +2480,117 @@ export const PublishLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PublishLabelsRequest",
 }) as any as S.Schema<PublishLabelsRequest>;
+
+/** Updates a label permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
+export interface GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest {
+  /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
+  useAdminAccess?: boolean;
+  /** Required. The permission to create or update on the label. */
+  labelPermission?: GoogleAppsDriveLabelsV2LabelPermission;
+  /** Required. The parent label resource name. */
+  parent?: string;
+}
+export const GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      useAdminAccess: S.optional(S.Boolean),
+      labelPermission: S.optional(GoogleAppsDriveLabelsV2LabelPermission),
+      parent: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest>;
+
+export type GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList =
+  Array<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest>;
+export const GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest,
+  ) as any as S.Schema<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList>;
+
+/** Updates one or more label permissions. */
+export interface GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest {
+  /** Required. The request message specifying the resources to update. */
+  requests?: GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList;
+  /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. If this is set, the `use_admin_access` field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
+  useAdminAccess?: boolean;
+}
+export const GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList,
+      ),
+      useAdminAccess: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest>;
+
+export interface UpdateBatchLabelPermissionRequest {
+  /** Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
+  parent: string;
+  /** Request body */
+  body?: GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest;
+}
+export const UpdateBatchLabelPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+parent}/permissions:batchUpdate",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBatchLabelPermissionRequest",
+}) as any as S.Schema<UpdateBatchLabelPermissionRequest>;
+
+/** Response for updating one or more label permissions. */
+export interface GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse {
+  /** Required. Permissions updated. */
+  permissions?: GoogleAppsDriveLabelsV2LabelPermissionList;
+}
+export const GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      permissions: S.optional(GoogleAppsDriveLabelsV2LabelPermissionList),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse>;
+
+export interface UpdateBatchLabelRevisionPermissionRequest {
+  /** Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
+  parent: string;
+  /** Request body */
+  body?: GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest;
+}
+export const UpdateBatchLabelRevisionPermissionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+parent}/permissions:batchUpdate",
+        baseUrl: "https://drivelabels.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateBatchLabelRevisionPermissionRequest",
+  }) as any as S.Schema<UpdateBatchLabelRevisionPermissionRequest>;
 
 export type GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequestCopyModeEnum =
   | "COPY_MODE_UNSPECIFIED"
@@ -2772,86 +2772,6 @@ export const UpdatePermissionsLabelsRevisionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "UpdatePermissionsLabelsRevisionsRequest",
 }) as any as S.Schema<UpdatePermissionsLabelsRevisionsRequest>;
 
-export type BatchDeleteLabelsPermissionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
-export const batchDeleteLabelsPermissions: API.OperationMethod<
-  BatchDeleteLabelsPermissionsRequest,
-  GoogleProtobufEmpty,
-  BatchDeleteLabelsPermissionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteLabelsPermissionsRequest,
-  output: GoogleProtobufEmpty,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchDeleteLabelsRevisionsPermissionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
-export const batchDeleteLabelsRevisionsPermissions: API.OperationMethod<
-  BatchDeleteLabelsRevisionsPermissionsRequest,
-  GoogleProtobufEmpty,
-  BatchDeleteLabelsRevisionsPermissionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteLabelsRevisionsPermissionsRequest,
-  output: GoogleProtobufEmpty,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchUpdateLabelsPermissionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
-export const batchUpdateLabelsPermissions: API.OperationMethod<
-  BatchUpdateLabelsPermissionsRequest,
-  GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
-  BatchUpdateLabelsPermissionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateLabelsPermissionsRequest,
-  output: GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchUpdateLabelsRevisionsPermissionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
-export const batchUpdateLabelsRevisionsPermissions: API.OperationMethod<
-  BatchUpdateLabelsRevisionsPermissionsRequest,
-  GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
-  BatchUpdateLabelsRevisionsPermissionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateLabelsRevisionsPermissionsRequest,
-  output: GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CreateLabelsError =
   | NotFound
   | Forbidden
@@ -2907,6 +2827,46 @@ export const createLabelsRevisionsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLabelsRevisionsPermissionsRequest,
   output: GoogleAppsDriveLabelsV2LabelPermission,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchLabelPermissionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
+export const deleteBatchLabelPermission: API.OperationMethod<
+  DeleteBatchLabelPermissionRequest,
+  GoogleProtobufEmpty,
+  DeleteBatchLabelPermissionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchLabelPermissionRequest,
+  output: GoogleProtobufEmpty,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchLabelRevisionPermissionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
+export const deleteBatchLabelRevisionPermission: API.OperationMethod<
+  DeleteBatchLabelRevisionPermissionRequest,
+  GoogleProtobufEmpty,
+  DeleteBatchLabelRevisionPermissionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchLabelRevisionPermissionRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3195,6 +3155,46 @@ export const publishLabels: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PublishLabelsRequest,
   output: GoogleAppsDriveLabelsV2Label,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchLabelPermissionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
+export const updateBatchLabelPermission: API.OperationMethod<
+  UpdateBatchLabelPermissionRequest,
+  GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
+  UpdateBatchLabelPermissionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchLabelPermissionRequest,
+  output: GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchLabelRevisionPermissionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
+export const updateBatchLabelRevisionPermission: API.OperationMethod<
+  UpdateBatchLabelRevisionPermissionRequest,
+  GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
+  UpdateBatchLabelRevisionPermissionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchLabelRevisionPermissionRequest,
+  output: GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

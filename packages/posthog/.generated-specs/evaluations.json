@@ -97,7 +97,7 @@
       },
       "traits": {}
     },
-    "com.posthog.evaluations#EvaluationsListRequest": {
+    "com.posthog.evaluations#ListEvaluationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -948,10 +948,10 @@
       },
       "traits": {}
     },
-    "com.posthog.evaluations#EvaluationsList": {
+    "com.posthog.evaluations#ListEvaluations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.evaluations#EvaluationsListRequest"
+        "target": "com.posthog.evaluations#ListEvaluationsRequest"
       },
       "output": {
         "target": "com.posthog.evaluations#PaginatedEvaluationList"
@@ -1163,7 +1163,7 @@
         "smithy.api#documentation": "Nested serializer for model configuration."
       }
     },
-    "com.posthog.evaluations#EvaluationsCreateRequest": {
+    "com.posthog.evaluations#CreateEvaluationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1259,10 +1259,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.evaluations#EvaluationsCreate": {
+    "com.posthog.evaluations#CreateEvaluation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.evaluations#EvaluationsCreateRequest"
+        "target": "com.posthog.evaluations#CreateEvaluationRequest"
       },
       "output": {
         "target": "com.posthog.evaluations#Evaluation"
@@ -1493,7 +1493,7 @@
         "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
       }
     },
-    "com.posthog.evaluations#EvaluationsUpdateRequest": {
+    "com.posthog.evaluations#UpdateEvaluationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1597,10 +1597,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.evaluations#EvaluationsUpdate": {
+    "com.posthog.evaluations#UpdateEvaluation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.evaluations#EvaluationsUpdateRequest"
+        "target": "com.posthog.evaluations#UpdateEvaluationRequest"
       },
       "output": {
         "target": "com.posthog.evaluations#Evaluation"
@@ -1791,7 +1791,7 @@
         "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
       }
     },
-    "com.posthog.evaluations#EvaluationsPartialUpdateRequest": {
+    "com.posthog.evaluations#UpdateEvaluationPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1895,10 +1895,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.evaluations#EvaluationsPartialUpdate": {
+    "com.posthog.evaluations#UpdateEvaluationPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.evaluations#EvaluationsPartialUpdateRequest"
+        "target": "com.posthog.evaluations#UpdateEvaluationPartialRequest"
       },
       "output": {
         "target": "com.posthog.evaluations#Evaluation"
@@ -1989,7 +1989,7 @@
       },
       "traits": {}
     },
-    "com.posthog.evaluations#EvaluationsTestHogCreateRequest": {
+    "com.posthog.evaluations#CreateEvaluationTestHogRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2128,10 +2128,10 @@
       },
       "traits": {}
     },
-    "com.posthog.evaluations#EvaluationsTestHogCreate": {
+    "com.posthog.evaluations#CreateEvaluationTestHog": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.evaluations#EvaluationsTestHogCreateRequest"
+        "target": "com.posthog.evaluations#CreateEvaluationTestHogRequest"
       },
       "output": {
         "target": "com.posthog.evaluations#TestHogResponse"
@@ -2150,25 +2150,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.evaluations#EvaluationsList"
+          "target": "com.posthog.evaluations#ListEvaluations"
         },
         {
-          "target": "com.posthog.evaluations#EvaluationsCreate"
+          "target": "com.posthog.evaluations#CreateEvaluation"
         },
         {
           "target": "com.posthog.evaluations#EvaluationsRetrieve"
         },
         {
-          "target": "com.posthog.evaluations#EvaluationsUpdate"
+          "target": "com.posthog.evaluations#UpdateEvaluation"
         },
         {
-          "target": "com.posthog.evaluations#EvaluationsPartialUpdate"
+          "target": "com.posthog.evaluations#UpdateEvaluationPartial"
         },
         {
           "target": "com.posthog.evaluations#EvaluationsDestroy"
         },
         {
-          "target": "com.posthog.evaluations#EvaluationsTestHogCreate"
+          "target": "com.posthog.evaluations#CreateEvaluationTestHog"
         }
       ],
       "traits": {

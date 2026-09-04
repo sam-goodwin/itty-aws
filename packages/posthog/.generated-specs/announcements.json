@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.announcements#AnnouncementsListRequest": {
+    "com.posthog.announcements#ListAnnouncementsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -435,10 +435,10 @@
       },
       "traits": {}
     },
-    "com.posthog.announcements#AnnouncementsList": {
+    "com.posthog.announcements#ListAnnouncements": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.announcements#AnnouncementsListRequest"
+        "target": "com.posthog.announcements#ListAnnouncementsRequest"
       },
       "output": {
         "target": "com.posthog.announcements#PaginatedAnnouncementListOutput"
@@ -460,7 +460,7 @@
         "smithy.api#documentation": "Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side."
       }
     },
-    "com.posthog.announcements#AnnouncementsCreateRequest": {
+    "com.posthog.announcements#CreateAnnouncementRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -490,10 +490,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.announcements#AnnouncementsCreate": {
+    "com.posthog.announcements#CreateAnnouncement": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.announcements#AnnouncementsCreateRequest"
+        "target": "com.posthog.announcements#CreateAnnouncementRequest"
       },
       "output": {
         "target": "com.posthog.announcements#AnnouncementOutput"
@@ -545,7 +545,7 @@
         }
       }
     },
-    "com.posthog.announcements#AnnouncementsChannelsListRequest": {
+    "com.posthog.announcements#ListAnnouncementChannelsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -603,7 +603,7 @@
       },
       "traits": {}
     },
-    "com.posthog.announcements#AnnouncementsChannelsListResponse": {
+    "com.posthog.announcements#ListAnnouncementChannelsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -618,13 +618,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.announcements#AnnouncementsChannelsList": {
+    "com.posthog.announcements#ListAnnouncementChannels": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.announcements#AnnouncementsChannelsListRequest"
+        "target": "com.posthog.announcements#ListAnnouncementChannelsRequest"
       },
       "output": {
-        "target": "com.posthog.announcements#AnnouncementsChannelsListResponse"
+        "target": "com.posthog.announcements#ListAnnouncementChannelsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -640,16 +640,16 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.announcements#AnnouncementsList"
+          "target": "com.posthog.announcements#ListAnnouncements"
         },
         {
-          "target": "com.posthog.announcements#AnnouncementsCreate"
+          "target": "com.posthog.announcements#CreateAnnouncement"
         },
         {
           "target": "com.posthog.announcements#AnnouncementsRetrieve"
         },
         {
-          "target": "com.posthog.announcements#AnnouncementsChannelsList"
+          "target": "com.posthog.announcements#ListAnnouncementChannels"
         }
       ],
       "traits": {

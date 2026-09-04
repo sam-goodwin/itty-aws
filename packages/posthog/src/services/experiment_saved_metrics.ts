@@ -45,7 +45,7 @@ export const ExperimentSavedMetricsCreateRequestTagsList =
     S.Unknown,
   ) as any as S.Schema<ExperimentSavedMetricsCreateRequestTagsList>;
 
-export interface ExperimentSavedMetricsCreateRequest {
+export interface CreateExperimentSavedMetricRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Name of the shared metric. Must be unique within the project (case-insensitive). */
@@ -56,7 +56,7 @@ export interface ExperimentSavedMetricsCreateRequest {
   query?: unknown;
   tags?: ExperimentSavedMetricsCreateRequestTagsList;
 }
-export const ExperimentSavedMetricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateExperimentSavedMetricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -71,8 +71,8 @@ export const ExperimentSavedMetricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ExperimentSavedMetricsCreateRequest",
-}) as any as S.Schema<ExperimentSavedMetricsCreateRequest>;
+  identifier: "CreateExperimentSavedMetricRequest",
+}) as any as S.Schema<CreateExperimentSavedMetricRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -191,7 +191,29 @@ export const ExperimentSavedMetricsDestroyResponse = /*@__PURE__*/ S.suspend(
   identifier: "ExperimentSavedMetricsDestroyResponse",
 }) as any as S.Schema<ExperimentSavedMetricsDestroyResponse>;
 
-export interface ExperimentSavedMetricsListRequest {
+export interface ExperimentSavedMetricsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment saved metric. */
+  id: number;
+}
+export const ExperimentSavedMetricsRetrieveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.Number.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/experiment_saved_metrics/{id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "ExperimentSavedMetricsRetrieveRequest",
+}) as any as S.Schema<ExperimentSavedMetricsRetrieveRequest>;
+
+export interface ListExperimentSavedMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Filter to shared metrics whose query references this event name. Matches events used directly in metric queries as well as events behind any actions those metrics reference. Use this for reuse discovery (find a metric by what it measures); distinct from 'search', which matches the metric's own name/description/tags. */
@@ -203,7 +225,7 @@ export interface ExperimentSavedMetricsListRequest {
   /** A search term. */
   search?: string;
 }
-export const ExperimentSavedMetricsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     event: S.optional(S.String.pipe(T.Query())),
@@ -218,8 +240,8 @@ export const ExperimentSavedMetricsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ExperimentSavedMetricsListRequest",
-}) as any as S.Schema<ExperimentSavedMetricsListRequest>;
+  identifier: "ListExperimentSavedMetricsRequest",
+}) as any as S.Schema<ListExperimentSavedMetricsRequest>;
 
 export type PaginatedExperimentSavedMetricListResultsList =
   Array<ExperimentSavedMetric>;
@@ -245,13 +267,51 @@ export const PaginatedExperimentSavedMetricList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedExperimentSavedMetricList",
 }) as any as S.Schema<PaginatedExperimentSavedMetricList>;
 
+export type ExperimentSavedMetricsUpdateRequestTagsList = Array<unknown>;
+export const ExperimentSavedMetricsUpdateRequestTagsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<ExperimentSavedMetricsUpdateRequestTagsList>;
+
+export interface UpdateExperimentSavedMetricRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment saved metric. */
+  id: number;
+  /** Name of the shared metric. Must be unique within the project (case-insensitive). */
+  name?: string;
+  /** Short description of what the metric measures. */
+  description?: string | null;
+  /** ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics. */
+  query?: unknown;
+  tags?: ExperimentSavedMetricsUpdateRequestTagsList;
+}
+export const UpdateExperimentSavedMetricRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    query: S.optional(S.Unknown),
+    tags: S.optional(ExperimentSavedMetricsUpdateRequestTagsList),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/projects/{project_id}/experiment_saved_metrics/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateExperimentSavedMetricRequest",
+}) as any as S.Schema<UpdateExperimentSavedMetricRequest>;
+
 export type ExperimentSavedMetricsPartialUpdateRequestTagsList = Array<unknown>;
 export const ExperimentSavedMetricsPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<ExperimentSavedMetricsPartialUpdateRequestTagsList>;
 
-export interface ExperimentSavedMetricsPartialUpdateRequest {
+export interface UpdateExperimentSavedMetricPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment saved metric. */
@@ -264,7 +324,7 @@ export interface ExperimentSavedMetricsPartialUpdateRequest {
   query?: unknown;
   tags?: ExperimentSavedMetricsPartialUpdateRequestTagsList;
 }
-export const ExperimentSavedMetricsPartialUpdateRequest =
+export const UpdateExperimentSavedMetricPartialRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -281,81 +341,21 @@ export const ExperimentSavedMetricsPartialUpdateRequest =
       }),
     ),
   ).annotate({
-    identifier: "ExperimentSavedMetricsPartialUpdateRequest",
-  }) as any as S.Schema<ExperimentSavedMetricsPartialUpdateRequest>;
+    identifier: "UpdateExperimentSavedMetricPartialRequest",
+  }) as any as S.Schema<UpdateExperimentSavedMetricPartialRequest>;
 
-export interface ExperimentSavedMetricsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment saved metric. */
-  id: number;
-}
-export const ExperimentSavedMetricsRetrieveRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/experiment_saved_metrics/{id}/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ExperimentSavedMetricsRetrieveRequest",
-}) as any as S.Schema<ExperimentSavedMetricsRetrieveRequest>;
-
-export type ExperimentSavedMetricsUpdateRequestTagsList = Array<unknown>;
-export const ExperimentSavedMetricsUpdateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ExperimentSavedMetricsUpdateRequestTagsList>;
-
-export interface ExperimentSavedMetricsUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment saved metric. */
-  id: number;
-  /** Name of the shared metric. Must be unique within the project (case-insensitive). */
-  name?: string;
-  /** Short description of what the metric measures. */
-  description?: string | null;
-  /** ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics. */
-  query?: unknown;
-  tags?: ExperimentSavedMetricsUpdateRequestTagsList;
-}
-export const ExperimentSavedMetricsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.Unknown),
-    tags: S.optional(ExperimentSavedMetricsUpdateRequestTagsList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/projects/{project_id}/experiment_saved_metrics/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentSavedMetricsUpdateRequest",
-}) as any as S.Schema<ExperimentSavedMetricsUpdateRequest>;
-
-export type ExperimentSavedMetricsCreateError =
+export type CreateExperimentSavedMetricError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const experimentSavedMetricsCreate: API.OperationMethod<
-  ExperimentSavedMetricsCreateRequest,
+export const createExperimentSavedMetric: API.OperationMethod<
+  CreateExperimentSavedMetricRequest,
   ExperimentSavedMetric,
-  ExperimentSavedMetricsCreateError,
+  CreateExperimentSavedMetricError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentSavedMetricsCreateRequest,
+  input: CreateExperimentSavedMetricRequest,
   output: ExperimentSavedMetric,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
@@ -379,42 +379,6 @@ export const experimentSavedMetricsDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExperimentSavedMetricsListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const experimentSavedMetricsList: API.OperationMethod<
-  ExperimentSavedMetricsListRequest,
-  PaginatedExperimentSavedMetricList,
-  ExperimentSavedMetricsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentSavedMetricsListRequest,
-  output: PaginatedExperimentSavedMetricList,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentSavedMetricsPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const experimentSavedMetricsPartialUpdate: API.OperationMethod<
-  ExperimentSavedMetricsPartialUpdateRequest,
-  ExperimentSavedMetric,
-  ExperimentSavedMetricsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentSavedMetricsPartialUpdateRequest,
-  output: ExperimentSavedMetric,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ExperimentSavedMetricsRetrieveError =
   | Forbidden
   | NotFound
@@ -432,18 +396,54 @@ export const experimentSavedMetricsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExperimentSavedMetricsUpdateError =
+export type ListExperimentSavedMetricsError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const experimentSavedMetricsUpdate: API.OperationMethod<
-  ExperimentSavedMetricsUpdateRequest,
-  ExperimentSavedMetric,
-  ExperimentSavedMetricsUpdateError,
+export const listExperimentSavedMetrics: API.OperationMethod<
+  ListExperimentSavedMetricsRequest,
+  PaginatedExperimentSavedMetricList,
+  ListExperimentSavedMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentSavedMetricsUpdateRequest,
+  input: ListExperimentSavedMetricsRequest,
+  output: PaginatedExperimentSavedMetricList,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateExperimentSavedMetricError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const updateExperimentSavedMetric: API.OperationMethod<
+  UpdateExperimentSavedMetricRequest,
+  ExperimentSavedMetric,
+  UpdateExperimentSavedMetricError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateExperimentSavedMetricRequest,
+  output: ExperimentSavedMetric,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateExperimentSavedMetricPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const updateExperimentSavedMetricPartial: API.OperationMethod<
+  UpdateExperimentSavedMetricPartialRequest,
+  ExperimentSavedMetric,
+  UpdateExperimentSavedMetricPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateExperimentSavedMetricPartialRequest,
   output: ExperimentSavedMetric,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,

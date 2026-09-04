@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.loadtestservice#LoadTestsListOutboundNetworkDependenciesEndpoints": {
+    "com.azure.loadtestservice#ListLoadTestOutboundNetworkDependencyEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#LoadTestsListOutboundNetworkDependenciesEndpointsRequest"
+        "target": "com.azure.loadtestservice#ListLoadTestOutboundNetworkDependencyEndpointsRequest"
       },
       "output": {
         "target": "com.azure.loadtestservice#PagedOutboundEnvironmentEndpoint"
@@ -145,7 +145,7 @@
         "smithy.api#documentation": "Details about the connection between the Batch service and the endpoint."
       }
     },
-    "com.azure.loadtestservice#LoadTestsListOutboundNetworkDependenciesEndpointsRequest": {
+    "com.azure.loadtestservice#ListLoadTestOutboundNetworkDependencyEndpointsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -177,10 +177,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#LoadTestsDelete": {
+    "com.azure.loadtestservice#DeleteLoadTest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#LoadTestsDeleteRequest"
+        "target": "com.azure.loadtestservice#DeleteLoadTestRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -196,7 +196,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.loadtestservice#LoadTestsDeleteRequest": {
+    "com.azure.loadtestservice#DeleteLoadTestRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -228,13 +228,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#LoadTestsUpdate": {
+    "com.azure.loadtestservice#UpdateLoadTest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#LoadTestsUpdateRequest"
+        "target": "com.azure.loadtestservice#UpdateLoadTestRequest"
       },
       "output": {
-        "target": "com.azure.loadtestservice#LoadTestsUpdateResponse"
+        "target": "com.azure.loadtestservice#UpdateLoadTestResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -247,7 +247,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.loadtestservice#LoadTestsUpdateResponse": {
+    "com.azure.loadtestservice#UpdateLoadTestResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -642,7 +642,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.loadtestservice#LoadTestsUpdateRequest": {
+    "com.azure.loadtestservice#UpdateLoadTestRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -983,13 +983,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.loadtestservice#LoadTestsGet": {
+    "com.azure.loadtestservice#GetLoadTest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#LoadTestsGetRequest"
+        "target": "com.azure.loadtestservice#GetLoadTestRequest"
       },
       "output": {
-        "target": "com.azure.loadtestservice#LoadTestsGetResponse"
+        "target": "com.azure.loadtestservice#GetLoadTestResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1002,7 +1002,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.loadtestservice#LoadTestsGetResponse": {
+    "com.azure.loadtestservice#GetLoadTestResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1100,7 +1100,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.loadtestservice#LoadTestsGetRequest": {
+    "com.azure.loadtestservice#GetLoadTestRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1132,10 +1132,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#LoadTestsListByResourceGroup": {
+    "com.azure.loadtestservice#ListLoadTestByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#LoadTestsListByResourceGroupRequest"
+        "target": "com.azure.loadtestservice#ListLoadTestByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.loadtestservice#LoadTestResourceListResult"
@@ -1279,7 +1279,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.loadtestservice#LoadTestsListByResourceGroupRequest": {
+    "com.azure.loadtestservice#ListLoadTestByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1303,10 +1303,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#QuotasCheckAvailability": {
+    "com.azure.loadtestservice#CheckQuotaAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#QuotasCheckAvailabilityRequest"
+        "target": "com.azure.loadtestservice#CheckQuotaAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.loadtestservice#CheckQuotaAvailabilityResponse"
@@ -1490,7 +1490,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.loadtestservice#QuotasCheckAvailabilityRequest": {
+    "com.azure.loadtestservice#CheckQuotaAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1580,13 +1580,13 @@
         "smithy.api#documentation": "Dimensions for new quota request."
       }
     },
-    "com.azure.loadtestservice#QuotasGet": {
+    "com.azure.loadtestservice#GetQuota": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#QuotasGetRequest"
+        "target": "com.azure.loadtestservice#GetQuotaRequest"
       },
       "output": {
-        "target": "com.azure.loadtestservice#QuotasGetResponse"
+        "target": "com.azure.loadtestservice#GetQuotaResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1599,7 +1599,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.loadtestservice#QuotasGetResponse": {
+    "com.azure.loadtestservice#GetQuotaResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1663,7 +1663,7 @@
         "smithy.api#documentation": "Quota bucket resource properties."
       }
     },
-    "com.azure.loadtestservice#QuotasGetRequest": {
+    "com.azure.loadtestservice#GetQuotaRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1695,10 +1695,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#QuotasList": {
+    "com.azure.loadtestservice#ListQuotas": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#QuotasListRequest"
+        "target": "com.azure.loadtestservice#ListQuotasRequest"
       },
       "output": {
         "target": "com.azure.loadtestservice#QuotaResourceListResult"
@@ -1782,7 +1782,7 @@
         "smithy.api#documentation": "Quota bucket details object."
       }
     },
-    "com.azure.loadtestservice#QuotasListRequest": {
+    "com.azure.loadtestservice#ListQuotasRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1806,10 +1806,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#LoadTestsListBySubscription": {
+    "com.azure.loadtestservice#ListLoadTestBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#LoadTestsListBySubscriptionRequest"
+        "target": "com.azure.loadtestservice#ListLoadTestBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.loadtestservice#LoadTestResourceListResult"
@@ -1825,7 +1825,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.loadtestservice#LoadTestsListBySubscriptionRequest": {
+    "com.azure.loadtestservice#ListLoadTestBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1841,13 +1841,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#OperationsList": {
+    "com.azure.loadtestservice#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.loadtestservice#OperationsListResponse"
+        "target": "com.azure.loadtestservice#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1860,7 +1860,7 @@
         "com.distilled.openapi#apiVersion": "2022-12-01"
       }
     },
-    "com.azure.loadtestservice#OperationsListResponse": {
+    "com.azure.loadtestservice#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -1999,13 +1999,13 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspaceQuotasGet": {
+    "com.azure.loadtestservice#GetPlaywrightWorkspaceQuota": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspaceQuotasGetRequest"
+        "target": "com.azure.loadtestservice#GetPlaywrightWorkspaceQuotaRequest"
       },
       "output": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspaceQuotasGetResponse"
+        "target": "com.azure.loadtestservice#GetPlaywrightWorkspaceQuotaResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2018,7 +2018,7 @@
         "com.distilled.openapi#apiVersion": "2025-09-01"
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspaceQuotasGetResponse": {
+    "com.azure.loadtestservice#GetPlaywrightWorkspaceQuotaResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2163,7 +2163,7 @@
         "smithy.api#documentation": "Playwright workspace quota free trial properties."
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspaceQuotasGetRequest": {
+    "com.azure.loadtestservice#GetPlaywrightWorkspaceQuotaRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2215,10 +2215,10 @@
       },
       "traits": {}
     },
-    "com.azure.loadtestservice#PlaywrightWorkspaceQuotasListByPlaywrightWorkspace": {
+    "com.azure.loadtestservice#ListPlaywrightWorkspaceQuotaByPlaywrightWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceRequest"
+        "target": "com.azure.loadtestservice#ListPlaywrightWorkspaceQuotaByPlaywrightWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.loadtestservice#PlaywrightWorkspaceQuotaListResult"
@@ -2302,7 +2302,7 @@
         "smithy.api#documentation": "Playwright workspace quota resource."
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceRequest": {
+    "com.azure.loadtestservice#ListPlaywrightWorkspaceQuotaByPlaywrightWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2334,10 +2334,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesDelete": {
+    "com.azure.loadtestservice#DeletePlaywrightWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspacesDeleteRequest"
+        "target": "com.azure.loadtestservice#DeletePlaywrightWorkspaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2353,7 +2353,7 @@
         "com.distilled.openapi#apiVersion": "2025-09-01"
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesDeleteRequest": {
+    "com.azure.loadtestservice#DeletePlaywrightWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2385,13 +2385,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesUpdate": {
+    "com.azure.loadtestservice#UpdatePlaywrightWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspacesUpdateRequest"
+        "target": "com.azure.loadtestservice#UpdatePlaywrightWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspacesUpdateResponse"
+        "target": "com.azure.loadtestservice#UpdatePlaywrightWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2404,7 +2404,7 @@
         "com.distilled.openapi#apiVersion": "2025-09-01"
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesUpdateResponse": {
+    "com.azure.loadtestservice#UpdatePlaywrightWorkspaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2545,7 +2545,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesUpdateRequest": {
+    "com.azure.loadtestservice#UpdatePlaywrightWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2846,13 +2846,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesGet": {
+    "com.azure.loadtestservice#GetPlaywrightWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspacesGetRequest"
+        "target": "com.azure.loadtestservice#GetPlaywrightWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspacesGetResponse"
+        "target": "com.azure.loadtestservice#GetPlaywrightWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2865,7 +2865,7 @@
         "com.distilled.openapi#apiVersion": "2025-09-01"
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesGetResponse": {
+    "com.azure.loadtestservice#GetPlaywrightWorkspaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2928,7 +2928,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesGetRequest": {
+    "com.azure.loadtestservice#GetPlaywrightWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2960,10 +2960,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesListByResourceGroup": {
+    "com.azure.loadtestservice#ListPlaywrightWorkspaceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspacesListByResourceGroupRequest"
+        "target": "com.azure.loadtestservice#ListPlaywrightWorkspaceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.loadtestservice#PlaywrightWorkspaceListResult"
@@ -3072,7 +3072,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesListByResourceGroupRequest": {
+    "com.azure.loadtestservice#ListPlaywrightWorkspaceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3096,10 +3096,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesListBySubscription": {
+    "com.azure.loadtestservice#ListPlaywrightWorkspaceBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspacesListBySubscriptionRequest"
+        "target": "com.azure.loadtestservice#ListPlaywrightWorkspaceBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.loadtestservice#PlaywrightWorkspaceListResult"
@@ -3115,7 +3115,7 @@
         "com.distilled.openapi#apiVersion": "2025-09-01"
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesListBySubscriptionRequest": {
+    "com.azure.loadtestservice#ListPlaywrightWorkspaceBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3131,13 +3131,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#PlaywrightQuotasGet": {
+    "com.azure.loadtestservice#GetPlaywrightQuota": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightQuotasGetRequest"
+        "target": "com.azure.loadtestservice#GetPlaywrightQuotaRequest"
       },
       "output": {
-        "target": "com.azure.loadtestservice#PlaywrightQuotasGetResponse"
+        "target": "com.azure.loadtestservice#GetPlaywrightQuotaResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3150,7 +3150,7 @@
         "com.distilled.openapi#apiVersion": "2025-09-01"
       }
     },
-    "com.azure.loadtestservice#PlaywrightQuotasGetResponse": {
+    "com.azure.loadtestservice#GetPlaywrightQuotaResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3256,7 +3256,7 @@
         "smithy.api#documentation": "The free trial state."
       }
     },
-    "com.azure.loadtestservice#PlaywrightQuotasGetRequest": {
+    "com.azure.loadtestservice#GetPlaywrightQuotaRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3300,10 +3300,10 @@
       },
       "traits": {}
     },
-    "com.azure.loadtestservice#PlaywrightQuotasListBySubscription": {
+    "com.azure.loadtestservice#ListPlaywrightQuotaBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightQuotasListBySubscriptionRequest"
+        "target": "com.azure.loadtestservice#ListPlaywrightQuotaBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.loadtestservice#PlaywrightQuotaListResult"
@@ -3387,7 +3387,7 @@
         "smithy.api#documentation": "Subscription-level location-based Playwright quota resource."
       }
     },
-    "com.azure.loadtestservice#PlaywrightQuotasListBySubscriptionRequest": {
+    "com.azure.loadtestservice#ListPlaywrightQuotaBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3411,13 +3411,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesCheckNameAvailability": {
+    "com.azure.loadtestservice#CheckPlaywrightWorkspaceNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspacesCheckNameAvailabilityRequest"
+        "target": "com.azure.loadtestservice#CheckPlaywrightWorkspaceNameAvailabilityRequest"
       },
       "output": {
-        "target": "com.azure.loadtestservice#PlaywrightWorkspacesCheckNameAvailabilityResponse"
+        "target": "com.azure.loadtestservice#CheckPlaywrightWorkspaceNameAvailabilityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3430,7 +3430,7 @@
         "com.distilled.openapi#apiVersion": "2025-09-01"
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesCheckNameAvailabilityResponse": {
+    "com.azure.loadtestservice#CheckPlaywrightWorkspaceNameAvailabilityResponse": {
       "type": "structure",
       "members": {
         "nameAvailable": {
@@ -3476,7 +3476,7 @@
         "smithy.api#documentation": "The reason why the given name is not available."
       }
     },
-    "com.azure.loadtestservice#PlaywrightWorkspacesCheckNameAvailabilityRequest": {
+    "com.azure.loadtestservice#CheckPlaywrightWorkspaceNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3509,70 +3509,70 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.loadtestservice#LoadTestsListOutboundNetworkDependenciesEndpoints"
+          "target": "com.azure.loadtestservice#ListLoadTestOutboundNetworkDependencyEndpoints"
         },
         {
-          "target": "com.azure.loadtestservice#LoadTestsDelete"
+          "target": "com.azure.loadtestservice#DeleteLoadTest"
         },
         {
-          "target": "com.azure.loadtestservice#LoadTestsUpdate"
+          "target": "com.azure.loadtestservice#UpdateLoadTest"
         },
         {
           "target": "com.azure.loadtestservice#LoadTestsCreateOrUpdate"
         },
         {
-          "target": "com.azure.loadtestservice#LoadTestsGet"
+          "target": "com.azure.loadtestservice#GetLoadTest"
         },
         {
-          "target": "com.azure.loadtestservice#LoadTestsListByResourceGroup"
+          "target": "com.azure.loadtestservice#ListLoadTestByResourceGroup"
         },
         {
-          "target": "com.azure.loadtestservice#QuotasCheckAvailability"
+          "target": "com.azure.loadtestservice#CheckQuotaAvailability"
         },
         {
-          "target": "com.azure.loadtestservice#QuotasGet"
+          "target": "com.azure.loadtestservice#GetQuota"
         },
         {
-          "target": "com.azure.loadtestservice#QuotasList"
+          "target": "com.azure.loadtestservice#ListQuotas"
         },
         {
-          "target": "com.azure.loadtestservice#LoadTestsListBySubscription"
+          "target": "com.azure.loadtestservice#ListLoadTestBySubscription"
         },
         {
-          "target": "com.azure.loadtestservice#OperationsList"
+          "target": "com.azure.loadtestservice#ListOperations"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightWorkspaceQuotasGet"
+          "target": "com.azure.loadtestservice#GetPlaywrightWorkspaceQuota"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightWorkspaceQuotasListByPlaywrightWorkspace"
+          "target": "com.azure.loadtestservice#ListPlaywrightWorkspaceQuotaByPlaywrightWorkspace"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightWorkspacesDelete"
+          "target": "com.azure.loadtestservice#DeletePlaywrightWorkspace"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightWorkspacesUpdate"
+          "target": "com.azure.loadtestservice#UpdatePlaywrightWorkspace"
         },
         {
           "target": "com.azure.loadtestservice#PlaywrightWorkspacesCreateOrUpdate"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightWorkspacesGet"
+          "target": "com.azure.loadtestservice#GetPlaywrightWorkspace"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightWorkspacesListByResourceGroup"
+          "target": "com.azure.loadtestservice#ListPlaywrightWorkspaceByResourceGroup"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightWorkspacesListBySubscription"
+          "target": "com.azure.loadtestservice#ListPlaywrightWorkspaceBySubscription"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightQuotasGet"
+          "target": "com.azure.loadtestservice#GetPlaywrightQuota"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightQuotasListBySubscription"
+          "target": "com.azure.loadtestservice#ListPlaywrightQuotaBySubscription"
         },
         {
-          "target": "com.azure.loadtestservice#PlaywrightWorkspacesCheckNameAvailability"
+          "target": "com.azure.loadtestservice#CheckPlaywrightWorkspaceNameAvailability"
         }
       ],
       "traits": {

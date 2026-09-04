@@ -4855,7 +4855,7 @@
         "smithy.api#documentation": "Deletes a user's account."
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchGetProjectsAccountsRequest": {
+    "com.gcp.identitytoolkit_v1#GetBatchProjectAccountRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -4895,10 +4895,10 @@
         }
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchGetProjectsAccounts": {
+    "com.gcp.identitytoolkit_v1#GetBatchProjectAccount": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.identitytoolkit_v1#BatchGetProjectsAccountsRequest"
+        "target": "com.gcp.identitytoolkit_v1#GetBatchProjectAccountRequest"
       },
       "output": {
         "target": "com.gcp.identitytoolkit_v1#GoogleCloudIdentitytoolkitV1DownloadAccountResponse"
@@ -4969,7 +4969,7 @@
         "smithy.api#documentation": "Updates account-related information for the specified user by setting specific fields or applying action codes. Requests from administrators and end users are supported."
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchDeleteProjectsAccountsRequest": {
+    "com.gcp.identitytoolkit_v1#DeleteBatchProjectAccountRequest": {
       "type": "structure",
       "members": {
         "targetProjectId": {
@@ -4989,10 +4989,10 @@
         }
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchDeleteProjectsAccounts": {
+    "com.gcp.identitytoolkit_v1#DeleteBatchProjectAccount": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.identitytoolkit_v1#BatchDeleteProjectsAccountsRequest"
+        "target": "com.gcp.identitytoolkit_v1#DeleteBatchProjectAccountRequest"
       },
       "output": {
         "target": "com.gcp.identitytoolkit_v1#GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse"
@@ -5069,7 +5069,7 @@
         "smithy.api#documentation": "Looks up user accounts within a project or a tenant based on conditions in the request."
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchCreateProjectsAccountsRequest": {
+    "com.gcp.identitytoolkit_v1#CreateBatchProjectAccountRequest": {
       "type": "structure",
       "members": {
         "targetProjectId": {
@@ -5089,10 +5089,10 @@
         }
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchCreateProjectsAccounts": {
+    "com.gcp.identitytoolkit_v1#CreateBatchProjectAccount": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.identitytoolkit_v1#BatchCreateProjectsAccountsRequest"
+        "target": "com.gcp.identitytoolkit_v1#CreateBatchProjectAccountRequest"
       },
       "output": {
         "target": "com.gcp.identitytoolkit_v1#GoogleCloudIdentitytoolkitV1UploadAccountResponse"
@@ -5335,7 +5335,7 @@
         "smithy.api#documentation": "Creates a session cookie for the given Identity Platform ID token. The session cookie is used by the client to preserve the user's login state."
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchDeleteProjectsTenantsAccountsRequest": {
+    "com.gcp.identitytoolkit_v1#DeleteBatchProjectTenantAccountRequest": {
       "type": "structure",
       "members": {
         "targetProjectId": {
@@ -5363,10 +5363,10 @@
         }
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchDeleteProjectsTenantsAccounts": {
+    "com.gcp.identitytoolkit_v1#DeleteBatchProjectTenantAccount": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.identitytoolkit_v1#BatchDeleteProjectsTenantsAccountsRequest"
+        "target": "com.gcp.identitytoolkit_v1#DeleteBatchProjectTenantAccountRequest"
       },
       "output": {
         "target": "com.gcp.identitytoolkit_v1#GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse"
@@ -5567,7 +5567,7 @@
         "smithy.api#documentation": "Sends an out-of-band confirmation code for an account. Requests from a authenticated request can optionally return a link including the OOB code instead of sending it."
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchCreateProjectsTenantsAccountsRequest": {
+    "com.gcp.identitytoolkit_v1#CreateBatchProjectTenantAccountRequest": {
       "type": "structure",
       "members": {
         "tenantId": {
@@ -5595,10 +5595,10 @@
         }
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchCreateProjectsTenantsAccounts": {
+    "com.gcp.identitytoolkit_v1#CreateBatchProjectTenantAccount": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.identitytoolkit_v1#BatchCreateProjectsTenantsAccountsRequest"
+        "target": "com.gcp.identitytoolkit_v1#CreateBatchProjectTenantAccountRequest"
       },
       "output": {
         "target": "com.gcp.identitytoolkit_v1#GoogleCloudIdentitytoolkitV1UploadAccountResponse"
@@ -5625,7 +5625,7 @@
         "smithy.api#documentation": "Uploads multiple accounts into the Google Cloud project. If there is a problem uploading one or more of the accounts, the rest will be uploaded, and a list of the errors will be returned. To use this method requires a Google OAuth 2.0 credential with proper [permissions](https://cloud.google.com/identity-platform/docs/access-control)."
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchGetProjectsTenantsAccountsRequest": {
+    "com.gcp.identitytoolkit_v1#GetBatchProjectTenantAccountRequest": {
       "type": "structure",
       "members": {
         "nextPageToken": {
@@ -5666,10 +5666,10 @@
         }
       }
     },
-    "com.gcp.identitytoolkit_v1#BatchGetProjectsTenantsAccounts": {
+    "com.gcp.identitytoolkit_v1#GetBatchProjectTenantAccount": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.identitytoolkit_v1#BatchGetProjectsTenantsAccountsRequest"
+        "target": "com.gcp.identitytoolkit_v1#GetBatchProjectTenantAccountRequest"
       },
       "output": {
         "target": "com.gcp.identitytoolkit_v1#GoogleCloudIdentitytoolkitV1DownloadAccountResponse"

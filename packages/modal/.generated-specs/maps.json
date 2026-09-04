@@ -290,7 +290,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.modal.maps#MapCheckInputsRequest": {
+    "com.modal.maps#CheckMapInputRequest": {
       "type": "structure",
       "members": {
         "lastEntryId": {
@@ -313,7 +313,7 @@
         "target": "smithy.api#Boolean"
       }
     },
-    "com.modal.maps#MapCheckInputsResponse": {
+    "com.modal.maps#CheckMapInputResponse": {
       "type": "structure",
       "members": {
         "lost": {
@@ -324,13 +324,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.maps#MapCheckInputs": {
+    "com.modal.maps#CheckMapInput": {
       "type": "operation",
       "input": {
-        "target": "com.modal.maps#MapCheckInputsRequest"
+        "target": "com.modal.maps#CheckMapInputRequest"
       },
       "output": {
-        "target": "com.modal.maps#MapCheckInputsResponse"
+        "target": "com.modal.maps#CheckMapInputResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -403,7 +403,7 @@
         "target": "com.modal.maps#MapStartOrContinueItem"
       }
     },
-    "com.modal.maps#MapStartOrContinueRequest": {
+    "com.modal.maps#StartMapOrContinueRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -452,7 +452,7 @@
         }
       }
     },
-    "com.modal.maps#MapStartOrContinueResponse": {
+    "com.modal.maps#StartMapOrContinueResponse": {
       "type": "structure",
       "members": {
         "mapToken": {
@@ -481,13 +481,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.maps#MapStartOrContinue": {
+    "com.modal.maps#StartMapOrContinue": {
       "type": "operation",
       "input": {
-        "target": "com.modal.maps#MapStartOrContinueRequest"
+        "target": "com.modal.maps#StartMapOrContinueRequest"
       },
       "output": {
-        "target": "com.modal.maps#MapStartOrContinueResponse"
+        "target": "com.modal.maps#StartMapOrContinueResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -505,10 +505,10 @@
           "target": "com.modal.maps#MapAwait"
         },
         {
-          "target": "com.modal.maps#MapCheckInputs"
+          "target": "com.modal.maps#CheckMapInput"
         },
         {
-          "target": "com.modal.maps#MapStartOrContinue"
+          "target": "com.modal.maps#StartMapOrContinue"
         }
       ],
       "traits": {

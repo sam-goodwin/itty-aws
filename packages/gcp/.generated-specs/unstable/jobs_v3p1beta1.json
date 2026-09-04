@@ -4038,7 +4038,7 @@
         "smithy.api#documentation": "Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes."
       }
     },
-    "com.gcp.jobs_v3p1beta1#BatchDeleteProjectsJobsRequest": {
+    "com.gcp.jobs_v3p1beta1#DeleteBatchProjectJobRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4058,10 +4058,10 @@
         }
       }
     },
-    "com.gcp.jobs_v3p1beta1#BatchDeleteProjectsJobs": {
+    "com.gcp.jobs_v3p1beta1#DeleteBatchProjectJob": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.jobs_v3p1beta1#BatchDeleteProjectsJobsRequest"
+        "target": "com.gcp.jobs_v3p1beta1#DeleteBatchProjectJobRequest"
       },
       "output": {
         "target": "com.gcp.jobs_v3p1beta1#Empty"

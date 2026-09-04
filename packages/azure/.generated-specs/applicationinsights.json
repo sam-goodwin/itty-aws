@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.applicationinsights#WorkbooksRevisionGet": {
+    "com.azure.applicationinsights#GetWorkbookRevision": {
       "type": "operation",
       "input": {
-        "target": "com.azure.applicationinsights#WorkbooksRevisionGetRequest"
+        "target": "com.azure.applicationinsights#GetWorkbookRevisionRequest"
       },
       "output": {
-        "target": "com.azure.applicationinsights#WorkbooksRevisionGetResponse"
+        "target": "com.azure.applicationinsights#GetWorkbookRevisionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.applicationinsights#WorkbooksRevisionGetResponse": {
+    "com.azure.applicationinsights#GetWorkbookRevisionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -422,7 +422,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.applicationinsights#WorkbooksRevisionGetRequest": {
+    "com.azure.applicationinsights#GetWorkbookRevisionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -462,10 +462,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.applicationinsights#WorkbooksRevisionsList": {
+    "com.azure.applicationinsights#ListWorkbookRevisions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.applicationinsights#WorkbooksRevisionsListRequest"
+        "target": "com.azure.applicationinsights#ListWorkbookRevisionsRequest"
       },
       "output": {
         "target": "com.azure.applicationinsights#WorkbooksListResult"
@@ -591,7 +591,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.applicationinsights#WorkbooksRevisionsListRequest": {
+    "com.azure.applicationinsights#ListWorkbookRevisionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -623,10 +623,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.applicationinsights#WorkbooksDelete": {
+    "com.azure.applicationinsights#DeleteWorkbook": {
       "type": "operation",
       "input": {
-        "target": "com.azure.applicationinsights#WorkbooksDeleteRequest"
+        "target": "com.azure.applicationinsights#DeleteWorkbookRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -642,7 +642,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.applicationinsights#WorkbooksDeleteRequest": {
+    "com.azure.applicationinsights#DeleteWorkbookRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -674,13 +674,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.applicationinsights#WorkbooksUpdate": {
+    "com.azure.applicationinsights#UpdateWorkbook": {
       "type": "operation",
       "input": {
-        "target": "com.azure.applicationinsights#WorkbooksUpdateRequest"
+        "target": "com.azure.applicationinsights#UpdateWorkbookRequest"
       },
       "output": {
-        "target": "com.azure.applicationinsights#WorkbooksUpdateResponse"
+        "target": "com.azure.applicationinsights#UpdateWorkbookResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -693,7 +693,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.applicationinsights#WorkbooksUpdateResponse": {
+    "com.azure.applicationinsights#UpdateWorkbookResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -774,7 +774,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.applicationinsights#WorkbooksUpdateRequest": {
+    "com.azure.applicationinsights#UpdateWorkbookRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1207,13 +1207,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.applicationinsights#WorkbooksGet": {
+    "com.azure.applicationinsights#GetWorkbook": {
       "type": "operation",
       "input": {
-        "target": "com.azure.applicationinsights#WorkbooksGetRequest"
+        "target": "com.azure.applicationinsights#GetWorkbookRequest"
       },
       "output": {
-        "target": "com.azure.applicationinsights#WorkbooksGetResponse"
+        "target": "com.azure.applicationinsights#GetWorkbookResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1226,7 +1226,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.applicationinsights#WorkbooksGetResponse": {
+    "com.azure.applicationinsights#GetWorkbookResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1307,7 +1307,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.applicationinsights#WorkbooksGetRequest": {
+    "com.azure.applicationinsights#GetWorkbookRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1346,10 +1346,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.applicationinsights#WorkbooksListByResourceGroup": {
+    "com.azure.applicationinsights#ListWorkbookByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.applicationinsights#WorkbooksListByResourceGroupRequest"
+        "target": "com.azure.applicationinsights#ListWorkbookByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.applicationinsights#WorkbooksListResult"
@@ -1365,7 +1365,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.applicationinsights#WorkbooksListByResourceGroupRequest": {
+    "com.azure.applicationinsights#ListWorkbookByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1455,10 +1455,10 @@
       },
       "traits": {}
     },
-    "com.azure.applicationinsights#WorkbooksListBySubscription": {
+    "com.azure.applicationinsights#ListWorkbookBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.applicationinsights#WorkbooksListBySubscriptionRequest"
+        "target": "com.azure.applicationinsights#ListWorkbookBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.applicationinsights#WorkbooksListResult"
@@ -1474,7 +1474,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.applicationinsights#WorkbooksListBySubscriptionRequest": {
+    "com.azure.applicationinsights#ListWorkbookBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1554,28 +1554,28 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.applicationinsights#WorkbooksRevisionGet"
+          "target": "com.azure.applicationinsights#GetWorkbookRevision"
         },
         {
-          "target": "com.azure.applicationinsights#WorkbooksRevisionsList"
+          "target": "com.azure.applicationinsights#ListWorkbookRevisions"
         },
         {
-          "target": "com.azure.applicationinsights#WorkbooksDelete"
+          "target": "com.azure.applicationinsights#DeleteWorkbook"
         },
         {
-          "target": "com.azure.applicationinsights#WorkbooksUpdate"
+          "target": "com.azure.applicationinsights#UpdateWorkbook"
         },
         {
           "target": "com.azure.applicationinsights#WorkbooksCreateOrUpdate"
         },
         {
-          "target": "com.azure.applicationinsights#WorkbooksGet"
+          "target": "com.azure.applicationinsights#GetWorkbook"
         },
         {
-          "target": "com.azure.applicationinsights#WorkbooksListByResourceGroup"
+          "target": "com.azure.applicationinsights#ListWorkbookByResourceGroup"
         },
         {
-          "target": "com.azure.applicationinsights#WorkbooksListBySubscription"
+          "target": "com.azure.applicationinsights#ListWorkbookBySubscription"
         }
       ],
       "traits": {

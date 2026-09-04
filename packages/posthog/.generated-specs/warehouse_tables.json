@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.warehouse_tables#WarehouseTablesListRequest": {
+    "com.posthog.warehouse_tables#ListWarehouseTablesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8445,10 +8445,10 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_tables#WarehouseTablesList": {
+    "com.posthog.warehouse_tables#ListWarehouseTables": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesListRequest"
+        "target": "com.posthog.warehouse_tables#ListWarehouseTablesRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#PaginatedTableListOutput"
@@ -8504,7 +8504,7 @@
         "smithy.api#documentation": "Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesCreateRequest": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8554,10 +8554,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesCreate": {
+    "com.posthog.warehouse_tables#CreateWarehouseTable": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesCreateRequest"
+        "target": "com.posthog.warehouse_tables#CreateWarehouseTableRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#TableOutput"
@@ -8643,7 +8643,7 @@
         "smithy.api#documentation": "Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesUpdateRequest": {
+    "com.posthog.warehouse_tables#UpdateWarehouseTableRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8701,10 +8701,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesUpdate": {
+    "com.posthog.warehouse_tables#UpdateWarehouseTable": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesUpdateRequest"
+        "target": "com.posthog.warehouse_tables#UpdateWarehouseTableRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#TableOutput"
@@ -8741,7 +8741,7 @@
         "smithy.api#documentation": "Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesPartialUpdateRequest": {
+    "com.posthog.warehouse_tables#UpdateWarehouseTablePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8799,10 +8799,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesPartialUpdate": {
+    "com.posthog.warehouse_tables#UpdateWarehouseTablePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesPartialUpdateRequest"
+        "target": "com.posthog.warehouse_tables#UpdateWarehouseTablePartialRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#TableOutput"
@@ -8876,7 +8876,7 @@
         "smithy.api#documentation": "Create, Read, Update and Delete Warehouse Tables."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesRefreshSchemaCreateRequest": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableRefreshSchemaRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8900,10 +8900,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesRefreshSchemaCreate": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableRefreshSchema": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesRefreshSchemaCreateRequest"
+        "target": "com.posthog.warehouse_tables#CreateWarehouseTableRefreshSchemaRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9217,7 +9217,7 @@
         "smithy.api#documentation": "Read-only reports for this subject's check-suite executions."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesCheckSuiteRunsRetrieveRequest": {
+    "com.posthog.warehouse_tables#CheckWarehouseTableSuiteRunRetrieveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9249,10 +9249,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesCheckSuiteRunsRetrieve": {
+    "com.posthog.warehouse_tables#CheckWarehouseTableSuiteRunRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesCheckSuiteRunsRetrieveRequest"
+        "target": "com.posthog.warehouse_tables#CheckWarehouseTableSuiteRunRetrieveRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#DataQualitySuiteRun"
@@ -9576,7 +9576,7 @@
         "smithy.api#documentation": "Every check execution in this suite run."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksListRequest": {
+    "com.posthog.warehouse_tables#ListWarehouseTableChecksRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9866,10 +9866,10 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksList": {
+    "com.posthog.warehouse_tables#ListWarehouseTableChecks": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesChecksListRequest"
+        "target": "com.posthog.warehouse_tables#ListWarehouseTableChecksRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#PaginatedDataQualityCheckList"
@@ -9904,7 +9904,7 @@
         "smithy.api#documentation": "Free-form string labels for grouping and filtering."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksCreateRequest": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableCheckRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10001,10 +10001,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksCreate": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableCheck": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesChecksCreateRequest"
+        "target": "com.posthog.warehouse_tables#CreateWarehouseTableCheckRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#DataQualityCheck"
@@ -10087,7 +10087,7 @@
         "smithy.api#documentation": "Free-form string labels for grouping and filtering."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksUpdateRequest": {
+    "com.posthog.warehouse_tables#UpdateWarehouseTableCheckRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10192,10 +10192,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksUpdate": {
+    "com.posthog.warehouse_tables#UpdateWarehouseTableCheck": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesChecksUpdateRequest"
+        "target": "com.posthog.warehouse_tables#UpdateWarehouseTableCheckRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#DataQualityCheck"
@@ -10230,7 +10230,7 @@
         "smithy.api#documentation": "Free-form string labels for grouping and filtering."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksPartialUpdateRequest": {
+    "com.posthog.warehouse_tables#UpdateWarehouseTableCheckPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10334,10 +10334,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksPartialUpdate": {
+    "com.posthog.warehouse_tables#UpdateWarehouseTableCheckPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesChecksPartialUpdateRequest"
+        "target": "com.posthog.warehouse_tables#UpdateWarehouseTableCheckPartialRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#DataQualityCheck"
@@ -10399,7 +10399,7 @@
         "smithy.api#documentation": "CRUD for one subject's checks, plus the actions that run them and report on them."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksRunCreateRequest": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableCheckRunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10430,10 +10430,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksRunCreate": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableCheckRun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesChecksRunCreateRequest"
+        "target": "com.posthog.warehouse_tables#CreateWarehouseTableCheckRunRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#DataQualitySuiteRun"
@@ -10447,7 +10447,7 @@
         "smithy.api#documentation": "Run this check now. Returns the suite run to poll for the report."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksRunsListRequest": {
+    "com.posthog.warehouse_tables#ListWarehouseTableCheckRunsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10485,7 +10485,7 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksRunsListResponse": {
+    "com.posthog.warehouse_tables#ListWarehouseTableCheckRunsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -10500,13 +10500,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksRunsList": {
+    "com.posthog.warehouse_tables#ListWarehouseTableCheckRuns": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesChecksRunsListRequest"
+        "target": "com.posthog.warehouse_tables#ListWarehouseTableCheckRunsRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesChecksRunsListResponse"
+        "target": "com.posthog.warehouse_tables#ListWarehouseTableCheckRunsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10710,7 +10710,7 @@
         "smithy.api#documentation": "Health rollup for this table or view, from the denormalized status of its checks."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksRunAllCreateRequest": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableCheckRunAllRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10733,10 +10733,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesChecksRunAllCreate": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableCheckRunAll": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesChecksRunAllCreateRequest"
+        "target": "com.posthog.warehouse_tables#CreateWarehouseTableCheckRunAllRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#DataQualitySuiteRun"
@@ -10849,7 +10849,7 @@
         "smithy.api#documentation": "Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesFileCreateRequest": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableFileRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10899,10 +10899,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesFileCreate": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableFile": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesFileCreateRequest"
+        "target": "com.posthog.warehouse_tables#CreateWarehouseTableFileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10955,7 +10955,7 @@
         "smithy.api#documentation": "How the file will be read when the table is created."
       }
     },
-    "com.posthog.warehouse_tables#WarehouseTablesUploadFileCreateRequest": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableUploadFileRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -11019,10 +11019,10 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_tables#WarehouseTablesUploadFileCreate": {
+    "com.posthog.warehouse_tables#CreateWarehouseTableUploadFile": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_tables#WarehouseTablesUploadFileCreateRequest"
+        "target": "com.posthog.warehouse_tables#CreateWarehouseTableUploadFileRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_tables#FileUploadResponse"
@@ -11082,25 +11082,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesList"
+          "target": "com.posthog.warehouse_tables#ListWarehouseTables"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesCreate"
+          "target": "com.posthog.warehouse_tables#CreateWarehouseTable"
         },
         {
           "target": "com.posthog.warehouse_tables#WarehouseTablesRetrieve"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesUpdate"
+          "target": "com.posthog.warehouse_tables#UpdateWarehouseTable"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesPartialUpdate"
+          "target": "com.posthog.warehouse_tables#UpdateWarehouseTablePartial"
         },
         {
           "target": "com.posthog.warehouse_tables#WarehouseTablesDestroy"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesRefreshSchemaCreate"
+          "target": "com.posthog.warehouse_tables#CreateWarehouseTableRefreshSchema"
         },
         {
           "target": "com.posthog.warehouse_tables#WarehouseTablesUpdateSchemaCreate"
@@ -11109,34 +11109,34 @@
           "target": "com.posthog.warehouse_tables#WarehouseTablesCheckSuiteRunsList"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesCheckSuiteRunsRetrieve"
+          "target": "com.posthog.warehouse_tables#CheckWarehouseTableSuiteRunRetrieve"
         },
         {
           "target": "com.posthog.warehouse_tables#WarehouseTablesCheckSuiteRunsCheckRunsList"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesChecksList"
+          "target": "com.posthog.warehouse_tables#ListWarehouseTableChecks"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesChecksCreate"
+          "target": "com.posthog.warehouse_tables#CreateWarehouseTableCheck"
         },
         {
           "target": "com.posthog.warehouse_tables#WarehouseTablesChecksRetrieve"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesChecksUpdate"
+          "target": "com.posthog.warehouse_tables#UpdateWarehouseTableCheck"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesChecksPartialUpdate"
+          "target": "com.posthog.warehouse_tables#UpdateWarehouseTableCheckPartial"
         },
         {
           "target": "com.posthog.warehouse_tables#WarehouseTablesChecksDestroy"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesChecksRunCreate"
+          "target": "com.posthog.warehouse_tables#CreateWarehouseTableCheckRun"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesChecksRunsList"
+          "target": "com.posthog.warehouse_tables#ListWarehouseTableCheckRuns"
         },
         {
           "target": "com.posthog.warehouse_tables#WarehouseTablesChecksCheckTypesList"
@@ -11145,16 +11145,16 @@
           "target": "com.posthog.warehouse_tables#WarehouseTablesChecksHealthRetrieve"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesChecksRunAllCreate"
+          "target": "com.posthog.warehouse_tables#CreateWarehouseTableCheckRunAll"
         },
         {
           "target": "com.posthog.warehouse_tables#WarehouseTablesCreateFromUploadCreate"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesFileCreate"
+          "target": "com.posthog.warehouse_tables#CreateWarehouseTableFile"
         },
         {
-          "target": "com.posthog.warehouse_tables#WarehouseTablesUploadFileCreate"
+          "target": "com.posthog.warehouse_tables#CreateWarehouseTableUploadFile"
         }
       ],
       "traits": {

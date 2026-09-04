@@ -40,542 +40,8 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type InsightsActivityRetrieveRequestFormat = "csv" | "json";
-export const InsightsActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
-
-export interface InsightsActivityRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this insight. */
-  id: number;
-  format?: InsightsActivityRetrieveRequestFormat | (string & {});
-  /** Page size. Defaults to 10. */
-  limit?: number;
-  /** 1-indexed page number. Defaults to 1. */
-  page?: number;
-}
-export const InsightsActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    format: S.optional(InsightsActivityRetrieveRequestFormat.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/insights/{id}/activity/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsActivityRetrieveRequest",
-}) as any as S.Schema<InsightsActivityRetrieveRequest>;
-
-export interface Change {
-  type?: string;
-  action?: string;
-  field?: string;
-  before?: unknown;
-  after?: unknown;
-}
-export const Change = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    action: S.optional(S.String),
-    field: S.optional(S.String),
-    before: S.optional(S.Unknown),
-    after: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
-
-export type DetailChangesList = Array<Change>;
-export const DetailChangesList = /*@__PURE__*/ S.Array(
-  Change,
-) as any as S.Schema<DetailChangesList>;
-
-export interface Merge {
-  type?: string;
-  source?: unknown;
-  target?: unknown;
-}
-export const Merge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    source: S.optional(S.Unknown),
-    target: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "Merge" }) as any as S.Schema<Merge>;
-
-export interface Trigger {
-  job_type?: string;
-  job_id?: string;
-  payload?: unknown;
-}
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job_type: S.optional(S.String),
-    job_id: S.optional(S.String),
-    payload: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
-
-export interface Detail {
-  id?: string;
-  changes?: DetailChangesList;
-  merge?: Merge;
-  trigger?: Trigger;
-  name?: string;
-  short_id?: string;
-  type?: string;
-}
-export const Detail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    changes: S.optional(DetailChangesList),
-    merge: S.optional(Merge),
-    trigger: S.optional(Trigger),
-    name: S.optional(S.String),
-    short_id: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "Detail" }) as any as S.Schema<Detail>;
-
-export interface ActivityLogEntry {
-  id?: string;
-  user?: unknown | null;
-  activity?: string;
-  scope?: string;
-  item_id?: string;
-  detail?: Detail;
-  created_at?: string;
-  /** Whether the activity was performed by the system rather than a user. */
-  is_system?: boolean;
-  /** Whether the acting user was being impersonated by PostHog staff. */
-  was_impersonated?: boolean;
-  /** API client that triggered the activity, from the x-posthog-client request header (e.g. 'mcp'). Null for requests that did not send the header. */
-  client?: string | null;
-}
-export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    user: S.optional(S.NullOr(S.Unknown)),
-    activity: S.optional(S.String),
-    scope: S.optional(S.String),
-    item_id: S.optional(S.String),
-    detail: S.optional(Detail),
-    created_at: S.optional(S.String),
-    is_system: S.optional(S.Boolean),
-    was_impersonated: S.optional(S.Boolean),
-    client: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ActivityLogEntry",
-}) as any as S.Schema<ActivityLogEntry>;
-
-export type ActivityLogPaginatedResponseResultsList = Array<ActivityLogEntry>;
-export const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
-  ActivityLogEntry,
-) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
-
-/** Response shape for paginated activity log endpoints. */
-export interface ActivityLogPaginatedResponse {
-  results?: ActivityLogPaginatedResponseResultsList;
-  next?: string | null;
-  previous?: string | null;
-  total_count?: number;
-}
-export const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(ActivityLogPaginatedResponseResultsList),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    total_count: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ActivityLogPaginatedResponse",
-}) as any as S.Schema<ActivityLogPaginatedResponse>;
-
-export type InsightsAllActivityRetrieveRequestFormat = "csv" | "json";
-export const InsightsAllActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
-
-export interface InsightsAllActivityRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  format?: InsightsAllActivityRetrieveRequestFormat | (string & {});
-  /** Page size. Defaults to 10. */
-  limit?: number;
-  /** 1-indexed page number. Defaults to 1. */
-  page?: number;
-}
-export const InsightsAllActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    format: S.optional(
-      InsightsAllActivityRetrieveRequestFormat.pipe(T.Query()),
-    ),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/insights/activity/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsAllActivityRetrieveRequest",
-}) as any as S.Schema<InsightsAllActivityRetrieveRequest>;
-
-export type InsightsAnalyzeRetrieveRequestFormat = "csv" | "json";
-export const InsightsAnalyzeRetrieveRequestFormat = /*@__PURE__*/ S.String;
-
-export interface InsightsAnalyzeRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this insight. */
-  id: number;
-  format?: InsightsAnalyzeRetrieveRequestFormat | (string & {});
-}
-export const InsightsAnalyzeRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    format: S.optional(InsightsAnalyzeRetrieveRequestFormat.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/insights/{id}/analyze/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsAnalyzeRetrieveRequest",
-}) as any as S.Schema<InsightsAnalyzeRetrieveRequest>;
-
-export interface InsightsAnalyzeRetrieveResponse {}
-export const InsightsAnalyzeRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InsightsAnalyzeRetrieveResponse",
-}) as any as S.Schema<InsightsAnalyzeRetrieveResponse>;
-
-export type InsightsBulkDeleteCreateRequestFormat = "csv" | "json";
-export const InsightsBulkDeleteCreateRequestFormat = /*@__PURE__*/ S.String;
-
-/** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
-export type InsightsBulkDeleteCreateRequestIdsList = Array<number>;
-export const InsightsBulkDeleteCreateRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<InsightsBulkDeleteCreateRequestIdsList>;
-
-export interface InsightsBulkDeleteCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  format?: InsightsBulkDeleteCreateRequestFormat | (string & {});
-  /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
-  ids: InsightsBulkDeleteCreateRequestIdsList;
-}
-export const InsightsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    format: S.optional(InsightsBulkDeleteCreateRequestFormat.pipe(T.Query())),
-    ids: InsightsBulkDeleteCreateRequestIdsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/insights/bulk_delete/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsBulkDeleteCreateRequest",
-}) as any as S.Schema<InsightsBulkDeleteCreateRequest>;
-
-export interface InsightBulkOperationResult {
-  /** ID of the insight that was soft-deleted or restored. */
-  id: number;
-  /** The insight's name (or derived name) at the time of the operation; null when it has neither. */
-  name: string | null;
-}
-export const InsightBulkOperationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "InsightBulkOperationResult",
-}) as any as S.Schema<InsightBulkOperationResult>;
-
-/** Insights that were successfully soft-deleted. */
-export type InsightBulkDeleteResponseDeletedList =
-  Array<InsightBulkOperationResult>;
-export const InsightBulkDeleteResponseDeletedList = /*@__PURE__*/ S.Array(
-  InsightBulkOperationResult,
-) as any as S.Schema<InsightBulkDeleteResponseDeletedList>;
-
-export interface InsightBulkOperationSkipped {
-  /** ID of the insight that was skipped. */
-  id: number;
-  /** Human-readable reason the insight was skipped (for example, not found or no edit permission). */
-  reason: string;
-}
-export const InsightBulkOperationSkipped = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    reason: S.String,
-  }),
-).annotate({
-  identifier: "InsightBulkOperationSkipped",
-}) as any as S.Schema<InsightBulkOperationSkipped>;
-
-/** Insights that were not deleted, with the reason for each. */
-export type InsightBulkDeleteResponseSkippedList =
-  Array<InsightBulkOperationSkipped>;
-export const InsightBulkDeleteResponseSkippedList = /*@__PURE__*/ S.Array(
-  InsightBulkOperationSkipped,
-) as any as S.Schema<InsightBulkDeleteResponseSkippedList>;
-
-export interface InsightBulkDeleteResponse {
-  /** Insights that were successfully soft-deleted. */
-  deleted: InsightBulkDeleteResponseDeletedList;
-  /** Insights that were not deleted, with the reason for each. */
-  skipped: InsightBulkDeleteResponseSkippedList;
-}
-export const InsightBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleted: InsightBulkDeleteResponseDeletedList,
-    skipped: InsightBulkDeleteResponseSkippedList,
-  }),
-).annotate({
-  identifier: "InsightBulkDeleteResponse",
-}) as any as S.Schema<InsightBulkDeleteResponse>;
-
-export type InsightsBulkRestoreCreateRequestFormat = "csv" | "json";
-export const InsightsBulkRestoreCreateRequestFormat = /*@__PURE__*/ S.String;
-
-/** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
-export type InsightsBulkRestoreCreateRequestIdsList = Array<number>;
-export const InsightsBulkRestoreCreateRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<InsightsBulkRestoreCreateRequestIdsList>;
-
-export interface InsightsBulkRestoreCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  format?: InsightsBulkRestoreCreateRequestFormat | (string & {});
-  /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
-  ids: InsightsBulkRestoreCreateRequestIdsList;
-}
-export const InsightsBulkRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    format: S.optional(InsightsBulkRestoreCreateRequestFormat.pipe(T.Query())),
-    ids: InsightsBulkRestoreCreateRequestIdsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/insights/bulk_restore/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsBulkRestoreCreateRequest",
-}) as any as S.Schema<InsightsBulkRestoreCreateRequest>;
-
-/** Insights that were successfully restored. */
-export type InsightBulkRestoreResponseRestoredList =
-  Array<InsightBulkOperationResult>;
-export const InsightBulkRestoreResponseRestoredList = /*@__PURE__*/ S.Array(
-  InsightBulkOperationResult,
-) as any as S.Schema<InsightBulkRestoreResponseRestoredList>;
-
-/** Insights that were not restored, with the reason for each. */
-export type InsightBulkRestoreResponseSkippedList =
-  Array<InsightBulkOperationSkipped>;
-export const InsightBulkRestoreResponseSkippedList = /*@__PURE__*/ S.Array(
-  InsightBulkOperationSkipped,
-) as any as S.Schema<InsightBulkRestoreResponseSkippedList>;
-
-export interface InsightBulkRestoreResponse {
-  /** Insights that were successfully restored. */
-  restored: InsightBulkRestoreResponseRestoredList;
-  /** Insights that were not restored, with the reason for each. */
-  skipped: InsightBulkRestoreResponseSkippedList;
-}
-export const InsightBulkRestoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restored: InsightBulkRestoreResponseRestoredList,
-    skipped: InsightBulkRestoreResponseSkippedList,
-  }),
-).annotate({
-  identifier: "InsightBulkRestoreResponse",
-}) as any as S.Schema<InsightBulkRestoreResponse>;
-
-export type InsightsBulkSetTestAccountFilterCreateRequestFormat =
-  | "csv"
-  | "json";
-export const InsightsBulkSetTestAccountFilterCreateRequestFormat =
-  /*@__PURE__*/ S.String;
-
-export interface InsightsBulkSetTestAccountFilterCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  format?: InsightsBulkSetTestAccountFilterCreateRequestFormat | (string & {});
-  /** Whether every existing insight should filter out internal and test users. */
-  enabled: boolean;
-}
-export const InsightsBulkSetTestAccountFilterCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      format: S.optional(
-        InsightsBulkSetTestAccountFilterCreateRequestFormat.pipe(T.Query()),
-      ),
-      enabled: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/insights/bulk_set_test_account_filter/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "InsightsBulkSetTestAccountFilterCreateRequest",
-  }) as any as S.Schema<InsightsBulkSetTestAccountFilterCreateRequest>;
-
-export interface InsightBulkSetTestAccountFilterResponse {
-  /** Number of insights whose test account filter was changed. */
-  updated: number;
-  /** Number of insights that already had the requested value. */
-  unchanged: number;
-  /** Number of insights with no test account filter to set, such as SQL insights. */
-  unsupported: number;
-  /** Number of insights the requester cannot edit. */
-  skipped: number;
-  /** Number of insights left as they are because they still store legacy `filters` rather than a query. They keep whatever value they already had. Opening and saving one converts it, after which this endpoint covers it. */
-  legacy: number;
-}
-export const InsightBulkSetTestAccountFilterResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updated: S.Number,
-      unchanged: S.Number,
-      unsupported: S.Number,
-      skipped: S.Number,
-      legacy: S.Number,
-    }),
-).annotate({
-  identifier: "InsightBulkSetTestAccountFilterResponse",
-}) as any as S.Schema<InsightBulkSetTestAccountFilterResponse>;
-
-export type InsightsBulkUpdateTagsCreateRequestFormat = "csv" | "json";
-export const InsightsBulkUpdateTagsCreateRequestFormat = /*@__PURE__*/ S.String;
-
-/** List of object IDs to update tags on. */
-export type InsightsBulkUpdateTagsCreateRequestIdsList = Array<number>;
-export const InsightsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<InsightsBulkUpdateTagsCreateRequestIdsList>;
-
-/** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
-export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
-
-/** Tag names to add, remove, or set. */
-export type InsightsBulkUpdateTagsCreateRequestTagsList = Array<string>;
-export const InsightsBulkUpdateTagsCreateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsBulkUpdateTagsCreateRequestTagsList>;
-
-export interface InsightsBulkUpdateTagsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  format?: InsightsBulkUpdateTagsCreateRequestFormat | (string & {});
-  /** List of object IDs to update tags on. */
-  ids?: InsightsBulkUpdateTagsCreateRequestIdsList;
-  /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
-  action?: BulkUpdateTagsActionEnum | (string & {});
-  /** Tag names to add, remove, or set. */
-  tags?: InsightsBulkUpdateTagsCreateRequestTagsList;
-}
-export const InsightsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    format: S.optional(
-      InsightsBulkUpdateTagsCreateRequestFormat.pipe(T.Query()),
-    ),
-    ids: S.optional(InsightsBulkUpdateTagsCreateRequestIdsList),
-    action: S.optional(BulkUpdateTagsActionEnum),
-    tags: S.optional(InsightsBulkUpdateTagsCreateRequestTagsList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/insights/bulk_update_tags/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsBulkUpdateTagsCreateRequest",
-}) as any as S.Schema<InsightsBulkUpdateTagsCreateRequest>;
-
-export type BulkUpdateTagsItemTagsList = Array<string>;
-export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkUpdateTagsItemTagsList>;
-
-export interface BulkUpdateTagsItem {
-  id?: number;
-  tags?: BulkUpdateTagsItemTagsList;
-}
-export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    tags: S.optional(BulkUpdateTagsItemTagsList),
-  }),
-).annotate({
-  identifier: "BulkUpdateTagsItem",
-}) as any as S.Schema<BulkUpdateTagsItem>;
-
-export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
-export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
-  BulkUpdateTagsItem,
-) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
-
-export interface BulkUpdateTagsError {
-  id?: number;
-  reason?: string;
-}
-export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BulkUpdateTagsError",
-}) as any as S.Schema<BulkUpdateTagsError>;
-
-export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
-export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
-  BulkUpdateTagsError,
-) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
-
-export interface BulkUpdateTagsResponse {
-  updated?: BulkUpdateTagsResponseUpdatedList;
-  skipped?: BulkUpdateTagsResponseSkippedList;
-}
-export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updated: S.optional(BulkUpdateTagsResponseUpdatedList),
-    skipped: S.optional(BulkUpdateTagsResponseSkippedList),
-  }),
-).annotate({
-  identifier: "BulkUpdateTagsResponse",
-}) as any as S.Schema<BulkUpdateTagsResponse>;
-
-export type InsightsCancelCreateRequestFormat = "csv" | "json";
-export const InsightsCancelCreateRequestFormat = /*@__PURE__*/ S.String;
+export type InsightsCreateRequestFormat = "csv" | "json";
+export const InsightsCreateRequestFormat = /*@__PURE__*/ S.String;
 
 export type BreakdownFilterBreakdownCase1Item = string | number;
 export const BreakdownFilterBreakdownCase1Item =
@@ -17204,68 +16670,6 @@ export const InsightQuerySchema =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InsightQuerySchema>;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
-export type InsightsCancelCreateRequestDashboardsList = Array<number>;
-export const InsightsCancelCreateRequestDashboardsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<InsightsCancelCreateRequestDashboardsList>;
-
-export type InsightsCancelCreateRequestTagsList = Array<unknown>;
-export const InsightsCancelCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsCancelCreateRequestTagsList>;
-
-export interface InsightsCancelCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  format?: InsightsCancelCreateRequestFormat | (string & {});
-  name?: string | null;
-  derived_name?: string | null;
-  query?: InsightQuerySchema | null;
-  order?: number | null;
-  deleted?: boolean;
-  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
-  dashboards?: InsightsCancelCreateRequestDashboardsList;
-  description?: string | null;
-  tags?: InsightsCancelCreateRequestTagsList;
-  favorited?: boolean;
-  _create_in_folder?: string;
-}
-export const InsightsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    format: S.optional(InsightsCancelCreateRequestFormat.pipe(T.Query())),
-    name: S.optional(S.NullOr(S.String)),
-    derived_name: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.NullOr(InsightQuerySchema)),
-    order: S.optional(S.NullOr(S.Number)),
-    deleted: S.optional(S.Boolean),
-    dashboards: S.optional(InsightsCancelCreateRequestDashboardsList),
-    description: S.optional(S.NullOr(S.String)),
-    tags: S.optional(InsightsCancelCreateRequestTagsList),
-    favorited: S.optional(S.Boolean),
-    _create_in_folder: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/insights/cancel/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsCancelCreateRequest",
-}) as any as S.Schema<InsightsCancelCreateRequest>;
-
-export interface InsightsCancelCreateResponse {}
-export const InsightsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InsightsCancelCreateResponse",
-}) as any as S.Schema<InsightsCancelCreateResponse>;
-
-export type InsightsCreateRequestFormat = "csv" | "json";
-export const InsightsCreateRequestFormat = /*@__PURE__*/ S.String;
-
-/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
 export type InsightsCreateRequestDashboardsList = Array<number>;
 export const InsightsCreateRequestDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -17276,7 +16680,7 @@ export const InsightsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightsCreateRequestTagsList>;
 
-export interface InsightsCreateRequest {
+export interface CreateInsightRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   format?: InsightsCreateRequestFormat | (string & {});
@@ -17294,7 +16698,7 @@ export interface InsightsCreateRequest {
   favorited?: boolean;
   _create_in_folder?: string;
 }
-export const InsightsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateInsightRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     format: S.optional(InsightsCreateRequestFormat.pipe(T.Query())),
@@ -17317,8 +16721,8 @@ export const InsightsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InsightsCreateRequest",
-}) as any as S.Schema<InsightsCreateRequest>;
+  identifier: "CreateInsightRequest",
+}) as any as S.Schema<CreateInsightRequest>;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
 export type InsightOutputDashboardsList = Array<number>;
@@ -17652,6 +17056,806 @@ export const InsightOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InsightOutput" }) as any as S.Schema<InsightOutput>;
 
+export type InsightsCancelCreateRequestFormat = "csv" | "json";
+export const InsightsCancelCreateRequestFormat = /*@__PURE__*/ S.String;
+
+/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
+export type InsightsCancelCreateRequestDashboardsList = Array<number>;
+export const InsightsCancelCreateRequestDashboardsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<InsightsCancelCreateRequestDashboardsList>;
+
+export type InsightsCancelCreateRequestTagsList = Array<unknown>;
+export const InsightsCancelCreateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<InsightsCancelCreateRequestTagsList>;
+
+export interface CreateInsightCancelRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: InsightsCancelCreateRequestFormat | (string & {});
+  name?: string | null;
+  derived_name?: string | null;
+  query?: InsightQuerySchema | null;
+  order?: number | null;
+  deleted?: boolean;
+  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
+  dashboards?: InsightsCancelCreateRequestDashboardsList;
+  description?: string | null;
+  tags?: InsightsCancelCreateRequestTagsList;
+  favorited?: boolean;
+  _create_in_folder?: string;
+}
+export const CreateInsightCancelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(InsightsCancelCreateRequestFormat.pipe(T.Query())),
+    name: S.optional(S.NullOr(S.String)),
+    derived_name: S.optional(S.NullOr(S.String)),
+    query: S.optional(S.NullOr(InsightQuerySchema)),
+    order: S.optional(S.NullOr(S.Number)),
+    deleted: S.optional(S.Boolean),
+    dashboards: S.optional(InsightsCancelCreateRequestDashboardsList),
+    description: S.optional(S.NullOr(S.String)),
+    tags: S.optional(InsightsCancelCreateRequestTagsList),
+    favorited: S.optional(S.Boolean),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/cancel/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateInsightCancelRequest",
+}) as any as S.Schema<CreateInsightCancelRequest>;
+
+export interface CreateInsightCancelResponse {}
+export const CreateInsightCancelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateInsightCancelResponse",
+}) as any as S.Schema<CreateInsightCancelResponse>;
+
+export interface CreateInsightSharingPasswordRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  insight_id: number;
+  enabled?: boolean;
+  settings?: unknown;
+  password_required?: boolean;
+}
+export const CreateInsightSharingPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    insight_id: S.Number.pipe(T.Label()),
+    enabled: S.optional(S.Boolean),
+    settings: S.optional(S.Unknown),
+    password_required: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/{insight_id}/sharing/passwords/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateInsightSharingPasswordRequest",
+}) as any as S.Schema<CreateInsightSharingPasswordRequest>;
+
+export interface SharePassword {
+  id?: number;
+  created_at?: string;
+  note?: string | null;
+  created_by_email?: string;
+  is_active?: boolean;
+}
+export const SharePassword = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    created_at: S.optional(S.String),
+    note: S.optional(S.NullOr(S.String)),
+    created_by_email: S.optional(S.String),
+    is_active: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
+
+export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
+export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
+  SharePassword,
+) as any as S.Schema<SharingConfigurationSharePasswordsList>;
+
+/** Mixin for serializers to add user access control fields */
+export interface SharingConfiguration {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: string | Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: SharingConfigurationSharePasswordsList;
+  /** The effective access level the user has for this object */
+  user_access_level?: string | null;
+}
+export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created_at: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+    settings: S.optional(S.Unknown),
+    password_required: S.optional(S.Boolean),
+    share_passwords: S.optional(SharingConfigurationSharePasswordsList),
+    user_access_level: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "SharingConfiguration",
+}) as any as S.Schema<SharingConfiguration>;
+
+export interface CreateInsightSharingRefreshRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  insight_id: number;
+  enabled?: boolean;
+  settings?: unknown;
+  password_required?: boolean;
+}
+export const CreateInsightSharingRefreshRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    insight_id: S.Number.pipe(T.Label()),
+    enabled: S.optional(S.Boolean),
+    settings: S.optional(S.Unknown),
+    password_required: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/{insight_id}/sharing/refresh/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateInsightSharingRefreshRequest",
+}) as any as S.Schema<CreateInsightSharingRefreshRequest>;
+
+export type InsightsSuggestionsCreateRequestFormat = "csv" | "json";
+export const InsightsSuggestionsCreateRequestFormat = /*@__PURE__*/ S.String;
+
+/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
+export type InsightsSuggestionsCreateRequestDashboardsList = Array<number>;
+export const InsightsSuggestionsCreateRequestDashboardsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<InsightsSuggestionsCreateRequestDashboardsList>;
+
+export type InsightsSuggestionsCreateRequestTagsList = Array<unknown>;
+export const InsightsSuggestionsCreateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<InsightsSuggestionsCreateRequestTagsList>;
+
+export interface CreateInsightSuggestionRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this insight. */
+  id: number;
+  format?: InsightsSuggestionsCreateRequestFormat | (string & {});
+  name?: string | null;
+  derived_name?: string | null;
+  query?: InsightQuerySchema | null;
+  order?: number | null;
+  deleted?: boolean;
+  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
+  dashboards?: InsightsSuggestionsCreateRequestDashboardsList;
+  description?: string | null;
+  tags?: InsightsSuggestionsCreateRequestTagsList;
+  favorited?: boolean;
+  _create_in_folder?: string;
+}
+export const CreateInsightSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    format: S.optional(InsightsSuggestionsCreateRequestFormat.pipe(T.Query())),
+    name: S.optional(S.NullOr(S.String)),
+    derived_name: S.optional(S.NullOr(S.String)),
+    query: S.optional(S.NullOr(InsightQuerySchema)),
+    order: S.optional(S.NullOr(S.Number)),
+    deleted: S.optional(S.Boolean),
+    dashboards: S.optional(InsightsSuggestionsCreateRequestDashboardsList),
+    description: S.optional(S.NullOr(S.String)),
+    tags: S.optional(InsightsSuggestionsCreateRequestTagsList),
+    favorited: S.optional(S.Boolean),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/{id}/suggestions/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateInsightSuggestionRequest",
+}) as any as S.Schema<CreateInsightSuggestionRequest>;
+
+export interface CreateInsightSuggestionResponse {}
+export const CreateInsightSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateInsightSuggestionResponse",
+}) as any as S.Schema<CreateInsightSuggestionResponse>;
+
+export type InsightsViewedCreateRequestFormat = "csv" | "json";
+export const InsightsViewedCreateRequestFormat = /*@__PURE__*/ S.String;
+
+/** Insight IDs that were just viewed by the current user. At most 2500 ids per request. */
+export type InsightsViewedCreateRequestInsightIdsList = Array<number>;
+export const InsightsViewedCreateRequestInsightIdsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<InsightsViewedCreateRequestInsightIdsList>;
+
+export interface CreateInsightViewedRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: InsightsViewedCreateRequestFormat | (string & {});
+  /** Insight IDs that were just viewed by the current user. At most 2500 ids per request. */
+  insight_ids: InsightsViewedCreateRequestInsightIdsList;
+}
+export const CreateInsightViewedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(InsightsViewedCreateRequestFormat.pipe(T.Query())),
+    insight_ids: InsightsViewedCreateRequestInsightIdsList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/viewed/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateInsightViewedRequest",
+}) as any as S.Schema<CreateInsightViewedRequest>;
+
+export interface CreateInsightViewedResponse {}
+export const CreateInsightViewedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateInsightViewedResponse",
+}) as any as S.Schema<CreateInsightViewedResponse>;
+
+export type InsightsActivityRetrieveRequestFormat = "csv" | "json";
+export const InsightsActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
+
+export interface InsightsActivityRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this insight. */
+  id: number;
+  format?: InsightsActivityRetrieveRequestFormat | (string & {});
+  /** Page size. Defaults to 10. */
+  limit?: number;
+  /** 1-indexed page number. Defaults to 1. */
+  page?: number;
+}
+export const InsightsActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    format: S.optional(InsightsActivityRetrieveRequestFormat.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/insights/{id}/activity/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InsightsActivityRetrieveRequest",
+}) as any as S.Schema<InsightsActivityRetrieveRequest>;
+
+export interface Change {
+  type?: string;
+  action?: string;
+  field?: string;
+  before?: unknown;
+  after?: unknown;
+}
+export const Change = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    action: S.optional(S.String),
+    field: S.optional(S.String),
+    before: S.optional(S.Unknown),
+    after: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
+
+export type DetailChangesList = Array<Change>;
+export const DetailChangesList = /*@__PURE__*/ S.Array(
+  Change,
+) as any as S.Schema<DetailChangesList>;
+
+export interface Merge {
+  type?: string;
+  source?: unknown;
+  target?: unknown;
+}
+export const Merge = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    source: S.optional(S.Unknown),
+    target: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "Merge" }) as any as S.Schema<Merge>;
+
+export interface Trigger {
+  job_type?: string;
+  job_id?: string;
+  payload?: unknown;
+}
+export const Trigger = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    job_type: S.optional(S.String),
+    job_id: S.optional(S.String),
+    payload: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
+
+export interface Detail {
+  id?: string;
+  changes?: DetailChangesList;
+  merge?: Merge;
+  trigger?: Trigger;
+  name?: string;
+  short_id?: string;
+  type?: string;
+}
+export const Detail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    changes: S.optional(DetailChangesList),
+    merge: S.optional(Merge),
+    trigger: S.optional(Trigger),
+    name: S.optional(S.String),
+    short_id: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({ identifier: "Detail" }) as any as S.Schema<Detail>;
+
+export interface ActivityLogEntry {
+  id?: string;
+  user?: unknown | null;
+  activity?: string;
+  scope?: string;
+  item_id?: string;
+  detail?: Detail;
+  created_at?: string;
+  /** Whether the activity was performed by the system rather than a user. */
+  is_system?: boolean;
+  /** Whether the acting user was being impersonated by PostHog staff. */
+  was_impersonated?: boolean;
+  /** API client that triggered the activity, from the x-posthog-client request header (e.g. 'mcp'). Null for requests that did not send the header. */
+  client?: string | null;
+}
+export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    user: S.optional(S.NullOr(S.Unknown)),
+    activity: S.optional(S.String),
+    scope: S.optional(S.String),
+    item_id: S.optional(S.String),
+    detail: S.optional(Detail),
+    created_at: S.optional(S.String),
+    is_system: S.optional(S.Boolean),
+    was_impersonated: S.optional(S.Boolean),
+    client: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "ActivityLogEntry",
+}) as any as S.Schema<ActivityLogEntry>;
+
+export type ActivityLogPaginatedResponseResultsList = Array<ActivityLogEntry>;
+export const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
+  ActivityLogEntry,
+) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
+
+/** Response shape for paginated activity log endpoints. */
+export interface ActivityLogPaginatedResponse {
+  results?: ActivityLogPaginatedResponseResultsList;
+  next?: string | null;
+  previous?: string | null;
+  total_count?: number;
+}
+export const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: S.optional(ActivityLogPaginatedResponseResultsList),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    total_count: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ActivityLogPaginatedResponse",
+}) as any as S.Schema<ActivityLogPaginatedResponse>;
+
+export type InsightsAllActivityRetrieveRequestFormat = "csv" | "json";
+export const InsightsAllActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
+
+export interface InsightsAllActivityRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: InsightsAllActivityRetrieveRequestFormat | (string & {});
+  /** Page size. Defaults to 10. */
+  limit?: number;
+  /** 1-indexed page number. Defaults to 1. */
+  page?: number;
+}
+export const InsightsAllActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(
+      InsightsAllActivityRetrieveRequestFormat.pipe(T.Query()),
+    ),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/insights/activity/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InsightsAllActivityRetrieveRequest",
+}) as any as S.Schema<InsightsAllActivityRetrieveRequest>;
+
+export type InsightsAnalyzeRetrieveRequestFormat = "csv" | "json";
+export const InsightsAnalyzeRetrieveRequestFormat = /*@__PURE__*/ S.String;
+
+export interface InsightsAnalyzeRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this insight. */
+  id: number;
+  format?: InsightsAnalyzeRetrieveRequestFormat | (string & {});
+}
+export const InsightsAnalyzeRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    format: S.optional(InsightsAnalyzeRetrieveRequestFormat.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/insights/{id}/analyze/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InsightsAnalyzeRetrieveRequest",
+}) as any as S.Schema<InsightsAnalyzeRetrieveRequest>;
+
+export interface InsightsAnalyzeRetrieveResponse {}
+export const InsightsAnalyzeRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "InsightsAnalyzeRetrieveResponse",
+}) as any as S.Schema<InsightsAnalyzeRetrieveResponse>;
+
+export type InsightsBulkDeleteCreateRequestFormat = "csv" | "json";
+export const InsightsBulkDeleteCreateRequestFormat = /*@__PURE__*/ S.String;
+
+/** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
+export type InsightsBulkDeleteCreateRequestIdsList = Array<number>;
+export const InsightsBulkDeleteCreateRequestIdsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<InsightsBulkDeleteCreateRequestIdsList>;
+
+export interface InsightsBulkDeleteCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: InsightsBulkDeleteCreateRequestFormat | (string & {});
+  /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
+  ids: InsightsBulkDeleteCreateRequestIdsList;
+}
+export const InsightsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(InsightsBulkDeleteCreateRequestFormat.pipe(T.Query())),
+    ids: InsightsBulkDeleteCreateRequestIdsList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/bulk_delete/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InsightsBulkDeleteCreateRequest",
+}) as any as S.Schema<InsightsBulkDeleteCreateRequest>;
+
+export interface InsightBulkOperationResult {
+  /** ID of the insight that was soft-deleted or restored. */
+  id: number;
+  /** The insight's name (or derived name) at the time of the operation; null when it has neither. */
+  name: string | null;
+}
+export const InsightBulkOperationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    name: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "InsightBulkOperationResult",
+}) as any as S.Schema<InsightBulkOperationResult>;
+
+/** Insights that were successfully soft-deleted. */
+export type InsightBulkDeleteResponseDeletedList =
+  Array<InsightBulkOperationResult>;
+export const InsightBulkDeleteResponseDeletedList = /*@__PURE__*/ S.Array(
+  InsightBulkOperationResult,
+) as any as S.Schema<InsightBulkDeleteResponseDeletedList>;
+
+export interface InsightBulkOperationSkipped {
+  /** ID of the insight that was skipped. */
+  id: number;
+  /** Human-readable reason the insight was skipped (for example, not found or no edit permission). */
+  reason: string;
+}
+export const InsightBulkOperationSkipped = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    reason: S.String,
+  }),
+).annotate({
+  identifier: "InsightBulkOperationSkipped",
+}) as any as S.Schema<InsightBulkOperationSkipped>;
+
+/** Insights that were not deleted, with the reason for each. */
+export type InsightBulkDeleteResponseSkippedList =
+  Array<InsightBulkOperationSkipped>;
+export const InsightBulkDeleteResponseSkippedList = /*@__PURE__*/ S.Array(
+  InsightBulkOperationSkipped,
+) as any as S.Schema<InsightBulkDeleteResponseSkippedList>;
+
+export interface InsightBulkDeleteResponse {
+  /** Insights that were successfully soft-deleted. */
+  deleted: InsightBulkDeleteResponseDeletedList;
+  /** Insights that were not deleted, with the reason for each. */
+  skipped: InsightBulkDeleteResponseSkippedList;
+}
+export const InsightBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleted: InsightBulkDeleteResponseDeletedList,
+    skipped: InsightBulkDeleteResponseSkippedList,
+  }),
+).annotate({
+  identifier: "InsightBulkDeleteResponse",
+}) as any as S.Schema<InsightBulkDeleteResponse>;
+
+export type InsightsBulkRestoreCreateRequestFormat = "csv" | "json";
+export const InsightsBulkRestoreCreateRequestFormat = /*@__PURE__*/ S.String;
+
+/** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
+export type InsightsBulkRestoreCreateRequestIdsList = Array<number>;
+export const InsightsBulkRestoreCreateRequestIdsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<InsightsBulkRestoreCreateRequestIdsList>;
+
+export interface InsightsBulkRestoreCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: InsightsBulkRestoreCreateRequestFormat | (string & {});
+  /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
+  ids: InsightsBulkRestoreCreateRequestIdsList;
+}
+export const InsightsBulkRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(InsightsBulkRestoreCreateRequestFormat.pipe(T.Query())),
+    ids: InsightsBulkRestoreCreateRequestIdsList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/bulk_restore/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InsightsBulkRestoreCreateRequest",
+}) as any as S.Schema<InsightsBulkRestoreCreateRequest>;
+
+/** Insights that were successfully restored. */
+export type InsightBulkRestoreResponseRestoredList =
+  Array<InsightBulkOperationResult>;
+export const InsightBulkRestoreResponseRestoredList = /*@__PURE__*/ S.Array(
+  InsightBulkOperationResult,
+) as any as S.Schema<InsightBulkRestoreResponseRestoredList>;
+
+/** Insights that were not restored, with the reason for each. */
+export type InsightBulkRestoreResponseSkippedList =
+  Array<InsightBulkOperationSkipped>;
+export const InsightBulkRestoreResponseSkippedList = /*@__PURE__*/ S.Array(
+  InsightBulkOperationSkipped,
+) as any as S.Schema<InsightBulkRestoreResponseSkippedList>;
+
+export interface InsightBulkRestoreResponse {
+  /** Insights that were successfully restored. */
+  restored: InsightBulkRestoreResponseRestoredList;
+  /** Insights that were not restored, with the reason for each. */
+  skipped: InsightBulkRestoreResponseSkippedList;
+}
+export const InsightBulkRestoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    restored: InsightBulkRestoreResponseRestoredList,
+    skipped: InsightBulkRestoreResponseSkippedList,
+  }),
+).annotate({
+  identifier: "InsightBulkRestoreResponse",
+}) as any as S.Schema<InsightBulkRestoreResponse>;
+
+export type InsightsBulkSetTestAccountFilterCreateRequestFormat =
+  | "csv"
+  | "json";
+export const InsightsBulkSetTestAccountFilterCreateRequestFormat =
+  /*@__PURE__*/ S.String;
+
+export interface InsightsBulkSetTestAccountFilterCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: InsightsBulkSetTestAccountFilterCreateRequestFormat | (string & {});
+  /** Whether every existing insight should filter out internal and test users. */
+  enabled: boolean;
+}
+export const InsightsBulkSetTestAccountFilterCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      format: S.optional(
+        InsightsBulkSetTestAccountFilterCreateRequestFormat.pipe(T.Query()),
+      ),
+      enabled: S.Boolean,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/insights/bulk_set_test_account_filter/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "InsightsBulkSetTestAccountFilterCreateRequest",
+  }) as any as S.Schema<InsightsBulkSetTestAccountFilterCreateRequest>;
+
+export interface InsightBulkSetTestAccountFilterResponse {
+  /** Number of insights whose test account filter was changed. */
+  updated: number;
+  /** Number of insights that already had the requested value. */
+  unchanged: number;
+  /** Number of insights with no test account filter to set, such as SQL insights. */
+  unsupported: number;
+  /** Number of insights the requester cannot edit. */
+  skipped: number;
+  /** Number of insights left as they are because they still store legacy `filters` rather than a query. They keep whatever value they already had. Opening and saving one converts it, after which this endpoint covers it. */
+  legacy: number;
+}
+export const InsightBulkSetTestAccountFilterResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updated: S.Number,
+      unchanged: S.Number,
+      unsupported: S.Number,
+      skipped: S.Number,
+      legacy: S.Number,
+    }),
+).annotate({
+  identifier: "InsightBulkSetTestAccountFilterResponse",
+}) as any as S.Schema<InsightBulkSetTestAccountFilterResponse>;
+
+export type InsightsBulkUpdateTagsCreateRequestFormat = "csv" | "json";
+export const InsightsBulkUpdateTagsCreateRequestFormat = /*@__PURE__*/ S.String;
+
+/** List of object IDs to update tags on. */
+export type InsightsBulkUpdateTagsCreateRequestIdsList = Array<number>;
+export const InsightsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<InsightsBulkUpdateTagsCreateRequestIdsList>;
+
+/** * `add` - add * `remove` - remove * `set` - set */
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
+export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
+
+/** Tag names to add, remove, or set. */
+export type InsightsBulkUpdateTagsCreateRequestTagsList = Array<string>;
+export const InsightsBulkUpdateTagsCreateRequestTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InsightsBulkUpdateTagsCreateRequestTagsList>;
+
+export interface InsightsBulkUpdateTagsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: InsightsBulkUpdateTagsCreateRequestFormat | (string & {});
+  /** List of object IDs to update tags on. */
+  ids?: InsightsBulkUpdateTagsCreateRequestIdsList;
+  /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
+  action?: BulkUpdateTagsActionEnum | (string & {});
+  /** Tag names to add, remove, or set. */
+  tags?: InsightsBulkUpdateTagsCreateRequestTagsList;
+}
+export const InsightsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(
+      InsightsBulkUpdateTagsCreateRequestFormat.pipe(T.Query()),
+    ),
+    ids: S.optional(InsightsBulkUpdateTagsCreateRequestIdsList),
+    action: S.optional(BulkUpdateTagsActionEnum),
+    tags: S.optional(InsightsBulkUpdateTagsCreateRequestTagsList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/bulk_update_tags/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InsightsBulkUpdateTagsCreateRequest",
+}) as any as S.Schema<InsightsBulkUpdateTagsCreateRequest>;
+
+export type BulkUpdateTagsItemTagsList = Array<string>;
+export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BulkUpdateTagsItemTagsList>;
+
+export interface BulkUpdateTagsItem {
+  id?: number;
+  tags?: BulkUpdateTagsItemTagsList;
+}
+export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    tags: S.optional(BulkUpdateTagsItemTagsList),
+  }),
+).annotate({
+  identifier: "BulkUpdateTagsItem",
+}) as any as S.Schema<BulkUpdateTagsItem>;
+
+export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
+export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
+  BulkUpdateTagsItem,
+) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
+
+export interface BulkUpdateTagsError {
+  id?: number;
+  reason?: string;
+}
+export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BulkUpdateTagsError",
+}) as any as S.Schema<BulkUpdateTagsError>;
+
+export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
+export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
+  BulkUpdateTagsError,
+) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
+
+export interface BulkUpdateTagsResponse {
+  updated?: BulkUpdateTagsResponseUpdatedList;
+  skipped?: BulkUpdateTagsResponseSkippedList;
+}
+export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updated: S.optional(BulkUpdateTagsResponseUpdatedList),
+    skipped: S.optional(BulkUpdateTagsResponseSkippedList),
+  }),
+).annotate({
+  identifier: "BulkUpdateTagsResponse",
+}) as any as S.Schema<BulkUpdateTagsResponse>;
+
 export type InsightsDestroyRequestFormat = "csv" | "json";
 export const InsightsDestroyRequestFormat = /*@__PURE__*/ S.String;
 
@@ -17755,132 +17959,6 @@ export const InsightsGenerateMetadataCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "InsightsGenerateMetadataCreateResponse",
 }) as any as S.Schema<InsightsGenerateMetadataCreateResponse>;
 
-export type InsightsListRequestFormat = "csv" | "json";
-export const InsightsListRequestFormat = /*@__PURE__*/ S.String;
-
-export type InsightsListRequestInsight =
-  | "FUNNELS"
-  | "JOURNEYS"
-  | "JSON"
-  | "LIFECYCLE"
-  | "PATHS"
-  | "RETENTION"
-  | "SQL"
-  | "STICKINESS"
-  | "TRENDS";
-export const InsightsListRequestInsight = /*@__PURE__*/ S.String;
-
-export type InsightsListRequestRefresh =
-  | "async"
-  | "async_except_on_cache_miss"
-  | "blocking"
-  | "force_async"
-  | "force_blocking"
-  | "force_cache"
-  | "lazy_async";
-export const InsightsListRequestRefresh = /*@__PURE__*/ S.String;
-
-export interface InsightsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Return basic insight metadata only (no results, faster). */
-  basic?: boolean;
-  /** JSON-encoded array of user IDs. Only returns insights whose `created_by` is in the list, e.g. `[1,42]`. */
-  created_by?: string;
-  /** Filter by `created_at > created_date_from`. Accepts absolute or relative dates. */
-  created_date_from?: string;
-  /** Filter by `created_at < created_date_to`. Accepts absolute or relative dates. */
-  created_date_to?: string;
-  /** JSON-encoded array of dashboard IDs. Returns insights attached to every listed dashboard (AND). */
-  dashboards?: string;
-  /** Filter by `last_modified_at > date_from`. Accepts absolute dates (`2025-04-23`) or relative strings (`-7d`, `-1m`). */
-  date_from?: string;
-  /** Filter by `last_modified_at < date_to`. Accepts absolute dates or relative strings. */
-  date_to?: string;
-  /** Include this parameter (any value) to restrict results to insights marked as favorited. */
-  favorited?: boolean;
-  format?: InsightsListRequestFormat | (string & {});
-  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
-  include_dashboards?: boolean;
-  /** Restrict to a single insight type. `JSON` matches non-wrapper query insights; `SQL` matches HogQL queries. */
-  insight?: InsightsListRequestInsight | (string & {});
-  /** Filter by `last_viewed_at > last_viewed_date_from`. Accepts absolute or relative dates. */
-  last_viewed_date_from?: string;
-  /** Filter by `last_viewed_at < last_viewed_date_to`. Accepts absolute or relative dates. */
-  last_viewed_date_to?: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** Whether to refresh the retrieved insights, how aggressively, and if sync or async: - `'force_cache'` - return cached data or a cache miss; always completes immediately as it never calculates - `'blocking'` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache - `'async'` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache - `'lazy_async'` - kick off background calculation, UNLESS there are somewhat fresh results in the cache - `'force_blocking'` - calculate synchronously, even if fresh results are already cached - `'force_async'` - kick off background calculation, even if fresh results are already cached Background calculation can be tracked using the `query_status` response field. */
-  refresh?: InsightsListRequestRefresh | (string & {});
-  /** When truthy, restricts results to insights that are saved (or attached to a visible dashboard). When falsy, only unsaved insights. */
-  saved?: boolean;
-  /** Search term matched across name, derived_name, description, and tag names. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
-  search?: string;
-  short_id?: string;
-  /** JSON-encoded array of tag names. Returns insights with any of the listed tags. */
-  tags?: string;
-  /** Include this parameter (any value) to restrict results to insights created by the authenticated user. */
-  user?: boolean;
-}
-export const InsightsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    basic: S.optional(S.Boolean.pipe(T.Query())),
-    created_by: S.optional(S.String.pipe(T.Query())),
-    created_date_from: S.optional(S.String.pipe(T.Query())),
-    created_date_to: S.optional(S.String.pipe(T.Query())),
-    dashboards: S.optional(S.String.pipe(T.Query())),
-    date_from: S.optional(S.String.pipe(T.Query())),
-    date_to: S.optional(S.String.pipe(T.Query())),
-    favorited: S.optional(S.Boolean.pipe(T.Query())),
-    format: S.optional(InsightsListRequestFormat.pipe(T.Query())),
-    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-    insight: S.optional(InsightsListRequestInsight.pipe(T.Query())),
-    last_viewed_date_from: S.optional(S.String.pipe(T.Query())),
-    last_viewed_date_to: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    refresh: S.optional(InsightsListRequestRefresh.pipe(T.Query())),
-    saved: S.optional(S.Boolean.pipe(T.Query())),
-    search: S.optional(S.String.pipe(T.Query())),
-    short_id: S.optional(S.String.pipe(T.Query())),
-    tags: S.optional(S.String.pipe(T.Query())),
-    user: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/insights/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsListRequest",
-}) as any as S.Schema<InsightsListRequest>;
-
-export type PaginatedInsightListOutputResultsList = Array<InsightOutput>;
-export const PaginatedInsightListOutputResultsList = /*@__PURE__*/ S.Array(
-  InsightOutput,
-) as any as S.Schema<PaginatedInsightListOutputResultsList>;
-
-export interface PaginatedInsightListOutput {
-  count?: number;
-  next?: string | null;
-  previous?: string | null;
-  results?: PaginatedInsightListOutputResultsList;
-}
-export const PaginatedInsightListOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedInsightListOutputResultsList),
-  }),
-).annotate({
-  identifier: "PaginatedInsightListOutput",
-}) as any as S.Schema<PaginatedInsightListOutput>;
-
 export type InsightsMyLastViewedRetrieveRequestFormat = "csv" | "json";
 export const InsightsMyLastViewedRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
@@ -17912,67 +17990,6 @@ export const InsightsMyLastViewedRetrieveResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InsightsMyLastViewedRetrieveResponse",
 }) as any as S.Schema<InsightsMyLastViewedRetrieveResponse>;
-
-export type InsightsPartialUpdateRequestFormat = "csv" | "json";
-export const InsightsPartialUpdateRequestFormat = /*@__PURE__*/ S.String;
-
-/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
-export type InsightsPartialUpdateRequestDashboardsList = Array<number>;
-export const InsightsPartialUpdateRequestDashboardsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<InsightsPartialUpdateRequestDashboardsList>;
-
-export type InsightsPartialUpdateRequestTagsList = Array<unknown>;
-export const InsightsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsPartialUpdateRequestTagsList>;
-
-export interface InsightsPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Numeric primary key or 8-character `short_id` (for example `AaVQ8Ijw`) identifying the insight. */
-  id: string;
-  format?: InsightsPartialUpdateRequestFormat | (string & {});
-  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
-  include_dashboards?: boolean;
-  name?: string | null;
-  derived_name?: string | null;
-  query?: InsightQuerySchema | null;
-  order?: number | null;
-  deleted?: boolean;
-  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
-  dashboards?: InsightsPartialUpdateRequestDashboardsList;
-  description?: string | null;
-  tags?: InsightsPartialUpdateRequestTagsList;
-  favorited?: boolean;
-  _create_in_folder?: string;
-}
-export const InsightsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    format: S.optional(InsightsPartialUpdateRequestFormat.pipe(T.Query())),
-    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-    name: S.optional(S.NullOr(S.String)),
-    derived_name: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.NullOr(InsightQuerySchema)),
-    order: S.optional(S.NullOr(S.Number)),
-    deleted: S.optional(S.Boolean),
-    dashboards: S.optional(InsightsPartialUpdateRequestDashboardsList),
-    description: S.optional(S.NullOr(S.String)),
-    tags: S.optional(InsightsPartialUpdateRequestTagsList),
-    favorited: S.optional(S.Boolean),
-    _create_in_folder: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/insights/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsPartialUpdateRequest",
-}) as any as S.Schema<InsightsPartialUpdateRequest>;
 
 export type InsightsRetrieveRequestFormat = "csv" | "json";
 export const InsightsRetrieveRequestFormat = /*@__PURE__*/ S.String;
@@ -18025,112 +18042,6 @@ export const InsightsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsRetrieveRequest",
 }) as any as S.Schema<InsightsRetrieveRequest>;
 
-export interface InsightsSharingListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  insight_id: number;
-}
-export const InsightsSharingListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    insight_id: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/insights/{insight_id}/sharing/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsSharingListRequest",
-}) as any as S.Schema<InsightsSharingListRequest>;
-
-export interface SharePassword {
-  id?: number;
-  created_at?: string;
-  note?: string | null;
-  created_by_email?: string;
-  is_active?: boolean;
-}
-export const SharePassword = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    note: S.optional(S.NullOr(S.String)),
-    created_by_email: S.optional(S.String),
-    is_active: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
-
-export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
-export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
-  SharePassword,
-) as any as S.Schema<SharingConfigurationSharePasswordsList>;
-
-/** Mixin for serializers to add user access control fields */
-export interface SharingConfiguration {
-  created_at?: string;
-  enabled?: boolean;
-  access_token?: string | Redacted.Redacted<string> | null;
-  settings?: unknown;
-  password_required?: boolean;
-  share_passwords?: SharingConfigurationSharePasswordsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-}
-export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-    settings: S.optional(S.Unknown),
-    password_required: S.optional(S.Boolean),
-    share_passwords: S.optional(SharingConfigurationSharePasswordsList),
-    user_access_level: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SharingConfiguration",
-}) as any as S.Schema<SharingConfiguration>;
-
-export type InsightsSharingListResponseBodyList = Array<SharingConfiguration>;
-export const InsightsSharingListResponseBodyList = /*@__PURE__*/ S.Array(
-  SharingConfiguration,
-) as any as S.Schema<InsightsSharingListResponseBodyList>;
-
-export type InsightsSharingListResponse = InsightsSharingListResponseBodyList;
-export const InsightsSharingListResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsSharingListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "InsightsSharingListResponse",
-}) as any as S.Schema<InsightsSharingListResponse>;
-
-export interface InsightsSharingPasswordsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  insight_id: number;
-  enabled?: boolean;
-  settings?: unknown;
-  password_required?: boolean;
-}
-export const InsightsSharingPasswordsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      insight_id: S.Number.pipe(T.Label()),
-      enabled: S.optional(S.Boolean),
-      settings: S.optional(S.Unknown),
-      password_required: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/insights/{insight_id}/sharing/passwords/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "InsightsSharingPasswordsCreateRequest",
-}) as any as S.Schema<InsightsSharingPasswordsCreateRequest>;
-
 export interface InsightsSharingPasswordsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -18160,98 +18071,6 @@ export const InsightsSharingPasswordsDestroyResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InsightsSharingPasswordsDestroyResponse",
 }) as any as S.Schema<InsightsSharingPasswordsDestroyResponse>;
-
-export interface InsightsSharingRefreshCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  insight_id: number;
-  enabled?: boolean;
-  settings?: unknown;
-  password_required?: boolean;
-}
-export const InsightsSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    insight_id: S.Number.pipe(T.Label()),
-    enabled: S.optional(S.Boolean),
-    settings: S.optional(S.Unknown),
-    password_required: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/insights/{insight_id}/sharing/refresh/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsSharingRefreshCreateRequest",
-}) as any as S.Schema<InsightsSharingRefreshCreateRequest>;
-
-export type InsightsSuggestionsCreateRequestFormat = "csv" | "json";
-export const InsightsSuggestionsCreateRequestFormat = /*@__PURE__*/ S.String;
-
-/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
-export type InsightsSuggestionsCreateRequestDashboardsList = Array<number>;
-export const InsightsSuggestionsCreateRequestDashboardsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<InsightsSuggestionsCreateRequestDashboardsList>;
-
-export type InsightsSuggestionsCreateRequestTagsList = Array<unknown>;
-export const InsightsSuggestionsCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsSuggestionsCreateRequestTagsList>;
-
-export interface InsightsSuggestionsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this insight. */
-  id: number;
-  format?: InsightsSuggestionsCreateRequestFormat | (string & {});
-  name?: string | null;
-  derived_name?: string | null;
-  query?: InsightQuerySchema | null;
-  order?: number | null;
-  deleted?: boolean;
-  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
-  dashboards?: InsightsSuggestionsCreateRequestDashboardsList;
-  description?: string | null;
-  tags?: InsightsSuggestionsCreateRequestTagsList;
-  favorited?: boolean;
-  _create_in_folder?: string;
-}
-export const InsightsSuggestionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    format: S.optional(InsightsSuggestionsCreateRequestFormat.pipe(T.Query())),
-    name: S.optional(S.NullOr(S.String)),
-    derived_name: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.NullOr(InsightQuerySchema)),
-    order: S.optional(S.NullOr(S.Number)),
-    deleted: S.optional(S.Boolean),
-    dashboards: S.optional(InsightsSuggestionsCreateRequestDashboardsList),
-    description: S.optional(S.NullOr(S.String)),
-    tags: S.optional(InsightsSuggestionsCreateRequestTagsList),
-    favorited: S.optional(S.Boolean),
-    _create_in_folder: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/insights/{id}/suggestions/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsSuggestionsCreateRequest",
-}) as any as S.Schema<InsightsSuggestionsCreateRequest>;
-
-export interface InsightsSuggestionsCreateResponse {}
-export const InsightsSuggestionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InsightsSuggestionsCreateResponse",
-}) as any as S.Schema<InsightsSuggestionsCreateResponse>;
 
 export type InsightsSuggestionsRetrieveRequestFormat = "csv" | "json";
 export const InsightsSuggestionsRetrieveRequestFormat = /*@__PURE__*/ S.String;
@@ -18288,31 +18107,28 @@ export const InsightsSuggestionsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsSuggestionsRetrieveResponse",
 }) as any as S.Schema<InsightsSuggestionsRetrieveResponse>;
 
-export interface InsightsThresholdsListRequest {
+export interface InsightsThresholdsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   insight_id: number;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
+  /** A UUID string identifying this threshold. */
+  id: string;
 }
-export const InsightsThresholdsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const InsightsThresholdsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     insight_id: S.Number.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
+    id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/api/projects/{project_id}/insights/{insight_id}/thresholds/",
+      uri: "/api/projects/{project_id}/insights/{insight_id}/thresholds/{id}/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "InsightsThresholdsListRequest",
-}) as any as S.Schema<InsightsThresholdsListRequest>;
+  identifier: "InsightsThresholdsRetrieveRequest",
+}) as any as S.Schema<InsightsThresholdsRetrieveRequest>;
 
 export interface InsightsThresholdBounds {
   /** Alert fires when the value drops below this number. */
@@ -19055,52 +18871,6 @@ export const ThresholdWithAlert = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThresholdWithAlert",
 }) as any as S.Schema<ThresholdWithAlert>;
 
-export type PaginatedThresholdWithAlertListResultsList =
-  Array<ThresholdWithAlert>;
-export const PaginatedThresholdWithAlertListResultsList = /*@__PURE__*/ S.Array(
-  ThresholdWithAlert,
-) as any as S.Schema<PaginatedThresholdWithAlertListResultsList>;
-
-export interface PaginatedThresholdWithAlertList {
-  count?: number;
-  next?: string | null;
-  previous?: string | null;
-  results?: PaginatedThresholdWithAlertListResultsList;
-}
-export const PaginatedThresholdWithAlertList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedThresholdWithAlertListResultsList),
-  }),
-).annotate({
-  identifier: "PaginatedThresholdWithAlertList",
-}) as any as S.Schema<PaginatedThresholdWithAlertList>;
-
-export interface InsightsThresholdsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  insight_id: number;
-  /** A UUID string identifying this threshold. */
-  id: string;
-}
-export const InsightsThresholdsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    insight_id: S.Number.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/insights/{insight_id}/thresholds/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsThresholdsRetrieveRequest",
-}) as any as S.Schema<InsightsThresholdsRetrieveRequest>;
-
 export type InsightsTrendingRetrieveRequestFormat = "csv" | "json";
 export const InsightsTrendingRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
@@ -19238,6 +19008,213 @@ export const PaginatedTrendingInsightList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedTrendingInsightList",
 }) as any as S.Schema<PaginatedTrendingInsightList>;
 
+export type InsightsListRequestFormat = "csv" | "json";
+export const InsightsListRequestFormat = /*@__PURE__*/ S.String;
+
+export type InsightsListRequestInsight =
+  | "FUNNELS"
+  | "JOURNEYS"
+  | "JSON"
+  | "LIFECYCLE"
+  | "PATHS"
+  | "RETENTION"
+  | "SQL"
+  | "STICKINESS"
+  | "TRENDS";
+export const InsightsListRequestInsight = /*@__PURE__*/ S.String;
+
+export type InsightsListRequestRefresh =
+  | "async"
+  | "async_except_on_cache_miss"
+  | "blocking"
+  | "force_async"
+  | "force_blocking"
+  | "force_cache"
+  | "lazy_async";
+export const InsightsListRequestRefresh = /*@__PURE__*/ S.String;
+
+export interface ListInsightsRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Return basic insight metadata only (no results, faster). */
+  basic?: boolean;
+  /** JSON-encoded array of user IDs. Only returns insights whose `created_by` is in the list, e.g. `[1,42]`. */
+  created_by?: string;
+  /** Filter by `created_at > created_date_from`. Accepts absolute or relative dates. */
+  created_date_from?: string;
+  /** Filter by `created_at < created_date_to`. Accepts absolute or relative dates. */
+  created_date_to?: string;
+  /** JSON-encoded array of dashboard IDs. Returns insights attached to every listed dashboard (AND). */
+  dashboards?: string;
+  /** Filter by `last_modified_at > date_from`. Accepts absolute dates (`2025-04-23`) or relative strings (`-7d`, `-1m`). */
+  date_from?: string;
+  /** Filter by `last_modified_at < date_to`. Accepts absolute dates or relative strings. */
+  date_to?: string;
+  /** Include this parameter (any value) to restrict results to insights marked as favorited. */
+  favorited?: boolean;
+  format?: InsightsListRequestFormat | (string & {});
+  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
+  include_dashboards?: boolean;
+  /** Restrict to a single insight type. `JSON` matches non-wrapper query insights; `SQL` matches HogQL queries. */
+  insight?: InsightsListRequestInsight | (string & {});
+  /** Filter by `last_viewed_at > last_viewed_date_from`. Accepts absolute or relative dates. */
+  last_viewed_date_from?: string;
+  /** Filter by `last_viewed_at < last_viewed_date_to`. Accepts absolute or relative dates. */
+  last_viewed_date_to?: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** Whether to refresh the retrieved insights, how aggressively, and if sync or async: - `'force_cache'` - return cached data or a cache miss; always completes immediately as it never calculates - `'blocking'` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache - `'async'` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache - `'lazy_async'` - kick off background calculation, UNLESS there are somewhat fresh results in the cache - `'force_blocking'` - calculate synchronously, even if fresh results are already cached - `'force_async'` - kick off background calculation, even if fresh results are already cached Background calculation can be tracked using the `query_status` response field. */
+  refresh?: InsightsListRequestRefresh | (string & {});
+  /** When truthy, restricts results to insights that are saved (or attached to a visible dashboard). When falsy, only unsaved insights. */
+  saved?: boolean;
+  /** Search term matched across name, derived_name, description, and tag names. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
+  search?: string;
+  short_id?: string;
+  /** JSON-encoded array of tag names. Returns insights with any of the listed tags. */
+  tags?: string;
+  /** Include this parameter (any value) to restrict results to insights created by the authenticated user. */
+  user?: boolean;
+}
+export const ListInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    basic: S.optional(S.Boolean.pipe(T.Query())),
+    created_by: S.optional(S.String.pipe(T.Query())),
+    created_date_from: S.optional(S.String.pipe(T.Query())),
+    created_date_to: S.optional(S.String.pipe(T.Query())),
+    dashboards: S.optional(S.String.pipe(T.Query())),
+    date_from: S.optional(S.String.pipe(T.Query())),
+    date_to: S.optional(S.String.pipe(T.Query())),
+    favorited: S.optional(S.Boolean.pipe(T.Query())),
+    format: S.optional(InsightsListRequestFormat.pipe(T.Query())),
+    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
+    insight: S.optional(InsightsListRequestInsight.pipe(T.Query())),
+    last_viewed_date_from: S.optional(S.String.pipe(T.Query())),
+    last_viewed_date_to: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    refresh: S.optional(InsightsListRequestRefresh.pipe(T.Query())),
+    saved: S.optional(S.Boolean.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+    short_id: S.optional(S.String.pipe(T.Query())),
+    tags: S.optional(S.String.pipe(T.Query())),
+    user: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/insights/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListInsightsRequest",
+}) as any as S.Schema<ListInsightsRequest>;
+
+export type PaginatedInsightListOutputResultsList = Array<InsightOutput>;
+export const PaginatedInsightListOutputResultsList = /*@__PURE__*/ S.Array(
+  InsightOutput,
+) as any as S.Schema<PaginatedInsightListOutputResultsList>;
+
+export interface PaginatedInsightListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: PaginatedInsightListOutputResultsList;
+}
+export const PaginatedInsightListOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: S.optional(PaginatedInsightListOutputResultsList),
+  }),
+).annotate({
+  identifier: "PaginatedInsightListOutput",
+}) as any as S.Schema<PaginatedInsightListOutput>;
+
+export interface ListInsightSharingRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  insight_id: number;
+}
+export const ListInsightSharingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    insight_id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/insights/{insight_id}/sharing/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListInsightSharingRequest",
+}) as any as S.Schema<ListInsightSharingRequest>;
+
+export type InsightsSharingListResponseBodyList = Array<SharingConfiguration>;
+export const InsightsSharingListResponseBodyList = /*@__PURE__*/ S.Array(
+  SharingConfiguration,
+) as any as S.Schema<InsightsSharingListResponseBodyList>;
+
+export type ListInsightSharingResponse = InsightsSharingListResponseBodyList;
+export const ListInsightSharingResponse = /*@__PURE__*/ S.suspend(() =>
+  InsightsSharingListResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "ListInsightSharingResponse",
+}) as any as S.Schema<ListInsightSharingResponse>;
+
+export interface ListInsightThresholdsRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  insight_id: number;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const ListInsightThresholdsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    insight_id: S.Number.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/insights/{insight_id}/thresholds/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListInsightThresholdsRequest",
+}) as any as S.Schema<ListInsightThresholdsRequest>;
+
+export type PaginatedThresholdWithAlertListResultsList =
+  Array<ThresholdWithAlert>;
+export const PaginatedThresholdWithAlertListResultsList = /*@__PURE__*/ S.Array(
+  ThresholdWithAlert,
+) as any as S.Schema<PaginatedThresholdWithAlertListResultsList>;
+
+export interface PaginatedThresholdWithAlertList {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: PaginatedThresholdWithAlertListResultsList;
+}
+export const PaginatedThresholdWithAlertList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: S.optional(PaginatedThresholdWithAlertListResultsList),
+  }),
+).annotate({
+  identifier: "PaginatedThresholdWithAlertList",
+}) as any as S.Schema<PaginatedThresholdWithAlertList>;
+
 export type InsightsUpdateRequestFormat = "csv" | "json";
 export const InsightsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
@@ -19252,7 +19229,7 @@ export const InsightsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightsUpdateRequestTagsList>;
 
-export interface InsightsUpdateRequest {
+export interface UpdateInsightRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Numeric primary key or 8-character `short_id` (for example `AaVQ8Ijw`) identifying the insight. */
@@ -19272,7 +19249,7 @@ export interface InsightsUpdateRequest {
   favorited?: boolean;
   _create_in_folder?: string;
 }
-export const InsightsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateInsightRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -19296,47 +19273,182 @@ export const InsightsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InsightsUpdateRequest",
-}) as any as S.Schema<InsightsUpdateRequest>;
+  identifier: "UpdateInsightRequest",
+}) as any as S.Schema<UpdateInsightRequest>;
 
-export type InsightsViewedCreateRequestFormat = "csv" | "json";
-export const InsightsViewedCreateRequestFormat = /*@__PURE__*/ S.String;
+export type InsightsPartialUpdateRequestFormat = "csv" | "json";
+export const InsightsPartialUpdateRequestFormat = /*@__PURE__*/ S.String;
 
-/** Insight IDs that were just viewed by the current user. At most 2500 ids per request. */
-export type InsightsViewedCreateRequestInsightIdsList = Array<number>;
-export const InsightsViewedCreateRequestInsightIdsList = /*@__PURE__*/ S.Array(
+/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
+export type InsightsPartialUpdateRequestDashboardsList = Array<number>;
+export const InsightsPartialUpdateRequestDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
-) as any as S.Schema<InsightsViewedCreateRequestInsightIdsList>;
+) as any as S.Schema<InsightsPartialUpdateRequestDashboardsList>;
 
-export interface InsightsViewedCreateRequest {
+export type InsightsPartialUpdateRequestTagsList = Array<unknown>;
+export const InsightsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<InsightsPartialUpdateRequestTagsList>;
+
+export interface UpdateInsightPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  format?: InsightsViewedCreateRequestFormat | (string & {});
-  /** Insight IDs that were just viewed by the current user. At most 2500 ids per request. */
-  insight_ids: InsightsViewedCreateRequestInsightIdsList;
+  /** Numeric primary key or 8-character `short_id` (for example `AaVQ8Ijw`) identifying the insight. */
+  id: string;
+  format?: InsightsPartialUpdateRequestFormat | (string & {});
+  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
+  include_dashboards?: boolean;
+  name?: string | null;
+  derived_name?: string | null;
+  query?: InsightQuerySchema | null;
+  order?: number | null;
+  deleted?: boolean;
+  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
+  dashboards?: InsightsPartialUpdateRequestDashboardsList;
+  description?: string | null;
+  tags?: InsightsPartialUpdateRequestTagsList;
+  favorited?: boolean;
+  _create_in_folder?: string;
 }
-export const InsightsViewedCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateInsightPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    format: S.optional(InsightsViewedCreateRequestFormat.pipe(T.Query())),
-    insight_ids: InsightsViewedCreateRequestInsightIdsList,
+    id: S.String.pipe(T.Label()),
+    format: S.optional(InsightsPartialUpdateRequestFormat.pipe(T.Query())),
+    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.optional(S.NullOr(S.String)),
+    derived_name: S.optional(S.NullOr(S.String)),
+    query: S.optional(S.NullOr(InsightQuerySchema)),
+    order: S.optional(S.NullOr(S.Number)),
+    deleted: S.optional(S.Boolean),
+    dashboards: S.optional(InsightsPartialUpdateRequestDashboardsList),
+    description: S.optional(S.NullOr(S.String)),
+    tags: S.optional(InsightsPartialUpdateRequestTagsList),
+    favorited: S.optional(S.Boolean),
+    _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/insights/viewed/",
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/insights/{id}/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "InsightsViewedCreateRequest",
-}) as any as S.Schema<InsightsViewedCreateRequest>;
+  identifier: "UpdateInsightPartialRequest",
+}) as any as S.Schema<UpdateInsightPartialRequest>;
 
-export interface InsightsViewedCreateResponse {}
-export const InsightsViewedCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InsightsViewedCreateResponse",
-}) as any as S.Schema<InsightsViewedCreateResponse>;
+export type CreateInsightError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
+export const createInsight: API.OperationMethod<
+  CreateInsightRequest,
+  InsightOutput,
+  CreateInsightError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateInsightRequest,
+  output: InsightOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateInsightCancelError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
+export const createInsightCancel: API.OperationMethod<
+  CreateInsightCancelRequest,
+  CreateInsightCancelResponse,
+  CreateInsightCancelError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateInsightCancelRequest,
+  output: CreateInsightCancelResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateInsightSharingPasswordError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Create a new password for the sharing configuration. */
+export const createInsightSharingPassword: API.OperationMethod<
+  CreateInsightSharingPasswordRequest,
+  SharingConfiguration,
+  CreateInsightSharingPasswordError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateInsightSharingPasswordRequest,
+  output: SharingConfiguration,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateInsightSharingRefreshError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const createInsightSharingRefresh: API.OperationMethod<
+  CreateInsightSharingRefreshRequest,
+  SharingConfiguration,
+  CreateInsightSharingRefreshError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateInsightSharingRefreshRequest,
+  output: SharingConfiguration,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateInsightSuggestionError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
+export const createInsightSuggestion: API.OperationMethod<
+  CreateInsightSuggestionRequest,
+  CreateInsightSuggestionResponse,
+  CreateInsightSuggestionError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateInsightSuggestionRequest,
+  output: CreateInsightSuggestionResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateInsightViewedError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Record that the current user has just viewed one or more insights. Submitted ids that do not belong to the current project or that point at deleted insights are silently dropped, as are views from impersonated staff-support sessions. Returns 201 on success regardless of how many ids were retained. */
+export const createInsightViewed: API.OperationMethod<
+  CreateInsightViewedRequest,
+  CreateInsightViewedResponse,
+  CreateInsightViewedError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateInsightViewedRequest,
+  output: CreateInsightViewedResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
 export type InsightsActivityRetrieveError =
   | BadRequest
@@ -19459,44 +19571,6 @@ export const insightsBulkUpdateTagsCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsightsCancelCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
-export const insightsCancelCreate: API.OperationMethod<
-  InsightsCancelCreateRequest,
-  InsightsCancelCreateResponse,
-  InsightsCancelCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsCancelCreateRequest,
-  output: InsightsCancelCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type InsightsCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
-export const insightsCreate: API.OperationMethod<
-  InsightsCreateRequest,
-  InsightOutput,
-  InsightsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsCreateRequest,
-  output: InsightOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type InsightsDestroyError =
   | BadRequest
   | Forbidden
@@ -19535,25 +19609,6 @@ export const insightsGenerateMetadataCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsightsListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
-export const insightsList: API.OperationMethod<
-  InsightsListRequest,
-  PaginatedInsightListOutput,
-  InsightsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsListRequest,
-  output: PaginatedInsightListOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type InsightsMyLastViewedRetrieveError =
   | BadRequest
   | Forbidden
@@ -19568,25 +19623,6 @@ export const insightsMyLastViewedRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsMyLastViewedRetrieveRequest,
   output: InsightsMyLastViewedRetrieveResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type InsightsPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
-export const insightsPartialUpdate: API.OperationMethod<
-  InsightsPartialUpdateRequest,
-  InsightOutput,
-  InsightsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsPartialUpdateRequest,
-  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -19611,39 +19647,6 @@ export const insightsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsightsSharingListError = Forbidden | NotFound | PosthogOpError;
-export const insightsSharingList: API.OperationMethod<
-  InsightsSharingListRequest,
-  InsightsSharingListResponse,
-  InsightsSharingListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsSharingListRequest,
-  output: InsightsSharingListResponse,
-  errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type InsightsSharingPasswordsCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Create a new password for the sharing configuration. */
-export const insightsSharingPasswordsCreate: API.OperationMethod<
-  InsightsSharingPasswordsCreateRequest,
-  SharingConfiguration,
-  InsightsSharingPasswordsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsSharingPasswordsCreateRequest,
-  output: SharingConfiguration,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type InsightsSharingPasswordsDestroyError =
   | Forbidden
   | NotFound
@@ -19662,43 +19665,6 @@ export const insightsSharingPasswordsDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsightsSharingRefreshCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const insightsSharingRefreshCreate: API.OperationMethod<
-  InsightsSharingRefreshCreateRequest,
-  SharingConfiguration,
-  InsightsSharingRefreshCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsSharingRefreshCreateRequest,
-  output: SharingConfiguration,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type InsightsSuggestionsCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
-export const insightsSuggestionsCreate: API.OperationMethod<
-  InsightsSuggestionsCreateRequest,
-  InsightsSuggestionsCreateResponse,
-  InsightsSuggestionsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsSuggestionsCreateRequest,
-  output: InsightsSuggestionsCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type InsightsSuggestionsRetrieveError =
   | BadRequest
   | Forbidden
@@ -19713,24 +19679,6 @@ export const insightsSuggestionsRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsSuggestionsRetrieveRequest,
   output: InsightsSuggestionsRetrieveResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type InsightsThresholdsListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const insightsThresholdsList: API.OperationMethod<
-  InsightsThresholdsListRequest,
-  PaginatedThresholdWithAlertList,
-  InsightsThresholdsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsThresholdsListRequest,
-  output: PaginatedThresholdWithAlertList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -19772,39 +19720,90 @@ export const insightsTrendingRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsightsUpdateError =
+export type ListInsightsError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
 /** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
-export const insightsUpdate: API.OperationMethod<
-  InsightsUpdateRequest,
-  InsightOutput,
-  InsightsUpdateError,
+export const listInsights: API.OperationMethod<
+  ListInsightsRequest,
+  PaginatedInsightListOutput,
+  ListInsightsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsightsUpdateRequest,
+  input: ListInsightsRequest,
+  output: PaginatedInsightListOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListInsightSharingError = Forbidden | NotFound | PosthogOpError;
+export const listInsightSharing: API.OperationMethod<
+  ListInsightSharingRequest,
+  ListInsightSharingResponse,
+  ListInsightSharingError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListInsightSharingRequest,
+  output: ListInsightSharingResponse,
+  errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListInsightThresholdsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const listInsightThresholds: API.OperationMethod<
+  ListInsightThresholdsRequest,
+  PaginatedThresholdWithAlertList,
+  ListInsightThresholdsError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListInsightThresholdsRequest,
+  output: PaginatedThresholdWithAlertList,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateInsightError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
+export const updateInsight: API.OperationMethod<
+  UpdateInsightRequest,
+  InsightOutput,
+  UpdateInsightError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateInsightRequest,
   output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
 
-export type InsightsViewedCreateError =
+export type UpdateInsightPartialError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Record that the current user has just viewed one or more insights. Submitted ids that do not belong to the current project or that point at deleted insights are silently dropped, as are views from impersonated staff-support sessions. Returns 201 on success regardless of how many ids were retained. */
-export const insightsViewedCreate: API.OperationMethod<
-  InsightsViewedCreateRequest,
-  InsightsViewedCreateResponse,
-  InsightsViewedCreateError,
+/** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
+export const updateInsightPartial: API.OperationMethod<
+  UpdateInsightPartialRequest,
+  InsightOutput,
+  UpdateInsightPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsightsViewedCreateRequest,
-  output: InsightsViewedCreateResponse,
+  input: UpdateInsightPartialRequest,
+  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

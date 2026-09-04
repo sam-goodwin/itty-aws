@@ -9350,7 +9350,7 @@
         "smithy.api#documentation": "Upsert a bouncer resize request"
       }
     },
-    "com.planetscale.api#CancelBouncerResizeRequestRequest": {
+    "com.planetscale.api#RequestCancelBouncerResizeRequest": {
       "type": "structure",
       "members": {
         "organization": {
@@ -9390,10 +9390,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.planetscale.api#CancelBouncerResizeRequest": {
+    "com.planetscale.api#RequestCancelBouncerResize": {
       "type": "operation",
       "input": {
-        "target": "com.planetscale.api#CancelBouncerResizeRequestRequest"
+        "target": "com.planetscale.api#RequestCancelBouncerResizeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -18301,7 +18301,7 @@
         "smithy.api#documentation": "Create a keyspace resize request\n\nStarts or queues an in-place resize of a branch keyspace's cluster size and/or replica count. Rejected with 422 while another resize is in progress or when the keyspace is already configured with the requested values."
       }
     },
-    "com.planetscale.api#CancelKeyspaceResizeRequestRequest": {
+    "com.planetscale.api#RequestCancelKeyspaceResizeRequest": {
       "type": "structure",
       "members": {
         "organization": {
@@ -18341,10 +18341,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.planetscale.api#CancelKeyspaceResizeRequest": {
+    "com.planetscale.api#RequestCancelKeyspaceResize": {
       "type": "operation",
       "input": {
-        "target": "com.planetscale.api#CancelKeyspaceResizeRequestRequest"
+        "target": "com.planetscale.api#RequestCancelKeyspaceResizeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -26511,7 +26511,7 @@
         "smithy.api#documentation": "Upsert a resize request"
       }
     },
-    "com.planetscale.api#CancelBranchChangeRequestRequest": {
+    "com.planetscale.api#RequestCancelBranchChangeRequest": {
       "type": "structure",
       "members": {
         "organization": {
@@ -26543,10 +26543,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.planetscale.api#CancelBranchChangeRequest": {
+    "com.planetscale.api#RequestCancelBranchChange": {
       "type": "operation",
       "input": {
-        "target": "com.planetscale.api#CancelBranchChangeRequestRequest"
+        "target": "com.planetscale.api#RequestCancelBranchChangeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36061,7 +36061,7 @@
         "smithy.api#documentation": "The deploy request will be updated to this state"
       }
     },
-    "com.planetscale.api#CloseDeployRequestRequest": {
+    "com.planetscale.api#RequestCloseDeployRequest": {
       "type": "structure",
       "members": {
         "organization": {
@@ -36099,10 +36099,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.planetscale.api#CloseDeployRequest": {
+    "com.planetscale.api#RequestCloseDeploy": {
       "type": "operation",
       "input": {
-        "target": "com.planetscale.api#CloseDeployRequestRequest"
+        "target": "com.planetscale.api#RequestCloseDeployRequest"
       },
       "output": {
         "target": "com.planetscale.api#DatabaseDeployRequest"
@@ -36124,7 +36124,7 @@
         "smithy.api#documentation": "Close a deploy request"
       }
     },
-    "com.planetscale.api#CompleteGatedDeployRequestRequest": {
+    "com.planetscale.api#RequestCompleteGatedDeployRequest": {
       "type": "structure",
       "members": {
         "organization": {
@@ -36156,10 +36156,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.planetscale.api#CompleteGatedDeployRequest": {
+    "com.planetscale.api#RequestCompleteGatedDeploy": {
       "type": "operation",
       "input": {
-        "target": "com.planetscale.api#CompleteGatedDeployRequestRequest"
+        "target": "com.planetscale.api#RequestCompleteGatedDeployRequest"
       },
       "output": {
         "target": "com.planetscale.api#DatabaseDeployRequest"
@@ -36307,7 +36307,7 @@
         "smithy.api#documentation": "Update auto-delete branch for deploy request\n\nEnables or disabled the auto-delete branch setting for a deploy request"
       }
     },
-    "com.planetscale.api#CancelDeployRequestRequest": {
+    "com.planetscale.api#RequestCancelDeployRequest": {
       "type": "structure",
       "members": {
         "organization": {
@@ -36339,10 +36339,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.planetscale.api#CancelDeployRequest": {
+    "com.planetscale.api#RequestCancelDeploy": {
       "type": "operation",
       "input": {
-        "target": "com.planetscale.api#CancelDeployRequestRequest"
+        "target": "com.planetscale.api#RequestCancelDeployRequest"
       },
       "output": {
         "target": "com.planetscale.api#DatabaseDeployRequest"
@@ -36421,7 +36421,7 @@
         "smithy.api#documentation": "Complete an errored deploy"
       }
     },
-    "com.planetscale.api#QueueDeployRequestRequest": {
+    "com.planetscale.api#RequestQueueDeployRequest": {
       "type": "structure",
       "members": {
         "organization": {
@@ -36459,10 +36459,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.planetscale.api#QueueDeployRequest": {
+    "com.planetscale.api#RequestQueueDeploy": {
       "type": "operation",
       "input": {
-        "target": "com.planetscale.api#QueueDeployRequestRequest"
+        "target": "com.planetscale.api#RequestQueueDeployRequest"
       },
       "output": {
         "target": "com.planetscale.api#DatabaseDeployRequest"
@@ -37621,7 +37621,7 @@
         "smithy.api#documentation": "Get a deployment\n\nGet the deployment for a deploy request"
       }
     },
-    "com.planetscale.api#ForceCutoverDeployRequestRequest": {
+    "com.planetscale.api#RequestForceCutoverDeployRequest": {
       "type": "structure",
       "members": {
         "organization": {
@@ -37653,10 +37653,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.planetscale.api#ForceCutoverDeployRequest": {
+    "com.planetscale.api#RequestForceCutoverDeploy": {
       "type": "operation",
       "input": {
-        "target": "com.planetscale.api#ForceCutoverDeployRequestRequest"
+        "target": "com.planetscale.api#RequestForceCutoverDeployRequest"
       },
       "output": {
         "target": "com.planetscale.api#DatabaseDeployRequest"
@@ -38353,7 +38353,7 @@
         "smithy.api#documentation": "Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`)"
       }
     },
-    "com.planetscale.api#ReviewDeployRequestRequest": {
+    "com.planetscale.api#RequestReviewDeployRequest": {
       "type": "structure",
       "members": {
         "organization": {
@@ -38498,10 +38498,10 @@
       },
       "traits": {}
     },
-    "com.planetscale.api#ReviewDeployRequest": {
+    "com.planetscale.api#RequestReviewDeploy": {
       "type": "operation",
       "input": {
-        "target": "com.planetscale.api#ReviewDeployRequestRequest"
+        "target": "com.planetscale.api#RequestReviewDeployRequest"
       },
       "output": {
         "target": "com.planetscale.api#DeployRequestReview"
@@ -52261,7 +52261,7 @@
           "target": "com.planetscale.api#UpdateBouncerResizeRequest"
         },
         {
-          "target": "com.planetscale.api#CancelBouncerResizeRequest"
+          "target": "com.planetscale.api#RequestCancelBouncerResize"
         },
         {
           "target": "com.planetscale.api#ListBranchChangeRequests"
@@ -52339,7 +52339,7 @@
           "target": "com.planetscale.api#CreateKeyspaceResizeRequest"
         },
         {
-          "target": "com.planetscale.api#CancelKeyspaceResizeRequest"
+          "target": "com.planetscale.api#RequestCancelKeyspaceResize"
         },
         {
           "target": "com.planetscale.api#GetKeyspaceResizeRequest"
@@ -52444,7 +52444,7 @@
           "target": "com.planetscale.api#UpdateBranchResizeRequest"
         },
         {
-          "target": "com.planetscale.api#CancelBranchChangeRequest"
+          "target": "com.planetscale.api#RequestCancelBranchChange"
         },
         {
           "target": "com.planetscale.api#GetBranchResizeRequest"
@@ -52552,10 +52552,10 @@
           "target": "com.planetscale.api#GetDeployRequest"
         },
         {
-          "target": "com.planetscale.api#CloseDeployRequest"
+          "target": "com.planetscale.api#RequestCloseDeploy"
         },
         {
-          "target": "com.planetscale.api#CompleteGatedDeployRequest"
+          "target": "com.planetscale.api#RequestCompleteGatedDeploy"
         },
         {
           "target": "com.planetscale.api#UpdateAutoApply"
@@ -52564,19 +52564,19 @@
           "target": "com.planetscale.api#UpdateAutoDeleteBranch"
         },
         {
-          "target": "com.planetscale.api#CancelDeployRequest"
+          "target": "com.planetscale.api#RequestCancelDeploy"
         },
         {
           "target": "com.planetscale.api#CompleteErroredDeploy"
         },
         {
-          "target": "com.planetscale.api#QueueDeployRequest"
+          "target": "com.planetscale.api#RequestQueueDeploy"
         },
         {
           "target": "com.planetscale.api#GetDeployment"
         },
         {
-          "target": "com.planetscale.api#ForceCutoverDeployRequest"
+          "target": "com.planetscale.api#RequestForceCutoverDeploy"
         },
         {
           "target": "com.planetscale.api#ListDeployOperations"
@@ -52588,7 +52588,7 @@
           "target": "com.planetscale.api#ListDeployRequestReviews"
         },
         {
-          "target": "com.planetscale.api#ReviewDeployRequest"
+          "target": "com.planetscale.api#RequestReviewDeploy"
         },
         {
           "target": "com.planetscale.api#SkipRevertPeriod"

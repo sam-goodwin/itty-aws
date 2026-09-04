@@ -70,125 +70,6 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export interface BatchGetStatsVideosRequest {
-  /** Required. Return videos with the given ids. The number of IDs specified cannot exceed 50. */
-  id?: StringList;
-  /** Required. The `**part**` parameter specifies a comma-separated list of one or more `videoStat` resource properties that the API response will include. If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a `videoStat` resource, the `statistics` property contains `view_count` and `like_count`. As such, if you set `**part=snippet**`, the API response will contain all of those properties. */
-  part?: StringList;
-  /** Optional. **Note:** This parameter is intended exclusively for YouTube content partners. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
-  onBehalfOfContentOwner?: string;
-}
-export const BatchGetStatsVideosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(StringList.pipe(T.Query())),
-    part: S.optional(StringList.pipe(T.Query())),
-    onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "youtube/v3/videos:batchGetStats",
-      baseUrl: "https://youtube.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchGetStatsVideosRequest",
-}) as any as S.Schema<BatchGetStatsVideosRequest>;
-
-/** Statistics about the video, such as the number of times the video was viewed or liked. */
-export interface VideoStatsStatistics {
-  /** Output only. The number of users who have indicated that they liked the video by giving it a positive rating. */
-  likeCount?: string;
-  /** Output only. The number of comments for the video. */
-  commentCount?: string;
-  /** Output only. The number of times the video has been viewed. */
-  viewCount?: string;
-}
-export const VideoStatsStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    likeCount: S.optional(S.String),
-    commentCount: S.optional(S.String),
-    viewCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VideoStatsStatistics",
-}) as any as S.Schema<VideoStatsStatistics>;
-
-/** Details about the content of a YouTube Video. This is a subset of the information in VideoContentDetails specifically for the Videos.stats API. */
-export interface VideoStatsContentDetails {
-  /** Output only. The length of the video. The property value is a [`google.protobuf.Duration`](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) object. */
-  duration?: string;
-}
-export const VideoStatsContentDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    duration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VideoStatsContentDetails",
-}) as any as S.Schema<VideoStatsContentDetails>;
-
-/** Basic details about a video. This is a subset of the information in VideoSnippet specifically for the Videos.stats API. */
-export interface VideoStatsSnippet {
-  /** Output only. The date and time that the video was uploaded. The property value is a [`google.protobuf.Timestamp`](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#timestamp) object. */
-  publishTime?: string;
-}
-export const VideoStatsSnippet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VideoStatsSnippet",
-}) as any as S.Schema<VideoStatsSnippet>;
-
-/** A *VideoStat* resource represents a YouTube video's stats. */
-export interface VideoStat {
-  /** Output only. Identifies what kind of resource this is. Value: the fixed string "youtube#videoStats". */
-  kind?: string;
-  /** Output only. The VideoStatsStatistics object contains statistics about the video. */
-  statistics?: VideoStatsStatistics;
-  /** Output only. The VideoStatsContentDetails object contains information about the video content, including the length of the video. */
-  contentDetails?: VideoStatsContentDetails;
-  /** Output only. The ID that YouTube uses to uniquely identify the video. */
-  id?: string;
-  /** Output only. The VideoStatsSnippet object contains basic details about the video, such publish time. */
-  snippet?: VideoStatsSnippet;
-  /** Output only. Etag of this resource. */
-  etag?: string;
-}
-export const VideoStat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    statistics: S.optional(VideoStatsStatistics),
-    contentDetails: S.optional(VideoStatsContentDetails),
-    id: S.optional(S.String),
-    snippet: S.optional(VideoStatsSnippet),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "VideoStat" }) as any as S.Schema<VideoStat>;
-
-export type VideoStatList = Array<VideoStat>;
-export const VideoStatList = /*@__PURE__*/ S.Array(
-  VideoStat,
-) as any as S.Schema<VideoStatList>;
-
-/** Response for the Videos.stats API. Returns VideoStat information about a batch of videos. VideoStat contains a subset of the information in Video that is relevant to statistics and content details. BatchGetStats is intentionally not atomic to provide a better user experience. BatchGetStatsResponse returns a summary to help users understand the outcome of the operation. */
-export interface BatchGetStatsResponse {
-  /** Identifies what kind of resource this is. Value: the fixed string "youtube#batchGetStatsResponse". */
-  kind?: string;
-  /** The videos' stats information. */
-  items?: VideoStatList;
-  /** Etag of this resource. */
-  etag?: string;
-}
-export const BatchGetStatsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    items: S.optional(VideoStatList),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchGetStatsResponse",
-}) as any as S.Schema<BatchGetStatsResponse>;
-
 export interface BindLiveBroadcastsRequest {
   /** This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel. */
   onBehalfOfContentOwnerChannel?: string;
@@ -1095,6 +976,125 @@ export const DownloadCaptionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DownloadCaptionsResponse",
 }) as any as S.Schema<DownloadCaptionsResponse>;
+
+export interface GetBatchStatVideosRequest {
+  /** Required. Return videos with the given ids. The number of IDs specified cannot exceed 50. */
+  id?: StringList;
+  /** Required. The `**part**` parameter specifies a comma-separated list of one or more `videoStat` resource properties that the API response will include. If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a `videoStat` resource, the `statistics` property contains `view_count` and `like_count`. As such, if you set `**part=snippet**`, the API response will contain all of those properties. */
+  part?: StringList;
+  /** Optional. **Note:** This parameter is intended exclusively for YouTube content partners. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
+  onBehalfOfContentOwner?: string;
+}
+export const GetBatchStatVideosRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(StringList.pipe(T.Query())),
+    part: S.optional(StringList.pipe(T.Query())),
+    onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "youtube/v3/videos:batchGetStats",
+      baseUrl: "https://youtube.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBatchStatVideosRequest",
+}) as any as S.Schema<GetBatchStatVideosRequest>;
+
+/** Statistics about the video, such as the number of times the video was viewed or liked. */
+export interface VideoStatsStatistics {
+  /** Output only. The number of users who have indicated that they liked the video by giving it a positive rating. */
+  likeCount?: string;
+  /** Output only. The number of comments for the video. */
+  commentCount?: string;
+  /** Output only. The number of times the video has been viewed. */
+  viewCount?: string;
+}
+export const VideoStatsStatistics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    likeCount: S.optional(S.String),
+    commentCount: S.optional(S.String),
+    viewCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VideoStatsStatistics",
+}) as any as S.Schema<VideoStatsStatistics>;
+
+/** Details about the content of a YouTube Video. This is a subset of the information in VideoContentDetails specifically for the Videos.stats API. */
+export interface VideoStatsContentDetails {
+  /** Output only. The length of the video. The property value is a [`google.protobuf.Duration`](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) object. */
+  duration?: string;
+}
+export const VideoStatsContentDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    duration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VideoStatsContentDetails",
+}) as any as S.Schema<VideoStatsContentDetails>;
+
+/** Basic details about a video. This is a subset of the information in VideoSnippet specifically for the Videos.stats API. */
+export interface VideoStatsSnippet {
+  /** Output only. The date and time that the video was uploaded. The property value is a [`google.protobuf.Timestamp`](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#timestamp) object. */
+  publishTime?: string;
+}
+export const VideoStatsSnippet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publishTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VideoStatsSnippet",
+}) as any as S.Schema<VideoStatsSnippet>;
+
+/** A *VideoStat* resource represents a YouTube video's stats. */
+export interface VideoStat {
+  /** Output only. Identifies what kind of resource this is. Value: the fixed string "youtube#videoStats". */
+  kind?: string;
+  /** Output only. The VideoStatsStatistics object contains statistics about the video. */
+  statistics?: VideoStatsStatistics;
+  /** Output only. The VideoStatsContentDetails object contains information about the video content, including the length of the video. */
+  contentDetails?: VideoStatsContentDetails;
+  /** Output only. The ID that YouTube uses to uniquely identify the video. */
+  id?: string;
+  /** Output only. The VideoStatsSnippet object contains basic details about the video, such publish time. */
+  snippet?: VideoStatsSnippet;
+  /** Output only. Etag of this resource. */
+  etag?: string;
+}
+export const VideoStat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    statistics: S.optional(VideoStatsStatistics),
+    contentDetails: S.optional(VideoStatsContentDetails),
+    id: S.optional(S.String),
+    snippet: S.optional(VideoStatsSnippet),
+    etag: S.optional(S.String),
+  }),
+).annotate({ identifier: "VideoStat" }) as any as S.Schema<VideoStat>;
+
+export type VideoStatList = Array<VideoStat>;
+export const VideoStatList = /*@__PURE__*/ S.Array(
+  VideoStat,
+) as any as S.Schema<VideoStatList>;
+
+/** Response for the Videos.stats API. Returns VideoStat information about a batch of videos. VideoStat contains a subset of the information in Video that is relevant to statistics and content details. BatchGetStats is intentionally not atomic to provide a better user experience. BatchGetStatsResponse returns a summary to help users understand the outcome of the operation. */
+export interface BatchGetStatsResponse {
+  /** Identifies what kind of resource this is. Value: the fixed string "youtube#batchGetStatsResponse". */
+  kind?: string;
+  /** The videos' stats information. */
+  items?: VideoStatList;
+  /** Etag of this resource. */
+  etag?: string;
+}
+export const BatchGetStatsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    items: S.optional(VideoStatList),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchGetStatsResponse",
+}) as any as S.Schema<BatchGetStatsResponse>;
 
 export interface GetRatingVideosRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
@@ -9308,21 +9308,6 @@ export const UpdateVideosRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateVideosRequest",
 }) as any as S.Schema<UpdateVideosRequest>;
 
-export type BatchGetStatsVideosError = NotFound | Forbidden | GcpOpError;
-/** Retrieves a batch of VideoStat resources, possibly filtered. BatchGetStats is intentionally not atomic to provide a better user experience. */
-export const batchGetStatsVideos: API.OperationMethod<
-  BatchGetStatsVideosRequest,
-  BatchGetStatsResponse,
-  BatchGetStatsVideosError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetStatsVideosRequest,
-  output: BatchGetStatsResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BindLiveBroadcastsError =
   | NotFound
   | Forbidden
@@ -9633,6 +9618,21 @@ export const downloadCaptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DownloadCaptionsRequest,
   output: DownloadCaptionsResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchStatVideosError = NotFound | Forbidden | GcpOpError;
+/** Retrieves a batch of VideoStat resources, possibly filtered. BatchGetStats is intentionally not atomic to provide a better user experience. */
+export const getBatchStatVideos: API.OperationMethod<
+  GetBatchStatVideosRequest,
+  BatchGetStatsResponse,
+  GetBatchStatVideosError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchStatVideosRequest,
+  output: BatchGetStatsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

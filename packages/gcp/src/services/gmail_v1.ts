@@ -70,46 +70,6 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export interface BatchDeleteMessagesRequest {
-  /** The IDs of the messages to delete. */
-  ids?: StringList;
-}
-export const BatchDeleteMessagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeleteMessagesRequest",
-}) as any as S.Schema<BatchDeleteMessagesRequest>;
-
-export interface BatchDeleteUsersMessagesRequest {
-  /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
-  userId: string;
-  /** Request body */
-  body?: BatchDeleteMessagesRequest;
-}
-export const BatchDeleteUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.String.pipe(T.Label()),
-    body: S.optional(BatchDeleteMessagesRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "gmail/v1/users/{userId}/messages/batchDelete",
-      baseUrl: "https://gmail.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchDeleteUsersMessagesRequest",
-}) as any as S.Schema<BatchDeleteUsersMessagesRequest>;
-
-export interface BatchDeleteUsersMessagesResponse {}
-export const BatchDeleteUsersMessagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BatchDeleteUsersMessagesResponse",
-}) as any as S.Schema<BatchDeleteUsersMessagesResponse>;
-
 /** Field values for a classification label. */
 export interface ClassificationLabelFieldValue {
   /** Required. The field ID for the Classification Label Value. Maps to the ID field of the Google Drive `Label.Field` object. */
@@ -882,6 +842,46 @@ export const CreateUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUsersSettingsSendAsRequest",
 }) as any as S.Schema<CreateUsersSettingsSendAsRequest>;
+
+export interface BatchDeleteMessagesRequest {
+  /** The IDs of the messages to delete. */
+  ids?: StringList;
+}
+export const BatchDeleteMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ids: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeleteMessagesRequest",
+}) as any as S.Schema<BatchDeleteMessagesRequest>;
+
+export interface DeleteBatchUserMessageRequest {
+  /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
+  userId: string;
+  /** Request body */
+  body?: BatchDeleteMessagesRequest;
+}
+export const DeleteBatchUserMessageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    body: S.optional(BatchDeleteMessagesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "gmail/v1/users/{userId}/messages/batchDelete",
+      baseUrl: "https://gmail.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBatchUserMessageRequest",
+}) as any as S.Schema<DeleteBatchUserMessageRequest>;
+
+export interface DeleteBatchUserMessageResponse {}
+export const DeleteBatchUserMessageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteBatchUserMessageResponse",
+}) as any as S.Schema<DeleteBatchUserMessageResponse>;
 
 export interface DeleteUsersDraftsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
@@ -3201,26 +3201,6 @@ export const WatchResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WatchResponse" }) as any as S.Schema<WatchResponse>;
 
-export type BatchDeleteUsersMessagesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes many messages by message ID. Provides no guarantees that messages were not already deleted or even existed at all. */
-export const batchDeleteUsersMessages: API.OperationMethod<
-  BatchDeleteUsersMessagesRequest,
-  BatchDeleteUsersMessagesResponse,
-  BatchDeleteUsersMessagesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteUsersMessagesRequest,
-  output: BatchDeleteUsersMessagesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BatchModifyUsersMessagesError =
   | NotFound
   | Forbidden
@@ -3396,6 +3376,26 @@ export const createUsersSettingsSendAs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsSendAsRequest,
   output: SendAs,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchUserMessageError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes many messages by message ID. Provides no guarantees that messages were not already deleted or even existed at all. */
+export const deleteBatchUserMessage: API.OperationMethod<
+  DeleteBatchUserMessageRequest,
+  DeleteBatchUserMessageResponse,
+  DeleteBatchUserMessageError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchUserMessageRequest,
+  output: DeleteBatchUserMessageResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

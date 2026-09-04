@@ -196,7 +196,7 @@ export const UserBasicInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasicInput" }) as any as S.Schema<UserBasicInput>;
 
-export interface AdvancedActivityLogsExportCreateRequest {
+export interface CreateAdvancedActivityLogExportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   user?: UserBasicInput | null;
@@ -212,7 +212,7 @@ export interface AdvancedActivityLogsExportCreateRequest {
   detail?: unknown;
   created_at?: string;
 }
-export const AdvancedActivityLogsExportCreateRequest = /*@__PURE__*/ S.suspend(
+export const CreateAdvancedActivityLogExportRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -236,8 +236,8 @@ export const AdvancedActivityLogsExportCreateRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "AdvancedActivityLogsExportCreateRequest",
-}) as any as S.Schema<AdvancedActivityLogsExportCreateRequest>;
+  identifier: "CreateAdvancedActivityLogExportRequest",
+}) as any as S.Schema<CreateAdvancedActivityLogExportRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -355,7 +355,7 @@ export const AdvancedActivityLogsListRequestUsersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestUsersList>;
 
-export interface AdvancedActivityLogsListRequest {
+export interface ListAdvancedActivityLogsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Filter by activity types (e.g. "created", "updated", "deleted"). */
@@ -399,7 +399,7 @@ export interface AdvancedActivityLogsListRequest {
   /** When set, filters rows where the actor was impersonating another user. */
   was_impersonated?: boolean;
 }
-export const AdvancedActivityLogsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAdvancedActivityLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     activities: S.optional(
@@ -444,8 +444,8 @@ export const AdvancedActivityLogsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AdvancedActivityLogsListRequest",
-}) as any as S.Schema<AdvancedActivityLogsListRequest>;
+  identifier: "ListAdvancedActivityLogsRequest",
+}) as any as S.Schema<ListAdvancedActivityLogsRequest>;
 
 export type PaginatedActivityLogListResultsList = Array<ActivityLog>;
 export const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
@@ -486,36 +486,36 @@ export const advancedActivityLogsAvailableFiltersRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AdvancedActivityLogsExportCreateError =
+export type CreateAdvancedActivityLogExportError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const advancedActivityLogsExportCreate: API.OperationMethod<
-  AdvancedActivityLogsExportCreateRequest,
+export const createAdvancedActivityLogExport: API.OperationMethod<
+  CreateAdvancedActivityLogExportRequest,
   ActivityLog,
-  AdvancedActivityLogsExportCreateError,
+  CreateAdvancedActivityLogExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdvancedActivityLogsExportCreateRequest,
+  input: CreateAdvancedActivityLogExportRequest,
   output: ActivityLog,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
 
-export type AdvancedActivityLogsListError =
+export type ListAdvancedActivityLogsError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const advancedActivityLogsList: API.OperationMethod<
-  AdvancedActivityLogsListRequest,
+export const listAdvancedActivityLogs: API.OperationMethod<
+  ListAdvancedActivityLogsRequest,
   PaginatedActivityLogList,
-  AdvancedActivityLogsListError,
+  ListAdvancedActivityLogsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdvancedActivityLogsListRequest,
+  input: ListAdvancedActivityLogsRequest,
   output: PaginatedActivityLogList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,

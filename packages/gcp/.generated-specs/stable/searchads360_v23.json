@@ -104188,7 +104188,7 @@
         "smithy.api#documentation": "Graduates an experiment to a full campaign. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ExperimentError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()"
       }
     },
-    "com.gcp.searchads360_v23#MutateCustomersUserListCustomerTypesRequest": {
+    "com.gcp.searchads360_v23#ListMutateCustomerUserCustomerTypesRequest": {
       "type": "structure",
       "members": {
         "customerId": {
@@ -104208,10 +104208,10 @@
         }
       }
     },
-    "com.gcp.searchads360_v23#MutateCustomersUserListCustomerTypes": {
+    "com.gcp.searchads360_v23#ListMutateCustomerUserCustomerTypes": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.searchads360_v23#MutateCustomersUserListCustomerTypesRequest"
+        "target": "com.gcp.searchads360_v23#ListMutateCustomerUserCustomerTypesRequest"
       },
       "output": {
         "target": "com.gcp.searchads360_v23#GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse"
@@ -104888,7 +104888,7 @@
         "smithy.api#documentation": "Runs the offline user data job. When finished, the long running operation will contain the processing result or failure information, if any. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [HeaderError]() [InternalError]() [OfflineUserDataJobError]() [QuotaError]() [RequestError]()"
       }
     },
-    "com.gcp.searchads360_v23#MutateCustomersAssetSetAssetsRequest": {
+    "com.gcp.searchads360_v23#SetMutateCustomerAssetAssetRequest": {
       "type": "structure",
       "members": {
         "customerId": {
@@ -104908,10 +104908,10 @@
         }
       }
     },
-    "com.gcp.searchads360_v23#MutateCustomersAssetSetAssets": {
+    "com.gcp.searchads360_v23#SetMutateCustomerAssetAsset": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.searchads360_v23#MutateCustomersAssetSetAssetsRequest"
+        "target": "com.gcp.searchads360_v23#SetMutateCustomerAssetAssetRequest"
       },
       "output": {
         "target": "com.gcp.searchads360_v23#GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse"

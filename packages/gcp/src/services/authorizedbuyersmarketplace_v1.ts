@@ -1275,80 +1275,6 @@ export const AddNoteBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddNoteBuyersProposalsRequest",
 }) as any as S.Schema<AddNoteBuyersProposalsRequest>;
 
-/** Request message for updating the deal at the given revision number. */
-export interface UpdateDealRequest {
-  /** Required. The deal to update. The deal's `name` field is used to identify the deal to be updated. Note: proposal_revision will have to be provided within the resource or else an error will be thrown. Format: buyers/{accountId}/proposals/{proposalId}/deals/{dealId} */
-  deal?: Deal;
-  /** List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. */
-  updateMask?: string;
-}
-export const UpdateDealRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deal: S.optional(Deal),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDealRequest",
-}) as any as S.Schema<UpdateDealRequest>;
-
-export type UpdateDealRequestList = Array<UpdateDealRequest>;
-export const UpdateDealRequestList = /*@__PURE__*/ S.Array(
-  UpdateDealRequest,
-) as any as S.Schema<UpdateDealRequestList>;
-
-/** Request message for batch updating deals. */
-export interface BatchUpdateDealsRequest {
-  /** Required. List of request messages to update deals. */
-  requests?: UpdateDealRequestList;
-}
-export const BatchUpdateDealsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(UpdateDealRequestList),
-  }),
-).annotate({
-  identifier: "BatchUpdateDealsRequest",
-}) as any as S.Schema<BatchUpdateDealsRequest>;
-
-export interface BatchUpdateBuyersProposalsDealsRequest {
-  /** Required. The name of the proposal containing the deals to batch update. Format: buyers/{accountId}/proposals/{proposalId} */
-  parent: string;
-  /** Request body */
-  body?: BatchUpdateDealsRequest;
-}
-export const BatchUpdateBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateDealsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/deals:batchUpdate",
-        baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BatchUpdateBuyersProposalsDealsRequest",
-}) as any as S.Schema<BatchUpdateBuyersProposalsDealsRequest>;
-
-export type DealList = Array<Deal>;
-export const DealList = /*@__PURE__*/ S.Array(
-  Deal,
-) as any as S.Schema<DealList>;
-
-/** Response message for batch updating deals. */
-export interface BatchUpdateDealsResponse {
-  /** Deals updated. */
-  deals?: DealList;
-}
-export const BatchUpdateDealsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deals: S.optional(DealList),
-  }),
-).annotate({
-  identifier: "BatchUpdateDealsResponse",
-}) as any as S.Schema<BatchUpdateDealsResponse>;
-
 /** Request to cancel an ongoing negotiation. */
 export type CancelNegotiationRequest = ActivateClientRequest;
 export const CancelNegotiationRequest = ActivateClientRequest;
@@ -2091,6 +2017,11 @@ export const ListBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBuyersProposalsDealsRequest",
 }) as any as S.Schema<ListBuyersProposalsDealsRequest>;
 
+export type DealList = Array<Deal>;
+export const DealList = /*@__PURE__*/ S.Array(
+  Deal,
+) as any as S.Schema<DealList>;
+
 /** Response message for listing deals in a proposal. */
 export interface ListDealsResponse {
   /** The list of deals. */
@@ -2521,6 +2452,74 @@ export const UnsubscribeClientsBuyersAuctionPackagesRequest =
     identifier: "UnsubscribeClientsBuyersAuctionPackagesRequest",
   }) as any as S.Schema<UnsubscribeClientsBuyersAuctionPackagesRequest>;
 
+/** Request message for updating the deal at the given revision number. */
+export interface UpdateDealRequest {
+  /** Required. The deal to update. The deal's `name` field is used to identify the deal to be updated. Note: proposal_revision will have to be provided within the resource or else an error will be thrown. Format: buyers/{accountId}/proposals/{proposalId}/deals/{dealId} */
+  deal?: Deal;
+  /** List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. */
+  updateMask?: string;
+}
+export const UpdateDealRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deal: S.optional(Deal),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateDealRequest",
+}) as any as S.Schema<UpdateDealRequest>;
+
+export type UpdateDealRequestList = Array<UpdateDealRequest>;
+export const UpdateDealRequestList = /*@__PURE__*/ S.Array(
+  UpdateDealRequest,
+) as any as S.Schema<UpdateDealRequestList>;
+
+/** Request message for batch updating deals. */
+export interface BatchUpdateDealsRequest {
+  /** Required. List of request messages to update deals. */
+  requests?: UpdateDealRequestList;
+}
+export const BatchUpdateDealsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requests: S.optional(UpdateDealRequestList),
+  }),
+).annotate({
+  identifier: "BatchUpdateDealsRequest",
+}) as any as S.Schema<BatchUpdateDealsRequest>;
+
+export interface UpdateBatchBuyerProposalDealRequest {
+  /** Required. The name of the proposal containing the deals to batch update. Format: buyers/{accountId}/proposals/{proposalId} */
+  parent: string;
+  /** Request body */
+  body?: BatchUpdateDealsRequest;
+}
+export const UpdateBatchBuyerProposalDealRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchUpdateDealsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/deals:batchUpdate",
+      baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBatchBuyerProposalDealRequest",
+}) as any as S.Schema<UpdateBatchBuyerProposalDealRequest>;
+
+/** Response message for batch updating deals. */
+export interface BatchUpdateDealsResponse {
+  /** Deals updated. */
+  deals?: DealList;
+}
+export const BatchUpdateDealsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deals: S.optional(DealList),
+  }),
+).annotate({
+  identifier: "BatchUpdateDealsResponse",
+}) as any as S.Schema<BatchUpdateDealsResponse>;
+
 export type AcceptBuyersProposalsError =
   | NotFound
   | Forbidden
@@ -2616,26 +2615,6 @@ export const addNoteBuyersProposals: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AddNoteBuyersProposalsRequest,
   output: Proposal,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchUpdateBuyersProposalsDealsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Batch updates multiple deals in the same proposal. */
-export const batchUpdateBuyersProposalsDeals: API.OperationMethod<
-  BatchUpdateBuyersProposalsDealsRequest,
-  BatchUpdateDealsResponse,
-  BatchUpdateBuyersProposalsDealsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateBuyersProposalsDealsRequest,
-  output: BatchUpdateDealsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3284,6 +3263,26 @@ export const unsubscribeClientsBuyersAuctionPackages: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UnsubscribeClientsBuyersAuctionPackagesRequest,
   output: AuctionPackage,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchBuyerProposalDealError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Batch updates multiple deals in the same proposal. */
+export const updateBatchBuyerProposalDeal: API.OperationMethod<
+  UpdateBatchBuyerProposalDealRequest,
+  BatchUpdateDealsResponse,
+  UpdateBatchBuyerProposalDealError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchBuyerProposalDealRequest,
+  output: BatchUpdateDealsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

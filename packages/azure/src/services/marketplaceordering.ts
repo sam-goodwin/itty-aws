@@ -12,87 +12,6 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface MarketplaceAgreementsCancelRequest {
-  /** The subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Publisher identifier string of image being deployed. */
-  publisherId: string;
-  /** Offer identifier string of image being deployed. */
-  offerId: string;
-  /** Plan identifier string of image being deployed. */
-  planId: string;
-}
-export const MarketplaceAgreementsCancelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    publisherId: S.String.pipe(T.Label()),
-    offerId: S.String.pipe(T.Label()),
-    planId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}/cancel",
-      code: 200,
-      apiVersion: "2021-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "MarketplaceAgreementsCancelRequest",
-}) as any as S.Schema<MarketplaceAgreementsCancelRequest>;
-
-/** Whether the agreement is active or cancelled */
-export type OldAgreementPropertiesState = "Active" | "Canceled";
-export const OldAgreementPropertiesState = /*@__PURE__*/ S.String;
-
-/** Old Agreement Terms definition */
-export interface OldAgreementProperties {
-  /** A unique identifier of the agreement. */
-  id?: string;
-  /** Publisher identifier string of image being deployed. */
-  publisher?: string;
-  /** Offer identifier string of image being deployed. */
-  offer?: string;
-  /** Date and time in UTC of when the terms were accepted. This is empty if state is cancelled. */
-  signDate?: string;
-  /** Date and time in UTC of when the terms were cancelled. This is empty if state is active. */
-  cancelDate?: string;
-  /** Whether the agreement is active or cancelled */
-  state?: OldAgreementPropertiesState;
-}
-export const OldAgreementProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    publisher: S.optional(S.String),
-    offer: S.optional(S.String),
-    signDate: S.optional(S.String),
-    cancelDate: S.optional(S.String),
-    state: S.optional(OldAgreementPropertiesState),
-  }),
-).annotate({
-  identifier: "OldAgreementProperties",
-}) as any as S.Schema<OldAgreementProperties>;
-
-export interface MarketplaceAgreementsCancelResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  /** Represents the properties of the resource. */
-  properties?: OldAgreementProperties;
-}
-export const MarketplaceAgreementsCancelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OldAgreementProperties),
-  }),
-).annotate({
-  identifier: "MarketplaceAgreementsCancelResponse",
-}) as any as S.Schema<MarketplaceAgreementsCancelResponse>;
-
 export type MarketplaceAgreementsCreateRequestOfferType = "virtualmachine";
 export const MarketplaceAgreementsCreateRequestOfferType =
   /*@__PURE__*/ S.String;
@@ -134,7 +53,7 @@ export const AgreementProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgreementProperties",
 }) as any as S.Schema<AgreementProperties>;
 
-export interface MarketplaceAgreementsCreateRequest {
+export interface CreateMarketplaceAgreementRequest {
   /** The subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Offer Type, currently only virtualmachine type is supported. */
@@ -148,7 +67,7 @@ export interface MarketplaceAgreementsCreateRequest {
   /** Represents the properties of the resource. */
   properties?: AgreementProperties;
 }
-export const MarketplaceAgreementsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     offerType: MarketplaceAgreementsCreateRequestOfferType.pipe(T.Label()),
@@ -165,8 +84,8 @@ export const MarketplaceAgreementsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MarketplaceAgreementsCreateRequest",
-}) as any as S.Schema<MarketplaceAgreementsCreateRequest>;
+  identifier: "CreateMarketplaceAgreementRequest",
+}) as any as S.Schema<CreateMarketplaceAgreementRequest>;
 
 /** The type of identity that created the resource. */
 export type MarketplaceAgreementsCreateResponseSystemDataCreatedByType =
@@ -219,7 +138,7 @@ export const MarketplaceAgreementsCreateResponseSystemData =
     identifier: "MarketplaceAgreementsCreateResponseSystemData",
   }) as any as S.Schema<MarketplaceAgreementsCreateResponseSystemData>;
 
-export interface MarketplaceAgreementsCreateResponse {
+export interface CreateMarketplaceAgreementResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
@@ -231,7 +150,7 @@ export interface MarketplaceAgreementsCreateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: MarketplaceAgreementsCreateResponseSystemData;
 }
-export const MarketplaceAgreementsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -240,13 +159,13 @@ export const MarketplaceAgreementsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(MarketplaceAgreementsCreateResponseSystemData),
   }),
 ).annotate({
-  identifier: "MarketplaceAgreementsCreateResponse",
-}) as any as S.Schema<MarketplaceAgreementsCreateResponse>;
+  identifier: "CreateMarketplaceAgreementResponse",
+}) as any as S.Schema<CreateMarketplaceAgreementResponse>;
 
 export type MarketplaceAgreementsGetRequestOfferType = "virtualmachine";
 export const MarketplaceAgreementsGetRequestOfferType = /*@__PURE__*/ S.String;
 
-export interface MarketplaceAgreementsGetRequest {
+export interface GetMarketplaceAgreementRequest {
   /** The subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Offer Type, currently only virtualmachine type is supported. */
@@ -258,7 +177,7 @@ export interface MarketplaceAgreementsGetRequest {
   /** Plan identifier string of image being deployed. */
   planId: string;
 }
-export const MarketplaceAgreementsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     offerType: MarketplaceAgreementsGetRequestOfferType.pipe(T.Label()),
@@ -274,8 +193,8 @@ export const MarketplaceAgreementsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MarketplaceAgreementsGetRequest",
-}) as any as S.Schema<MarketplaceAgreementsGetRequest>;
+  identifier: "GetMarketplaceAgreementRequest",
+}) as any as S.Schema<GetMarketplaceAgreementRequest>;
 
 /** The type of identity that created the resource. */
 export type MarketplaceAgreementsGetResponseSystemDataCreatedByType =
@@ -328,7 +247,7 @@ export const MarketplaceAgreementsGetResponseSystemData =
     identifier: "MarketplaceAgreementsGetResponseSystemData",
   }) as any as S.Schema<MarketplaceAgreementsGetResponseSystemData>;
 
-export interface MarketplaceAgreementsGetResponse {
+export interface GetMarketplaceAgreementResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
@@ -340,7 +259,7 @@ export interface MarketplaceAgreementsGetResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: MarketplaceAgreementsGetResponseSystemData;
 }
-export const MarketplaceAgreementsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -349,10 +268,10 @@ export const MarketplaceAgreementsGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(MarketplaceAgreementsGetResponseSystemData),
   }),
 ).annotate({
-  identifier: "MarketplaceAgreementsGetResponse",
-}) as any as S.Schema<MarketplaceAgreementsGetResponse>;
+  identifier: "GetMarketplaceAgreementResponse",
+}) as any as S.Schema<GetMarketplaceAgreementResponse>;
 
-export interface MarketplaceAgreementsGetAgreementRequest {
+export interface GetMarketplaceAgreementAgreementRequest {
   /** The subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Publisher identifier string of image being deployed. */
@@ -362,7 +281,7 @@ export interface MarketplaceAgreementsGetAgreementRequest {
   /** Plan identifier string of image being deployed. */
   planId: string;
 }
-export const MarketplaceAgreementsGetAgreementRequest = /*@__PURE__*/ S.suspend(
+export const GetMarketplaceAgreementAgreementRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -378,10 +297,42 @@ export const MarketplaceAgreementsGetAgreementRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "MarketplaceAgreementsGetAgreementRequest",
-}) as any as S.Schema<MarketplaceAgreementsGetAgreementRequest>;
+  identifier: "GetMarketplaceAgreementAgreementRequest",
+}) as any as S.Schema<GetMarketplaceAgreementAgreementRequest>;
 
-export interface MarketplaceAgreementsGetAgreementResponse {
+/** Whether the agreement is active or cancelled */
+export type OldAgreementPropertiesState = "Active" | "Canceled";
+export const OldAgreementPropertiesState = /*@__PURE__*/ S.String;
+
+/** Old Agreement Terms definition */
+export interface OldAgreementProperties {
+  /** A unique identifier of the agreement. */
+  id?: string;
+  /** Publisher identifier string of image being deployed. */
+  publisher?: string;
+  /** Offer identifier string of image being deployed. */
+  offer?: string;
+  /** Date and time in UTC of when the terms were accepted. This is empty if state is cancelled. */
+  signDate?: string;
+  /** Date and time in UTC of when the terms were cancelled. This is empty if state is active. */
+  cancelDate?: string;
+  /** Whether the agreement is active or cancelled */
+  state?: OldAgreementPropertiesState;
+}
+export const OldAgreementProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    publisher: S.optional(S.String),
+    offer: S.optional(S.String),
+    signDate: S.optional(S.String),
+    cancelDate: S.optional(S.String),
+    state: S.optional(OldAgreementPropertiesState),
+  }),
+).annotate({
+  identifier: "OldAgreementProperties",
+}) as any as S.Schema<OldAgreementProperties>;
+
+export interface GetMarketplaceAgreementAgreementResponse {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
@@ -391,23 +342,23 @@ export interface MarketplaceAgreementsGetAgreementResponse {
   /** Represents the properties of the resource. */
   properties?: OldAgreementProperties;
 }
-export const MarketplaceAgreementsGetAgreementResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetMarketplaceAgreementAgreementResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(S.String),
       properties: S.optional(OldAgreementProperties),
     }),
-  ).annotate({
-    identifier: "MarketplaceAgreementsGetAgreementResponse",
-  }) as any as S.Schema<MarketplaceAgreementsGetAgreementResponse>;
+).annotate({
+  identifier: "GetMarketplaceAgreementAgreementResponse",
+}) as any as S.Schema<GetMarketplaceAgreementAgreementResponse>;
 
-export interface MarketplaceAgreementsListRequest {
+export interface ListMarketplaceAgreementsRequest {
   /** The subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
 }
-export const MarketplaceAgreementsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMarketplaceAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -419,8 +370,8 @@ export const MarketplaceAgreementsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MarketplaceAgreementsListRequest",
-}) as any as S.Schema<MarketplaceAgreementsListRequest>;
+  identifier: "ListMarketplaceAgreementsRequest",
+}) as any as S.Schema<ListMarketplaceAgreementsRequest>;
 
 /** Terms properties for provided Publisher/Offer/Plan tuple */
 export interface OldAgreementTerms {
@@ -461,57 +412,8 @@ export const OldAgreementTermsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "OldAgreementTermsList",
 }) as any as S.Schema<OldAgreementTermsList>;
 
-export interface MarketplaceAgreementsSignRequest {
-  /** The subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Publisher identifier string of image being deployed. */
-  publisherId: string;
-  /** Offer identifier string of image being deployed. */
-  offerId: string;
-  /** Plan identifier string of image being deployed. */
-  planId: string;
-}
-export const MarketplaceAgreementsSignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    publisherId: S.String.pipe(T.Label()),
-    offerId: S.String.pipe(T.Label()),
-    planId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}/sign",
-      code: 200,
-      apiVersion: "2021-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "MarketplaceAgreementsSignRequest",
-}) as any as S.Schema<MarketplaceAgreementsSignRequest>;
-
-export interface MarketplaceAgreementsSignResponse {
-  /** Resource ID. */
-  id?: string;
-  /** Resource name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  /** Represents the properties of the resource. */
-  properties?: OldAgreementProperties;
-}
-export const MarketplaceAgreementsSignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OldAgreementProperties),
-  }),
-).annotate({
-  identifier: "MarketplaceAgreementsSignResponse",
-}) as any as S.Schema<MarketplaceAgreementsSignResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -521,8 +423,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** The object that represents the operation. */
 export interface OperationDisplay {
@@ -582,6 +484,179 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+export interface MarketplaceAgreementsCancelRequest {
+  /** The subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Publisher identifier string of image being deployed. */
+  publisherId: string;
+  /** Offer identifier string of image being deployed. */
+  offerId: string;
+  /** Plan identifier string of image being deployed. */
+  planId: string;
+}
+export const MarketplaceAgreementsCancelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    publisherId: S.String.pipe(T.Label()),
+    offerId: S.String.pipe(T.Label()),
+    planId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}/cancel",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "MarketplaceAgreementsCancelRequest",
+}) as any as S.Schema<MarketplaceAgreementsCancelRequest>;
+
+export interface MarketplaceAgreementsCancelResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  /** Represents the properties of the resource. */
+  properties?: OldAgreementProperties;
+}
+export const MarketplaceAgreementsCancelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(OldAgreementProperties),
+  }),
+).annotate({
+  identifier: "MarketplaceAgreementsCancelResponse",
+}) as any as S.Schema<MarketplaceAgreementsCancelResponse>;
+
+export interface SignMarketplaceAgreementRequest {
+  /** The subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Publisher identifier string of image being deployed. */
+  publisherId: string;
+  /** Offer identifier string of image being deployed. */
+  offerId: string;
+  /** Plan identifier string of image being deployed. */
+  planId: string;
+}
+export const SignMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    publisherId: S.String.pipe(T.Label()),
+    offerId: S.String.pipe(T.Label()),
+    planId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}/sign",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "SignMarketplaceAgreementRequest",
+}) as any as S.Schema<SignMarketplaceAgreementRequest>;
+
+export interface SignMarketplaceAgreementResponse {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  /** Represents the properties of the resource. */
+  properties?: OldAgreementProperties;
+}
+export const SignMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(OldAgreementProperties),
+  }),
+).annotate({
+  identifier: "SignMarketplaceAgreementResponse",
+}) as any as S.Schema<SignMarketplaceAgreementResponse>;
+
+export type CreateMarketplaceAgreementError = AzureOpError;
+/** Save marketplace terms. */
+export const CreateMarketplaceAgreement: API.OperationMethod<
+  CreateMarketplaceAgreementRequest,
+  CreateMarketplaceAgreementResponse,
+  CreateMarketplaceAgreementError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMarketplaceAgreementRequest,
+  output: CreateMarketplaceAgreementResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetMarketplaceAgreementError = AzureOpError;
+/** Get marketplace terms. */
+export const GetMarketplaceAgreement: API.OperationMethod<
+  GetMarketplaceAgreementRequest,
+  GetMarketplaceAgreementResponse,
+  GetMarketplaceAgreementError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMarketplaceAgreementRequest,
+  output: GetMarketplaceAgreementResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetMarketplaceAgreementAgreementError = AzureOpError;
+/** Get marketplace agreement. */
+export const GetMarketplaceAgreementAgreement: API.OperationMethod<
+  GetMarketplaceAgreementAgreementRequest,
+  GetMarketplaceAgreementAgreementResponse,
+  GetMarketplaceAgreementAgreementError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMarketplaceAgreementAgreementRequest,
+  output: GetMarketplaceAgreementAgreementResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMarketplaceAgreementsError = AzureOpError;
+/** List marketplace agreements in the subscription. */
+export const ListMarketplaceAgreements: API.OperationMethod<
+  ListMarketplaceAgreementsRequest,
+  OldAgreementTermsList,
+  ListMarketplaceAgreementsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMarketplaceAgreementsRequest,
+  output: OldAgreementTermsList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists all of the available Microsoft.MarketplaceOrdering REST API operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  OperationListResult,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: OperationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
 export type MarketplaceAgreementsCancelError = AzureOpError;
 /** Cancel marketplace terms. */
 export const MarketplaceAgreementsCancel: API.OperationMethod<
@@ -597,91 +672,16 @@ export const MarketplaceAgreementsCancel: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MarketplaceAgreementsCreateError = AzureOpError;
-/** Save marketplace terms. */
-export const MarketplaceAgreementsCreate: API.OperationMethod<
-  MarketplaceAgreementsCreateRequest,
-  MarketplaceAgreementsCreateResponse,
-  MarketplaceAgreementsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MarketplaceAgreementsCreateRequest,
-  output: MarketplaceAgreementsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MarketplaceAgreementsGetError = AzureOpError;
-/** Get marketplace terms. */
-export const MarketplaceAgreementsGet: API.OperationMethod<
-  MarketplaceAgreementsGetRequest,
-  MarketplaceAgreementsGetResponse,
-  MarketplaceAgreementsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MarketplaceAgreementsGetRequest,
-  output: MarketplaceAgreementsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MarketplaceAgreementsGetAgreementError = AzureOpError;
-/** Get marketplace agreement. */
-export const MarketplaceAgreementsGetAgreement: API.OperationMethod<
-  MarketplaceAgreementsGetAgreementRequest,
-  MarketplaceAgreementsGetAgreementResponse,
-  MarketplaceAgreementsGetAgreementError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MarketplaceAgreementsGetAgreementRequest,
-  output: MarketplaceAgreementsGetAgreementResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MarketplaceAgreementsListError = AzureOpError;
-/** List marketplace agreements in the subscription. */
-export const MarketplaceAgreementsList: API.OperationMethod<
-  MarketplaceAgreementsListRequest,
-  OldAgreementTermsList,
-  MarketplaceAgreementsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MarketplaceAgreementsListRequest,
-  output: OldAgreementTermsList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MarketplaceAgreementsSignError = AzureOpError;
+export type SignMarketplaceAgreementError = AzureOpError;
 /** Sign marketplace terms. */
-export const MarketplaceAgreementsSign: API.OperationMethod<
-  MarketplaceAgreementsSignRequest,
-  MarketplaceAgreementsSignResponse,
-  MarketplaceAgreementsSignError,
+export const SignMarketplaceAgreement: API.OperationMethod<
+  SignMarketplaceAgreementRequest,
+  SignMarketplaceAgreementResponse,
+  SignMarketplaceAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarketplaceAgreementsSignRequest,
-  output: MarketplaceAgreementsSignResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** Lists all of the available Microsoft.MarketplaceOrdering REST API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationListResult,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationListResult,
+  input: SignMarketplaceAgreementRequest,
+  output: SignMarketplaceAgreementResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

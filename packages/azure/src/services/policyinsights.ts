@@ -322,13 +322,425 @@ export const AttestationsCreateOrUpdateAtSubscriptionResponse =
     identifier: "AttestationsCreateOrUpdateAtSubscriptionResponse",
   }) as any as S.Schema<AttestationsCreateOrUpdateAtSubscriptionResponse>;
 
-export interface AttestationsDeleteAtResourceRequest {
+export type PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace =
+  "Microsoft.Management";
+export const PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace =
+  /*@__PURE__*/ S.String;
+
+/** The information about the resource that will be evaluated. */
+export interface CheckRestrictionsResourceDetails {
+  /** The resource content. This should include whatever properties are already known and can be a partial set of all resource properties. */
+  resourceContent: unknown;
+  /** The api-version of the resource content. */
+  apiVersion?: string;
+  /** The scope where the resource is being created. For example, if the resource is a child resource this would be the parent resource's resource ID. */
+  scope?: string;
+}
+export const CheckRestrictionsResourceDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceContent: S.Unknown,
+    apiVersion: S.optional(S.String),
+    scope: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckRestrictionsResourceDetails",
+}) as any as S.Schema<CheckRestrictionsResourceDetails>;
+
+/** The list of potential values for the field that should be evaluated against Azure Policy. */
+export type PendingFieldValuesList = Array<string>;
+export const PendingFieldValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PendingFieldValuesList>;
+
+/** A field that should be evaluated against Azure Policy to determine restrictions. */
+export interface PendingField {
+  /** The name of the field. This can be a top-level property like 'name' or 'type' or an Azure Policy field alias. */
+  field: string;
+  /** The list of potential values for the field that should be evaluated against Azure Policy. */
+  values?: PendingFieldValuesList;
+}
+export const PendingField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    field: S.String,
+    values: S.optional(PendingFieldValuesList),
+  }),
+).annotate({ identifier: "PendingField" }) as any as S.Schema<PendingField>;
+
+/** The list of fields and values that should be evaluated for potential restrictions. */
+export type PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList =
+  Array<PendingField>;
+export const PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList =
+  /*@__PURE__*/ S.Array(
+    PendingField,
+  ) as any as S.Schema<PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList>;
+
+export interface CheckPolicyRestrictionAtManagementGroupScopeRequest {
+  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
+  managementGroupsNamespace:
+    | PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace
+    | (string & {});
+  /** Management group ID. */
+  managementGroupId: string;
+  /** The information about the resource that will be evaluated. */
+  resourceDetails?: CheckRestrictionsResourceDetails;
+  /** The list of fields and values that should be evaluated for potential restrictions. */
+  pendingFields?: PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList;
+}
+export const CheckPolicyRestrictionAtManagementGroupScopeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managementGroupsNamespace:
+        PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace.pipe(
+          T.Label(),
+        ),
+      managementGroupId: S.String.pipe(T.Label()),
+      resourceDetails: S.optional(CheckRestrictionsResourceDetails),
+      pendingFields: S.optional(
+        PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckPolicyRestrictionAtManagementGroupScopeRequest",
+  }) as any as S.Schema<CheckPolicyRestrictionAtManagementGroupScopeRequest>;
+
+/** The type of restriction that is imposed on the field. */
+export type FieldRestrictionResult = "Required" | "Removed" | "Deny" | "Audit";
+export const FieldRestrictionResult = /*@__PURE__*/ S.String;
+
+/** The values that policy either requires or denies for the field. */
+export type FieldRestrictionValuesList = Array<string>;
+export const FieldRestrictionValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FieldRestrictionValuesList>;
+
+/** Resource identifiers for a policy. */
+export interface PolicyReference {
+  /** The resource identifier of the policy definition. */
+  policyDefinitionId?: string;
+  /** The resource identifier of the policy set definition. */
+  policySetDefinitionId?: string;
+  /** The reference identifier of a specific policy definition within a policy set definition. */
+  policyDefinitionReferenceId?: string;
+  /** The resource identifier of the policy assignment. */
+  policyAssignmentId?: string;
+}
+export const PolicyReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyDefinitionId: S.optional(S.String),
+    policySetDefinitionId: S.optional(S.String),
+    policyDefinitionReferenceId: S.optional(S.String),
+    policyAssignmentId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyReference",
+}) as any as S.Schema<PolicyReference>;
+
+/** The restrictions on a field imposed by a specific policy. */
+export interface FieldRestriction {
+  /** The type of restriction that is imposed on the field. */
+  result?: FieldRestrictionResult;
+  /** The value that policy will set for the field if the user does not provide a value. */
+  defaultValue?: string;
+  /** The values that policy either requires or denies for the field. */
+  values?: FieldRestrictionValuesList;
+  /** The details of the policy that is causing the field restriction. */
+  policy?: PolicyReference;
+  /** The effect of the policy that is causing the field restriction. http://aka.ms/policyeffects */
+  policyEffect?: string;
+  /** The reason for the restriction. */
+  reason?: string;
+}
+export const FieldRestriction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(FieldRestrictionResult),
+    defaultValue: S.optional(S.String),
+    values: S.optional(FieldRestrictionValuesList),
+    policy: S.optional(PolicyReference),
+    policyEffect: S.optional(S.String),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FieldRestriction",
+}) as any as S.Schema<FieldRestriction>;
+
+/** The restrictions placed on that field by policy. */
+export type FieldRestrictionsRestrictionsList = Array<FieldRestriction>;
+export const FieldRestrictionsRestrictionsList = /*@__PURE__*/ S.Array(
+  FieldRestriction,
+) as any as S.Schema<FieldRestrictionsRestrictionsList>;
+
+/** The restrictions that will be placed on a field in the resource by policy. */
+export interface FieldRestrictions {
+  /** The name of the field. This can be a top-level property like 'name' or 'type' or an Azure Policy field alias. */
+  field?: string;
+  /** The restrictions placed on that field by policy. */
+  restrictions?: FieldRestrictionsRestrictionsList;
+}
+export const FieldRestrictions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    field: S.optional(S.String),
+    restrictions: S.optional(FieldRestrictionsRestrictionsList),
+  }),
+).annotate({
+  identifier: "FieldRestrictions",
+}) as any as S.Schema<FieldRestrictions>;
+
+/** The restrictions that will be placed on various fields in the resource by policy. */
+export type CheckRestrictionsResultFieldRestrictionsList =
+  Array<FieldRestrictions>;
+export const CheckRestrictionsResultFieldRestrictionsList =
+  /*@__PURE__*/ S.Array(
+    FieldRestrictions,
+  ) as any as S.Schema<CheckRestrictionsResultFieldRestrictionsList>;
+
+/** Evaluation details of policy language expressions. */
+export interface ExpressionEvaluationDetails {
+  /** Evaluation result. */
+  result?: string;
+  /** Expression evaluated. */
+  expression?: string;
+  /** The kind of expression that was evaluated. */
+  expressionKind?: string;
+  /** Property path if the expression is a field or an alias. */
+  path?: string;
+  /** Value of the expression. */
+  expressionValue?: unknown;
+  /** Target value to be compared with the expression value. */
+  targetValue?: unknown;
+  /** Operator to compare the expression value and the target value. */
+  operator?: string;
+}
+export const ExpressionEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String),
+    expression: S.optional(S.String),
+    expressionKind: S.optional(S.String),
+    path: S.optional(S.String),
+    expressionValue: S.optional(S.Unknown),
+    targetValue: S.optional(S.Unknown),
+    operator: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExpressionEvaluationDetails",
+}) as any as S.Schema<ExpressionEvaluationDetails>;
+
+/** Details of the evaluated expressions. */
+export type CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
+  Array<ExpressionEvaluationDetails>;
+export const CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
+  /*@__PURE__*/ S.Array(
+    ExpressionEvaluationDetails,
+  ) as any as S.Schema<CheckRestrictionEvaluationDetailsEvaluatedExpressionsList>;
+
+/** Evaluation details of IfNotExists effect. */
+export interface IfNotExistsEvaluationDetails {
+  /** ID of the last evaluated resource for IfNotExists effect. */
+  resourceId?: string;
+  /** Total number of resources to which the existence condition is applicable. */
+  totalResources?: number;
+}
+export const IfNotExistsEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.optional(S.String),
+    totalResources: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "IfNotExistsEvaluationDetails",
+}) as any as S.Schema<IfNotExistsEvaluationDetails>;
+
+/** Policy evaluation details. */
+export interface CheckRestrictionEvaluationDetails {
+  /** Details of the evaluated expressions. */
+  evaluatedExpressions?: CheckRestrictionEvaluationDetailsEvaluatedExpressionsList;
+  /** Evaluation details of IfNotExists effect. */
+  ifNotExistsDetails?: IfNotExistsEvaluationDetails;
+  /** The reason for the evaluation result. */
+  reason?: string;
+}
+export const CheckRestrictionEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluatedExpressions: S.optional(
+      CheckRestrictionEvaluationDetailsEvaluatedExpressionsList,
+    ),
+    ifNotExistsDetails: S.optional(IfNotExistsEvaluationDetails),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckRestrictionEvaluationDetails",
+}) as any as S.Schema<CheckRestrictionEvaluationDetails>;
+
+/** The details of the effect that was applied to the resource. */
+export interface PolicyEffectDetails {
+  /** The effect that was applied to the resource. http://aka.ms/policyeffects */
+  policyEffect?: string;
+}
+export const PolicyEffectDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEffect: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyEffectDetails",
+}) as any as S.Schema<PolicyEffectDetails>;
+
+/** The result of a non-compliant policy evaluation against the given resource content. */
+export interface PolicyEvaluationResult {
+  /** The details of the policy that was evaluated. */
+  policyInfo?: PolicyReference;
+  /** The result of the policy evaluation against the resource. This will typically be 'NonCompliant' but may contain other values if errors were encountered. */
+  evaluationResult?: string;
+  /** The detailed results of the policy expressions and values that were evaluated. */
+  evaluationDetails?: CheckRestrictionEvaluationDetails;
+  /** The details of the effect that was applied to the resource. */
+  effectDetails?: PolicyEffectDetails;
+}
+export const PolicyEvaluationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyInfo: S.optional(PolicyReference),
+    evaluationResult: S.optional(S.String),
+    evaluationDetails: S.optional(CheckRestrictionEvaluationDetails),
+    effectDetails: S.optional(PolicyEffectDetails),
+  }),
+).annotate({
+  identifier: "PolicyEvaluationResult",
+}) as any as S.Schema<PolicyEvaluationResult>;
+
+/** Policy evaluation results against the given resource content. This will indicate if the partial content that was provided will be denied as-is. */
+export type CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList =
+  Array<PolicyEvaluationResult>;
+export const CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList =
+  /*@__PURE__*/ S.Array(
+    PolicyEvaluationResult,
+  ) as any as S.Schema<CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList>;
+
+/** Evaluation results for the provided partial resource content. */
+export interface CheckRestrictionsResultContentEvaluationResult {
+  /** Policy evaluation results against the given resource content. This will indicate if the partial content that was provided will be denied as-is. */
+  policyEvaluations?: CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList;
+}
+export const CheckRestrictionsResultContentEvaluationResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      policyEvaluations: S.optional(
+        CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "CheckRestrictionsResultContentEvaluationResult",
+  }) as any as S.Schema<CheckRestrictionsResultContentEvaluationResult>;
+
+/** The result of a check policy restrictions evaluation on a resource. */
+export interface CheckRestrictionsResult {
+  /** The restrictions that will be placed on various fields in the resource by policy. */
+  fieldRestrictions?: CheckRestrictionsResultFieldRestrictionsList;
+  /** Evaluation results for the provided partial resource content. */
+  contentEvaluationResult?: CheckRestrictionsResultContentEvaluationResult;
+}
+export const CheckRestrictionsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fieldRestrictions: S.optional(CheckRestrictionsResultFieldRestrictionsList),
+    contentEvaluationResult: S.optional(
+      CheckRestrictionsResultContentEvaluationResult,
+    ),
+  }),
+).annotate({
+  identifier: "CheckRestrictionsResult",
+}) as any as S.Schema<CheckRestrictionsResult>;
+
+/** The list of fields and values that should be evaluated for potential restrictions. */
+export type PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList =
+  Array<PendingField>;
+export const PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList =
+  /*@__PURE__*/ S.Array(
+    PendingField,
+  ) as any as S.Schema<PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList>;
+
+export interface CheckPolicyRestrictionAtResourceGroupScopeRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The information about the resource that will be evaluated. */
+  resourceDetails: CheckRestrictionsResourceDetails;
+  /** The list of fields and values that should be evaluated for potential restrictions. */
+  pendingFields?: PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList;
+  /** Whether to include policies with the 'audit' effect in the results. Defaults to false. */
+  includeAuditEffect?: boolean;
+}
+export const CheckPolicyRestrictionAtResourceGroupScopeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      resourceDetails: CheckRestrictionsResourceDetails,
+      pendingFields: S.optional(
+        PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList,
+      ),
+      includeAuditEffect: S.optional(S.Boolean),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckPolicyRestrictionAtResourceGroupScopeRequest",
+  }) as any as S.Schema<CheckPolicyRestrictionAtResourceGroupScopeRequest>;
+
+/** The list of fields and values that should be evaluated for potential restrictions. */
+export type PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList =
+  Array<PendingField>;
+export const PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList =
+  /*@__PURE__*/ S.Array(
+    PendingField,
+  ) as any as S.Schema<PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList>;
+
+export interface CheckPolicyRestrictionAtSubscriptionScopeRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The information about the resource that will be evaluated. */
+  resourceDetails: CheckRestrictionsResourceDetails;
+  /** The list of fields and values that should be evaluated for potential restrictions. */
+  pendingFields?: PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList;
+  /** Whether to include policies with the 'audit' effect in the results. Defaults to false. */
+  includeAuditEffect?: boolean;
+}
+export const CheckPolicyRestrictionAtSubscriptionScopeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceDetails: CheckRestrictionsResourceDetails,
+      pendingFields: S.optional(
+        PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList,
+      ),
+      includeAuditEffect: S.optional(S.Boolean),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckPolicyRestrictionAtSubscriptionScopeRequest",
+  }) as any as S.Schema<CheckPolicyRestrictionAtSubscriptionScopeRequest>;
+
+export interface DeleteAttestationAtResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** The name of the attestation. */
   attestationName: string;
 }
-export const AttestationsDeleteAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteAttestationAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     attestationName: S.String.pipe(T.Label()),
@@ -341,17 +753,17 @@ export const AttestationsDeleteAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AttestationsDeleteAtResourceRequest",
-}) as any as S.Schema<AttestationsDeleteAtResourceRequest>;
+  identifier: "DeleteAttestationAtResourceRequest",
+}) as any as S.Schema<DeleteAttestationAtResourceRequest>;
 
-export interface AttestationsDeleteAtResourceResponse {}
-export const AttestationsDeleteAtResourceResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export interface DeleteAttestationAtResourceResponse {}
+export const DeleteAttestationAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "AttestationsDeleteAtResourceResponse",
-}) as any as S.Schema<AttestationsDeleteAtResourceResponse>;
+  identifier: "DeleteAttestationAtResourceResponse",
+}) as any as S.Schema<DeleteAttestationAtResourceResponse>;
 
-export interface AttestationsDeleteAtResourceGroupRequest {
+export interface DeleteAttestationAtResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -359,7 +771,7 @@ export interface AttestationsDeleteAtResourceGroupRequest {
   /** The name of the attestation. */
   attestationName: string;
 }
-export const AttestationsDeleteAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
+export const DeleteAttestationAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -374,22 +786,23 @@ export const AttestationsDeleteAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "AttestationsDeleteAtResourceGroupRequest",
-}) as any as S.Schema<AttestationsDeleteAtResourceGroupRequest>;
+  identifier: "DeleteAttestationAtResourceGroupRequest",
+}) as any as S.Schema<DeleteAttestationAtResourceGroupRequest>;
 
-export interface AttestationsDeleteAtResourceGroupResponse {}
-export const AttestationsDeleteAtResourceGroupResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AttestationsDeleteAtResourceGroupResponse",
-  }) as any as S.Schema<AttestationsDeleteAtResourceGroupResponse>;
+export interface DeleteAttestationAtResourceGroupResponse {}
+export const DeleteAttestationAtResourceGroupResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteAttestationAtResourceGroupResponse",
+}) as any as S.Schema<DeleteAttestationAtResourceGroupResponse>;
 
-export interface AttestationsDeleteAtSubscriptionRequest {
+export interface DeleteAttestationAtSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the attestation. */
   attestationName: string;
 }
-export const AttestationsDeleteAtSubscriptionRequest = /*@__PURE__*/ S.suspend(
+export const DeleteAttestationAtSubscriptionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -403,23 +816,345 @@ export const AttestationsDeleteAtSubscriptionRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "AttestationsDeleteAtSubscriptionRequest",
-}) as any as S.Schema<AttestationsDeleteAtSubscriptionRequest>;
+  identifier: "DeleteAttestationAtSubscriptionRequest",
+}) as any as S.Schema<DeleteAttestationAtSubscriptionRequest>;
 
-export interface AttestationsDeleteAtSubscriptionResponse {}
-export const AttestationsDeleteAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
+export interface DeleteAttestationAtSubscriptionResponse {}
+export const DeleteAttestationAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
   () => S.Struct({}),
 ).annotate({
-  identifier: "AttestationsDeleteAtSubscriptionResponse",
-}) as any as S.Schema<AttestationsDeleteAtSubscriptionResponse>;
+  identifier: "DeleteAttestationAtSubscriptionResponse",
+}) as any as S.Schema<DeleteAttestationAtSubscriptionResponse>;
 
-export interface AttestationsGetAtResourceRequest {
+export type RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace =
+  "Microsoft.Management";
+export const RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace =
+  /*@__PURE__*/ S.String;
+
+export interface DeleteRemediationAtManagementGroupRequest {
+  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
+  managementGroupsNamespace:
+    | RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
+  /** Management group ID. */
+  managementGroupId: string;
+  /** The name of the remediation. */
+  remediationName: string;
+}
+export const DeleteRemediationAtManagementGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managementGroupsNamespace:
+        RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace.pipe(
+          T.Label(),
+        ),
+      managementGroupId: S.String.pipe(T.Label()),
+      remediationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteRemediationAtManagementGroupRequest",
+  }) as any as S.Schema<DeleteRemediationAtManagementGroupRequest>;
+
+/** The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified. */
+export type ResourceDiscoveryMode =
+  | "ExistingNonCompliant"
+  | "ReEvaluateCompliance";
+export const ResourceDiscoveryMode = /*@__PURE__*/ S.String;
+
+/** The resource locations that will be remediated. */
+export type RemediationFiltersLocationsList = Array<string>;
+export const RemediationFiltersLocationsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RemediationFiltersLocationsList>;
+
+/** The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided. */
+export type RemediationFiltersResourceIdsList = Array<string>;
+export const RemediationFiltersResourceIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RemediationFiltersResourceIdsList>;
+
+/** The filters that will be applied to determine which resources to remediate. */
+export interface RemediationFilters {
+  /** The resource locations that will be remediated. */
+  locations?: RemediationFiltersLocationsList;
+  /** The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided. */
+  resourceIds?: RemediationFiltersResourceIdsList;
+}
+export const RemediationFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    locations: S.optional(RemediationFiltersLocationsList),
+    resourceIds: S.optional(RemediationFiltersResourceIdsList),
+  }),
+).annotate({
+  identifier: "RemediationFilters",
+}) as any as S.Schema<RemediationFilters>;
+
+/** The deployment status summary for all deployments created by the remediation. */
+export interface RemediationDeploymentSummary {
+  /** The number of deployments required by the remediation. */
+  totalDeployments?: number;
+  /** The number of deployments required by the remediation that have succeeded. */
+  successfulDeployments?: number;
+  /** The number of deployments required by the remediation that have failed. */
+  failedDeployments?: number;
+}
+export const RemediationDeploymentSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalDeployments: S.optional(S.Number),
+    successfulDeployments: S.optional(S.Number),
+    failedDeployments: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RemediationDeploymentSummary",
+}) as any as S.Schema<RemediationDeploymentSummary>;
+
+/** The remediation failure threshold settings */
+export interface RemediationPropertiesFailureThreshold {
+  /** A number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold. */
+  percentage?: number;
+}
+export const RemediationPropertiesFailureThreshold = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      percentage: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "RemediationPropertiesFailureThreshold",
+}) as any as S.Schema<RemediationPropertiesFailureThreshold>;
+
+/** The remediation properties. */
+export interface RemediationProperties {
+  /** The resource ID of the policy assignment that should be remediated. */
+  policyAssignmentId?: string;
+  /** The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition. */
+  policyDefinitionReferenceId?: string;
+  /** The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified. */
+  resourceDiscoveryMode?: ResourceDiscoveryMode;
+  /** The status of the remediation. This refers to the entire remediation task, not individual deployments. Allowed values are Evaluating, Canceled, Cancelling, Failed, Complete, or Succeeded. */
+  provisioningState?: string;
+  /** The time at which the remediation was created. */
+  createdOn?: string;
+  /** The time at which the remediation was last updated. */
+  lastUpdatedOn?: string;
+  /** The filters that will be applied to determine which resources to remediate. */
+  filters?: RemediationFilters;
+  /** The deployment status summary for all deployments created by the remediation. */
+  deploymentStatus?: RemediationDeploymentSummary;
+  /** The remediation status message. Provides additional details regarding the state of the remediation. */
+  statusMessage?: string;
+  /** The remediation correlation Id. Can be used to find events related to the remediation in the activity log. */
+  correlationId?: string;
+  /** Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used. */
+  resourceCount?: number;
+  /** Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used. */
+  parallelDeployments?: number;
+  /** The remediation failure threshold settings */
+  failureThreshold?: RemediationPropertiesFailureThreshold;
+}
+export const RemediationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyAssignmentId: S.optional(S.String),
+    policyDefinitionReferenceId: S.optional(S.String),
+    resourceDiscoveryMode: S.optional(ResourceDiscoveryMode),
+    provisioningState: S.optional(S.String),
+    createdOn: S.optional(S.String),
+    lastUpdatedOn: S.optional(S.String),
+    filters: S.optional(RemediationFilters),
+    deploymentStatus: S.optional(RemediationDeploymentSummary),
+    statusMessage: S.optional(S.String),
+    correlationId: S.optional(S.String),
+    resourceCount: S.optional(S.Number),
+    parallelDeployments: S.optional(S.Number),
+    failureThreshold: S.optional(RemediationPropertiesFailureThreshold),
+  }),
+).annotate({
+  identifier: "RemediationProperties",
+}) as any as S.Schema<RemediationProperties>;
+
+export interface DeleteRemediationAtManagementGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties for the remediation. */
+  properties?: RemediationProperties;
+}
+export const DeleteRemediationAtManagementGroupResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(RemediationProperties),
+    }),
+  ).annotate({
+    identifier: "DeleteRemediationAtManagementGroupResponse",
+  }) as any as S.Schema<DeleteRemediationAtManagementGroupResponse>;
+
+export interface DeleteRemediationAtResourceRequest {
+  /** Resource ID. */
+  resourceId: string;
+  /** The name of the remediation. */
+  remediationName: string;
+}
+export const DeleteRemediationAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    remediationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      code: 200,
+      apiVersion: "2024-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRemediationAtResourceRequest",
+}) as any as S.Schema<DeleteRemediationAtResourceRequest>;
+
+export interface DeleteRemediationAtResourceResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties for the remediation. */
+  properties?: RemediationProperties;
+}
+export const DeleteRemediationAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RemediationProperties),
+  }),
+).annotate({
+  identifier: "DeleteRemediationAtResourceResponse",
+}) as any as S.Schema<DeleteRemediationAtResourceResponse>;
+
+export interface DeleteRemediationAtResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the remediation. */
+  remediationName: string;
+}
+export const DeleteRemediationAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      remediationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteRemediationAtResourceGroupRequest",
+}) as any as S.Schema<DeleteRemediationAtResourceGroupRequest>;
+
+export interface DeleteRemediationAtResourceGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties for the remediation. */
+  properties?: RemediationProperties;
+}
+export const DeleteRemediationAtResourceGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(RemediationProperties),
+    }),
+).annotate({
+  identifier: "DeleteRemediationAtResourceGroupResponse",
+}) as any as S.Schema<DeleteRemediationAtResourceGroupResponse>;
+
+export interface DeleteRemediationAtSubscriptionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the remediation. */
+  remediationName: string;
+}
+export const DeleteRemediationAtSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      remediationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteRemediationAtSubscriptionRequest",
+}) as any as S.Schema<DeleteRemediationAtSubscriptionRequest>;
+
+export interface DeleteRemediationAtSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties for the remediation. */
+  properties?: RemediationProperties;
+}
+export const DeleteRemediationAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(RemediationProperties),
+    }),
+).annotate({
+  identifier: "DeleteRemediationAtSubscriptionResponse",
+}) as any as S.Schema<DeleteRemediationAtSubscriptionResponse>;
+
+export interface GetAttestationAtResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** The name of the attestation. */
   attestationName: string;
 }
-export const AttestationsGetAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAttestationAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     attestationName: S.String.pipe(T.Label()),
@@ -432,10 +1167,10 @@ export const AttestationsGetAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AttestationsGetAtResourceRequest",
-}) as any as S.Schema<AttestationsGetAtResourceRequest>;
+  identifier: "GetAttestationAtResourceRequest",
+}) as any as S.Schema<GetAttestationAtResourceRequest>;
 
-export interface AttestationsGetAtResourceResponse {
+export interface GetAttestationAtResourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -447,7 +1182,7 @@ export interface AttestationsGetAtResourceResponse {
   /** Properties for the attestation. */
   properties: AttestationProperties;
 }
-export const AttestationsGetAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetAttestationAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -456,10 +1191,10 @@ export const AttestationsGetAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
     properties: AttestationProperties,
   }),
 ).annotate({
-  identifier: "AttestationsGetAtResourceResponse",
-}) as any as S.Schema<AttestationsGetAtResourceResponse>;
+  identifier: "GetAttestationAtResourceResponse",
+}) as any as S.Schema<GetAttestationAtResourceResponse>;
 
-export interface AttestationsGetAtResourceGroupRequest {
+export interface GetAttestationAtResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -467,7 +1202,7 @@ export interface AttestationsGetAtResourceGroupRequest {
   /** The name of the attestation. */
   attestationName: string;
 }
-export const AttestationsGetAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
+export const GetAttestationAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -482,10 +1217,10 @@ export const AttestationsGetAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "AttestationsGetAtResourceGroupRequest",
-}) as any as S.Schema<AttestationsGetAtResourceGroupRequest>;
+  identifier: "GetAttestationAtResourceGroupRequest",
+}) as any as S.Schema<GetAttestationAtResourceGroupRequest>;
 
-export interface AttestationsGetAtResourceGroupResponse {
+export interface GetAttestationAtResourceGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -497,7 +1232,7 @@ export interface AttestationsGetAtResourceGroupResponse {
   /** Properties for the attestation. */
   properties: AttestationProperties;
 }
-export const AttestationsGetAtResourceGroupResponse = /*@__PURE__*/ S.suspend(
+export const GetAttestationAtResourceGroupResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -507,33 +1242,32 @@ export const AttestationsGetAtResourceGroupResponse = /*@__PURE__*/ S.suspend(
       properties: AttestationProperties,
     }),
 ).annotate({
-  identifier: "AttestationsGetAtResourceGroupResponse",
-}) as any as S.Schema<AttestationsGetAtResourceGroupResponse>;
+  identifier: "GetAttestationAtResourceGroupResponse",
+}) as any as S.Schema<GetAttestationAtResourceGroupResponse>;
 
-export interface AttestationsGetAtSubscriptionRequest {
+export interface GetAttestationAtSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the attestation. */
   attestationName: string;
 }
-export const AttestationsGetAtSubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      attestationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
+export const GetAttestationAtSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    attestationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      code: 200,
+      apiVersion: "2024-10-01",
+    }),
+  ),
 ).annotate({
-  identifier: "AttestationsGetAtSubscriptionRequest",
-}) as any as S.Schema<AttestationsGetAtSubscriptionRequest>;
+  identifier: "GetAttestationAtSubscriptionRequest",
+}) as any as S.Schema<GetAttestationAtSubscriptionRequest>;
 
-export interface AttestationsGetAtSubscriptionResponse {
+export interface GetAttestationAtSubscriptionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -545,7 +1279,7 @@ export interface AttestationsGetAtSubscriptionResponse {
   /** Properties for the attestation. */
   properties: AttestationProperties;
 }
-export const AttestationsGetAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
+export const GetAttestationAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -555,10 +1289,292 @@ export const AttestationsGetAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
       properties: AttestationProperties,
     }),
 ).annotate({
-  identifier: "AttestationsGetAtSubscriptionResponse",
-}) as any as S.Schema<AttestationsGetAtSubscriptionResponse>;
+  identifier: "GetAttestationAtSubscriptionResponse",
+}) as any as S.Schema<GetAttestationAtSubscriptionResponse>;
 
-export interface AttestationsListForResourceRequest {
+export interface GetPolicyMetadataResourceRequest {
+  /** The name of the policy metadata resource. */
+  resourceName: string;
+}
+export const GetPolicyMetadataResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.PolicyInsights/policyMetadata/{resourceName}",
+      code: 200,
+      apiVersion: "2024-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetPolicyMetadataResourceRequest",
+}) as any as S.Schema<GetPolicyMetadataResourceRequest>;
+
+/** The properties of the policy metadata. */
+export interface PolicyMetadataProperties {
+  /** The policy metadata identifier. */
+  metadataId?: string;
+  /** The category of the policy metadata. */
+  category?: string;
+  /** The title of the policy metadata. */
+  title?: string;
+  /** The owner of the policy metadata. */
+  owner?: string;
+  /** Url for getting additional content about the resource metadata. */
+  additionalContentUrl?: string;
+  /** Additional metadata. */
+  metadata?: unknown;
+  /** The description of the policy metadata. */
+  description?: string;
+  /** The requirements of the policy metadata. */
+  requirements?: string;
+}
+export const PolicyMetadataProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadataId: S.optional(S.String),
+    category: S.optional(S.String),
+    title: S.optional(S.String),
+    owner: S.optional(S.String),
+    additionalContentUrl: S.optional(S.String),
+    metadata: S.optional(S.Unknown),
+    description: S.optional(S.String),
+    requirements: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyMetadataProperties",
+}) as any as S.Schema<PolicyMetadataProperties>;
+
+export interface GetPolicyMetadataResourceResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the policy metadata. */
+  properties?: PolicyMetadataProperties;
+}
+export const GetPolicyMetadataResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(PolicyMetadataProperties),
+  }),
+).annotate({
+  identifier: "GetPolicyMetadataResourceResponse",
+}) as any as S.Schema<GetPolicyMetadataResourceResponse>;
+
+export type RemediationsGetAtManagementGroupRequestManagementGroupsNamespace =
+  "Microsoft.Management";
+export const RemediationsGetAtManagementGroupRequestManagementGroupsNamespace =
+  /*@__PURE__*/ S.String;
+
+export interface GetRemediationAtManagementGroupRequest {
+  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
+  managementGroupsNamespace:
+    | RemediationsGetAtManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
+  /** Management group ID. */
+  managementGroupId: string;
+  /** The name of the remediation. */
+  remediationName: string;
+}
+export const GetRemediationAtManagementGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      managementGroupsNamespace:
+        RemediationsGetAtManagementGroupRequestManagementGroupsNamespace.pipe(
+          T.Label(),
+        ),
+      managementGroupId: S.String.pipe(T.Label()),
+      remediationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetRemediationAtManagementGroupRequest",
+}) as any as S.Schema<GetRemediationAtManagementGroupRequest>;
+
+export interface GetRemediationAtManagementGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties for the remediation. */
+  properties?: RemediationProperties;
+}
+export const GetRemediationAtManagementGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(RemediationProperties),
+    }),
+).annotate({
+  identifier: "GetRemediationAtManagementGroupResponse",
+}) as any as S.Schema<GetRemediationAtManagementGroupResponse>;
+
+export interface GetRemediationAtResourceRequest {
+  /** Resource ID. */
+  resourceId: string;
+  /** The name of the remediation. */
+  remediationName: string;
+}
+export const GetRemediationAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    remediationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      code: 200,
+      apiVersion: "2024-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetRemediationAtResourceRequest",
+}) as any as S.Schema<GetRemediationAtResourceRequest>;
+
+export interface GetRemediationAtResourceResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties for the remediation. */
+  properties?: RemediationProperties;
+}
+export const GetRemediationAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RemediationProperties),
+  }),
+).annotate({
+  identifier: "GetRemediationAtResourceResponse",
+}) as any as S.Schema<GetRemediationAtResourceResponse>;
+
+export interface GetRemediationAtResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the remediation. */
+  remediationName: string;
+}
+export const GetRemediationAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      remediationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetRemediationAtResourceGroupRequest",
+}) as any as S.Schema<GetRemediationAtResourceGroupRequest>;
+
+export interface GetRemediationAtResourceGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties for the remediation. */
+  properties?: RemediationProperties;
+}
+export const GetRemediationAtResourceGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(RemediationProperties),
+    }),
+).annotate({
+  identifier: "GetRemediationAtResourceGroupResponse",
+}) as any as S.Schema<GetRemediationAtResourceGroupResponse>;
+
+export interface GetRemediationAtSubscriptionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the remediation. */
+  remediationName: string;
+}
+export const GetRemediationAtSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    remediationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      code: 200,
+      apiVersion: "2024-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetRemediationAtSubscriptionRequest",
+}) as any as S.Schema<GetRemediationAtSubscriptionRequest>;
+
+export interface GetRemediationAtSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties for the remediation. */
+  properties?: RemediationProperties;
+}
+export const GetRemediationAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(RemediationProperties),
+    }),
+).annotate({
+  identifier: "GetRemediationAtSubscriptionResponse",
+}) as any as S.Schema<GetRemediationAtSubscriptionResponse>;
+
+export interface ListAttestationForResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** Maximum number of records to return. */
@@ -566,7 +1582,7 @@ export interface AttestationsListForResourceRequest {
   /** OData filter expression. */
   _filter?: string;
 }
-export const AttestationsListForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAttestationForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -580,8 +1596,8 @@ export const AttestationsListForResourceRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AttestationsListForResourceRequest",
-}) as any as S.Schema<AttestationsListForResourceRequest>;
+  identifier: "ListAttestationForResourceRequest",
+}) as any as S.Schema<ListAttestationForResourceRequest>;
 
 /** An attestation resource. */
 export interface Attestation {
@@ -628,7 +1644,7 @@ export const AttestationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttestationListResult",
 }) as any as S.Schema<AttestationListResult>;
 
-export interface AttestationsListForResourceGroupRequest {
+export interface ListAttestationForResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -638,7 +1654,7 @@ export interface AttestationsListForResourceGroupRequest {
   /** OData filter expression. */
   _filter?: string;
 }
-export const AttestationsListForResourceGroupRequest = /*@__PURE__*/ S.suspend(
+export const ListAttestationForResourceGroupRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -654,10 +1670,10 @@ export const AttestationsListForResourceGroupRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "AttestationsListForResourceGroupRequest",
-}) as any as S.Schema<AttestationsListForResourceGroupRequest>;
+  identifier: "ListAttestationForResourceGroupRequest",
+}) as any as S.Schema<ListAttestationForResourceGroupRequest>;
 
-export interface AttestationsListForSubscriptionRequest {
+export interface ListAttestationForSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Maximum number of records to return. */
@@ -665,7 +1681,7 @@ export interface AttestationsListForSubscriptionRequest {
   /** OData filter expression. */
   _filter?: string;
 }
-export const AttestationsListForSubscriptionRequest = /*@__PURE__*/ S.suspend(
+export const ListAttestationForSubscriptionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -680,8 +1696,8 @@ export const AttestationsListForSubscriptionRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "AttestationsListForSubscriptionRequest",
-}) as any as S.Schema<AttestationsListForSubscriptionRequest>;
+  identifier: "ListAttestationForSubscriptionRequest",
+}) as any as S.Schema<ListAttestationForSubscriptionRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -693,7 +1709,7 @@ export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestCompo
 export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
-export interface ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest {
+export interface ListComponentPolicyStateQueryResultForPolicyDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
@@ -721,7 +1737,7 @@ export interface ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest
   /** OData apply expression for aggregations. */
   _apply?: string;
 }
-export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest =
+export const ListComponentPolicyStateQueryResultForPolicyDefinitionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -750,48 +1766,19 @@ export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest =
       }),
     ),
   ).annotate({
-    identifier:
-      "ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest",
-  }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest>;
+    identifier: "ListComponentPolicyStateQueryResultForPolicyDefinitionRequest",
+  }) as any as S.Schema<ListComponentPolicyStateQueryResultForPolicyDefinitionRequest>;
 
 /** Evaluation details of policy language expressions. */
-export interface ComponentExpressionEvaluationDetails {
-  /** Evaluation result. */
-  result?: string;
-  /** Expression evaluated. */
-  expression?: string;
-  /** The kind of expression that was evaluated. */
-  expressionKind?: string;
-  /** Property path if the expression is a field or an alias. */
-  path?: string;
-  /** Value of the expression. */
-  expressionValue?: unknown;
-  /** Target value to be compared with the expression value. */
-  targetValue?: unknown;
-  /** Operator to compare the expression value and the target value. */
-  operator?: string;
-}
-export const ComponentExpressionEvaluationDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.String),
-      expression: S.optional(S.String),
-      expressionKind: S.optional(S.String),
-      path: S.optional(S.String),
-      expressionValue: S.optional(S.Unknown),
-      targetValue: S.optional(S.Unknown),
-      operator: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ComponentExpressionEvaluationDetails",
-}) as any as S.Schema<ComponentExpressionEvaluationDetails>;
+export type ComponentExpressionEvaluationDetails = ExpressionEvaluationDetails;
+export const ComponentExpressionEvaluationDetails = ExpressionEvaluationDetails;
 
 /** Details of the evaluated expressions. */
 export type ComponentPolicyEvaluationDetailsEvaluatedExpressionsList =
-  Array<ComponentExpressionEvaluationDetails>;
+  Array<ExpressionEvaluationDetails>;
 export const ComponentPolicyEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
-    ComponentExpressionEvaluationDetails,
+    ExpressionEvaluationDetails,
   ) as any as S.Schema<ComponentPolicyEvaluationDetailsEvaluatedExpressionsList>;
 
 /** Policy evaluation details. */
@@ -958,7 +1945,7 @@ export type ComponentPolicyStatesListQueryResultsForResourceRequestComponentPoli
 export const ComponentPolicyStatesListQueryResultsForResourceRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
-export interface ComponentPolicyStatesListQueryResultsForResourceRequest {
+export interface ListComponentPolicyStateQueryResultForResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s). */
@@ -982,7 +1969,7 @@ export interface ComponentPolicyStatesListQueryResultsForResourceRequest {
   /** The $expand query parameter. */
   _expand?: string;
 }
-export const ComponentPolicyStatesListQueryResultsForResourceRequest =
+export const ListComponentPolicyStateQueryResultForResourceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceId: S.String.pipe(T.Label()),
@@ -1007,15 +1994,15 @@ export const ComponentPolicyStatesListQueryResultsForResourceRequest =
       }),
     ),
   ).annotate({
-    identifier: "ComponentPolicyStatesListQueryResultsForResourceRequest",
-  }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForResourceRequest>;
+    identifier: "ListComponentPolicyStateQueryResultForResourceRequest",
+  }) as any as S.Schema<ListComponentPolicyStateQueryResultForResourceRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForResourceGroupRequestComponentPolicyStatesResource =
   "latest";
 export const ComponentPolicyStatesListQueryResultsForResourceGroupRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
-export interface ComponentPolicyStatesListQueryResultsForResourceGroupRequest {
+export interface ListComponentPolicyStateQueryResultForResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1039,7 +2026,7 @@ export interface ComponentPolicyStatesListQueryResultsForResourceGroupRequest {
   /** OData apply expression for aggregations. */
   _apply?: string;
 }
-export const ComponentPolicyStatesListQueryResultsForResourceGroupRequest =
+export const ListComponentPolicyStateQueryResultForResourceGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1064,8 +2051,8 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupRequest =
       }),
     ),
   ).annotate({
-    identifier: "ComponentPolicyStatesListQueryResultsForResourceGroupRequest",
-  }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForResourceGroupRequest>;
+    identifier: "ListComponentPolicyStateQueryResultForResourceGroupRequest",
+  }) as any as S.Schema<ListComponentPolicyStateQueryResultForResourceGroupRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1077,7 +2064,7 @@ export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssi
 export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
-export interface ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest {
+export interface ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Resource group name. */
@@ -1107,7 +2094,7 @@ export interface ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolic
   /** OData apply expression for aggregations. */
   _apply?: string;
 }
-export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest =
+export const ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1138,15 +2125,15 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAss
     ),
   ).annotate({
     identifier:
-      "ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest",
-  }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
+      "ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest",
+  }) as any as S.Schema<ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForSubscriptionRequestComponentPolicyStatesResource =
   "latest";
 export const ComponentPolicyStatesListQueryResultsForSubscriptionRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
-export interface ComponentPolicyStatesListQueryResultsForSubscriptionRequest {
+export interface ListComponentPolicyStateQueryResultForSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The virtual resource under ComponentPolicyStates resource type. In a given time range, 'latest' represents the latest component policy state(s). */
@@ -1168,7 +2155,7 @@ export interface ComponentPolicyStatesListQueryResultsForSubscriptionRequest {
   /** OData apply expression for aggregations. */
   _apply?: string;
 }
-export const ComponentPolicyStatesListQueryResultsForSubscriptionRequest =
+export const ListComponentPolicyStateQueryResultForSubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1192,8 +2179,8 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionRequest =
       }),
     ),
   ).annotate({
-    identifier: "ComponentPolicyStatesListQueryResultsForSubscriptionRequest",
-  }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForSubscriptionRequest>;
+    identifier: "ListComponentPolicyStateQueryResultForSubscriptionRequest",
+  }) as any as S.Schema<ListComponentPolicyStateQueryResultForSubscriptionRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1205,7 +2192,7 @@ export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssig
 export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
-export interface ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest {
+export interface ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
@@ -1233,7 +2220,7 @@ export interface ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicy
   /** OData apply expression for aggregations. */
   _apply?: string;
 }
-export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest =
+export const ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1263,11 +2250,11 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssi
     ),
   ).annotate({
     identifier:
-      "ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest",
-  }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest>;
+      "ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest",
+  }) as any as S.Schema<ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest>;
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1277,8 +2264,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
@@ -1351,7 +2338,7 @@ export type PolicyEventsListQueryResultsForManagementGroupRequestPolicyEventsRes
 export const PolicyEventsListQueryResultsForManagementGroupRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
-export interface PolicyEventsListQueryResultsForManagementGroupRequest {
+export interface ListPolicyEventQueryResultForManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
   managementGroupsNamespace:
     | PolicyEventsListQueryResultsForManagementGroupRequestManagementGroupsNamespace
@@ -1379,7 +2366,7 @@ export interface PolicyEventsListQueryResultsForManagementGroupRequest {
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
 }
-export const PolicyEventsListQueryResultsForManagementGroupRequest =
+export const ListPolicyEventQueryResultForManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       managementGroupsNamespace:
@@ -1408,8 +2395,8 @@ export const PolicyEventsListQueryResultsForManagementGroupRequest =
       }),
     ),
   ).annotate({
-    identifier: "PolicyEventsListQueryResultsForManagementGroupRequest",
-  }) as any as S.Schema<PolicyEventsListQueryResultsForManagementGroupRequest>;
+    identifier: "ListPolicyEventQueryResultForManagementGroupRequest",
+  }) as any as S.Schema<ListPolicyEventQueryResultForManagementGroupRequest>;
 
 /** Component event details. */
 export interface ComponentEventDetails {
@@ -1587,7 +2574,7 @@ export type PolicyEventsListQueryResultsForPolicyDefinitionRequestPolicyEventsRe
 export const PolicyEventsListQueryResultsForPolicyDefinitionRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
-export interface PolicyEventsListQueryResultsForPolicyDefinitionRequest {
+export interface ListPolicyEventQueryResultForPolicyDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
@@ -1617,7 +2604,7 @@ export interface PolicyEventsListQueryResultsForPolicyDefinitionRequest {
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
 }
-export const PolicyEventsListQueryResultsForPolicyDefinitionRequest =
+export const ListPolicyEventQueryResultForPolicyDefinitionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1647,88 +2634,15 @@ export const PolicyEventsListQueryResultsForPolicyDefinitionRequest =
       }),
     ),
   ).annotate({
-    identifier: "PolicyEventsListQueryResultsForPolicyDefinitionRequest",
-  }) as any as S.Schema<PolicyEventsListQueryResultsForPolicyDefinitionRequest>;
-
-export type PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization";
-export const PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
-  /*@__PURE__*/ S.String;
-
-export type PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource =
-  "default";
-export const PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource =
-  /*@__PURE__*/ S.String;
-
-export interface PolicyEventsListQueryResultsForPolicySetDefinitionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace:
-    | PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace
-    | (string & {});
-  /** Policy set definition name. */
-  policySetDefinitionName: string;
-  /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
-  policyEventsResource:
-    | PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource
-    | (string & {});
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
-  _orderby?: string;
-  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
-  _select?: string;
-  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
-  _from?: string;
-  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
-  _to?: string;
-  /** OData filter expression. */
-  _filter?: string;
-  /** OData apply expression for aggregations. */
-  _apply?: string;
-  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
-  _skiptoken?: string;
-}
-export const PolicyEventsListQueryResultsForPolicySetDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      authorizationNamespace:
-        PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace.pipe(
-          T.Label(),
-        ),
-      policySetDefinitionName: S.String.pipe(T.Label()),
-      policyEventsResource:
-        PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource.pipe(
-          T.Label(),
-        ),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-      _select: S.optional(S.String.pipe(T.Query("$select"))),
-      _from: S.optional(S.String.pipe(T.Query("$from"))),
-      _to: S.optional(S.String.pipe(T.Query("$to"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
-      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyEventsListQueryResultsForPolicySetDefinitionRequest",
-  }) as any as S.Schema<PolicyEventsListQueryResultsForPolicySetDefinitionRequest>;
+    identifier: "ListPolicyEventQueryResultForPolicyDefinitionRequest",
+  }) as any as S.Schema<ListPolicyEventQueryResultForPolicyDefinitionRequest>;
 
 export type PolicyEventsListQueryResultsForResourceRequestPolicyEventsResource =
   "default";
 export const PolicyEventsListQueryResultsForResourceRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
-export interface PolicyEventsListQueryResultsForResourceRequest {
+export interface ListPolicyEventQueryResultForResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
@@ -1754,7 +2668,7 @@ export interface PolicyEventsListQueryResultsForResourceRequest {
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
 }
-export const PolicyEventsListQueryResultsForResourceRequest =
+export const ListPolicyEventQueryResultForResourceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceId: S.String.pipe(T.Label()),
@@ -1780,15 +2694,15 @@ export const PolicyEventsListQueryResultsForResourceRequest =
       }),
     ),
   ).annotate({
-    identifier: "PolicyEventsListQueryResultsForResourceRequest",
-  }) as any as S.Schema<PolicyEventsListQueryResultsForResourceRequest>;
+    identifier: "ListPolicyEventQueryResultForResourceRequest",
+  }) as any as S.Schema<ListPolicyEventQueryResultForResourceRequest>;
 
 export type PolicyEventsListQueryResultsForResourceGroupRequestPolicyEventsResource =
   "default";
 export const PolicyEventsListQueryResultsForResourceGroupRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
-export interface PolicyEventsListQueryResultsForResourceGroupRequest {
+export interface ListPolicyEventQueryResultForResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1814,7 +2728,7 @@ export interface PolicyEventsListQueryResultsForResourceGroupRequest {
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
 }
-export const PolicyEventsListQueryResultsForResourceGroupRequest =
+export const ListPolicyEventQueryResultForResourceGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1840,8 +2754,8 @@ export const PolicyEventsListQueryResultsForResourceGroupRequest =
       }),
     ),
   ).annotate({
-    identifier: "PolicyEventsListQueryResultsForResourceGroupRequest",
-  }) as any as S.Schema<PolicyEventsListQueryResultsForResourceGroupRequest>;
+    identifier: "ListPolicyEventQueryResultForResourceGroupRequest",
+  }) as any as S.Schema<ListPolicyEventQueryResultForResourceGroupRequest>;
 
 export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1853,7 +2767,7 @@ export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentReq
 export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
-export interface PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest {
+export interface ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Resource group name. */
@@ -1885,7 +2799,7 @@ export interface PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignme
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
 }
-export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest =
+export const ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1917,15 +2831,15 @@ export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRe
     ),
   ).annotate({
     identifier:
-      "PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest",
-  }) as any as S.Schema<PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
+      "ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentRequest",
+  }) as any as S.Schema<ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type PolicyEventsListQueryResultsForSubscriptionRequestPolicyEventsResource =
   "default";
 export const PolicyEventsListQueryResultsForSubscriptionRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
-export interface PolicyEventsListQueryResultsForSubscriptionRequest {
+export interface ListPolicyEventQueryResultForSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
@@ -1949,7 +2863,7 @@ export interface PolicyEventsListQueryResultsForSubscriptionRequest {
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
 }
-export const PolicyEventsListQueryResultsForSubscriptionRequest =
+export const ListPolicyEventQueryResultForSubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1974,8 +2888,8 @@ export const PolicyEventsListQueryResultsForSubscriptionRequest =
       }),
     ),
   ).annotate({
-    identifier: "PolicyEventsListQueryResultsForSubscriptionRequest",
-  }) as any as S.Schema<PolicyEventsListQueryResultsForSubscriptionRequest>;
+    identifier: "ListPolicyEventQueryResultForSubscriptionRequest",
+  }) as any as S.Schema<ListPolicyEventQueryResultForSubscriptionRequest>;
 
 export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1987,7 +2901,7 @@ export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequ
 export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
-export interface PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequest {
+export interface ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
@@ -2017,7 +2931,7 @@ export interface PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmen
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
 }
-export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequest =
+export const ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2048,91 +2962,14 @@ export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentReq
     ),
   ).annotate({
     identifier:
-      "PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequest",
-  }) as any as S.Schema<PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequest>;
+      "ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentRequest",
+  }) as any as S.Schema<ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentRequest>;
 
-export interface PolicyMetadataGetResourceRequest {
-  /** The name of the policy metadata resource. */
-  resourceName: string;
-}
-export const PolicyMetadataGetResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.PolicyInsights/policyMetadata/{resourceName}",
-      code: 200,
-      apiVersion: "2024-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "PolicyMetadataGetResourceRequest",
-}) as any as S.Schema<PolicyMetadataGetResourceRequest>;
-
-/** The properties of the policy metadata. */
-export interface PolicyMetadataProperties {
-  /** The policy metadata identifier. */
-  metadataId?: string;
-  /** The category of the policy metadata. */
-  category?: string;
-  /** The title of the policy metadata. */
-  title?: string;
-  /** The owner of the policy metadata. */
-  owner?: string;
-  /** Url for getting additional content about the resource metadata. */
-  additionalContentUrl?: string;
-  /** Additional metadata. */
-  metadata?: unknown;
-  /** The description of the policy metadata. */
-  description?: string;
-  /** The requirements of the policy metadata. */
-  requirements?: string;
-}
-export const PolicyMetadataProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadataId: S.optional(S.String),
-    category: S.optional(S.String),
-    title: S.optional(S.String),
-    owner: S.optional(S.String),
-    additionalContentUrl: S.optional(S.String),
-    metadata: S.optional(S.Unknown),
-    description: S.optional(S.String),
-    requirements: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PolicyMetadataProperties",
-}) as any as S.Schema<PolicyMetadataProperties>;
-
-export interface PolicyMetadataGetResourceResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the policy metadata. */
-  properties?: PolicyMetadataProperties;
-}
-export const PolicyMetadataGetResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PolicyMetadataProperties),
-  }),
-).annotate({
-  identifier: "PolicyMetadataGetResourceResponse",
-}) as any as S.Schema<PolicyMetadataGetResourceResponse>;
-
-export interface PolicyMetadataListRequest {
+export interface ListPolicyMetadataRequest {
   /** Maximum number of records to return. */
   _top?: number;
 }
-export const PolicyMetadataListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListPolicyMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
   }).pipe(
@@ -2144,8 +2981,8 @@ export const PolicyMetadataListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PolicyMetadataListRequest",
-}) as any as S.Schema<PolicyMetadataListRequest>;
+  identifier: "ListPolicyMetadataRequest",
+}) as any as S.Schema<ListPolicyMetadataRequest>;
 
 /** The properties of the policy metadata, excluding properties containing large strings */
 export interface PolicyMetadataSlimProperties {
@@ -2219,391 +3056,6 @@ export const PolicyMetadataCollection = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyMetadataCollection",
 }) as any as S.Schema<PolicyMetadataCollection>;
 
-export type PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace =
-  "Microsoft.Management";
-export const PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace =
-  /*@__PURE__*/ S.String;
-
-/** The information about the resource that will be evaluated. */
-export interface CheckRestrictionsResourceDetails {
-  /** The resource content. This should include whatever properties are already known and can be a partial set of all resource properties. */
-  resourceContent: unknown;
-  /** The api-version of the resource content. */
-  apiVersion?: string;
-  /** The scope where the resource is being created. For example, if the resource is a child resource this would be the parent resource's resource ID. */
-  scope?: string;
-}
-export const CheckRestrictionsResourceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceContent: S.Unknown,
-    apiVersion: S.optional(S.String),
-    scope: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckRestrictionsResourceDetails",
-}) as any as S.Schema<CheckRestrictionsResourceDetails>;
-
-/** The list of potential values for the field that should be evaluated against Azure Policy. */
-export type PendingFieldValuesList = Array<string>;
-export const PendingFieldValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PendingFieldValuesList>;
-
-/** A field that should be evaluated against Azure Policy to determine restrictions. */
-export interface PendingField {
-  /** The name of the field. This can be a top-level property like 'name' or 'type' or an Azure Policy field alias. */
-  field: string;
-  /** The list of potential values for the field that should be evaluated against Azure Policy. */
-  values?: PendingFieldValuesList;
-}
-export const PendingField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    values: S.optional(PendingFieldValuesList),
-  }),
-).annotate({ identifier: "PendingField" }) as any as S.Schema<PendingField>;
-
-/** The list of fields and values that should be evaluated for potential restrictions. */
-export type PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList =
-  Array<PendingField>;
-export const PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList =
-  /*@__PURE__*/ S.Array(
-    PendingField,
-  ) as any as S.Schema<PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList>;
-
-export interface PolicyRestrictionsCheckAtManagementGroupScopeRequest {
-  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace:
-    | PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace
-    | (string & {});
-  /** Management group ID. */
-  managementGroupId: string;
-  /** The information about the resource that will be evaluated. */
-  resourceDetails?: CheckRestrictionsResourceDetails;
-  /** The list of fields and values that should be evaluated for potential restrictions. */
-  pendingFields?: PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList;
-}
-export const PolicyRestrictionsCheckAtManagementGroupScopeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managementGroupsNamespace:
-        PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace.pipe(
-          T.Label(),
-        ),
-      managementGroupId: S.String.pipe(T.Label()),
-      resourceDetails: S.optional(CheckRestrictionsResourceDetails),
-      pendingFields: S.optional(
-        PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyRestrictionsCheckAtManagementGroupScopeRequest",
-  }) as any as S.Schema<PolicyRestrictionsCheckAtManagementGroupScopeRequest>;
-
-/** The type of restriction that is imposed on the field. */
-export type FieldRestrictionResult = "Required" | "Removed" | "Deny" | "Audit";
-export const FieldRestrictionResult = /*@__PURE__*/ S.String;
-
-/** The values that policy either requires or denies for the field. */
-export type FieldRestrictionValuesList = Array<string>;
-export const FieldRestrictionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FieldRestrictionValuesList>;
-
-/** Resource identifiers for a policy. */
-export interface PolicyReference {
-  /** The resource identifier of the policy definition. */
-  policyDefinitionId?: string;
-  /** The resource identifier of the policy set definition. */
-  policySetDefinitionId?: string;
-  /** The reference identifier of a specific policy definition within a policy set definition. */
-  policyDefinitionReferenceId?: string;
-  /** The resource identifier of the policy assignment. */
-  policyAssignmentId?: string;
-}
-export const PolicyReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyDefinitionId: S.optional(S.String),
-    policySetDefinitionId: S.optional(S.String),
-    policyDefinitionReferenceId: S.optional(S.String),
-    policyAssignmentId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PolicyReference",
-}) as any as S.Schema<PolicyReference>;
-
-/** The restrictions on a field imposed by a specific policy. */
-export interface FieldRestriction {
-  /** The type of restriction that is imposed on the field. */
-  result?: FieldRestrictionResult;
-  /** The value that policy will set for the field if the user does not provide a value. */
-  defaultValue?: string;
-  /** The values that policy either requires or denies for the field. */
-  values?: FieldRestrictionValuesList;
-  /** The details of the policy that is causing the field restriction. */
-  policy?: PolicyReference;
-  /** The effect of the policy that is causing the field restriction. http://aka.ms/policyeffects */
-  policyEffect?: string;
-  /** The reason for the restriction. */
-  reason?: string;
-}
-export const FieldRestriction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(FieldRestrictionResult),
-    defaultValue: S.optional(S.String),
-    values: S.optional(FieldRestrictionValuesList),
-    policy: S.optional(PolicyReference),
-    policyEffect: S.optional(S.String),
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FieldRestriction",
-}) as any as S.Schema<FieldRestriction>;
-
-/** The restrictions placed on that field by policy. */
-export type FieldRestrictionsRestrictionsList = Array<FieldRestriction>;
-export const FieldRestrictionsRestrictionsList = /*@__PURE__*/ S.Array(
-  FieldRestriction,
-) as any as S.Schema<FieldRestrictionsRestrictionsList>;
-
-/** The restrictions that will be placed on a field in the resource by policy. */
-export interface FieldRestrictions {
-  /** The name of the field. This can be a top-level property like 'name' or 'type' or an Azure Policy field alias. */
-  field?: string;
-  /** The restrictions placed on that field by policy. */
-  restrictions?: FieldRestrictionsRestrictionsList;
-}
-export const FieldRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.String),
-    restrictions: S.optional(FieldRestrictionsRestrictionsList),
-  }),
-).annotate({
-  identifier: "FieldRestrictions",
-}) as any as S.Schema<FieldRestrictions>;
-
-/** The restrictions that will be placed on various fields in the resource by policy. */
-export type CheckRestrictionsResultFieldRestrictionsList =
-  Array<FieldRestrictions>;
-export const CheckRestrictionsResultFieldRestrictionsList =
-  /*@__PURE__*/ S.Array(
-    FieldRestrictions,
-  ) as any as S.Schema<CheckRestrictionsResultFieldRestrictionsList>;
-
-/** Evaluation details of policy language expressions. */
-export type ExpressionEvaluationDetails = ComponentExpressionEvaluationDetails;
-export const ExpressionEvaluationDetails = ComponentExpressionEvaluationDetails;
-
-/** Details of the evaluated expressions. */
-export type CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
-  Array<ComponentExpressionEvaluationDetails>;
-export const CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
-  /*@__PURE__*/ S.Array(
-    ComponentExpressionEvaluationDetails,
-  ) as any as S.Schema<CheckRestrictionEvaluationDetailsEvaluatedExpressionsList>;
-
-/** Evaluation details of IfNotExists effect. */
-export interface IfNotExistsEvaluationDetails {
-  /** ID of the last evaluated resource for IfNotExists effect. */
-  resourceId?: string;
-  /** Total number of resources to which the existence condition is applicable. */
-  totalResources?: number;
-}
-export const IfNotExistsEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(S.String),
-    totalResources: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "IfNotExistsEvaluationDetails",
-}) as any as S.Schema<IfNotExistsEvaluationDetails>;
-
-/** Policy evaluation details. */
-export interface CheckRestrictionEvaluationDetails {
-  /** Details of the evaluated expressions. */
-  evaluatedExpressions?: CheckRestrictionEvaluationDetailsEvaluatedExpressionsList;
-  /** Evaluation details of IfNotExists effect. */
-  ifNotExistsDetails?: IfNotExistsEvaluationDetails;
-  /** The reason for the evaluation result. */
-  reason?: string;
-}
-export const CheckRestrictionEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatedExpressions: S.optional(
-      CheckRestrictionEvaluationDetailsEvaluatedExpressionsList,
-    ),
-    ifNotExistsDetails: S.optional(IfNotExistsEvaluationDetails),
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckRestrictionEvaluationDetails",
-}) as any as S.Schema<CheckRestrictionEvaluationDetails>;
-
-/** The details of the effect that was applied to the resource. */
-export interface PolicyEffectDetails {
-  /** The effect that was applied to the resource. http://aka.ms/policyeffects */
-  policyEffect?: string;
-}
-export const PolicyEffectDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEffect: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PolicyEffectDetails",
-}) as any as S.Schema<PolicyEffectDetails>;
-
-/** The result of a non-compliant policy evaluation against the given resource content. */
-export interface PolicyEvaluationResult {
-  /** The details of the policy that was evaluated. */
-  policyInfo?: PolicyReference;
-  /** The result of the policy evaluation against the resource. This will typically be 'NonCompliant' but may contain other values if errors were encountered. */
-  evaluationResult?: string;
-  /** The detailed results of the policy expressions and values that were evaluated. */
-  evaluationDetails?: CheckRestrictionEvaluationDetails;
-  /** The details of the effect that was applied to the resource. */
-  effectDetails?: PolicyEffectDetails;
-}
-export const PolicyEvaluationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyInfo: S.optional(PolicyReference),
-    evaluationResult: S.optional(S.String),
-    evaluationDetails: S.optional(CheckRestrictionEvaluationDetails),
-    effectDetails: S.optional(PolicyEffectDetails),
-  }),
-).annotate({
-  identifier: "PolicyEvaluationResult",
-}) as any as S.Schema<PolicyEvaluationResult>;
-
-/** Policy evaluation results against the given resource content. This will indicate if the partial content that was provided will be denied as-is. */
-export type CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList =
-  Array<PolicyEvaluationResult>;
-export const CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList =
-  /*@__PURE__*/ S.Array(
-    PolicyEvaluationResult,
-  ) as any as S.Schema<CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList>;
-
-/** Evaluation results for the provided partial resource content. */
-export interface CheckRestrictionsResultContentEvaluationResult {
-  /** Policy evaluation results against the given resource content. This will indicate if the partial content that was provided will be denied as-is. */
-  policyEvaluations?: CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList;
-}
-export const CheckRestrictionsResultContentEvaluationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyEvaluations: S.optional(
-        CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CheckRestrictionsResultContentEvaluationResult",
-  }) as any as S.Schema<CheckRestrictionsResultContentEvaluationResult>;
-
-/** The result of a check policy restrictions evaluation on a resource. */
-export interface CheckRestrictionsResult {
-  /** The restrictions that will be placed on various fields in the resource by policy. */
-  fieldRestrictions?: CheckRestrictionsResultFieldRestrictionsList;
-  /** Evaluation results for the provided partial resource content. */
-  contentEvaluationResult?: CheckRestrictionsResultContentEvaluationResult;
-}
-export const CheckRestrictionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldRestrictions: S.optional(CheckRestrictionsResultFieldRestrictionsList),
-    contentEvaluationResult: S.optional(
-      CheckRestrictionsResultContentEvaluationResult,
-    ),
-  }),
-).annotate({
-  identifier: "CheckRestrictionsResult",
-}) as any as S.Schema<CheckRestrictionsResult>;
-
-/** The list of fields and values that should be evaluated for potential restrictions. */
-export type PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList =
-  Array<PendingField>;
-export const PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList =
-  /*@__PURE__*/ S.Array(
-    PendingField,
-  ) as any as S.Schema<PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList>;
-
-export interface PolicyRestrictionsCheckAtResourceGroupScopeRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The information about the resource that will be evaluated. */
-  resourceDetails: CheckRestrictionsResourceDetails;
-  /** The list of fields and values that should be evaluated for potential restrictions. */
-  pendingFields?: PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList;
-  /** Whether to include policies with the 'audit' effect in the results. Defaults to false. */
-  includeAuditEffect?: boolean;
-}
-export const PolicyRestrictionsCheckAtResourceGroupScopeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceDetails: CheckRestrictionsResourceDetails,
-      pendingFields: S.optional(
-        PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList,
-      ),
-      includeAuditEffect: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyRestrictionsCheckAtResourceGroupScopeRequest",
-  }) as any as S.Schema<PolicyRestrictionsCheckAtResourceGroupScopeRequest>;
-
-/** The list of fields and values that should be evaluated for potential restrictions. */
-export type PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList =
-  Array<PendingField>;
-export const PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList =
-  /*@__PURE__*/ S.Array(
-    PendingField,
-  ) as any as S.Schema<PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList>;
-
-export interface PolicyRestrictionsCheckAtSubscriptionScopeRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The information about the resource that will be evaluated. */
-  resourceDetails: CheckRestrictionsResourceDetails;
-  /** The list of fields and values that should be evaluated for potential restrictions. */
-  pendingFields?: PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList;
-  /** Whether to include policies with the 'audit' effect in the results. Defaults to false. */
-  includeAuditEffect?: boolean;
-}
-export const PolicyRestrictionsCheckAtSubscriptionScopeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceDetails: CheckRestrictionsResourceDetails,
-      pendingFields: S.optional(
-        PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList,
-      ),
-      includeAuditEffect: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyRestrictionsCheckAtSubscriptionScopeRequest",
-  }) as any as S.Schema<PolicyRestrictionsCheckAtSubscriptionScopeRequest>;
-
 export type PolicyStatesListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
   "Microsoft.Management";
 export const PolicyStatesListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
@@ -2615,7 +3067,7 @@ export type PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesRes
 export const PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
-export interface PolicyStatesListQueryResultsForManagementGroupRequest {
+export interface ListPolicyStateQueryResultForManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
   managementGroupsNamespace:
     | PolicyStatesListQueryResultsForManagementGroupRequestManagementGroupsNamespace
@@ -2643,7 +3095,7 @@ export interface PolicyStatesListQueryResultsForManagementGroupRequest {
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
 }
-export const PolicyStatesListQueryResultsForManagementGroupRequest =
+export const ListPolicyStateQueryResultForManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       managementGroupsNamespace:
@@ -2672,15 +3124,15 @@ export const PolicyStatesListQueryResultsForManagementGroupRequest =
       }),
     ),
   ).annotate({
-    identifier: "PolicyStatesListQueryResultsForManagementGroupRequest",
-  }) as any as S.Schema<PolicyStatesListQueryResultsForManagementGroupRequest>;
+    identifier: "ListPolicyStateQueryResultForManagementGroupRequest",
+  }) as any as S.Schema<ListPolicyStateQueryResultForManagementGroupRequest>;
 
 /** Details of the evaluated expressions. */
 export type PolicyEvaluationDetailsEvaluatedExpressionsList =
-  Array<ComponentExpressionEvaluationDetails>;
+  Array<ExpressionEvaluationDetails>;
 export const PolicyEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
-    ComponentExpressionEvaluationDetails,
+    ExpressionEvaluationDetails,
   ) as any as S.Schema<PolicyEvaluationDetailsEvaluatedExpressionsList>;
 
 /** Policy evaluation details. */
@@ -2889,7 +3341,7 @@ export type PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesRe
 export const PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
-export interface PolicyStatesListQueryResultsForPolicyDefinitionRequest {
+export interface ListPolicyStateQueryResultForPolicyDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
@@ -2919,7 +3371,7 @@ export interface PolicyStatesListQueryResultsForPolicyDefinitionRequest {
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
 }
-export const PolicyStatesListQueryResultsForPolicyDefinitionRequest =
+export const ListPolicyStateQueryResultForPolicyDefinitionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2949,8 +3401,803 @@ export const PolicyStatesListQueryResultsForPolicyDefinitionRequest =
       }),
     ),
   ).annotate({
-    identifier: "PolicyStatesListQueryResultsForPolicyDefinitionRequest",
-  }) as any as S.Schema<PolicyStatesListQueryResultsForPolicyDefinitionRequest>;
+    identifier: "ListPolicyStateQueryResultForPolicyDefinitionRequest",
+  }) as any as S.Schema<ListPolicyStateQueryResultForPolicyDefinitionRequest>;
+
+export type PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
+  | "default"
+  | "latest";
+export const PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
+  /*@__PURE__*/ S.String;
+
+export interface ListPolicyStateQueryResultForResourceRequest {
+  /** Resource ID. */
+  resourceId: string;
+  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource
+    | (string & {});
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
+  _orderby?: string;
+  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
+  _select?: string;
+  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
+  _from?: string;
+  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
+  _to?: string;
+  /** OData filter expression. */
+  _filter?: string;
+  /** OData apply expression for aggregations. */
+  _apply?: string;
+  /** The $expand query parameter. For example, to expand components use $expand=components */
+  _expand?: string;
+  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
+  _skiptoken?: string;
+}
+export const ListPolicyStateQueryResultForResourceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceId: S.String.pipe(T.Label()),
+      policyStatesResource:
+        PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource.pipe(
+          T.Label(),
+        ),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+      _select: S.optional(S.String.pipe(T.Query("$select"))),
+      _from: S.optional(S.String.pipe(T.Query("$from"))),
+      _to: S.optional(S.String.pipe(T.Query("$to"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
+      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPolicyStateQueryResultForResourceRequest",
+  }) as any as S.Schema<ListPolicyStateQueryResultForResourceRequest>;
+
+export type PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
+  | "default"
+  | "latest";
+export const PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
+  /*@__PURE__*/ S.String;
+
+export interface ListPolicyStateQueryResultForResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource
+    | (string & {});
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
+  _orderby?: string;
+  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
+  _select?: string;
+  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
+  _from?: string;
+  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
+  _to?: string;
+  /** OData filter expression. */
+  _filter?: string;
+  /** OData apply expression for aggregations. */
+  _apply?: string;
+  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
+  _skiptoken?: string;
+}
+export const ListPolicyStateQueryResultForResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      policyStatesResource:
+        PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource.pipe(
+          T.Label(),
+        ),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+      _select: S.optional(S.String.pipe(T.Query("$select"))),
+      _from: S.optional(S.String.pipe(T.Query("$from"))),
+      _to: S.optional(S.String.pipe(T.Query("$to"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
+      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPolicyStateQueryResultForResourceGroupRequest",
+  }) as any as S.Schema<ListPolicyStateQueryResultForResourceGroupRequest>;
+
+export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
+  "Microsoft.Authorization";
+export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
+  /*@__PURE__*/ S.String;
+
+export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
+  | "default"
+  | "latest";
+export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
+  /*@__PURE__*/ S.String;
+
+export interface ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** Resource group name. */
+  resourceGroupName: string;
+  /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
+  authorizationNamespace:
+    | PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
+  /** Policy assignment name. */
+  policyAssignmentName: string;
+  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource
+    | (string & {});
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
+  _orderby?: string;
+  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
+  _select?: string;
+  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
+  _from?: string;
+  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
+  _to?: string;
+  /** OData filter expression. */
+  _filter?: string;
+  /** OData apply expression for aggregations. */
+  _apply?: string;
+  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
+  _skiptoken?: string;
+}
+export const ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      authorizationNamespace:
+        PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace.pipe(
+          T.Label(),
+        ),
+      policyAssignmentName: S.String.pipe(T.Label()),
+      policyStatesResource:
+        PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource.pipe(
+          T.Label(),
+        ),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+      _select: S.optional(S.String.pipe(T.Query("$select"))),
+      _from: S.optional(S.String.pipe(T.Query("$from"))),
+      _to: S.optional(S.String.pipe(T.Query("$to"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
+      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest",
+  }) as any as S.Schema<ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest>;
+
+export type PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
+  | "default"
+  | "latest";
+export const PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
+  /*@__PURE__*/ S.String;
+
+export interface ListPolicyStateQueryResultForSubscriptionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource
+    | (string & {});
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
+  _orderby?: string;
+  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
+  _select?: string;
+  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
+  _from?: string;
+  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
+  _to?: string;
+  /** OData filter expression. */
+  _filter?: string;
+  /** OData apply expression for aggregations. */
+  _apply?: string;
+  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
+  _skiptoken?: string;
+}
+export const ListPolicyStateQueryResultForSubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      policyStatesResource:
+        PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource.pipe(
+          T.Label(),
+        ),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+      _select: S.optional(S.String.pipe(T.Query("$select"))),
+      _from: S.optional(S.String.pipe(T.Query("$from"))),
+      _to: S.optional(S.String.pipe(T.Query("$to"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
+      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPolicyStateQueryResultForSubscriptionRequest",
+  }) as any as S.Schema<ListPolicyStateQueryResultForSubscriptionRequest>;
+
+export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
+  "Microsoft.Authorization";
+export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
+  /*@__PURE__*/ S.String;
+
+export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
+  | "default"
+  | "latest";
+export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
+  /*@__PURE__*/ S.String;
+
+export interface ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
+  authorizationNamespace:
+    | PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace
+    | (string & {});
+  /** Policy assignment name. */
+  policyAssignmentName: string;
+  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
+  policyStatesResource:
+    | PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource
+    | (string & {});
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
+  _orderby?: string;
+  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
+  _select?: string;
+  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
+  _from?: string;
+  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
+  _to?: string;
+  /** OData filter expression. */
+  _filter?: string;
+  /** OData apply expression for aggregations. */
+  _apply?: string;
+  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
+  _skiptoken?: string;
+}
+export const ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      authorizationNamespace:
+        PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace.pipe(
+          T.Label(),
+        ),
+      policyAssignmentName: S.String.pipe(T.Label()),
+      policyStatesResource:
+        PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource.pipe(
+          T.Label(),
+        ),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+      _select: S.optional(S.String.pipe(T.Query("$select"))),
+      _from: S.optional(S.String.pipe(T.Query("$from"))),
+      _to: S.optional(S.String.pipe(T.Query("$to"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
+      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest",
+  }) as any as S.Schema<ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest>;
+
+export type RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace =
+  "Microsoft.Management";
+export const RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace =
+  /*@__PURE__*/ S.String;
+
+export interface ListRemediationDeploymentAtManagementGroupRequest {
+  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
+  managementGroupsNamespace:
+    | RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
+  /** Management group ID. */
+  managementGroupId: string;
+  /** The name of the remediation. */
+  remediationName: string;
+  /** Maximum number of records to return. */
+  _top?: number;
+}
+export const ListRemediationDeploymentAtManagementGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managementGroupsNamespace:
+        RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace.pipe(
+          T.Label(),
+        ),
+      managementGroupId: S.String.pipe(T.Label()),
+      remediationName: S.String.pipe(T.Label()),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListRemediationDeploymentAtManagementGroupRequest",
+  }) as any as S.Schema<ListRemediationDeploymentAtManagementGroupRequest>;
+
+/** Internal error details. */
+export type ErrorDefinitionDetailsList = Array<ErrorDefinition>;
+export const ErrorDefinitionDetailsList = /*@__PURE__*/ S.Array(
+  S.suspend(() => ErrorDefinition),
+) as any as S.Schema<ErrorDefinitionDetailsList>;
+
+/** Scenario specific error details. */
+export interface TypedErrorInfo {
+  /** The type of included error details. */
+  type?: string;
+  /** The scenario specific error details. */
+  info?: unknown;
+}
+export const TypedErrorInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    info: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "TypedErrorInfo" }) as any as S.Schema<TypedErrorInfo>;
+
+/** Additional scenario specific error details. */
+export type ErrorDefinitionAdditionalInfoList = Array<TypedErrorInfo>;
+export const ErrorDefinitionAdditionalInfoList = /*@__PURE__*/ S.Array(
+  TypedErrorInfo,
+) as any as S.Schema<ErrorDefinitionAdditionalInfoList>;
+
+/** Error definition. */
+export interface ErrorDefinition {
+  /** Service specific error code which serves as the substatus for the HTTP error code. */
+  code?: string;
+  /** Description of the error. */
+  message?: string;
+  /** The target of the error. */
+  target?: string;
+  /** Internal error details. */
+  details?: ErrorDefinitionDetailsList;
+  /** Additional scenario specific error details. */
+  additionalInfo?: ErrorDefinitionAdditionalInfoList;
+}
+export const ErrorDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+    target: S.optional(S.String),
+    details: S.optional(ErrorDefinitionDetailsList),
+    additionalInfo: S.optional(ErrorDefinitionAdditionalInfoList),
+  }),
+).annotate({
+  identifier: "ErrorDefinition",
+}) as any as S.Schema<ErrorDefinition>;
+
+/** Details of a single deployment created by the remediation. */
+export interface RemediationDeployment {
+  /** Resource ID of the resource that is being remediated by the deployment. */
+  remediatedResourceId?: string;
+  /** Resource ID of the template deployment that will remediate the resource. */
+  deploymentId?: string;
+  /** Status of the remediation deployment. */
+  status?: string;
+  /** Location of the resource that is being remediated. */
+  resourceLocation?: string;
+  /** Error encountered while remediated the resource. */
+  error?: ErrorDefinition;
+  /** The time at which the remediation was created. */
+  createdOn?: string;
+  /** The time at which the remediation deployment was last updated. */
+  lastUpdatedOn?: string;
+}
+export const RemediationDeployment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    remediatedResourceId: S.optional(S.String),
+    deploymentId: S.optional(S.String),
+    status: S.optional(S.String),
+    resourceLocation: S.optional(S.String),
+    error: S.optional(ErrorDefinition),
+    createdOn: S.optional(S.String),
+    lastUpdatedOn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RemediationDeployment",
+}) as any as S.Schema<RemediationDeployment>;
+
+/** The RemediationDeployment items on this page */
+export type RemediationDeploymentsListResultValueList =
+  Array<RemediationDeployment>;
+export const RemediationDeploymentsListResultValueList = /*@__PURE__*/ S.Array(
+  RemediationDeployment,
+) as any as S.Schema<RemediationDeploymentsListResultValueList>;
+
+/** List of deployments for a remediation. */
+export interface RemediationDeploymentsListResult {
+  /** The RemediationDeployment items on this page */
+  value: RemediationDeploymentsListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const RemediationDeploymentsListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: RemediationDeploymentsListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RemediationDeploymentsListResult",
+}) as any as S.Schema<RemediationDeploymentsListResult>;
+
+export interface ListRemediationDeploymentAtResourceRequest {
+  /** Resource ID. */
+  resourceId: string;
+  /** The name of the remediation. */
+  remediationName: string;
+  /** Maximum number of records to return. */
+  _top?: number;
+}
+export const ListRemediationDeploymentAtResourceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceId: S.String.pipe(T.Label()),
+      remediationName: S.String.pipe(T.Label()),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListRemediationDeploymentAtResourceRequest",
+  }) as any as S.Schema<ListRemediationDeploymentAtResourceRequest>;
+
+export interface ListRemediationDeploymentAtResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the remediation. */
+  remediationName: string;
+  /** Maximum number of records to return. */
+  _top?: number;
+}
+export const ListRemediationDeploymentAtResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      remediationName: S.String.pipe(T.Label()),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListRemediationDeploymentAtResourceGroupRequest",
+  }) as any as S.Schema<ListRemediationDeploymentAtResourceGroupRequest>;
+
+export interface ListRemediationDeploymentAtSubscriptionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the remediation. */
+  remediationName: string;
+  /** Maximum number of records to return. */
+  _top?: number;
+}
+export const ListRemediationDeploymentAtSubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      remediationName: S.String.pipe(T.Label()),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListRemediationDeploymentAtSubscriptionRequest",
+  }) as any as S.Schema<ListRemediationDeploymentAtSubscriptionRequest>;
+
+export type RemediationsListForManagementGroupRequestManagementGroupsNamespace =
+  "Microsoft.Management";
+export const RemediationsListForManagementGroupRequestManagementGroupsNamespace =
+  /*@__PURE__*/ S.String;
+
+export interface ListRemediationForManagementGroupRequest {
+  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
+  managementGroupsNamespace:
+    | RemediationsListForManagementGroupRequestManagementGroupsNamespace
+    | (string & {});
+  /** Management group ID. */
+  managementGroupId: string;
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** OData filter expression. */
+  _filter?: string;
+}
+export const ListRemediationForManagementGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      managementGroupsNamespace:
+        RemediationsListForManagementGroupRequestManagementGroupsNamespace.pipe(
+          T.Label(),
+        ),
+      managementGroupId: S.String.pipe(T.Label()),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListRemediationForManagementGroupRequest",
+}) as any as S.Schema<ListRemediationForManagementGroupRequest>;
+
+/** The remediation definition. */
+export interface Remediation {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties for the remediation. */
+  properties?: RemediationProperties;
+}
+export const Remediation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RemediationProperties),
+  }),
+).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
+
+/** The Remediation items on this page */
+export type RemediationListResultValueList = Array<Remediation>;
+export const RemediationListResultValueList = /*@__PURE__*/ S.Array(
+  Remediation,
+) as any as S.Schema<RemediationListResultValueList>;
+
+/** List of remediations. */
+export interface RemediationListResult {
+  /** The Remediation items on this page */
+  value: RemediationListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const RemediationListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: RemediationListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RemediationListResult",
+}) as any as S.Schema<RemediationListResult>;
+
+export interface ListRemediationForResourceRequest {
+  /** Resource ID. */
+  resourceId: string;
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** OData filter expression. */
+  _filter?: string;
+}
+export const ListRemediationForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations",
+      code: 200,
+      apiVersion: "2024-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListRemediationForResourceRequest",
+}) as any as S.Schema<ListRemediationForResourceRequest>;
+
+export interface ListRemediationForResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** OData filter expression. */
+  _filter?: string;
+}
+export const ListRemediationForResourceGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListRemediationForResourceGroupRequest",
+}) as any as S.Schema<ListRemediationForResourceGroupRequest>;
+
+export interface ListRemediationForSubscriptionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** OData filter expression. */
+  _filter?: string;
+}
+export const ListRemediationForSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListRemediationForSubscriptionRequest",
+}) as any as S.Schema<ListRemediationForSubscriptionRequest>;
+
+export type PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
+  "Microsoft.Authorization";
+export const PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
+  /*@__PURE__*/ S.String;
+
+export type PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource =
+  "default";
+export const PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource =
+  /*@__PURE__*/ S.String;
+
+export interface PolicyEventsListQueryResultsForPolicySetDefinitionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
+  authorizationNamespace:
+    | PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace
+    | (string & {});
+  /** Policy set definition name. */
+  policySetDefinitionName: string;
+  /** The name of the virtual resource under PolicyEvents resource type; only "default" is allowed. */
+  policyEventsResource:
+    | PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource
+    | (string & {});
+  /** Maximum number of records to return. */
+  _top?: number;
+  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
+  _orderby?: string;
+  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
+  _select?: string;
+  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
+  _from?: string;
+  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
+  _to?: string;
+  /** OData filter expression. */
+  _filter?: string;
+  /** OData apply expression for aggregations. */
+  _apply?: string;
+  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
+  _skiptoken?: string;
+}
+export const PolicyEventsListQueryResultsForPolicySetDefinitionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      authorizationNamespace:
+        PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace.pipe(
+          T.Label(),
+        ),
+      policySetDefinitionName: S.String.pipe(T.Label()),
+      policyEventsResource:
+        PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource.pipe(
+          T.Label(),
+        ),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+      _select: S.optional(S.String.pipe(T.Query("$select"))),
+      _from: S.optional(S.String.pipe(T.Query("$from"))),
+      _to: S.optional(S.String.pipe(T.Query("$to"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
+      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
+        code: 200,
+        apiVersion: "2024-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PolicyEventsListQueryResultsForPolicySetDefinitionRequest",
+  }) as any as S.Schema<PolicyEventsListQueryResultsForPolicySetDefinitionRequest>;
 
 export type PolicyStatesListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -3025,339 +4272,6 @@ export const PolicyStatesListQueryResultsForPolicySetDefinitionRequest =
   ).annotate({
     identifier: "PolicyStatesListQueryResultsForPolicySetDefinitionRequest",
   }) as any as S.Schema<PolicyStatesListQueryResultsForPolicySetDefinitionRequest>;
-
-export type PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
-  | "default"
-  | "latest";
-export const PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
-  /*@__PURE__*/ S.String;
-
-export interface PolicyStatesListQueryResultsForResourceRequest {
-  /** Resource ID. */
-  resourceId: string;
-  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource:
-    | PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource
-    | (string & {});
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
-  _orderby?: string;
-  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
-  _select?: string;
-  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
-  _from?: string;
-  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
-  _to?: string;
-  /** OData filter expression. */
-  _filter?: string;
-  /** OData apply expression for aggregations. */
-  _apply?: string;
-  /** The $expand query parameter. For example, to expand components use $expand=components */
-  _expand?: string;
-  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
-  _skiptoken?: string;
-}
-export const PolicyStatesListQueryResultsForResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceId: S.String.pipe(T.Label()),
-      policyStatesResource:
-        PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource.pipe(
-          T.Label(),
-        ),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-      _select: S.optional(S.String.pipe(T.Query("$select"))),
-      _from: S.optional(S.String.pipe(T.Query("$from"))),
-      _to: S.optional(S.String.pipe(T.Query("$to"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
-      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyStatesListQueryResultsForResourceRequest",
-  }) as any as S.Schema<PolicyStatesListQueryResultsForResourceRequest>;
-
-export type PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
-  | "default"
-  | "latest";
-export const PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
-  /*@__PURE__*/ S.String;
-
-export interface PolicyStatesListQueryResultsForResourceGroupRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource:
-    | PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource
-    | (string & {});
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
-  _orderby?: string;
-  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
-  _select?: string;
-  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
-  _from?: string;
-  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
-  _to?: string;
-  /** OData filter expression. */
-  _filter?: string;
-  /** OData apply expression for aggregations. */
-  _apply?: string;
-  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
-  _skiptoken?: string;
-}
-export const PolicyStatesListQueryResultsForResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      policyStatesResource:
-        PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource.pipe(
-          T.Label(),
-        ),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-      _select: S.optional(S.String.pipe(T.Query("$select"))),
-      _from: S.optional(S.String.pipe(T.Query("$from"))),
-      _to: S.optional(S.String.pipe(T.Query("$to"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
-      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyStatesListQueryResultsForResourceGroupRequest",
-  }) as any as S.Schema<PolicyStatesListQueryResultsForResourceGroupRequest>;
-
-export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization";
-export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  /*@__PURE__*/ S.String;
-
-export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
-  | "default"
-  | "latest";
-export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
-  /*@__PURE__*/ S.String;
-
-export interface PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** Resource group name. */
-  resourceGroupName: string;
-  /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace:
-    | PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace
-    | (string & {});
-  /** Policy assignment name. */
-  policyAssignmentName: string;
-  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource:
-    | PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource
-    | (string & {});
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
-  _orderby?: string;
-  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
-  _select?: string;
-  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
-  _from?: string;
-  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
-  _to?: string;
-  /** OData filter expression. */
-  _filter?: string;
-  /** OData apply expression for aggregations. */
-  _apply?: string;
-  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
-  _skiptoken?: string;
-}
-export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      authorizationNamespace:
-        PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace.pipe(
-          T.Label(),
-        ),
-      policyAssignmentName: S.String.pipe(T.Label()),
-      policyStatesResource:
-        PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource.pipe(
-          T.Label(),
-        ),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-      _select: S.optional(S.String.pipe(T.Query("$select"))),
-      _from: S.optional(S.String.pipe(T.Query("$from"))),
-      _to: S.optional(S.String.pipe(T.Query("$to"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
-      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest",
-  }) as any as S.Schema<PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
-
-export type PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
-  | "default"
-  | "latest";
-export const PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
-  /*@__PURE__*/ S.String;
-
-export interface PolicyStatesListQueryResultsForSubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource:
-    | PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource
-    | (string & {});
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
-  _orderby?: string;
-  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
-  _select?: string;
-  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
-  _from?: string;
-  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
-  _to?: string;
-  /** OData filter expression. */
-  _filter?: string;
-  /** OData apply expression for aggregations. */
-  _apply?: string;
-  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
-  _skiptoken?: string;
-}
-export const PolicyStatesListQueryResultsForSubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      policyStatesResource:
-        PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource.pipe(
-          T.Label(),
-        ),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-      _select: S.optional(S.String.pipe(T.Query("$select"))),
-      _from: S.optional(S.String.pipe(T.Query("$from"))),
-      _to: S.optional(S.String.pipe(T.Query("$to"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
-      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyStatesListQueryResultsForSubscriptionRequest",
-  }) as any as S.Schema<PolicyStatesListQueryResultsForSubscriptionRequest>;
-
-export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization";
-export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  /*@__PURE__*/ S.String;
-
-export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
-  | "default"
-  | "latest";
-export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
-  /*@__PURE__*/ S.String;
-
-export interface PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace:
-    | PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace
-    | (string & {});
-  /** Policy assignment name. */
-  policyAssignmentName: string;
-  /** The virtual resource under PolicyStates resource type. In a given time range, 'latest' represents the latest policy state(s), whereas 'default' represents all policy state(s). */
-  policyStatesResource:
-    | PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource
-    | (string & {});
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** Ordering expression using OData notation. One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc". */
-  _orderby?: string;
-  /** Select expression using OData notation. Limits the columns on each record to just those requested, e.g. "$select=PolicyAssignmentId, ResourceId". */
-  _select?: string;
-  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
-  _from?: string;
-  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
-  _to?: string;
-  /** OData filter expression. */
-  _filter?: string;
-  /** OData apply expression for aggregations. */
-  _apply?: string;
-  /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
-  _skiptoken?: string;
-}
-export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      authorizationNamespace:
-        PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace.pipe(
-          T.Label(),
-        ),
-      policyAssignmentName: S.String.pipe(T.Label()),
-      policyStatesResource:
-        PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource.pipe(
-          T.Label(),
-        ),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-      _select: S.optional(S.String.pipe(T.Query("$select"))),
-      _from: S.optional(S.String.pipe(T.Query("$from"))),
-      _to: S.optional(S.String.pipe(T.Query("$to"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _apply: S.optional(S.String.pipe(T.Query("$apply"))),
-      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest",
-  }) as any as S.Schema<PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest>;
 
 export type PolicyStatesSummarizeForManagementGroupRequestManagementGroupsNamespace =
   "Microsoft.Management";
@@ -3678,67 +4592,6 @@ export const PolicyStatesSummarizeForPolicyDefinitionRequest =
   ).annotate({
     identifier: "PolicyStatesSummarizeForPolicyDefinitionRequest",
   }) as any as S.Schema<PolicyStatesSummarizeForPolicyDefinitionRequest>;
-
-export type PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization";
-export const PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace =
-  /*@__PURE__*/ S.String;
-
-export type PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource =
-  "latest";
-export const PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource =
-  /*@__PURE__*/ S.String;
-
-export interface PolicyStatesSummarizeForPolicySetDefinitionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
-  authorizationNamespace:
-    | PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace
-    | (string & {});
-  /** Policy set definition name. */
-  policySetDefinitionName: string;
-  /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
-  policyStatesSummaryResource:
-    | PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource
-    | (string & {});
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
-  _from?: string;
-  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
-  _to?: string;
-  /** OData filter expression. */
-  _filter?: string;
-}
-export const PolicyStatesSummarizeForPolicySetDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      authorizationNamespace:
-        PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace.pipe(
-          T.Label(),
-        ),
-      policySetDefinitionName: S.String.pipe(T.Label()),
-      policyStatesSummaryResource:
-        PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource.pipe(
-          T.Label(),
-        ),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _from: S.optional(S.String.pipe(T.Query("$from"))),
-      _to: S.optional(S.String.pipe(T.Query("$to"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyStatesSummarizeForPolicySetDefinitionRequest",
-  }) as any as S.Schema<PolicyStatesSummarizeForPolicySetDefinitionRequest>;
 
 export type PolicyStatesSummarizeForResourceRequestPolicyStatesSummaryResource =
   "latest";
@@ -4095,122 +4948,6 @@ export const RemediationsCancelAtManagementGroupRequest =
   ).annotate({
     identifier: "RemediationsCancelAtManagementGroupRequest",
   }) as any as S.Schema<RemediationsCancelAtManagementGroupRequest>;
-
-/** The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified. */
-export type ResourceDiscoveryMode =
-  | "ExistingNonCompliant"
-  | "ReEvaluateCompliance";
-export const ResourceDiscoveryMode = /*@__PURE__*/ S.String;
-
-/** The resource locations that will be remediated. */
-export type RemediationFiltersLocationsList = Array<string>;
-export const RemediationFiltersLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemediationFiltersLocationsList>;
-
-/** The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided. */
-export type RemediationFiltersResourceIdsList = Array<string>;
-export const RemediationFiltersResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemediationFiltersResourceIdsList>;
-
-/** The filters that will be applied to determine which resources to remediate. */
-export interface RemediationFilters {
-  /** The resource locations that will be remediated. */
-  locations?: RemediationFiltersLocationsList;
-  /** The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided. */
-  resourceIds?: RemediationFiltersResourceIdsList;
-}
-export const RemediationFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locations: S.optional(RemediationFiltersLocationsList),
-    resourceIds: S.optional(RemediationFiltersResourceIdsList),
-  }),
-).annotate({
-  identifier: "RemediationFilters",
-}) as any as S.Schema<RemediationFilters>;
-
-/** The deployment status summary for all deployments created by the remediation. */
-export interface RemediationDeploymentSummary {
-  /** The number of deployments required by the remediation. */
-  totalDeployments?: number;
-  /** The number of deployments required by the remediation that have succeeded. */
-  successfulDeployments?: number;
-  /** The number of deployments required by the remediation that have failed. */
-  failedDeployments?: number;
-}
-export const RemediationDeploymentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalDeployments: S.optional(S.Number),
-    successfulDeployments: S.optional(S.Number),
-    failedDeployments: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RemediationDeploymentSummary",
-}) as any as S.Schema<RemediationDeploymentSummary>;
-
-/** The remediation failure threshold settings */
-export interface RemediationPropertiesFailureThreshold {
-  /** A number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold. */
-  percentage?: number;
-}
-export const RemediationPropertiesFailureThreshold = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      percentage: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RemediationPropertiesFailureThreshold",
-}) as any as S.Schema<RemediationPropertiesFailureThreshold>;
-
-/** The remediation properties. */
-export interface RemediationProperties {
-  /** The resource ID of the policy assignment that should be remediated. */
-  policyAssignmentId?: string;
-  /** The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition. */
-  policyDefinitionReferenceId?: string;
-  /** The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified. */
-  resourceDiscoveryMode?: ResourceDiscoveryMode;
-  /** The status of the remediation. This refers to the entire remediation task, not individual deployments. Allowed values are Evaluating, Canceled, Cancelling, Failed, Complete, or Succeeded. */
-  provisioningState?: string;
-  /** The time at which the remediation was created. */
-  createdOn?: string;
-  /** The time at which the remediation was last updated. */
-  lastUpdatedOn?: string;
-  /** The filters that will be applied to determine which resources to remediate. */
-  filters?: RemediationFilters;
-  /** The deployment status summary for all deployments created by the remediation. */
-  deploymentStatus?: RemediationDeploymentSummary;
-  /** The remediation status message. Provides additional details regarding the state of the remediation. */
-  statusMessage?: string;
-  /** The remediation correlation Id. Can be used to find events related to the remediation in the activity log. */
-  correlationId?: string;
-  /** Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used. */
-  resourceCount?: number;
-  /** Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used. */
-  parallelDeployments?: number;
-  /** The remediation failure threshold settings */
-  failureThreshold?: RemediationPropertiesFailureThreshold;
-}
-export const RemediationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyAssignmentId: S.optional(S.String),
-    policyDefinitionReferenceId: S.optional(S.String),
-    resourceDiscoveryMode: S.optional(ResourceDiscoveryMode),
-    provisioningState: S.optional(S.String),
-    createdOn: S.optional(S.String),
-    lastUpdatedOn: S.optional(S.String),
-    filters: S.optional(RemediationFilters),
-    deploymentStatus: S.optional(RemediationDeploymentSummary),
-    statusMessage: S.optional(S.String),
-    correlationId: S.optional(S.String),
-    resourceCount: S.optional(S.Number),
-    parallelDeployments: S.optional(S.Number),
-    failureThreshold: S.optional(RemediationPropertiesFailureThreshold),
-  }),
-).annotate({
-  identifier: "RemediationProperties",
-}) as any as S.Schema<RemediationProperties>;
 
 export interface RemediationsCancelAtManagementGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4634,807 +5371,66 @@ export const RemediationsCreateOrUpdateAtSubscriptionResponse =
     identifier: "RemediationsCreateOrUpdateAtSubscriptionResponse",
   }) as any as S.Schema<RemediationsCreateOrUpdateAtSubscriptionResponse>;
 
-export type RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management";
-export const RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace =
+export type PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace =
+  "Microsoft.Authorization";
+export const PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
-export interface RemediationsDeleteAtManagementGroupRequest {
-  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace:
-    | RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace
-    | (string & {});
-  /** Management group ID. */
-  managementGroupId: string;
-  /** The name of the remediation. */
-  remediationName: string;
-}
-export const RemediationsDeleteAtManagementGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managementGroupsNamespace:
-        RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace.pipe(
-          T.Label(),
-        ),
-      managementGroupId: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemediationsDeleteAtManagementGroupRequest",
-  }) as any as S.Schema<RemediationsDeleteAtManagementGroupRequest>;
-
-export interface RemediationsDeleteAtManagementGroupResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties for the remediation. */
-  properties?: RemediationProperties;
-}
-export const RemediationsDeleteAtManagementGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RemediationProperties),
-    }),
-  ).annotate({
-    identifier: "RemediationsDeleteAtManagementGroupResponse",
-  }) as any as S.Schema<RemediationsDeleteAtManagementGroupResponse>;
-
-export interface RemediationsDeleteAtResourceRequest {
-  /** Resource ID. */
-  resourceId: string;
-  /** The name of the remediation. */
-  remediationName: string;
-}
-export const RemediationsDeleteAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.String.pipe(T.Label()),
-    remediationName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
-      code: 200,
-      apiVersion: "2024-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "RemediationsDeleteAtResourceRequest",
-}) as any as S.Schema<RemediationsDeleteAtResourceRequest>;
-
-export interface RemediationsDeleteAtResourceResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties for the remediation. */
-  properties?: RemediationProperties;
-}
-export const RemediationsDeleteAtResourceResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RemediationProperties),
-    }),
-).annotate({
-  identifier: "RemediationsDeleteAtResourceResponse",
-}) as any as S.Schema<RemediationsDeleteAtResourceResponse>;
-
-export interface RemediationsDeleteAtResourceGroupRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the remediation. */
-  remediationName: string;
-}
-export const RemediationsDeleteAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "RemediationsDeleteAtResourceGroupRequest",
-}) as any as S.Schema<RemediationsDeleteAtResourceGroupRequest>;
-
-export interface RemediationsDeleteAtResourceGroupResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties for the remediation. */
-  properties?: RemediationProperties;
-}
-export const RemediationsDeleteAtResourceGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RemediationProperties),
-    }),
-  ).annotate({
-    identifier: "RemediationsDeleteAtResourceGroupResponse",
-  }) as any as S.Schema<RemediationsDeleteAtResourceGroupResponse>;
-
-export interface RemediationsDeleteAtSubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the remediation. */
-  remediationName: string;
-}
-export const RemediationsDeleteAtSubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "RemediationsDeleteAtSubscriptionRequest",
-}) as any as S.Schema<RemediationsDeleteAtSubscriptionRequest>;
-
-export interface RemediationsDeleteAtSubscriptionResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties for the remediation. */
-  properties?: RemediationProperties;
-}
-export const RemediationsDeleteAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RemediationProperties),
-    }),
-).annotate({
-  identifier: "RemediationsDeleteAtSubscriptionResponse",
-}) as any as S.Schema<RemediationsDeleteAtSubscriptionResponse>;
-
-export type RemediationsGetAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management";
-export const RemediationsGetAtManagementGroupRequestManagementGroupsNamespace =
+export type PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource =
+  "latest";
+export const PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
-export interface RemediationsGetAtManagementGroupRequest {
-  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace:
-    | RemediationsGetAtManagementGroupRequestManagementGroupsNamespace
+export interface SetPolicyStateSummarizeForPolicyDefinitionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The namespace for Microsoft Authorization resource provider; only "Microsoft.Authorization" is allowed. */
+  authorizationNamespace:
+    | PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace
     | (string & {});
-  /** Management group ID. */
-  managementGroupId: string;
-  /** The name of the remediation. */
-  remediationName: string;
-}
-export const RemediationsGetAtManagementGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      managementGroupsNamespace:
-        RemediationsGetAtManagementGroupRequestManagementGroupsNamespace.pipe(
-          T.Label(),
-        ),
-      managementGroupId: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "RemediationsGetAtManagementGroupRequest",
-}) as any as S.Schema<RemediationsGetAtManagementGroupRequest>;
-
-export interface RemediationsGetAtManagementGroupResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties for the remediation. */
-  properties?: RemediationProperties;
-}
-export const RemediationsGetAtManagementGroupResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RemediationProperties),
-    }),
-).annotate({
-  identifier: "RemediationsGetAtManagementGroupResponse",
-}) as any as S.Schema<RemediationsGetAtManagementGroupResponse>;
-
-export interface RemediationsGetAtResourceRequest {
-  /** Resource ID. */
-  resourceId: string;
-  /** The name of the remediation. */
-  remediationName: string;
-}
-export const RemediationsGetAtResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.String.pipe(T.Label()),
-    remediationName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
-      code: 200,
-      apiVersion: "2024-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "RemediationsGetAtResourceRequest",
-}) as any as S.Schema<RemediationsGetAtResourceRequest>;
-
-export interface RemediationsGetAtResourceResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties for the remediation. */
-  properties?: RemediationProperties;
-}
-export const RemediationsGetAtResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({
-  identifier: "RemediationsGetAtResourceResponse",
-}) as any as S.Schema<RemediationsGetAtResourceResponse>;
-
-export interface RemediationsGetAtResourceGroupRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the remediation. */
-  remediationName: string;
-}
-export const RemediationsGetAtResourceGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "RemediationsGetAtResourceGroupRequest",
-}) as any as S.Schema<RemediationsGetAtResourceGroupRequest>;
-
-export interface RemediationsGetAtResourceGroupResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties for the remediation. */
-  properties?: RemediationProperties;
-}
-export const RemediationsGetAtResourceGroupResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RemediationProperties),
-    }),
-).annotate({
-  identifier: "RemediationsGetAtResourceGroupResponse",
-}) as any as S.Schema<RemediationsGetAtResourceGroupResponse>;
-
-export interface RemediationsGetAtSubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the remediation. */
-  remediationName: string;
-}
-export const RemediationsGetAtSubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "RemediationsGetAtSubscriptionRequest",
-}) as any as S.Schema<RemediationsGetAtSubscriptionRequest>;
-
-export interface RemediationsGetAtSubscriptionResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties for the remediation. */
-  properties?: RemediationProperties;
-}
-export const RemediationsGetAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RemediationProperties),
-    }),
-).annotate({
-  identifier: "RemediationsGetAtSubscriptionResponse",
-}) as any as S.Schema<RemediationsGetAtSubscriptionResponse>;
-
-export type RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management";
-export const RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace =
-  /*@__PURE__*/ S.String;
-
-export interface RemediationsListDeploymentsAtManagementGroupRequest {
-  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace:
-    | RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace
+  /** Policy set definition name. */
+  policySetDefinitionName: string;
+  /** The virtual resource under PolicyStates resource type for summarize action. In a given time range, 'latest' represents the latest policy state(s) and is the only allowed value. */
+  policyStatesSummaryResource:
+    | PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource
     | (string & {});
-  /** Management group ID. */
-  managementGroupId: string;
-  /** The name of the remediation. */
-  remediationName: string;
   /** Maximum number of records to return. */
   _top?: number;
-}
-export const RemediationsListDeploymentsAtManagementGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managementGroupsNamespace:
-        RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace.pipe(
-          T.Label(),
-        ),
-      managementGroupId: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemediationsListDeploymentsAtManagementGroupRequest",
-  }) as any as S.Schema<RemediationsListDeploymentsAtManagementGroupRequest>;
-
-/** Internal error details. */
-export type ErrorDefinitionDetailsList = Array<ErrorDefinition>;
-export const ErrorDefinitionDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDefinition),
-) as any as S.Schema<ErrorDefinitionDetailsList>;
-
-/** Scenario specific error details. */
-export interface TypedErrorInfo {
-  /** The type of included error details. */
-  type?: string;
-  /** The scenario specific error details. */
-  info?: unknown;
-}
-export const TypedErrorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    info: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "TypedErrorInfo" }) as any as S.Schema<TypedErrorInfo>;
-
-/** Additional scenario specific error details. */
-export type ErrorDefinitionAdditionalInfoList = Array<TypedErrorInfo>;
-export const ErrorDefinitionAdditionalInfoList = /*@__PURE__*/ S.Array(
-  TypedErrorInfo,
-) as any as S.Schema<ErrorDefinitionAdditionalInfoList>;
-
-/** Error definition. */
-export interface ErrorDefinition {
-  /** Service specific error code which serves as the substatus for the HTTP error code. */
-  code?: string;
-  /** Description of the error. */
-  message?: string;
-  /** The target of the error. */
-  target?: string;
-  /** Internal error details. */
-  details?: ErrorDefinitionDetailsList;
-  /** Additional scenario specific error details. */
-  additionalInfo?: ErrorDefinitionAdditionalInfoList;
-}
-export const ErrorDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    target: S.optional(S.String),
-    details: S.optional(ErrorDefinitionDetailsList),
-    additionalInfo: S.optional(ErrorDefinitionAdditionalInfoList),
-  }),
-).annotate({
-  identifier: "ErrorDefinition",
-}) as any as S.Schema<ErrorDefinition>;
-
-/** Details of a single deployment created by the remediation. */
-export interface RemediationDeployment {
-  /** Resource ID of the resource that is being remediated by the deployment. */
-  remediatedResourceId?: string;
-  /** Resource ID of the template deployment that will remediate the resource. */
-  deploymentId?: string;
-  /** Status of the remediation deployment. */
-  status?: string;
-  /** Location of the resource that is being remediated. */
-  resourceLocation?: string;
-  /** Error encountered while remediated the resource. */
-  error?: ErrorDefinition;
-  /** The time at which the remediation was created. */
-  createdOn?: string;
-  /** The time at which the remediation deployment was last updated. */
-  lastUpdatedOn?: string;
-}
-export const RemediationDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remediatedResourceId: S.optional(S.String),
-    deploymentId: S.optional(S.String),
-    status: S.optional(S.String),
-    resourceLocation: S.optional(S.String),
-    error: S.optional(ErrorDefinition),
-    createdOn: S.optional(S.String),
-    lastUpdatedOn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemediationDeployment",
-}) as any as S.Schema<RemediationDeployment>;
-
-/** The RemediationDeployment items on this page */
-export type RemediationDeploymentsListResultValueList =
-  Array<RemediationDeployment>;
-export const RemediationDeploymentsListResultValueList = /*@__PURE__*/ S.Array(
-  RemediationDeployment,
-) as any as S.Schema<RemediationDeploymentsListResultValueList>;
-
-/** List of deployments for a remediation. */
-export interface RemediationDeploymentsListResult {
-  /** The RemediationDeployment items on this page */
-  value: RemediationDeploymentsListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const RemediationDeploymentsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: RemediationDeploymentsListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemediationDeploymentsListResult",
-}) as any as S.Schema<RemediationDeploymentsListResult>;
-
-export interface RemediationsListDeploymentsAtResourceRequest {
-  /** Resource ID. */
-  resourceId: string;
-  /** The name of the remediation. */
-  remediationName: string;
-  /** Maximum number of records to return. */
-  _top?: number;
-}
-export const RemediationsListDeploymentsAtResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceId: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemediationsListDeploymentsAtResourceRequest",
-  }) as any as S.Schema<RemediationsListDeploymentsAtResourceRequest>;
-
-export interface RemediationsListDeploymentsAtResourceGroupRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the remediation. */
-  remediationName: string;
-  /** Maximum number of records to return. */
-  _top?: number;
-}
-export const RemediationsListDeploymentsAtResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemediationsListDeploymentsAtResourceGroupRequest",
-  }) as any as S.Schema<RemediationsListDeploymentsAtResourceGroupRequest>;
-
-export interface RemediationsListDeploymentsAtSubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the remediation. */
-  remediationName: string;
-  /** Maximum number of records to return. */
-  _top?: number;
-}
-export const RemediationsListDeploymentsAtSubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      remediationName: S.String.pipe(T.Label()),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemediationsListDeploymentsAtSubscriptionRequest",
-  }) as any as S.Schema<RemediationsListDeploymentsAtSubscriptionRequest>;
-
-export type RemediationsListForManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management";
-export const RemediationsListForManagementGroupRequestManagementGroupsNamespace =
-  /*@__PURE__*/ S.String;
-
-export interface RemediationsListForManagementGroupRequest {
-  /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
-  managementGroupsNamespace:
-    | RemediationsListForManagementGroupRequestManagementGroupsNamespace
-    | (string & {});
-  /** Management group ID. */
-  managementGroupId: string;
-  /** Maximum number of records to return. */
-  _top?: number;
+  /** ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, the service uses ($to - 1-day). */
+  _from?: string;
+  /** ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, the service uses request time. */
+  _to?: string;
   /** OData filter expression. */
   _filter?: string;
 }
-export const RemediationsListForManagementGroupRequest =
+export const SetPolicyStateSummarizeForPolicyDefinitionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      managementGroupsNamespace:
-        RemediationsListForManagementGroupRequestManagementGroupsNamespace.pipe(
+      subscriptionId: S.String.pipe(T.Label()),
+      authorizationNamespace:
+        PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace.pipe(
           T.Label(),
         ),
-      managementGroupId: S.String.pipe(T.Label()),
+      policySetDefinitionName: S.String.pipe(T.Label()),
+      policyStatesSummaryResource:
+        PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource.pipe(
+          T.Label(),
+        ),
       _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _from: S.optional(S.String.pipe(T.Query("$from"))),
+      _to: S.optional(S.String.pipe(T.Query("$to"))),
       _filter: S.optional(S.String.pipe(T.Query("$filter"))),
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations",
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
         code: 200,
         apiVersion: "2024-10-01",
       }),
     ),
   ).annotate({
-    identifier: "RemediationsListForManagementGroupRequest",
-  }) as any as S.Schema<RemediationsListForManagementGroupRequest>;
-
-/** The remediation definition. */
-export interface Remediation {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties for the remediation. */
-  properties?: RemediationProperties;
-}
-export const Remediation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemediationProperties),
-  }),
-).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
-
-/** The Remediation items on this page */
-export type RemediationListResultValueList = Array<Remediation>;
-export const RemediationListResultValueList = /*@__PURE__*/ S.Array(
-  Remediation,
-) as any as S.Schema<RemediationListResultValueList>;
-
-/** List of remediations. */
-export interface RemediationListResult {
-  /** The Remediation items on this page */
-  value: RemediationListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const RemediationListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: RemediationListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemediationListResult",
-}) as any as S.Schema<RemediationListResult>;
-
-export interface RemediationsListForResourceRequest {
-  /** Resource ID. */
-  resourceId: string;
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** OData filter expression. */
-  _filter?: string;
-}
-export const RemediationsListForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.String.pipe(T.Label()),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations",
-      code: 200,
-      apiVersion: "2024-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "RemediationsListForResourceRequest",
-}) as any as S.Schema<RemediationsListForResourceRequest>;
-
-export interface RemediationsListForResourceGroupRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** OData filter expression. */
-  _filter?: string;
-}
-export const RemediationsListForResourceGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "RemediationsListForResourceGroupRequest",
-}) as any as S.Schema<RemediationsListForResourceGroupRequest>;
-
-export interface RemediationsListForSubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** Maximum number of records to return. */
-  _top?: number;
-  /** OData filter expression. */
-  _filter?: string;
-}
-export const RemediationsListForSubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations",
-        code: 200,
-        apiVersion: "2024-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "RemediationsListForSubscriptionRequest",
-}) as any as S.Schema<RemediationsListForSubscriptionRequest>;
+    identifier: "SetPolicyStateSummarizeForPolicyDefinitionRequest",
+  }) as any as S.Schema<SetPolicyStateSummarizeForPolicyDefinitionRequest>;
 
 export type AttestationsCreateOrUpdateAtResourceError = AzureOpError;
 /** Creates or updates an attestation at resource scope. */
@@ -5481,279 +5477,777 @@ export const AttestationsCreateOrUpdateAtSubscription: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AttestationsDeleteAtResourceError = AzureOpError;
+export type CheckPolicyRestrictionAtManagementGroupScopeError = AzureOpError;
+/** Checks what restrictions Azure Policy will place on resources within a management group. */
+export const CheckPolicyRestrictionAtManagementGroupScope: API.OperationMethod<
+  CheckPolicyRestrictionAtManagementGroupScopeRequest,
+  CheckRestrictionsResult,
+  CheckPolicyRestrictionAtManagementGroupScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckPolicyRestrictionAtManagementGroupScopeRequest,
+  output: CheckRestrictionsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CheckPolicyRestrictionAtResourceGroupScopeError = AzureOpError;
+/** Checks what restrictions Azure Policy will place on a resource within a resource group. Use this when the resource group the resource will be created in is already known. */
+export const CheckPolicyRestrictionAtResourceGroupScope: API.OperationMethod<
+  CheckPolicyRestrictionAtResourceGroupScopeRequest,
+  CheckRestrictionsResult,
+  CheckPolicyRestrictionAtResourceGroupScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckPolicyRestrictionAtResourceGroupScopeRequest,
+  output: CheckRestrictionsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CheckPolicyRestrictionAtSubscriptionScopeError = AzureOpError;
+/** Checks what restrictions Azure Policy will place on a resource within a subscription. */
+export const CheckPolicyRestrictionAtSubscriptionScope: API.OperationMethod<
+  CheckPolicyRestrictionAtSubscriptionScopeRequest,
+  CheckRestrictionsResult,
+  CheckPolicyRestrictionAtSubscriptionScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckPolicyRestrictionAtSubscriptionScopeRequest,
+  output: CheckRestrictionsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAttestationAtResourceError = AzureOpError;
 /** Deletes an existing attestation at individual resource scope. */
-export const AttestationsDeleteAtResource: API.OperationMethod<
-  AttestationsDeleteAtResourceRequest,
-  AttestationsDeleteAtResourceResponse,
-  AttestationsDeleteAtResourceError,
+export const DeleteAttestationAtResource: API.OperationMethod<
+  DeleteAttestationAtResourceRequest,
+  DeleteAttestationAtResourceResponse,
+  DeleteAttestationAtResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttestationsDeleteAtResourceRequest,
-  output: AttestationsDeleteAtResourceResponse,
+  input: DeleteAttestationAtResourceRequest,
+  output: DeleteAttestationAtResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AttestationsDeleteAtResourceGroupError = AzureOpError;
+export type DeleteAttestationAtResourceGroupError = AzureOpError;
 /** Deletes an existing attestation at resource group scope. */
-export const AttestationsDeleteAtResourceGroup: API.OperationMethod<
-  AttestationsDeleteAtResourceGroupRequest,
-  AttestationsDeleteAtResourceGroupResponse,
-  AttestationsDeleteAtResourceGroupError,
+export const DeleteAttestationAtResourceGroup: API.OperationMethod<
+  DeleteAttestationAtResourceGroupRequest,
+  DeleteAttestationAtResourceGroupResponse,
+  DeleteAttestationAtResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttestationsDeleteAtResourceGroupRequest,
-  output: AttestationsDeleteAtResourceGroupResponse,
+  input: DeleteAttestationAtResourceGroupRequest,
+  output: DeleteAttestationAtResourceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AttestationsDeleteAtSubscriptionError = AzureOpError;
+export type DeleteAttestationAtSubscriptionError = AzureOpError;
 /** Deletes an existing attestation at subscription scope. */
-export const AttestationsDeleteAtSubscription: API.OperationMethod<
-  AttestationsDeleteAtSubscriptionRequest,
-  AttestationsDeleteAtSubscriptionResponse,
-  AttestationsDeleteAtSubscriptionError,
+export const DeleteAttestationAtSubscription: API.OperationMethod<
+  DeleteAttestationAtSubscriptionRequest,
+  DeleteAttestationAtSubscriptionResponse,
+  DeleteAttestationAtSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttestationsDeleteAtSubscriptionRequest,
-  output: AttestationsDeleteAtSubscriptionResponse,
+  input: DeleteAttestationAtSubscriptionRequest,
+  output: DeleteAttestationAtSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AttestationsGetAtResourceError = AzureOpError;
+export type DeleteRemediationAtManagementGroupError = AzureOpError;
+/** Deletes an existing remediation at management group scope. */
+export const DeleteRemediationAtManagementGroup: API.OperationMethod<
+  DeleteRemediationAtManagementGroupRequest,
+  DeleteRemediationAtManagementGroupResponse,
+  DeleteRemediationAtManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRemediationAtManagementGroupRequest,
+  output: DeleteRemediationAtManagementGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRemediationAtResourceError = AzureOpError;
+/** Deletes an existing remediation at individual resource scope. */
+export const DeleteRemediationAtResource: API.OperationMethod<
+  DeleteRemediationAtResourceRequest,
+  DeleteRemediationAtResourceResponse,
+  DeleteRemediationAtResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRemediationAtResourceRequest,
+  output: DeleteRemediationAtResourceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRemediationAtResourceGroupError = AzureOpError;
+/** Deletes an existing remediation at resource group scope. */
+export const DeleteRemediationAtResourceGroup: API.OperationMethod<
+  DeleteRemediationAtResourceGroupRequest,
+  DeleteRemediationAtResourceGroupResponse,
+  DeleteRemediationAtResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRemediationAtResourceGroupRequest,
+  output: DeleteRemediationAtResourceGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRemediationAtSubscriptionError = AzureOpError;
+/** Deletes an existing remediation at subscription scope. */
+export const DeleteRemediationAtSubscription: API.OperationMethod<
+  DeleteRemediationAtSubscriptionRequest,
+  DeleteRemediationAtSubscriptionResponse,
+  DeleteRemediationAtSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRemediationAtSubscriptionRequest,
+  output: DeleteRemediationAtSubscriptionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAttestationAtResourceError = AzureOpError;
 /** Gets an existing attestation at resource scope. */
-export const AttestationsGetAtResource: API.OperationMethod<
-  AttestationsGetAtResourceRequest,
-  AttestationsGetAtResourceResponse,
-  AttestationsGetAtResourceError,
+export const GetAttestationAtResource: API.OperationMethod<
+  GetAttestationAtResourceRequest,
+  GetAttestationAtResourceResponse,
+  GetAttestationAtResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttestationsGetAtResourceRequest,
-  output: AttestationsGetAtResourceResponse,
+  input: GetAttestationAtResourceRequest,
+  output: GetAttestationAtResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AttestationsGetAtResourceGroupError = AzureOpError;
+export type GetAttestationAtResourceGroupError = AzureOpError;
 /** Gets an existing attestation at resource group scope. */
-export const AttestationsGetAtResourceGroup: API.OperationMethod<
-  AttestationsGetAtResourceGroupRequest,
-  AttestationsGetAtResourceGroupResponse,
-  AttestationsGetAtResourceGroupError,
+export const GetAttestationAtResourceGroup: API.OperationMethod<
+  GetAttestationAtResourceGroupRequest,
+  GetAttestationAtResourceGroupResponse,
+  GetAttestationAtResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttestationsGetAtResourceGroupRequest,
-  output: AttestationsGetAtResourceGroupResponse,
+  input: GetAttestationAtResourceGroupRequest,
+  output: GetAttestationAtResourceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AttestationsGetAtSubscriptionError = AzureOpError;
+export type GetAttestationAtSubscriptionError = AzureOpError;
 /** Gets an existing attestation at subscription scope. */
-export const AttestationsGetAtSubscription: API.OperationMethod<
-  AttestationsGetAtSubscriptionRequest,
-  AttestationsGetAtSubscriptionResponse,
-  AttestationsGetAtSubscriptionError,
+export const GetAttestationAtSubscription: API.OperationMethod<
+  GetAttestationAtSubscriptionRequest,
+  GetAttestationAtSubscriptionResponse,
+  GetAttestationAtSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttestationsGetAtSubscriptionRequest,
-  output: AttestationsGetAtSubscriptionResponse,
+  input: GetAttestationAtSubscriptionRequest,
+  output: GetAttestationAtSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AttestationsListForResourceError = AzureOpError;
+export type GetPolicyMetadataResourceError = AzureOpError;
+/** Get policy metadata resource. */
+export const GetPolicyMetadataResource: API.OperationMethod<
+  GetPolicyMetadataResourceRequest,
+  GetPolicyMetadataResourceResponse,
+  GetPolicyMetadataResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPolicyMetadataResourceRequest,
+  output: GetPolicyMetadataResourceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRemediationAtManagementGroupError = AzureOpError;
+/** Gets an existing remediation at management group scope. */
+export const GetRemediationAtManagementGroup: API.OperationMethod<
+  GetRemediationAtManagementGroupRequest,
+  GetRemediationAtManagementGroupResponse,
+  GetRemediationAtManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRemediationAtManagementGroupRequest,
+  output: GetRemediationAtManagementGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRemediationAtResourceError = AzureOpError;
+/** Gets an existing remediation at resource scope. */
+export const GetRemediationAtResource: API.OperationMethod<
+  GetRemediationAtResourceRequest,
+  GetRemediationAtResourceResponse,
+  GetRemediationAtResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRemediationAtResourceRequest,
+  output: GetRemediationAtResourceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRemediationAtResourceGroupError = AzureOpError;
+/** Gets an existing remediation at resource group scope. */
+export const GetRemediationAtResourceGroup: API.OperationMethod<
+  GetRemediationAtResourceGroupRequest,
+  GetRemediationAtResourceGroupResponse,
+  GetRemediationAtResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRemediationAtResourceGroupRequest,
+  output: GetRemediationAtResourceGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRemediationAtSubscriptionError = AzureOpError;
+/** Gets an existing remediation at subscription scope. */
+export const GetRemediationAtSubscription: API.OperationMethod<
+  GetRemediationAtSubscriptionRequest,
+  GetRemediationAtSubscriptionResponse,
+  GetRemediationAtSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRemediationAtSubscriptionRequest,
+  output: GetRemediationAtSubscriptionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAttestationForResourceError = AzureOpError;
 /** Gets all attestations for a resource. */
-export const AttestationsListForResource: API.OperationMethod<
-  AttestationsListForResourceRequest,
+export const ListAttestationForResource: API.OperationMethod<
+  ListAttestationForResourceRequest,
   AttestationListResult,
-  AttestationsListForResourceError,
+  ListAttestationForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttestationsListForResourceRequest,
+  input: ListAttestationForResourceRequest,
   output: AttestationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AttestationsListForResourceGroupError = AzureOpError;
+export type ListAttestationForResourceGroupError = AzureOpError;
 /** Gets all attestations for the resource group. */
-export const AttestationsListForResourceGroup: API.OperationMethod<
-  AttestationsListForResourceGroupRequest,
+export const ListAttestationForResourceGroup: API.OperationMethod<
+  ListAttestationForResourceGroupRequest,
   AttestationListResult,
-  AttestationsListForResourceGroupError,
+  ListAttestationForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttestationsListForResourceGroupRequest,
+  input: ListAttestationForResourceGroupRequest,
   output: AttestationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AttestationsListForSubscriptionError = AzureOpError;
+export type ListAttestationForSubscriptionError = AzureOpError;
 /** Gets all attestations for the subscription. */
-export const AttestationsListForSubscription: API.OperationMethod<
-  AttestationsListForSubscriptionRequest,
+export const ListAttestationForSubscription: API.OperationMethod<
+  ListAttestationForSubscriptionRequest,
   AttestationListResult,
-  AttestationsListForSubscriptionError,
+  ListAttestationForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttestationsListForSubscriptionRequest,
+  input: ListAttestationForSubscriptionRequest,
   output: AttestationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionError =
+export type ListComponentPolicyStateQueryResultForPolicyDefinitionError =
   AzureOpError;
 /** Queries component policy states for the subscription level policy definition. */
-export const ComponentPolicyStatesListQueryResultsForPolicyDefinition: API.OperationMethod<
-  ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest,
+export const ListComponentPolicyStateQueryResultForPolicyDefinition: API.OperationMethod<
+  ListComponentPolicyStateQueryResultForPolicyDefinitionRequest,
   ComponentPolicyStatesQueryResults,
-  ComponentPolicyStatesListQueryResultsForPolicyDefinitionError,
+  ListComponentPolicyStateQueryResultForPolicyDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequest,
+  input: ListComponentPolicyStateQueryResultForPolicyDefinitionRequest,
   output: ComponentPolicyStatesQueryResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ComponentPolicyStatesListQueryResultsForResourceError =
-  AzureOpError;
+export type ListComponentPolicyStateQueryResultForResourceError = AzureOpError;
 /** Queries component policy states for the resource. */
-export const ComponentPolicyStatesListQueryResultsForResource: API.OperationMethod<
-  ComponentPolicyStatesListQueryResultsForResourceRequest,
+export const ListComponentPolicyStateQueryResultForResource: API.OperationMethod<
+  ListComponentPolicyStateQueryResultForResourceRequest,
   ComponentPolicyStatesQueryResults,
-  ComponentPolicyStatesListQueryResultsForResourceError,
+  ListComponentPolicyStateQueryResultForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComponentPolicyStatesListQueryResultsForResourceRequest,
+  input: ListComponentPolicyStateQueryResultForResourceRequest,
   output: ComponentPolicyStatesQueryResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ComponentPolicyStatesListQueryResultsForResourceGroupError =
+export type ListComponentPolicyStateQueryResultForResourceGroupError =
   AzureOpError;
 /** Queries component policy states under resource group scope. */
-export const ComponentPolicyStatesListQueryResultsForResourceGroup: API.OperationMethod<
-  ComponentPolicyStatesListQueryResultsForResourceGroupRequest,
+export const ListComponentPolicyStateQueryResultForResourceGroup: API.OperationMethod<
+  ListComponentPolicyStateQueryResultForResourceGroupRequest,
   ComponentPolicyStatesQueryResults,
-  ComponentPolicyStatesListQueryResultsForResourceGroupError,
+  ListComponentPolicyStateQueryResultForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComponentPolicyStatesListQueryResultsForResourceGroupRequest,
+  input: ListComponentPolicyStateQueryResultForResourceGroupRequest,
   output: ComponentPolicyStatesQueryResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentError =
+export type ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentError =
   AzureOpError;
 /** Queries component policy states for the resource group level policy assignment. */
-export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment: API.OperationMethod<
-  ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest,
+export const ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignment: API.OperationMethod<
+  ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest,
   ComponentPolicyStatesQueryResults,
-  ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentError,
+  ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input:
-    ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest,
+    ListComponentPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest,
   output: ComponentPolicyStatesQueryResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ComponentPolicyStatesListQueryResultsForSubscriptionError =
+export type ListComponentPolicyStateQueryResultForSubscriptionError =
   AzureOpError;
 /** Queries component policy states under subscription scope. */
-export const ComponentPolicyStatesListQueryResultsForSubscription: API.OperationMethod<
-  ComponentPolicyStatesListQueryResultsForSubscriptionRequest,
+export const ListComponentPolicyStateQueryResultForSubscription: API.OperationMethod<
+  ListComponentPolicyStateQueryResultForSubscriptionRequest,
   ComponentPolicyStatesQueryResults,
-  ComponentPolicyStatesListQueryResultsForSubscriptionError,
+  ListComponentPolicyStateQueryResultForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComponentPolicyStatesListQueryResultsForSubscriptionRequest,
+  input: ListComponentPolicyStateQueryResultForSubscriptionRequest,
   output: ComponentPolicyStatesQueryResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentError =
+export type ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentError =
   AzureOpError;
 /** Queries component policy states for the subscription level policy assignment. */
-export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment: API.OperationMethod<
-  ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest,
+export const ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignment: API.OperationMethod<
+  ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest,
   ComponentPolicyStatesQueryResults,
-  ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentError,
+  ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input:
-    ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest,
+    ListComponentPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest,
   output: ComponentPolicyStatesQueryResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
+export type ListOperationsError = AzureOpError;
 /** Lists available operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
   OperationsListResults,
-  OperationsListError,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: ListOperationsRequest,
   output: OperationsListResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type PolicyEventsListQueryResultsForManagementGroupError = AzureOpError;
+export type ListPolicyEventQueryResultForManagementGroupError = AzureOpError;
 /** Queries policy events for the resources under the management group. */
-export const PolicyEventsListQueryResultsForManagementGroup: API.OperationMethod<
-  PolicyEventsListQueryResultsForManagementGroupRequest,
+export const ListPolicyEventQueryResultForManagementGroup: API.OperationMethod<
+  ListPolicyEventQueryResultForManagementGroupRequest,
   PolicyEventsQueryResults,
-  PolicyEventsListQueryResultsForManagementGroupError,
+  ListPolicyEventQueryResultForManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PolicyEventsListQueryResultsForManagementGroupRequest,
+  input: ListPolicyEventQueryResultForManagementGroupRequest,
   output: PolicyEventsQueryResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type PolicyEventsListQueryResultsForPolicyDefinitionError = AzureOpError;
+export type ListPolicyEventQueryResultForPolicyDefinitionError = AzureOpError;
 /** Queries policy events for the subscription level policy definition. */
-export const PolicyEventsListQueryResultsForPolicyDefinition: API.OperationMethod<
-  PolicyEventsListQueryResultsForPolicyDefinitionRequest,
+export const ListPolicyEventQueryResultForPolicyDefinition: API.OperationMethod<
+  ListPolicyEventQueryResultForPolicyDefinitionRequest,
   PolicyEventsQueryResults,
-  PolicyEventsListQueryResultsForPolicyDefinitionError,
+  ListPolicyEventQueryResultForPolicyDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PolicyEventsListQueryResultsForPolicyDefinitionRequest,
+  input: ListPolicyEventQueryResultForPolicyDefinitionRequest,
   output: PolicyEventsQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyEventQueryResultForResourceError = AzureOpError;
+/** Queries policy events for the resource. */
+export const ListPolicyEventQueryResultForResource: API.OperationMethod<
+  ListPolicyEventQueryResultForResourceRequest,
+  PolicyEventsQueryResults,
+  ListPolicyEventQueryResultForResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyEventQueryResultForResourceRequest,
+  output: PolicyEventsQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyEventQueryResultForResourceGroupError = AzureOpError;
+/** Queries policy events for the resources under the resource group. */
+export const ListPolicyEventQueryResultForResourceGroup: API.OperationMethod<
+  ListPolicyEventQueryResultForResourceGroupRequest,
+  PolicyEventsQueryResults,
+  ListPolicyEventQueryResultForResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyEventQueryResultForResourceGroupRequest,
+  output: PolicyEventsQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentError =
+  AzureOpError;
+/** Queries policy events for the resource group level policy assignment. */
+export const ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignment: API.OperationMethod<
+  ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentRequest,
+  PolicyEventsQueryResults,
+  ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyEventQueryResultForResourceGroupLevelPolicyAssignmentRequest,
+  output: PolicyEventsQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyEventQueryResultForSubscriptionError = AzureOpError;
+/** Queries policy events for the resources under the subscription. */
+export const ListPolicyEventQueryResultForSubscription: API.OperationMethod<
+  ListPolicyEventQueryResultForSubscriptionRequest,
+  PolicyEventsQueryResults,
+  ListPolicyEventQueryResultForSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyEventQueryResultForSubscriptionRequest,
+  output: PolicyEventsQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentError =
+  AzureOpError;
+/** Queries policy events for the subscription level policy assignment. */
+export const ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignment: API.OperationMethod<
+  ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentRequest,
+  PolicyEventsQueryResults,
+  ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyEventQueryResultForSubscriptionLevelPolicyAssignmentRequest,
+  output: PolicyEventsQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyMetadataError = AzureOpError;
+/** Get a list of the policy metadata resources. */
+export const ListPolicyMetadata: API.OperationMethod<
+  ListPolicyMetadataRequest,
+  PolicyMetadataCollection,
+  ListPolicyMetadataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyMetadataRequest,
+  output: PolicyMetadataCollection,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyStateQueryResultForManagementGroupError = AzureOpError;
+/** Queries policy states for the resources under the management group. */
+export const ListPolicyStateQueryResultForManagementGroup: API.OperationMethod<
+  ListPolicyStateQueryResultForManagementGroupRequest,
+  PolicyStatesQueryResults,
+  ListPolicyStateQueryResultForManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyStateQueryResultForManagementGroupRequest,
+  output: PolicyStatesQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyStateQueryResultForPolicyDefinitionError = AzureOpError;
+/** Queries policy states for the subscription level policy definition. */
+export const ListPolicyStateQueryResultForPolicyDefinition: API.OperationMethod<
+  ListPolicyStateQueryResultForPolicyDefinitionRequest,
+  PolicyStatesQueryResults,
+  ListPolicyStateQueryResultForPolicyDefinitionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyStateQueryResultForPolicyDefinitionRequest,
+  output: PolicyStatesQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyStateQueryResultForResourceError = AzureOpError;
+/** Queries policy states for the resource. */
+export const ListPolicyStateQueryResultForResource: API.OperationMethod<
+  ListPolicyStateQueryResultForResourceRequest,
+  PolicyStatesQueryResults,
+  ListPolicyStateQueryResultForResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyStateQueryResultForResourceRequest,
+  output: PolicyStatesQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyStateQueryResultForResourceGroupError = AzureOpError;
+/** Queries policy states for the resources under the resource group. */
+export const ListPolicyStateQueryResultForResourceGroup: API.OperationMethod<
+  ListPolicyStateQueryResultForResourceGroupRequest,
+  PolicyStatesQueryResults,
+  ListPolicyStateQueryResultForResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyStateQueryResultForResourceGroupRequest,
+  output: PolicyStatesQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentError =
+  AzureOpError;
+/** Queries policy states for the resource group level policy assignment. */
+export const ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignment: API.OperationMethod<
+  ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest,
+  PolicyStatesQueryResults,
+  ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyStateQueryResultForResourceGroupLevelPolicyAssignmentRequest,
+  output: PolicyStatesQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyStateQueryResultForSubscriptionError = AzureOpError;
+/** Queries policy states for the resources under the subscription. */
+export const ListPolicyStateQueryResultForSubscription: API.OperationMethod<
+  ListPolicyStateQueryResultForSubscriptionRequest,
+  PolicyStatesQueryResults,
+  ListPolicyStateQueryResultForSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyStateQueryResultForSubscriptionRequest,
+  output: PolicyStatesQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentError =
+  AzureOpError;
+/** Queries policy states for the subscription level policy assignment. */
+export const ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignment: API.OperationMethod<
+  ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest,
+  PolicyStatesQueryResults,
+  ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPolicyStateQueryResultForSubscriptionLevelPolicyAssignmentRequest,
+  output: PolicyStatesQueryResults,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRemediationDeploymentAtManagementGroupError = AzureOpError;
+/** Gets all deployments for a remediation at management group scope. */
+export const ListRemediationDeploymentAtManagementGroup: API.OperationMethod<
+  ListRemediationDeploymentAtManagementGroupRequest,
+  RemediationDeploymentsListResult,
+  ListRemediationDeploymentAtManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRemediationDeploymentAtManagementGroupRequest,
+  output: RemediationDeploymentsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRemediationDeploymentAtResourceError = AzureOpError;
+/** Gets all deployments for a remediation at resource scope. */
+export const ListRemediationDeploymentAtResource: API.OperationMethod<
+  ListRemediationDeploymentAtResourceRequest,
+  RemediationDeploymentsListResult,
+  ListRemediationDeploymentAtResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRemediationDeploymentAtResourceRequest,
+  output: RemediationDeploymentsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRemediationDeploymentAtResourceGroupError = AzureOpError;
+/** Gets all deployments for a remediation at resource group scope. */
+export const ListRemediationDeploymentAtResourceGroup: API.OperationMethod<
+  ListRemediationDeploymentAtResourceGroupRequest,
+  RemediationDeploymentsListResult,
+  ListRemediationDeploymentAtResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRemediationDeploymentAtResourceGroupRequest,
+  output: RemediationDeploymentsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRemediationDeploymentAtSubscriptionError = AzureOpError;
+/** Gets all deployments for a remediation at subscription scope. */
+export const ListRemediationDeploymentAtSubscription: API.OperationMethod<
+  ListRemediationDeploymentAtSubscriptionRequest,
+  RemediationDeploymentsListResult,
+  ListRemediationDeploymentAtSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRemediationDeploymentAtSubscriptionRequest,
+  output: RemediationDeploymentsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRemediationForManagementGroupError = AzureOpError;
+/** Gets all remediations for the management group. */
+export const ListRemediationForManagementGroup: API.OperationMethod<
+  ListRemediationForManagementGroupRequest,
+  RemediationListResult,
+  ListRemediationForManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRemediationForManagementGroupRequest,
+  output: RemediationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRemediationForResourceError = AzureOpError;
+/** Gets all remediations for a resource. */
+export const ListRemediationForResource: API.OperationMethod<
+  ListRemediationForResourceRequest,
+  RemediationListResult,
+  ListRemediationForResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRemediationForResourceRequest,
+  output: RemediationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRemediationForResourceGroupError = AzureOpError;
+/** Gets all remediations for the subscription. */
+export const ListRemediationForResourceGroup: API.OperationMethod<
+  ListRemediationForResourceGroupRequest,
+  RemediationListResult,
+  ListRemediationForResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRemediationForResourceGroupRequest,
+  output: RemediationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRemediationForSubscriptionError = AzureOpError;
+/** Gets all remediations for the subscription. */
+export const ListRemediationForSubscription: API.OperationMethod<
+  ListRemediationForSubscriptionRequest,
+  RemediationListResult,
+  ListRemediationForSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRemediationForSubscriptionRequest,
+  output: RemediationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5775,190 +6269,6 @@ export const PolicyEventsListQueryResultsForPolicySetDefinition: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type PolicyEventsListQueryResultsForResourceError = AzureOpError;
-/** Queries policy events for the resource. */
-export const PolicyEventsListQueryResultsForResource: API.OperationMethod<
-  PolicyEventsListQueryResultsForResourceRequest,
-  PolicyEventsQueryResults,
-  PolicyEventsListQueryResultsForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyEventsListQueryResultsForResourceRequest,
-  output: PolicyEventsQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyEventsListQueryResultsForResourceGroupError = AzureOpError;
-/** Queries policy events for the resources under the resource group. */
-export const PolicyEventsListQueryResultsForResourceGroup: API.OperationMethod<
-  PolicyEventsListQueryResultsForResourceGroupRequest,
-  PolicyEventsQueryResults,
-  PolicyEventsListQueryResultsForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyEventsListQueryResultsForResourceGroupRequest,
-  output: PolicyEventsQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentError =
-  AzureOpError;
-/** Queries policy events for the resource group level policy assignment. */
-export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignment: API.OperationMethod<
-  PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest,
-  PolicyEventsQueryResults,
-  PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest,
-  output: PolicyEventsQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyEventsListQueryResultsForSubscriptionError = AzureOpError;
-/** Queries policy events for the resources under the subscription. */
-export const PolicyEventsListQueryResultsForSubscription: API.OperationMethod<
-  PolicyEventsListQueryResultsForSubscriptionRequest,
-  PolicyEventsQueryResults,
-  PolicyEventsListQueryResultsForSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyEventsListQueryResultsForSubscriptionRequest,
-  output: PolicyEventsQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentError =
-  AzureOpError;
-/** Queries policy events for the subscription level policy assignment. */
-export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignment: API.OperationMethod<
-  PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequest,
-  PolicyEventsQueryResults,
-  PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequest,
-  output: PolicyEventsQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyMetadataGetResourceError = AzureOpError;
-/** Get policy metadata resource. */
-export const PolicyMetadataGetResource: API.OperationMethod<
-  PolicyMetadataGetResourceRequest,
-  PolicyMetadataGetResourceResponse,
-  PolicyMetadataGetResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyMetadataGetResourceRequest,
-  output: PolicyMetadataGetResourceResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyMetadataListError = AzureOpError;
-/** Get a list of the policy metadata resources. */
-export const PolicyMetadataList: API.OperationMethod<
-  PolicyMetadataListRequest,
-  PolicyMetadataCollection,
-  PolicyMetadataListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyMetadataListRequest,
-  output: PolicyMetadataCollection,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyRestrictionsCheckAtManagementGroupScopeError = AzureOpError;
-/** Checks what restrictions Azure Policy will place on resources within a management group. */
-export const PolicyRestrictionsCheckAtManagementGroupScope: API.OperationMethod<
-  PolicyRestrictionsCheckAtManagementGroupScopeRequest,
-  CheckRestrictionsResult,
-  PolicyRestrictionsCheckAtManagementGroupScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyRestrictionsCheckAtManagementGroupScopeRequest,
-  output: CheckRestrictionsResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyRestrictionsCheckAtResourceGroupScopeError = AzureOpError;
-/** Checks what restrictions Azure Policy will place on a resource within a resource group. Use this when the resource group the resource will be created in is already known. */
-export const PolicyRestrictionsCheckAtResourceGroupScope: API.OperationMethod<
-  PolicyRestrictionsCheckAtResourceGroupScopeRequest,
-  CheckRestrictionsResult,
-  PolicyRestrictionsCheckAtResourceGroupScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyRestrictionsCheckAtResourceGroupScopeRequest,
-  output: CheckRestrictionsResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyRestrictionsCheckAtSubscriptionScopeError = AzureOpError;
-/** Checks what restrictions Azure Policy will place on a resource within a subscription. */
-export const PolicyRestrictionsCheckAtSubscriptionScope: API.OperationMethod<
-  PolicyRestrictionsCheckAtSubscriptionScopeRequest,
-  CheckRestrictionsResult,
-  PolicyRestrictionsCheckAtSubscriptionScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyRestrictionsCheckAtSubscriptionScopeRequest,
-  output: CheckRestrictionsResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyStatesListQueryResultsForManagementGroupError = AzureOpError;
-/** Queries policy states for the resources under the management group. */
-export const PolicyStatesListQueryResultsForManagementGroup: API.OperationMethod<
-  PolicyStatesListQueryResultsForManagementGroupRequest,
-  PolicyStatesQueryResults,
-  PolicyStatesListQueryResultsForManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyStatesListQueryResultsForManagementGroupRequest,
-  output: PolicyStatesQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyStatesListQueryResultsForPolicyDefinitionError = AzureOpError;
-/** Queries policy states for the subscription level policy definition. */
-export const PolicyStatesListQueryResultsForPolicyDefinition: API.OperationMethod<
-  PolicyStatesListQueryResultsForPolicyDefinitionRequest,
-  PolicyStatesQueryResults,
-  PolicyStatesListQueryResultsForPolicyDefinitionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyStatesListQueryResultsForPolicyDefinitionRequest,
-  output: PolicyStatesQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PolicyStatesListQueryResultsForPolicySetDefinitionError =
   AzureOpError;
 /** Queries policy states for the subscription level policy set definition. */
@@ -5969,85 +6279,6 @@ export const PolicyStatesListQueryResultsForPolicySetDefinition: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PolicyStatesListQueryResultsForPolicySetDefinitionRequest,
-  output: PolicyStatesQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyStatesListQueryResultsForResourceError = AzureOpError;
-/** Queries policy states for the resource. */
-export const PolicyStatesListQueryResultsForResource: API.OperationMethod<
-  PolicyStatesListQueryResultsForResourceRequest,
-  PolicyStatesQueryResults,
-  PolicyStatesListQueryResultsForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyStatesListQueryResultsForResourceRequest,
-  output: PolicyStatesQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyStatesListQueryResultsForResourceGroupError = AzureOpError;
-/** Queries policy states for the resources under the resource group. */
-export const PolicyStatesListQueryResultsForResourceGroup: API.OperationMethod<
-  PolicyStatesListQueryResultsForResourceGroupRequest,
-  PolicyStatesQueryResults,
-  PolicyStatesListQueryResultsForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyStatesListQueryResultsForResourceGroupRequest,
-  output: PolicyStatesQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentError =
-  AzureOpError;
-/** Queries policy states for the resource group level policy assignment. */
-export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment: API.OperationMethod<
-  PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest,
-  PolicyStatesQueryResults,
-  PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest,
-  output: PolicyStatesQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyStatesListQueryResultsForSubscriptionError = AzureOpError;
-/** Queries policy states for the resources under the subscription. */
-export const PolicyStatesListQueryResultsForSubscription: API.OperationMethod<
-  PolicyStatesListQueryResultsForSubscriptionRequest,
-  PolicyStatesQueryResults,
-  PolicyStatesListQueryResultsForSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyStatesListQueryResultsForSubscriptionRequest,
-  output: PolicyStatesQueryResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentError =
-  AzureOpError;
-/** Queries policy states for the subscription level policy assignment. */
-export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment: API.OperationMethod<
-  PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest,
-  PolicyStatesQueryResults,
-  PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest,
   output: PolicyStatesQueryResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6078,21 +6309,6 @@ export const PolicyStatesSummarizeForPolicyDefinition: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PolicyStatesSummarizeForPolicyDefinitionRequest,
-  output: SummarizeResults,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyStatesSummarizeForPolicySetDefinitionError = AzureOpError;
-/** Summarizes policy states for the subscription level policy set definition. */
-export const PolicyStatesSummarizeForPolicySetDefinition: API.OperationMethod<
-  PolicyStatesSummarizeForPolicySetDefinitionRequest,
-  SummarizeResults,
-  PolicyStatesSummarizeForPolicySetDefinitionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyStatesSummarizeForPolicySetDefinitionRequest,
   output: SummarizeResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6326,241 +6542,16 @@ export const RemediationsCreateOrUpdateAtSubscription: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemediationsDeleteAtManagementGroupError = AzureOpError;
-/** Deletes an existing remediation at management group scope. */
-export const RemediationsDeleteAtManagementGroup: API.OperationMethod<
-  RemediationsDeleteAtManagementGroupRequest,
-  RemediationsDeleteAtManagementGroupResponse,
-  RemediationsDeleteAtManagementGroupError,
+export type SetPolicyStateSummarizeForPolicyDefinitionError = AzureOpError;
+/** Summarizes policy states for the subscription level policy set definition. */
+export const SetPolicyStateSummarizeForPolicyDefinition: API.OperationMethod<
+  SetPolicyStateSummarizeForPolicyDefinitionRequest,
+  SummarizeResults,
+  SetPolicyStateSummarizeForPolicyDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsDeleteAtManagementGroupRequest,
-  output: RemediationsDeleteAtManagementGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsDeleteAtResourceError = AzureOpError;
-/** Deletes an existing remediation at individual resource scope. */
-export const RemediationsDeleteAtResource: API.OperationMethod<
-  RemediationsDeleteAtResourceRequest,
-  RemediationsDeleteAtResourceResponse,
-  RemediationsDeleteAtResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsDeleteAtResourceRequest,
-  output: RemediationsDeleteAtResourceResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsDeleteAtResourceGroupError = AzureOpError;
-/** Deletes an existing remediation at resource group scope. */
-export const RemediationsDeleteAtResourceGroup: API.OperationMethod<
-  RemediationsDeleteAtResourceGroupRequest,
-  RemediationsDeleteAtResourceGroupResponse,
-  RemediationsDeleteAtResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsDeleteAtResourceGroupRequest,
-  output: RemediationsDeleteAtResourceGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsDeleteAtSubscriptionError = AzureOpError;
-/** Deletes an existing remediation at subscription scope. */
-export const RemediationsDeleteAtSubscription: API.OperationMethod<
-  RemediationsDeleteAtSubscriptionRequest,
-  RemediationsDeleteAtSubscriptionResponse,
-  RemediationsDeleteAtSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsDeleteAtSubscriptionRequest,
-  output: RemediationsDeleteAtSubscriptionResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsGetAtManagementGroupError = AzureOpError;
-/** Gets an existing remediation at management group scope. */
-export const RemediationsGetAtManagementGroup: API.OperationMethod<
-  RemediationsGetAtManagementGroupRequest,
-  RemediationsGetAtManagementGroupResponse,
-  RemediationsGetAtManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsGetAtManagementGroupRequest,
-  output: RemediationsGetAtManagementGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsGetAtResourceError = AzureOpError;
-/** Gets an existing remediation at resource scope. */
-export const RemediationsGetAtResource: API.OperationMethod<
-  RemediationsGetAtResourceRequest,
-  RemediationsGetAtResourceResponse,
-  RemediationsGetAtResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsGetAtResourceRequest,
-  output: RemediationsGetAtResourceResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsGetAtResourceGroupError = AzureOpError;
-/** Gets an existing remediation at resource group scope. */
-export const RemediationsGetAtResourceGroup: API.OperationMethod<
-  RemediationsGetAtResourceGroupRequest,
-  RemediationsGetAtResourceGroupResponse,
-  RemediationsGetAtResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsGetAtResourceGroupRequest,
-  output: RemediationsGetAtResourceGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsGetAtSubscriptionError = AzureOpError;
-/** Gets an existing remediation at subscription scope. */
-export const RemediationsGetAtSubscription: API.OperationMethod<
-  RemediationsGetAtSubscriptionRequest,
-  RemediationsGetAtSubscriptionResponse,
-  RemediationsGetAtSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsGetAtSubscriptionRequest,
-  output: RemediationsGetAtSubscriptionResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsListDeploymentsAtManagementGroupError = AzureOpError;
-/** Gets all deployments for a remediation at management group scope. */
-export const RemediationsListDeploymentsAtManagementGroup: API.OperationMethod<
-  RemediationsListDeploymentsAtManagementGroupRequest,
-  RemediationDeploymentsListResult,
-  RemediationsListDeploymentsAtManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsListDeploymentsAtManagementGroupRequest,
-  output: RemediationDeploymentsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsListDeploymentsAtResourceError = AzureOpError;
-/** Gets all deployments for a remediation at resource scope. */
-export const RemediationsListDeploymentsAtResource: API.OperationMethod<
-  RemediationsListDeploymentsAtResourceRequest,
-  RemediationDeploymentsListResult,
-  RemediationsListDeploymentsAtResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsListDeploymentsAtResourceRequest,
-  output: RemediationDeploymentsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsListDeploymentsAtResourceGroupError = AzureOpError;
-/** Gets all deployments for a remediation at resource group scope. */
-export const RemediationsListDeploymentsAtResourceGroup: API.OperationMethod<
-  RemediationsListDeploymentsAtResourceGroupRequest,
-  RemediationDeploymentsListResult,
-  RemediationsListDeploymentsAtResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsListDeploymentsAtResourceGroupRequest,
-  output: RemediationDeploymentsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsListDeploymentsAtSubscriptionError = AzureOpError;
-/** Gets all deployments for a remediation at subscription scope. */
-export const RemediationsListDeploymentsAtSubscription: API.OperationMethod<
-  RemediationsListDeploymentsAtSubscriptionRequest,
-  RemediationDeploymentsListResult,
-  RemediationsListDeploymentsAtSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsListDeploymentsAtSubscriptionRequest,
-  output: RemediationDeploymentsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsListForManagementGroupError = AzureOpError;
-/** Gets all remediations for the management group. */
-export const RemediationsListForManagementGroup: API.OperationMethod<
-  RemediationsListForManagementGroupRequest,
-  RemediationListResult,
-  RemediationsListForManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsListForManagementGroupRequest,
-  output: RemediationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsListForResourceError = AzureOpError;
-/** Gets all remediations for a resource. */
-export const RemediationsListForResource: API.OperationMethod<
-  RemediationsListForResourceRequest,
-  RemediationListResult,
-  RemediationsListForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsListForResourceRequest,
-  output: RemediationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsListForResourceGroupError = AzureOpError;
-/** Gets all remediations for the subscription. */
-export const RemediationsListForResourceGroup: API.OperationMethod<
-  RemediationsListForResourceGroupRequest,
-  RemediationListResult,
-  RemediationsListForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsListForResourceGroupRequest,
-  output: RemediationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RemediationsListForSubscriptionError = AzureOpError;
-/** Gets all remediations for the subscription. */
-export const RemediationsListForSubscription: API.OperationMethod<
-  RemediationsListForSubscriptionRequest,
-  RemediationListResult,
-  RemediationsListForSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemediationsListForSubscriptionRequest,
-  output: RemediationListResult,
+  input: SetPolicyStateSummarizeForPolicyDefinitionRequest,
+  output: SummarizeResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

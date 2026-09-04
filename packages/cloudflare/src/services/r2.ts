@@ -4875,12 +4875,6 @@ export type BucketsObjectsUploadRequestCfR2Jurisdiction =
 export const BucketsObjectsUploadRequestCfR2Jurisdiction =
   /*@__PURE__*/ S.String;
 
-export type BucketsObjectsUploadRequestCfR2StorageClass =
-  | "Standard"
-  | "InfrequentAccess";
-export const BucketsObjectsUploadRequestCfR2StorageClass =
-  /*@__PURE__*/ S.String;
-
 export interface UploadBucketObjectRequest {
   /** Account ID. */
   accountId: string;
@@ -4890,10 +4884,8 @@ export interface UploadBucketObjectRequest {
   cfR2Jurisdiction?:
     | BucketsObjectsUploadRequestCfR2Jurisdiction
     | (string & {});
-  /** Storage class for newly uploaded objects, unless specified otherwise. */
-  cfR2StorageClass?:
-    | BucketsObjectsUploadRequestCfR2StorageClass
-    | (string & {});
+  /** Storage class for the object. */
+  cfR2StorageClass?: string;
   /** The key (name) to assign to the object. May contain slashes for path-like keys. */
   objectName: string;
   /** The object content — sent verbatim as the request body. */
@@ -4925,9 +4917,7 @@ export const UploadBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     cfR2StorageClass: S.optional(
-      BucketsObjectsUploadRequestCfR2StorageClass.pipe(
-        T.Header("cf-r2-storage-class"),
-      ),
+      S.String.pipe(T.Header("cf-r2-storage-class")),
     ),
     objectName: S.String.pipe(T.Label("object_name")),
     body: S.optional(S.String.pipe(T.HttpBody())),

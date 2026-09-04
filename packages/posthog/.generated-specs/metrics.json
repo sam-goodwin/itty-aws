@@ -460,7 +460,7 @@
         "smithy.api#documentation": "Label keys to drill into when finding which label values moved. Omit to auto-discover the most common keys on this metric (plus service_name). Max 4 are used."
       }
     },
-    "com.posthog.metrics#MetricsCharacterizeCreateRequest": {
+    "com.posthog.metrics#CreateMetricCharacterizeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -754,10 +754,10 @@
         "smithy.api#documentation": "Time-bucketed points, ordered by time ascending."
       }
     },
-    "com.posthog.metrics#MetricsCharacterizeCreate": {
+    "com.posthog.metrics#CreateMetricCharacterize": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.metrics#MetricsCharacterizeCreateRequest"
+        "target": "com.posthog.metrics#CreateMetricCharacterizeRequest"
       },
       "output": {
         "target": "com.posthog.metrics#MetricAnomalyReport"
@@ -1025,7 +1025,7 @@
         "smithy.api#documentation": "* `second` - second\n* `minute` - minute\n* `minute_5` - minute_5\n* `minute_15` - minute_15\n* `hour` - hour\n* `hour_6` - hour_6\n* `day` - day\n* `week` - week"
       }
     },
-    "com.posthog.metrics#MetricsExplainCreateRequest": {
+    "com.posthog.metrics#CreateMetricExplainRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1388,10 +1388,10 @@
         "smithy.api#documentation": "The series behind the point, largest contributors first, trimmed for display."
       }
     },
-    "com.posthog.metrics#MetricsExplainCreate": {
+    "com.posthog.metrics#CreateMetricExplain": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.metrics#MetricsExplainCreateRequest"
+        "target": "com.posthog.metrics#CreateMetricExplainRequest"
       },
       "output": {
         "target": "com.posthog.metrics#MetricExplainResponse"
@@ -1761,7 +1761,7 @@
         "smithy.api#documentation": "Full multi-clause form: each clause is an independent metric selection sharing the request's time grid (maximum 10). Mutually exclusive with 'metricName'."
       }
     },
-    "com.posthog.metrics#MetricsQueryCreateRequest": {
+    "com.posthog.metrics#CreateMetricQueryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1806,10 +1806,10 @@
         "smithy.api#documentation": "One series per (clause, label-set). A single ungrouped query returns exactly one series with empty labels."
       }
     },
-    "com.posthog.metrics#MetricsQueryCreate": {
+    "com.posthog.metrics#CreateMetricQuery": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.metrics#MetricsQueryCreateRequest"
+        "target": "com.posthog.metrics#CreateMetricQueryRequest"
       },
       "output": {
         "target": "com.posthog.metrics#MetricQueryResponse"
@@ -1882,7 +1882,7 @@
         "smithy.api#documentation": "Label predicates ANDed together, matched against each emission's series. Pass the same filters used for the chart so the emissions listed are the ones behind it."
       }
     },
-    "com.posthog.metrics#MetricsSamplesCreateRequest": {
+    "com.posthog.metrics#CreateMetricSampleRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2048,10 +2048,10 @@
         "smithy.api#documentation": "Raw emissions ordered by timestamp descending."
       }
     },
-    "com.posthog.metrics#MetricsSamplesCreate": {
+    "com.posthog.metrics#CreateMetricSample": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.metrics#MetricsSamplesCreateRequest"
+        "target": "com.posthog.metrics#CreateMetricSampleRequest"
       },
       "output": {
         "target": "com.posthog.metrics#MetricSamplesResponse"
@@ -2172,13 +2172,13 @@
           "target": "com.posthog.metrics#MetricsAttributesRetrieve"
         },
         {
-          "target": "com.posthog.metrics#MetricsCharacterizeCreate"
+          "target": "com.posthog.metrics#CreateMetricCharacterize"
         },
         {
           "target": "com.posthog.metrics#MetricsErrorSpikesRetrieve"
         },
         {
-          "target": "com.posthog.metrics#MetricsExplainCreate"
+          "target": "com.posthog.metrics#CreateMetricExplain"
         },
         {
           "target": "com.posthog.metrics#MetricsHasMetricsRetrieve"
@@ -2187,10 +2187,10 @@
           "target": "com.posthog.metrics#MetricsOverviewRetrieve"
         },
         {
-          "target": "com.posthog.metrics#MetricsQueryCreate"
+          "target": "com.posthog.metrics#CreateMetricQuery"
         },
         {
-          "target": "com.posthog.metrics#MetricsSamplesCreate"
+          "target": "com.posthog.metrics#CreateMetricSample"
         },
         {
           "target": "com.posthog.metrics#MetricsValuesRetrieve"

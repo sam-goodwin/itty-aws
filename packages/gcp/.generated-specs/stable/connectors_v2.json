@@ -4217,7 +4217,7 @@
         "smithy.api#documentation": "Reports readiness status of the connector. Similar logic to GetStatus but modified for kubernetes health check to understand."
       }
     },
-    "com.gcp.connectors_v2#ExecuteHttpRequestProjectsLocationsConnectionsRequest": {
+    "com.gcp.connectors_v2#RequestExecuteHttpProjectLocationConnectionRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -4237,10 +4237,10 @@
         }
       }
     },
-    "com.gcp.connectors_v2#ExecuteHttpRequestProjectsLocationsConnections": {
+    "com.gcp.connectors_v2#RequestExecuteHttpProjectLocationConnection": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.connectors_v2#ExecuteHttpRequestProjectsLocationsConnectionsRequest"
+        "target": "com.gcp.connectors_v2#RequestExecuteHttpProjectLocationConnectionRequest"
       },
       "output": {
         "target": "com.gcp.connectors_v2#ExecuteHttpRequestResponse"

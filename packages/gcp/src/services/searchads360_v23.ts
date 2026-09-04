@@ -28931,6 +28931,170 @@ export const GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesResponse
       "GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesResponse",
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesResponse>;
 
+export type GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum =
+  | "UNSPECIFIED"
+  | "UNKNOWN"
+  | "ALL_CUSTOMERS"
+  | "PURCHASERS"
+  | "HIGH_VALUE_CUSTOMERS"
+  | "DISENGAGED_CUSTOMERS"
+  | "QUALIFIED_LEADS"
+  | "CONVERTED_LEADS"
+  | "PAID_SUBSCRIBERS"
+  | "LOYALTY_SIGN_UPS"
+  | "CART_ABANDONERS"
+  | "LOYALTY_TIER_1_MEMBERS"
+  | "LOYALTY_TIER_2_MEMBERS"
+  | "LOYALTY_TIER_3_MEMBERS"
+  | "LOYALTY_TIER_4_MEMBERS"
+  | "LOYALTY_TIER_5_MEMBERS"
+  | "LOYALTY_TIER_6_MEMBERS"
+  | "LOYALTY_TIER_7_MEMBERS";
+export const GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum =
+  /*@__PURE__*/ S.String;
+
+/** A user list customer type */
+export interface GoogleAdsSearchads360V23Resources__UserListCustomerType {
+  /** Immutable. The user list customer type category */
+  customerTypeCategory?:
+    | GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum
+    | (string & {});
+  /** Immutable. The resource name of the user list customer type User list customer type resource names have the form: `customers/{customer_id}/userListCustomerTypes/{user_list_id}~{customer_type_category}` */
+  resourceName?: string;
+  /** Immutable. The resource name for the user list this user list customer type is associated with */
+  userList?: string;
+}
+export const GoogleAdsSearchads360V23Resources__UserListCustomerType =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customerTypeCategory: S.optional(
+        GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum,
+      ),
+      resourceName: S.optional(S.String),
+      userList: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAdsSearchads360V23Resources__UserListCustomerType",
+  }) as any as S.Schema<GoogleAdsSearchads360V23Resources__UserListCustomerType>;
+
+/** A single mutate operation on the user list customer type. */
+export interface GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation {
+  /** Attach a user list customer type to a user list. No resource name is expected for the new user list customer type. */
+  create?: GoogleAdsSearchads360V23Resources__UserListCustomerType;
+  /** Remove an existing user list customer type. A resource name for the removed user list customer type is expected, in this format: `customers/{customer_id}/userListCustomerTypes/{user_list_id}~{customer_type_category}` */
+  remove?: string;
+}
+export const GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      create: S.optional(
+        GoogleAdsSearchads360V23Resources__UserListCustomerType,
+      ),
+      remove: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation",
+  }) as any as S.Schema<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation>;
+
+export type GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList =
+  Array<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation>;
+export const GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList =
+  /*@__PURE__*/ S.Array(
+    GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation,
+  ) as any as S.Schema<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList>;
+
+/** Request message for UserListCustomerTypeService.MutateUserListCustomerTypes. */
+export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest {
+  /** Optional. If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false. */
+  partialFailure?: boolean;
+  /** Optional. If true, the request is validated but not executed. Only errors are returned, not results. */
+  validateOnly?: boolean;
+  /** Required. The list of operations to perform on the user list customer types. */
+  operations?: GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList;
+}
+export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      partialFailure: S.optional(S.Boolean),
+      validateOnly: S.optional(S.Boolean),
+      operations: S.optional(
+        GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest",
+  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest>;
+
+export interface ListMutateCustomerUserCustomerTypesRequest {
+  /** Required. The ID of the customer whose user list customer types are being modified. */
+  customerId: string;
+  /** Request body */
+  body?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest;
+}
+export const ListMutateCustomerUserCustomerTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customerId: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v23/customers/{+customerId}/userListCustomerTypes:mutate",
+        baseUrl: "https://searchads360.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListMutateCustomerUserCustomerTypesRequest",
+  }) as any as S.Schema<ListMutateCustomerUserCustomerTypesRequest>;
+
+/** The result for the user list customer type mutate. */
+export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult {
+  /** Returned for successful operations. */
+  resourceName?: string;
+}
+export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult",
+  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
+
+export type GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList =
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
+export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList =
+  /*@__PURE__*/ S.Array(
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
+  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList>;
+
+/** Response message for a user list customer type mutate. */
+export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse {
+  /** Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error. */
+  partialFailureError?: GoogleRpc__Status;
+  /** All results for the mutate. */
+  results?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList;
+}
+export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      partialFailureError: S.optional(GoogleRpc__Status),
+      results: S.optional(
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse",
+  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse>;
+
 /** Request message for ReachPlanService.ListPlannableLocations. */
 export interface GoogleAdsSearchads360V23Services__ListPlannableLocationsRequest {
   /** Optional. Additional information on the application issuing the request. */
@@ -29594,18 +29758,10 @@ export const GoogleAdsSearchads360V23Services__MutateAdParameterResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdParameterResult>;
 
 /** The result for the asset group asset mutate. */
-export interface GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult {
-  /** Returned for successful operations. */
-  resourceName?: string;
-}
+export type GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult =
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** Result message for RecommendationSubscriptionService.MutateRecommendationSubscription */
 export interface GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResult {
@@ -29646,9 +29802,9 @@ export const GoogleAdsSearchads360V23Services__MutateAssetSetResult =
 
 /** The result for an ad group ad label mutate. */
 export type GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the asset group signal mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult {
@@ -29799,9 +29955,9 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupResult =
 
 /** The result for the customer conversion goal mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the ad group criterion customizer mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResult {
@@ -29844,15 +30000,15 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerAssetResult =
 
 /** The result for the campaign experiment mutate. */
 export type GoogleAdsSearchads360V23Services__MutateExperimentResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateExperimentResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the Keyword Plan ad group keyword mutate. */
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the shared criterion mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateSharedCriterionResult {
@@ -29875,9 +30031,9 @@ export const GoogleAdsSearchads360V23Services__MutateSharedCriterionResult =
 
 /** The result for an ad group criterion label mutate. */
 export type GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the criterion mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResult {
@@ -29978,9 +30134,9 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult =
 
 /** The result for the asset group mutate. */
 export type GoogleAdsSearchads360V23Services__MutateAssetGroupResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the bidding strategy mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateBiddingStrategyResult {
@@ -30083,9 +30239,9 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResult =
 
 /** The result for the campaign goal config mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the customizer attribute mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResult {
@@ -30165,15 +30321,15 @@ export const GoogleAdsSearchads360V23Services__MutateConversionValueRuleResult =
 
 /** The result for the Keyword Plan ad group mutate. */
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for a customer label mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCustomerLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCustomerLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the customer mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomerResult {
@@ -30233,9 +30389,9 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult =
 
 /** The result for the keyword plan mutate. */
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlansResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlansResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the campaign asset mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCampaignAssetResult {
@@ -30258,15 +30414,15 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignAssetResult =
 
 /** The result for the campaign conversion goal mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the Keyword Plan campaign mutate. */
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the criterion mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResult {
@@ -30422,9 +30578,9 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignGroupResult =
 
 /** The result for a campaign label mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCampaignLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCampaignLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the conversion custom variable mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResult {
@@ -30448,15 +30604,15 @@ export const GoogleAdsSearchads360V23Services__MutateConversionCustomVariableRes
 
 /** The result for an ad group label mutate. */
 export type GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the user list mutate. */
 export type GoogleAdsSearchads360V23Services__MutateUserListResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateUserListResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the asset group listing group filter mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResult {
@@ -30500,9 +30656,9 @@ export const GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResult
 
 /** The result for the Keyword Plan campaign keyword mutate. */
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the criterion mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCampaignCriterionResult {
@@ -30546,9 +30702,9 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaRes
 
 /** The result for the remarketing action mutate. */
 export type GoogleAdsSearchads360V23Services__MutateRemarketingActionResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateRemarketingActionResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** The result for the ad mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAdGroupAdResult {
@@ -30572,13 +30728,13 @@ export interface GoogleAdsSearchads360V23Services__MutateOperationResponse {
   /** The result for the ad parameter mutate. */
   adParameterResult?: GoogleAdsSearchads360V23Services__MutateAdParameterResult;
   /** The result for the asset group asset mutate. */
-  assetGroupAssetResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  assetGroupAssetResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the recommendation subscription mutate. */
   recommendationSubscriptionResult?: GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResult;
   /** The result for the asset set mutate. */
   assetSetResult?: GoogleAdsSearchads360V23Services__MutateAssetSetResult;
   /** The result for the ad group ad label mutate. */
-  adGroupAdLabelResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  adGroupAdLabelResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the asset group signal mutate. */
   assetGroupSignalResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult;
   /** The result for the campaign draft mutate. */
@@ -30596,19 +30752,19 @@ export interface GoogleAdsSearchads360V23Services__MutateOperationResponse {
   /** The result for the ad group mutate. */
   adGroupResult?: GoogleAdsSearchads360V23Services__MutateAdGroupResult;
   /** The result for the customer conversion goal mutate. */
-  customerConversionGoalResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  customerConversionGoalResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the ad group criterion customizer mutate. */
   adGroupCriterionCustomizerResult?: GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResult;
   /** The result for the customer asset mutate. */
   customerAssetResult?: GoogleAdsSearchads360V23Services__MutateCustomerAssetResult;
   /** The result for the experiment mutate. */
-  experimentResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  experimentResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the keyword plan ad group keyword mutate. */
-  keywordPlanAdGroupKeywordResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  keywordPlanAdGroupKeywordResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the shared criterion mutate. */
   sharedCriterionResult?: GoogleAdsSearchads360V23Services__MutateSharedCriterionResult;
   /** The result for the ad group criterion label mutate. */
-  adGroupCriterionLabelResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  adGroupCriterionLabelResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the campaign bid modifier mutate. */
   campaignBidModifierResult?: GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResult;
   /** The result for the conversion goal campaign config mutate. */
@@ -30620,7 +30776,7 @@ export interface GoogleAdsSearchads360V23Services__MutateOperationResponse {
   /** The result for the ad group customizer mutate. */
   adGroupCustomizerResult?: GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult;
   /** The result for the asset group mutate. */
-  assetGroupResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  assetGroupResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the bidding strategy mutate. */
   biddingStrategyResult?: GoogleAdsSearchads360V23Services__MutateBiddingStrategyResult;
   /** The result for the Search Ads 360 campaign mutate. */
@@ -30632,7 +30788,7 @@ export interface GoogleAdsSearchads360V23Services__MutateOperationResponse {
   /** The result for the ad group bid modifier mutate. */
   adGroupBidModifierResult?: GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResult;
   /** The result for the campaign goal config mutate. */
-  campaignGoalConfigResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  campaignGoalConfigResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the customer customizer mutate. */
   customerCustomizerResult?: GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResult;
   /** The result for the experiment arm mutate. */
@@ -30642,9 +30798,9 @@ export interface GoogleAdsSearchads360V23Services__MutateOperationResponse {
   /** The result for the conversion value rule mutate. */
   conversionValueRuleResult?: GoogleAdsSearchads360V23Services__MutateConversionValueRuleResult;
   /** The result for the keyword plan ad group mutate. */
-  keywordPlanAdGroupResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  keywordPlanAdGroupResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the customer label mutate. */
-  customerLabelResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  customerLabelResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the customer mutate. */
   customerResult?: GoogleAdsSearchads360V23Services__MutateCustomerResult;
   /** The result for the campaign budget mutate. */
@@ -30652,13 +30808,13 @@ export interface GoogleAdsSearchads360V23Services__MutateOperationResponse {
   /** The result for the campaign asset set mutate. */
   campaignAssetSetResult?: GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult;
   /** The result for the keyword plan mutate. */
-  keywordPlanResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  keywordPlanResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the campaign asset mutate. */
   campaignAssetResult?: GoogleAdsSearchads360V23Services__MutateCampaignAssetResult;
   /** The result for the campaign conversion goal mutate. */
-  campaignConversionGoalResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  campaignConversionGoalResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the keyword plan campaign mutate. */
-  keywordPlanCampaignResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  keywordPlanCampaignResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the ad group criterion mutate. */
   adGroupCriterionResult?: GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResult;
   /** The result for the campaign shared set mutate. */
@@ -30676,25 +30832,25 @@ export interface GoogleAdsSearchads360V23Services__MutateOperationResponse {
   /** The result for the campaign group mutate. */
   campaignGroupResult?: GoogleAdsSearchads360V23Services__MutateCampaignGroupResult;
   /** The result for the campaign label mutate. */
-  campaignLabelResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  campaignLabelResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the conversion custom variable mutate. */
   conversionCustomVariableResult?: GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResult;
   /** The result for the ad group label mutate. */
-  adGroupLabelResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  adGroupLabelResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the user list mutate. */
-  userListResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  userListResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the asset group listing group filter mutate. */
   assetGroupListingGroupFilterResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResult;
   /** The result for the bidding data exclusion mutate. */
   biddingDataExclusionResult?: GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResult;
   /** The result for the keyword plan campaign keyword mutate. */
-  keywordPlanCampaignKeywordResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  keywordPlanCampaignKeywordResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the campaign criterion mutate. */
   campaignCriterionResult?: GoogleAdsSearchads360V23Services__MutateCampaignCriterionResult;
   /** The result for the customer negative criterion mutate. */
   customerNegativeCriterionResult?: GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResult;
   /** The result for the remarketing action mutate. */
-  remarketingActionResult?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  remarketingActionResult?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
   /** The result for the ad group ad mutate. */
   adGroupAdResult?: GoogleAdsSearchads360V23Services__MutateAdGroupAdResult;
 }
@@ -30705,7 +30861,7 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateAdParameterResult,
       ),
       assetGroupAssetResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       recommendationSubscriptionResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResult,
@@ -30714,7 +30870,7 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateAssetSetResult,
       ),
       adGroupAdLabelResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       assetGroupSignalResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult,
@@ -30741,7 +30897,7 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateAdGroupResult,
       ),
       customerConversionGoalResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       adGroupCriterionCustomizerResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResult,
@@ -30750,16 +30906,16 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateCustomerAssetResult,
       ),
       experimentResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       keywordPlanAdGroupKeywordResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       sharedCriterionResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateSharedCriterionResult,
       ),
       adGroupCriterionLabelResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       campaignBidModifierResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResult,
@@ -30777,7 +30933,7 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult,
       ),
       assetGroupResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       biddingStrategyResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateBiddingStrategyResult,
@@ -30795,7 +30951,7 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResult,
       ),
       campaignGoalConfigResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       customerCustomizerResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResult,
@@ -30810,10 +30966,10 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateConversionValueRuleResult,
       ),
       keywordPlanAdGroupResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       customerLabelResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       customerResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateCustomerResult,
@@ -30825,16 +30981,16 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult,
       ),
       keywordPlanResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       campaignAssetResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateCampaignAssetResult,
       ),
       campaignConversionGoalResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       keywordPlanCampaignResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       adGroupCriterionResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResult,
@@ -30859,16 +31015,16 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateCampaignGroupResult,
       ),
       campaignLabelResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       conversionCustomVariableResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResult,
       ),
       adGroupLabelResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       userListResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       assetGroupListingGroupFilterResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResult,
@@ -30877,7 +31033,7 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResult,
       ),
       keywordPlanCampaignKeywordResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       campaignCriterionResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateCampaignCriterionResult,
@@ -30886,7 +31042,7 @@ export const GoogleAdsSearchads360V23Services__MutateOperationResponse =
         GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResult,
       ),
       remarketingActionResult: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
       adGroupAdResult: S.optional(
         GoogleAdsSearchads360V23Services__MutateAdGroupAdResult,
@@ -31311,20 +31467,20 @@ export const MutateCustomersAccountBudgetProposalsRequest =
 
 /** The result for the account budget proposal mutate. */
 export type GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** Response message for account-level budget mutate operations. */
 export interface GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse {
   /** The result of the mutate. */
-  result?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  result?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 }
 export const GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
     }),
   ).annotate({
@@ -31401,23 +31557,23 @@ export const MutateCustomersAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The result for the account link mutate. */
 export type GoogleAdsSearchads360V23Services__MutateAccountLinkResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateAccountLinkResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** Response message for account link mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAccountLinkResponse {
   /** Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error. */
   partialFailureError?: GoogleRpc__Status;
   /** Result for the mutate. */
-  result?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  result?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 }
 export const GoogleAdsSearchads360V23Services__MutateAccountLinkResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       partialFailureError: S.optional(GoogleRpc__Status),
       result: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
     }),
   ).annotate({
@@ -31481,10 +31637,10 @@ export const MutateCustomersAdGroupAdLabelsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersAdGroupAdLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResultList>;
 
 /** Response message for an ad group ad labels mutate. */
@@ -32211,10 +32367,10 @@ export const MutateCustomersAdGroupCriterionLabelsRequest =
   }) as any as S.Schema<MutateCustomersAdGroupCriterionLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList>;
 
 /** Response message for an ad group criterion labels mutate. */
@@ -32389,10 +32545,10 @@ export const MutateCustomersAdGroupLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAdGroupLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList>;
 
 /** Response message for an ad group labels mutate. */
@@ -32747,10 +32903,10 @@ export const MutateCustomersAssetGroupAssetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersAssetGroupAssetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList>;
 
 /** Response message for an asset group asset mutate. */
@@ -32916,10 +33072,10 @@ export const MutateCustomersAssetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAssetGroupsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetGroupResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupResultList>;
 
 /** Response message for an asset group mutate. */
@@ -33129,102 +33285,6 @@ export const GoogleAdsSearchads360V23Services__MutateAssetsResponse =
   ).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateAssetsResponse",
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetsResponse>;
-
-export type GoogleAdsSearchads360V23Services__AssetSetAssetOperationList =
-  Array<GoogleAdsSearchads360V23Services__AssetSetAssetOperation>;
-export const GoogleAdsSearchads360V23Services__AssetSetAssetOperationList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__AssetSetAssetOperation,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__AssetSetAssetOperationList>;
-
-export type GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequestResponseContentTypeEnum =
-  | "UNSPECIFIED"
-  | "RESOURCE_NAME_ONLY"
-  | "MUTABLE_RESOURCE";
-export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequestResponseContentTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Request message for AssetSetAssetService.MutateAssetSetAssets. */
-export interface GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest {
-  /** Required. The list of operations to perform on individual asset set assets. */
-  operations?: GoogleAdsSearchads360V23Services__AssetSetAssetOperationList;
-  /** The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation. */
-  responseContentType?:
-    | GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequestResponseContentTypeEnum
-    | (string & {});
-  /** If true, the request is validated but not executed. Only errors are returned, not results. */
-  validateOnly?: boolean;
-  /** If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false. */
-  partialFailure?: boolean;
-}
-export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operations: S.optional(
-        GoogleAdsSearchads360V23Services__AssetSetAssetOperationList,
-      ),
-      responseContentType: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequestResponseContentTypeEnum,
-      ),
-      validateOnly: S.optional(S.Boolean),
-      partialFailure: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest>;
-
-export interface MutateCustomersAssetSetAssetsRequest {
-  /** Required. The ID of the customer whose asset set assets are being modified. */
-  customerId: string;
-  /** Request body */
-  body?: GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest;
-}
-export const MutateCustomersAssetSetAssetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customerId: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v23/customers/{+customerId}/assetSetAssets:mutate",
-        baseUrl: "https://searchads360.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "MutateCustomersAssetSetAssetsRequest",
-}) as any as S.Schema<MutateCustomersAssetSetAssetsRequest>;
-
-export type GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult>;
-export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList>;
-
-/** Response message for an asset set asset mutate. */
-export interface GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse {
-  /** All results for the mutate. */
-  results?: GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList;
-  /** Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error. */
-  partialFailureError?: GoogleRpc__Status;
-}
-export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList,
-      ),
-      partialFailureError: S.optional(GoogleRpc__Status),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetSetsRequestResponseContentTypeEnum =
   | "UNSPECIFIED"
@@ -34032,20 +34092,20 @@ export const MutateCustomersBillingSetupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Result for a single billing setup mutate. */
 export type GoogleAdsSearchads360V23Services__MutateBillingSetupResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateBillingSetupResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** Response message for a billing setup operation. */
 export interface GoogleAdsSearchads360V23Services__MutateBillingSetupResponse {
   /** A result that identifies the resource affected by the mutate request. */
-  result?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  result?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 }
 export const GoogleAdsSearchads360V23Services__MutateBillingSetupResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
     }),
   ).annotate({
@@ -34493,10 +34553,10 @@ export const MutateCustomersCampaignConversionGoalsRequest =
   }) as any as S.Schema<MutateCustomersCampaignConversionGoalsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResultList>;
 
 /** Response message for a campaign conversion goal mutate. */
@@ -34863,10 +34923,10 @@ export const MutateCustomersCampaignGoalConfigsRequest =
   }) as any as S.Schema<MutateCustomersCampaignGoalConfigsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList>;
 
 /** Response message for a campaign goal config mutate. */
@@ -35041,10 +35101,10 @@ export const MutateCustomersCampaignLabelsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCampaignLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList>;
 
 /** Response message for a campaign labels mutate. */
@@ -35922,15 +35982,15 @@ export const MutateCustomersCustomAudiencesRequest = /*@__PURE__*/ S.suspend(
 
 /** The result for the custom audience mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCustomAudienceResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCustomAudienceResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList>;
 
 /** Response message for custom audience mutate. */
@@ -36415,20 +36475,20 @@ export const MutateCustomersCustomerClientLinksRequest =
 
 /** The result for a single customer client link mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** Response message for a CustomerClientLink mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse {
   /** A result that identifies the resource affected by the mutate request. */
-  result?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  result?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
     }),
   ).annotate({
@@ -36490,10 +36550,10 @@ export const MutateCustomersCustomerConversionGoalsRequest =
   }) as any as S.Schema<MutateCustomersCustomerConversionGoalsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList>;
 
 /** Response message for a customer conversion goal mutate. */
@@ -36666,10 +36726,10 @@ export const MutateCustomersCustomerLabelsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCustomerLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList>;
 
 /** Response message for a customer labels mutate. */
@@ -36808,15 +36868,15 @@ export const MutateCustomersCustomerManagerLinksRequest =
 
 /** The result for the customer manager link mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList>;
 
 /** Response message for a CustomerManagerLink mutate. */
@@ -37399,20 +37459,20 @@ export const MutateCustomersCustomerUserAccessesRequest =
 
 /** The result for the customer user access mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** Response message for customer user access mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse {
   /** Result for the mutate. */
-  result?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  result?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
     }),
   ).annotate({
@@ -37542,20 +37602,20 @@ export const MutateCustomersCustomerUserAccessInvitationsRequest =
 
 /** The result for the access invitation mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 /** Response message for access invitation mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse {
   /** Result for the mutate. */
-  result?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  result?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(
-        GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
       ),
     }),
   ).annotate({
@@ -37732,15 +37792,15 @@ export const MutateCustomersCustomInterestsRequest = /*@__PURE__*/ S.suspend(
 
 /** The result for the custom interest mutate. */
 export type GoogleAdsSearchads360V23Services__MutateCustomInterestResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateCustomInterestResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomInterestResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomInterestResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestResultList>;
 
 /** Response message for custom interest mutate. */
@@ -38008,10 +38068,10 @@ export const MutateCustomersExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersExperimentsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateExperimentResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateExperimentResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateExperimentResultList>;
 
 /** Response message for experiment mutate. */
@@ -38177,15 +38237,15 @@ export const MutateCustomersGoalsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The result for the goal mutate. */
 export type GoogleAdsSearchads360V23Services__MutateGoalResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 export const GoogleAdsSearchads360V23Services__MutateGoalResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult;
 
 export type GoogleAdsSearchads360V23Services__MutateGoalResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateGoalResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateGoalResultList>;
 
 /** Response message for a goal mutate. */
@@ -38264,10 +38324,10 @@ export const MutateCustomersKeywordPlanAdGroupKeywordsRequest =
   }) as any as S.Schema<MutateCustomersKeywordPlanAdGroupKeywordsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResultList>;
 
 /** Response message for a Keyword Plan ad group keyword mutate. */
@@ -38347,10 +38407,10 @@ export const MutateCustomersKeywordPlanAdGroupsRequest =
   }) as any as S.Schema<MutateCustomersKeywordPlanAdGroupsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList>;
 
 /** Response message for a Keyword Plan ad group mutate. */
@@ -38430,10 +38490,10 @@ export const MutateCustomersKeywordPlanCampaignKeywordsRequest =
   }) as any as S.Schema<MutateCustomersKeywordPlanCampaignKeywordsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList>;
 
 /** Response message for a Keyword Plan campaign keyword mutate. */
@@ -38513,10 +38573,10 @@ export const MutateCustomersKeywordPlanCampaignsRequest =
   }) as any as S.Schema<MutateCustomersKeywordPlanCampaignsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList>;
 
 /** Response message for a Keyword Plan campaign mutate. */
@@ -38594,10 +38654,10 @@ export const MutateCustomersKeywordPlansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersKeywordPlansRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList>;
 
 /** Response message for a keyword plan mutate. */
@@ -38768,10 +38828,10 @@ export const MutateCustomersRemarketingActionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersRemarketingActionsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList>;
 
 /** Response message for remarketing action mutate. */
@@ -39261,161 +39321,6 @@ export const GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsRespon
       "GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsResponse",
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsResponse>;
 
-export type GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum =
-  | "UNSPECIFIED"
-  | "UNKNOWN"
-  | "ALL_CUSTOMERS"
-  | "PURCHASERS"
-  | "HIGH_VALUE_CUSTOMERS"
-  | "DISENGAGED_CUSTOMERS"
-  | "QUALIFIED_LEADS"
-  | "CONVERTED_LEADS"
-  | "PAID_SUBSCRIBERS"
-  | "LOYALTY_SIGN_UPS"
-  | "CART_ABANDONERS"
-  | "LOYALTY_TIER_1_MEMBERS"
-  | "LOYALTY_TIER_2_MEMBERS"
-  | "LOYALTY_TIER_3_MEMBERS"
-  | "LOYALTY_TIER_4_MEMBERS"
-  | "LOYALTY_TIER_5_MEMBERS"
-  | "LOYALTY_TIER_6_MEMBERS"
-  | "LOYALTY_TIER_7_MEMBERS";
-export const GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum =
-  /*@__PURE__*/ S.String;
-
-/** A user list customer type */
-export interface GoogleAdsSearchads360V23Resources__UserListCustomerType {
-  /** Immutable. The user list customer type category */
-  customerTypeCategory?:
-    | GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum
-    | (string & {});
-  /** Immutable. The resource name of the user list customer type User list customer type resource names have the form: `customers/{customer_id}/userListCustomerTypes/{user_list_id}~{customer_type_category}` */
-  resourceName?: string;
-  /** Immutable. The resource name for the user list this user list customer type is associated with */
-  userList?: string;
-}
-export const GoogleAdsSearchads360V23Resources__UserListCustomerType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerTypeCategory: S.optional(
-        GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum,
-      ),
-      resourceName: S.optional(S.String),
-      userList: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Resources__UserListCustomerType",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Resources__UserListCustomerType>;
-
-/** A single mutate operation on the user list customer type. */
-export interface GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation {
-  /** Attach a user list customer type to a user list. No resource name is expected for the new user list customer type. */
-  create?: GoogleAdsSearchads360V23Resources__UserListCustomerType;
-  /** Remove an existing user list customer type. A resource name for the removed user list customer type is expected, in this format: `customers/{customer_id}/userListCustomerTypes/{user_list_id}~{customer_type_category}` */
-  remove?: string;
-}
-export const GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      create: S.optional(
-        GoogleAdsSearchads360V23Resources__UserListCustomerType,
-      ),
-      remove: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation>;
-
-export type GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList =
-  Array<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation>;
-export const GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList>;
-
-/** Request message for UserListCustomerTypeService.MutateUserListCustomerTypes. */
-export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest {
-  /** Optional. If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false. */
-  partialFailure?: boolean;
-  /** Optional. If true, the request is validated but not executed. Only errors are returned, not results. */
-  validateOnly?: boolean;
-  /** Required. The list of operations to perform on the user list customer types. */
-  operations?: GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList;
-}
-export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partialFailure: S.optional(S.Boolean),
-      validateOnly: S.optional(S.Boolean),
-      operations: S.optional(
-        GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest>;
-
-export interface MutateCustomersUserListCustomerTypesRequest {
-  /** Required. The ID of the customer whose user list customer types are being modified. */
-  customerId: string;
-  /** Request body */
-  body?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest;
-}
-export const MutateCustomersUserListCustomerTypesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerId: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v23/customers/{+customerId}/userListCustomerTypes:mutate",
-        baseUrl: "https://searchads360.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "MutateCustomersUserListCustomerTypesRequest",
-  }) as any as S.Schema<MutateCustomersUserListCustomerTypesRequest>;
-
-/** The result for the user list customer type mutate. */
-export type GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
-export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult =
-  GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult;
-
-export type GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
-export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList>;
-
-/** Response message for a user list customer type mutate. */
-export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse {
-  /** Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error. */
-  partialFailureError?: GoogleRpc__Status;
-  /** All results for the mutate. */
-  results?: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList;
-}
-export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partialFailureError: S.optional(GoogleRpc__Status),
-      results: S.optional(
-        GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse>;
-
 export type GoogleAdsSearchads360V23Services__UserListOperationList =
   Array<GoogleAdsSearchads360V23Services__UserListOperation>;
 export const GoogleAdsSearchads360V23Services__UserListOperationList =
@@ -39471,10 +39376,10 @@ export const MutateCustomersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersUserListsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateUserListResultList =
-  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateUserListResultList =
   /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
+    GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListResultList>;
 
 /** Response message for user list mutate. */
@@ -48642,6 +48547,101 @@ export const GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsResponse 
       "GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsResponse",
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsResponse>;
 
+export type GoogleAdsSearchads360V23Services__AssetSetAssetOperationList =
+  Array<GoogleAdsSearchads360V23Services__AssetSetAssetOperation>;
+export const GoogleAdsSearchads360V23Services__AssetSetAssetOperationList =
+  /*@__PURE__*/ S.Array(
+    GoogleAdsSearchads360V23Services__AssetSetAssetOperation,
+  ) as any as S.Schema<GoogleAdsSearchads360V23Services__AssetSetAssetOperationList>;
+
+export type GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequestResponseContentTypeEnum =
+  | "UNSPECIFIED"
+  | "RESOURCE_NAME_ONLY"
+  | "MUTABLE_RESOURCE";
+export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequestResponseContentTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Request message for AssetSetAssetService.MutateAssetSetAssets. */
+export interface GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest {
+  /** Required. The list of operations to perform on individual asset set assets. */
+  operations?: GoogleAdsSearchads360V23Services__AssetSetAssetOperationList;
+  /** The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation. */
+  responseContentType?:
+    | GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequestResponseContentTypeEnum
+    | (string & {});
+  /** If true, the request is validated but not executed. Only errors are returned, not results. */
+  validateOnly?: boolean;
+  /** If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false. */
+  partialFailure?: boolean;
+}
+export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operations: S.optional(
+        GoogleAdsSearchads360V23Services__AssetSetAssetOperationList,
+      ),
+      responseContentType: S.optional(
+        GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequestResponseContentTypeEnum,
+      ),
+      validateOnly: S.optional(S.Boolean),
+      partialFailure: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest",
+  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest>;
+
+export interface SetMutateCustomerAssetAssetRequest {
+  /** Required. The ID of the customer whose asset set assets are being modified. */
+  customerId: string;
+  /** Request body */
+  body?: GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest;
+}
+export const SetMutateCustomerAssetAssetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v23/customers/{+customerId}/assetSetAssets:mutate",
+      baseUrl: "https://searchads360.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetMutateCustomerAssetAssetRequest",
+}) as any as S.Schema<SetMutateCustomerAssetAssetRequest>;
+
+export type GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList =
+  Array<GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult>;
+export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList =
+  /*@__PURE__*/ S.Array(
+    GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult,
+  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList>;
+
+/** Response message for an asset set asset mutate. */
+export interface GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse {
+  /** All results for the mutate. */
+  results?: GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList;
+  /** Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error. */
+  partialFailureError?: GoogleRpc__Status;
+}
+export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      results: S.optional(
+        GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList,
+      ),
+      partialFailureError: S.optional(GoogleRpc__Status),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse",
+  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse>;
+
 export type GoogleAdsSearchads360V23Services__StartIdentityVerificationRequestVerificationProgramEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
@@ -51375,6 +51375,26 @@ export const listInsightsEligibleDatesAudienceInsights: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type ListMutateCustomerUserCustomerTypesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Attach or remove user list customer types. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [UserListCustomerTypeError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() */
+export const listMutateCustomerUserCustomerTypes: API.OperationMethod<
+  ListMutateCustomerUserCustomerTypesRequest,
+  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse,
+  ListMutateCustomerUserCustomerTypesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMutateCustomerUserCustomerTypesRequest,
+  output: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListPlannableLocationsV23Error =
   | NotFound
   | Forbidden
@@ -51916,26 +51936,6 @@ export const mutateCustomersAssets: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAssetsRequest,
   output: GoogleAdsSearchads360V23Services__MutateAssetsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MutateCustomersAssetSetAssetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates, updates or removes asset set assets. Operation statuses are returned. */
-export const mutateCustomersAssetSetAssets: API.OperationMethod<
-  MutateCustomersAssetSetAssetsRequest,
-  GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse,
-  MutateCustomersAssetSetAssetsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MutateCustomersAssetSetAssetsRequest,
-  output: GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -53052,26 +53052,6 @@ export const mutateCustomersSmartCampaignSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MutateCustomersUserListCustomerTypesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Attach or remove user list customer types. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [UserListCustomerTypeError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() */
-export const mutateCustomersUserListCustomerTypes: API.OperationMethod<
-  MutateCustomersUserListCustomerTypesRequest,
-  GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse,
-  MutateCustomersUserListCustomerTypesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MutateCustomersUserListCustomerTypesRequest,
-  output: GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type MutateCustomersUserListsError =
   | NotFound
   | Forbidden
@@ -53411,6 +53391,26 @@ export const searchSearchAds360Fields: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchSearchAds360FieldsRequest,
   output: GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetMutateCustomerAssetAssetError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates, updates or removes asset set assets. Operation statuses are returned. */
+export const setMutateCustomerAssetAsset: API.OperationMethod<
+  SetMutateCustomerAssetAssetRequest,
+  GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse,
+  SetMutateCustomerAssetAssetError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetMutateCustomerAssetAssetRequest,
+  output: GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

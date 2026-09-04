@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.notebooks#NotebooksListRequest": {
+    "com.posthog.notebooks#ListNotebooksRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -310,10 +310,10 @@
       },
       "traits": {}
     },
-    "com.posthog.notebooks#NotebooksList": {
+    "com.posthog.notebooks#ListNotebooks": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksListRequest"
+        "target": "com.posthog.notebooks#ListNotebooksRequest"
       },
       "output": {
         "target": "com.posthog.notebooks#PaginatedNotebookMinimalListOutput"
@@ -375,7 +375,7 @@
         "smithy.api#documentation": "Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique."
       }
     },
-    "com.posthog.notebooks#NotebooksCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -561,10 +561,10 @@
         "smithy.api#documentation": "Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique."
       }
     },
-    "com.posthog.notebooks#NotebooksCreate": {
+    "com.posthog.notebooks#CreateNotebook": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookRequest"
       },
       "output": {
         "target": "com.posthog.notebooks#NotebookOutput"
@@ -589,7 +589,7 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksSharingListRequest": {
+    "com.posthog.notebooks#ListNotebookSharingRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -687,7 +687,7 @@
       },
       "traits": {}
     },
-    "com.posthog.notebooks#NotebooksSharingListResponse": {
+    "com.posthog.notebooks#ListNotebookSharingResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -702,13 +702,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.notebooks#NotebooksSharingList": {
+    "com.posthog.notebooks#ListNotebookSharing": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksSharingListRequest"
+        "target": "com.posthog.notebooks#ListNotebookSharingRequest"
       },
       "output": {
-        "target": "com.posthog.notebooks#NotebooksSharingListResponse"
+        "target": "com.posthog.notebooks#ListNotebookSharingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -718,7 +718,7 @@
         }
       }
     },
-    "com.posthog.notebooks#NotebooksSharingPasswordsCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookSharingPasswordRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -750,10 +750,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksSharingPasswordsCreate": {
+    "com.posthog.notebooks#CreateNotebookSharingPassword": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksSharingPasswordsCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookSharingPasswordRequest"
       },
       "output": {
         "target": "com.posthog.notebooks#SharingConfiguration"
@@ -814,7 +814,7 @@
         "smithy.api#documentation": "Delete a password from the sharing configuration."
       }
     },
-    "com.posthog.notebooks#NotebooksSharingRefreshCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookSharingRefreshRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -846,10 +846,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksSharingRefreshCreate": {
+    "com.posthog.notebooks#CreateNotebookSharingRefresh": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksSharingRefreshCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookSharingRefreshRequest"
       },
       "output": {
         "target": "com.posthog.notebooks#SharingConfiguration"
@@ -919,7 +919,7 @@
         "smithy.api#documentation": "Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique."
       }
     },
-    "com.posthog.notebooks#NotebooksUpdateRequest": {
+    "com.posthog.notebooks#UpdateNotebookRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -983,10 +983,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksUpdate": {
+    "com.posthog.notebooks#UpdateNotebook": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksUpdateRequest"
+        "target": "com.posthog.notebooks#UpdateNotebookRequest"
       },
       "output": {
         "target": "com.posthog.notebooks#NotebookOutput"
@@ -1020,7 +1020,7 @@
         "smithy.api#documentation": "Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique."
       }
     },
-    "com.posthog.notebooks#NotebooksPartialUpdateRequest": {
+    "com.posthog.notebooks#UpdateNotebookPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1084,10 +1084,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksPartialUpdate": {
+    "com.posthog.notebooks#UpdateNotebookPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksPartialUpdateRequest"
+        "target": "com.posthog.notebooks#UpdateNotebookPartialRequest"
       },
       "output": {
         "target": "com.posthog.notebooks#NotebookOutput"
@@ -1238,7 +1238,7 @@
       },
       "traits": {}
     },
-    "com.posthog.notebooks#NotebooksCollabMarkdownSaveCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookCollabMarkdownSaveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1300,10 +1300,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksCollabMarkdownSaveCreate": {
+    "com.posthog.notebooks#CreateNotebookCollabMarkdownSave": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksCollabMarkdownSaveCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookCollabMarkdownSaveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1317,7 +1317,7 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksCollabPresenceCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookCollabPresenceRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1361,10 +1361,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksCollabPresenceCreate": {
+    "com.posthog.notebooks#CreateNotebookCollabPresence": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksCollabPresenceCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookCollabPresenceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1387,7 +1387,7 @@
         "smithy.api#documentation": "List of ProseMirror step JSON objects to apply."
       }
     },
-    "com.posthog.notebooks#NotebooksCollabSaveCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookCollabSaveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1453,10 +1453,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksCollabSaveCreate": {
+    "com.posthog.notebooks#CreateNotebookCollabSave": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksCollabSaveCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookCollabSaveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1538,7 +1538,7 @@
         "smithy.api#documentation": "Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique."
       }
     },
-    "com.posthog.notebooks#NotebooksHogqlExecuteCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookHogqlExecuteRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1602,10 +1602,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksHogqlExecuteCreate": {
+    "com.posthog.notebooks#CreateNotebookHogqlExecute": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksHogqlExecuteCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookHogqlExecuteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1630,7 +1630,7 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksKernelConfigCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookKernelConfigRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1705,10 +1705,10 @@
       },
       "traits": {}
     },
-    "com.posthog.notebooks#NotebooksKernelConfigCreate": {
+    "com.posthog.notebooks#CreateNotebookKernelConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksKernelConfigCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookKernelConfigRequest"
       },
       "output": {
         "target": "com.posthog.notebooks#NotebookKernelConfigResponse"
@@ -1790,7 +1790,7 @@
         "smithy.api#documentation": "Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique."
       }
     },
-    "com.posthog.notebooks#NotebooksKernelExecuteCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookKernelExecuteRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1854,10 +1854,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksKernelExecuteCreate": {
+    "com.posthog.notebooks#CreateNotebookKernelExecute": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksKernelExecuteCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookKernelExecuteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1891,7 +1891,7 @@
         "smithy.api#documentation": "Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique."
       }
     },
-    "com.posthog.notebooks#NotebooksKernelExecuteStreamCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookKernelExecuteStreamRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1955,10 +1955,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#NotebooksKernelExecuteStreamCreate": {
+    "com.posthog.notebooks#CreateNotebookKernelExecuteStream": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksKernelExecuteStreamCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookKernelExecuteStreamRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2577,7 +2577,7 @@
         "smithy.api#documentation": "Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch."
       }
     },
-    "com.posthog.notebooks#NotebooksSqlV2RunCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookSqlV2RunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2664,10 +2664,10 @@
       },
       "traits": {}
     },
-    "com.posthog.notebooks#NotebooksSqlV2RunCreate": {
+    "com.posthog.notebooks#CreateNotebookSqlV2Run": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksSqlV2RunCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookSqlV2RunRequest"
       },
       "output": {
         "target": "com.posthog.notebooks#NotebookSQLV2RunResponse"
@@ -2967,7 +2967,7 @@
         "smithy.api#documentation": "Read a run's durable state: its status, and — once done or interrupted — the result envelope (columns, first rows, stdout/stderr, media, error). Poll until terminal. Flag-gated (revamped-py-notebooks)."
       }
     },
-    "com.posthog.notebooks#NotebooksSqlV2RunsInterruptCreateRequest": {
+    "com.posthog.notebooks#CreateNotebookSqlV2RunInterruptRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3017,10 +3017,10 @@
       },
       "traits": {}
     },
-    "com.posthog.notebooks#NotebooksSqlV2RunsInterruptCreate": {
+    "com.posthog.notebooks#CreateNotebookSqlV2RunInterrupt": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.notebooks#NotebooksSqlV2RunsInterruptCreateRequest"
+        "target": "com.posthog.notebooks#CreateNotebookSqlV2RunInterruptRequest"
       },
       "output": {
         "target": "com.posthog.notebooks#NotebookSQLV2InterruptResponse"
@@ -3450,31 +3450,31 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.notebooks#NotebooksList"
+          "target": "com.posthog.notebooks#ListNotebooks"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksCreate"
+          "target": "com.posthog.notebooks#CreateNotebook"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksSharingList"
+          "target": "com.posthog.notebooks#ListNotebookSharing"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksSharingPasswordsCreate"
+          "target": "com.posthog.notebooks#CreateNotebookSharingPassword"
         },
         {
           "target": "com.posthog.notebooks#NotebooksSharingPasswordsDestroy"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksSharingRefreshCreate"
+          "target": "com.posthog.notebooks#CreateNotebookSharingRefresh"
         },
         {
           "target": "com.posthog.notebooks#NotebooksRetrieve"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksUpdate"
+          "target": "com.posthog.notebooks#UpdateNotebook"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksPartialUpdate"
+          "target": "com.posthog.notebooks#UpdateNotebookPartial"
         },
         {
           "target": "com.posthog.notebooks#NotebooksDestroy"
@@ -3483,31 +3483,31 @@
           "target": "com.posthog.notebooks#NotebooksActivityRetrieve"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksCollabMarkdownSaveCreate"
+          "target": "com.posthog.notebooks#CreateNotebookCollabMarkdownSave"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksCollabPresenceCreate"
+          "target": "com.posthog.notebooks#CreateNotebookCollabPresence"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksCollabSaveCreate"
+          "target": "com.posthog.notebooks#CreateNotebookCollabSave"
         },
         {
           "target": "com.posthog.notebooks#NotebooksCollabStreamRetrieve"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksHogqlExecuteCreate"
+          "target": "com.posthog.notebooks#CreateNotebookHogqlExecute"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksKernelConfigCreate"
+          "target": "com.posthog.notebooks#CreateNotebookKernelConfig"
         },
         {
           "target": "com.posthog.notebooks#NotebooksKernelDataframeRetrieve"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksKernelExecuteCreate"
+          "target": "com.posthog.notebooks#CreateNotebookKernelExecute"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksKernelExecuteStreamCreate"
+          "target": "com.posthog.notebooks#CreateNotebookKernelExecuteStream"
         },
         {
           "target": "com.posthog.notebooks#NotebooksKernelRestartCreate"
@@ -3522,13 +3522,13 @@
           "target": "com.posthog.notebooks#NotebooksKernelStopCreate"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksSqlV2RunCreate"
+          "target": "com.posthog.notebooks#CreateNotebookSqlV2Run"
         },
         {
           "target": "com.posthog.notebooks#NotebooksSqlV2RunsRetrieve"
         },
         {
-          "target": "com.posthog.notebooks#NotebooksSqlV2RunsInterruptCreate"
+          "target": "com.posthog.notebooks#CreateNotebookSqlV2RunInterrupt"
         },
         {
           "target": "com.posthog.notebooks#NotebooksSqlV2StateRetrieve"

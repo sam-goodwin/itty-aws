@@ -13,6 +13,180 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The resource type to check for name availability. */
+export type OperationsCheckNameAvailabilityRequestType =
+  "Microsoft.AppConfiguration/configurationStores";
+export const OperationsCheckNameAvailabilityRequestType =
+  /*@__PURE__*/ S.String;
+
+export interface CheckOperationNameAvailabilityRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name to check for availability. */
+  name: string;
+  /** The resource type to check for name availability. */
+  type: OperationsCheckNameAvailabilityRequestType | (string & {});
+}
+export const CheckOperationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      name: S.String,
+      type: OperationsCheckNameAvailabilityRequestType,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/checkNameAvailability",
+        code: 200,
+        apiVersion: "2024-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "CheckOperationNameAvailabilityRequest",
+}) as any as S.Schema<CheckOperationNameAvailabilityRequest>;
+
+/** The result of a request to check the availability of a resource name. */
+export interface NameAvailabilityStatus {
+  /** The value indicating whether the resource name is available. */
+  nameAvailable?: boolean;
+  /** If any, the error message that provides more detail for the reason that the name is not available. */
+  message?: string;
+  /** If any, the reason that the name is not available. */
+  reason?: string;
+}
+export const NameAvailabilityStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nameAvailable: S.optional(S.Boolean),
+    message: S.optional(S.String),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NameAvailabilityStatus",
+}) as any as S.Schema<NameAvailabilityStatus>;
+
+/** The resource type to check for name availability. */
+export type OperationsRegionalCheckNameAvailabilityRequestType =
+  "Microsoft.AppConfiguration/configurationStores";
+export const OperationsRegionalCheckNameAvailabilityRequestType =
+  /*@__PURE__*/ S.String;
+
+export interface CheckOperationRegionalNameAvailabilityRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The location in which uniqueness will be verified. */
+  location: string;
+  /** The name to check for availability. */
+  name: string;
+  /** The resource type to check for name availability. */
+  type: OperationsRegionalCheckNameAvailabilityRequestType | (string & {});
+}
+export const CheckOperationRegionalNameAvailabilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      location: S.String.pipe(T.Label()),
+      name: S.String,
+      type: OperationsRegionalCheckNameAvailabilityRequestType,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/checkNameAvailability",
+        code: 200,
+        apiVersion: "2024-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckOperationRegionalNameAvailabilityRequest",
+  }) as any as S.Schema<CheckOperationRegionalNameAvailabilityRequest>;
+
+export interface ConfigurationStoresPurgeDeletedRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The location in which uniqueness will be verified. */
+  location: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+}
+export const ConfigurationStoresPurgeDeletedRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      location: S.String.pipe(T.Label()),
+      configStoreName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}/purge",
+        code: 200,
+        apiVersion: "2024-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ConfigurationStoresPurgeDeletedRequest",
+}) as any as S.Schema<ConfigurationStoresPurgeDeletedRequest>;
+
+export interface ConfigurationStoresPurgeDeletedResponse {}
+export const ConfigurationStoresPurgeDeletedResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "ConfigurationStoresPurgeDeletedResponse",
+}) as any as S.Schema<ConfigurationStoresPurgeDeletedResponse>;
+
+export interface ConfigurationStoresRegenerateKeyRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** The id of the key to regenerate. */
+  id?: string;
+}
+export const ConfigurationStoresRegenerateKeyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      configStoreName: S.String.pipe(T.Label()),
+      id: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/regenerateKey",
+        code: 200,
+        apiVersion: "2024-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ConfigurationStoresRegenerateKeyRequest",
+}) as any as S.Schema<ConfigurationStoresRegenerateKeyRequest>;
+
+/** An API key used for authenticating with a configuration store endpoint. */
+export interface ApiKey {
+  /** The key ID. */
+  id?: string;
+  /** A name for the key describing its usage. */
+  name?: string;
+  /** The value of the key that is used for authentication purposes. */
+  value?: string;
+  /** A connection string that can be used by supporting clients for authentication. */
+  connectionString?: string | Redacted.Redacted<string>;
+  /** The last time any of the key's properties were modified. */
+  lastModified?: string;
+  /** Whether this key can only be used for read operations. */
+  readOnly?: boolean;
+}
+export const ApiKey = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    lastModified: S.optional(S.String),
+    readOnly: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "ApiKey" }) as any as S.Schema<ApiKey>;
+
 /** Resource tags. */
 export type ConfigurationStoresCreateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -192,7 +366,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
-export interface ConfigurationStoresCreateRequest {
+export interface CreateConfigurationStoreRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
   /** The name of the resource group to which the container registry belongs. */
@@ -210,7 +384,7 @@ export interface ConfigurationStoresCreateRequest {
   /** The sku of the configuration store. */
   sku: Sku;
 }
-export const ConfigurationStoresCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateConfigurationStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -229,8 +403,8 @@ export const ConfigurationStoresCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConfigurationStoresCreateRequest",
-}) as any as S.Schema<ConfigurationStoresCreateRequest>;
+  identifier: "CreateConfigurationStoreRequest",
+}) as any as S.Schema<CreateConfigurationStoreRequest>;
 
 /** Resource tags. */
 export type ConfigurationStoresCreateResponseTagsMap = {
@@ -532,7 +706,7 @@ export const ConfigurationStoresCreateResponseSystemData =
     identifier: "ConfigurationStoresCreateResponseSystemData",
   }) as any as S.Schema<ConfigurationStoresCreateResponseSystemData>;
 
-export interface ConfigurationStoresCreateResponse {
+export interface CreateConfigurationStoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -552,7 +726,7 @@ export interface ConfigurationStoresCreateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationStoresCreateResponseSystemData;
 }
-export const ConfigurationStoresCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateConfigurationStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -565,10 +739,320 @@ export const ConfigurationStoresCreateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(ConfigurationStoresCreateResponseSystemData),
   }),
 ).annotate({
-  identifier: "ConfigurationStoresCreateResponse",
-}) as any as S.Schema<ConfigurationStoresCreateResponse>;
+  identifier: "CreateConfigurationStoreResponse",
+}) as any as S.Schema<CreateConfigurationStoreResponse>;
 
-export interface ConfigurationStoresDeleteRequest {
+export interface CreateReplicaRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** The name of the replica. */
+  replicaName: string;
+  /** The location of the replica. */
+  location?: string;
+}
+export const CreateReplicaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    replicaName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateReplicaRequest",
+}) as any as S.Schema<CreateReplicaRequest>;
+
+/** The type of identity that created the resource. */
+export type ReplicaSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ReplicaSystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ReplicaSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const ReplicaSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ReplicaSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ReplicaSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ReplicaSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ReplicaSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(ReplicaSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(ReplicaSystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplicaSystemData",
+}) as any as S.Schema<ReplicaSystemData>;
+
+/** The provisioning state of the replica. */
+export type ReplicaPropertiesProvisioningState =
+  | "Creating"
+  | "Succeeded"
+  | "Deleting"
+  | "Failed"
+  | "Canceled";
+export const ReplicaPropertiesProvisioningState = /*@__PURE__*/ S.String;
+
+/** All replica properties. */
+export interface ReplicaProperties {
+  /** The URI of the replica where the replica API will be available. */
+  endpoint?: string;
+  /** The provisioning state of the replica. */
+  provisioningState?: ReplicaPropertiesProvisioningState;
+}
+export const ReplicaProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpoint: S.optional(S.String),
+    provisioningState: S.optional(ReplicaPropertiesProvisioningState),
+  }),
+).annotate({
+  identifier: "ReplicaProperties",
+}) as any as S.Schema<ReplicaProperties>;
+
+/** The replica resource. */
+export interface Replica {
+  /** The resource ID. */
+  id?: string;
+  /** The name of the replica. */
+  name?: string;
+  /** The type of the resource. */
+  type?: string;
+  /** The location of the replica. */
+  location?: string;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ReplicaSystemData;
+  /** All replica properties. */
+  properties?: ReplicaProperties;
+}
+export const Replica = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    location: S.optional(S.String),
+    systemData: S.optional(ReplicaSystemData),
+    properties: S.optional(ReplicaProperties),
+  }),
+).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
+
+/** Enables filtering of key-values. */
+export interface KeyValueFilter {
+  /** Filters key-values by their key field. */
+  key: string;
+  /** Filters key-values by their label field. */
+  label?: string;
+}
+export const KeyValueFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.String,
+    label: S.optional(S.String),
+  }),
+).annotate({ identifier: "KeyValueFilter" }) as any as S.Schema<KeyValueFilter>;
+
+/** A list of filters used to filter the key-values included in the snapshot. */
+export type SnapshotPropertiesInputFiltersList = Array<KeyValueFilter>;
+export const SnapshotPropertiesInputFiltersList = /*@__PURE__*/ S.Array(
+  KeyValueFilter,
+) as any as S.Schema<SnapshotPropertiesInputFiltersList>;
+
+/** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
+export type SnapshotPropertiesInputCompositionType = "Key" | "Key_Label";
+export const SnapshotPropertiesInputCompositionType = /*@__PURE__*/ S.String;
+
+/** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
+export type SnapshotPropertiesInputTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SnapshotPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SnapshotPropertiesInputTagsMap>;
+
+/** All snapshot properties. */
+export interface SnapshotPropertiesInput {
+  /** A list of filters used to filter the key-values included in the snapshot. */
+  filters: SnapshotPropertiesInputFiltersList;
+  /** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
+  compositionType?: SnapshotPropertiesInputCompositionType | (string & {});
+  /** The amount of time, in seconds, that a snapshot will remain in the archived state before expiring. This property is only writable during the creation of a snapshot. If not specified, the default lifetime of key-value revisions will be used. */
+  retentionPeriod?: number;
+  /** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
+  tags?: SnapshotPropertiesInputTagsMap;
+}
+export const SnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filters: SnapshotPropertiesInputFiltersList,
+    compositionType: S.optional(SnapshotPropertiesInputCompositionType),
+    retentionPeriod: S.optional(S.Number),
+    tags: S.optional(SnapshotPropertiesInputTagsMap),
+  }),
+).annotate({
+  identifier: "SnapshotPropertiesInput",
+}) as any as S.Schema<SnapshotPropertiesInput>;
+
+export interface CreateSnapshotRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** The name of the snapshot. */
+  snapshotName: string;
+  /** All snapshot properties. */
+  properties?: SnapshotPropertiesInput;
+}
+export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    snapshotName: S.String.pipe(T.Label()),
+    properties: S.optional(SnapshotPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/snapshots/{snapshotName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSnapshotRequest",
+}) as any as S.Schema<CreateSnapshotRequest>;
+
+/** The provisioning state of the snapshot. */
+export type SnapshotPropertiesProvisioningState =
+  | "Creating"
+  | "Updating"
+  | "Deleting"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled";
+export const SnapshotPropertiesProvisioningState = /*@__PURE__*/ S.String;
+
+/** The current status of the snapshot. */
+export type SnapshotPropertiesStatus =
+  | "Provisioning"
+  | "Ready"
+  | "Archived"
+  | "Failed";
+export const SnapshotPropertiesStatus = /*@__PURE__*/ S.String;
+
+/** A list of filters used to filter the key-values included in the snapshot. */
+export type SnapshotPropertiesFiltersList = Array<KeyValueFilter>;
+export const SnapshotPropertiesFiltersList = /*@__PURE__*/ S.Array(
+  KeyValueFilter,
+) as any as S.Schema<SnapshotPropertiesFiltersList>;
+
+/** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
+export type SnapshotPropertiesCompositionType = "Key" | "Key_Label";
+export const SnapshotPropertiesCompositionType = /*@__PURE__*/ S.String;
+
+/** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
+export type SnapshotPropertiesTagsMap = { [key: string]: string | undefined };
+export const SnapshotPropertiesTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SnapshotPropertiesTagsMap>;
+
+/** All snapshot properties. */
+export interface SnapshotProperties {
+  /** The provisioning state of the snapshot. */
+  provisioningState?: SnapshotPropertiesProvisioningState;
+  /** The current status of the snapshot. */
+  status?: SnapshotPropertiesStatus;
+  /** A list of filters used to filter the key-values included in the snapshot. */
+  filters: SnapshotPropertiesFiltersList;
+  /** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
+  compositionType?: SnapshotPropertiesCompositionType;
+  /** The time that the snapshot was created. */
+  created?: string;
+  /** The time that the snapshot will expire. */
+  expires?: string;
+  /** The amount of time, in seconds, that a snapshot will remain in the archived state before expiring. This property is only writable during the creation of a snapshot. If not specified, the default lifetime of key-value revisions will be used. */
+  retentionPeriod?: number;
+  /** The size in bytes of the snapshot. */
+  size?: number;
+  /** The amount of key-values in the snapshot. */
+  itemsCount?: number;
+  /** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
+  tags?: SnapshotPropertiesTagsMap;
+  /** A value representing the current state of the snapshot. */
+  etag?: string;
+}
+export const SnapshotProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(SnapshotPropertiesProvisioningState),
+    status: S.optional(SnapshotPropertiesStatus),
+    filters: SnapshotPropertiesFiltersList,
+    compositionType: S.optional(SnapshotPropertiesCompositionType),
+    created: S.optional(S.String),
+    expires: S.optional(S.String),
+    retentionPeriod: S.optional(S.Number),
+    size: S.optional(S.Number),
+    itemsCount: S.optional(S.Number),
+    tags: S.optional(SnapshotPropertiesTagsMap),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SnapshotProperties",
+}) as any as S.Schema<SnapshotProperties>;
+
+/** The snapshot resource. */
+export interface Snapshot {
+  /** The resource ID. */
+  id?: string;
+  /** The name of the snapshot. */
+  name?: string;
+  /** The type of the resource. */
+  type?: string;
+  /** All snapshot properties. */
+  properties?: SnapshotProperties;
+}
+export const Snapshot = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(SnapshotProperties),
+  }),
+).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
+
+export interface DeleteConfigurationStoreRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
   /** The name of the resource group to which the container registry belongs. */
@@ -576,7 +1060,7 @@ export interface ConfigurationStoresDeleteRequest {
   /** The name of the configuration store. */
   configStoreName: string;
 }
-export const ConfigurationStoresDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteConfigurationStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -590,17 +1074,123 @@ export const ConfigurationStoresDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConfigurationStoresDeleteRequest",
-}) as any as S.Schema<ConfigurationStoresDeleteRequest>;
+  identifier: "DeleteConfigurationStoreRequest",
+}) as any as S.Schema<DeleteConfigurationStoreRequest>;
 
-export interface ConfigurationStoresDeleteResponse {}
-export const ConfigurationStoresDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteConfigurationStoreResponse {}
+export const DeleteConfigurationStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "ConfigurationStoresDeleteResponse",
-}) as any as S.Schema<ConfigurationStoresDeleteResponse>;
+  identifier: "DeleteConfigurationStoreResponse",
+}) as any as S.Schema<DeleteConfigurationStoreResponse>;
 
-export interface ConfigurationStoresGetRequest {
+export interface DeleteKeyValueRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** Identifier of key and label combination. Key and label are joined by $ character. Label is optional. */
+  keyValueName: string;
+}
+export const DeleteKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    keyValueName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteKeyValueRequest",
+}) as any as S.Schema<DeleteKeyValueRequest>;
+
+export interface DeleteKeyValueResponse {}
+export const DeleteKeyValueResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteKeyValueResponse",
+}) as any as S.Schema<DeleteKeyValueResponse>;
+
+export interface DeletePrivateEndpointConnectionRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** Private endpoint connection name */
+  privateEndpointConnectionName: string;
+}
+export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      configStoreName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2024-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeletePrivateEndpointConnectionRequest",
+}) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
+export interface DeletePrivateEndpointConnectionResponse {}
+export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeletePrivateEndpointConnectionResponse",
+}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
+export interface DeleteReplicaRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** The name of the replica. */
+  replicaName: string;
+}
+export const DeleteReplicaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    replicaName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteReplicaRequest",
+}) as any as S.Schema<DeleteReplicaRequest>;
+
+export interface DeleteReplicaResponse {}
+export const DeleteReplicaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteReplicaResponse",
+}) as any as S.Schema<DeleteReplicaResponse>;
+
+export interface GetConfigurationStoreRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
   /** The name of the resource group to which the container registry belongs. */
@@ -608,7 +1198,7 @@ export interface ConfigurationStoresGetRequest {
   /** The name of the configuration store. */
   configStoreName: string;
 }
-export const ConfigurationStoresGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConfigurationStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -622,8 +1212,8 @@ export const ConfigurationStoresGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConfigurationStoresGetRequest",
-}) as any as S.Schema<ConfigurationStoresGetRequest>;
+  identifier: "GetConfigurationStoreRequest",
+}) as any as S.Schema<GetConfigurationStoreRequest>;
 
 /** Resource tags. */
 export type ConfigurationStoresGetResponseTagsMap = {
@@ -685,7 +1275,7 @@ export const ConfigurationStoresGetResponseSystemData = /*@__PURE__*/ S.suspend(
   identifier: "ConfigurationStoresGetResponseSystemData",
 }) as any as S.Schema<ConfigurationStoresGetResponseSystemData>;
 
-export interface ConfigurationStoresGetResponse {
+export interface GetConfigurationStoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -705,7 +1295,7 @@ export interface ConfigurationStoresGetResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationStoresGetResponseSystemData;
 }
-export const ConfigurationStoresGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConfigurationStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -718,10 +1308,10 @@ export const ConfigurationStoresGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(ConfigurationStoresGetResponseSystemData),
   }),
 ).annotate({
-  identifier: "ConfigurationStoresGetResponse",
-}) as any as S.Schema<ConfigurationStoresGetResponse>;
+  identifier: "GetConfigurationStoreResponse",
+}) as any as S.Schema<GetConfigurationStoreResponse>;
 
-export interface ConfigurationStoresGetDeletedRequest {
+export interface GetConfigurationStoreDeletedRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
   /** The location in which uniqueness will be verified. */
@@ -729,23 +1319,22 @@ export interface ConfigurationStoresGetDeletedRequest {
   /** The name of the configuration store. */
   configStoreName: string;
 }
-export const ConfigurationStoresGetDeletedRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      configStoreName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
+export const GetConfigurationStoreDeletedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
 ).annotate({
-  identifier: "ConfigurationStoresGetDeletedRequest",
-}) as any as S.Schema<ConfigurationStoresGetDeletedRequest>;
+  identifier: "GetConfigurationStoreDeletedRequest",
+}) as any as S.Schema<GetConfigurationStoreDeletedRequest>;
 
 /** Tags of the original configuration store. */
 export type DeletedConfigurationStorePropertiesTagsMap = {
@@ -807,27 +1396,372 @@ export const DeletedConfigurationStore = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletedConfigurationStore",
 }) as any as S.Schema<DeletedConfigurationStore>;
 
-export interface ConfigurationStoresListRequest {
+export interface GetKeyValueRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
-  /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
-  _skipToken?: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** Identifier of key and label combination. Key and label are joined by $ character. Label is optional. */
+  keyValueName: string;
 }
-export const ConfigurationStoresListRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    keyValueName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
       code: 200,
       apiVersion: "2024-06-01",
     }),
   ),
 ).annotate({
-  identifier: "ConfigurationStoresListRequest",
-}) as any as S.Schema<ConfigurationStoresListRequest>;
+  identifier: "GetKeyValueRequest",
+}) as any as S.Schema<GetKeyValueRequest>;
+
+/** A dictionary of tags that can help identify what a key-value may be applicable for. */
+export type KeyValuePropertiesTagsMap = { [key: string]: string | undefined };
+export const KeyValuePropertiesTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<KeyValuePropertiesTagsMap>;
+
+/** All key-value properties. */
+export interface KeyValueProperties {
+  /** The primary identifier of a key-value. The key is used in unison with the label to uniquely identify a key-value. */
+  key?: string;
+  /** A value used to group key-values. The label is used in unison with the key to uniquely identify a key-value. */
+  label?: string;
+  /** The value of the key-value. */
+  value?: string;
+  /** The content type of the key-value's value. Providing a proper content-type can enable transformations of values when they are retrieved by applications. */
+  contentType?: string;
+  /** An ETag indicating the state of a key-value within a configuration store. */
+  eTag?: string;
+  /** The last time a modifying operation was performed on the given key-value. */
+  lastModified?: string;
+  /** A value indicating whether the key-value is locked. A locked key-value may not be modified until it is unlocked. */
+  locked?: boolean;
+  /** A dictionary of tags that can help identify what a key-value may be applicable for. */
+  tags?: KeyValuePropertiesTagsMap;
+}
+export const KeyValueProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    label: S.optional(S.String),
+    value: S.optional(S.String),
+    contentType: S.optional(S.String),
+    eTag: S.optional(S.String),
+    lastModified: S.optional(S.String),
+    locked: S.optional(S.Boolean),
+    tags: S.optional(KeyValuePropertiesTagsMap),
+  }),
+).annotate({
+  identifier: "KeyValueProperties",
+}) as any as S.Schema<KeyValueProperties>;
+
+/** The key-value resource along with all resource properties. */
+export interface KeyValue {
+  /** The resource ID. */
+  id?: string;
+  /** The name of the resource. */
+  name?: string;
+  /** The type of the resource. */
+  type?: string;
+  /** All key-value properties. */
+  properties?: KeyValueProperties;
+}
+export const KeyValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(KeyValueProperties),
+  }),
+).annotate({ identifier: "KeyValue" }) as any as S.Schema<KeyValue>;
+
+export interface GetPrivateEndpointConnectionRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** Private endpoint connection name */
+  privateEndpointConnectionName: string;
+}
+export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    privateEndpointConnectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetPrivateEndpointConnectionRequest",
+}) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
+/** A private endpoint connection */
+export interface PrivateEndpointConnection {
+  /** The resource ID. */
+  id?: string;
+  /** The name of the resource. */
+  name?: string;
+  /** The type of the resource. */
+  type?: string;
+  /** The properties of a private endpoint. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(PrivateEndpointConnectionProperties),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnection",
+}) as any as S.Schema<PrivateEndpointConnection>;
+
+export interface GetPrivateLinkResourceRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** The name of the private link resource group. */
+  groupName: string;
+}
+export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources/{groupName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetPrivateLinkResourceRequest",
+}) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
+/** The private link resource required member names. */
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
+/** The list of required DNS zone names of the private link resource. */
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
+/** Properties of a private link resource. */
+export interface PrivateLinkResourceProperties {
+  /** The private link resource group id. */
+  groupId?: string;
+  /** The private link resource required member names. */
+  requiredMembers?: PrivateLinkResourcePropertiesRequiredMembersList;
+  /** The list of required DNS zone names of the private link resource. */
+  requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
+}
+export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.optional(S.String),
+    requiredMembers: S.optional(
+      PrivateLinkResourcePropertiesRequiredMembersList,
+    ),
+    requiredZoneNames: S.optional(
+      PrivateLinkResourcePropertiesRequiredZoneNamesList,
+    ),
+  }),
+).annotate({
+  identifier: "PrivateLinkResourceProperties",
+}) as any as S.Schema<PrivateLinkResourceProperties>;
+
+/** A resource that supports private link capabilities. */
+export interface PrivateLinkResource {
+  /** The resource ID. */
+  id?: string;
+  /** The name of the resource. */
+  name?: string;
+  /** The type of the resource. */
+  type?: string;
+  /** Private link resource properties. */
+  properties?: PrivateLinkResourceProperties;
+}
+export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(PrivateLinkResourceProperties),
+  }),
+).annotate({
+  identifier: "PrivateLinkResource",
+}) as any as S.Schema<PrivateLinkResource>;
+
+export interface GetReplicaRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** The name of the replica. */
+  replicaName: string;
+}
+export const GetReplicaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    replicaName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetReplicaRequest",
+}) as any as S.Schema<GetReplicaRequest>;
+
+export interface GetSnapshotRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** The name of the snapshot. */
+  snapshotName: string;
+}
+export const GetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    snapshotName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/snapshots/{snapshotName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSnapshotRequest",
+}) as any as S.Schema<GetSnapshotRequest>;
+
+/** A dictionary of tags that can help identify what a key-value may be applicable for. */
+export type KeyValuePropertiesInputTagsMap = {
+  [key: string]: string | undefined;
+};
+export const KeyValuePropertiesInputTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<KeyValuePropertiesInputTagsMap>;
+
+/** All key-value properties. */
+export interface KeyValuePropertiesInput {
+  /** The value of the key-value. */
+  value?: string;
+  /** The content type of the key-value's value. Providing a proper content-type can enable transformations of values when they are retrieved by applications. */
+  contentType?: string;
+  /** A dictionary of tags that can help identify what a key-value may be applicable for. */
+  tags?: KeyValuePropertiesInputTagsMap;
+}
+export const KeyValuePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    contentType: S.optional(S.String),
+    tags: S.optional(KeyValuePropertiesInputTagsMap),
+  }),
+).annotate({
+  identifier: "KeyValuePropertiesInput",
+}) as any as S.Schema<KeyValuePropertiesInput>;
+
+export interface KeyValuesCreateOrUpdateRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** Identifier of key and label combination. Key and label are joined by $ character. Label is optional. */
+  keyValueName: string;
+  /** All key-value properties. */
+  properties?: KeyValuePropertiesInput;
+}
+export const KeyValuesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configStoreName: S.String.pipe(T.Label()),
+    keyValueName: S.String.pipe(T.Label()),
+    properties: S.optional(KeyValuePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "KeyValuesCreateOrUpdateRequest",
+}) as any as S.Schema<KeyValuesCreateOrUpdateRequest>;
+
+export interface ListConfigurationStoreByResourceGroupRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
+  _skipToken?: string;
+}
+export const ListConfigurationStoreByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores",
+        code: 200,
+        apiVersion: "2024-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListConfigurationStoreByResourceGroupRequest",
+  }) as any as S.Schema<ListConfigurationStoreByResourceGroupRequest>;
 
 /** Resource tags. */
 export type ConfigurationStoreTagsMap = { [key: string]: string | undefined };
@@ -942,37 +1876,11 @@ export const ConfigurationStoreListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationStoreListResult",
 }) as any as S.Schema<ConfigurationStoreListResult>;
 
-export interface ConfigurationStoresListByResourceGroupRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
-  _skipToken?: string;
-}
-export const ConfigurationStoresListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationStoresListByResourceGroupRequest",
-  }) as any as S.Schema<ConfigurationStoresListByResourceGroupRequest>;
-
-export interface ConfigurationStoresListDeletedRequest {
+export interface ListConfigurationStoreDeletedRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
 }
-export const ConfigurationStoresListDeletedRequest = /*@__PURE__*/ S.suspend(
+export const ListConfigurationStoreDeletedRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -985,8 +1893,8 @@ export const ConfigurationStoresListDeletedRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ConfigurationStoresListDeletedRequest",
-}) as any as S.Schema<ConfigurationStoresListDeletedRequest>;
+  identifier: "ListConfigurationStoreDeletedRequest",
+}) as any as S.Schema<ListConfigurationStoreDeletedRequest>;
 
 /** The list of deleted configuration store. */
 export type DeletedConfigurationStoreListResultValueList =
@@ -1012,7 +1920,7 @@ export const DeletedConfigurationStoreListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletedConfigurationStoreListResult",
 }) as any as S.Schema<DeletedConfigurationStoreListResult>;
 
-export interface ConfigurationStoresListKeysRequest {
+export interface ListConfigurationStoreKeysRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
   /** The name of the resource group to which the container registry belongs. */
@@ -1022,7 +1930,7 @@ export interface ConfigurationStoresListKeysRequest {
   /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
 }
-export const ConfigurationStoresListKeysRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListConfigurationStoreKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1037,34 +1945,8 @@ export const ConfigurationStoresListKeysRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConfigurationStoresListKeysRequest",
-}) as any as S.Schema<ConfigurationStoresListKeysRequest>;
-
-/** An API key used for authenticating with a configuration store endpoint. */
-export interface ApiKey {
-  /** The key ID. */
-  id?: string;
-  /** A name for the key describing its usage. */
-  name?: string;
-  /** The value of the key that is used for authentication purposes. */
-  value?: string;
-  /** A connection string that can be used by supporting clients for authentication. */
-  connectionString?: string | Redacted.Redacted<string>;
-  /** The last time any of the key's properties were modified. */
-  lastModified?: string;
-  /** Whether this key can only be used for read operations. */
-  readOnly?: boolean;
-}
-export const ApiKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    lastModified: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ApiKey" }) as any as S.Schema<ApiKey>;
+  identifier: "ListConfigurationStoreKeysRequest",
+}) as any as S.Schema<ListConfigurationStoreKeysRequest>;
 
 /** The collection value. */
 export type ApiKeyListResultValueList = Array<ApiKey>;
@@ -1088,489 +1970,33 @@ export const ApiKeyListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiKeyListResult",
 }) as any as S.Schema<ApiKeyListResult>;
 
-export interface ConfigurationStoresPurgeDeletedRequest {
+export interface ListConfigurationStoresRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
-  /** The location in which uniqueness will be verified. */
-  location: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-}
-export const ConfigurationStoresPurgeDeletedRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      configStoreName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}/purge",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "ConfigurationStoresPurgeDeletedRequest",
-}) as any as S.Schema<ConfigurationStoresPurgeDeletedRequest>;
-
-export interface ConfigurationStoresPurgeDeletedResponse {}
-export const ConfigurationStoresPurgeDeletedResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ConfigurationStoresPurgeDeletedResponse",
-}) as any as S.Schema<ConfigurationStoresPurgeDeletedResponse>;
-
-export interface ConfigurationStoresRegenerateKeyRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** The id of the key to regenerate. */
-  id?: string;
-}
-export const ConfigurationStoresRegenerateKeyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      configStoreName: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/regenerateKey",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "ConfigurationStoresRegenerateKeyRequest",
-}) as any as S.Schema<ConfigurationStoresRegenerateKeyRequest>;
-
-/** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
-export type ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled";
-export const ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess =
-  /*@__PURE__*/ S.String;
-
-/** The properties for updating a configuration store. */
-export interface ConfigurationStorePropertiesUpdateParameters {
-  /** The encryption settings of the configuration store. */
-  encryption?: EncryptionProperties;
-  /** Disables all authentication methods other than AAD authentication. */
-  disableLocalAuth?: boolean;
-  /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
-  publicNetworkAccess?:
-    | ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess
-    | (string & {});
-  /** Property specifying whether protection against purge is enabled for this configuration store. */
-  enablePurgeProtection?: boolean;
-  /** Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM). */
-  dataPlaneProxy?: DataPlaneProxyProperties;
-  /** The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores. */
-  defaultKeyValueRevisionRetentionPeriodInSeconds?: number;
-}
-export const ConfigurationStorePropertiesUpdateParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      encryption: S.optional(EncryptionProperties),
-      disableLocalAuth: S.optional(S.Boolean),
-      publicNetworkAccess: S.optional(
-        ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess,
-      ),
-      enablePurgeProtection: S.optional(S.Boolean),
-      dataPlaneProxy: S.optional(DataPlaneProxyProperties),
-      defaultKeyValueRevisionRetentionPeriodInSeconds: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ConfigurationStorePropertiesUpdateParameters",
-  }) as any as S.Schema<ConfigurationStorePropertiesUpdateParameters>;
-
-/** The ARM resource tags. */
-export type ConfigurationStoresUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigurationStoresUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationStoresUpdateRequestTagsMap>;
-
-export interface ConfigurationStoresUpdateRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** The properties for updating a configuration store. */
-  properties?: ConfigurationStorePropertiesUpdateParameters;
-  /** The managed identity information for the configuration store. */
-  identity?: ResourceIdentityInput;
-  /** The SKU of the configuration store. */
-  sku?: Sku;
-  /** The ARM resource tags. */
-  tags?: ConfigurationStoresUpdateRequestTagsMap;
-}
-export const ConfigurationStoresUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configStoreName: S.String.pipe(T.Label()),
-    properties: S.optional(ConfigurationStorePropertiesUpdateParameters),
-    identity: S.optional(ResourceIdentityInput),
-    sku: S.optional(Sku),
-    tags: S.optional(ConfigurationStoresUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
-      code: 200,
-      apiVersion: "2024-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationStoresUpdateRequest",
-}) as any as S.Schema<ConfigurationStoresUpdateRequest>;
-
-/** Resource tags. */
-export type ConfigurationStoresUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigurationStoresUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationStoresUpdateResponseTagsMap>;
-
-/** The type of identity that created the resource. */
-export type ConfigurationStoresUpdateResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationStoresUpdateResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ConfigurationStoresUpdateResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const ConfigurationStoresUpdateResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ConfigurationStoresUpdateResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ConfigurationStoresUpdateResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ConfigurationStoresUpdateResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ConfigurationStoresUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationStoresUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationStoresUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationStoresUpdateResponseSystemData",
-  }) as any as S.Schema<ConfigurationStoresUpdateResponseSystemData>;
-
-export interface ConfigurationStoresUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource tags. */
-  tags?: ConfigurationStoresUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The managed identity information, if configured. */
-  identity?: ResourceIdentity;
-  /** The properties of a configuration store. */
-  properties?: ConfigurationStoreProperties;
-  /** The sku of the configuration store. */
-  sku: Sku;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ConfigurationStoresUpdateResponseSystemData;
-}
-export const ConfigurationStoresUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ConfigurationStoresUpdateResponseTagsMap),
-    location: S.String,
-    identity: S.optional(ResourceIdentity),
-    properties: S.optional(ConfigurationStoreProperties),
-    sku: Sku,
-    systemData: S.optional(ConfigurationStoresUpdateResponseSystemData),
-  }),
-).annotate({
-  identifier: "ConfigurationStoresUpdateResponse",
-}) as any as S.Schema<ConfigurationStoresUpdateResponse>;
-
-/** A dictionary of tags that can help identify what a key-value may be applicable for. */
-export type KeyValuePropertiesInputTagsMap = {
-  [key: string]: string | undefined;
-};
-export const KeyValuePropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KeyValuePropertiesInputTagsMap>;
-
-/** All key-value properties. */
-export interface KeyValuePropertiesInput {
-  /** The value of the key-value. */
-  value?: string;
-  /** The content type of the key-value's value. Providing a proper content-type can enable transformations of values when they are retrieved by applications. */
-  contentType?: string;
-  /** A dictionary of tags that can help identify what a key-value may be applicable for. */
-  tags?: KeyValuePropertiesInputTagsMap;
-}
-export const KeyValuePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    contentType: S.optional(S.String),
-    tags: S.optional(KeyValuePropertiesInputTagsMap),
-  }),
-).annotate({
-  identifier: "KeyValuePropertiesInput",
-}) as any as S.Schema<KeyValuePropertiesInput>;
-
-export interface KeyValuesCreateOrUpdateRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** Identifier of key and label combination. Key and label are joined by $ character. Label is optional. */
-  keyValueName: string;
-  /** All key-value properties. */
-  properties?: KeyValuePropertiesInput;
-}
-export const KeyValuesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configStoreName: S.String.pipe(T.Label()),
-    keyValueName: S.String.pipe(T.Label()),
-    properties: S.optional(KeyValuePropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
-      code: 200,
-      apiVersion: "2024-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "KeyValuesCreateOrUpdateRequest",
-}) as any as S.Schema<KeyValuesCreateOrUpdateRequest>;
-
-/** A dictionary of tags that can help identify what a key-value may be applicable for. */
-export type KeyValuePropertiesTagsMap = { [key: string]: string | undefined };
-export const KeyValuePropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KeyValuePropertiesTagsMap>;
-
-/** All key-value properties. */
-export interface KeyValueProperties {
-  /** The primary identifier of a key-value. The key is used in unison with the label to uniquely identify a key-value. */
-  key?: string;
-  /** A value used to group key-values. The label is used in unison with the key to uniquely identify a key-value. */
-  label?: string;
-  /** The value of the key-value. */
-  value?: string;
-  /** The content type of the key-value's value. Providing a proper content-type can enable transformations of values when they are retrieved by applications. */
-  contentType?: string;
-  /** An ETag indicating the state of a key-value within a configuration store. */
-  eTag?: string;
-  /** The last time a modifying operation was performed on the given key-value. */
-  lastModified?: string;
-  /** A value indicating whether the key-value is locked. A locked key-value may not be modified until it is unlocked. */
-  locked?: boolean;
-  /** A dictionary of tags that can help identify what a key-value may be applicable for. */
-  tags?: KeyValuePropertiesTagsMap;
-}
-export const KeyValueProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.String),
-    value: S.optional(S.String),
-    contentType: S.optional(S.String),
-    eTag: S.optional(S.String),
-    lastModified: S.optional(S.String),
-    locked: S.optional(S.Boolean),
-    tags: S.optional(KeyValuePropertiesTagsMap),
-  }),
-).annotate({
-  identifier: "KeyValueProperties",
-}) as any as S.Schema<KeyValueProperties>;
-
-/** The key-value resource along with all resource properties. */
-export interface KeyValue {
-  /** The resource ID. */
-  id?: string;
-  /** The name of the resource. */
-  name?: string;
-  /** The type of the resource. */
-  type?: string;
-  /** All key-value properties. */
-  properties?: KeyValueProperties;
-}
-export const KeyValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(KeyValueProperties),
-  }),
-).annotate({ identifier: "KeyValue" }) as any as S.Schema<KeyValue>;
-
-export interface KeyValuesDeleteRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** Identifier of key and label combination. Key and label are joined by $ character. Label is optional. */
-  keyValueName: string;
-}
-export const KeyValuesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configStoreName: S.String.pipe(T.Label()),
-    keyValueName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
-      code: 200,
-      apiVersion: "2024-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "KeyValuesDeleteRequest",
-}) as any as S.Schema<KeyValuesDeleteRequest>;
-
-export interface KeyValuesDeleteResponse {}
-export const KeyValuesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "KeyValuesDeleteResponse",
-}) as any as S.Schema<KeyValuesDeleteResponse>;
-
-export interface KeyValuesGetRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** Identifier of key and label combination. Key and label are joined by $ character. Label is optional. */
-  keyValueName: string;
-}
-export const KeyValuesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configStoreName: S.String.pipe(T.Label()),
-    keyValueName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
-      code: 200,
-      apiVersion: "2024-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "KeyValuesGetRequest",
-}) as any as S.Schema<KeyValuesGetRequest>;
-
-/** The resource type to check for name availability. */
-export type OperationsCheckNameAvailabilityRequestType =
-  "Microsoft.AppConfiguration/configurationStores";
-export const OperationsCheckNameAvailabilityRequestType =
-  /*@__PURE__*/ S.String;
-
-export interface OperationsCheckNameAvailabilityRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name to check for availability. */
-  name: string;
-  /** The resource type to check for name availability. */
-  type: OperationsCheckNameAvailabilityRequestType | (string & {});
-}
-export const OperationsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      name: S.String,
-      type: OperationsCheckNameAvailabilityRequestType,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/checkNameAvailability",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "OperationsCheckNameAvailabilityRequest",
-}) as any as S.Schema<OperationsCheckNameAvailabilityRequest>;
-
-/** The result of a request to check the availability of a resource name. */
-export interface NameAvailabilityStatus {
-  /** The value indicating whether the resource name is available. */
-  nameAvailable?: boolean;
-  /** If any, the error message that provides more detail for the reason that the name is not available. */
-  message?: string;
-  /** If any, the reason that the name is not available. */
-  reason?: string;
-}
-export const NameAvailabilityStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    message: S.optional(S.String),
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NameAvailabilityStatus",
-}) as any as S.Schema<NameAvailabilityStatus>;
-
-export interface OperationsListRequest {
   /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
 }
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListConfigurationStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores",
+      code: 200,
+      apiVersion: "2024-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListConfigurationStoresRequest",
+}) as any as S.Schema<ListConfigurationStoresRequest>;
+
+export interface ListOperationsRequest {
+  /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
+  _skipToken?: string;
+}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
   }).pipe(
@@ -1582,8 +2008,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** The display information for a configuration store operation. */
 export interface OperationDefinitionDisplay {
@@ -1777,40 +2203,154 @@ export const OperationDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationDefinitionListResult",
 }) as any as S.Schema<OperationDefinitionListResult>;
 
-/** The resource type to check for name availability. */
-export type OperationsRegionalCheckNameAvailabilityRequestType =
-  "Microsoft.AppConfiguration/configurationStores";
-export const OperationsRegionalCheckNameAvailabilityRequestType =
-  /*@__PURE__*/ S.String;
-
-export interface OperationsRegionalCheckNameAvailabilityRequest {
+export interface ListPrivateEndpointConnectionByConfigurationStoreRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
-  /** The location in which uniqueness will be verified. */
-  location: string;
-  /** The name to check for availability. */
-  name: string;
-  /** The resource type to check for name availability. */
-  type: OperationsRegionalCheckNameAvailabilityRequestType | (string & {});
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
 }
-export const OperationsRegionalCheckNameAvailabilityRequest =
+export const ListPrivateEndpointConnectionByConfigurationStoreRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      name: S.String,
-      type: OperationsRegionalCheckNameAvailabilityRequestType,
+      resourceGroupName: S.String.pipe(T.Label()),
+      configStoreName: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/checkNameAvailability",
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections",
         code: 200,
         apiVersion: "2024-06-01",
       }),
     ),
   ).annotate({
-    identifier: "OperationsRegionalCheckNameAvailabilityRequest",
-  }) as any as S.Schema<OperationsRegionalCheckNameAvailabilityRequest>;
+    identifier: "ListPrivateEndpointConnectionByConfigurationStoreRequest",
+  }) as any as S.Schema<ListPrivateEndpointConnectionByConfigurationStoreRequest>;
+
+/** The collection value. */
+export type PrivateEndpointConnectionListResultValueList =
+  Array<PrivateEndpointConnection>;
+export const PrivateEndpointConnectionListResultValueList =
+  /*@__PURE__*/ S.Array(
+    PrivateEndpointConnection,
+  ) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
+/** A list of private endpoint connections */
+export interface PrivateEndpointConnectionListResult {
+  /** The collection value. */
+  value?: PrivateEndpointConnectionListResultValueList;
+  /** The URI that can be used to request the next set of paged results. */
+  nextLink?: string;
+}
+export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(PrivateEndpointConnectionListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnectionListResult",
+}) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
+export interface ListPrivateLinkResourceByConfigurationStoreRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+}
+export const ListPrivateLinkResourceByConfigurationStoreRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      configStoreName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources",
+        code: 200,
+        apiVersion: "2024-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPrivateLinkResourceByConfigurationStoreRequest",
+  }) as any as S.Schema<ListPrivateLinkResourceByConfigurationStoreRequest>;
+
+/** The collection value. */
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
+export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+  PrivateLinkResource,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
+/** A list of private link resources. */
+export interface PrivateLinkResourceListResult {
+  /** The collection value. */
+  value?: PrivateLinkResourceListResultValueList;
+  /** The URI that can be used to request the next set of paged results. */
+  nextLink?: string;
+}
+export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(PrivateLinkResourceListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkResourceListResult",
+}) as any as S.Schema<PrivateLinkResourceListResult>;
+
+export interface ListReplicaByConfigurationStoreRequest {
+  /** The Microsoft Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group to which the container registry belongs. */
+  resourceGroupName: string;
+  /** The name of the configuration store. */
+  configStoreName: string;
+  /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
+  _skipToken?: string;
+}
+export const ListReplicaByConfigurationStoreRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      configStoreName: S.String.pipe(T.Label()),
+      _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas",
+        code: 200,
+        apiVersion: "2024-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListReplicaByConfigurationStoreRequest",
+}) as any as S.Schema<ListReplicaByConfigurationStoreRequest>;
+
+/** The collection value. */
+export type ReplicaListResultValueList = Array<Replica>;
+export const ReplicaListResultValueList = /*@__PURE__*/ S.Array(
+  Replica,
+) as any as S.Schema<ReplicaListResultValueList>;
+
+/** The result of a request to list replicas. */
+export interface ReplicaListResult {
+  /** The collection value. */
+  value?: ReplicaListResultValueList;
+  /** The URI that can be used to request the next set of paged results. */
+  nextLink?: string;
+}
+export const ReplicaListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ReplicaListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplicaListResult",
+}) as any as S.Schema<ReplicaListResult>;
 
 /** The private link service connection status. */
 export type PrivateLinkServiceConnectionStateInputStatus =
@@ -1887,845 +2427,213 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
     identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
   }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
 
-/** A private endpoint connection */
-export interface PrivateEndpointConnection {
-  /** The resource ID. */
-  id?: string;
-  /** The name of the resource. */
-  name?: string;
-  /** The type of the resource. */
-  type?: string;
-  /** The properties of a private endpoint. */
-  properties?: PrivateEndpointConnectionProperties;
-}
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnection",
-}) as any as S.Schema<PrivateEndpointConnection>;
+/** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
+export type ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
 
-export interface PrivateEndpointConnectionsDeleteRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** Private endpoint connection name */
-  privateEndpointConnectionName: string;
+/** The properties for updating a configuration store. */
+export interface ConfigurationStorePropertiesUpdateParameters {
+  /** The encryption settings of the configuration store. */
+  encryption?: EncryptionProperties;
+  /** Disables all authentication methods other than AAD authentication. */
+  disableLocalAuth?: boolean;
+  /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
+  publicNetworkAccess?:
+    | ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess
+    | (string & {});
+  /** Property specifying whether protection against purge is enabled for this configuration store. */
+  enablePurgeProtection?: boolean;
+  /** Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM). */
+  dataPlaneProxy?: DataPlaneProxyProperties;
+  /** The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores. */
+  defaultKeyValueRevisionRetentionPeriodInSeconds?: number;
 }
-export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      configStoreName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsDeleteRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsDeleteRequest>;
-
-export interface PrivateEndpointConnectionsDeleteResponse {}
-export const PrivateEndpointConnectionsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointConnectionsDeleteResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsDeleteResponse>;
-
-export interface PrivateEndpointConnectionsGetRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** Private endpoint connection name */
-  privateEndpointConnectionName: string;
-}
-export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      configStoreName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsGetRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsGetRequest>;
-
-export interface PrivateEndpointConnectionsListByConfigurationStoreRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-}
-export const PrivateEndpointConnectionsListByConfigurationStoreRequest =
+export const ConfigurationStorePropertiesUpdateParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      configStoreName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
+      encryption: S.optional(EncryptionProperties),
+      disableLocalAuth: S.optional(S.Boolean),
+      publicNetworkAccess: S.optional(
+        ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess,
+      ),
+      enablePurgeProtection: S.optional(S.Boolean),
+      dataPlaneProxy: S.optional(DataPlaneProxyProperties),
+      defaultKeyValueRevisionRetentionPeriodInSeconds: S.optional(S.Number),
+    }),
   ).annotate({
-    identifier: "PrivateEndpointConnectionsListByConfigurationStoreRequest",
-  }) as any as S.Schema<PrivateEndpointConnectionsListByConfigurationStoreRequest>;
+    identifier: "ConfigurationStorePropertiesUpdateParameters",
+  }) as any as S.Schema<ConfigurationStorePropertiesUpdateParameters>;
 
-/** The collection value. */
-export type PrivateEndpointConnectionListResultValueList =
-  Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+/** The ARM resource tags. */
+export type ConfigurationStoresUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationStoresUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigurationStoresUpdateRequestTagsMap>;
 
-/** A list of private endpoint connections */
-export interface PrivateEndpointConnectionListResult {
-  /** The collection value. */
-  value?: PrivateEndpointConnectionListResultValueList;
-  /** The URI that can be used to request the next set of paged results. */
-  nextLink?: string;
-}
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PrivateEndpointConnectionListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionListResult",
-}) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
-export interface PrivateLinkResourcesGetRequest {
+export interface UpdateConfigurationStoreRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
   /** The name of the resource group to which the container registry belongs. */
   resourceGroupName: string;
   /** The name of the configuration store. */
   configStoreName: string;
-  /** The name of the private link resource group. */
-  groupName: string;
+  /** The properties for updating a configuration store. */
+  properties?: ConfigurationStorePropertiesUpdateParameters;
+  /** The managed identity information for the configuration store. */
+  identity?: ResourceIdentityInput;
+  /** The SKU of the configuration store. */
+  sku?: Sku;
+  /** The ARM resource tags. */
+  tags?: ConfigurationStoresUpdateRequestTagsMap;
 }
-export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateConfigurationStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     configStoreName: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
+    properties: S.optional(ConfigurationStorePropertiesUpdateParameters),
+    identity: S.optional(ResourceIdentityInput),
+    sku: S.optional(Sku),
+    tags: S.optional(ConfigurationStoresUpdateRequestTagsMap),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources/{groupName}",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
       code: 200,
       apiVersion: "2024-06-01",
     }),
   ),
 ).annotate({
-  identifier: "PrivateLinkResourcesGetRequest",
-}) as any as S.Schema<PrivateLinkResourcesGetRequest>;
+  identifier: "UpdateConfigurationStoreRequest",
+}) as any as S.Schema<UpdateConfigurationStoreRequest>;
 
-/** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
-/** The list of required DNS zone names of the private link resource. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
-/** Properties of a private link resource. */
-export interface PrivateLinkResourceProperties {
-  /** The private link resource group id. */
-  groupId?: string;
-  /** The private link resource required member names. */
-  requiredMembers?: PrivateLinkResourcePropertiesRequiredMembersList;
-  /** The list of required DNS zone names of the private link resource. */
-  requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
-}
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupId: S.optional(S.String),
-    requiredMembers: S.optional(
-      PrivateLinkResourcePropertiesRequiredMembersList,
-    ),
-    requiredZoneNames: S.optional(
-      PrivateLinkResourcePropertiesRequiredZoneNamesList,
-    ),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceProperties",
-}) as any as S.Schema<PrivateLinkResourceProperties>;
-
-/** A resource that supports private link capabilities. */
-export interface PrivateLinkResource {
-  /** The resource ID. */
-  id?: string;
-  /** The name of the resource. */
-  name?: string;
-  /** The type of the resource. */
-  type?: string;
-  /** Private link resource properties. */
-  properties?: PrivateLinkResourceProperties;
-}
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "PrivateLinkResource",
-}) as any as S.Schema<PrivateLinkResource>;
-
-export interface PrivateLinkResourcesListByConfigurationStoreRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-}
-export const PrivateLinkResourcesListByConfigurationStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      configStoreName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PrivateLinkResourcesListByConfigurationStoreRequest",
-  }) as any as S.Schema<PrivateLinkResourcesListByConfigurationStoreRequest>;
-
-/** The collection value. */
-export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateLinkResource,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
-/** A list of private link resources. */
-export interface PrivateLinkResourceListResult {
-  /** The collection value. */
-  value?: PrivateLinkResourceListResultValueList;
-  /** The URI that can be used to request the next set of paged results. */
-  nextLink?: string;
-}
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PrivateLinkResourceListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceListResult",
-}) as any as S.Schema<PrivateLinkResourceListResult>;
-
-export interface ReplicasCreateRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** The name of the replica. */
-  replicaName: string;
-  /** The location of the replica. */
-  location?: string;
-}
-export const ReplicasCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configStoreName: S.String.pipe(T.Label()),
-    replicaName: S.String.pipe(T.Label()),
-    location: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
-      code: 200,
-      apiVersion: "2024-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ReplicasCreateRequest",
-}) as any as S.Schema<ReplicasCreateRequest>;
+/** Resource tags. */
+export type ConfigurationStoresUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationStoresUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigurationStoresUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
-export type ReplicaSystemDataCreatedByType =
+export type ConfigurationStoresUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ReplicaSystemDataCreatedByType = /*@__PURE__*/ S.String;
+export const ConfigurationStoresUpdateResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
-export type ReplicaSystemDataLastModifiedByType =
+export type ConfigurationStoresUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ReplicaSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+export const ConfigurationStoresUpdateResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
-export interface ReplicaSystemData {
+export interface ConfigurationStoresUpdateResponseSystemData {
   /** The identity that created the resource. */
   createdBy?: string;
   /** The type of identity that created the resource. */
-  createdByType?: ReplicaSystemDataCreatedByType;
+  createdByType?: ConfigurationStoresUpdateResponseSystemDataCreatedByType;
   /** The timestamp of resource creation (UTC). */
   createdAt?: string;
   /** The identity that last modified the resource. */
   lastModifiedBy?: string;
   /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ReplicaSystemDataLastModifiedByType;
+  lastModifiedByType?: ConfigurationStoresUpdateResponseSystemDataLastModifiedByType;
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ReplicaSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ReplicaSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ReplicaSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicaSystemData",
-}) as any as S.Schema<ReplicaSystemData>;
-
-/** The provisioning state of the replica. */
-export type ReplicaPropertiesProvisioningState =
-  | "Creating"
-  | "Succeeded"
-  | "Deleting"
-  | "Failed"
-  | "Canceled";
-export const ReplicaPropertiesProvisioningState = /*@__PURE__*/ S.String;
-
-/** All replica properties. */
-export interface ReplicaProperties {
-  /** The URI of the replica where the replica API will be available. */
-  endpoint?: string;
-  /** The provisioning state of the replica. */
-  provisioningState?: ReplicaPropertiesProvisioningState;
-}
-export const ReplicaProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.optional(S.String),
-    provisioningState: S.optional(ReplicaPropertiesProvisioningState),
-  }),
-).annotate({
-  identifier: "ReplicaProperties",
-}) as any as S.Schema<ReplicaProperties>;
-
-/** The replica resource. */
-export interface Replica {
-  /** The resource ID. */
-  id?: string;
-  /** The name of the replica. */
-  name?: string;
-  /** The type of the resource. */
-  type?: string;
-  /** The location of the replica. */
-  location?: string;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: ReplicaSystemData;
-  /** All replica properties. */
-  properties?: ReplicaProperties;
-}
-export const Replica = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    systemData: S.optional(ReplicaSystemData),
-    properties: S.optional(ReplicaProperties),
-  }),
-).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
-
-export interface ReplicasDeleteRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** The name of the replica. */
-  replicaName: string;
-}
-export const ReplicasDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configStoreName: S.String.pipe(T.Label()),
-    replicaName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
-      code: 200,
-      apiVersion: "2024-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ReplicasDeleteRequest",
-}) as any as S.Schema<ReplicasDeleteRequest>;
-
-export interface ReplicasDeleteResponse {}
-export const ReplicasDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReplicasDeleteResponse",
-}) as any as S.Schema<ReplicasDeleteResponse>;
-
-export interface ReplicasGetRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** The name of the replica. */
-  replicaName: string;
-}
-export const ReplicasGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configStoreName: S.String.pipe(T.Label()),
-    replicaName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
-      code: 200,
-      apiVersion: "2024-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ReplicasGetRequest",
-}) as any as S.Schema<ReplicasGetRequest>;
-
-export interface ReplicasListByConfigurationStoreRequest {
-  /** The Microsoft Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group to which the container registry belongs. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
-  _skipToken?: string;
-}
-export const ReplicasListByConfigurationStoreRequest = /*@__PURE__*/ S.suspend(
-  () =>
+export const ConfigurationStoresUpdateResponseSystemData =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      configStoreName: S.String.pipe(T.Label()),
-      _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas",
-        code: 200,
-        apiVersion: "2024-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "ReplicasListByConfigurationStoreRequest",
-}) as any as S.Schema<ReplicasListByConfigurationStoreRequest>;
-
-/** The collection value. */
-export type ReplicaListResultValueList = Array<Replica>;
-export const ReplicaListResultValueList = /*@__PURE__*/ S.Array(
-  Replica,
-) as any as S.Schema<ReplicaListResultValueList>;
-
-/** The result of a request to list replicas. */
-export interface ReplicaListResult {
-  /** The collection value. */
-  value?: ReplicaListResultValueList;
-  /** The URI that can be used to request the next set of paged results. */
-  nextLink?: string;
-}
-export const ReplicaListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ReplicaListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicaListResult",
-}) as any as S.Schema<ReplicaListResult>;
-
-/** Enables filtering of key-values. */
-export interface KeyValueFilter {
-  /** Filters key-values by their key field. */
-  key: string;
-  /** Filters key-values by their label field. */
-  label?: string;
-}
-export const KeyValueFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.String),
-  }),
-).annotate({ identifier: "KeyValueFilter" }) as any as S.Schema<KeyValueFilter>;
-
-/** A list of filters used to filter the key-values included in the snapshot. */
-export type SnapshotPropertiesInputFiltersList = Array<KeyValueFilter>;
-export const SnapshotPropertiesInputFiltersList = /*@__PURE__*/ S.Array(
-  KeyValueFilter,
-) as any as S.Schema<SnapshotPropertiesInputFiltersList>;
-
-/** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
-export type SnapshotPropertiesInputCompositionType = "Key" | "Key_Label";
-export const SnapshotPropertiesInputCompositionType = /*@__PURE__*/ S.String;
-
-/** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
-export type SnapshotPropertiesInputTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SnapshotPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SnapshotPropertiesInputTagsMap>;
-
-/** All snapshot properties. */
-export interface SnapshotPropertiesInput {
-  /** A list of filters used to filter the key-values included in the snapshot. */
-  filters: SnapshotPropertiesInputFiltersList;
-  /** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
-  compositionType?: SnapshotPropertiesInputCompositionType | (string & {});
-  /** The amount of time, in seconds, that a snapshot will remain in the archived state before expiring. This property is only writable during the creation of a snapshot. If not specified, the default lifetime of key-value revisions will be used. */
-  retentionPeriod?: number;
-  /** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
-  tags?: SnapshotPropertiesInputTagsMap;
-}
-export const SnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filters: SnapshotPropertiesInputFiltersList,
-    compositionType: S.optional(SnapshotPropertiesInputCompositionType),
-    retentionPeriod: S.optional(S.Number),
-    tags: S.optional(SnapshotPropertiesInputTagsMap),
-  }),
-).annotate({
-  identifier: "SnapshotPropertiesInput",
-}) as any as S.Schema<SnapshotPropertiesInput>;
-
-export interface SnapshotsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** The name of the snapshot. */
-  snapshotName: string;
-  /** All snapshot properties. */
-  properties?: SnapshotPropertiesInput;
-}
-export const SnapshotsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configStoreName: S.String.pipe(T.Label()),
-    snapshotName: S.String.pipe(T.Label()),
-    properties: S.optional(SnapshotPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/snapshots/{snapshotName}",
-      code: 200,
-      apiVersion: "2024-06-01",
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        ConfigurationStoresUpdateResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        ConfigurationStoresUpdateResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
     }),
-  ),
-).annotate({
-  identifier: "SnapshotsCreateRequest",
-}) as any as S.Schema<SnapshotsCreateRequest>;
+  ).annotate({
+    identifier: "ConfigurationStoresUpdateResponseSystemData",
+  }) as any as S.Schema<ConfigurationStoresUpdateResponseSystemData>;
 
-/** The provisioning state of the snapshot. */
-export type SnapshotPropertiesProvisioningState =
-  | "Creating"
-  | "Updating"
-  | "Deleting"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled";
-export const SnapshotPropertiesProvisioningState = /*@__PURE__*/ S.String;
-
-/** The current status of the snapshot. */
-export type SnapshotPropertiesStatus =
-  | "Provisioning"
-  | "Ready"
-  | "Archived"
-  | "Failed";
-export const SnapshotPropertiesStatus = /*@__PURE__*/ S.String;
-
-/** A list of filters used to filter the key-values included in the snapshot. */
-export type SnapshotPropertiesFiltersList = Array<KeyValueFilter>;
-export const SnapshotPropertiesFiltersList = /*@__PURE__*/ S.Array(
-  KeyValueFilter,
-) as any as S.Schema<SnapshotPropertiesFiltersList>;
-
-/** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
-export type SnapshotPropertiesCompositionType = "Key" | "Key_Label";
-export const SnapshotPropertiesCompositionType = /*@__PURE__*/ S.String;
-
-/** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
-export type SnapshotPropertiesTagsMap = { [key: string]: string | undefined };
-export const SnapshotPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SnapshotPropertiesTagsMap>;
-
-/** All snapshot properties. */
-export interface SnapshotProperties {
-  /** The provisioning state of the snapshot. */
-  provisioningState?: SnapshotPropertiesProvisioningState;
-  /** The current status of the snapshot. */
-  status?: SnapshotPropertiesStatus;
-  /** A list of filters used to filter the key-values included in the snapshot. */
-  filters: SnapshotPropertiesFiltersList;
-  /** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
-  compositionType?: SnapshotPropertiesCompositionType;
-  /** The time that the snapshot was created. */
-  created?: string;
-  /** The time that the snapshot will expire. */
-  expires?: string;
-  /** The amount of time, in seconds, that a snapshot will remain in the archived state before expiring. This property is only writable during the creation of a snapshot. If not specified, the default lifetime of key-value revisions will be used. */
-  retentionPeriod?: number;
-  /** The size in bytes of the snapshot. */
-  size?: number;
-  /** The amount of key-values in the snapshot. */
-  itemsCount?: number;
-  /** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
-  tags?: SnapshotPropertiesTagsMap;
-  /** A value representing the current state of the snapshot. */
-  etag?: string;
-}
-export const SnapshotProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(SnapshotPropertiesProvisioningState),
-    status: S.optional(SnapshotPropertiesStatus),
-    filters: SnapshotPropertiesFiltersList,
-    compositionType: S.optional(SnapshotPropertiesCompositionType),
-    created: S.optional(S.String),
-    expires: S.optional(S.String),
-    retentionPeriod: S.optional(S.Number),
-    size: S.optional(S.Number),
-    itemsCount: S.optional(S.Number),
-    tags: S.optional(SnapshotPropertiesTagsMap),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SnapshotProperties",
-}) as any as S.Schema<SnapshotProperties>;
-
-/** The snapshot resource. */
-export interface Snapshot {
-  /** The resource ID. */
+export interface UpdateConfigurationStoreResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
-  /** The name of the snapshot. */
+  /** The name of the resource */
   name?: string;
-  /** The type of the resource. */
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
   type?: string;
-  /** All snapshot properties. */
-  properties?: SnapshotProperties;
+  /** Resource tags. */
+  tags?: ConfigurationStoresUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The managed identity information, if configured. */
+  identity?: ResourceIdentity;
+  /** The properties of a configuration store. */
+  properties?: ConfigurationStoreProperties;
+  /** The sku of the configuration store. */
+  sku: Sku;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: ConfigurationStoresUpdateResponseSystemData;
 }
-export const Snapshot = /*@__PURE__*/ S.suspend(() =>
+export const UpdateConfigurationStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
-    properties: S.optional(SnapshotProperties),
+    tags: S.optional(ConfigurationStoresUpdateResponseTagsMap),
+    location: S.String,
+    identity: S.optional(ResourceIdentity),
+    properties: S.optional(ConfigurationStoreProperties),
+    sku: Sku,
+    systemData: S.optional(ConfigurationStoresUpdateResponseSystemData),
   }),
-).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
-
-export interface SnapshotsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the configuration store. */
-  configStoreName: string;
-  /** The name of the snapshot. */
-  snapshotName: string;
-}
-export const SnapshotsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    configStoreName: S.String.pipe(T.Label()),
-    snapshotName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/snapshots/{snapshotName}",
-      code: 200,
-      apiVersion: "2024-06-01",
-    }),
-  ),
 ).annotate({
-  identifier: "SnapshotsGetRequest",
-}) as any as S.Schema<SnapshotsGetRequest>;
+  identifier: "UpdateConfigurationStoreResponse",
+}) as any as S.Schema<UpdateConfigurationStoreResponse>;
 
-export type ConfigurationStoresCreateError = AzureOpError;
-/** Creates a configuration store with the specified parameters. */
-export const ConfigurationStoresCreate: API.OperationMethod<
-  ConfigurationStoresCreateRequest,
-  ConfigurationStoresCreateResponse,
-  ConfigurationStoresCreateError,
+export type CheckOperationNameAvailabilityError = AzureOpError;
+/** Checks whether the configuration store name is available for use. */
+export const CheckOperationNameAvailability: API.OperationMethod<
+  CheckOperationNameAvailabilityRequest,
+  NameAvailabilityStatus,
+  CheckOperationNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationStoresCreateRequest,
-  output: ConfigurationStoresCreateResponse,
+  input: CheckOperationNameAvailabilityRequest,
+  output: NameAvailabilityStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConfigurationStoresDeleteError = AzureOpError;
-/** Deletes a configuration store. */
-export const ConfigurationStoresDelete: API.OperationMethod<
-  ConfigurationStoresDeleteRequest,
-  ConfigurationStoresDeleteResponse,
-  ConfigurationStoresDeleteError,
+export type CheckOperationRegionalNameAvailabilityError = AzureOpError;
+/** Checks whether the configuration store name is available for use. */
+export const CheckOperationRegionalNameAvailability: API.OperationMethod<
+  CheckOperationRegionalNameAvailabilityRequest,
+  NameAvailabilityStatus,
+  CheckOperationRegionalNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationStoresDeleteRequest,
-  output: ConfigurationStoresDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationStoresGetError = AzureOpError;
-/** Gets the properties of the specified configuration store. */
-export const ConfigurationStoresGet: API.OperationMethod<
-  ConfigurationStoresGetRequest,
-  ConfigurationStoresGetResponse,
-  ConfigurationStoresGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationStoresGetRequest,
-  output: ConfigurationStoresGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationStoresGetDeletedError = AzureOpError;
-/** Gets a deleted Azure app configuration store. */
-export const ConfigurationStoresGetDeleted: API.OperationMethod<
-  ConfigurationStoresGetDeletedRequest,
-  DeletedConfigurationStore,
-  ConfigurationStoresGetDeletedError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationStoresGetDeletedRequest,
-  output: DeletedConfigurationStore,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationStoresListError = AzureOpError;
-/** Lists the configuration stores for a given subscription. */
-export const ConfigurationStoresList: API.OperationMethod<
-  ConfigurationStoresListRequest,
-  ConfigurationStoreListResult,
-  ConfigurationStoresListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationStoresListRequest,
-  output: ConfigurationStoreListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationStoresListByResourceGroupError = AzureOpError;
-/** Lists the configuration stores for a given resource group. */
-export const ConfigurationStoresListByResourceGroup: API.OperationMethod<
-  ConfigurationStoresListByResourceGroupRequest,
-  ConfigurationStoreListResult,
-  ConfigurationStoresListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationStoresListByResourceGroupRequest,
-  output: ConfigurationStoreListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationStoresListDeletedError = AzureOpError;
-/** Gets information about the deleted configuration stores in a subscription. */
-export const ConfigurationStoresListDeleted: API.OperationMethod<
-  ConfigurationStoresListDeletedRequest,
-  DeletedConfigurationStoreListResult,
-  ConfigurationStoresListDeletedError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationStoresListDeletedRequest,
-  output: DeletedConfigurationStoreListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationStoresListKeysError = AzureOpError;
-/** Lists the access key for the specified configuration store. */
-export const ConfigurationStoresListKeys: API.OperationMethod<
-  ConfigurationStoresListKeysRequest,
-  ApiKeyListResult,
-  ConfigurationStoresListKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationStoresListKeysRequest,
-  output: ApiKeyListResult,
+  input: CheckOperationRegionalNameAvailabilityRequest,
+  output: NameAvailabilityStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2761,16 +2669,211 @@ export const ConfigurationStoresRegenerateKey: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConfigurationStoresUpdateError = AzureOpError;
-/** Updates a configuration store with the specified parameters. */
-export const ConfigurationStoresUpdate: API.OperationMethod<
-  ConfigurationStoresUpdateRequest,
-  ConfigurationStoresUpdateResponse,
-  ConfigurationStoresUpdateError,
+export type CreateConfigurationStoreError = AzureOpError;
+/** Creates a configuration store with the specified parameters. */
+export const CreateConfigurationStore: API.OperationMethod<
+  CreateConfigurationStoreRequest,
+  CreateConfigurationStoreResponse,
+  CreateConfigurationStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationStoresUpdateRequest,
-  output: ConfigurationStoresUpdateResponse,
+  input: CreateConfigurationStoreRequest,
+  output: CreateConfigurationStoreResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateReplicaError = AzureOpError;
+/** Creates a replica with the specified parameters. */
+export const CreateReplica: API.OperationMethod<
+  CreateReplicaRequest,
+  Replica,
+  CreateReplicaError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateReplicaRequest,
+  output: Replica,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSnapshotError = AzureOpError;
+/** Creates a snapshot. NOTE: This operation is intended for use in Azure Resource Manager (ARM) Template deployments. For all other scenarios involving App Configuration snapshots the data plane API should be used instead. */
+export const CreateSnapshot: API.OperationMethod<
+  CreateSnapshotRequest,
+  Snapshot,
+  CreateSnapshotError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSnapshotRequest,
+  output: Snapshot,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConfigurationStoreError = AzureOpError;
+/** Deletes a configuration store. */
+export const DeleteConfigurationStore: API.OperationMethod<
+  DeleteConfigurationStoreRequest,
+  DeleteConfigurationStoreResponse,
+  DeleteConfigurationStoreError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConfigurationStoreRequest,
+  output: DeleteConfigurationStoreResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteKeyValueError = AzureOpError;
+/** Deletes a key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead. */
+export const DeleteKeyValue: API.OperationMethod<
+  DeleteKeyValueRequest,
+  DeleteKeyValueResponse,
+  DeleteKeyValueError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteKeyValueRequest,
+  output: DeleteKeyValueResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePrivateEndpointConnectionError = AzureOpError;
+/** Deletes a private endpoint connection. */
+export const DeletePrivateEndpointConnection: API.OperationMethod<
+  DeletePrivateEndpointConnectionRequest,
+  DeletePrivateEndpointConnectionResponse,
+  DeletePrivateEndpointConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteReplicaError = AzureOpError;
+/** Deletes a replica. */
+export const DeleteReplica: API.OperationMethod<
+  DeleteReplicaRequest,
+  DeleteReplicaResponse,
+  DeleteReplicaError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteReplicaRequest,
+  output: DeleteReplicaResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConfigurationStoreError = AzureOpError;
+/** Gets the properties of the specified configuration store. */
+export const GetConfigurationStore: API.OperationMethod<
+  GetConfigurationStoreRequest,
+  GetConfigurationStoreResponse,
+  GetConfigurationStoreError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConfigurationStoreRequest,
+  output: GetConfigurationStoreResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConfigurationStoreDeletedError = AzureOpError;
+/** Gets a deleted Azure app configuration store. */
+export const GetConfigurationStoreDeleted: API.OperationMethod<
+  GetConfigurationStoreDeletedRequest,
+  DeletedConfigurationStore,
+  GetConfigurationStoreDeletedError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConfigurationStoreDeletedRequest,
+  output: DeletedConfigurationStore,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetKeyValueError = AzureOpError;
+/** Gets the properties of the specified key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead. */
+export const GetKeyValue: API.OperationMethod<
+  GetKeyValueRequest,
+  KeyValue,
+  GetKeyValueError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetKeyValueRequest,
+  output: KeyValue,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPrivateEndpointConnectionError = AzureOpError;
+/** Gets the specified private endpoint connection associated with the configuration store. */
+export const GetPrivateEndpointConnection: API.OperationMethod<
+  GetPrivateEndpointConnectionRequest,
+  PrivateEndpointConnection,
+  GetPrivateEndpointConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPrivateEndpointConnectionRequest,
+  output: PrivateEndpointConnection,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPrivateLinkResourceError = AzureOpError;
+/** Gets a private link resource that need to be created for a configuration store. */
+export const GetPrivateLinkResource: API.OperationMethod<
+  GetPrivateLinkResourceRequest,
+  PrivateLinkResource,
+  GetPrivateLinkResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPrivateLinkResourceRequest,
+  output: PrivateLinkResource,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetReplicaError = AzureOpError;
+/** Gets the properties of the specified replica. */
+export const GetReplica: API.OperationMethod<
+  GetReplicaRequest,
+  Replica,
+  GetReplicaError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetReplicaRequest,
+  output: Replica,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSnapshotError = AzureOpError;
+/** Gets the properties of the specified snapshot. NOTE: This operation is intended for use in Azure Resource Manager (ARM) Template deployments. For all other scenarios involving App Configuration snapshots the data plane API should be used instead. */
+export const GetSnapshot: API.OperationMethod<
+  GetSnapshotRequest,
+  Snapshot,
+  GetSnapshotError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSnapshotRequest,
+  output: Snapshot,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2791,76 +2894,122 @@ export const KeyValuesCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type KeyValuesDeleteError = AzureOpError;
-/** Deletes a key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead. */
-export const KeyValuesDelete: API.OperationMethod<
-  KeyValuesDeleteRequest,
-  KeyValuesDeleteResponse,
-  KeyValuesDeleteError,
+export type ListConfigurationStoreByResourceGroupError = AzureOpError;
+/** Lists the configuration stores for a given resource group. */
+export const ListConfigurationStoreByResourceGroup: API.OperationMethod<
+  ListConfigurationStoreByResourceGroupRequest,
+  ConfigurationStoreListResult,
+  ListConfigurationStoreByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeyValuesDeleteRequest,
-  output: KeyValuesDeleteResponse,
+  input: ListConfigurationStoreByResourceGroupRequest,
+  output: ConfigurationStoreListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type KeyValuesGetError = AzureOpError;
-/** Gets the properties of the specified key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead. */
-export const KeyValuesGet: API.OperationMethod<
-  KeyValuesGetRequest,
-  KeyValue,
-  KeyValuesGetError,
+export type ListConfigurationStoreDeletedError = AzureOpError;
+/** Gets information about the deleted configuration stores in a subscription. */
+export const ListConfigurationStoreDeleted: API.OperationMethod<
+  ListConfigurationStoreDeletedRequest,
+  DeletedConfigurationStoreListResult,
+  ListConfigurationStoreDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeyValuesGetRequest,
-  output: KeyValue,
+  input: ListConfigurationStoreDeletedRequest,
+  output: DeletedConfigurationStoreListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsCheckNameAvailabilityError = AzureOpError;
-/** Checks whether the configuration store name is available for use. */
-export const OperationsCheckNameAvailability: API.OperationMethod<
-  OperationsCheckNameAvailabilityRequest,
-  NameAvailabilityStatus,
-  OperationsCheckNameAvailabilityError,
+export type ListConfigurationStoreKeysError = AzureOpError;
+/** Lists the access key for the specified configuration store. */
+export const ListConfigurationStoreKeys: API.OperationMethod<
+  ListConfigurationStoreKeysRequest,
+  ApiKeyListResult,
+  ListConfigurationStoreKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsCheckNameAvailabilityRequest,
-  output: NameAvailabilityStatus,
+  input: ListConfigurationStoreKeysRequest,
+  output: ApiKeyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
+export type ListConfigurationStoresError = AzureOpError;
+/** Lists the configuration stores for a given subscription. */
+export const ListConfigurationStores: API.OperationMethod<
+  ListConfigurationStoresRequest,
+  ConfigurationStoreListResult,
+  ListConfigurationStoresError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConfigurationStoresRequest,
+  output: ConfigurationStoreListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
 /** Lists the operations available from this provider. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
   OperationDefinitionListResult,
-  OperationsListError,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: ListOperationsRequest,
   output: OperationDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsRegionalCheckNameAvailabilityError = AzureOpError;
-/** Checks whether the configuration store name is available for use. */
-export const OperationsRegionalCheckNameAvailability: API.OperationMethod<
-  OperationsRegionalCheckNameAvailabilityRequest,
-  NameAvailabilityStatus,
-  OperationsRegionalCheckNameAvailabilityError,
+export type ListPrivateEndpointConnectionByConfigurationStoreError =
+  AzureOpError;
+/** Lists all private endpoint connections for a configuration store. */
+export const ListPrivateEndpointConnectionByConfigurationStore: API.OperationMethod<
+  ListPrivateEndpointConnectionByConfigurationStoreRequest,
+  PrivateEndpointConnectionListResult,
+  ListPrivateEndpointConnectionByConfigurationStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsRegionalCheckNameAvailabilityRequest,
-  output: NameAvailabilityStatus,
+  input: ListPrivateEndpointConnectionByConfigurationStoreRequest,
+  output: PrivateEndpointConnectionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPrivateLinkResourceByConfigurationStoreError = AzureOpError;
+/** Gets the private link resources that need to be created for a configuration store. */
+export const ListPrivateLinkResourceByConfigurationStore: API.OperationMethod<
+  ListPrivateLinkResourceByConfigurationStoreRequest,
+  PrivateLinkResourceListResult,
+  ListPrivateLinkResourceByConfigurationStoreError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPrivateLinkResourceByConfigurationStoreRequest,
+  output: PrivateLinkResourceListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReplicaByConfigurationStoreError = AzureOpError;
+/** Lists the replicas for a given configuration store. */
+export const ListReplicaByConfigurationStore: API.OperationMethod<
+  ListReplicaByConfigurationStoreRequest,
+  ReplicaListResult,
+  ListReplicaByConfigurationStoreError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReplicaByConfigurationStoreRequest,
+  output: ReplicaListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2881,167 +3030,16 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PrivateEndpointConnectionsDeleteError = AzureOpError;
-/** Deletes a private endpoint connection. */
-export const PrivateEndpointConnectionsDelete: API.OperationMethod<
-  PrivateEndpointConnectionsDeleteRequest,
-  PrivateEndpointConnectionsDeleteResponse,
-  PrivateEndpointConnectionsDeleteError,
+export type UpdateConfigurationStoreError = AzureOpError;
+/** Updates a configuration store with the specified parameters. */
+export const UpdateConfigurationStore: API.OperationMethod<
+  UpdateConfigurationStoreRequest,
+  UpdateConfigurationStoreResponse,
+  UpdateConfigurationStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsDeleteRequest,
-  output: PrivateEndpointConnectionsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateEndpointConnectionsGetError = AzureOpError;
-/** Gets the specified private endpoint connection associated with the configuration store. */
-export const PrivateEndpointConnectionsGet: API.OperationMethod<
-  PrivateEndpointConnectionsGetRequest,
-  PrivateEndpointConnection,
-  PrivateEndpointConnectionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsGetRequest,
-  output: PrivateEndpointConnection,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateEndpointConnectionsListByConfigurationStoreError =
-  AzureOpError;
-/** Lists all private endpoint connections for a configuration store. */
-export const PrivateEndpointConnectionsListByConfigurationStore: API.OperationMethod<
-  PrivateEndpointConnectionsListByConfigurationStoreRequest,
-  PrivateEndpointConnectionListResult,
-  PrivateEndpointConnectionsListByConfigurationStoreError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsListByConfigurationStoreRequest,
-  output: PrivateEndpointConnectionListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateLinkResourcesGetError = AzureOpError;
-/** Gets a private link resource that need to be created for a configuration store. */
-export const PrivateLinkResourcesGet: API.OperationMethod<
-  PrivateLinkResourcesGetRequest,
-  PrivateLinkResource,
-  PrivateLinkResourcesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateLinkResourcesGetRequest,
-  output: PrivateLinkResource,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateLinkResourcesListByConfigurationStoreError = AzureOpError;
-/** Gets the private link resources that need to be created for a configuration store. */
-export const PrivateLinkResourcesListByConfigurationStore: API.OperationMethod<
-  PrivateLinkResourcesListByConfigurationStoreRequest,
-  PrivateLinkResourceListResult,
-  PrivateLinkResourcesListByConfigurationStoreError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateLinkResourcesListByConfigurationStoreRequest,
-  output: PrivateLinkResourceListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReplicasCreateError = AzureOpError;
-/** Creates a replica with the specified parameters. */
-export const ReplicasCreate: API.OperationMethod<
-  ReplicasCreateRequest,
-  Replica,
-  ReplicasCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReplicasCreateRequest,
-  output: Replica,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReplicasDeleteError = AzureOpError;
-/** Deletes a replica. */
-export const ReplicasDelete: API.OperationMethod<
-  ReplicasDeleteRequest,
-  ReplicasDeleteResponse,
-  ReplicasDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReplicasDeleteRequest,
-  output: ReplicasDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReplicasGetError = AzureOpError;
-/** Gets the properties of the specified replica. */
-export const ReplicasGet: API.OperationMethod<
-  ReplicasGetRequest,
-  Replica,
-  ReplicasGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReplicasGetRequest,
-  output: Replica,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReplicasListByConfigurationStoreError = AzureOpError;
-/** Lists the replicas for a given configuration store. */
-export const ReplicasListByConfigurationStore: API.OperationMethod<
-  ReplicasListByConfigurationStoreRequest,
-  ReplicaListResult,
-  ReplicasListByConfigurationStoreError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReplicasListByConfigurationStoreRequest,
-  output: ReplicaListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SnapshotsCreateError = AzureOpError;
-/** Creates a snapshot. NOTE: This operation is intended for use in Azure Resource Manager (ARM) Template deployments. For all other scenarios involving App Configuration snapshots the data plane API should be used instead. */
-export const SnapshotsCreate: API.OperationMethod<
-  SnapshotsCreateRequest,
-  Snapshot,
-  SnapshotsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SnapshotsCreateRequest,
-  output: Snapshot,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SnapshotsGetError = AzureOpError;
-/** Gets the properties of the specified snapshot. NOTE: This operation is intended for use in Azure Resource Manager (ARM) Template deployments. For all other scenarios involving App Configuration snapshots the data plane API should be used instead. */
-export const SnapshotsGet: API.OperationMethod<
-  SnapshotsGetRequest,
-  Snapshot,
-  SnapshotsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SnapshotsGetRequest,
-  output: Snapshot,
+  input: UpdateConfigurationStoreRequest,
+  output: UpdateConfigurationStoreResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

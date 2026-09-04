@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.data_quality_checks#DataQualityChecksListRequest": {
+    "com.posthog.data_quality_checks#ListDataQualityChecksRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -555,10 +555,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_quality_checks#DataQualityChecksList": {
+    "com.posthog.data_quality_checks#ListDataQualityChecks": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_quality_checks#DataQualityChecksListRequest"
+        "target": "com.posthog.data_quality_checks#ListDataQualityChecksRequest"
       },
       "output": {
         "target": "com.posthog.data_quality_checks#PaginatedDataQualityOverviewCheckList"
@@ -572,7 +572,7 @@
         "smithy.api#documentation": "Every check in the project, and the health of every subject that has one.\n\nThe per-subject surfaces answer \"what is wrong with this table\". This answers \"what is wrong\nacross the project\", which they cannot: each is nested under one parent. Read-only -- authoring\nstill happens against the subject that owns the check."
       }
     },
-    "com.posthog.data_quality_checks#DataQualityChecksHealthListRequest": {
+    "com.posthog.data_quality_checks#ListDataQualityCheckHealthRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -638,7 +638,7 @@
       },
       "traits": {}
     },
-    "com.posthog.data_quality_checks#DataQualityChecksHealthListResponse": {
+    "com.posthog.data_quality_checks#ListDataQualityCheckHealthResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -653,13 +653,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.data_quality_checks#DataQualityChecksHealthList": {
+    "com.posthog.data_quality_checks#ListDataQualityCheckHealth": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_quality_checks#DataQualityChecksHealthListRequest"
+        "target": "com.posthog.data_quality_checks#ListDataQualityCheckHealthRequest"
       },
       "output": {
-        "target": "com.posthog.data_quality_checks#DataQualityChecksHealthListResponse"
+        "target": "com.posthog.data_quality_checks#ListDataQualityCheckHealthResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -675,10 +675,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.data_quality_checks#DataQualityChecksList"
+          "target": "com.posthog.data_quality_checks#ListDataQualityChecks"
         },
         {
-          "target": "com.posthog.data_quality_checks#DataQualityChecksHealthList"
+          "target": "com.posthog.data_quality_checks#ListDataQualityCheckHealth"
         }
       ],
       "traits": {

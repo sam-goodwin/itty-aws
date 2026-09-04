@@ -149,7 +149,7 @@
         "smithy.api#documentation": "Return the team's current version pin and resolved version."
       }
     },
-    "com.posthog.js_snippet#JsSnippetVersionPartialUpdateRequest": {
+    "com.posthog.js_snippet#UpdateJsSnippetVersionPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -182,7 +182,7 @@
       },
       "traits": {}
     },
-    "com.posthog.js_snippet#JsSnippetVersionPartialUpdateResponse": {
+    "com.posthog.js_snippet#UpdateJsSnippetVersionPartialResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -197,13 +197,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.js_snippet#JsSnippetVersionPartialUpdate": {
+    "com.posthog.js_snippet#UpdateJsSnippetVersionPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.js_snippet#JsSnippetVersionPartialUpdateRequest"
+        "target": "com.posthog.js_snippet#UpdateJsSnippetVersionPartialRequest"
       },
       "output": {
-        "target": "com.posthog.js_snippet#JsSnippetVersionPartialUpdateResponse"
+        "target": "com.posthog.js_snippet#UpdateJsSnippetVersionPartialResponse"
       },
       "errors": [
         {
@@ -275,7 +275,7 @@
           "target": "com.posthog.js_snippet#JsSnippetVersionRetrieve"
         },
         {
-          "target": "com.posthog.js_snippet#JsSnippetVersionPartialUpdate"
+          "target": "com.posthog.js_snippet#UpdateJsSnippetVersionPartial"
         }
       ],
       "traits": {

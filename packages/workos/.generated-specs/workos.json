@@ -323,7 +323,7 @@
         "smithy.api#documentation": "Validate an agent credential\n\nValidate an agent credential — an API key or access token — against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential."
       }
     },
-    "com.workos.api#AgentAdminControllerGetRegistrationRequest": {
+    "com.workos.api#GetAgentAdminControllerRegistrationRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -580,10 +580,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#AgentAdminControllerGetRegistration": {
+    "com.workos.api#GetAgentAdminControllerRegistration": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AgentAdminControllerGetRegistrationRequest"
+        "target": "com.workos.api#GetAgentAdminControllerRegistrationRequest"
       },
       "output": {
         "target": "com.workos.api#AgentRegistration"
@@ -794,7 +794,7 @@
         "smithy.api#documentation": "Validate API key\n\nValidate an API key value and return the API key object if valid."
       }
     },
-    "com.workos.api#ApiKeysControllerDeleteRequest": {
+    "com.workos.api#DeleteApiKeyControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -810,10 +810,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#ApiKeysControllerDelete": {
+    "com.workos.api#DeleteApiKeyController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ApiKeysControllerDeleteRequest"
+        "target": "com.workos.api#DeleteApiKeyControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -907,7 +907,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#AuditLogValidatorsControllerListRequest": {
+    "com.workos.api#ListAuditLogValidatorControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -1133,7 +1133,7 @@
         "smithy.api#documentation": "The list of records for the current page."
       }
     },
-    "com.workos.api#AuditLogValidatorsControllerListResponse": {
+    "com.workos.api#ListAuditLogValidatorControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -1159,13 +1159,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuditLogValidatorsControllerList": {
+    "com.workos.api#ListAuditLogValidatorController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuditLogValidatorsControllerListRequest"
+        "target": "com.workos.api#ListAuditLogValidatorControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#AuditLogValidatorsControllerListResponse"
+        "target": "com.workos.api#ListAuditLogValidatorControllerResponse"
       },
       "errors": [
         {
@@ -1351,7 +1351,7 @@
         "smithy.api#documentation": "The list of targets for the schema."
       }
     },
-    "com.workos.api#AuditLogValidatorVersionsControllerCreateRequest": {
+    "com.workos.api#CreateAuditLogValidatorVersionControllerRequest": {
       "type": "structure",
       "members": {
         "actionName": {
@@ -1385,10 +1385,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuditLogValidatorVersionsControllerCreate": {
+    "com.workos.api#CreateAuditLogValidatorVersionController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuditLogValidatorVersionsControllerCreateRequest"
+        "target": "com.workos.api#CreateAuditLogValidatorVersionControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuditLogSchemaJson"
@@ -1542,7 +1542,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#AuditLogEventsControllerCreateRequest": {
+    "com.workos.api#CreateAuditLogEventControllerRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -1574,10 +1574,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#AuditLogEventsControllerCreate": {
+    "com.workos.api#CreateAuditLogEventController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuditLogEventsControllerCreateRequest"
+        "target": "com.workos.api#CreateAuditLogEventControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuditLogEventCreateResponse"
@@ -1841,7 +1841,7 @@
         "smithy.api#documentation": "Get Export\n\nGet an Audit Log Export. The URL will expire after 10 minutes. If the export is needed again at a later time, refetching the export will regenerate the URL."
       }
     },
-    "com.workos.api#AuthenticationChallengesControllerVerifyRequest": {
+    "com.workos.api#VerifyAuthenticationChallengeControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -1930,10 +1930,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#AuthenticationChallengesControllerVerify": {
+    "com.workos.api#VerifyAuthenticationChallengeController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthenticationChallengesControllerVerifyRequest"
+        "target": "com.workos.api#VerifyAuthenticationChallengeControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuthenticationChallengeVerifyResponse"
@@ -1984,7 +1984,7 @@
         "smithy.api#documentation": "The type of factor to enroll."
       }
     },
-    "com.workos.api#AuthenticationFactorsControllerCreateRequest": {
+    "com.workos.api#CreateAuthenticationFactorControllerRequest": {
       "type": "structure",
       "members": {
         "type": {
@@ -2168,10 +2168,10 @@
         "smithy.api#documentation": "TOTP-based authentication factor details. Includes enrollment secrets only available at creation time."
       }
     },
-    "com.workos.api#AuthenticationFactorsControllerCreate": {
+    "com.workos.api#CreateAuthenticationFactorController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthenticationFactorsControllerCreateRequest"
+        "target": "com.workos.api#CreateAuthenticationFactorControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuthenticationFactorEnrolled"
@@ -2190,7 +2190,7 @@
         "smithy.api#documentation": "Enroll Factor\n\nEnrolls an Authentication Factor to be used as an additional factor of authentication. The returned ID should be used to create an authentication Challenge."
       }
     },
-    "com.workos.api#AuthenticationFactorsControllerGetRequest": {
+    "com.workos.api#GetAuthenticationFactorControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -2329,10 +2329,10 @@
         "smithy.api#documentation": "TOTP-based authentication factor details."
       }
     },
-    "com.workos.api#AuthenticationFactorsControllerGet": {
+    "com.workos.api#GetAuthenticationFactorController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthenticationFactorsControllerGetRequest"
+        "target": "com.workos.api#GetAuthenticationFactorControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuthenticationFactor"
@@ -2351,7 +2351,7 @@
         "smithy.api#documentation": "Get Factor\n\nGets an Authentication Factor."
       }
     },
-    "com.workos.api#AuthenticationFactorsControllerDeleteRequest": {
+    "com.workos.api#DeleteAuthenticationFactorControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -2367,10 +2367,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthenticationFactorsControllerDelete": {
+    "com.workos.api#DeleteAuthenticationFactorController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthenticationFactorsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteAuthenticationFactorControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2622,7 +2622,7 @@
         "smithy.api#documentation": "Complete external authentication\n\nCompletes an external authentication flow and returns control to AuthKit. This endpoint is used with [Standalone Connect](/authkit/connect/standalone) to bridge your existing authentication system with the Connect OAuth API infrastructure.\n\nAfter successfully authenticating a user in your application, calling this endpoint will:\n\n- Create or update the user in AuthKit, using the given `id` as its `external_id`.\n- Return a `redirect_uri` your application should redirect to in order for AuthKit to complete the flow\n\nUsers are automatically created or updated based on the `id` and `email` provided. If a user with the same `id` exists, their information is updated. Otherwise, a new user is created.\n\nIf you provide a new `id` with an `email` that already belongs to an existing user, the request will fail with an error as email addresses are unique to a user."
       }
     },
-    "com.workos.api#AuthorizationGroupRoleAssignmentsControllerListRequest": {
+    "com.workos.api#ListAuthorizationGroupRoleAssignmentControllerRequest": {
       "type": "structure",
       "members": {
         "group_id": {
@@ -2824,10 +2824,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#AuthorizationGroupRoleAssignmentsControllerList": {
+    "com.workos.api#ListAuthorizationGroupRoleAssignmentController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationGroupRoleAssignmentsControllerListRequest"
+        "target": "com.workos.api#ListAuthorizationGroupRoleAssignmentControllerRequest"
       },
       "output": {
         "target": "com.workos.api#GroupRoleAssignmentList"
@@ -2849,7 +2849,7 @@
         "smithy.api#documentation": "List role assignments for a group\n\nList all role assignments granted to a group. Each assignment represents a role granted to the group on a resource."
       }
     },
-    "com.workos.api#AuthorizationGroupRoleAssignmentsControllerCreateRequest": {
+    "com.workos.api#CreateAuthorizationGroupRoleAssignmentControllerRequest": {
       "type": "structure",
       "members": {
         "group_id": {
@@ -2890,10 +2890,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationGroupRoleAssignmentsControllerCreate": {
+    "com.workos.api#CreateAuthorizationGroupRoleAssignmentController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationGroupRoleAssignmentsControllerCreateRequest"
+        "target": "com.workos.api#CreateAuthorizationGroupRoleAssignmentControllerRequest"
       },
       "output": {
         "target": "com.workos.api#GroupRoleAssignment"
@@ -3081,7 +3081,7 @@
         "smithy.api#documentation": "Remove group role assignments by criteria\n\nRemove role assignments from a group that match the provided criteria. Returns 404 when no matching active assignment is found."
       }
     },
-    "com.workos.api#AuthorizationGroupRoleAssignmentsControllerGetRequest": {
+    "com.workos.api#GetAuthorizationGroupRoleAssignmentControllerRequest": {
       "type": "structure",
       "members": {
         "group_id": {
@@ -3105,10 +3105,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationGroupRoleAssignmentsControllerGet": {
+    "com.workos.api#GetAuthorizationGroupRoleAssignmentController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationGroupRoleAssignmentsControllerGetRequest"
+        "target": "com.workos.api#GetAuthorizationGroupRoleAssignmentControllerRequest"
       },
       "output": {
         "target": "com.workos.api#GroupRoleAssignment"
@@ -3179,7 +3179,7 @@
         "smithy.api#documentation": "Remove a group role assignment\n\nRemove a specific role assignment from a group by its ID."
       }
     },
-    "com.workos.api#AuthorizationControllerCheckRequest": {
+    "com.workos.api#CheckAuthorizationControllerRequest": {
       "type": "structure",
       "members": {
         "organization_membership_id": {
@@ -3232,10 +3232,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#AuthorizationControllerCheck": {
+    "com.workos.api#CheckAuthorizationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationControllerCheckRequest"
+        "target": "com.workos.api#CheckAuthorizationControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuthorizationCheck"
@@ -3260,7 +3260,7 @@
         "smithy.api#documentation": "Check authorization\n\nCheck if an organization membership has a specific permission on a resource. Supports identification by resource_id OR by resource_external_id + resource_type_slug."
       }
     },
-    "com.workos.api#AuthorizationControllerListResourcesForMembershipRequest": {
+    "com.workos.api#ListAuthorizationControllerResourceForMembershipRequest": {
       "type": "structure",
       "members": {
         "organization_membership_id": {
@@ -3458,10 +3458,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#AuthorizationControllerListResourcesForMembership": {
+    "com.workos.api#ListAuthorizationControllerResourceForMembership": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationControllerListResourcesForMembershipRequest"
+        "target": "com.workos.api#ListAuthorizationControllerResourceForMembershipRequest"
       },
       "output": {
         "target": "com.workos.api#AuthorizationResourceList"
@@ -3489,7 +3489,7 @@
         "smithy.api#documentation": "List resources for organization membership\n\nReturns all child resources of a parent resource where the organization membership has a specific permission. This is useful for resource discovery—answering \"What projects can this user access in this workspace?\"\n\nYou must provide either `parent_resource_id` or both `parent_resource_external_id` and `parent_resource_type_slug` to identify the parent resource."
       }
     },
-    "com.workos.api#AuthorizationControllerListEffectivePermissionsRequest": {
+    "com.workos.api#ListAuthorizationControllerEffectivePermissionsRequest": {
       "type": "structure",
       "members": {
         "organization_membership_id": {
@@ -3659,10 +3659,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#AuthorizationControllerListEffectivePermissions": {
+    "com.workos.api#ListAuthorizationControllerEffectivePermissions": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationControllerListEffectivePermissionsRequest"
+        "target": "com.workos.api#ListAuthorizationControllerEffectivePermissionsRequest"
       },
       "output": {
         "target": "com.workos.api#AuthorizationPermissionList"
@@ -3687,7 +3687,7 @@
         "smithy.api#documentation": "List effective permissions for an organization membership on a resource\n\nReturns all permissions the organization membership effectively has on a resource, including permissions inherited through roles assigned to ancestor resources. Results are not filtered by the resource type: a permission is returned whenever a check for it on this resource would be authorized, and each permission is labeled with the resource type it is declared on."
       }
     },
-    "com.workos.api#AuthorizationControllerListEffectivePermissionsByExternalIdRequest": {
+    "com.workos.api#ListAuthorizationControllerEffectivePermissionByExternalIdRequest": {
       "type": "structure",
       "members": {
         "organization_membership_id": {
@@ -3747,10 +3747,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationControllerListEffectivePermissionsByExternalId": {
+    "com.workos.api#ListAuthorizationControllerEffectivePermissionByExternalId": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationControllerListEffectivePermissionsByExternalIdRequest"
+        "target": "com.workos.api#ListAuthorizationControllerEffectivePermissionByExternalIdRequest"
       },
       "output": {
         "target": "com.workos.api#AuthorizationPermissionList"
@@ -3775,7 +3775,7 @@
         "smithy.api#documentation": "List effective permissions for an organization membership on a resource by external ID\n\nReturns all permissions the organization membership effectively has on a resource identified by its external ID, including permissions inherited through roles assigned to ancestor resources. Results are not filtered by the resource type: a permission is returned whenever a check for it on this resource would be authorized, and each permission is labeled with the resource type it is declared on."
       }
     },
-    "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsRequest": {
+    "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentsRequest": {
       "type": "structure",
       "members": {
         "organization_membership_id": {
@@ -4034,10 +4034,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignments": {
+    "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsRequest"
+        "target": "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentsRequest"
       },
       "output": {
         "target": "com.workos.api#UserRoleAssignmentList"
@@ -4246,7 +4246,7 @@
         "smithy.api#documentation": "Remove a role assignment by ID\n\nRemove a role assignment using its ID."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerListRequest": {
+    "com.workos.api#ListAuthorizationOrganizationRoleControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -4382,10 +4382,10 @@
         "smithy.api#documentation": "The list of records for the current page."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerList": {
+    "com.workos.api#ListAuthorizationOrganizationRoleController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationOrganizationRolesControllerListRequest"
+        "target": "com.workos.api#ListAuthorizationOrganizationRoleControllerRequest"
       },
       "output": {
         "target": "com.workos.api#RoleList"
@@ -4407,7 +4407,7 @@
         "smithy.api#documentation": "List custom roles\n\nGet a list of all roles that apply to an organization. This includes both environment roles and custom roles, returned in priority order."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerCreateRequest": {
+    "com.workos.api#CreateAuthorizationOrganizationRoleControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -4477,7 +4477,7 @@
         "smithy.api#documentation": "The permission slugs assigned to the role."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerCreateResponse": {
+    "com.workos.api#CreateAuthorizationOrganizationRoleControllerResponse": {
       "type": "structure",
       "members": {
         "slug": {
@@ -4556,13 +4556,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerCreate": {
+    "com.workos.api#CreateAuthorizationOrganizationRoleController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationOrganizationRolesControllerCreateRequest"
+        "target": "com.workos.api#CreateAuthorizationOrganizationRoleControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationOrganizationRolesControllerCreateResponse"
+        "target": "com.workos.api#CreateAuthorizationOrganizationRoleControllerResponse"
       },
       "errors": [
         {
@@ -4590,7 +4590,7 @@
         "smithy.api#documentation": "Create a custom role\n\nCreate a new custom role for this organization."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerGetRequest": {
+    "com.workos.api#GetAuthorizationOrganizationRoleControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -4643,7 +4643,7 @@
         "smithy.api#documentation": "The permission slugs assigned to the role."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerGetResponse": {
+    "com.workos.api#GetAuthorizationOrganizationRoleControllerResponse": {
       "type": "structure",
       "members": {
         "slug": {
@@ -4722,13 +4722,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerGet": {
+    "com.workos.api#GetAuthorizationOrganizationRoleController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationOrganizationRolesControllerGetRequest"
+        "target": "com.workos.api#GetAuthorizationOrganizationRoleControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationOrganizationRolesControllerGetResponse"
+        "target": "com.workos.api#GetAuthorizationOrganizationRoleControllerResponse"
       },
       "errors": [
         {
@@ -4747,7 +4747,7 @@
         "smithy.api#documentation": "Get a custom role\n\nRetrieve a role that applies to an organization by its slug. This can return either an environment role or a custom role."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerUpdateRequest": {
+    "com.workos.api#UpdateAuthorizationOrganizationRoleControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -4813,7 +4813,7 @@
         "smithy.api#documentation": "The permission slugs assigned to the role."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerUpdateResponse": {
+    "com.workos.api#UpdateAuthorizationOrganizationRoleControllerResponse": {
       "type": "structure",
       "members": {
         "slug": {
@@ -4892,13 +4892,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerUpdate": {
+    "com.workos.api#UpdateAuthorizationOrganizationRoleController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationOrganizationRolesControllerUpdateRequest"
+        "target": "com.workos.api#UpdateAuthorizationOrganizationRoleControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationOrganizationRolesControllerUpdateResponse"
+        "target": "com.workos.api#UpdateAuthorizationOrganizationRoleControllerResponse"
       },
       "errors": [
         {
@@ -4923,7 +4923,7 @@
         "smithy.api#documentation": "Update a custom role\n\nUpdate an existing custom role. Only the fields provided in the request body will be updated."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerDeleteRequest": {
+    "com.workos.api#DeleteAuthorizationOrganizationRoleControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -4947,10 +4947,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolesControllerDelete": {
+    "com.workos.api#DeleteAuthorizationOrganizationRoleController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationOrganizationRolesControllerDeleteRequest"
+        "target": "com.workos.api#DeleteAuthorizationOrganizationRoleControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5150,7 +5150,7 @@
         "smithy.api#documentation": "The permission slugs to assign to the role."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolePermissionsControllerSetPermissionsRequest": {
+    "com.workos.api#SetAuthorizationOrganizationRolePermissionControllerPermissionRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -5209,7 +5209,7 @@
         "smithy.api#documentation": "The permission slugs assigned to the role."
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponse": {
+    "com.workos.api#SetAuthorizationOrganizationRolePermissionControllerPermissionResponse": {
       "type": "structure",
       "members": {
         "slug": {
@@ -5288,13 +5288,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationOrganizationRolePermissionsControllerSetPermissions": {
+    "com.workos.api#SetAuthorizationOrganizationRolePermissionControllerPermission": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationOrganizationRolePermissionsControllerSetPermissionsRequest"
+        "target": "com.workos.api#SetAuthorizationOrganizationRolePermissionControllerPermissionRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponse"
+        "target": "com.workos.api#SetAuthorizationOrganizationRolePermissionControllerPermissionResponse"
       },
       "errors": [
         {
@@ -5373,7 +5373,7 @@
         "smithy.api#documentation": "Remove a permission from a custom role\n\nRemove a single permission from a custom role by its slug."
       }
     },
-    "com.workos.api#AuthorizationResourcesByExternalIdControllerGetByExternalIdRequest": {
+    "com.workos.api#GetAuthorizationResourceByExternalIdControllerByExternalIdRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -5405,10 +5405,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesByExternalIdControllerGetByExternalId": {
+    "com.workos.api#GetAuthorizationResourceByExternalIdControllerByExternalId": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationResourcesByExternalIdControllerGetByExternalIdRequest"
+        "target": "com.workos.api#GetAuthorizationResourceByExternalIdControllerByExternalIdRequest"
       },
       "output": {
         "target": "com.workos.api#AuthorizationResource"
@@ -5430,7 +5430,7 @@
         "smithy.api#documentation": "Get a resource by external ID\n\nRetrieve the details of an authorization resource by its external ID, organization, and resource type. This is useful when you only have the external ID from your system and need to fetch the full resource details."
       }
     },
-    "com.workos.api#AuthorizationResourcesByExternalIdControllerUpdateByExternalIdRequest": {
+    "com.workos.api#UpdateAuthorizationResourceByExternalIdControllerByExternalIdRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -5493,7 +5493,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesByExternalIdControllerUpdateByExternalIdResponse": {
+    "com.workos.api#UpdateAuthorizationResourceByExternalIdControllerByExternalIdResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -5573,13 +5573,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesByExternalIdControllerUpdateByExternalId": {
+    "com.workos.api#UpdateAuthorizationResourceByExternalIdControllerByExternalId": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationResourcesByExternalIdControllerUpdateByExternalIdRequest"
+        "target": "com.workos.api#UpdateAuthorizationResourceByExternalIdControllerByExternalIdRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationResourcesByExternalIdControllerUpdateByExternalIdResponse"
+        "target": "com.workos.api#UpdateAuthorizationResourceByExternalIdControllerByExternalIdResponse"
       },
       "errors": [
         {
@@ -5607,7 +5607,7 @@
         "smithy.api#documentation": "Update a resource by external ID\n\nUpdate an existing authorization resource using its external ID."
       }
     },
-    "com.workos.api#AuthorizationResourcesByExternalIdControllerDeleteByExternalIdRequest": {
+    "com.workos.api#DeleteAuthorizationResourceByExternalIdControllerByExternalIdRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -5646,10 +5646,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesByExternalIdControllerDeleteByExternalId": {
+    "com.workos.api#DeleteAuthorizationResourceByExternalIdControllerByExternalId": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationResourcesByExternalIdControllerDeleteByExternalIdRequest"
+        "target": "com.workos.api#DeleteAuthorizationResourceByExternalIdControllerByExternalIdRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5695,7 +5695,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequest": {
+    "com.workos.api#ListAuthorizationResourceByExternalIdControllerOrganizationMembershipForResourceByExternalIdRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -6060,10 +6060,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId": {
+    "com.workos.api#ListAuthorizationResourceByExternalIdControllerOrganizationMembershipForResourceByExternalId": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequest"
+        "target": "com.workos.api#ListAuthorizationResourceByExternalIdControllerOrganizationMembershipForResourceByExternalIdRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserOrganizationMembershipBaseWithUserList"
@@ -6091,7 +6091,7 @@
         "smithy.api#documentation": "List memberships for a resource by external ID\n\nReturns all organization memberships that have a specific permission on a resource, using the resource's external ID. This is useful for answering \"Who can access this resource?\" when you only have the external ID."
       }
     },
-    "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdRequest": {
+    "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentForResourceByExternalIdRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -6158,10 +6158,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalId": {
+    "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentForResourceByExternalId": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdRequest"
+        "target": "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentForResourceByExternalIdRequest"
       },
       "output": {
         "target": "com.workos.api#UserRoleAssignmentList"
@@ -6183,7 +6183,7 @@
         "smithy.api#documentation": "List role assignments for a resource by external ID\n\nList all role assignments granted on a resource, identified by its external ID. Each assignment includes the organization membership it was granted to."
       }
     },
-    "com.workos.api#AuthorizationPermissionsControllerListRequest": {
+    "com.workos.api#ListAuthorizationPermissionControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -6219,10 +6219,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationPermissionsControllerList": {
+    "com.workos.api#ListAuthorizationPermissionController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationPermissionsControllerListRequest"
+        "target": "com.workos.api#ListAuthorizationPermissionControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuthorizationPermissionList"
@@ -6241,7 +6241,7 @@
         "smithy.api#documentation": "List permissions\n\nGet a list of all permissions in your WorkOS environment."
       }
     },
-    "com.workos.api#AuthorizationPermissionsControllerCreateRequest": {
+    "com.workos.api#CreateAuthorizationPermissionControllerRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -6274,7 +6274,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationPermissionsControllerCreateResponse": {
+    "com.workos.api#CreateAuthorizationPermissionControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -6346,13 +6346,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationPermissionsControllerCreate": {
+    "com.workos.api#CreateAuthorizationPermissionController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationPermissionsControllerCreateRequest"
+        "target": "com.workos.api#CreateAuthorizationPermissionControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationPermissionsControllerCreateResponse"
+        "target": "com.workos.api#CreateAuthorizationPermissionControllerResponse"
       },
       "errors": [
         {
@@ -6415,7 +6415,7 @@
         "smithy.api#documentation": "Get a permission\n\nRetrieve a permission by its unique slug."
       }
     },
-    "com.workos.api#AuthorizationPermissionsControllerUpdateRequest": {
+    "com.workos.api#UpdateAuthorizationPermissionControllerRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -6444,10 +6444,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationPermissionsControllerUpdate": {
+    "com.workos.api#UpdateAuthorizationPermissionController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationPermissionsControllerUpdateRequest"
+        "target": "com.workos.api#UpdateAuthorizationPermissionControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuthorizationPermission"
@@ -6472,7 +6472,7 @@
         "smithy.api#documentation": "Update a permission\n\nUpdate an existing permission. Only the fields provided in the request body will be updated."
       }
     },
-    "com.workos.api#AuthorizationPermissionsControllerDeleteRequest": {
+    "com.workos.api#DeleteAuthorizationPermissionControllerRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -6488,10 +6488,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationPermissionsControllerDelete": {
+    "com.workos.api#DeleteAuthorizationPermissionController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationPermissionsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteAuthorizationPermissionControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6513,7 +6513,7 @@
         "smithy.api#documentation": "Delete a permission\n\nDelete an existing permission. System permissions cannot be deleted."
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerListRequest": {
+    "com.workos.api#ListAuthorizationResourceControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -6591,10 +6591,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerList": {
+    "com.workos.api#ListAuthorizationResourceController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationResourcesControllerListRequest"
+        "target": "com.workos.api#ListAuthorizationResourceControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuthorizationResourceList"
@@ -6619,7 +6619,7 @@
         "smithy.api#documentation": "List resources\n\nGet a paginated list of authorization resources."
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerCreateRequest": {
+    "com.workos.api#CreateAuthorizationResourceControllerRequest": {
       "type": "structure",
       "members": {
         "external_id": {
@@ -6681,7 +6681,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerCreateResponse": {
+    "com.workos.api#CreateAuthorizationResourceControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -6761,13 +6761,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerCreate": {
+    "com.workos.api#CreateAuthorizationResourceController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationResourcesControllerCreateRequest"
+        "target": "com.workos.api#CreateAuthorizationResourceControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationResourcesControllerCreateResponse"
+        "target": "com.workos.api#CreateAuthorizationResourceControllerResponse"
       },
       "errors": [
         {
@@ -6839,7 +6839,7 @@
         "smithy.api#documentation": "Get a resource\n\nRetrieve the details of an authorization resource by its ID."
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerUpdateRequest": {
+    "com.workos.api#UpdateAuthorizationResourceControllerRequest": {
       "type": "structure",
       "members": {
         "resource_id": {
@@ -6886,7 +6886,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerUpdateResponse": {
+    "com.workos.api#UpdateAuthorizationResourceControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -6966,13 +6966,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerUpdate": {
+    "com.workos.api#UpdateAuthorizationResourceController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationResourcesControllerUpdateRequest"
+        "target": "com.workos.api#UpdateAuthorizationResourceControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationResourcesControllerUpdateResponse"
+        "target": "com.workos.api#UpdateAuthorizationResourceControllerResponse"
       },
       "errors": [
         {
@@ -7000,7 +7000,7 @@
         "smithy.api#documentation": "Update a resource\n\nUpdate an existing authorization resource."
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerDeleteRequest": {
+    "com.workos.api#DeleteAuthorizationResourceControllerRequest": {
       "type": "structure",
       "members": {
         "resource_id": {
@@ -7023,10 +7023,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerDelete": {
+    "com.workos.api#DeleteAuthorizationResourceController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationResourcesControllerDeleteRequest"
+        "target": "com.workos.api#DeleteAuthorizationResourceControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7072,7 +7072,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequest": {
+    "com.workos.api#ListAuthorizationResourceControllerOrganizationMembershipForResourceRequest": {
       "type": "structure",
       "members": {
         "resource_id": {
@@ -7131,10 +7131,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationResourcesControllerListOrganizationMembershipsForResource": {
+    "com.workos.api#ListAuthorizationResourceControllerOrganizationMembershipForResource": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequest"
+        "target": "com.workos.api#ListAuthorizationResourceControllerOrganizationMembershipForResourceRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserOrganizationMembershipBaseWithUserList"
@@ -7162,7 +7162,7 @@
         "smithy.api#documentation": "List organization memberships for resource\n\nReturns all organization memberships that have a specific permission on a resource instance. This is useful for answering \"Who can access this resource?\"."
       }
     },
-    "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceRequest": {
+    "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentForResourceRequest": {
       "type": "structure",
       "members": {
         "resource_id": {
@@ -7213,10 +7213,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource": {
+    "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentForResource": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceRequest"
+        "target": "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentForResourceRequest"
       },
       "output": {
         "target": "com.workos.api#UserRoleAssignmentList"
@@ -7238,7 +7238,7 @@
         "smithy.api#documentation": "List role assignments for a resource\n\nList all role assignments granted on a specific resource instance. Each assignment includes the organization membership it was granted to."
       }
     },
-    "com.workos.api#AuthorizationRolesControllerList": {
+    "com.workos.api#ListAuthorizationRoleController": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -7260,7 +7260,7 @@
         "smithy.api#documentation": "List environment roles\n\nList all environment roles in priority order."
       }
     },
-    "com.workos.api#AuthorizationRolesControllerCreateRequest": {
+    "com.workos.api#CreateAuthorizationRoleControllerRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -7322,7 +7322,7 @@
         "smithy.api#documentation": "The permission slugs assigned to the role."
       }
     },
-    "com.workos.api#AuthorizationRolesControllerCreateResponse": {
+    "com.workos.api#CreateAuthorizationRoleControllerResponse": {
       "type": "structure",
       "members": {
         "slug": {
@@ -7401,13 +7401,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationRolesControllerCreate": {
+    "com.workos.api#CreateAuthorizationRoleController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationRolesControllerCreateRequest"
+        "target": "com.workos.api#CreateAuthorizationRoleControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationRolesControllerCreateResponse"
+        "target": "com.workos.api#CreateAuthorizationRoleControllerResponse"
       },
       "errors": [
         {
@@ -7435,7 +7435,7 @@
         "smithy.api#documentation": "Create an environment role\n\nCreate a new environment role."
       }
     },
-    "com.workos.api#AuthorizationRolesControllerGetRequest": {
+    "com.workos.api#GetAuthorizationRoleControllerRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -7451,10 +7451,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizationRolesControllerGet": {
+    "com.workos.api#GetAuthorizationRoleController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationRolesControllerGetRequest"
+        "target": "com.workos.api#GetAuthorizationRoleControllerRequest"
       },
       "output": {
         "target": "com.workos.api#Role"
@@ -7476,7 +7476,7 @@
         "smithy.api#documentation": "Get an environment role\n\nGet an environment role by its slug."
       }
     },
-    "com.workos.api#AuthorizationRolesControllerUpdateRequest": {
+    "com.workos.api#UpdateAuthorizationRoleControllerRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -7534,7 +7534,7 @@
         "smithy.api#documentation": "The permission slugs assigned to the role."
       }
     },
-    "com.workos.api#AuthorizationRolesControllerUpdateResponse": {
+    "com.workos.api#UpdateAuthorizationRoleControllerResponse": {
       "type": "structure",
       "members": {
         "slug": {
@@ -7613,13 +7613,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationRolesControllerUpdate": {
+    "com.workos.api#UpdateAuthorizationRoleController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationRolesControllerUpdateRequest"
+        "target": "com.workos.api#UpdateAuthorizationRoleControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationRolesControllerUpdateResponse"
+        "target": "com.workos.api#UpdateAuthorizationRoleControllerResponse"
       },
       "errors": [
         {
@@ -7808,7 +7808,7 @@
         "smithy.api#documentation": "The permission slugs to assign to the role."
       }
     },
-    "com.workos.api#AuthorizationRolePermissionsControllerSetPermissionsRequest": {
+    "com.workos.api#SetAuthorizationRolePermissionControllerPermissionRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -7859,7 +7859,7 @@
         "smithy.api#documentation": "The permission slugs assigned to the role."
       }
     },
-    "com.workos.api#AuthorizationRolePermissionsControllerSetPermissionsResponse": {
+    "com.workos.api#SetAuthorizationRolePermissionControllerPermissionResponse": {
       "type": "structure",
       "members": {
         "slug": {
@@ -7938,13 +7938,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#AuthorizationRolePermissionsControllerSetPermissions": {
+    "com.workos.api#SetAuthorizationRolePermissionControllerPermission": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizationRolePermissionsControllerSetPermissionsRequest"
+        "target": "com.workos.api#SetAuthorizationRolePermissionControllerPermissionRequest"
       },
       "output": {
-        "target": "com.workos.api#AuthorizationRolePermissionsControllerSetPermissionsResponse"
+        "target": "com.workos.api#SetAuthorizationRolePermissionControllerPermissionResponse"
       },
       "errors": [
         {
@@ -8057,7 +8057,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#ApplicationsControllerListRequest": {
+    "com.workos.api#ListApplicationControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -8301,10 +8301,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#ApplicationsControllerList": {
+    "com.workos.api#ListApplicationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ApplicationsControllerListRequest"
+        "target": "com.workos.api#ListApplicationControllerRequest"
       },
       "output": {
         "target": "com.workos.api#ConnectApplicationList"
@@ -8478,7 +8478,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#ApplicationsControllerCreateRequest": {
+    "com.workos.api#CreateApplicationControllerRequest": {
       "type": "structure",
       "members": {
         "body": {
@@ -8531,7 +8531,7 @@
         "smithy.api#documentation": "The redirect URIs configured for this application."
       }
     },
-    "com.workos.api#ApplicationsControllerCreateResponse": {
+    "com.workos.api#CreateApplicationControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -8632,13 +8632,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#ApplicationsControllerCreate": {
+    "com.workos.api#CreateApplicationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ApplicationsControllerCreateRequest"
+        "target": "com.workos.api#CreateApplicationControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#ApplicationsControllerCreateResponse"
+        "target": "com.workos.api#CreateApplicationControllerResponse"
       },
       "errors": [
         {
@@ -8852,7 +8852,7 @@
         "smithy.api#documentation": "Updated redirect URIs for the application. OAuth applications only."
       }
     },
-    "com.workos.api#ApplicationsControllerUpdateRequest": {
+    "com.workos.api#UpdateApplicationControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -8933,7 +8933,7 @@
         "smithy.api#documentation": "The redirect URIs configured for this application."
       }
     },
-    "com.workos.api#ApplicationsControllerUpdateResponse": {
+    "com.workos.api#UpdateApplicationControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -9034,13 +9034,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#ApplicationsControllerUpdate": {
+    "com.workos.api#UpdateApplicationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ApplicationsControllerUpdateRequest"
+        "target": "com.workos.api#UpdateApplicationControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#ApplicationsControllerUpdateResponse"
+        "target": "com.workos.api#UpdateApplicationControllerResponse"
       },
       "errors": [
         {
@@ -9059,7 +9059,7 @@
         "smithy.api#documentation": "Update a Connect Application\n\nUpdate an existing Connect Application. For OAuth applications, you can update redirect URIs. For all applications, you can update the name, description, and scopes."
       }
     },
-    "com.workos.api#ApplicationsControllerDeleteRequest": {
+    "com.workos.api#DeleteApplicationControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -9075,10 +9075,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#ApplicationsControllerDelete": {
+    "com.workos.api#DeleteApplicationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ApplicationsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteApplicationControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9097,7 +9097,7 @@
         "smithy.api#documentation": "Delete a Connect Application\n\nDelete an existing Connect Application."
       }
     },
-    "com.workos.api#ApplicationCredentialsControllerListRequest": {
+    "com.workos.api#ListApplicationCredentialControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -9169,7 +9169,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#ApplicationCredentialsControllerListResponse": {
+    "com.workos.api#ListApplicationCredentialControllerResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -9184,13 +9184,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#ApplicationCredentialsControllerList": {
+    "com.workos.api#ListApplicationCredentialController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ApplicationCredentialsControllerListRequest"
+        "target": "com.workos.api#ListApplicationCredentialControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#ApplicationCredentialsControllerListResponse"
+        "target": "com.workos.api#ListApplicationCredentialControllerResponse"
       },
       "errors": [
         {
@@ -9206,7 +9206,7 @@
         "smithy.api#documentation": "List Client Secrets for a Connect Application\n\nList all client secrets associated with a Connect Application."
       }
     },
-    "com.workos.api#ApplicationCredentialsControllerCreateRequest": {
+    "com.workos.api#CreateApplicationCredentialControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -9272,10 +9272,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#ApplicationCredentialsControllerCreate": {
+    "com.workos.api#CreateApplicationCredentialController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ApplicationCredentialsControllerCreateRequest"
+        "target": "com.workos.api#CreateApplicationCredentialControllerRequest"
       },
       "output": {
         "target": "com.workos.api#NewConnectApplicationSecret"
@@ -9297,7 +9297,7 @@
         "smithy.api#documentation": "Create a new client secret for a Connect Application\n\nCreate new secrets for a Connect Application."
       }
     },
-    "com.workos.api#ApplicationCredentialsControllerDeleteRequest": {
+    "com.workos.api#DeleteApplicationCredentialControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -9313,10 +9313,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#ApplicationCredentialsControllerDelete": {
+    "com.workos.api#DeleteApplicationCredentialController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ApplicationCredentialsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteApplicationCredentialControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9623,7 +9623,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#ConnectionsControllerListRequest": {
+    "com.workos.api#ListConnectionControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -10218,10 +10218,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#ConnectionsControllerList": {
+    "com.workos.api#ListConnectionController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ConnectionsControllerListRequest"
+        "target": "com.workos.api#ListConnectionControllerRequest"
       },
       "output": {
         "target": "com.workos.api#ConnectionList"
@@ -10284,7 +10284,7 @@
         "smithy.api#documentation": "Get a Connection\n\nGet the details of an existing connection."
       }
     },
-    "com.workos.api#ConnectionsControllerDeleteRequest": {
+    "com.workos.api#DeleteConnectionControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -10300,10 +10300,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#ConnectionsControllerDelete": {
+    "com.workos.api#DeleteConnectionController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ConnectionsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteConnectionControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10325,7 +10325,7 @@
         "smithy.api#documentation": "Delete a Connection\n\nPermanently deletes an existing connection. It cannot be undone."
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerListDataIntegrationsRequest": {
+    "com.workos.api#ListDataIntegrationManagementControllerDataIntegrationsRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -10826,10 +10826,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerListDataIntegrations": {
+    "com.workos.api#ListDataIntegrationManagementControllerDataIntegrations": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsManagementControllerListDataIntegrationsRequest"
+        "target": "com.workos.api#ListDataIntegrationManagementControllerDataIntegrationsRequest"
       },
       "output": {
         "target": "com.workos.api#DataIntegrationList"
@@ -11076,7 +11076,7 @@
         "smithy.api#documentation": "How client credentials are sent when exchanging authorization codes and refreshing tokens."
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerCreateDataIntegrationRequest": {
+    "com.workos.api#CreateDataIntegrationManagementControllerDataIntegrationRequest": {
       "type": "structure",
       "members": {
         "provider": {
@@ -11141,10 +11141,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerCreateDataIntegration": {
+    "com.workos.api#CreateDataIntegrationManagementControllerDataIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsManagementControllerCreateDataIntegrationRequest"
+        "target": "com.workos.api#CreateDataIntegrationManagementControllerDataIntegrationRequest"
       },
       "output": {
         "target": "com.workos.api#DataIntegration"
@@ -11175,7 +11175,7 @@
         "smithy.api#documentation": "Create a data integration\n\nCreates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials or `organization` to have each organization supply its own. Set `auth_methods` to `[\"api_key\"]` to create an API key integration; you may optionally supply an `api_key` block to install a first tenant in the same call. Set `auth_methods` to `[\"client_credentials\"]` to create a client-credentials integration; client credentials are installed per-tenant afterwards. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition."
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerGetDataIntegrationRequest": {
+    "com.workos.api#GetDataIntegrationManagementControllerDataIntegrationRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -11191,10 +11191,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerGetDataIntegration": {
+    "com.workos.api#GetDataIntegrationManagementControllerDataIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsManagementControllerGetDataIntegrationRequest"
+        "target": "com.workos.api#GetDataIntegrationManagementControllerDataIntegrationRequest"
       },
       "output": {
         "target": "com.workos.api#DataIntegration"
@@ -11327,7 +11327,7 @@
         "smithy.api#documentation": "How client credentials are sent when exchanging authorization codes and refreshing tokens."
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerUpdateDataIntegrationRequest": {
+    "com.workos.api#UpdateDataIntegrationManagementControllerDataIntegrationRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -11381,10 +11381,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerUpdateDataIntegration": {
+    "com.workos.api#UpdateDataIntegrationManagementControllerDataIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsManagementControllerUpdateDataIntegrationRequest"
+        "target": "com.workos.api#UpdateDataIntegrationManagementControllerDataIntegrationRequest"
       },
       "output": {
         "target": "com.workos.api#DataIntegration"
@@ -11412,7 +11412,7 @@
         "smithy.api#documentation": "Update a data integration\n\nUpdates the description, enabled state, or custom credentials of a data integration. For custom providers, `custom_provider` updates the OAuth definition."
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerDeleteDataIntegrationRequest": {
+    "com.workos.api#DeleteDataIntegrationManagementControllerDataIntegrationRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -11428,10 +11428,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DataIntegrationsManagementControllerDeleteDataIntegration": {
+    "com.workos.api#DeleteDataIntegrationManagementControllerDataIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsManagementControllerDeleteDataIntegrationRequest"
+        "target": "com.workos.api#DeleteDataIntegrationManagementControllerDataIntegrationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -11450,7 +11450,7 @@
         "smithy.api#documentation": "Delete a data integration\n\nDeletes a data integration and all of its connected installations. For a custom provider, also deletes the custom provider definition."
       }
     },
-    "com.workos.api#DataIntegrationsControllerUpsertApiKeyRequest": {
+    "com.workos.api#UpsertDataIntegrationControllerApiKeyRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -11649,10 +11649,10 @@
         "smithy.api#documentation": "The state of the connected account:\n- `connected`: The connection is active and tokens are valid.\n- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed.\n- `disconnected`: The connection has been disconnected."
       }
     },
-    "com.workos.api#DataIntegrationsControllerUpsertApiKey": {
+    "com.workos.api#UpsertDataIntegrationControllerApiKey": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsControllerUpsertApiKeyRequest"
+        "target": "com.workos.api#UpsertDataIntegrationControllerApiKeyRequest"
       },
       "output": {
         "target": "com.workos.api#ConnectedAccount"
@@ -11785,7 +11785,7 @@
         "smithy.api#documentation": "Provider-specific configuration values collected for this installation, keyed by the provider's config field descriptors."
       }
     },
-    "com.workos.api#DataIntegrationsControllerUpsertClientCredentialsRequest": {
+    "com.workos.api#UpsertDataIntegrationControllerClientCredentialRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -11835,10 +11835,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DataIntegrationsControllerUpsertClientCredentials": {
+    "com.workos.api#UpsertDataIntegrationControllerClientCredential": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsControllerUpsertClientCredentialsRequest"
+        "target": "com.workos.api#UpsertDataIntegrationControllerClientCredentialRequest"
       },
       "output": {
         "target": "com.workos.api#ConnectedAccount"
@@ -12242,7 +12242,7 @@
         "smithy.api#documentation": "Vend credentials for a connected account\n\nReturns credentials for a user's connected account. Branches on the installation's `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret."
       }
     },
-    "com.workos.api#DataIntegrationsControllerGetUserlandUserTokenRequest": {
+    "com.workos.api#GetDataIntegrationControllerUserlandUserTokenRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -12406,7 +12406,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#DataIntegrationsControllerGetUserlandUserTokenResponse": {
+    "com.workos.api#GetDataIntegrationControllerUserlandUserTokenResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -12421,13 +12421,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#DataIntegrationsControllerGetUserlandUserToken": {
+    "com.workos.api#GetDataIntegrationControllerUserlandUserToken": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsControllerGetUserlandUserTokenRequest"
+        "target": "com.workos.api#GetDataIntegrationControllerUserlandUserTokenRequest"
       },
       "output": {
-        "target": "com.workos.api#DataIntegrationsControllerGetUserlandUserTokenResponse"
+        "target": "com.workos.api#GetDataIntegrationControllerUserlandUserTokenResponse"
       },
       "errors": [
         {
@@ -12449,7 +12449,7 @@
         "smithy.api#documentation": "Get an access token for a connected account\n\nFetches a valid OAuth access token for a user's connected account. WorkOS automatically handles token refresh, ensuring you always receive a valid, non-expired token."
       }
     },
-    "com.workos.api#DirectoriesControllerListRequest": {
+    "com.workos.api#ListDirectoryControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -12851,10 +12851,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#DirectoriesControllerList": {
+    "com.workos.api#ListDirectoryController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DirectoriesControllerListRequest"
+        "target": "com.workos.api#ListDirectoryControllerRequest"
       },
       "output": {
         "target": "com.workos.api#DirectoryList"
@@ -12917,7 +12917,7 @@
         "smithy.api#documentation": "Get a Directory\n\nGet the details of an existing directory."
       }
     },
-    "com.workos.api#DirectoriesControllerDeleteDirectoryRequest": {
+    "com.workos.api#DeleteDirectoryControllerDirectoryRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -12933,10 +12933,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DirectoriesControllerDeleteDirectory": {
+    "com.workos.api#DeleteDirectoryControllerDirectory": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DirectoriesControllerDeleteDirectoryRequest"
+        "target": "com.workos.api#DeleteDirectoryControllerDirectoryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -12958,7 +12958,7 @@
         "smithy.api#documentation": "Delete a Directory\n\nPermanently deletes an existing directory. It cannot be undone."
       }
     },
-    "com.workos.api#DirectoryGroupsControllerListRequest": {
+    "com.workos.api#ListDirectoryGroupControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -13137,10 +13137,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#DirectoryGroupsControllerList": {
+    "com.workos.api#ListDirectoryGroupController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DirectoryGroupsControllerListRequest"
+        "target": "com.workos.api#ListDirectoryGroupControllerRequest"
       },
       "output": {
         "target": "com.workos.api#DirectoryGroupList"
@@ -13206,7 +13206,7 @@
         "smithy.api#documentation": "Get a Directory Group\n\nGet the details of an existing Directory Group."
       }
     },
-    "com.workos.api#DirectoryUsersControllerListRequest": {
+    "com.workos.api#ListDirectoryUserControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -13558,10 +13558,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#DirectoryUsersControllerList": {
+    "com.workos.api#ListDirectoryUserController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DirectoryUsersControllerListRequest"
+        "target": "com.workos.api#ListDirectoryUserControllerRequest"
       },
       "output": {
         "target": "com.workos.api#DirectoryUserList"
@@ -13634,7 +13634,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#EventsControllerListRequest": {
+    "com.workos.api#ListEventControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -13821,10 +13821,10 @@
         "smithy.api#documentation": "Pagination cursor for navigating to the next page of results."
       }
     },
-    "com.workos.api#EventsControllerList": {
+    "com.workos.api#ListEventController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#EventsControllerListRequest"
+        "target": "com.workos.api#ListEventControllerRequest"
       },
       "output": {
         "target": "com.workos.api#EventList"
@@ -13846,7 +13846,7 @@
         "smithy.api#documentation": "List events\n\nList events for the current environment."
       }
     },
-    "com.workos.api#FeatureFlagsControllerListRequest": {
+    "com.workos.api#ListFeatureFlagControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -14051,10 +14051,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#FeatureFlagsControllerList": {
+    "com.workos.api#ListFeatureFlagController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#FeatureFlagsControllerListRequest"
+        "target": "com.workos.api#ListFeatureFlagControllerRequest"
       },
       "output": {
         "target": "com.workos.api#FlagList"
@@ -14117,7 +14117,7 @@
         "smithy.api#documentation": "Get a feature flag\n\nGet the details of an existing feature flag by its slug."
       }
     },
-    "com.workos.api#FeatureFlagsControllerDisableFlagRequest": {
+    "com.workos.api#DisableFeatureFlagControllerFlagRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -14171,7 +14171,7 @@
         "smithy.api#documentation": "Labels assigned to the Feature Flag for categorizing and filtering."
       }
     },
-    "com.workos.api#FeatureFlagsControllerDisableFlagResponse": {
+    "com.workos.api#DisableFeatureFlagControllerFlagResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -14258,13 +14258,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#FeatureFlagsControllerDisableFlag": {
+    "com.workos.api#DisableFeatureFlagControllerFlag": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#FeatureFlagsControllerDisableFlagRequest"
+        "target": "com.workos.api#DisableFeatureFlagControllerFlagRequest"
       },
       "output": {
-        "target": "com.workos.api#FeatureFlagsControllerDisableFlagResponse"
+        "target": "com.workos.api#DisableFeatureFlagControllerFlagResponse"
       },
       "errors": [
         {
@@ -14280,7 +14280,7 @@
         "smithy.api#documentation": "Disable a feature flag\n\nDisables a feature flag in the current environment."
       }
     },
-    "com.workos.api#FeatureFlagsControllerEnableFlagRequest": {
+    "com.workos.api#EnableFeatureFlagControllerFlagRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -14334,7 +14334,7 @@
         "smithy.api#documentation": "Labels assigned to the Feature Flag for categorizing and filtering."
       }
     },
-    "com.workos.api#FeatureFlagsControllerEnableFlagResponse": {
+    "com.workos.api#EnableFeatureFlagControllerFlagResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -14421,13 +14421,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#FeatureFlagsControllerEnableFlag": {
+    "com.workos.api#EnableFeatureFlagControllerFlag": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#FeatureFlagsControllerEnableFlagRequest"
+        "target": "com.workos.api#EnableFeatureFlagControllerFlagRequest"
       },
       "output": {
-        "target": "com.workos.api#FeatureFlagsControllerEnableFlagResponse"
+        "target": "com.workos.api#EnableFeatureFlagControllerFlagResponse"
       },
       "errors": [
         {
@@ -14443,7 +14443,7 @@
         "smithy.api#documentation": "Enable a feature flag\n\nEnables a feature flag in the current environment."
       }
     },
-    "com.workos.api#FlagTargetsControllerCreateTargetRequest": {
+    "com.workos.api#CreateFlagTargetControllerTargetRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -14467,10 +14467,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#FlagTargetsControllerCreateTarget": {
+    "com.workos.api#CreateFlagTargetControllerTarget": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#FlagTargetsControllerCreateTargetRequest"
+        "target": "com.workos.api#CreateFlagTargetControllerTargetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14495,7 +14495,7 @@
         "smithy.api#documentation": "Add a feature flag target\n\nEnables a feature flag for a specific target in the current environment. Currently, supported targets include users and organizations."
       }
     },
-    "com.workos.api#FlagTargetsControllerDeleteTargetRequest": {
+    "com.workos.api#DeleteFlagTargetControllerTargetRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -14519,10 +14519,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#FlagTargetsControllerDeleteTarget": {
+    "com.workos.api#DeleteFlagTargetControllerTarget": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#FlagTargetsControllerDeleteTargetRequest"
+        "target": "com.workos.api#DeleteFlagTargetControllerTargetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14547,7 +14547,7 @@
         "smithy.api#documentation": "Remove a feature flag target\n\nRemoves a target from the feature flag's target list in the current environment. Currently, supported targets include users and organizations."
       }
     },
-    "com.workos.api#OrganizationDomainsControllerCreateRequest": {
+    "com.workos.api#CreateOrganizationDomainControllerRequest": {
       "type": "structure",
       "members": {
         "domain": {
@@ -14625,7 +14625,7 @@
         "smithy.api#documentation": "Strategy used to verify the domain."
       }
     },
-    "com.workos.api#OrganizationDomainsControllerCreateResponse": {
+    "com.workos.api#CreateOrganizationDomainControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -14699,13 +14699,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#OrganizationDomainsControllerCreate": {
+    "com.workos.api#CreateOrganizationDomainController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationDomainsControllerCreateRequest"
+        "target": "com.workos.api#CreateOrganizationDomainControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#OrganizationDomainsControllerCreateResponse"
+        "target": "com.workos.api#CreateOrganizationDomainControllerResponse"
       },
       "errors": [
         {
@@ -14721,7 +14721,7 @@
         "smithy.api#documentation": "Create an Organization Domain\n\nCreates a new Organization Domain."
       }
     },
-    "com.workos.api#OrganizationDomainsControllerGetRequest": {
+    "com.workos.api#GetOrganizationDomainControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -14861,10 +14861,10 @@
         "smithy.api#documentation": "Strategy used to verify the domain."
       }
     },
-    "com.workos.api#OrganizationDomainsControllerGet": {
+    "com.workos.api#GetOrganizationDomainController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationDomainsControllerGetRequest"
+        "target": "com.workos.api#GetOrganizationDomainControllerRequest"
       },
       "output": {
         "target": "com.workos.api#OrganizationDomainStandAlone"
@@ -14883,7 +14883,7 @@
         "smithy.api#documentation": "Get an Organization Domain\n\nGet the details of an existing organization domain."
       }
     },
-    "com.workos.api#OrganizationDomainsControllerDeleteRequest": {
+    "com.workos.api#DeleteOrganizationDomainControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -14899,10 +14899,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#OrganizationDomainsControllerDelete": {
+    "com.workos.api#DeleteOrganizationDomainController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationDomainsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteOrganizationDomainControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14921,7 +14921,7 @@
         "smithy.api#documentation": "Delete an Organization Domain\n\nPermanently deletes an organization domain. It cannot be undone."
       }
     },
-    "com.workos.api#OrganizationDomainsControllerVerifyRequest": {
+    "com.workos.api#VerifyOrganizationDomainControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -14937,10 +14937,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#OrganizationDomainsControllerVerify": {
+    "com.workos.api#VerifyOrganizationDomainController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationDomainsControllerVerifyRequest"
+        "target": "com.workos.api#VerifyOrganizationDomainControllerRequest"
       },
       "output": {
         "target": "com.workos.api#OrganizationDomainStandAlone"
@@ -14966,7 +14966,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#OrganizationsControllerListRequest": {
+    "com.workos.api#ListOrganizationControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -15291,10 +15291,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#OrganizationsControllerList": {
+    "com.workos.api#ListOrganizationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationsControllerListRequest"
+        "target": "com.workos.api#ListOrganizationControllerRequest"
       },
       "output": {
         "target": "com.workos.api#OrganizationList"
@@ -15381,7 +15381,7 @@
         "smithy.api#documentation": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization."
       }
     },
-    "com.workos.api#OrganizationsControllerCreateRequest": {
+    "com.workos.api#CreateOrganizationControllerRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -15427,10 +15427,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#OrganizationsControllerCreate": {
+    "com.workos.api#CreateOrganizationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationsControllerCreateRequest"
+        "target": "com.workos.api#CreateOrganizationControllerRequest"
       },
       "output": {
         "target": "com.workos.api#Organization"
@@ -15455,7 +15455,7 @@
         "smithy.api#documentation": "Create an Organization\n\nCreates a new organization in the current environment."
       }
     },
-    "com.workos.api#OrganizationsControllerGetByExternalIdRequest": {
+    "com.workos.api#GetOrganizationControllerByExternalIdRequest": {
       "type": "structure",
       "members": {
         "external_id": {
@@ -15471,10 +15471,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#OrganizationsControllerGetByExternalId": {
+    "com.workos.api#GetOrganizationControllerByExternalId": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationsControllerGetByExternalIdRequest"
+        "target": "com.workos.api#GetOrganizationControllerByExternalIdRequest"
       },
       "output": {
         "target": "com.workos.api#Organization"
@@ -15561,7 +15561,7 @@
         "smithy.api#documentation": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization."
       }
     },
-    "com.workos.api#OrganizationsControllerUpdateOrganizationRequest": {
+    "com.workos.api#UpdateOrganizationControllerOrganizationRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -15621,10 +15621,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#OrganizationsControllerUpdateOrganization": {
+    "com.workos.api#UpdateOrganizationControllerOrganization": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationsControllerUpdateOrganizationRequest"
+        "target": "com.workos.api#UpdateOrganizationControllerOrganizationRequest"
       },
       "output": {
         "target": "com.workos.api#Organization"
@@ -15655,7 +15655,7 @@
         "smithy.api#documentation": "Update an Organization\n\nUpdates an organization in the current environment."
       }
     },
-    "com.workos.api#OrganizationsControllerDeleteOrganizationRequest": {
+    "com.workos.api#DeleteOrganizationControllerOrganizationRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -15671,10 +15671,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#OrganizationsControllerDeleteOrganization": {
+    "com.workos.api#DeleteOrganizationControllerOrganization": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationsControllerDeleteOrganizationRequest"
+        "target": "com.workos.api#DeleteOrganizationControllerOrganizationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15696,7 +15696,7 @@
         "smithy.api#documentation": "Delete an Organization\n\nPermanently deletes an organization in the current environment. It cannot be undone."
       }
     },
-    "com.workos.api#OrganizationsControllerGetAuditLogConfigurationRequest": {
+    "com.workos.api#GetOrganizationControllerAuditLogConfigurationRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -15894,10 +15894,10 @@
         "smithy.api#documentation": "The Audit Log Stream currently configured for the organization, if any."
       }
     },
-    "com.workos.api#OrganizationsControllerGetAuditLogConfiguration": {
+    "com.workos.api#GetOrganizationControllerAuditLogConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationsControllerGetAuditLogConfigurationRequest"
+        "target": "com.workos.api#GetOrganizationControllerAuditLogConfigurationRequest"
       },
       "output": {
         "target": "com.workos.api#AuditLogConfiguration"
@@ -15967,7 +15967,7 @@
         "smithy.api#documentation": "Get Retention\n\nGet the configured event retention period for the given Organization."
       }
     },
-    "com.workos.api#AuditLogsRetentionControllerUpdateAuditLogsRetentionRequest": {
+    "com.workos.api#UpdateAuditLogRetentionControllerAuditLogRetentionRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -15989,10 +15989,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuditLogsRetentionControllerUpdateAuditLogsRetention": {
+    "com.workos.api#UpdateAuditLogRetentionControllerAuditLogRetention": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuditLogsRetentionControllerUpdateAuditLogsRetentionRequest"
+        "target": "com.workos.api#UpdateAuditLogRetentionControllerAuditLogRetentionRequest"
       },
       "output": {
         "target": "com.workos.api#AuditLogsRetentionJson"
@@ -16014,7 +16014,7 @@
         "smithy.api#documentation": "Set Retention\n\nSet the event retention period for the given Organization."
       }
     },
-    "com.workos.api#OrganizationApiKeysControllerListRequest": {
+    "com.workos.api#ListOrganizationApiKeyControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -16227,10 +16227,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#OrganizationApiKeysControllerList": {
+    "com.workos.api#ListOrganizationApiKeyController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationApiKeysControllerListRequest"
+        "target": "com.workos.api#ListOrganizationApiKeyControllerRequest"
       },
       "output": {
         "target": "com.workos.api#OrganizationApiKeyList"
@@ -16258,7 +16258,7 @@
         "smithy.api#documentation": "The permission slugs to assign to the API key."
       }
     },
-    "com.workos.api#OrganizationApiKeysControllerCreateRequest": {
+    "com.workos.api#CreateOrganizationApiKeyControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -16408,10 +16408,10 @@
         "smithy.api#documentation": "The permission slugs assigned to the API Key."
       }
     },
-    "com.workos.api#OrganizationApiKeysControllerCreate": {
+    "com.workos.api#CreateOrganizationApiKeyController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationApiKeysControllerCreateRequest"
+        "target": "com.workos.api#CreateOrganizationApiKeyControllerRequest"
       },
       "output": {
         "target": "com.workos.api#OrganizationApiKeyWithValue"
@@ -16433,7 +16433,7 @@
         "smithy.api#documentation": "Create an API key for an organization\n\nCreate a new API key for an organization."
       }
     },
-    "com.workos.api#ProviderControllerListForOrganizationRequest": {
+    "com.workos.api#ListProviderControllerForOrganizationRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -16648,10 +16648,10 @@
         "smithy.api#documentation": "A list of data integration configurations for the organization."
       }
     },
-    "com.workos.api#ProviderControllerListForOrganization": {
+    "com.workos.api#ListProviderControllerForOrganization": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ProviderControllerListForOrganizationRequest"
+        "target": "com.workos.api#ListProviderControllerForOrganizationRequest"
       },
       "output": {
         "target": "com.workos.api#DataIntegrationConfigurationListResponse"
@@ -16773,7 +16773,7 @@
         "smithy.api#documentation": "Configure a provider for an organization\n\nCreates or updates an organization's provider configuration. Use this endpoint to enable or disable a provider, set custom OAuth scopes, or supply organization-managed OAuth credentials."
       }
     },
-    "com.workos.api#OrganizationFeatureFlagsControllerListRequest": {
+    "com.workos.api#ListOrganizationFeatureFlagControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -16817,10 +16817,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#OrganizationFeatureFlagsControllerList": {
+    "com.workos.api#ListOrganizationFeatureFlagController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationFeatureFlagsControllerListRequest"
+        "target": "com.workos.api#ListOrganizationFeatureFlagControllerRequest"
       },
       "output": {
         "target": "com.workos.api#FlagList"
@@ -16839,7 +16839,7 @@
         "smithy.api#documentation": "List enabled feature flags for an organization\n\nGet a list of all enabled feature flags for an organization."
       }
     },
-    "com.workos.api#GroupsControllerListRequest": {
+    "com.workos.api#ListGroupControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -16996,10 +16996,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#GroupsControllerList": {
+    "com.workos.api#ListGroupController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#GroupsControllerListRequest"
+        "target": "com.workos.api#ListGroupControllerRequest"
       },
       "output": {
         "target": "com.workos.api#GroupList"
@@ -17021,7 +17021,7 @@
         "smithy.api#documentation": "List groups\n\nGet a paginated list of groups within an organization."
       }
     },
-    "com.workos.api#GroupsControllerCreateRequest": {
+    "com.workos.api#CreateGroupControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -17050,10 +17050,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#GroupsControllerCreate": {
+    "com.workos.api#CreateGroupController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#GroupsControllerCreateRequest"
+        "target": "com.workos.api#CreateGroupControllerRequest"
       },
       "output": {
         "target": "com.workos.api#Group"
@@ -17081,7 +17081,7 @@
         "smithy.api#documentation": "Create a group\n\nCreate a new group within an organization."
       }
     },
-    "com.workos.api#GroupsControllerGetRequest": {
+    "com.workos.api#GetGroupControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -17105,10 +17105,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#GroupsControllerGet": {
+    "com.workos.api#GetGroupController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#GroupsControllerGetRequest"
+        "target": "com.workos.api#GetGroupControllerRequest"
       },
       "output": {
         "target": "com.workos.api#Group"
@@ -17130,7 +17130,7 @@
         "smithy.api#documentation": "Get a group\n\nRetrieve a group by its ID within an organization."
       }
     },
-    "com.workos.api#GroupsControllerUpdateRequest": {
+    "com.workos.api#UpdateGroupControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -17167,10 +17167,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#GroupsControllerUpdate": {
+    "com.workos.api#UpdateGroupController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#GroupsControllerUpdateRequest"
+        "target": "com.workos.api#UpdateGroupControllerRequest"
       },
       "output": {
         "target": "com.workos.api#Group"
@@ -17198,7 +17198,7 @@
         "smithy.api#documentation": "Update a group\n\nUpdate an existing group. Only the fields provided in the request body will be updated."
       }
     },
-    "com.workos.api#GroupsControllerDeleteRequest": {
+    "com.workos.api#DeleteGroupControllerRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -17222,10 +17222,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#GroupsControllerDelete": {
+    "com.workos.api#DeleteGroupController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#GroupsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteGroupControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17247,7 +17247,7 @@
         "smithy.api#documentation": "Delete a group\n\nDelete a group from an organization."
       }
     },
-    "com.workos.api#GroupMembershipsControllerListMembersRequest": {
+    "com.workos.api#ListGroupMembershipControllerMembersRequest": {
       "type": "structure",
       "members": {
         "organizationId": {
@@ -17468,10 +17468,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#GroupMembershipsControllerListMembers": {
+    "com.workos.api#ListGroupMembershipControllerMembers": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#GroupMembershipsControllerListMembersRequest"
+        "target": "com.workos.api#ListGroupMembershipControllerMembersRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserOrganizationMembershipBaseList"
@@ -17611,7 +17611,7 @@
         "smithy.api#documentation": "Remove a member from a Group\n\nRemove an organization membership from a group."
       }
     },
-    "com.workos.api#OrganizationAuthorizedApplicationsControllerListRequest": {
+    "com.workos.api#ListOrganizationAuthorizedApplicationControllerRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -17770,10 +17770,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#OrganizationAuthorizedApplicationsControllerList": {
+    "com.workos.api#ListOrganizationAuthorizedApplicationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationAuthorizedApplicationsControllerListRequest"
+        "target": "com.workos.api#ListOrganizationAuthorizedApplicationControllerRequest"
       },
       "output": {
         "target": "com.workos.api#OrganizationAuthorizedConnectApplicationList"
@@ -17795,7 +17795,7 @@
         "smithy.api#documentation": "List authorized applications\n\nGet a list of all Connect applications that users in the organization have authorized."
       }
     },
-    "com.workos.api#ItContactsControllerListRequest": {
+    "com.workos.api#ListItContactControllerRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -17912,10 +17912,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#ItContactsControllerList": {
+    "com.workos.api#ListItContactController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ItContactsControllerListRequest"
+        "target": "com.workos.api#ListItContactControllerRequest"
       },
       "output": {
         "target": "com.workos.api#ItContactList"
@@ -17937,7 +17937,7 @@
         "smithy.api#documentation": "List IT contacts\n\nGet the IT contacts for an organization."
       }
     },
-    "com.workos.api#ItContactsControllerCreateRequest": {
+    "com.workos.api#CreateItContactControllerRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -17960,10 +17960,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#ItContactsControllerCreate": {
+    "com.workos.api#CreateItContactController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ItContactsControllerCreateRequest"
+        "target": "com.workos.api#CreateItContactControllerRequest"
       },
       "output": {
         "target": "com.workos.api#ItContact"
@@ -17991,7 +17991,7 @@
         "smithy.api#documentation": "Create an IT contact\n\nAdd an IT contact to an organization. No Admin Portal invitation is sent, though the contact is notified if the organization has a connection certificate nearing expiry."
       }
     },
-    "com.workos.api#ItContactsControllerDeleteRequest": {
+    "com.workos.api#DeleteItContactControllerRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -18015,10 +18015,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#ItContactsControllerDelete": {
+    "com.workos.api#DeleteItContactController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#ItContactsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteItContactControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -18196,7 +18196,7 @@
         "smithy.api#documentation": "Revoke an IT contact's invitation\n\nRevoke the organization's active Admin Portal invitation."
       }
     },
-    "com.workos.api#TeamsControllerCreateTeamRequest": {
+    "com.workos.api#CreateTeamControllerTeamRequest": {
       "type": "structure",
       "members": {
         "admin_email": {
@@ -18306,10 +18306,10 @@
         "smithy.api#documentation": "Whether the team can host production environments. `Active` means billing is set up. `Inactive` means a team admin must add a payment method in the WorkOS Dashboard. `Suspended` and `Deleting` mean the team can't be provisioned into."
       }
     },
-    "com.workos.api#TeamsControllerCreateTeam": {
+    "com.workos.api#CreateTeamControllerTeam": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#TeamsControllerCreateTeamRequest"
+        "target": "com.workos.api#CreateTeamControllerTeamRequest"
       },
       "output": {
         "target": "com.workos.api#Team"
@@ -18331,7 +18331,7 @@
         "smithy.api#documentation": "Create a team\n\nCreates a team along with its default project, a staging environment, and a production environment. An admin invitation is sent to `admin_email`, onboarding is marked complete with AuthKit enabled, and the calling platform is authorized to act inside the team."
       }
     },
-    "com.workos.api#TeamsControllerGetTeamRequest": {
+    "com.workos.api#GetTeamControllerTeamRequest": {
       "type": "structure",
       "members": {
         "team_id": {
@@ -18347,10 +18347,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#TeamsControllerGetTeam": {
+    "com.workos.api#GetTeamControllerTeam": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#TeamsControllerGetTeamRequest"
+        "target": "com.workos.api#GetTeamControllerTeamRequest"
       },
       "output": {
         "target": "com.workos.api#Team"
@@ -18428,7 +18428,7 @@
         "smithy.api#documentation": "The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails."
       }
     },
-    "com.workos.api#PortalSessionsControllerCreateRequest": {
+    "com.workos.api#CreatePortalSessionControllerRequest": {
       "type": "structure",
       "members": {
         "return_url": {
@@ -18478,10 +18478,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#PortalSessionsControllerCreate": {
+    "com.workos.api#CreatePortalSessionController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#PortalSessionsControllerCreateRequest"
+        "target": "com.workos.api#CreatePortalSessionControllerRequest"
       },
       "output": {
         "target": "com.workos.api#PortalLinkResponse"
@@ -18818,7 +18818,7 @@
         "smithy.api#documentation": "Create an attempt\n\nAssess a request for risk using the Radar engine and receive a verdict."
       }
     },
-    "com.workos.api#RadarStandaloneControllerUpdateRadarAttemptRequest": {
+    "com.workos.api#UpdateRadarStandaloneControllerRadarAttemptRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -18846,10 +18846,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#RadarStandaloneControllerUpdateRadarAttempt": {
+    "com.workos.api#UpdateRadarStandaloneControllerRadarAttempt": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#RadarStandaloneControllerUpdateRadarAttemptRequest"
+        "target": "com.workos.api#UpdateRadarStandaloneControllerRadarAttemptRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19225,7 +19225,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#SsoControllerAuthorizeRequest": {
+    "com.workos.api#AuthorizeSsoControllerRequest": {
       "type": "structure",
       "members": {
         "provider_scopes": {
@@ -19346,10 +19346,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#SsoControllerAuthorize": {
+    "com.workos.api#AuthorizeSsoController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#SsoControllerAuthorizeRequest"
+        "target": "com.workos.api#AuthorizeSsoControllerRequest"
       },
       "output": {
         "target": "com.workos.api#SsoAuthorizeUrlResponse"
@@ -19363,7 +19363,7 @@
         "smithy.api#documentation": "Initiate SSO\n\nInitiates the single sign-on flow."
       }
     },
-    "com.workos.api#SsoControllerJsonWebKeySetRequest": {
+    "com.workos.api#SetSsoControllerJsonWebKeyRequest": {
       "type": "structure",
       "members": {
         "clientId": {
@@ -19472,10 +19472,10 @@
         "smithy.api#documentation": "The public keys used for verifying access tokens."
       }
     },
-    "com.workos.api#SsoControllerJsonWebKeySet": {
+    "com.workos.api#SetSsoControllerJsonWebKey": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#SsoControllerJsonWebKeySetRequest"
+        "target": "com.workos.api#SetSsoControllerJsonWebKeyRequest"
       },
       "output": {
         "target": "com.workos.api#JwksResponse"
@@ -19532,7 +19532,7 @@
         "smithy.api#documentation": "Logout Redirect\n\nLogout allows to sign out a user from your application by triggering the identity provider sign out flow. This `GET` endpoint should be a redirection, since the identity provider user will be identified in the browser session.\n\nBefore redirecting to this endpoint, you need to generate a short-lived logout token using the [Logout Authorize](/reference/sso/logout/authorize) endpoint."
       }
     },
-    "com.workos.api#SsoControllerLogoutAuthorizeRequest": {
+    "com.workos.api#AuthorizeSsoControllerLogoutRequest": {
       "type": "structure",
       "members": {
         "profile_id": {
@@ -19565,10 +19565,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#SsoControllerLogoutAuthorize": {
+    "com.workos.api#AuthorizeSsoControllerLogout": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#SsoControllerLogoutAuthorizeRequest"
+        "target": "com.workos.api#AuthorizeSsoControllerLogoutRequest"
       },
       "output": {
         "target": "com.workos.api#SsoLogoutAuthorizeResponse"
@@ -20040,7 +20040,7 @@
         "smithy.api#documentation": "The complete set of raw attributes returned by the identity provider."
       }
     },
-    "com.workos.api#SsoControllerGetProfile": {
+    "com.workos.api#GetSsoControllerProfile": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -21391,7 +21391,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#UserlandSsoControllerAuthorizeRequest": {
+    "com.workos.api#AuthorizeUserlandSsoControllerRequest": {
       "type": "structure",
       "members": {
         "code_challenge_method": {
@@ -21521,10 +21521,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandSsoControllerAuthorize": {
+    "com.workos.api#AuthorizeUserlandSsoController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandSsoControllerAuthorizeRequest"
+        "target": "com.workos.api#AuthorizeUserlandSsoControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -21620,7 +21620,7 @@
         "smithy.api#documentation": "Get device authorization URL\n\nInitiates the CLI Auth flow by requesting a device code and verification URLs. This endpoint implements the OAuth 2.0 Device Authorization Flow ([RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628)) and is designed for command-line applications or other devices with limited input capabilities."
       }
     },
-    "com.workos.api#CorsOriginsControllerListRequest": {
+    "com.workos.api#ListCorOriginControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -21725,7 +21725,7 @@
         "smithy.api#documentation": "The list of records for the current page."
       }
     },
-    "com.workos.api#CorsOriginsControllerListResponse": {
+    "com.workos.api#ListCorOriginControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -21751,13 +21751,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#CorsOriginsControllerList": {
+    "com.workos.api#ListCorOriginController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#CorsOriginsControllerListRequest"
+        "target": "com.workos.api#ListCorOriginControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#CorsOriginsControllerListResponse"
+        "target": "com.workos.api#ListCorOriginControllerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21768,7 +21768,7 @@
         "smithy.api#documentation": "List CORS origins\n\nLists the CORS origins for the current environment."
       }
     },
-    "com.workos.api#CorsOriginsControllerCreateCorsOriginRequest": {
+    "com.workos.api#CreateCorOriginControllerCorOriginRequest": {
       "type": "structure",
       "members": {
         "origin": {
@@ -21782,10 +21782,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#CorsOriginsControllerCreateCorsOrigin": {
+    "com.workos.api#CreateCorOriginControllerCorOrigin": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#CorsOriginsControllerCreateCorsOriginRequest"
+        "target": "com.workos.api#CreateCorOriginControllerCorOriginRequest"
       },
       "output": {
         "target": "com.workos.api#CorsOriginResponse"
@@ -21807,7 +21807,7 @@
         "smithy.api#documentation": "Create a CORS origin\n\nCreates a new CORS origin for the API key's application. CORS origins allow browser-based applications to make requests to the WorkOS API."
       }
     },
-    "com.workos.api#UserlandUsersControllerGetEmailVerificationRequest": {
+    "com.workos.api#GetUserlandUserControllerEmailVerificationRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -21877,10 +21877,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#UserlandUsersControllerGetEmailVerification": {
+    "com.workos.api#GetUserlandUserControllerEmailVerification": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUsersControllerGetEmailVerificationRequest"
+        "target": "com.workos.api#GetUserlandUserControllerEmailVerificationRequest"
       },
       "output": {
         "target": "com.workos.api#EmailVerification"
@@ -21899,7 +21899,7 @@
         "smithy.api#documentation": "Get an email verification code\n\nGet the details of an existing email verification code that can be used to send an email to a user for verification."
       }
     },
-    "com.workos.api#UserlandUserInvitesControllerListRequest": {
+    "com.workos.api#ListUserlandUserInviteControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -22143,10 +22143,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#UserlandUserInvitesControllerList": {
+    "com.workos.api#ListUserlandUserInviteController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserInvitesControllerListRequest"
+        "target": "com.workos.api#ListUserlandUserInviteControllerRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserInviteList"
@@ -22713,7 +22713,7 @@
         "smithy.api#documentation": "The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization)."
       }
     },
-    "com.workos.api#UserlandUserInvitesControllerCreateRequest": {
+    "com.workos.api#CreateUserlandUserInviteControllerRequest": {
       "type": "structure",
       "members": {
         "email": {
@@ -22757,10 +22757,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandUserInvitesControllerCreate": {
+    "com.workos.api#CreateUserlandUserInviteController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserInvitesControllerCreateRequest"
+        "target": "com.workos.api#CreateUserlandUserInviteControllerRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserInvite"
@@ -22785,7 +22785,7 @@
         "smithy.api#documentation": "Send an invitation\n\nSends an invitation email to the recipient."
       }
     },
-    "com.workos.api#UserlandUserInvitesControllerGetByTokenRequest": {
+    "com.workos.api#GetUserlandUserInviteControllerByTokenRequest": {
       "type": "structure",
       "members": {
         "token": {
@@ -22801,10 +22801,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandUserInvitesControllerGetByToken": {
+    "com.workos.api#GetUserlandUserInviteControllerByToken": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserInvitesControllerGetByTokenRequest"
+        "target": "com.workos.api#GetUserlandUserInviteControllerByTokenRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserInvite"
@@ -22823,7 +22823,7 @@
         "smithy.api#documentation": "Find an invitation by token\n\nRetrieve an existing invitation using the token."
       }
     },
-    "com.workos.api#UserlandUserInvitesControllerGetRequest": {
+    "com.workos.api#GetUserlandUserInviteControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -22839,10 +22839,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandUserInvitesControllerGet": {
+    "com.workos.api#GetUserlandUserInviteController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserInvitesControllerGetRequest"
+        "target": "com.workos.api#GetUserlandUserInviteControllerRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserInvite"
@@ -23874,7 +23874,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#JwtTemplatesControllerGetJwtTemplate": {
+    "com.workos.api#GetJwtTemplateControllerJwtTemplate": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -23896,7 +23896,7 @@
         "smithy.api#documentation": "Get JWT template\n\nGet the JWT template for the current environment."
       }
     },
-    "com.workos.api#JwtTemplatesControllerUpdateJwtTemplateRequest": {
+    "com.workos.api#UpdateJwtTemplateControllerJwtTemplateRequest": {
       "type": "structure",
       "members": {
         "content": {
@@ -23910,10 +23910,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#JwtTemplatesControllerUpdateJwtTemplate": {
+    "com.workos.api#UpdateJwtTemplateControllerJwtTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#JwtTemplatesControllerUpdateJwtTemplateRequest"
+        "target": "com.workos.api#UpdateJwtTemplateControllerJwtTemplateRequest"
       },
       "output": {
         "target": "com.workos.api#JwtTemplate"
@@ -24063,7 +24063,7 @@
         "smithy.api#documentation": "Create a Magic Auth code\n\nCreates a one-time authentication code that can be sent to the user's email address. The code expires in 10 minutes. To verify the code, [authenticate the user with Magic Auth](/reference/authkit/authentication/magic-auth)."
       }
     },
-    "com.workos.api#UserlandMagicAuthControllerGetRequest": {
+    "com.workos.api#GetUserlandMagicAuthControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -24133,10 +24133,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#UserlandMagicAuthControllerGet": {
+    "com.workos.api#GetUserlandMagicAuthController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandMagicAuthControllerGetRequest"
+        "target": "com.workos.api#GetUserlandMagicAuthControllerRequest"
       },
       "output": {
         "target": "com.workos.api#MagicAuth"
@@ -24186,7 +24186,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerListRequest": {
+    "com.workos.api#ListUserlandUserOrganizationMembershipControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -24434,10 +24434,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerList": {
+    "com.workos.api#ListUserlandUserOrganizationMembershipController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerListRequest"
+        "target": "com.workos.api#ListUserlandUserOrganizationMembershipControllerRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserOrganizationMembershipList"
@@ -24471,7 +24471,7 @@
         "smithy.api#documentation": "An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`."
       }
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerCreateRequest": {
+    "com.workos.api#CreateUserlandUserOrganizationMembershipControllerRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -24552,7 +24552,7 @@
         "smithy.api#documentation": "The list of roles assigned to the user within the organization."
       }
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerCreateResponse": {
+    "com.workos.api#CreateUserlandUserOrganizationMembershipControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -24649,13 +24649,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerCreate": {
+    "com.workos.api#CreateUserlandUserOrganizationMembershipController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerCreateRequest"
+        "target": "com.workos.api#CreateUserlandUserOrganizationMembershipControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerCreateResponse"
+        "target": "com.workos.api#CreateUserlandUserOrganizationMembershipControllerResponse"
       },
       "errors": [
         {
@@ -24677,7 +24677,7 @@
         "smithy.api#documentation": "Create an organization membership\n\nCreates a new `active` organization membership for the given organization and user.\n\nCalling this API with an organization and user that match an `inactive` organization membership will activate the membership with the specified role(s)."
       }
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerGetRequest": {
+    "com.workos.api#GetUserlandUserOrganizationMembershipControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -24693,10 +24693,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerGet": {
+    "com.workos.api#GetUserlandUserOrganizationMembershipController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerGetRequest"
+        "target": "com.workos.api#GetUserlandUserOrganizationMembershipControllerRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserOrganizationMembership"
@@ -24765,7 +24765,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerUpdateRequest": {
+    "com.workos.api#UpdateUserlandUserOrganizationMembershipControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -24788,10 +24788,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerUpdate": {
+    "com.workos.api#UpdateUserlandUserOrganizationMembershipController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerUpdateRequest"
+        "target": "com.workos.api#UpdateUserlandUserOrganizationMembershipControllerRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUserOrganizationMembership"
@@ -24813,7 +24813,7 @@
         "smithy.api#documentation": "Update an organization membership\n\nUpdate the details of an existing organization membership."
       }
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerDeleteRequest": {
+    "com.workos.api#DeleteUserlandUserOrganizationMembershipControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -24829,10 +24829,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandUserOrganizationMembershipsControllerDelete": {
+    "com.workos.api#DeleteUserlandUserOrganizationMembershipController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteUserlandUserOrganizationMembershipControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -25083,7 +25083,7 @@
         "smithy.api#documentation": "Reactivate an organization membership\n\nReactivates an `inactive` organization membership, retaining the pre-existing role(s). Emits an [organization_membership.updated](/events/organization-membership) event upon successful reactivation.\n\n- Reactivating an `active` membership is a no-op and does not emit an event.\n- Reactivating a `pending` membership returns an error. The user needs to [accept the invitation](/authkit/invitations) instead.\n\nSee the [membership management documentation](/authkit/users-organizations/organizations/membership-management) for additional details."
       }
     },
-    "com.workos.api#OrganizationMembershipGroupsControllerListGroupsRequest": {
+    "com.workos.api#ListOrganizationMembershipGroupControllerGroupsRequest": {
       "type": "structure",
       "members": {
         "omId": {
@@ -25127,10 +25127,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#OrganizationMembershipGroupsControllerListGroups": {
+    "com.workos.api#ListOrganizationMembershipGroupControllerGroups": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#OrganizationMembershipGroupsControllerListGroupsRequest"
+        "target": "com.workos.api#ListOrganizationMembershipGroupControllerGroupsRequest"
       },
       "output": {
         "target": "com.workos.api#GroupList"
@@ -25149,7 +25149,7 @@
         "smithy.api#documentation": "List groups\n\nGet a list of groups that an organization membership belongs to."
       }
     },
-    "com.workos.api#UserlandUsersControllerCreatePasswordResetTokenRequest": {
+    "com.workos.api#CreateUserlandUserControllerPasswordResetTokenRequest": {
       "type": "structure",
       "members": {
         "email": {
@@ -25219,10 +25219,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#UserlandUsersControllerCreatePasswordResetToken": {
+    "com.workos.api#CreateUserlandUserControllerPasswordResetToken": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUsersControllerCreatePasswordResetTokenRequest"
+        "target": "com.workos.api#CreateUserlandUserControllerPasswordResetTokenRequest"
       },
       "output": {
         "target": "com.workos.api#PasswordReset"
@@ -25311,7 +25311,7 @@
         "smithy.api#documentation": "Reset the password\n\nSets a new password using the `token` query parameter from the link that the user received. Successfully resetting the password will verify a user's email, if it hasn't been verified yet."
       }
     },
-    "com.workos.api#UserlandUsersControllerGetPasswordResetRequest": {
+    "com.workos.api#GetUserlandUserControllerPasswordResetRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -25327,10 +25327,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandUsersControllerGetPasswordReset": {
+    "com.workos.api#GetUserlandUserControllerPasswordReset": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUsersControllerGetPasswordResetRequest"
+        "target": "com.workos.api#GetUserlandUserControllerPasswordResetRequest"
       },
       "output": {
         "target": "com.workos.api#PasswordReset"
@@ -25427,7 +25427,7 @@
         "smithy.api#documentation": "Send a Radar SMS challenge\n\nSends a one-time verification code over SMS to a user as part of a Radar challenge. Use the returned `verification_id` to authenticate the user with the `urn:workos:oauth:grant-type:radar-sms-challenge:code` grant type."
       }
     },
-    "com.workos.api#PublicRadarChallengesControllerGetRequest": {
+    "com.workos.api#GetPublicRadarChallengeControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -25512,10 +25512,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#PublicRadarChallengesControllerGet": {
+    "com.workos.api#GetPublicRadarChallengeController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#PublicRadarChallengesControllerGetRequest"
+        "target": "com.workos.api#GetPublicRadarChallengeControllerRequest"
       },
       "output": {
         "target": "com.workos.api#RadarChallenge"
@@ -25534,7 +25534,7 @@
         "smithy.api#documentation": "Get Radar Challenge details\n\nGet the details of an existing Radar Challenge, including the OTP code."
       }
     },
-    "com.workos.api#RedirectUrisControllerListRequest": {
+    "com.workos.api#ListRedirectUrisControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -25645,7 +25645,7 @@
         "smithy.api#documentation": "The list of records for the current page."
       }
     },
-    "com.workos.api#RedirectUrisControllerListResponse": {
+    "com.workos.api#ListRedirectUrisControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -25671,13 +25671,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#RedirectUrisControllerList": {
+    "com.workos.api#ListRedirectUrisController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#RedirectUrisControllerListRequest"
+        "target": "com.workos.api#ListRedirectUrisControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#RedirectUrisControllerListResponse"
+        "target": "com.workos.api#ListRedirectUrisControllerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25688,7 +25688,7 @@
         "smithy.api#documentation": "List redirect URIs\n\nLists the redirect URIs for an environment."
       }
     },
-    "com.workos.api#RedirectUrisControllerCreateRequest": {
+    "com.workos.api#CreateRedirectUrisControllerRequest": {
       "type": "structure",
       "members": {
         "uri": {
@@ -25702,10 +25702,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#RedirectUrisControllerCreate": {
+    "com.workos.api#CreateRedirectUrisController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#RedirectUrisControllerCreateRequest"
+        "target": "com.workos.api#CreateRedirectUrisControllerRequest"
       },
       "output": {
         "target": "com.workos.api#RedirectUri"
@@ -25727,7 +25727,7 @@
         "smithy.api#documentation": "Create a redirect URI\n\nCreates a new redirect URI for an application."
       }
     },
-    "com.workos.api#RedirectUrisControllerDeleteRequest": {
+    "com.workos.api#DeleteRedirectUrisControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -25743,10 +25743,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#RedirectUrisControllerDelete": {
+    "com.workos.api#DeleteRedirectUrisController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#RedirectUrisControllerDeleteRequest"
+        "target": "com.workos.api#DeleteRedirectUrisControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -26316,7 +26316,7 @@
         "smithy.api#documentation": "Create a user\n\nCreate a new user in the current environment."
       }
     },
-    "com.workos.api#UserlandUsersControllerGetByExternalIdRequest": {
+    "com.workos.api#GetUserlandUserControllerByExternalIdRequest": {
       "type": "structure",
       "members": {
         "external_id": {
@@ -26332,10 +26332,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandUsersControllerGetByExternalId": {
+    "com.workos.api#GetUserlandUserControllerByExternalId": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUsersControllerGetByExternalIdRequest"
+        "target": "com.workos.api#GetUserlandUserControllerByExternalIdRequest"
       },
       "output": {
         "target": "com.workos.api#UserlandUser"
@@ -27025,7 +27025,7 @@
         "smithy.api#documentation": "Send verification email\n\nSends an email that contains a one-time code used to verify a user's email address."
       }
     },
-    "com.workos.api#UserlandUserIdentitiesControllerGetRequest": {
+    "com.workos.api#GetUserlandUserIdentityControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -27161,7 +27161,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#UserlandUserIdentitiesControllerGetResponse": {
+    "com.workos.api#GetUserlandUserIdentityControllerResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -27176,13 +27176,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#UserlandUserIdentitiesControllerGet": {
+    "com.workos.api#GetUserlandUserIdentityController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserIdentitiesControllerGetRequest"
+        "target": "com.workos.api#GetUserlandUserIdentityControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#UserlandUserIdentitiesControllerGetResponse"
+        "target": "com.workos.api#GetUserlandUserIdentityControllerResponse"
       },
       "errors": [
         {
@@ -27198,7 +27198,7 @@
         "smithy.api#documentation": "Get user identities\n\nGet a list of identities associated with the user. A user can have multiple associated identities after going through [identity linking](/authkit/identity-linking). Currently only OAuth identities are supported. More provider types may be added in the future."
       }
     },
-    "com.workos.api#UserlandUserSessionsControllerListRequest": {
+    "com.workos.api#ListUserlandUserSessionControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -27490,7 +27490,7 @@
         "smithy.api#documentation": "The list of records for the current page."
       }
     },
-    "com.workos.api#UserlandUserSessionsControllerListResponse": {
+    "com.workos.api#ListUserlandUserSessionControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -27516,13 +27516,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#UserlandUserSessionsControllerList": {
+    "com.workos.api#ListUserlandUserSessionController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserSessionsControllerListRequest"
+        "target": "com.workos.api#ListUserlandUserSessionControllerRequest"
       },
       "output": {
-        "target": "com.workos.api#UserlandUserSessionsControllerListResponse"
+        "target": "com.workos.api#ListUserlandUserSessionControllerResponse"
       },
       "errors": [
         {
@@ -27541,7 +27541,7 @@
         "smithy.api#documentation": "List sessions\n\nGet a list of all active sessions for a specific user."
       }
     },
-    "com.workos.api#UserApiKeysControllerListRequest": {
+    "com.workos.api#ListUserApiKeyControllerRequest": {
       "type": "structure",
       "members": {
         "userId": {
@@ -27768,10 +27768,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#UserApiKeysControllerList": {
+    "com.workos.api#ListUserApiKeyController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserApiKeysControllerListRequest"
+        "target": "com.workos.api#ListUserApiKeyControllerRequest"
       },
       "output": {
         "target": "com.workos.api#UserApiKeyList"
@@ -27799,7 +27799,7 @@
         "smithy.api#documentation": "The permission slugs to assign to the API key. Each permission must be enabled for user API keys."
       }
     },
-    "com.workos.api#UserApiKeysControllerCreateRequest": {
+    "com.workos.api#CreateUserApiKeyControllerRequest": {
       "type": "structure",
       "members": {
         "userId": {
@@ -27964,10 +27964,10 @@
         "smithy.api#documentation": "The permission slugs assigned to the API Key."
       }
     },
-    "com.workos.api#UserApiKeysControllerCreate": {
+    "com.workos.api#CreateUserApiKeyController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserApiKeysControllerCreateRequest"
+        "target": "com.workos.api#CreateUserApiKeyControllerRequest"
       },
       "output": {
         "target": "com.workos.api#UserApiKeyWithValue"
@@ -27992,7 +27992,7 @@
         "smithy.api#documentation": "Create an API key for a user\n\nCreate a new API key owned by a user. The user must have an active membership in the specified organization."
       }
     },
-    "com.workos.api#UserlandUserFeatureFlagsControllerListRequest": {
+    "com.workos.api#ListUserlandUserFeatureFlagControllerRequest": {
       "type": "structure",
       "members": {
         "userId": {
@@ -28036,10 +28036,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#UserlandUserFeatureFlagsControllerList": {
+    "com.workos.api#ListUserlandUserFeatureFlagController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#UserlandUserFeatureFlagsControllerListRequest"
+        "target": "com.workos.api#ListUserlandUserFeatureFlagControllerRequest"
       },
       "output": {
         "target": "com.workos.api#FlagList"
@@ -28058,7 +28058,7 @@
         "smithy.api#documentation": "List enabled feature flags for a user\n\nGet a list of all enabled feature flags for the provided user. This includes feature flags enabled specifically for the user as well as any organizations that the user is a member of."
       }
     },
-    "com.workos.api#AuthorizedApplicationsControllerListRequest": {
+    "com.workos.api#ListAuthorizedApplicationControllerRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -28207,10 +28207,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#AuthorizedApplicationsControllerList": {
+    "com.workos.api#ListAuthorizedApplicationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizedApplicationsControllerListRequest"
+        "target": "com.workos.api#ListAuthorizedApplicationControllerRequest"
       },
       "output": {
         "target": "com.workos.api#AuthorizedConnectApplicationList"
@@ -28232,7 +28232,7 @@
         "smithy.api#documentation": "List authorized applications\n\nGet a list of all Connect applications that the user has authorized."
       }
     },
-    "com.workos.api#AuthorizedApplicationsControllerDeleteRequest": {
+    "com.workos.api#DeleteAuthorizedApplicationControllerRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -28256,10 +28256,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#AuthorizedApplicationsControllerDelete": {
+    "com.workos.api#DeleteAuthorizedApplicationController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#AuthorizedApplicationsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteAuthorizedApplicationControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -28278,7 +28278,7 @@
         "smithy.api#documentation": "Delete an authorized application\n\nDelete an existing Authorized Connect Application."
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerGetUserDataInstallationRequest": {
+    "com.workos.api#GetDataIntegrationUserManagementControllerUserDataInstallationRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -28309,10 +28309,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerGetUserDataInstallation": {
+    "com.workos.api#GetDataIntegrationUserManagementControllerUserDataInstallation": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsUserManagementControllerGetUserDataInstallationRequest"
+        "target": "com.workos.api#GetDataIntegrationUserManagementControllerUserDataInstallationRequest"
       },
       "output": {
         "target": "com.workos.api#ConnectedAccount"
@@ -28360,7 +28360,7 @@
         "smithy.api#documentation": "Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided."
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerCreateUserDataInstallationRequest": {
+    "com.workos.api#CreateDataIntegrationUserManagementControllerUserDataInstallationRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -28423,10 +28423,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerCreateUserDataInstallation": {
+    "com.workos.api#CreateDataIntegrationUserManagementControllerUserDataInstallation": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsUserManagementControllerCreateUserDataInstallationRequest"
+        "target": "com.workos.api#CreateDataIntegrationUserManagementControllerUserDataInstallationRequest"
       },
       "output": {
         "target": "com.workos.api#ConnectedAccount"
@@ -28480,7 +28480,7 @@
         "smithy.api#documentation": "Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided."
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequest": {
+    "com.workos.api#UpdateDataIntegrationUserManagementControllerUserDataInstallationRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -28543,10 +28543,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerUpdateUserDataInstallation": {
+    "com.workos.api#UpdateDataIntegrationUserManagementControllerUserDataInstallation": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequest"
+        "target": "com.workos.api#UpdateDataIntegrationUserManagementControllerUserDataInstallationRequest"
       },
       "output": {
         "target": "com.workos.api#ConnectedAccount"
@@ -28565,7 +28565,7 @@
         "smithy.api#documentation": "Update a connected account\n\nUpdates a user's [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider."
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerDeleteUserDataInstallationRequest": {
+    "com.workos.api#DeleteDataIntegrationUserManagementControllerUserDataInstallationRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -28596,10 +28596,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerDeleteUserDataInstallation": {
+    "com.workos.api#DeleteDataIntegrationUserManagementControllerUserDataInstallation": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsUserManagementControllerDeleteUserDataInstallationRequest"
+        "target": "com.workos.api#DeleteDataIntegrationUserManagementControllerUserDataInstallationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -28618,7 +28618,7 @@
         "smithy.api#documentation": "Delete a connected account\n\nDisconnects WorkOS's account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. This does not revoke access on the provider side."
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequest": {
+    "com.workos.api#GetDataIntegrationUserManagementControllerUserDataIntegrationRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -29055,10 +29055,10 @@
         "smithy.api#documentation": "A list of [providers](/reference/pipes/provider), each including a [`connected_account`](/reference/pipes/connected-account) field with the user's connection status."
       }
     },
-    "com.workos.api#DataIntegrationsUserManagementControllerGetUserDataIntegrations": {
+    "com.workos.api#GetDataIntegrationUserManagementControllerUserDataIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequest"
+        "target": "com.workos.api#GetDataIntegrationUserManagementControllerUserDataIntegrationRequest"
       },
       "output": {
         "target": "com.workos.api#DataIntegrationsListResponse"
@@ -29281,7 +29281,7 @@
         "smithy.api#documentation": "Enroll an authentication factor\n\nEnrolls a user in a new [authentication factor](/reference/authkit/mfa/authentication-factor)."
       }
     },
-    "com.workos.api#WaitlistEntriesControllerDeleteRequest": {
+    "com.workos.api#DeleteWaitlistEntryControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -29297,10 +29297,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#WaitlistEntriesControllerDelete": {
+    "com.workos.api#DeleteWaitlistEntryController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#WaitlistEntriesControllerDeleteRequest"
+        "target": "com.workos.api#DeleteWaitlistEntryControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -29686,7 +29686,7 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#WaitlistsControllerListResponse": {
+    "com.workos.api#ListWaitlistControllerResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -29715,13 +29715,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#WaitlistsControllerList": {
+    "com.workos.api#ListWaitlistController": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.workos.api#WaitlistsControllerListResponse"
+        "target": "com.workos.api#ListWaitlistControllerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -29794,7 +29794,7 @@
       },
       "traits": {}
     },
-    "com.workos.api#WaitlistsControllerListEntriesRequest": {
+    "com.workos.api#ListWaitlistControllerEntriesRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -29992,7 +29992,7 @@
         "smithy.api#documentation": "The list of records for the current page."
       }
     },
-    "com.workos.api#WaitlistsControllerListEntriesResponse": {
+    "com.workos.api#ListWaitlistControllerEntriesResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -30018,13 +30018,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.workos.api#WaitlistsControllerListEntries": {
+    "com.workos.api#ListWaitlistControllerEntries": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#WaitlistsControllerListEntriesRequest"
+        "target": "com.workos.api#ListWaitlistControllerEntriesRequest"
       },
       "output": {
-        "target": "com.workos.api#WaitlistsControllerListEntriesResponse"
+        "target": "com.workos.api#ListWaitlistControllerEntriesResponse"
       },
       "errors": [
         {
@@ -30055,7 +30055,7 @@
         "smithy.api#documentation": "Object containing additional key/value pairs collected with the waitlist entry. Values are user-provided — treat them as untrusted input when rendering or exporting."
       }
     },
-    "com.workos.api#WaitlistsControllerCreateEntryRequest": {
+    "com.workos.api#CreateWaitlistControllerEntryRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -30090,10 +30090,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#WaitlistsControllerCreateEntry": {
+    "com.workos.api#CreateWaitlistControllerEntry": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#WaitlistsControllerCreateEntryRequest"
+        "target": "com.workos.api#CreateWaitlistControllerEntryRequest"
       },
       "output": {
         "target": "com.workos.api#WaitlistEntry"
@@ -30127,7 +30127,7 @@
         "smithy.api#documentation": "Map of values used to determine the encryption key."
       }
     },
-    "com.workos.api#JumpWireWebKeyControllerCreateDataKeyRequest": {
+    "com.workos.api#CreateJumpWireWebKeyControllerDataKeyRequest": {
       "type": "structure",
       "members": {
         "context": {
@@ -30188,10 +30188,10 @@
         "smithy.api#documentation": "Map of values used to determine the encryption key."
       }
     },
-    "com.workos.api#JumpWireWebKeyControllerCreateDataKey": {
+    "com.workos.api#CreateJumpWireWebKeyControllerDataKey": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#JumpWireWebKeyControllerCreateDataKeyRequest"
+        "target": "com.workos.api#CreateJumpWireWebKeyControllerDataKeyRequest"
       },
       "output": {
         "target": "com.workos.api#CreateDataKeyResponse"
@@ -30213,7 +30213,7 @@
         "smithy.api#documentation": "Create a data key\n\nGenerate an isolated encryption key for local encryption operations."
       }
     },
-    "com.workos.api#JumpWireWebKeyControllerDecryptRequest": {
+    "com.workos.api#DecryptJumpWireWebKeyControllerRequest": {
       "type": "structure",
       "members": {
         "keys": {
@@ -30248,10 +30248,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#JumpWireWebKeyControllerDecrypt": {
+    "com.workos.api#DecryptJumpWireWebKeyController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#JumpWireWebKeyControllerDecryptRequest"
+        "target": "com.workos.api#DecryptJumpWireWebKeyControllerRequest"
       },
       "output": {
         "target": "com.workos.api#DecryptResponse"
@@ -30510,7 +30510,7 @@
         "smithy.api#documentation": "Map of values used to determine the encryption key."
       }
     },
-    "com.workos.api#JumpWireWebDataVaultControllerCreateRequest": {
+    "com.workos.api#CreateJumpWireWebDataVaultControllerRequest": {
       "type": "structure",
       "members": {
         "key_context": {
@@ -30629,10 +30629,10 @@
         "smithy.api#documentation": "The user or API key that performed an action."
       }
     },
-    "com.workos.api#JumpWireWebDataVaultControllerCreate": {
+    "com.workos.api#CreateJumpWireWebDataVaultController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#JumpWireWebDataVaultControllerCreateRequest"
+        "target": "com.workos.api#CreateJumpWireWebDataVaultControllerRequest"
       },
       "output": {
         "target": "com.workos.api#ObjectMetadata"
@@ -30657,7 +30657,7 @@
         "smithy.api#documentation": "Create an object\n\nEncrypt and store a new key-value object."
       }
     },
-    "com.workos.api#JumpWireWebDataVaultControllerShowByNameRequest": {
+    "com.workos.api#GetJumpWireWebDataVaultControllerByNameRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -30708,10 +30708,10 @@
         "smithy.api#documentation": "An encrypted object with its decrypted value and metadata."
       }
     },
-    "com.workos.api#JumpWireWebDataVaultControllerShowByName": {
+    "com.workos.api#GetJumpWireWebDataVaultControllerByName": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#JumpWireWebDataVaultControllerShowByNameRequest"
+        "target": "com.workos.api#GetJumpWireWebDataVaultControllerByNameRequest"
       },
       "output": {
         "target": "com.workos.api#Object"
@@ -30733,7 +30733,7 @@
         "smithy.api#documentation": "Read an object by name\n\nFetch and decrypt an object by its unique name."
       }
     },
-    "com.workos.api#JumpWireWebDataVaultControllerShowByIdRequest": {
+    "com.workos.api#GetJumpWireWebDataVaultControllerByIdRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -30749,10 +30749,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#JumpWireWebDataVaultControllerShowById": {
+    "com.workos.api#GetJumpWireWebDataVaultControllerById": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#JumpWireWebDataVaultControllerShowByIdRequest"
+        "target": "com.workos.api#GetJumpWireWebDataVaultControllerByIdRequest"
       },
       "output": {
         "target": "com.workos.api#Object"
@@ -30774,7 +30774,7 @@
         "smithy.api#documentation": "Read an object by ID\n\nFetch and decrypt an object by its unique identifier."
       }
     },
-    "com.workos.api#JumpWireWebDataVaultControllerUpdateRequest": {
+    "com.workos.api#UpdateJumpWireWebDataVaultControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -30832,10 +30832,10 @@
         "smithy.api#documentation": "An encrypted object's metadata (value excluded)."
       }
     },
-    "com.workos.api#JumpWireWebDataVaultControllerUpdate": {
+    "com.workos.api#UpdateJumpWireWebDataVaultController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#JumpWireWebDataVaultControllerUpdateRequest"
+        "target": "com.workos.api#UpdateJumpWireWebDataVaultControllerRequest"
       },
       "output": {
         "target": "com.workos.api#ObjectWithoutValue"
@@ -30857,7 +30857,7 @@
         "smithy.api#documentation": "Update an object\n\nUpdate the value of an existing encrypted object."
       }
     },
-    "com.workos.api#JumpWireWebDataVaultControllerDeleteRequest": {
+    "com.workos.api#DeleteJumpWireWebDataVaultControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -30900,10 +30900,10 @@
       },
       "traits": {}
     },
-    "com.workos.api#JumpWireWebDataVaultControllerDelete": {
+    "com.workos.api#DeleteJumpWireWebDataVaultController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#JumpWireWebDataVaultControllerDeleteRequest"
+        "target": "com.workos.api#DeleteJumpWireWebDataVaultControllerRequest"
       },
       "output": {
         "target": "com.workos.api#DeleteObjectResponse"
@@ -31078,7 +31078,7 @@
         "smithy.api#documentation": "List object versions\n\nRetrieve all versions for a specific object."
       }
     },
-    "com.workos.api#WebhookEndpointsControllerListRequest": {
+    "com.workos.api#ListWebhookEndpointControllerRequest": {
       "type": "structure",
       "members": {
         "before": {
@@ -31255,10 +31255,10 @@
         "smithy.api#documentation": "Pagination cursors for navigating between pages of results."
       }
     },
-    "com.workos.api#WebhookEndpointsControllerList": {
+    "com.workos.api#ListWebhookEndpointController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#WebhookEndpointsControllerListRequest"
+        "target": "com.workos.api#ListWebhookEndpointControllerRequest"
       },
       "output": {
         "target": "com.workos.api#WebhookEndpointList"
@@ -31863,7 +31863,7 @@
         "smithy.api#documentation": "The events that the Webhook Endpoint is subscribed to."
       }
     },
-    "com.workos.api#WebhookEndpointsControllerCreateRequest": {
+    "com.workos.api#CreateWebhookEndpointControllerRequest": {
       "type": "structure",
       "members": {
         "endpoint_url": {
@@ -31883,10 +31883,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#WebhookEndpointsControllerCreate": {
+    "com.workos.api#CreateWebhookEndpointController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#WebhookEndpointsControllerCreateRequest"
+        "target": "com.workos.api#CreateWebhookEndpointControllerRequest"
       },
       "output": {
         "target": "com.workos.api#WebhookEndpointJson"
@@ -32519,7 +32519,7 @@
         "smithy.api#documentation": "The events that the Webhook Endpoint is subscribed to."
       }
     },
-    "com.workos.api#WebhookEndpointsControllerUpdateRequest": {
+    "com.workos.api#UpdateWebhookEndpointControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -32553,10 +32553,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#WebhookEndpointsControllerUpdate": {
+    "com.workos.api#UpdateWebhookEndpointController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#WebhookEndpointsControllerUpdateRequest"
+        "target": "com.workos.api#UpdateWebhookEndpointControllerRequest"
       },
       "output": {
         "target": "com.workos.api#WebhookEndpointJson"
@@ -32581,7 +32581,7 @@
         "smithy.api#documentation": "Update a Webhook Endpoint\n\nUpdate the properties of an existing webhook endpoint."
       }
     },
-    "com.workos.api#WebhookEndpointsControllerDeleteRequest": {
+    "com.workos.api#DeleteWebhookEndpointControllerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -32597,10 +32597,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.workos.api#WebhookEndpointsControllerDelete": {
+    "com.workos.api#DeleteWebhookEndpointController": {
       "type": "operation",
       "input": {
-        "target": "com.workos.api#WebhookEndpointsControllerDeleteRequest"
+        "target": "com.workos.api#DeleteWebhookEndpointControllerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -32818,28 +32818,28 @@
           "target": "com.workos.api#AgentAdminControllerValidateCredential"
         },
         {
-          "target": "com.workos.api#AgentAdminControllerGetRegistration"
+          "target": "com.workos.api#GetAgentAdminControllerRegistration"
         },
         {
           "target": "com.workos.api#ApiKeysControllerValidateApiKey"
         },
         {
-          "target": "com.workos.api#ApiKeysControllerDelete"
+          "target": "com.workos.api#DeleteApiKeyController"
         },
         {
           "target": "com.workos.api#ApiKeysControllerExpire"
         },
         {
-          "target": "com.workos.api#AuditLogValidatorsControllerList"
+          "target": "com.workos.api#ListAuditLogValidatorController"
         },
         {
           "target": "com.workos.api#AuditLogValidatorVersionsControllerSchemas"
         },
         {
-          "target": "com.workos.api#AuditLogValidatorVersionsControllerCreate"
+          "target": "com.workos.api#CreateAuditLogValidatorVersionController"
         },
         {
-          "target": "com.workos.api#AuditLogEventsControllerCreate"
+          "target": "com.workos.api#CreateAuditLogEventController"
         },
         {
           "target": "com.workos.api#AuditLogExportsControllerExports"
@@ -32848,16 +32848,16 @@
           "target": "com.workos.api#AuditLogExportsControllerExport"
         },
         {
-          "target": "com.workos.api#AuthenticationChallengesControllerVerify"
+          "target": "com.workos.api#VerifyAuthenticationChallengeController"
         },
         {
-          "target": "com.workos.api#AuthenticationFactorsControllerCreate"
+          "target": "com.workos.api#CreateAuthenticationFactorController"
         },
         {
-          "target": "com.workos.api#AuthenticationFactorsControllerGet"
+          "target": "com.workos.api#GetAuthenticationFactorController"
         },
         {
-          "target": "com.workos.api#AuthenticationFactorsControllerDelete"
+          "target": "com.workos.api#DeleteAuthenticationFactorController"
         },
         {
           "target": "com.workos.api#AuthenticationFactorsControllerChallenge"
@@ -32866,10 +32866,10 @@
           "target": "com.workos.api#ExternalAuthControllerCompleteLogin"
         },
         {
-          "target": "com.workos.api#AuthorizationGroupRoleAssignmentsControllerList"
+          "target": "com.workos.api#ListAuthorizationGroupRoleAssignmentController"
         },
         {
-          "target": "com.workos.api#AuthorizationGroupRoleAssignmentsControllerCreate"
+          "target": "com.workos.api#CreateAuthorizationGroupRoleAssignmentController"
         },
         {
           "target": "com.workos.api#AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments"
@@ -32878,25 +32878,25 @@
           "target": "com.workos.api#AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments"
         },
         {
-          "target": "com.workos.api#AuthorizationGroupRoleAssignmentsControllerGet"
+          "target": "com.workos.api#GetAuthorizationGroupRoleAssignmentController"
         },
         {
           "target": "com.workos.api#AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignment"
         },
         {
-          "target": "com.workos.api#AuthorizationControllerCheck"
+          "target": "com.workos.api#CheckAuthorizationController"
         },
         {
-          "target": "com.workos.api#AuthorizationControllerListResourcesForMembership"
+          "target": "com.workos.api#ListAuthorizationControllerResourceForMembership"
         },
         {
-          "target": "com.workos.api#AuthorizationControllerListEffectivePermissions"
+          "target": "com.workos.api#ListAuthorizationControllerEffectivePermissions"
         },
         {
-          "target": "com.workos.api#AuthorizationControllerListEffectivePermissionsByExternalId"
+          "target": "com.workos.api#ListAuthorizationControllerEffectivePermissionByExternalId"
         },
         {
-          "target": "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignments"
+          "target": "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignments"
         },
         {
           "target": "com.workos.api#AuthorizationRoleAssignmentsControllerAssignRole"
@@ -32908,277 +32908,277 @@
           "target": "com.workos.api#AuthorizationRoleAssignmentsControllerRemoveRoleById"
         },
         {
-          "target": "com.workos.api#AuthorizationOrganizationRolesControllerList"
+          "target": "com.workos.api#ListAuthorizationOrganizationRoleController"
         },
         {
-          "target": "com.workos.api#AuthorizationOrganizationRolesControllerCreate"
+          "target": "com.workos.api#CreateAuthorizationOrganizationRoleController"
         },
         {
-          "target": "com.workos.api#AuthorizationOrganizationRolesControllerGet"
+          "target": "com.workos.api#GetAuthorizationOrganizationRoleController"
         },
         {
-          "target": "com.workos.api#AuthorizationOrganizationRolesControllerUpdate"
+          "target": "com.workos.api#UpdateAuthorizationOrganizationRoleController"
         },
         {
-          "target": "com.workos.api#AuthorizationOrganizationRolesControllerDelete"
+          "target": "com.workos.api#DeleteAuthorizationOrganizationRoleController"
         },
         {
           "target": "com.workos.api#AuthorizationOrganizationRolePermissionsControllerAddPermission"
         },
         {
-          "target": "com.workos.api#AuthorizationOrganizationRolePermissionsControllerSetPermissions"
+          "target": "com.workos.api#SetAuthorizationOrganizationRolePermissionControllerPermission"
         },
         {
           "target": "com.workos.api#AuthorizationOrganizationRolePermissionsControllerRemovePermission"
         },
         {
-          "target": "com.workos.api#AuthorizationResourcesByExternalIdControllerGetByExternalId"
+          "target": "com.workos.api#GetAuthorizationResourceByExternalIdControllerByExternalId"
         },
         {
-          "target": "com.workos.api#AuthorizationResourcesByExternalIdControllerUpdateByExternalId"
+          "target": "com.workos.api#UpdateAuthorizationResourceByExternalIdControllerByExternalId"
         },
         {
-          "target": "com.workos.api#AuthorizationResourcesByExternalIdControllerDeleteByExternalId"
+          "target": "com.workos.api#DeleteAuthorizationResourceByExternalIdControllerByExternalId"
         },
         {
-          "target": "com.workos.api#AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId"
+          "target": "com.workos.api#ListAuthorizationResourceByExternalIdControllerOrganizationMembershipForResourceByExternalId"
         },
         {
-          "target": "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalId"
+          "target": "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentForResourceByExternalId"
         },
         {
-          "target": "com.workos.api#AuthorizationPermissionsControllerList"
+          "target": "com.workos.api#ListAuthorizationPermissionController"
         },
         {
-          "target": "com.workos.api#AuthorizationPermissionsControllerCreate"
+          "target": "com.workos.api#CreateAuthorizationPermissionController"
         },
         {
           "target": "com.workos.api#AuthorizationPermissionsControllerFind"
         },
         {
-          "target": "com.workos.api#AuthorizationPermissionsControllerUpdate"
+          "target": "com.workos.api#UpdateAuthorizationPermissionController"
         },
         {
-          "target": "com.workos.api#AuthorizationPermissionsControllerDelete"
+          "target": "com.workos.api#DeleteAuthorizationPermissionController"
         },
         {
-          "target": "com.workos.api#AuthorizationResourcesControllerList"
+          "target": "com.workos.api#ListAuthorizationResourceController"
         },
         {
-          "target": "com.workos.api#AuthorizationResourcesControllerCreate"
+          "target": "com.workos.api#CreateAuthorizationResourceController"
         },
         {
           "target": "com.workos.api#AuthorizationResourcesControllerFindById"
         },
         {
-          "target": "com.workos.api#AuthorizationResourcesControllerUpdate"
+          "target": "com.workos.api#UpdateAuthorizationResourceController"
         },
         {
-          "target": "com.workos.api#AuthorizationResourcesControllerDelete"
+          "target": "com.workos.api#DeleteAuthorizationResourceController"
         },
         {
-          "target": "com.workos.api#AuthorizationResourcesControllerListOrganizationMembershipsForResource"
+          "target": "com.workos.api#ListAuthorizationResourceControllerOrganizationMembershipForResource"
         },
         {
-          "target": "com.workos.api#AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource"
+          "target": "com.workos.api#ListAuthorizationRoleAssignmentControllerRoleAssignmentForResource"
         },
         {
-          "target": "com.workos.api#AuthorizationRolesControllerList"
+          "target": "com.workos.api#ListAuthorizationRoleController"
         },
         {
-          "target": "com.workos.api#AuthorizationRolesControllerCreate"
+          "target": "com.workos.api#CreateAuthorizationRoleController"
         },
         {
-          "target": "com.workos.api#AuthorizationRolesControllerGet"
+          "target": "com.workos.api#GetAuthorizationRoleController"
         },
         {
-          "target": "com.workos.api#AuthorizationRolesControllerUpdate"
+          "target": "com.workos.api#UpdateAuthorizationRoleController"
         },
         {
           "target": "com.workos.api#AuthorizationRolePermissionsControllerAddPermission"
         },
         {
-          "target": "com.workos.api#AuthorizationRolePermissionsControllerSetPermissions"
+          "target": "com.workos.api#SetAuthorizationRolePermissionControllerPermission"
         },
         {
           "target": "com.workos.api#ClientApiTokenControllerIssueClientApiToken"
         },
         {
-          "target": "com.workos.api#ApplicationsControllerList"
+          "target": "com.workos.api#ListApplicationController"
         },
         {
-          "target": "com.workos.api#ApplicationsControllerCreate"
+          "target": "com.workos.api#CreateApplicationController"
         },
         {
           "target": "com.workos.api#ApplicationsControllerFind"
         },
         {
-          "target": "com.workos.api#ApplicationsControllerUpdate"
+          "target": "com.workos.api#UpdateApplicationController"
         },
         {
-          "target": "com.workos.api#ApplicationsControllerDelete"
+          "target": "com.workos.api#DeleteApplicationController"
         },
         {
-          "target": "com.workos.api#ApplicationCredentialsControllerList"
+          "target": "com.workos.api#ListApplicationCredentialController"
         },
         {
-          "target": "com.workos.api#ApplicationCredentialsControllerCreate"
+          "target": "com.workos.api#CreateApplicationCredentialController"
         },
         {
-          "target": "com.workos.api#ApplicationCredentialsControllerDelete"
+          "target": "com.workos.api#DeleteApplicationCredentialController"
         },
         {
-          "target": "com.workos.api#ConnectionsControllerList"
+          "target": "com.workos.api#ListConnectionController"
         },
         {
           "target": "com.workos.api#ConnectionsControllerFind"
         },
         {
-          "target": "com.workos.api#ConnectionsControllerDelete"
+          "target": "com.workos.api#DeleteConnectionController"
         },
         {
-          "target": "com.workos.api#DataIntegrationsManagementControllerListDataIntegrations"
+          "target": "com.workos.api#ListDataIntegrationManagementControllerDataIntegrations"
         },
         {
-          "target": "com.workos.api#DataIntegrationsManagementControllerCreateDataIntegration"
+          "target": "com.workos.api#CreateDataIntegrationManagementControllerDataIntegration"
         },
         {
-          "target": "com.workos.api#DataIntegrationsManagementControllerGetDataIntegration"
+          "target": "com.workos.api#GetDataIntegrationManagementControllerDataIntegration"
         },
         {
-          "target": "com.workos.api#DataIntegrationsManagementControllerUpdateDataIntegration"
+          "target": "com.workos.api#UpdateDataIntegrationManagementControllerDataIntegration"
         },
         {
-          "target": "com.workos.api#DataIntegrationsManagementControllerDeleteDataIntegration"
+          "target": "com.workos.api#DeleteDataIntegrationManagementControllerDataIntegration"
         },
         {
-          "target": "com.workos.api#DataIntegrationsControllerUpsertApiKey"
+          "target": "com.workos.api#UpsertDataIntegrationControllerApiKey"
         },
         {
           "target": "com.workos.api#DataIntegrationsControllerGetDataIntegrationAuthorizeUrl"
         },
         {
-          "target": "com.workos.api#DataIntegrationsControllerUpsertClientCredentials"
+          "target": "com.workos.api#UpsertDataIntegrationControllerClientCredential"
         },
         {
           "target": "com.workos.api#DataIntegrationsControllerVendCredentials"
         },
         {
-          "target": "com.workos.api#DataIntegrationsControllerGetUserlandUserToken"
+          "target": "com.workos.api#GetDataIntegrationControllerUserlandUserToken"
         },
         {
-          "target": "com.workos.api#DirectoriesControllerList"
+          "target": "com.workos.api#ListDirectoryController"
         },
         {
           "target": "com.workos.api#DirectoriesControllerFind"
         },
         {
-          "target": "com.workos.api#DirectoriesControllerDeleteDirectory"
+          "target": "com.workos.api#DeleteDirectoryControllerDirectory"
         },
         {
-          "target": "com.workos.api#DirectoryGroupsControllerList"
+          "target": "com.workos.api#ListDirectoryGroupController"
         },
         {
           "target": "com.workos.api#DirectoryGroupsControllerFind"
         },
         {
-          "target": "com.workos.api#DirectoryUsersControllerList"
+          "target": "com.workos.api#ListDirectoryUserController"
         },
         {
           "target": "com.workos.api#DirectoryUsersControllerFind"
         },
         {
-          "target": "com.workos.api#EventsControllerList"
+          "target": "com.workos.api#ListEventController"
         },
         {
-          "target": "com.workos.api#FeatureFlagsControllerList"
+          "target": "com.workos.api#ListFeatureFlagController"
         },
         {
           "target": "com.workos.api#FeatureFlagsControllerFindBySlug"
         },
         {
-          "target": "com.workos.api#FeatureFlagsControllerDisableFlag"
+          "target": "com.workos.api#DisableFeatureFlagControllerFlag"
         },
         {
-          "target": "com.workos.api#FeatureFlagsControllerEnableFlag"
+          "target": "com.workos.api#EnableFeatureFlagControllerFlag"
         },
         {
-          "target": "com.workos.api#FlagTargetsControllerCreateTarget"
+          "target": "com.workos.api#CreateFlagTargetControllerTarget"
         },
         {
-          "target": "com.workos.api#FlagTargetsControllerDeleteTarget"
+          "target": "com.workos.api#DeleteFlagTargetControllerTarget"
         },
         {
-          "target": "com.workos.api#OrganizationDomainsControllerCreate"
+          "target": "com.workos.api#CreateOrganizationDomainController"
         },
         {
-          "target": "com.workos.api#OrganizationDomainsControllerGet"
+          "target": "com.workos.api#GetOrganizationDomainController"
         },
         {
-          "target": "com.workos.api#OrganizationDomainsControllerDelete"
+          "target": "com.workos.api#DeleteOrganizationDomainController"
         },
         {
-          "target": "com.workos.api#OrganizationDomainsControllerVerify"
+          "target": "com.workos.api#VerifyOrganizationDomainController"
         },
         {
-          "target": "com.workos.api#OrganizationsControllerList"
+          "target": "com.workos.api#ListOrganizationController"
         },
         {
-          "target": "com.workos.api#OrganizationsControllerCreate"
+          "target": "com.workos.api#CreateOrganizationController"
         },
         {
-          "target": "com.workos.api#OrganizationsControllerGetByExternalId"
+          "target": "com.workos.api#GetOrganizationControllerByExternalId"
         },
         {
           "target": "com.workos.api#OrganizationsControllerFind"
         },
         {
-          "target": "com.workos.api#OrganizationsControllerUpdateOrganization"
+          "target": "com.workos.api#UpdateOrganizationControllerOrganization"
         },
         {
-          "target": "com.workos.api#OrganizationsControllerDeleteOrganization"
+          "target": "com.workos.api#DeleteOrganizationControllerOrganization"
         },
         {
-          "target": "com.workos.api#OrganizationsControllerGetAuditLogConfiguration"
+          "target": "com.workos.api#GetOrganizationControllerAuditLogConfiguration"
         },
         {
           "target": "com.workos.api#AuditLogsRetentionControllerAuditLogsRetention"
         },
         {
-          "target": "com.workos.api#AuditLogsRetentionControllerUpdateAuditLogsRetention"
+          "target": "com.workos.api#UpdateAuditLogRetentionControllerAuditLogRetention"
         },
         {
-          "target": "com.workos.api#OrganizationApiKeysControllerList"
+          "target": "com.workos.api#ListOrganizationApiKeyController"
         },
         {
-          "target": "com.workos.api#OrganizationApiKeysControllerCreate"
+          "target": "com.workos.api#CreateOrganizationApiKeyController"
         },
         {
-          "target": "com.workos.api#ProviderControllerListForOrganization"
+          "target": "com.workos.api#ListProviderControllerForOrganization"
         },
         {
           "target": "com.workos.api#ProviderControllerConfigure"
         },
         {
-          "target": "com.workos.api#OrganizationFeatureFlagsControllerList"
+          "target": "com.workos.api#ListOrganizationFeatureFlagController"
         },
         {
-          "target": "com.workos.api#GroupsControllerList"
+          "target": "com.workos.api#ListGroupController"
         },
         {
-          "target": "com.workos.api#GroupsControllerCreate"
+          "target": "com.workos.api#CreateGroupController"
         },
         {
-          "target": "com.workos.api#GroupsControllerGet"
+          "target": "com.workos.api#GetGroupController"
         },
         {
-          "target": "com.workos.api#GroupsControllerUpdate"
+          "target": "com.workos.api#UpdateGroupController"
         },
         {
-          "target": "com.workos.api#GroupsControllerDelete"
+          "target": "com.workos.api#DeleteGroupController"
         },
         {
-          "target": "com.workos.api#GroupMembershipsControllerListMembers"
+          "target": "com.workos.api#ListGroupMembershipControllerMembers"
         },
         {
           "target": "com.workos.api#GroupMembershipsControllerAddMember"
@@ -33187,16 +33187,16 @@
           "target": "com.workos.api#GroupMembershipsControllerRemoveMember"
         },
         {
-          "target": "com.workos.api#OrganizationAuthorizedApplicationsControllerList"
+          "target": "com.workos.api#ListOrganizationAuthorizedApplicationController"
         },
         {
-          "target": "com.workos.api#ItContactsControllerList"
+          "target": "com.workos.api#ListItContactController"
         },
         {
-          "target": "com.workos.api#ItContactsControllerCreate"
+          "target": "com.workos.api#CreateItContactController"
         },
         {
-          "target": "com.workos.api#ItContactsControllerDelete"
+          "target": "com.workos.api#DeleteItContactController"
         },
         {
           "target": "com.workos.api#ItContactsControllerInvite"
@@ -33205,19 +33205,19 @@
           "target": "com.workos.api#ItContactsControllerRevoke"
         },
         {
-          "target": "com.workos.api#TeamsControllerCreateTeam"
+          "target": "com.workos.api#CreateTeamControllerTeam"
         },
         {
-          "target": "com.workos.api#TeamsControllerGetTeam"
+          "target": "com.workos.api#GetTeamControllerTeam"
         },
         {
-          "target": "com.workos.api#PortalSessionsControllerCreate"
+          "target": "com.workos.api#CreatePortalSessionController"
         },
         {
           "target": "com.workos.api#RadarStandaloneControllerAssess"
         },
         {
-          "target": "com.workos.api#RadarStandaloneControllerUpdateRadarAttempt"
+          "target": "com.workos.api#UpdateRadarStandaloneControllerRadarAttempt"
         },
         {
           "target": "com.workos.api#RadarStandaloneControllerUpdateRadarList"
@@ -33226,19 +33226,19 @@
           "target": "com.workos.api#RadarStandaloneControllerDeleteRadarListEntry"
         },
         {
-          "target": "com.workos.api#SsoControllerAuthorize"
+          "target": "com.workos.api#AuthorizeSsoController"
         },
         {
-          "target": "com.workos.api#SsoControllerJsonWebKeySet"
+          "target": "com.workos.api#SetSsoControllerJsonWebKey"
         },
         {
           "target": "com.workos.api#SsoControllerLogout"
         },
         {
-          "target": "com.workos.api#SsoControllerLogoutAuthorize"
+          "target": "com.workos.api#AuthorizeSsoControllerLogout"
         },
         {
-          "target": "com.workos.api#SsoControllerGetProfile"
+          "target": "com.workos.api#GetSsoControllerProfile"
         },
         {
           "target": "com.workos.api#SsoControllerToken"
@@ -33247,31 +33247,31 @@
           "target": "com.workos.api#UserlandSessionsControllerAuthenticate0"
         },
         {
-          "target": "com.workos.api#UserlandSsoControllerAuthorize"
+          "target": "com.workos.api#AuthorizeUserlandSsoController"
         },
         {
           "target": "com.workos.api#UserlandSsoControllerDeviceAuthorization"
         },
         {
-          "target": "com.workos.api#CorsOriginsControllerList"
+          "target": "com.workos.api#ListCorOriginController"
         },
         {
-          "target": "com.workos.api#CorsOriginsControllerCreateCorsOrigin"
+          "target": "com.workos.api#CreateCorOriginControllerCorOrigin"
         },
         {
-          "target": "com.workos.api#UserlandUsersControllerGetEmailVerification"
+          "target": "com.workos.api#GetUserlandUserControllerEmailVerification"
         },
         {
-          "target": "com.workos.api#UserlandUserInvitesControllerList"
+          "target": "com.workos.api#ListUserlandUserInviteController"
         },
         {
-          "target": "com.workos.api#UserlandUserInvitesControllerCreate"
+          "target": "com.workos.api#CreateUserlandUserInviteController"
         },
         {
-          "target": "com.workos.api#UserlandUserInvitesControllerGetByToken"
+          "target": "com.workos.api#GetUserlandUserInviteControllerByToken"
         },
         {
-          "target": "com.workos.api#UserlandUserInvitesControllerGet"
+          "target": "com.workos.api#GetUserlandUserInviteController"
         },
         {
           "target": "com.workos.api#UserlandUserInvitesControllerAccept"
@@ -33283,31 +33283,31 @@
           "target": "com.workos.api#UserlandUserInvitesControllerRevoke"
         },
         {
-          "target": "com.workos.api#JwtTemplatesControllerGetJwtTemplate"
+          "target": "com.workos.api#GetJwtTemplateControllerJwtTemplate"
         },
         {
-          "target": "com.workos.api#JwtTemplatesControllerUpdateJwtTemplate"
+          "target": "com.workos.api#UpdateJwtTemplateControllerJwtTemplate"
         },
         {
           "target": "com.workos.api#UserlandMagicAuthControllerSendMagicAuthCodeAndReturn"
         },
         {
-          "target": "com.workos.api#UserlandMagicAuthControllerGet"
+          "target": "com.workos.api#GetUserlandMagicAuthController"
         },
         {
-          "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerList"
+          "target": "com.workos.api#ListUserlandUserOrganizationMembershipController"
         },
         {
-          "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerCreate"
+          "target": "com.workos.api#CreateUserlandUserOrganizationMembershipController"
         },
         {
-          "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerGet"
+          "target": "com.workos.api#GetUserlandUserOrganizationMembershipController"
         },
         {
-          "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerUpdate"
+          "target": "com.workos.api#UpdateUserlandUserOrganizationMembershipController"
         },
         {
-          "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerDelete"
+          "target": "com.workos.api#DeleteUserlandUserOrganizationMembershipController"
         },
         {
           "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerDeactivate"
@@ -33316,31 +33316,31 @@
           "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerReactivate"
         },
         {
-          "target": "com.workos.api#OrganizationMembershipGroupsControllerListGroups"
+          "target": "com.workos.api#ListOrganizationMembershipGroupControllerGroups"
         },
         {
-          "target": "com.workos.api#UserlandUsersControllerCreatePasswordResetToken"
+          "target": "com.workos.api#CreateUserlandUserControllerPasswordResetToken"
         },
         {
           "target": "com.workos.api#UserlandUsersControllerResetPassword0"
         },
         {
-          "target": "com.workos.api#UserlandUsersControllerGetPasswordReset"
+          "target": "com.workos.api#GetUserlandUserControllerPasswordReset"
         },
         {
           "target": "com.workos.api#PublicRadarChallengesControllerSendRadarSmsChallenge"
         },
         {
-          "target": "com.workos.api#PublicRadarChallengesControllerGet"
+          "target": "com.workos.api#GetPublicRadarChallengeController"
         },
         {
-          "target": "com.workos.api#RedirectUrisControllerList"
+          "target": "com.workos.api#ListRedirectUrisController"
         },
         {
-          "target": "com.workos.api#RedirectUrisControllerCreate"
+          "target": "com.workos.api#CreateRedirectUrisController"
         },
         {
-          "target": "com.workos.api#RedirectUrisControllerDelete"
+          "target": "com.workos.api#DeleteRedirectUrisController"
         },
         {
           "target": "com.workos.api#UserlandSessionsControllerLogout"
@@ -33355,7 +33355,7 @@
           "target": "com.workos.api#UserlandUsersControllerCreate0"
         },
         {
-          "target": "com.workos.api#UserlandUsersControllerGetByExternalId"
+          "target": "com.workos.api#GetUserlandUserControllerByExternalId"
         },
         {
           "target": "com.workos.api#UserlandUsersControllerGet0"
@@ -33379,40 +33379,40 @@
           "target": "com.workos.api#UserlandUsersControllerSendVerificationEmail0"
         },
         {
-          "target": "com.workos.api#UserlandUserIdentitiesControllerGet"
+          "target": "com.workos.api#GetUserlandUserIdentityController"
         },
         {
-          "target": "com.workos.api#UserlandUserSessionsControllerList"
+          "target": "com.workos.api#ListUserlandUserSessionController"
         },
         {
-          "target": "com.workos.api#UserApiKeysControllerList"
+          "target": "com.workos.api#ListUserApiKeyController"
         },
         {
-          "target": "com.workos.api#UserApiKeysControllerCreate"
+          "target": "com.workos.api#CreateUserApiKeyController"
         },
         {
-          "target": "com.workos.api#UserlandUserFeatureFlagsControllerList"
+          "target": "com.workos.api#ListUserlandUserFeatureFlagController"
         },
         {
-          "target": "com.workos.api#AuthorizedApplicationsControllerList"
+          "target": "com.workos.api#ListAuthorizedApplicationController"
         },
         {
-          "target": "com.workos.api#AuthorizedApplicationsControllerDelete"
+          "target": "com.workos.api#DeleteAuthorizedApplicationController"
         },
         {
-          "target": "com.workos.api#DataIntegrationsUserManagementControllerGetUserDataInstallation"
+          "target": "com.workos.api#GetDataIntegrationUserManagementControllerUserDataInstallation"
         },
         {
-          "target": "com.workos.api#DataIntegrationsUserManagementControllerCreateUserDataInstallation"
+          "target": "com.workos.api#CreateDataIntegrationUserManagementControllerUserDataInstallation"
         },
         {
-          "target": "com.workos.api#DataIntegrationsUserManagementControllerUpdateUserDataInstallation"
+          "target": "com.workos.api#UpdateDataIntegrationUserManagementControllerUserDataInstallation"
         },
         {
-          "target": "com.workos.api#DataIntegrationsUserManagementControllerDeleteUserDataInstallation"
+          "target": "com.workos.api#DeleteDataIntegrationUserManagementControllerUserDataInstallation"
         },
         {
-          "target": "com.workos.api#DataIntegrationsUserManagementControllerGetUserDataIntegrations"
+          "target": "com.workos.api#GetDataIntegrationUserManagementControllerUserDataIntegration"
         },
         {
           "target": "com.workos.api#UserlandUserAuthenticationFactorsControllerList0"
@@ -33421,7 +33421,7 @@
           "target": "com.workos.api#UserlandUserAuthenticationFactorsControllerCreate0"
         },
         {
-          "target": "com.workos.api#WaitlistEntriesControllerDelete"
+          "target": "com.workos.api#DeleteWaitlistEntryController"
         },
         {
           "target": "com.workos.api#WaitlistEntriesControllerApprove"
@@ -33430,22 +33430,22 @@
           "target": "com.workos.api#WaitlistEntriesControllerDeny"
         },
         {
-          "target": "com.workos.api#WaitlistsControllerList"
+          "target": "com.workos.api#ListWaitlistController"
         },
         {
           "target": "com.workos.api#WaitlistsControllerFind"
         },
         {
-          "target": "com.workos.api#WaitlistsControllerListEntries"
+          "target": "com.workos.api#ListWaitlistControllerEntries"
         },
         {
-          "target": "com.workos.api#WaitlistsControllerCreateEntry"
+          "target": "com.workos.api#CreateWaitlistControllerEntry"
         },
         {
-          "target": "com.workos.api#JumpWireWebKeyControllerCreateDataKey"
+          "target": "com.workos.api#CreateJumpWireWebKeyControllerDataKey"
         },
         {
-          "target": "com.workos.api#JumpWireWebKeyControllerDecrypt"
+          "target": "com.workos.api#DecryptJumpWireWebKeyController"
         },
         {
           "target": "com.workos.api#JumpWireWebKeyControllerRekey"
@@ -33454,19 +33454,19 @@
           "target": "com.workos.api#JumpWireWebDataVaultControllerIndex"
         },
         {
-          "target": "com.workos.api#JumpWireWebDataVaultControllerCreate"
+          "target": "com.workos.api#CreateJumpWireWebDataVaultController"
         },
         {
-          "target": "com.workos.api#JumpWireWebDataVaultControllerShowByName"
+          "target": "com.workos.api#GetJumpWireWebDataVaultControllerByName"
         },
         {
-          "target": "com.workos.api#JumpWireWebDataVaultControllerShowById"
+          "target": "com.workos.api#GetJumpWireWebDataVaultControllerById"
         },
         {
-          "target": "com.workos.api#JumpWireWebDataVaultControllerUpdate"
+          "target": "com.workos.api#UpdateJumpWireWebDataVaultController"
         },
         {
-          "target": "com.workos.api#JumpWireWebDataVaultControllerDelete"
+          "target": "com.workos.api#DeleteJumpWireWebDataVaultController"
         },
         {
           "target": "com.workos.api#JumpWireWebDataVaultControllerDescribe"
@@ -33475,16 +33475,16 @@
           "target": "com.workos.api#JumpWireWebDataVaultControllerVersions"
         },
         {
-          "target": "com.workos.api#WebhookEndpointsControllerList"
+          "target": "com.workos.api#ListWebhookEndpointController"
         },
         {
-          "target": "com.workos.api#WebhookEndpointsControllerCreate"
+          "target": "com.workos.api#CreateWebhookEndpointController"
         },
         {
-          "target": "com.workos.api#WebhookEndpointsControllerUpdate"
+          "target": "com.workos.api#UpdateWebhookEndpointController"
         },
         {
-          "target": "com.workos.api#WebhookEndpointsControllerDelete"
+          "target": "com.workos.api#DeleteWebhookEndpointController"
         },
         {
           "target": "com.workos.api#WidgetsPublicControllerIssueWidgetSessionToken"

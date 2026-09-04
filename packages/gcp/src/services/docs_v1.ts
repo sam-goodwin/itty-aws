@@ -65,211 +65,31 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** Provides control over how write requests are executed. */
-export interface WriteControl {
-  /** The optional revision ID of the document the write request is applied to. If this is not the latest revision of the document, the request is not processed and returns a 400 bad request error. When a required revision ID is returned in a response, it indicates the revision ID of the document after the request was applied. */
-  requiredRevisionId?: string;
-  /** The optional target revision ID of the document the write request is applied to. If collaborator changes have occurred after the document was read using the API, the changes produced by this write request are applied against the collaborator changes. This results in a new revision of the document that incorporates both the collaborator changes and the changes in the request, with the Docs server resolving conflicting changes. When using target revision ID, the API client can be thought of as another collaborator of the document. The target revision ID can only be used to write to recent versions of a document. If the target revision is too far behind the latest revision, the request is not processed and returns a 400 bad request error. The request should be tried again after retrieving the latest version of the document. Usually a revision ID remains valid for use as a target revision for several minutes after it's read, but for frequently edited documents this window might be shorter. */
-  targetRevisionId?: string;
-}
-export const WriteControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requiredRevisionId: S.optional(S.String),
-    targetRevisionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "WriteControl" }) as any as S.Schema<WriteControl>;
-
-export type CreateParagraphBulletsRequestBulletPresetEnum =
-  | "BULLET_GLYPH_PRESET_UNSPECIFIED"
-  | "BULLET_DISC_CIRCLE_SQUARE"
-  | "BULLET_DIAMONDX_ARROW3D_SQUARE"
-  | "BULLET_CHECKBOX"
-  | "BULLET_ARROW_DIAMOND_DISC"
-  | "BULLET_STAR_CIRCLE_SQUARE"
-  | "BULLET_ARROW3D_CIRCLE_SQUARE"
-  | "BULLET_LEFTTRIANGLE_DIAMOND_DISC"
-  | "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE"
-  | "BULLET_DIAMOND_CIRCLE_SQUARE"
-  | "NUMBERED_DECIMAL_ALPHA_ROMAN"
-  | "NUMBERED_DECIMAL_ALPHA_ROMAN_PARENS"
-  | "NUMBERED_DECIMAL_NESTED"
-  | "NUMBERED_UPPERALPHA_ALPHA_ROMAN"
-  | "NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL"
-  | "NUMBERED_ZERODECIMAL_ALPHA_ROMAN";
-export const CreateParagraphBulletsRequestBulletPresetEnum =
-  /*@__PURE__*/ S.String;
-
-/** Specifies a contiguous range of text. */
-export interface Range {
-  /** The ID of the header, footer, or footnote that this range is contained in. An empty segment ID signifies the document's body. */
-  segmentId?: string;
-  /** The zero-based start index of this range, in UTF-16 code units. In all current uses, a start index must be provided. This field is an Int32Value in order to accommodate future use cases with open-ended ranges. */
-  startIndex?: number;
-  /** The tab that contains this range. When omitted, the request applies to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
+/** Properties of a tab. */
+export interface TabProperties {
+  /** The immutable ID of the tab. */
   tabId?: string;
-  /** The zero-based end index of this range, exclusive, in UTF-16 code units. In all current uses, an end index must be provided. This field is an Int32Value in order to accommodate future use cases with open-ended ranges. */
-  endIndex?: number;
-}
-export const Range = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segmentId: S.optional(S.String),
-    startIndex: S.optional(S.Number),
-    tabId: S.optional(S.String),
-    endIndex: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
-
-/** Creates bullets for all of the paragraphs that overlap with the given range. The nesting level of each paragraph will be determined by counting leading tabs in front of each paragraph. To avoid excess space between the bullet and the corresponding paragraph, these leading tabs are removed by this request. This may change the indices of parts of the text. If the paragraph immediately before paragraphs being updated is in a list with a matching preset, the paragraphs being updated are added to that preceding list. */
-export interface CreateParagraphBulletsRequest {
-  /** The kinds of bullet glyphs to be used. */
-  bulletPreset?: CreateParagraphBulletsRequestBulletPresetEnum | (string & {});
-  /** The range to apply the bullet preset to. */
-  range?: Range;
-}
-export const CreateParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bulletPreset: S.optional(CreateParagraphBulletsRequestBulletPresetEnum),
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "CreateParagraphBulletsRequest",
-}) as any as S.Schema<CreateParagraphBulletsRequest>;
-
-/** Deletes bullets from all of the paragraphs that overlap with the given range. The nesting level of each paragraph will be visually preserved by adding indent to the start of the corresponding paragraph. */
-export interface DeleteParagraphBulletsRequest {
-  /** The range to delete bullets from. */
-  range?: Range;
-}
-export const DeleteParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "DeleteParagraphBulletsRequest",
-}) as any as S.Schema<DeleteParagraphBulletsRequest>;
-
-/** A particular location in the document. */
-export interface Location {
-  /** The zero-based index, in UTF-16 code units. The index is relative to the beginning of the segment specified by segment_id. */
+  /** Optional. The emoji icon displayed with the tab. A valid emoji icon is represented by a non-empty Unicode string. Any set of characters that don't represent a single emoji is invalid. If an emoji is invalid, a 400 bad request error is returned. If this value is unset or empty, the tab will display the default tab icon. */
+  iconEmoji?: string;
+  /** The zero-based index of the tab within the parent. */
   index?: number;
-  /** The tab that the location is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
-  tabId?: string;
-  /** The ID of the header, footer or footnote the location is in. An empty segment ID signifies the document's body. */
-  segmentId?: string;
+  /** Output only. The depth of the tab within the document. Root-level tabs start at 0. */
+  nestingLevel?: number;
+  /** Optional. The ID of the parent tab. Empty when the current tab is a root-level tab, which means it doesn't have any parents. */
+  parentTabId?: string;
+  /** The user-visible name of the tab. */
+  title?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+export const TabProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    index: S.optional(S.Number),
     tabId: S.optional(S.String),
-    segmentId: S.optional(S.String),
+    iconEmoji: S.optional(S.String),
+    index: S.optional(S.Number),
+    nestingLevel: S.optional(S.Number),
+    parentTabId: S.optional(S.String),
+    title: S.optional(S.String),
   }),
-).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
-
-/** Location of a single cell within a table. */
-export interface TableCellLocation {
-  /** The zero-based column index. For example, the second column in the table has a column index of 1. */
-  columnIndex?: number;
-  /** The location where the table starts in the document. */
-  tableStartLocation?: Location;
-  /** The zero-based row index. For example, the second row in the table has a row index of 1. */
-  rowIndex?: number;
-}
-export const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columnIndex: S.optional(S.Number),
-    tableStartLocation: S.optional(Location),
-    rowIndex: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TableCellLocation",
-}) as any as S.Schema<TableCellLocation>;
-
-/** Inserts an empty column into a table. */
-export interface InsertTableColumnRequest {
-  /** Whether to insert new column to the right of the reference cell location. - `True`: insert to the right. - `False`: insert to the left. */
-  insertRight?: boolean;
-  /** The reference table cell location from which columns will be inserted. A new column will be inserted to the left (or right) of the column where the reference cell is. If the reference cell is a merged cell, a new column will be inserted to the left (or right) of the merged cell. */
-  tableCellLocation?: TableCellLocation;
-}
-export const InsertTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insertRight: S.optional(S.Boolean),
-    tableCellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "InsertTableColumnRequest",
-}) as any as S.Schema<InsertTableColumnRequest>;
-
-/** A criteria that matches a specific string of text in the document. */
-export interface SubstringMatchCriteria {
-  /** Indicates whether the search should respect case: - `True`: the search is case sensitive. - `False`: the search is case insensitive. */
-  matchCase?: boolean;
-  /** Optional. True if the find value should be treated as a regular expression. Any backslashes in the pattern should be escaped. - `True`: the search text is treated as a regular expressions. - `False`: the search text is treated as a substring for matching. */
-  searchByRegex?: boolean;
-  /** The text to search for in the document. */
-  text?: string;
-}
-export const SubstringMatchCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matchCase: S.optional(S.Boolean),
-    searchByRegex: S.optional(S.Boolean),
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubstringMatchCriteria",
-}) as any as S.Schema<SubstringMatchCriteria>;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** A criteria that specifies in which tabs a request executes. */
-export interface TabsCriteria {
-  /** The list of tab IDs in which the request executes. */
-  tabIds?: StringList;
-}
-export const TabsCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabIds: S.optional(StringList),
-  }),
-).annotate({ identifier: "TabsCriteria" }) as any as S.Schema<TabsCriteria>;
-
-/** Replaces all instances of text matching a criteria with replace text. */
-export interface ReplaceAllTextRequest {
-  /** The text that will replace the matched text. */
-  replaceText?: string;
-  /** Finds text in the document matching this substring. */
-  containsText?: SubstringMatchCriteria;
-  /** Optional. The criteria used to specify in which tabs the replacement occurs. When omitted, the replacement applies to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the replacement applies to the singular tab. In a document containing multiple tabs: - If provided, the replacement applies to the specified tabs. - If omitted, the replacement applies to all tabs. */
-  tabsCriteria?: TabsCriteria;
-}
-export const ReplaceAllTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replaceText: S.optional(S.String),
-    containsText: S.optional(SubstringMatchCriteria),
-    tabsCriteria: S.optional(TabsCriteria),
-  }),
-).annotate({
-  identifier: "ReplaceAllTextRequest",
-}) as any as S.Schema<ReplaceAllTextRequest>;
-
-export type DocumentFormatDocumentModeEnum =
-  | "DOCUMENT_MODE_UNSPECIFIED"
-  | "PAGES"
-  | "PAGELESS";
-export const DocumentFormatDocumentModeEnum = /*@__PURE__*/ S.String;
-
-/** Represents document-level format settings. */
-export interface DocumentFormat {
-  /** Whether the document has pages or is pageless. */
-  documentMode?: DocumentFormatDocumentModeEnum | (string & {});
-}
-export const DocumentFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentMode: S.optional(DocumentFormatDocumentModeEnum),
-  }),
-).annotate({ identifier: "DocumentFormat" }) as any as S.Schema<DocumentFormat>;
+).annotate({ identifier: "TabProperties" }) as any as S.Schema<TabProperties>;
 
 export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "PT";
 export const DimensionUnitEnum = /*@__PURE__*/ S.String;
@@ -287,6 +107,21 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
     magnitude: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
+
+/** The properties of an embedded drawing and used to differentiate the object type. An embedded drawing is one that's created and edited within a document. Note that extensive details are not supported. */
+export interface EmbeddedDrawingProperties {}
+export const EmbeddedDrawingProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "EmbeddedDrawingProperties",
+}) as any as S.Schema<EmbeddedDrawingProperties>;
+
+export type EmbeddedObjectBorderDashStyleEnum =
+  | "DASH_STYLE_UNSPECIFIED"
+  | "SOLID"
+  | "DOT"
+  | "DASH";
+export const EmbeddedObjectBorderDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** An RGB color. */
 export interface RgbColor {
@@ -326,1782 +161,6 @@ export const OptionalColor = /*@__PURE__*/ S.suspend(() =>
     color: S.optional(Color),
   }),
 ).annotate({ identifier: "OptionalColor" }) as any as S.Schema<OptionalColor>;
-
-/** Represents the background of a document. */
-export interface Background {
-  /** The background color. */
-  color?: OptionalColor;
-}
-export const Background = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color: S.optional(OptionalColor),
-  }),
-).annotate({ identifier: "Background" }) as any as S.Schema<Background>;
-
-/** A width and height. */
-export interface Size {
-  /** The width of the object. */
-  width?: Dimension;
-  /** The height of the object. */
-  height?: Dimension;
-}
-export const Size = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(Dimension),
-    height: S.optional(Dimension),
-  }),
-).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
-
-/** The style of the document. */
-export interface DocumentStyle {
-  /** Indicates whether DocumentStyle margin_header, SectionStyle margin_header and DocumentStyle margin_footer, SectionStyle margin_footer are respected. When false, the default values in the Docs editor for header and footer margin is used. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  useCustomHeaderFooterMargins?: boolean;
-  /** Specifies document-level format settings, such as the document mode (pages vs pageless). */
-  documentFormat?: DocumentFormat;
-  /** The bottom page margin. Updating the bottom page margin on the document style clears the bottom page margin on all section styles. If DocumentMode is PAGELESS, this property will not be rendered. */
-  marginBottom?: Dimension;
-  /** The ID of the header used only for even pages. The value of use_even_page_header_footer determines whether to use the default_header_id or this value for the header on even pages. If not set, there's no even page header. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  evenPageHeaderId?: string;
-  /** Indicates whether to use the even page header / footer IDs for the even pages. If DocumentMode is PAGELESS, this property will not be rendered. */
-  useEvenPageHeaderFooter?: boolean;
-  /** The ID of the default footer. If not set, there's no default footer. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  defaultFooterId?: string;
-  /** The ID of the footer used only for even pages. The value of use_even_page_header_footer determines whether to use the default_footer_id or this value for the footer on even pages. If not set, there's no even page footer. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  evenPageFooterId?: string;
-  /** The page number from which to start counting the number of pages. If DocumentMode is PAGELESS, this property will not be rendered. */
-  pageNumberStart?: number;
-  /** The amount of space between the bottom of the page and the contents of the footer. If DocumentMode is PAGELESS, this property will not be rendered. */
-  marginFooter?: Dimension;
-  /** The left page margin. Updating the left page margin on the document style clears the left page margin on all section styles. It may also cause columns to resize in all sections. If DocumentMode is PAGELESS, this property will not be rendered. */
-  marginLeft?: Dimension;
-  /** Indicates whether to use the first page header / footer IDs for the first page. If DocumentMode is PAGELESS, this property will not be rendered. */
-  useFirstPageHeaderFooter?: boolean;
-  /** The ID of the header used only for the first page. If not set then a unique header for the first page does not exist. The value of use_first_page_header_footer determines whether to use the default_header_id or this value for the header on the first page. If not set, there's no first page header. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  firstPageHeaderId?: string;
-  /** The background of the document. Documents cannot have a transparent background color. */
-  background?: Background;
-  /** The amount of space between the top of the page and the contents of the header. If DocumentMode is PAGELESS, this property will not be rendered. */
-  marginHeader?: Dimension;
-  /** The ID of the footer used only for the first page. If not set then a unique footer for the first page does not exist. The value of use_first_page_header_footer determines whether to use the default_footer_id or this value for the footer on the first page. If not set, there's no first page footer. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  firstPageFooterId?: string;
-  /** The top page margin. Updating the top page margin on the document style clears the top page margin on all section styles. If DocumentMode is PAGELESS, this property will not be rendered. */
-  marginTop?: Dimension;
-  /** The size of a page in the document. If DocumentMode is PAGELESS, this property will not be rendered. */
-  pageSize?: Size;
-  /** Optional. Indicates whether to flip the dimensions of the page_size, which allows changing the page orientation between portrait and landscape. If DocumentMode is PAGELESS, this property will not be rendered. */
-  flipPageOrientation?: boolean;
-  /** The right page margin. Updating the right page margin on the document style clears the right page margin on all section styles. It may also cause columns to resize in all sections. If DocumentMode is PAGELESS, this property will not be rendered. */
-  marginRight?: Dimension;
-  /** The ID of the default header. If not set, there's no default header. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  defaultHeaderId?: string;
-}
-export const DocumentStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    useCustomHeaderFooterMargins: S.optional(S.Boolean),
-    documentFormat: S.optional(DocumentFormat),
-    marginBottom: S.optional(Dimension),
-    evenPageHeaderId: S.optional(S.String),
-    useEvenPageHeaderFooter: S.optional(S.Boolean),
-    defaultFooterId: S.optional(S.String),
-    evenPageFooterId: S.optional(S.String),
-    pageNumberStart: S.optional(S.Number),
-    marginFooter: S.optional(Dimension),
-    marginLeft: S.optional(Dimension),
-    useFirstPageHeaderFooter: S.optional(S.Boolean),
-    firstPageHeaderId: S.optional(S.String),
-    background: S.optional(Background),
-    marginHeader: S.optional(Dimension),
-    firstPageFooterId: S.optional(S.String),
-    marginTop: S.optional(Dimension),
-    pageSize: S.optional(Size),
-    flipPageOrientation: S.optional(S.Boolean),
-    marginRight: S.optional(Dimension),
-    defaultHeaderId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DocumentStyle" }) as any as S.Schema<DocumentStyle>;
-
-/** Updates the DocumentStyle. */
-export interface UpdateDocumentStyleRequest {
-  /** The tab that contains the style to update. When omitted, the request applies to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If not provided, the request applies to the first tab in the document. */
-  tabId?: string;
-  /** The fields that should be updated. At least one field must be specified. The root `document_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the background, set `fields` to `"background"`. */
-  fields?: string;
-  /** The styles to set on the document. Certain document style changes may cause other changes in order to mirror the behavior of the Docs editor. See the documentation of DocumentStyle for more information. */
-  documentStyle?: DocumentStyle;
-}
-export const UpdateDocumentStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-    fields: S.optional(S.String),
-    documentStyle: S.optional(DocumentStyle),
-  }),
-).annotate({
-  identifier: "UpdateDocumentStyleRequest",
-}) as any as S.Schema<UpdateDocumentStyleRequest>;
-
-/** Location at the end of a body, header, footer or footnote. The location is immediately before the last newline in the document segment. */
-export interface EndOfSegmentLocation {
-  /** The ID of the header, footer or footnote the location is in. An empty segment ID signifies the document's body. */
-  segmentId?: string;
-  /** The tab that the location is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
-  tabId?: string;
-}
-export const EndOfSegmentLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segmentId: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EndOfSegmentLocation",
-}) as any as S.Schema<EndOfSegmentLocation>;
-
-/** Properties specific to a linked Person. */
-export interface PersonProperties {
-  /** The email address linked to this Person. This field is always present. */
-  email?: string;
-  /** The name of the person if it's displayed in the link text instead of the person's email address. */
-  name?: string;
-}
-export const PersonProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PersonProperties",
-}) as any as S.Schema<PersonProperties>;
-
-/** Inserts a person mention. */
-export interface InsertPersonRequest {
-  /** Inserts the person mention at a specific index in the document. The person mention must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Person mentions cannot be inserted inside an equation. */
-  location?: Location;
-  /** Inserts the person mention at the end of a header, footer, footnote or the document body. */
-  endOfSegmentLocation?: EndOfSegmentLocation;
-  /** The properties of the person mention to insert. */
-  personProperties?: PersonProperties;
-}
-export const InsertPersonRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    personProperties: S.optional(PersonProperties),
-  }),
-).annotate({
-  identifier: "InsertPersonRequest",
-}) as any as S.Schema<InsertPersonRequest>;
-
-export type CreateHeaderRequestTypeEnum =
-  | "HEADER_FOOTER_TYPE_UNSPECIFIED"
-  | "DEFAULT";
-export const CreateHeaderRequestTypeEnum = /*@__PURE__*/ S.String;
-
-/** Creates a Header. The new header is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a header of the specified type already exists, a 400 bad request error is returned. */
-export interface CreateHeaderRequest {
-  /** The type of header to create. */
-  type?: CreateHeaderRequestTypeEnum | (string & {});
-  /** The location of the SectionBreak which begins the section this header should belong to. If `section_break_location' is unset or if it refers to the first section break in the document body, the header applies to the DocumentStyle */
-  sectionBreakLocation?: Location;
-}
-export const CreateHeaderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CreateHeaderRequestTypeEnum),
-    sectionBreakLocation: S.optional(Location),
-  }),
-).annotate({
-  identifier: "CreateHeaderRequest",
-}) as any as S.Schema<CreateHeaderRequest>;
-
-/** Properties of a tab. */
-export interface TabProperties {
-  /** The immutable ID of the tab. */
-  tabId?: string;
-  /** Optional. The emoji icon displayed with the tab. A valid emoji icon is represented by a non-empty Unicode string. Any set of characters that don't represent a single emoji is invalid. If an emoji is invalid, a 400 bad request error is returned. If this value is unset or empty, the tab will display the default tab icon. */
-  iconEmoji?: string;
-  /** The zero-based index of the tab within the parent. */
-  index?: number;
-  /** Output only. The depth of the tab within the document. Root-level tabs start at 0. */
-  nestingLevel?: number;
-  /** Optional. The ID of the parent tab. Empty when the current tab is a root-level tab, which means it doesn't have any parents. */
-  parentTabId?: string;
-  /** The user-visible name of the tab. */
-  title?: string;
-}
-export const TabProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-    iconEmoji: S.optional(S.String),
-    index: S.optional(S.Number),
-    nestingLevel: S.optional(S.Number),
-    parentTabId: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
-).annotate({ identifier: "TabProperties" }) as any as S.Schema<TabProperties>;
-
-/** Update the properties of a document tab. */
-export interface UpdateDocumentTabPropertiesRequest {
-  /** The fields that should be updated. At least one field must be specified. The root `tab_properties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. */
-  fields?: string;
-  /** The tab properties to update. */
-  tabProperties?: TabProperties;
-}
-export const UpdateDocumentTabPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(S.String),
-    tabProperties: S.optional(TabProperties),
-  }),
-).annotate({
-  identifier: "UpdateDocumentTabPropertiesRequest",
-}) as any as S.Schema<UpdateDocumentTabPropertiesRequest>;
-
-/** A table range represents a reference to a subset of a table. It's important to note that the cells specified by a table range do not necessarily form a rectangle. For example, let's say we have a 3 x 3 table where all the cells of the last row are merged together. The table looks like this: [ ] A table range with table cell location = (table_start_location, row = 0, column = 0), row span = 3 and column span = 2 specifies the following cells: x x [ x x x ] */
-export interface TableRange {
-  /** The column span of the table range. */
-  columnSpan?: number;
-  /** The cell location where the table range starts. */
-  tableCellLocation?: TableCellLocation;
-  /** The row span of the table range. */
-  rowSpan?: number;
-}
-export const TableRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columnSpan: S.optional(S.Number),
-    tableCellLocation: S.optional(TableCellLocation),
-    rowSpan: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TableRange" }) as any as S.Schema<TableRange>;
-
-/** Merges cells in a Table. */
-export interface MergeTableCellsRequest {
-  /** The table range specifying which cells of the table to merge. Any text in the cells being merged will be concatenated and stored in the "head" cell of the range. This is the upper-left cell of the range when the content direction is left to right, and the upper-right cell of the range otherwise. If the range is non-rectangular (which can occur in some cases where the range covers cells that are already merged or where the table is non-rectangular), a 400 bad request error is returned. */
-  tableRange?: TableRange;
-}
-export const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({
-  identifier: "MergeTableCellsRequest",
-}) as any as S.Schema<MergeTableCellsRequest>;
-
-export type CreateFooterRequestTypeEnum =
-  | "HEADER_FOOTER_TYPE_UNSPECIFIED"
-  | "DEFAULT";
-export const CreateFooterRequestTypeEnum = /*@__PURE__*/ S.String;
-
-/** Creates a Footer. The new footer is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a footer of the specified type already exists, a 400 bad request error is returned. */
-export interface CreateFooterRequest {
-  /** The type of footer to create. */
-  type?: CreateFooterRequestTypeEnum | (string & {});
-  /** The location of the SectionBreak immediately preceding the section whose SectionStyle this footer should belong to. If this is unset or refers to the first section break in the document, the footer applies to the document style. */
-  sectionBreakLocation?: Location;
-}
-export const CreateFooterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CreateFooterRequestTypeEnum),
-    sectionBreakLocation: S.optional(Location),
-  }),
-).annotate({
-  identifier: "CreateFooterRequest",
-}) as any as S.Schema<CreateFooterRequest>;
-
-/** Inserts a table at the specified location. A newline character will be inserted before the inserted table. */
-export interface InsertTableRequest {
-  /** The number of columns in the table. */
-  columns?: number;
-  /** Inserts the table at the end of the given header, footer or document body. A newline character will be inserted before the inserted table. Tables cannot be inserted inside a footnote. */
-  endOfSegmentLocation?: EndOfSegmentLocation;
-  /** Inserts the table at a specific model index. A newline character will be inserted before the inserted table, therefore the table start index will be at the specified location index + 1. The table must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between an existing table and its preceding paragraph). Tables cannot be inserted inside a footnote or equation. */
-  location?: Location;
-  /** The number of rows in the table. */
-  rows?: number;
-}
-export const InsertTableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(S.Number),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    location: S.optional(Location),
-    rows: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InsertTableRequest",
-}) as any as S.Schema<InsertTableRequest>;
-
-/** Deletes a NamedRange. */
-export interface DeleteNamedRangeRequest {
-  /** The ID of the named range to delete. */
-  namedRangeId?: string;
-  /** The name of the range(s) to delete. All named ranges with the given name will be deleted. */
-  name?: string;
-  /** Optional. The criteria used to specify which tab(s) the range deletion should occur in. When omitted, the range deletion is applied to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the range deletion applies to the singular tab. In a document containing multiple tabs: - If provided, the range deletion applies to the specified tabs. - If not provided, the range deletion applies to all tabs. */
-  tabsCriteria?: TabsCriteria;
-}
-export const DeleteNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedRangeId: S.optional(S.String),
-    name: S.optional(S.String),
-    tabsCriteria: S.optional(TabsCriteria),
-  }),
-).annotate({
-  identifier: "DeleteNamedRangeRequest",
-}) as any as S.Schema<DeleteNamedRangeRequest>;
-
-/** Deletes a Footer from the document. */
-export interface DeleteFooterRequest {
-  /** The tab that contains the footer to delete. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
-  tabId?: string;
-  /** The id of the footer to delete. If this footer is defined on DocumentStyle, the reference to this footer is removed, resulting in no footer of that type for the first section of the document. If this footer is defined on a SectionStyle, the reference to this footer is removed and the footer of that type is now continued from the previous section. */
-  footerId?: string;
-}
-export const DeleteFooterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-    footerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteFooterRequest",
-}) as any as S.Schema<DeleteFooterRequest>;
-
-/** Inserts an InlineObject containing an image at the given location. */
-export interface InsertInlineImageRequest {
-  /** The image URI. The image is fetched once at insertion time and a copy is stored for display inside the document. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The provided URI must be publicly accessible and at most 2 kB in length. The URI itself is saved with the image, and exposed via the ImageProperties.content_uri field. */
-  uri?: string;
-  /** Inserts the text at the end of a header, footer or the document body. Inline images cannot be inserted inside a footnote. */
-  endOfSegmentLocation?: EndOfSegmentLocation;
-  /** Inserts the image at a specific index in the document. The image must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Inline images cannot be inserted inside a footnote or equation. */
-  location?: Location;
-  /** The size that the image should appear as in the document. This property is optional and the final size of the image in the document is determined by the following rules: * If neither width nor height is specified, then a default size of the image is calculated based on its resolution. * If one dimension is specified then the other dimension is calculated to preserve the aspect ratio of the image. * If both width and height are specified, the image is scaled to fit within the provided dimensions while maintaining its aspect ratio. */
-  objectSize?: Size;
-}
-export const InsertInlineImageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    location: S.optional(Location),
-    objectSize: S.optional(Size),
-  }),
-).annotate({
-  identifier: "InsertInlineImageRequest",
-}) as any as S.Schema<InsertInlineImageRequest>;
-
-export type TextStyleBaselineOffsetEnum =
-  | "BASELINE_OFFSET_UNSPECIFIED"
-  | "NONE"
-  | "SUPERSCRIPT"
-  | "SUBSCRIPT";
-export const TextStyleBaselineOffsetEnum = /*@__PURE__*/ S.String;
-
-/** Represents a font family and weight of text. */
-export interface WeightedFontFamily {
-  /** The weight of the font. This field can have any value that's a multiple of `100` between `100` and `900`, inclusive. This range corresponds to the numerical values described in the CSS 2.1 Specification, [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with non-numerical values disallowed. The default value is `400` ("normal"). The font weight makes up just one component of the rendered font weight. A combination of the `weight` and the text style's resolved `bold` value determine the rendered weight, after accounting for inheritance: * If the text is bold and the weight is less than `400`, the rendered weight is 400. * If the text is bold and the weight is greater than or equal to `400` but is less than `700`, the rendered weight is `700`. * If the weight is greater than or equal to `700`, the rendered weight is equal to the weight. * If the text is not bold, the rendered weight is equal to the weight. */
-  weight?: number;
-  /** The font family of the text. The font family can be any font from the Font menu in Docs or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`. */
-  fontFamily?: string;
-}
-export const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    weight: S.optional(S.Number),
-    fontFamily: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WeightedFontFamily",
-}) as any as S.Schema<WeightedFontFamily>;
-
-/** A reference to a bookmark in this document. */
-export interface BookmarkLink {
-  /** The ID of the tab containing this bookmark. */
-  tabId?: string;
-  /** The ID of a bookmark in this document. */
-  id?: string;
-}
-export const BookmarkLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "BookmarkLink" }) as any as S.Schema<BookmarkLink>;
-
-/** A reference to a heading in this document. */
-export interface HeadingLink {
-  /** The ID of a heading in this document. */
-  id?: string;
-  /** The ID of the tab containing this heading. */
-  tabId?: string;
-}
-export const HeadingLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({ identifier: "HeadingLink" }) as any as S.Schema<HeadingLink>;
-
-/** A reference to another portion of a document or an external URL resource. */
-export interface Link {
-  /** The ID of a bookmark in this document. Legacy field: Instead, set includeTabsContent to `true` and use Link.bookmark for read and write operations. This field is only returned when includeTabsContent is set to `false` in documents containing a single tab and links to a bookmark within the singular tab. Otherwise, Link.bookmark is returned. If this field is used in a write request, the bookmark is considered to be from the tab ID specified in the request. If a tab ID is not specified in the request, it is considered to be from the first tab in the document. */
-  bookmarkId?: string;
-  /** The ID of a heading in this document. Legacy field: Instead, set includeTabsContent to `true` and use Link.heading for read and write operations. This field is only returned when includeTabsContent is set to `false` in documents containing a single tab and links to a heading within the singular tab. Otherwise, Link.heading is returned. If this field is used in a write request, the heading is considered to be from the tab ID specified in the request. If a tab ID is not specified in the request, it is considered to be from the first tab in the document. */
-  headingId?: string;
-  /** The ID of a tab in this document. */
-  tabId?: string;
-  /** A bookmark in this document. In documents containing a single tab, links to bookmarks within the singular tab continue to return Link.bookmarkId when the includeTabsContent parameter is set to `false` or unset. Otherwise, this field is returned. */
-  bookmark?: BookmarkLink;
-  /** A heading in this document. In documents containing a single tab, links to headings within the singular tab continue to return Link.headingId when the includeTabsContent parameter is set to `false` or unset. Otherwise, this field is returned. */
-  heading?: HeadingLink;
-  /** An external URL. */
-  url?: string;
-}
-export const Link = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bookmarkId: S.optional(S.String),
-    headingId: S.optional(S.String),
-    tabId: S.optional(S.String),
-    bookmark: S.optional(BookmarkLink),
-    heading: S.optional(HeadingLink),
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
-
-/** Represents the styling that can be applied to text. Inherited text styles are represented as unset fields in this message. A text style's parent depends on where the text style is defined: * The TextStyle of text in a Paragraph inherits from the paragraph's corresponding named style type. * The TextStyle on a named style inherits from the normal text named style. * The TextStyle of the normal text named style inherits from the default text style in the Docs editor. * The TextStyle on a Paragraph element that's contained in a table may inherit its text style from the table style. If the text style does not inherit from a parent, unsetting fields will revert the style to a value matching the defaults in the Docs editor. */
-export interface TextStyle {
-  /** The text's vertical offset from its normal position. Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font size, computed based on the `font_size` field. Changes in this field don't affect the `font_size`. */
-  baselineOffset?: TextStyleBaselineOffsetEnum | (string & {});
-  /** Whether or not the text is underlined. */
-  underline?: boolean;
-  /** The background color of the text. If set, the color is either an RGB color or transparent, depending on the `color` field. */
-  backgroundColor?: OptionalColor;
-  /** Whether or not the text is struck through. */
-  strikethrough?: boolean;
-  /** Whether or not the text is italicized. */
-  italic?: boolean;
-  /** The font family and rendered weight of the text. If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family` is applied first, then `bold`. If `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad request error is returned. */
-  weightedFontFamily?: WeightedFontFamily;
-  /** Whether or not the text is in small capital letters. */
-  smallCaps?: boolean;
-  /** The hyperlink destination of the text. If unset, there's no link. Links are not inherited from parent text. Changing the link in an update request causes some other changes to the text style of the range: * When setting a link, the text foreground color will be updated to the default link color and the text will be underlined. If these fields are modified in the same request, those values will be used instead of the link defaults. * Setting a link on a text range that overlaps with an existing link will also update the existing link to point to the new URL. * Links are not settable on newline characters. As a result, setting a link on a text range that crosses a paragraph boundary, such as `"ABC\n123"`, will separate the newline character(s) into their own text runs. The link will be applied separately to the runs before and after the newline. * Removing a link will update the text style of the range to match the style of the preceding text (or the default text styles if the preceding text is another link) unless different styles are being set in the same request. */
-  link?: Link;
-  /** The foreground color of the text. If set, the color is either an RGB color or transparent, depending on the `color` field. */
-  foregroundColor?: OptionalColor;
-  /** Whether or not the text is rendered as bold. */
-  bold?: boolean;
-  /** The size of the text's font. */
-  fontSize?: Dimension;
-}
-export const TextStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baselineOffset: S.optional(TextStyleBaselineOffsetEnum),
-    underline: S.optional(S.Boolean),
-    backgroundColor: S.optional(OptionalColor),
-    strikethrough: S.optional(S.Boolean),
-    italic: S.optional(S.Boolean),
-    weightedFontFamily: S.optional(WeightedFontFamily),
-    smallCaps: S.optional(S.Boolean),
-    link: S.optional(Link),
-    foregroundColor: S.optional(OptionalColor),
-    bold: S.optional(S.Boolean),
-    fontSize: S.optional(Dimension),
-  }),
-).annotate({ identifier: "TextStyle" }) as any as S.Schema<TextStyle>;
-
-/** Update the styling of text. */
-export interface UpdateTextStyleRequest {
-  /** The fields that should be updated. At least one field must be specified. The root `text_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to `"bold"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
-  fields?: string;
-  /** The range of text to style. The range may be extended to include adjacent newlines. If the range fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the matching text style. Ranges cannot be inserted inside a relative UpdateTextStyleRequest. */
-  range?: Range;
-  /** The styles to set on the text. If the value for a particular style matches that of the parent, that style will be set to inherit. Certain text style changes may cause other changes in order to to mirror the behavior of the Docs editor. See the documentation of TextStyle for more information. */
-  textStyle?: TextStyle;
-}
-export const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(S.String),
-    range: S.optional(Range),
-    textStyle: S.optional(TextStyle),
-  }),
-).annotate({
-  identifier: "UpdateTextStyleRequest",
-}) as any as S.Schema<UpdateTextStyleRequest>;
-
-export type InsertSectionBreakRequestSectionTypeEnum =
-  | "SECTION_TYPE_UNSPECIFIED"
-  | "CONTINUOUS"
-  | "NEXT_PAGE";
-export const InsertSectionBreakRequestSectionTypeEnum = /*@__PURE__*/ S.String;
-
-/** Inserts a section break at the given location. A newline character will be inserted before the section break. */
-export interface InsertSectionBreakRequest {
-  /** Inserts a newline and a section break at the end of the document body. Section breaks cannot be inserted inside a footnote, header or footer. Because section breaks can only be inserted inside the body, the segment ID field must be empty. */
-  endOfSegmentLocation?: EndOfSegmentLocation;
-  /** The type of section to insert. */
-  sectionType?: InsertSectionBreakRequestSectionTypeEnum | (string & {});
-  /** Inserts a newline and a section break at a specific index in the document. The section break must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Section breaks cannot be inserted inside a table, equation, footnote, header, or footer. Since section breaks can only be inserted inside the body, the segment ID field must be empty. */
-  location?: Location;
-}
-export const InsertSectionBreakRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    sectionType: S.optional(InsertSectionBreakRequestSectionTypeEnum),
-    location: S.optional(Location),
-  }),
-).annotate({
-  identifier: "InsertSectionBreakRequest",
-}) as any as S.Schema<InsertSectionBreakRequest>;
-
-export type NamedStyleNamedStyleTypeEnum =
-  | "NAMED_STYLE_TYPE_UNSPECIFIED"
-  | "NORMAL_TEXT"
-  | "TITLE"
-  | "SUBTITLE"
-  | "HEADING_1"
-  | "HEADING_2"
-  | "HEADING_3"
-  | "HEADING_4"
-  | "HEADING_5"
-  | "HEADING_6";
-export const NamedStyleNamedStyleTypeEnum = /*@__PURE__*/ S.String;
-
-/** The shading of a paragraph. */
-export interface Shading {
-  /** The background color of this paragraph shading. */
-  backgroundColor?: OptionalColor;
-}
-export const Shading = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backgroundColor: S.optional(OptionalColor),
-  }),
-).annotate({ identifier: "Shading" }) as any as S.Schema<Shading>;
-
-export type ParagraphBorderDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH";
-export const ParagraphBorderDashStyleEnum = /*@__PURE__*/ S.String;
-
-/** A border around a paragraph. */
-export interface ParagraphBorder {
-  /** The width of the border. */
-  width?: Dimension;
-  /** The color of the border. */
-  color?: OptionalColor;
-  /** The padding of the border. */
-  padding?: Dimension;
-  /** The dash style of the border. */
-  dashStyle?: ParagraphBorderDashStyleEnum | (string & {});
-}
-export const ParagraphBorder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(Dimension),
-    color: S.optional(OptionalColor),
-    padding: S.optional(Dimension),
-    dashStyle: S.optional(ParagraphBorderDashStyleEnum),
-  }),
-).annotate({
-  identifier: "ParagraphBorder",
-}) as any as S.Schema<ParagraphBorder>;
-
-export type ParagraphStyleSpacingModeEnum =
-  | "SPACING_MODE_UNSPECIFIED"
-  | "NEVER_COLLAPSE"
-  | "COLLAPSE_LISTS";
-export const ParagraphStyleSpacingModeEnum = /*@__PURE__*/ S.String;
-
-export type ParagraphStyleAlignmentEnum =
-  | "ALIGNMENT_UNSPECIFIED"
-  | "START"
-  | "CENTER"
-  | "END"
-  | "JUSTIFIED";
-export const ParagraphStyleAlignmentEnum = /*@__PURE__*/ S.String;
-
-export type ParagraphStyleNamedStyleTypeEnum =
-  | "NAMED_STYLE_TYPE_UNSPECIFIED"
-  | "NORMAL_TEXT"
-  | "TITLE"
-  | "SUBTITLE"
-  | "HEADING_1"
-  | "HEADING_2"
-  | "HEADING_3"
-  | "HEADING_4"
-  | "HEADING_5"
-  | "HEADING_6";
-export const ParagraphStyleNamedStyleTypeEnum = /*@__PURE__*/ S.String;
-
-export type TabStopAlignmentEnum =
-  | "TAB_STOP_ALIGNMENT_UNSPECIFIED"
-  | "START"
-  | "CENTER"
-  | "END";
-export const TabStopAlignmentEnum = /*@__PURE__*/ S.String;
-
-/** A tab stop within a paragraph. */
-export interface TabStop {
-  /** The offset between this tab stop and the start margin. */
-  offset?: Dimension;
-  /** The alignment of this tab stop. If unset, the value defaults to START. */
-  alignment?: TabStopAlignmentEnum | (string & {});
-}
-export const TabStop = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offset: S.optional(Dimension),
-    alignment: S.optional(TabStopAlignmentEnum),
-  }),
-).annotate({ identifier: "TabStop" }) as any as S.Schema<TabStop>;
-
-export type TabStopList = Array<TabStop>;
-export const TabStopList = /*@__PURE__*/ S.Array(
-  TabStop,
-) as any as S.Schema<TabStopList>;
-
-export type ParagraphStyleDirectionEnum =
-  | "CONTENT_DIRECTION_UNSPECIFIED"
-  | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT";
-export const ParagraphStyleDirectionEnum = /*@__PURE__*/ S.String;
-
-/** Styles that apply to a whole paragraph. Inherited paragraph styles are represented as unset fields in this message. A paragraph style's parent depends on where the paragraph style is defined: * The ParagraphStyle on a Paragraph inherits from the paragraph's corresponding named style type. * The ParagraphStyle on a named style inherits from the normal text named style. * The ParagraphStyle of the normal text named style inherits from the default paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph element that's contained in a table may inherit its paragraph style from the table style. If the paragraph style does not inherit from a parent, unsetting fields will revert the style to a value matching the defaults in the Docs editor. */
-export interface ParagraphStyle {
-  /** The shading of the paragraph. If unset, the value is inherited from the parent. */
-  shading?: Shading;
-  /** The border to the left of this paragraph. If unset, the value is inherited from the parent. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
-  borderLeft?: ParagraphBorder;
-  /** The border at the bottom of this paragraph. If unset, the value is inherited from the parent. The bottom border is rendered when the paragraph below has different border and indent properties. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
-  borderBottom?: ParagraphBorder;
-  /** Whether at least a part of this paragraph should be laid out on the same page or column as the next paragraph if possible. If unset, the value is inherited from the parent. */
-  keepWithNext?: boolean;
-  /** The amount of extra space below the paragraph. If unset, the value is inherited from the parent. */
-  spaceBelow?: Dimension;
-  /** The border between this paragraph and the next and previous paragraphs. If unset, the value is inherited from the parent. The between border is rendered when the adjacent paragraph has the same border and indent properties. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
-  borderBetween?: ParagraphBorder;
-  /** Whether the current paragraph should always start at the beginning of a page. If unset, the value is inherited from the parent. Attempting to update page_break_before for paragraphs in unsupported regions, including Table, Header, Footer and Footnote, can result in an invalid document state that returns a 400 bad request error. */
-  pageBreakBefore?: boolean;
-  /** The spacing mode for the paragraph. */
-  spacingMode?: ParagraphStyleSpacingModeEnum | (string & {});
-  /** The border at the top of this paragraph. If unset, the value is inherited from the parent. The top border is rendered when the paragraph above has different border and indent properties. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
-  borderTop?: ParagraphBorder;
-  /** Whether to avoid widows and orphans for the paragraph. If unset, the value is inherited from the parent. */
-  avoidWidowAndOrphan?: boolean;
-  /** The amount of indentation for the paragraph on the side that corresponds to the end of the text, based on the current paragraph direction. If unset, the value is inherited from the parent. */
-  indentEnd?: Dimension;
-  /** The text alignment for this paragraph. */
-  alignment?: ParagraphStyleAlignmentEnum | (string & {});
-  /** The heading ID of the paragraph. If empty, then this paragraph is not a heading. This property is read-only. */
-  headingId?: string;
-  /** The named style type of the paragraph. Since updating the named style type affects other properties within ParagraphStyle, the named style type is applied before the other properties are updated. */
-  namedStyleType?: ParagraphStyleNamedStyleTypeEnum | (string & {});
-  /** Whether all lines of the paragraph should be laid out on the same page or column if possible. If unset, the value is inherited from the parent. */
-  keepLinesTogether?: boolean;
-  /** The amount of indentation for the first line of the paragraph. If unset, the value is inherited from the parent. */
-  indentFirstLine?: Dimension;
-  /** A list of the tab stops for this paragraph. The list of tab stops is not inherited. This property is read-only. */
-  tabStops?: TabStopList;
-  /** The amount of indentation for the paragraph on the side that corresponds to the start of the text, based on the current paragraph direction. If unset, the value is inherited from the parent. */
-  indentStart?: Dimension;
-  /** The amount of extra space above the paragraph. If unset, the value is inherited from the parent. */
-  spaceAbove?: Dimension;
-  /** The border to the right of this paragraph. If unset, the value is inherited from the parent. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
-  borderRight?: ParagraphBorder;
-  /** The amount of space between lines, as a percentage of normal, where normal is represented as 100.0. If unset, the value is inherited from the parent. */
-  lineSpacing?: number;
-  /** The text direction of this paragraph. If unset, the value defaults to LEFT_TO_RIGHT since paragraph direction is not inherited. */
-  direction?: ParagraphStyleDirectionEnum | (string & {});
-}
-export const ParagraphStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shading: S.optional(Shading),
-    borderLeft: S.optional(ParagraphBorder),
-    borderBottom: S.optional(ParagraphBorder),
-    keepWithNext: S.optional(S.Boolean),
-    spaceBelow: S.optional(Dimension),
-    borderBetween: S.optional(ParagraphBorder),
-    pageBreakBefore: S.optional(S.Boolean),
-    spacingMode: S.optional(ParagraphStyleSpacingModeEnum),
-    borderTop: S.optional(ParagraphBorder),
-    avoidWidowAndOrphan: S.optional(S.Boolean),
-    indentEnd: S.optional(Dimension),
-    alignment: S.optional(ParagraphStyleAlignmentEnum),
-    headingId: S.optional(S.String),
-    namedStyleType: S.optional(ParagraphStyleNamedStyleTypeEnum),
-    keepLinesTogether: S.optional(S.Boolean),
-    indentFirstLine: S.optional(Dimension),
-    tabStops: S.optional(TabStopList),
-    indentStart: S.optional(Dimension),
-    spaceAbove: S.optional(Dimension),
-    borderRight: S.optional(ParagraphBorder),
-    lineSpacing: S.optional(S.Number),
-    direction: S.optional(ParagraphStyleDirectionEnum),
-  }),
-).annotate({ identifier: "ParagraphStyle" }) as any as S.Schema<ParagraphStyle>;
-
-/** A named style. Paragraphs in the document can inherit their TextStyle and ParagraphStyle from this named style when they have the same named style type. */
-export interface NamedStyle {
-  /** The text style of this named style. */
-  textStyle?: TextStyle;
-  /** The type of this named style. */
-  namedStyleType?: NamedStyleNamedStyleTypeEnum | (string & {});
-  /** The paragraph style of this named style. */
-  paragraphStyle?: ParagraphStyle;
-}
-export const NamedStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textStyle: S.optional(TextStyle),
-    namedStyleType: S.optional(NamedStyleNamedStyleTypeEnum),
-    paragraphStyle: S.optional(ParagraphStyle),
-  }),
-).annotate({ identifier: "NamedStyle" }) as any as S.Schema<NamedStyle>;
-
-/** Updates a named style. */
-export interface UpdateNamedStyleRequest {
-  /** The document tab to update. By default, the update is applied to the first tab. */
-  tabId?: string;
-  /** The NamedStyle fields that should be updated. At least `named_style_type` must be specified. The root `named_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to include `"text_style"` and `"text_style.bold"`. To update the paragraph style's alignment property, set `fields` to include `"paragraph_style"` and `"paragraph_style.alignment"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. Specifying `"text_style"` or `"paragraph_style"` with an empty TextStyle or ParagraphStyle will reset all of its nested fields. */
-  fields?: string;
-  /** The document style to update. */
-  namedStyle?: NamedStyle;
-}
-export const UpdateNamedStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-    fields: S.optional(S.String),
-    namedStyle: S.optional(NamedStyle),
-  }),
-).annotate({
-  identifier: "UpdateNamedStyleRequest",
-}) as any as S.Schema<UpdateNamedStyleRequest>;
-
-/** Adds a document tab. When a tab is added at a given index, all subsequent tabs' indexes are incremented. */
-export interface AddDocumentTabRequest {
-  /** The properties of the tab to add. All properties are optional. */
-  tabProperties?: TabProperties;
-}
-export const AddDocumentTabRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabProperties: S.optional(TabProperties),
-  }),
-).annotate({
-  identifier: "AddDocumentTabRequest",
-}) as any as S.Schema<AddDocumentTabRequest>;
-
-export type TableColumnPropertiesWidthTypeEnum =
-  | "WIDTH_TYPE_UNSPECIFIED"
-  | "EVENLY_DISTRIBUTED"
-  | "FIXED_WIDTH";
-export const TableColumnPropertiesWidthTypeEnum = /*@__PURE__*/ S.String;
-
-/** The properties of a column in a table. */
-export interface TableColumnProperties {
-  /** The width type of the column. */
-  widthType?: TableColumnPropertiesWidthTypeEnum | (string & {});
-  /** The width of the column. Set when the column's `width_type` is FIXED_WIDTH. */
-  width?: Dimension;
-}
-export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    widthType: S.optional(TableColumnPropertiesWidthTypeEnum),
-    width: S.optional(Dimension),
-  }),
-).annotate({
-  identifier: "TableColumnProperties",
-}) as any as S.Schema<TableColumnProperties>;
-
-export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IntegerList>;
-
-/** Updates the TableColumnProperties of columns in a table. */
-export interface UpdateTableColumnPropertiesRequest {
-  /** The location where the table starts in the document. */
-  tableStartLocation?: Location;
-  /** The fields that should be updated. At least one field must be specified. The root `tableColumnProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the column width, set `fields` to `"width"`. */
-  fields?: string;
-  /** The table column properties to update. If the value of `table_column_properties#width` is less than 5 points (5/72 inch), a 400 bad request error is returned. */
-  tableColumnProperties?: TableColumnProperties;
-  /** The list of zero-based column indices whose property should be updated. If no indices are specified, all columns will be updated. */
-  columnIndices?: IntegerList;
-}
-export const UpdateTableColumnPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableStartLocation: S.optional(Location),
-    fields: S.optional(S.String),
-    tableColumnProperties: S.optional(TableColumnProperties),
-    columnIndices: S.optional(IntegerList),
-  }),
-).annotate({
-  identifier: "UpdateTableColumnPropertiesRequest",
-}) as any as S.Schema<UpdateTableColumnPropertiesRequest>;
-
-export type DateElementPropertiesTimeFormatEnum =
-  | "TIME_FORMAT_UNSPECIFIED"
-  | "TIME_FORMAT_DISABLED"
-  | "TIME_FORMAT_HOUR_MINUTE"
-  | "TIME_FORMAT_HOUR_MINUTE_TIMEZONE";
-export const DateElementPropertiesTimeFormatEnum = /*@__PURE__*/ S.String;
-
-export type DateElementPropertiesDateFormatEnum =
-  | "DATE_FORMAT_UNSPECIFIED"
-  | "DATE_FORMAT_CUSTOM"
-  | "DATE_FORMAT_MONTH_DAY_ABBREVIATED"
-  | "DATE_FORMAT_MONTH_DAY_FULL"
-  | "DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED"
-  | "DATE_FORMAT_ISO8601";
-export const DateElementPropertiesDateFormatEnum = /*@__PURE__*/ S.String;
-
-/** Properties of a DateElement. */
-export interface DateElementProperties {
-  /** Determines how the time part of the DateElement will be displayed in the document. If unset, the default value is TIME_FORMAT_DISABLED, indicating no time should be shown. */
-  timeFormat?: DateElementPropertiesTimeFormatEnum | (string & {});
-  /** Output only. Indicates how the DateElement is displayed in the document. */
-  displayText?: string;
-  /** The point in time to represent, in seconds and nanoseconds since Unix epoch: January 1, 1970 at midnight UTC. Timestamp is expected to be in UTC. If time_zone_id is set, the timestamp is adjusted according to the time zone. For example, a timestamp of `18000` with a date format of `DATE_FORMAT_ISO8601` and time format of `TIME_FORMAT_HOUR_MINUTE` would be displayed as `1970-01-01 5:00 AM`. A timestamp of `18000` with date format of `DATE_FORMAT_ISO8601`, time format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to `America/New_York` will instead be `1970-01-01 12:00 AM`. */
-  timestamp?: string;
-  /** Determines how the date part of the DateElement will be displayed in the document. If unset, the default value is DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED, indicating the DateElement will be formatted as `MMM d, y` in `en`, or locale specific equivalent. */
-  dateFormat?: DateElementPropertiesDateFormatEnum | (string & {});
-  /** The time zone of the DateElement, as defined by the Unicode Common Locale Data Repository (CLDR) project. For example, `America/New_York`. If unset, the default time zone is `etc/UTC`. */
-  timeZoneId?: string;
-  /** The language code of the DateElement. For example, `en`. If unset, the default locale is `en`. Limited to the following locales: `af`, `am`, `ar`, `as`, `az`, `be`, `bg`, `bn`, `ca`, `cs`, `da`, `de`, `el`, `en`, `en-CA`, `en-GB`, `es`, `es-419`, `et`, `eu`, `fa`, `fi`, `fil`, `fr`, `fr-CA`, `gl`, `gu`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `iw`, `ja`, `ka`, `kk`, `km`, `kn`, `ko`, `lo`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `ne`, `nl`, `no`, `or`, `pa`, `pl`, `pt-BR`, `pt-PT`, `ro`, `ru`, `si`, `sk`, `sl`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tr`, `uk`, `ur`, `uz`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`, `zu`, `cy`, `my`. */
-  locale?: string;
-}
-export const DateElementProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeFormat: S.optional(DateElementPropertiesTimeFormatEnum),
-    displayText: S.optional(S.String),
-    timestamp: S.optional(S.String),
-    dateFormat: S.optional(DateElementPropertiesDateFormatEnum),
-    timeZoneId: S.optional(S.String),
-    locale: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DateElementProperties",
-}) as any as S.Schema<DateElementProperties>;
-
-/** Inserts a date at the specified location. */
-export interface InsertDateRequest {
-  /** Inserts the date at the end of the given header, footer or document body. */
-  endOfSegmentLocation?: EndOfSegmentLocation;
-  /** The properties of the date to insert. */
-  dateElementProperties?: DateElementProperties;
-  /** Inserts the date at a specific index in the document. The date must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between an existing table and its preceding paragraph). */
-  location?: Location;
-}
-export const InsertDateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    dateElementProperties: S.optional(DateElementProperties),
-    location: S.optional(Location),
-  }),
-).annotate({
-  identifier: "InsertDateRequest",
-}) as any as S.Schema<InsertDateRequest>;
-
-/** Deletes content from the document. */
-export interface DeleteContentRangeRequest {
-  /** The range of content to delete. Deleting text that crosses a paragraph boundary may result in changes to paragraph styles, lists, positioned objects and bookmarks as the two paragraphs are merged. Attempting to delete certain ranges can result in an invalid document structure in which case a 400 bad request error is returned. Some examples of invalid delete requests include: * Deleting one code unit of a surrogate pair. * Deleting the last newline character of a Body, Header, Footer, Footnote, TableCell or TableOfContents. * Deleting the start or end of a Table, TableOfContents or Equation without deleting the entire element. * Deleting the newline character before a Table, TableOfContents or SectionBreak without deleting the element. * Deleting individual rows or cells of a table. Deleting the content within a table cell is allowed. */
-  range?: Range;
-}
-export const DeleteContentRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "DeleteContentRangeRequest",
-}) as any as S.Schema<DeleteContentRangeRequest>;
-
-/** Unmerges cells in a Table. */
-export interface UnmergeTableCellsRequest {
-  /** The table range specifying which cells of the table to unmerge. All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected. If the range has no merged cells, the request will do nothing. If there is text in any of the merged cells, the text will remain in the "head" cell of the resulting block of unmerged cells. The "head" cell is the upper-left cell when the content direction is from left to right, and the upper-right otherwise. */
-  tableRange?: TableRange;
-}
-export const UnmergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({
-  identifier: "UnmergeTableCellsRequest",
-}) as any as S.Schema<UnmergeTableCellsRequest>;
-
-/** Replaces the contents of the specified NamedRange or NamedRanges with the given replacement content. Note that an individual NamedRange may consist of multiple discontinuous ranges. In this case, only the content in the first range will be replaced. The other ranges and their content will be deleted. In cases where replacing or deleting any ranges would result in an invalid document structure, a 400 bad request error is returned. */
-export interface ReplaceNamedRangeContentRequest {
-  /** The ID of the named range whose content will be replaced. If there is no named range with the given ID a 400 bad request error is returned. */
-  namedRangeId?: string;
-  /** Optional. The criteria used to specify in which tabs the replacement occurs. When omitted, the replacement applies to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the replacement applies to the singular tab. In a document containing multiple tabs: - If provided, the replacement applies to the specified tabs. - If omitted, the replacement applies to all tabs. */
-  tabsCriteria?: TabsCriteria;
-  /** The name of the NamedRanges whose content will be replaced. If there are multiple named ranges with the given name, then the content of each one will be replaced. If there are no named ranges with the given name, then the request will be a no-op. */
-  namedRangeName?: string;
-  /** Replaces the content of the specified named range(s) with the given text. */
-  text?: string;
-}
-export const ReplaceNamedRangeContentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedRangeId: S.optional(S.String),
-    tabsCriteria: S.optional(TabsCriteria),
-    namedRangeName: S.optional(S.String),
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplaceNamedRangeContentRequest",
-}) as any as S.Schema<ReplaceNamedRangeContentRequest>;
-
-/** Deletes a PositionedObject from the document. */
-export interface DeletePositionedObjectRequest {
-  /** The ID of the positioned object to delete. */
-  objectId?: string;
-  /** The tab that the positioned object to delete is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
-  tabId?: string;
-}
-export const DeletePositionedObjectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletePositionedObjectRequest",
-}) as any as S.Schema<DeletePositionedObjectRequest>;
-
-export type ReplaceImageRequestImageReplaceMethodEnum =
-  | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
-  | "CENTER_CROP";
-export const ReplaceImageRequestImageReplaceMethodEnum = /*@__PURE__*/ S.String;
-
-/** Replaces an existing image with a new image. Replacing an image removes some image effects from the existing image in order to mirror the behavior of the Docs editor. */
-export interface ReplaceImageRequest {
-  /** The replacement method. */
-  imageReplaceMethod?:
-    | ReplaceImageRequestImageReplaceMethodEnum
-    | (string & {});
-  /** The tab that the image to be replaced is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
-  tabId?: string;
-  /** The URI of the new image. The image is fetched once at insertion time and a copy is stored for display inside the document. Images must be less than 50MB, cannot exceed 25 megapixels, and must be in PNG, JPEG, or GIF format. The provided URI can't surpass 2 KB in length. The URI is saved with the image, and exposed through the ImageProperties.source_uri field. */
-  uri?: string;
-  /** The ID of the existing image that will be replaced. The ID can be retrieved from the response of a get request. */
-  imageObjectId?: string;
-}
-export const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageReplaceMethod: S.optional(ReplaceImageRequestImageReplaceMethodEnum),
-    tabId: S.optional(S.String),
-    uri: S.optional(S.String),
-    imageObjectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplaceImageRequest",
-}) as any as S.Schema<ReplaceImageRequest>;
-
-/** Inserts text at the specified location. */
-export interface InsertTextRequest {
-  /** Inserts the text at a specific index in the document. Text must be inserted inside the bounds of an existing Paragraph. For instance, text cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). The text must be inserted in the preceding paragraph. */
-  location?: Location;
-  /** The text to be inserted. Inserting a newline character will implicitly create a new Paragraph at that index. The paragraph style of the new paragraph will be copied from the paragraph at the current insertion index, including lists and bullets. Text styles for inserted text will be determined automatically, generally preserving the styling of neighboring text. In most cases, the text style for the inserted text will match the text immediately before the insertion index. Some control characters (U+0000-U+0008, U+000C-U+001F) and characters from the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF) will be stripped out of the inserted text. */
-  text?: string;
-  /** Inserts the text at the end of a header, footer, footnote or the document body. */
-  endOfSegmentLocation?: EndOfSegmentLocation;
-}
-export const InsertTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    text: S.optional(S.String),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-  }),
-).annotate({
-  identifier: "InsertTextRequest",
-}) as any as S.Schema<InsertTextRequest>;
-
-/** Update the styling of all paragraphs that overlap with the given range. */
-export interface UpdateParagraphStyleRequest {
-  /** The styles to set on the paragraphs. Certain paragraph style changes may cause other changes in order to mirror the behavior of the Docs editor. See the documentation of ParagraphStyle for more information. */
-  paragraphStyle?: ParagraphStyle;
-  /** The fields that should be updated. At least one field must be specified. The root `paragraph_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the paragraph style's alignment property, set `fields` to `"alignment"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
-  fields?: string;
-  /** The range overlapping the paragraphs to style. */
-  range?: Range;
-}
-export const UpdateParagraphStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paragraphStyle: S.optional(ParagraphStyle),
-    fields: S.optional(S.String),
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "UpdateParagraphStyleRequest",
-}) as any as S.Schema<UpdateParagraphStyleRequest>;
-
-/** Styles that apply to a table row. */
-export interface TableRowStyle {
-  /** The minimum height of the row. The row will be rendered in the Docs editor at a height equal to or greater than this value in order to show all the content in the row's cells. */
-  minRowHeight?: Dimension;
-  /** Whether the row is a table header. */
-  tableHeader?: boolean;
-  /** Whether the row cannot overflow across page or column boundaries. */
-  preventOverflow?: boolean;
-}
-export const TableRowStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minRowHeight: S.optional(Dimension),
-    tableHeader: S.optional(S.Boolean),
-    preventOverflow: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TableRowStyle" }) as any as S.Schema<TableRowStyle>;
-
-/** Updates the TableRowStyle of rows in a table. */
-export interface UpdateTableRowStyleRequest {
-  /** The location where the table starts in the document. */
-  tableStartLocation?: Location;
-  /** The fields that should be updated. At least one field must be specified. The root `tableRowStyle` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the minimum row height, set `fields` to `"min_row_height"`. */
-  fields?: string;
-  /** The styles to be set on the rows. */
-  tableRowStyle?: TableRowStyle;
-  /** The list of zero-based row indices whose style should be updated. If no indices are specified, all rows will be updated. */
-  rowIndices?: IntegerList;
-}
-export const UpdateTableRowStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableStartLocation: S.optional(Location),
-    fields: S.optional(S.String),
-    tableRowStyle: S.optional(TableRowStyle),
-    rowIndices: S.optional(IntegerList),
-  }),
-).annotate({
-  identifier: "UpdateTableRowStyleRequest",
-}) as any as S.Schema<UpdateTableRowStyleRequest>;
-
-/** Properties that apply to a section's column. */
-export interface SectionColumnProperties {
-  /** The padding at the end of the column. */
-  paddingEnd?: Dimension;
-  /** Output only. The width of the column. */
-  width?: Dimension;
-}
-export const SectionColumnProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paddingEnd: S.optional(Dimension),
-    width: S.optional(Dimension),
-  }),
-).annotate({
-  identifier: "SectionColumnProperties",
-}) as any as S.Schema<SectionColumnProperties>;
-
-export type SectionColumnPropertiesList = Array<SectionColumnProperties>;
-export const SectionColumnPropertiesList = /*@__PURE__*/ S.Array(
-  SectionColumnProperties,
-) as any as S.Schema<SectionColumnPropertiesList>;
-
-export type SectionStyleSectionTypeEnum =
-  | "SECTION_TYPE_UNSPECIFIED"
-  | "CONTINUOUS"
-  | "NEXT_PAGE";
-export const SectionStyleSectionTypeEnum = /*@__PURE__*/ S.String;
-
-export type SectionStyleColumnSeparatorStyleEnum =
-  | "COLUMN_SEPARATOR_STYLE_UNSPECIFIED"
-  | "NONE"
-  | "BETWEEN_EACH_COLUMN";
-export const SectionStyleColumnSeparatorStyleEnum = /*@__PURE__*/ S.String;
-
-export type SectionStyleContentDirectionEnum =
-  | "CONTENT_DIRECTION_UNSPECIFIED"
-  | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT";
-export const SectionStyleContentDirectionEnum = /*@__PURE__*/ S.String;
-
-/** The styling that applies to a section. */
-export interface SectionStyle {
-  /** The top page margin of the section. If unset, the value defaults to margin_top from DocumentStyle. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  marginTop?: Dimension;
-  /** The header margin of the section. If unset, the value defaults to margin_header from DocumentStyle. If updated, use_custom_header_footer_margins is set to true on DocumentStyle. The value of use_custom_header_footer_margins on DocumentStyle indicates if a header margin is being respected for this section. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  marginHeader?: Dimension;
-  /** The ID of the footer used only for even pages. If the value of DocumentStyle's use_even_page_header_footer is true, this value is used for the footers on even pages in the section. If it is false, the footers on even pages use the default_footer_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's even_page_footer_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  evenPageFooterId?: string;
-  /** The ID of the footer used only for the first page of the section. If use_first_page_header_footer is true, this value is used for the footer on the first page of the section. If it's false, the footer on the first page of the section uses the default_footer_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's first_page_footer_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  firstPageFooterId?: string;
-  /** The ID of the default footer. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's default_footer_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  defaultFooterId?: string;
-  /** The page number from which to start counting the number of pages for this section. If unset, page numbering continues from the previous section. If the value is unset in the first SectionBreak, refer to DocumentStyle's page_number_start. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  pageNumberStart?: number;
-  /** The section's columns properties. If empty, the section contains one column with the default properties in the Docs editor. A section can be updated to have no more than 3 columns. When updating this property, setting a concrete value is required. Unsetting this property will result in a 400 bad request error. */
-  columnProperties?: SectionColumnPropertiesList;
-  /** The ID of the header used only for even pages. If the value of DocumentStyle's use_even_page_header_footer is true, this value is used for the headers on even pages in the section. If it is false, the headers on even pages use the default_header_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's even_page_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  evenPageHeaderId?: string;
-  /** The left page margin of the section. If unset, the value defaults to margin_left from DocumentStyle. Updating the left margin causes columns in this section to resize. Since the margin affects column width, it's applied before column properties. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  marginLeft?: Dimension;
-  /** The right page margin of the section. If unset, the value defaults to margin_right from DocumentStyle. Updating the right margin causes columns in this section to resize. Since the margin affects column width, it's applied before column properties. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  marginRight?: Dimension;
-  /** The ID of the header used only for the first page of the section. If use_first_page_header_footer is true, this value is used for the header on the first page of the section. If it's false, the header on the first page of the section uses the default_header_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's first_page_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  firstPageHeaderId?: string;
-  /** Output only. The type of section. */
-  sectionType?: SectionStyleSectionTypeEnum | (string & {});
-  /** The style of column separators. This style can be set even when there's one column in the section. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  columnSeparatorStyle?: SectionStyleColumnSeparatorStyleEnum | (string & {});
-  /** The content direction of this section. If unset, the value defaults to LEFT_TO_RIGHT. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  contentDirection?: SectionStyleContentDirectionEnum | (string & {});
-  /** The footer margin of the section. If unset, the value defaults to margin_footer from DocumentStyle. If updated, use_custom_header_footer_margins is set to true on DocumentStyle. The value of use_custom_header_footer_margins on DocumentStyle indicates if a footer margin is being respected for this section If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  marginFooter?: Dimension;
-  /** Indicates whether to use the first page header / footer IDs for the first page of the section. If unset, it inherits from DocumentStyle's use_first_page_header_footer for the first section. If the value is unset for subsequent sectors, it should be interpreted as false. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  useFirstPageHeaderFooter?: boolean;
-  /** Optional. Indicates whether to flip the dimensions of DocumentStyle's page_size for this section, which allows changing the page orientation between portrait and landscape. If unset, the value inherits from DocumentStyle's flip_page_orientation. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  flipPageOrientation?: boolean;
-  /** The ID of the default header. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's default_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
-  defaultHeaderId?: string;
-  /** The bottom page margin of the section. If unset, the value defaults to margin_bottom from DocumentStyle. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  marginBottom?: Dimension;
-}
-export const SectionStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    marginTop: S.optional(Dimension),
-    marginHeader: S.optional(Dimension),
-    evenPageFooterId: S.optional(S.String),
-    firstPageFooterId: S.optional(S.String),
-    defaultFooterId: S.optional(S.String),
-    pageNumberStart: S.optional(S.Number),
-    columnProperties: S.optional(SectionColumnPropertiesList),
-    evenPageHeaderId: S.optional(S.String),
-    marginLeft: S.optional(Dimension),
-    marginRight: S.optional(Dimension),
-    firstPageHeaderId: S.optional(S.String),
-    sectionType: S.optional(SectionStyleSectionTypeEnum),
-    columnSeparatorStyle: S.optional(SectionStyleColumnSeparatorStyleEnum),
-    contentDirection: S.optional(SectionStyleContentDirectionEnum),
-    marginFooter: S.optional(Dimension),
-    useFirstPageHeaderFooter: S.optional(S.Boolean),
-    flipPageOrientation: S.optional(S.Boolean),
-    defaultHeaderId: S.optional(S.String),
-    marginBottom: S.optional(Dimension),
-  }),
-).annotate({ identifier: "SectionStyle" }) as any as S.Schema<SectionStyle>;
-
-/** Updates the SectionStyle. */
-export interface UpdateSectionStyleRequest {
-  /** The styles to be set on the section. Certain section style changes may cause other changes in order to mirror the behavior of the Docs editor. See the documentation of SectionStyle for more information. */
-  sectionStyle?: SectionStyle;
-  /** The fields that should be updated. At least one field must be specified. The root `section_style` is implied and must not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the left margin, set `fields` to `"margin_left"`. */
-  fields?: string;
-  /** The range overlapping the sections to style. Because section breaks can only be inserted inside the body, the segment ID field must be empty. */
-  range?: Range;
-}
-export const UpdateSectionStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sectionStyle: S.optional(SectionStyle),
-    fields: S.optional(S.String),
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "UpdateSectionStyleRequest",
-}) as any as S.Schema<UpdateSectionStyleRequest>;
-
-/** Deletes a row from a table. */
-export interface DeleteTableRowRequest {
-  /** The reference table cell location from which the row will be deleted. The row this cell spans will be deleted. If this is a merged cell that spans multiple rows, all rows that the cell spans will be deleted. If no rows remain in the table after this deletion, the whole table is deleted. */
-  tableCellLocation?: TableCellLocation;
-}
-export const DeleteTableRowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "DeleteTableRowRequest",
-}) as any as S.Schema<DeleteTableRowRequest>;
-
-/** Deletes a column from a table. */
-export interface DeleteTableColumnRequest {
-  /** The reference table cell location from which the column will be deleted. The column this cell spans will be deleted. If this is a merged cell that spans multiple columns, all columns that the cell spans will be deleted. If no columns remain in the table after this deletion, the whole table is deleted. */
-  tableCellLocation?: TableCellLocation;
-}
-export const DeleteTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "DeleteTableColumnRequest",
-}) as any as S.Schema<DeleteTableColumnRequest>;
-
-/** Inserts an empty row into a table. */
-export interface InsertTableRowRequest {
-  /** Whether to insert new row below the reference cell location. - `True`: insert below the cell. - `False`: insert above the cell. */
-  insertBelow?: boolean;
-  /** The reference table cell location from which rows will be inserted. A new row will be inserted above (or below) the row where the reference cell is. If the reference cell is a merged cell, a new row will be inserted above (or below) the merged cell. */
-  tableCellLocation?: TableCellLocation;
-}
-export const InsertTableRowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insertBelow: S.optional(S.Boolean),
-    tableCellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({
-  identifier: "InsertTableRowRequest",
-}) as any as S.Schema<InsertTableRowRequest>;
-
-/** Inserts a page break followed by a newline at the specified location. */
-export interface InsertPageBreakRequest {
-  /** Inserts the page break at a specific index in the document. The page break must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Page breaks cannot be inserted inside a table, equation, footnote, header or footer. Since page breaks can only be inserted inside the body, the segment ID field must be empty. */
-  location?: Location;
-  /** Inserts the page break at the end of the document body. Page breaks cannot be inserted inside a footnote, header or footer. Since page breaks can only be inserted inside the body, the segment ID field must be empty. */
-  endOfSegmentLocation?: EndOfSegmentLocation;
-}
-export const InsertPageBreakRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-  }),
-).annotate({
-  identifier: "InsertPageBreakRequest",
-}) as any as S.Schema<InsertPageBreakRequest>;
-
-/** Creates a Footnote segment and inserts a new FootnoteReference to it at the given location. The new Footnote segment will contain a space followed by a newline character. */
-export interface CreateFootnoteRequest {
-  /** Inserts the footnote reference at the end of the document body. Footnote references cannot be inserted inside a header, footer or footnote. Since footnote references can only be inserted in the body, the segment ID field must be empty. */
-  endOfSegmentLocation?: EndOfSegmentLocation;
-  /** Inserts the footnote reference at a specific index in the document. The footnote reference must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Footnote references cannot be inserted inside an equation, header, footer or footnote. Since footnote references can only be inserted in the body, the segment ID field must be empty. */
-  location?: Location;
-}
-export const CreateFootnoteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    location: S.optional(Location),
-  }),
-).annotate({
-  identifier: "CreateFootnoteRequest",
-}) as any as S.Schema<CreateFootnoteRequest>;
-
-/** Properties specific to a RichLink. */
-export interface RichLinkProperties {
-  /** The title of the RichLink as displayed in the link. This title matches the title of the linked resource at the time of the insertion or last update of the link. This field is always present. */
-  title?: string;
-  /** The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of the RichLink, if there's one (for example, when it's a file in Drive). */
-  mimeType?: string;
-  /** The URI to the RichLink. This is always present. */
-  uri?: string;
-}
-export const RichLinkProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    mimeType: S.optional(S.String),
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RichLinkProperties",
-}) as any as S.Schema<RichLinkProperties>;
-
-/** Inserts a RichLink at the specified location. */
-export interface InsertRichLinkRequest {
-  /** Inserts the rich link at a specific index in the document. The rich link must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). The rich link cannot be inserted inside an equation. */
-  location?: Location;
-  /** Inserts the rich link at the end of a header, footer, footnote or the document body. */
-  endOfSegmentLocation?: EndOfSegmentLocation;
-  /** The properties of the rich link to insert. */
-  richLinkProperties?: RichLinkProperties;
-}
-export const InsertRichLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-    richLinkProperties: S.optional(RichLinkProperties),
-  }),
-).annotate({
-  identifier: "InsertRichLinkRequest",
-}) as any as S.Schema<InsertRichLinkRequest>;
-
-/** Creates a NamedRange referencing the given range. */
-export interface CreateNamedRangeRequest {
-  /** The range to apply the name to. */
-  range?: Range;
-  /** The name of the NamedRange. Names do not need to be unique. Names must be at least 1 character and no more than 256 characters, measured in UTF-16 code units. */
-  name?: string;
-}
-export const CreateNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNamedRangeRequest",
-}) as any as S.Schema<CreateNamedRangeRequest>;
-
-/** Deletes a Header from the document. */
-export interface DeleteHeaderRequest {
-  /** The id of the header to delete. If this header is defined on DocumentStyle, the reference to this header is removed, resulting in no header of that type for the first section of the document. If this header is defined on a SectionStyle, the reference to this header is removed and the header of that type is now continued from the previous section. */
-  headerId?: string;
-  /** The tab containing the header to delete. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
-  tabId?: string;
-}
-export const DeleteHeaderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headerId: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteHeaderRequest",
-}) as any as S.Schema<DeleteHeaderRequest>;
-
-export type TableCellStyleContentAlignmentEnum =
-  | "CONTENT_ALIGNMENT_UNSPECIFIED"
-  | "CONTENT_ALIGNMENT_UNSUPPORTED"
-  | "TOP"
-  | "MIDDLE"
-  | "BOTTOM";
-export const TableCellStyleContentAlignmentEnum = /*@__PURE__*/ S.String;
-
-export type TableCellBorderDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH";
-export const TableCellBorderDashStyleEnum = /*@__PURE__*/ S.String;
-
-/** A border around a table cell. Table cell borders cannot be transparent. To hide a table cell border, make its width 0. */
-export interface TableCellBorder {
-  /** The color of the border. This color cannot be transparent. */
-  color?: OptionalColor;
-  /** The dash style of the border. */
-  dashStyle?: TableCellBorderDashStyleEnum | (string & {});
-  /** The width of the border. */
-  width?: Dimension;
-}
-export const TableCellBorder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color: S.optional(OptionalColor),
-    dashStyle: S.optional(TableCellBorderDashStyleEnum),
-    width: S.optional(Dimension),
-  }),
-).annotate({
-  identifier: "TableCellBorder",
-}) as any as S.Schema<TableCellBorder>;
-
-/** The style of a TableCell. Inherited table cell styles are represented as unset fields in this message. A table cell style can inherit from the table's style. */
-export interface TableCellStyle {
-  /** The left padding of the cell. */
-  paddingLeft?: Dimension;
-  /** The alignment of the content in the table cell. The default alignment matches the alignment for newly created table cells in the Docs editor. */
-  contentAlignment?: TableCellStyleContentAlignmentEnum | (string & {});
-  /** The top border of the cell. */
-  borderTop?: TableCellBorder;
-  /** The top padding of the cell. */
-  paddingTop?: Dimension;
-  /** The column span of the cell. This property is read-only. */
-  columnSpan?: number;
-  /** The background color of the cell. */
-  backgroundColor?: OptionalColor;
-  /** The right border of the cell. */
-  borderRight?: TableCellBorder;
-  /** The left border of the cell. */
-  borderLeft?: TableCellBorder;
-  /** The right padding of the cell. */
-  paddingRight?: Dimension;
-  /** The bottom padding of the cell. */
-  paddingBottom?: Dimension;
-  /** The bottom border of the cell. */
-  borderBottom?: TableCellBorder;
-  /** The row span of the cell. This property is read-only. */
-  rowSpan?: number;
-}
-export const TableCellStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paddingLeft: S.optional(Dimension),
-    contentAlignment: S.optional(TableCellStyleContentAlignmentEnum),
-    borderTop: S.optional(TableCellBorder),
-    paddingTop: S.optional(Dimension),
-    columnSpan: S.optional(S.Number),
-    backgroundColor: S.optional(OptionalColor),
-    borderRight: S.optional(TableCellBorder),
-    borderLeft: S.optional(TableCellBorder),
-    paddingRight: S.optional(Dimension),
-    paddingBottom: S.optional(Dimension),
-    borderBottom: S.optional(TableCellBorder),
-    rowSpan: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TableCellStyle" }) as any as S.Schema<TableCellStyle>;
-
-/** Updates the style of a range of table cells. */
-export interface UpdateTableCellStyleRequest {
-  /** The fields that should be updated. At least one field must be specified. The root `tableCellStyle` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the table cell background color, set `fields` to `"backgroundColor"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
-  fields?: string;
-  /** The location where the table starts in the document. When specified, the updates are applied to all the cells in the table. */
-  tableStartLocation?: Location;
-  /** The style to set on the table cells. When updating borders, if a cell shares a border with an adjacent cell, the corresponding border property of the adjacent cell is updated as well. Borders that are merged and invisible are not updated. Since updating a border shared by adjacent cells in the same request can cause conflicting border updates, border updates are applied in the following order: - `border_right` - `border_left` - `border_bottom` - `border_top` */
-  tableCellStyle?: TableCellStyle;
-  /** The table range representing the subset of the table to which the updates are applied. */
-  tableRange?: TableRange;
-}
-export const UpdateTableCellStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(S.String),
-    tableStartLocation: S.optional(Location),
-    tableCellStyle: S.optional(TableCellStyle),
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({
-  identifier: "UpdateTableCellStyleRequest",
-}) as any as S.Schema<UpdateTableCellStyleRequest>;
-
-/** Updates the number of pinned table header rows in a table. */
-export interface PinTableHeaderRowsRequest {
-  /** The number of table rows to pin, where 0 implies that all rows are unpinned. */
-  pinnedHeaderRowsCount?: number;
-  /** The location where the table starts in the document. */
-  tableStartLocation?: Location;
-}
-export const PinTableHeaderRowsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pinnedHeaderRowsCount: S.optional(S.Number),
-    tableStartLocation: S.optional(Location),
-  }),
-).annotate({
-  identifier: "PinTableHeaderRowsRequest",
-}) as any as S.Schema<PinTableHeaderRowsRequest>;
-
-/** Deletes a tab. If the tab has child tabs, they are deleted as well. */
-export interface DeleteTabRequest {
-  /** The ID of the tab to delete. */
-  tabId?: string;
-}
-export const DeleteTabRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteTabRequest",
-}) as any as S.Schema<DeleteTabRequest>;
-
-/** A single update to apply to a document. */
-export interface Request {
-  /** Creates bullets for paragraphs. */
-  createParagraphBullets?: CreateParagraphBulletsRequest;
-  /** Deletes bullets from paragraphs. */
-  deleteParagraphBullets?: DeleteParagraphBulletsRequest;
-  /** Inserts an empty column into a table. */
-  insertTableColumn?: InsertTableColumnRequest;
-  /** Replaces all instances of the specified text. */
-  replaceAllText?: ReplaceAllTextRequest;
-  /** Updates the style of the document. */
-  updateDocumentStyle?: UpdateDocumentStyleRequest;
-  /** Inserts a person mention. */
-  insertPerson?: InsertPersonRequest;
-  /** Creates a header. */
-  createHeader?: CreateHeaderRequest;
-  /** Updates the properties of a document tab. */
-  updateDocumentTabProperties?: UpdateDocumentTabPropertiesRequest;
-  /** Merges cells in a table. */
-  mergeTableCells?: MergeTableCellsRequest;
-  /** Creates a footer. */
-  createFooter?: CreateFooterRequest;
-  /** Inserts a table at the specified location. */
-  insertTable?: InsertTableRequest;
-  /** Deletes a named range. */
-  deleteNamedRange?: DeleteNamedRangeRequest;
-  /** Deletes a footer from the document. */
-  deleteFooter?: DeleteFooterRequest;
-  /** Inserts an inline image at the specified location. */
-  insertInlineImage?: InsertInlineImageRequest;
-  /** Updates the text style at the specified range. */
-  updateTextStyle?: UpdateTextStyleRequest;
-  /** Inserts a section break at the specified location. */
-  insertSectionBreak?: InsertSectionBreakRequest;
-  /** Updates a named style. */
-  updateNamedStyle?: UpdateNamedStyleRequest;
-  /** Adds a document tab. */
-  addDocumentTab?: AddDocumentTabRequest;
-  /** Updates the properties of columns in a table. */
-  updateTableColumnProperties?: UpdateTableColumnPropertiesRequest;
-  /** Inserts a date. */
-  insertDate?: InsertDateRequest;
-  /** Deletes content from the document. */
-  deleteContentRange?: DeleteContentRangeRequest;
-  /** Unmerges cells in a table. */
-  unmergeTableCells?: UnmergeTableCellsRequest;
-  /** Replaces the content in a named range. */
-  replaceNamedRangeContent?: ReplaceNamedRangeContentRequest;
-  /** Deletes a positioned object from the document. */
-  deletePositionedObject?: DeletePositionedObjectRequest;
-  /** Replaces an image in the document. */
-  replaceImage?: ReplaceImageRequest;
-  /** Inserts text at the specified location. */
-  insertText?: InsertTextRequest;
-  /** Updates the paragraph style at the specified range. */
-  updateParagraphStyle?: UpdateParagraphStyleRequest;
-  /** Updates the row style in a table. */
-  updateTableRowStyle?: UpdateTableRowStyleRequest;
-  /** Updates the section style of the specified range. */
-  updateSectionStyle?: UpdateSectionStyleRequest;
-  /** Deletes a row from a table. */
-  deleteTableRow?: DeleteTableRowRequest;
-  /** Deletes a column from a table. */
-  deleteTableColumn?: DeleteTableColumnRequest;
-  /** Inserts an empty row into a table. */
-  insertTableRow?: InsertTableRowRequest;
-  /** Inserts a page break at the specified location. */
-  insertPageBreak?: InsertPageBreakRequest;
-  /** Creates a footnote. */
-  createFootnote?: CreateFootnoteRequest;
-  /** Insert a rich link. */
-  insertRichLink?: InsertRichLinkRequest;
-  /** Creates a named range. */
-  createNamedRange?: CreateNamedRangeRequest;
-  /** Deletes a header from the document. */
-  deleteHeader?: DeleteHeaderRequest;
-  /** Updates the style of table cells. */
-  updateTableCellStyle?: UpdateTableCellStyleRequest;
-  /** Updates the number of pinned header rows in a table. */
-  pinTableHeaderRows?: PinTableHeaderRowsRequest;
-  /** Deletes a document tab. */
-  deleteTab?: DeleteTabRequest;
-}
-export const Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createParagraphBullets: S.optional(CreateParagraphBulletsRequest),
-    deleteParagraphBullets: S.optional(DeleteParagraphBulletsRequest),
-    insertTableColumn: S.optional(InsertTableColumnRequest),
-    replaceAllText: S.optional(ReplaceAllTextRequest),
-    updateDocumentStyle: S.optional(UpdateDocumentStyleRequest),
-    insertPerson: S.optional(InsertPersonRequest),
-    createHeader: S.optional(CreateHeaderRequest),
-    updateDocumentTabProperties: S.optional(UpdateDocumentTabPropertiesRequest),
-    mergeTableCells: S.optional(MergeTableCellsRequest),
-    createFooter: S.optional(CreateFooterRequest),
-    insertTable: S.optional(InsertTableRequest),
-    deleteNamedRange: S.optional(DeleteNamedRangeRequest),
-    deleteFooter: S.optional(DeleteFooterRequest),
-    insertInlineImage: S.optional(InsertInlineImageRequest),
-    updateTextStyle: S.optional(UpdateTextStyleRequest),
-    insertSectionBreak: S.optional(InsertSectionBreakRequest),
-    updateNamedStyle: S.optional(UpdateNamedStyleRequest),
-    addDocumentTab: S.optional(AddDocumentTabRequest),
-    updateTableColumnProperties: S.optional(UpdateTableColumnPropertiesRequest),
-    insertDate: S.optional(InsertDateRequest),
-    deleteContentRange: S.optional(DeleteContentRangeRequest),
-    unmergeTableCells: S.optional(UnmergeTableCellsRequest),
-    replaceNamedRangeContent: S.optional(ReplaceNamedRangeContentRequest),
-    deletePositionedObject: S.optional(DeletePositionedObjectRequest),
-    replaceImage: S.optional(ReplaceImageRequest),
-    insertText: S.optional(InsertTextRequest),
-    updateParagraphStyle: S.optional(UpdateParagraphStyleRequest),
-    updateTableRowStyle: S.optional(UpdateTableRowStyleRequest),
-    updateSectionStyle: S.optional(UpdateSectionStyleRequest),
-    deleteTableRow: S.optional(DeleteTableRowRequest),
-    deleteTableColumn: S.optional(DeleteTableColumnRequest),
-    insertTableRow: S.optional(InsertTableRowRequest),
-    insertPageBreak: S.optional(InsertPageBreakRequest),
-    createFootnote: S.optional(CreateFootnoteRequest),
-    insertRichLink: S.optional(InsertRichLinkRequest),
-    createNamedRange: S.optional(CreateNamedRangeRequest),
-    deleteHeader: S.optional(DeleteHeaderRequest),
-    updateTableCellStyle: S.optional(UpdateTableCellStyleRequest),
-    pinTableHeaderRows: S.optional(PinTableHeaderRowsRequest),
-    deleteTab: S.optional(DeleteTabRequest),
-  }),
-).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
-
-export type RequestList = Array<Request>;
-export const RequestList = /*@__PURE__*/ S.Array(
-  Request,
-) as any as S.Schema<RequestList>;
-
-/** Request message for BatchUpdateDocument. */
-export interface BatchUpdateDocumentRequest {
-  /** Provides control over how write requests are executed. */
-  writeControl?: WriteControl;
-  /** A list of updates to apply to the document. */
-  requests?: RequestList;
-}
-export const BatchUpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    writeControl: S.optional(WriteControl),
-    requests: S.optional(RequestList),
-  }),
-).annotate({
-  identifier: "BatchUpdateDocumentRequest",
-}) as any as S.Schema<BatchUpdateDocumentRequest>;
-
-export interface BatchUpdateDocumentsRequest {
-  /** The ID of the document to update. */
-  documentId: string;
-  /** Request body */
-  body?: BatchUpdateDocumentRequest;
-}
-export const BatchUpdateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentId: S.String.pipe(T.Label()),
-    body: S.optional(BatchUpdateDocumentRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/documents/{documentId}:batchUpdate",
-      baseUrl: "https://docs.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchUpdateDocumentsRequest",
-}) as any as S.Schema<BatchUpdateDocumentsRequest>;
-
-/** The result of replacing text. */
-export interface ReplaceAllTextResponse {
-  /** The number of occurrences changed by replacing all text. */
-  occurrencesChanged?: number;
-}
-export const ReplaceAllTextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    occurrencesChanged: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ReplaceAllTextResponse",
-}) as any as S.Schema<ReplaceAllTextResponse>;
-
-/** The result of inserting an inline image. */
-export interface InsertInlineImageResponse {
-  /** The ID of the created InlineObject. */
-  objectId?: string;
-}
-export const InsertInlineImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsertInlineImageResponse",
-}) as any as S.Schema<InsertInlineImageResponse>;
-
-/** The result of creating a footnote. */
-export interface CreateFootnoteResponse {
-  /** The ID of the created footnote. */
-  footnoteId?: string;
-}
-export const CreateFootnoteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    footnoteId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateFootnoteResponse",
-}) as any as S.Schema<CreateFootnoteResponse>;
-
-/** The result of inserting an embedded Google Sheets chart. */
-export interface InsertInlineSheetsChartResponse {
-  /** The object ID of the inserted chart. */
-  objectId?: string;
-}
-export const InsertInlineSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsertInlineSheetsChartResponse",
-}) as any as S.Schema<InsertInlineSheetsChartResponse>;
-
-/** The result of creating a header. */
-export interface CreateHeaderResponse {
-  /** The ID of the created header. */
-  headerId?: string;
-}
-export const CreateHeaderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateHeaderResponse",
-}) as any as S.Schema<CreateHeaderResponse>;
-
-/** The result of creating a named range. */
-export interface CreateNamedRangeResponse {
-  /** The ID of the created named range. */
-  namedRangeId?: string;
-}
-export const CreateNamedRangeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedRangeId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNamedRangeResponse",
-}) as any as S.Schema<CreateNamedRangeResponse>;
-
-/** The result of adding a document tab. */
-export interface AddDocumentTabResponse {
-  /** The properties of the newly added tab. */
-  tabProperties?: TabProperties;
-}
-export const AddDocumentTabResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabProperties: S.optional(TabProperties),
-  }),
-).annotate({
-  identifier: "AddDocumentTabResponse",
-}) as any as S.Schema<AddDocumentTabResponse>;
-
-/** The result of creating a footer. */
-export interface CreateFooterResponse {
-  /** The ID of the created footer. */
-  footerId?: string;
-}
-export const CreateFooterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    footerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateFooterResponse",
-}) as any as S.Schema<CreateFooterResponse>;
-
-/** A single response from an update. */
-export interface Response {
-  /** The result of replacing text. */
-  replaceAllText?: ReplaceAllTextResponse;
-  /** The result of inserting an inline image. */
-  insertInlineImage?: InsertInlineImageResponse;
-  /** The result of creating a footnote. */
-  createFootnote?: CreateFootnoteResponse;
-  /** The result of inserting an inline Google Sheets chart. */
-  insertInlineSheetsChart?: InsertInlineSheetsChartResponse;
-  /** The result of creating a header. */
-  createHeader?: CreateHeaderResponse;
-  /** The result of creating a named range. */
-  createNamedRange?: CreateNamedRangeResponse;
-  /** The result of adding a document tab. */
-  addDocumentTab?: AddDocumentTabResponse;
-  /** The result of creating a footer. */
-  createFooter?: CreateFooterResponse;
-}
-export const Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replaceAllText: S.optional(ReplaceAllTextResponse),
-    insertInlineImage: S.optional(InsertInlineImageResponse),
-    createFootnote: S.optional(CreateFootnoteResponse),
-    insertInlineSheetsChart: S.optional(InsertInlineSheetsChartResponse),
-    createHeader: S.optional(CreateHeaderResponse),
-    createNamedRange: S.optional(CreateNamedRangeResponse),
-    addDocumentTab: S.optional(AddDocumentTabResponse),
-    createFooter: S.optional(CreateFooterResponse),
-  }),
-).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
-
-export type ResponseList = Array<Response>;
-export const ResponseList = /*@__PURE__*/ S.Array(
-  Response,
-) as any as S.Schema<ResponseList>;
-
-/** Response message from a BatchUpdateDocument request. */
-export interface BatchUpdateDocumentResponse {
-  /** The ID of the document to which the updates were applied to. */
-  documentId?: string;
-  /** The updated write control after applying the request. */
-  writeControl?: WriteControl;
-  /** The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty. */
-  replies?: ResponseList;
-}
-export const BatchUpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentId: S.optional(S.String),
-    writeControl: S.optional(WriteControl),
-    replies: S.optional(ResponseList),
-  }),
-).annotate({
-  identifier: "BatchUpdateDocumentResponse",
-}) as any as S.Schema<BatchUpdateDocumentResponse>;
-
-/** The properties of an embedded drawing and used to differentiate the object type. An embedded drawing is one that's created and edited within a document. Note that extensive details are not supported. */
-export interface EmbeddedDrawingProperties {}
-export const EmbeddedDrawingProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EmbeddedDrawingProperties",
-}) as any as S.Schema<EmbeddedDrawingProperties>;
-
-export type EmbeddedObjectBorderDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH";
-export const EmbeddedObjectBorderDashStyleEnum = /*@__PURE__*/ S.String;
 
 export type EmbeddedObjectBorderPropertyStateEnum = "RENDERED" | "NOT_RENDERED";
 export const EmbeddedObjectBorderPropertyStateEnum = /*@__PURE__*/ S.String;
@@ -2156,6 +215,20 @@ export const LinkedContentReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LinkedContentReference",
 }) as any as S.Schema<LinkedContentReference>;
+
+/** A width and height. */
+export interface Size {
+  /** The width of the object. */
+  width?: Dimension;
+  /** The height of the object. */
+  height?: Dimension;
+}
+export const Size = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    width: S.optional(Dimension),
+    height: S.optional(Dimension),
+  }),
+).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
 /** The crop properties of an image. The crop rectangle is represented using fractional offsets from the original content's 4 edges. - If the offset is in the interval (0, 1), the corresponding edge of crop rectangle is positioned inside of the image's original bounding rectangle. - If the offset is negative or greater than 1, the corresponding edge of crop rectangle is positioned outside of the image's original bounding rectangle. - If all offsets and rotation angles are 0, the image is not cropped. */
 export interface CropProperties {
@@ -2486,6 +559,11 @@ export const SuggestedInlineObjectPropertiesMap = /*@__PURE__*/ S.Record(
   SuggestedInlineObjectProperties,
 ) as any as S.Schema<SuggestedInlineObjectPropertiesMap>;
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
 /** An object that appears inline with text. An InlineObject contains an EmbeddedObject such as an image. */
 export interface InlineObject {
   /** The properties of this inline object. */
@@ -2596,6 +674,102 @@ export const DocumentStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DocumentStyleSuggestionState",
 }) as any as S.Schema<DocumentStyleSuggestionState>;
+
+export type DocumentFormatDocumentModeEnum =
+  | "DOCUMENT_MODE_UNSPECIFIED"
+  | "PAGES"
+  | "PAGELESS";
+export const DocumentFormatDocumentModeEnum = /*@__PURE__*/ S.String;
+
+/** Represents document-level format settings. */
+export interface DocumentFormat {
+  /** Whether the document has pages or is pageless. */
+  documentMode?: DocumentFormatDocumentModeEnum | (string & {});
+}
+export const DocumentFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentMode: S.optional(DocumentFormatDocumentModeEnum),
+  }),
+).annotate({ identifier: "DocumentFormat" }) as any as S.Schema<DocumentFormat>;
+
+/** Represents the background of a document. */
+export interface Background {
+  /** The background color. */
+  color?: OptionalColor;
+}
+export const Background = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    color: S.optional(OptionalColor),
+  }),
+).annotate({ identifier: "Background" }) as any as S.Schema<Background>;
+
+/** The style of the document. */
+export interface DocumentStyle {
+  /** Indicates whether DocumentStyle margin_header, SectionStyle margin_header and DocumentStyle margin_footer, SectionStyle margin_footer are respected. When false, the default values in the Docs editor for header and footer margin is used. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  useCustomHeaderFooterMargins?: boolean;
+  /** Specifies document-level format settings, such as the document mode (pages vs pageless). */
+  documentFormat?: DocumentFormat;
+  /** The bottom page margin. Updating the bottom page margin on the document style clears the bottom page margin on all section styles. If DocumentMode is PAGELESS, this property will not be rendered. */
+  marginBottom?: Dimension;
+  /** The ID of the header used only for even pages. The value of use_even_page_header_footer determines whether to use the default_header_id or this value for the header on even pages. If not set, there's no even page header. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  evenPageHeaderId?: string;
+  /** Indicates whether to use the even page header / footer IDs for the even pages. If DocumentMode is PAGELESS, this property will not be rendered. */
+  useEvenPageHeaderFooter?: boolean;
+  /** The ID of the default footer. If not set, there's no default footer. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  defaultFooterId?: string;
+  /** The ID of the footer used only for even pages. The value of use_even_page_header_footer determines whether to use the default_footer_id or this value for the footer on even pages. If not set, there's no even page footer. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  evenPageFooterId?: string;
+  /** The page number from which to start counting the number of pages. If DocumentMode is PAGELESS, this property will not be rendered. */
+  pageNumberStart?: number;
+  /** The amount of space between the bottom of the page and the contents of the footer. If DocumentMode is PAGELESS, this property will not be rendered. */
+  marginFooter?: Dimension;
+  /** The left page margin. Updating the left page margin on the document style clears the left page margin on all section styles. It may also cause columns to resize in all sections. If DocumentMode is PAGELESS, this property will not be rendered. */
+  marginLeft?: Dimension;
+  /** Indicates whether to use the first page header / footer IDs for the first page. If DocumentMode is PAGELESS, this property will not be rendered. */
+  useFirstPageHeaderFooter?: boolean;
+  /** The ID of the header used only for the first page. If not set then a unique header for the first page does not exist. The value of use_first_page_header_footer determines whether to use the default_header_id or this value for the header on the first page. If not set, there's no first page header. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  firstPageHeaderId?: string;
+  /** The background of the document. Documents cannot have a transparent background color. */
+  background?: Background;
+  /** The amount of space between the top of the page and the contents of the header. If DocumentMode is PAGELESS, this property will not be rendered. */
+  marginHeader?: Dimension;
+  /** The ID of the footer used only for the first page. If not set then a unique footer for the first page does not exist. The value of use_first_page_header_footer determines whether to use the default_footer_id or this value for the footer on the first page. If not set, there's no first page footer. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  firstPageFooterId?: string;
+  /** The top page margin. Updating the top page margin on the document style clears the top page margin on all section styles. If DocumentMode is PAGELESS, this property will not be rendered. */
+  marginTop?: Dimension;
+  /** The size of a page in the document. If DocumentMode is PAGELESS, this property will not be rendered. */
+  pageSize?: Size;
+  /** Optional. Indicates whether to flip the dimensions of the page_size, which allows changing the page orientation between portrait and landscape. If DocumentMode is PAGELESS, this property will not be rendered. */
+  flipPageOrientation?: boolean;
+  /** The right page margin. Updating the right page margin on the document style clears the right page margin on all section styles. It may also cause columns to resize in all sections. If DocumentMode is PAGELESS, this property will not be rendered. */
+  marginRight?: Dimension;
+  /** The ID of the default header. If not set, there's no default header. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  defaultHeaderId?: string;
+}
+export const DocumentStyle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    useCustomHeaderFooterMargins: S.optional(S.Boolean),
+    documentFormat: S.optional(DocumentFormat),
+    marginBottom: S.optional(Dimension),
+    evenPageHeaderId: S.optional(S.String),
+    useEvenPageHeaderFooter: S.optional(S.Boolean),
+    defaultFooterId: S.optional(S.String),
+    evenPageFooterId: S.optional(S.String),
+    pageNumberStart: S.optional(S.Number),
+    marginFooter: S.optional(Dimension),
+    marginLeft: S.optional(Dimension),
+    useFirstPageHeaderFooter: S.optional(S.Boolean),
+    firstPageHeaderId: S.optional(S.String),
+    background: S.optional(Background),
+    marginHeader: S.optional(Dimension),
+    firstPageFooterId: S.optional(S.String),
+    marginTop: S.optional(Dimension),
+    pageSize: S.optional(Size),
+    flipPageOrientation: S.optional(S.Boolean),
+    marginRight: S.optional(Dimension),
+    defaultHeaderId: S.optional(S.String),
+  }),
+).annotate({ identifier: "DocumentStyle" }) as any as S.Schema<DocumentStyle>;
 
 /** A suggested change to the DocumentStyle. */
 export interface SuggestedDocumentStyle {
@@ -2766,6 +940,23 @@ export const PositionedObjectMap = /*@__PURE__*/ S.Record(
   PositionedObject,
 ) as any as S.Schema<PositionedObjectMap>;
 
+/** Styles that apply to a table row. */
+export interface TableRowStyle {
+  /** The minimum height of the row. The row will be rendered in the Docs editor at a height equal to or greater than this value in order to show all the content in the row's cells. */
+  minRowHeight?: Dimension;
+  /** Whether the row is a table header. */
+  tableHeader?: boolean;
+  /** Whether the row cannot overflow across page or column boundaries. */
+  preventOverflow?: boolean;
+}
+export const TableRowStyle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minRowHeight: S.optional(Dimension),
+    tableHeader: S.optional(S.Boolean),
+    preventOverflow: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "TableRowStyle" }) as any as S.Schema<TableRowStyle>;
+
 /** A mask that indicates which of the fields on the base TableRowStyle have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface TableRowStyleSuggestionState {
   /** Indicates if there was a suggested change to min_row_height. */
@@ -2802,6 +993,84 @@ export const SuggestedTableRowStyleMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedTableRowStyle,
 ) as any as S.Schema<SuggestedTableRowStyleMap>;
+
+export type TableCellStyleContentAlignmentEnum =
+  | "CONTENT_ALIGNMENT_UNSPECIFIED"
+  | "CONTENT_ALIGNMENT_UNSUPPORTED"
+  | "TOP"
+  | "MIDDLE"
+  | "BOTTOM";
+export const TableCellStyleContentAlignmentEnum = /*@__PURE__*/ S.String;
+
+export type TableCellBorderDashStyleEnum =
+  | "DASH_STYLE_UNSPECIFIED"
+  | "SOLID"
+  | "DOT"
+  | "DASH";
+export const TableCellBorderDashStyleEnum = /*@__PURE__*/ S.String;
+
+/** A border around a table cell. Table cell borders cannot be transparent. To hide a table cell border, make its width 0. */
+export interface TableCellBorder {
+  /** The color of the border. This color cannot be transparent. */
+  color?: OptionalColor;
+  /** The dash style of the border. */
+  dashStyle?: TableCellBorderDashStyleEnum | (string & {});
+  /** The width of the border. */
+  width?: Dimension;
+}
+export const TableCellBorder = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    color: S.optional(OptionalColor),
+    dashStyle: S.optional(TableCellBorderDashStyleEnum),
+    width: S.optional(Dimension),
+  }),
+).annotate({
+  identifier: "TableCellBorder",
+}) as any as S.Schema<TableCellBorder>;
+
+/** The style of a TableCell. Inherited table cell styles are represented as unset fields in this message. A table cell style can inherit from the table's style. */
+export interface TableCellStyle {
+  /** The left padding of the cell. */
+  paddingLeft?: Dimension;
+  /** The alignment of the content in the table cell. The default alignment matches the alignment for newly created table cells in the Docs editor. */
+  contentAlignment?: TableCellStyleContentAlignmentEnum | (string & {});
+  /** The top border of the cell. */
+  borderTop?: TableCellBorder;
+  /** The top padding of the cell. */
+  paddingTop?: Dimension;
+  /** The column span of the cell. This property is read-only. */
+  columnSpan?: number;
+  /** The background color of the cell. */
+  backgroundColor?: OptionalColor;
+  /** The right border of the cell. */
+  borderRight?: TableCellBorder;
+  /** The left border of the cell. */
+  borderLeft?: TableCellBorder;
+  /** The right padding of the cell. */
+  paddingRight?: Dimension;
+  /** The bottom padding of the cell. */
+  paddingBottom?: Dimension;
+  /** The bottom border of the cell. */
+  borderBottom?: TableCellBorder;
+  /** The row span of the cell. This property is read-only. */
+  rowSpan?: number;
+}
+export const TableCellStyle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paddingLeft: S.optional(Dimension),
+    contentAlignment: S.optional(TableCellStyleContentAlignmentEnum),
+    borderTop: S.optional(TableCellBorder),
+    paddingTop: S.optional(Dimension),
+    columnSpan: S.optional(S.Number),
+    backgroundColor: S.optional(OptionalColor),
+    borderRight: S.optional(TableCellBorder),
+    borderLeft: S.optional(TableCellBorder),
+    paddingRight: S.optional(Dimension),
+    paddingBottom: S.optional(Dimension),
+    borderBottom: S.optional(TableCellBorder),
+    rowSpan: S.optional(S.Number),
+  }),
+).annotate({ identifier: "TableCellStyle" }) as any as S.Schema<TableCellStyle>;
 
 /** A mask that indicates which of the fields on the base TableCellStyle have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface TableCellStyleSuggestionState {
@@ -2941,6 +1210,28 @@ export const TableRowList = /*@__PURE__*/ S.Array(
   TableRow,
 ) as any as S.Schema<TableRowList>;
 
+export type TableColumnPropertiesWidthTypeEnum =
+  | "WIDTH_TYPE_UNSPECIFIED"
+  | "EVENLY_DISTRIBUTED"
+  | "FIXED_WIDTH";
+export const TableColumnPropertiesWidthTypeEnum = /*@__PURE__*/ S.String;
+
+/** The properties of a column in a table. */
+export interface TableColumnProperties {
+  /** The width type of the column. */
+  widthType?: TableColumnPropertiesWidthTypeEnum | (string & {});
+  /** The width of the column. Set when the column's `width_type` is FIXED_WIDTH. */
+  width?: Dimension;
+}
+export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    widthType: S.optional(TableColumnPropertiesWidthTypeEnum),
+    width: S.optional(Dimension),
+  }),
+).annotate({
+  identifier: "TableColumnProperties",
+}) as any as S.Schema<TableColumnProperties>;
+
 export type TableColumnPropertiesList = Array<TableColumnProperties>;
 export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
   TableColumnProperties,
@@ -2982,6 +1273,110 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
     suggestedDeletionIds: S.optional(StringList),
   }),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
+
+/** Properties that apply to a section's column. */
+export interface SectionColumnProperties {
+  /** The padding at the end of the column. */
+  paddingEnd?: Dimension;
+  /** Output only. The width of the column. */
+  width?: Dimension;
+}
+export const SectionColumnProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paddingEnd: S.optional(Dimension),
+    width: S.optional(Dimension),
+  }),
+).annotate({
+  identifier: "SectionColumnProperties",
+}) as any as S.Schema<SectionColumnProperties>;
+
+export type SectionColumnPropertiesList = Array<SectionColumnProperties>;
+export const SectionColumnPropertiesList = /*@__PURE__*/ S.Array(
+  SectionColumnProperties,
+) as any as S.Schema<SectionColumnPropertiesList>;
+
+export type SectionStyleSectionTypeEnum =
+  | "SECTION_TYPE_UNSPECIFIED"
+  | "CONTINUOUS"
+  | "NEXT_PAGE";
+export const SectionStyleSectionTypeEnum = /*@__PURE__*/ S.String;
+
+export type SectionStyleColumnSeparatorStyleEnum =
+  | "COLUMN_SEPARATOR_STYLE_UNSPECIFIED"
+  | "NONE"
+  | "BETWEEN_EACH_COLUMN";
+export const SectionStyleColumnSeparatorStyleEnum = /*@__PURE__*/ S.String;
+
+export type SectionStyleContentDirectionEnum =
+  | "CONTENT_DIRECTION_UNSPECIFIED"
+  | "LEFT_TO_RIGHT"
+  | "RIGHT_TO_LEFT";
+export const SectionStyleContentDirectionEnum = /*@__PURE__*/ S.String;
+
+/** The styling that applies to a section. */
+export interface SectionStyle {
+  /** The top page margin of the section. If unset, the value defaults to margin_top from DocumentStyle. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  marginTop?: Dimension;
+  /** The header margin of the section. If unset, the value defaults to margin_header from DocumentStyle. If updated, use_custom_header_footer_margins is set to true on DocumentStyle. The value of use_custom_header_footer_margins on DocumentStyle indicates if a header margin is being respected for this section. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  marginHeader?: Dimension;
+  /** The ID of the footer used only for even pages. If the value of DocumentStyle's use_even_page_header_footer is true, this value is used for the footers on even pages in the section. If it is false, the footers on even pages use the default_footer_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's even_page_footer_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  evenPageFooterId?: string;
+  /** The ID of the footer used only for the first page of the section. If use_first_page_header_footer is true, this value is used for the footer on the first page of the section. If it's false, the footer on the first page of the section uses the default_footer_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's first_page_footer_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  firstPageFooterId?: string;
+  /** The ID of the default footer. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's default_footer_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  defaultFooterId?: string;
+  /** The page number from which to start counting the number of pages for this section. If unset, page numbering continues from the previous section. If the value is unset in the first SectionBreak, refer to DocumentStyle's page_number_start. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  pageNumberStart?: number;
+  /** The section's columns properties. If empty, the section contains one column with the default properties in the Docs editor. A section can be updated to have no more than 3 columns. When updating this property, setting a concrete value is required. Unsetting this property will result in a 400 bad request error. */
+  columnProperties?: SectionColumnPropertiesList;
+  /** The ID of the header used only for even pages. If the value of DocumentStyle's use_even_page_header_footer is true, this value is used for the headers on even pages in the section. If it is false, the headers on even pages use the default_header_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's even_page_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  evenPageHeaderId?: string;
+  /** The left page margin of the section. If unset, the value defaults to margin_left from DocumentStyle. Updating the left margin causes columns in this section to resize. Since the margin affects column width, it's applied before column properties. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  marginLeft?: Dimension;
+  /** The right page margin of the section. If unset, the value defaults to margin_right from DocumentStyle. Updating the right margin causes columns in this section to resize. Since the margin affects column width, it's applied before column properties. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  marginRight?: Dimension;
+  /** The ID of the header used only for the first page of the section. If use_first_page_header_footer is true, this value is used for the header on the first page of the section. If it's false, the header on the first page of the section uses the default_header_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's first_page_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  firstPageHeaderId?: string;
+  /** Output only. The type of section. */
+  sectionType?: SectionStyleSectionTypeEnum | (string & {});
+  /** The style of column separators. This style can be set even when there's one column in the section. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  columnSeparatorStyle?: SectionStyleColumnSeparatorStyleEnum | (string & {});
+  /** The content direction of this section. If unset, the value defaults to LEFT_TO_RIGHT. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  contentDirection?: SectionStyleContentDirectionEnum | (string & {});
+  /** The footer margin of the section. If unset, the value defaults to margin_footer from DocumentStyle. If updated, use_custom_header_footer_margins is set to true on DocumentStyle. The value of use_custom_header_footer_margins on DocumentStyle indicates if a footer margin is being respected for this section If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  marginFooter?: Dimension;
+  /** Indicates whether to use the first page header / footer IDs for the first page of the section. If unset, it inherits from DocumentStyle's use_first_page_header_footer for the first section. If the value is unset for subsequent sectors, it should be interpreted as false. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  useFirstPageHeaderFooter?: boolean;
+  /** Optional. Indicates whether to flip the dimensions of DocumentStyle's page_size for this section, which allows changing the page orientation between portrait and landscape. If unset, the value inherits from DocumentStyle's flip_page_orientation. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  flipPageOrientation?: boolean;
+  /** The ID of the default header. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's default_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
+  defaultHeaderId?: string;
+  /** The bottom page margin of the section. If unset, the value defaults to margin_bottom from DocumentStyle. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
+  marginBottom?: Dimension;
+}
+export const SectionStyle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    marginTop: S.optional(Dimension),
+    marginHeader: S.optional(Dimension),
+    evenPageFooterId: S.optional(S.String),
+    firstPageFooterId: S.optional(S.String),
+    defaultFooterId: S.optional(S.String),
+    pageNumberStart: S.optional(S.Number),
+    columnProperties: S.optional(SectionColumnPropertiesList),
+    evenPageHeaderId: S.optional(S.String),
+    marginLeft: S.optional(Dimension),
+    marginRight: S.optional(Dimension),
+    firstPageHeaderId: S.optional(S.String),
+    sectionType: S.optional(SectionStyleSectionTypeEnum),
+    columnSeparatorStyle: S.optional(SectionStyleColumnSeparatorStyleEnum),
+    contentDirection: S.optional(SectionStyleContentDirectionEnum),
+    marginFooter: S.optional(Dimension),
+    useFirstPageHeaderFooter: S.optional(S.Boolean),
+    flipPageOrientation: S.optional(S.Boolean),
+    defaultHeaderId: S.optional(S.String),
+    marginBottom: S.optional(Dimension),
+  }),
+).annotate({ identifier: "SectionStyle" }) as any as S.Schema<SectionStyle>;
 
 /** A StructuralElement representing a section break. A section is a range of content that has the same SectionStyle. A section break represents the start of a new section, and the section style applies to the section after the section break. The document body always begins with a section break. */
 export interface SectionBreak {
@@ -3081,6 +1476,124 @@ export const BulletSuggestionState = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulletSuggestionState",
 }) as any as S.Schema<BulletSuggestionState>;
 
+export type TextStyleBaselineOffsetEnum =
+  | "BASELINE_OFFSET_UNSPECIFIED"
+  | "NONE"
+  | "SUPERSCRIPT"
+  | "SUBSCRIPT";
+export const TextStyleBaselineOffsetEnum = /*@__PURE__*/ S.String;
+
+/** Represents a font family and weight of text. */
+export interface WeightedFontFamily {
+  /** The weight of the font. This field can have any value that's a multiple of `100` between `100` and `900`, inclusive. This range corresponds to the numerical values described in the CSS 2.1 Specification, [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with non-numerical values disallowed. The default value is `400` ("normal"). The font weight makes up just one component of the rendered font weight. A combination of the `weight` and the text style's resolved `bold` value determine the rendered weight, after accounting for inheritance: * If the text is bold and the weight is less than `400`, the rendered weight is 400. * If the text is bold and the weight is greater than or equal to `400` but is less than `700`, the rendered weight is `700`. * If the weight is greater than or equal to `700`, the rendered weight is equal to the weight. * If the text is not bold, the rendered weight is equal to the weight. */
+  weight?: number;
+  /** The font family of the text. The font family can be any font from the Font menu in Docs or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`. */
+  fontFamily?: string;
+}
+export const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    weight: S.optional(S.Number),
+    fontFamily: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WeightedFontFamily",
+}) as any as S.Schema<WeightedFontFamily>;
+
+/** A reference to a bookmark in this document. */
+export interface BookmarkLink {
+  /** The ID of the tab containing this bookmark. */
+  tabId?: string;
+  /** The ID of a bookmark in this document. */
+  id?: string;
+}
+export const BookmarkLink = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tabId: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
+).annotate({ identifier: "BookmarkLink" }) as any as S.Schema<BookmarkLink>;
+
+/** A reference to a heading in this document. */
+export interface HeadingLink {
+  /** The ID of a heading in this document. */
+  id?: string;
+  /** The ID of the tab containing this heading. */
+  tabId?: string;
+}
+export const HeadingLink = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    tabId: S.optional(S.String),
+  }),
+).annotate({ identifier: "HeadingLink" }) as any as S.Schema<HeadingLink>;
+
+/** A reference to another portion of a document or an external URL resource. */
+export interface Link {
+  /** The ID of a bookmark in this document. Legacy field: Instead, set includeTabsContent to `true` and use Link.bookmark for read and write operations. This field is only returned when includeTabsContent is set to `false` in documents containing a single tab and links to a bookmark within the singular tab. Otherwise, Link.bookmark is returned. If this field is used in a write request, the bookmark is considered to be from the tab ID specified in the request. If a tab ID is not specified in the request, it is considered to be from the first tab in the document. */
+  bookmarkId?: string;
+  /** The ID of a heading in this document. Legacy field: Instead, set includeTabsContent to `true` and use Link.heading for read and write operations. This field is only returned when includeTabsContent is set to `false` in documents containing a single tab and links to a heading within the singular tab. Otherwise, Link.heading is returned. If this field is used in a write request, the heading is considered to be from the tab ID specified in the request. If a tab ID is not specified in the request, it is considered to be from the first tab in the document. */
+  headingId?: string;
+  /** The ID of a tab in this document. */
+  tabId?: string;
+  /** A bookmark in this document. In documents containing a single tab, links to bookmarks within the singular tab continue to return Link.bookmarkId when the includeTabsContent parameter is set to `false` or unset. Otherwise, this field is returned. */
+  bookmark?: BookmarkLink;
+  /** A heading in this document. In documents containing a single tab, links to headings within the singular tab continue to return Link.headingId when the includeTabsContent parameter is set to `false` or unset. Otherwise, this field is returned. */
+  heading?: HeadingLink;
+  /** An external URL. */
+  url?: string;
+}
+export const Link = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bookmarkId: S.optional(S.String),
+    headingId: S.optional(S.String),
+    tabId: S.optional(S.String),
+    bookmark: S.optional(BookmarkLink),
+    heading: S.optional(HeadingLink),
+    url: S.optional(S.String),
+  }),
+).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
+
+/** Represents the styling that can be applied to text. Inherited text styles are represented as unset fields in this message. A text style's parent depends on where the text style is defined: * The TextStyle of text in a Paragraph inherits from the paragraph's corresponding named style type. * The TextStyle on a named style inherits from the normal text named style. * The TextStyle of the normal text named style inherits from the default text style in the Docs editor. * The TextStyle on a Paragraph element that's contained in a table may inherit its text style from the table style. If the text style does not inherit from a parent, unsetting fields will revert the style to a value matching the defaults in the Docs editor. */
+export interface TextStyle {
+  /** The text's vertical offset from its normal position. Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font size, computed based on the `font_size` field. Changes in this field don't affect the `font_size`. */
+  baselineOffset?: TextStyleBaselineOffsetEnum | (string & {});
+  /** Whether or not the text is underlined. */
+  underline?: boolean;
+  /** The background color of the text. If set, the color is either an RGB color or transparent, depending on the `color` field. */
+  backgroundColor?: OptionalColor;
+  /** Whether or not the text is struck through. */
+  strikethrough?: boolean;
+  /** Whether or not the text is italicized. */
+  italic?: boolean;
+  /** The font family and rendered weight of the text. If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family` is applied first, then `bold`. If `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad request error is returned. */
+  weightedFontFamily?: WeightedFontFamily;
+  /** Whether or not the text is in small capital letters. */
+  smallCaps?: boolean;
+  /** The hyperlink destination of the text. If unset, there's no link. Links are not inherited from parent text. Changing the link in an update request causes some other changes to the text style of the range: * When setting a link, the text foreground color will be updated to the default link color and the text will be underlined. If these fields are modified in the same request, those values will be used instead of the link defaults. * Setting a link on a text range that overlaps with an existing link will also update the existing link to point to the new URL. * Links are not settable on newline characters. As a result, setting a link on a text range that crosses a paragraph boundary, such as `"ABC\n123"`, will separate the newline character(s) into their own text runs. The link will be applied separately to the runs before and after the newline. * Removing a link will update the text style of the range to match the style of the preceding text (or the default text styles if the preceding text is another link) unless different styles are being set in the same request. */
+  link?: Link;
+  /** The foreground color of the text. If set, the color is either an RGB color or transparent, depending on the `color` field. */
+  foregroundColor?: OptionalColor;
+  /** Whether or not the text is rendered as bold. */
+  bold?: boolean;
+  /** The size of the text's font. */
+  fontSize?: Dimension;
+}
+export const TextStyle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baselineOffset: S.optional(TextStyleBaselineOffsetEnum),
+    underline: S.optional(S.Boolean),
+    backgroundColor: S.optional(OptionalColor),
+    strikethrough: S.optional(S.Boolean),
+    italic: S.optional(S.Boolean),
+    weightedFontFamily: S.optional(WeightedFontFamily),
+    smallCaps: S.optional(S.Boolean),
+    link: S.optional(Link),
+    foregroundColor: S.optional(OptionalColor),
+    bold: S.optional(S.Boolean),
+    fontSize: S.optional(Dimension),
+  }),
+).annotate({ identifier: "TextStyle" }) as any as S.Schema<TextStyle>;
+
 /** Describes the bullet of a paragraph. */
 export interface Bullet {
   /** The ID of the list this paragraph belongs to. */
@@ -3119,6 +1632,179 @@ export const SuggestedBulletMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedBullet,
 ) as any as S.Schema<SuggestedBulletMap>;
+
+/** The shading of a paragraph. */
+export interface Shading {
+  /** The background color of this paragraph shading. */
+  backgroundColor?: OptionalColor;
+}
+export const Shading = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backgroundColor: S.optional(OptionalColor),
+  }),
+).annotate({ identifier: "Shading" }) as any as S.Schema<Shading>;
+
+export type ParagraphBorderDashStyleEnum =
+  | "DASH_STYLE_UNSPECIFIED"
+  | "SOLID"
+  | "DOT"
+  | "DASH";
+export const ParagraphBorderDashStyleEnum = /*@__PURE__*/ S.String;
+
+/** A border around a paragraph. */
+export interface ParagraphBorder {
+  /** The width of the border. */
+  width?: Dimension;
+  /** The color of the border. */
+  color?: OptionalColor;
+  /** The padding of the border. */
+  padding?: Dimension;
+  /** The dash style of the border. */
+  dashStyle?: ParagraphBorderDashStyleEnum | (string & {});
+}
+export const ParagraphBorder = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    width: S.optional(Dimension),
+    color: S.optional(OptionalColor),
+    padding: S.optional(Dimension),
+    dashStyle: S.optional(ParagraphBorderDashStyleEnum),
+  }),
+).annotate({
+  identifier: "ParagraphBorder",
+}) as any as S.Schema<ParagraphBorder>;
+
+export type ParagraphStyleSpacingModeEnum =
+  | "SPACING_MODE_UNSPECIFIED"
+  | "NEVER_COLLAPSE"
+  | "COLLAPSE_LISTS";
+export const ParagraphStyleSpacingModeEnum = /*@__PURE__*/ S.String;
+
+export type ParagraphStyleAlignmentEnum =
+  | "ALIGNMENT_UNSPECIFIED"
+  | "START"
+  | "CENTER"
+  | "END"
+  | "JUSTIFIED";
+export const ParagraphStyleAlignmentEnum = /*@__PURE__*/ S.String;
+
+export type ParagraphStyleNamedStyleTypeEnum =
+  | "NAMED_STYLE_TYPE_UNSPECIFIED"
+  | "NORMAL_TEXT"
+  | "TITLE"
+  | "SUBTITLE"
+  | "HEADING_1"
+  | "HEADING_2"
+  | "HEADING_3"
+  | "HEADING_4"
+  | "HEADING_5"
+  | "HEADING_6";
+export const ParagraphStyleNamedStyleTypeEnum = /*@__PURE__*/ S.String;
+
+export type TabStopAlignmentEnum =
+  | "TAB_STOP_ALIGNMENT_UNSPECIFIED"
+  | "START"
+  | "CENTER"
+  | "END";
+export const TabStopAlignmentEnum = /*@__PURE__*/ S.String;
+
+/** A tab stop within a paragraph. */
+export interface TabStop {
+  /** The offset between this tab stop and the start margin. */
+  offset?: Dimension;
+  /** The alignment of this tab stop. If unset, the value defaults to START. */
+  alignment?: TabStopAlignmentEnum | (string & {});
+}
+export const TabStop = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offset: S.optional(Dimension),
+    alignment: S.optional(TabStopAlignmentEnum),
+  }),
+).annotate({ identifier: "TabStop" }) as any as S.Schema<TabStop>;
+
+export type TabStopList = Array<TabStop>;
+export const TabStopList = /*@__PURE__*/ S.Array(
+  TabStop,
+) as any as S.Schema<TabStopList>;
+
+export type ParagraphStyleDirectionEnum =
+  | "CONTENT_DIRECTION_UNSPECIFIED"
+  | "LEFT_TO_RIGHT"
+  | "RIGHT_TO_LEFT";
+export const ParagraphStyleDirectionEnum = /*@__PURE__*/ S.String;
+
+/** Styles that apply to a whole paragraph. Inherited paragraph styles are represented as unset fields in this message. A paragraph style's parent depends on where the paragraph style is defined: * The ParagraphStyle on a Paragraph inherits from the paragraph's corresponding named style type. * The ParagraphStyle on a named style inherits from the normal text named style. * The ParagraphStyle of the normal text named style inherits from the default paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph element that's contained in a table may inherit its paragraph style from the table style. If the paragraph style does not inherit from a parent, unsetting fields will revert the style to a value matching the defaults in the Docs editor. */
+export interface ParagraphStyle {
+  /** The shading of the paragraph. If unset, the value is inherited from the parent. */
+  shading?: Shading;
+  /** The border to the left of this paragraph. If unset, the value is inherited from the parent. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
+  borderLeft?: ParagraphBorder;
+  /** The border at the bottom of this paragraph. If unset, the value is inherited from the parent. The bottom border is rendered when the paragraph below has different border and indent properties. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
+  borderBottom?: ParagraphBorder;
+  /** Whether at least a part of this paragraph should be laid out on the same page or column as the next paragraph if possible. If unset, the value is inherited from the parent. */
+  keepWithNext?: boolean;
+  /** The amount of extra space below the paragraph. If unset, the value is inherited from the parent. */
+  spaceBelow?: Dimension;
+  /** The border between this paragraph and the next and previous paragraphs. If unset, the value is inherited from the parent. The between border is rendered when the adjacent paragraph has the same border and indent properties. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
+  borderBetween?: ParagraphBorder;
+  /** Whether the current paragraph should always start at the beginning of a page. If unset, the value is inherited from the parent. Attempting to update page_break_before for paragraphs in unsupported regions, including Table, Header, Footer and Footnote, can result in an invalid document state that returns a 400 bad request error. */
+  pageBreakBefore?: boolean;
+  /** The spacing mode for the paragraph. */
+  spacingMode?: ParagraphStyleSpacingModeEnum | (string & {});
+  /** The border at the top of this paragraph. If unset, the value is inherited from the parent. The top border is rendered when the paragraph above has different border and indent properties. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
+  borderTop?: ParagraphBorder;
+  /** Whether to avoid widows and orphans for the paragraph. If unset, the value is inherited from the parent. */
+  avoidWidowAndOrphan?: boolean;
+  /** The amount of indentation for the paragraph on the side that corresponds to the end of the text, based on the current paragraph direction. If unset, the value is inherited from the parent. */
+  indentEnd?: Dimension;
+  /** The text alignment for this paragraph. */
+  alignment?: ParagraphStyleAlignmentEnum | (string & {});
+  /** The heading ID of the paragraph. If empty, then this paragraph is not a heading. This property is read-only. */
+  headingId?: string;
+  /** The named style type of the paragraph. Since updating the named style type affects other properties within ParagraphStyle, the named style type is applied before the other properties are updated. */
+  namedStyleType?: ParagraphStyleNamedStyleTypeEnum | (string & {});
+  /** Whether all lines of the paragraph should be laid out on the same page or column if possible. If unset, the value is inherited from the parent. */
+  keepLinesTogether?: boolean;
+  /** The amount of indentation for the first line of the paragraph. If unset, the value is inherited from the parent. */
+  indentFirstLine?: Dimension;
+  /** A list of the tab stops for this paragraph. The list of tab stops is not inherited. This property is read-only. */
+  tabStops?: TabStopList;
+  /** The amount of indentation for the paragraph on the side that corresponds to the start of the text, based on the current paragraph direction. If unset, the value is inherited from the parent. */
+  indentStart?: Dimension;
+  /** The amount of extra space above the paragraph. If unset, the value is inherited from the parent. */
+  spaceAbove?: Dimension;
+  /** The border to the right of this paragraph. If unset, the value is inherited from the parent. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
+  borderRight?: ParagraphBorder;
+  /** The amount of space between lines, as a percentage of normal, where normal is represented as 100.0. If unset, the value is inherited from the parent. */
+  lineSpacing?: number;
+  /** The text direction of this paragraph. If unset, the value defaults to LEFT_TO_RIGHT since paragraph direction is not inherited. */
+  direction?: ParagraphStyleDirectionEnum | (string & {});
+}
+export const ParagraphStyle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    shading: S.optional(Shading),
+    borderLeft: S.optional(ParagraphBorder),
+    borderBottom: S.optional(ParagraphBorder),
+    keepWithNext: S.optional(S.Boolean),
+    spaceBelow: S.optional(Dimension),
+    borderBetween: S.optional(ParagraphBorder),
+    pageBreakBefore: S.optional(S.Boolean),
+    spacingMode: S.optional(ParagraphStyleSpacingModeEnum),
+    borderTop: S.optional(ParagraphBorder),
+    avoidWidowAndOrphan: S.optional(S.Boolean),
+    indentEnd: S.optional(Dimension),
+    alignment: S.optional(ParagraphStyleAlignmentEnum),
+    headingId: S.optional(S.String),
+    namedStyleType: S.optional(ParagraphStyleNamedStyleTypeEnum),
+    keepLinesTogether: S.optional(S.Boolean),
+    indentFirstLine: S.optional(Dimension),
+    tabStops: S.optional(TabStopList),
+    indentStart: S.optional(Dimension),
+    spaceAbove: S.optional(Dimension),
+    borderRight: S.optional(ParagraphBorder),
+    lineSpacing: S.optional(S.Number),
+    direction: S.optional(ParagraphStyleDirectionEnum),
+  }),
+).annotate({ identifier: "ParagraphStyle" }) as any as S.Schema<ParagraphStyle>;
 
 /** A mask that indicates which of the fields on the base Shading have been changed in this suggested change. For any field set to true, there's a new suggested value. */
 export interface ShadingSuggestionState {
@@ -3282,6 +1968,22 @@ export const FootnoteReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "FootnoteReference",
 }) as any as S.Schema<FootnoteReference>;
 
+/** Properties specific to a linked Person. */
+export interface PersonProperties {
+  /** The email address linked to this Person. This field is always present. */
+  email?: string;
+  /** The name of the person if it's displayed in the link text instead of the person's email address. */
+  name?: string;
+}
+export const PersonProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PersonProperties",
+}) as any as S.Schema<PersonProperties>;
+
 /** A person or email address mentioned in a document. These mentions behave as a single, immutable element containing the person's name or email address. */
 export interface Person {
   /** IDs for suggestions that remove this person link from the document. A Person might have multiple deletion IDs if, for example, multiple users suggest deleting it. If empty, then this person link isn't suggested for deletion. */
@@ -3439,6 +2141,50 @@ export const AutoText = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AutoText" }) as any as S.Schema<AutoText>;
 
+export type DateElementPropertiesTimeFormatEnum =
+  | "TIME_FORMAT_UNSPECIFIED"
+  | "TIME_FORMAT_DISABLED"
+  | "TIME_FORMAT_HOUR_MINUTE"
+  | "TIME_FORMAT_HOUR_MINUTE_TIMEZONE";
+export const DateElementPropertiesTimeFormatEnum = /*@__PURE__*/ S.String;
+
+export type DateElementPropertiesDateFormatEnum =
+  | "DATE_FORMAT_UNSPECIFIED"
+  | "DATE_FORMAT_CUSTOM"
+  | "DATE_FORMAT_MONTH_DAY_ABBREVIATED"
+  | "DATE_FORMAT_MONTH_DAY_FULL"
+  | "DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED"
+  | "DATE_FORMAT_ISO8601";
+export const DateElementPropertiesDateFormatEnum = /*@__PURE__*/ S.String;
+
+/** Properties of a DateElement. */
+export interface DateElementProperties {
+  /** Determines how the time part of the DateElement will be displayed in the document. If unset, the default value is TIME_FORMAT_DISABLED, indicating no time should be shown. */
+  timeFormat?: DateElementPropertiesTimeFormatEnum | (string & {});
+  /** Output only. Indicates how the DateElement is displayed in the document. */
+  displayText?: string;
+  /** The point in time to represent, in seconds and nanoseconds since Unix epoch: January 1, 1970 at midnight UTC. Timestamp is expected to be in UTC. If time_zone_id is set, the timestamp is adjusted according to the time zone. For example, a timestamp of `18000` with a date format of `DATE_FORMAT_ISO8601` and time format of `TIME_FORMAT_HOUR_MINUTE` would be displayed as `1970-01-01 5:00 AM`. A timestamp of `18000` with date format of `DATE_FORMAT_ISO8601`, time format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to `America/New_York` will instead be `1970-01-01 12:00 AM`. */
+  timestamp?: string;
+  /** Determines how the date part of the DateElement will be displayed in the document. If unset, the default value is DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED, indicating the DateElement will be formatted as `MMM d, y` in `en`, or locale specific equivalent. */
+  dateFormat?: DateElementPropertiesDateFormatEnum | (string & {});
+  /** The time zone of the DateElement, as defined by the Unicode Common Locale Data Repository (CLDR) project. For example, `America/New_York`. If unset, the default time zone is `etc/UTC`. */
+  timeZoneId?: string;
+  /** The language code of the DateElement. For example, `en`. If unset, the default locale is `en`. Limited to the following locales: `af`, `am`, `ar`, `as`, `az`, `be`, `bg`, `bn`, `ca`, `cs`, `da`, `de`, `el`, `en`, `en-CA`, `en-GB`, `es`, `es-419`, `et`, `eu`, `fa`, `fi`, `fil`, `fr`, `fr-CA`, `gl`, `gu`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `iw`, `ja`, `ka`, `kk`, `km`, `kn`, `ko`, `lo`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `ne`, `nl`, `no`, `or`, `pa`, `pl`, `pt-BR`, `pt-PT`, `ro`, `ru`, `si`, `sk`, `sl`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tr`, `uk`, `ur`, `uz`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`, `zu`, `cy`, `my`. */
+  locale?: string;
+}
+export const DateElementProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeFormat: S.optional(DateElementPropertiesTimeFormatEnum),
+    displayText: S.optional(S.String),
+    timestamp: S.optional(S.String),
+    dateFormat: S.optional(DateElementPropertiesDateFormatEnum),
+    timeZoneId: S.optional(S.String),
+    locale: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DateElementProperties",
+}) as any as S.Schema<DateElementProperties>;
+
 /** A mask that indicates which of the fields on the base DateElementProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface DateElementPropertiesSuggestionState {
   /** Indicates if there was a suggested change to date_format. */
@@ -3541,6 +2287,25 @@ export const PageBreak = /*@__PURE__*/ S.suspend(() =>
     textStyle: S.optional(TextStyle),
   }),
 ).annotate({ identifier: "PageBreak" }) as any as S.Schema<PageBreak>;
+
+/** Properties specific to a RichLink. */
+export interface RichLinkProperties {
+  /** The title of the RichLink as displayed in the link. This title matches the title of the linked resource at the time of the insertion or last update of the link. This field is always present. */
+  title?: string;
+  /** The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of the RichLink, if there's one (for example, when it's a file in Drive). */
+  mimeType?: string;
+  /** The URI to the RichLink. This is always present. */
+  uri?: string;
+}
+export const RichLinkProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.optional(S.String),
+    mimeType: S.optional(S.String),
+    uri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RichLinkProperties",
+}) as any as S.Schema<RichLinkProperties>;
 
 /** A link to a Google resource (such as a file in Drive, a YouTube video, or a Calendar event). */
 export interface RichLink {
@@ -3725,6 +2490,26 @@ export const FooterMap = /*@__PURE__*/ S.Record(
   Footer,
 ) as any as S.Schema<FooterMap>;
 
+/** Specifies a contiguous range of text. */
+export interface Range {
+  /** The ID of the header, footer, or footnote that this range is contained in. An empty segment ID signifies the document's body. */
+  segmentId?: string;
+  /** The zero-based start index of this range, in UTF-16 code units. In all current uses, a start index must be provided. This field is an Int32Value in order to accommodate future use cases with open-ended ranges. */
+  startIndex?: number;
+  /** The tab that contains this range. When omitted, the request applies to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
+  tabId?: string;
+  /** The zero-based end index of this range, exclusive, in UTF-16 code units. In all current uses, an end index must be provided. This field is an Int32Value in order to accommodate future use cases with open-ended ranges. */
+  endIndex?: number;
+}
+export const Range = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    segmentId: S.optional(S.String),
+    startIndex: S.optional(S.Number),
+    tabId: S.optional(S.String),
+    endIndex: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
+
 export type RangeList = Array<Range>;
 export const RangeList = /*@__PURE__*/ S.Array(
   Range,
@@ -3822,6 +2607,36 @@ export const HeaderMap = /*@__PURE__*/ S.Record(
   S.String,
   Header,
 ) as any as S.Schema<HeaderMap>;
+
+export type NamedStyleNamedStyleTypeEnum =
+  | "NAMED_STYLE_TYPE_UNSPECIFIED"
+  | "NORMAL_TEXT"
+  | "TITLE"
+  | "SUBTITLE"
+  | "HEADING_1"
+  | "HEADING_2"
+  | "HEADING_3"
+  | "HEADING_4"
+  | "HEADING_5"
+  | "HEADING_6";
+export const NamedStyleNamedStyleTypeEnum = /*@__PURE__*/ S.String;
+
+/** A named style. Paragraphs in the document can inherit their TextStyle and ParagraphStyle from this named style when they have the same named style type. */
+export interface NamedStyle {
+  /** The text style of this named style. */
+  textStyle?: TextStyle;
+  /** The type of this named style. */
+  namedStyleType?: NamedStyleNamedStyleTypeEnum | (string & {});
+  /** The paragraph style of this named style. */
+  paragraphStyle?: ParagraphStyle;
+}
+export const NamedStyle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    textStyle: S.optional(TextStyle),
+    namedStyleType: S.optional(NamedStyleNamedStyleTypeEnum),
+    paragraphStyle: S.optional(ParagraphStyle),
+  }),
+).annotate({ identifier: "NamedStyle" }) as any as S.Schema<NamedStyle>;
 
 export type NamedStyleList = Array<NamedStyle>;
 export const NamedStyleList = /*@__PURE__*/ S.Array(
@@ -4264,25 +3079,1190 @@ export const GetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDocumentsRequest",
 }) as any as S.Schema<GetDocumentsRequest>;
 
-export type BatchUpdateDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Applies one or more updates to the document. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies, the reply to the third request, and another empty reply, in that order. Because other users may be editing the document, the document might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the document should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically. */
-export const batchUpdateDocuments: API.OperationMethod<
-  BatchUpdateDocumentsRequest,
-  BatchUpdateDocumentResponse,
-  BatchUpdateDocumentsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateDocumentsRequest,
-  output: BatchUpdateDocumentResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
+/** Provides control over how write requests are executed. */
+export interface WriteControl {
+  /** The optional revision ID of the document the write request is applied to. If this is not the latest revision of the document, the request is not processed and returns a 400 bad request error. When a required revision ID is returned in a response, it indicates the revision ID of the document after the request was applied. */
+  requiredRevisionId?: string;
+  /** The optional target revision ID of the document the write request is applied to. If collaborator changes have occurred after the document was read using the API, the changes produced by this write request are applied against the collaborator changes. This results in a new revision of the document that incorporates both the collaborator changes and the changes in the request, with the Docs server resolving conflicting changes. When using target revision ID, the API client can be thought of as another collaborator of the document. The target revision ID can only be used to write to recent versions of a document. If the target revision is too far behind the latest revision, the request is not processed and returns a 400 bad request error. The request should be tried again after retrieving the latest version of the document. Usually a revision ID remains valid for use as a target revision for several minutes after it's read, but for frequently edited documents this window might be shorter. */
+  targetRevisionId?: string;
+}
+export const WriteControl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requiredRevisionId: S.optional(S.String),
+    targetRevisionId: S.optional(S.String),
+  }),
+).annotate({ identifier: "WriteControl" }) as any as S.Schema<WriteControl>;
+
+export type CreateParagraphBulletsRequestBulletPresetEnum =
+  | "BULLET_GLYPH_PRESET_UNSPECIFIED"
+  | "BULLET_DISC_CIRCLE_SQUARE"
+  | "BULLET_DIAMONDX_ARROW3D_SQUARE"
+  | "BULLET_CHECKBOX"
+  | "BULLET_ARROW_DIAMOND_DISC"
+  | "BULLET_STAR_CIRCLE_SQUARE"
+  | "BULLET_ARROW3D_CIRCLE_SQUARE"
+  | "BULLET_LEFTTRIANGLE_DIAMOND_DISC"
+  | "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE"
+  | "BULLET_DIAMOND_CIRCLE_SQUARE"
+  | "NUMBERED_DECIMAL_ALPHA_ROMAN"
+  | "NUMBERED_DECIMAL_ALPHA_ROMAN_PARENS"
+  | "NUMBERED_DECIMAL_NESTED"
+  | "NUMBERED_UPPERALPHA_ALPHA_ROMAN"
+  | "NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL"
+  | "NUMBERED_ZERODECIMAL_ALPHA_ROMAN";
+export const CreateParagraphBulletsRequestBulletPresetEnum =
+  /*@__PURE__*/ S.String;
+
+/** Creates bullets for all of the paragraphs that overlap with the given range. The nesting level of each paragraph will be determined by counting leading tabs in front of each paragraph. To avoid excess space between the bullet and the corresponding paragraph, these leading tabs are removed by this request. This may change the indices of parts of the text. If the paragraph immediately before paragraphs being updated is in a list with a matching preset, the paragraphs being updated are added to that preceding list. */
+export interface CreateParagraphBulletsRequest {
+  /** The kinds of bullet glyphs to be used. */
+  bulletPreset?: CreateParagraphBulletsRequestBulletPresetEnum | (string & {});
+  /** The range to apply the bullet preset to. */
+  range?: Range;
+}
+export const CreateParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bulletPreset: S.optional(CreateParagraphBulletsRequestBulletPresetEnum),
+    range: S.optional(Range),
+  }),
+).annotate({
+  identifier: "CreateParagraphBulletsRequest",
+}) as any as S.Schema<CreateParagraphBulletsRequest>;
+
+/** Deletes bullets from all of the paragraphs that overlap with the given range. The nesting level of each paragraph will be visually preserved by adding indent to the start of the corresponding paragraph. */
+export interface DeleteParagraphBulletsRequest {
+  /** The range to delete bullets from. */
+  range?: Range;
+}
+export const DeleteParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    range: S.optional(Range),
+  }),
+).annotate({
+  identifier: "DeleteParagraphBulletsRequest",
+}) as any as S.Schema<DeleteParagraphBulletsRequest>;
+
+/** A particular location in the document. */
+export interface Location {
+  /** The zero-based index, in UTF-16 code units. The index is relative to the beginning of the segment specified by segment_id. */
+  index?: number;
+  /** The tab that the location is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
+  tabId?: string;
+  /** The ID of the header, footer or footnote the location is in. An empty segment ID signifies the document's body. */
+  segmentId?: string;
+}
+export const Location = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    index: S.optional(S.Number),
+    tabId: S.optional(S.String),
+    segmentId: S.optional(S.String),
+  }),
+).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
+
+/** Location of a single cell within a table. */
+export interface TableCellLocation {
+  /** The zero-based column index. For example, the second column in the table has a column index of 1. */
+  columnIndex?: number;
+  /** The location where the table starts in the document. */
+  tableStartLocation?: Location;
+  /** The zero-based row index. For example, the second row in the table has a row index of 1. */
+  rowIndex?: number;
+}
+export const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    columnIndex: S.optional(S.Number),
+    tableStartLocation: S.optional(Location),
+    rowIndex: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TableCellLocation",
+}) as any as S.Schema<TableCellLocation>;
+
+/** Inserts an empty column into a table. */
+export interface InsertTableColumnRequest {
+  /** Whether to insert new column to the right of the reference cell location. - `True`: insert to the right. - `False`: insert to the left. */
+  insertRight?: boolean;
+  /** The reference table cell location from which columns will be inserted. A new column will be inserted to the left (or right) of the column where the reference cell is. If the reference cell is a merged cell, a new column will be inserted to the left (or right) of the merged cell. */
+  tableCellLocation?: TableCellLocation;
+}
+export const InsertTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    insertRight: S.optional(S.Boolean),
+    tableCellLocation: S.optional(TableCellLocation),
+  }),
+).annotate({
+  identifier: "InsertTableColumnRequest",
+}) as any as S.Schema<InsertTableColumnRequest>;
+
+/** A criteria that matches a specific string of text in the document. */
+export interface SubstringMatchCriteria {
+  /** Indicates whether the search should respect case: - `True`: the search is case sensitive. - `False`: the search is case insensitive. */
+  matchCase?: boolean;
+  /** Optional. True if the find value should be treated as a regular expression. Any backslashes in the pattern should be escaped. - `True`: the search text is treated as a regular expressions. - `False`: the search text is treated as a substring for matching. */
+  searchByRegex?: boolean;
+  /** The text to search for in the document. */
+  text?: string;
+}
+export const SubstringMatchCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    matchCase: S.optional(S.Boolean),
+    searchByRegex: S.optional(S.Boolean),
+    text: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SubstringMatchCriteria",
+}) as any as S.Schema<SubstringMatchCriteria>;
+
+/** A criteria that specifies in which tabs a request executes. */
+export interface TabsCriteria {
+  /** The list of tab IDs in which the request executes. */
+  tabIds?: StringList;
+}
+export const TabsCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tabIds: S.optional(StringList),
+  }),
+).annotate({ identifier: "TabsCriteria" }) as any as S.Schema<TabsCriteria>;
+
+/** Replaces all instances of text matching a criteria with replace text. */
+export interface ReplaceAllTextRequest {
+  /** The text that will replace the matched text. */
+  replaceText?: string;
+  /** Finds text in the document matching this substring. */
+  containsText?: SubstringMatchCriteria;
+  /** Optional. The criteria used to specify in which tabs the replacement occurs. When omitted, the replacement applies to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the replacement applies to the singular tab. In a document containing multiple tabs: - If provided, the replacement applies to the specified tabs. - If omitted, the replacement applies to all tabs. */
+  tabsCriteria?: TabsCriteria;
+}
+export const ReplaceAllTextRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    replaceText: S.optional(S.String),
+    containsText: S.optional(SubstringMatchCriteria),
+    tabsCriteria: S.optional(TabsCriteria),
+  }),
+).annotate({
+  identifier: "ReplaceAllTextRequest",
+}) as any as S.Schema<ReplaceAllTextRequest>;
+
+/** Updates the DocumentStyle. */
+export interface UpdateDocumentStyleRequest {
+  /** The tab that contains the style to update. When omitted, the request applies to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If not provided, the request applies to the first tab in the document. */
+  tabId?: string;
+  /** The fields that should be updated. At least one field must be specified. The root `document_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the background, set `fields` to `"background"`. */
+  fields?: string;
+  /** The styles to set on the document. Certain document style changes may cause other changes in order to mirror the behavior of the Docs editor. See the documentation of DocumentStyle for more information. */
+  documentStyle?: DocumentStyle;
+}
+export const UpdateDocumentStyleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tabId: S.optional(S.String),
+    fields: S.optional(S.String),
+    documentStyle: S.optional(DocumentStyle),
+  }),
+).annotate({
+  identifier: "UpdateDocumentStyleRequest",
+}) as any as S.Schema<UpdateDocumentStyleRequest>;
+
+/** Location at the end of a body, header, footer or footnote. The location is immediately before the last newline in the document segment. */
+export interface EndOfSegmentLocation {
+  /** The ID of the header, footer or footnote the location is in. An empty segment ID signifies the document's body. */
+  segmentId?: string;
+  /** The tab that the location is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
+  tabId?: string;
+}
+export const EndOfSegmentLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    segmentId: S.optional(S.String),
+    tabId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EndOfSegmentLocation",
+}) as any as S.Schema<EndOfSegmentLocation>;
+
+/** Inserts a person mention. */
+export interface InsertPersonRequest {
+  /** Inserts the person mention at a specific index in the document. The person mention must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Person mentions cannot be inserted inside an equation. */
+  location?: Location;
+  /** Inserts the person mention at the end of a header, footer, footnote or the document body. */
+  endOfSegmentLocation?: EndOfSegmentLocation;
+  /** The properties of the person mention to insert. */
+  personProperties?: PersonProperties;
+}
+export const InsertPersonRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(Location),
+    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
+    personProperties: S.optional(PersonProperties),
+  }),
+).annotate({
+  identifier: "InsertPersonRequest",
+}) as any as S.Schema<InsertPersonRequest>;
+
+export type CreateHeaderRequestTypeEnum =
+  | "HEADER_FOOTER_TYPE_UNSPECIFIED"
+  | "DEFAULT";
+export const CreateHeaderRequestTypeEnum = /*@__PURE__*/ S.String;
+
+/** Creates a Header. The new header is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a header of the specified type already exists, a 400 bad request error is returned. */
+export interface CreateHeaderRequest {
+  /** The type of header to create. */
+  type?: CreateHeaderRequestTypeEnum | (string & {});
+  /** The location of the SectionBreak which begins the section this header should belong to. If `section_break_location' is unset or if it refers to the first section break in the document body, the header applies to the DocumentStyle */
+  sectionBreakLocation?: Location;
+}
+export const CreateHeaderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(CreateHeaderRequestTypeEnum),
+    sectionBreakLocation: S.optional(Location),
+  }),
+).annotate({
+  identifier: "CreateHeaderRequest",
+}) as any as S.Schema<CreateHeaderRequest>;
+
+/** Update the properties of a document tab. */
+export interface UpdateDocumentTabPropertiesRequest {
+  /** The fields that should be updated. At least one field must be specified. The root `tab_properties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. */
+  fields?: string;
+  /** The tab properties to update. */
+  tabProperties?: TabProperties;
+}
+export const UpdateDocumentTabPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: S.optional(S.String),
+    tabProperties: S.optional(TabProperties),
+  }),
+).annotate({
+  identifier: "UpdateDocumentTabPropertiesRequest",
+}) as any as S.Schema<UpdateDocumentTabPropertiesRequest>;
+
+/** A table range represents a reference to a subset of a table. It's important to note that the cells specified by a table range do not necessarily form a rectangle. For example, let's say we have a 3 x 3 table where all the cells of the last row are merged together. The table looks like this: [ ] A table range with table cell location = (table_start_location, row = 0, column = 0), row span = 3 and column span = 2 specifies the following cells: x x [ x x x ] */
+export interface TableRange {
+  /** The column span of the table range. */
+  columnSpan?: number;
+  /** The cell location where the table range starts. */
+  tableCellLocation?: TableCellLocation;
+  /** The row span of the table range. */
+  rowSpan?: number;
+}
+export const TableRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    columnSpan: S.optional(S.Number),
+    tableCellLocation: S.optional(TableCellLocation),
+    rowSpan: S.optional(S.Number),
+  }),
+).annotate({ identifier: "TableRange" }) as any as S.Schema<TableRange>;
+
+/** Merges cells in a Table. */
+export interface MergeTableCellsRequest {
+  /** The table range specifying which cells of the table to merge. Any text in the cells being merged will be concatenated and stored in the "head" cell of the range. This is the upper-left cell of the range when the content direction is left to right, and the upper-right cell of the range otherwise. If the range is non-rectangular (which can occur in some cases where the range covers cells that are already merged or where the table is non-rectangular), a 400 bad request error is returned. */
+  tableRange?: TableRange;
+}
+export const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableRange: S.optional(TableRange),
+  }),
+).annotate({
+  identifier: "MergeTableCellsRequest",
+}) as any as S.Schema<MergeTableCellsRequest>;
+
+export type CreateFooterRequestTypeEnum =
+  | "HEADER_FOOTER_TYPE_UNSPECIFIED"
+  | "DEFAULT";
+export const CreateFooterRequestTypeEnum = /*@__PURE__*/ S.String;
+
+/** Creates a Footer. The new footer is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a footer of the specified type already exists, a 400 bad request error is returned. */
+export interface CreateFooterRequest {
+  /** The type of footer to create. */
+  type?: CreateFooterRequestTypeEnum | (string & {});
+  /** The location of the SectionBreak immediately preceding the section whose SectionStyle this footer should belong to. If this is unset or refers to the first section break in the document, the footer applies to the document style. */
+  sectionBreakLocation?: Location;
+}
+export const CreateFooterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(CreateFooterRequestTypeEnum),
+    sectionBreakLocation: S.optional(Location),
+  }),
+).annotate({
+  identifier: "CreateFooterRequest",
+}) as any as S.Schema<CreateFooterRequest>;
+
+/** Inserts a table at the specified location. A newline character will be inserted before the inserted table. */
+export interface InsertTableRequest {
+  /** The number of columns in the table. */
+  columns?: number;
+  /** Inserts the table at the end of the given header, footer or document body. A newline character will be inserted before the inserted table. Tables cannot be inserted inside a footnote. */
+  endOfSegmentLocation?: EndOfSegmentLocation;
+  /** Inserts the table at a specific model index. A newline character will be inserted before the inserted table, therefore the table start index will be at the specified location index + 1. The table must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between an existing table and its preceding paragraph). Tables cannot be inserted inside a footnote or equation. */
+  location?: Location;
+  /** The number of rows in the table. */
+  rows?: number;
+}
+export const InsertTableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    columns: S.optional(S.Number),
+    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
+    location: S.optional(Location),
+    rows: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "InsertTableRequest",
+}) as any as S.Schema<InsertTableRequest>;
+
+/** Deletes a NamedRange. */
+export interface DeleteNamedRangeRequest {
+  /** The ID of the named range to delete. */
+  namedRangeId?: string;
+  /** The name of the range(s) to delete. All named ranges with the given name will be deleted. */
+  name?: string;
+  /** Optional. The criteria used to specify which tab(s) the range deletion should occur in. When omitted, the range deletion is applied to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the range deletion applies to the singular tab. In a document containing multiple tabs: - If provided, the range deletion applies to the specified tabs. - If not provided, the range deletion applies to all tabs. */
+  tabsCriteria?: TabsCriteria;
+}
+export const DeleteNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namedRangeId: S.optional(S.String),
+    name: S.optional(S.String),
+    tabsCriteria: S.optional(TabsCriteria),
+  }),
+).annotate({
+  identifier: "DeleteNamedRangeRequest",
+}) as any as S.Schema<DeleteNamedRangeRequest>;
+
+/** Deletes a Footer from the document. */
+export interface DeleteFooterRequest {
+  /** The tab that contains the footer to delete. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
+  tabId?: string;
+  /** The id of the footer to delete. If this footer is defined on DocumentStyle, the reference to this footer is removed, resulting in no footer of that type for the first section of the document. If this footer is defined on a SectionStyle, the reference to this footer is removed and the footer of that type is now continued from the previous section. */
+  footerId?: string;
+}
+export const DeleteFooterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tabId: S.optional(S.String),
+    footerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteFooterRequest",
+}) as any as S.Schema<DeleteFooterRequest>;
+
+/** Inserts an InlineObject containing an image at the given location. */
+export interface InsertInlineImageRequest {
+  /** The image URI. The image is fetched once at insertion time and a copy is stored for display inside the document. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The provided URI must be publicly accessible and at most 2 kB in length. The URI itself is saved with the image, and exposed via the ImageProperties.content_uri field. */
+  uri?: string;
+  /** Inserts the text at the end of a header, footer or the document body. Inline images cannot be inserted inside a footnote. */
+  endOfSegmentLocation?: EndOfSegmentLocation;
+  /** Inserts the image at a specific index in the document. The image must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Inline images cannot be inserted inside a footnote or equation. */
+  location?: Location;
+  /** The size that the image should appear as in the document. This property is optional and the final size of the image in the document is determined by the following rules: * If neither width nor height is specified, then a default size of the image is calculated based on its resolution. * If one dimension is specified then the other dimension is calculated to preserve the aspect ratio of the image. * If both width and height are specified, the image is scaled to fit within the provided dimensions while maintaining its aspect ratio. */
+  objectSize?: Size;
+}
+export const InsertInlineImageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.optional(S.String),
+    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
+    location: S.optional(Location),
+    objectSize: S.optional(Size),
+  }),
+).annotate({
+  identifier: "InsertInlineImageRequest",
+}) as any as S.Schema<InsertInlineImageRequest>;
+
+/** Update the styling of text. */
+export interface UpdateTextStyleRequest {
+  /** The fields that should be updated. At least one field must be specified. The root `text_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to `"bold"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
+  fields?: string;
+  /** The range of text to style. The range may be extended to include adjacent newlines. If the range fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the matching text style. Ranges cannot be inserted inside a relative UpdateTextStyleRequest. */
+  range?: Range;
+  /** The styles to set on the text. If the value for a particular style matches that of the parent, that style will be set to inherit. Certain text style changes may cause other changes in order to to mirror the behavior of the Docs editor. See the documentation of TextStyle for more information. */
+  textStyle?: TextStyle;
+}
+export const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: S.optional(S.String),
+    range: S.optional(Range),
+    textStyle: S.optional(TextStyle),
+  }),
+).annotate({
+  identifier: "UpdateTextStyleRequest",
+}) as any as S.Schema<UpdateTextStyleRequest>;
+
+export type InsertSectionBreakRequestSectionTypeEnum =
+  | "SECTION_TYPE_UNSPECIFIED"
+  | "CONTINUOUS"
+  | "NEXT_PAGE";
+export const InsertSectionBreakRequestSectionTypeEnum = /*@__PURE__*/ S.String;
+
+/** Inserts a section break at the given location. A newline character will be inserted before the section break. */
+export interface InsertSectionBreakRequest {
+  /** Inserts a newline and a section break at the end of the document body. Section breaks cannot be inserted inside a footnote, header or footer. Because section breaks can only be inserted inside the body, the segment ID field must be empty. */
+  endOfSegmentLocation?: EndOfSegmentLocation;
+  /** The type of section to insert. */
+  sectionType?: InsertSectionBreakRequestSectionTypeEnum | (string & {});
+  /** Inserts a newline and a section break at a specific index in the document. The section break must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Section breaks cannot be inserted inside a table, equation, footnote, header, or footer. Since section breaks can only be inserted inside the body, the segment ID field must be empty. */
+  location?: Location;
+}
+export const InsertSectionBreakRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
+    sectionType: S.optional(InsertSectionBreakRequestSectionTypeEnum),
+    location: S.optional(Location),
+  }),
+).annotate({
+  identifier: "InsertSectionBreakRequest",
+}) as any as S.Schema<InsertSectionBreakRequest>;
+
+/** Updates a named style. */
+export interface UpdateNamedStyleRequest {
+  /** The document tab to update. By default, the update is applied to the first tab. */
+  tabId?: string;
+  /** The NamedStyle fields that should be updated. At least `named_style_type` must be specified. The root `named_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to include `"text_style"` and `"text_style.bold"`. To update the paragraph style's alignment property, set `fields` to include `"paragraph_style"` and `"paragraph_style.alignment"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. Specifying `"text_style"` or `"paragraph_style"` with an empty TextStyle or ParagraphStyle will reset all of its nested fields. */
+  fields?: string;
+  /** The document style to update. */
+  namedStyle?: NamedStyle;
+}
+export const UpdateNamedStyleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tabId: S.optional(S.String),
+    fields: S.optional(S.String),
+    namedStyle: S.optional(NamedStyle),
+  }),
+).annotate({
+  identifier: "UpdateNamedStyleRequest",
+}) as any as S.Schema<UpdateNamedStyleRequest>;
+
+/** Adds a document tab. When a tab is added at a given index, all subsequent tabs' indexes are incremented. */
+export interface AddDocumentTabRequest {
+  /** The properties of the tab to add. All properties are optional. */
+  tabProperties?: TabProperties;
+}
+export const AddDocumentTabRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tabProperties: S.optional(TabProperties),
+  }),
+).annotate({
+  identifier: "AddDocumentTabRequest",
+}) as any as S.Schema<AddDocumentTabRequest>;
+
+export type IntegerList = Array<number>;
+export const IntegerList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<IntegerList>;
+
+/** Updates the TableColumnProperties of columns in a table. */
+export interface UpdateTableColumnPropertiesRequest {
+  /** The location where the table starts in the document. */
+  tableStartLocation?: Location;
+  /** The fields that should be updated. At least one field must be specified. The root `tableColumnProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the column width, set `fields` to `"width"`. */
+  fields?: string;
+  /** The table column properties to update. If the value of `table_column_properties#width` is less than 5 points (5/72 inch), a 400 bad request error is returned. */
+  tableColumnProperties?: TableColumnProperties;
+  /** The list of zero-based column indices whose property should be updated. If no indices are specified, all columns will be updated. */
+  columnIndices?: IntegerList;
+}
+export const UpdateTableColumnPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableStartLocation: S.optional(Location),
+    fields: S.optional(S.String),
+    tableColumnProperties: S.optional(TableColumnProperties),
+    columnIndices: S.optional(IntegerList),
+  }),
+).annotate({
+  identifier: "UpdateTableColumnPropertiesRequest",
+}) as any as S.Schema<UpdateTableColumnPropertiesRequest>;
+
+/** Inserts a date at the specified location. */
+export interface InsertDateRequest {
+  /** Inserts the date at the end of the given header, footer or document body. */
+  endOfSegmentLocation?: EndOfSegmentLocation;
+  /** The properties of the date to insert. */
+  dateElementProperties?: DateElementProperties;
+  /** Inserts the date at a specific index in the document. The date must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between an existing table and its preceding paragraph). */
+  location?: Location;
+}
+export const InsertDateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
+    dateElementProperties: S.optional(DateElementProperties),
+    location: S.optional(Location),
+  }),
+).annotate({
+  identifier: "InsertDateRequest",
+}) as any as S.Schema<InsertDateRequest>;
+
+/** Deletes content from the document. */
+export interface DeleteContentRangeRequest {
+  /** The range of content to delete. Deleting text that crosses a paragraph boundary may result in changes to paragraph styles, lists, positioned objects and bookmarks as the two paragraphs are merged. Attempting to delete certain ranges can result in an invalid document structure in which case a 400 bad request error is returned. Some examples of invalid delete requests include: * Deleting one code unit of a surrogate pair. * Deleting the last newline character of a Body, Header, Footer, Footnote, TableCell or TableOfContents. * Deleting the start or end of a Table, TableOfContents or Equation without deleting the entire element. * Deleting the newline character before a Table, TableOfContents or SectionBreak without deleting the element. * Deleting individual rows or cells of a table. Deleting the content within a table cell is allowed. */
+  range?: Range;
+}
+export const DeleteContentRangeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    range: S.optional(Range),
+  }),
+).annotate({
+  identifier: "DeleteContentRangeRequest",
+}) as any as S.Schema<DeleteContentRangeRequest>;
+
+/** Unmerges cells in a Table. */
+export interface UnmergeTableCellsRequest {
+  /** The table range specifying which cells of the table to unmerge. All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected. If the range has no merged cells, the request will do nothing. If there is text in any of the merged cells, the text will remain in the "head" cell of the resulting block of unmerged cells. The "head" cell is the upper-left cell when the content direction is from left to right, and the upper-right otherwise. */
+  tableRange?: TableRange;
+}
+export const UnmergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableRange: S.optional(TableRange),
+  }),
+).annotate({
+  identifier: "UnmergeTableCellsRequest",
+}) as any as S.Schema<UnmergeTableCellsRequest>;
+
+/** Replaces the contents of the specified NamedRange or NamedRanges with the given replacement content. Note that an individual NamedRange may consist of multiple discontinuous ranges. In this case, only the content in the first range will be replaced. The other ranges and their content will be deleted. In cases where replacing or deleting any ranges would result in an invalid document structure, a 400 bad request error is returned. */
+export interface ReplaceNamedRangeContentRequest {
+  /** The ID of the named range whose content will be replaced. If there is no named range with the given ID a 400 bad request error is returned. */
+  namedRangeId?: string;
+  /** Optional. The criteria used to specify in which tabs the replacement occurs. When omitted, the replacement applies to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the replacement applies to the singular tab. In a document containing multiple tabs: - If provided, the replacement applies to the specified tabs. - If omitted, the replacement applies to all tabs. */
+  tabsCriteria?: TabsCriteria;
+  /** The name of the NamedRanges whose content will be replaced. If there are multiple named ranges with the given name, then the content of each one will be replaced. If there are no named ranges with the given name, then the request will be a no-op. */
+  namedRangeName?: string;
+  /** Replaces the content of the specified named range(s) with the given text. */
+  text?: string;
+}
+export const ReplaceNamedRangeContentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namedRangeId: S.optional(S.String),
+    tabsCriteria: S.optional(TabsCriteria),
+    namedRangeName: S.optional(S.String),
+    text: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplaceNamedRangeContentRequest",
+}) as any as S.Schema<ReplaceNamedRangeContentRequest>;
+
+/** Deletes a PositionedObject from the document. */
+export interface DeletePositionedObjectRequest {
+  /** The ID of the positioned object to delete. */
+  objectId?: string;
+  /** The tab that the positioned object to delete is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
+  tabId?: string;
+}
+export const DeletePositionedObjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.String),
+    tabId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletePositionedObjectRequest",
+}) as any as S.Schema<DeletePositionedObjectRequest>;
+
+export type ReplaceImageRequestImageReplaceMethodEnum =
+  | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
+  | "CENTER_CROP";
+export const ReplaceImageRequestImageReplaceMethodEnum = /*@__PURE__*/ S.String;
+
+/** Replaces an existing image with a new image. Replacing an image removes some image effects from the existing image in order to mirror the behavior of the Docs editor. */
+export interface ReplaceImageRequest {
+  /** The replacement method. */
+  imageReplaceMethod?:
+    | ReplaceImageRequestImageReplaceMethodEnum
+    | (string & {});
+  /** The tab that the image to be replaced is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
+  tabId?: string;
+  /** The URI of the new image. The image is fetched once at insertion time and a copy is stored for display inside the document. Images must be less than 50MB, cannot exceed 25 megapixels, and must be in PNG, JPEG, or GIF format. The provided URI can't surpass 2 KB in length. The URI is saved with the image, and exposed through the ImageProperties.source_uri field. */
+  uri?: string;
+  /** The ID of the existing image that will be replaced. The ID can be retrieved from the response of a get request. */
+  imageObjectId?: string;
+}
+export const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageReplaceMethod: S.optional(ReplaceImageRequestImageReplaceMethodEnum),
+    tabId: S.optional(S.String),
+    uri: S.optional(S.String),
+    imageObjectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplaceImageRequest",
+}) as any as S.Schema<ReplaceImageRequest>;
+
+/** Inserts text at the specified location. */
+export interface InsertTextRequest {
+  /** Inserts the text at a specific index in the document. Text must be inserted inside the bounds of an existing Paragraph. For instance, text cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). The text must be inserted in the preceding paragraph. */
+  location?: Location;
+  /** The text to be inserted. Inserting a newline character will implicitly create a new Paragraph at that index. The paragraph style of the new paragraph will be copied from the paragraph at the current insertion index, including lists and bullets. Text styles for inserted text will be determined automatically, generally preserving the styling of neighboring text. In most cases, the text style for the inserted text will match the text immediately before the insertion index. Some control characters (U+0000-U+0008, U+000C-U+001F) and characters from the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF) will be stripped out of the inserted text. */
+  text?: string;
+  /** Inserts the text at the end of a header, footer, footnote or the document body. */
+  endOfSegmentLocation?: EndOfSegmentLocation;
+}
+export const InsertTextRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(Location),
+    text: S.optional(S.String),
+    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
+  }),
+).annotate({
+  identifier: "InsertTextRequest",
+}) as any as S.Schema<InsertTextRequest>;
+
+/** Update the styling of all paragraphs that overlap with the given range. */
+export interface UpdateParagraphStyleRequest {
+  /** The styles to set on the paragraphs. Certain paragraph style changes may cause other changes in order to mirror the behavior of the Docs editor. See the documentation of ParagraphStyle for more information. */
+  paragraphStyle?: ParagraphStyle;
+  /** The fields that should be updated. At least one field must be specified. The root `paragraph_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the paragraph style's alignment property, set `fields` to `"alignment"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
+  fields?: string;
+  /** The range overlapping the paragraphs to style. */
+  range?: Range;
+}
+export const UpdateParagraphStyleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paragraphStyle: S.optional(ParagraphStyle),
+    fields: S.optional(S.String),
+    range: S.optional(Range),
+  }),
+).annotate({
+  identifier: "UpdateParagraphStyleRequest",
+}) as any as S.Schema<UpdateParagraphStyleRequest>;
+
+/** Updates the TableRowStyle of rows in a table. */
+export interface UpdateTableRowStyleRequest {
+  /** The location where the table starts in the document. */
+  tableStartLocation?: Location;
+  /** The fields that should be updated. At least one field must be specified. The root `tableRowStyle` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the minimum row height, set `fields` to `"min_row_height"`. */
+  fields?: string;
+  /** The styles to be set on the rows. */
+  tableRowStyle?: TableRowStyle;
+  /** The list of zero-based row indices whose style should be updated. If no indices are specified, all rows will be updated. */
+  rowIndices?: IntegerList;
+}
+export const UpdateTableRowStyleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableStartLocation: S.optional(Location),
+    fields: S.optional(S.String),
+    tableRowStyle: S.optional(TableRowStyle),
+    rowIndices: S.optional(IntegerList),
+  }),
+).annotate({
+  identifier: "UpdateTableRowStyleRequest",
+}) as any as S.Schema<UpdateTableRowStyleRequest>;
+
+/** Updates the SectionStyle. */
+export interface UpdateSectionStyleRequest {
+  /** The styles to be set on the section. Certain section style changes may cause other changes in order to mirror the behavior of the Docs editor. See the documentation of SectionStyle for more information. */
+  sectionStyle?: SectionStyle;
+  /** The fields that should be updated. At least one field must be specified. The root `section_style` is implied and must not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the left margin, set `fields` to `"margin_left"`. */
+  fields?: string;
+  /** The range overlapping the sections to style. Because section breaks can only be inserted inside the body, the segment ID field must be empty. */
+  range?: Range;
+}
+export const UpdateSectionStyleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sectionStyle: S.optional(SectionStyle),
+    fields: S.optional(S.String),
+    range: S.optional(Range),
+  }),
+).annotate({
+  identifier: "UpdateSectionStyleRequest",
+}) as any as S.Schema<UpdateSectionStyleRequest>;
+
+/** Deletes a row from a table. */
+export interface DeleteTableRowRequest {
+  /** The reference table cell location from which the row will be deleted. The row this cell spans will be deleted. If this is a merged cell that spans multiple rows, all rows that the cell spans will be deleted. If no rows remain in the table after this deletion, the whole table is deleted. */
+  tableCellLocation?: TableCellLocation;
+}
+export const DeleteTableRowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableCellLocation: S.optional(TableCellLocation),
+  }),
+).annotate({
+  identifier: "DeleteTableRowRequest",
+}) as any as S.Schema<DeleteTableRowRequest>;
+
+/** Deletes a column from a table. */
+export interface DeleteTableColumnRequest {
+  /** The reference table cell location from which the column will be deleted. The column this cell spans will be deleted. If this is a merged cell that spans multiple columns, all columns that the cell spans will be deleted. If no columns remain in the table after this deletion, the whole table is deleted. */
+  tableCellLocation?: TableCellLocation;
+}
+export const DeleteTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableCellLocation: S.optional(TableCellLocation),
+  }),
+).annotate({
+  identifier: "DeleteTableColumnRequest",
+}) as any as S.Schema<DeleteTableColumnRequest>;
+
+/** Inserts an empty row into a table. */
+export interface InsertTableRowRequest {
+  /** Whether to insert new row below the reference cell location. - `True`: insert below the cell. - `False`: insert above the cell. */
+  insertBelow?: boolean;
+  /** The reference table cell location from which rows will be inserted. A new row will be inserted above (or below) the row where the reference cell is. If the reference cell is a merged cell, a new row will be inserted above (or below) the merged cell. */
+  tableCellLocation?: TableCellLocation;
+}
+export const InsertTableRowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    insertBelow: S.optional(S.Boolean),
+    tableCellLocation: S.optional(TableCellLocation),
+  }),
+).annotate({
+  identifier: "InsertTableRowRequest",
+}) as any as S.Schema<InsertTableRowRequest>;
+
+/** Inserts a page break followed by a newline at the specified location. */
+export interface InsertPageBreakRequest {
+  /** Inserts the page break at a specific index in the document. The page break must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Page breaks cannot be inserted inside a table, equation, footnote, header or footer. Since page breaks can only be inserted inside the body, the segment ID field must be empty. */
+  location?: Location;
+  /** Inserts the page break at the end of the document body. Page breaks cannot be inserted inside a footnote, header or footer. Since page breaks can only be inserted inside the body, the segment ID field must be empty. */
+  endOfSegmentLocation?: EndOfSegmentLocation;
+}
+export const InsertPageBreakRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(Location),
+    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
+  }),
+).annotate({
+  identifier: "InsertPageBreakRequest",
+}) as any as S.Schema<InsertPageBreakRequest>;
+
+/** Creates a Footnote segment and inserts a new FootnoteReference to it at the given location. The new Footnote segment will contain a space followed by a newline character. */
+export interface CreateFootnoteRequest {
+  /** Inserts the footnote reference at the end of the document body. Footnote references cannot be inserted inside a header, footer or footnote. Since footnote references can only be inserted in the body, the segment ID field must be empty. */
+  endOfSegmentLocation?: EndOfSegmentLocation;
+  /** Inserts the footnote reference at a specific index in the document. The footnote reference must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Footnote references cannot be inserted inside an equation, header, footer or footnote. Since footnote references can only be inserted in the body, the segment ID field must be empty. */
+  location?: Location;
+}
+export const CreateFootnoteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
+    location: S.optional(Location),
+  }),
+).annotate({
+  identifier: "CreateFootnoteRequest",
+}) as any as S.Schema<CreateFootnoteRequest>;
+
+/** Inserts a RichLink at the specified location. */
+export interface InsertRichLinkRequest {
+  /** Inserts the rich link at a specific index in the document. The rich link must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). The rich link cannot be inserted inside an equation. */
+  location?: Location;
+  /** Inserts the rich link at the end of a header, footer, footnote or the document body. */
+  endOfSegmentLocation?: EndOfSegmentLocation;
+  /** The properties of the rich link to insert. */
+  richLinkProperties?: RichLinkProperties;
+}
+export const InsertRichLinkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(Location),
+    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
+    richLinkProperties: S.optional(RichLinkProperties),
+  }),
+).annotate({
+  identifier: "InsertRichLinkRequest",
+}) as any as S.Schema<InsertRichLinkRequest>;
+
+/** Creates a NamedRange referencing the given range. */
+export interface CreateNamedRangeRequest {
+  /** The range to apply the name to. */
+  range?: Range;
+  /** The name of the NamedRange. Names do not need to be unique. Names must be at least 1 character and no more than 256 characters, measured in UTF-16 code units. */
+  name?: string;
+}
+export const CreateNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    range: S.optional(Range),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateNamedRangeRequest",
+}) as any as S.Schema<CreateNamedRangeRequest>;
+
+/** Deletes a Header from the document. */
+export interface DeleteHeaderRequest {
+  /** The id of the header to delete. If this header is defined on DocumentStyle, the reference to this header is removed, resulting in no header of that type for the first section of the document. If this header is defined on a SectionStyle, the reference to this header is removed and the header of that type is now continued from the previous section. */
+  headerId?: string;
+  /** The tab containing the header to delete. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
+  tabId?: string;
+}
+export const DeleteHeaderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    headerId: S.optional(S.String),
+    tabId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteHeaderRequest",
+}) as any as S.Schema<DeleteHeaderRequest>;
+
+/** Updates the style of a range of table cells. */
+export interface UpdateTableCellStyleRequest {
+  /** The fields that should be updated. At least one field must be specified. The root `tableCellStyle` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the table cell background color, set `fields` to `"backgroundColor"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
+  fields?: string;
+  /** The location where the table starts in the document. When specified, the updates are applied to all the cells in the table. */
+  tableStartLocation?: Location;
+  /** The style to set on the table cells. When updating borders, if a cell shares a border with an adjacent cell, the corresponding border property of the adjacent cell is updated as well. Borders that are merged and invisible are not updated. Since updating a border shared by adjacent cells in the same request can cause conflicting border updates, border updates are applied in the following order: - `border_right` - `border_left` - `border_bottom` - `border_top` */
+  tableCellStyle?: TableCellStyle;
+  /** The table range representing the subset of the table to which the updates are applied. */
+  tableRange?: TableRange;
+}
+export const UpdateTableCellStyleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: S.optional(S.String),
+    tableStartLocation: S.optional(Location),
+    tableCellStyle: S.optional(TableCellStyle),
+    tableRange: S.optional(TableRange),
+  }),
+).annotate({
+  identifier: "UpdateTableCellStyleRequest",
+}) as any as S.Schema<UpdateTableCellStyleRequest>;
+
+/** Updates the number of pinned table header rows in a table. */
+export interface PinTableHeaderRowsRequest {
+  /** The number of table rows to pin, where 0 implies that all rows are unpinned. */
+  pinnedHeaderRowsCount?: number;
+  /** The location where the table starts in the document. */
+  tableStartLocation?: Location;
+}
+export const PinTableHeaderRowsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pinnedHeaderRowsCount: S.optional(S.Number),
+    tableStartLocation: S.optional(Location),
+  }),
+).annotate({
+  identifier: "PinTableHeaderRowsRequest",
+}) as any as S.Schema<PinTableHeaderRowsRequest>;
+
+/** Deletes a tab. If the tab has child tabs, they are deleted as well. */
+export interface DeleteTabRequest {
+  /** The ID of the tab to delete. */
+  tabId?: string;
+}
+export const DeleteTabRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tabId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteTabRequest",
+}) as any as S.Schema<DeleteTabRequest>;
+
+/** A single update to apply to a document. */
+export interface Request {
+  /** Creates bullets for paragraphs. */
+  createParagraphBullets?: CreateParagraphBulletsRequest;
+  /** Deletes bullets from paragraphs. */
+  deleteParagraphBullets?: DeleteParagraphBulletsRequest;
+  /** Inserts an empty column into a table. */
+  insertTableColumn?: InsertTableColumnRequest;
+  /** Replaces all instances of the specified text. */
+  replaceAllText?: ReplaceAllTextRequest;
+  /** Updates the style of the document. */
+  updateDocumentStyle?: UpdateDocumentStyleRequest;
+  /** Inserts a person mention. */
+  insertPerson?: InsertPersonRequest;
+  /** Creates a header. */
+  createHeader?: CreateHeaderRequest;
+  /** Updates the properties of a document tab. */
+  updateDocumentTabProperties?: UpdateDocumentTabPropertiesRequest;
+  /** Merges cells in a table. */
+  mergeTableCells?: MergeTableCellsRequest;
+  /** Creates a footer. */
+  createFooter?: CreateFooterRequest;
+  /** Inserts a table at the specified location. */
+  insertTable?: InsertTableRequest;
+  /** Deletes a named range. */
+  deleteNamedRange?: DeleteNamedRangeRequest;
+  /** Deletes a footer from the document. */
+  deleteFooter?: DeleteFooterRequest;
+  /** Inserts an inline image at the specified location. */
+  insertInlineImage?: InsertInlineImageRequest;
+  /** Updates the text style at the specified range. */
+  updateTextStyle?: UpdateTextStyleRequest;
+  /** Inserts a section break at the specified location. */
+  insertSectionBreak?: InsertSectionBreakRequest;
+  /** Updates a named style. */
+  updateNamedStyle?: UpdateNamedStyleRequest;
+  /** Adds a document tab. */
+  addDocumentTab?: AddDocumentTabRequest;
+  /** Updates the properties of columns in a table. */
+  updateTableColumnProperties?: UpdateTableColumnPropertiesRequest;
+  /** Inserts a date. */
+  insertDate?: InsertDateRequest;
+  /** Deletes content from the document. */
+  deleteContentRange?: DeleteContentRangeRequest;
+  /** Unmerges cells in a table. */
+  unmergeTableCells?: UnmergeTableCellsRequest;
+  /** Replaces the content in a named range. */
+  replaceNamedRangeContent?: ReplaceNamedRangeContentRequest;
+  /** Deletes a positioned object from the document. */
+  deletePositionedObject?: DeletePositionedObjectRequest;
+  /** Replaces an image in the document. */
+  replaceImage?: ReplaceImageRequest;
+  /** Inserts text at the specified location. */
+  insertText?: InsertTextRequest;
+  /** Updates the paragraph style at the specified range. */
+  updateParagraphStyle?: UpdateParagraphStyleRequest;
+  /** Updates the row style in a table. */
+  updateTableRowStyle?: UpdateTableRowStyleRequest;
+  /** Updates the section style of the specified range. */
+  updateSectionStyle?: UpdateSectionStyleRequest;
+  /** Deletes a row from a table. */
+  deleteTableRow?: DeleteTableRowRequest;
+  /** Deletes a column from a table. */
+  deleteTableColumn?: DeleteTableColumnRequest;
+  /** Inserts an empty row into a table. */
+  insertTableRow?: InsertTableRowRequest;
+  /** Inserts a page break at the specified location. */
+  insertPageBreak?: InsertPageBreakRequest;
+  /** Creates a footnote. */
+  createFootnote?: CreateFootnoteRequest;
+  /** Insert a rich link. */
+  insertRichLink?: InsertRichLinkRequest;
+  /** Creates a named range. */
+  createNamedRange?: CreateNamedRangeRequest;
+  /** Deletes a header from the document. */
+  deleteHeader?: DeleteHeaderRequest;
+  /** Updates the style of table cells. */
+  updateTableCellStyle?: UpdateTableCellStyleRequest;
+  /** Updates the number of pinned header rows in a table. */
+  pinTableHeaderRows?: PinTableHeaderRowsRequest;
+  /** Deletes a document tab. */
+  deleteTab?: DeleteTabRequest;
+}
+export const Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createParagraphBullets: S.optional(CreateParagraphBulletsRequest),
+    deleteParagraphBullets: S.optional(DeleteParagraphBulletsRequest),
+    insertTableColumn: S.optional(InsertTableColumnRequest),
+    replaceAllText: S.optional(ReplaceAllTextRequest),
+    updateDocumentStyle: S.optional(UpdateDocumentStyleRequest),
+    insertPerson: S.optional(InsertPersonRequest),
+    createHeader: S.optional(CreateHeaderRequest),
+    updateDocumentTabProperties: S.optional(UpdateDocumentTabPropertiesRequest),
+    mergeTableCells: S.optional(MergeTableCellsRequest),
+    createFooter: S.optional(CreateFooterRequest),
+    insertTable: S.optional(InsertTableRequest),
+    deleteNamedRange: S.optional(DeleteNamedRangeRequest),
+    deleteFooter: S.optional(DeleteFooterRequest),
+    insertInlineImage: S.optional(InsertInlineImageRequest),
+    updateTextStyle: S.optional(UpdateTextStyleRequest),
+    insertSectionBreak: S.optional(InsertSectionBreakRequest),
+    updateNamedStyle: S.optional(UpdateNamedStyleRequest),
+    addDocumentTab: S.optional(AddDocumentTabRequest),
+    updateTableColumnProperties: S.optional(UpdateTableColumnPropertiesRequest),
+    insertDate: S.optional(InsertDateRequest),
+    deleteContentRange: S.optional(DeleteContentRangeRequest),
+    unmergeTableCells: S.optional(UnmergeTableCellsRequest),
+    replaceNamedRangeContent: S.optional(ReplaceNamedRangeContentRequest),
+    deletePositionedObject: S.optional(DeletePositionedObjectRequest),
+    replaceImage: S.optional(ReplaceImageRequest),
+    insertText: S.optional(InsertTextRequest),
+    updateParagraphStyle: S.optional(UpdateParagraphStyleRequest),
+    updateTableRowStyle: S.optional(UpdateTableRowStyleRequest),
+    updateSectionStyle: S.optional(UpdateSectionStyleRequest),
+    deleteTableRow: S.optional(DeleteTableRowRequest),
+    deleteTableColumn: S.optional(DeleteTableColumnRequest),
+    insertTableRow: S.optional(InsertTableRowRequest),
+    insertPageBreak: S.optional(InsertPageBreakRequest),
+    createFootnote: S.optional(CreateFootnoteRequest),
+    insertRichLink: S.optional(InsertRichLinkRequest),
+    createNamedRange: S.optional(CreateNamedRangeRequest),
+    deleteHeader: S.optional(DeleteHeaderRequest),
+    updateTableCellStyle: S.optional(UpdateTableCellStyleRequest),
+    pinTableHeaderRows: S.optional(PinTableHeaderRowsRequest),
+    deleteTab: S.optional(DeleteTabRequest),
+  }),
+).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
+
+export type RequestList = Array<Request>;
+export const RequestList = /*@__PURE__*/ S.Array(
+  Request,
+) as any as S.Schema<RequestList>;
+
+/** Request message for BatchUpdateDocument. */
+export interface BatchUpdateDocumentRequest {
+  /** Provides control over how write requests are executed. */
+  writeControl?: WriteControl;
+  /** A list of updates to apply to the document. */
+  requests?: RequestList;
+}
+export const BatchUpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    writeControl: S.optional(WriteControl),
+    requests: S.optional(RequestList),
+  }),
+).annotate({
+  identifier: "BatchUpdateDocumentRequest",
+}) as any as S.Schema<BatchUpdateDocumentRequest>;
+
+export interface UpdateBatchDocumentRequest {
+  /** The ID of the document to update. */
+  documentId: string;
+  /** Request body */
+  body?: BatchUpdateDocumentRequest;
+}
+export const UpdateBatchDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentId: S.String.pipe(T.Label()),
+    body: S.optional(BatchUpdateDocumentRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/documents/{documentId}:batchUpdate",
+      baseUrl: "https://docs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBatchDocumentRequest",
+}) as any as S.Schema<UpdateBatchDocumentRequest>;
+
+/** The result of replacing text. */
+export interface ReplaceAllTextResponse {
+  /** The number of occurrences changed by replacing all text. */
+  occurrencesChanged?: number;
+}
+export const ReplaceAllTextResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    occurrencesChanged: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ReplaceAllTextResponse",
+}) as any as S.Schema<ReplaceAllTextResponse>;
+
+/** The result of inserting an inline image. */
+export interface InsertInlineImageResponse {
+  /** The ID of the created InlineObject. */
+  objectId?: string;
+}
+export const InsertInlineImageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InsertInlineImageResponse",
+}) as any as S.Schema<InsertInlineImageResponse>;
+
+/** The result of creating a footnote. */
+export interface CreateFootnoteResponse {
+  /** The ID of the created footnote. */
+  footnoteId?: string;
+}
+export const CreateFootnoteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    footnoteId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateFootnoteResponse",
+}) as any as S.Schema<CreateFootnoteResponse>;
+
+/** The result of inserting an embedded Google Sheets chart. */
+export interface InsertInlineSheetsChartResponse {
+  /** The object ID of the inserted chart. */
+  objectId?: string;
+}
+export const InsertInlineSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InsertInlineSheetsChartResponse",
+}) as any as S.Schema<InsertInlineSheetsChartResponse>;
+
+/** The result of creating a header. */
+export interface CreateHeaderResponse {
+  /** The ID of the created header. */
+  headerId?: string;
+}
+export const CreateHeaderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    headerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateHeaderResponse",
+}) as any as S.Schema<CreateHeaderResponse>;
+
+/** The result of creating a named range. */
+export interface CreateNamedRangeResponse {
+  /** The ID of the created named range. */
+  namedRangeId?: string;
+}
+export const CreateNamedRangeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namedRangeId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateNamedRangeResponse",
+}) as any as S.Schema<CreateNamedRangeResponse>;
+
+/** The result of adding a document tab. */
+export interface AddDocumentTabResponse {
+  /** The properties of the newly added tab. */
+  tabProperties?: TabProperties;
+}
+export const AddDocumentTabResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tabProperties: S.optional(TabProperties),
+  }),
+).annotate({
+  identifier: "AddDocumentTabResponse",
+}) as any as S.Schema<AddDocumentTabResponse>;
+
+/** The result of creating a footer. */
+export interface CreateFooterResponse {
+  /** The ID of the created footer. */
+  footerId?: string;
+}
+export const CreateFooterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    footerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateFooterResponse",
+}) as any as S.Schema<CreateFooterResponse>;
+
+/** A single response from an update. */
+export interface Response {
+  /** The result of replacing text. */
+  replaceAllText?: ReplaceAllTextResponse;
+  /** The result of inserting an inline image. */
+  insertInlineImage?: InsertInlineImageResponse;
+  /** The result of creating a footnote. */
+  createFootnote?: CreateFootnoteResponse;
+  /** The result of inserting an inline Google Sheets chart. */
+  insertInlineSheetsChart?: InsertInlineSheetsChartResponse;
+  /** The result of creating a header. */
+  createHeader?: CreateHeaderResponse;
+  /** The result of creating a named range. */
+  createNamedRange?: CreateNamedRangeResponse;
+  /** The result of adding a document tab. */
+  addDocumentTab?: AddDocumentTabResponse;
+  /** The result of creating a footer. */
+  createFooter?: CreateFooterResponse;
+}
+export const Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    replaceAllText: S.optional(ReplaceAllTextResponse),
+    insertInlineImage: S.optional(InsertInlineImageResponse),
+    createFootnote: S.optional(CreateFootnoteResponse),
+    insertInlineSheetsChart: S.optional(InsertInlineSheetsChartResponse),
+    createHeader: S.optional(CreateHeaderResponse),
+    createNamedRange: S.optional(CreateNamedRangeResponse),
+    addDocumentTab: S.optional(AddDocumentTabResponse),
+    createFooter: S.optional(CreateFooterResponse),
+  }),
+).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
+
+export type ResponseList = Array<Response>;
+export const ResponseList = /*@__PURE__*/ S.Array(
+  Response,
+) as any as S.Schema<ResponseList>;
+
+/** Response message from a BatchUpdateDocument request. */
+export interface BatchUpdateDocumentResponse {
+  /** The ID of the document to which the updates were applied to. */
+  documentId?: string;
+  /** The updated write control after applying the request. */
+  writeControl?: WriteControl;
+  /** The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty. */
+  replies?: ResponseList;
+}
+export const BatchUpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentId: S.optional(S.String),
+    writeControl: S.optional(WriteControl),
+    replies: S.optional(ResponseList),
+  }),
+).annotate({
+  identifier: "BatchUpdateDocumentResponse",
+}) as any as S.Schema<BatchUpdateDocumentResponse>;
 
 export type CreateDocumentsError =
   | NotFound
@@ -4315,6 +4295,26 @@ export const getDocuments: API.OperationMethod<
   input: GetDocumentsRequest,
   output: Document,
   errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchDocumentError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Applies one or more updates to the document. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies, the reply to the third request, and another empty reply, in that order. Because other users may be editing the document, the document might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the document should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically. */
+export const updateBatchDocument: API.OperationMethod<
+  UpdateBatchDocumentRequest,
+  BatchUpdateDocumentResponse,
+  UpdateBatchDocumentError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchDocumentRequest,
+  output: BatchUpdateDocumentResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

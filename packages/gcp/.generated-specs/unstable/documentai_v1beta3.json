@@ -11932,7 +11932,7 @@
         "smithy.api#documentation": "Returns a list of documents present in the dataset."
       }
     },
-    "com.gcp.documentai_v1beta3#BatchDeleteDocumentsProjectsLocationsProcessorsDatasetRequest": {
+    "com.gcp.documentai_v1beta3#DeleteBatchDocumentProjectLocationProcessorDatasetRequest": {
       "type": "structure",
       "members": {
         "dataset": {
@@ -11952,10 +11952,10 @@
         }
       }
     },
-    "com.gcp.documentai_v1beta3#BatchDeleteDocumentsProjectsLocationsProcessorsDataset": {
+    "com.gcp.documentai_v1beta3#DeleteBatchDocumentProjectLocationProcessorDataset": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.documentai_v1beta3#BatchDeleteDocumentsProjectsLocationsProcessorsDatasetRequest"
+        "target": "com.gcp.documentai_v1beta3#DeleteBatchDocumentProjectLocationProcessorDatasetRequest"
       },
       "output": {
         "target": "com.gcp.documentai_v1beta3#GoogleLongrunningOperation"

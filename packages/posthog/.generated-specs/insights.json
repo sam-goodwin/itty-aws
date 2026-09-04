@@ -143,7 +143,7 @@
       },
       "traits": {}
     },
-    "com.posthog.insights#InsightsListRequest": {
+    "com.posthog.insights#ListInsightsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -35808,10 +35808,10 @@
       },
       "traits": {}
     },
-    "com.posthog.insights#InsightsList": {
+    "com.posthog.insights#ListInsights": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsListRequest"
+        "target": "com.posthog.insights#ListInsightsRequest"
       },
       "output": {
         "target": "com.posthog.insights#PaginatedInsightListOutput"
@@ -35870,7 +35870,7 @@
       },
       "traits": {}
     },
-    "com.posthog.insights#InsightsCreateRequest": {
+    "com.posthog.insights#CreateInsightRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -35947,10 +35947,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insights#InsightsCreate": {
+    "com.posthog.insights#CreateInsight": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsCreateRequest"
+        "target": "com.posthog.insights#CreateInsightRequest"
       },
       "output": {
         "target": "com.posthog.insights#InsightOutput"
@@ -35975,7 +35975,7 @@
         "smithy.api#documentation": "DRF ViewSet mixin that gates coalesced responses behind permission checks.\n\nThe QueryCoalescingMiddleware attaches cached response data to\nrequest.META[\"_coalesced_response\"] for followers. This mixin runs DRF's\ninitial() (auth + permissions + throttling) before returning the\ncached response, ensuring the request is authorized."
       }
     },
-    "com.posthog.insights#InsightsSharingListRequest": {
+    "com.posthog.insights#ListInsightSharingRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -36073,7 +36073,7 @@
       },
       "traits": {}
     },
-    "com.posthog.insights#InsightsSharingListResponse": {
+    "com.posthog.insights#ListInsightSharingResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -36088,13 +36088,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.insights#InsightsSharingList": {
+    "com.posthog.insights#ListInsightSharing": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsSharingListRequest"
+        "target": "com.posthog.insights#ListInsightSharingRequest"
       },
       "output": {
-        "target": "com.posthog.insights#InsightsSharingListResponse"
+        "target": "com.posthog.insights#ListInsightSharingResponse"
       },
       "errors": [
         {
@@ -36112,7 +36112,7 @@
         }
       }
     },
-    "com.posthog.insights#InsightsSharingPasswordsCreateRequest": {
+    "com.posthog.insights#CreateInsightSharingPasswordRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -36144,10 +36144,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insights#InsightsSharingPasswordsCreate": {
+    "com.posthog.insights#CreateInsightSharingPassword": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsSharingPasswordsCreateRequest"
+        "target": "com.posthog.insights#CreateInsightSharingPasswordRequest"
       },
       "output": {
         "target": "com.posthog.insights#SharingConfiguration"
@@ -36227,7 +36227,7 @@
         "smithy.api#documentation": "Delete a password from the sharing configuration."
       }
     },
-    "com.posthog.insights#InsightsSharingRefreshCreateRequest": {
+    "com.posthog.insights#CreateInsightSharingRefreshRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -36259,10 +36259,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insights#InsightsSharingRefreshCreate": {
+    "com.posthog.insights#CreateInsightSharingRefresh": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsSharingRefreshCreateRequest"
+        "target": "com.posthog.insights#CreateInsightSharingRefreshRequest"
       },
       "output": {
         "target": "com.posthog.insights#SharingConfiguration"
@@ -36286,7 +36286,7 @@
         }
       }
     },
-    "com.posthog.insights#InsightsThresholdsListRequest": {
+    "com.posthog.insights#ListInsightThresholdsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -37814,10 +37814,10 @@
       },
       "traits": {}
     },
-    "com.posthog.insights#InsightsThresholdsList": {
+    "com.posthog.insights#ListInsightThresholds": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsThresholdsListRequest"
+        "target": "com.posthog.insights#ListInsightThresholdsRequest"
       },
       "output": {
         "target": "com.posthog.insights#PaginatedThresholdWithAlertList"
@@ -38089,7 +38089,7 @@
       },
       "traits": {}
     },
-    "com.posthog.insights#InsightsUpdateRequest": {
+    "com.posthog.insights#UpdateInsightRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -38174,10 +38174,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insights#InsightsUpdate": {
+    "com.posthog.insights#UpdateInsight": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsUpdateRequest"
+        "target": "com.posthog.insights#UpdateInsightRequest"
       },
       "output": {
         "target": "com.posthog.insights#InsightOutput"
@@ -38236,7 +38236,7 @@
       },
       "traits": {}
     },
-    "com.posthog.insights#InsightsPartialUpdateRequest": {
+    "com.posthog.insights#UpdateInsightPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -38321,10 +38321,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insights#InsightsPartialUpdate": {
+    "com.posthog.insights#UpdateInsightPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsPartialUpdateRequest"
+        "target": "com.posthog.insights#UpdateInsightPartialRequest"
       },
       "output": {
         "target": "com.posthog.insights#InsightOutput"
@@ -38868,7 +38868,7 @@
       },
       "traits": {}
     },
-    "com.posthog.insights#InsightsSuggestionsCreateRequest": {
+    "com.posthog.insights#CreateInsightSuggestionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -38946,10 +38946,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insights#InsightsSuggestionsCreate": {
+    "com.posthog.insights#CreateInsightSuggestion": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsSuggestionsCreateRequest"
+        "target": "com.posthog.insights#CreateInsightSuggestionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -39645,7 +39645,7 @@
       },
       "traits": {}
     },
-    "com.posthog.insights#InsightsCancelCreateRequest": {
+    "com.posthog.insights#CreateInsightCancelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -39715,10 +39715,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insights#InsightsCancelCreate": {
+    "com.posthog.insights#CreateInsightCancel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsCancelCreateRequest"
+        "target": "com.posthog.insights#CreateInsightCancelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -40268,7 +40268,7 @@
         "smithy.api#documentation": "Insight IDs that were just viewed by the current user. At most 2500 ids per request."
       }
     },
-    "com.posthog.insights#InsightsViewedCreateRequest": {
+    "com.posthog.insights#CreateInsightViewedRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -40297,10 +40297,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.insights#InsightsViewedCreate": {
+    "com.posthog.insights#CreateInsightViewed": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.insights#InsightsViewedCreateRequest"
+        "target": "com.posthog.insights#CreateInsightViewedRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -40369,25 +40369,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.insights#InsightsList"
+          "target": "com.posthog.insights#ListInsights"
         },
         {
-          "target": "com.posthog.insights#InsightsCreate"
+          "target": "com.posthog.insights#CreateInsight"
         },
         {
-          "target": "com.posthog.insights#InsightsSharingList"
+          "target": "com.posthog.insights#ListInsightSharing"
         },
         {
-          "target": "com.posthog.insights#InsightsSharingPasswordsCreate"
+          "target": "com.posthog.insights#CreateInsightSharingPassword"
         },
         {
           "target": "com.posthog.insights#InsightsSharingPasswordsDestroy"
         },
         {
-          "target": "com.posthog.insights#InsightsSharingRefreshCreate"
+          "target": "com.posthog.insights#CreateInsightSharingRefresh"
         },
         {
-          "target": "com.posthog.insights#InsightsThresholdsList"
+          "target": "com.posthog.insights#ListInsightThresholds"
         },
         {
           "target": "com.posthog.insights#InsightsThresholdsRetrieve"
@@ -40396,10 +40396,10 @@
           "target": "com.posthog.insights#InsightsRetrieve"
         },
         {
-          "target": "com.posthog.insights#InsightsUpdate"
+          "target": "com.posthog.insights#UpdateInsight"
         },
         {
-          "target": "com.posthog.insights#InsightsPartialUpdate"
+          "target": "com.posthog.insights#UpdateInsightPartial"
         },
         {
           "target": "com.posthog.insights#InsightsDestroy"
@@ -40414,7 +40414,7 @@
           "target": "com.posthog.insights#InsightsSuggestionsRetrieve"
         },
         {
-          "target": "com.posthog.insights#InsightsSuggestionsCreate"
+          "target": "com.posthog.insights#CreateInsightSuggestion"
         },
         {
           "target": "com.posthog.insights#InsightsAllActivityRetrieve"
@@ -40432,7 +40432,7 @@
           "target": "com.posthog.insights#InsightsBulkUpdateTagsCreate"
         },
         {
-          "target": "com.posthog.insights#InsightsCancelCreate"
+          "target": "com.posthog.insights#CreateInsightCancel"
         },
         {
           "target": "com.posthog.insights#InsightsGenerateMetadataCreate"
@@ -40444,7 +40444,7 @@
           "target": "com.posthog.insights#InsightsTrendingRetrieve"
         },
         {
-          "target": "com.posthog.insights#InsightsViewedCreate"
+          "target": "com.posthog.insights#CreateInsightViewed"
         }
       ],
       "traits": {

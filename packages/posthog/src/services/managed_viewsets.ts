@@ -50,12 +50,12 @@ export type ManagedViewsetsUpdateRequestKind =
   | "engineering_analytics";
 export const ManagedViewsetsUpdateRequestKind = /*@__PURE__*/ S.String;
 
-export interface ManagedViewsetsUpdateRequest {
+export interface UpdateManagedViewsetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   kind: ManagedViewsetsUpdateRequestKind | (string & {});
 }
-export const ManagedViewsetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateManagedViewsetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     kind: ManagedViewsetsUpdateRequestKind.pipe(T.Label()),
@@ -67,15 +67,15 @@ export const ManagedViewsetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ManagedViewsetsUpdateRequest",
-}) as any as S.Schema<ManagedViewsetsUpdateRequest>;
+  identifier: "UpdateManagedViewsetRequest",
+}) as any as S.Schema<UpdateManagedViewsetRequest>;
 
-export interface ManagedViewsetsUpdateResponse {}
-export const ManagedViewsetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export interface UpdateManagedViewsetResponse {}
+export const UpdateManagedViewsetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "ManagedViewsetsUpdateResponse",
-}) as any as S.Schema<ManagedViewsetsUpdateResponse>;
+  identifier: "UpdateManagedViewsetResponse",
+}) as any as S.Schema<UpdateManagedViewsetResponse>;
 
 export type ManagedViewsetsRetrieveError = PosthogOpError;
 /** Get all views associated with a specific managed viewset. GET /api/environments/{team_id}/managed_viewsets/{kind}/ */
@@ -92,16 +92,16 @@ export const managedViewsetsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ManagedViewsetsUpdateError = PosthogOpError;
+export type UpdateManagedViewsetError = PosthogOpError;
 /** Enable or disable a managed viewset by kind. PUT /api/environments/{team_id}/managed_viewsets/{kind}/ with body {"enabled": true/false} */
-export const managedViewsetsUpdate: API.OperationMethod<
-  ManagedViewsetsUpdateRequest,
-  ManagedViewsetsUpdateResponse,
-  ManagedViewsetsUpdateError,
+export const updateManagedViewset: API.OperationMethod<
+  UpdateManagedViewsetRequest,
+  UpdateManagedViewsetResponse,
+  UpdateManagedViewsetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedViewsetsUpdateRequest,
-  output: ManagedViewsetsUpdateResponse,
+  input: UpdateManagedViewsetRequest,
+  output: UpdateManagedViewsetResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

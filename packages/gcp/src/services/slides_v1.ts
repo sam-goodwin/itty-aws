@@ -65,45 +65,54 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** Reroutes a line such that it's connected at the two closest connection sites on the connected page elements. */
-export interface RerouteLineRequest {
-  /** The object ID of the line to reroute. Only a line with a category indicating it is a "connector" can be rerouted. The start and end connections of the line must be on different page elements. */
-  objectId?: string;
+/** The properties of Page are only relevant for pages with page_type LAYOUT. */
+export interface LayoutProperties {
+  /** The name of the layout. */
+  name?: string;
+  /** The human-readable name of the layout. */
+  displayName?: string;
+  /** The object ID of the master that this layout is based on. */
+  masterObjectId?: string;
 }
-export const RerouteLineRequest = /*@__PURE__*/ S.suspend(() =>
+export const LayoutProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectId: S.optional(S.String),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    masterObjectId: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RerouteLineRequest",
-}) as any as S.Schema<RerouteLineRequest>;
+  identifier: "LayoutProperties",
+}) as any as S.Schema<LayoutProperties>;
 
-export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
-export const DimensionUnitEnum = /*@__PURE__*/ S.String;
+export type PagePageTypeEnum =
+  | "SLIDE"
+  | "MASTER"
+  | "LAYOUT"
+  | "NOTES"
+  | "NOTES_MASTER";
+export const PagePageTypeEnum = /*@__PURE__*/ S.String;
 
-/** A magnitude in a single direction in the specified units. */
-export interface Dimension {
-  /** The units for magnitude. */
-  unit?: DimensionUnitEnum | (string & {});
-  /** The magnitude. */
-  magnitude?: number;
+/** The properties of Page that are only relevant for pages with page_type SLIDE. */
+export interface SlideProperties {
+  /** The object ID of the layout that this slide is based on. This property is read-only. */
+  layoutObjectId?: string;
+  /** The object ID of the master that this slide is based on. This property is read-only. */
+  masterObjectId?: string;
+  /** Whether the slide is skipped in the presentation mode. Defaults to false. */
+  isSkipped?: boolean;
+  /** The notes page that this slide is associated with. It defines the visual appearance of a notes page when printing or exporting slides with speaker notes. A notes page inherits properties from the notes master. The placeholder shape with type BODY on the notes page contains the speaker notes for this slide. The ID of this shape is identified by the speakerNotesObjectId field. The notes page is read-only except for the text content and styles of the speaker notes shape. This property is read-only. */
+  notesPage?: Page;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+export const SlideProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unit: S.optional(DimensionUnitEnum),
-    magnitude: S.optional(S.Number),
+    layoutObjectId: S.optional(S.String),
+    masterObjectId: S.optional(S.String),
+    isSkipped: S.optional(S.Boolean),
+    notesPage: S.optional(S.suspend(() => Page)),
   }),
-).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
-
-export type OutlineDashStyleEnum =
-  | "DASH_STYLE_UNSPECIFIED"
-  | "SOLID"
-  | "DOT"
-  | "DASH"
-  | "DASH_DOT"
-  | "LONG_DASH"
-  | "LONG_DASH_DOT";
-export const OutlineDashStyleEnum = /*@__PURE__*/ S.String;
+).annotate({
+  identifier: "SlideProperties",
+}) as any as S.Schema<SlideProperties>;
 
 /** An RGB color. */
 export interface RgbColor {
@@ -170,117 +179,22 @@ export const SolidFill = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SolidFill" }) as any as S.Schema<SolidFill>;
 
-/** The fill of the outline. */
-export interface OutlineFill {
-  /** Solid color fill. */
-  solidFill?: SolidFill;
+export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
+export const DimensionUnitEnum = /*@__PURE__*/ S.String;
+
+/** A magnitude in a single direction in the specified units. */
+export interface Dimension {
+  /** The units for magnitude. */
+  unit?: DimensionUnitEnum | (string & {});
+  /** The magnitude. */
+  magnitude?: number;
 }
-export const OutlineFill = /*@__PURE__*/ S.suspend(() =>
+export const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    solidFill: S.optional(SolidFill),
+    unit: S.optional(DimensionUnitEnum),
+    magnitude: S.optional(S.Number),
   }),
-).annotate({ identifier: "OutlineFill" }) as any as S.Schema<OutlineFill>;
-
-export type OutlinePropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
-export const OutlinePropertyStateEnum = /*@__PURE__*/ S.String;
-
-/** The outline of a PageElement. If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements created in the Slides editor, which may depend on the page element kind. */
-export interface Outline {
-  /** The thickness of the outline. */
-  weight?: Dimension;
-  /** The dash style of the outline. */
-  dashStyle?: OutlineDashStyleEnum | (string & {});
-  /** The fill of the outline. */
-  outlineFill?: OutlineFill;
-  /** The outline property state. Updating the outline on a page element will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no outline on a page element, set this field to `NOT_RENDERED`. In this case, any other outline fields set in the same request will be ignored. */
-  propertyState?: OutlinePropertyStateEnum | (string & {});
-}
-export const Outline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    weight: S.optional(Dimension),
-    dashStyle: S.optional(OutlineDashStyleEnum),
-    outlineFill: S.optional(OutlineFill),
-    propertyState: S.optional(OutlinePropertyStateEnum),
-  }),
-).annotate({ identifier: "Outline" }) as any as S.Schema<Outline>;
-
-/** The properties of the Video. */
-export interface VideoProperties {
-  /** Whether to enable video autoplay when the page is displayed in present mode. Defaults to false. */
-  autoPlay?: boolean;
-  /** The outline of the video. The default outline matches the defaults for new videos created in the Slides editor. */
-  outline?: Outline;
-  /** Whether to mute the audio during video playback. Defaults to false. */
-  mute?: boolean;
-  /** The time at which to end playback, measured in seconds from the beginning of the video. If set, the end time should be after the start time. If not set or if you set this to a value that exceeds the video's length, the video will be played until its end. */
-  end?: number;
-  /** The time at which to start playback, measured in seconds from the beginning of the video. If set, the start time should be before the end time. If you set this to a value that exceeds the video's length in seconds, the video will be played from the last second. If not set, the video will be played from the beginning. */
-  start?: number;
-}
-export const VideoProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoPlay: S.optional(S.Boolean),
-    outline: S.optional(Outline),
-    mute: S.optional(S.Boolean),
-    end: S.optional(S.Number),
-    start: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "VideoProperties",
-}) as any as S.Schema<VideoProperties>;
-
-/** Update the properties of a Video. */
-export interface UpdateVideoPropertiesRequest {
-  /** The video properties to update. */
-  videoProperties?: VideoProperties;
-  /** The fields that should be updated. At least one field must be specified. The root `videoProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the video outline color, set `fields` to `"outline.outlineFill.solidFill.color"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
-  fields?: string;
-  /** The object ID of the video the updates are applied to. */
-  objectId?: string;
-}
-export const UpdateVideoPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    videoProperties: S.optional(VideoProperties),
-    fields: S.optional(S.String),
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVideoPropertiesRequest",
-}) as any as S.Schema<UpdateVideoPropertiesRequest>;
-
-export type AffineTransformUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
-export const AffineTransformUnitEnum = /*@__PURE__*/ S.String;
-
-/** AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to transform source coordinates (x,y) into destination coordinates (x', y') according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After transformation, x' = scale_x * x + shear_x * y + translate_x; y' = scale_y * y + shear_y * x + translate_y; This message is therefore composed of these six matrix elements. */
-export interface AffineTransform {
-  /** The Y coordinate scaling element. */
-  scaleY?: number;
-  /** The X coordinate scaling element. */
-  scaleX?: number;
-  /** The units for translate elements. */
-  unit?: AffineTransformUnitEnum | (string & {});
-  /** The X coordinate translation element. */
-  translateX?: number;
-  /** The X coordinate shearing element. */
-  shearX?: number;
-  /** The Y coordinate translation element. */
-  translateY?: number;
-  /** The Y coordinate shearing element. */
-  shearY?: number;
-}
-export const AffineTransform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scaleY: S.optional(S.Number),
-    scaleX: S.optional(S.Number),
-    unit: S.optional(AffineTransformUnitEnum),
-    translateX: S.optional(S.Number),
-    shearX: S.optional(S.Number),
-    translateY: S.optional(S.Number),
-    shearY: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AffineTransform",
-}) as any as S.Schema<AffineTransform>;
+).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** A width and height. */
 export interface Size {
@@ -295,359 +209,6 @@ export const Size = /*@__PURE__*/ S.suspend(() =>
     height: S.optional(Dimension),
   }),
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
-
-/** Common properties for a page element. Note: When you initially create a PageElement, the API may modify the values of both `size` and `transform`, but the visual size will be unchanged. */
-export interface PageElementProperties {
-  /** The object ID of the page where the element is located. */
-  pageObjectId?: string;
-  /** The transform for the element. */
-  transform?: AffineTransform;
-  /** The size of the element. */
-  size?: Size;
-}
-export const PageElementProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageObjectId: S.optional(S.String),
-    transform: S.optional(AffineTransform),
-    size: S.optional(Size),
-  }),
-).annotate({
-  identifier: "PageElementProperties",
-}) as any as S.Schema<PageElementProperties>;
-
-export type CreateSheetsChartRequestLinkingModeEnum =
-  | "NOT_LINKED_IMAGE"
-  | "LINKED";
-export const CreateSheetsChartRequestLinkingModeEnum = /*@__PURE__*/ S.String;
-
-/** Creates an embedded Google Sheets chart. NOTE: Chart creation requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, drive.file, or drive OAuth scopes. */
-export interface CreateSheetsChartRequest {
-  /** The element properties for the chart. When the aspect ratio of the provided size does not match the chart aspect ratio, the chart is scaled and centered with respect to the size in order to maintain aspect ratio. The provided transform is applied after this operation. */
-  elementProperties?: PageElementProperties;
-  /** The mode with which the chart is linked to the source spreadsheet. When not specified, the chart will be an image that is not linked. */
-  linkingMode?: CreateSheetsChartRequestLinkingModeEnum | (string & {});
-  /** The ID of the specific chart in the Google Sheets spreadsheet. */
-  chartId?: number;
-  /** The ID of the Google Sheets spreadsheet that contains the chart. You might need to add a resource key to the HTTP header for a subset of old files. For more information, see [Access link-shared files using resource keys](https://developers.google.com/drive/api/v3/resource-keys). */
-  spreadsheetId?: string;
-  /** A user-supplied object ID. If specified, the ID must be unique among all pages and page elements in the presentation. The ID should start with a word character [a-zA-Z0-9_] and then followed by any number of the following characters [a-zA-Z0-9_-:]. The length of the ID should not be less than 5 or greater than 50. If empty, a unique identifier will be generated. */
-  objectId?: string;
-}
-export const CreateSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    elementProperties: S.optional(PageElementProperties),
-    linkingMode: S.optional(CreateSheetsChartRequestLinkingModeEnum),
-    chartId: S.optional(S.Number),
-    spreadsheetId: S.optional(S.String),
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSheetsChartRequest",
-}) as any as S.Schema<CreateSheetsChartRequest>;
-
-/** Creates a new table. */
-export interface CreateTableRequest {
-  /** Number of rows in the table. */
-  rows?: number;
-  /** The element properties for the table. The table will be created at the provided size, subject to a minimum size. If no size is provided, the table will be automatically sized. Table transforms must have a scale of 1 and no shear components. If no transform is provided, the table will be centered on the page. */
-  elementProperties?: PageElementProperties;
-  /** Number of columns in the table. */
-  columns?: number;
-  /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
-  objectId?: string;
-}
-export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rows: S.optional(S.Number),
-    elementProperties: S.optional(PageElementProperties),
-    columns: S.optional(S.Number),
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateTableRequest",
-}) as any as S.Schema<CreateTableRequest>;
-
-export type CreateVideoRequestSourceEnum =
-  | "SOURCE_UNSPECIFIED"
-  | "YOUTUBE"
-  | "DRIVE";
-export const CreateVideoRequestSourceEnum = /*@__PURE__*/ S.String;
-
-/** Creates a video. NOTE: Creating a video from Google Drive requires that the requesting app have at least one of the drive, drive.readonly, or drive.file OAuth scopes. */
-export interface CreateVideoRequest {
-  /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
-  objectId?: string;
-  /** The video source. */
-  source?: CreateVideoRequestSourceEnum | (string & {});
-  /** The element properties for the video. The PageElementProperties.size property is optional. If you don't specify a size, a default size is chosen by the server. The PageElementProperties.transform property is optional. The transform must not have shear components. If you don't specify a transform, the video will be placed at the top left corner of the page. */
-  elementProperties?: PageElementProperties;
-  /** The video source's unique identifier for this video. e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0, the ID is 7U3axjORYZ0. For a Google Drive video https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q. To access a Google Drive video file, you might need to add a resource key to the HTTP header for a subset of old files. For more information, see [Access link-shared files using resource keys](https://developers.google.com/drive/api/v3/resource-keys). */
-  id?: string;
-}
-export const CreateVideoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    source: S.optional(CreateVideoRequestSourceEnum),
-    elementProperties: S.optional(PageElementProperties),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateVideoRequest",
-}) as any as S.Schema<CreateVideoRequest>;
-
-/** A location of a single table cell within a table. */
-export interface TableCellLocation {
-  /** The 0-based row index. */
-  rowIndex?: number;
-  /** The 0-based column index. */
-  columnIndex?: number;
-}
-export const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowIndex: S.optional(S.Number),
-    columnIndex: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TableCellLocation",
-}) as any as S.Schema<TableCellLocation>;
-
-/** A table range represents a reference to a subset of a table. It's important to note that the cells specified by a table range do not necessarily form a rectangle. For example, let's say we have a 3 x 3 table where all the cells of the last row are merged together. The table looks like this: [ ] A table range with location = (0, 0), row span = 3 and column span = 2 specifies the following cells: x x [ x x x ] */
-export interface TableRange {
-  /** The row span of the table range. */
-  rowSpan?: number;
-  /** The column span of the table range. */
-  columnSpan?: number;
-  /** The starting location of the table range. */
-  location?: TableCellLocation;
-}
-export const TableRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rowSpan: S.optional(S.Number),
-    columnSpan: S.optional(S.Number),
-    location: S.optional(TableCellLocation),
-  }),
-).annotate({ identifier: "TableRange" }) as any as S.Schema<TableRange>;
-
-/** Merges cells in a Table. */
-export interface MergeTableCellsRequest {
-  /** The object ID of the table. */
-  objectId?: string;
-  /** The table range specifying which cells of the table to merge. Any text in the cells being merged will be concatenated and stored in the upper-left ("head") cell of the range. If the range is non-rectangular (which can occur in some cases where the range covers cells that are already merged), a 400 bad request error is returned. */
-  tableRange?: TableRange;
-}
-export const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({
-  identifier: "MergeTableCellsRequest",
-}) as any as S.Schema<MergeTableCellsRequest>;
-
-export type UpdateLineCategoryRequestLineCategoryEnum =
-  | "LINE_CATEGORY_UNSPECIFIED"
-  | "STRAIGHT"
-  | "BENT"
-  | "CURVED";
-export const UpdateLineCategoryRequestLineCategoryEnum = /*@__PURE__*/ S.String;
-
-/** Updates the category of a line. */
-export interface UpdateLineCategoryRequest {
-  /** The line category to update to. The exact line type is determined based on the category to update to and how it's routed to connect to other page elements. */
-  lineCategory?: UpdateLineCategoryRequestLineCategoryEnum | (string & {});
-  /** The object ID of the line the update is applied to. Only a line with a category indicating it is a "connector" can be updated. The line may be rerouted after updating its category. */
-  objectId?: string;
-}
-export const UpdateLineCategoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lineCategory: S.optional(UpdateLineCategoryRequestLineCategoryEnum),
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateLineCategoryRequest",
-}) as any as S.Schema<UpdateLineCategoryRequest>;
-
-/** A color that can either be fully opaque or fully transparent. */
-export interface OptionalColor {
-  /** If set, this will be used as an opaque color. If unset, this represents a transparent color. */
-  opaqueColor?: OpaqueColor;
-}
-export const OptionalColor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    opaqueColor: S.optional(OpaqueColor),
-  }),
-).annotate({ identifier: "OptionalColor" }) as any as S.Schema<OptionalColor>;
-
-export type LinkRelativeLinkEnum =
-  | "RELATIVE_SLIDE_LINK_UNSPECIFIED"
-  | "NEXT_SLIDE"
-  | "PREVIOUS_SLIDE"
-  | "FIRST_SLIDE"
-  | "LAST_SLIDE";
-export const LinkRelativeLinkEnum = /*@__PURE__*/ S.String;
-
-/** A hypertext link. */
-export interface Link {
-  /** If set, indicates this is a link to a slide in this presentation, addressed by its position. */
-  relativeLink?: LinkRelativeLinkEnum | (string & {});
-  /** If set, indicates this is a link to the external web page at this URL. */
-  url?: string;
-  /** If set, indicates this is a link to the slide at this zero-based index in the presentation. There may not be a slide at this index. */
-  slideIndex?: number;
-  /** If set, indicates this is a link to the specific page in this presentation with this ID. A page with this ID may not exist. */
-  pageObjectId?: string;
-}
-export const Link = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relativeLink: S.optional(LinkRelativeLinkEnum),
-    url: S.optional(S.String),
-    slideIndex: S.optional(S.Number),
-    pageObjectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
-
-export type TextStyleBaselineOffsetEnum =
-  | "BASELINE_OFFSET_UNSPECIFIED"
-  | "NONE"
-  | "SUPERSCRIPT"
-  | "SUBSCRIPT";
-export const TextStyleBaselineOffsetEnum = /*@__PURE__*/ S.String;
-
-/** Represents a font family and weight used to style a TextRun. */
-export interface WeightedFontFamily {
-  /** The rendered weight of the text. This field can have any value that is a multiple of `100` between `100` and `900`, inclusive. This range corresponds to the numerical values described in the CSS 2.1 Specification, [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with non-numerical values disallowed. Weights greater than or equal to `700` are considered bold, and weights less than `700`are not bold. The default value is `400` ("normal"). */
-  weight?: number;
-  /** The font family of the text. The font family can be any font from the Font menu in Slides or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`. */
-  fontFamily?: string;
-}
-export const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    weight: S.optional(S.Number),
-    fontFamily: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WeightedFontFamily",
-}) as any as S.Schema<WeightedFontFamily>;
-
-/** Represents the styling that can be applied to a TextRun. If this text is contained in a shape with a parent placeholder, then these text styles may be inherited from the parent. Which text styles are inherited depend on the nesting level of lists: * A text run in a paragraph that is not in a list will inherit its text style from the the newline character in the paragraph at the 0 nesting level of the list inside the parent placeholder. * A text run in a paragraph that is in a list will inherit its text style from the newline character in the paragraph at its corresponding nesting level of the list inside the parent placeholder. Inherited text styles are represented as unset fields in this message. If text is contained in a shape without a parent placeholder, unsetting these fields will revert the style to a value matching the defaults in the Slides editor. */
-export interface TextStyle {
-  /** The background color of the text. If set, the color is either opaque or transparent, depending on if the `opaque_color` field in it is set. */
-  backgroundColor?: OptionalColor;
-  /** The hyperlink destination of the text. If unset, there is no link. Links are not inherited from parent text. Changing the link in an update request causes some other changes to the text style of the range: * When setting a link, the text foreground color will be set to ThemeColorType.HYPERLINK and the text will be underlined. If these fields are modified in the same request, those values will be used instead of the link defaults. * Setting a link on a text range that overlaps with an existing link will also update the existing link to point to the new URL. * Links are not settable on newline characters. As a result, setting a link on a text range that crosses a paragraph boundary, such as `"ABC\n123"`, will separate the newline character(s) into their own text runs. The link will be applied separately to the runs before and after the newline. * Removing a link will update the text style of the range to match the style of the preceding text (or the default text styles if the preceding text is another link) unless different styles are being set in the same request. */
-  link?: Link;
-  /** The font family of the text. The font family can be any font from the Font menu in Slides or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`. Some fonts can affect the weight of the text. If an update request specifies values for both `font_family` and `bold`, the explicitly-set `bold` value is used. */
-  fontFamily?: string;
-  /** The text's vertical offset from its normal position. Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font size, computed based on the `font_size` field. The `font_size` itself is not affected by changes in this field. */
-  baselineOffset?: TextStyleBaselineOffsetEnum | (string & {});
-  /** Whether or not the text is underlined. */
-  underline?: boolean;
-  /** The font family and rendered weight of the text. This field is an extension of `font_family` meant to support explicit font weights without breaking backwards compatibility. As such, when reading the style of a range of text, the value of `weighted_font_family#font_family` will always be equal to that of `font_family`. However, when writing, if both fields are included in the field mask (either explicitly or through the wildcard `"*"`), their values are reconciled as follows: * If `font_family` is set and `weighted_font_family` is not, the value of `font_family` is applied with weight `400` ("normal"). * If both fields are set, the value of `font_family` must match that of `weighted_font_family#font_family`. If so, the font family and weight of `weighted_font_family` is applied. Otherwise, a 400 bad request error is returned. * If `weighted_font_family` is set and `font_family` is not, the font family and weight of `weighted_font_family` is applied. * If neither field is set, the font family and weight of the text inherit from the parent. Note that these properties cannot inherit separately from each other. If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family` is applied first, then `bold`. If `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad request error is returned. */
-  weightedFontFamily?: WeightedFontFamily;
-  /** The size of the text's font. When read, the `font_size` will specified in points. */
-  fontSize?: Dimension;
-  /** Whether or not the text is rendered as bold. */
-  bold?: boolean;
-  /** Whether or not the text is struck through. */
-  strikethrough?: boolean;
-  /** The color of the text itself. If set, the color is either opaque or transparent, depending on if the `opaque_color` field in it is set. */
-  foregroundColor?: OptionalColor;
-  /** Whether or not the text is in small capital letters. */
-  smallCaps?: boolean;
-  /** Whether or not the text is italicized. */
-  italic?: boolean;
-}
-export const TextStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backgroundColor: S.optional(OptionalColor),
-    link: S.optional(Link),
-    fontFamily: S.optional(S.String),
-    baselineOffset: S.optional(TextStyleBaselineOffsetEnum),
-    underline: S.optional(S.Boolean),
-    weightedFontFamily: S.optional(WeightedFontFamily),
-    fontSize: S.optional(Dimension),
-    bold: S.optional(S.Boolean),
-    strikethrough: S.optional(S.Boolean),
-    foregroundColor: S.optional(OptionalColor),
-    smallCaps: S.optional(S.Boolean),
-    italic: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TextStyle" }) as any as S.Schema<TextStyle>;
-
-export type RangeTypeEnum =
-  | "RANGE_TYPE_UNSPECIFIED"
-  | "FIXED_RANGE"
-  | "FROM_START_INDEX"
-  | "ALL";
-export const RangeTypeEnum = /*@__PURE__*/ S.String;
-
-/** Specifies a contiguous range of an indexed collection, such as characters in text. */
-export interface Range {
-  /** The optional zero-based index of the end of the collection. Required for `FIXED_RANGE` ranges. */
-  endIndex?: number;
-  /** The type of range. */
-  type?: RangeTypeEnum | (string & {});
-  /** The optional zero-based index of the beginning of the collection. Required for `FIXED_RANGE` and `FROM_START_INDEX` ranges. */
-  startIndex?: number;
-}
-export const Range = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endIndex: S.optional(S.Number),
-    type: S.optional(RangeTypeEnum),
-    startIndex: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
-
-/** Update the styling of text in a Shape or Table. */
-export interface UpdateTextStyleRequest {
-  /** The style(s) to set on the text. If the value for a particular style matches that of the parent, that style will be set to inherit. Certain text style changes may cause other changes meant to mirror the behavior of the Slides editor. See the documentation of TextStyle for more information. */
-  style?: TextStyle;
-  /** The location of the cell in the table containing the text to style. If `object_id` refers to a table, `cell_location` must have a value. Otherwise, it must not. */
-  cellLocation?: TableCellLocation;
-  /** The fields that should be updated. At least one field must be specified. The root `style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to `"bold"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
-  fields?: string;
-  /** The object ID of the shape or table with the text to be styled. */
-  objectId?: string;
-  /** The range of text to style. The range may be extended to include adjacent newlines. If the range fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the matching text style. */
-  textRange?: Range;
-}
-export const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    style: S.optional(TextStyle),
-    cellLocation: S.optional(TableCellLocation),
-    fields: S.optional(S.String),
-    objectId: S.optional(S.String),
-    textRange: S.optional(Range),
-  }),
-).annotate({
-  identifier: "UpdateTextStyleRequest",
-}) as any as S.Schema<UpdateTextStyleRequest>;
-
-/** The properties of Page are only relevant for pages with page_type LAYOUT. */
-export interface LayoutProperties {
-  /** The name of the layout. */
-  name?: string;
-  /** The human-readable name of the layout. */
-  displayName?: string;
-  /** The object ID of the master that this layout is based on. */
-  masterObjectId?: string;
-}
-export const LayoutProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    masterObjectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LayoutProperties",
-}) as any as S.Schema<LayoutProperties>;
-
-export type PagePageTypeEnum =
-  | "SLIDE"
-  | "MASTER"
-  | "LAYOUT"
-  | "NOTES"
-  | "NOTES_MASTER";
-export const PagePageTypeEnum = /*@__PURE__*/ S.String;
 
 /** The stretched picture fill. The page or page element is filled entirely with the specified picture. The picture is stretched to fit its container. */
 export interface StretchedPictureFill {
@@ -903,6 +464,40 @@ export const ShapeShapeTypeEnum = /*@__PURE__*/ S.String;
 export type ShadowPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
 export const ShadowPropertyStateEnum = /*@__PURE__*/ S.String;
 
+export type AffineTransformUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
+export const AffineTransformUnitEnum = /*@__PURE__*/ S.String;
+
+/** AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to transform source coordinates (x,y) into destination coordinates (x', y') according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After transformation, x' = scale_x * x + shear_x * y + translate_x; y' = scale_y * y + shear_y * x + translate_y; This message is therefore composed of these six matrix elements. */
+export interface AffineTransform {
+  /** The Y coordinate scaling element. */
+  scaleY?: number;
+  /** The X coordinate scaling element. */
+  scaleX?: number;
+  /** The units for translate elements. */
+  unit?: AffineTransformUnitEnum | (string & {});
+  /** The X coordinate translation element. */
+  translateX?: number;
+  /** The X coordinate shearing element. */
+  shearX?: number;
+  /** The Y coordinate translation element. */
+  translateY?: number;
+  /** The Y coordinate shearing element. */
+  shearY?: number;
+}
+export const AffineTransform = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scaleY: S.optional(S.Number),
+    scaleX: S.optional(S.Number),
+    unit: S.optional(AffineTransformUnitEnum),
+    translateX: S.optional(S.Number),
+    shearX: S.optional(S.Number),
+    translateY: S.optional(S.Number),
+    shearY: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AffineTransform",
+}) as any as S.Schema<AffineTransform>;
+
 export type ShadowTypeEnum = "SHADOW_TYPE_UNSPECIFIED" | "OUTER";
 export const ShadowTypeEnum = /*@__PURE__*/ S.String;
 
@@ -982,6 +577,78 @@ export type ShapePropertiesContentAlignmentEnum =
   | "MIDDLE"
   | "BOTTOM";
 export const ShapePropertiesContentAlignmentEnum = /*@__PURE__*/ S.String;
+
+export type OutlineDashStyleEnum =
+  | "DASH_STYLE_UNSPECIFIED"
+  | "SOLID"
+  | "DOT"
+  | "DASH"
+  | "DASH_DOT"
+  | "LONG_DASH"
+  | "LONG_DASH_DOT";
+export const OutlineDashStyleEnum = /*@__PURE__*/ S.String;
+
+/** The fill of the outline. */
+export interface OutlineFill {
+  /** Solid color fill. */
+  solidFill?: SolidFill;
+}
+export const OutlineFill = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    solidFill: S.optional(SolidFill),
+  }),
+).annotate({ identifier: "OutlineFill" }) as any as S.Schema<OutlineFill>;
+
+export type OutlinePropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
+export const OutlinePropertyStateEnum = /*@__PURE__*/ S.String;
+
+/** The outline of a PageElement. If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements created in the Slides editor, which may depend on the page element kind. */
+export interface Outline {
+  /** The thickness of the outline. */
+  weight?: Dimension;
+  /** The dash style of the outline. */
+  dashStyle?: OutlineDashStyleEnum | (string & {});
+  /** The fill of the outline. */
+  outlineFill?: OutlineFill;
+  /** The outline property state. Updating the outline on a page element will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no outline on a page element, set this field to `NOT_RENDERED`. In this case, any other outline fields set in the same request will be ignored. */
+  propertyState?: OutlinePropertyStateEnum | (string & {});
+}
+export const Outline = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    weight: S.optional(Dimension),
+    dashStyle: S.optional(OutlineDashStyleEnum),
+    outlineFill: S.optional(OutlineFill),
+    propertyState: S.optional(OutlinePropertyStateEnum),
+  }),
+).annotate({ identifier: "Outline" }) as any as S.Schema<Outline>;
+
+export type LinkRelativeLinkEnum =
+  | "RELATIVE_SLIDE_LINK_UNSPECIFIED"
+  | "NEXT_SLIDE"
+  | "PREVIOUS_SLIDE"
+  | "FIRST_SLIDE"
+  | "LAST_SLIDE";
+export const LinkRelativeLinkEnum = /*@__PURE__*/ S.String;
+
+/** A hypertext link. */
+export interface Link {
+  /** If set, indicates this is a link to a slide in this presentation, addressed by its position. */
+  relativeLink?: LinkRelativeLinkEnum | (string & {});
+  /** If set, indicates this is a link to the external web page at this URL. */
+  url?: string;
+  /** If set, indicates this is a link to the slide at this zero-based index in the presentation. There may not be a slide at this index. */
+  slideIndex?: number;
+  /** If set, indicates this is a link to the specific page in this presentation with this ID. A page with this ID may not exist. */
+  pageObjectId?: string;
+}
+export const Link = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relativeLink: S.optional(LinkRelativeLinkEnum),
+    url: S.optional(S.String),
+    slideIndex: S.optional(S.Number),
+    pageObjectId: S.optional(S.String),
+  }),
+).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 export type ShapeBackgroundFillPropertyStateEnum =
   | "RENDERED"
@@ -1069,6 +736,84 @@ export const Placeholder = /*@__PURE__*/ S.suspend(() =>
     parentObjectId: S.optional(S.String),
   }),
 ).annotate({ identifier: "Placeholder" }) as any as S.Schema<Placeholder>;
+
+/** A color that can either be fully opaque or fully transparent. */
+export interface OptionalColor {
+  /** If set, this will be used as an opaque color. If unset, this represents a transparent color. */
+  opaqueColor?: OpaqueColor;
+}
+export const OptionalColor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    opaqueColor: S.optional(OpaqueColor),
+  }),
+).annotate({ identifier: "OptionalColor" }) as any as S.Schema<OptionalColor>;
+
+export type TextStyleBaselineOffsetEnum =
+  | "BASELINE_OFFSET_UNSPECIFIED"
+  | "NONE"
+  | "SUPERSCRIPT"
+  | "SUBSCRIPT";
+export const TextStyleBaselineOffsetEnum = /*@__PURE__*/ S.String;
+
+/** Represents a font family and weight used to style a TextRun. */
+export interface WeightedFontFamily {
+  /** The rendered weight of the text. This field can have any value that is a multiple of `100` between `100` and `900`, inclusive. This range corresponds to the numerical values described in the CSS 2.1 Specification, [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with non-numerical values disallowed. Weights greater than or equal to `700` are considered bold, and weights less than `700`are not bold. The default value is `400` ("normal"). */
+  weight?: number;
+  /** The font family of the text. The font family can be any font from the Font menu in Slides or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`. */
+  fontFamily?: string;
+}
+export const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    weight: S.optional(S.Number),
+    fontFamily: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WeightedFontFamily",
+}) as any as S.Schema<WeightedFontFamily>;
+
+/** Represents the styling that can be applied to a TextRun. If this text is contained in a shape with a parent placeholder, then these text styles may be inherited from the parent. Which text styles are inherited depend on the nesting level of lists: * A text run in a paragraph that is not in a list will inherit its text style from the the newline character in the paragraph at the 0 nesting level of the list inside the parent placeholder. * A text run in a paragraph that is in a list will inherit its text style from the newline character in the paragraph at its corresponding nesting level of the list inside the parent placeholder. Inherited text styles are represented as unset fields in this message. If text is contained in a shape without a parent placeholder, unsetting these fields will revert the style to a value matching the defaults in the Slides editor. */
+export interface TextStyle {
+  /** The background color of the text. If set, the color is either opaque or transparent, depending on if the `opaque_color` field in it is set. */
+  backgroundColor?: OptionalColor;
+  /** The hyperlink destination of the text. If unset, there is no link. Links are not inherited from parent text. Changing the link in an update request causes some other changes to the text style of the range: * When setting a link, the text foreground color will be set to ThemeColorType.HYPERLINK and the text will be underlined. If these fields are modified in the same request, those values will be used instead of the link defaults. * Setting a link on a text range that overlaps with an existing link will also update the existing link to point to the new URL. * Links are not settable on newline characters. As a result, setting a link on a text range that crosses a paragraph boundary, such as `"ABC\n123"`, will separate the newline character(s) into their own text runs. The link will be applied separately to the runs before and after the newline. * Removing a link will update the text style of the range to match the style of the preceding text (or the default text styles if the preceding text is another link) unless different styles are being set in the same request. */
+  link?: Link;
+  /** The font family of the text. The font family can be any font from the Font menu in Slides or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`. Some fonts can affect the weight of the text. If an update request specifies values for both `font_family` and `bold`, the explicitly-set `bold` value is used. */
+  fontFamily?: string;
+  /** The text's vertical offset from its normal position. Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font size, computed based on the `font_size` field. The `font_size` itself is not affected by changes in this field. */
+  baselineOffset?: TextStyleBaselineOffsetEnum | (string & {});
+  /** Whether or not the text is underlined. */
+  underline?: boolean;
+  /** The font family and rendered weight of the text. This field is an extension of `font_family` meant to support explicit font weights without breaking backwards compatibility. As such, when reading the style of a range of text, the value of `weighted_font_family#font_family` will always be equal to that of `font_family`. However, when writing, if both fields are included in the field mask (either explicitly or through the wildcard `"*"`), their values are reconciled as follows: * If `font_family` is set and `weighted_font_family` is not, the value of `font_family` is applied with weight `400` ("normal"). * If both fields are set, the value of `font_family` must match that of `weighted_font_family#font_family`. If so, the font family and weight of `weighted_font_family` is applied. Otherwise, a 400 bad request error is returned. * If `weighted_font_family` is set and `font_family` is not, the font family and weight of `weighted_font_family` is applied. * If neither field is set, the font family and weight of the text inherit from the parent. Note that these properties cannot inherit separately from each other. If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family` is applied first, then `bold`. If `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad request error is returned. */
+  weightedFontFamily?: WeightedFontFamily;
+  /** The size of the text's font. When read, the `font_size` will specified in points. */
+  fontSize?: Dimension;
+  /** Whether or not the text is rendered as bold. */
+  bold?: boolean;
+  /** Whether or not the text is struck through. */
+  strikethrough?: boolean;
+  /** The color of the text itself. If set, the color is either opaque or transparent, depending on if the `opaque_color` field in it is set. */
+  foregroundColor?: OptionalColor;
+  /** Whether or not the text is in small capital letters. */
+  smallCaps?: boolean;
+  /** Whether or not the text is italicized. */
+  italic?: boolean;
+}
+export const TextStyle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backgroundColor: S.optional(OptionalColor),
+    link: S.optional(Link),
+    fontFamily: S.optional(S.String),
+    baselineOffset: S.optional(TextStyleBaselineOffsetEnum),
+    underline: S.optional(S.Boolean),
+    weightedFontFamily: S.optional(WeightedFontFamily),
+    fontSize: S.optional(Dimension),
+    bold: S.optional(S.Boolean),
+    strikethrough: S.optional(S.Boolean),
+    foregroundColor: S.optional(OptionalColor),
+    smallCaps: S.optional(S.Boolean),
+    italic: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "TextStyle" }) as any as S.Schema<TextStyle>;
 
 /** Contains properties describing the look and feel of a list bullet at a given level of nesting. */
 export interface NestingLevel {
@@ -1575,6 +1320,31 @@ export const Line = /*@__PURE__*/ S.suspend(() =>
 export type VideoSourceEnum = "SOURCE_UNSPECIFIED" | "YOUTUBE" | "DRIVE";
 export const VideoSourceEnum = /*@__PURE__*/ S.String;
 
+/** The properties of the Video. */
+export interface VideoProperties {
+  /** Whether to enable video autoplay when the page is displayed in present mode. Defaults to false. */
+  autoPlay?: boolean;
+  /** The outline of the video. The default outline matches the defaults for new videos created in the Slides editor. */
+  outline?: Outline;
+  /** Whether to mute the audio during video playback. Defaults to false. */
+  mute?: boolean;
+  /** The time at which to end playback, measured in seconds from the beginning of the video. If set, the end time should be after the start time. If not set or if you set this to a value that exceeds the video's length, the video will be played until its end. */
+  end?: number;
+  /** The time at which to start playback, measured in seconds from the beginning of the video. If set, the start time should be before the end time. If you set this to a value that exceeds the video's length in seconds, the video will be played from the last second. If not set, the video will be played from the beginning. */
+  start?: number;
+}
+export const VideoProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoPlay: S.optional(S.Boolean),
+    outline: S.optional(Outline),
+    mute: S.optional(S.Boolean),
+    end: S.optional(S.Number),
+    start: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VideoProperties",
+}) as any as S.Schema<VideoProperties>;
+
 /** A PageElement kind representing a video. */
 export interface Video {
   /** An URL to a video. The URL is valid as long as the source video exists and sharing settings do not change. */
@@ -1709,6 +1479,22 @@ export const TableBorderProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableBorderProperties",
 }) as any as S.Schema<TableBorderProperties>;
+
+/** A location of a single table cell within a table. */
+export interface TableCellLocation {
+  /** The 0-based row index. */
+  rowIndex?: number;
+  /** The 0-based column index. */
+  columnIndex?: number;
+}
+export const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rowIndex: S.optional(S.Number),
+    columnIndex: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TableCellLocation",
+}) as any as S.Schema<TableCellLocation>;
 
 /** The properties of each border cell. */
 export interface TableBorderCell {
@@ -2008,7 +1794,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
     layoutProperties: S.optional(LayoutProperties),
     objectId: S.optional(S.String),
     pageType: S.optional(PagePageTypeEnum),
-    slideProperties: S.optional(S.suspend(() => SlideProperties)),
+    slideProperties: S.optional(SlideProperties),
     pageProperties: S.optional(PageProperties),
     pageElements: S.optional(PageElementList),
     notesProperties: S.optional(NotesProperties),
@@ -2016,27 +1802,409 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
-/** The properties of Page that are only relevant for pages with page_type SLIDE. */
-export interface SlideProperties {
-  /** The object ID of the layout that this slide is based on. This property is read-only. */
-  layoutObjectId?: string;
-  /** The object ID of the master that this slide is based on. This property is read-only. */
-  masterObjectId?: string;
-  /** Whether the slide is skipped in the presentation mode. Defaults to false. */
-  isSkipped?: boolean;
-  /** The notes page that this slide is associated with. It defines the visual appearance of a notes page when printing or exporting slides with speaker notes. A notes page inherits properties from the notes master. The placeholder shape with type BODY on the notes page contains the speaker notes for this slide. The ID of this shape is identified by the speakerNotesObjectId field. The notes page is read-only except for the text content and styles of the speaker notes shape. This property is read-only. */
-  notesPage?: Page;
+export type PageList = Array<Page>;
+export const PageList = /*@__PURE__*/ S.Array(
+  Page,
+) as any as S.Schema<PageList>;
+
+/** A Google Slides presentation. */
+export interface Presentation {
+  /** The slide masters in the presentation. A slide master contains all common page elements and the common properties for a set of layouts. They serve three purposes: - Placeholder shapes on a master contain the default text styles and shape properties of all placeholder shapes on pages that use that master. - The master page properties define the common page properties inherited by its layouts. - Any other shapes on the master slide appear on all slides using that master, regardless of their layout. */
+  masters?: PageList;
+  /** The slides in the presentation. A slide inherits properties from a slide layout. */
+  slides?: PageList;
+  /** Output only. The revision ID of the presentation. Can be used in update requests to assert the presentation revision hasn't changed since the last read operation. Only populated if the user has edit access to the presentation. The revision ID is not a sequential number but a nebulous string. The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is unchanged between calls, then the presentation has not changed. Conversely, a changed ID (for the same presentation and user) usually means the presentation has been updated. However, a changed ID can also be due to internal factors such as ID format changes. */
+  revisionId?: string;
+  /** The notes master in the presentation. It serves three purposes: - Placeholder shapes on a notes master contain the default text styles and shape properties of all placeholder shapes on notes pages. Specifically, a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a `BODY` placeholder shape contains the speaker notes. - The notes master page properties define the common page properties inherited by all notes pages. - Any other shapes on the notes master appear on all notes pages. The notes master is read-only. */
+  notesMaster?: Page;
+  /** The ID of the presentation. */
+  presentationId?: string;
+  /** The size of pages in the presentation. */
+  pageSize?: Size;
+  /** The layouts in the presentation. A layout is a template that determines how content is arranged and styled on the slides that inherit from that layout. */
+  layouts?: PageList;
+  /** The title of the presentation. */
+  title?: string;
+  /** The locale of the presentation, as an IETF BCP 47 language tag. */
+  locale?: string;
 }
-export const SlideProperties = /*@__PURE__*/ S.suspend(() =>
+export const Presentation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    layoutObjectId: S.optional(S.String),
-    masterObjectId: S.optional(S.String),
-    isSkipped: S.optional(S.Boolean),
-    notesPage: S.optional(Page),
+    masters: S.optional(PageList),
+    slides: S.optional(PageList),
+    revisionId: S.optional(S.String),
+    notesMaster: S.optional(Page),
+    presentationId: S.optional(S.String),
+    pageSize: S.optional(Size),
+    layouts: S.optional(PageList),
+    title: S.optional(S.String),
+    locale: S.optional(S.String),
+  }),
+).annotate({ identifier: "Presentation" }) as any as S.Schema<Presentation>;
+
+export interface CreatePresentationsRequest {
+  /** Request body */
+  body?: Presentation;
+}
+export const CreatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(Presentation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/presentations",
+      baseUrl: "https://slides.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreatePresentationsRequest",
+}) as any as S.Schema<CreatePresentationsRequest>;
+
+export interface GetPresentationsRequest {
+  /** The ID of the presentation to retrieve. */
+  presentationId: string;
+}
+export const GetPresentationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    presentationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/presentations/{+presentationId}",
+      baseUrl: "https://slides.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPresentationsRequest",
+}) as any as S.Schema<GetPresentationsRequest>;
+
+export interface GetPresentationsPagesRequest {
+  /** The ID of the presentation to retrieve. */
+  presentationId: string;
+  /** The object ID of the page to retrieve. */
+  pageObjectId: string;
+}
+export const GetPresentationsPagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    presentationId: S.String.pipe(T.Label()),
+    pageObjectId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/presentations/{presentationId}/pages/{pageObjectId}",
+      baseUrl: "https://slides.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPresentationsPagesRequest",
+}) as any as S.Schema<GetPresentationsPagesRequest>;
+
+export type GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum =
+  "PNG";
+export const GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum =
+  /*@__PURE__*/ S.String;
+
+export type GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum =
+  | "THUMBNAIL_SIZE_UNSPECIFIED"
+  | "LARGE"
+  | "MEDIUM"
+  | "SMALL"
+  | "WIDTH2000_PX";
+export const GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum =
+  /*@__PURE__*/ S.String;
+
+export interface GetThumbnailPresentationsPagesRequest {
+  /** The ID of the presentation to retrieve. */
+  presentationId: string;
+  /** The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG. */
+  "thumbnailProperties.mimeType"?:
+    | GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum
+    | (string & {});
+  /** The object ID of the page whose thumbnail to retrieve. */
+  pageObjectId: string;
+  /** The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image. */
+  "thumbnailProperties.thumbnailSize"?:
+    | GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum
+    | (string & {});
+}
+export const GetThumbnailPresentationsPagesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      presentationId: S.String.pipe(T.Label()),
+      "thumbnailProperties.mimeType": S.optional(
+        GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      pageObjectId: S.String.pipe(T.Label()),
+      "thumbnailProperties.thumbnailSize": S.optional(
+        GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail",
+        baseUrl: "https://slides.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetThumbnailPresentationsPagesRequest",
+}) as any as S.Schema<GetThumbnailPresentationsPagesRequest>;
+
+/** The thumbnail of a page. */
+export interface Thumbnail {
+  /** The positive width in pixels of the thumbnail image. */
+  width?: number;
+  /** The content URL of the thumbnail image. The URL to the image has a default lifetime of 30 minutes. This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the image as the original requester. Access to the image may be lost if the presentation's sharing settings change. The mime type of the thumbnail image is the same as specified in the `GetPageThumbnailRequest`. */
+  contentUrl?: string;
+  /** The positive height in pixels of the thumbnail image. */
+  height?: number;
+}
+export const Thumbnail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    width: S.optional(S.Number),
+    contentUrl: S.optional(S.String),
+    height: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Thumbnail" }) as any as S.Schema<Thumbnail>;
+
+/** Reroutes a line such that it's connected at the two closest connection sites on the connected page elements. */
+export interface RerouteLineRequest {
+  /** The object ID of the line to reroute. Only a line with a category indicating it is a "connector" can be rerouted. The start and end connections of the line must be on different page elements. */
+  objectId?: string;
+}
+export const RerouteLineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SlideProperties",
-}) as any as S.Schema<SlideProperties>;
+  identifier: "RerouteLineRequest",
+}) as any as S.Schema<RerouteLineRequest>;
+
+/** Update the properties of a Video. */
+export interface UpdateVideoPropertiesRequest {
+  /** The video properties to update. */
+  videoProperties?: VideoProperties;
+  /** The fields that should be updated. At least one field must be specified. The root `videoProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the video outline color, set `fields` to `"outline.outlineFill.solidFill.color"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
+  fields?: string;
+  /** The object ID of the video the updates are applied to. */
+  objectId?: string;
+}
+export const UpdateVideoPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    videoProperties: S.optional(VideoProperties),
+    fields: S.optional(S.String),
+    objectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateVideoPropertiesRequest",
+}) as any as S.Schema<UpdateVideoPropertiesRequest>;
+
+/** Common properties for a page element. Note: When you initially create a PageElement, the API may modify the values of both `size` and `transform`, but the visual size will be unchanged. */
+export interface PageElementProperties {
+  /** The object ID of the page where the element is located. */
+  pageObjectId?: string;
+  /** The transform for the element. */
+  transform?: AffineTransform;
+  /** The size of the element. */
+  size?: Size;
+}
+export const PageElementProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageObjectId: S.optional(S.String),
+    transform: S.optional(AffineTransform),
+    size: S.optional(Size),
+  }),
+).annotate({
+  identifier: "PageElementProperties",
+}) as any as S.Schema<PageElementProperties>;
+
+export type CreateSheetsChartRequestLinkingModeEnum =
+  | "NOT_LINKED_IMAGE"
+  | "LINKED";
+export const CreateSheetsChartRequestLinkingModeEnum = /*@__PURE__*/ S.String;
+
+/** Creates an embedded Google Sheets chart. NOTE: Chart creation requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, drive.file, or drive OAuth scopes. */
+export interface CreateSheetsChartRequest {
+  /** The element properties for the chart. When the aspect ratio of the provided size does not match the chart aspect ratio, the chart is scaled and centered with respect to the size in order to maintain aspect ratio. The provided transform is applied after this operation. */
+  elementProperties?: PageElementProperties;
+  /** The mode with which the chart is linked to the source spreadsheet. When not specified, the chart will be an image that is not linked. */
+  linkingMode?: CreateSheetsChartRequestLinkingModeEnum | (string & {});
+  /** The ID of the specific chart in the Google Sheets spreadsheet. */
+  chartId?: number;
+  /** The ID of the Google Sheets spreadsheet that contains the chart. You might need to add a resource key to the HTTP header for a subset of old files. For more information, see [Access link-shared files using resource keys](https://developers.google.com/drive/api/v3/resource-keys). */
+  spreadsheetId?: string;
+  /** A user-supplied object ID. If specified, the ID must be unique among all pages and page elements in the presentation. The ID should start with a word character [a-zA-Z0-9_] and then followed by any number of the following characters [a-zA-Z0-9_-:]. The length of the ID should not be less than 5 or greater than 50. If empty, a unique identifier will be generated. */
+  objectId?: string;
+}
+export const CreateSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    elementProperties: S.optional(PageElementProperties),
+    linkingMode: S.optional(CreateSheetsChartRequestLinkingModeEnum),
+    chartId: S.optional(S.Number),
+    spreadsheetId: S.optional(S.String),
+    objectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateSheetsChartRequest",
+}) as any as S.Schema<CreateSheetsChartRequest>;
+
+/** Creates a new table. */
+export interface CreateTableRequest {
+  /** Number of rows in the table. */
+  rows?: number;
+  /** The element properties for the table. The table will be created at the provided size, subject to a minimum size. If no size is provided, the table will be automatically sized. Table transforms must have a scale of 1 and no shear components. If no transform is provided, the table will be centered on the page. */
+  elementProperties?: PageElementProperties;
+  /** Number of columns in the table. */
+  columns?: number;
+  /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
+  objectId?: string;
+}
+export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rows: S.optional(S.Number),
+    elementProperties: S.optional(PageElementProperties),
+    columns: S.optional(S.Number),
+    objectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateTableRequest",
+}) as any as S.Schema<CreateTableRequest>;
+
+export type CreateVideoRequestSourceEnum =
+  | "SOURCE_UNSPECIFIED"
+  | "YOUTUBE"
+  | "DRIVE";
+export const CreateVideoRequestSourceEnum = /*@__PURE__*/ S.String;
+
+/** Creates a video. NOTE: Creating a video from Google Drive requires that the requesting app have at least one of the drive, drive.readonly, or drive.file OAuth scopes. */
+export interface CreateVideoRequest {
+  /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
+  objectId?: string;
+  /** The video source. */
+  source?: CreateVideoRequestSourceEnum | (string & {});
+  /** The element properties for the video. The PageElementProperties.size property is optional. If you don't specify a size, a default size is chosen by the server. The PageElementProperties.transform property is optional. The transform must not have shear components. If you don't specify a transform, the video will be placed at the top left corner of the page. */
+  elementProperties?: PageElementProperties;
+  /** The video source's unique identifier for this video. e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0, the ID is 7U3axjORYZ0. For a Google Drive video https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q. To access a Google Drive video file, you might need to add a resource key to the HTTP header for a subset of old files. For more information, see [Access link-shared files using resource keys](https://developers.google.com/drive/api/v3/resource-keys). */
+  id?: string;
+}
+export const CreateVideoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.String),
+    source: S.optional(CreateVideoRequestSourceEnum),
+    elementProperties: S.optional(PageElementProperties),
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateVideoRequest",
+}) as any as S.Schema<CreateVideoRequest>;
+
+/** A table range represents a reference to a subset of a table. It's important to note that the cells specified by a table range do not necessarily form a rectangle. For example, let's say we have a 3 x 3 table where all the cells of the last row are merged together. The table looks like this: [ ] A table range with location = (0, 0), row span = 3 and column span = 2 specifies the following cells: x x [ x x x ] */
+export interface TableRange {
+  /** The row span of the table range. */
+  rowSpan?: number;
+  /** The column span of the table range. */
+  columnSpan?: number;
+  /** The starting location of the table range. */
+  location?: TableCellLocation;
+}
+export const TableRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rowSpan: S.optional(S.Number),
+    columnSpan: S.optional(S.Number),
+    location: S.optional(TableCellLocation),
+  }),
+).annotate({ identifier: "TableRange" }) as any as S.Schema<TableRange>;
+
+/** Merges cells in a Table. */
+export interface MergeTableCellsRequest {
+  /** The object ID of the table. */
+  objectId?: string;
+  /** The table range specifying which cells of the table to merge. Any text in the cells being merged will be concatenated and stored in the upper-left ("head") cell of the range. If the range is non-rectangular (which can occur in some cases where the range covers cells that are already merged), a 400 bad request error is returned. */
+  tableRange?: TableRange;
+}
+export const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.String),
+    tableRange: S.optional(TableRange),
+  }),
+).annotate({
+  identifier: "MergeTableCellsRequest",
+}) as any as S.Schema<MergeTableCellsRequest>;
+
+export type UpdateLineCategoryRequestLineCategoryEnum =
+  | "LINE_CATEGORY_UNSPECIFIED"
+  | "STRAIGHT"
+  | "BENT"
+  | "CURVED";
+export const UpdateLineCategoryRequestLineCategoryEnum = /*@__PURE__*/ S.String;
+
+/** Updates the category of a line. */
+export interface UpdateLineCategoryRequest {
+  /** The line category to update to. The exact line type is determined based on the category to update to and how it's routed to connect to other page elements. */
+  lineCategory?: UpdateLineCategoryRequestLineCategoryEnum | (string & {});
+  /** The object ID of the line the update is applied to. Only a line with a category indicating it is a "connector" can be updated. The line may be rerouted after updating its category. */
+  objectId?: string;
+}
+export const UpdateLineCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lineCategory: S.optional(UpdateLineCategoryRequestLineCategoryEnum),
+    objectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateLineCategoryRequest",
+}) as any as S.Schema<UpdateLineCategoryRequest>;
+
+export type RangeTypeEnum =
+  | "RANGE_TYPE_UNSPECIFIED"
+  | "FIXED_RANGE"
+  | "FROM_START_INDEX"
+  | "ALL";
+export const RangeTypeEnum = /*@__PURE__*/ S.String;
+
+/** Specifies a contiguous range of an indexed collection, such as characters in text. */
+export interface Range {
+  /** The optional zero-based index of the end of the collection. Required for `FIXED_RANGE` ranges. */
+  endIndex?: number;
+  /** The type of range. */
+  type?: RangeTypeEnum | (string & {});
+  /** The optional zero-based index of the beginning of the collection. Required for `FIXED_RANGE` and `FROM_START_INDEX` ranges. */
+  startIndex?: number;
+}
+export const Range = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endIndex: S.optional(S.Number),
+    type: S.optional(RangeTypeEnum),
+    startIndex: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
+
+/** Update the styling of text in a Shape or Table. */
+export interface UpdateTextStyleRequest {
+  /** The style(s) to set on the text. If the value for a particular style matches that of the parent, that style will be set to inherit. Certain text style changes may cause other changes meant to mirror the behavior of the Slides editor. See the documentation of TextStyle for more information. */
+  style?: TextStyle;
+  /** The location of the cell in the table containing the text to style. If `object_id` refers to a table, `cell_location` must have a value. Otherwise, it must not. */
+  cellLocation?: TableCellLocation;
+  /** The fields that should be updated. At least one field must be specified. The root `style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to `"bold"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
+  fields?: string;
+  /** The object ID of the shape or table with the text to be styled. */
+  objectId?: string;
+  /** The range of text to style. The range may be extended to include adjacent newlines. If the range fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the matching text style. */
+  textRange?: Range;
+}
+export const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    style: S.optional(TextStyle),
+    cellLocation: S.optional(TableCellLocation),
+    fields: S.optional(S.String),
+    objectId: S.optional(S.String),
+    textRange: S.optional(Range),
+  }),
+).annotate({
+  identifier: "UpdateTextStyleRequest",
+}) as any as S.Schema<UpdateTextStyleRequest>;
 
 /** Updates the properties of a Slide. */
 export interface UpdateSlidePropertiesRequest {
@@ -3246,13 +3414,13 @@ export const BatchUpdatePresentationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdatePresentationRequest",
 }) as any as S.Schema<BatchUpdatePresentationRequest>;
 
-export interface BatchUpdatePresentationsRequest {
+export interface UpdateBatchPresentationRequest {
   /** The presentation to apply the updates to. */
   presentationId: string;
   /** Request body */
   body?: BatchUpdatePresentationRequest;
 }
-export const BatchUpdatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateBatchPresentationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     presentationId: S.String.pipe(T.Label()),
     body: S.optional(BatchUpdatePresentationRequest.pipe(T.HttpBody())),
@@ -3264,8 +3432,8 @@ export const BatchUpdatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchUpdatePresentationsRequest",
-}) as any as S.Schema<BatchUpdatePresentationsRequest>;
+  identifier: "UpdateBatchPresentationRequest",
+}) as any as S.Schema<UpdateBatchPresentationRequest>;
 
 /** The result of creating an image. */
 export interface CreateImageResponse {
@@ -3494,194 +3662,6 @@ export const BatchUpdatePresentationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdatePresentationResponse",
 }) as any as S.Schema<BatchUpdatePresentationResponse>;
 
-export type PageList = Array<Page>;
-export const PageList = /*@__PURE__*/ S.Array(
-  Page,
-) as any as S.Schema<PageList>;
-
-/** A Google Slides presentation. */
-export interface Presentation {
-  /** The slide masters in the presentation. A slide master contains all common page elements and the common properties for a set of layouts. They serve three purposes: - Placeholder shapes on a master contain the default text styles and shape properties of all placeholder shapes on pages that use that master. - The master page properties define the common page properties inherited by its layouts. - Any other shapes on the master slide appear on all slides using that master, regardless of their layout. */
-  masters?: PageList;
-  /** The slides in the presentation. A slide inherits properties from a slide layout. */
-  slides?: PageList;
-  /** Output only. The revision ID of the presentation. Can be used in update requests to assert the presentation revision hasn't changed since the last read operation. Only populated if the user has edit access to the presentation. The revision ID is not a sequential number but a nebulous string. The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is unchanged between calls, then the presentation has not changed. Conversely, a changed ID (for the same presentation and user) usually means the presentation has been updated. However, a changed ID can also be due to internal factors such as ID format changes. */
-  revisionId?: string;
-  /** The notes master in the presentation. It serves three purposes: - Placeholder shapes on a notes master contain the default text styles and shape properties of all placeholder shapes on notes pages. Specifically, a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a `BODY` placeholder shape contains the speaker notes. - The notes master page properties define the common page properties inherited by all notes pages. - Any other shapes on the notes master appear on all notes pages. The notes master is read-only. */
-  notesMaster?: Page;
-  /** The ID of the presentation. */
-  presentationId?: string;
-  /** The size of pages in the presentation. */
-  pageSize?: Size;
-  /** The layouts in the presentation. A layout is a template that determines how content is arranged and styled on the slides that inherit from that layout. */
-  layouts?: PageList;
-  /** The title of the presentation. */
-  title?: string;
-  /** The locale of the presentation, as an IETF BCP 47 language tag. */
-  locale?: string;
-}
-export const Presentation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    masters: S.optional(PageList),
-    slides: S.optional(PageList),
-    revisionId: S.optional(S.String),
-    notesMaster: S.optional(Page),
-    presentationId: S.optional(S.String),
-    pageSize: S.optional(Size),
-    layouts: S.optional(PageList),
-    title: S.optional(S.String),
-    locale: S.optional(S.String),
-  }),
-).annotate({ identifier: "Presentation" }) as any as S.Schema<Presentation>;
-
-export interface CreatePresentationsRequest {
-  /** Request body */
-  body?: Presentation;
-}
-export const CreatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(Presentation.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/presentations",
-      baseUrl: "https://slides.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreatePresentationsRequest",
-}) as any as S.Schema<CreatePresentationsRequest>;
-
-export interface GetPresentationsRequest {
-  /** The ID of the presentation to retrieve. */
-  presentationId: string;
-}
-export const GetPresentationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    presentationId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/presentations/{+presentationId}",
-      baseUrl: "https://slides.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPresentationsRequest",
-}) as any as S.Schema<GetPresentationsRequest>;
-
-export interface GetPresentationsPagesRequest {
-  /** The ID of the presentation to retrieve. */
-  presentationId: string;
-  /** The object ID of the page to retrieve. */
-  pageObjectId: string;
-}
-export const GetPresentationsPagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    presentationId: S.String.pipe(T.Label()),
-    pageObjectId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/presentations/{presentationId}/pages/{pageObjectId}",
-      baseUrl: "https://slides.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPresentationsPagesRequest",
-}) as any as S.Schema<GetPresentationsPagesRequest>;
-
-export type GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum =
-  "PNG";
-export const GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum =
-  /*@__PURE__*/ S.String;
-
-export type GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum =
-  | "THUMBNAIL_SIZE_UNSPECIFIED"
-  | "LARGE"
-  | "MEDIUM"
-  | "SMALL"
-  | "WIDTH2000_PX";
-export const GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum =
-  /*@__PURE__*/ S.String;
-
-export interface GetThumbnailPresentationsPagesRequest {
-  /** The ID of the presentation to retrieve. */
-  presentationId: string;
-  /** The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG. */
-  "thumbnailProperties.mimeType"?:
-    | GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum
-    | (string & {});
-  /** The object ID of the page whose thumbnail to retrieve. */
-  pageObjectId: string;
-  /** The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image. */
-  "thumbnailProperties.thumbnailSize"?:
-    | GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum
-    | (string & {});
-}
-export const GetThumbnailPresentationsPagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      presentationId: S.String.pipe(T.Label()),
-      "thumbnailProperties.mimeType": S.optional(
-        GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum.pipe(
-          T.Query(),
-        ),
-      ),
-      pageObjectId: S.String.pipe(T.Label()),
-      "thumbnailProperties.thumbnailSize": S.optional(
-        GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum.pipe(
-          T.Query(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail",
-        baseUrl: "https://slides.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetThumbnailPresentationsPagesRequest",
-}) as any as S.Schema<GetThumbnailPresentationsPagesRequest>;
-
-/** The thumbnail of a page. */
-export interface Thumbnail {
-  /** The positive width in pixels of the thumbnail image. */
-  width?: number;
-  /** The content URL of the thumbnail image. The URL to the image has a default lifetime of 30 minutes. This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the image as the original requester. Access to the image may be lost if the presentation's sharing settings change. The mime type of the thumbnail image is the same as specified in the `GetPageThumbnailRequest`. */
-  contentUrl?: string;
-  /** The positive height in pixels of the thumbnail image. */
-  height?: number;
-}
-export const Thumbnail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(S.Number),
-    contentUrl: S.optional(S.String),
-    height: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Thumbnail" }) as any as S.Schema<Thumbnail>;
-
-export type BatchUpdatePresentationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies: the reply to the third request, and another empty reply, in that order. Because other users may be editing the presentation, the presentation might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically. */
-export const batchUpdatePresentations: API.OperationMethod<
-  BatchUpdatePresentationsRequest,
-  BatchUpdatePresentationResponse,
-  BatchUpdatePresentationsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdatePresentationsRequest,
-  output: BatchUpdatePresentationResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CreatePresentationsError =
   | NotFound
   | Forbidden
@@ -3746,6 +3726,26 @@ export const getThumbnailPresentationsPages: API.OperationMethod<
   input: GetThumbnailPresentationsPagesRequest,
   output: Thumbnail,
   errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchPresentationError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies: the reply to the third request, and another empty reply, in that order. Because other users may be editing the presentation, the presentation might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically. */
+export const updateBatchPresentation: API.OperationMethod<
+  UpdateBatchPresentationRequest,
+  BatchUpdatePresentationResponse,
+  UpdateBatchPresentationError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchPresentationRequest,
+  output: BatchUpdatePresentationResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

@@ -2563,7 +2563,7 @@
         "smithy.api#documentation": "Settings for Node client libraries."
       }
     },
-    "com.gcp.serviceusage_v1#BatchEnableServicesResponse": {
+    "com.gcp.serviceusage_v1#EnableBatchServiceResponse": {
       "type": "structure",
       "members": {
         "failures": {
@@ -2615,7 +2615,7 @@
         "smithy.api#documentation": "Response message for the `ListServices` method."
       }
     },
-    "com.gcp.serviceusage_v1#BatchGetServicesResponse": {
+    "com.gcp.serviceusage_v1#GetBatchServiceResponse": {
       "type": "structure",
       "members": {
         "services": {
@@ -4668,7 +4668,7 @@
         "smithy.api#documentation": "Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java))."
       }
     },
-    "com.gcp.serviceusage_v1#BatchEnableServicesRequest": {
+    "com.gcp.serviceusage_v1#EnableBatchServiceRequest": {
       "type": "structure",
       "members": {
         "serviceIds": {
@@ -5422,7 +5422,7 @@
         "smithy.api#documentation": "Disable a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled."
       }
     },
-    "com.gcp.serviceusage_v1#BatchGetServicesRequest": {
+    "com.gcp.serviceusage_v1#GetBatchServiceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -5442,13 +5442,13 @@
         }
       }
     },
-    "com.gcp.serviceusage_v1#BatchGetServices": {
+    "com.gcp.serviceusage_v1#GetBatchService": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.serviceusage_v1#BatchGetServicesRequest"
+        "target": "com.gcp.serviceusage_v1#GetBatchServiceRequest"
       },
       "output": {
-        "target": "com.gcp.serviceusage_v1#BatchGetServicesResponse"
+        "target": "com.gcp.serviceusage_v1#GetBatchServiceResponse"
       },
       "errors": [
         {
@@ -5515,7 +5515,7 @@
           }
         },
         "body": {
-          "target": "com.gcp.serviceusage_v1#BatchEnableServicesRequest",
+          "target": "com.gcp.serviceusage_v1#EnableBatchServiceRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -5523,7 +5523,7 @@
         }
       }
     },
-    "com.gcp.serviceusage_v1#BatchEnableServices": {
+    "com.gcp.serviceusage_v1#EnableBatchService": {
       "type": "operation",
       "input": {
         "target": "com.gcp.serviceusage_v1#BatchEnableServicesRequest_"

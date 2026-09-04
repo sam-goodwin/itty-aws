@@ -316,7 +316,7 @@ export const HogFunctionsCreateRequestMappingsList = /*@__PURE__*/ S.Array(
   MappingsInput,
 ) as any as S.Schema<HogFunctionsCreateRequestMappingsList>;
 
-export interface HogFunctionsCreateRequest {
+export interface CreateHogFunctionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
@@ -351,7 +351,7 @@ export interface HogFunctionsCreateRequest {
   /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
   base_updated_at?: string;
 }
-export const HogFunctionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     type: S.optional(S.NullOr(HogFunctionTypeEnum)),
@@ -378,8 +378,8 @@ export const HogFunctionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HogFunctionsCreateRequest",
-}) as any as S.Schema<HogFunctionsCreateRequest>;
+  identifier: "CreateHogFunctionRequest",
+}) as any as S.Schema<CreateHogFunctionRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -683,6 +683,353 @@ export const HogFunctionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionOutput",
 }) as any as S.Schema<HogFunctionOutput>;
 
+export interface CreateHogFunctionDiscardDraftRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+}
+export const CreateHogFunctionDiscardDraftRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/hog_functions/{id}/discard_draft/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateHogFunctionDiscardDraftRequest",
+}) as any as S.Schema<CreateHogFunctionDiscardDraftRequest>;
+
+/** Schema defining the configurable input parameters for this function. */
+export type HogFunctionInputInputsSchemaList = Array<InputsSchemaItem>;
+export const HogFunctionInputInputsSchemaList = /*@__PURE__*/ S.Array(
+  InputsSchemaItem,
+) as any as S.Schema<HogFunctionInputInputsSchemaList>;
+
+/** Values for each input defined in inputs_schema. */
+export type HogFunctionInputInputsMap = {
+  [key: string]: InputsItemInput | undefined;
+};
+export const HogFunctionInputInputsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  InputsItemInput,
+) as any as S.Schema<HogFunctionInputInputsMap>;
+
+/** Event-to-destination field mappings. Only for destination and site_destination types. */
+export type HogFunctionInputMappingsList = Array<MappingsInput>;
+export const HogFunctionInputMappingsList = /*@__PURE__*/ S.Array(
+  MappingsInput,
+) as any as S.Schema<HogFunctionInputMappingsList>;
+
+export interface HogFunctionInput {
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
+  type?: HogFunctionTypeEnum | (string & {}) | null;
+  /** Display name for the function. */
+  name?: string | null;
+  /** Human-readable description of what this function does. */
+  description?: string;
+  /** Whether the function is active and processing events. */
+  enabled?: boolean;
+  /** Soft-delete flag. Set to true to archive the function. */
+  deleted?: boolean;
+  /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
+  hog?: string;
+  /** Schema defining the configurable input parameters for this function. */
+  inputs_schema?: HogFunctionInputInputsSchemaList;
+  /** Values for each input defined in inputs_schema. */
+  inputs?: HogFunctionInputInputsMap;
+  /** Event filters that control which events trigger this function. */
+  filters?: HogFunctionFilters;
+  /** PII masking configuration with TTL, threshold, and hash expression. */
+  masking?: HogFunctionMasking | null;
+  /** Event-to-destination field mappings. Only for destination and site_destination types. */
+  mappings?: HogFunctionInputMappingsList | null;
+  /** URL for the function's icon displayed in the UI. */
+  icon_url?: string | null;
+  /** ID of the template to create this function from. */
+  template_id?: string | null;
+  /** Execution priority for transformations. Lower values run first. */
+  execution_order?: number | null;
+  _create_in_folder?: string;
+  /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
+  base_updated_at?: string;
+}
+export const HogFunctionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.NullOr(HogFunctionTypeEnum)),
+    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    deleted: S.optional(S.Boolean),
+    hog: S.optional(S.String),
+    inputs_schema: S.optional(HogFunctionInputInputsSchemaList),
+    inputs: S.optional(HogFunctionInputInputsMap),
+    filters: S.optional(HogFunctionFilters),
+    masking: S.optional(S.NullOr(HogFunctionMasking)),
+    mappings: S.optional(S.NullOr(HogFunctionInputMappingsList)),
+    icon_url: S.optional(S.NullOr(S.String)),
+    template_id: S.optional(S.NullOr(S.String)),
+    execution_order: S.optional(S.NullOr(S.Number)),
+    _create_in_folder: S.optional(S.String),
+    base_updated_at: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HogFunctionInput",
+}) as any as S.Schema<HogFunctionInput>;
+
+/** Mock global variables available during test invocation. */
+export type HogFunctionsInvocationsCreateRequestGlobalsMap = {
+  [key: string]: unknown | undefined;
+};
+export const HogFunctionsInvocationsCreateRequestGlobalsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<HogFunctionsInvocationsCreateRequestGlobalsMap>;
+
+/** Mock ClickHouse event data to test the function with. */
+export type HogFunctionsInvocationsCreateRequestClickhouseEventMap = {
+  [key: string]: unknown | undefined;
+};
+export const HogFunctionsInvocationsCreateRequestClickhouseEventMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<HogFunctionsInvocationsCreateRequestClickhouseEventMap>;
+
+export interface CreateHogFunctionInvocationRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** Full function configuration to test. Omit when use_draft is true. */
+  configuration?: HogFunctionInput;
+  /** Test the function's staged draft instead of passing a configuration. Staged secret inputs are used; secrets the draft doesn't change fall back to the live values. 400 when nothing is staged. */
+  use_draft?: boolean;
+  /** Mock global variables available during test invocation. */
+  globals?: HogFunctionsInvocationsCreateRequestGlobalsMap;
+  /** Mock ClickHouse event data to test the function with. */
+  clickhouse_event?: HogFunctionsInvocationsCreateRequestClickhouseEventMap;
+  /** When true (default), async functions like fetch() are simulated. */
+  mock_async_functions?: boolean;
+  /** Optional invocation ID for correlation. */
+  invocation_id?: string | null;
+}
+export const CreateHogFunctionInvocationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    configuration: S.optional(HogFunctionInput),
+    use_draft: S.optional(S.Boolean),
+    globals: S.optional(HogFunctionsInvocationsCreateRequestGlobalsMap),
+    clickhouse_event: S.optional(
+      HogFunctionsInvocationsCreateRequestClickhouseEventMap,
+    ),
+    mock_async_functions: S.optional(S.Boolean),
+    invocation_id: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/hog_functions/{id}/invocations/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateHogFunctionInvocationRequest",
+}) as any as S.Schema<CreateHogFunctionInvocationRequest>;
+
+/** Execution logs from the test invocation. */
+export type HogFunctionInvocationOutputLogsList = Array<unknown>;
+export const HogFunctionInvocationOutputLogsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<HogFunctionInvocationOutputLogsList>;
+
+export interface HogFunctionInvocationOutput {
+  /** Invocation result status. */
+  status?: string;
+  /** Execution logs from the test invocation. */
+  logs?: HogFunctionInvocationOutputLogsList;
+  /** Optional invocation ID for correlation. */
+  invocation_id?: string | null;
+}
+export const HogFunctionInvocationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(S.String),
+    logs: S.optional(HogFunctionInvocationOutputLogsList),
+    invocation_id: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "HogFunctionInvocationOutput",
+}) as any as S.Schema<HogFunctionInvocationOutput>;
+
+export interface CreateHogFunctionPublishRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** False (default) previews the publish: returns which config fields would change without changing anything. True applies the staged draft to the live function. */
+  confirm?: boolean;
+  /** From the preview response, and required when confirm=true on an enabled function. Expires after 15 minutes, and any edit to the draft or the live config invalidates it (409), so you always publish the exact draft you previewed. */
+  confirm_token?: string;
+}
+export const CreateHogFunctionPublishRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    confirm: S.optional(S.Boolean),
+    confirm_token: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/hog_functions/{id}/publish/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateHogFunctionPublishRequest",
+}) as any as S.Schema<CreateHogFunctionPublishRequest>;
+
+/** Config fields publishing would change (hog, inputs_schema, inputs, filters, mappings, masking). Only set on previews. */
+export type HogFunctionPublishResponseOutputChangedFieldsList = Array<string>;
+export const HogFunctionPublishResponseOutputChangedFieldsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HogFunctionPublishResponseOutputChangedFieldsList>;
+
+export interface HogFunctionPublishResponseOutput {
+  /** Whether the draft was applied to the live function. */
+  published: boolean;
+  /** The staged draft's timestamp, for reference; publishing is confirmed via confirm_token. */
+  draft_updated_at: string | null;
+  /** Echo this back with confirm=true to publish the previewed draft. Only set on previews. */
+  confirm_token: string | null;
+  /** Config fields publishing would change (hog, inputs_schema, inputs, filters, mappings, masking). Only set on previews. */
+  changed_fields: HogFunctionPublishResponseOutputChangedFieldsList | null;
+  /** The function after publishing (only set when published=true). */
+  function?: HogFunctionOutput | null;
+}
+export const HogFunctionPublishResponseOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    published: S.Boolean,
+    draft_updated_at: S.NullOr(S.String),
+    confirm_token: S.NullOr(S.String),
+    changed_fields: S.NullOr(HogFunctionPublishResponseOutputChangedFieldsList),
+    function: S.optional(S.NullOr(HogFunctionOutput)),
+  }),
+).annotate({
+  identifier: "HogFunctionPublishResponseOutput",
+}) as any as S.Schema<HogFunctionPublishResponseOutput>;
+
+/** * `running` - running * `succeeded` - succeeded * `failed` - failed * `canceled` - canceled */
+export type HogInvocationRerunFilterStatusEnum =
+  | "running"
+  | "succeeded"
+  | "failed"
+  | "canceled";
+export const HogInvocationRerunFilterStatusEnum = /*@__PURE__*/ S.String;
+
+/** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
+export type HogInvocationRerunFilterStatusList = Array<
+  HogInvocationRerunFilterStatusEnum | (string & {})
+>;
+export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
+  HogInvocationRerunFilterStatusEnum,
+) as any as S.Schema<HogInvocationRerunFilterStatusList>;
+
+/** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
+export type HogInvocationRerunFilterErrorKindList = Array<string>;
+export const HogInvocationRerunFilterErrorKindList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<HogInvocationRerunFilterErrorKindList>;
+
+/** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
+export type HogInvocationRerunFilterInvocationIdsList = Array<string>;
+export const HogInvocationRerunFilterInvocationIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<HogInvocationRerunFilterInvocationIdsList>;
+
+/** Filter shape for the rerun endpoint. `window_start`/`window_end` are required. */
+export interface HogInvocationRerunFilter {
+  /** Inclusive lower bound on `scheduled_at` (UTC). */
+  window_start: string;
+  /** Exclusive upper bound on `scheduled_at` (UTC). */
+  window_end: string;
+  /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
+  status?: HogInvocationRerunFilterStatusList;
+  /** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
+  error_kind?: HogInvocationRerunFilterErrorKindList;
+  /** Restrict to invocations whose error_message contains this substring (case-insensitive). Use to isolate one failure mode when error_kind is too coarse (most app-level errors share the 'hog_error' kind). */
+  error_message_contains?: string;
+  /** Skip invocations that have already been attempted this many times or more. */
+  max_attempts?: number;
+  /** Maximum number of invocations to rerun in this request. Server-side cap is 10000. */
+  max_count?: number;
+  /** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
+  invocation_ids?: HogInvocationRerunFilterInvocationIdsList;
+}
+export const HogInvocationRerunFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    window_start: S.String,
+    window_end: S.String,
+    status: S.optional(HogInvocationRerunFilterStatusList),
+    error_kind: S.optional(HogInvocationRerunFilterErrorKindList),
+    error_message_contains: S.optional(S.String),
+    max_attempts: S.optional(S.Number),
+    max_count: S.optional(S.Number),
+    invocation_ids: S.optional(HogInvocationRerunFilterInvocationIdsList),
+  }),
+).annotate({
+  identifier: "HogInvocationRerunFilter",
+}) as any as S.Schema<HogInvocationRerunFilter>;
+
+export interface CreateHogFunctionRerunRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** Required. `window_start` / `window_end` pin the query to a small set of date partitions on the `hog_invocation_results` table. Optional `invocation_ids` restricts to specific invocations within that window. */
+  filter: HogInvocationRerunFilter;
+}
+export const CreateHogFunctionRerunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    filter: HogInvocationRerunFilter,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/hog_functions/{id}/rerun/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateHogFunctionRerunRequest",
+}) as any as S.Schema<CreateHogFunctionRerunRequest>;
+
+/** Response from the rerun endpoint. The endpoint only enqueues a wrapper job onto the cyclotron `rerun` queue — the actual ClickHouse paging and re-enqueue work happens asynchronously in the `cdp-rerun-worker` service. Use `rerun_job_id` to look up progress on the wrapper job later. */
+export interface HogInvocationRerunResponse {
+  /** ID of the cyclotron wrapper job that will run the rerun. Use this to poll status. */
+  rerun_job_id: string;
+  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
+  queued_count: number;
+  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
+  skipped_count: number;
+}
+export const HogInvocationRerunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rerun_job_id: S.String,
+    queued_count: S.Number,
+    skipped_count: S.Number,
+  }),
+).annotate({
+  identifier: "HogInvocationRerunResponse",
+}) as any as S.Schema<HogInvocationRerunResponse>;
+
 export interface HogFunctionsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -710,28 +1057,6 @@ export const HogFunctionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HogFunctionsDestroyResponse",
 }) as any as S.Schema<HogFunctionsDestroyResponse>;
-
-export interface HogFunctionsDiscardDraftCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this hog function. */
-  id: string;
-}
-export const HogFunctionsDiscardDraftCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/hog_functions/{id}/discard_draft/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "HogFunctionsDiscardDraftCreateRequest",
-}) as any as S.Schema<HogFunctionsDiscardDraftCreateRequest>;
 
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionsEnableBackfillsCreateRequestInputsSchemaList =
@@ -887,277 +1212,6 @@ export const HogFunctionsIconsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HogFunctionsIconsRetrieveResponse",
 }) as any as S.Schema<HogFunctionsIconsRetrieveResponse>;
-
-/** Schema defining the configurable input parameters for this function. */
-export type HogFunctionInputInputsSchemaList = Array<InputsSchemaItem>;
-export const HogFunctionInputInputsSchemaList = /*@__PURE__*/ S.Array(
-  InputsSchemaItem,
-) as any as S.Schema<HogFunctionInputInputsSchemaList>;
-
-/** Values for each input defined in inputs_schema. */
-export type HogFunctionInputInputsMap = {
-  [key: string]: InputsItemInput | undefined;
-};
-export const HogFunctionInputInputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InputsItemInput,
-) as any as S.Schema<HogFunctionInputInputsMap>;
-
-/** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionInputMappingsList = Array<MappingsInput>;
-export const HogFunctionInputMappingsList = /*@__PURE__*/ S.Array(
-  MappingsInput,
-) as any as S.Schema<HogFunctionInputMappingsList>;
-
-export interface HogFunctionInput {
-  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
-  type?: HogFunctionTypeEnum | (string & {}) | null;
-  /** Display name for the function. */
-  name?: string | null;
-  /** Human-readable description of what this function does. */
-  description?: string;
-  /** Whether the function is active and processing events. */
-  enabled?: boolean;
-  /** Soft-delete flag. Set to true to archive the function. */
-  deleted?: boolean;
-  /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
-  hog?: string;
-  /** Schema defining the configurable input parameters for this function. */
-  inputs_schema?: HogFunctionInputInputsSchemaList;
-  /** Values for each input defined in inputs_schema. */
-  inputs?: HogFunctionInputInputsMap;
-  /** Event filters that control which events trigger this function. */
-  filters?: HogFunctionFilters;
-  /** PII masking configuration with TTL, threshold, and hash expression. */
-  masking?: HogFunctionMasking | null;
-  /** Event-to-destination field mappings. Only for destination and site_destination types. */
-  mappings?: HogFunctionInputMappingsList | null;
-  /** URL for the function's icon displayed in the UI. */
-  icon_url?: string | null;
-  /** ID of the template to create this function from. */
-  template_id?: string | null;
-  /** Execution priority for transformations. Lower values run first. */
-  execution_order?: number | null;
-  _create_in_folder?: string;
-  /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
-  base_updated_at?: string;
-}
-export const HogFunctionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.NullOr(HogFunctionTypeEnum)),
-    name: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    deleted: S.optional(S.Boolean),
-    hog: S.optional(S.String),
-    inputs_schema: S.optional(HogFunctionInputInputsSchemaList),
-    inputs: S.optional(HogFunctionInputInputsMap),
-    filters: S.optional(HogFunctionFilters),
-    masking: S.optional(S.NullOr(HogFunctionMasking)),
-    mappings: S.optional(S.NullOr(HogFunctionInputMappingsList)),
-    icon_url: S.optional(S.NullOr(S.String)),
-    template_id: S.optional(S.NullOr(S.String)),
-    execution_order: S.optional(S.NullOr(S.Number)),
-    _create_in_folder: S.optional(S.String),
-    base_updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HogFunctionInput",
-}) as any as S.Schema<HogFunctionInput>;
-
-/** Mock global variables available during test invocation. */
-export type HogFunctionsInvocationsCreateRequestGlobalsMap = {
-  [key: string]: unknown | undefined;
-};
-export const HogFunctionsInvocationsCreateRequestGlobalsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<HogFunctionsInvocationsCreateRequestGlobalsMap>;
-
-/** Mock ClickHouse event data to test the function with. */
-export type HogFunctionsInvocationsCreateRequestClickhouseEventMap = {
-  [key: string]: unknown | undefined;
-};
-export const HogFunctionsInvocationsCreateRequestClickhouseEventMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<HogFunctionsInvocationsCreateRequestClickhouseEventMap>;
-
-export interface HogFunctionsInvocationsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this hog function. */
-  id: string;
-  /** Full function configuration to test. Omit when use_draft is true. */
-  configuration?: HogFunctionInput;
-  /** Test the function's staged draft instead of passing a configuration. Staged secret inputs are used; secrets the draft doesn't change fall back to the live values. 400 when nothing is staged. */
-  use_draft?: boolean;
-  /** Mock global variables available during test invocation. */
-  globals?: HogFunctionsInvocationsCreateRequestGlobalsMap;
-  /** Mock ClickHouse event data to test the function with. */
-  clickhouse_event?: HogFunctionsInvocationsCreateRequestClickhouseEventMap;
-  /** When true (default), async functions like fetch() are simulated. */
-  mock_async_functions?: boolean;
-  /** Optional invocation ID for correlation. */
-  invocation_id?: string | null;
-}
-export const HogFunctionsInvocationsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      configuration: S.optional(HogFunctionInput),
-      use_draft: S.optional(S.Boolean),
-      globals: S.optional(HogFunctionsInvocationsCreateRequestGlobalsMap),
-      clickhouse_event: S.optional(
-        HogFunctionsInvocationsCreateRequestClickhouseEventMap,
-      ),
-      mock_async_functions: S.optional(S.Boolean),
-      invocation_id: S.optional(S.NullOr(S.String)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/hog_functions/{id}/invocations/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "HogFunctionsInvocationsCreateRequest",
-}) as any as S.Schema<HogFunctionsInvocationsCreateRequest>;
-
-/** Execution logs from the test invocation. */
-export type HogFunctionInvocationOutputLogsList = Array<unknown>;
-export const HogFunctionInvocationOutputLogsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<HogFunctionInvocationOutputLogsList>;
-
-export interface HogFunctionInvocationOutput {
-  /** Invocation result status. */
-  status?: string;
-  /** Execution logs from the test invocation. */
-  logs?: HogFunctionInvocationOutputLogsList;
-  /** Optional invocation ID for correlation. */
-  invocation_id?: string | null;
-}
-export const HogFunctionInvocationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    logs: S.optional(HogFunctionInvocationOutputLogsList),
-    invocation_id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "HogFunctionInvocationOutput",
-}) as any as S.Schema<HogFunctionInvocationOutput>;
-
-export type HogFunctionsListRequestTypeList = Array<string>;
-export const HogFunctionsListRequestTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HogFunctionsListRequestTypeList>;
-
-export interface HogFunctionsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  created_at?: string;
-  created_by?: number;
-  enabled?: boolean;
-  id?: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** Multiple values may be separated by commas. */
-  type?: HogFunctionsListRequestTypeList;
-  updated_at?: string;
-}
-export const HogFunctionsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    created_at: S.optional(S.String.pipe(T.Query())),
-    created_by: S.optional(S.Number.pipe(T.Query())),
-    enabled: S.optional(S.Boolean.pipe(T.Query())),
-    id: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    type: S.optional(HogFunctionsListRequestTypeList.pipe(T.Query())),
-    updated_at: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/hog_functions/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HogFunctionsListRequest",
-}) as any as S.Schema<HogFunctionsListRequest>;
-
-export interface HogFunctionMinimal {
-  id?: string;
-  type?: string | null;
-  name?: string | null;
-  description?: string;
-  created_at?: string;
-  created_by?: UserBasic | null;
-  updated_at?: string;
-  enabled?: boolean;
-  hog?: string;
-  filters?: unknown;
-  icon_url?: string | null;
-  template?: HogFunctionTemplate;
-  status?: HogFunctionStatus | null;
-  execution_order?: number | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
-  /** When config was last staged for review, or null when nothing is staged. */
-  draft_updated_at?: string | null;
-}
-export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.String),
-    created_at: S.optional(S.String),
-    created_by: S.optional(S.NullOr(UserBasic)),
-    updated_at: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    hog: S.optional(S.String),
-    filters: S.optional(S.Unknown),
-    icon_url: S.optional(S.NullOr(S.String)),
-    template: S.optional(HogFunctionTemplate),
-    status: S.optional(S.NullOr(HogFunctionStatus)),
-    execution_order: S.optional(S.NullOr(S.Number)),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
-    draft_updated_at: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "HogFunctionMinimal",
-}) as any as S.Schema<HogFunctionMinimal>;
-
-export type PaginatedHogFunctionMinimalListResultsList =
-  Array<HogFunctionMinimal>;
-export const PaginatedHogFunctionMinimalListResultsList = /*@__PURE__*/ S.Array(
-  HogFunctionMinimal,
-) as any as S.Schema<PaginatedHogFunctionMinimalListResultsList>;
-
-export interface PaginatedHogFunctionMinimalList {
-  count?: number;
-  next?: string | null;
-  previous?: string | null;
-  results?: PaginatedHogFunctionMinimalListResultsList;
-}
-export const PaginatedHogFunctionMinimalList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedHogFunctionMinimalListResultsList),
-  }),
-).annotate({
-  identifier: "PaginatedHogFunctionMinimalList",
-}) as any as S.Schema<PaginatedHogFunctionMinimalList>;
 
 export interface HogFunctionsLogsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1458,313 +1512,6 @@ export const AppMetricsTotalsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppMetricsTotalsResponse",
 }) as any as S.Schema<AppMetricsTotalsResponse>;
 
-/** Schema defining the configurable input parameters for this function. */
-export type HogFunctionsPartialUpdateRequestInputsSchemaList =
-  Array<InputsSchemaItem>;
-export const HogFunctionsPartialUpdateRequestInputsSchemaList =
-  /*@__PURE__*/ S.Array(
-    InputsSchemaItem,
-  ) as any as S.Schema<HogFunctionsPartialUpdateRequestInputsSchemaList>;
-
-/** Values for each input defined in inputs_schema. */
-export type HogFunctionsPartialUpdateRequestInputsMap = {
-  [key: string]: InputsItemInput | undefined;
-};
-export const HogFunctionsPartialUpdateRequestInputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InputsItemInput,
-) as any as S.Schema<HogFunctionsPartialUpdateRequestInputsMap>;
-
-/** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionsPartialUpdateRequestMappingsList = Array<MappingsInput>;
-export const HogFunctionsPartialUpdateRequestMappingsList =
-  /*@__PURE__*/ S.Array(
-    MappingsInput,
-  ) as any as S.Schema<HogFunctionsPartialUpdateRequestMappingsList>;
-
-export interface HogFunctionsPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this hog function. */
-  id: string;
-  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
-  type?: HogFunctionTypeEnum | (string & {}) | null;
-  /** Display name for the function. */
-  name?: string | null;
-  /** Human-readable description of what this function does. */
-  description?: string;
-  /** Whether the function is active and processing events. */
-  enabled?: boolean;
-  /** Soft-delete flag. Set to true to archive the function. */
-  deleted?: boolean;
-  /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
-  hog?: string;
-  /** Schema defining the configurable input parameters for this function. */
-  inputs_schema?: HogFunctionsPartialUpdateRequestInputsSchemaList;
-  /** Values for each input defined in inputs_schema. */
-  inputs?: HogFunctionsPartialUpdateRequestInputsMap;
-  /** Event filters that control which events trigger this function. */
-  filters?: HogFunctionFilters;
-  /** PII masking configuration with TTL, threshold, and hash expression. */
-  masking?: HogFunctionMasking | null;
-  /** Event-to-destination field mappings. Only for destination and site_destination types. */
-  mappings?: HogFunctionsPartialUpdateRequestMappingsList | null;
-  /** URL for the function's icon displayed in the UI. */
-  icon_url?: string | null;
-  /** ID of the template to create this function from. */
-  template_id?: string | null;
-  /** Execution priority for transformations. Lower values run first. */
-  execution_order?: number | null;
-  _create_in_folder?: string;
-  /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
-  base_updated_at?: string;
-}
-export const HogFunctionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    type: S.optional(S.NullOr(HogFunctionTypeEnum)),
-    name: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    deleted: S.optional(S.Boolean),
-    hog: S.optional(S.String),
-    inputs_schema: S.optional(HogFunctionsPartialUpdateRequestInputsSchemaList),
-    inputs: S.optional(HogFunctionsPartialUpdateRequestInputsMap),
-    filters: S.optional(HogFunctionFilters),
-    masking: S.optional(S.NullOr(HogFunctionMasking)),
-    mappings: S.optional(
-      S.NullOr(HogFunctionsPartialUpdateRequestMappingsList),
-    ),
-    icon_url: S.optional(S.NullOr(S.String)),
-    template_id: S.optional(S.NullOr(S.String)),
-    execution_order: S.optional(S.NullOr(S.Number)),
-    _create_in_folder: S.optional(S.String),
-    base_updated_at: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/hog_functions/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HogFunctionsPartialUpdateRequest",
-}) as any as S.Schema<HogFunctionsPartialUpdateRequest>;
-
-export interface HogFunctionsPublishCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this hog function. */
-  id: string;
-  /** False (default) previews the publish: returns which config fields would change without changing anything. True applies the staged draft to the live function. */
-  confirm?: boolean;
-  /** From the preview response, and required when confirm=true on an enabled function. Expires after 15 minutes, and any edit to the draft or the live config invalidates it (409), so you always publish the exact draft you previewed. */
-  confirm_token?: string;
-}
-export const HogFunctionsPublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    confirm: S.optional(S.Boolean),
-    confirm_token: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/hog_functions/{id}/publish/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HogFunctionsPublishCreateRequest",
-}) as any as S.Schema<HogFunctionsPublishCreateRequest>;
-
-/** Config fields publishing would change (hog, inputs_schema, inputs, filters, mappings, masking). Only set on previews. */
-export type HogFunctionPublishResponseOutputChangedFieldsList = Array<string>;
-export const HogFunctionPublishResponseOutputChangedFieldsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<HogFunctionPublishResponseOutputChangedFieldsList>;
-
-export interface HogFunctionPublishResponseOutput {
-  /** Whether the draft was applied to the live function. */
-  published: boolean;
-  /** The staged draft's timestamp, for reference; publishing is confirmed via confirm_token. */
-  draft_updated_at: string | null;
-  /** Echo this back with confirm=true to publish the previewed draft. Only set on previews. */
-  confirm_token: string | null;
-  /** Config fields publishing would change (hog, inputs_schema, inputs, filters, mappings, masking). Only set on previews. */
-  changed_fields: HogFunctionPublishResponseOutputChangedFieldsList | null;
-  /** The function after publishing (only set when published=true). */
-  function?: HogFunctionOutput | null;
-}
-export const HogFunctionPublishResponseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    published: S.Boolean,
-    draft_updated_at: S.NullOr(S.String),
-    confirm_token: S.NullOr(S.String),
-    changed_fields: S.NullOr(HogFunctionPublishResponseOutputChangedFieldsList),
-    function: S.optional(S.NullOr(HogFunctionOutput)),
-  }),
-).annotate({
-  identifier: "HogFunctionPublishResponseOutput",
-}) as any as S.Schema<HogFunctionPublishResponseOutput>;
-
-/** Map of hog function UUIDs to their new execution_order values. */
-export type HogFunctionsRearrangePartialUpdateRequestOrdersMap = {
-  [key: string]: number | undefined;
-};
-export const HogFunctionsRearrangePartialUpdateRequestOrdersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Number,
-  ) as any as S.Schema<HogFunctionsRearrangePartialUpdateRequestOrdersMap>;
-
-export interface HogFunctionsRearrangePartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Map of hog function UUIDs to their new execution_order values. */
-  orders?: HogFunctionsRearrangePartialUpdateRequestOrdersMap;
-}
-export const HogFunctionsRearrangePartialUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      orders: S.optional(HogFunctionsRearrangePartialUpdateRequestOrdersMap),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/hog_functions/rearrange/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "HogFunctionsRearrangePartialUpdateRequest",
-  }) as any as S.Schema<HogFunctionsRearrangePartialUpdateRequest>;
-
-export type HogFunctionsRearrangePartialUpdateResponseBodyList =
-  Array<HogFunctionOutput>;
-export const HogFunctionsRearrangePartialUpdateResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    HogFunctionOutput,
-  ) as any as S.Schema<HogFunctionsRearrangePartialUpdateResponseBodyList>;
-
-export type HogFunctionsRearrangePartialUpdateResponse =
-  HogFunctionsRearrangePartialUpdateResponseBodyList;
-export const HogFunctionsRearrangePartialUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    HogFunctionsRearrangePartialUpdateResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "HogFunctionsRearrangePartialUpdateResponse",
-  }) as any as S.Schema<HogFunctionsRearrangePartialUpdateResponse>;
-
-/** * `running` - running * `succeeded` - succeeded * `failed` - failed * `canceled` - canceled */
-export type HogInvocationRerunFilterStatusEnum =
-  | "running"
-  | "succeeded"
-  | "failed"
-  | "canceled";
-export const HogInvocationRerunFilterStatusEnum = /*@__PURE__*/ S.String;
-
-/** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
-export type HogInvocationRerunFilterStatusList = Array<
-  HogInvocationRerunFilterStatusEnum | (string & {})
->;
-export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
-  HogInvocationRerunFilterStatusEnum,
-) as any as S.Schema<HogInvocationRerunFilterStatusList>;
-
-/** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
-export type HogInvocationRerunFilterErrorKindList = Array<string>;
-export const HogInvocationRerunFilterErrorKindList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HogInvocationRerunFilterErrorKindList>;
-
-/** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
-export type HogInvocationRerunFilterInvocationIdsList = Array<string>;
-export const HogInvocationRerunFilterInvocationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HogInvocationRerunFilterInvocationIdsList>;
-
-/** Filter shape for the rerun endpoint. `window_start`/`window_end` are required. */
-export interface HogInvocationRerunFilter {
-  /** Inclusive lower bound on `scheduled_at` (UTC). */
-  window_start: string;
-  /** Exclusive upper bound on `scheduled_at` (UTC). */
-  window_end: string;
-  /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
-  status?: HogInvocationRerunFilterStatusList;
-  /** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
-  error_kind?: HogInvocationRerunFilterErrorKindList;
-  /** Restrict to invocations whose error_message contains this substring (case-insensitive). Use to isolate one failure mode when error_kind is too coarse (most app-level errors share the 'hog_error' kind). */
-  error_message_contains?: string;
-  /** Skip invocations that have already been attempted this many times or more. */
-  max_attempts?: number;
-  /** Maximum number of invocations to rerun in this request. Server-side cap is 10000. */
-  max_count?: number;
-  /** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
-  invocation_ids?: HogInvocationRerunFilterInvocationIdsList;
-}
-export const HogInvocationRerunFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    window_start: S.String,
-    window_end: S.String,
-    status: S.optional(HogInvocationRerunFilterStatusList),
-    error_kind: S.optional(HogInvocationRerunFilterErrorKindList),
-    error_message_contains: S.optional(S.String),
-    max_attempts: S.optional(S.Number),
-    max_count: S.optional(S.Number),
-    invocation_ids: S.optional(HogInvocationRerunFilterInvocationIdsList),
-  }),
-).annotate({
-  identifier: "HogInvocationRerunFilter",
-}) as any as S.Schema<HogInvocationRerunFilter>;
-
-export interface HogFunctionsRerunCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this hog function. */
-  id: string;
-  /** Required. `window_start` / `window_end` pin the query to a small set of date partitions on the `hog_invocation_results` table. Optional `invocation_ids` restricts to specific invocations within that window. */
-  filter: HogInvocationRerunFilter;
-}
-export const HogFunctionsRerunCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    filter: HogInvocationRerunFilter,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/hog_functions/{id}/rerun/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HogFunctionsRerunCreateRequest",
-}) as any as S.Schema<HogFunctionsRerunCreateRequest>;
-
-/** Response from the rerun endpoint. The endpoint only enqueues a wrapper job onto the cyclotron `rerun` queue — the actual ClickHouse paging and re-enqueue work happens asynchronously in the `cdp-rerun-worker` service. Use `rerun_job_id` to look up progress on the wrapper job later. */
-export interface HogInvocationRerunResponse {
-  /** ID of the cyclotron wrapper job that will run the rerun. Use this to poll status. */
-  rerun_job_id: string;
-  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
-  queued_count: number;
-  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
-  skipped_count: number;
-}
-export const HogInvocationRerunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rerun_job_id: S.String,
-    queued_count: S.Number,
-    skipped_count: S.Number,
-  }),
-).annotate({
-  identifier: "HogInvocationRerunResponse",
-}) as any as S.Schema<HogInvocationRerunResponse>;
-
 export interface HogFunctionsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1785,74 +1532,6 @@ export const HogFunctionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HogFunctionsRetrieveRequest",
 }) as any as S.Schema<HogFunctionsRetrieveRequest>;
-
-export interface HogFunctionsRevisionsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this hog function. */
-  id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-}
-export const HogFunctionsRevisionsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/hog_functions/{id}/revisions/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HogFunctionsRevisionsListRequest",
-}) as any as S.Schema<HogFunctionsRevisionsListRequest>;
-
-export interface HogFunctionRevisionBasic {
-  /** Function version this snapshot was published as. */
-  version: number;
-  created_at: string;
-  created_by: UserBasic | null;
-}
-export const HogFunctionRevisionBasic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.Number,
-    created_at: S.String,
-    created_by: S.NullOr(UserBasic),
-  }),
-).annotate({
-  identifier: "HogFunctionRevisionBasic",
-}) as any as S.Schema<HogFunctionRevisionBasic>;
-
-export type PaginatedHogFunctionRevisionBasicListResultsList =
-  Array<HogFunctionRevisionBasic>;
-export const PaginatedHogFunctionRevisionBasicListResultsList =
-  /*@__PURE__*/ S.Array(
-    HogFunctionRevisionBasic,
-  ) as any as S.Schema<PaginatedHogFunctionRevisionBasicListResultsList>;
-
-export interface PaginatedHogFunctionRevisionBasicList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedHogFunctionRevisionBasicListResultsList;
-}
-export const PaginatedHogFunctionRevisionBasicList = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      count: S.Number,
-      next: S.optional(S.NullOr(S.String)),
-      previous: S.optional(S.NullOr(S.String)),
-      results: PaginatedHogFunctionRevisionBasicListResultsList,
-    }),
-).annotate({
-  identifier: "PaginatedHogFunctionRevisionBasicList",
-}) as any as S.Schema<PaginatedHogFunctionRevisionBasicList>;
 
 export interface HogFunctionsRevisionsRestoreCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1926,6 +1605,182 @@ export const HogFunctionRevision = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionRevision",
 }) as any as S.Schema<HogFunctionRevision>;
 
+export interface ListHogFunctionRevisionsRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const ListHogFunctionRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/hog_functions/{id}/revisions/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListHogFunctionRevisionsRequest",
+}) as any as S.Schema<ListHogFunctionRevisionsRequest>;
+
+export interface HogFunctionRevisionBasic {
+  /** Function version this snapshot was published as. */
+  version: number;
+  created_at: string;
+  created_by: UserBasic | null;
+}
+export const HogFunctionRevisionBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.Number,
+    created_at: S.String,
+    created_by: S.NullOr(UserBasic),
+  }),
+).annotate({
+  identifier: "HogFunctionRevisionBasic",
+}) as any as S.Schema<HogFunctionRevisionBasic>;
+
+export type PaginatedHogFunctionRevisionBasicListResultsList =
+  Array<HogFunctionRevisionBasic>;
+export const PaginatedHogFunctionRevisionBasicListResultsList =
+  /*@__PURE__*/ S.Array(
+    HogFunctionRevisionBasic,
+  ) as any as S.Schema<PaginatedHogFunctionRevisionBasicListResultsList>;
+
+export interface PaginatedHogFunctionRevisionBasicList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedHogFunctionRevisionBasicListResultsList;
+}
+export const PaginatedHogFunctionRevisionBasicList = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      count: S.Number,
+      next: S.optional(S.NullOr(S.String)),
+      previous: S.optional(S.NullOr(S.String)),
+      results: PaginatedHogFunctionRevisionBasicListResultsList,
+    }),
+).annotate({
+  identifier: "PaginatedHogFunctionRevisionBasicList",
+}) as any as S.Schema<PaginatedHogFunctionRevisionBasicList>;
+
+export type HogFunctionsListRequestTypeList = Array<string>;
+export const HogFunctionsListRequestTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<HogFunctionsListRequestTypeList>;
+
+export interface ListHogFunctionsRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  created_at?: string;
+  created_by?: number;
+  enabled?: boolean;
+  id?: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** Multiple values may be separated by commas. */
+  type?: HogFunctionsListRequestTypeList;
+  updated_at?: string;
+}
+export const ListHogFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    created_at: S.optional(S.String.pipe(T.Query())),
+    created_by: S.optional(S.Number.pipe(T.Query())),
+    enabled: S.optional(S.Boolean.pipe(T.Query())),
+    id: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    type: S.optional(HogFunctionsListRequestTypeList.pipe(T.Query())),
+    updated_at: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/hog_functions/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListHogFunctionsRequest",
+}) as any as S.Schema<ListHogFunctionsRequest>;
+
+export interface HogFunctionMinimal {
+  id?: string;
+  type?: string | null;
+  name?: string | null;
+  description?: string;
+  created_at?: string;
+  created_by?: UserBasic | null;
+  updated_at?: string;
+  enabled?: boolean;
+  hog?: string;
+  filters?: unknown;
+  icon_url?: string | null;
+  template?: HogFunctionTemplate;
+  status?: HogFunctionStatus | null;
+  execution_order?: number | null;
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
+  search_match_type?: SearchMatchTypeEnum | null;
+  /** When config was last staged for review, or null when nothing is staged. */
+  draft_updated_at?: string | null;
+}
+export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    type: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    created_at: S.optional(S.String),
+    created_by: S.optional(S.NullOr(UserBasic)),
+    updated_at: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    hog: S.optional(S.String),
+    filters: S.optional(S.Unknown),
+    icon_url: S.optional(S.NullOr(S.String)),
+    template: S.optional(HogFunctionTemplate),
+    status: S.optional(S.NullOr(HogFunctionStatus)),
+    execution_order: S.optional(S.NullOr(S.Number)),
+    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
+    draft_updated_at: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "HogFunctionMinimal",
+}) as any as S.Schema<HogFunctionMinimal>;
+
+export type PaginatedHogFunctionMinimalListResultsList =
+  Array<HogFunctionMinimal>;
+export const PaginatedHogFunctionMinimalListResultsList = /*@__PURE__*/ S.Array(
+  HogFunctionMinimal,
+) as any as S.Schema<PaginatedHogFunctionMinimalListResultsList>;
+
+export interface PaginatedHogFunctionMinimalList {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: PaginatedHogFunctionMinimalListResultsList;
+}
+export const PaginatedHogFunctionMinimalList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: S.optional(PaginatedHogFunctionMinimalListResultsList),
+  }),
+).annotate({
+  identifier: "PaginatedHogFunctionMinimalList",
+}) as any as S.Schema<PaginatedHogFunctionMinimalList>;
+
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionsUpdateRequestInputsSchemaList = Array<InputsSchemaItem>;
 export const HogFunctionsUpdateRequestInputsSchemaList = /*@__PURE__*/ S.Array(
@@ -1947,7 +1802,7 @@ export const HogFunctionsUpdateRequestMappingsList = /*@__PURE__*/ S.Array(
   MappingsInput,
 ) as any as S.Schema<HogFunctionsUpdateRequestMappingsList>;
 
-export interface HogFunctionsUpdateRequest {
+export interface UpdateHogFunctionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this hog function. */
@@ -1984,7 +1839,7 @@ export interface HogFunctionsUpdateRequest {
   /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
   base_updated_at?: string;
 }
-export const HogFunctionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2012,23 +1867,228 @@ export const HogFunctionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HogFunctionsUpdateRequest",
-}) as any as S.Schema<HogFunctionsUpdateRequest>;
+  identifier: "UpdateHogFunctionRequest",
+}) as any as S.Schema<UpdateHogFunctionRequest>;
 
-export type HogFunctionsCreateError =
+/** Schema defining the configurable input parameters for this function. */
+export type HogFunctionsPartialUpdateRequestInputsSchemaList =
+  Array<InputsSchemaItem>;
+export const HogFunctionsPartialUpdateRequestInputsSchemaList =
+  /*@__PURE__*/ S.Array(
+    InputsSchemaItem,
+  ) as any as S.Schema<HogFunctionsPartialUpdateRequestInputsSchemaList>;
+
+/** Values for each input defined in inputs_schema. */
+export type HogFunctionsPartialUpdateRequestInputsMap = {
+  [key: string]: InputsItemInput | undefined;
+};
+export const HogFunctionsPartialUpdateRequestInputsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  InputsItemInput,
+) as any as S.Schema<HogFunctionsPartialUpdateRequestInputsMap>;
+
+/** Event-to-destination field mappings. Only for destination and site_destination types. */
+export type HogFunctionsPartialUpdateRequestMappingsList = Array<MappingsInput>;
+export const HogFunctionsPartialUpdateRequestMappingsList =
+  /*@__PURE__*/ S.Array(
+    MappingsInput,
+  ) as any as S.Schema<HogFunctionsPartialUpdateRequestMappingsList>;
+
+export interface UpdateHogFunctionPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
+  type?: HogFunctionTypeEnum | (string & {}) | null;
+  /** Display name for the function. */
+  name?: string | null;
+  /** Human-readable description of what this function does. */
+  description?: string;
+  /** Whether the function is active and processing events. */
+  enabled?: boolean;
+  /** Soft-delete flag. Set to true to archive the function. */
+  deleted?: boolean;
+  /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
+  hog?: string;
+  /** Schema defining the configurable input parameters for this function. */
+  inputs_schema?: HogFunctionsPartialUpdateRequestInputsSchemaList;
+  /** Values for each input defined in inputs_schema. */
+  inputs?: HogFunctionsPartialUpdateRequestInputsMap;
+  /** Event filters that control which events trigger this function. */
+  filters?: HogFunctionFilters;
+  /** PII masking configuration with TTL, threshold, and hash expression. */
+  masking?: HogFunctionMasking | null;
+  /** Event-to-destination field mappings. Only for destination and site_destination types. */
+  mappings?: HogFunctionsPartialUpdateRequestMappingsList | null;
+  /** URL for the function's icon displayed in the UI. */
+  icon_url?: string | null;
+  /** ID of the template to create this function from. */
+  template_id?: string | null;
+  /** Execution priority for transformations. Lower values run first. */
+  execution_order?: number | null;
+  _create_in_folder?: string;
+  /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
+  base_updated_at?: string;
+}
+export const UpdateHogFunctionPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    type: S.optional(S.NullOr(HogFunctionTypeEnum)),
+    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    deleted: S.optional(S.Boolean),
+    hog: S.optional(S.String),
+    inputs_schema: S.optional(HogFunctionsPartialUpdateRequestInputsSchemaList),
+    inputs: S.optional(HogFunctionsPartialUpdateRequestInputsMap),
+    filters: S.optional(HogFunctionFilters),
+    masking: S.optional(S.NullOr(HogFunctionMasking)),
+    mappings: S.optional(
+      S.NullOr(HogFunctionsPartialUpdateRequestMappingsList),
+    ),
+    icon_url: S.optional(S.NullOr(S.String)),
+    template_id: S.optional(S.NullOr(S.String)),
+    execution_order: S.optional(S.NullOr(S.Number)),
+    _create_in_folder: S.optional(S.String),
+    base_updated_at: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/hog_functions/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateHogFunctionPartialRequest",
+}) as any as S.Schema<UpdateHogFunctionPartialRequest>;
+
+/** Map of hog function UUIDs to their new execution_order values. */
+export type HogFunctionsRearrangePartialUpdateRequestOrdersMap = {
+  [key: string]: number | undefined;
+};
+export const HogFunctionsRearrangePartialUpdateRequestOrdersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Number,
+  ) as any as S.Schema<HogFunctionsRearrangePartialUpdateRequestOrdersMap>;
+
+export interface UpdateHogFunctionRearrangePartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Map of hog function UUIDs to their new execution_order values. */
+  orders?: HogFunctionsRearrangePartialUpdateRequestOrdersMap;
+}
+export const UpdateHogFunctionRearrangePartialRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      orders: S.optional(HogFunctionsRearrangePartialUpdateRequestOrdersMap),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/projects/{project_id}/hog_functions/rearrange/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UpdateHogFunctionRearrangePartialRequest",
+}) as any as S.Schema<UpdateHogFunctionRearrangePartialRequest>;
+
+export type HogFunctionsRearrangePartialUpdateResponseBodyList =
+  Array<HogFunctionOutput>;
+export const HogFunctionsRearrangePartialUpdateResponseBodyList =
+  /*@__PURE__*/ S.Array(
+    HogFunctionOutput,
+  ) as any as S.Schema<HogFunctionsRearrangePartialUpdateResponseBodyList>;
+
+export type UpdateHogFunctionRearrangePartialResponse =
+  HogFunctionsRearrangePartialUpdateResponseBodyList;
+export const UpdateHogFunctionRearrangePartialResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    HogFunctionsRearrangePartialUpdateResponseBodyList.pipe(
+      T.RawResponseRoot(),
+    ),
+  ).annotate({
+    identifier: "UpdateHogFunctionRearrangePartialResponse",
+  }) as any as S.Schema<UpdateHogFunctionRearrangePartialResponse>;
+
+export type CreateHogFunctionError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const hogFunctionsCreate: API.OperationMethod<
-  HogFunctionsCreateRequest,
+export const createHogFunction: API.OperationMethod<
+  CreateHogFunctionRequest,
   HogFunctionOutput,
-  HogFunctionsCreateError,
+  CreateHogFunctionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsCreateRequest,
+  input: CreateHogFunctionRequest,
   output: HogFunctionOutput,
   errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateHogFunctionDiscardDraftError = PosthogOpError;
+export const createHogFunctionDiscardDraft: API.OperationMethod<
+  CreateHogFunctionDiscardDraftRequest,
+  HogFunctionOutput,
+  CreateHogFunctionDiscardDraftError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateHogFunctionDiscardDraftRequest,
+  output: HogFunctionOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateHogFunctionInvocationError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const createHogFunctionInvocation: API.OperationMethod<
+  CreateHogFunctionInvocationRequest,
+  HogFunctionInvocationOutput,
+  CreateHogFunctionInvocationError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateHogFunctionInvocationRequest,
+  output: HogFunctionInvocationOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateHogFunctionPublishError = PosthogOpError;
+export const createHogFunctionPublish: API.OperationMethod<
+  CreateHogFunctionPublishRequest,
+  HogFunctionPublishResponseOutput,
+  CreateHogFunctionPublishError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateHogFunctionPublishRequest,
+  output: HogFunctionPublishResponseOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateHogFunctionRerunError = BadRequest | PosthogOpError;
+/** Rerun past invocations of this hog function from their stored payloads. The CDP worker reads matching rows from the `hog_invocation_results` ClickHouse table, rehydrates the invocation from the stored `invocation_globals`, and re-enqueues onto cyclotron. Each rerun run reuses the original `invocation_id` with `is_retry=1` set on the new lifecycle row so the UI can surface that it was a rerun. Only types a cyclotron worker executes (`TYPES_THAT_CAN_RERUN`) can be rerun: rerun re-enqueues onto the cyclotron hog queue, and other types run elsewhere (source webhooks inline in the cdp-api HTTP handler, transformations during ingestion, `site_*` transpiled to client-side JS). A re-enqueued invocation of one of those would never drain and wedges the partition, so a rerun of a non-rerunnable type is rejected with a 400 here. A disabled function is rejected the same way: the worker skips its invocations, so the rerun could never execute. Because rerun replays historical event/person/group data, it requires `person:read` and `group:read` on top of `hog_function:write`. */
+export const createHogFunctionRerun: API.OperationMethod<
+  CreateHogFunctionRerunRequest,
+  HogInvocationRerunResponse,
+  CreateHogFunctionRerunError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateHogFunctionRerunRequest,
+  output: HogInvocationRerunResponse,
+  errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -2044,20 +2104,6 @@ export const hogFunctionsDestroy: API.OperationMethod<
   input: HogFunctionsDestroyRequest,
   output: HogFunctionsDestroyResponse,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HogFunctionsDiscardDraftCreateError = PosthogOpError;
-export const hogFunctionsDiscardDraftCreate: API.OperationMethod<
-  HogFunctionsDiscardDraftCreateRequest,
-  HogFunctionOutput,
-  HogFunctionsDiscardDraftCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsDiscardDraftCreateRequest,
-  output: HogFunctionOutput,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -2110,42 +2156,6 @@ export const hogFunctionsIconsRetrieve: API.OperationMethod<
   input: HogFunctionsIconsRetrieveRequest,
   output: HogFunctionsIconsRetrieveResponse,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HogFunctionsInvocationsCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const hogFunctionsInvocationsCreate: API.OperationMethod<
-  HogFunctionsInvocationsCreateRequest,
-  HogFunctionInvocationOutput,
-  HogFunctionsInvocationsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsInvocationsCreateRequest,
-  output: HogFunctionInvocationOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HogFunctionsListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const hogFunctionsList: API.OperationMethod<
-  HogFunctionsListRequest,
-  PaginatedHogFunctionMinimalList,
-  HogFunctionsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsListRequest,
-  output: PaginatedHogFunctionMinimalList,
-  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -2219,72 +2229,6 @@ export const hogFunctionsMetricsTotalsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HogFunctionsPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const hogFunctionsPartialUpdate: API.OperationMethod<
-  HogFunctionsPartialUpdateRequest,
-  HogFunctionOutput,
-  HogFunctionsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsPartialUpdateRequest,
-  output: HogFunctionOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HogFunctionsPublishCreateError = PosthogOpError;
-export const hogFunctionsPublishCreate: API.OperationMethod<
-  HogFunctionsPublishCreateRequest,
-  HogFunctionPublishResponseOutput,
-  HogFunctionsPublishCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsPublishCreateRequest,
-  output: HogFunctionPublishResponseOutput,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HogFunctionsRearrangePartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Update the execution order of multiple HogFunctions. */
-export const hogFunctionsRearrangePartialUpdate: API.OperationMethod<
-  HogFunctionsRearrangePartialUpdateRequest,
-  HogFunctionsRearrangePartialUpdateResponse,
-  HogFunctionsRearrangePartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsRearrangePartialUpdateRequest,
-  output: HogFunctionsRearrangePartialUpdateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HogFunctionsRerunCreateError = BadRequest | PosthogOpError;
-/** Rerun past invocations of this hog function from their stored payloads. The CDP worker reads matching rows from the `hog_invocation_results` ClickHouse table, rehydrates the invocation from the stored `invocation_globals`, and re-enqueues onto cyclotron. Each rerun run reuses the original `invocation_id` with `is_retry=1` set on the new lifecycle row so the UI can surface that it was a rerun. Only types a cyclotron worker executes (`TYPES_THAT_CAN_RERUN`) can be rerun: rerun re-enqueues onto the cyclotron hog queue, and other types run elsewhere (source webhooks inline in the cdp-api HTTP handler, transformations during ingestion, `site_*` transpiled to client-side JS). A re-enqueued invocation of one of those would never drain and wedges the partition, so a rerun of a non-rerunnable type is rejected with a 400 here. A disabled function is rejected the same way: the worker skips its invocations, so the rerun could never execute. Because rerun replays historical event/person/group data, it requires `person:read` and `group:read` on top of `hog_function:write`. */
-export const hogFunctionsRerunCreate: API.OperationMethod<
-  HogFunctionsRerunCreateRequest,
-  HogInvocationRerunResponse,
-  HogFunctionsRerunCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsRerunCreateRequest,
-  output: HogInvocationRerunResponse,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type HogFunctionsRetrieveError = Forbidden | NotFound | PosthogOpError;
 export const hogFunctionsRetrieve: API.OperationMethod<
   HogFunctionsRetrieveRequest,
@@ -2295,20 +2239,6 @@ export const hogFunctionsRetrieve: API.OperationMethod<
   input: HogFunctionsRetrieveRequest,
   output: HogFunctionOutput,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HogFunctionsRevisionsListError = PosthogOpError;
-export const hogFunctionsRevisionsList: API.OperationMethod<
-  HogFunctionsRevisionsListRequest,
-  PaginatedHogFunctionRevisionBasicList,
-  HogFunctionsRevisionsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsRevisionsListRequest,
-  output: PaginatedHogFunctionRevisionBasicList,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -2341,19 +2271,88 @@ export const hogFunctionsRevisionsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HogFunctionsUpdateError =
+export type ListHogFunctionRevisionsError = PosthogOpError;
+export const listHogFunctionRevisions: API.OperationMethod<
+  ListHogFunctionRevisionsRequest,
+  PaginatedHogFunctionRevisionBasicList,
+  ListHogFunctionRevisionsError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHogFunctionRevisionsRequest,
+  output: PaginatedHogFunctionRevisionBasicList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListHogFunctionsError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const hogFunctionsUpdate: API.OperationMethod<
-  HogFunctionsUpdateRequest,
-  HogFunctionOutput,
-  HogFunctionsUpdateError,
+export const listHogFunctions: API.OperationMethod<
+  ListHogFunctionsRequest,
+  PaginatedHogFunctionMinimalList,
+  ListHogFunctionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsUpdateRequest,
+  input: ListHogFunctionsRequest,
+  output: PaginatedHogFunctionMinimalList,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateHogFunctionError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const updateHogFunction: API.OperationMethod<
+  UpdateHogFunctionRequest,
+  HogFunctionOutput,
+  UpdateHogFunctionError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHogFunctionRequest,
   output: HogFunctionOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateHogFunctionPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const updateHogFunctionPartial: API.OperationMethod<
+  UpdateHogFunctionPartialRequest,
+  HogFunctionOutput,
+  UpdateHogFunctionPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHogFunctionPartialRequest,
+  output: HogFunctionOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateHogFunctionRearrangePartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Update the execution order of multiple HogFunctions. */
+export const updateHogFunctionRearrangePartial: API.OperationMethod<
+  UpdateHogFunctionRearrangePartialRequest,
+  UpdateHogFunctionRearrangePartialResponse,
+  UpdateHogFunctionRearrangePartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHogFunctionRearrangePartialRequest,
+  output: UpdateHogFunctionRearrangePartialResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

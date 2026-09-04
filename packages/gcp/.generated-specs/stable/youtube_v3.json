@@ -18841,7 +18841,7 @@
         }
       }
     },
-    "com.gcp.youtube_v3#BatchGetStatsVideosRequest": {
+    "com.gcp.youtube_v3#GetBatchStatVideosRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -18867,10 +18867,10 @@
         }
       }
     },
-    "com.gcp.youtube_v3#BatchGetStatsVideos": {
+    "com.gcp.youtube_v3#GetBatchStatVideos": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.youtube_v3#BatchGetStatsVideosRequest"
+        "target": "com.gcp.youtube_v3#GetBatchStatVideosRequest"
       },
       "output": {
         "target": "com.gcp.youtube_v3#BatchGetStatsResponse"

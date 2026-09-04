@@ -24633,7 +24633,7 @@
         "smithy.api#documentation": "Tests correlation config on a conversation."
       }
     },
-    "com.gcp.contactcenterinsights_v1#BulkDeleteFeedbackLabelsProjectsLocationsRequest": {
+    "com.gcp.contactcenterinsights_v1#DeleteBulkFeedbackLabelProjectLocationRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -24653,10 +24653,10 @@
         }
       }
     },
-    "com.gcp.contactcenterinsights_v1#BulkDeleteFeedbackLabelsProjectsLocations": {
+    "com.gcp.contactcenterinsights_v1#DeleteBulkFeedbackLabelProjectLocation": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.contactcenterinsights_v1#BulkDeleteFeedbackLabelsProjectsLocationsRequest"
+        "target": "com.gcp.contactcenterinsights_v1#DeleteBulkFeedbackLabelProjectLocationRequest"
       },
       "output": {
         "target": "com.gcp.contactcenterinsights_v1#GoogleLongrunningOperation"
@@ -25922,7 +25922,7 @@
         "smithy.api#documentation": "Deletes a conversation."
       }
     },
-    "com.gcp.contactcenterinsights_v1#BulkDeleteProjectsLocationsConversationsRequest": {
+    "com.gcp.contactcenterinsights_v1#DeleteBulkProjectLocationConversationRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -25942,10 +25942,10 @@
         }
       }
     },
-    "com.gcp.contactcenterinsights_v1#BulkDeleteProjectsLocationsConversations": {
+    "com.gcp.contactcenterinsights_v1#DeleteBulkProjectLocationConversation": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.contactcenterinsights_v1#BulkDeleteProjectsLocationsConversationsRequest"
+        "target": "com.gcp.contactcenterinsights_v1#DeleteBulkProjectLocationConversationRequest"
       },
       "output": {
         "target": "com.gcp.contactcenterinsights_v1#GoogleLongrunningOperation"
@@ -32988,7 +32988,7 @@
         "smithy.api#documentation": "Delete a dataset."
       }
     },
-    "com.gcp.contactcenterinsights_v1#BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest": {
+    "com.gcp.contactcenterinsights_v1#DeleteBulkFeedbackLabelProjectLocationDatasetRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -33008,10 +33008,10 @@
         }
       }
     },
-    "com.gcp.contactcenterinsights_v1#BulkDeleteFeedbackLabelsProjectsLocationsDatasets": {
+    "com.gcp.contactcenterinsights_v1#DeleteBulkFeedbackLabelProjectLocationDataset": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.contactcenterinsights_v1#BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest"
+        "target": "com.gcp.contactcenterinsights_v1#DeleteBulkFeedbackLabelProjectLocationDatasetRequest"
       },
       "output": {
         "target": "com.gcp.contactcenterinsights_v1#GoogleLongrunningOperation"
@@ -33655,7 +33655,7 @@
         "smithy.api#documentation": "Deletes a conversation."
       }
     },
-    "com.gcp.contactcenterinsights_v1#BulkDeleteProjectsLocationsDatasetsConversationsRequest": {
+    "com.gcp.contactcenterinsights_v1#DeleteBulkProjectLocationDatasetConversationRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -33675,10 +33675,10 @@
         }
       }
     },
-    "com.gcp.contactcenterinsights_v1#BulkDeleteProjectsLocationsDatasetsConversations": {
+    "com.gcp.contactcenterinsights_v1#DeleteBulkProjectLocationDatasetConversation": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.contactcenterinsights_v1#BulkDeleteProjectsLocationsDatasetsConversationsRequest"
+        "target": "com.gcp.contactcenterinsights_v1#DeleteBulkProjectLocationDatasetConversationRequest"
       },
       "output": {
         "target": "com.gcp.contactcenterinsights_v1#GoogleLongrunningOperation"

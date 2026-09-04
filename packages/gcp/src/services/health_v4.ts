@@ -70,92 +70,6 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-/** Request to delete a batch of identifiable data points. */
-export interface BatchDeleteDataPointsRequest {
-  /** Required. The names of the DataPoints to delete. A maximum of 10000 data points can be deleted in a single request. */
-  names?: StringList;
-}
-export const BatchDeleteDataPointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeleteDataPointsRequest",
-}) as any as S.Schema<BatchDeleteDataPointsRequest>;
-
-export interface BatchDeleteUsersDataTypesDataPointsRequest {
-  /** Optional. Parent (data type) for the Data Point collection Format: `users/me/dataTypes/{data_type}`, e.g.: - `users/me/dataTypes/steps` - `users/me/dataTypes/-` For a list of the supported data types see the DataPoint data union field. Deleting data points across multiple data type collections is supported following https://aip.dev/159. If this is set, the parent of all of the data points specified in `names` must match this field. */
-  parent: string;
-  /** Request body */
-  body?: BatchDeleteDataPointsRequest;
-}
-export const BatchDeleteUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeleteDataPointsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v4/{+parent}/dataPoints:batchDelete",
-        baseUrl: "https://health.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeleteUsersDataTypesDataPointsRequest",
-  }) as any as S.Schema<BatchDeleteUsersDataTypesDataPointsRequest>;
-
-export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
-
-export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
-
-/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: DocumentMapList;
-}
-export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
-
-/** This resource represents a long-running operation that is the result of a network API call. */
-export interface Operation {
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    done: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
 export type SubscriberConfigSubscriptionCreatePolicyEnum =
   | "SUBSCRIPTION_CREATE_POLICY_UNSPECIFIED"
   | "AUTOMATIC"
@@ -246,6 +160,57 @@ export const CreateProjectsSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProjectsSubscribersRequest",
 }) as any as S.Schema<CreateProjectsSubscribersRequest>;
+
+export type DocumentMap = { [key: string]: unknown | undefined };
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
+
+export type DocumentMapList = Array<DocumentMap>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
+
+/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: DocumentMapList;
+}
+export const Status = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
+).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
+
+/** This resource represents a long-running operation that is the result of a network API call. */
+export interface Operation {
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    done: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Payload for creating a subscription. */
 export interface CreateSubscriptionPayload {
@@ -3602,6 +3567,41 @@ export const DailyRollUpDataPointsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DailyRollUpDataPointsResponse",
 }) as any as S.Schema<DailyRollUpDataPointsResponse>;
 
+/** Request to delete a batch of identifiable data points. */
+export interface BatchDeleteDataPointsRequest {
+  /** Required. The names of the DataPoints to delete. A maximum of 10000 data points can be deleted in a single request. */
+  names?: StringList;
+}
+export const BatchDeleteDataPointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    names: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeleteDataPointsRequest",
+}) as any as S.Schema<BatchDeleteDataPointsRequest>;
+
+export interface DeleteBatchUserDataTypeDataPointRequest {
+  /** Optional. Parent (data type) for the Data Point collection Format: `users/me/dataTypes/{data_type}`, e.g.: - `users/me/dataTypes/steps` - `users/me/dataTypes/-` For a list of the supported data types see the DataPoint data union field. Deleting data points across multiple data type collections is supported following https://aip.dev/159. If this is set, the parent of all of the data points specified in `names` must match this field. */
+  parent: string;
+  /** Request body */
+  body?: BatchDeleteDataPointsRequest;
+}
+export const DeleteBatchUserDataTypeDataPointRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(BatchDeleteDataPointsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v4/{+parent}/dataPoints:batchDelete",
+        baseUrl: "https://health.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteBatchUserDataTypeDataPointRequest",
+}) as any as S.Schema<DeleteBatchUserDataTypeDataPointRequest>;
+
 export interface DeleteProjectsSubscribersRequest {
   /** Required. The name of the subscriber to delete. Format: projects/{project}/subscribers/{subscriber} Example: projects/my-project/subscribers/my-subscriber-123 The {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated if not provided during creation. */
   name: string;
@@ -4755,26 +4755,6 @@ export const UpdateSettingsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSettingsUsersRequest",
 }) as any as S.Schema<UpdateSettingsUsersRequest>;
 
-export type BatchDeleteUsersDataTypesDataPointsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Delete a batch of identifyable data points. */
-export const batchDeleteUsersDataTypesDataPoints: API.OperationMethod<
-  BatchDeleteUsersDataTypesDataPointsRequest,
-  Operation,
-  BatchDeleteUsersDataTypesDataPointsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteUsersDataTypesDataPointsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CreateProjectsSubscribersError =
   | NotFound
   | Forbidden
@@ -4850,6 +4830,26 @@ export const dailyRollUpUsersDataTypesDataPoints: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DailyRollUpUsersDataTypesDataPointsRequest,
   output: DailyRollUpDataPointsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchUserDataTypeDataPointError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Delete a batch of identifyable data points. */
+export const deleteBatchUserDataTypeDataPoint: API.OperationMethod<
+  DeleteBatchUserDataTypeDataPointRequest,
+  Operation,
+  DeleteBatchUserDataTypeDataPointError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchUserDataTypeDataPointRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

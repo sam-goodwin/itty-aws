@@ -33,7 +33,7 @@
         "smithy.api#documentation": "AMP URL response for a requested URL."
       }
     },
-    "com.gcp.acceleratedmobilepageurl_v1#BatchGetAmpUrlsRequest": {
+    "com.gcp.acceleratedmobilepageurl_v1#GetBatchAmpUrlRequest": {
       "type": "structure",
       "members": {
         "urls": {
@@ -76,7 +76,7 @@
         }
       }
     },
-    "com.gcp.acceleratedmobilepageurl_v1#BatchGetAmpUrlsResponse": {
+    "com.gcp.acceleratedmobilepageurl_v1#GetBatchAmpUrlResponse": {
       "type": "structure",
       "members": {
         "ampUrls": {
@@ -179,7 +179,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.gcp.acceleratedmobilepageurl_v1#BatchGetAmpUrlsRequest",
+          "target": "com.gcp.acceleratedmobilepageurl_v1#GetBatchAmpUrlRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -239,13 +239,13 @@
         ]
       }
     },
-    "com.gcp.acceleratedmobilepageurl_v1#BatchGetAmpUrls": {
+    "com.gcp.acceleratedmobilepageurl_v1#GetBatchAmpUrl": {
       "type": "operation",
       "input": {
         "target": "com.gcp.acceleratedmobilepageurl_v1#BatchGetAmpUrlsRequest_"
       },
       "output": {
-        "target": "com.gcp.acceleratedmobilepageurl_v1#BatchGetAmpUrlsResponse"
+        "target": "com.gcp.acceleratedmobilepageurl_v1#GetBatchAmpUrlResponse"
       },
       "errors": [
         {

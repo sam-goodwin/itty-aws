@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.external_data_schemas#ExternalDataSchemasListRequest": {
+    "com.posthog.external_data_schemas#ListExternalDataSchemasRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -606,10 +606,10 @@
       },
       "traits": {}
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasList": {
+    "com.posthog.external_data_schemas#ListExternalDataSchemas": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasListRequest"
+        "target": "com.posthog.external_data_schemas#ListExternalDataSchemasRequest"
       },
       "output": {
         "target": "com.posthog.external_data_schemas#PaginatedExternalDataSchemaList"
@@ -734,7 +734,7 @@
         "smithy.api#documentation": "Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN \"NOT IN\"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows."
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequest": {
+    "com.posthog.external_data_schemas#UpdateExternalDataSchemaRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -838,10 +838,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasUpdate": {
+    "com.posthog.external_data_schemas#UpdateExternalDataSchema": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequest"
+        "target": "com.posthog.external_data_schemas#UpdateExternalDataSchemaRequest"
       },
       "output": {
         "target": "com.posthog.external_data_schemas#ExternalDataSchema"
@@ -918,7 +918,7 @@
         "smithy.api#documentation": "Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN \"NOT IN\"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows."
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequest": {
+    "com.posthog.external_data_schemas#UpdateExternalDataSchemaPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1022,10 +1022,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdate": {
+    "com.posthog.external_data_schemas#UpdateExternalDataSchemaPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequest"
+        "target": "com.posthog.external_data_schemas#UpdateExternalDataSchemaPartialRequest"
       },
       "output": {
         "target": "com.posthog.external_data_schemas#ExternalDataSchema"
@@ -1097,7 +1097,7 @@
         }
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasCancelCreateRequest": {
+    "com.posthog.external_data_schemas#CreateExternalDataSchemaCancelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1121,7 +1121,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasCancelCreateResponse": {
+    "com.posthog.external_data_schemas#CreateExternalDataSchemaCancelResponse": {
       "type": "structure",
       "members": {
         "detail": {
@@ -1132,13 +1132,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasCancelCreate": {
+    "com.posthog.external_data_schemas#CreateExternalDataSchemaCancel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasCancelCreateRequest"
+        "target": "com.posthog.external_data_schemas#CreateExternalDataSchemaCancelRequest"
       },
       "output": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasCancelCreateResponse"
+        "target": "com.posthog.external_data_schemas#CreateExternalDataSchemaCancelResponse"
       },
       "errors": [
         {
@@ -1159,7 +1159,7 @@
         }
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasDeleteDataDestroyRequest": {
+    "com.posthog.external_data_schemas#DeleteExternalDataSchemaDataDestroyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1183,10 +1183,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasDeleteDataDestroy": {
+    "com.posthog.external_data_schemas#DeleteExternalDataSchemaDataDestroy": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasDeleteDataDestroyRequest"
+        "target": "com.posthog.external_data_schemas#DeleteExternalDataSchemaDataDestroyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1260,7 +1260,7 @@
         "smithy.api#documentation": "Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN \"NOT IN\"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows."
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequest": {
+    "com.posthog.external_data_schemas#CreateExternalDataSchemaIncrementalFieldRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1364,10 +1364,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreate": {
+    "com.posthog.external_data_schemas#CreateExternalDataSchemaIncrementalField": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequest"
+        "target": "com.posthog.external_data_schemas#CreateExternalDataSchemaIncrementalFieldRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1473,7 +1473,7 @@
         }
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequest": {
+    "com.posthog.external_data_schemas#CreateExternalDataSchemaReloadRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1497,10 +1497,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreate": {
+    "com.posthog.external_data_schemas#CreateExternalDataSchemaReload": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequest"
+        "target": "com.posthog.external_data_schemas#CreateExternalDataSchemaReloadRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1524,7 +1524,7 @@
         }
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequest": {
+    "com.posthog.external_data_schemas#CreateExternalDataSchemaResyncRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1548,10 +1548,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreate": {
+    "com.posthog.external_data_schemas#CreateExternalDataSchemaResync": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequest"
+        "target": "com.posthog.external_data_schemas#CreateExternalDataSchemaResyncRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1619,37 +1619,37 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasList"
+          "target": "com.posthog.external_data_schemas#ListExternalDataSchemas"
         },
         {
           "target": "com.posthog.external_data_schemas#ExternalDataSchemasRetrieve"
         },
         {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasUpdate"
+          "target": "com.posthog.external_data_schemas#UpdateExternalDataSchema"
         },
         {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdate"
+          "target": "com.posthog.external_data_schemas#UpdateExternalDataSchemaPartial"
         },
         {
           "target": "com.posthog.external_data_schemas#ExternalDataSchemasDestroy"
         },
         {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasCancelCreate"
+          "target": "com.posthog.external_data_schemas#CreateExternalDataSchemaCancel"
         },
         {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasDeleteDataDestroy"
+          "target": "com.posthog.external_data_schemas#DeleteExternalDataSchemaDataDestroy"
         },
         {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreate"
+          "target": "com.posthog.external_data_schemas#CreateExternalDataSchemaIncrementalField"
         },
         {
           "target": "com.posthog.external_data_schemas#ExternalDataSchemasLogsRetrieve"
         },
         {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreate"
+          "target": "com.posthog.external_data_schemas#CreateExternalDataSchemaReload"
         },
         {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreate"
+          "target": "com.posthog.external_data_schemas#CreateExternalDataSchemaResync"
         }
       ],
       "traits": {

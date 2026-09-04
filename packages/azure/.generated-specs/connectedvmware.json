@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.connectedvmware#VMInstanceGuestAgentsList": {
+    "com.azure.connectedvmware#ListVmInstanceGuestAgents": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VMInstanceGuestAgentsListRequest"
+        "target": "com.azure.connectedvmware#ListVmInstanceGuestAgentsRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#GuestAgentList"
@@ -452,7 +452,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.connectedvmware#VMInstanceGuestAgentsListRequest": {
+    "com.azure.connectedvmware#ListVmInstanceGuestAgentsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -468,10 +468,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VMInstanceGuestAgentsDelete": {
+    "com.azure.connectedvmware#DeleteVmInstanceGuestAgent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VMInstanceGuestAgentsDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteVmInstanceGuestAgentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -487,7 +487,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VMInstanceGuestAgentsDeleteRequest": {
+    "com.azure.connectedvmware#DeleteVmInstanceGuestAgentRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -503,13 +503,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VMInstanceGuestAgentsCreate": {
+    "com.azure.connectedvmware#CreateVmInstanceGuestAgent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VMInstanceGuestAgentsCreateRequest"
+        "target": "com.azure.connectedvmware#CreateVmInstanceGuestAgentRequest"
       },
       "output": {
-        "target": "com.azure.connectedvmware#VMInstanceGuestAgentsCreateResponse"
+        "target": "com.azure.connectedvmware#CreateVmInstanceGuestAgentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -522,7 +522,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VMInstanceGuestAgentsCreateResponse": {
+    "com.azure.connectedvmware#CreateVmInstanceGuestAgentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -561,7 +561,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.connectedvmware#VMInstanceGuestAgentsCreateRequest": {
+    "com.azure.connectedvmware#CreateVmInstanceGuestAgentRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -616,13 +616,13 @@
         "smithy.api#documentation": "Describes the properties of a Virtual Machine Guest Agent."
       }
     },
-    "com.azure.connectedvmware#VMInstanceGuestAgentsGet": {
+    "com.azure.connectedvmware#GetVmInstanceGuestAgent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VMInstanceGuestAgentsGetRequest"
+        "target": "com.azure.connectedvmware#GetVmInstanceGuestAgentRequest"
       },
       "output": {
-        "target": "com.azure.connectedvmware#VMInstanceGuestAgentsGetResponse"
+        "target": "com.azure.connectedvmware#GetVmInstanceGuestAgentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -635,7 +635,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VMInstanceGuestAgentsGetResponse": {
+    "com.azure.connectedvmware#GetVmInstanceGuestAgentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -674,7 +674,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.connectedvmware#VMInstanceGuestAgentsGetRequest": {
+    "com.azure.connectedvmware#GetVmInstanceGuestAgentRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -820,13 +820,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VmInstanceHybridIdentityMetadataGet": {
+    "com.azure.connectedvmware#GetVmInstanceHybridIdentityMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VmInstanceHybridIdentityMetadataGetRequest"
+        "target": "com.azure.connectedvmware#GetVmInstanceHybridIdentityMetadataRequest"
       },
       "output": {
-        "target": "com.azure.connectedvmware#VmInstanceHybridIdentityMetadataGetResponse"
+        "target": "com.azure.connectedvmware#GetVmInstanceHybridIdentityMetadataResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -839,7 +839,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VmInstanceHybridIdentityMetadataGetResponse": {
+    "com.azure.connectedvmware#GetVmInstanceHybridIdentityMetadataResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -878,7 +878,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.connectedvmware#VmInstanceHybridIdentityMetadataGetRequest": {
+    "com.azure.connectedvmware#GetVmInstanceHybridIdentityMetadataRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -894,10 +894,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesRestart": {
+    "com.azure.connectedvmware#RestartVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineInstancesRestartRequest"
+        "target": "com.azure.connectedvmware#RestartVirtualMachineInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -913,7 +913,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesRestartRequest": {
+    "com.azure.connectedvmware#RestartVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -929,10 +929,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesStart": {
+    "com.azure.connectedvmware#StartVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineInstancesStartRequest"
+        "target": "com.azure.connectedvmware#StartVirtualMachineInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -948,7 +948,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesStartRequest": {
+    "com.azure.connectedvmware#StartVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -964,10 +964,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesStop": {
+    "com.azure.connectedvmware#StopVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineInstancesStopRequest"
+        "target": "com.azure.connectedvmware#StopVirtualMachineInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -983,7 +983,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesStopRequest": {
+    "com.azure.connectedvmware#StopVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2190,10 +2190,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesDelete": {
+    "com.azure.connectedvmware#DeleteVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineInstancesDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteVirtualMachineInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2209,7 +2209,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesDeleteRequest": {
+    "com.azure.connectedvmware#DeleteVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2239,13 +2239,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesUpdate": {
+    "com.azure.connectedvmware#UpdateVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineInstancesUpdateRequest"
+        "target": "com.azure.connectedvmware#UpdateVirtualMachineInstanceRequest"
       },
       "output": {
-        "target": "com.azure.connectedvmware#VirtualMachineInstancesUpdateResponse"
+        "target": "com.azure.connectedvmware#UpdateVirtualMachineInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2258,7 +2258,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesUpdateResponse": {
+    "com.azure.connectedvmware#UpdateVirtualMachineInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2303,7 +2303,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesUpdateRequest": {
+    "com.azure.connectedvmware#UpdateVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2936,13 +2936,13 @@
         "smithy.api#documentation": "Specifies the operating system settings for the virtual machine."
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesGet": {
+    "com.azure.connectedvmware#GetVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineInstancesGetRequest"
+        "target": "com.azure.connectedvmware#GetVirtualMachineInstanceRequest"
       },
       "output": {
-        "target": "com.azure.connectedvmware#VirtualMachineInstancesGetResponse"
+        "target": "com.azure.connectedvmware#GetVirtualMachineInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2955,7 +2955,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesGetResponse": {
+    "com.azure.connectedvmware#GetVirtualMachineInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3000,7 +3000,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineInstancesGetRequest": {
+    "com.azure.connectedvmware#GetVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3016,10 +3016,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#InventoryItemsListByVCenter": {
+    "com.azure.connectedvmware#ListInventoryItemByVCenter": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#InventoryItemsListByVCenterRequest"
+        "target": "com.azure.connectedvmware#ListInventoryItemByVCenterRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#InventoryItemsList"
@@ -3199,7 +3199,7 @@
         "smithy.api#documentation": "The inventory type."
       }
     },
-    "com.azure.connectedvmware#InventoryItemsListByVCenterRequest": {
+    "com.azure.connectedvmware#ListInventoryItemByVCenterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3231,10 +3231,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#InventoryItemsDelete": {
+    "com.azure.connectedvmware#DeleteInventoryItem": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#InventoryItemsDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteInventoryItemRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3250,7 +3250,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#InventoryItemsDeleteRequest": {
+    "com.azure.connectedvmware#DeleteInventoryItemRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3290,13 +3290,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#InventoryItemsCreate": {
+    "com.azure.connectedvmware#CreateInventoryItem": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#InventoryItemsCreateRequest"
+        "target": "com.azure.connectedvmware#CreateInventoryItemRequest"
       },
       "output": {
-        "target": "com.azure.connectedvmware#InventoryItemsCreateResponse"
+        "target": "com.azure.connectedvmware#CreateInventoryItemResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3309,7 +3309,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#InventoryItemsCreateResponse": {
+    "com.azure.connectedvmware#CreateInventoryItemResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3354,7 +3354,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.connectedvmware#InventoryItemsCreateRequest": {
+    "com.azure.connectedvmware#CreateInventoryItemRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3407,13 +3407,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#InventoryItemsGet": {
+    "com.azure.connectedvmware#GetInventoryItem": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#InventoryItemsGetRequest"
+        "target": "com.azure.connectedvmware#GetInventoryItemRequest"
       },
       "output": {
-        "target": "com.azure.connectedvmware#InventoryItemsGetResponse"
+        "target": "com.azure.connectedvmware#GetInventoryItemResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3426,7 +3426,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#InventoryItemsGetResponse": {
+    "com.azure.connectedvmware#GetInventoryItemResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3471,7 +3471,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.connectedvmware#InventoryItemsGetRequest": {
+    "com.azure.connectedvmware#GetInventoryItemRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3511,10 +3511,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksListByResourceGroup": {
+    "com.azure.connectedvmware#ListVirtualNetworkByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualNetworksListByResourceGroupRequest"
+        "target": "com.azure.connectedvmware#ListVirtualNetworkByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VirtualNetworksList"
@@ -3809,7 +3809,7 @@
         "smithy.api#documentation": "The resource status information."
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksListByResourceGroupRequest": {
+    "com.azure.connectedvmware#ListVirtualNetworkByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3868,10 +3868,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksDelete": {
+    "com.azure.connectedvmware#DeleteVirtualNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualNetworksDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteVirtualNetworkRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3887,7 +3887,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksDeleteRequest": {
+    "com.azure.connectedvmware#DeleteVirtualNetworkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3926,10 +3926,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksUpdate": {
+    "com.azure.connectedvmware#UpdateVirtualNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualNetworksUpdateRequest"
+        "target": "com.azure.connectedvmware#UpdateVirtualNetworkRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VirtualNetwork"
@@ -3945,7 +3945,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksUpdateRequest": {
+    "com.azure.connectedvmware#UpdateVirtualNetworkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3995,10 +3995,10 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksCreate": {
+    "com.azure.connectedvmware#CreateVirtualNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualNetworksCreateRequest"
+        "target": "com.azure.connectedvmware#CreateVirtualNetworkRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VirtualNetwork"
@@ -4014,7 +4014,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksCreateRequest": {
+    "com.azure.connectedvmware#CreateVirtualNetworkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4116,10 +4116,10 @@
         "smithy.api#documentation": "Describes the properties of a Virtual Network."
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksGet": {
+    "com.azure.connectedvmware#GetVirtualNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualNetworksGetRequest"
+        "target": "com.azure.connectedvmware#GetVirtualNetworkRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VirtualNetwork"
@@ -4135,7 +4135,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualNetworksGetRequest": {
+    "com.azure.connectedvmware#GetVirtualNetworkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4167,10 +4167,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesListByResourceGroup": {
+    "com.azure.connectedvmware#ListVirtualMachineTemplateByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineTemplatesListByResourceGroupRequest"
+        "target": "com.azure.connectedvmware#ListVirtualMachineTemplateByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VirtualMachineTemplatesList"
@@ -4549,7 +4549,7 @@
         "smithy.api#documentation": "Gets or sets the network interfaces of the template."
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesListByResourceGroupRequest": {
+    "com.azure.connectedvmware#ListVirtualMachineTemplateByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4608,10 +4608,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesDelete": {
+    "com.azure.connectedvmware#DeleteVirtualMachineTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineTemplatesDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteVirtualMachineTemplateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4627,7 +4627,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesDeleteRequest": {
+    "com.azure.connectedvmware#DeleteVirtualMachineTemplateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4666,10 +4666,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesUpdate": {
+    "com.azure.connectedvmware#UpdateVirtualMachineTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineTemplatesUpdateRequest"
+        "target": "com.azure.connectedvmware#UpdateVirtualMachineTemplateRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VirtualMachineTemplate"
@@ -4685,7 +4685,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesUpdateRequest": {
+    "com.azure.connectedvmware#UpdateVirtualMachineTemplateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4735,10 +4735,10 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesCreate": {
+    "com.azure.connectedvmware#CreateVirtualMachineTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineTemplatesCreateRequest"
+        "target": "com.azure.connectedvmware#CreateVirtualMachineTemplateRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VirtualMachineTemplate"
@@ -4754,7 +4754,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesCreateRequest": {
+    "com.azure.connectedvmware#CreateVirtualMachineTemplateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4856,10 +4856,10 @@
         "smithy.api#documentation": "Describes the properties of a Virtual Machine Template."
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesGet": {
+    "com.azure.connectedvmware#GetVirtualMachineTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VirtualMachineTemplatesGetRequest"
+        "target": "com.azure.connectedvmware#GetVirtualMachineTemplateRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VirtualMachineTemplate"
@@ -4875,7 +4875,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VirtualMachineTemplatesGetRequest": {
+    "com.azure.connectedvmware#GetVirtualMachineTemplateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4907,10 +4907,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VCentersListByResourceGroup": {
+    "com.azure.connectedvmware#ListVCenterByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VCentersListByResourceGroupRequest"
+        "target": "com.azure.connectedvmware#ListVCenterByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VCentersList"
@@ -5239,7 +5239,7 @@
         "smithy.api#documentation": "Username / Password Credentials to connect to vcenter."
       }
     },
-    "com.azure.connectedvmware#VCentersListByResourceGroupRequest": {
+    "com.azure.connectedvmware#ListVCenterByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5298,10 +5298,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VCentersDelete": {
+    "com.azure.connectedvmware#DeleteVCenter": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VCentersDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteVCenterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5317,7 +5317,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VCentersDeleteRequest": {
+    "com.azure.connectedvmware#DeleteVCenterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5356,10 +5356,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#VCentersUpdate": {
+    "com.azure.connectedvmware#UpdateVCenter": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VCentersUpdateRequest"
+        "target": "com.azure.connectedvmware#UpdateVCenterRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VCenter"
@@ -5375,7 +5375,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VCentersUpdateRequest": {
+    "com.azure.connectedvmware#UpdateVCenterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5425,10 +5425,10 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedvmware#VCentersCreate": {
+    "com.azure.connectedvmware#CreateVCenter": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VCentersCreateRequest"
+        "target": "com.azure.connectedvmware#CreateVCenterRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VCenter"
@@ -5444,7 +5444,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VCentersCreateRequest": {
+    "com.azure.connectedvmware#CreateVCenterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5547,10 +5547,10 @@
         "smithy.api#documentation": "Describes the properties of a VCenter."
       }
     },
-    "com.azure.connectedvmware#VCentersGet": {
+    "com.azure.connectedvmware#GetVCenter": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#VCentersGetRequest"
+        "target": "com.azure.connectedvmware#GetVCenterRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#VCenter"
@@ -5566,7 +5566,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#VCentersGetRequest": {
+    "com.azure.connectedvmware#GetVCenterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5598,10 +5598,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#DatastoresListByResourceGroup": {
+    "com.azure.connectedvmware#ListDatastoreByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#DatastoresListByResourceGroupRequest"
+        "target": "com.azure.connectedvmware#ListDatastoreByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#DatastoresList"
@@ -5908,7 +5908,7 @@
         "smithy.api#documentation": "The resource status information."
       }
     },
-    "com.azure.connectedvmware#DatastoresListByResourceGroupRequest": {
+    "com.azure.connectedvmware#ListDatastoreByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5967,10 +5967,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#DatastoresDelete": {
+    "com.azure.connectedvmware#DeleteDatastore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#DatastoresDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteDatastoreRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5986,7 +5986,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#DatastoresDeleteRequest": {
+    "com.azure.connectedvmware#DeleteDatastoreRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6025,10 +6025,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#DatastoresUpdate": {
+    "com.azure.connectedvmware#UpdateDatastore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#DatastoresUpdateRequest"
+        "target": "com.azure.connectedvmware#UpdateDatastoreRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#Datastore"
@@ -6044,7 +6044,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#DatastoresUpdateRequest": {
+    "com.azure.connectedvmware#UpdateDatastoreRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6094,10 +6094,10 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedvmware#DatastoresCreate": {
+    "com.azure.connectedvmware#CreateDatastore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#DatastoresCreateRequest"
+        "target": "com.azure.connectedvmware#CreateDatastoreRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#Datastore"
@@ -6113,7 +6113,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#DatastoresCreateRequest": {
+    "com.azure.connectedvmware#CreateDatastoreRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6215,10 +6215,10 @@
         "smithy.api#documentation": "Describes the properties of a Datastore."
       }
     },
-    "com.azure.connectedvmware#DatastoresGet": {
+    "com.azure.connectedvmware#GetDatastore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#DatastoresGetRequest"
+        "target": "com.azure.connectedvmware#GetDatastoreRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#Datastore"
@@ -6234,7 +6234,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#DatastoresGetRequest": {
+    "com.azure.connectedvmware#GetDatastoreRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6266,10 +6266,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#HostsListByResourceGroup": {
+    "com.azure.connectedvmware#ListHostByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#HostsListByResourceGroupRequest"
+        "target": "com.azure.connectedvmware#ListHostByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#HostsList"
@@ -6618,7 +6618,7 @@
         "smithy.api#documentation": "The resource status information."
       }
     },
-    "com.azure.connectedvmware#HostsListByResourceGroupRequest": {
+    "com.azure.connectedvmware#ListHostByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6677,10 +6677,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#HostsDelete": {
+    "com.azure.connectedvmware#DeleteHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#HostsDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteHostRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6696,7 +6696,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#HostsDeleteRequest": {
+    "com.azure.connectedvmware#DeleteHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6735,10 +6735,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#HostsUpdate": {
+    "com.azure.connectedvmware#UpdateHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#HostsUpdateRequest"
+        "target": "com.azure.connectedvmware#UpdateHostRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#Host"
@@ -6754,7 +6754,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#HostsUpdateRequest": {
+    "com.azure.connectedvmware#UpdateHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6804,10 +6804,10 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedvmware#HostsCreate": {
+    "com.azure.connectedvmware#CreateHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#HostsCreateRequest"
+        "target": "com.azure.connectedvmware#CreateHostRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#Host"
@@ -6823,7 +6823,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#HostsCreateRequest": {
+    "com.azure.connectedvmware#CreateHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6925,10 +6925,10 @@
         "smithy.api#documentation": "Describes the properties of a Host."
       }
     },
-    "com.azure.connectedvmware#HostsGet": {
+    "com.azure.connectedvmware#GetHost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#HostsGetRequest"
+        "target": "com.azure.connectedvmware#GetHostRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#Host"
@@ -6944,7 +6944,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#HostsGetRequest": {
+    "com.azure.connectedvmware#GetHostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6976,10 +6976,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#ClustersListByResourceGroup": {
+    "com.azure.connectedvmware#ListClusterByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ClustersListByResourceGroupRequest"
+        "target": "com.azure.connectedvmware#ListClusterByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#ClustersList"
@@ -7328,7 +7328,7 @@
         "smithy.api#documentation": "The resource status information."
       }
     },
-    "com.azure.connectedvmware#ClustersListByResourceGroupRequest": {
+    "com.azure.connectedvmware#ListClusterByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7387,10 +7387,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#ClustersDelete": {
+    "com.azure.connectedvmware#DeleteCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ClustersDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteClusterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7406,7 +7406,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#ClustersDeleteRequest": {
+    "com.azure.connectedvmware#DeleteClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7445,10 +7445,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#ClustersUpdate": {
+    "com.azure.connectedvmware#UpdateCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ClustersUpdateRequest"
+        "target": "com.azure.connectedvmware#UpdateClusterRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#Cluster"
@@ -7464,7 +7464,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#ClustersUpdateRequest": {
+    "com.azure.connectedvmware#UpdateClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7514,10 +7514,10 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedvmware#ClustersCreate": {
+    "com.azure.connectedvmware#CreateCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ClustersCreateRequest"
+        "target": "com.azure.connectedvmware#CreateClusterRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#Cluster"
@@ -7533,7 +7533,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#ClustersCreateRequest": {
+    "com.azure.connectedvmware#CreateClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7635,10 +7635,10 @@
         "smithy.api#documentation": "Describes the properties of a Cluster."
       }
     },
-    "com.azure.connectedvmware#ClustersGet": {
+    "com.azure.connectedvmware#GetCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ClustersGetRequest"
+        "target": "com.azure.connectedvmware#GetClusterRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#Cluster"
@@ -7654,7 +7654,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#ClustersGetRequest": {
+    "com.azure.connectedvmware#GetClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7686,10 +7686,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsListByResourceGroup": {
+    "com.azure.connectedvmware#ListResourcePoolByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ResourcePoolsListByResourceGroupRequest"
+        "target": "com.azure.connectedvmware#ListResourcePoolByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#ResourcePoolsList"
@@ -8074,7 +8074,7 @@
         "smithy.api#documentation": "Gets the datastore ARM ids."
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsListByResourceGroupRequest": {
+    "com.azure.connectedvmware#ListResourcePoolByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8133,10 +8133,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsDelete": {
+    "com.azure.connectedvmware#DeleteResourcePool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ResourcePoolsDeleteRequest"
+        "target": "com.azure.connectedvmware#DeleteResourcePoolRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8152,7 +8152,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsDeleteRequest": {
+    "com.azure.connectedvmware#DeleteResourcePoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8191,10 +8191,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsUpdate": {
+    "com.azure.connectedvmware#UpdateResourcePool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ResourcePoolsUpdateRequest"
+        "target": "com.azure.connectedvmware#UpdateResourcePoolRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#ResourcePool"
@@ -8210,7 +8210,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsUpdateRequest": {
+    "com.azure.connectedvmware#UpdateResourcePoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8260,10 +8260,10 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsCreate": {
+    "com.azure.connectedvmware#CreateResourcePool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ResourcePoolsCreateRequest"
+        "target": "com.azure.connectedvmware#CreateResourcePoolRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#ResourcePool"
@@ -8279,7 +8279,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsCreateRequest": {
+    "com.azure.connectedvmware#CreateResourcePoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8381,10 +8381,10 @@
         "smithy.api#documentation": "Describes the properties of a Resource Pool."
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsGet": {
+    "com.azure.connectedvmware#GetResourcePool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedvmware#ResourcePoolsGetRequest"
+        "target": "com.azure.connectedvmware#GetResourcePoolRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#ResourcePool"
@@ -8400,7 +8400,7 @@
         "com.distilled.openapi#apiVersion": "2023-12-01"
       }
     },
-    "com.azure.connectedvmware#ResourcePoolsGetRequest": {
+    "com.azure.connectedvmware#GetResourcePoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8544,184 +8544,184 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.connectedvmware#VMInstanceGuestAgentsList"
+          "target": "com.azure.connectedvmware#ListVmInstanceGuestAgents"
         },
         {
-          "target": "com.azure.connectedvmware#VMInstanceGuestAgentsDelete"
+          "target": "com.azure.connectedvmware#DeleteVmInstanceGuestAgent"
         },
         {
-          "target": "com.azure.connectedvmware#VMInstanceGuestAgentsCreate"
+          "target": "com.azure.connectedvmware#CreateVmInstanceGuestAgent"
         },
         {
-          "target": "com.azure.connectedvmware#VMInstanceGuestAgentsGet"
+          "target": "com.azure.connectedvmware#GetVmInstanceGuestAgent"
         },
         {
           "target": "com.azure.connectedvmware#VmInstanceHybridIdentityMetadataList2"
         },
         {
-          "target": "com.azure.connectedvmware#VmInstanceHybridIdentityMetadataGet"
+          "target": "com.azure.connectedvmware#GetVmInstanceHybridIdentityMetadata"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineInstancesRestart"
+          "target": "com.azure.connectedvmware#RestartVirtualMachineInstance"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineInstancesStart"
+          "target": "com.azure.connectedvmware#StartVirtualMachineInstance"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineInstancesStop"
+          "target": "com.azure.connectedvmware#StopVirtualMachineInstance"
         },
         {
           "target": "com.azure.connectedvmware#VirtualMachineInstancesList2"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineInstancesDelete"
+          "target": "com.azure.connectedvmware#DeleteVirtualMachineInstance"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineInstancesUpdate"
+          "target": "com.azure.connectedvmware#UpdateVirtualMachineInstance"
         },
         {
           "target": "com.azure.connectedvmware#VirtualMachineInstancesCreateOrUpdate"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineInstancesGet"
+          "target": "com.azure.connectedvmware#GetVirtualMachineInstance"
         },
         {
-          "target": "com.azure.connectedvmware#InventoryItemsListByVCenter"
+          "target": "com.azure.connectedvmware#ListInventoryItemByVCenter"
         },
         {
-          "target": "com.azure.connectedvmware#InventoryItemsDelete"
+          "target": "com.azure.connectedvmware#DeleteInventoryItem"
         },
         {
-          "target": "com.azure.connectedvmware#InventoryItemsCreate"
+          "target": "com.azure.connectedvmware#CreateInventoryItem"
         },
         {
-          "target": "com.azure.connectedvmware#InventoryItemsGet"
+          "target": "com.azure.connectedvmware#GetInventoryItem"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualNetworksListByResourceGroup"
+          "target": "com.azure.connectedvmware#ListVirtualNetworkByResourceGroup"
         },
         {
           "target": "com.azure.connectedvmware#VirtualNetworksList2"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualNetworksDelete"
+          "target": "com.azure.connectedvmware#DeleteVirtualNetwork"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualNetworksUpdate"
+          "target": "com.azure.connectedvmware#UpdateVirtualNetwork"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualNetworksCreate"
+          "target": "com.azure.connectedvmware#CreateVirtualNetwork"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualNetworksGet"
+          "target": "com.azure.connectedvmware#GetVirtualNetwork"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineTemplatesListByResourceGroup"
+          "target": "com.azure.connectedvmware#ListVirtualMachineTemplateByResourceGroup"
         },
         {
           "target": "com.azure.connectedvmware#VirtualMachineTemplatesList2"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineTemplatesDelete"
+          "target": "com.azure.connectedvmware#DeleteVirtualMachineTemplate"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineTemplatesUpdate"
+          "target": "com.azure.connectedvmware#UpdateVirtualMachineTemplate"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineTemplatesCreate"
+          "target": "com.azure.connectedvmware#CreateVirtualMachineTemplate"
         },
         {
-          "target": "com.azure.connectedvmware#VirtualMachineTemplatesGet"
+          "target": "com.azure.connectedvmware#GetVirtualMachineTemplate"
         },
         {
-          "target": "com.azure.connectedvmware#VCentersListByResourceGroup"
+          "target": "com.azure.connectedvmware#ListVCenterByResourceGroup"
         },
         {
           "target": "com.azure.connectedvmware#VCentersList2"
         },
         {
-          "target": "com.azure.connectedvmware#VCentersDelete"
+          "target": "com.azure.connectedvmware#DeleteVCenter"
         },
         {
-          "target": "com.azure.connectedvmware#VCentersUpdate"
+          "target": "com.azure.connectedvmware#UpdateVCenter"
         },
         {
-          "target": "com.azure.connectedvmware#VCentersCreate"
+          "target": "com.azure.connectedvmware#CreateVCenter"
         },
         {
-          "target": "com.azure.connectedvmware#VCentersGet"
+          "target": "com.azure.connectedvmware#GetVCenter"
         },
         {
-          "target": "com.azure.connectedvmware#DatastoresListByResourceGroup"
+          "target": "com.azure.connectedvmware#ListDatastoreByResourceGroup"
         },
         {
           "target": "com.azure.connectedvmware#DatastoresList2"
         },
         {
-          "target": "com.azure.connectedvmware#DatastoresDelete"
+          "target": "com.azure.connectedvmware#DeleteDatastore"
         },
         {
-          "target": "com.azure.connectedvmware#DatastoresUpdate"
+          "target": "com.azure.connectedvmware#UpdateDatastore"
         },
         {
-          "target": "com.azure.connectedvmware#DatastoresCreate"
+          "target": "com.azure.connectedvmware#CreateDatastore"
         },
         {
-          "target": "com.azure.connectedvmware#DatastoresGet"
+          "target": "com.azure.connectedvmware#GetDatastore"
         },
         {
-          "target": "com.azure.connectedvmware#HostsListByResourceGroup"
+          "target": "com.azure.connectedvmware#ListHostByResourceGroup"
         },
         {
           "target": "com.azure.connectedvmware#HostsList2"
         },
         {
-          "target": "com.azure.connectedvmware#HostsDelete"
+          "target": "com.azure.connectedvmware#DeleteHost"
         },
         {
-          "target": "com.azure.connectedvmware#HostsUpdate"
+          "target": "com.azure.connectedvmware#UpdateHost"
         },
         {
-          "target": "com.azure.connectedvmware#HostsCreate"
+          "target": "com.azure.connectedvmware#CreateHost"
         },
         {
-          "target": "com.azure.connectedvmware#HostsGet"
+          "target": "com.azure.connectedvmware#GetHost"
         },
         {
-          "target": "com.azure.connectedvmware#ClustersListByResourceGroup"
+          "target": "com.azure.connectedvmware#ListClusterByResourceGroup"
         },
         {
           "target": "com.azure.connectedvmware#ClustersList2"
         },
         {
-          "target": "com.azure.connectedvmware#ClustersDelete"
+          "target": "com.azure.connectedvmware#DeleteCluster"
         },
         {
-          "target": "com.azure.connectedvmware#ClustersUpdate"
+          "target": "com.azure.connectedvmware#UpdateCluster"
         },
         {
-          "target": "com.azure.connectedvmware#ClustersCreate"
+          "target": "com.azure.connectedvmware#CreateCluster"
         },
         {
-          "target": "com.azure.connectedvmware#ClustersGet"
+          "target": "com.azure.connectedvmware#GetCluster"
         },
         {
-          "target": "com.azure.connectedvmware#ResourcePoolsListByResourceGroup"
+          "target": "com.azure.connectedvmware#ListResourcePoolByResourceGroup"
         },
         {
           "target": "com.azure.connectedvmware#ResourcePoolsList2"
         },
         {
-          "target": "com.azure.connectedvmware#ResourcePoolsDelete"
+          "target": "com.azure.connectedvmware#DeleteResourcePool"
         },
         {
-          "target": "com.azure.connectedvmware#ResourcePoolsUpdate"
+          "target": "com.azure.connectedvmware#UpdateResourcePool"
         },
         {
-          "target": "com.azure.connectedvmware#ResourcePoolsCreate"
+          "target": "com.azure.connectedvmware#CreateResourcePool"
         },
         {
-          "target": "com.azure.connectedvmware#ResourcePoolsGet"
+          "target": "com.azure.connectedvmware#GetResourcePool"
         },
         {
           "target": "com.azure.connectedvmware#OperationsList2"

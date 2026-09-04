@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.automanage#HCIReportsListByConfigurationProfileAssignments": {
+    "com.azure.automanage#ListHciReportByConfigurationProfileAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#HCIReportsListByConfigurationProfileAssignmentsRequest"
+        "target": "com.azure.automanage#ListHciReportByConfigurationProfileAssignmentsRequest"
       },
       "output": {
         "target": "com.azure.automanage#ReportList"
@@ -508,7 +508,7 @@
         "smithy.api#documentation": "The error details."
       }
     },
-    "com.azure.automanage#HCIReportsListByConfigurationProfileAssignmentsRequest": {
+    "com.azure.automanage#ListHciReportByConfigurationProfileAssignmentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -548,13 +548,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#HCIReportsGet": {
+    "com.azure.automanage#GetHciReport": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#HCIReportsGetRequest"
+        "target": "com.azure.automanage#GetHciReportRequest"
       },
       "output": {
-        "target": "com.azure.automanage#HCIReportsGetResponse"
+        "target": "com.azure.automanage#GetHciReportResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -567,7 +567,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#HCIReportsGetResponse": {
+    "com.azure.automanage#GetHciReportResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -713,7 +713,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.automanage#HCIReportsGetRequest": {
+    "com.azure.automanage#GetHciReportRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -761,10 +761,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsListByClusterName": {
+    "com.azure.automanage#ListConfigurationProfileAssignmentByClusterName": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileAssignmentsListByClusterNameRequest"
+        "target": "com.azure.automanage#ListConfigurationProfileAssignmentByClusterNameRequest"
       },
       "output": {
         "target": "com.azure.automanage#ConfigurationProfileAssignmentList"
@@ -981,7 +981,7 @@
         "smithy.api#documentation": "Automanage configuration profile assignment properties."
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsListByClusterNameRequest": {
+    "com.azure.automanage#ListConfigurationProfileAssignmentByClusterNameRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1013,10 +1013,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCIAssignmentsDelete": {
+    "com.azure.automanage#DeleteConfigurationProfileHciAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileHCIAssignmentsDeleteRequest"
+        "target": "com.azure.automanage#DeleteConfigurationProfileHciAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1032,7 +1032,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCIAssignmentsDeleteRequest": {
+    "com.azure.automanage#DeleteConfigurationProfileHciAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1303,13 +1303,13 @@
         "smithy.api#documentation": "Automanage configuration profile assignment properties."
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCIAssignmentsGet": {
+    "com.azure.automanage#GetConfigurationProfileHciAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileHCIAssignmentsGetRequest"
+        "target": "com.azure.automanage#GetConfigurationProfileHciAssignmentRequest"
       },
       "output": {
-        "target": "com.azure.automanage#ConfigurationProfileHCIAssignmentsGetResponse"
+        "target": "com.azure.automanage#GetConfigurationProfileHciAssignmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1322,7 +1322,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCIAssignmentsGetResponse": {
+    "com.azure.automanage#GetConfigurationProfileHciAssignmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1474,7 +1474,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCIAssignmentsGetRequest": {
+    "com.azure.automanage#GetConfigurationProfileHciAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1514,10 +1514,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#HCRPReportsListByConfigurationProfileAssignments": {
+    "com.azure.automanage#ListHcrpReportByConfigurationProfileAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#HCRPReportsListByConfigurationProfileAssignmentsRequest"
+        "target": "com.azure.automanage#ListHcrpReportByConfigurationProfileAssignmentsRequest"
       },
       "output": {
         "target": "com.azure.automanage#ReportList"
@@ -1533,7 +1533,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#HCRPReportsListByConfigurationProfileAssignmentsRequest": {
+    "com.azure.automanage#ListHcrpReportByConfigurationProfileAssignmentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1573,13 +1573,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#HCRPReportsGet": {
+    "com.azure.automanage#GetHcrpReport": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#HCRPReportsGetRequest"
+        "target": "com.azure.automanage#GetHcrpReportRequest"
       },
       "output": {
-        "target": "com.azure.automanage#HCRPReportsGetResponse"
+        "target": "com.azure.automanage#GetHcrpReportResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1592,7 +1592,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#HCRPReportsGetResponse": {
+    "com.azure.automanage#GetHcrpReportResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1738,7 +1738,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.automanage#HCRPReportsGetRequest": {
+    "com.azure.automanage#GetHcrpReportRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1786,10 +1786,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsListByMachineName": {
+    "com.azure.automanage#ListConfigurationProfileAssignmentByMachineName": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileAssignmentsListByMachineNameRequest"
+        "target": "com.azure.automanage#ListConfigurationProfileAssignmentByMachineNameRequest"
       },
       "output": {
         "target": "com.azure.automanage#ConfigurationProfileAssignmentList"
@@ -1805,7 +1805,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsListByMachineNameRequest": {
+    "com.azure.automanage#ListConfigurationProfileAssignmentByMachineNameRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1837,10 +1837,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCRPAssignmentsDelete": {
+    "com.azure.automanage#DeleteConfigurationProfileHcrpAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileHCRPAssignmentsDeleteRequest"
+        "target": "com.azure.automanage#DeleteConfigurationProfileHcrpAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1856,7 +1856,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCRPAssignmentsDeleteRequest": {
+    "com.azure.automanage#DeleteConfigurationProfileHcrpAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2113,13 +2113,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCRPAssignmentsGet": {
+    "com.azure.automanage#GetConfigurationProfileHcrpAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileHCRPAssignmentsGetRequest"
+        "target": "com.azure.automanage#GetConfigurationProfileHcrpAssignmentRequest"
       },
       "output": {
-        "target": "com.azure.automanage#ConfigurationProfileHCRPAssignmentsGetResponse"
+        "target": "com.azure.automanage#GetConfigurationProfileHcrpAssignmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2132,7 +2132,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCRPAssignmentsGetResponse": {
+    "com.azure.automanage#GetConfigurationProfileHcrpAssignmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2284,7 +2284,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.automanage#ConfigurationProfileHCRPAssignmentsGetRequest": {
+    "com.azure.automanage#GetConfigurationProfileHcrpAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2324,13 +2324,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ServicePrincipalsGet": {
+    "com.azure.automanage#GetServicePrincipal": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ServicePrincipalsGetRequest"
+        "target": "com.azure.automanage#GetServicePrincipalRequest"
       },
       "output": {
-        "target": "com.azure.automanage#ServicePrincipalsGetResponse"
+        "target": "com.azure.automanage#GetServicePrincipalResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2343,7 +2343,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ServicePrincipalsGetResponse": {
+    "com.azure.automanage#GetServicePrincipalResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2509,7 +2509,7 @@
         "smithy.api#documentation": "The Service Principal properties for the subscription."
       }
     },
-    "com.azure.automanage#ServicePrincipalsGetRequest": {
+    "com.azure.automanage#GetServicePrincipalRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2525,10 +2525,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ServicePrincipalsListBySubscription": {
+    "com.azure.automanage#ListServicePrincipalBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ServicePrincipalsListBySubscriptionRequest"
+        "target": "com.azure.automanage#ListServicePrincipalBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.automanage#ServicePrincipalListResult"
@@ -2713,7 +2713,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.automanage#ServicePrincipalsListBySubscriptionRequest": {
+    "com.azure.automanage#ListServicePrincipalBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2729,10 +2729,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ReportsListByConfigurationProfileAssignments": {
+    "com.azure.automanage#ListReportByConfigurationProfileAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ReportsListByConfigurationProfileAssignmentsRequest"
+        "target": "com.azure.automanage#ListReportByConfigurationProfileAssignmentsRequest"
       },
       "output": {
         "target": "com.azure.automanage#ReportList"
@@ -2748,7 +2748,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ReportsListByConfigurationProfileAssignmentsRequest": {
+    "com.azure.automanage#ListReportByConfigurationProfileAssignmentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2788,13 +2788,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ReportsGet": {
+    "com.azure.automanage#GetReport": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ReportsGetRequest"
+        "target": "com.azure.automanage#GetReportRequest"
       },
       "output": {
-        "target": "com.azure.automanage#ReportsGetResponse"
+        "target": "com.azure.automanage#GetReportResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2807,7 +2807,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ReportsGetResponse": {
+    "com.azure.automanage#GetReportResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2953,7 +2953,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.automanage#ReportsGetRequest": {
+    "com.azure.automanage#GetReportRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3001,13 +3001,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#OperationsList": {
+    "com.azure.automanage#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.automanage#OperationsListResponse"
+        "target": "com.azure.automanage#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3020,7 +3020,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#OperationsListResponse": {
+    "com.azure.automanage#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -3159,10 +3159,10 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsListBySubscription": {
+    "com.azure.automanage#ListConfigurationProfileAssignmentBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileAssignmentsListBySubscriptionRequest"
+        "target": "com.azure.automanage#ListConfigurationProfileAssignmentBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.automanage#ConfigurationProfileAssignmentList"
@@ -3178,7 +3178,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsListBySubscriptionRequest": {
+    "com.azure.automanage#ListConfigurationProfileAssignmentBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3194,10 +3194,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsList": {
+    "com.azure.automanage#ListConfigurationProfileAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileAssignmentsListRequest"
+        "target": "com.azure.automanage#ListConfigurationProfileAssignmentsRequest"
       },
       "output": {
         "target": "com.azure.automanage#ConfigurationProfileAssignmentList"
@@ -3213,7 +3213,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsListRequest": {
+    "com.azure.automanage#ListConfigurationProfileAssignmentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3237,10 +3237,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsListByVirtualMachines": {
+    "com.azure.automanage#ListConfigurationProfileAssignmentByVirtualMachines": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileAssignmentsListByVirtualMachinesRequest"
+        "target": "com.azure.automanage#ListConfigurationProfileAssignmentByVirtualMachinesRequest"
       },
       "output": {
         "target": "com.azure.automanage#ConfigurationProfileAssignmentList"
@@ -3256,7 +3256,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsListByVirtualMachinesRequest": {
+    "com.azure.automanage#ListConfigurationProfileAssignmentByVirtualMachinesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3288,10 +3288,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsDelete": {
+    "com.azure.automanage#DeleteConfigurationProfileAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileAssignmentsDeleteRequest"
+        "target": "com.azure.automanage#DeleteConfigurationProfileAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3307,7 +3307,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsDeleteRequest": {
+    "com.azure.automanage#DeleteConfigurationProfileAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3564,13 +3564,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsGet": {
+    "com.azure.automanage#GetConfigurationProfileAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfileAssignmentsGetRequest"
+        "target": "com.azure.automanage#GetConfigurationProfileAssignmentRequest"
       },
       "output": {
-        "target": "com.azure.automanage#ConfigurationProfileAssignmentsGetResponse"
+        "target": "com.azure.automanage#GetConfigurationProfileAssignmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3583,7 +3583,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsGetResponse": {
+    "com.azure.automanage#GetConfigurationProfileAssignmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3735,7 +3735,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.automanage#ConfigurationProfileAssignmentsGetRequest": {
+    "com.azure.automanage#GetConfigurationProfileAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3775,10 +3775,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfilesVersionsListChildResources": {
+    "com.azure.automanage#ListConfigurationProfileVersionChildResources": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfilesVersionsListChildResourcesRequest"
+        "target": "com.azure.automanage#ListConfigurationProfileVersionChildResourcesRequest"
       },
       "output": {
         "target": "com.azure.automanage#ConfigurationProfileList"
@@ -4002,7 +4002,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.automanage#ConfigurationProfilesVersionsListChildResourcesRequest": {
+    "com.azure.automanage#ListConfigurationProfileVersionChildResourcesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4034,10 +4034,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfilesVersionsDelete": {
+    "com.azure.automanage#DeleteConfigurationProfileVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfilesVersionsDeleteRequest"
+        "target": "com.azure.automanage#DeleteConfigurationProfileVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4053,7 +4053,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfilesVersionsDeleteRequest": {
+    "com.azure.automanage#DeleteConfigurationProfileVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4354,13 +4354,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.automanage#ConfigurationProfilesVersionsGet": {
+    "com.azure.automanage#GetConfigurationProfileVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfilesVersionsGetRequest"
+        "target": "com.azure.automanage#GetConfigurationProfileVersionRequest"
       },
       "output": {
-        "target": "com.azure.automanage#ConfigurationProfilesVersionsGetResponse"
+        "target": "com.azure.automanage#GetConfigurationProfileVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4373,7 +4373,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfilesVersionsGetResponse": {
+    "com.azure.automanage#GetConfigurationProfileVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4544,7 +4544,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.automanage#ConfigurationProfilesVersionsGetRequest": {
+    "com.azure.automanage#GetConfigurationProfileVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4584,10 +4584,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfilesListBySubscription": {
+    "com.azure.automanage#ListConfigurationProfileBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfilesListBySubscriptionRequest"
+        "target": "com.azure.automanage#ListConfigurationProfileBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.automanage#ConfigurationProfileList"
@@ -4603,7 +4603,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfilesListBySubscriptionRequest": {
+    "com.azure.automanage#ListConfigurationProfileBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4619,10 +4619,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfilesListByResourceGroup": {
+    "com.azure.automanage#ListConfigurationProfileByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfilesListByResourceGroupRequest"
+        "target": "com.azure.automanage#ListConfigurationProfileByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.automanage#ConfigurationProfileList"
@@ -4638,7 +4638,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfilesListByResourceGroupRequest": {
+    "com.azure.automanage#ListConfigurationProfileByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4662,10 +4662,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfilesDelete": {
+    "com.azure.automanage#DeleteConfigurationProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfilesDeleteRequest"
+        "target": "com.azure.automanage#DeleteConfigurationProfileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4681,7 +4681,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfilesDeleteRequest": {
+    "com.azure.automanage#DeleteConfigurationProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4713,13 +4713,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#ConfigurationProfilesUpdate": {
+    "com.azure.automanage#UpdateConfigurationProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfilesUpdateRequest"
+        "target": "com.azure.automanage#UpdateConfigurationProfileRequest"
       },
       "output": {
-        "target": "com.azure.automanage#ConfigurationProfilesUpdateResponse"
+        "target": "com.azure.automanage#UpdateConfigurationProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4732,7 +4732,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfilesUpdateResponse": {
+    "com.azure.automanage#UpdateConfigurationProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4903,7 +4903,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.automanage#ConfigurationProfilesUpdateRequest": {
+    "com.azure.automanage#UpdateConfigurationProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5212,13 +5212,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.automanage#ConfigurationProfilesGet": {
+    "com.azure.automanage#GetConfigurationProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#ConfigurationProfilesGetRequest"
+        "target": "com.azure.automanage#GetConfigurationProfileRequest"
       },
       "output": {
-        "target": "com.azure.automanage#ConfigurationProfilesGetResponse"
+        "target": "com.azure.automanage#GetConfigurationProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5231,7 +5231,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#ConfigurationProfilesGetResponse": {
+    "com.azure.automanage#GetConfigurationProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5402,7 +5402,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.automanage#ConfigurationProfilesGetRequest": {
+    "com.azure.automanage#GetConfigurationProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5434,10 +5434,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#BestPracticesVersionsListByTenant": {
+    "com.azure.automanage#ListBestPracticeVersionByTenant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#BestPracticesVersionsListByTenantRequest"
+        "target": "com.azure.automanage#ListBestPracticeVersionByTenantRequest"
       },
       "output": {
         "target": "com.azure.automanage#BestPracticeList"
@@ -5622,7 +5622,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.automanage#BestPracticesVersionsListByTenantRequest": {
+    "com.azure.automanage#ListBestPracticeVersionByTenantRequest": {
       "type": "structure",
       "members": {
         "bestPracticeName": {
@@ -5638,10 +5638,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#BestPracticesVersionsGet": {
+    "com.azure.automanage#GetBestPracticeVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#BestPracticesVersionsGetRequest"
+        "target": "com.azure.automanage#GetBestPracticeVersionRequest"
       },
       "output": {
         "target": "com.azure.automanage#BestPractice"
@@ -5657,7 +5657,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#BestPracticesVersionsGetRequest": {
+    "com.azure.automanage#GetBestPracticeVersionRequest": {
       "type": "structure",
       "members": {
         "bestPracticeName": {
@@ -5681,7 +5681,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.automanage#BestPracticesListByTenant": {
+    "com.azure.automanage#ListBestPracticeByTenant": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -5700,10 +5700,10 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#BestPracticesGet": {
+    "com.azure.automanage#GetBestPractice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.automanage#BestPracticesGetRequest"
+        "target": "com.azure.automanage#GetBestPracticeRequest"
       },
       "output": {
         "target": "com.azure.automanage#BestPractice"
@@ -5719,7 +5719,7 @@
         "com.distilled.openapi#apiVersion": "2022-05-04"
       }
     },
-    "com.azure.automanage#BestPracticesGetRequest": {
+    "com.azure.automanage#GetBestPracticeRequest": {
       "type": "structure",
       "members": {
         "bestPracticeName": {
@@ -5740,115 +5740,115 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.automanage#HCIReportsListByConfigurationProfileAssignments"
+          "target": "com.azure.automanage#ListHciReportByConfigurationProfileAssignments"
         },
         {
-          "target": "com.azure.automanage#HCIReportsGet"
+          "target": "com.azure.automanage#GetHciReport"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileAssignmentsListByClusterName"
+          "target": "com.azure.automanage#ListConfigurationProfileAssignmentByClusterName"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileHCIAssignmentsDelete"
+          "target": "com.azure.automanage#DeleteConfigurationProfileHciAssignment"
         },
         {
           "target": "com.azure.automanage#ConfigurationProfileHCIAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileHCIAssignmentsGet"
+          "target": "com.azure.automanage#GetConfigurationProfileHciAssignment"
         },
         {
-          "target": "com.azure.automanage#HCRPReportsListByConfigurationProfileAssignments"
+          "target": "com.azure.automanage#ListHcrpReportByConfigurationProfileAssignments"
         },
         {
-          "target": "com.azure.automanage#HCRPReportsGet"
+          "target": "com.azure.automanage#GetHcrpReport"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileAssignmentsListByMachineName"
+          "target": "com.azure.automanage#ListConfigurationProfileAssignmentByMachineName"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileHCRPAssignmentsDelete"
+          "target": "com.azure.automanage#DeleteConfigurationProfileHcrpAssignment"
         },
         {
           "target": "com.azure.automanage#ConfigurationProfileHCRPAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileHCRPAssignmentsGet"
+          "target": "com.azure.automanage#GetConfigurationProfileHcrpAssignment"
         },
         {
-          "target": "com.azure.automanage#ServicePrincipalsGet"
+          "target": "com.azure.automanage#GetServicePrincipal"
         },
         {
-          "target": "com.azure.automanage#ServicePrincipalsListBySubscription"
+          "target": "com.azure.automanage#ListServicePrincipalBySubscription"
         },
         {
-          "target": "com.azure.automanage#ReportsListByConfigurationProfileAssignments"
+          "target": "com.azure.automanage#ListReportByConfigurationProfileAssignments"
         },
         {
-          "target": "com.azure.automanage#ReportsGet"
+          "target": "com.azure.automanage#GetReport"
         },
         {
-          "target": "com.azure.automanage#OperationsList"
+          "target": "com.azure.automanage#ListOperations"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileAssignmentsListBySubscription"
+          "target": "com.azure.automanage#ListConfigurationProfileAssignmentBySubscription"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileAssignmentsList"
+          "target": "com.azure.automanage#ListConfigurationProfileAssignments"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileAssignmentsListByVirtualMachines"
+          "target": "com.azure.automanage#ListConfigurationProfileAssignmentByVirtualMachines"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileAssignmentsDelete"
+          "target": "com.azure.automanage#DeleteConfigurationProfileAssignment"
         },
         {
           "target": "com.azure.automanage#ConfigurationProfileAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfileAssignmentsGet"
+          "target": "com.azure.automanage#GetConfigurationProfileAssignment"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfilesVersionsListChildResources"
+          "target": "com.azure.automanage#ListConfigurationProfileVersionChildResources"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfilesVersionsDelete"
+          "target": "com.azure.automanage#DeleteConfigurationProfileVersion"
         },
         {
           "target": "com.azure.automanage#ConfigurationProfilesVersionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfilesVersionsGet"
+          "target": "com.azure.automanage#GetConfigurationProfileVersion"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfilesListBySubscription"
+          "target": "com.azure.automanage#ListConfigurationProfileBySubscription"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfilesListByResourceGroup"
+          "target": "com.azure.automanage#ListConfigurationProfileByResourceGroup"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfilesDelete"
+          "target": "com.azure.automanage#DeleteConfigurationProfile"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfilesUpdate"
+          "target": "com.azure.automanage#UpdateConfigurationProfile"
         },
         {
           "target": "com.azure.automanage#ConfigurationProfilesCreateOrUpdate"
         },
         {
-          "target": "com.azure.automanage#ConfigurationProfilesGet"
+          "target": "com.azure.automanage#GetConfigurationProfile"
         },
         {
-          "target": "com.azure.automanage#BestPracticesVersionsListByTenant"
+          "target": "com.azure.automanage#ListBestPracticeVersionByTenant"
         },
         {
-          "target": "com.azure.automanage#BestPracticesVersionsGet"
+          "target": "com.azure.automanage#GetBestPracticeVersion"
         },
         {
-          "target": "com.azure.automanage#BestPracticesListByTenant"
+          "target": "com.azure.automanage#ListBestPracticeByTenant"
         },
         {
-          "target": "com.azure.automanage#BestPracticesGet"
+          "target": "com.azure.automanage#GetBestPractice"
         }
       ],
       "traits": {

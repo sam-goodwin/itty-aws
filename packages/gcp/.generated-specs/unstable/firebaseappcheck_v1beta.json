@@ -1720,7 +1720,7 @@
         "smithy.api#documentation": "Gets the Service configuration for the specified service name."
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchUpdateProjectsServicesRequest": {
+    "com.gcp.firebaseappcheck_v1beta#UpdateBatchProjectServiceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -1740,10 +1740,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchUpdateProjectsServices": {
+    "com.gcp.firebaseappcheck_v1beta#UpdateBatchProjectService": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1beta#BatchUpdateProjectsServicesRequest"
+        "target": "com.gcp.firebaseappcheck_v1beta#UpdateBatchProjectServiceRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1beta#GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse"
@@ -1939,7 +1939,7 @@
         "smithy.api#documentation": "Updates the specified ResourcePolicy configuration."
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchUpdateProjectsServicesResourcePoliciesRequest": {
+    "com.gcp.firebaseappcheck_v1beta#UpdateBatchProjectServiceResourcePolicyRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -1959,10 +1959,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchUpdateProjectsServicesResourcePolicies": {
+    "com.gcp.firebaseappcheck_v1beta#UpdateBatchProjectServiceResourcePolicy": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1beta#BatchUpdateProjectsServicesResourcePoliciesRequest"
+        "target": "com.gcp.firebaseappcheck_v1beta#UpdateBatchProjectServiceResourcePolicyRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1beta#GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse"
@@ -2276,7 +2276,7 @@
         "smithy.api#documentation": "Accepts an App Attest CBOR attestation and verifies it with Apple using your preconfigured team and bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an AppCheckToken using ExchangeAppAttestAssertion. For convenience and performance, this method's response object will also contain an AppCheckToken (if the verification is successful)."
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#ExchangeDeviceCheckTokenProjectsAppsRequest": {
+    "com.gcp.firebaseappcheck_v1beta#CheckExchangeDeviceTokenProjectAppRequest": {
       "type": "structure",
       "members": {
         "app": {
@@ -2296,10 +2296,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#ExchangeDeviceCheckTokenProjectsApps": {
+    "com.gcp.firebaseappcheck_v1beta#CheckExchangeDeviceTokenProjectApp": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1beta#ExchangeDeviceCheckTokenProjectsAppsRequest"
+        "target": "com.gcp.firebaseappcheck_v1beta#CheckExchangeDeviceTokenProjectAppRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1beta#GoogleFirebaseAppcheckV1betaAppCheckToken"
@@ -2669,7 +2669,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsPlayIntegrityConfigRequest": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppPlayIntegrityConfigRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2689,10 +2689,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsPlayIntegrityConfig": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppPlayIntegrityConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsPlayIntegrityConfigRequest"
+        "target": "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppPlayIntegrityConfigRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1beta#GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse"
@@ -2807,7 +2807,7 @@
         "smithy.api#documentation": "Gets the AppAttestConfig for the specified app."
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsAppAttestConfigRequest": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppAppAttestConfigRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2827,10 +2827,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsAppAttestConfig": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppAppAttestConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsAppAttestConfigRequest"
+        "target": "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppAppAttestConfigRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1beta#GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse"
@@ -2945,7 +2945,7 @@
         "smithy.api#documentation": "Gets the RecaptchaV3Config for the specified app. For security reasons, the `site_secret` field is never populated in the response."
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsRecaptchaV3ConfigRequest": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppRecaptchaV3ConfigRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2965,10 +2965,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsRecaptchaV3Config": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppRecaptchaV3Config": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsRecaptchaV3ConfigRequest"
+        "target": "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppRecaptchaV3ConfigRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1beta#GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse"
@@ -3527,7 +3527,7 @@
         "smithy.api#documentation": "Gets the RecaptchaConfig for the specified app. For security reasons, the `site_secret` field is never populated in the response."
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsRecaptchaConfigRequest": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppRecaptchaConfigRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3547,10 +3547,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsRecaptchaConfig": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppRecaptchaConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsRecaptchaConfigRequest"
+        "target": "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppRecaptchaConfigRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1beta#GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse"
@@ -3665,7 +3665,7 @@
         "smithy.api#documentation": "Gets the RecaptchaEnterpriseConfig for the specified app."
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppRecaptchaEnterpriseConfigRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3685,10 +3685,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsRecaptchaEnterpriseConfig": {
+    "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppRecaptchaEnterpriseConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1beta#BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest"
+        "target": "com.gcp.firebaseappcheck_v1beta#GetBatchProjectAppRecaptchaEnterpriseConfigRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1beta#GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse"

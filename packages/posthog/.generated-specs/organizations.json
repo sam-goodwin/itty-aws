@@ -760,7 +760,7 @@
         "smithy.api#documentation": "Default statistical method for new experiments in this organization.\n\n* `bayesian` - Bayesian\n* `frequentist` - Frequentist"
       }
     },
-    "com.posthog.organizations#PartialUpdateRequest": {
+    "com.posthog.organizations#UpdatePartialRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -863,10 +863,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#PartialUpdate": {
+    "com.posthog.organizations#UpdatePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#PartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdatePartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#Organization"
@@ -930,7 +930,7 @@
         }
       }
     },
-    "com.posthog.organizations#RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest": {
+    "com.posthog.organizations#CreateRemoveBlockedMemberAndEnforceVerifiedDomainRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -966,10 +966,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#RemoveBlockedMembersAndEnforceVerifiedDomainsCreate": {
+    "com.posthog.organizations#CreateRemoveBlockedMemberAndEnforceVerifiedDomain": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest"
+        "target": "com.posthog.organizations#CreateRemoveBlockedMemberAndEnforceVerifiedDomainRequest"
       },
       "output": {
         "target": "com.posthog.organizations#OrganizationRemoveBlockedMembersResponse"
@@ -1188,7 +1188,7 @@
         "smithy.api#documentation": "When each project in the organization last received data, broken down by kind of data."
       }
     },
-    "com.posthog.organizations#CimdVerificationTokensListRequest": {
+    "com.posthog.organizations#ListCimdVerificationTokensRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -1439,10 +1439,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#CimdVerificationTokensList": {
+    "com.posthog.organizations#ListCimdVerificationTokens": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#CimdVerificationTokensListRequest"
+        "target": "com.posthog.organizations#ListCimdVerificationTokensRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedCIMDVerificationTokenList"
@@ -1456,7 +1456,7 @@
         "smithy.api#documentation": "Manage CIMD verification tokens for an organization.\n\nA partner embeds the plaintext token in their CIMD metadata document as\n`verification_token` inside the `com.posthog` object (the legacy top-level\n`posthog_verification_token` field still works as a fallback). When PostHog fetches\nthe metadata, matching the token links the partner app to this organization and\ngrants a higher default rate limit for account provisioning.\n\nEach token is scoped at creation to the one `cimd_url` it will be published at,\nand verifies nowhere else. Two organizations may name the same URL; only the one\nwhose token is actually served there verifies, so claiming a URL cannot be used\nto block a partner from verifying theirs.\n\nThe plaintext value is only available on creation; we store a hash."
       }
     },
-    "com.posthog.organizations#CimdVerificationTokensCreateRequest": {
+    "com.posthog.organizations#CreateCimdVerificationTokenRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -1548,10 +1548,10 @@
         "smithy.api#documentation": "Create-response variant that includes the plaintext token.\n\nOnly emitted from the create endpoint - storage-side we only persist the\nhash, so subsequent reads use the base serializer."
       }
     },
-    "com.posthog.organizations#CimdVerificationTokensCreate": {
+    "com.posthog.organizations#CreateCimdVerificationToken": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#CimdVerificationTokensCreateRequest"
+        "target": "com.posthog.organizations#CreateCimdVerificationTokenRequest"
       },
       "output": {
         "target": "com.posthog.organizations#CIMDVerificationTokenWithValue"
@@ -1606,7 +1606,7 @@
         "smithy.api#documentation": "Manage CIMD verification tokens for an organization.\n\nA partner embeds the plaintext token in their CIMD metadata document as\n`verification_token` inside the `com.posthog` object (the legacy top-level\n`posthog_verification_token` field still works as a fallback). When PostHog fetches\nthe metadata, matching the token links the partner app to this organization and\ngrants a higher default rate limit for account provisioning.\n\nEach token is scoped at creation to the one `cimd_url` it will be published at,\nand verifies nowhere else. Two organizations may name the same URL; only the one\nwhose token is actually served there verifies, so claiming a URL cannot be used\nto block a partner from verifying theirs.\n\nThe plaintext value is only available on creation; we store a hash."
       }
     },
-    "com.posthog.organizations#CimdVerificationTokensPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateCimdVerificationTokenPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -1636,10 +1636,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#CimdVerificationTokensPartialUpdate": {
+    "com.posthog.organizations#UpdateCimdVerificationTokenPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#CimdVerificationTokensPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateCimdVerificationTokenPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#CIMDVerificationToken"
@@ -1694,7 +1694,7 @@
         "smithy.api#documentation": "Manage CIMD verification tokens for an organization.\n\nA partner embeds the plaintext token in their CIMD metadata document as\n`verification_token` inside the `com.posthog` object (the legacy top-level\n`posthog_verification_token` field still works as a fallback). When PostHog fetches\nthe metadata, matching the token links the partner app to this organization and\ngrants a higher default rate limit for account provisioning.\n\nEach token is scoped at creation to the one `cimd_url` it will be published at,\nand verifies nowhere else. Two organizations may name the same URL; only the one\nwhose token is actually served there verifies, so claiming a URL cannot be used\nto block a partner from verifying theirs.\n\nThe plaintext value is only available on creation; we store a hash."
       }
     },
-    "com.posthog.organizations#DesktopBetaTermsListRequest": {
+    "com.posthog.organizations#ListDesktopBetaTermsRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -1723,10 +1723,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#DesktopBetaTermsList": {
+    "com.posthog.organizations#ListDesktopBetaTerms": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#DesktopBetaTermsListRequest"
+        "target": "com.posthog.organizations#ListDesktopBetaTermsRequest"
       },
       "output": {
         "target": "com.posthog.organizations#DesktopBetaTermsAcceptanceDTO"
@@ -1739,7 +1739,7 @@
         }
       }
     },
-    "com.posthog.organizations#DesktopBetaTermsCreateRequest": {
+    "com.posthog.organizations#CreateDesktopBetaTermRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -1755,10 +1755,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#DesktopBetaTermsCreate": {
+    "com.posthog.organizations#CreateDesktopBetaTerm": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#DesktopBetaTermsCreateRequest"
+        "target": "com.posthog.organizations#CreateDesktopBetaTermRequest"
       },
       "output": {
         "target": "com.posthog.organizations#DesktopBetaTermsAcceptanceDTO"
@@ -1771,7 +1771,7 @@
         }
       }
     },
-    "com.posthog.organizations#DomainsListRequest": {
+    "com.posthog.organizations#ListDomainsRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -1871,10 +1871,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#DomainsList": {
+    "com.posthog.organizations#ListDomains": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#DomainsListRequest"
+        "target": "com.posthog.organizations#ListDomainsRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedOrganizationDomainList"
@@ -1898,7 +1898,7 @@
         }
       }
     },
-    "com.posthog.organizations#DomainsCreateRequest": {
+    "com.posthog.organizations#CreateDomainRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -1923,10 +1923,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#DomainsCreate": {
+    "com.posthog.organizations#CreateDomain": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#DomainsCreateRequest"
+        "target": "com.posthog.organizations#CreateDomainRequest"
       },
       "output": {
         "target": "com.posthog.organizations#OrganizationDomain"
@@ -1998,7 +1998,7 @@
         }
       }
     },
-    "com.posthog.organizations#DomainsUpdateRequest": {
+    "com.posthog.organizations#UpdateDomainRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -2031,10 +2031,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#DomainsUpdate": {
+    "com.posthog.organizations#UpdateDomain": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#DomainsUpdateRequest"
+        "target": "com.posthog.organizations#UpdateDomainRequest"
       },
       "output": {
         "target": "com.posthog.organizations#OrganizationDomain"
@@ -2058,7 +2058,7 @@
         }
       }
     },
-    "com.posthog.organizations#DomainsPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateDomainPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -2091,10 +2091,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#DomainsPartialUpdate": {
+    "com.posthog.organizations#UpdateDomainPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#DomainsPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateDomainPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#OrganizationDomain"
@@ -2274,7 +2274,7 @@
         }
       }
     },
-    "com.posthog.organizations#IdentityProviderConfigsListRequest": {
+    "com.posthog.organizations#ListIdentityProviderConfigsRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -2566,10 +2566,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#IdentityProviderConfigsList": {
+    "com.posthog.organizations#ListIdentityProviderConfigs": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsListRequest"
+        "target": "com.posthog.organizations#ListIdentityProviderConfigsRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedIdentityProviderConfigList"
@@ -2628,7 +2628,7 @@
         "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
       }
     },
-    "com.posthog.organizations#IdentityProviderConfigsCreateRequest": {
+    "com.posthog.organizations#CreateIdentityProviderConfigRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -2717,10 +2717,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#IdentityProviderConfigsCreate": {
+    "com.posthog.organizations#CreateIdentityProviderConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsCreateRequest"
+        "target": "com.posthog.organizations#CreateIdentityProviderConfigRequest"
       },
       "output": {
         "target": "com.posthog.organizations#IdentityProviderConfig"
@@ -2819,7 +2819,7 @@
         "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
       }
     },
-    "com.posthog.organizations#IdentityProviderConfigsUpdateRequest": {
+    "com.posthog.organizations#UpdateIdentityProviderConfigRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -2916,10 +2916,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#IdentityProviderConfigsUpdate": {
+    "com.posthog.organizations#UpdateIdentityProviderConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsUpdateRequest"
+        "target": "com.posthog.organizations#UpdateIdentityProviderConfigRequest"
       },
       "output": {
         "target": "com.posthog.organizations#IdentityProviderConfig"
@@ -2978,7 +2978,7 @@
         "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
       }
     },
-    "com.posthog.organizations#IdentityProviderConfigsPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateIdentityProviderConfigPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -3075,10 +3075,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#IdentityProviderConfigsPartialUpdate": {
+    "com.posthog.organizations#UpdateIdentityProviderConfigPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateIdentityProviderConfigPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#IdentityProviderConfig"
@@ -3131,7 +3131,7 @@
         }
       }
     },
-    "com.posthog.organizations#IdentityProviderConfigsScimTokenCreateRequest": {
+    "com.posthog.organizations#CreateIdentityProviderConfigScimTokenRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -3175,10 +3175,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#IdentityProviderConfigsScimTokenCreate": {
+    "com.posthog.organizations#CreateIdentityProviderConfigScimToken": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsScimTokenCreateRequest"
+        "target": "com.posthog.organizations#CreateIdentityProviderConfigScimTokenRequest"
       },
       "output": {
         "target": "com.posthog.organizations#SCIMTokenResponse"
@@ -3192,7 +3192,7 @@
         "smithy.api#documentation": "Regenerate the SCIM bearer token for this IdP config."
       }
     },
-    "com.posthog.organizations#IntegrationsEnvironmentMappingPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateIntegrationEnvironmentMappingPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -3265,10 +3265,10 @@
         "smithy.api#documentation": "* `vercel` - Vercel"
       }
     },
-    "com.posthog.organizations#IntegrationsEnvironmentMappingPartialUpdate": {
+    "com.posthog.organizations#UpdateIntegrationEnvironmentMappingPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#IntegrationsEnvironmentMappingPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateIntegrationEnvironmentMappingPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#OrganizationIntegration"
@@ -3293,7 +3293,7 @@
         "smithy.api#documentation": "ViewSet for organization-level integrations.\n\nProvides access to integrations that are scoped to the entire organization\n(vs. project-level integrations). Examples include Vercel, AWS Marketplace, etc.\n\nCreation is handled by the integration installation flows\n(e.g., Vercel marketplace installation). Users can disconnect integrations\nvia the DELETE endpoint."
       }
     },
-    "com.posthog.organizations#InvitesListRequest": {
+    "com.posthog.organizations#ListInvitesRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -3431,10 +3431,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#InvitesList": {
+    "com.posthog.organizations#ListInvites": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#InvitesListRequest"
+        "target": "com.posthog.organizations#ListInvitesRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedOrganizationInviteListOutput"
@@ -3458,7 +3458,7 @@
         }
       }
     },
-    "com.posthog.organizations#InvitesCreateRequest": {
+    "com.posthog.organizations#CreateInviteRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -3501,10 +3501,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#InvitesCreate": {
+    "com.posthog.organizations#CreateInvite": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#InvitesCreateRequest"
+        "target": "com.posthog.organizations#CreateInviteRequest"
       },
       "output": {
         "target": "com.posthog.organizations#OrganizationInviteOutput"
@@ -3576,7 +3576,7 @@
         }
       }
     },
-    "com.posthog.organizations#InvitesBulkCreateRequest": {
+    "com.posthog.organizations#CreateInviteBulkRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -3619,10 +3619,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#InvitesBulkCreate": {
+    "com.posthog.organizations#CreateInviteBulk": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#InvitesBulkCreateRequest"
+        "target": "com.posthog.organizations#CreateInviteBulkRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3646,7 +3646,7 @@
         }
       }
     },
-    "com.posthog.organizations#InvitesDelegateCreateRequest": {
+    "com.posthog.organizations#CreateInviteDelegateRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -3681,10 +3681,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#InvitesDelegateCreate": {
+    "com.posthog.organizations#CreateInviteDelegate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#InvitesDelegateCreateRequest"
+        "target": "com.posthog.organizations#CreateInviteDelegateRequest"
       },
       "output": {
         "target": "com.posthog.organizations#OrganizationInviteOutput"
@@ -3698,7 +3698,7 @@
         "smithy.api#documentation": "Create an onboarding delegation invite: an admin-level invite flagged as a setup delegation.\nSends a single dedicated delegation email and records the inviting user as having delegated."
       }
     },
-    "com.posthog.organizations#LegalDocumentsListRequest": {
+    "com.posthog.organizations#ListLegalDocumentsRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -3806,10 +3806,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#LegalDocumentsList": {
+    "com.posthog.organizations#ListLegalDocuments": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#LegalDocumentsListRequest"
+        "target": "com.posthog.organizations#ListLegalDocumentsRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedLegalDocumentDTOList"
@@ -3853,7 +3853,7 @@
         "smithy.api#documentation": "* `BAA` - BAA\n* `DPA` - DPA"
       }
     },
-    "com.posthog.organizations#LegalDocumentsCreateRequest": {
+    "com.posthog.organizations#CreateLegalDocumentRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -3893,10 +3893,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#LegalDocumentsCreate": {
+    "com.posthog.organizations#CreateLegalDocument": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#LegalDocumentsCreateRequest"
+        "target": "com.posthog.organizations#CreateLegalDocumentRequest"
       },
       "output": {
         "target": "com.posthog.organizations#LegalDocumentDTO"
@@ -4081,7 +4081,7 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#MembersListRequest": {
+    "com.posthog.organizations#ListMembersRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -4235,10 +4235,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#MembersList": {
+    "com.posthog.organizations#ListMembers": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#MembersListRequest"
+        "target": "com.posthog.organizations#ListMembersRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedOrganizationMemberList"
@@ -4262,7 +4262,7 @@
         }
       }
     },
-    "com.posthog.organizations#MembersUpdateRequest": {
+    "com.posthog.organizations#UpdateMemberRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -4288,10 +4288,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#MembersUpdate": {
+    "com.posthog.organizations#UpdateMember": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#MembersUpdateRequest"
+        "target": "com.posthog.organizations#UpdateMemberRequest"
       },
       "output": {
         "target": "com.posthog.organizations#OrganizationMember"
@@ -4315,7 +4315,7 @@
         }
       }
     },
-    "com.posthog.organizations#MembersPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateMemberPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -4341,10 +4341,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#MembersPartialUpdate": {
+    "com.posthog.organizations#UpdateMemberPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#MembersPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateMemberPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#OrganizationMember"
@@ -4515,7 +4515,7 @@
         }
       }
     },
-    "com.posthog.organizations#OauthApplicationsListRequest": {
+    "com.posthog.organizations#ListOauthApplicationsRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -4615,10 +4615,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#OauthApplicationsList": {
+    "com.posthog.organizations#ListOauthApplications": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OauthApplicationsListRequest"
+        "target": "com.posthog.organizations#ListOauthApplicationsRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedOrganizationOAuthApplicationList"
@@ -4643,7 +4643,7 @@
         "smithy.api#documentation": "ViewSet for listing OAuth applications at the organization level (read-only)."
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsListRequest": {
+    "com.posthog.organizations#ListOrganizationProjectsRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -8345,10 +8345,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#OrganizationsProjectsList": {
+    "com.posthog.organizations#ListOrganizationProjects": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsListRequest"
+        "target": "com.posthog.organizations#ListOrganizationProjectsRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedProjectBackwardCompatBasicList"
@@ -12489,7 +12489,7 @@
         "smithy.api#documentation": "* `0` - Disabled\n* `1` - Stateless\n* `2` - Stateful"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsCreateRequest": {
+    "com.posthog.organizations#CreateOrganizationProjectRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -13865,10 +13865,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#OrganizationsProjectsCreate": {
+    "com.posthog.organizations#CreateOrganizationProject": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsCreateRequest"
+        "target": "com.posthog.organizations#CreateOrganizationProjectRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -14009,7 +14009,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsUpdateRequest": {
+    "com.posthog.organizations#UpdateOrganizationProjectRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -14387,10 +14387,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsUpdate": {
+    "com.posthog.organizations#UpdateOrganizationProject": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsUpdateRequest"
+        "target": "com.posthog.organizations#UpdateOrganizationProjectRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -14482,7 +14482,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateOrganizationProjectPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -14860,10 +14860,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsPartialUpdate": {
+    "com.posthog.organizations#UpdateOrganizationProjectPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateOrganizationProjectPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -15053,7 +15053,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsAddProductIntentPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateOrganizationProjectAddProductIntentPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -15431,10 +15431,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsAddProductIntentPartialUpdate": {
+    "com.posthog.organizations#UpdateOrganizationProjectAddProductIntentPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsAddProductIntentPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateOrganizationProjectAddProductIntentPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -15526,7 +15526,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsChangeOrganizationCreateRequest": {
+    "com.posthog.organizations#CreateOrganizationProjectChangeOrganizationRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -15904,10 +15904,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsChangeOrganizationCreate": {
+    "com.posthog.organizations#CreateOrganizationProjectChangeOrganization": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsChangeOrganizationCreateRequest"
+        "target": "com.posthog.organizations#CreateOrganizationProjectChangeOrganizationRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -15999,7 +15999,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateOrganizationProjectCompleteProductOnboardingPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -16377,10 +16377,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsCompleteProductOnboardingPartialUpdate": {
+    "com.posthog.organizations#UpdateOrganizationProjectCompleteProductOnboardingPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateOrganizationProjectCompleteProductOnboardingPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -16513,7 +16513,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsDefaultEvaluationContextsCreateRequest": {
+    "com.posthog.organizations#CreateOrganizationProjectDefaultEvaluationContextRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -16891,10 +16891,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsDefaultEvaluationContextsCreate": {
+    "com.posthog.organizations#CreateOrganizationProjectDefaultEvaluationContext": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsDefaultEvaluationContextsCreateRequest"
+        "target": "com.posthog.organizations#CreateOrganizationProjectDefaultEvaluationContextRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -16949,7 +16949,7 @@
         "smithy.api#documentation": "Manage default evaluation contexts for a project. Members can read; writing requires\nproject admin, matching the admin-only settings UI."
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsDefaultReleaseConditionsRetrieveRequest": {
+    "com.posthog.organizations#ReleaseOrganizationProjectDefaultConditionRetrieveRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -16973,10 +16973,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsDefaultReleaseConditionsRetrieve": {
+    "com.posthog.organizations#ReleaseOrganizationProjectDefaultConditionRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsDefaultReleaseConditionsRetrieveRequest"
+        "target": "com.posthog.organizations#ReleaseOrganizationProjectDefaultConditionRetrieveRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -17925,7 +17925,7 @@
         "smithy.api#documentation": "Projects for the current organization."
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsEvaluationContextSuggestionsCreateRequest": {
+    "com.posthog.organizations#CreateOrganizationProjectEvaluationContextSuggestionRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -17983,10 +17983,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#OrganizationsProjectsEvaluationContextSuggestionsCreate": {
+    "com.posthog.organizations#CreateOrganizationProjectEvaluationContextSuggestion": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsEvaluationContextSuggestionsCreateRequest"
+        "target": "com.posthog.organizations#CreateOrganizationProjectEvaluationContextSuggestionRequest"
       },
       "output": {
         "target": "com.posthog.organizations#EvaluationContextSuggestionResponse"
@@ -18049,7 +18049,7 @@
         "smithy.api#documentation": "Hide an evaluation context name from the flag editor's suggestion list, or restore it.\n\nPOST hides the name; DELETE restores it. The underlying context row and any flags already\nusing it are never modified — this only controls what gets suggested."
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsEventIngestionRestrictionsListRequest": {
+    "com.posthog.organizations#ListOrganizationProjectEventIngestionRestrictionsRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -18256,7 +18256,7 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#OrganizationsProjectsEventIngestionRestrictionsListResponse": {
+    "com.posthog.organizations#ListOrganizationProjectEventIngestionRestrictionsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -18271,13 +18271,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsEventIngestionRestrictionsList": {
+    "com.posthog.organizations#ListOrganizationProjectEventIngestionRestrictions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsEventIngestionRestrictionsListRequest"
+        "target": "com.posthog.organizations#ListOrganizationProjectEventIngestionRestrictionsRequest"
       },
       "output": {
-        "target": "com.posthog.organizations#OrganizationsProjectsEventIngestionRestrictionsListResponse"
+        "target": "com.posthog.organizations#ListOrganizationProjectEventIngestionRestrictionsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18396,7 +18396,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsExperimentsConfigPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateOrganizationProjectExperimentConfigPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -18774,10 +18774,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsExperimentsConfigPartialUpdate": {
+    "com.posthog.organizations#UpdateOrganizationProjectExperimentConfigPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsExperimentsConfigPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateOrganizationProjectExperimentConfigPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -19421,7 +19421,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsLogsConfigPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateOrganizationProjectLogConfigPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -19799,10 +19799,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsLogsConfigPartialUpdate": {
+    "com.posthog.organizations#UpdateOrganizationProjectLogConfigPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsLogsConfigPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateOrganizationProjectLogConfigPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -19883,7 +19883,7 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsResetTokenPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateOrganizationProjectResetTokenPartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -20261,10 +20261,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#OrganizationsProjectsResetTokenPartialUpdate": {
+    "com.posthog.organizations#UpdateOrganizationProjectResetTokenPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#OrganizationsProjectsResetTokenPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateOrganizationProjectResetTokenPartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#ProjectBackwardCompat"
@@ -20803,7 +20803,7 @@
         "smithy.api#documentation": "Return the project settings as of the provided timestamp.\nQuery params:\n- at: ISO8601 datetime (required)\n- scope: optional, one or multiple keys to filter the returned settings"
       }
     },
-    "com.posthog.organizations#RoleExternalReferencesListRequest": {
+    "com.posthog.organizations#ListRoleExternalReferencesRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -20919,10 +20919,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#RoleExternalReferencesList": {
+    "com.posthog.organizations#ListRoleExternalReferences": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#RoleExternalReferencesListRequest"
+        "target": "com.posthog.organizations#ListRoleExternalReferencesRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedRoleExternalReferenceList"
@@ -20946,7 +20946,7 @@
         }
       }
     },
-    "com.posthog.organizations#RoleExternalReferencesCreateRequest": {
+    "com.posthog.organizations#CreateRoleExternalReferenceRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -20999,10 +20999,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#RoleExternalReferencesCreate": {
+    "com.posthog.organizations#CreateRoleExternalReference": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#RoleExternalReferencesCreateRequest"
+        "target": "com.posthog.organizations#CreateRoleExternalReferenceRequest"
       },
       "output": {
         "target": "com.posthog.organizations#RoleExternalReference"
@@ -21160,7 +21160,7 @@
         }
       }
     },
-    "com.posthog.organizations#RolesListRequest": {
+    "com.posthog.organizations#ListRolesRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -21270,10 +21270,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#RolesList": {
+    "com.posthog.organizations#ListRoles": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#RolesListRequest"
+        "target": "com.posthog.organizations#ListRolesRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedRoleList"
@@ -21298,7 +21298,7 @@
         "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
       }
     },
-    "com.posthog.organizations#RolesCreateRequest": {
+    "com.posthog.organizations#CreateRoleRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -21317,10 +21317,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#RolesCreate": {
+    "com.posthog.organizations#CreateRole": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#RolesCreateRequest"
+        "target": "com.posthog.organizations#CreateRoleRequest"
       },
       "output": {
         "target": "com.posthog.organizations#Role"
@@ -21394,7 +21394,7 @@
         "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
       }
     },
-    "com.posthog.organizations#RolesUpdateRequest": {
+    "com.posthog.organizations#UpdateRoleRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -21421,10 +21421,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#RolesUpdate": {
+    "com.posthog.organizations#UpdateRole": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#RolesUpdateRequest"
+        "target": "com.posthog.organizations#UpdateRoleRequest"
       },
       "output": {
         "target": "com.posthog.organizations#Role"
@@ -21449,7 +21449,7 @@
         "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
       }
     },
-    "com.posthog.organizations#RolesPartialUpdateRequest": {
+    "com.posthog.organizations#UpdateRolePartialRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -21476,10 +21476,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#RolesPartialUpdate": {
+    "com.posthog.organizations#UpdateRolePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#RolesPartialUpdateRequest"
+        "target": "com.posthog.organizations#UpdateRolePartialRequest"
       },
       "output": {
         "target": "com.posthog.organizations#Role"
@@ -21553,7 +21553,7 @@
         "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
       }
     },
-    "com.posthog.organizations#RolesRoleMembershipsListRequest": {
+    "com.posthog.organizations#ListRoleRoleMembershipsRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -21648,10 +21648,10 @@
       },
       "traits": {}
     },
-    "com.posthog.organizations#RolesRoleMembershipsList": {
+    "com.posthog.organizations#ListRoleRoleMemberships": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#RolesRoleMembershipsListRequest"
+        "target": "com.posthog.organizations#ListRoleRoleMembershipsRequest"
       },
       "output": {
         "target": "com.posthog.organizations#PaginatedRoleMembershipListOutput"
@@ -21676,7 +21676,7 @@
         "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
       }
     },
-    "com.posthog.organizations#RolesRoleMembershipsCreateRequest": {
+    "com.posthog.organizations#CreateRoleRoleMembershipRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -21702,10 +21702,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.organizations#RolesRoleMembershipsCreate": {
+    "com.posthog.organizations#CreateRoleRoleMembership": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.organizations#RolesRoleMembershipsCreateRequest"
+        "target": "com.posthog.organizations#CreateRoleRoleMembershipRequest"
       },
       "output": {
         "target": "com.posthog.organizations#RoleMembershipOutput"
@@ -22144,13 +22144,13 @@
           "target": "com.posthog.organizations#Update"
         },
         {
-          "target": "com.posthog.organizations#PartialUpdate"
+          "target": "com.posthog.organizations#UpdatePartial"
         },
         {
           "target": "com.posthog.organizations#Destroy"
         },
         {
-          "target": "com.posthog.organizations#RemoveBlockedMembersAndEnforceVerifiedDomainsCreate"
+          "target": "com.posthog.organizations#CreateRemoveBlockedMemberAndEnforceVerifiedDomain"
         },
         {
           "target": "com.posthog.organizations#RequestAiAccessCreate"
@@ -22159,40 +22159,40 @@
           "target": "com.posthog.organizations#TeamsDataFreshnessRetrieve"
         },
         {
-          "target": "com.posthog.organizations#CimdVerificationTokensList"
+          "target": "com.posthog.organizations#ListCimdVerificationTokens"
         },
         {
-          "target": "com.posthog.organizations#CimdVerificationTokensCreate"
+          "target": "com.posthog.organizations#CreateCimdVerificationToken"
         },
         {
           "target": "com.posthog.organizations#CimdVerificationTokensRetrieve"
         },
         {
-          "target": "com.posthog.organizations#CimdVerificationTokensPartialUpdate"
+          "target": "com.posthog.organizations#UpdateCimdVerificationTokenPartial"
         },
         {
           "target": "com.posthog.organizations#CimdVerificationTokensDestroy"
         },
         {
-          "target": "com.posthog.organizations#DesktopBetaTermsList"
+          "target": "com.posthog.organizations#ListDesktopBetaTerms"
         },
         {
-          "target": "com.posthog.organizations#DesktopBetaTermsCreate"
+          "target": "com.posthog.organizations#CreateDesktopBetaTerm"
         },
         {
-          "target": "com.posthog.organizations#DomainsList"
+          "target": "com.posthog.organizations#ListDomains"
         },
         {
-          "target": "com.posthog.organizations#DomainsCreate"
+          "target": "com.posthog.organizations#CreateDomain"
         },
         {
           "target": "com.posthog.organizations#DomainsRetrieve"
         },
         {
-          "target": "com.posthog.organizations#DomainsUpdate"
+          "target": "com.posthog.organizations#UpdateDomain"
         },
         {
-          "target": "com.posthog.organizations#DomainsPartialUpdate"
+          "target": "com.posthog.organizations#UpdateDomainPartial"
         },
         {
           "target": "com.posthog.organizations#DomainsDestroy"
@@ -22204,49 +22204,49 @@
           "target": "com.posthog.organizations#DomainsVerifyCreate"
         },
         {
-          "target": "com.posthog.organizations#IdentityProviderConfigsList"
+          "target": "com.posthog.organizations#ListIdentityProviderConfigs"
         },
         {
-          "target": "com.posthog.organizations#IdentityProviderConfigsCreate"
+          "target": "com.posthog.organizations#CreateIdentityProviderConfig"
         },
         {
           "target": "com.posthog.organizations#IdentityProviderConfigsRetrieve"
         },
         {
-          "target": "com.posthog.organizations#IdentityProviderConfigsUpdate"
+          "target": "com.posthog.organizations#UpdateIdentityProviderConfig"
         },
         {
-          "target": "com.posthog.organizations#IdentityProviderConfigsPartialUpdate"
+          "target": "com.posthog.organizations#UpdateIdentityProviderConfigPartial"
         },
         {
           "target": "com.posthog.organizations#IdentityProviderConfigsDestroy"
         },
         {
-          "target": "com.posthog.organizations#IdentityProviderConfigsScimTokenCreate"
+          "target": "com.posthog.organizations#CreateIdentityProviderConfigScimToken"
         },
         {
-          "target": "com.posthog.organizations#IntegrationsEnvironmentMappingPartialUpdate"
+          "target": "com.posthog.organizations#UpdateIntegrationEnvironmentMappingPartial"
         },
         {
-          "target": "com.posthog.organizations#InvitesList"
+          "target": "com.posthog.organizations#ListInvites"
         },
         {
-          "target": "com.posthog.organizations#InvitesCreate"
+          "target": "com.posthog.organizations#CreateInvite"
         },
         {
           "target": "com.posthog.organizations#InvitesDestroy"
         },
         {
-          "target": "com.posthog.organizations#InvitesBulkCreate"
+          "target": "com.posthog.organizations#CreateInviteBulk"
         },
         {
-          "target": "com.posthog.organizations#InvitesDelegateCreate"
+          "target": "com.posthog.organizations#CreateInviteDelegate"
         },
         {
-          "target": "com.posthog.organizations#LegalDocumentsList"
+          "target": "com.posthog.organizations#ListLegalDocuments"
         },
         {
-          "target": "com.posthog.organizations#LegalDocumentsCreate"
+          "target": "com.posthog.organizations#CreateLegalDocument"
         },
         {
           "target": "com.posthog.organizations#LegalDocumentsRetrieve"
@@ -22258,13 +22258,13 @@
           "target": "com.posthog.organizations#LegalDocumentsDownloadRetrieve"
         },
         {
-          "target": "com.posthog.organizations#MembersList"
+          "target": "com.posthog.organizations#ListMembers"
         },
         {
-          "target": "com.posthog.organizations#MembersUpdate"
+          "target": "com.posthog.organizations#UpdateMember"
         },
         {
-          "target": "com.posthog.organizations#MembersPartialUpdate"
+          "target": "com.posthog.organizations#UpdateMemberPartial"
         },
         {
           "target": "com.posthog.organizations#MembersDestroy"
@@ -22276,22 +22276,22 @@
           "target": "com.posthog.organizations#MembersScopedApiKeysRetrieve"
         },
         {
-          "target": "com.posthog.organizations#OauthApplicationsList"
+          "target": "com.posthog.organizations#ListOauthApplications"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsList"
+          "target": "com.posthog.organizations#ListOrganizationProjects"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsCreate"
+          "target": "com.posthog.organizations#CreateOrganizationProject"
         },
         {
           "target": "com.posthog.organizations#OrganizationsProjectsRetrieve"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsUpdate"
+          "target": "com.posthog.organizations#UpdateOrganizationProject"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsPartialUpdate"
+          "target": "com.posthog.organizations#UpdateOrganizationProjectPartial"
         },
         {
           "target": "com.posthog.organizations#OrganizationsProjectsDestroy"
@@ -22300,25 +22300,25 @@
           "target": "com.posthog.organizations#OrganizationsProjectsActivityRetrieve"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsAddProductIntentPartialUpdate"
+          "target": "com.posthog.organizations#UpdateOrganizationProjectAddProductIntentPartial"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsChangeOrganizationCreate"
+          "target": "com.posthog.organizations#CreateOrganizationProjectChangeOrganization"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsCompleteProductOnboardingPartialUpdate"
+          "target": "com.posthog.organizations#UpdateOrganizationProjectCompleteProductOnboardingPartial"
         },
         {
           "target": "com.posthog.organizations#OrganizationsProjectsDefaultEvaluationContextsRetrieve"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsDefaultEvaluationContextsCreate"
+          "target": "com.posthog.organizations#CreateOrganizationProjectDefaultEvaluationContext"
         },
         {
           "target": "com.posthog.organizations#OrganizationsProjectsDefaultEvaluationContextsDestroy"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsDefaultReleaseConditionsRetrieve"
+          "target": "com.posthog.organizations#ReleaseOrganizationProjectDefaultConditionRetrieve"
         },
         {
           "target": "com.posthog.organizations#OrganizationsProjectsDefaultReleaseConditionsUpdate"
@@ -22327,19 +22327,19 @@
           "target": "com.posthog.organizations#OrganizationsProjectsDeleteSecretTokenBackupPartialUpdate"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsEvaluationContextSuggestionsCreate"
+          "target": "com.posthog.organizations#CreateOrganizationProjectEvaluationContextSuggestion"
         },
         {
           "target": "com.posthog.organizations#OrganizationsProjectsEvaluationContextSuggestionsDestroy"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsEventIngestionRestrictionsList"
+          "target": "com.posthog.organizations#ListOrganizationProjectEventIngestionRestrictions"
         },
         {
           "target": "com.posthog.organizations#OrganizationsProjectsExperimentsConfigRetrieve"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsExperimentsConfigPartialUpdate"
+          "target": "com.posthog.organizations#UpdateOrganizationProjectExperimentConfigPartial"
         },
         {
           "target": "com.posthog.organizations#OrganizationsProjectsGenerateConversationsPublicTokenCreate"
@@ -22351,10 +22351,10 @@
           "target": "com.posthog.organizations#OrganizationsProjectsLogsConfigRetrieve"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsLogsConfigPartialUpdate"
+          "target": "com.posthog.organizations#UpdateOrganizationProjectLogConfigPartial"
         },
         {
-          "target": "com.posthog.organizations#OrganizationsProjectsResetTokenPartialUpdate"
+          "target": "com.posthog.organizations#UpdateOrganizationProjectResetTokenPartial"
         },
         {
           "target": "com.posthog.organizations#OrganizationsProjectsRotateSecretTokenPartialUpdate"
@@ -22363,10 +22363,10 @@
           "target": "com.posthog.organizations#OrganizationsProjectsSettingsAsOfRetrieve"
         },
         {
-          "target": "com.posthog.organizations#RoleExternalReferencesList"
+          "target": "com.posthog.organizations#ListRoleExternalReferences"
         },
         {
-          "target": "com.posthog.organizations#RoleExternalReferencesCreate"
+          "target": "com.posthog.organizations#CreateRoleExternalReference"
         },
         {
           "target": "com.posthog.organizations#RoleExternalReferencesDestroy"
@@ -22375,28 +22375,28 @@
           "target": "com.posthog.organizations#RoleExternalReferencesLookupRetrieve"
         },
         {
-          "target": "com.posthog.organizations#RolesList"
+          "target": "com.posthog.organizations#ListRoles"
         },
         {
-          "target": "com.posthog.organizations#RolesCreate"
+          "target": "com.posthog.organizations#CreateRole"
         },
         {
           "target": "com.posthog.organizations#RolesRetrieve"
         },
         {
-          "target": "com.posthog.organizations#RolesUpdate"
+          "target": "com.posthog.organizations#UpdateRole"
         },
         {
-          "target": "com.posthog.organizations#RolesPartialUpdate"
+          "target": "com.posthog.organizations#UpdateRolePartial"
         },
         {
           "target": "com.posthog.organizations#RolesDestroy"
         },
         {
-          "target": "com.posthog.organizations#RolesRoleMembershipsList"
+          "target": "com.posthog.organizations#ListRoleRoleMemberships"
         },
         {
-          "target": "com.posthog.organizations#RolesRoleMembershipsCreate"
+          "target": "com.posthog.organizations#CreateRoleRoleMembership"
         },
         {
           "target": "com.posthog.organizations#RolesRoleMembershipsRetrieve"

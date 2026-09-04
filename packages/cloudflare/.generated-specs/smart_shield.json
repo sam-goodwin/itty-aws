@@ -896,7 +896,7 @@
         }
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksCreateRequest": {
+    "com.cloudflare.smart_shield#CreateHealthCheckRequest": {
       "type": "structure",
       "members": {
         "zone_id": {
@@ -1235,7 +1235,7 @@
         }
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksCreateResponse": {
+    "com.cloudflare.smart_shield#CreateHealthCheckResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1346,13 +1346,13 @@
         "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksCreate": {
+    "com.cloudflare.smart_shield#CreateHealthCheck": {
       "type": "operation",
       "input": {
-        "target": "com.cloudflare.smart_shield#HealthChecksCreateRequest"
+        "target": "com.cloudflare.smart_shield#CreateHealthCheckRequest"
       },
       "output": {
-        "target": "com.cloudflare.smart_shield#HealthChecksCreateResponse"
+        "target": "com.cloudflare.smart_shield#CreateHealthCheckResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1363,7 +1363,7 @@
         "smithy.api#documentation": "Create a new health check."
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksDeleteRequest": {
+    "com.cloudflare.smart_shield#DeleteHealthCheckRequest": {
       "type": "structure",
       "members": {
         "zone_id": {
@@ -1387,7 +1387,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksDeleteResponse": {
+    "com.cloudflare.smart_shield#DeleteHealthCheckResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1402,13 +1402,13 @@
         "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksDelete": {
+    "com.cloudflare.smart_shield#DeleteHealthCheck": {
       "type": "operation",
       "input": {
-        "target": "com.cloudflare.smart_shield#HealthChecksDeleteRequest"
+        "target": "com.cloudflare.smart_shield#DeleteHealthCheckRequest"
       },
       "output": {
-        "target": "com.cloudflare.smart_shield#HealthChecksDeleteResponse"
+        "target": "com.cloudflare.smart_shield#DeleteHealthCheckResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2109,7 +2109,7 @@
         "smithy.api#documentation": "Patch a configured health check."
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksGetRequest": {
+    "com.cloudflare.smart_shield#GetHealthCheckRequest": {
       "type": "structure",
       "members": {
         "zone_id": {
@@ -2376,7 +2376,7 @@
         }
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksGetResponse": {
+    "com.cloudflare.smart_shield#GetHealthCheckResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2487,13 +2487,13 @@
         "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksGet": {
+    "com.cloudflare.smart_shield#GetHealthCheck": {
       "type": "operation",
       "input": {
-        "target": "com.cloudflare.smart_shield#HealthChecksGetRequest"
+        "target": "com.cloudflare.smart_shield#GetHealthCheckRequest"
       },
       "output": {
-        "target": "com.cloudflare.smart_shield#HealthChecksGetResponse"
+        "target": "com.cloudflare.smart_shield#GetHealthCheckResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2505,7 +2505,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksListRequest": {
+    "com.cloudflare.smart_shield#ListHealthChecksRequest": {
       "type": "structure",
       "members": {
         "zone_id": {
@@ -2891,7 +2891,7 @@
         "target": "com.cloudflare.smart_shield#HealthChecksListResultItem"
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksListResponse": {
+    "com.cloudflare.smart_shield#ListHealthChecksResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -2906,13 +2906,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksList": {
+    "com.cloudflare.smart_shield#ListHealthChecks": {
       "type": "operation",
       "input": {
-        "target": "com.cloudflare.smart_shield#HealthChecksListRequest"
+        "target": "com.cloudflare.smart_shield#ListHealthChecksRequest"
       },
       "output": {
-        "target": "com.cloudflare.smart_shield#HealthChecksListResponse"
+        "target": "com.cloudflare.smart_shield#ListHealthChecksResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3340,7 +3340,7 @@
         }
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksUpdateRequest": {
+    "com.cloudflare.smart_shield#UpdateHealthCheckRequest": {
       "type": "structure",
       "members": {
         "zone_id": {
@@ -3632,7 +3632,7 @@
         }
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksUpdateResponse": {
+    "com.cloudflare.smart_shield#UpdateHealthCheckResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3743,13 +3743,13 @@
         "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
-    "com.cloudflare.smart_shield#HealthChecksUpdate": {
+    "com.cloudflare.smart_shield#UpdateHealthCheck": {
       "type": "operation",
       "input": {
-        "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequest"
+        "target": "com.cloudflare.smart_shield#UpdateHealthCheckRequest"
       },
       "output": {
-        "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponse"
+        "target": "com.cloudflare.smart_shield#UpdateHealthCheckResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3778,22 +3778,22 @@
           "target": "com.cloudflare.smart_shield#CacheReserveClearStatus"
         },
         {
-          "target": "com.cloudflare.smart_shield#HealthChecksCreate"
+          "target": "com.cloudflare.smart_shield#CreateHealthCheck"
         },
         {
-          "target": "com.cloudflare.smart_shield#HealthChecksDelete"
+          "target": "com.cloudflare.smart_shield#DeleteHealthCheck"
         },
         {
           "target": "com.cloudflare.smart_shield#HealthChecksEdit"
         },
         {
-          "target": "com.cloudflare.smart_shield#HealthChecksGet"
+          "target": "com.cloudflare.smart_shield#GetHealthCheck"
         },
         {
-          "target": "com.cloudflare.smart_shield#HealthChecksList"
+          "target": "com.cloudflare.smart_shield#ListHealthChecks"
         },
         {
-          "target": "com.cloudflare.smart_shield#HealthChecksUpdate"
+          "target": "com.cloudflare.smart_shield#UpdateHealthCheck"
         }
       ],
       "traits": {

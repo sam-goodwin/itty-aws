@@ -981,7 +981,7 @@
         }
       }
     },
-    "com.modal.functions#FunctionCallGetInfoRequest": {
+    "com.modal.functions#GetFunctionCallInfoRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -1082,7 +1082,7 @@
         "target": "com.modal.functions#InputInfo"
       }
     },
-    "com.modal.functions#FunctionCallGetInfoResponse": {
+    "com.modal.functions#GetFunctionCallInfoResponse": {
       "type": "structure",
       "members": {
         "info": {
@@ -1093,13 +1093,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionCallGetInfo": {
+    "com.modal.functions#GetFunctionCallInfo": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionCallGetInfoRequest"
+        "target": "com.modal.functions#GetFunctionCallInfoRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionCallGetInfoResponse"
+        "target": "com.modal.functions#GetFunctionCallInfoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1109,7 +1109,7 @@
         }
       }
     },
-    "com.modal.functions#FunctionCallListRequest": {
+    "com.modal.functions#ListFunctionCallRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -1126,7 +1126,7 @@
         "target": "com.modal.functions#FunctionCallInfo"
       }
     },
-    "com.modal.functions#FunctionCallListResponse": {
+    "com.modal.functions#ListFunctionCallResponse": {
       "type": "structure",
       "members": {
         "functionCalls": {
@@ -1137,13 +1137,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionCallList": {
+    "com.modal.functions#ListFunctionCall": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionCallListRequest"
+        "target": "com.modal.functions#ListFunctionCallRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionCallListResponse"
+        "target": "com.modal.functions#ListFunctionCallResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2413,7 +2413,7 @@
         "target": "com.modal.functions#FunctionDataRankedFunction"
       }
     },
-    "com.modal.functions#FunctionCreateRequest": {
+    "com.modal.functions#CreateFunctionRequest": {
       "type": "structure",
       "members": {
         "function": {
@@ -2491,7 +2491,7 @@
         "target": "com.modal.functions#Warning"
       }
     },
-    "com.modal.functions#FunctionCreateResponse": {
+    "com.modal.functions#CreateFunctionResponse": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -2526,13 +2526,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionCreate": {
+    "com.modal.functions#CreateFunction": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionCreateRequest"
+        "target": "com.modal.functions#CreateFunctionRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionCreateResponse"
+        "target": "com.modal.functions#CreateFunctionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2575,7 +2575,7 @@
         }
       }
     },
-    "com.modal.functions#FunctionGetRequest": {
+    "com.modal.functions#GetFunctionRequest": {
       "type": "structure",
       "members": {
         "appName": {
@@ -2598,7 +2598,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.functions#FunctionGetResponse": {
+    "com.modal.functions#GetFunctionResponse": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -2618,13 +2618,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionGet": {
+    "com.modal.functions#GetFunction": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionGetRequest"
+        "target": "com.modal.functions#GetFunctionRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionGetResponse"
+        "target": "com.modal.functions#GetFunctionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2635,7 +2635,7 @@
         "smithy.api#documentation": "For map RPCs, to signal that all inputs have been sent"
       }
     },
-    "com.modal.functions#FunctionGetCallGraphRequest": {
+    "com.modal.functions#GetFunctionCallGraphRequest": {
       "type": "structure",
       "members": {
         "functionCallId": {
@@ -2758,7 +2758,7 @@
         "target": "com.modal.functions#FunctionCallCallGraphInfo"
       }
     },
-    "com.modal.functions#FunctionGetCallGraphResponse": {
+    "com.modal.functions#GetFunctionCallGraphResponse": {
       "type": "structure",
       "members": {
         "inputs": {
@@ -2772,13 +2772,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionGetCallGraph": {
+    "com.modal.functions#GetFunctionCallGraph": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionGetCallGraphRequest"
+        "target": "com.modal.functions#GetFunctionCallGraphRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionGetCallGraphResponse"
+        "target": "com.modal.functions#GetFunctionCallGraphResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2788,7 +2788,7 @@
         }
       }
     },
-    "com.modal.functions#FunctionGetCurrentStatsRequest": {
+    "com.modal.functions#GetFunctionCurrentStatRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -2799,7 +2799,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.functions#FunctionGetCurrentStatsResponse": {
+    "com.modal.functions#GetFunctionCurrentStatResponse": {
       "type": "structure",
       "members": {
         "backlog": {
@@ -2819,13 +2819,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionGetCurrentStats": {
+    "com.modal.functions#GetFunctionCurrentStat": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionGetCurrentStatsRequest"
+        "target": "com.modal.functions#GetFunctionCurrentStatRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionGetCurrentStatsResponse"
+        "target": "com.modal.functions#GetFunctionCurrentStatResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2835,7 +2835,7 @@
         }
       }
     },
-    "com.modal.functions#FunctionGetDynamicConcurrencyRequest": {
+    "com.modal.functions#GetFunctionDynamicConcurrencyRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -2852,7 +2852,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.functions#FunctionGetDynamicConcurrencyResponse": {
+    "com.modal.functions#GetFunctionDynamicConcurrencyResponse": {
       "type": "structure",
       "members": {
         "concurrency": {
@@ -2863,13 +2863,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionGetDynamicConcurrency": {
+    "com.modal.functions#GetFunctionDynamicConcurrency": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionGetDynamicConcurrencyRequest"
+        "target": "com.modal.functions#GetFunctionDynamicConcurrencyRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionGetDynamicConcurrencyResponse"
+        "target": "com.modal.functions#GetFunctionDynamicConcurrencyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2879,7 +2879,7 @@
         }
       }
     },
-    "com.modal.functions#FunctionGetInputsRequest": {
+    "com.modal.functions#GetFunctionInputRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -2987,7 +2987,7 @@
         "target": "com.modal.functions#FunctionGetInputsItem"
       }
     },
-    "com.modal.functions#FunctionGetInputsResponse": {
+    "com.modal.functions#GetFunctionInputResponse": {
       "type": "structure",
       "members": {
         "inputs": {
@@ -3001,13 +3001,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionGetInputs": {
+    "com.modal.functions#GetFunctionInput": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionGetInputsRequest"
+        "target": "com.modal.functions#GetFunctionInputRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionGetInputsResponse"
+        "target": "com.modal.functions#GetFunctionInputResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3017,7 +3017,7 @@
         }
       }
     },
-    "com.modal.functions#FunctionGetOutputsRequest": {
+    "com.modal.functions#GetFunctionOutputRequest": {
       "type": "structure",
       "members": {
         "functionCallId": {
@@ -3170,7 +3170,7 @@
         "target": "com.modal.functions#FunctionGetOutputsItem"
       }
     },
-    "com.modal.functions#FunctionGetOutputsResponse": {
+    "com.modal.functions#GetFunctionOutputResponse": {
       "type": "structure",
       "members": {
         "idxs": {
@@ -3190,13 +3190,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionGetOutputs": {
+    "com.modal.functions#GetFunctionOutput": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionGetOutputsRequest"
+        "target": "com.modal.functions#GetFunctionOutputRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionGetOutputsResponse"
+        "target": "com.modal.functions#GetFunctionOutputResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3207,7 +3207,7 @@
         "smithy.api#documentation": "For containers to request next call"
       }
     },
-    "com.modal.functions#FunctionGetSerializedRequest": {
+    "com.modal.functions#GetFunctionSerializedRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -3218,7 +3218,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.functions#FunctionGetSerializedResponse": {
+    "com.modal.functions#GetFunctionSerializedResponse": {
       "type": "structure",
       "members": {
         "functionSerialized": {
@@ -3232,13 +3232,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionGetSerialized": {
+    "com.modal.functions#GetFunctionSerialized": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionGetSerializedRequest"
+        "target": "com.modal.functions#GetFunctionSerializedRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionGetSerializedResponse"
+        "target": "com.modal.functions#GetFunctionSerializedResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3249,7 +3249,7 @@
         "smithy.api#documentation": "Returns the next result(s) for an entire function call (FunctionMap)"
       }
     },
-    "com.modal.functions#FunctionGetTimeRangeStatsRequest": {
+    "com.modal.functions#GetFunctionTimeRangeStatRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -3286,7 +3286,7 @@
         }
       }
     },
-    "com.modal.functions#FunctionGetTimeRangeStatsResponse": {
+    "com.modal.functions#GetFunctionTimeRangeStatResponse": {
       "type": "structure",
       "members": {
         "since": {
@@ -3354,13 +3354,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionGetTimeRangeStats": {
+    "com.modal.functions#GetFunctionTimeRangeStat": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionGetTimeRangeStatsRequest"
+        "target": "com.modal.functions#GetFunctionTimeRangeStatRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionGetTimeRangeStatsResponse"
+        "target": "com.modal.functions#GetFunctionTimeRangeStatResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3773,7 +3773,7 @@
         "smithy.api#documentation": "For containers to return result"
       }
     },
-    "com.modal.functions#FunctionStartPtyShell": {
+    "com.modal.functions#StartFunctionPtyShell": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -3789,7 +3789,7 @@
         }
       }
     },
-    "com.modal.functions#FunctionUpdateSchedulingParamsRequest": {
+    "com.modal.functions#UpdateFunctionSchedulingParamRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -3806,7 +3806,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.functions#FunctionUpdateSchedulingParamsResponse": {
+    "com.modal.functions#UpdateFunctionSchedulingParamResponse": {
       "type": "structure",
       "members": {
         "currentSettings": {
@@ -3817,13 +3817,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.functions#FunctionUpdateSchedulingParams": {
+    "com.modal.functions#UpdateFunctionSchedulingParam": {
       "type": "operation",
       "input": {
-        "target": "com.modal.functions#FunctionUpdateSchedulingParamsRequest"
+        "target": "com.modal.functions#UpdateFunctionSchedulingParamRequest"
       },
       "output": {
-        "target": "com.modal.functions#FunctionUpdateSchedulingParamsResponse"
+        "target": "com.modal.functions#UpdateFunctionSchedulingParamResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3850,43 +3850,43 @@
           "target": "com.modal.functions#FunctionCallFromId"
         },
         {
-          "target": "com.modal.functions#FunctionCallGetInfo"
+          "target": "com.modal.functions#GetFunctionCallInfo"
         },
         {
-          "target": "com.modal.functions#FunctionCallList"
+          "target": "com.modal.functions#ListFunctionCall"
         },
         {
           "target": "com.modal.functions#FunctionCallPutDataOut"
         },
         {
-          "target": "com.modal.functions#FunctionCreate"
+          "target": "com.modal.functions#CreateFunction"
         },
         {
           "target": "com.modal.functions#FunctionFinishInputs"
         },
         {
-          "target": "com.modal.functions#FunctionGet"
+          "target": "com.modal.functions#GetFunction"
         },
         {
-          "target": "com.modal.functions#FunctionGetCallGraph"
+          "target": "com.modal.functions#GetFunctionCallGraph"
         },
         {
-          "target": "com.modal.functions#FunctionGetCurrentStats"
+          "target": "com.modal.functions#GetFunctionCurrentStat"
         },
         {
-          "target": "com.modal.functions#FunctionGetDynamicConcurrency"
+          "target": "com.modal.functions#GetFunctionDynamicConcurrency"
         },
         {
-          "target": "com.modal.functions#FunctionGetInputs"
+          "target": "com.modal.functions#GetFunctionInput"
         },
         {
-          "target": "com.modal.functions#FunctionGetOutputs"
+          "target": "com.modal.functions#GetFunctionOutput"
         },
         {
-          "target": "com.modal.functions#FunctionGetSerialized"
+          "target": "com.modal.functions#GetFunctionSerialized"
         },
         {
-          "target": "com.modal.functions#FunctionGetTimeRangeStats"
+          "target": "com.modal.functions#GetFunctionTimeRangeStat"
         },
         {
           "target": "com.modal.functions#FunctionMap"
@@ -3904,10 +3904,10 @@
           "target": "com.modal.functions#FunctionRetryInputs"
         },
         {
-          "target": "com.modal.functions#FunctionStartPtyShell"
+          "target": "com.modal.functions#StartFunctionPtyShell"
         },
         {
-          "target": "com.modal.functions#FunctionUpdateSchedulingParams"
+          "target": "com.modal.functions#UpdateFunctionSchedulingParam"
         }
       ],
       "traits": {

@@ -718,7 +718,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.gcp.safebrowsing_v5#BatchGetHashListsRequest": {
+    "com.gcp.safebrowsing_v5#GetBatchHashListRequest": {
       "type": "structure",
       "members": {
         "version": {
@@ -751,10 +751,10 @@
         }
       }
     },
-    "com.gcp.safebrowsing_v5#BatchGetHashLists": {
+    "com.gcp.safebrowsing_v5#GetBatchHashList": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.safebrowsing_v5#BatchGetHashListsRequest"
+        "target": "com.gcp.safebrowsing_v5#GetBatchHashListRequest"
       },
       "output": {
         "target": "com.gcp.safebrowsing_v5#GoogleSecuritySafebrowsingV5BatchGetHashListsResponse"

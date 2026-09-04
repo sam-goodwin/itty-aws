@@ -6580,7 +6580,7 @@
         "smithy.api#documentation": "Delete connection\n\nDeletes the connection with the given ID."
       }
     },
-    "com.prisma.postgres#PostV1ConnectionsByIdRotateRequest": {
+    "com.prisma.postgres#RotatePostV1ConnectionByIdRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -6846,7 +6846,7 @@
       },
       "traits": {}
     },
-    "com.prisma.postgres#PostV1ConnectionsByIdRotateResponse": {
+    "com.prisma.postgres#RotatePostV1ConnectionByIdResponse": {
       "type": "structure",
       "members": {
         "data": {
@@ -6860,13 +6860,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.prisma.postgres#PostV1ConnectionsByIdRotate": {
+    "com.prisma.postgres#RotatePostV1ConnectionById": {
       "type": "operation",
       "input": {
-        "target": "com.prisma.postgres#PostV1ConnectionsByIdRotateRequest"
+        "target": "com.prisma.postgres#RotatePostV1ConnectionByIdRequest"
       },
       "output": {
-        "target": "com.prisma.postgres#PostV1ConnectionsByIdRotateResponse"
+        "target": "com.prisma.postgres#RotatePostV1ConnectionByIdResponse"
       },
       "errors": [
         {
@@ -9990,7 +9990,7 @@
       },
       "traits": {}
     },
-    "com.prisma.postgres#PostV1DatabasesByTargetDatabaseIdRestoreRequest": {
+    "com.prisma.postgres#RestorePostV1DatabaseByTargetDatabaseIdRequest": {
       "type": "structure",
       "members": {
         "targetDatabaseId": {
@@ -10399,7 +10399,7 @@
       },
       "traits": {}
     },
-    "com.prisma.postgres#PostV1DatabasesByTargetDatabaseIdRestoreResponse": {
+    "com.prisma.postgres#RestorePostV1DatabaseByTargetDatabaseIdResponse": {
       "type": "structure",
       "members": {
         "data": {
@@ -10413,13 +10413,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.prisma.postgres#PostV1DatabasesByTargetDatabaseIdRestore": {
+    "com.prisma.postgres#RestorePostV1DatabaseByTargetDatabaseId": {
       "type": "operation",
       "input": {
-        "target": "com.prisma.postgres#PostV1DatabasesByTargetDatabaseIdRestoreRequest"
+        "target": "com.prisma.postgres#RestorePostV1DatabaseByTargetDatabaseIdRequest"
       },
       "output": {
-        "target": "com.prisma.postgres#PostV1DatabasesByTargetDatabaseIdRestoreResponse"
+        "target": "com.prisma.postgres#RestorePostV1DatabaseByTargetDatabaseIdResponse"
       },
       "errors": [
         {
@@ -10776,7 +10776,7 @@
         "smithy.api#documentation": "Delete deployment\n\n⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️\n\nPermanently deletes the deployment, its metadata, and any associated VM. The deployment must be stopped or in the `new` state before it can be deleted."
       }
     },
-    "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStartRequest": {
+    "com.prisma.postgres#StartPostV1DeploymentByDeploymentIdRequest": {
       "type": "structure",
       "members": {
         "deploymentId": {
@@ -10803,7 +10803,7 @@
       },
       "traits": {}
     },
-    "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStartResponse": {
+    "com.prisma.postgres#StartPostV1DeploymentByDeploymentIdResponse": {
       "type": "structure",
       "members": {
         "data": {
@@ -10817,13 +10817,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStart": {
+    "com.prisma.postgres#StartPostV1DeploymentByDeploymentId": {
       "type": "operation",
       "input": {
-        "target": "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStartRequest"
+        "target": "com.prisma.postgres#StartPostV1DeploymentByDeploymentIdRequest"
       },
       "output": {
-        "target": "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStartResponse"
+        "target": "com.prisma.postgres#StartPostV1DeploymentByDeploymentIdResponse"
       },
       "errors": [
         {
@@ -10845,7 +10845,7 @@
         "smithy.api#documentation": "Start deployment\n\n⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️\n\nRequests VM creation and startup for the deployment. The artifact must be uploaded before calling this endpoint. Returns a preview domain that becomes reachable once the VM is running. Poll the status endpoint until `running` is reached."
       }
     },
-    "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStopRequest": {
+    "com.prisma.postgres#StopPostV1DeploymentByDeploymentIdRequest": {
       "type": "structure",
       "members": {
         "deploymentId": {
@@ -10860,10 +10860,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStop": {
+    "com.prisma.postgres#StopPostV1DeploymentByDeploymentId": {
       "type": "operation",
       "input": {
-        "target": "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStopRequest"
+        "target": "com.prisma.postgres#StopPostV1DeploymentByDeploymentIdRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19469,7 +19469,7 @@
           "target": "com.prisma.postgres#DeleteV1ConnectionsById"
         },
         {
-          "target": "com.prisma.postgres#PostV1ConnectionsByIdRotate"
+          "target": "com.prisma.postgres#RotatePostV1ConnectionById"
         },
         {
           "target": "com.prisma.postgres#GetV1Databases"
@@ -19496,7 +19496,7 @@
           "target": "com.prisma.postgres#GetV1DatabasesByDatabaseIdBackups"
         },
         {
-          "target": "com.prisma.postgres#PostV1DatabasesByTargetDatabaseIdRestore"
+          "target": "com.prisma.postgres#RestorePostV1DatabaseByTargetDatabaseId"
         },
         {
           "target": "com.prisma.postgres#GetV1DatabasesByDatabaseIdUsage"
@@ -19508,10 +19508,10 @@
           "target": "com.prisma.postgres#DeleteV1DeploymentsByDeploymentId"
         },
         {
-          "target": "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStart"
+          "target": "com.prisma.postgres#StartPostV1DeploymentByDeploymentId"
         },
         {
-          "target": "com.prisma.postgres#PostV1DeploymentsByDeploymentIdStop"
+          "target": "com.prisma.postgres#StopPostV1DeploymentByDeploymentId"
         },
         {
           "target": "com.prisma.postgres#GetV1DeploymentsByDeploymentIdLogs"

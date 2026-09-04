@@ -11,29 +11,35 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface StreamlitAppsActivateVersionCreateRequest {
+export interface CreateStreamlitAppRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  short_id: string;
-  /** Version number to activate. Must reference an existing version of this app. */
-  version_number: number;
+  /** Name of the app. */
+  name: string;
+  /** Optional description of the app. */
+  description?: string;
+  /** CPU cores allocated to the sandbox. */
+  cpu_cores?: number;
+  /** Memory in GB allocated to the sandbox. */
+  memory_gb?: number;
 }
-export const StreamlitAppsActivateVersionCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      short_id: S.String.pipe(T.Label()),
-      version_number: S.Number,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/activate_version/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "StreamlitAppsActivateVersionCreateRequest",
-  }) as any as S.Schema<StreamlitAppsActivateVersionCreateRequest>;
+export const CreateStreamlitAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.String,
+    description: S.optional(S.String),
+    cpu_cores: S.optional(S.Number),
+    memory_gb: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/streamlit_apps/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateStreamlitAppRequest",
+}) as any as S.Schema<CreateStreamlitAppRequest>;
 
 export type StreamlitAppUserInfoHedgehogConfigMap = {
   [key: string]: unknown | undefined;
@@ -92,84 +98,6 @@ export const AppVersionContract = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppVersionContract",
 }) as any as S.Schema<AppVersionContract>;
 
-export interface ActivateVersionResponse {
-  /** The version that is now active for the app. */
-  active_version: AppVersionContract;
-}
-export const ActivateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active_version: AppVersionContract,
-  }),
-).annotate({
-  identifier: "ActivateVersionResponse",
-}) as any as S.Schema<ActivateVersionResponse>;
-
-export interface StreamlitAppsConnectInfoRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-}
-export const StreamlitAppsConnectInfoRetrieveRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      short_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/connect_info/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "StreamlitAppsConnectInfoRetrieveRequest",
-}) as any as S.Schema<StreamlitAppsConnectInfoRetrieveRequest>;
-
-export interface StreamlitConnectInfo {
-  /** Authenticated URL to embed the running app in an iframe. */
-  iframe_url: string;
-  /** Seconds until the embedded session credential expires. */
-  expires_in: number;
-}
-export const StreamlitConnectInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iframe_url: S.String,
-    expires_in: S.Number,
-  }),
-).annotate({
-  identifier: "StreamlitConnectInfo",
-}) as any as S.Schema<StreamlitConnectInfo>;
-
-export interface StreamlitAppsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Name of the app. */
-  name: string;
-  /** Optional description of the app. */
-  description?: string;
-  /** CPU cores allocated to the sandbox. */
-  cpu_cores?: number;
-  /** Memory in GB allocated to the sandbox. */
-  memory_gb?: number;
-}
-export const StreamlitAppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    name: S.String,
-    description: S.optional(S.String),
-    cpu_cores: S.optional(S.Number),
-    memory_gb: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/streamlit_apps/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "StreamlitAppsCreateRequest",
-}) as any as S.Schema<StreamlitAppsCreateRequest>;
-
 export interface AppSandboxContract {
   status: string;
   restart_count: number;
@@ -225,58 +153,67 @@ export const AppContract = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppContract" }) as any as S.Schema<AppContract>;
 
-export interface StreamlitAppsCreateVersionFromSourceCreateRequest {
+export interface CreateStreamlitAppActivateVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** Full Python source for the Streamlit app's root app.py file, as free text (max 1 MB). Becomes a new version and is set as the active version. */
-  source: string;
+  /** Version number to activate. Must reference an existing version of this app. */
+  version_number: number;
 }
-export const StreamlitAppsCreateVersionFromSourceCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateStreamlitAppActivateVersionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       short_id: S.String.pipe(T.Label()),
-      source: S.String,
+      version_number: S.Number,
     }).pipe(
       T.Http({
         method: "POST",
-        uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/create_version_from_source/",
+        uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/activate_version/",
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "StreamlitAppsCreateVersionFromSourceCreateRequest",
-  }) as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequest>;
+).annotate({
+  identifier: "CreateStreamlitAppActivateVersionRequest",
+}) as any as S.Schema<CreateStreamlitAppActivateVersionRequest>;
 
-export interface StreamlitAppsDestroyRequest {
+export interface ActivateVersionResponse {
+  /** The version that is now active for the app. */
+  active_version: AppVersionContract;
+}
+export const ActivateVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    active_version: AppVersionContract,
+  }),
+).annotate({
+  identifier: "ActivateVersionResponse",
+}) as any as S.Schema<ActivateVersionResponse>;
+
+export interface CreateStreamlitAppUploadVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
+  /** Zip archive containing the Streamlit app sources (max 10 MB). */
+  file: string;
 }
-export const StreamlitAppsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    short_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/",
-      code: 200,
-    }),
-  ),
+export const CreateStreamlitAppUploadVersionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      short_id: S.String.pipe(T.Label()),
+      file: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/upload_version/",
+        code: 200,
+      }),
+    ),
 ).annotate({
-  identifier: "StreamlitAppsDestroyRequest",
-}) as any as S.Schema<StreamlitAppsDestroyRequest>;
+  identifier: "CreateStreamlitAppUploadVersionRequest",
+}) as any as S.Schema<CreateStreamlitAppUploadVersionRequest>;
 
-export interface StreamlitAppsDestroyResponse {}
-export const StreamlitAppsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StreamlitAppsDestroyResponse",
-}) as any as S.Schema<StreamlitAppsDestroyResponse>;
-
-export interface StreamlitAppsListRequest {
+export interface ListStreamlitAppsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Number of results to return per page. */
@@ -284,7 +221,7 @@ export interface StreamlitAppsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const StreamlitAppsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListStreamlitAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -297,8 +234,8 @@ export const StreamlitAppsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "StreamlitAppsListRequest",
-}) as any as S.Schema<StreamlitAppsListRequest>;
+  identifier: "ListStreamlitAppsRequest",
+}) as any as S.Schema<ListStreamlitAppsRequest>;
 
 export interface AppSummaryContract {
   /** User who created this app. */
@@ -353,37 +290,92 @@ export const PaginatedAppSummaryContractList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedAppSummaryContractList",
 }) as any as S.Schema<PaginatedAppSummaryContractList>;
 
-export interface StreamlitAppsPartialUpdateRequest {
+export interface StreamlitAppsConnectInfoRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** New name for the app. */
-  name?: string;
-  /** New description for the app. */
-  description?: string;
-  /** New CPU core allocation for the sandbox. */
-  cpu_cores?: number;
-  /** New memory (GB) allocation for the sandbox. */
-  memory_gb?: number;
 }
-export const StreamlitAppsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const StreamlitAppsConnectInfoRetrieveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      short_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/connect_info/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "StreamlitAppsConnectInfoRetrieveRequest",
+}) as any as S.Schema<StreamlitAppsConnectInfoRetrieveRequest>;
+
+export interface StreamlitConnectInfo {
+  /** Authenticated URL to embed the running app in an iframe. */
+  iframe_url: string;
+  /** Seconds until the embedded session credential expires. */
+  expires_in: number;
+}
+export const StreamlitConnectInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    iframe_url: S.String,
+    expires_in: S.Number,
+  }),
+).annotate({
+  identifier: "StreamlitConnectInfo",
+}) as any as S.Schema<StreamlitConnectInfo>;
+
+export interface StreamlitAppsCreateVersionFromSourceCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** Full Python source for the Streamlit app's root app.py file, as free text (max 1 MB). Becomes a new version and is set as the active version. */
+  source: string;
+}
+export const StreamlitAppsCreateVersionFromSourceCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      short_id: S.String.pipe(T.Label()),
+      source: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/create_version_from_source/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "StreamlitAppsCreateVersionFromSourceCreateRequest",
+  }) as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequest>;
+
+export interface StreamlitAppsDestroyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+}
+export const StreamlitAppsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    cpu_cores: S.optional(S.Number),
-    memory_gb: S.optional(S.Number),
   }).pipe(
     T.Http({
-      method: "PATCH",
+      method: "DELETE",
       uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "StreamlitAppsPartialUpdateRequest",
-}) as any as S.Schema<StreamlitAppsPartialUpdateRequest>;
+  identifier: "StreamlitAppsDestroyRequest",
+}) as any as S.Schema<StreamlitAppsDestroyRequest>;
+
+export interface StreamlitAppsDestroyResponse {}
+export const StreamlitAppsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StreamlitAppsDestroyResponse",
+}) as any as S.Schema<StreamlitAppsDestroyResponse>;
 
 export interface StreamlitAppsRestartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -519,62 +511,6 @@ export const StreamlitAppsStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamlitAppsStopCreateRequest",
 }) as any as S.Schema<StreamlitAppsStopCreateRequest>;
 
-export interface StreamlitAppsUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** New name for the app. */
-  name?: string;
-  /** New description for the app. */
-  description?: string;
-  /** New CPU core allocation for the sandbox. */
-  cpu_cores?: number;
-  /** New memory (GB) allocation for the sandbox. */
-  memory_gb?: number;
-}
-export const StreamlitAppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    short_id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    cpu_cores: S.optional(S.Number),
-    memory_gb: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "StreamlitAppsUpdateRequest",
-}) as any as S.Schema<StreamlitAppsUpdateRequest>;
-
-export interface StreamlitAppsUploadVersionCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  /** Zip archive containing the Streamlit app sources (max 10 MB). */
-  file: string;
-}
-export const StreamlitAppsUploadVersionCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      short_id: S.String.pipe(T.Label()),
-      file: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/upload_version/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "StreamlitAppsUploadVersionCreateRequest",
-}) as any as S.Schema<StreamlitAppsUploadVersionCreateRequest>;
-
 export interface StreamlitAppsVersionsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -614,16 +550,125 @@ export const StreamlitAppVersionList = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamlitAppVersionList",
 }) as any as S.Schema<StreamlitAppVersionList>;
 
-export type StreamlitAppsActivateVersionCreateError = PosthogOpError;
-/** Activate an existing app version */
-export const streamlitAppsActivateVersionCreate: API.OperationMethod<
-  StreamlitAppsActivateVersionCreateRequest,
-  ActivateVersionResponse,
-  StreamlitAppsActivateVersionCreateError,
+export interface UpdateStreamlitAppRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** New name for the app. */
+  name?: string;
+  /** New description for the app. */
+  description?: string;
+  /** New CPU core allocation for the sandbox. */
+  cpu_cores?: number;
+  /** New memory (GB) allocation for the sandbox. */
+  memory_gb?: number;
+}
+export const UpdateStreamlitAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    cpu_cores: S.optional(S.Number),
+    memory_gb: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateStreamlitAppRequest",
+}) as any as S.Schema<UpdateStreamlitAppRequest>;
+
+export interface UpdateStreamlitAppPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** New name for the app. */
+  name?: string;
+  /** New description for the app. */
+  description?: string;
+  /** New CPU core allocation for the sandbox. */
+  cpu_cores?: number;
+  /** New memory (GB) allocation for the sandbox. */
+  memory_gb?: number;
+}
+export const UpdateStreamlitAppPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    cpu_cores: S.optional(S.Number),
+    memory_gb: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateStreamlitAppPartialRequest",
+}) as any as S.Schema<UpdateStreamlitAppPartialRequest>;
+
+export type CreateStreamlitAppError = PosthogOpError;
+/** Create a streamlit app */
+export const createStreamlitApp: API.OperationMethod<
+  CreateStreamlitAppRequest,
+  AppContract,
+  CreateStreamlitAppError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsActivateVersionCreateRequest,
+  input: CreateStreamlitAppRequest,
+  output: AppContract,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateStreamlitAppActivateVersionError = PosthogOpError;
+/** Activate an existing app version */
+export const createStreamlitAppActivateVersion: API.OperationMethod<
+  CreateStreamlitAppActivateVersionRequest,
+  ActivateVersionResponse,
+  CreateStreamlitAppActivateVersionError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateStreamlitAppActivateVersionRequest,
   output: ActivateVersionResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateStreamlitAppUploadVersionError = PosthogOpError;
+/** Upload a new app version */
+export const createStreamlitAppUploadVersion: API.OperationMethod<
+  CreateStreamlitAppUploadVersionRequest,
+  AppVersionContract,
+  CreateStreamlitAppUploadVersionError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateStreamlitAppUploadVersionRequest,
+  output: AppVersionContract,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListStreamlitAppsError = PosthogOpError;
+/** List streamlit apps */
+export const listStreamlitApps: API.OperationMethod<
+  ListStreamlitAppsRequest,
+  PaginatedAppSummaryContractList,
+  ListStreamlitAppsError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListStreamlitAppsRequest,
+  output: PaginatedAppSummaryContractList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -639,21 +684,6 @@ export const streamlitAppsConnectInfoRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StreamlitAppsConnectInfoRetrieveRequest,
   output: StreamlitConnectInfo,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type StreamlitAppsCreateError = PosthogOpError;
-/** Create a streamlit app */
-export const streamlitAppsCreate: API.OperationMethod<
-  StreamlitAppsCreateRequest,
-  AppContract,
-  StreamlitAppsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsCreateRequest,
-  output: AppContract,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -684,36 +714,6 @@ export const streamlitAppsDestroy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StreamlitAppsDestroyRequest,
   output: StreamlitAppsDestroyResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type StreamlitAppsListError = PosthogOpError;
-/** List streamlit apps */
-export const streamlitAppsList: API.OperationMethod<
-  StreamlitAppsListRequest,
-  PaginatedAppSummaryContractList,
-  StreamlitAppsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsListRequest,
-  output: PaginatedAppSummaryContractList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type StreamlitAppsPartialUpdateError = PosthogOpError;
-/** Partially update a streamlit app */
-export const streamlitAppsPartialUpdate: API.OperationMethod<
-  StreamlitAppsPartialUpdateRequest,
-  AppContract,
-  StreamlitAppsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsPartialUpdateRequest,
-  output: AppContract,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -794,36 +794,6 @@ export const streamlitAppsStopCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StreamlitAppsUpdateError = PosthogOpError;
-/** Update a streamlit app */
-export const streamlitAppsUpdate: API.OperationMethod<
-  StreamlitAppsUpdateRequest,
-  AppContract,
-  StreamlitAppsUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsUpdateRequest,
-  output: AppContract,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type StreamlitAppsUploadVersionCreateError = PosthogOpError;
-/** Upload a new app version */
-export const streamlitAppsUploadVersionCreate: API.OperationMethod<
-  StreamlitAppsUploadVersionCreateRequest,
-  AppVersionContract,
-  StreamlitAppsUploadVersionCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StreamlitAppsUploadVersionCreateRequest,
-  output: AppVersionContract,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type StreamlitAppsVersionsRetrieveError = PosthogOpError;
 /** List app versions */
 export const streamlitAppsVersionsRetrieve: API.OperationMethod<
@@ -834,6 +804,36 @@ export const streamlitAppsVersionsRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StreamlitAppsVersionsRetrieveRequest,
   output: StreamlitAppVersionList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateStreamlitAppError = PosthogOpError;
+/** Update a streamlit app */
+export const updateStreamlitApp: API.OperationMethod<
+  UpdateStreamlitAppRequest,
+  AppContract,
+  UpdateStreamlitAppError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateStreamlitAppRequest,
+  output: AppContract,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateStreamlitAppPartialError = PosthogOpError;
+/** Partially update a streamlit app */
+export const updateStreamlitAppPartial: API.OperationMethod<
+  UpdateStreamlitAppPartialRequest,
+  AppContract,
+  UpdateStreamlitAppPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateStreamlitAppPartialRequest,
+  output: AppContract,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

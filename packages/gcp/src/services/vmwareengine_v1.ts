@@ -2165,6 +2165,41 @@ export const GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest 
       "GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
+export interface GetNsxCredentialsProjectsLocationsPrivateCloudsRequest {
+  /** Required. The resource name of the private cloud to be queried for credentials. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
+  privateCloud: string;
+}
+export const GetNsxCredentialsProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateCloud: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+privateCloud}:showNsxCredentials",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetNsxCredentialsProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<GetNsxCredentialsProjectsLocationsPrivateCloudsRequest>;
+
+/** Credentials for a private cloud. */
+export interface Vmwareengine_Credentials {
+  /** Initial username. */
+  username?: string;
+  /** Initial password. */
+  password?: string;
+}
+export const Vmwareengine_Credentials = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    username: S.optional(S.String),
+    password: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Vmwareengine_Credentials",
+}) as any as S.Schema<Vmwareengine_Credentials>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
@@ -3023,6 +3058,28 @@ export const GetProjectsLocationsVmwareEngineNetworksRequest =
   ).annotate({
     identifier: "GetProjectsLocationsVmwareEngineNetworksRequest",
   }) as any as S.Schema<GetProjectsLocationsVmwareEngineNetworksRequest>;
+
+export interface GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
+  /** Required. The resource name of the private cloud to be queried for credentials. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
+  privateCloud: string;
+  /** Optional. The username of the user to be queried for credentials. The default value of this field is CloudOwner@gve.local. The provided value must be one of the following: CloudOwner@gve.local, solution-user-01@gve.local, solution-user-02@gve.local, solution-user-03@gve.local, solution-user-04@gve.local, solution-user-05@gve.local, zertoadmin@gve.local. */
+  username?: string;
+}
+export const GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateCloud: S.String.pipe(T.Label()),
+      username: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+privateCloud}:showVcenterCredentials",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest>;
 
 /** Request message for VmwareEngine.GrantDnsBindPermission */
 export interface GrantDnsBindPermissionRequest {
@@ -4944,63 +5001,6 @@ export const SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest 
       "SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
   }) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
-export interface ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest {
-  /** Required. The resource name of the private cloud to be queried for credentials. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
-  privateCloud: string;
-}
-export const ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateCloud: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+privateCloud}:showNsxCredentials",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest",
-  }) as any as S.Schema<ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest>;
-
-/** Credentials for a private cloud. */
-export interface Vmwareengine_Credentials {
-  /** Initial username. */
-  username?: string;
-  /** Initial password. */
-  password?: string;
-}
-export const Vmwareengine_Credentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    username: S.optional(S.String),
-    password: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Vmwareengine_Credentials",
-}) as any as S.Schema<Vmwareengine_Credentials>;
-
-export interface ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
-  /** Required. The resource name of the private cloud to be queried for credentials. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
-  privateCloud: string;
-  /** Optional. The username of the user to be queried for credentials. The default value of this field is CloudOwner@gve.local. The provided value must be one of the following: CloudOwner@gve.local, solution-user-01@gve.local, solution-user-02@gve.local, solution-user-03@gve.local, solution-user-04@gve.local, solution-user-05@gve.local, zertoadmin@gve.local. */
-  username?: string;
-}
-export const ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateCloud: S.String.pipe(T.Label()),
-      username: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+privateCloud}:showVcenterCredentials",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest",
-  }) as any as S.Schema<ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
@@ -5792,6 +5792,24 @@ export const getIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.Op
   retry: Retry.Retry,
 }));
 
+export type GetNsxCredentialsProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Gets details of credentials for NSX appliance. */
+export const getNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
+  GetNsxCredentialsProjectsLocationsPrivateCloudsRequest,
+  Vmwareengine_Credentials,
+  GetNsxCredentialsProjectsLocationsPrivateCloudsError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetNsxCredentialsProjectsLocationsPrivateCloudsRequest,
+  output: Vmwareengine_Credentials,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -6126,6 +6144,24 @@ export const getProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareEngineNetworksRequest,
   output: VmwareEngineNetwork,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetVcenterCredentialsProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Gets details of credentials for Vcenter appliance. */
+export const getVcenterCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
+  GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest,
+  Vmwareengine_Credentials,
+  GetVcenterCredentialsProjectsLocationsPrivateCloudsError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest,
+  output: Vmwareengine_Credentials,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7087,42 +7123,6 @@ export const setIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.Op
   input: SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
   output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ShowNsxCredentialsProjectsLocationsPrivateCloudsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets details of credentials for NSX appliance. */
-export const showNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
-  ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest,
-  Vmwareengine_Credentials,
-  ShowNsxCredentialsProjectsLocationsPrivateCloudsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest,
-  output: Vmwareengine_Credentials,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ShowVcenterCredentialsProjectsLocationsPrivateCloudsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets details of credentials for Vcenter appliance. */
-export const showVcenterCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
-  ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest,
-  Vmwareengine_Credentials,
-  ShowVcenterCredentialsProjectsLocationsPrivateCloudsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest,
-  output: Vmwareengine_Credentials,
-  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.certificateregistration#AppServiceCertificateOrdersVerifyDomainOwnership": {
+    "com.azure.certificateregistration#VerifyAppServiceCertificateOrderDomainOwnership": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersVerifyDomainOwnershipRequest"
+        "target": "com.azure.certificateregistration#VerifyAppServiceCertificateOrderDomainOwnershipRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersVerifyDomainOwnershipRequest": {
+    "com.azure.certificateregistration#VerifyAppServiceCertificateOrderDomainOwnershipRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -424,10 +424,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersResendRequestEmails": {
+    "com.azure.certificateregistration#RequestAppServiceCertificateOrderResendEmail": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersResendRequestEmailsRequest"
+        "target": "com.azure.certificateregistration#RequestAppServiceCertificateOrderResendEmailRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -443,7 +443,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersResendRequestEmailsRequest": {
+    "com.azure.certificateregistration#RequestAppServiceCertificateOrderResendEmailRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -716,13 +716,13 @@
         "smithy.api#documentation": "ReissueCertificateOrderRequest resource specific properties"
       }
     },
-    "com.azure.certificateregistration#CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponse": {
+    "com.azure.certificateregistration#GetCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponse": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseRequest"
+        "target": "com.azure.certificateregistration#GetCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponseRequest"
       },
       "output": {
-        "target": "com.azure.certificateregistration#CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseResponse"
+        "target": "com.azure.certificateregistration#GetCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -735,7 +735,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseResponse": {
+    "com.azure.certificateregistration#GetCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponseResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1545,7 +1545,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.certificateregistration#CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseRequest": {
+    "com.azure.certificateregistration#GetCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1606,10 +1606,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.certificateregistration#CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponse": {
+    "com.azure.certificateregistration#ListCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponse": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseRequest"
+        "target": "com.azure.certificateregistration#ListCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponseRequest"
       },
       "output": {
         "target": "com.azure.certificateregistration#DetectorResponseCollection"
@@ -1699,7 +1699,7 @@
         "smithy.api#documentation": "Class representing Response from Detector"
       }
     },
-    "com.azure.certificateregistration#CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseRequest": {
+    "com.azure.certificateregistration#ListCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1731,10 +1731,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersDeleteCertificate": {
+    "com.azure.certificateregistration#DeleteAppServiceCertificateOrderCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersDeleteCertificateRequest"
+        "target": "com.azure.certificateregistration#DeleteAppServiceCertificateOrderCertificateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1750,7 +1750,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersDeleteCertificateRequest": {
+    "com.azure.certificateregistration#DeleteAppServiceCertificateOrderCertificateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1790,13 +1790,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateCertificate": {
+    "com.azure.certificateregistration#UpdateAppServiceCertificateOrderCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateCertificateRequest"
+        "target": "com.azure.certificateregistration#UpdateAppServiceCertificateOrderCertificateRequest"
       },
       "output": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateCertificateResponse"
+        "target": "com.azure.certificateregistration#UpdateAppServiceCertificateOrderCertificateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1809,7 +1809,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateCertificateResponse": {
+    "com.azure.certificateregistration#UpdateAppServiceCertificateOrderCertificateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1978,7 +1978,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateCertificateRequest": {
+    "com.azure.certificateregistration#UpdateAppServiceCertificateOrderCertificateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2195,13 +2195,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersGetCertificate": {
+    "com.azure.certificateregistration#GetAppServiceCertificateOrderCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersGetCertificateRequest"
+        "target": "com.azure.certificateregistration#GetAppServiceCertificateOrderCertificateRequest"
       },
       "output": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersGetCertificateResponse"
+        "target": "com.azure.certificateregistration#GetAppServiceCertificateOrderCertificateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2214,7 +2214,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersGetCertificateResponse": {
+    "com.azure.certificateregistration#GetAppServiceCertificateOrderCertificateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2283,7 +2283,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersGetCertificateRequest": {
+    "com.azure.certificateregistration#GetAppServiceCertificateOrderCertificateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2323,10 +2323,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersListCertificates": {
+    "com.azure.certificateregistration#ListAppServiceCertificateOrderCertificates": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersListCertificatesRequest"
+        "target": "com.azure.certificateregistration#ListAppServiceCertificateOrderCertificatesRequest"
       },
       "output": {
         "target": "com.azure.certificateregistration#AppServiceCertificateCollection"
@@ -2441,7 +2441,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersListCertificatesRequest": {
+    "com.azure.certificateregistration#ListAppServiceCertificateOrderCertificatesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2473,10 +2473,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersDelete": {
+    "com.azure.certificateregistration#DeleteAppServiceCertificateOrder": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersDeleteRequest"
+        "target": "com.azure.certificateregistration#DeleteAppServiceCertificateOrderRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2492,7 +2492,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersDeleteRequest": {
+    "com.azure.certificateregistration#DeleteAppServiceCertificateOrderRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2524,13 +2524,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersUpdate": {
+    "com.azure.certificateregistration#UpdateAppServiceCertificateOrder": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateRequest"
+        "target": "com.azure.certificateregistration#UpdateAppServiceCertificateOrderRequest"
       },
       "output": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateResponse"
+        "target": "com.azure.certificateregistration#UpdateAppServiceCertificateOrderResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2543,7 +2543,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateResponse": {
+    "com.azure.certificateregistration#UpdateAppServiceCertificateOrderResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2992,7 +2992,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateRequest": {
+    "com.azure.certificateregistration#UpdateAppServiceCertificateOrderRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3319,13 +3319,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersGet": {
+    "com.azure.certificateregistration#GetAppServiceCertificateOrder": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersGetRequest"
+        "target": "com.azure.certificateregistration#GetAppServiceCertificateOrderRequest"
       },
       "output": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersGetResponse"
+        "target": "com.azure.certificateregistration#GetAppServiceCertificateOrderResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3338,7 +3338,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersGetResponse": {
+    "com.azure.certificateregistration#GetAppServiceCertificateOrderResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3407,7 +3407,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersGetRequest": {
+    "com.azure.certificateregistration#GetAppServiceCertificateOrderRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3439,10 +3439,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersListByResourceGroup": {
+    "com.azure.certificateregistration#ListAppServiceCertificateOrderByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersListByResourceGroupRequest"
+        "target": "com.azure.certificateregistration#ListAppServiceCertificateOrderByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.certificateregistration#AppServiceCertificateOrderCollection"
@@ -3557,7 +3557,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersListByResourceGroupRequest": {
+    "com.azure.certificateregistration#ListAppServiceCertificateOrderByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3653,10 +3653,10 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersList": {
+    "com.azure.certificateregistration#ListAppServiceCertificateOrders": {
       "type": "operation",
       "input": {
-        "target": "com.azure.certificateregistration#AppServiceCertificateOrdersListRequest"
+        "target": "com.azure.certificateregistration#ListAppServiceCertificateOrdersRequest"
       },
       "output": {
         "target": "com.azure.certificateregistration#AppServiceCertificateOrderCollection"
@@ -3672,7 +3672,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.certificateregistration#AppServiceCertificateOrdersListRequest": {
+    "com.azure.certificateregistration#ListAppServiceCertificateOrdersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3688,7 +3688,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.certificateregistration#CertificateRegistrationProviderListOperations": {
+    "com.azure.certificateregistration#ListCertificateRegistrationProviderOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -3974,7 +3974,7 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersVerifyDomainOwnership"
+          "target": "com.azure.certificateregistration#VerifyAppServiceCertificateOrderDomainOwnership"
         },
         {
           "target": "com.azure.certificateregistration#AppServiceCertificateOrdersRetrieveSiteSeal"
@@ -3986,7 +3986,7 @@
           "target": "com.azure.certificateregistration#AppServiceCertificateOrdersRetrieveCertificateActions"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersResendRequestEmails"
+          "target": "com.azure.certificateregistration#RequestAppServiceCertificateOrderResendEmail"
         },
         {
           "target": "com.azure.certificateregistration#AppServiceCertificateOrdersResendEmail"
@@ -3998,49 +3998,49 @@
           "target": "com.azure.certificateregistration#AppServiceCertificateOrdersReissue"
         },
         {
-          "target": "com.azure.certificateregistration#CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponse"
+          "target": "com.azure.certificateregistration#GetCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponse"
         },
         {
-          "target": "com.azure.certificateregistration#CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponse"
+          "target": "com.azure.certificateregistration#ListCertificateOrderDiagnosticAppServiceCertificateOrderDetectorResponse"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersDeleteCertificate"
+          "target": "com.azure.certificateregistration#DeleteAppServiceCertificateOrderCertificate"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersUpdateCertificate"
+          "target": "com.azure.certificateregistration#UpdateAppServiceCertificateOrderCertificate"
         },
         {
           "target": "com.azure.certificateregistration#AppServiceCertificateOrdersCreateOrUpdateCertificate"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersGetCertificate"
+          "target": "com.azure.certificateregistration#GetAppServiceCertificateOrderCertificate"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersListCertificates"
+          "target": "com.azure.certificateregistration#ListAppServiceCertificateOrderCertificates"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersDelete"
+          "target": "com.azure.certificateregistration#DeleteAppServiceCertificateOrder"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersUpdate"
+          "target": "com.azure.certificateregistration#UpdateAppServiceCertificateOrder"
         },
         {
           "target": "com.azure.certificateregistration#AppServiceCertificateOrdersCreateOrUpdate"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersGet"
+          "target": "com.azure.certificateregistration#GetAppServiceCertificateOrder"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersListByResourceGroup"
+          "target": "com.azure.certificateregistration#ListAppServiceCertificateOrderByResourceGroup"
         },
         {
           "target": "com.azure.certificateregistration#AppServiceCertificateOrdersValidatePurchaseInformation"
         },
         {
-          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersList"
+          "target": "com.azure.certificateregistration#ListAppServiceCertificateOrders"
         },
         {
-          "target": "com.azure.certificateregistration#CertificateRegistrationProviderListOperations"
+          "target": "com.azure.certificateregistration#ListCertificateRegistrationProviderOperations"
         }
       ],
       "traits": {

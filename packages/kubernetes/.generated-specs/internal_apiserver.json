@@ -125,7 +125,7 @@
         "smithy.api#documentation": "versions are the versions supported in this group."
       }
     },
-    "com.kubernetes.internal_apiserver#GetInternalApiserverAPIGroup": {
+    "com.kubernetes.internal_apiserver#GetInternalApiserverApiGroup": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -285,7 +285,7 @@
         "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
       }
     },
-    "com.kubernetes.internal_apiserver#GetInternalApiserverV1alpha1APIResources": {
+    "com.kubernetes.internal_apiserver#GetInternalApiserverV1alpha1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -1905,7 +1905,7 @@
         "smithy.api#documentation": "partially update status of the specified StorageVersion"
       }
     },
-    "com.kubernetes.internal_apiserver#WatchInternalApiserverV1alpha1StorageVersionListRequest": {
+    "com.kubernetes.internal_apiserver#ListWatchInternalApiserverV1alpha1StorageVersionRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -2018,10 +2018,10 @@
         "smithy.api#documentation": "Event represents a single event to a watched resource."
       }
     },
-    "com.kubernetes.internal_apiserver#WatchInternalApiserverV1alpha1StorageVersionList": {
+    "com.kubernetes.internal_apiserver#ListWatchInternalApiserverV1alpha1StorageVersion": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.internal_apiserver#WatchInternalApiserverV1alpha1StorageVersionListRequest"
+        "target": "com.kubernetes.internal_apiserver#ListWatchInternalApiserverV1alpha1StorageVersionRequest"
       },
       "output": {
         "target": "com.kubernetes.internal_apiserver#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -2196,10 +2196,10 @@
       "version": "unversioned",
       "operations": [
         {
-          "target": "com.kubernetes.internal_apiserver#GetInternalApiserverAPIGroup"
+          "target": "com.kubernetes.internal_apiserver#GetInternalApiserverApiGroup"
         },
         {
-          "target": "com.kubernetes.internal_apiserver#GetInternalApiserverV1alpha1APIResources"
+          "target": "com.kubernetes.internal_apiserver#GetInternalApiserverV1alpha1ApiResources"
         },
         {
           "target": "com.kubernetes.internal_apiserver#ListInternalApiserverV1alpha1StorageVersion"
@@ -2232,7 +2232,7 @@
           "target": "com.kubernetes.internal_apiserver#PatchInternalApiserverV1alpha1StorageVersionStatus"
         },
         {
-          "target": "com.kubernetes.internal_apiserver#WatchInternalApiserverV1alpha1StorageVersionList"
+          "target": "com.kubernetes.internal_apiserver#ListWatchInternalApiserverV1alpha1StorageVersion"
         },
         {
           "target": "com.kubernetes.internal_apiserver#WatchInternalApiserverV1alpha1StorageVersion"

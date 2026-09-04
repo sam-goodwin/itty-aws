@@ -159,13 +159,13 @@ export const BatchCreatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreatePermissionsRequest",
 }) as any as S.Schema<BatchCreatePermissionsRequest>;
 
-export interface BatchCreateNotesPermissionsRequest {
+export interface CreateBatchNotePermissionRequest {
   /** The parent resource shared by all Permissions being created. Format: `notes/{note}` If this is set, the parent field in the CreatePermission messages must either be empty or match this field. */
   parent: string;
   /** Request body */
   body?: BatchCreatePermissionsRequest;
 }
-export const BatchCreateNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateBatchNotePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchCreatePermissionsRequest.pipe(T.HttpBody())),
@@ -177,8 +177,8 @@ export const BatchCreateNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchCreateNotesPermissionsRequest",
-}) as any as S.Schema<BatchCreateNotesPermissionsRequest>;
+  identifier: "CreateBatchNotePermissionRequest",
+}) as any as S.Schema<CreateBatchNotePermissionRequest>;
 
 export type PermissionList = Array<Permission>;
 export const PermissionList = /*@__PURE__*/ S.Array(
@@ -202,46 +202,6 @@ export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
-
-/** The request to remove one or more permissions from a note. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
-export interface BatchDeletePermissionsRequest {
-  /** Required. The names of the permissions to delete. Format: `notes/{note}/permissions/{permission}` */
-  names?: StringList;
-}
-export const BatchDeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeletePermissionsRequest",
-}) as any as S.Schema<BatchDeletePermissionsRequest>;
-
-export interface BatchDeleteNotesPermissionsRequest {
-  /** The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. */
-  parent: string;
-  /** Request body */
-  body?: BatchDeletePermissionsRequest;
-}
-export const BatchDeleteNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(BatchDeletePermissionsRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/permissions:batchDelete",
-      baseUrl: "https://keep.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchDeleteNotesPermissionsRequest",
-}) as any as S.Schema<BatchDeleteNotesPermissionsRequest>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
 
 /** An attachment to a note. */
 export interface Attachment {
@@ -373,6 +333,46 @@ export const CreateNotesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateNotesRequest",
 }) as any as S.Schema<CreateNotesRequest>;
 
+/** The request to remove one or more permissions from a note. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
+export interface BatchDeletePermissionsRequest {
+  /** Required. The names of the permissions to delete. Format: `notes/{note}/permissions/{permission}` */
+  names?: StringList;
+}
+export const BatchDeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    names: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeletePermissionsRequest",
+}) as any as S.Schema<BatchDeletePermissionsRequest>;
+
+export interface DeleteBatchNotePermissionRequest {
+  /** The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. */
+  parent: string;
+  /** Request body */
+  body?: BatchDeletePermissionsRequest;
+}
+export const DeleteBatchNotePermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchDeletePermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/permissions:batchDelete",
+      baseUrl: "https://keep.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBatchNotePermissionRequest",
+}) as any as S.Schema<DeleteBatchNotePermissionRequest>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface Empty {}
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
+
 export interface DeleteNotesRequest {
   /** Required. Name of the note to delete. */
   name: string;
@@ -475,41 +475,21 @@ export const ListNotesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNotesResponse",
 }) as any as S.Schema<ListNotesResponse>;
 
-export type BatchCreateNotesPermissionsError =
+export type CreateBatchNotePermissionError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates one or more permissions on the note. Only permissions with the `WRITER` role may be created. If adding any permission fails, then the entire request fails and no changes are made. */
-export const batchCreateNotesPermissions: API.OperationMethod<
-  BatchCreateNotesPermissionsRequest,
+export const createBatchNotePermission: API.OperationMethod<
+  CreateBatchNotePermissionRequest,
   BatchCreatePermissionsResponse,
-  BatchCreateNotesPermissionsError,
+  CreateBatchNotePermissionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateNotesPermissionsRequest,
+  input: CreateBatchNotePermissionRequest,
   output: BatchCreatePermissionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchDeleteNotesPermissionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
-export const batchDeleteNotesPermissions: API.OperationMethod<
-  BatchDeleteNotesPermissionsRequest,
-  Empty,
-  BatchDeleteNotesPermissionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteNotesPermissionsRequest,
-  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -530,6 +510,26 @@ export const createNotes: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNotesRequest,
   output: Note,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchNotePermissionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
+export const deleteBatchNotePermission: API.OperationMethod<
+  DeleteBatchNotePermissionRequest,
+  Empty,
+  DeleteBatchNotePermissionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchNotePermissionRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

@@ -185,7 +185,7 @@
       },
       "traits": {}
     },
-    "com.posthog.conversations#ConversationsTicketsListRequest": {
+    "com.posthog.conversations#ListConversationTicketsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -867,10 +867,10 @@
       },
       "traits": {}
     },
-    "com.posthog.conversations#ConversationsTicketsList": {
+    "com.posthog.conversations#ListConversationTickets": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsTicketsListRequest"
+        "target": "com.posthog.conversations#ListConversationTicketsRequest"
       },
       "output": {
         "target": "com.posthog.conversations#PaginatedTicketList"
@@ -1019,7 +1019,7 @@
         "smithy.api#documentation": "Tag names to set on the ticket."
       }
     },
-    "com.posthog.conversations#ConversationsTicketsUpdateRequest": {
+    "com.posthog.conversations#UpdateConversationTicketRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1102,10 +1102,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.conversations#ConversationsTicketsUpdate": {
+    "com.posthog.conversations#UpdateConversationTicket": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsTicketsUpdateRequest"
+        "target": "com.posthog.conversations#UpdateConversationTicketRequest"
       },
       "output": {
         "target": "com.posthog.conversations#Ticket"
@@ -1153,7 +1153,7 @@
         "smithy.api#documentation": "Tag names to set on the ticket."
       }
     },
-    "com.posthog.conversations#ConversationsTicketsPartialUpdateRequest": {
+    "com.posthog.conversations#UpdateConversationTicketPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1236,10 +1236,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.conversations#ConversationsTicketsPartialUpdate": {
+    "com.posthog.conversations#UpdateConversationTicketPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsTicketsPartialUpdateRequest"
+        "target": "com.posthog.conversations#UpdateConversationTicketPartialRequest"
       },
       "output": {
         "target": "com.posthog.conversations#Ticket"
@@ -1331,7 +1331,7 @@
         "smithy.api#documentation": "* `good` - good\n* `bad` - bad"
       }
     },
-    "com.posthog.conversations#ConversationsTicketsAiFeedbackCreateRequest": {
+    "com.posthog.conversations#CreateConversationTicketAiFeedbackRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1375,10 +1375,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.conversations#ConversationsTicketsAiFeedbackCreate": {
+    "com.posthog.conversations#CreateConversationTicketAiFeedback": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsTicketsAiFeedbackCreateRequest"
+        "target": "com.posthog.conversations#CreateConversationTicketAiFeedbackRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1392,7 +1392,7 @@
         "smithy.api#documentation": "Record reviewer feedback on an AI reply, captured to the internal analytics project."
       }
     },
-    "com.posthog.conversations#ConversationsTicketsMessagesListRequest": {
+    "com.posthog.conversations#ListConversationTicketMessagesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1530,10 +1530,10 @@
       },
       "traits": {}
     },
-    "com.posthog.conversations#ConversationsTicketsMessagesList": {
+    "com.posthog.conversations#ListConversationTicketMessages": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsTicketsMessagesListRequest"
+        "target": "com.posthog.conversations#ListConversationTicketMessagesRequest"
       },
       "output": {
         "target": "com.posthog.conversations#PaginatedTicketMessageList"
@@ -1547,7 +1547,7 @@
         "smithy.api#documentation": "Return the message thread for a ticket, ordered chronologically (paginated)."
       }
     },
-    "com.posthog.conversations#ConversationsTicketsNotesPartialUpdateRequest": {
+    "com.posthog.conversations#UpdateConversationTicketNotePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1591,10 +1591,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.conversations#ConversationsTicketsNotesPartialUpdate": {
+    "com.posthog.conversations#UpdateConversationTicketNotePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsTicketsNotesPartialUpdateRequest"
+        "target": "com.posthog.conversations#UpdateConversationTicketNotePartialRequest"
       },
       "output": {
         "target": "com.posthog.conversations#TicketMessage"
@@ -1679,7 +1679,7 @@
         "smithy.api#documentation": "Soft-delete a private note on a ticket.\n\nOnly the note's author can delete it. Customer-facing replies cannot be\ndeleted via this endpoint."
       }
     },
-    "com.posthog.conversations#ConversationsTicketsReplyCreateRequest": {
+    "com.posthog.conversations#CreateConversationTicketReplyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1722,10 +1722,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.conversations#ConversationsTicketsReplyCreate": {
+    "com.posthog.conversations#CreateConversationTicketReply": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsTicketsReplyCreateRequest"
+        "target": "com.posthog.conversations#CreateConversationTicketReplyRequest"
       },
       "output": {
         "target": "com.posthog.conversations#TicketMessage"
@@ -2001,7 +2001,7 @@
         "smithy.api#documentation": "Bulk update tags on multiple objects.\n\nPAT access: this action has no ``required_scopes=`` on the decorator —\ninheriting viewsets must add ``\"bulk_update_tags\"`` to their\n``scope_object_write_actions`` list to accept personal API keys.\nWithout that opt-in, ``APIScopePermission`` rejects PAT requests with\n\"This action does not support personal API key access\". Done per-viewset\nso granting ``<scope>:write`` for one resource doesn't leak access to\nsibling resources that share this mixin.\n\nAccepts:\n- {\"ids\": [...], \"action\": \"add\"|\"remove\"|\"set\", \"tags\": [\"tag1\", \"tag2\"]}\n\nActions:\n- \"add\": Add tags to existing tags on each object\n- \"remove\": Remove specific tags from each object\n- \"set\": Replace all tags on each object with the provided list"
       }
     },
-    "com.posthog.conversations#ConversationsTicketsComposeCreateRequest": {
+    "com.posthog.conversations#CreateConversationTicketComposeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2076,10 +2076,10 @@
       },
       "traits": {}
     },
-    "com.posthog.conversations#ConversationsTicketsComposeCreate": {
+    "com.posthog.conversations#CreateConversationTicketCompose": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsTicketsComposeCreateRequest"
+        "target": "com.posthog.conversations#CreateConversationTicketComposeRequest"
       },
       "output": {
         "target": "com.posthog.conversations#ComposeTicketResponse"
@@ -2098,7 +2098,7 @@
         "smithy.api#documentation": "Create a new outbound ticket and send the first message to the customer."
       }
     },
-    "com.posthog.conversations#ConversationsViewsListRequest": {
+    "com.posthog.conversations#ListConversationViewsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2731,10 +2731,10 @@
       },
       "traits": {}
     },
-    "com.posthog.conversations#ConversationsViewsList": {
+    "com.posthog.conversations#ListConversationViews": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsViewsListRequest"
+        "target": "com.posthog.conversations#ListConversationViewsRequest"
       },
       "output": {
         "target": "com.posthog.conversations#PaginatedTicketViewList"
@@ -2758,7 +2758,7 @@
         }
       }
     },
-    "com.posthog.conversations#ConversationsViewsCreateRequest": {
+    "com.posthog.conversations#CreateConversationViewRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2789,10 +2789,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.conversations#ConversationsViewsCreate": {
+    "com.posthog.conversations#CreateConversationView": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsViewsCreateRequest"
+        "target": "com.posthog.conversations#CreateConversationViewRequest"
       },
       "output": {
         "target": "com.posthog.conversations#TicketView"
@@ -2863,7 +2863,7 @@
         }
       }
     },
-    "com.posthog.conversations#ConversationsViewsPartialUpdateRequest": {
+    "com.posthog.conversations#UpdateConversationViewPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2901,10 +2901,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.conversations#ConversationsViewsPartialUpdate": {
+    "com.posthog.conversations#UpdateConversationViewPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.conversations#ConversationsViewsPartialUpdateRequest"
+        "target": "com.posthog.conversations#UpdateConversationViewPartialRequest"
       },
       "output": {
         "target": "com.posthog.conversations#TicketView"
@@ -3021,34 +3021,34 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.conversations#ConversationsTicketsList"
+          "target": "com.posthog.conversations#ListConversationTickets"
         },
         {
           "target": "com.posthog.conversations#ConversationsTicketsRetrieve"
         },
         {
-          "target": "com.posthog.conversations#ConversationsTicketsUpdate"
+          "target": "com.posthog.conversations#UpdateConversationTicket"
         },
         {
-          "target": "com.posthog.conversations#ConversationsTicketsPartialUpdate"
+          "target": "com.posthog.conversations#UpdateConversationTicketPartial"
         },
         {
           "target": "com.posthog.conversations#ConversationsTicketsDestroy"
         },
         {
-          "target": "com.posthog.conversations#ConversationsTicketsAiFeedbackCreate"
+          "target": "com.posthog.conversations#CreateConversationTicketAiFeedback"
         },
         {
-          "target": "com.posthog.conversations#ConversationsTicketsMessagesList"
+          "target": "com.posthog.conversations#ListConversationTicketMessages"
         },
         {
-          "target": "com.posthog.conversations#ConversationsTicketsNotesPartialUpdate"
+          "target": "com.posthog.conversations#UpdateConversationTicketNotePartial"
         },
         {
           "target": "com.posthog.conversations#ConversationsTicketsNotesDestroy"
         },
         {
-          "target": "com.posthog.conversations#ConversationsTicketsReplyCreate"
+          "target": "com.posthog.conversations#CreateConversationTicketReply"
         },
         {
           "target": "com.posthog.conversations#ConversationsTicketsBulkUpdateStatusCreate"
@@ -3057,19 +3057,19 @@
           "target": "com.posthog.conversations#ConversationsTicketsBulkUpdateTagsCreate"
         },
         {
-          "target": "com.posthog.conversations#ConversationsTicketsComposeCreate"
+          "target": "com.posthog.conversations#CreateConversationTicketCompose"
         },
         {
-          "target": "com.posthog.conversations#ConversationsViewsList"
+          "target": "com.posthog.conversations#ListConversationViews"
         },
         {
-          "target": "com.posthog.conversations#ConversationsViewsCreate"
+          "target": "com.posthog.conversations#CreateConversationView"
         },
         {
           "target": "com.posthog.conversations#ConversationsViewsRetrieve"
         },
         {
-          "target": "com.posthog.conversations#ConversationsViewsPartialUpdate"
+          "target": "com.posthog.conversations#UpdateConversationViewPartial"
         },
         {
           "target": "com.posthog.conversations#ConversationsViewsDestroy"

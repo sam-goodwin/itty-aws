@@ -65,97 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface FetchReleaseFilterOptionsAppsRequest {
-  /** Required. Name of the resource, i.e. app the filtering options are for. Format: apps/{app} */
-  name: string;
-}
-export const FetchReleaseFilterOptionsAppsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:fetchReleaseFilterOptions",
-        baseUrl: "https://playdeveloperreporting.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "FetchReleaseFilterOptionsAppsRequest",
-}) as any as S.Schema<FetchReleaseFilterOptionsAppsRequest>;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** A representation of an app release. */
-export interface GooglePlayDeveloperReportingV1beta1Release {
-  /** Readable identifier of the release. */
-  displayName?: string;
-  /** The version codes contained in this release. */
-  versionCodes?: StringList;
-}
-export const GooglePlayDeveloperReportingV1beta1Release =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      versionCodes: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1Release",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Release>;
-
-export type GooglePlayDeveloperReportingV1beta1ReleaseList =
-  Array<GooglePlayDeveloperReportingV1beta1Release>;
-export const GooglePlayDeveloperReportingV1beta1ReleaseList =
-  /*@__PURE__*/ S.Array(
-    GooglePlayDeveloperReportingV1beta1Release,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ReleaseList>;
-
-/** A representation of a Play release track. */
-export interface GooglePlayDeveloperReportingV1beta1Track {
-  /** Represents all active releases in the track. */
-  servingReleases?: GooglePlayDeveloperReportingV1beta1ReleaseList;
-  /** The type of the track. */
-  type?: string;
-  /** Readable identifier of the track. */
-  displayName?: string;
-}
-export const GooglePlayDeveloperReportingV1beta1Track = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      servingReleases: S.optional(
-        GooglePlayDeveloperReportingV1beta1ReleaseList,
-      ),
-      type: S.optional(S.String),
-      displayName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GooglePlayDeveloperReportingV1beta1Track",
-}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Track>;
-
-export type GooglePlayDeveloperReportingV1beta1TrackList =
-  Array<GooglePlayDeveloperReportingV1beta1Track>;
-export const GooglePlayDeveloperReportingV1beta1TrackList =
-  /*@__PURE__*/ S.Array(
-    GooglePlayDeveloperReportingV1beta1Track,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1TrackList>;
-
-/** A set of filtering options for releases and version codes specific to an app. */
-export interface GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions {
-  /** List of tracks to filter releases over. Provides the grouping of version codes under releases and tracks. */
-  tracks?: GooglePlayDeveloperReportingV1beta1TrackList;
-}
-export const GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tracks: S.optional(GooglePlayDeveloperReportingV1beta1TrackList),
-    }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions>;
-
 export interface GetVitalsAnonrssandswapmemoryusageRequest {
   /** Required. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet */
   name: string;
@@ -826,6 +735,11 @@ export const GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse =
   ).annotate({
     identifier: "GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse",
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse>;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
@@ -1744,6 +1658,91 @@ export const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRate
       "GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse",
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse>;
 
+export interface ReleaseFetchFilterOptionAppRequest {
+  /** Required. Name of the resource, i.e. app the filtering options are for. Format: apps/{app} */
+  name: string;
+}
+export const ReleaseFetchFilterOptionAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}:fetchReleaseFilterOptions",
+      baseUrl: "https://playdeveloperreporting.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ReleaseFetchFilterOptionAppRequest",
+}) as any as S.Schema<ReleaseFetchFilterOptionAppRequest>;
+
+/** A representation of an app release. */
+export interface GooglePlayDeveloperReportingV1beta1Release {
+  /** Readable identifier of the release. */
+  displayName?: string;
+  /** The version codes contained in this release. */
+  versionCodes?: StringList;
+}
+export const GooglePlayDeveloperReportingV1beta1Release =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      displayName: S.optional(S.String),
+      versionCodes: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GooglePlayDeveloperReportingV1beta1Release",
+  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Release>;
+
+export type GooglePlayDeveloperReportingV1beta1ReleaseList =
+  Array<GooglePlayDeveloperReportingV1beta1Release>;
+export const GooglePlayDeveloperReportingV1beta1ReleaseList =
+  /*@__PURE__*/ S.Array(
+    GooglePlayDeveloperReportingV1beta1Release,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ReleaseList>;
+
+/** A representation of a Play release track. */
+export interface GooglePlayDeveloperReportingV1beta1Track {
+  /** Represents all active releases in the track. */
+  servingReleases?: GooglePlayDeveloperReportingV1beta1ReleaseList;
+  /** The type of the track. */
+  type?: string;
+  /** Readable identifier of the track. */
+  displayName?: string;
+}
+export const GooglePlayDeveloperReportingV1beta1Track = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      servingReleases: S.optional(
+        GooglePlayDeveloperReportingV1beta1ReleaseList,
+      ),
+      type: S.optional(S.String),
+      displayName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1Track",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Track>;
+
+export type GooglePlayDeveloperReportingV1beta1TrackList =
+  Array<GooglePlayDeveloperReportingV1beta1Track>;
+export const GooglePlayDeveloperReportingV1beta1TrackList =
+  /*@__PURE__*/ S.Array(
+    GooglePlayDeveloperReportingV1beta1Track,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1TrackList>;
+
+/** A set of filtering options for releases and version codes specific to an app. */
+export interface GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions {
+  /** List of tracks to filter releases over. Provides the grouping of version codes under releases and tracks. */
+  tracks?: GooglePlayDeveloperReportingV1beta1TrackList;
+}
+export const GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tracks: S.optional(GooglePlayDeveloperReportingV1beta1TrackList),
+    }),
+  ).annotate({
+    identifier: "GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions",
+  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions>;
+
 export interface SearchAppsRequest {
   /** Optional. A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match the call that provided the page token. */
   pageToken?: string;
@@ -2249,24 +2248,6 @@ export const GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse =
     identifier: "GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse",
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse>;
 
-export type FetchReleaseFilterOptionsAppsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Describes filtering options for releases. */
-export const fetchReleaseFilterOptionsApps: API.OperationMethod<
-  FetchReleaseFilterOptionsAppsRequest,
-  GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions,
-  FetchReleaseFilterOptionsAppsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FetchReleaseFilterOptionsAppsRequest,
-  output: GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type GetVitalsAnonrssandswapmemoryusageError =
   | NotFound
   | Forbidden
@@ -2649,6 +2630,24 @@ export const queryVitalsStuckbackgroundwakelockrate: API.OperationMethod<
   output:
     GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ReleaseFetchFilterOptionAppError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Describes filtering options for releases. */
+export const releaseFetchFilterOptionApp: API.OperationMethod<
+  ReleaseFetchFilterOptionAppRequest,
+  GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions,
+  ReleaseFetchFilterOptionAppError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ReleaseFetchFilterOptionAppRequest,
+  output: GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions,
+  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

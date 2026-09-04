@@ -1622,7 +1622,7 @@
         "smithy.api#documentation": "Response message for the BatchGetEvents method."
       }
     },
-    "com.gcp.firebasecrashlytics_v1alpha#BatchUpdateProjectsAppsIssuesRequest": {
+    "com.gcp.firebasecrashlytics_v1alpha#UpdateBatchProjectAppIssueRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -1694,10 +1694,10 @@
         ]
       }
     },
-    "com.gcp.firebasecrashlytics_v1alpha#BatchUpdateProjectsAppsIssues": {
+    "com.gcp.firebasecrashlytics_v1alpha#UpdateBatchProjectAppIssue": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebasecrashlytics_v1alpha#BatchUpdateProjectsAppsIssuesRequest"
+        "target": "com.gcp.firebasecrashlytics_v1alpha#UpdateBatchProjectAppIssueRequest"
       },
       "output": {
         "target": "com.gcp.firebasecrashlytics_v1alpha#BatchUpdateIssuesResponse"
@@ -2015,7 +2015,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.gcp.firebasecrashlytics_v1alpha#BatchGetProjectsAppsEventsRequest": {
+    "com.gcp.firebasecrashlytics_v1alpha#GetBatchProjectAppEventRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2042,10 +2042,10 @@
         }
       }
     },
-    "com.gcp.firebasecrashlytics_v1alpha#BatchGetProjectsAppsEvents": {
+    "com.gcp.firebasecrashlytics_v1alpha#GetBatchProjectAppEvent": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebasecrashlytics_v1alpha#BatchGetProjectsAppsEventsRequest"
+        "target": "com.gcp.firebasecrashlytics_v1alpha#GetBatchProjectAppEventRequest"
       },
       "output": {
         "target": "com.gcp.firebasecrashlytics_v1alpha#BatchGetEventsResponse"

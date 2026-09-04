@@ -46,7 +46,7 @@
         "smithy.api#documentation": "The segment's path items in displayed order. In open mode exactly two items - a single edge, source then target. In anchored mode the concrete chain as shown, starting at the anchor."
       }
     },
-    "com.posthog.paths_v2#PathsV2SegmentToFunnelCreateRequest": {
+    "com.posthog.paths_v2#CreatePathV2SegmentToFunnelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -89,10 +89,10 @@
       },
       "traits": {}
     },
-    "com.posthog.paths_v2#PathsV2SegmentToFunnelCreate": {
+    "com.posthog.paths_v2#CreatePathV2SegmentToFunnel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.paths_v2#PathsV2SegmentToFunnelCreateRequest"
+        "target": "com.posthog.paths_v2#CreatePathV2SegmentToFunnelRequest"
       },
       "output": {
         "target": "com.posthog.paths_v2#PathsV2SegmentToFunnelResponse"
@@ -129,7 +129,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.paths_v2#PathsV2SegmentToFunnelCreate"
+          "target": "com.posthog.paths_v2#CreatePathV2SegmentToFunnel"
         }
       ],
       "traits": {

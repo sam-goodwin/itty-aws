@@ -1235,7 +1235,7 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchUpdateProjectsServicesRequest": {
+    "com.gcp.firebaseappcheck_v1#UpdateBatchProjectServiceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -1281,10 +1281,10 @@
         ]
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchUpdateProjectsServices": {
+    "com.gcp.firebaseappcheck_v1#UpdateBatchProjectService": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1#BatchUpdateProjectsServicesRequest"
+        "target": "com.gcp.firebaseappcheck_v1#UpdateBatchProjectServiceRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1#GoogleFirebaseAppcheckV1BatchUpdateServicesResponse"
@@ -1661,7 +1661,7 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchUpdateProjectsServicesResourcePoliciesRequest": {
+    "com.gcp.firebaseappcheck_v1#UpdateBatchProjectServiceResourcePolicyRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -1681,10 +1681,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchUpdateProjectsServicesResourcePolicies": {
+    "com.gcp.firebaseappcheck_v1#UpdateBatchProjectServiceResourcePolicy": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1#BatchUpdateProjectsServicesResourcePoliciesRequest"
+        "target": "com.gcp.firebaseappcheck_v1#UpdateBatchProjectServiceResourcePolicyRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1#GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse"
@@ -2061,7 +2061,7 @@
         "smithy.api#documentation": "Validates an [integrity verdict response token from Play Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify). If valid, returns an AppCheckToken."
       }
     },
-    "com.gcp.firebaseappcheck_v1#MintAppCheckTokenProjectsAppsRequest": {
+    "com.gcp.firebaseappcheck_v1#CheckMintAppTokenProjectAppRequest": {
       "type": "structure",
       "members": {
         "app": {
@@ -2081,10 +2081,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1#MintAppCheckTokenProjectsApps": {
+    "com.gcp.firebaseappcheck_v1#CheckMintAppTokenProjectApp": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1#MintAppCheckTokenProjectsAppsRequest"
+        "target": "com.gcp.firebaseappcheck_v1#CheckMintAppTokenProjectAppRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1#GoogleFirebaseAppcheckV1MintAppCheckTokenResponse"
@@ -2161,7 +2161,7 @@
         "smithy.api#documentation": "Validates a [reCAPTCHA Enterprise response token](https://cloud.google.com/recaptcha-enterprise/docs/create-assessment#retrieve_token). If valid, returns an AppCheckToken."
       }
     },
-    "com.gcp.firebaseappcheck_v1#ExchangeDeviceCheckTokenProjectsAppsRequest": {
+    "com.gcp.firebaseappcheck_v1#CheckExchangeDeviceTokenProjectAppRequest": {
       "type": "structure",
       "members": {
         "app": {
@@ -2181,10 +2181,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1#ExchangeDeviceCheckTokenProjectsApps": {
+    "com.gcp.firebaseappcheck_v1#CheckExchangeDeviceTokenProjectApp": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1#ExchangeDeviceCheckTokenProjectsAppsRequest"
+        "target": "com.gcp.firebaseappcheck_v1#CheckExchangeDeviceTokenProjectAppRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1#GoogleFirebaseAppcheckV1AppCheckToken"
@@ -2324,7 +2324,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsRecaptchaV3ConfigRequest": {
+    "com.gcp.firebaseappcheck_v1#GetBatchProjectAppRecaptchaV3ConfigRequest": {
       "type": "structure",
       "members": {
         "names": {
@@ -2344,10 +2344,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsRecaptchaV3Config": {
+    "com.gcp.firebaseappcheck_v1#GetBatchProjectAppRecaptchaV3Config": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsRecaptchaV3ConfigRequest"
+        "target": "com.gcp.firebaseappcheck_v1#GetBatchProjectAppRecaptchaV3ConfigRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1#GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse"
@@ -2405,7 +2405,7 @@
         "smithy.api#documentation": "Gets the RecaptchaV3Config for the specified app. For security reasons, the `site_secret` field is never populated in the response."
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsPlayIntegrityConfigRequest": {
+    "com.gcp.firebaseappcheck_v1#GetBatchProjectAppPlayIntegrityConfigRequest": {
       "type": "structure",
       "members": {
         "names": {
@@ -2425,10 +2425,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsPlayIntegrityConfig": {
+    "com.gcp.firebaseappcheck_v1#GetBatchProjectAppPlayIntegrityConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsPlayIntegrityConfigRequest"
+        "target": "com.gcp.firebaseappcheck_v1#GetBatchProjectAppPlayIntegrityConfigRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1#GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse"
@@ -2738,7 +2738,7 @@
         "smithy.api#documentation": "Updates the AppAttestConfig for the specified app. While this configuration is incomplete or invalid, the app will be unable to exchange AppAttest tokens for App Check tokens."
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsAppAttestConfigRequest": {
+    "com.gcp.firebaseappcheck_v1#GetBatchProjectAppAppAttestConfigRequest": {
       "type": "structure",
       "members": {
         "names": {
@@ -2758,10 +2758,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsAppAttestConfig": {
+    "com.gcp.firebaseappcheck_v1#GetBatchProjectAppAppAttestConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsAppAttestConfigRequest"
+        "target": "com.gcp.firebaseappcheck_v1#GetBatchProjectAppAppAttestConfigRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1#GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse"
@@ -2819,7 +2819,7 @@
         "smithy.api#documentation": "Gets the AppAttestConfig for the specified app."
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest": {
+    "com.gcp.firebaseappcheck_v1#GetBatchProjectAppRecaptchaEnterpriseConfigRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2839,10 +2839,10 @@
         }
       }
     },
-    "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsRecaptchaEnterpriseConfig": {
+    "com.gcp.firebaseappcheck_v1#GetBatchProjectAppRecaptchaEnterpriseConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappcheck_v1#BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest"
+        "target": "com.gcp.firebaseappcheck_v1#GetBatchProjectAppRecaptchaEnterpriseConfigRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappcheck_v1#GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse"

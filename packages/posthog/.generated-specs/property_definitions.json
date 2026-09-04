@@ -47,7 +47,7 @@
       },
       "traits": {}
     },
-    "com.posthog.property_definitions#PropertyDefinitionsListRequest": {
+    "com.posthog.property_definitions#ListPropertyDefinitionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -471,10 +471,10 @@
       },
       "traits": {}
     },
-    "com.posthog.property_definitions#PropertyDefinitionsList": {
+    "com.posthog.property_definitions#ListPropertyDefinitions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.property_definitions#PropertyDefinitionsListRequest"
+        "target": "com.posthog.property_definitions#ListPropertyDefinitionsRequest"
       },
       "output": {
         "target": "com.posthog.property_definitions#PaginatedEnterprisePropertyDefinitionList"
@@ -565,7 +565,7 @@
       },
       "traits": {}
     },
-    "com.posthog.property_definitions#PropertyDefinitionsUpdateRequest": {
+    "com.posthog.property_definitions#UpdatePropertyDefinitionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -613,10 +613,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.property_definitions#PropertyDefinitionsUpdate": {
+    "com.posthog.property_definitions#UpdatePropertyDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.property_definitions#PropertyDefinitionsUpdateRequest"
+        "target": "com.posthog.property_definitions#UpdatePropertyDefinitionRequest"
       },
       "output": {
         "target": "com.posthog.property_definitions#EnterprisePropertyDefinition"
@@ -659,7 +659,7 @@
       },
       "traits": {}
     },
-    "com.posthog.property_definitions#PropertyDefinitionsPartialUpdateRequest": {
+    "com.posthog.property_definitions#UpdatePropertyDefinitionPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -707,10 +707,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.property_definitions#PropertyDefinitionsPartialUpdate": {
+    "com.posthog.property_definitions#UpdatePropertyDefinitionPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.property_definitions#PropertyDefinitionsPartialUpdateRequest"
+        "target": "com.posthog.property_definitions#UpdatePropertyDefinitionPartialRequest"
       },
       "output": {
         "target": "com.posthog.property_definitions#EnterprisePropertyDefinition"
@@ -1030,16 +1030,16 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.property_definitions#PropertyDefinitionsList"
+          "target": "com.posthog.property_definitions#ListPropertyDefinitions"
         },
         {
           "target": "com.posthog.property_definitions#PropertyDefinitionsRetrieve"
         },
         {
-          "target": "com.posthog.property_definitions#PropertyDefinitionsUpdate"
+          "target": "com.posthog.property_definitions#UpdatePropertyDefinition"
         },
         {
-          "target": "com.posthog.property_definitions#PropertyDefinitionsPartialUpdate"
+          "target": "com.posthog.property_definitions#UpdatePropertyDefinitionPartial"
         },
         {
           "target": "com.posthog.property_definitions#PropertyDefinitionsDestroy"

@@ -3000,13 +3000,13 @@ export const RestoreFromCloudSQLRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreFromCloudSQLRequest",
 }) as any as S.Schema<RestoreFromCloudSQLRequest>;
 
-export interface RestoreFromCloudSQLProjectsLocationsClustersRequest {
+export interface RestoreFromCloudSqlProjectsLocationsClustersRequest {
   /** Required. The location of the new cluster. For the required format, see the comment on Cluster.name field. */
   parent: string;
   /** Request body */
   body?: RestoreFromCloudSQLRequest;
 }
-export const RestoreFromCloudSQLProjectsLocationsClustersRequest =
+export const RestoreFromCloudSqlProjectsLocationsClustersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -3019,8 +3019,8 @@ export const RestoreFromCloudSQLProjectsLocationsClustersRequest =
       }),
     ),
   ).annotate({
-    identifier: "RestoreFromCloudSQLProjectsLocationsClustersRequest",
-  }) as any as S.Schema<RestoreFromCloudSQLProjectsLocationsClustersRequest>;
+    identifier: "RestoreFromCloudSqlProjectsLocationsClustersRequest",
+  }) as any as S.Schema<RestoreFromCloudSqlProjectsLocationsClustersRequest>;
 
 /** Message describing a ContinuousBackupSource. */
 export interface ContinuousBackupSource {
@@ -3911,20 +3911,20 @@ export const restartProjectsLocationsClustersInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreFromCloudSQLProjectsLocationsClustersError =
+export type RestoreFromCloudSqlProjectsLocationsClustersError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Restores an AlloyDB cluster from a CloudSQL resource. */
-export const restoreFromCloudSQLProjectsLocationsClusters: API.OperationMethod<
-  RestoreFromCloudSQLProjectsLocationsClustersRequest,
+export const restoreFromCloudSqlProjectsLocationsClusters: API.OperationMethod<
+  RestoreFromCloudSqlProjectsLocationsClustersRequest,
   Operation,
-  RestoreFromCloudSQLProjectsLocationsClustersError,
+  RestoreFromCloudSqlProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreFromCloudSQLProjectsLocationsClustersRequest,
+  input: RestoreFromCloudSqlProjectsLocationsClustersRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,

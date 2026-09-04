@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.user_interviews#UserInterviewsListRequest": {
+    "com.posthog.user_interviews#ListUserInterviewsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -310,10 +310,10 @@
       },
       "traits": {}
     },
-    "com.posthog.user_interviews#UserInterviewsList": {
+    "com.posthog.user_interviews#ListUserInterviews": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.user_interviews#UserInterviewsListRequest"
+        "target": "com.posthog.user_interviews#ListUserInterviewsRequest"
       },
       "output": {
         "target": "com.posthog.user_interviews#PaginatedUserInterviewListOutput"
@@ -342,7 +342,7 @@
         "smithy.api#documentation": "Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta."
       }
     },
-    "com.posthog.user_interviews#UserInterviewsCreateRequest": {
+    "com.posthog.user_interviews#CreateUserInterviewRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -373,10 +373,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.user_interviews#UserInterviewsCreate": {
+    "com.posthog.user_interviews#CreateUserInterview": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.user_interviews#UserInterviewsCreateRequest"
+        "target": "com.posthog.user_interviews#CreateUserInterviewRequest"
       },
       "output": {
         "target": "com.posthog.user_interviews#UserInterviewOutput"
@@ -445,7 +445,7 @@
         "smithy.api#documentation": "Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta."
       }
     },
-    "com.posthog.user_interviews#UserInterviewsUpdateRequest": {
+    "com.posthog.user_interviews#UpdateUserInterviewRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -484,10 +484,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.user_interviews#UserInterviewsUpdate": {
+    "com.posthog.user_interviews#UpdateUserInterview": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.user_interviews#UserInterviewsUpdateRequest"
+        "target": "com.posthog.user_interviews#UpdateUserInterviewRequest"
       },
       "output": {
         "target": "com.posthog.user_interviews#UserInterviewOutput"
@@ -516,7 +516,7 @@
         "smithy.api#documentation": "Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta."
       }
     },
-    "com.posthog.user_interviews#UserInterviewsPartialUpdateRequest": {
+    "com.posthog.user_interviews#UpdateUserInterviewPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -555,10 +555,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.user_interviews#UserInterviewsPartialUpdate": {
+    "com.posthog.user_interviews#UpdateUserInterviewPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.user_interviews#UserInterviewsPartialUpdateRequest"
+        "target": "com.posthog.user_interviews#UpdateUserInterviewPartialRequest"
       },
       "output": {
         "target": "com.posthog.user_interviews#UserInterviewOutput"
@@ -649,7 +649,7 @@
         "smithy.api#documentation": "Optional. Restrict results to interviews carrying any of these classifications (OR). Combines with `topic_id` as AND."
       }
     },
-    "com.posthog.user_interviews#UserInterviewsSearchCreateRequest": {
+    "com.posthog.user_interviews#CreateUserInterviewSearchRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -760,7 +760,7 @@
       },
       "traits": {}
     },
-    "com.posthog.user_interviews#UserInterviewsSearchCreateResponse": {
+    "com.posthog.user_interviews#CreateUserInterviewSearchResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -775,13 +775,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.user_interviews#UserInterviewsSearchCreate": {
+    "com.posthog.user_interviews#CreateUserInterviewSearch": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.user_interviews#UserInterviewsSearchCreateRequest"
+        "target": "com.posthog.user_interviews#CreateUserInterviewSearchRequest"
       },
       "output": {
-        "target": "com.posthog.user_interviews#UserInterviewsSearchCreateResponse"
+        "target": "com.posthog.user_interviews#CreateUserInterviewSearchResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -797,25 +797,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.user_interviews#UserInterviewsList"
+          "target": "com.posthog.user_interviews#ListUserInterviews"
         },
         {
-          "target": "com.posthog.user_interviews#UserInterviewsCreate"
+          "target": "com.posthog.user_interviews#CreateUserInterview"
         },
         {
           "target": "com.posthog.user_interviews#UserInterviewsRetrieve"
         },
         {
-          "target": "com.posthog.user_interviews#UserInterviewsUpdate"
+          "target": "com.posthog.user_interviews#UpdateUserInterview"
         },
         {
-          "target": "com.posthog.user_interviews#UserInterviewsPartialUpdate"
+          "target": "com.posthog.user_interviews#UpdateUserInterviewPartial"
         },
         {
           "target": "com.posthog.user_interviews#UserInterviewsDestroy"
         },
         {
-          "target": "com.posthog.user_interviews#UserInterviewsSearchCreate"
+          "target": "com.posthog.user_interviews#CreateUserInterviewSearch"
         }
       ],
       "traits": {

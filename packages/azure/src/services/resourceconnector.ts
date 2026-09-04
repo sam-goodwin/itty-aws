@@ -287,7 +287,7 @@ export const AppliancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppliancesCreateOrUpdateResponse",
 }) as any as S.Schema<AppliancesCreateOrUpdateResponse>;
 
-export interface AppliancesDeleteRequest {
+export interface DeleteApplianceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -295,7 +295,7 @@ export interface AppliancesDeleteRequest {
   /** Appliances name. */
   resourceName: string;
 }
-export const AppliancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteApplianceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -309,17 +309,17 @@ export const AppliancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppliancesDeleteRequest",
-}) as any as S.Schema<AppliancesDeleteRequest>;
+  identifier: "DeleteApplianceRequest",
+}) as any as S.Schema<DeleteApplianceRequest>;
 
-export interface AppliancesDeleteResponse {}
-export const AppliancesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteApplianceResponse {}
+export const DeleteApplianceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "AppliancesDeleteResponse",
-}) as any as S.Schema<AppliancesDeleteResponse>;
+  identifier: "DeleteApplianceResponse",
+}) as any as S.Schema<DeleteApplianceResponse>;
 
-export interface AppliancesGetRequest {
+export interface GetApplianceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -327,7 +327,7 @@ export interface AppliancesGetRequest {
   /** Appliances name. */
   resourceName: string;
 }
-export const AppliancesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetApplianceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -341,8 +341,8 @@ export const AppliancesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppliancesGetRequest",
-}) as any as S.Schema<AppliancesGetRequest>;
+  identifier: "GetApplianceRequest",
+}) as any as S.Schema<GetApplianceRequest>;
 
 /** Resource tags. */
 export type AppliancesGetResponseTagsMap = {
@@ -353,7 +353,7 @@ export const AppliancesGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<AppliancesGetResponseTagsMap>;
 
-export interface AppliancesGetResponse {
+export interface GetApplianceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -371,7 +371,7 @@ export interface AppliancesGetResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const AppliancesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetApplianceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -383,14 +383,14 @@ export const AppliancesGetResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(Identity),
   }),
 ).annotate({
-  identifier: "AppliancesGetResponse",
-}) as any as S.Schema<AppliancesGetResponse>;
+  identifier: "GetApplianceResponse",
+}) as any as S.Schema<GetApplianceResponse>;
 
-export interface AppliancesGetTelemetryConfigRequest {
+export interface GetApplianceTelemetryConfigRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const AppliancesGetTelemetryConfigRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetApplianceTelemetryConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -402,8 +402,8 @@ export const AppliancesGetTelemetryConfigRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppliancesGetTelemetryConfigRequest",
-}) as any as S.Schema<AppliancesGetTelemetryConfigRequest>;
+  identifier: "GetApplianceTelemetryConfigRequest",
+}) as any as S.Schema<GetApplianceTelemetryConfigRequest>;
 
 /** The Get Telemetry Config Result appliance. */
 export interface ApplianceGetTelemetryConfigResult {
@@ -418,7 +418,7 @@ export const ApplianceGetTelemetryConfigResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplianceGetTelemetryConfigResult",
 }) as any as S.Schema<ApplianceGetTelemetryConfigResult>;
 
-export interface AppliancesGetUpgradeGraphRequest {
+export interface GetApplianceUpgradeGraphRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -428,7 +428,7 @@ export interface AppliancesGetUpgradeGraphRequest {
   /** Upgrade graph version, ex - stable */
   upgradeGraph: string;
 }
-export const AppliancesGetUpgradeGraphRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetApplianceUpgradeGraphRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -443,8 +443,8 @@ export const AppliancesGetUpgradeGraphRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppliancesGetUpgradeGraphRequest",
-}) as any as S.Schema<AppliancesGetUpgradeGraphRequest>;
+  identifier: "GetApplianceUpgradeGraphRequest",
+}) as any as S.Schema<GetApplianceUpgradeGraphRequest>;
 
 /** The SupportedVersionCatalogVersionData object for appliance. */
 export interface SupportedVersionCatalogVersionData {
@@ -557,28 +557,27 @@ export const UpgradeGraph = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpgradeGraph" }) as any as S.Schema<UpgradeGraph>;
 
-export interface AppliancesListByResourceGroupRequest {
+export interface ListApplianceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const AppliancesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances",
-        code: 200,
-        apiVersion: "2022-10-27",
-      }),
-    ),
+export const ListApplianceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances",
+      code: 200,
+      apiVersion: "2022-10-27",
+    }),
+  ),
 ).annotate({
-  identifier: "AppliancesListByResourceGroupRequest",
-}) as any as S.Schema<AppliancesListByResourceGroupRequest>;
+  identifier: "ListApplianceByResourceGroupRequest",
+}) as any as S.Schema<ListApplianceByResourceGroupRequest>;
 
 /** Resource tags. */
 export type ApplianceTagsMap = { [key: string]: string | undefined };
@@ -641,11 +640,11 @@ export const ApplianceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplianceListResult",
 }) as any as S.Schema<ApplianceListResult>;
 
-export interface AppliancesListBySubscriptionRequest {
+export interface ListApplianceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const AppliancesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListApplianceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -657,10 +656,10 @@ export const AppliancesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppliancesListBySubscriptionRequest",
-}) as any as S.Schema<AppliancesListBySubscriptionRequest>;
+  identifier: "ListApplianceBySubscriptionRequest",
+}) as any as S.Schema<ListApplianceBySubscriptionRequest>;
 
-export interface AppliancesListClusterUserCredentialRequest {
+export interface ListApplianceClusterUserCredentialRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -668,7 +667,7 @@ export interface AppliancesListClusterUserCredentialRequest {
   /** Appliances name. */
   resourceName: string;
 }
-export const AppliancesListClusterUserCredentialRequest =
+export const ListApplianceClusterUserCredentialRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -683,8 +682,8 @@ export const AppliancesListClusterUserCredentialRequest =
       }),
     ),
   ).annotate({
-    identifier: "AppliancesListClusterUserCredentialRequest",
-  }) as any as S.Schema<AppliancesListClusterUserCredentialRequest>;
+    identifier: "ListApplianceClusterUserCredentialRequest",
+  }) as any as S.Schema<ListApplianceClusterUserCredentialRequest>;
 
 /** Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS). */
 export interface HybridConnectionConfig {
@@ -752,7 +751,7 @@ export const ApplianceListCredentialResults = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplianceListCredentialResults",
 }) as any as S.Schema<ApplianceListCredentialResults>;
 
-export interface AppliancesListKeysRequest {
+export interface ListApplianceKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -762,7 +761,7 @@ export interface AppliancesListKeysRequest {
   /** This sets the type of artifact being returned, when empty no artifact endpoint is returned. */
   artifactType?: string;
 }
-export const AppliancesListKeysRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListApplianceKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -777,8 +776,8 @@ export const AppliancesListKeysRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppliancesListKeysRequest",
-}) as any as S.Schema<AppliancesListKeysRequest>;
+  identifier: "ListApplianceKeysRequest",
+}) as any as S.Schema<ListApplianceKeysRequest>;
 
 /** Appliance ArtifactProfile definition. */
 export interface ArtifactProfile {
@@ -861,8 +860,8 @@ export const ApplianceListKeysResults = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplianceListKeysResults",
 }) as any as S.Schema<ApplianceListKeysResults>;
 
-export interface AppliancesListOperationsRequest {}
-export const AppliancesListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListApplianceOperationsRequest {}
+export const ListApplianceOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -872,8 +871,8 @@ export const AppliancesListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppliancesListOperationsRequest",
-}) as any as S.Schema<AppliancesListOperationsRequest>;
+  identifier: "ListApplianceOperationsRequest",
+}) as any as S.Schema<ListApplianceOperationsRequest>;
 
 /** Describes the properties of an Appliances Operation Value Display. */
 export interface ApplianceOperationValueDisplay {
@@ -950,7 +949,7 @@ export const AppliancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<AppliancesUpdateRequestTagsMap>;
 
-export interface AppliancesUpdateRequest {
+export interface UpdateApplianceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -960,7 +959,7 @@ export interface AppliancesUpdateRequest {
   /** Resource tags */
   tags?: AppliancesUpdateRequestTagsMap;
 }
-export const AppliancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateApplianceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -975,8 +974,8 @@ export const AppliancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppliancesUpdateRequest",
-}) as any as S.Schema<AppliancesUpdateRequest>;
+  identifier: "UpdateApplianceRequest",
+}) as any as S.Schema<UpdateApplianceRequest>;
 
 /** Resource tags. */
 export type AppliancesUpdateResponseTagsMap = {
@@ -987,7 +986,7 @@ export const AppliancesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<AppliancesUpdateResponseTagsMap>;
 
-export interface AppliancesUpdateResponse {
+export interface UpdateApplianceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1005,7 +1004,7 @@ export interface AppliancesUpdateResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const AppliancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateApplianceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1017,8 +1016,8 @@ export const AppliancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(Identity),
   }),
 ).annotate({
-  identifier: "AppliancesUpdateResponse",
-}) as any as S.Schema<AppliancesUpdateResponse>;
+  identifier: "UpdateApplianceResponse",
+}) as any as S.Schema<UpdateApplianceResponse>;
 
 export type AppliancesCreateOrUpdateError = AzureOpError;
 /** Creates or updates an Appliance. Creates or updates an Appliance in the specified Subscription and Resource Group. */
@@ -1035,151 +1034,151 @@ export const AppliancesCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AppliancesDeleteError = AzureOpError;
+export type DeleteApplianceError = AzureOpError;
 /** Deletes an Appliance. Deletes an Appliance with the specified Resource Name, Resource Group, and Subscription Id. */
-export const AppliancesDelete: API.OperationMethod<
-  AppliancesDeleteRequest,
-  AppliancesDeleteResponse,
-  AppliancesDeleteError,
+export const DeleteAppliance: API.OperationMethod<
+  DeleteApplianceRequest,
+  DeleteApplianceResponse,
+  DeleteApplianceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesDeleteRequest,
-  output: AppliancesDeleteResponse,
+  input: DeleteApplianceRequest,
+  output: DeleteApplianceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AppliancesGetError = AzureOpError;
+export type GetApplianceError = AzureOpError;
 /** Gets an Appliance. Gets the details of an Appliance with a specified resource group and name. */
-export const AppliancesGet: API.OperationMethod<
-  AppliancesGetRequest,
-  AppliancesGetResponse,
-  AppliancesGetError,
+export const GetAppliance: API.OperationMethod<
+  GetApplianceRequest,
+  GetApplianceResponse,
+  GetApplianceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesGetRequest,
-  output: AppliancesGetResponse,
+  input: GetApplianceRequest,
+  output: GetApplianceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AppliancesGetTelemetryConfigError = AzureOpError;
+export type GetApplianceTelemetryConfigError = AzureOpError;
 /** Gets the telemetry config. Gets the telemetry config. */
-export const AppliancesGetTelemetryConfig: API.OperationMethod<
-  AppliancesGetTelemetryConfigRequest,
+export const GetApplianceTelemetryConfig: API.OperationMethod<
+  GetApplianceTelemetryConfigRequest,
   ApplianceGetTelemetryConfigResult,
-  AppliancesGetTelemetryConfigError,
+  GetApplianceTelemetryConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesGetTelemetryConfigRequest,
+  input: GetApplianceTelemetryConfigRequest,
   output: ApplianceGetTelemetryConfigResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AppliancesGetUpgradeGraphError = AzureOpError;
+export type GetApplianceUpgradeGraphError = AzureOpError;
 /** Gets an Appliance upgrade graph. Gets the upgrade graph of an Appliance with a specified resource group and name and specific release train. */
-export const AppliancesGetUpgradeGraph: API.OperationMethod<
-  AppliancesGetUpgradeGraphRequest,
+export const GetApplianceUpgradeGraph: API.OperationMethod<
+  GetApplianceUpgradeGraphRequest,
   UpgradeGraph,
-  AppliancesGetUpgradeGraphError,
+  GetApplianceUpgradeGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesGetUpgradeGraphRequest,
+  input: GetApplianceUpgradeGraphRequest,
   output: UpgradeGraph,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AppliancesListByResourceGroupError = AzureOpError;
+export type ListApplianceByResourceGroupError = AzureOpError;
 /** Gets a list of Appliances in the specified subscription and resource group. Gets a list of Appliances in the specified subscription and resource group. The operation returns properties of each Appliance. */
-export const AppliancesListByResourceGroup: API.OperationMethod<
-  AppliancesListByResourceGroupRequest,
+export const ListApplianceByResourceGroup: API.OperationMethod<
+  ListApplianceByResourceGroupRequest,
   ApplianceListResult,
-  AppliancesListByResourceGroupError,
+  ListApplianceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesListByResourceGroupRequest,
+  input: ListApplianceByResourceGroupRequest,
   output: ApplianceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AppliancesListBySubscriptionError = AzureOpError;
+export type ListApplianceBySubscriptionError = AzureOpError;
 /** Gets a list of Appliances in a subscription. Gets a list of Appliances in the specified subscription. The operation returns properties of each Appliance */
-export const AppliancesListBySubscription: API.OperationMethod<
-  AppliancesListBySubscriptionRequest,
+export const ListApplianceBySubscription: API.OperationMethod<
+  ListApplianceBySubscriptionRequest,
   ApplianceListResult,
-  AppliancesListBySubscriptionError,
+  ListApplianceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesListBySubscriptionRequest,
+  input: ListApplianceBySubscriptionRequest,
   output: ApplianceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AppliancesListClusterUserCredentialError = AzureOpError;
+export type ListApplianceClusterUserCredentialError = AzureOpError;
 /** Returns the cluster user credential. Returns the cluster user credentials for the dedicated appliance. */
-export const AppliancesListClusterUserCredential: API.OperationMethod<
-  AppliancesListClusterUserCredentialRequest,
+export const ListApplianceClusterUserCredential: API.OperationMethod<
+  ListApplianceClusterUserCredentialRequest,
   ApplianceListCredentialResults,
-  AppliancesListClusterUserCredentialError,
+  ListApplianceClusterUserCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesListClusterUserCredentialRequest,
+  input: ListApplianceClusterUserCredentialRequest,
   output: ApplianceListCredentialResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AppliancesListKeysError = AzureOpError;
+export type ListApplianceKeysError = AzureOpError;
 /** Gets the management config. Returns the cluster customer credentials for the dedicated appliance. */
-export const AppliancesListKeys: API.OperationMethod<
-  AppliancesListKeysRequest,
+export const ListApplianceKeys: API.OperationMethod<
+  ListApplianceKeysRequest,
   ApplianceListKeysResults,
-  AppliancesListKeysError,
+  ListApplianceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesListKeysRequest,
+  input: ListApplianceKeysRequest,
   output: ApplianceListKeysResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AppliancesListOperationsError = AzureOpError;
+export type ListApplianceOperationsError = AzureOpError;
 /** Lists all available Appliances operations. */
-export const AppliancesListOperations: API.OperationMethod<
-  AppliancesListOperationsRequest,
+export const ListApplianceOperations: API.OperationMethod<
+  ListApplianceOperationsRequest,
   ApplianceOperationsList,
-  AppliancesListOperationsError,
+  ListApplianceOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesListOperationsRequest,
+  input: ListApplianceOperationsRequest,
   output: ApplianceOperationsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AppliancesUpdateError = AzureOpError;
+export type UpdateApplianceError = AzureOpError;
 /** Updates an Appliance. Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription. */
-export const AppliancesUpdate: API.OperationMethod<
-  AppliancesUpdateRequest,
-  AppliancesUpdateResponse,
-  AppliancesUpdateError,
+export const UpdateAppliance: API.OperationMethod<
+  UpdateApplianceRequest,
+  UpdateApplianceResponse,
+  UpdateApplianceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppliancesUpdateRequest,
-  output: AppliancesUpdateResponse,
+  input: UpdateApplianceRequest,
+  output: UpdateApplianceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

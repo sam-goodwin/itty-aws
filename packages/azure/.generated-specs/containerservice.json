@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.containerservice#SnapshotsDelete": {
+    "com.azure.containerservice#DeleteSnapshot": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#SnapshotsDeleteRequest"
+        "target": "com.azure.containerservice#DeleteSnapshotRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#SnapshotsDeleteRequest": {
+    "com.azure.containerservice#DeleteSnapshotRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -68,13 +68,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#SnapshotsUpdateTags": {
+    "com.azure.containerservice#UpdateSnapshotTag": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#SnapshotsUpdateTagsRequest"
+        "target": "com.azure.containerservice#UpdateSnapshotTagRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#SnapshotsUpdateTagsResponse"
+        "target": "com.azure.containerservice#UpdateSnapshotTagResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -87,7 +87,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#SnapshotsUpdateTagsResponse": {
+    "com.azure.containerservice#UpdateSnapshotTagResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -430,7 +430,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.containerservice#SnapshotsUpdateTagsRequest": {
+    "com.azure.containerservice#UpdateSnapshotTagRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -659,13 +659,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#SnapshotsGet": {
+    "com.azure.containerservice#GetSnapshot": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#SnapshotsGetRequest"
+        "target": "com.azure.containerservice#GetSnapshotRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#SnapshotsGetResponse"
+        "target": "com.azure.containerservice#GetSnapshotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -678,7 +678,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#SnapshotsGetResponse": {
+    "com.azure.containerservice#GetSnapshotResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -741,7 +741,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#SnapshotsGetRequest": {
+    "com.azure.containerservice#GetSnapshotRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -773,10 +773,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#SnapshotsListByResourceGroup": {
+    "com.azure.containerservice#ListSnapshotByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#SnapshotsListByResourceGroupRequest"
+        "target": "com.azure.containerservice#ListSnapshotByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.containerservice#SnapshotListResult"
@@ -885,7 +885,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#SnapshotsListByResourceGroupRequest": {
+    "com.azure.containerservice#ListSnapshotByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -909,13 +909,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersGetUpgradeProfile": {
+    "com.azure.containerservice#GetManagedClusterUpgradeProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersGetUpgradeProfileRequest"
+        "target": "com.azure.containerservice#GetManagedClusterUpgradeProfileRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#ManagedClustersGetUpgradeProfileResponse"
+        "target": "com.azure.containerservice#GetManagedClusterUpgradeProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -928,7 +928,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersGetUpgradeProfileResponse": {
+    "com.azure.containerservice#GetManagedClusterUpgradeProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1081,7 +1081,7 @@
         "smithy.api#documentation": "The operating system type. The default is Linux."
       }
     },
-    "com.azure.containerservice#ManagedClustersGetUpgradeProfileRequest": {
+    "com.azure.containerservice#GetManagedClusterUpgradeProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1113,10 +1113,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#TrustedAccessRoleBindingsDelete": {
+    "com.azure.containerservice#DeleteTrustedAccessRoleBinding": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#TrustedAccessRoleBindingsDeleteRequest"
+        "target": "com.azure.containerservice#DeleteTrustedAccessRoleBindingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1132,7 +1132,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#TrustedAccessRoleBindingsDeleteRequest": {
+    "com.azure.containerservice#DeleteTrustedAccessRoleBindingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1383,13 +1383,13 @@
         "smithy.api#documentation": "A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'."
       }
     },
-    "com.azure.containerservice#TrustedAccessRoleBindingsGet": {
+    "com.azure.containerservice#GetTrustedAccessRoleBinding": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#TrustedAccessRoleBindingsGetRequest"
+        "target": "com.azure.containerservice#GetTrustedAccessRoleBindingRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#TrustedAccessRoleBindingsGetResponse"
+        "target": "com.azure.containerservice#GetTrustedAccessRoleBindingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1402,7 +1402,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#TrustedAccessRoleBindingsGetResponse": {
+    "com.azure.containerservice#GetTrustedAccessRoleBindingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1441,7 +1441,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#TrustedAccessRoleBindingsGetRequest": {
+    "com.azure.containerservice#GetTrustedAccessRoleBindingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1481,10 +1481,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#TrustedAccessRoleBindingsList": {
+    "com.azure.containerservice#ListTrustedAccessRoleBindings": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#TrustedAccessRoleBindingsListRequest"
+        "target": "com.azure.containerservice#ListTrustedAccessRoleBindingsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#TrustedAccessRoleBindingListResult"
@@ -1569,7 +1569,7 @@
         "smithy.api#documentation": "Defines binding between a resource and role"
       }
     },
-    "com.azure.containerservice#TrustedAccessRoleBindingsListRequest": {
+    "com.azure.containerservice#ListTrustedAccessRoleBindingsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1601,10 +1601,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersStop": {
+    "com.azure.containerservice#StopManagedCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersStopRequest"
+        "target": "com.azure.containerservice#StopManagedClusterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1620,7 +1620,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersStopRequest": {
+    "com.azure.containerservice#StopManagedClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1652,10 +1652,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersStart": {
+    "com.azure.containerservice#StartManagedCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersStartRequest"
+        "target": "com.azure.containerservice#StartManagedClusterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1671,7 +1671,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersStartRequest": {
+    "com.azure.containerservice#StartManagedClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1837,10 +1837,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersRotateServiceAccountSigningKeys": {
+    "com.azure.containerservice#RotateManagedClusterServiceAccountSigningKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersRotateServiceAccountSigningKeysRequest"
+        "target": "com.azure.containerservice#RotateManagedClusterServiceAccountSigningKeyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1856,7 +1856,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersRotateServiceAccountSigningKeysRequest": {
+    "com.azure.containerservice#RotateManagedClusterServiceAccountSigningKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1888,10 +1888,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersRotateClusterCertificates": {
+    "com.azure.containerservice#RotateManagedClusterClusterCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersRotateClusterCertificatesRequest"
+        "target": "com.azure.containerservice#RotateManagedClusterClusterCertificateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1907,7 +1907,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersRotateClusterCertificatesRequest": {
+    "com.azure.containerservice#RotateManagedClusterClusterCertificateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2147,13 +2147,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#PrivateLinkResourcesList": {
+    "com.azure.containerservice#ListPrivateLinkResources": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#PrivateLinkResourcesListRequest"
+        "target": "com.azure.containerservice#ListPrivateLinkResourcesRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#PrivateLinkResourcesListResult"
+        "target": "com.azure.containerservice#ListPrivateLinkResourcesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -2166,7 +2166,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#PrivateLinkResourcesListResult": {
+    "com.azure.containerservice#ListPrivateLinkResourcesResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -2189,7 +2189,7 @@
         "smithy.api#documentation": "The collection value."
       }
     },
-    "com.azure.containerservice#PrivateLinkResourcesListRequest": {
+    "com.azure.containerservice#ListPrivateLinkResourcesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2221,10 +2221,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsDelete": {
+    "com.azure.containerservice#DeletePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#PrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.containerservice#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2240,7 +2240,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.containerservice#DeletePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2280,13 +2280,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsUpdate": {
+    "com.azure.containerservice#UpdatePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#PrivateEndpointConnectionsUpdateRequest"
+        "target": "com.azure.containerservice#UpdatePrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#PrivateEndpointConnectionsUpdateResponse"
+        "target": "com.azure.containerservice#UpdatePrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2299,7 +2299,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsUpdateResponse": {
+    "com.azure.containerservice#UpdatePrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2468,7 +2468,7 @@
         "smithy.api#documentation": "The current provisioning state."
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsUpdateRequest": {
+    "com.azure.containerservice#UpdatePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2535,13 +2535,13 @@
         "smithy.api#documentation": "Properties of a private endpoint connection."
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsGet": {
+    "com.azure.containerservice#GetPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#PrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.containerservice#GetPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#PrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.containerservice#GetPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2554,7 +2554,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsGetResponse": {
+    "com.azure.containerservice#GetPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2592,7 +2592,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsGetRequest": {
+    "com.azure.containerservice#GetPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2632,10 +2632,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsList": {
+    "com.azure.containerservice#ListPrivateEndpointConnections": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#PrivateEndpointConnectionsListRequest"
+        "target": "com.azure.containerservice#ListPrivateEndpointConnectionsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#PrivateEndpointConnectionListResult"
@@ -2712,7 +2712,7 @@
         "smithy.api#documentation": "A private endpoint connection"
       }
     },
-    "com.azure.containerservice#PrivateEndpointConnectionsListRequest": {
+    "com.azure.containerservice#ListPrivateEndpointConnectionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2744,10 +2744,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersListOutboundNetworkDependenciesEndpoints": {
+    "com.azure.containerservice#ListManagedClusterOutboundNetworkDependencyEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersListOutboundNetworkDependenciesEndpointsRequest"
+        "target": "com.azure.containerservice#ListManagedClusterOutboundNetworkDependencyEndpointsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#OutboundEnvironmentEndpointCollection"
@@ -2883,7 +2883,7 @@
         "smithy.api#documentation": "connect information from the AKS agent nodes to a single endpoint."
       }
     },
-    "com.azure.containerservice#ManagedClustersListOutboundNetworkDependenciesEndpointsRequest": {
+    "com.azure.containerservice#ListManagedClusterOutboundNetworkDependencyEndpointsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2915,13 +2915,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersGetMeshUpgradeProfile": {
+    "com.azure.containerservice#GetManagedClusterMeshUpgradeProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersGetMeshUpgradeProfileRequest"
+        "target": "com.azure.containerservice#GetManagedClusterMeshUpgradeProfileRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#ManagedClustersGetMeshUpgradeProfileResponse"
+        "target": "com.azure.containerservice#GetManagedClusterMeshUpgradeProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2934,7 +2934,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersGetMeshUpgradeProfileResponse": {
+    "com.azure.containerservice#GetManagedClusterMeshUpgradeProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3045,7 +3045,7 @@
         "smithy.api#documentation": "List of revisions available for upgrade of a specific mesh revision"
       }
     },
-    "com.azure.containerservice#ManagedClustersGetMeshUpgradeProfileRequest": {
+    "com.azure.containerservice#GetManagedClusterMeshUpgradeProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3085,10 +3085,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersListMeshUpgradeProfiles": {
+    "com.azure.containerservice#ListManagedClusterMeshUpgradeProfiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersListMeshUpgradeProfilesRequest"
+        "target": "com.azure.containerservice#ListManagedClusterMeshUpgradeProfilesRequest"
       },
       "output": {
         "target": "com.azure.containerservice#MeshUpgradeProfileList"
@@ -3172,7 +3172,7 @@
         "smithy.api#documentation": "Upgrade profile for given mesh."
       }
     },
-    "com.azure.containerservice#ManagedClustersListMeshUpgradeProfilesRequest": {
+    "com.azure.containerservice#ListManagedClusterMeshUpgradeProfilesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3204,10 +3204,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedNamespacesListCredential": {
+    "com.azure.containerservice#ListManagedNamespaceCredential": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedNamespacesListCredentialRequest"
+        "target": "com.azure.containerservice#ListManagedNamespaceCredentialRequest"
       },
       "output": {
         "target": "com.azure.containerservice#CredentialResults"
@@ -3266,7 +3266,7 @@
         "smithy.api#documentation": "The credential result response."
       }
     },
-    "com.azure.containerservice#ManagedNamespacesListCredentialRequest": {
+    "com.azure.containerservice#ListManagedNamespaceCredentialRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3306,10 +3306,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedNamespacesDelete": {
+    "com.azure.containerservice#DeleteManagedNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedNamespacesDeleteRequest"
+        "target": "com.azure.containerservice#DeleteManagedNamespaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3325,7 +3325,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedNamespacesDeleteRequest": {
+    "com.azure.containerservice#DeleteManagedNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3365,13 +3365,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedNamespacesUpdate": {
+    "com.azure.containerservice#UpdateManagedNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedNamespacesUpdateRequest"
+        "target": "com.azure.containerservice#UpdateManagedNamespaceRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#ManagedNamespacesUpdateResponse"
+        "target": "com.azure.containerservice#UpdateManagedNamespaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3384,7 +3384,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedNamespacesUpdateResponse": {
+    "com.azure.containerservice#UpdateManagedNamespaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3727,7 +3727,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#ManagedNamespacesUpdateRequest": {
+    "com.azure.containerservice#UpdateManagedNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4012,13 +4012,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#ManagedNamespacesGet": {
+    "com.azure.containerservice#GetManagedNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedNamespacesGetRequest"
+        "target": "com.azure.containerservice#GetManagedNamespaceRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#ManagedNamespacesGetResponse"
+        "target": "com.azure.containerservice#GetManagedNamespaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4031,7 +4031,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedNamespacesGetResponse": {
+    "com.azure.containerservice#GetManagedNamespaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4100,7 +4100,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#ManagedNamespacesGetRequest": {
+    "com.azure.containerservice#GetManagedNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4140,10 +4140,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedNamespacesListByManagedCluster": {
+    "com.azure.containerservice#ListManagedNamespaceByManagedCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedNamespacesListByManagedClusterRequest"
+        "target": "com.azure.containerservice#ListManagedNamespaceByManagedClusterRequest"
       },
       "output": {
         "target": "com.azure.containerservice#ManagedNamespaceListResult"
@@ -4258,7 +4258,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#ManagedNamespacesListByManagedClusterRequest": {
+    "com.azure.containerservice#ListManagedNamespaceByManagedClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4290,10 +4290,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#MaintenanceConfigurationsDelete": {
+    "com.azure.containerservice#DeleteMaintenanceConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#MaintenanceConfigurationsDeleteRequest"
+        "target": "com.azure.containerservice#DeleteMaintenanceConfigurationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4309,7 +4309,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#MaintenanceConfigurationsDeleteRequest": {
+    "com.azure.containerservice#DeleteMaintenanceConfigurationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4831,13 +4831,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#MaintenanceConfigurationsGet": {
+    "com.azure.containerservice#GetMaintenanceConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#MaintenanceConfigurationsGetRequest"
+        "target": "com.azure.containerservice#GetMaintenanceConfigurationRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#MaintenanceConfigurationsGetResponse"
+        "target": "com.azure.containerservice#GetMaintenanceConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4850,7 +4850,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#MaintenanceConfigurationsGetResponse": {
+    "com.azure.containerservice#GetMaintenanceConfigurationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4888,7 +4888,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#MaintenanceConfigurationsGetRequest": {
+    "com.azure.containerservice#GetMaintenanceConfigurationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4928,10 +4928,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#MaintenanceConfigurationsListByManagedCluster": {
+    "com.azure.containerservice#ListMaintenanceConfigurationByManagedCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#MaintenanceConfigurationsListByManagedClusterRequest"
+        "target": "com.azure.containerservice#ListMaintenanceConfigurationByManagedClusterRequest"
       },
       "output": {
         "target": "com.azure.containerservice#MaintenanceConfigurationListResult"
@@ -5015,7 +5015,7 @@
         "smithy.api#documentation": "Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance."
       }
     },
-    "com.azure.containerservice#MaintenanceConfigurationsListByManagedClusterRequest": {
+    "com.azure.containerservice#ListMaintenanceConfigurationByManagedClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5047,10 +5047,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersListClusterUserCredentials": {
+    "com.azure.containerservice#ListManagedClusterClusterUserCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersListClusterUserCredentialsRequest"
+        "target": "com.azure.containerservice#ListManagedClusterClusterUserCredentialsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#CredentialResults"
@@ -5066,7 +5066,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersListClusterUserCredentialsRequest": {
+    "com.azure.containerservice#ListManagedClusterClusterUserCredentialsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5130,10 +5130,10 @@
       },
       "traits": {}
     },
-    "com.azure.containerservice#ManagedClustersListClusterMonitoringUserCredentials": {
+    "com.azure.containerservice#ListManagedClusterClusterMonitoringUserCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersListClusterMonitoringUserCredentialsRequest"
+        "target": "com.azure.containerservice#ListManagedClusterClusterMonitoringUserCredentialsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#CredentialResults"
@@ -5149,7 +5149,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersListClusterMonitoringUserCredentialsRequest": {
+    "com.azure.containerservice#ListManagedClusterClusterMonitoringUserCredentialsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5188,10 +5188,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersListClusterAdminCredentials": {
+    "com.azure.containerservice#ListManagedClusterClusterAdminCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersListClusterAdminCredentialsRequest"
+        "target": "com.azure.containerservice#ListManagedClusterClusterAdminCredentialsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#CredentialResults"
@@ -5207,7 +5207,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersListClusterAdminCredentialsRequest": {
+    "com.azure.containerservice#ListManagedClusterClusterAdminCredentialsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5246,10 +5246,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#IdentityBindingsDelete": {
+    "com.azure.containerservice#DeleteIdentityBinding": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#IdentityBindingsDeleteRequest"
+        "target": "com.azure.containerservice#DeleteIdentityBindingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5265,7 +5265,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#IdentityBindingsDeleteRequest": {
+    "com.azure.containerservice#DeleteIdentityBindingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5562,13 +5562,13 @@
         "smithy.api#documentation": "Managed identity profile for the identity binding."
       }
     },
-    "com.azure.containerservice#IdentityBindingsGet": {
+    "com.azure.containerservice#GetIdentityBinding": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#IdentityBindingsGetRequest"
+        "target": "com.azure.containerservice#GetIdentityBindingRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#IdentityBindingsGetResponse"
+        "target": "com.azure.containerservice#GetIdentityBindingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5581,7 +5581,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#IdentityBindingsGetResponse": {
+    "com.azure.containerservice#GetIdentityBindingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5625,7 +5625,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#IdentityBindingsGetRequest": {
+    "com.azure.containerservice#GetIdentityBindingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5665,10 +5665,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#IdentityBindingsListByManagedCluster": {
+    "com.azure.containerservice#ListIdentityBindingByManagedCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#IdentityBindingsListByManagedClusterRequest"
+        "target": "com.azure.containerservice#ListIdentityBindingByManagedClusterRequest"
       },
       "output": {
         "target": "com.azure.containerservice#IdentityBindingListResult"
@@ -5758,7 +5758,7 @@
         "smithy.api#documentation": "The IdentityBinding resource."
       }
     },
-    "com.azure.containerservice#IdentityBindingsListByManagedClusterRequest": {
+    "com.azure.containerservice#ListIdentityBindingByManagedClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5790,10 +5790,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersGetCommandResult": {
+    "com.azure.containerservice#GetManagedClusterCommandResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersGetCommandResultRequest"
+        "target": "com.azure.containerservice#GetManagedClusterCommandResultRequest"
       },
       "output": {
         "target": "com.azure.containerservice#RunCommandResult"
@@ -5809,7 +5809,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersGetCommandResultRequest": {
+    "com.azure.containerservice#GetManagedClusterCommandResultRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5849,10 +5849,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#AgentPoolsGetAvailableAgentPoolVersions": {
+    "com.azure.containerservice#GetAgentPoolAvailableAgentPoolVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#AgentPoolsGetAvailableAgentPoolVersionsRequest"
+        "target": "com.azure.containerservice#GetAgentPoolAvailableAgentPoolVersionRequest"
       },
       "output": {
         "target": "com.azure.containerservice#AgentPoolAvailableVersions"
@@ -5950,7 +5950,7 @@
         "smithy.api#documentation": "Available version information for an agent pool."
       }
     },
-    "com.azure.containerservice#AgentPoolsGetAvailableAgentPoolVersionsRequest": {
+    "com.azure.containerservice#GetAgentPoolAvailableAgentPoolVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5982,13 +5982,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#AgentPoolsGetUpgradeProfile": {
+    "com.azure.containerservice#GetAgentPoolUpgradeProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#AgentPoolsGetUpgradeProfileRequest"
+        "target": "com.azure.containerservice#GetAgentPoolUpgradeProfileRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#AgentPoolsGetUpgradeProfileResponse"
+        "target": "com.azure.containerservice#GetAgentPoolUpgradeProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6001,7 +6001,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#AgentPoolsGetUpgradeProfileResponse": {
+    "com.azure.containerservice#GetAgentPoolUpgradeProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6164,7 +6164,7 @@
         "smithy.api#documentation": "The operating system type. The default is Linux."
       }
     },
-    "com.azure.containerservice#AgentPoolsGetUpgradeProfileRequest": {
+    "com.azure.containerservice#GetAgentPoolUpgradeProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6263,13 +6263,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#MachinesGet": {
+    "com.azure.containerservice#GetMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#MachinesGetRequest"
+        "target": "com.azure.containerservice#GetMachineRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#MachinesGetResponse"
+        "target": "com.azure.containerservice#GetMachineResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6282,7 +6282,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#MachinesGetResponse": {
+    "com.azure.containerservice#GetMachineResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6418,7 +6418,7 @@
         "smithy.api#documentation": "To determine if address belongs IPv4 or IPv6 family"
       }
     },
-    "com.azure.containerservice#MachinesGetRequest": {
+    "com.azure.containerservice#GetMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6466,10 +6466,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#MachinesList": {
+    "com.azure.containerservice#ListMachines": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#MachinesListRequest"
+        "target": "com.azure.containerservice#ListMachinesRequest"
       },
       "output": {
         "target": "com.azure.containerservice#MachineListResult"
@@ -6568,7 +6568,7 @@
         "smithy.api#documentation": "The Availability zone in which machine is located."
       }
     },
-    "com.azure.containerservice#MachinesListRequest": {
+    "com.azure.containerservice#ListMachinesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6608,10 +6608,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#AgentPoolsDeleteMachines": {
+    "com.azure.containerservice#DeleteAgentPoolMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#AgentPoolsDeleteMachinesRequest"
+        "target": "com.azure.containerservice#DeleteAgentPoolMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6627,7 +6627,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#AgentPoolsDeleteMachinesRequest": {
+    "com.azure.containerservice#DeleteAgentPoolMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6742,10 +6742,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#AgentPoolsDelete": {
+    "com.azure.containerservice#DeleteAgentPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#AgentPoolsDeleteRequest"
+        "target": "com.azure.containerservice#DeleteAgentPoolRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6761,7 +6761,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#AgentPoolsDeleteRequest": {
+    "com.azure.containerservice#DeleteAgentPoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9212,13 +9212,13 @@
         "smithy.api#documentation": "The operating system type. The default is Linux."
       }
     },
-    "com.azure.containerservice#AgentPoolsGet": {
+    "com.azure.containerservice#GetAgentPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#AgentPoolsGetRequest"
+        "target": "com.azure.containerservice#GetAgentPoolRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#AgentPoolsGetResponse"
+        "target": "com.azure.containerservice#GetAgentPoolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9231,7 +9231,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#AgentPoolsGetResponse": {
+    "com.azure.containerservice#GetAgentPoolResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9269,7 +9269,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#AgentPoolsGetRequest": {
+    "com.azure.containerservice#GetAgentPoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9309,10 +9309,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#AgentPoolsList": {
+    "com.azure.containerservice#ListAgentPools": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#AgentPoolsListRequest"
+        "target": "com.azure.containerservice#ListAgentPoolsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#AgentPoolListResult"
@@ -9396,7 +9396,7 @@
         "smithy.api#documentation": "Agent Pool."
       }
     },
-    "com.azure.containerservice#AgentPoolsListRequest": {
+    "com.azure.containerservice#ListAgentPoolsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9479,10 +9479,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersDelete": {
+    "com.azure.containerservice#DeleteManagedCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersDeleteRequest"
+        "target": "com.azure.containerservice#DeleteManagedClusterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9498,7 +9498,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersDeleteRequest": {
+    "com.azure.containerservice#DeleteManagedClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9530,13 +9530,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersUpdateTags": {
+    "com.azure.containerservice#UpdateManagedClusterTag": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersUpdateTagsRequest"
+        "target": "com.azure.containerservice#UpdateManagedClusterTagRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#ManagedClustersUpdateTagsResponse"
+        "target": "com.azure.containerservice#UpdateManagedClusterTagResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9549,7 +9549,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersUpdateTagsResponse": {
+    "com.azure.containerservice#UpdateManagedClusterTagResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13860,7 +13860,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#ManagedClustersUpdateTagsRequest": {
+    "com.azure.containerservice#UpdateManagedClusterTagRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15416,13 +15416,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#ManagedClustersGet": {
+    "com.azure.containerservice#GetManagedCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersGetRequest"
+        "target": "com.azure.containerservice#GetManagedClusterRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#ManagedClustersGetResponse"
+        "target": "com.azure.containerservice#GetManagedClusterResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15435,7 +15435,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersGetResponse": {
+    "com.azure.containerservice#GetManagedClusterResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15528,7 +15528,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#ManagedClustersGetRequest": {
+    "com.azure.containerservice#GetManagedClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15560,10 +15560,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersListByResourceGroup": {
+    "com.azure.containerservice#ListManagedClusterByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersListByResourceGroupRequest"
+        "target": "com.azure.containerservice#ListManagedClusterByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.containerservice#ManagedClusterListResult"
@@ -15702,7 +15702,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#ManagedClustersListByResourceGroupRequest": {
+    "com.azure.containerservice#ListManagedClusterByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15726,10 +15726,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#SnapshotsList": {
+    "com.azure.containerservice#ListSnapshots": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#SnapshotsListRequest"
+        "target": "com.azure.containerservice#ListSnapshotsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#SnapshotListResult"
@@ -15745,7 +15745,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#SnapshotsListRequest": {
+    "com.azure.containerservice#ListSnapshotsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15761,10 +15761,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersList": {
+    "com.azure.containerservice#ListManagedClusters": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersListRequest"
+        "target": "com.azure.containerservice#ListManagedClustersRequest"
       },
       "output": {
         "target": "com.azure.containerservice#ManagedClusterListResult"
@@ -15780,7 +15780,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersListRequest": {
+    "com.azure.containerservice#ListManagedClustersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15796,10 +15796,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#TrustedAccessRolesList": {
+    "com.azure.containerservice#ListTrustedAccessRoles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#TrustedAccessRolesListRequest"
+        "target": "com.azure.containerservice#ListTrustedAccessRolesRequest"
       },
       "output": {
         "target": "com.azure.containerservice#TrustedAccessRoleListResult"
@@ -15963,7 +15963,7 @@
         "smithy.api#documentation": "List of allowed verbs"
       }
     },
-    "com.azure.containerservice#TrustedAccessRolesListRequest": {
+    "com.azure.containerservice#ListTrustedAccessRolesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15987,13 +15987,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersGetMeshRevisionProfile": {
+    "com.azure.containerservice#GetManagedClusterMeshRevisionProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersGetMeshRevisionProfileRequest"
+        "target": "com.azure.containerservice#GetManagedClusterMeshRevisionProfileRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#ManagedClustersGetMeshRevisionProfileResponse"
+        "target": "com.azure.containerservice#GetManagedClusterMeshRevisionProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16006,7 +16006,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#ManagedClustersGetMeshRevisionProfileResponse": {
+    "com.azure.containerservice#GetManagedClusterMeshRevisionProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16067,7 +16067,7 @@
         "smithy.api#documentation": "Available mesh revisions."
       }
     },
-    "com.azure.containerservice#ManagedClustersGetMeshRevisionProfileRequest": {
+    "com.azure.containerservice#GetManagedClusterMeshRevisionProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16099,10 +16099,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersListMeshRevisionProfiles": {
+    "com.azure.containerservice#ListManagedClusterMeshRevisionProfiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersListMeshRevisionProfilesRequest"
+        "target": "com.azure.containerservice#ListManagedClusterMeshRevisionProfilesRequest"
       },
       "output": {
         "target": "com.azure.containerservice#MeshRevisionProfileList"
@@ -16186,7 +16186,7 @@
         "smithy.api#documentation": "Mesh revision profile for a mesh."
       }
     },
-    "com.azure.containerservice#ManagedClustersListMeshRevisionProfilesRequest": {
+    "com.azure.containerservice#ListManagedClusterMeshRevisionProfilesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16210,10 +16210,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#ManagedClustersListKubernetesVersions": {
+    "com.azure.containerservice#ListManagedClusterKuberneteVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#ManagedClustersListKubernetesVersionsRequest"
+        "target": "com.azure.containerservice#ListManagedClusterKuberneteVersionsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#KubernetesVersionListResult"
@@ -16348,7 +16348,7 @@
         "smithy.api#documentation": "Kubernetes support plans available for this version."
       }
     },
-    "com.azure.containerservice#ManagedClustersListKubernetesVersionsRequest": {
+    "com.azure.containerservice#ListManagedClusterKuberneteVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16372,7 +16372,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#OperationsList": {
+    "com.azure.containerservice#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -16479,10 +16479,10 @@
         "smithy.api#documentation": "Describes the properties of a Operation Value Display."
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsDelete": {
+    "com.azure.containerservice#DeleteDeploymentSafeguard": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#DeploymentSafeguardsDeleteRequest"
+        "target": "com.azure.containerservice#DeleteDeploymentSafeguardRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -16498,7 +16498,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsDeleteRequest": {
+    "com.azure.containerservice#DeleteDeploymentSafeguardRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -16514,13 +16514,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsCreate": {
+    "com.azure.containerservice#CreateDeploymentSafeguard": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#DeploymentSafeguardsCreateRequest"
+        "target": "com.azure.containerservice#CreateDeploymentSafeguardRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#DeploymentSafeguardsCreateResponse"
+        "target": "com.azure.containerservice#CreateDeploymentSafeguardResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16533,7 +16533,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsCreateResponse": {
+    "com.azure.containerservice#CreateDeploymentSafeguardResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16725,7 +16725,7 @@
         "smithy.api#documentation": "The provisioning state of the last accepted operation."
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsCreateRequest": {
+    "com.azure.containerservice#CreateDeploymentSafeguardRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -16783,13 +16783,13 @@
         "smithy.api#documentation": "User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards"
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsGet": {
+    "com.azure.containerservice#GetDeploymentSafeguard": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#DeploymentSafeguardsGetRequest"
+        "target": "com.azure.containerservice#GetDeploymentSafeguardRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#DeploymentSafeguardsGetResponse"
+        "target": "com.azure.containerservice#GetDeploymentSafeguardResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16802,7 +16802,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsGetResponse": {
+    "com.azure.containerservice#GetDeploymentSafeguardResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16846,7 +16846,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsGetRequest": {
+    "com.azure.containerservice#GetDeploymentSafeguardRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -16862,10 +16862,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsList": {
+    "com.azure.containerservice#ListDeploymentSafeguards": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#DeploymentSafeguardsListRequest"
+        "target": "com.azure.containerservice#ListDeploymentSafeguardsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#DeploymentSafeguardListResult"
@@ -16955,7 +16955,7 @@
         "smithy.api#documentation": "Deployment Safeguards"
       }
     },
-    "com.azure.containerservice#DeploymentSafeguardsListRequest": {
+    "com.azure.containerservice#ListDeploymentSafeguardsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -19142,10 +19142,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetMembersDelete": {
+    "com.azure.containerservice#DeleteFleetMember": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetMembersDeleteRequest"
+        "target": "com.azure.containerservice#DeleteFleetMemberRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19161,7 +19161,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetMembersDeleteRequest": {
+    "com.azure.containerservice#DeleteFleetMemberRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19201,13 +19201,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetMembersUpdate": {
+    "com.azure.containerservice#UpdateFleetMember": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetMembersUpdateRequest"
+        "target": "com.azure.containerservice#UpdateFleetMemberRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#FleetMembersUpdateResponse"
+        "target": "com.azure.containerservice#UpdateFleetMemberResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19220,7 +19220,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetMembersUpdateResponse": {
+    "com.azure.containerservice#UpdateFleetMemberResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -19435,7 +19435,7 @@
         "smithy.api#documentation": "The provisioning state of the last accepted operation."
       }
     },
-    "com.azure.containerservice#FleetMembersUpdateRequest": {
+    "com.azure.containerservice#UpdateFleetMemberRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19513,13 +19513,13 @@
         "smithy.api#documentation": "The labels for the fleet member."
       }
     },
-    "com.azure.containerservice#FleetMembersCreate": {
+    "com.azure.containerservice#CreateFleetMember": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetMembersCreateRequest"
+        "target": "com.azure.containerservice#CreateFleetMemberRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#FleetMembersCreateResponse"
+        "target": "com.azure.containerservice#CreateFleetMemberResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19532,7 +19532,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetMembersCreateResponse": {
+    "com.azure.containerservice#CreateFleetMemberResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -19576,7 +19576,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#FleetMembersCreateRequest": {
+    "com.azure.containerservice#CreateFleetMemberRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19661,13 +19661,13 @@
         "smithy.api#documentation": "The labels for the fleet member."
       }
     },
-    "com.azure.containerservice#FleetMembersGet": {
+    "com.azure.containerservice#GetFleetMember": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetMembersGetRequest"
+        "target": "com.azure.containerservice#GetFleetMemberRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#FleetMembersGetResponse"
+        "target": "com.azure.containerservice#GetFleetMemberResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19680,7 +19680,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetMembersGetResponse": {
+    "com.azure.containerservice#GetFleetMemberResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -19724,7 +19724,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#FleetMembersGetRequest": {
+    "com.azure.containerservice#GetFleetMemberRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19764,10 +19764,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetMembersListByFleet": {
+    "com.azure.containerservice#ListFleetMemberByFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetMembersListByFleetRequest"
+        "target": "com.azure.containerservice#ListFleetMemberByFleetRequest"
       },
       "output": {
         "target": "com.azure.containerservice#FleetMemberListResult"
@@ -19857,7 +19857,7 @@
         "smithy.api#documentation": "A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure."
       }
     },
-    "com.azure.containerservice#FleetMembersListByFleetRequest": {
+    "com.azure.containerservice#ListFleetMemberByFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19910,10 +19910,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesDelete": {
+    "com.azure.containerservice#DeleteFleetManagedNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetManagedNamespacesDeleteRequest"
+        "target": "com.azure.containerservice#DeleteFleetManagedNamespaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19929,7 +19929,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesDeleteRequest": {
+    "com.azure.containerservice#DeleteFleetManagedNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19969,13 +19969,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesUpdate": {
+    "com.azure.containerservice#UpdateFleetManagedNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetManagedNamespacesUpdateRequest"
+        "target": "com.azure.containerservice#UpdateFleetManagedNamespaceRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#FleetManagedNamespacesUpdateResponse"
+        "target": "com.azure.containerservice#UpdateFleetManagedNamespaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19988,7 +19988,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesUpdateResponse": {
+    "com.azure.containerservice#UpdateFleetManagedNamespaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20896,7 +20896,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesUpdateRequest": {
+    "com.azure.containerservice#UpdateFleetManagedNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21147,13 +21147,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesGet": {
+    "com.azure.containerservice#GetFleetManagedNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetManagedNamespacesGetRequest"
+        "target": "com.azure.containerservice#GetFleetManagedNamespaceRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#FleetManagedNamespacesGetResponse"
+        "target": "com.azure.containerservice#GetFleetManagedNamespaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21166,7 +21166,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesGetResponse": {
+    "com.azure.containerservice#GetFleetManagedNamespaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -21235,7 +21235,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesGetRequest": {
+    "com.azure.containerservice#GetFleetManagedNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21275,10 +21275,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesListByFleet": {
+    "com.azure.containerservice#ListFleetManagedNamespaceByFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetManagedNamespacesListByFleetRequest"
+        "target": "com.azure.containerservice#ListFleetManagedNamespaceByFleetRequest"
       },
       "output": {
         "target": "com.azure.containerservice#FleetManagedNamespaceListResult"
@@ -21393,7 +21393,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#FleetManagedNamespacesListByFleetRequest": {
+    "com.azure.containerservice#ListFleetManagedNamespaceByFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21425,10 +21425,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetsListCredentials": {
+    "com.azure.containerservice#ListFleetCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetsListCredentialsRequest"
+        "target": "com.azure.containerservice#ListFleetCredentialsRequest"
       },
       "output": {
         "target": "com.azure.containerservice#FleetCredentialResults"
@@ -21487,7 +21487,7 @@
         "smithy.api#documentation": "One credential result item."
       }
     },
-    "com.azure.containerservice#FleetsListCredentialsRequest": {
+    "com.azure.containerservice#ListFleetCredentialsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21519,13 +21519,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#GatesUpdate": {
+    "com.azure.containerservice#UpdateGate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#GatesUpdateRequest"
+        "target": "com.azure.containerservice#UpdateGateRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#GatesUpdateResponse"
+        "target": "com.azure.containerservice#UpdateGateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21538,7 +21538,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#GatesUpdateResponse": {
+    "com.azure.containerservice#UpdateGateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -21750,7 +21750,7 @@
         "smithy.api#documentation": "The provisioning state of the Gate resource."
       }
     },
-    "com.azure.containerservice#GatesUpdateRequest": {
+    "com.azure.containerservice#UpdateGateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21810,13 +21810,13 @@
         "smithy.api#documentation": "Properties of a Gate that can be patched."
       }
     },
-    "com.azure.containerservice#GatesGet": {
+    "com.azure.containerservice#GetGate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#GatesGetRequest"
+        "target": "com.azure.containerservice#GetGateRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#GatesGetResponse"
+        "target": "com.azure.containerservice#GetGateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21829,7 +21829,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#GatesGetResponse": {
+    "com.azure.containerservice#GetGateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -21873,7 +21873,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#GatesGetRequest": {
+    "com.azure.containerservice#GetGateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21913,10 +21913,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#GatesListByFleet": {
+    "com.azure.containerservice#ListGateByFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#GatesListByFleetRequest"
+        "target": "com.azure.containerservice#ListGateByFleetRequest"
       },
       "output": {
         "target": "com.azure.containerservice#GateListResult"
@@ -22006,7 +22006,7 @@
         "smithy.api#documentation": "A Gate controls the progression during a staged rollout, e.g. in an Update Run."
       }
     },
-    "com.azure.containerservice#GatesListByFleetRequest": {
+    "com.azure.containerservice#ListGateByFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -22133,10 +22133,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#AutoUpgradeProfilesDelete": {
+    "com.azure.containerservice#DeleteAutoUpgradeProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#AutoUpgradeProfilesDeleteRequest"
+        "target": "com.azure.containerservice#DeleteAutoUpgradeProfileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -22152,7 +22152,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#AutoUpgradeProfilesDeleteRequest": {
+    "com.azure.containerservice#DeleteAutoUpgradeProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -22640,13 +22640,13 @@
         "smithy.api#documentation": "The error detail."
       }
     },
-    "com.azure.containerservice#AutoUpgradeProfilesGet": {
+    "com.azure.containerservice#GetAutoUpgradeProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#AutoUpgradeProfilesGetRequest"
+        "target": "com.azure.containerservice#GetAutoUpgradeProfileRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#AutoUpgradeProfilesGetResponse"
+        "target": "com.azure.containerservice#GetAutoUpgradeProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22659,7 +22659,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#AutoUpgradeProfilesGetResponse": {
+    "com.azure.containerservice#GetAutoUpgradeProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -22703,7 +22703,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerservice#AutoUpgradeProfilesGetRequest": {
+    "com.azure.containerservice#GetAutoUpgradeProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -22743,10 +22743,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#AutoUpgradeProfilesListByFleet": {
+    "com.azure.containerservice#ListAutoUpgradeProfileByFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#AutoUpgradeProfilesListByFleetRequest"
+        "target": "com.azure.containerservice#ListAutoUpgradeProfileByFleetRequest"
       },
       "output": {
         "target": "com.azure.containerservice#AutoUpgradeProfileListResult"
@@ -22836,7 +22836,7 @@
         "smithy.api#documentation": "The AutoUpgradeProfile resource."
       }
     },
-    "com.azure.containerservice#AutoUpgradeProfilesListByFleetRequest": {
+    "com.azure.containerservice#ListAutoUpgradeProfileByFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -22882,10 +22882,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetsDelete": {
+    "com.azure.containerservice#DeleteFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetsDeleteRequest"
+        "target": "com.azure.containerservice#DeleteFleetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -22901,7 +22901,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetsDeleteRequest": {
+    "com.azure.containerservice#DeleteFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -22933,13 +22933,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetsUpdate": {
+    "com.azure.containerservice#UpdateFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetsUpdateRequest"
+        "target": "com.azure.containerservice#UpdateFleetRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#FleetsUpdateResponse"
+        "target": "com.azure.containerservice#UpdateFleetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22952,7 +22952,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetsUpdateResponse": {
+    "com.azure.containerservice#UpdateFleetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -23356,7 +23356,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#FleetsUpdateRequest": {
+    "com.azure.containerservice#UpdateFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -23697,13 +23697,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#FleetsGet": {
+    "com.azure.containerservice#GetFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetsGetRequest"
+        "target": "com.azure.containerservice#GetFleetRequest"
       },
       "output": {
-        "target": "com.azure.containerservice#FleetsGetResponse"
+        "target": "com.azure.containerservice#GetFleetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -23716,7 +23716,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetsGetResponse": {
+    "com.azure.containerservice#GetFleetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -23820,7 +23820,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#FleetsGetRequest": {
+    "com.azure.containerservice#GetFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -23852,10 +23852,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetsListByResourceGroup": {
+    "com.azure.containerservice#ListFleetByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetsListByResourceGroupRequest"
+        "target": "com.azure.containerservice#ListFleetByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.containerservice#FleetListResult"
@@ -24005,7 +24005,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerservice#FleetsListByResourceGroupRequest": {
+    "com.azure.containerservice#ListFleetByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -24029,10 +24029,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerservice#FleetsListBySubscription": {
+    "com.azure.containerservice#ListFleetBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerservice#FleetsListBySubscriptionRequest"
+        "target": "com.azure.containerservice#ListFleetBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.containerservice#FleetListResult"
@@ -24048,7 +24048,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.containerservice#FleetsListBySubscriptionRequest": {
+    "com.azure.containerservice#ListFleetBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -24083,49 +24083,49 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.containerservice#SnapshotsDelete"
+          "target": "com.azure.containerservice#DeleteSnapshot"
         },
         {
-          "target": "com.azure.containerservice#SnapshotsUpdateTags"
+          "target": "com.azure.containerservice#UpdateSnapshotTag"
         },
         {
           "target": "com.azure.containerservice#SnapshotsCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#SnapshotsGet"
+          "target": "com.azure.containerservice#GetSnapshot"
         },
         {
-          "target": "com.azure.containerservice#SnapshotsListByResourceGroup"
+          "target": "com.azure.containerservice#ListSnapshotByResourceGroup"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersGetUpgradeProfile"
+          "target": "com.azure.containerservice#GetManagedClusterUpgradeProfile"
         },
         {
-          "target": "com.azure.containerservice#TrustedAccessRoleBindingsDelete"
+          "target": "com.azure.containerservice#DeleteTrustedAccessRoleBinding"
         },
         {
           "target": "com.azure.containerservice#TrustedAccessRoleBindingsCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#TrustedAccessRoleBindingsGet"
+          "target": "com.azure.containerservice#GetTrustedAccessRoleBinding"
         },
         {
-          "target": "com.azure.containerservice#TrustedAccessRoleBindingsList"
+          "target": "com.azure.containerservice#ListTrustedAccessRoleBindings"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersStop"
+          "target": "com.azure.containerservice#StopManagedCluster"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersStart"
+          "target": "com.azure.containerservice#StartManagedCluster"
         },
         {
           "target": "com.azure.containerservice#ManagedClustersRunCommand"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersRotateServiceAccountSigningKeys"
+          "target": "com.azure.containerservice#RotateManagedClusterServiceAccountSigningKey"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersRotateClusterCertificates"
+          "target": "com.azure.containerservice#RotateManagedClusterClusterCertificate"
         },
         {
           "target": "com.azure.containerservice#ResolvePrivateLinkServiceIdPOST"
@@ -24134,166 +24134,166 @@
           "target": "com.azure.containerservice#ManagedClustersResetServicePrincipalProfile"
         },
         {
-          "target": "com.azure.containerservice#PrivateLinkResourcesList"
+          "target": "com.azure.containerservice#ListPrivateLinkResources"
         },
         {
-          "target": "com.azure.containerservice#PrivateEndpointConnectionsDelete"
+          "target": "com.azure.containerservice#DeletePrivateEndpointConnection"
         },
         {
-          "target": "com.azure.containerservice#PrivateEndpointConnectionsUpdate"
+          "target": "com.azure.containerservice#UpdatePrivateEndpointConnection"
         },
         {
-          "target": "com.azure.containerservice#PrivateEndpointConnectionsGet"
+          "target": "com.azure.containerservice#GetPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.containerservice#PrivateEndpointConnectionsList"
+          "target": "com.azure.containerservice#ListPrivateEndpointConnections"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersListOutboundNetworkDependenciesEndpoints"
+          "target": "com.azure.containerservice#ListManagedClusterOutboundNetworkDependencyEndpoints"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersGetMeshUpgradeProfile"
+          "target": "com.azure.containerservice#GetManagedClusterMeshUpgradeProfile"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersListMeshUpgradeProfiles"
+          "target": "com.azure.containerservice#ListManagedClusterMeshUpgradeProfiles"
         },
         {
-          "target": "com.azure.containerservice#ManagedNamespacesListCredential"
+          "target": "com.azure.containerservice#ListManagedNamespaceCredential"
         },
         {
-          "target": "com.azure.containerservice#ManagedNamespacesDelete"
+          "target": "com.azure.containerservice#DeleteManagedNamespace"
         },
         {
-          "target": "com.azure.containerservice#ManagedNamespacesUpdate"
+          "target": "com.azure.containerservice#UpdateManagedNamespace"
         },
         {
           "target": "com.azure.containerservice#ManagedNamespacesCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#ManagedNamespacesGet"
+          "target": "com.azure.containerservice#GetManagedNamespace"
         },
         {
-          "target": "com.azure.containerservice#ManagedNamespacesListByManagedCluster"
+          "target": "com.azure.containerservice#ListManagedNamespaceByManagedCluster"
         },
         {
-          "target": "com.azure.containerservice#MaintenanceConfigurationsDelete"
+          "target": "com.azure.containerservice#DeleteMaintenanceConfiguration"
         },
         {
           "target": "com.azure.containerservice#MaintenanceConfigurationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#MaintenanceConfigurationsGet"
+          "target": "com.azure.containerservice#GetMaintenanceConfiguration"
         },
         {
-          "target": "com.azure.containerservice#MaintenanceConfigurationsListByManagedCluster"
+          "target": "com.azure.containerservice#ListMaintenanceConfigurationByManagedCluster"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersListClusterUserCredentials"
+          "target": "com.azure.containerservice#ListManagedClusterClusterUserCredentials"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersListClusterMonitoringUserCredentials"
+          "target": "com.azure.containerservice#ListManagedClusterClusterMonitoringUserCredentials"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersListClusterAdminCredentials"
+          "target": "com.azure.containerservice#ListManagedClusterClusterAdminCredentials"
         },
         {
-          "target": "com.azure.containerservice#IdentityBindingsDelete"
+          "target": "com.azure.containerservice#DeleteIdentityBinding"
         },
         {
           "target": "com.azure.containerservice#IdentityBindingsCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#IdentityBindingsGet"
+          "target": "com.azure.containerservice#GetIdentityBinding"
         },
         {
-          "target": "com.azure.containerservice#IdentityBindingsListByManagedCluster"
+          "target": "com.azure.containerservice#ListIdentityBindingByManagedCluster"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersGetCommandResult"
+          "target": "com.azure.containerservice#GetManagedClusterCommandResult"
         },
         {
-          "target": "com.azure.containerservice#AgentPoolsGetAvailableAgentPoolVersions"
+          "target": "com.azure.containerservice#GetAgentPoolAvailableAgentPoolVersion"
         },
         {
-          "target": "com.azure.containerservice#AgentPoolsGetUpgradeProfile"
+          "target": "com.azure.containerservice#GetAgentPoolUpgradeProfile"
         },
         {
           "target": "com.azure.containerservice#AgentPoolsUpgradeNodeImageVersion"
         },
         {
-          "target": "com.azure.containerservice#MachinesGet"
+          "target": "com.azure.containerservice#GetMachine"
         },
         {
-          "target": "com.azure.containerservice#MachinesList"
+          "target": "com.azure.containerservice#ListMachines"
         },
         {
-          "target": "com.azure.containerservice#AgentPoolsDeleteMachines"
+          "target": "com.azure.containerservice#DeleteAgentPoolMachine"
         },
         {
           "target": "com.azure.containerservice#AgentPoolsAbortLatestOperation"
         },
         {
-          "target": "com.azure.containerservice#AgentPoolsDelete"
+          "target": "com.azure.containerservice#DeleteAgentPool"
         },
         {
           "target": "com.azure.containerservice#AgentPoolsCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#AgentPoolsGet"
+          "target": "com.azure.containerservice#GetAgentPool"
         },
         {
-          "target": "com.azure.containerservice#AgentPoolsList"
+          "target": "com.azure.containerservice#ListAgentPools"
         },
         {
           "target": "com.azure.containerservice#ManagedClustersAbortLatestOperation"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersDelete"
+          "target": "com.azure.containerservice#DeleteManagedCluster"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersUpdateTags"
+          "target": "com.azure.containerservice#UpdateManagedClusterTag"
         },
         {
           "target": "com.azure.containerservice#ManagedClustersCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersGet"
+          "target": "com.azure.containerservice#GetManagedCluster"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersListByResourceGroup"
+          "target": "com.azure.containerservice#ListManagedClusterByResourceGroup"
         },
         {
-          "target": "com.azure.containerservice#SnapshotsList"
+          "target": "com.azure.containerservice#ListSnapshots"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersList"
+          "target": "com.azure.containerservice#ListManagedClusters"
         },
         {
-          "target": "com.azure.containerservice#TrustedAccessRolesList"
+          "target": "com.azure.containerservice#ListTrustedAccessRoles"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersGetMeshRevisionProfile"
+          "target": "com.azure.containerservice#GetManagedClusterMeshRevisionProfile"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersListMeshRevisionProfiles"
+          "target": "com.azure.containerservice#ListManagedClusterMeshRevisionProfiles"
         },
         {
-          "target": "com.azure.containerservice#ManagedClustersListKubernetesVersions"
+          "target": "com.azure.containerservice#ListManagedClusterKuberneteVersions"
         },
         {
-          "target": "com.azure.containerservice#OperationsList"
+          "target": "com.azure.containerservice#ListOperations"
         },
         {
-          "target": "com.azure.containerservice#DeploymentSafeguardsDelete"
+          "target": "com.azure.containerservice#DeleteDeploymentSafeguard"
         },
         {
-          "target": "com.azure.containerservice#DeploymentSafeguardsCreate"
+          "target": "com.azure.containerservice#CreateDeploymentSafeguard"
         },
         {
-          "target": "com.azure.containerservice#DeploymentSafeguardsGet"
+          "target": "com.azure.containerservice#GetDeploymentSafeguard"
         },
         {
-          "target": "com.azure.containerservice#DeploymentSafeguardsList"
+          "target": "com.azure.containerservice#ListDeploymentSafeguards"
         },
         {
           "target": "com.azure.containerservice#FleetUpdateStrategiesDelete"
@@ -24329,79 +24329,79 @@
           "target": "com.azure.containerservice#UpdateRunsListByFleet"
         },
         {
-          "target": "com.azure.containerservice#FleetMembersDelete"
+          "target": "com.azure.containerservice#DeleteFleetMember"
         },
         {
-          "target": "com.azure.containerservice#FleetMembersUpdate"
+          "target": "com.azure.containerservice#UpdateFleetMember"
         },
         {
-          "target": "com.azure.containerservice#FleetMembersCreate"
+          "target": "com.azure.containerservice#CreateFleetMember"
         },
         {
-          "target": "com.azure.containerservice#FleetMembersGet"
+          "target": "com.azure.containerservice#GetFleetMember"
         },
         {
-          "target": "com.azure.containerservice#FleetMembersListByFleet"
+          "target": "com.azure.containerservice#ListFleetMemberByFleet"
         },
         {
-          "target": "com.azure.containerservice#FleetManagedNamespacesDelete"
+          "target": "com.azure.containerservice#DeleteFleetManagedNamespace"
         },
         {
-          "target": "com.azure.containerservice#FleetManagedNamespacesUpdate"
+          "target": "com.azure.containerservice#UpdateFleetManagedNamespace"
         },
         {
           "target": "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#FleetManagedNamespacesGet"
+          "target": "com.azure.containerservice#GetFleetManagedNamespace"
         },
         {
-          "target": "com.azure.containerservice#FleetManagedNamespacesListByFleet"
+          "target": "com.azure.containerservice#ListFleetManagedNamespaceByFleet"
         },
         {
-          "target": "com.azure.containerservice#FleetsListCredentials"
+          "target": "com.azure.containerservice#ListFleetCredentials"
         },
         {
-          "target": "com.azure.containerservice#GatesUpdate"
+          "target": "com.azure.containerservice#UpdateGate"
         },
         {
-          "target": "com.azure.containerservice#GatesGet"
+          "target": "com.azure.containerservice#GetGate"
         },
         {
-          "target": "com.azure.containerservice#GatesListByFleet"
+          "target": "com.azure.containerservice#ListGateByFleet"
         },
         {
           "target": "com.azure.containerservice#AutoUpgradeProfileOperationsGenerateUpdateRun"
         },
         {
-          "target": "com.azure.containerservice#AutoUpgradeProfilesDelete"
+          "target": "com.azure.containerservice#DeleteAutoUpgradeProfile"
         },
         {
           "target": "com.azure.containerservice#AutoUpgradeProfilesCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#AutoUpgradeProfilesGet"
+          "target": "com.azure.containerservice#GetAutoUpgradeProfile"
         },
         {
-          "target": "com.azure.containerservice#AutoUpgradeProfilesListByFleet"
+          "target": "com.azure.containerservice#ListAutoUpgradeProfileByFleet"
         },
         {
-          "target": "com.azure.containerservice#FleetsDelete"
+          "target": "com.azure.containerservice#DeleteFleet"
         },
         {
-          "target": "com.azure.containerservice#FleetsUpdate"
+          "target": "com.azure.containerservice#UpdateFleet"
         },
         {
           "target": "com.azure.containerservice#FleetsCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerservice#FleetsGet"
+          "target": "com.azure.containerservice#GetFleet"
         },
         {
-          "target": "com.azure.containerservice#FleetsListByResourceGroup"
+          "target": "com.azure.containerservice#ListFleetByResourceGroup"
         },
         {
-          "target": "com.azure.containerservice#FleetsListBySubscription"
+          "target": "com.azure.containerservice#ListFleetBySubscription"
         }
       ],
       "traits": {

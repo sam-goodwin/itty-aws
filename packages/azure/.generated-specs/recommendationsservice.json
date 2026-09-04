@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.recommendationsservice#OperationsList": {
+    "com.azure.recommendationsservice#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#OperationsListResponse"
+        "target": "com.azure.recommendationsservice#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#OperationsListResponse": {
+    "com.azure.recommendationsservice#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -175,13 +175,13 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.recommendationsservice#OperationStatusesGet": {
+    "com.azure.recommendationsservice#GetOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#OperationStatusesGetRequest"
+        "target": "com.azure.recommendationsservice#GetOperationStatusRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#OperationStatusesGetResponse"
+        "target": "com.azure.recommendationsservice#GetOperationStatusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -194,7 +194,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#OperationStatusesGetResponse": {
+    "com.azure.recommendationsservice#GetOperationStatusResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -420,7 +420,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.recommendationsservice#OperationStatusesGetRequest": {
+    "com.azure.recommendationsservice#GetOperationStatusRequest": {
       "type": "structure",
       "members": {
         "location": {
@@ -444,10 +444,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsDelete": {
+    "com.azure.recommendationsservice#DeleteServiceEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ServiceEndpointsDeleteRequest"
+        "target": "com.azure.recommendationsservice#DeleteServiceEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -463,7 +463,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsDeleteRequest": {
+    "com.azure.recommendationsservice#DeleteServiceEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -503,13 +503,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsUpdate": {
+    "com.azure.recommendationsservice#UpdateServiceEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ServiceEndpointsUpdateRequest"
+        "target": "com.azure.recommendationsservice#UpdateServiceEndpointRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#ServiceEndpointsUpdateResponse"
+        "target": "com.azure.recommendationsservice#UpdateServiceEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -522,7 +522,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsUpdateResponse": {
+    "com.azure.recommendationsservice#UpdateServiceEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -725,7 +725,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsUpdateRequest": {
+    "com.azure.recommendationsservice#UpdateServiceEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1090,13 +1090,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsGet": {
+    "com.azure.recommendationsservice#GetServiceEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ServiceEndpointsGetRequest"
+        "target": "com.azure.recommendationsservice#GetServiceEndpointRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#ServiceEndpointsGetResponse"
+        "target": "com.azure.recommendationsservice#GetServiceEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1109,7 +1109,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsGetResponse": {
+    "com.azure.recommendationsservice#GetServiceEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1312,7 +1312,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsGetRequest": {
+    "com.azure.recommendationsservice#GetServiceEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1352,10 +1352,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsListByAccountResource": {
+    "com.azure.recommendationsservice#ListServiceEndpointByAccountResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ServiceEndpointsListByAccountResourceRequest"
+        "target": "com.azure.recommendationsservice#ListServiceEndpointByAccountResourceRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#ServiceEndpointResourceList"
@@ -1603,7 +1603,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ServiceEndpointsListByAccountResourceRequest": {
+    "com.azure.recommendationsservice#ListServiceEndpointByAccountResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1635,10 +1635,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ModelingDelete": {
+    "com.azure.recommendationsservice#DeleteModeling": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ModelingDeleteRequest"
+        "target": "com.azure.recommendationsservice#DeleteModelingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1654,7 +1654,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#ModelingDeleteRequest": {
+    "com.azure.recommendationsservice#DeleteModelingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1694,13 +1694,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ModelingUpdate": {
+    "com.azure.recommendationsservice#UpdateModeling": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ModelingUpdateRequest"
+        "target": "com.azure.recommendationsservice#UpdateModelingRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#ModelingUpdateResponse"
+        "target": "com.azure.recommendationsservice#UpdateModelingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1713,7 +1713,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#ModelingUpdateResponse": {
+    "com.azure.recommendationsservice#UpdateModelingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2015,7 +2015,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ModelingUpdateRequest": {
+    "com.azure.recommendationsservice#UpdateModelingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2568,13 +2568,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ModelingGet": {
+    "com.azure.recommendationsservice#GetModeling": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ModelingGetRequest"
+        "target": "com.azure.recommendationsservice#GetModelingRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#ModelingGetResponse"
+        "target": "com.azure.recommendationsservice#GetModelingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2587,7 +2587,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#ModelingGetResponse": {
+    "com.azure.recommendationsservice#GetModelingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2874,7 +2874,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ModelingGetRequest": {
+    "com.azure.recommendationsservice#GetModelingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2914,10 +2914,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ModelingListByAccountResource": {
+    "com.azure.recommendationsservice#ListModelingByAccountResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ModelingListByAccountResourceRequest"
+        "target": "com.azure.recommendationsservice#ListModelingByAccountResourceRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#ModelingResourceList"
@@ -3249,7 +3249,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ModelingListByAccountResourceRequest": {
+    "com.azure.recommendationsservice#ListModelingByAccountResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3281,10 +3281,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#AccountsGetStatus": {
+    "com.azure.recommendationsservice#GetAccountStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#AccountsGetStatusRequest"
+        "target": "com.azure.recommendationsservice#GetAccountStatusRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#AccountStatus"
@@ -3378,7 +3378,7 @@
         "smithy.api#documentation": "Stage status."
       }
     },
-    "com.azure.recommendationsservice#AccountsGetStatusRequest": {
+    "com.azure.recommendationsservice#GetAccountStatusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3410,10 +3410,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#AccountsDelete": {
+    "com.azure.recommendationsservice#DeleteAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#AccountsDeleteRequest"
+        "target": "com.azure.recommendationsservice#DeleteAccountRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3429,7 +3429,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#AccountsDeleteRequest": {
+    "com.azure.recommendationsservice#DeleteAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3461,13 +3461,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#AccountsUpdate": {
+    "com.azure.recommendationsservice#UpdateAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#AccountsUpdateRequest"
+        "target": "com.azure.recommendationsservice#UpdateAccountRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#AccountsUpdateResponse"
+        "target": "com.azure.recommendationsservice#UpdateAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3480,7 +3480,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#AccountsUpdateResponse": {
+    "com.azure.recommendationsservice#UpdateAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3848,7 +3848,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#AccountsUpdateRequest": {
+    "com.azure.recommendationsservice#UpdateAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4281,13 +4281,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#AccountsGet": {
+    "com.azure.recommendationsservice#GetAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#AccountsGetRequest"
+        "target": "com.azure.recommendationsservice#GetAccountRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#AccountsGetResponse"
+        "target": "com.azure.recommendationsservice#GetAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4300,7 +4300,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#AccountsGetResponse": {
+    "com.azure.recommendationsservice#GetAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4529,7 +4529,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#AccountsGetRequest": {
+    "com.azure.recommendationsservice#GetAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4561,10 +4561,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#AccountsListByResourceGroup": {
+    "com.azure.recommendationsservice#ListAccountByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#AccountsListByResourceGroupRequest"
+        "target": "com.azure.recommendationsservice#ListAccountByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#AccountResourceList"
@@ -4838,7 +4838,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#AccountsListByResourceGroupRequest": {
+    "com.azure.recommendationsservice#ListAccountByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4862,10 +4862,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#AccountsListBySubscription": {
+    "com.azure.recommendationsservice#ListAccountBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#AccountsListBySubscriptionRequest"
+        "target": "com.azure.recommendationsservice#ListAccountBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#AccountResourceList"
@@ -4881,7 +4881,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#AccountsListBySubscriptionRequest": {
+    "com.azure.recommendationsservice#ListAccountBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4897,13 +4897,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#AccountsCheckNameAvailability": {
+    "com.azure.recommendationsservice#CheckAccountNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#AccountsCheckNameAvailabilityRequest"
+        "target": "com.azure.recommendationsservice#CheckAccountNameAvailabilityRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#AccountsCheckNameAvailabilityResponse"
+        "target": "com.azure.recommendationsservice#CheckAccountNameAvailabilityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4916,7 +4916,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#AccountsCheckNameAvailabilityResponse": {
+    "com.azure.recommendationsservice#CheckAccountNameAvailabilityResponse": {
       "type": "structure",
       "members": {
         "nameAvailable": {
@@ -4962,7 +4962,7 @@
         "smithy.api#documentation": "The reason why the given name is not available."
       }
     },
-    "com.azure.recommendationsservice#AccountsCheckNameAvailabilityRequest": {
+    "com.azure.recommendationsservice#CheckAccountNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4995,64 +4995,64 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.recommendationsservice#OperationsList"
+          "target": "com.azure.recommendationsservice#ListOperations"
         },
         {
-          "target": "com.azure.recommendationsservice#OperationStatusesGet"
+          "target": "com.azure.recommendationsservice#GetOperationStatus"
         },
         {
-          "target": "com.azure.recommendationsservice#ServiceEndpointsDelete"
+          "target": "com.azure.recommendationsservice#DeleteServiceEndpoint"
         },
         {
-          "target": "com.azure.recommendationsservice#ServiceEndpointsUpdate"
+          "target": "com.azure.recommendationsservice#UpdateServiceEndpoint"
         },
         {
           "target": "com.azure.recommendationsservice#ServiceEndpointsCreateOrUpdate"
         },
         {
-          "target": "com.azure.recommendationsservice#ServiceEndpointsGet"
+          "target": "com.azure.recommendationsservice#GetServiceEndpoint"
         },
         {
-          "target": "com.azure.recommendationsservice#ServiceEndpointsListByAccountResource"
+          "target": "com.azure.recommendationsservice#ListServiceEndpointByAccountResource"
         },
         {
-          "target": "com.azure.recommendationsservice#ModelingDelete"
+          "target": "com.azure.recommendationsservice#DeleteModeling"
         },
         {
-          "target": "com.azure.recommendationsservice#ModelingUpdate"
+          "target": "com.azure.recommendationsservice#UpdateModeling"
         },
         {
           "target": "com.azure.recommendationsservice#ModelingCreateOrUpdate"
         },
         {
-          "target": "com.azure.recommendationsservice#ModelingGet"
+          "target": "com.azure.recommendationsservice#GetModeling"
         },
         {
-          "target": "com.azure.recommendationsservice#ModelingListByAccountResource"
+          "target": "com.azure.recommendationsservice#ListModelingByAccountResource"
         },
         {
-          "target": "com.azure.recommendationsservice#AccountsGetStatus"
+          "target": "com.azure.recommendationsservice#GetAccountStatus"
         },
         {
-          "target": "com.azure.recommendationsservice#AccountsDelete"
+          "target": "com.azure.recommendationsservice#DeleteAccount"
         },
         {
-          "target": "com.azure.recommendationsservice#AccountsUpdate"
+          "target": "com.azure.recommendationsservice#UpdateAccount"
         },
         {
           "target": "com.azure.recommendationsservice#AccountsCreateOrUpdate"
         },
         {
-          "target": "com.azure.recommendationsservice#AccountsGet"
+          "target": "com.azure.recommendationsservice#GetAccount"
         },
         {
-          "target": "com.azure.recommendationsservice#AccountsListByResourceGroup"
+          "target": "com.azure.recommendationsservice#ListAccountByResourceGroup"
         },
         {
-          "target": "com.azure.recommendationsservice#AccountsListBySubscription"
+          "target": "com.azure.recommendationsservice#ListAccountBySubscription"
         },
         {
-          "target": "com.azure.recommendationsservice#AccountsCheckNameAvailability"
+          "target": "com.azure.recommendationsservice#CheckAccountNameAvailability"
         }
       ],
       "traits": {

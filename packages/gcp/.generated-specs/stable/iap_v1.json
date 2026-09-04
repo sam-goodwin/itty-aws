@@ -1335,7 +1335,7 @@
         "smithy.api#documentation": "Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api"
       }
     },
-    "com.gcp.iap_v1#ListProjectsIap_tunnelLocationsDestGroupsRequest": {
+    "com.gcp.iap_v1#ListProjectsIapTunnelLocationsDestGroupsRequest": {
       "type": "structure",
       "members": {
         "pageSize": {
@@ -1362,10 +1362,10 @@
         }
       }
     },
-    "com.gcp.iap_v1#ListProjectsIap_tunnelLocationsDestGroups": {
+    "com.gcp.iap_v1#ListProjectsIapTunnelLocationsDestGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.iap_v1#ListProjectsIap_tunnelLocationsDestGroupsRequest"
+        "target": "com.gcp.iap_v1#ListProjectsIapTunnelLocationsDestGroupsRequest"
       },
       "output": {
         "target": "com.gcp.iap_v1#ListTunnelDestGroupsResponse"
@@ -1390,7 +1390,7 @@
         }
       }
     },
-    "com.gcp.iap_v1#CreateProjectsIap_tunnelLocationsDestGroupsRequest": {
+    "com.gcp.iap_v1#CreateProjectsIapTunnelLocationsDestGroupsRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -1417,10 +1417,10 @@
         }
       }
     },
-    "com.gcp.iap_v1#CreateProjectsIap_tunnelLocationsDestGroups": {
+    "com.gcp.iap_v1#CreateProjectsIapTunnelLocationsDestGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.iap_v1#CreateProjectsIap_tunnelLocationsDestGroupsRequest"
+        "target": "com.gcp.iap_v1#CreateProjectsIapTunnelLocationsDestGroupsRequest"
       },
       "output": {
         "target": "com.gcp.iap_v1#TunnelDestGroup"
@@ -1447,7 +1447,7 @@
         "smithy.api#documentation": "Creates a new TunnelDestGroup."
       }
     },
-    "com.gcp.iap_v1#DeleteProjectsIap_tunnelLocationsDestGroupsRequest": {
+    "com.gcp.iap_v1#DeleteProjectsIapTunnelLocationsDestGroupsRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -1460,10 +1460,10 @@
         }
       }
     },
-    "com.gcp.iap_v1#DeleteProjectsIap_tunnelLocationsDestGroups": {
+    "com.gcp.iap_v1#DeleteProjectsIapTunnelLocationsDestGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.iap_v1#DeleteProjectsIap_tunnelLocationsDestGroupsRequest"
+        "target": "com.gcp.iap_v1#DeleteProjectsIapTunnelLocationsDestGroupsRequest"
       },
       "output": {
         "target": "com.gcp.iap_v1#Empty"
@@ -1490,7 +1490,7 @@
         "smithy.api#documentation": "Deletes a TunnelDestGroup."
       }
     },
-    "com.gcp.iap_v1#PatchProjectsIap_tunnelLocationsDestGroupsRequest": {
+    "com.gcp.iap_v1#PatchProjectsIapTunnelLocationsDestGroupsRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -1517,10 +1517,10 @@
         }
       }
     },
-    "com.gcp.iap_v1#PatchProjectsIap_tunnelLocationsDestGroups": {
+    "com.gcp.iap_v1#PatchProjectsIapTunnelLocationsDestGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.iap_v1#PatchProjectsIap_tunnelLocationsDestGroupsRequest"
+        "target": "com.gcp.iap_v1#PatchProjectsIapTunnelLocationsDestGroupsRequest"
       },
       "output": {
         "target": "com.gcp.iap_v1#TunnelDestGroup"
@@ -1547,7 +1547,7 @@
         "smithy.api#documentation": "Updates a TunnelDestGroup."
       }
     },
-    "com.gcp.iap_v1#GetProjectsIap_tunnelLocationsDestGroupsRequest": {
+    "com.gcp.iap_v1#GetProjectsIapTunnelLocationsDestGroupsRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -1560,10 +1560,10 @@
         }
       }
     },
-    "com.gcp.iap_v1#GetProjectsIap_tunnelLocationsDestGroups": {
+    "com.gcp.iap_v1#GetProjectsIapTunnelLocationsDestGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.iap_v1#GetProjectsIap_tunnelLocationsDestGroupsRequest"
+        "target": "com.gcp.iap_v1#GetProjectsIapTunnelLocationsDestGroupsRequest"
       },
       "output": {
         "target": "com.gcp.iap_v1#TunnelDestGroup"

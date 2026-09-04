@@ -11,7 +11,7 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface WarehouseColumnStatisticsListRequest {
+export interface ListWarehouseColumnStatisticsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Number of results to return per page. */
@@ -21,7 +21,7 @@ export interface WarehouseColumnStatisticsListRequest {
   /** Only return statistics for this data warehouse table. */
   table_id?: string;
 }
-export const WarehouseColumnStatisticsListRequest = /*@__PURE__*/ S.suspend(
+export const ListWarehouseColumnStatisticsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -36,8 +36,8 @@ export const WarehouseColumnStatisticsListRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "WarehouseColumnStatisticsListRequest",
-}) as any as S.Schema<WarehouseColumnStatisticsListRequest>;
+  identifier: "ListWarehouseColumnStatisticsRequest",
+}) as any as S.Schema<ListWarehouseColumnStatisticsRequest>;
 
 export interface WarehouseColumnStatistics2 {
   id: string;
@@ -137,15 +137,15 @@ export const WarehouseColumnStatisticsRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "WarehouseColumnStatisticsRetrieveRequest",
 }) as any as S.Schema<WarehouseColumnStatisticsRetrieveRequest>;
 
-export type WarehouseColumnStatisticsListError = PosthogOpError;
+export type ListWarehouseColumnStatisticsError = PosthogOpError;
 /** Read per-column data statistics (null fraction, min/max, row count) for warehouse tables. Statistics are computed automatically after a sync and surfaced to the AI agent so it can write better queries. They are system-owned and read-only here. List can be filtered to one table with `?table_id=<uuid>`. */
-export const warehouseColumnStatisticsList: API.OperationMethod<
-  WarehouseColumnStatisticsListRequest,
+export const listWarehouseColumnStatistics: API.OperationMethod<
+  ListWarehouseColumnStatisticsRequest,
   PaginatedWarehouseColumnStatisticsList,
-  WarehouseColumnStatisticsListError,
+  ListWarehouseColumnStatisticsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseColumnStatisticsListRequest,
+  input: ListWarehouseColumnStatisticsRequest,
   output: PaginatedWarehouseColumnStatisticsList,
   errors: [],
   protocol: PosthogProtocol,

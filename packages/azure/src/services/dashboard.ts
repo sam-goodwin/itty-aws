@@ -13,239 +13,7 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface DashboardsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Azure Managed Dashboard. */
-  dashboardName: string;
-}
-export const DashboardsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    dashboardName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "DashboardsGetRequest",
-}) as any as S.Schema<DashboardsGetRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** Resource tags. */
-export type DashboardsGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const DashboardsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DashboardsGetResponseTagsMap>;
-
-export type ProvisioningState =
-  | "Accepted"
-  | "Creating"
-  | "Updating"
-  | "Deleting"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Deleted"
-  | "NotSpecified";
-export const ProvisioningState = /*@__PURE__*/ S.String;
-
-/** Properties specific to the grafana resource. */
-export interface ManagedDashboardProperties {
-  /** Provisioning state of the resource. */
-  provisioningState?: ProvisioningState;
-}
-export const ManagedDashboardProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({
-  identifier: "ManagedDashboardProperties",
-}) as any as S.Schema<ManagedDashboardProperties>;
-
-export interface DashboardsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DashboardsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties specific to the managed dashboard resource. */
-  properties?: ManagedDashboardProperties;
-}
-export const DashboardsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DashboardsGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ManagedDashboardProperties),
-  }),
-).annotate({
-  identifier: "DashboardsGetResponse",
-}) as any as S.Schema<DashboardsGetResponse>;
-
-export interface DashboardsListRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const DashboardsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "DashboardsListRequest",
-}) as any as S.Schema<DashboardsListRequest>;
-
-/** Resource tags. */
-export type ManagedDashboardTagsMap = { [key: string]: string | undefined };
-export const ManagedDashboardTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ManagedDashboardTagsMap>;
-
-/** The managed dashboard resource type. */
-export interface ManagedDashboard {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ManagedDashboardTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties specific to the managed dashboard resource. */
-  properties?: ManagedDashboardProperties;
-}
-export const ManagedDashboard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ManagedDashboardTagsMap),
-    location: S.String,
-    properties: S.optional(ManagedDashboardProperties),
-  }),
-).annotate({
-  identifier: "ManagedDashboard",
-}) as any as S.Schema<ManagedDashboard>;
-
-/** The ManagedDashboard items on this page */
-export type ManagedDashboardListResponseValueList = Array<ManagedDashboard>;
-export const ManagedDashboardListResponseValueList = /*@__PURE__*/ S.Array(
-  ManagedDashboard,
-) as any as S.Schema<ManagedDashboardListResponseValueList>;
-
-/** Paged collection of ManagedDashboard items */
-export interface ManagedDashboardListResponse {
-  /** The ManagedDashboard items on this page */
-  value: ManagedDashboardListResponseValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ManagedDashboardListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ManagedDashboardListResponseValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedDashboardListResponse",
-}) as any as S.Schema<ManagedDashboardListResponse>;
-
-export interface DashboardsListBySubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-}
-export const DashboardsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/dashboards",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "DashboardsListBySubscriptionRequest",
-}) as any as S.Schema<DashboardsListBySubscriptionRequest>;
-
-export interface GrafanaCheckEnterpriseDetailsRequest {
+export interface CheckGrafanaEnterpriseDetailRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -253,23 +21,22 @@ export interface GrafanaCheckEnterpriseDetailsRequest {
   /** The workspace name of Azure Managed Grafana. */
   workspaceName: string;
 }
-export const GrafanaCheckEnterpriseDetailsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/checkEnterpriseDetails",
-        code: 200,
-        apiVersion: "2025-08-01",
-      }),
-    ),
+export const CheckGrafanaEnterpriseDetailRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/checkEnterpriseDetails",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
 ).annotate({
-  identifier: "GrafanaCheckEnterpriseDetailsRequest",
-}) as any as S.Schema<GrafanaCheckEnterpriseDetailsRequest>;
+  identifier: "CheckGrafanaEnterpriseDetailRequest",
+}) as any as S.Schema<CheckGrafanaEnterpriseDetailRequest>;
 
 /** The current billing term of the SaaS Subscription. */
 export interface SubscriptionTerm {
@@ -687,7 +454,7 @@ export const GrafanaCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrafanaCreateRequestIdentity",
 }) as any as S.Schema<GrafanaCreateRequestIdentity>;
 
-export interface GrafanaCreateRequest {
+export interface CreateGrafanaRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -705,7 +472,7 @@ export interface GrafanaCreateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GrafanaCreateRequestIdentity;
 }
-export const GrafanaCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateGrafanaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -724,8 +491,62 @@ export const GrafanaCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "GrafanaCreateRequest",
-}) as any as S.Schema<GrafanaCreateRequest>;
+  identifier: "CreateGrafanaRequest",
+}) as any as S.Schema<CreateGrafanaRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+export type ProvisioningState =
+  | "Accepted"
+  | "Creating"
+  | "Updating"
+  | "Deleting"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Deleted"
+  | "NotSpecified";
+export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Indicate the state for enable or disable traffic over the public interface. */
 export type ManagedGrafanaPropertiesPublicNetworkAccess =
@@ -1013,7 +834,7 @@ export const GrafanaCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrafanaCreateResponseIdentity",
 }) as any as S.Schema<GrafanaCreateResponseIdentity>;
 
-export interface GrafanaCreateResponse {
+export interface CreateGrafanaResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1033,7 +854,7 @@ export interface GrafanaCreateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GrafanaCreateResponseIdentity;
 }
-export const GrafanaCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateGrafanaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1046,477 +867,8 @@ export const GrafanaCreateResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(GrafanaCreateResponseIdentity),
   }),
 ).annotate({
-  identifier: "GrafanaCreateResponse",
-}) as any as S.Schema<GrafanaCreateResponse>;
-
-export interface GrafanaDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-}
-export const GrafanaDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "GrafanaDeleteRequest",
-}) as any as S.Schema<GrafanaDeleteRequest>;
-
-export interface GrafanaDeleteResponse {}
-export const GrafanaDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GrafanaDeleteResponse",
-}) as any as S.Schema<GrafanaDeleteResponse>;
-
-export interface GrafanaFetchAvailablePluginsRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-}
-export const GrafanaFetchAvailablePluginsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/fetchAvailablePlugins",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "GrafanaFetchAvailablePluginsRequest",
-}) as any as S.Schema<GrafanaFetchAvailablePluginsRequest>;
-
-/** Available plugins of grafana */
-export interface GrafanaAvailablePlugin {
-  /** Grafana plugin id */
-  pluginId?: string;
-  /** Grafana plugin display name */
-  name?: string;
-  /** Grafana plugin type */
-  type?: string;
-  /** Grafana plugin author/publisher name */
-  author?: string;
-}
-export const GrafanaAvailablePlugin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pluginId: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    author: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GrafanaAvailablePlugin",
-}) as any as S.Schema<GrafanaAvailablePlugin>;
-
-export type GrafanaAvailablePluginListResponseValueList =
-  Array<GrafanaAvailablePlugin>;
-export const GrafanaAvailablePluginListResponseValueList =
-  /*@__PURE__*/ S.Array(
-    GrafanaAvailablePlugin,
-  ) as any as S.Schema<GrafanaAvailablePluginListResponseValueList>;
-
-export interface GrafanaAvailablePluginListResponse {
-  value?: GrafanaAvailablePluginListResponseValueList;
-  nextLink?: string;
-}
-export const GrafanaAvailablePluginListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(GrafanaAvailablePluginListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GrafanaAvailablePluginListResponse",
-}) as any as S.Schema<GrafanaAvailablePluginListResponse>;
-
-export interface GrafanaGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-}
-export const GrafanaGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "GrafanaGetRequest",
-}) as any as S.Schema<GrafanaGetRequest>;
-
-/** Resource tags. */
-export type GrafanaGetResponseTagsMap = { [key: string]: string | undefined };
-export const GrafanaGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GrafanaGetResponseTagsMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export type GrafanaGetResponseIdentity = GrafanaCreateResponseIdentity;
-export const GrafanaGetResponseIdentity = GrafanaCreateResponseIdentity;
-
-export interface GrafanaGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties specific to the grafana resource. */
-  properties?: ManagedGrafanaProperties;
-  /** The Sku of the grafana resource. */
-  sku?: ResourceSku;
-  /** Resource tags. */
-  tags?: GrafanaGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GrafanaCreateResponseIdentity;
-}
-export const GrafanaGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagedGrafanaProperties),
-    sku: S.optional(ResourceSku),
-    tags: S.optional(GrafanaGetResponseTagsMap),
-    location: S.optional(S.String),
-    identity: S.optional(GrafanaCreateResponseIdentity),
-  }),
-).annotate({
-  identifier: "GrafanaGetResponse",
-}) as any as S.Schema<GrafanaGetResponse>;
-
-export interface GrafanaListRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-}
-export const GrafanaListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/grafana",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "GrafanaListRequest",
-}) as any as S.Schema<GrafanaListRequest>;
-
-/** Resource tags. */
-export type ManagedGrafanaTagsMap = { [key: string]: string | undefined };
-export const ManagedGrafanaTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ManagedGrafanaTagsMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export type ManagedGrafanaIdentity = GrafanaCreateResponseIdentity;
-export const ManagedGrafanaIdentity = GrafanaCreateResponseIdentity;
-
-/** The grafana resource type. */
-export interface ManagedGrafana {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties specific to the grafana resource. */
-  properties?: ManagedGrafanaProperties;
-  /** The Sku of the grafana resource. */
-  sku?: ResourceSku;
-  /** Resource tags. */
-  tags?: ManagedGrafanaTagsMap;
-  /** The geo-location where the resource lives */
-  location?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GrafanaCreateResponseIdentity;
-}
-export const ManagedGrafana = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagedGrafanaProperties),
-    sku: S.optional(ResourceSku),
-    tags: S.optional(ManagedGrafanaTagsMap),
-    location: S.optional(S.String),
-    identity: S.optional(GrafanaCreateResponseIdentity),
-  }),
-).annotate({ identifier: "ManagedGrafana" }) as any as S.Schema<ManagedGrafana>;
-
-/** The ManagedGrafana items on this page */
-export type ManagedGrafanaListResponseValueList = Array<ManagedGrafana>;
-export const ManagedGrafanaListResponseValueList = /*@__PURE__*/ S.Array(
-  ManagedGrafana,
-) as any as S.Schema<ManagedGrafanaListResponseValueList>;
-
-/** Paged collection of ManagedGrafana items */
-export interface ManagedGrafanaListResponse {
-  /** The ManagedGrafana items on this page */
-  value: ManagedGrafanaListResponseValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ManagedGrafanaListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ManagedGrafanaListResponseValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedGrafanaListResponse",
-}) as any as S.Schema<ManagedGrafanaListResponse>;
-
-export interface GrafanaListByResourceGroupRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const GrafanaListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "GrafanaListByResourceGroupRequest",
-}) as any as S.Schema<GrafanaListByResourceGroupRequest>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export type GrafanaUpdateRequestIdentity = GrafanaCreateRequestIdentity;
-export const GrafanaUpdateRequestIdentity = GrafanaCreateRequestIdentity;
-
-/** The new tags of the grafana resource. */
-export type GrafanaUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const GrafanaUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GrafanaUpdateRequestTagsMap>;
-
-/** The zone redundancy setting of the Grafana instance. */
-export type ManagedGrafanaPropertiesUpdateParametersInputZoneRedundancy =
-  | "Disabled"
-  | "Enabled";
-export const ManagedGrafanaPropertiesUpdateParametersInputZoneRedundancy =
-  /*@__PURE__*/ S.String;
-
-/** The api key setting of the Grafana instance. */
-export type ManagedGrafanaPropertiesUpdateParametersInputApiKey =
-  | "Disabled"
-  | "Enabled";
-export const ManagedGrafanaPropertiesUpdateParametersInputApiKey =
-  /*@__PURE__*/ S.String;
-
-/** Whether a Grafana instance uses deterministic outbound IPs. */
-export type ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP =
-  | "Disabled"
-  | "Enabled";
-export const ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP =
-  /*@__PURE__*/ S.String;
-
-/** Indicate the state for enable or disable traffic over the public interface. */
-export type ManagedGrafanaPropertiesUpdateParametersInputPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled";
-export const ManagedGrafanaPropertiesUpdateParametersInputPublicNetworkAccess =
-  /*@__PURE__*/ S.String;
-
-/** Update of Grafana plugin. Key is plugin id, value is plugin definition. If plugin definition is null, plugin with given plugin id will be removed. Otherwise, given plugin will be installed. */
-export type ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap = {
-  [key: string]: GrafanaPluginInput | undefined;
-};
-export const ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GrafanaPluginInput,
-  ) as any as S.Schema<ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap>;
-
-/** The properties parameters for a PATCH request to a grafana resource. */
-export interface ManagedGrafanaPropertiesUpdateParametersInput {
-  /** The zone redundancy setting of the Grafana instance. */
-  zoneRedundancy?:
-    | ManagedGrafanaPropertiesUpdateParametersInputZoneRedundancy
-    | (string & {});
-  /** The api key setting of the Grafana instance. */
-  apiKey?: ManagedGrafanaPropertiesUpdateParametersInputApiKey | (string & {});
-  /** The creator will have admin access for the Grafana instance. */
-  creatorCanAdmin?: CreatorCanAdmin | (string & {});
-  /** Whether a Grafana instance uses deterministic outbound IPs. */
-  deterministicOutboundIP?:
-    | ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP
-    | (string & {});
-  /** Indicate the state for enable or disable traffic over the public interface. */
-  publicNetworkAccess?:
-    | ManagedGrafanaPropertiesUpdateParametersInputPublicNetworkAccess
-    | (string & {});
-  /** GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios. */
-  grafanaIntegrations?: GrafanaIntegrations;
-  /** Enterprise settings of a Grafana instance */
-  enterpriseConfigurations?: EnterpriseConfigurations;
-  /** Server configurations of a Grafana instance */
-  grafanaConfigurations?: GrafanaConfigurations;
-  /** Update of Grafana plugin. Key is plugin id, value is plugin definition. If plugin definition is null, plugin with given plugin id will be removed. Otherwise, given plugin will be installed. */
-  grafanaPlugins?: ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap;
-  /** The major Grafana software version to target. */
-  grafanaMajorVersion?: string;
-}
-export const ManagedGrafanaPropertiesUpdateParametersInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zoneRedundancy: S.optional(
-        ManagedGrafanaPropertiesUpdateParametersInputZoneRedundancy,
-      ),
-      apiKey: S.optional(ManagedGrafanaPropertiesUpdateParametersInputApiKey),
-      creatorCanAdmin: S.optional(CreatorCanAdmin),
-      deterministicOutboundIP: S.optional(
-        ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP,
-      ),
-      publicNetworkAccess: S.optional(
-        ManagedGrafanaPropertiesUpdateParametersInputPublicNetworkAccess,
-      ),
-      grafanaIntegrations: S.optional(GrafanaIntegrations),
-      enterpriseConfigurations: S.optional(EnterpriseConfigurations),
-      grafanaConfigurations: S.optional(GrafanaConfigurations),
-      grafanaPlugins: S.optional(
-        ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap,
-      ),
-      grafanaMajorVersion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ManagedGrafanaPropertiesUpdateParametersInput",
-  }) as any as S.Schema<ManagedGrafanaPropertiesUpdateParametersInput>;
-
-export interface GrafanaUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-  sku?: ResourceSku;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GrafanaCreateRequestIdentity;
-  /** The new tags of the grafana resource. */
-  tags?: GrafanaUpdateRequestTagsMap;
-  /** Properties specific to the managed grafana resource. */
-  properties?: ManagedGrafanaPropertiesUpdateParametersInput;
-}
-export const GrafanaUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    sku: S.optional(ResourceSku),
-    identity: S.optional(GrafanaCreateRequestIdentity),
-    tags: S.optional(GrafanaUpdateRequestTagsMap),
-    properties: S.optional(ManagedGrafanaPropertiesUpdateParametersInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "GrafanaUpdateRequest",
-}) as any as S.Schema<GrafanaUpdateRequest>;
-
-/** Resource tags. */
-export type GrafanaUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const GrafanaUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GrafanaUpdateResponseTagsMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export type GrafanaUpdateResponseIdentity = GrafanaCreateResponseIdentity;
-export const GrafanaUpdateResponseIdentity = GrafanaCreateResponseIdentity;
-
-export interface GrafanaUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties specific to the grafana resource. */
-  properties?: ManagedGrafanaProperties;
-  /** The Sku of the grafana resource. */
-  sku?: ResourceSku;
-  /** Resource tags. */
-  tags?: GrafanaUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GrafanaCreateResponseIdentity;
-}
-export const GrafanaUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagedGrafanaProperties),
-    sku: S.optional(ResourceSku),
-    tags: S.optional(GrafanaUpdateResponseTagsMap),
-    location: S.optional(S.String),
-    identity: S.optional(GrafanaCreateResponseIdentity),
-  }),
-).annotate({
-  identifier: "GrafanaUpdateResponse",
-}) as any as S.Schema<GrafanaUpdateResponse>;
+  identifier: "CreateGrafanaResponse",
+}) as any as S.Schema<CreateGrafanaResponse>;
 
 /** Resource tags. */
 export type IntegrationFabricsCreateRequestTagsMap = {
@@ -1552,7 +904,7 @@ export const IntegrationFabricPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntegrationFabricPropertiesInput",
 }) as any as S.Schema<IntegrationFabricPropertiesInput>;
 
-export interface IntegrationFabricsCreateRequest {
+export interface CreateIntegrationFabricRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1567,7 +919,7 @@ export interface IntegrationFabricsCreateRequest {
   location: string;
   properties?: IntegrationFabricPropertiesInput;
 }
-export const IntegrationFabricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateIntegrationFabricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1585,8 +937,8 @@ export const IntegrationFabricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "IntegrationFabricsCreateRequest",
-}) as any as S.Schema<IntegrationFabricsCreateRequest>;
+  identifier: "CreateIntegrationFabricRequest",
+}) as any as S.Schema<CreateIntegrationFabricRequest>;
 
 /** Resource tags. */
 export type IntegrationFabricsCreateResponseTagsMap = {
@@ -1624,7 +976,7 @@ export const IntegrationFabricProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntegrationFabricProperties",
 }) as any as S.Schema<IntegrationFabricProperties>;
 
-export interface IntegrationFabricsCreateResponse {
+export interface CreateIntegrationFabricResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1639,7 +991,7 @@ export interface IntegrationFabricsCreateResponse {
   location: string;
   properties?: IntegrationFabricProperties;
 }
-export const IntegrationFabricsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateIntegrationFabricResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1650,297 +1002,8 @@ export const IntegrationFabricsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(IntegrationFabricProperties),
   }),
 ).annotate({
-  identifier: "IntegrationFabricsCreateResponse",
-}) as any as S.Schema<IntegrationFabricsCreateResponse>;
-
-export interface IntegrationFabricsDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-  /** The integration fabric name of Azure Managed Grafana. */
-  integrationFabricName: string;
-}
-export const IntegrationFabricsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    integrationFabricName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "IntegrationFabricsDeleteRequest",
-}) as any as S.Schema<IntegrationFabricsDeleteRequest>;
-
-export interface IntegrationFabricsDeleteResponse {}
-export const IntegrationFabricsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IntegrationFabricsDeleteResponse",
-}) as any as S.Schema<IntegrationFabricsDeleteResponse>;
-
-export interface IntegrationFabricsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-  /** The integration fabric name of Azure Managed Grafana. */
-  integrationFabricName: string;
-}
-export const IntegrationFabricsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    integrationFabricName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "IntegrationFabricsGetRequest",
-}) as any as S.Schema<IntegrationFabricsGetRequest>;
-
-/** Resource tags. */
-export type IntegrationFabricsGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const IntegrationFabricsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IntegrationFabricsGetResponseTagsMap>;
-
-export interface IntegrationFabricsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: IntegrationFabricsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: IntegrationFabricProperties;
-}
-export const IntegrationFabricsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(IntegrationFabricsGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(IntegrationFabricProperties),
-  }),
-).annotate({
-  identifier: "IntegrationFabricsGetResponse",
-}) as any as S.Schema<IntegrationFabricsGetResponse>;
-
-export interface IntegrationFabricsListRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-}
-export const IntegrationFabricsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "IntegrationFabricsListRequest",
-}) as any as S.Schema<IntegrationFabricsListRequest>;
-
-/** Resource tags. */
-export type IntegrationFabricTagsMap = { [key: string]: string | undefined };
-export const IntegrationFabricTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IntegrationFabricTagsMap>;
-
-/** The integration fabric resource type. */
-export interface IntegrationFabric {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: IntegrationFabricTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: IntegrationFabricProperties;
-}
-export const IntegrationFabric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(IntegrationFabricTagsMap),
-    location: S.String,
-    properties: S.optional(IntegrationFabricProperties),
-  }),
-).annotate({
-  identifier: "IntegrationFabric",
-}) as any as S.Schema<IntegrationFabric>;
-
-/** The IntegrationFabric items on this page */
-export type IntegrationFabricListResponseValueList = Array<IntegrationFabric>;
-export const IntegrationFabricListResponseValueList = /*@__PURE__*/ S.Array(
-  IntegrationFabric,
-) as any as S.Schema<IntegrationFabricListResponseValueList>;
-
-/** Paged collection of IntegrationFabric items */
-export interface IntegrationFabricListResponse {
-  /** The IntegrationFabric items on this page */
-  value: IntegrationFabricListResponseValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const IntegrationFabricListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: IntegrationFabricListResponseValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IntegrationFabricListResponse",
-}) as any as S.Schema<IntegrationFabricListResponse>;
-
-/** The new tags of the Integration Fabric resource. */
-export type IntegrationFabricsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const IntegrationFabricsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IntegrationFabricsUpdateRequestTagsMap>;
-
-/** The new integration scenarios covered by this integration fabric. */
-export type IntegrationFabricPropertiesUpdateParametersScenariosList =
-  Array<string>;
-export const IntegrationFabricPropertiesUpdateParametersScenariosList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IntegrationFabricPropertiesUpdateParametersScenariosList>;
-
-export interface IntegrationFabricPropertiesUpdateParameters {
-  /** The new integration scenarios covered by this integration fabric. */
-  scenarios?: IntegrationFabricPropertiesUpdateParametersScenariosList;
-}
-export const IntegrationFabricPropertiesUpdateParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scenarios: S.optional(
-        IntegrationFabricPropertiesUpdateParametersScenariosList,
-      ),
-    }),
-  ).annotate({
-    identifier: "IntegrationFabricPropertiesUpdateParameters",
-  }) as any as S.Schema<IntegrationFabricPropertiesUpdateParameters>;
-
-export interface IntegrationFabricsUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-  /** The integration fabric name of Azure Managed Grafana. */
-  integrationFabricName: string;
-  /** The new tags of the Integration Fabric resource. */
-  tags?: IntegrationFabricsUpdateRequestTagsMap;
-  /** The new properties of this Integration Fabric resource */
-  properties?: IntegrationFabricPropertiesUpdateParameters;
-}
-export const IntegrationFabricsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    integrationFabricName: S.String.pipe(T.Label()),
-    tags: S.optional(IntegrationFabricsUpdateRequestTagsMap),
-    properties: S.optional(IntegrationFabricPropertiesUpdateParameters),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "IntegrationFabricsUpdateRequest",
-}) as any as S.Schema<IntegrationFabricsUpdateRequest>;
-
-/** Resource tags. */
-export type IntegrationFabricsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const IntegrationFabricsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IntegrationFabricsUpdateResponseTagsMap>;
-
-export interface IntegrationFabricsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: IntegrationFabricsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: IntegrationFabricProperties;
-}
-export const IntegrationFabricsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(IntegrationFabricsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(IntegrationFabricProperties),
-  }),
-).annotate({
-  identifier: "IntegrationFabricsUpdateResponse",
-}) as any as S.Schema<IntegrationFabricsUpdateResponse>;
+  identifier: "CreateIntegrationFabricResponse",
+}) as any as S.Schema<CreateIntegrationFabricResponse>;
 
 /** Resource tags. */
 export type ManagedDashboardsCreateRequestTagsMap = {
@@ -1955,7 +1018,7 @@ export const ManagedDashboardsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type ManagedDashboardPropertiesInput = GrafanaPluginInput;
 export const ManagedDashboardPropertiesInput = GrafanaPluginInput;
 
-export interface ManagedDashboardsCreateRequest {
+export interface CreateManagedDashboardRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1969,7 +1032,7 @@ export interface ManagedDashboardsCreateRequest {
   /** Properties specific to the managed dashboard resource. */
   properties?: GrafanaPluginInput;
 }
-export const ManagedDashboardsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateManagedDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1986,8 +1049,8 @@ export const ManagedDashboardsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ManagedDashboardsCreateRequest",
-}) as any as S.Schema<ManagedDashboardsCreateRequest>;
+  identifier: "CreateManagedDashboardRequest",
+}) as any as S.Schema<CreateManagedDashboardRequest>;
 
 /** Resource tags. */
 export type ManagedDashboardsCreateResponseTagsMap = {
@@ -1998,7 +1061,20 @@ export const ManagedDashboardsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ManagedDashboardsCreateResponseTagsMap>;
 
-export interface ManagedDashboardsCreateResponse {
+/** Properties specific to the grafana resource. */
+export interface ManagedDashboardProperties {
+  /** Provisioning state of the resource. */
+  provisioningState?: ProvisioningState;
+}
+export const ManagedDashboardProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(ProvisioningState),
+  }),
+).annotate({
+  identifier: "ManagedDashboardProperties",
+}) as any as S.Schema<ManagedDashboardProperties>;
+
+export interface CreateManagedDashboardResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2014,7 +1090,7 @@ export interface ManagedDashboardsCreateResponse {
   /** Properties specific to the managed dashboard resource. */
   properties?: ManagedDashboardProperties;
 }
-export const ManagedDashboardsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateManagedDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2025,116 +1101,8 @@ export const ManagedDashboardsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ManagedDashboardProperties),
   }),
 ).annotate({
-  identifier: "ManagedDashboardsCreateResponse",
-}) as any as S.Schema<ManagedDashboardsCreateResponse>;
-
-export interface ManagedDashboardsDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Azure Managed Dashboard. */
-  dashboardName: string;
-}
-export const ManagedDashboardsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    dashboardName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "ManagedDashboardsDeleteRequest",
-}) as any as S.Schema<ManagedDashboardsDeleteRequest>;
-
-export interface ManagedDashboardsDeleteResponse {}
-export const ManagedDashboardsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ManagedDashboardsDeleteResponse",
-}) as any as S.Schema<ManagedDashboardsDeleteResponse>;
-
-/** The new tags of the managed dashboard resource. */
-export type ManagedDashboardsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ManagedDashboardsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ManagedDashboardsUpdateRequestTagsMap>;
-
-export interface ManagedDashboardsUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Azure Managed Dashboard. */
-  dashboardName: string;
-  /** The new tags of the managed dashboard resource. */
-  tags?: ManagedDashboardsUpdateRequestTagsMap;
-}
-export const ManagedDashboardsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    dashboardName: S.String.pipe(T.Label()),
-    tags: S.optional(ManagedDashboardsUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "ManagedDashboardsUpdateRequest",
-}) as any as S.Schema<ManagedDashboardsUpdateRequest>;
-
-/** Resource tags. */
-export type ManagedDashboardsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ManagedDashboardsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ManagedDashboardsUpdateResponseTagsMap>;
-
-export interface ManagedDashboardsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ManagedDashboardsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties specific to the managed dashboard resource. */
-  properties?: ManagedDashboardProperties;
-}
-export const ManagedDashboardsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ManagedDashboardsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ManagedDashboardProperties),
-  }),
-).annotate({
-  identifier: "ManagedDashboardsUpdateResponse",
-}) as any as S.Schema<ManagedDashboardsUpdateResponse>;
+  identifier: "CreateManagedDashboardResponse",
+}) as any as S.Schema<CreateManagedDashboardResponse>;
 
 /** Resource tags. */
 export type ManagedPrivateEndpointsCreateRequestTagsMap = {
@@ -2182,7 +1150,7 @@ export const ManagedPrivateEndpointModelPropertiesInput =
     identifier: "ManagedPrivateEndpointModelPropertiesInput",
   }) as any as S.Schema<ManagedPrivateEndpointModelPropertiesInput>;
 
-export interface ManagedPrivateEndpointsCreateRequest {
+export interface CreateManagedPrivateEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2198,27 +1166,26 @@ export interface ManagedPrivateEndpointsCreateRequest {
   /** Resource properties. */
   properties?: ManagedPrivateEndpointModelPropertiesInput;
 }
-export const ManagedPrivateEndpointsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      managedPrivateEndpointName: S.String.pipe(T.Label()),
-      tags: S.optional(ManagedPrivateEndpointsCreateRequestTagsMap),
-      location: S.String,
-      properties: S.optional(ManagedPrivateEndpointModelPropertiesInput),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
-        code: 200,
-        apiVersion: "2025-08-01",
-      }),
-    ),
+export const CreateManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    managedPrivateEndpointName: S.String.pipe(T.Label()),
+    tags: S.optional(ManagedPrivateEndpointsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ManagedPrivateEndpointModelPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
 ).annotate({
-  identifier: "ManagedPrivateEndpointsCreateRequest",
-}) as any as S.Schema<ManagedPrivateEndpointsCreateRequest>;
+  identifier: "CreateManagedPrivateEndpointRequest",
+}) as any as S.Schema<CreateManagedPrivateEndpointRequest>;
 
 /** Resource tags. */
 export type ManagedPrivateEndpointsCreateResponseTagsMap = {
@@ -2297,7 +1264,7 @@ export const ManagedPrivateEndpointModelProperties = /*@__PURE__*/ S.suspend(
   identifier: "ManagedPrivateEndpointModelProperties",
 }) as any as S.Schema<ManagedPrivateEndpointModelProperties>;
 
-export interface ManagedPrivateEndpointsCreateResponse {
+export interface CreateManagedPrivateEndpointResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2313,7 +1280,7 @@ export interface ManagedPrivateEndpointsCreateResponse {
   /** Resource properties. */
   properties?: ManagedPrivateEndpointModelProperties;
 }
-export const ManagedPrivateEndpointsCreateResponse = /*@__PURE__*/ S.suspend(
+export const CreateManagedPrivateEndpointResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -2325,10 +1292,109 @@ export const ManagedPrivateEndpointsCreateResponse = /*@__PURE__*/ S.suspend(
       properties: S.optional(ManagedPrivateEndpointModelProperties),
     }),
 ).annotate({
-  identifier: "ManagedPrivateEndpointsCreateResponse",
-}) as any as S.Schema<ManagedPrivateEndpointsCreateResponse>;
+  identifier: "CreateManagedPrivateEndpointResponse",
+}) as any as S.Schema<CreateManagedPrivateEndpointResponse>;
 
-export interface ManagedPrivateEndpointsDeleteRequest {
+export interface DeleteGrafanaRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+}
+export const DeleteGrafanaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteGrafanaRequest",
+}) as any as S.Schema<DeleteGrafanaRequest>;
+
+export interface DeleteGrafanaResponse {}
+export const DeleteGrafanaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteGrafanaResponse",
+}) as any as S.Schema<DeleteGrafanaResponse>;
+
+export interface DeleteIntegrationFabricRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+  /** The integration fabric name of Azure Managed Grafana. */
+  integrationFabricName: string;
+}
+export const DeleteIntegrationFabricRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    integrationFabricName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteIntegrationFabricRequest",
+}) as any as S.Schema<DeleteIntegrationFabricRequest>;
+
+export interface DeleteIntegrationFabricResponse {}
+export const DeleteIntegrationFabricResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteIntegrationFabricResponse",
+}) as any as S.Schema<DeleteIntegrationFabricResponse>;
+
+export interface DeleteManagedDashboardRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Azure Managed Dashboard. */
+  dashboardName: string;
+}
+export const DeleteManagedDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    dashboardName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteManagedDashboardRequest",
+}) as any as S.Schema<DeleteManagedDashboardRequest>;
+
+export interface DeleteManagedDashboardResponse {}
+export const DeleteManagedDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteManagedDashboardResponse",
+}) as any as S.Schema<DeleteManagedDashboardResponse>;
+
+export interface DeleteManagedPrivateEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2338,33 +1404,270 @@ export interface ManagedPrivateEndpointsDeleteRequest {
   /** The managed private endpoint name of Azure Managed Grafana. */
   managedPrivateEndpointName: string;
 }
-export const ManagedPrivateEndpointsDeleteRequest = /*@__PURE__*/ S.suspend(
+export const DeleteManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    managedPrivateEndpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteManagedPrivateEndpointRequest",
+}) as any as S.Schema<DeleteManagedPrivateEndpointRequest>;
+
+export interface DeleteManagedPrivateEndpointResponse {}
+export const DeleteManagedPrivateEndpointResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteManagedPrivateEndpointResponse",
+}) as any as S.Schema<DeleteManagedPrivateEndpointResponse>;
+
+export interface DeletePrivateEndpointConnectionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+  /** The private endpoint connection name of Azure Managed Grafana. */
+  privateEndpointConnectionName: string;
+}
+export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
-      managedPrivateEndpointName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
         apiVersion: "2025-08-01",
       }),
     ),
 ).annotate({
-  identifier: "ManagedPrivateEndpointsDeleteRequest",
-}) as any as S.Schema<ManagedPrivateEndpointsDeleteRequest>;
+  identifier: "DeletePrivateEndpointConnectionRequest",
+}) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
-export interface ManagedPrivateEndpointsDeleteResponse {}
-export const ManagedPrivateEndpointsDeleteResponse = /*@__PURE__*/ S.suspend(
+export interface DeletePrivateEndpointConnectionResponse {}
+export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
   () => S.Struct({}),
 ).annotate({
-  identifier: "ManagedPrivateEndpointsDeleteResponse",
-}) as any as S.Schema<ManagedPrivateEndpointsDeleteResponse>;
+  identifier: "DeletePrivateEndpointConnectionResponse",
+}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
-export interface ManagedPrivateEndpointsGetRequest {
+export interface GetDashboardRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Azure Managed Dashboard. */
+  dashboardName: string;
+}
+export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    dashboardName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetDashboardRequest",
+}) as any as S.Schema<GetDashboardRequest>;
+
+/** Resource tags. */
+export type DashboardsGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DashboardsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DashboardsGetResponseTagsMap>;
+
+export interface GetDashboardResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DashboardsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties specific to the managed dashboard resource. */
+  properties?: ManagedDashboardProperties;
+}
+export const GetDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(DashboardsGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ManagedDashboardProperties),
+  }),
+).annotate({
+  identifier: "GetDashboardResponse",
+}) as any as S.Schema<GetDashboardResponse>;
+
+export interface GetGrafanaRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+}
+export const GetGrafanaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetGrafanaRequest",
+}) as any as S.Schema<GetGrafanaRequest>;
+
+/** Resource tags. */
+export type GrafanaGetResponseTagsMap = { [key: string]: string | undefined };
+export const GrafanaGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<GrafanaGetResponseTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export type GrafanaGetResponseIdentity = GrafanaCreateResponseIdentity;
+export const GrafanaGetResponseIdentity = GrafanaCreateResponseIdentity;
+
+export interface GetGrafanaResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties specific to the grafana resource. */
+  properties?: ManagedGrafanaProperties;
+  /** The Sku of the grafana resource. */
+  sku?: ResourceSku;
+  /** Resource tags. */
+  tags?: GrafanaGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: GrafanaCreateResponseIdentity;
+}
+export const GetGrafanaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ManagedGrafanaProperties),
+    sku: S.optional(ResourceSku),
+    tags: S.optional(GrafanaGetResponseTagsMap),
+    location: S.optional(S.String),
+    identity: S.optional(GrafanaCreateResponseIdentity),
+  }),
+).annotate({
+  identifier: "GetGrafanaResponse",
+}) as any as S.Schema<GetGrafanaResponse>;
+
+export interface GetIntegrationFabricRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+  /** The integration fabric name of Azure Managed Grafana. */
+  integrationFabricName: string;
+}
+export const GetIntegrationFabricRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    integrationFabricName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetIntegrationFabricRequest",
+}) as any as S.Schema<GetIntegrationFabricRequest>;
+
+/** Resource tags. */
+export type IntegrationFabricsGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IntegrationFabricsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IntegrationFabricsGetResponseTagsMap>;
+
+export interface GetIntegrationFabricResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: IntegrationFabricsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: IntegrationFabricProperties;
+}
+export const GetIntegrationFabricResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(IntegrationFabricsGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(IntegrationFabricProperties),
+  }),
+).annotate({
+  identifier: "GetIntegrationFabricResponse",
+}) as any as S.Schema<GetIntegrationFabricResponse>;
+
+export interface GetManagedPrivateEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2374,7 +1677,7 @@ export interface ManagedPrivateEndpointsGetRequest {
   /** The managed private endpoint name of Azure Managed Grafana. */
   managedPrivateEndpointName: string;
 }
-export const ManagedPrivateEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2389,8 +1692,8 @@ export const ManagedPrivateEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ManagedPrivateEndpointsGetRequest",
-}) as any as S.Schema<ManagedPrivateEndpointsGetRequest>;
+  identifier: "GetManagedPrivateEndpointRequest",
+}) as any as S.Schema<GetManagedPrivateEndpointRequest>;
 
 /** Resource tags. */
 export type ManagedPrivateEndpointsGetResponseTagsMap = {
@@ -2401,7 +1704,7 @@ export const ManagedPrivateEndpointsGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ManagedPrivateEndpointsGetResponseTagsMap>;
 
-export interface ManagedPrivateEndpointsGetResponse {
+export interface GetManagedPrivateEndpointResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2417,7 +1720,7 @@ export interface ManagedPrivateEndpointsGetResponse {
   /** Resource properties. */
   properties?: ManagedPrivateEndpointModelProperties;
 }
-export const ManagedPrivateEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetManagedPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2428,10 +1731,154 @@ export const ManagedPrivateEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ManagedPrivateEndpointModelProperties),
   }),
 ).annotate({
-  identifier: "ManagedPrivateEndpointsGetResponse",
-}) as any as S.Schema<ManagedPrivateEndpointsGetResponse>;
+  identifier: "GetManagedPrivateEndpointResponse",
+}) as any as S.Schema<GetManagedPrivateEndpointResponse>;
 
-export interface ManagedPrivateEndpointsListRequest {
+export interface GetPrivateEndpointConnectionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+  /** The private endpoint connection name of Azure Managed Grafana. */
+  privateEndpointConnectionName: string;
+}
+export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    privateEndpointConnectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetPrivateEndpointConnectionRequest",
+}) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
+export interface GetPrivateEndpointConnectionResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(PrivateEndpointConnectionProperties),
+    }),
+).annotate({
+  identifier: "GetPrivateEndpointConnectionResponse",
+}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
+export interface GetPrivateLinkResourceRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+  privateLinkResourceName: string;
+}
+export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    privateLinkResourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateLinkResources/{privateLinkResourceName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetPrivateLinkResourceRequest",
+}) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
+/** The private link resource required member names. */
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
+/** The private link resource Private link DNS zone name. */
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
+/** Properties of a private link resource. */
+export interface PrivateLinkResourceProperties {
+  /** Provisioning state of the resource. */
+  provisioningState?: ProvisioningState;
+  /** The private link resource group id. */
+  groupId?: string;
+  /** The private link resource required member names. */
+  requiredMembers?: PrivateLinkResourcePropertiesRequiredMembersList;
+  /** The private link resource Private link DNS zone name. */
+  requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
+}
+export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(ProvisioningState),
+    groupId: S.optional(S.String),
+    requiredMembers: S.optional(
+      PrivateLinkResourcePropertiesRequiredMembersList,
+    ),
+    requiredZoneNames: S.optional(
+      PrivateLinkResourcePropertiesRequiredZoneNamesList,
+    ),
+  }),
+).annotate({
+  identifier: "PrivateLinkResourceProperties",
+}) as any as S.Schema<PrivateLinkResourceProperties>;
+
+export interface GetPrivateLinkResourceResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource properties. */
+  properties?: PrivateLinkResourceProperties;
+}
+export const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(PrivateLinkResourceProperties),
+  }),
+).annotate({
+  identifier: "GetPrivateLinkResourceResponse",
+}) as any as S.Schema<GetPrivateLinkResourceResponse>;
+
+export interface GrafanaFetchAvailablePluginsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2439,7 +1886,368 @@ export interface ManagedPrivateEndpointsListRequest {
   /** The workspace name of Azure Managed Grafana. */
   workspaceName: string;
 }
-export const ManagedPrivateEndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const GrafanaFetchAvailablePluginsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/fetchAvailablePlugins",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "GrafanaFetchAvailablePluginsRequest",
+}) as any as S.Schema<GrafanaFetchAvailablePluginsRequest>;
+
+/** Available plugins of grafana */
+export interface GrafanaAvailablePlugin {
+  /** Grafana plugin id */
+  pluginId?: string;
+  /** Grafana plugin display name */
+  name?: string;
+  /** Grafana plugin type */
+  type?: string;
+  /** Grafana plugin author/publisher name */
+  author?: string;
+}
+export const GrafanaAvailablePlugin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pluginId: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    author: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GrafanaAvailablePlugin",
+}) as any as S.Schema<GrafanaAvailablePlugin>;
+
+export type GrafanaAvailablePluginListResponseValueList =
+  Array<GrafanaAvailablePlugin>;
+export const GrafanaAvailablePluginListResponseValueList =
+  /*@__PURE__*/ S.Array(
+    GrafanaAvailablePlugin,
+  ) as any as S.Schema<GrafanaAvailablePluginListResponseValueList>;
+
+export interface GrafanaAvailablePluginListResponse {
+  value?: GrafanaAvailablePluginListResponseValueList;
+  nextLink?: string;
+}
+export const GrafanaAvailablePluginListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(GrafanaAvailablePluginListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GrafanaAvailablePluginListResponse",
+}) as any as S.Schema<GrafanaAvailablePluginListResponse>;
+
+export interface ListDashboardBySubscriptionRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+}
+export const ListDashboardBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/dashboards",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListDashboardBySubscriptionRequest",
+}) as any as S.Schema<ListDashboardBySubscriptionRequest>;
+
+/** Resource tags. */
+export type ManagedDashboardTagsMap = { [key: string]: string | undefined };
+export const ManagedDashboardTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ManagedDashboardTagsMap>;
+
+/** The managed dashboard resource type. */
+export interface ManagedDashboard {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ManagedDashboardTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties specific to the managed dashboard resource. */
+  properties?: ManagedDashboardProperties;
+}
+export const ManagedDashboard = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ManagedDashboardTagsMap),
+    location: S.String,
+    properties: S.optional(ManagedDashboardProperties),
+  }),
+).annotate({
+  identifier: "ManagedDashboard",
+}) as any as S.Schema<ManagedDashboard>;
+
+/** The ManagedDashboard items on this page */
+export type ManagedDashboardListResponseValueList = Array<ManagedDashboard>;
+export const ManagedDashboardListResponseValueList = /*@__PURE__*/ S.Array(
+  ManagedDashboard,
+) as any as S.Schema<ManagedDashboardListResponseValueList>;
+
+/** Paged collection of ManagedDashboard items */
+export interface ManagedDashboardListResponse {
+  /** The ManagedDashboard items on this page */
+  value: ManagedDashboardListResponseValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ManagedDashboardListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ManagedDashboardListResponseValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedDashboardListResponse",
+}) as any as S.Schema<ManagedDashboardListResponse>;
+
+export interface ListDashboardsRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListDashboardsRequest",
+}) as any as S.Schema<ListDashboardsRequest>;
+
+export interface ListGrafanaRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+}
+export const ListGrafanaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/grafana",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListGrafanaRequest",
+}) as any as S.Schema<ListGrafanaRequest>;
+
+/** Resource tags. */
+export type ManagedGrafanaTagsMap = { [key: string]: string | undefined };
+export const ManagedGrafanaTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ManagedGrafanaTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export type ManagedGrafanaIdentity = GrafanaCreateResponseIdentity;
+export const ManagedGrafanaIdentity = GrafanaCreateResponseIdentity;
+
+/** The grafana resource type. */
+export interface ManagedGrafana {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties specific to the grafana resource. */
+  properties?: ManagedGrafanaProperties;
+  /** The Sku of the grafana resource. */
+  sku?: ResourceSku;
+  /** Resource tags. */
+  tags?: ManagedGrafanaTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: GrafanaCreateResponseIdentity;
+}
+export const ManagedGrafana = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ManagedGrafanaProperties),
+    sku: S.optional(ResourceSku),
+    tags: S.optional(ManagedGrafanaTagsMap),
+    location: S.optional(S.String),
+    identity: S.optional(GrafanaCreateResponseIdentity),
+  }),
+).annotate({ identifier: "ManagedGrafana" }) as any as S.Schema<ManagedGrafana>;
+
+/** The ManagedGrafana items on this page */
+export type ManagedGrafanaListResponseValueList = Array<ManagedGrafana>;
+export const ManagedGrafanaListResponseValueList = /*@__PURE__*/ S.Array(
+  ManagedGrafana,
+) as any as S.Schema<ManagedGrafanaListResponseValueList>;
+
+/** Paged collection of ManagedGrafana items */
+export interface ManagedGrafanaListResponse {
+  /** The ManagedGrafana items on this page */
+  value: ManagedGrafanaListResponseValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ManagedGrafanaListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ManagedGrafanaListResponseValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedGrafanaListResponse",
+}) as any as S.Schema<ManagedGrafanaListResponse>;
+
+export interface ListGrafanaByResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListGrafanaByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListGrafanaByResourceGroupRequest",
+}) as any as S.Schema<ListGrafanaByResourceGroupRequest>;
+
+export interface ListIntegrationFabricsRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+}
+export const ListIntegrationFabricsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListIntegrationFabricsRequest",
+}) as any as S.Schema<ListIntegrationFabricsRequest>;
+
+/** Resource tags. */
+export type IntegrationFabricTagsMap = { [key: string]: string | undefined };
+export const IntegrationFabricTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IntegrationFabricTagsMap>;
+
+/** The integration fabric resource type. */
+export interface IntegrationFabric {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: IntegrationFabricTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: IntegrationFabricProperties;
+}
+export const IntegrationFabric = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(IntegrationFabricTagsMap),
+    location: S.String,
+    properties: S.optional(IntegrationFabricProperties),
+  }),
+).annotate({
+  identifier: "IntegrationFabric",
+}) as any as S.Schema<IntegrationFabric>;
+
+/** The IntegrationFabric items on this page */
+export type IntegrationFabricListResponseValueList = Array<IntegrationFabric>;
+export const IntegrationFabricListResponseValueList = /*@__PURE__*/ S.Array(
+  IntegrationFabric,
+) as any as S.Schema<IntegrationFabricListResponseValueList>;
+
+/** Paged collection of IntegrationFabric items */
+export interface IntegrationFabricListResponse {
+  /** The IntegrationFabric items on this page */
+  value: IntegrationFabricListResponseValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const IntegrationFabricListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: IntegrationFabricListResponseValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IntegrationFabricListResponse",
+}) as any as S.Schema<IntegrationFabricListResponse>;
+
+export interface ListManagedPrivateEndpointsRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+}
+export const ListManagedPrivateEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2453,8 +2261,8 @@ export const ManagedPrivateEndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ManagedPrivateEndpointsListRequest",
-}) as any as S.Schema<ManagedPrivateEndpointsListRequest>;
+  identifier: "ListManagedPrivateEndpointsRequest",
+}) as any as S.Schema<ListManagedPrivateEndpointsRequest>;
 
 /** Resource tags. */
 export type ManagedPrivateEndpointModelTagsMap = {
@@ -2521,124 +2329,8 @@ export const ManagedPrivateEndpointModelListResponse = /*@__PURE__*/ S.suspend(
   identifier: "ManagedPrivateEndpointModelListResponse",
 }) as any as S.Schema<ManagedPrivateEndpointModelListResponse>;
 
-export interface ManagedPrivateEndpointsRefreshRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-}
-export const ManagedPrivateEndpointsRefreshRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/refreshManagedPrivateEndpoints",
-        code: 200,
-        apiVersion: "2025-08-01",
-      }),
-    ),
-).annotate({
-  identifier: "ManagedPrivateEndpointsRefreshRequest",
-}) as any as S.Schema<ManagedPrivateEndpointsRefreshRequest>;
-
-export interface ManagedPrivateEndpointsRefreshResponse {}
-export const ManagedPrivateEndpointsRefreshResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ManagedPrivateEndpointsRefreshResponse",
-}) as any as S.Schema<ManagedPrivateEndpointsRefreshResponse>;
-
-/** The new tags of the managed private endpoint. */
-export type ManagedPrivateEndpointsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ManagedPrivateEndpointsUpdateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ManagedPrivateEndpointsUpdateRequestTagsMap>;
-
-export interface ManagedPrivateEndpointsUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-  /** The managed private endpoint name of Azure Managed Grafana. */
-  managedPrivateEndpointName: string;
-  /** The new tags of the managed private endpoint. */
-  tags?: ManagedPrivateEndpointsUpdateRequestTagsMap;
-}
-export const ManagedPrivateEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      managedPrivateEndpointName: S.String.pipe(T.Label()),
-      tags: S.optional(ManagedPrivateEndpointsUpdateRequestTagsMap),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
-        code: 200,
-        apiVersion: "2025-08-01",
-      }),
-    ),
-).annotate({
-  identifier: "ManagedPrivateEndpointsUpdateRequest",
-}) as any as S.Schema<ManagedPrivateEndpointsUpdateRequest>;
-
-/** Resource tags. */
-export type ManagedPrivateEndpointsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ManagedPrivateEndpointsUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ManagedPrivateEndpointsUpdateResponseTagsMap>;
-
-export interface ManagedPrivateEndpointsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ManagedPrivateEndpointsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Resource properties. */
-  properties?: ManagedPrivateEndpointModelProperties;
-}
-export const ManagedPrivateEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(ManagedPrivateEndpointsUpdateResponseTagsMap),
-      location: S.String,
-      properties: S.optional(ManagedPrivateEndpointModelProperties),
-    }),
-).annotate({
-  identifier: "ManagedPrivateEndpointsUpdateResponse",
-}) as any as S.Schema<ManagedPrivateEndpointsUpdateResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2648,8 +2340,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
@@ -2710,20 +2402,175 @@ export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
 
-export interface OperationsListResponse {
+export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: OperationsListResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationsListResponseValueList),
     nextLink: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
+
+export interface ListPrivateEndpointConnectionsRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+}
+export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      workspaceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections",
+        code: 200,
+        apiVersion: "2025-08-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListPrivateEndpointConnectionsRequest",
+}) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
+
+/** The PrivateEndpointConnection items on this page */
+export type PrivateEndpointConnectionListResultValueList =
+  Array<PrivateEndpointConnection>;
+export const PrivateEndpointConnectionListResultValueList =
+  /*@__PURE__*/ S.Array(
+    PrivateEndpointConnection,
+  ) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
+/** The response of a PrivateEndpointConnection list operation. */
+export interface PrivateEndpointConnectionListResult {
+  /** The PrivateEndpointConnection items on this page */
+  value: PrivateEndpointConnectionListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: PrivateEndpointConnectionListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnectionListResult",
+}) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
+export interface ListPrivateLinkResourcesRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+}
+export const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateLinkResources",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListPrivateLinkResourcesRequest",
+}) as any as S.Schema<ListPrivateLinkResourcesRequest>;
+
+/** A private link resource */
+export interface PrivateLinkResource {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource properties. */
+  properties?: PrivateLinkResourceProperties;
+}
+export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(PrivateLinkResourceProperties),
+  }),
+).annotate({
+  identifier: "PrivateLinkResource",
+}) as any as S.Schema<PrivateLinkResource>;
+
+/** The PrivateLinkResource items on this page */
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
+export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+  PrivateLinkResource,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
+/** The response of a PrivateLinkResource list operation. */
+export interface PrivateLinkResourceListResult {
+  /** The PrivateLinkResource items on this page */
+  value: PrivateLinkResourceListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: PrivateLinkResourceListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkResourceListResult",
+}) as any as S.Schema<PrivateLinkResourceListResult>;
+
+export interface ManagedPrivateEndpointsRefreshRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+}
+export const ManagedPrivateEndpointsRefreshRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      workspaceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/refreshManagedPrivateEndpoints",
+        code: 200,
+        apiVersion: "2025-08-01",
+      }),
+    ),
+).annotate({
+  identifier: "ManagedPrivateEndpointsRefreshRequest",
+}) as any as S.Schema<ManagedPrivateEndpointsRefreshRequest>;
+
+export interface ManagedPrivateEndpointsRefreshResponse {}
+export const ManagedPrivateEndpointsRefreshResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "ManagedPrivateEndpointsRefreshResponse",
+}) as any as S.Schema<ManagedPrivateEndpointsRefreshResponse>;
 
 /** The Private Endpoint resource. */
 export type PrivateEndpointConnectionPropertiesInputPrivateEndpoint =
@@ -2840,72 +2687,160 @@ export const PrivateEndpointConnectionsApproveResponse =
     identifier: "PrivateEndpointConnectionsApproveResponse",
   }) as any as S.Schema<PrivateEndpointConnectionsApproveResponse>;
 
-export interface PrivateEndpointConnectionsDeleteRequest {
+/** Managed service identity (system assigned and/or user assigned identities) */
+export type GrafanaUpdateRequestIdentity = GrafanaCreateRequestIdentity;
+export const GrafanaUpdateRequestIdentity = GrafanaCreateRequestIdentity;
+
+/** The new tags of the grafana resource. */
+export type GrafanaUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const GrafanaUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<GrafanaUpdateRequestTagsMap>;
+
+/** The zone redundancy setting of the Grafana instance. */
+export type ManagedGrafanaPropertiesUpdateParametersInputZoneRedundancy =
+  | "Disabled"
+  | "Enabled";
+export const ManagedGrafanaPropertiesUpdateParametersInputZoneRedundancy =
+  /*@__PURE__*/ S.String;
+
+/** The api key setting of the Grafana instance. */
+export type ManagedGrafanaPropertiesUpdateParametersInputApiKey =
+  | "Disabled"
+  | "Enabled";
+export const ManagedGrafanaPropertiesUpdateParametersInputApiKey =
+  /*@__PURE__*/ S.String;
+
+/** Whether a Grafana instance uses deterministic outbound IPs. */
+export type ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP =
+  | "Disabled"
+  | "Enabled";
+export const ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP =
+  /*@__PURE__*/ S.String;
+
+/** Indicate the state for enable or disable traffic over the public interface. */
+export type ManagedGrafanaPropertiesUpdateParametersInputPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const ManagedGrafanaPropertiesUpdateParametersInputPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** Update of Grafana plugin. Key is plugin id, value is plugin definition. If plugin definition is null, plugin with given plugin id will be removed. Otherwise, given plugin will be installed. */
+export type ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap = {
+  [key: string]: GrafanaPluginInput | undefined;
+};
+export const ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    GrafanaPluginInput,
+  ) as any as S.Schema<ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap>;
+
+/** The properties parameters for a PATCH request to a grafana resource. */
+export interface ManagedGrafanaPropertiesUpdateParametersInput {
+  /** The zone redundancy setting of the Grafana instance. */
+  zoneRedundancy?:
+    | ManagedGrafanaPropertiesUpdateParametersInputZoneRedundancy
+    | (string & {});
+  /** The api key setting of the Grafana instance. */
+  apiKey?: ManagedGrafanaPropertiesUpdateParametersInputApiKey | (string & {});
+  /** The creator will have admin access for the Grafana instance. */
+  creatorCanAdmin?: CreatorCanAdmin | (string & {});
+  /** Whether a Grafana instance uses deterministic outbound IPs. */
+  deterministicOutboundIP?:
+    | ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP
+    | (string & {});
+  /** Indicate the state for enable or disable traffic over the public interface. */
+  publicNetworkAccess?:
+    | ManagedGrafanaPropertiesUpdateParametersInputPublicNetworkAccess
+    | (string & {});
+  /** GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios. */
+  grafanaIntegrations?: GrafanaIntegrations;
+  /** Enterprise settings of a Grafana instance */
+  enterpriseConfigurations?: EnterpriseConfigurations;
+  /** Server configurations of a Grafana instance */
+  grafanaConfigurations?: GrafanaConfigurations;
+  /** Update of Grafana plugin. Key is plugin id, value is plugin definition. If plugin definition is null, plugin with given plugin id will be removed. Otherwise, given plugin will be installed. */
+  grafanaPlugins?: ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap;
+  /** The major Grafana software version to target. */
+  grafanaMajorVersion?: string;
+}
+export const ManagedGrafanaPropertiesUpdateParametersInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      zoneRedundancy: S.optional(
+        ManagedGrafanaPropertiesUpdateParametersInputZoneRedundancy,
+      ),
+      apiKey: S.optional(ManagedGrafanaPropertiesUpdateParametersInputApiKey),
+      creatorCanAdmin: S.optional(CreatorCanAdmin),
+      deterministicOutboundIP: S.optional(
+        ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP,
+      ),
+      publicNetworkAccess: S.optional(
+        ManagedGrafanaPropertiesUpdateParametersInputPublicNetworkAccess,
+      ),
+      grafanaIntegrations: S.optional(GrafanaIntegrations),
+      enterpriseConfigurations: S.optional(EnterpriseConfigurations),
+      grafanaConfigurations: S.optional(GrafanaConfigurations),
+      grafanaPlugins: S.optional(
+        ManagedGrafanaPropertiesUpdateParametersInputGrafanaPluginsMap,
+      ),
+      grafanaMajorVersion: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ManagedGrafanaPropertiesUpdateParametersInput",
+  }) as any as S.Schema<ManagedGrafanaPropertiesUpdateParametersInput>;
+
+export interface UpdateGrafanaRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** The workspace name of Azure Managed Grafana. */
   workspaceName: string;
-  /** The private endpoint connection name of Azure Managed Grafana. */
-  privateEndpointConnectionName: string;
+  sku?: ResourceSku;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: GrafanaCreateRequestIdentity;
+  /** The new tags of the grafana resource. */
+  tags?: GrafanaUpdateRequestTagsMap;
+  /** Properties specific to the managed grafana resource. */
+  properties?: ManagedGrafanaPropertiesUpdateParametersInput;
 }
-export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2025-08-01",
-      }),
-    ),
+export const UpdateGrafanaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    sku: S.optional(ResourceSku),
+    identity: S.optional(GrafanaCreateRequestIdentity),
+    tags: S.optional(GrafanaUpdateRequestTagsMap),
+    properties: S.optional(ManagedGrafanaPropertiesUpdateParametersInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
 ).annotate({
-  identifier: "PrivateEndpointConnectionsDeleteRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsDeleteRequest>;
+  identifier: "UpdateGrafanaRequest",
+}) as any as S.Schema<UpdateGrafanaRequest>;
 
-export interface PrivateEndpointConnectionsDeleteResponse {}
-export const PrivateEndpointConnectionsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointConnectionsDeleteResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsDeleteResponse>;
+/** Resource tags. */
+export type GrafanaUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const GrafanaUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<GrafanaUpdateResponseTagsMap>;
 
-export interface PrivateEndpointConnectionsGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-  /** The private endpoint connection name of Azure Managed Grafana. */
-  privateEndpointConnectionName: string;
-}
-export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2025-08-01",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsGetRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsGetRequest>;
+/** Managed service identity (system assigned and/or user assigned identities) */
+export type GrafanaUpdateResponseIdentity = GrafanaCreateResponseIdentity;
+export const GrafanaUpdateResponseIdentity = GrafanaCreateResponseIdentity;
 
-export interface PrivateEndpointConnectionsGetResponse {
+export interface UpdateGrafanaResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2914,320 +2849,530 @@ export interface PrivateEndpointConnectionsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
+  /** Properties specific to the grafana resource. */
+  properties?: ManagedGrafanaProperties;
+  /** The Sku of the grafana resource. */
+  sku?: ResourceSku;
+  /** Resource tags. */
+  tags?: GrafanaUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: GrafanaCreateResponseIdentity;
 }
-export const PrivateEndpointConnectionsGetResponse = /*@__PURE__*/ S.suspend(
+export const UpdateGrafanaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ManagedGrafanaProperties),
+    sku: S.optional(ResourceSku),
+    tags: S.optional(GrafanaUpdateResponseTagsMap),
+    location: S.optional(S.String),
+    identity: S.optional(GrafanaCreateResponseIdentity),
+  }),
+).annotate({
+  identifier: "UpdateGrafanaResponse",
+}) as any as S.Schema<UpdateGrafanaResponse>;
+
+/** The new tags of the Integration Fabric resource. */
+export type IntegrationFabricsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IntegrationFabricsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IntegrationFabricsUpdateRequestTagsMap>;
+
+/** The new integration scenarios covered by this integration fabric. */
+export type IntegrationFabricPropertiesUpdateParametersScenariosList =
+  Array<string>;
+export const IntegrationFabricPropertiesUpdateParametersScenariosList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IntegrationFabricPropertiesUpdateParametersScenariosList>;
+
+export interface IntegrationFabricPropertiesUpdateParameters {
+  /** The new integration scenarios covered by this integration fabric. */
+  scenarios?: IntegrationFabricPropertiesUpdateParametersScenariosList;
+}
+export const IntegrationFabricPropertiesUpdateParameters =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      scenarios: S.optional(
+        IntegrationFabricPropertiesUpdateParametersScenariosList,
+      ),
+    }),
+  ).annotate({
+    identifier: "IntegrationFabricPropertiesUpdateParameters",
+  }) as any as S.Schema<IntegrationFabricPropertiesUpdateParameters>;
+
+export interface UpdateIntegrationFabricRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+  /** The integration fabric name of Azure Managed Grafana. */
+  integrationFabricName: string;
+  /** The new tags of the Integration Fabric resource. */
+  tags?: IntegrationFabricsUpdateRequestTagsMap;
+  /** The new properties of this Integration Fabric resource */
+  properties?: IntegrationFabricPropertiesUpdateParameters;
+}
+export const UpdateIntegrationFabricRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    integrationFabricName: S.String.pipe(T.Label()),
+    tags: S.optional(IntegrationFabricsUpdateRequestTagsMap),
+    properties: S.optional(IntegrationFabricPropertiesUpdateParameters),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateIntegrationFabricRequest",
+}) as any as S.Schema<UpdateIntegrationFabricRequest>;
+
+/** Resource tags. */
+export type IntegrationFabricsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IntegrationFabricsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IntegrationFabricsUpdateResponseTagsMap>;
+
+export interface UpdateIntegrationFabricResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: IntegrationFabricsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: IntegrationFabricProperties;
+}
+export const UpdateIntegrationFabricResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(IntegrationFabricsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(IntegrationFabricProperties),
+  }),
+).annotate({
+  identifier: "UpdateIntegrationFabricResponse",
+}) as any as S.Schema<UpdateIntegrationFabricResponse>;
+
+/** The new tags of the managed dashboard resource. */
+export type ManagedDashboardsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ManagedDashboardsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ManagedDashboardsUpdateRequestTagsMap>;
+
+export interface UpdateManagedDashboardRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Azure Managed Dashboard. */
+  dashboardName: string;
+  /** The new tags of the managed dashboard resource. */
+  tags?: ManagedDashboardsUpdateRequestTagsMap;
+}
+export const UpdateManagedDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    dashboardName: S.String.pipe(T.Label()),
+    tags: S.optional(ManagedDashboardsUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateManagedDashboardRequest",
+}) as any as S.Schema<UpdateManagedDashboardRequest>;
+
+/** Resource tags. */
+export type ManagedDashboardsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ManagedDashboardsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ManagedDashboardsUpdateResponseTagsMap>;
+
+export interface UpdateManagedDashboardResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ManagedDashboardsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties specific to the managed dashboard resource. */
+  properties?: ManagedDashboardProperties;
+}
+export const UpdateManagedDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ManagedDashboardsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ManagedDashboardProperties),
+  }),
+).annotate({
+  identifier: "UpdateManagedDashboardResponse",
+}) as any as S.Schema<UpdateManagedDashboardResponse>;
+
+/** The new tags of the managed private endpoint. */
+export type ManagedPrivateEndpointsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ManagedPrivateEndpointsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ManagedPrivateEndpointsUpdateRequestTagsMap>;
+
+export interface UpdateManagedPrivateEndpointRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The workspace name of Azure Managed Grafana. */
+  workspaceName: string;
+  /** The managed private endpoint name of Azure Managed Grafana. */
+  managedPrivateEndpointName: string;
+  /** The new tags of the managed private endpoint. */
+  tags?: ManagedPrivateEndpointsUpdateRequestTagsMap;
+}
+export const UpdateManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    managedPrivateEndpointName: S.String.pipe(T.Label()),
+    tags: S.optional(ManagedPrivateEndpointsUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      code: 200,
+      apiVersion: "2025-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateManagedPrivateEndpointRequest",
+}) as any as S.Schema<UpdateManagedPrivateEndpointRequest>;
+
+/** Resource tags. */
+export type ManagedPrivateEndpointsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ManagedPrivateEndpointsUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ManagedPrivateEndpointsUpdateResponseTagsMap>;
+
+export interface UpdateManagedPrivateEndpointResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ManagedPrivateEndpointsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Resource properties. */
+  properties?: ManagedPrivateEndpointModelProperties;
+}
+export const UpdateManagedPrivateEndpointResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
+      tags: S.optional(ManagedPrivateEndpointsUpdateResponseTagsMap),
+      location: S.String,
+      properties: S.optional(ManagedPrivateEndpointModelProperties),
     }),
 ).annotate({
-  identifier: "PrivateEndpointConnectionsGetResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsGetResponse>;
+  identifier: "UpdateManagedPrivateEndpointResponse",
+}) as any as S.Schema<UpdateManagedPrivateEndpointResponse>;
 
-export interface PrivateEndpointConnectionsListRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-}
-export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections",
-        code: 200,
-        apiVersion: "2025-08-01",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsListRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsListRequest>;
-
-/** The PrivateEndpointConnection items on this page */
-export type PrivateEndpointConnectionListResultValueList =
-  Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
-/** The response of a PrivateEndpointConnection list operation. */
-export interface PrivateEndpointConnectionListResult {
-  /** The PrivateEndpointConnection items on this page */
-  value: PrivateEndpointConnectionListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: PrivateEndpointConnectionListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionListResult",
-}) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
-export interface PrivateLinkResourcesGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-  privateLinkResourceName: string;
-}
-export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    privateLinkResourceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateLinkResources/{privateLinkResourceName}",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "PrivateLinkResourcesGetRequest",
-}) as any as S.Schema<PrivateLinkResourcesGetRequest>;
-
-/** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
-/** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
-/** Properties of a private link resource. */
-export interface PrivateLinkResourceProperties {
-  /** Provisioning state of the resource. */
-  provisioningState?: ProvisioningState;
-  /** The private link resource group id. */
-  groupId?: string;
-  /** The private link resource required member names. */
-  requiredMembers?: PrivateLinkResourcePropertiesRequiredMembersList;
-  /** The private link resource Private link DNS zone name. */
-  requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
-}
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState),
-    groupId: S.optional(S.String),
-    requiredMembers: S.optional(
-      PrivateLinkResourcePropertiesRequiredMembersList,
-    ),
-    requiredZoneNames: S.optional(
-      PrivateLinkResourcePropertiesRequiredZoneNamesList,
-    ),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceProperties",
-}) as any as S.Schema<PrivateLinkResourceProperties>;
-
-export interface PrivateLinkResourcesGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateLinkResourceProperties;
-}
-export const PrivateLinkResourcesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourcesGetResponse",
-}) as any as S.Schema<PrivateLinkResourcesGetResponse>;
-
-export interface PrivateLinkResourcesListRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The workspace name of Azure Managed Grafana. */
-  workspaceName: string;
-}
-export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateLinkResources",
-      code: 200,
-      apiVersion: "2025-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "PrivateLinkResourcesListRequest",
-}) as any as S.Schema<PrivateLinkResourcesListRequest>;
-
-/** A private link resource */
-export interface PrivateLinkResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateLinkResourceProperties;
-}
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "PrivateLinkResource",
-}) as any as S.Schema<PrivateLinkResource>;
-
-/** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateLinkResource,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
-/** The response of a PrivateLinkResource list operation. */
-export interface PrivateLinkResourceListResult {
-  /** The PrivateLinkResource items on this page */
-  value: PrivateLinkResourceListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: PrivateLinkResourceListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceListResult",
-}) as any as S.Schema<PrivateLinkResourceListResult>;
-
-export type DashboardsGetError = AzureOpError;
-/** Get the properties of a specific dashboard for grafana resource. */
-export const DashboardsGet: API.OperationMethod<
-  DashboardsGetRequest,
-  DashboardsGetResponse,
-  DashboardsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsGetRequest,
-  output: DashboardsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DashboardsListError = AzureOpError;
-/** List all resources of dashboards under the specified resource group. */
-export const DashboardsList: API.OperationMethod<
-  DashboardsListRequest,
-  ManagedDashboardListResponse,
-  DashboardsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsListRequest,
-  output: ManagedDashboardListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DashboardsListBySubscriptionError = AzureOpError;
-/** List all resources of dashboards under the specified subscription. */
-export const DashboardsListBySubscription: API.OperationMethod<
-  DashboardsListBySubscriptionRequest,
-  ManagedDashboardListResponse,
-  DashboardsListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsListBySubscriptionRequest,
-  output: ManagedDashboardListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GrafanaCheckEnterpriseDetailsError = AzureOpError;
+export type CheckGrafanaEnterpriseDetailError = AzureOpError;
 /** Retrieve enterprise add-on details information */
-export const GrafanaCheckEnterpriseDetails: API.OperationMethod<
-  GrafanaCheckEnterpriseDetailsRequest,
+export const CheckGrafanaEnterpriseDetail: API.OperationMethod<
+  CheckGrafanaEnterpriseDetailRequest,
   EnterpriseDetails,
-  GrafanaCheckEnterpriseDetailsError,
+  CheckGrafanaEnterpriseDetailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GrafanaCheckEnterpriseDetailsRequest,
+  input: CheckGrafanaEnterpriseDetailRequest,
   output: EnterpriseDetails,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GrafanaCreateError = AzureOpError;
+export type CreateGrafanaError = AzureOpError;
 /** Create or update a workspace for Grafana resource. This API is idempotent, so user can either create a new grafana or update an existing grafana. */
-export const GrafanaCreate: API.OperationMethod<
-  GrafanaCreateRequest,
-  GrafanaCreateResponse,
-  GrafanaCreateError,
+export const CreateGrafana: API.OperationMethod<
+  CreateGrafanaRequest,
+  CreateGrafanaResponse,
+  CreateGrafanaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GrafanaCreateRequest,
-  output: GrafanaCreateResponse,
+  input: CreateGrafanaRequest,
+  output: CreateGrafanaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GrafanaDeleteError = AzureOpError;
-/** Delete a workspace for Grafana resource. */
-export const GrafanaDelete: API.OperationMethod<
-  GrafanaDeleteRequest,
-  GrafanaDeleteResponse,
-  GrafanaDeleteError,
+export type CreateIntegrationFabricError = AzureOpError;
+/** Create a IntegrationFabric */
+export const CreateIntegrationFabric: API.OperationMethod<
+  CreateIntegrationFabricRequest,
+  CreateIntegrationFabricResponse,
+  CreateIntegrationFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GrafanaDeleteRequest,
-  output: GrafanaDeleteResponse,
+  input: CreateIntegrationFabricRequest,
+  output: CreateIntegrationFabricResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateManagedDashboardError = AzureOpError;
+/** Create or update a dashboard for grafana resource. This API is idempotent, so user can either create a new dashboard or update an existing dashboard. */
+export const CreateManagedDashboard: API.OperationMethod<
+  CreateManagedDashboardRequest,
+  CreateManagedDashboardResponse,
+  CreateManagedDashboardError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateManagedDashboardRequest,
+  output: CreateManagedDashboardResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateManagedPrivateEndpointError = AzureOpError;
+/** Create or update a managed private endpoint for a grafana resource. */
+export const CreateManagedPrivateEndpoint: API.OperationMethod<
+  CreateManagedPrivateEndpointRequest,
+  CreateManagedPrivateEndpointResponse,
+  CreateManagedPrivateEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateManagedPrivateEndpointRequest,
+  output: CreateManagedPrivateEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteGrafanaError = AzureOpError;
+/** Delete a workspace for Grafana resource. */
+export const DeleteGrafana: API.OperationMethod<
+  DeleteGrafanaRequest,
+  DeleteGrafanaResponse,
+  DeleteGrafanaError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGrafanaRequest,
+  output: DeleteGrafanaResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteIntegrationFabricError = AzureOpError;
+/** Delete a IntegrationFabric */
+export const DeleteIntegrationFabric: API.OperationMethod<
+  DeleteIntegrationFabricRequest,
+  DeleteIntegrationFabricResponse,
+  DeleteIntegrationFabricError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteIntegrationFabricRequest,
+  output: DeleteIntegrationFabricResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteManagedDashboardError = AzureOpError;
+/** Delete a dashboard for Grafana resource. */
+export const DeleteManagedDashboard: API.OperationMethod<
+  DeleteManagedDashboardRequest,
+  DeleteManagedDashboardResponse,
+  DeleteManagedDashboardError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteManagedDashboardRequest,
+  output: DeleteManagedDashboardResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteManagedPrivateEndpointError = AzureOpError;
+/** Delete a managed private endpoint for a grafana resource. */
+export const DeleteManagedPrivateEndpoint: API.OperationMethod<
+  DeleteManagedPrivateEndpointRequest,
+  DeleteManagedPrivateEndpointResponse,
+  DeleteManagedPrivateEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteManagedPrivateEndpointRequest,
+  output: DeleteManagedPrivateEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePrivateEndpointConnectionError = AzureOpError;
+/** Delete private endpoint connection */
+export const DeletePrivateEndpointConnection: API.OperationMethod<
+  DeletePrivateEndpointConnectionRequest,
+  DeletePrivateEndpointConnectionResponse,
+  DeletePrivateEndpointConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDashboardError = AzureOpError;
+/** Get the properties of a specific dashboard for grafana resource. */
+export const GetDashboard: API.OperationMethod<
+  GetDashboardRequest,
+  GetDashboardResponse,
+  GetDashboardError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDashboardRequest,
+  output: GetDashboardResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGrafanaError = AzureOpError;
+/** Get the properties of a specific workspace for Grafana resource. */
+export const GetGrafana: API.OperationMethod<
+  GetGrafanaRequest,
+  GetGrafanaResponse,
+  GetGrafanaError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGrafanaRequest,
+  output: GetGrafanaResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetIntegrationFabricError = AzureOpError;
+/** Get a IntegrationFabric */
+export const GetIntegrationFabric: API.OperationMethod<
+  GetIntegrationFabricRequest,
+  GetIntegrationFabricResponse,
+  GetIntegrationFabricError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIntegrationFabricRequest,
+  output: GetIntegrationFabricResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetManagedPrivateEndpointError = AzureOpError;
+/** Get a specific managed private endpoint of a grafana resource. */
+export const GetManagedPrivateEndpoint: API.OperationMethod<
+  GetManagedPrivateEndpointRequest,
+  GetManagedPrivateEndpointResponse,
+  GetManagedPrivateEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagedPrivateEndpointRequest,
+  output: GetManagedPrivateEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPrivateEndpointConnectionError = AzureOpError;
+/** Get private endpoint connections. */
+export const GetPrivateEndpointConnection: API.OperationMethod<
+  GetPrivateEndpointConnectionRequest,
+  GetPrivateEndpointConnectionResponse,
+  GetPrivateEndpointConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPrivateLinkResourceError = AzureOpError;
+/** Get specific private link resource information for this grafana resource */
+export const GetPrivateLinkResource: API.OperationMethod<
+  GetPrivateLinkResourceRequest,
+  GetPrivateLinkResourceResponse,
+  GetPrivateLinkResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPrivateLinkResourceRequest,
+  output: GetPrivateLinkResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3248,241 +3393,136 @@ export const GrafanaFetchAvailablePlugins: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GrafanaGetError = AzureOpError;
-/** Get the properties of a specific workspace for Grafana resource. */
-export const GrafanaGet: API.OperationMethod<
-  GrafanaGetRequest,
-  GrafanaGetResponse,
-  GrafanaGetError,
+export type ListDashboardBySubscriptionError = AzureOpError;
+/** List all resources of dashboards under the specified subscription. */
+export const ListDashboardBySubscription: API.OperationMethod<
+  ListDashboardBySubscriptionRequest,
+  ManagedDashboardListResponse,
+  ListDashboardBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GrafanaGetRequest,
-  output: GrafanaGetResponse,
+  input: ListDashboardBySubscriptionRequest,
+  output: ManagedDashboardListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GrafanaListError = AzureOpError;
+export type ListDashboardsError = AzureOpError;
+/** List all resources of dashboards under the specified resource group. */
+export const ListDashboards: API.OperationMethod<
+  ListDashboardsRequest,
+  ManagedDashboardListResponse,
+  ListDashboardsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDashboardsRequest,
+  output: ManagedDashboardListResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListGrafanaError = AzureOpError;
 /** List all resources of workspaces for Grafana under the specified subscription. */
-export const GrafanaList: API.OperationMethod<
-  GrafanaListRequest,
+export const ListGrafana: API.OperationMethod<
+  ListGrafanaRequest,
   ManagedGrafanaListResponse,
-  GrafanaListError,
+  ListGrafanaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GrafanaListRequest,
+  input: ListGrafanaRequest,
   output: ManagedGrafanaListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GrafanaListByResourceGroupError = AzureOpError;
+export type ListGrafanaByResourceGroupError = AzureOpError;
 /** List all resources of workspaces for Grafana under the specified resource group. */
-export const GrafanaListByResourceGroup: API.OperationMethod<
-  GrafanaListByResourceGroupRequest,
+export const ListGrafanaByResourceGroup: API.OperationMethod<
+  ListGrafanaByResourceGroupRequest,
   ManagedGrafanaListResponse,
-  GrafanaListByResourceGroupError,
+  ListGrafanaByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GrafanaListByResourceGroupRequest,
+  input: ListGrafanaByResourceGroupRequest,
   output: ManagedGrafanaListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GrafanaUpdateError = AzureOpError;
-/** Update a workspace for Grafana resource. */
-export const GrafanaUpdate: API.OperationMethod<
-  GrafanaUpdateRequest,
-  GrafanaUpdateResponse,
-  GrafanaUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GrafanaUpdateRequest,
-  output: GrafanaUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IntegrationFabricsCreateError = AzureOpError;
-/** Create a IntegrationFabric */
-export const IntegrationFabricsCreate: API.OperationMethod<
-  IntegrationFabricsCreateRequest,
-  IntegrationFabricsCreateResponse,
-  IntegrationFabricsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationFabricsCreateRequest,
-  output: IntegrationFabricsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IntegrationFabricsDeleteError = AzureOpError;
-/** Delete a IntegrationFabric */
-export const IntegrationFabricsDelete: API.OperationMethod<
-  IntegrationFabricsDeleteRequest,
-  IntegrationFabricsDeleteResponse,
-  IntegrationFabricsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationFabricsDeleteRequest,
-  output: IntegrationFabricsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IntegrationFabricsGetError = AzureOpError;
-/** Get a IntegrationFabric */
-export const IntegrationFabricsGet: API.OperationMethod<
-  IntegrationFabricsGetRequest,
-  IntegrationFabricsGetResponse,
-  IntegrationFabricsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationFabricsGetRequest,
-  output: IntegrationFabricsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IntegrationFabricsListError = AzureOpError;
+export type ListIntegrationFabricsError = AzureOpError;
 /** List IntegrationFabric resources by ManagedGrafana */
-export const IntegrationFabricsList: API.OperationMethod<
-  IntegrationFabricsListRequest,
+export const ListIntegrationFabrics: API.OperationMethod<
+  ListIntegrationFabricsRequest,
   IntegrationFabricListResponse,
-  IntegrationFabricsListError,
+  ListIntegrationFabricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationFabricsListRequest,
+  input: ListIntegrationFabricsRequest,
   output: IntegrationFabricListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type IntegrationFabricsUpdateError = AzureOpError;
-/** Update a IntegrationFabric */
-export const IntegrationFabricsUpdate: API.OperationMethod<
-  IntegrationFabricsUpdateRequest,
-  IntegrationFabricsUpdateResponse,
-  IntegrationFabricsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationFabricsUpdateRequest,
-  output: IntegrationFabricsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagedDashboardsCreateError = AzureOpError;
-/** Create or update a dashboard for grafana resource. This API is idempotent, so user can either create a new dashboard or update an existing dashboard. */
-export const ManagedDashboardsCreate: API.OperationMethod<
-  ManagedDashboardsCreateRequest,
-  ManagedDashboardsCreateResponse,
-  ManagedDashboardsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagedDashboardsCreateRequest,
-  output: ManagedDashboardsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagedDashboardsDeleteError = AzureOpError;
-/** Delete a dashboard for Grafana resource. */
-export const ManagedDashboardsDelete: API.OperationMethod<
-  ManagedDashboardsDeleteRequest,
-  ManagedDashboardsDeleteResponse,
-  ManagedDashboardsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagedDashboardsDeleteRequest,
-  output: ManagedDashboardsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagedDashboardsUpdateError = AzureOpError;
-/** Update a dashboard for Grafana resource. */
-export const ManagedDashboardsUpdate: API.OperationMethod<
-  ManagedDashboardsUpdateRequest,
-  ManagedDashboardsUpdateResponse,
-  ManagedDashboardsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagedDashboardsUpdateRequest,
-  output: ManagedDashboardsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagedPrivateEndpointsCreateError = AzureOpError;
-/** Create or update a managed private endpoint for a grafana resource. */
-export const ManagedPrivateEndpointsCreate: API.OperationMethod<
-  ManagedPrivateEndpointsCreateRequest,
-  ManagedPrivateEndpointsCreateResponse,
-  ManagedPrivateEndpointsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagedPrivateEndpointsCreateRequest,
-  output: ManagedPrivateEndpointsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagedPrivateEndpointsDeleteError = AzureOpError;
-/** Delete a managed private endpoint for a grafana resource. */
-export const ManagedPrivateEndpointsDelete: API.OperationMethod<
-  ManagedPrivateEndpointsDeleteRequest,
-  ManagedPrivateEndpointsDeleteResponse,
-  ManagedPrivateEndpointsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagedPrivateEndpointsDeleteRequest,
-  output: ManagedPrivateEndpointsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagedPrivateEndpointsGetError = AzureOpError;
-/** Get a specific managed private endpoint of a grafana resource. */
-export const ManagedPrivateEndpointsGet: API.OperationMethod<
-  ManagedPrivateEndpointsGetRequest,
-  ManagedPrivateEndpointsGetResponse,
-  ManagedPrivateEndpointsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagedPrivateEndpointsGetRequest,
-  output: ManagedPrivateEndpointsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagedPrivateEndpointsListError = AzureOpError;
+export type ListManagedPrivateEndpointsError = AzureOpError;
 /** List all managed private endpoints of a grafana resource. */
-export const ManagedPrivateEndpointsList: API.OperationMethod<
-  ManagedPrivateEndpointsListRequest,
+export const ListManagedPrivateEndpoints: API.OperationMethod<
+  ListManagedPrivateEndpointsRequest,
   ManagedPrivateEndpointModelListResponse,
-  ManagedPrivateEndpointsListError,
+  ListManagedPrivateEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedPrivateEndpointsListRequest,
+  input: ListManagedPrivateEndpointsRequest,
   output: ManagedPrivateEndpointModelListResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** List the operations for the provider */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPrivateEndpointConnectionsError = AzureOpError;
+/** Get private endpoint connection */
+export const ListPrivateEndpointConnections: API.OperationMethod<
+  ListPrivateEndpointConnectionsRequest,
+  PrivateEndpointConnectionListResult,
+  ListPrivateEndpointConnectionsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPrivateEndpointConnectionsRequest,
+  output: PrivateEndpointConnectionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPrivateLinkResourcesError = AzureOpError;
+/** List all private link resources information for this grafana resource */
+export const ListPrivateLinkResources: API.OperationMethod<
+  ListPrivateLinkResourcesRequest,
+  PrivateLinkResourceListResult,
+  ListPrivateLinkResourcesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPrivateLinkResourcesRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3503,36 +3543,6 @@ export const ManagedPrivateEndpointsRefresh: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ManagedPrivateEndpointsUpdateError = AzureOpError;
-/** Update a managed private endpoint for an existing grafana resource. */
-export const ManagedPrivateEndpointsUpdate: API.OperationMethod<
-  ManagedPrivateEndpointsUpdateRequest,
-  ManagedPrivateEndpointsUpdateResponse,
-  ManagedPrivateEndpointsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagedPrivateEndpointsUpdateRequest,
-  output: ManagedPrivateEndpointsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PrivateEndpointConnectionsApproveError = AzureOpError;
 /** Manual approve private endpoint connection */
 export const PrivateEndpointConnectionsApprove: API.OperationMethod<
@@ -3548,76 +3558,61 @@ export const PrivateEndpointConnectionsApprove: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PrivateEndpointConnectionsDeleteError = AzureOpError;
-/** Delete private endpoint connection */
-export const PrivateEndpointConnectionsDelete: API.OperationMethod<
-  PrivateEndpointConnectionsDeleteRequest,
-  PrivateEndpointConnectionsDeleteResponse,
-  PrivateEndpointConnectionsDeleteError,
+export type UpdateGrafanaError = AzureOpError;
+/** Update a workspace for Grafana resource. */
+export const UpdateGrafana: API.OperationMethod<
+  UpdateGrafanaRequest,
+  UpdateGrafanaResponse,
+  UpdateGrafanaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsDeleteRequest,
-  output: PrivateEndpointConnectionsDeleteResponse,
+  input: UpdateGrafanaRequest,
+  output: UpdateGrafanaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type PrivateEndpointConnectionsGetError = AzureOpError;
-/** Get private endpoint connections. */
-export const PrivateEndpointConnectionsGet: API.OperationMethod<
-  PrivateEndpointConnectionsGetRequest,
-  PrivateEndpointConnectionsGetResponse,
-  PrivateEndpointConnectionsGetError,
+export type UpdateIntegrationFabricError = AzureOpError;
+/** Update a IntegrationFabric */
+export const UpdateIntegrationFabric: API.OperationMethod<
+  UpdateIntegrationFabricRequest,
+  UpdateIntegrationFabricResponse,
+  UpdateIntegrationFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsGetRequest,
-  output: PrivateEndpointConnectionsGetResponse,
+  input: UpdateIntegrationFabricRequest,
+  output: UpdateIntegrationFabricResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type PrivateEndpointConnectionsListError = AzureOpError;
-/** Get private endpoint connection */
-export const PrivateEndpointConnectionsList: API.OperationMethod<
-  PrivateEndpointConnectionsListRequest,
-  PrivateEndpointConnectionListResult,
-  PrivateEndpointConnectionsListError,
+export type UpdateManagedDashboardError = AzureOpError;
+/** Update a dashboard for Grafana resource. */
+export const UpdateManagedDashboard: API.OperationMethod<
+  UpdateManagedDashboardRequest,
+  UpdateManagedDashboardResponse,
+  UpdateManagedDashboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsListRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: UpdateManagedDashboardRequest,
+  output: UpdateManagedDashboardResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type PrivateLinkResourcesGetError = AzureOpError;
-/** Get specific private link resource information for this grafana resource */
-export const PrivateLinkResourcesGet: API.OperationMethod<
-  PrivateLinkResourcesGetRequest,
-  PrivateLinkResourcesGetResponse,
-  PrivateLinkResourcesGetError,
+export type UpdateManagedPrivateEndpointError = AzureOpError;
+/** Update a managed private endpoint for an existing grafana resource. */
+export const UpdateManagedPrivateEndpoint: API.OperationMethod<
+  UpdateManagedPrivateEndpointRequest,
+  UpdateManagedPrivateEndpointResponse,
+  UpdateManagedPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateLinkResourcesGetRequest,
-  output: PrivateLinkResourcesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateLinkResourcesListError = AzureOpError;
-/** List all private link resources information for this grafana resource */
-export const PrivateLinkResourcesList: API.OperationMethod<
-  PrivateLinkResourcesListRequest,
-  PrivateLinkResourceListResult,
-  PrivateLinkResourcesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateLinkResourcesListRequest,
-  output: PrivateLinkResourceListResult,
+  input: UpdateManagedPrivateEndpointRequest,
+  output: UpdateManagedPrivateEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.communitytraining#CommunityTrainingsDelete": {
+    "com.azure.communitytraining#DeleteCommunityTraining": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communitytraining#CommunityTrainingsDeleteRequest"
+        "target": "com.azure.communitytraining#DeleteCommunityTrainingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2023-11-01"
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsDeleteRequest": {
+    "com.azure.communitytraining#DeleteCommunityTrainingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -68,13 +68,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsUpdate": {
+    "com.azure.communitytraining#UpdateCommunityTraining": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communitytraining#CommunityTrainingsUpdateRequest"
+        "target": "com.azure.communitytraining#UpdateCommunityTrainingRequest"
       },
       "output": {
-        "target": "com.azure.communitytraining#CommunityTrainingsUpdateResponse"
+        "target": "com.azure.communitytraining#UpdateCommunityTrainingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -87,7 +87,7 @@
         "com.distilled.openapi#apiVersion": "2023-11-01"
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsUpdateResponse": {
+    "com.azure.communitytraining#UpdateCommunityTrainingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -514,7 +514,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsUpdateRequest": {
+    "com.azure.communitytraining#UpdateCommunityTrainingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -690,13 +690,13 @@
         "smithy.api#documentation": "The resource model definition representing SKU"
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsCreate": {
+    "com.azure.communitytraining#CreateCommunityTraining": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communitytraining#CommunityTrainingsCreateRequest"
+        "target": "com.azure.communitytraining#CreateCommunityTrainingRequest"
       },
       "output": {
-        "target": "com.azure.communitytraining#CommunityTrainingsCreateResponse"
+        "target": "com.azure.communitytraining#CreateCommunityTrainingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -709,7 +709,7 @@
         "com.distilled.openapi#apiVersion": "2023-11-01"
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsCreateResponse": {
+    "com.azure.communitytraining#CreateCommunityTrainingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -814,7 +814,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsCreateRequest": {
+    "com.azure.communitytraining#CreateCommunityTrainingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -919,13 +919,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsGet": {
+    "com.azure.communitytraining#GetCommunityTraining": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communitytraining#CommunityTrainingsGetRequest"
+        "target": "com.azure.communitytraining#GetCommunityTrainingRequest"
       },
       "output": {
-        "target": "com.azure.communitytraining#CommunityTrainingsGetResponse"
+        "target": "com.azure.communitytraining#GetCommunityTrainingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -938,7 +938,7 @@
         "com.distilled.openapi#apiVersion": "2023-11-01"
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsGetResponse": {
+    "com.azure.communitytraining#GetCommunityTrainingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1043,7 +1043,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsGetRequest": {
+    "com.azure.communitytraining#GetCommunityTrainingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1075,10 +1075,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsListByResourceGroup": {
+    "com.azure.communitytraining#ListCommunityTrainingByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communitytraining#CommunityTrainingsListByResourceGroupRequest"
+        "target": "com.azure.communitytraining#ListCommunityTrainingByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.communitytraining#CommunityTrainingListResult"
@@ -1229,7 +1229,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsListByResourceGroupRequest": {
+    "com.azure.communitytraining#ListCommunityTrainingByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1253,10 +1253,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsListBySubscription": {
+    "com.azure.communitytraining#ListCommunityTrainingBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communitytraining#CommunityTrainingsListBySubscriptionRequest"
+        "target": "com.azure.communitytraining#ListCommunityTrainingBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.communitytraining#CommunityTrainingListResult"
@@ -1272,7 +1272,7 @@
         "com.distilled.openapi#apiVersion": "2023-11-01"
       }
     },
-    "com.azure.communitytraining#CommunityTrainingsListBySubscriptionRequest": {
+    "com.azure.communitytraining#ListCommunityTrainingBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1288,13 +1288,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communitytraining#OperationsList": {
+    "com.azure.communitytraining#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.communitytraining#OperationsListResponse"
+        "target": "com.azure.communitytraining#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1307,7 +1307,7 @@
         "com.distilled.openapi#apiVersion": "2023-11-01"
       }
     },
-    "com.azure.communitytraining#OperationsListResponse": {
+    "com.azure.communitytraining#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -1451,25 +1451,25 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.communitytraining#CommunityTrainingsDelete"
+          "target": "com.azure.communitytraining#DeleteCommunityTraining"
         },
         {
-          "target": "com.azure.communitytraining#CommunityTrainingsUpdate"
+          "target": "com.azure.communitytraining#UpdateCommunityTraining"
         },
         {
-          "target": "com.azure.communitytraining#CommunityTrainingsCreate"
+          "target": "com.azure.communitytraining#CreateCommunityTraining"
         },
         {
-          "target": "com.azure.communitytraining#CommunityTrainingsGet"
+          "target": "com.azure.communitytraining#GetCommunityTraining"
         },
         {
-          "target": "com.azure.communitytraining#CommunityTrainingsListByResourceGroup"
+          "target": "com.azure.communitytraining#ListCommunityTrainingByResourceGroup"
         },
         {
-          "target": "com.azure.communitytraining#CommunityTrainingsListBySubscription"
+          "target": "com.azure.communitytraining#ListCommunityTrainingBySubscription"
         },
         {
-          "target": "com.azure.communitytraining#OperationsList"
+          "target": "com.azure.communitytraining#ListOperations"
         }
       ],
       "traits": {

@@ -143,7 +143,7 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagsListRequest": {
+    "com.posthog.feature_flags#ListFeatureFlagsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -740,10 +740,10 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagsList": {
+    "com.posthog.feature_flags#ListFeatureFlags": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_flags#FeatureFlagsListRequest"
+        "target": "com.posthog.feature_flags#ListFeatureFlagsRequest"
       },
       "output": {
         "target": "com.posthog.feature_flags#PaginatedFeatureFlagListOutput"
@@ -1590,7 +1590,7 @@
         "smithy.api#documentation": "Evaluation contexts that control where this flag evaluates at runtime."
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsCreateRequest": {
+    "com.posthog.feature_flags#CreateFeatureFlagRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1676,10 +1676,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsCreate": {
+    "com.posthog.feature_flags#CreateFeatureFlag": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_flags#FeatureFlagsCreateRequest"
+        "target": "com.posthog.feature_flags#CreateFeatureFlagRequest"
       },
       "output": {
         "target": "com.posthog.feature_flags#FeatureFlagOutput"
@@ -1856,7 +1856,7 @@
         "smithy.api#documentation": "Identifier used for bucketing users into rollout and variants\n\n* `distinct_id` - User ID (default)\n* `device_id` - Device ID"
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsUpdateRequest": {
+    "com.posthog.feature_flags#UpdateFeatureFlagRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1973,10 +1973,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsUpdate": {
+    "com.posthog.feature_flags#UpdateFeatureFlag": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequest"
+        "target": "com.posthog.feature_flags#UpdateFeatureFlagRequest"
       },
       "output": {
         "target": "com.posthog.feature_flags#FeatureFlagOutput"
@@ -2019,7 +2019,7 @@
         "smithy.api#documentation": "Evaluation contexts that control where this flag evaluates at runtime."
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsPartialUpdateRequest": {
+    "com.posthog.feature_flags#UpdateFeatureFlagPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2113,10 +2113,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsPartialUpdate": {
+    "com.posthog.feature_flags#UpdateFeatureFlagPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_flags#FeatureFlagsPartialUpdateRequest"
+        "target": "com.posthog.feature_flags#UpdateFeatureFlagPartialRequest"
       },
       "output": {
         "target": "com.posthog.feature_flags#FeatureFlagOutput"
@@ -2627,7 +2627,7 @@
         "smithy.api#documentation": "Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/feature-flags) for more information on feature flags.\n\nIf you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user."
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequest": {
+    "com.posthog.feature_flags#CreateFeatureFlagDashboardRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2651,10 +2651,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreate": {
+    "com.posthog.feature_flags#CreateFeatureFlagDashboard": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequest"
+        "target": "com.posthog.feature_flags#CreateFeatureFlagDashboardRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2679,7 +2679,7 @@
         "smithy.api#documentation": "Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/feature-flags) for more information on feature flags.\n\nIf you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user."
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsDependentFlagsListRequest": {
+    "com.posthog.feature_flags#ListFeatureFlagDependentFlagsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2734,7 +2734,7 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagsDependentFlagsListResponse": {
+    "com.posthog.feature_flags#ListFeatureFlagDependentFlagsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2749,13 +2749,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsDependentFlagsList": {
+    "com.posthog.feature_flags#ListFeatureFlagDependentFlags": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_flags#FeatureFlagsDependentFlagsListRequest"
+        "target": "com.posthog.feature_flags#ListFeatureFlagDependentFlagsRequest"
       },
       "output": {
-        "target": "com.posthog.feature_flags#FeatureFlagsDependentFlagsListResponse"
+        "target": "com.posthog.feature_flags#ListFeatureFlagDependentFlagsResponse"
       },
       "errors": [
         {
@@ -2774,7 +2774,7 @@
         "smithy.api#documentation": "Get other active flags that depend on this flag."
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequest": {
+    "com.posthog.feature_flags#CreateFeatureFlagEnrichUsageDashboardRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2798,10 +2798,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreate": {
+    "com.posthog.feature_flags#CreateFeatureFlagEnrichUsageDashboard": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequest"
+        "target": "com.posthog.feature_flags#CreateFeatureFlagEnrichUsageDashboardRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2983,7 +2983,7 @@
         "smithy.api#documentation": "Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/feature-flags) for more information on feature flags.\n\nIf you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user."
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsTestEvaluationCreateRequest": {
+    "com.posthog.feature_flags#CreateFeatureFlagTestEvaluationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3250,10 +3250,10 @@
         "smithy.api#documentation": "Detailed analysis of each condition in the feature flag"
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsTestEvaluationCreate": {
+    "com.posthog.feature_flags#CreateFeatureFlagTestEvaluation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_flags#FeatureFlagsTestEvaluationCreateRequest"
+        "target": "com.posthog.feature_flags#CreateFeatureFlagTestEvaluationRequest"
       },
       "output": {
         "target": "com.posthog.feature_flags#FeatureFlagTestEvaluationResponse"
@@ -4454,7 +4454,7 @@
         "smithy.api#documentation": "The release condition to evaluate"
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsUserBlastRadiusCreateRequest": {
+    "com.posthog.feature_flags#CreateFeatureFlagUserBlastRadiusRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4501,10 +4501,10 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagsUserBlastRadiusCreate": {
+    "com.posthog.feature_flags#CreateFeatureFlagUserBlastRadius": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.feature_flags#FeatureFlagsUserBlastRadiusCreateRequest"
+        "target": "com.posthog.feature_flags#CreateFeatureFlagUserBlastRadiusRequest"
       },
       "output": {
         "target": "com.posthog.feature_flags#UserBlastRadiusResponse"
@@ -4586,19 +4586,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.feature_flags#FeatureFlagsList"
+          "target": "com.posthog.feature_flags#ListFeatureFlags"
         },
         {
-          "target": "com.posthog.feature_flags#FeatureFlagsCreate"
+          "target": "com.posthog.feature_flags#CreateFeatureFlag"
         },
         {
           "target": "com.posthog.feature_flags#FeatureFlagsRetrieve"
         },
         {
-          "target": "com.posthog.feature_flags#FeatureFlagsUpdate"
+          "target": "com.posthog.feature_flags#UpdateFeatureFlag"
         },
         {
-          "target": "com.posthog.feature_flags#FeatureFlagsPartialUpdate"
+          "target": "com.posthog.feature_flags#UpdateFeatureFlagPartial"
         },
         {
           "target": "com.posthog.feature_flags#FeatureFlagsDestroy"
@@ -4610,13 +4610,13 @@
           "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreate"
         },
         {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreate"
+          "target": "com.posthog.feature_flags#CreateFeatureFlagDashboard"
         },
         {
-          "target": "com.posthog.feature_flags#FeatureFlagsDependentFlagsList"
+          "target": "com.posthog.feature_flags#ListFeatureFlagDependentFlags"
         },
         {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreate"
+          "target": "com.posthog.feature_flags#CreateFeatureFlagEnrichUsageDashboard"
         },
         {
           "target": "com.posthog.feature_flags#FeatureFlagsRemoteConfigRetrieve"
@@ -4625,7 +4625,7 @@
           "target": "com.posthog.feature_flags#FeatureFlagsStatusRetrieve"
         },
         {
-          "target": "com.posthog.feature_flags#FeatureFlagsTestEvaluationCreate"
+          "target": "com.posthog.feature_flags#CreateFeatureFlagTestEvaluation"
         },
         {
           "target": "com.posthog.feature_flags#FeatureFlagsVersionsRetrieve"
@@ -4652,7 +4652,7 @@
           "target": "com.posthog.feature_flags#FeatureFlagsMyFlagsRetrieve"
         },
         {
-          "target": "com.posthog.feature_flags#FeatureFlagsUserBlastRadiusCreate"
+          "target": "com.posthog.feature_flags#CreateFeatureFlagUserBlastRadius"
         }
       ],
       "traits": {

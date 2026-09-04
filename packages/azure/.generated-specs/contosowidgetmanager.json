@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.contosowidgetmanager#EmployeesDelete": {
+    "com.azure.contosowidgetmanager#DeleteEmployee": {
       "type": "operation",
       "input": {
-        "target": "com.azure.contosowidgetmanager#EmployeesDeleteRequest"
+        "target": "com.azure.contosowidgetmanager#DeleteEmployeeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesDeleteRequest": {
+    "com.azure.contosowidgetmanager#DeleteEmployeeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -68,13 +68,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesUpdate": {
+    "com.azure.contosowidgetmanager#UpdateEmployee": {
       "type": "operation",
       "input": {
-        "target": "com.azure.contosowidgetmanager#EmployeesUpdateRequest"
+        "target": "com.azure.contosowidgetmanager#UpdateEmployeeRequest"
       },
       "output": {
-        "target": "com.azure.contosowidgetmanager#EmployeesUpdateResponse"
+        "target": "com.azure.contosowidgetmanager#UpdateEmployeeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -87,7 +87,7 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesUpdateResponse": {
+    "com.azure.contosowidgetmanager#UpdateEmployeeResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -340,7 +340,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesUpdateRequest": {
+    "com.azure.contosowidgetmanager#UpdateEmployeeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -567,13 +567,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesGet": {
+    "com.azure.contosowidgetmanager#GetEmployee": {
       "type": "operation",
       "input": {
-        "target": "com.azure.contosowidgetmanager#EmployeesGetRequest"
+        "target": "com.azure.contosowidgetmanager#GetEmployeeRequest"
       },
       "output": {
-        "target": "com.azure.contosowidgetmanager#EmployeesGetResponse"
+        "target": "com.azure.contosowidgetmanager#GetEmployeeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -586,7 +586,7 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesGetResponse": {
+    "com.azure.contosowidgetmanager#GetEmployeeResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -649,7 +649,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesGetRequest": {
+    "com.azure.contosowidgetmanager#GetEmployeeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -681,10 +681,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesListByResourceGroup": {
+    "com.azure.contosowidgetmanager#ListEmployeeByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.contosowidgetmanager#EmployeesListByResourceGroupRequest"
+        "target": "com.azure.contosowidgetmanager#ListEmployeeByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.contosowidgetmanager#EmployeeListResult"
@@ -793,7 +793,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesListByResourceGroupRequest": {
+    "com.azure.contosowidgetmanager#ListEmployeeByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -817,10 +817,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesListBySubscription": {
+    "com.azure.contosowidgetmanager#ListEmployeeBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.contosowidgetmanager#EmployeesListBySubscriptionRequest"
+        "target": "com.azure.contosowidgetmanager#ListEmployeeBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.contosowidgetmanager#EmployeeListResult"
@@ -836,7 +836,7 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.contosowidgetmanager#EmployeesListBySubscriptionRequest": {
+    "com.azure.contosowidgetmanager#ListEmployeeBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -852,13 +852,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.contosowidgetmanager#OperationsList": {
+    "com.azure.contosowidgetmanager#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.contosowidgetmanager#OperationsListResponse"
+        "target": "com.azure.contosowidgetmanager#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -871,7 +871,7 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.contosowidgetmanager#OperationsListResponse": {
+    "com.azure.contosowidgetmanager#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -1015,25 +1015,25 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.contosowidgetmanager#EmployeesDelete"
+          "target": "com.azure.contosowidgetmanager#DeleteEmployee"
         },
         {
-          "target": "com.azure.contosowidgetmanager#EmployeesUpdate"
+          "target": "com.azure.contosowidgetmanager#UpdateEmployee"
         },
         {
           "target": "com.azure.contosowidgetmanager#EmployeesCreateOrUpdate"
         },
         {
-          "target": "com.azure.contosowidgetmanager#EmployeesGet"
+          "target": "com.azure.contosowidgetmanager#GetEmployee"
         },
         {
-          "target": "com.azure.contosowidgetmanager#EmployeesListByResourceGroup"
+          "target": "com.azure.contosowidgetmanager#ListEmployeeByResourceGroup"
         },
         {
-          "target": "com.azure.contosowidgetmanager#EmployeesListBySubscription"
+          "target": "com.azure.contosowidgetmanager#ListEmployeeBySubscription"
         },
         {
-          "target": "com.azure.contosowidgetmanager#OperationsList"
+          "target": "com.azure.contosowidgetmanager#ListOperations"
         }
       ],
       "traits": {

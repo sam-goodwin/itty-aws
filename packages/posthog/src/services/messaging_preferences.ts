@@ -21,7 +21,7 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface MessagingPreferencesAddOptOutCreateRequest {
+export interface CreateMessagingPreferenceAddOptOutRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The recipient identifier to opt out (e.g. email address). */
@@ -29,7 +29,7 @@ export interface MessagingPreferencesAddOptOutCreateRequest {
   /** Optional message category key. If omitted, the recipient is opted out of all marketing messages. */
   category_key?: string;
 }
-export const MessagingPreferencesAddOptOutCreateRequest =
+export const CreateMessagingPreferenceAddOptOutRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -43,8 +43,8 @@ export const MessagingPreferencesAddOptOutCreateRequest =
       }),
     ),
   ).annotate({
-    identifier: "MessagingPreferencesAddOptOutCreateRequest",
-  }) as any as S.Schema<MessagingPreferencesAddOptOutCreateRequest>;
+    identifier: "CreateMessagingPreferenceAddOptOutRequest",
+  }) as any as S.Schema<CreateMessagingPreferenceAddOptOutRequest>;
 
 export interface MessagePreferences {
   /** Server-assigned UUID for this recipient's preference record. */
@@ -90,7 +90,7 @@ export const MessagingPreferencesBulkAddOptOutsCreateRequestOptOutsList =
     BulkOptOutEntry,
   ) as any as S.Schema<MessagingPreferencesBulkAddOptOutsCreateRequestOptOutsList>;
 
-export interface MessagingPreferencesBulkAddOptOutsCreateRequest {
+export interface CreateMessagingPreferenceBulkAddOptOutRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Recipients to opt out, at most 1000 per request. */
@@ -98,7 +98,7 @@ export interface MessagingPreferencesBulkAddOptOutsCreateRequest {
   /** Message category key applied to entries without their own. If omitted, recipients are opted out of all marketing messages. */
   category_key?: string;
 }
-export const MessagingPreferencesBulkAddOptOutsCreateRequest =
+export const CreateMessagingPreferenceBulkAddOptOutRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -112,8 +112,8 @@ export const MessagingPreferencesBulkAddOptOutsCreateRequest =
       }),
     ),
   ).annotate({
-    identifier: "MessagingPreferencesBulkAddOptOutsCreateRequest",
-  }) as any as S.Schema<MessagingPreferencesBulkAddOptOutsCreateRequest>;
+    identifier: "CreateMessagingPreferenceBulkAddOptOutRequest",
+  }) as any as S.Schema<CreateMessagingPreferenceBulkAddOptOutRequest>;
 
 /** The first few entry-level problems, so the caller can fix their list. */
 export type BulkAddOptOutsResultErrorsList = Array<string>;
@@ -141,6 +141,31 @@ export const BulkAddOptOutsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BulkAddOptOutsResult",
 }) as any as S.Schema<BulkAddOptOutsResult>;
+
+export interface CreateMessagingPreferenceRemoveOptOutRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** The recipient identifier to opt back in (e.g. email address). */
+  identifier: string;
+  /** Optional message category key. If omitted, the recipient is opted back in to all marketing messages. */
+  category_key?: string;
+}
+export const CreateMessagingPreferenceRemoveOptOutRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      identifier: S.String,
+      category_key: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/messaging_preferences/remove_opt_out/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateMessagingPreferenceRemoveOptOutRequest",
+  }) as any as S.Schema<CreateMessagingPreferenceRemoveOptOutRequest>;
 
 export interface MessagingPreferencesExportOptOutsCsvRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -259,31 +284,6 @@ export const PaginatedOptOuts = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedOptOuts",
 }) as any as S.Schema<PaginatedOptOuts>;
 
-export interface MessagingPreferencesRemoveOptOutCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** The recipient identifier to opt back in (e.g. email address). */
-  identifier: string;
-  /** Optional message category key. If omitted, the recipient is opted back in to all marketing messages. */
-  category_key?: string;
-}
-export const MessagingPreferencesRemoveOptOutCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      identifier: S.String,
-      category_key: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/messaging_preferences/remove_opt_out/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "MessagingPreferencesRemoveOptOutCreateRequest",
-  }) as any as S.Schema<MessagingPreferencesRemoveOptOutCreateRequest>;
-
 export interface MessagingPreferencesWebhookUrlRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -313,34 +313,49 @@ export const WebhookUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebhookUrl" }) as any as S.Schema<WebhookUrl>;
 
-export type MessagingPreferencesAddOptOutCreateError = PosthogOpError;
+export type CreateMessagingPreferenceAddOptOutError = PosthogOpError;
 /** Manually add a recipient to the opt-out list Manually add a recipient to the opt-out list for a specific category or all marketing messages. */
-export const messagingPreferencesAddOptOutCreate: API.OperationMethod<
-  MessagingPreferencesAddOptOutCreateRequest,
+export const createMessagingPreferenceAddOptOut: API.OperationMethod<
+  CreateMessagingPreferenceAddOptOutRequest,
   MessagePreferences,
-  MessagingPreferencesAddOptOutCreateError,
+  CreateMessagingPreferenceAddOptOutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MessagingPreferencesAddOptOutCreateRequest,
+  input: CreateMessagingPreferenceAddOptOutRequest,
   output: MessagePreferences,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
 
-export type MessagingPreferencesBulkAddOptOutsCreateError =
+export type CreateMessagingPreferenceBulkAddOptOutError =
   | NotFound
   | PosthogOpError;
 /** Add multiple recipients to the opt-out list Opt every recipient in the list out of the category named on their entry, or a default category. */
-export const messagingPreferencesBulkAddOptOutsCreate: API.OperationMethod<
-  MessagingPreferencesBulkAddOptOutsCreateRequest,
+export const createMessagingPreferenceBulkAddOptOut: API.OperationMethod<
+  CreateMessagingPreferenceBulkAddOptOutRequest,
   BulkAddOptOutsResult,
-  MessagingPreferencesBulkAddOptOutsCreateError,
+  CreateMessagingPreferenceBulkAddOptOutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MessagingPreferencesBulkAddOptOutsCreateRequest,
+  input: CreateMessagingPreferenceBulkAddOptOutRequest,
   output: BulkAddOptOutsResult,
   errors: [NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateMessagingPreferenceRemoveOptOutError = PosthogOpError;
+/** Remove a recipient from the opt-out list Opt a recipient back in to a specific category, or to all marketing messages. */
+export const createMessagingPreferenceRemoveOptOut: API.OperationMethod<
+  CreateMessagingPreferenceRemoveOptOutRequest,
+  MessagePreferences,
+  CreateMessagingPreferenceRemoveOptOutError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMessagingPreferenceRemoveOptOutRequest,
+  output: MessagePreferences,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -390,21 +405,6 @@ export const messagingPreferencesOptOutsRetrieve: API.OperationMethod<
   input: MessagingPreferencesOptOutsRetrieveRequest,
   output: PaginatedOptOuts,
   errors: [NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MessagingPreferencesRemoveOptOutCreateError = PosthogOpError;
-/** Remove a recipient from the opt-out list Opt a recipient back in to a specific category, or to all marketing messages. */
-export const messagingPreferencesRemoveOptOutCreate: API.OperationMethod<
-  MessagingPreferencesRemoveOptOutCreateRequest,
-  MessagePreferences,
-  MessagingPreferencesRemoveOptOutCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MessagingPreferencesRemoveOptOutCreateRequest,
-  output: MessagePreferences,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

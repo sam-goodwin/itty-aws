@@ -10272,7 +10272,7 @@
         "smithy.api#documentation": "Updates the user's profile details."
       }
     },
-    "com.gcp.health_v4#BatchDeleteUsersDataTypesDataPointsRequest": {
+    "com.gcp.health_v4#DeleteBatchUserDataTypeDataPointRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -10292,10 +10292,10 @@
         }
       }
     },
-    "com.gcp.health_v4#BatchDeleteUsersDataTypesDataPoints": {
+    "com.gcp.health_v4#DeleteBatchUserDataTypeDataPoint": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.health_v4#BatchDeleteUsersDataTypesDataPointsRequest"
+        "target": "com.gcp.health_v4#DeleteBatchUserDataTypeDataPointRequest"
       },
       "output": {
         "target": "com.gcp.health_v4#Operation"

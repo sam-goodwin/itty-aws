@@ -5604,7 +5604,7 @@
         }
       }
     },
-    "com.gcp.authorizedbuyersmarketplace_v1alpha#BatchUpdateBuyersProposalsDealsRequest": {
+    "com.gcp.authorizedbuyersmarketplace_v1alpha#UpdateBatchBuyerProposalDealRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -5624,10 +5624,10 @@
         }
       }
     },
-    "com.gcp.authorizedbuyersmarketplace_v1alpha#BatchUpdateBuyersProposalsDeals": {
+    "com.gcp.authorizedbuyersmarketplace_v1alpha#UpdateBatchBuyerProposalDeal": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.authorizedbuyersmarketplace_v1alpha#BatchUpdateBuyersProposalsDealsRequest"
+        "target": "com.gcp.authorizedbuyersmarketplace_v1alpha#UpdateBatchBuyerProposalDealRequest"
       },
       "output": {
         "target": "com.gcp.authorizedbuyersmarketplace_v1alpha#BatchUpdateDealsResponse"

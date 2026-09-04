@@ -7216,21 +7216,21 @@ export const GetSolanaAccountByNameRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSolanaAccountByNameRequest",
 }) as any as S.Schema<GetSolanaAccountByNameRequest>;
 
-export interface GetSQLGrammarRequest {}
-export const GetSQLGrammarRequest = /*@__PURE__*/ S.suspend(() =>
+export interface GetSqlGrammarRequest {}
+export const GetSqlGrammarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/v2/data/query/grammar", code: 200 }),
   ),
 ).annotate({
-  identifier: "GetSQLGrammarRequest",
-}) as any as S.Schema<GetSQLGrammarRequest>;
+  identifier: "GetSqlGrammarRequest",
+}) as any as S.Schema<GetSqlGrammarRequest>;
 
-export type GetSQLGrammarResponse = string;
-export const GetSQLGrammarResponse = /*@__PURE__*/ S.suspend(() =>
+export type GetSqlGrammarResponse = string;
+export const GetSqlGrammarResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "GetSQLGrammarResponse",
-}) as any as S.Schema<GetSQLGrammarResponse>;
+  identifier: "GetSqlGrammarResponse",
+}) as any as S.Schema<GetSqlGrammarResponse>;
 
 export type GetSQLSchemaRequestDatabase =
   | "base"
@@ -7239,20 +7239,20 @@ export type GetSQLSchemaRequestDatabase =
   | "hyperevm";
 export const GetSQLSchemaRequestDatabase = /*@__PURE__*/ S.String;
 
-export interface GetSQLSchemaRequest {
+export interface GetSqlSchemaRequest {
   /** The name of the database to query. Defaults to "base" when not specified. */
   database?: GetSQLSchemaRequestDatabase | (string & {});
   /** Get the schema for a specific table. */
   table?: string;
 }
-export const GetSQLSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSqlSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.optional(GetSQLSchemaRequestDatabase.pipe(T.Query())),
     table: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v2/data/query/schema", code: 200 })),
 ).annotate({
-  identifier: "GetSQLSchemaRequest",
-}) as any as S.Schema<GetSQLSchemaRequest>;
+  identifier: "GetSqlSchemaRequest",
+}) as any as S.Schema<GetSqlSchemaRequest>;
 
 /** Schema definition for a table column. */
 export interface OnchainDataColumnSchema {
@@ -13952,30 +13952,30 @@ export const getSolanaAccountByName: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSQLGrammarError = CoinbaseOpError;
+export type GetSqlGrammarError = CoinbaseOpError;
 /** Get SQL grammar Retrieve the SQL grammar for the SQL API. The SQL queries that are supported by the SQL API are defined in ANTLR4 grammar which is evaluated by server before executing the query. This ensures the safety and soundness of the SQL query before execution. This endpoint returns the ANTLR4 grammar that is used to evaluate the SQL queries so that developers can understand the SQL API and build SQL queries with high confidence and correctness. LLMs interact well with ANTLR4 grammar. You can feed the grammar directly into the LLMs to help generate SQL queries. */
-export const getSQLGrammar: API.OperationMethod<
-  GetSQLGrammarRequest,
-  GetSQLGrammarResponse,
-  GetSQLGrammarError,
+export const getSqlGrammar: API.OperationMethod<
+  GetSqlGrammarRequest,
+  GetSqlGrammarResponse,
+  GetSqlGrammarError,
   CoinbaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSQLGrammarRequest,
-  output: GetSQLGrammarResponse,
+  input: GetSqlGrammarRequest,
+  output: GetSqlGrammarResponse,
   errors: [UnknownCoinbaseError],
   protocol: CoinbaseProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetSQLSchemaError = CoinbaseOpError;
+export type GetSqlSchemaError = CoinbaseOpError;
 /** Get schema details Retrieve the schema information for the available tables in the SQL API's indexed data. This includes table names, column definitions, data types, and indexed fields. */
-export const getSQLSchema: API.OperationMethod<
-  GetSQLSchemaRequest,
+export const getSqlSchema: API.OperationMethod<
+  GetSqlSchemaRequest,
   OnchainDataSchemaResponse,
-  GetSQLSchemaError,
+  GetSqlSchemaError,
   CoinbaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSQLSchemaRequest,
+  input: GetSqlSchemaRequest,
   output: OnchainDataSchemaResponse,
   errors: [UnknownCoinbaseError],
   protocol: CoinbaseProtocol,

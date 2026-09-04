@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.kubernetes.core#GetServiceAccountIssuerOpenIDConfigurationResponse": {
+    "com.kubernetes.core#GetServiceAccountIssuerOpenIdConfigurationResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -32,13 +32,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#GetServiceAccountIssuerOpenIDConfiguration": {
+    "com.kubernetes.core#GetServiceAccountIssuerOpenIdConfiguration": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.kubernetes.core#GetServiceAccountIssuerOpenIDConfigurationResponse"
+        "target": "com.kubernetes.core#GetServiceAccountIssuerOpenIdConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -123,7 +123,7 @@
         "smithy.api#documentation": "versions are the api versions that are available."
       }
     },
-    "com.kubernetes.core#GetCoreAPIVersions": {
+    "com.kubernetes.core#GetCoreApiVersions": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -283,7 +283,7 @@
         "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
       }
     },
-    "com.kubernetes.core#GetCoreV1APIResources": {
+    "com.kubernetes.core#GetCoreV1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -13749,7 +13749,7 @@
         "smithy.api#documentation": "delete a Pod"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodAttachRequest": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodAttachRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -13808,7 +13808,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodAttachResponse": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodAttachResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -13823,13 +13823,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodAttach": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodAttach": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodAttachRequest"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodAttachRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodAttachResponse"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodAttachResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14579,7 +14579,7 @@
         "smithy.api#documentation": "connect GET requests to exec of Pod"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1PostNamespacedPodExecRequest": {
+    "com.kubernetes.core#ExecConnectCoreV1PostNamespacedPodRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -14645,7 +14645,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1PostNamespacedPodExecResponse": {
+    "com.kubernetes.core#ExecConnectCoreV1PostNamespacedPodResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -14660,13 +14660,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1PostNamespacedPodExec": {
+    "com.kubernetes.core#ExecConnectCoreV1PostNamespacedPod": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1PostNamespacedPodExecRequest"
+        "target": "com.kubernetes.core#ExecConnectCoreV1PostNamespacedPodRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1PostNamespacedPodExecResponse"
+        "target": "com.kubernetes.core#ExecConnectCoreV1PostNamespacedPodResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14808,7 +14808,7 @@
         "smithy.api#documentation": "read log of the specified Pod"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodPortforwardRequest": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodPortforwardRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -14839,7 +14839,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodPortforwardResponse": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodPortforwardResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -14854,13 +14854,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodPortforward": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodPortforward": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodPortforwardRequest"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodPortforwardRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodPortforwardResponse"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodPortforwardResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14934,7 +14934,7 @@
         "smithy.api#documentation": "connect POST requests to portforward of Pod"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyRequest": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -14965,7 +14965,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyResponse": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -14980,13 +14980,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxy": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxy": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyRequest"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyResponse"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15186,7 +15186,7 @@
         "smithy.api#documentation": "connect PATCH requests to proxy of Pod"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyRequest": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -15217,7 +15217,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyResponse": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -15232,13 +15232,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxy": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxy": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyRequest"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyResponse"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15249,7 +15249,7 @@
         "smithy.api#documentation": "connect DELETE requests to proxy of Pod"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyWithPathRequest": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyWithPathRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -15281,7 +15281,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyWithPathResponse": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyWithPathResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -15296,13 +15296,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyWithPath": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyWithPath": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyWithPathRequest"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyWithPathRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyWithPathResponse"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyWithPathResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15505,7 +15505,7 @@
         "smithy.api#documentation": "connect PATCH requests to proxy of Pod"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyWithPathRequest": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyWithPathRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -15537,7 +15537,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyWithPathResponse": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyWithPathResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -15552,13 +15552,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyWithPath": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyWithPath": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyWithPathRequest"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyWithPathRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyWithPathResponse"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyWithPathResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -23022,7 +23022,7 @@
         "smithy.api#documentation": "delete a Service"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyRequest": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -23053,7 +23053,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyResponse": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -23068,13 +23068,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxy": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxy": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyRequest"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyResponse"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -23274,7 +23274,7 @@
         "smithy.api#documentation": "connect PATCH requests to proxy of Service"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyRequest": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -23305,7 +23305,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyResponse": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -23320,13 +23320,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxy": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxy": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyRequest"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyResponse"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -23337,7 +23337,7 @@
         "smithy.api#documentation": "connect DELETE requests to proxy of Service"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyWithPathRequest": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyWithPathRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -23369,7 +23369,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyWithPathResponse": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyWithPathResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -23384,13 +23384,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyWithPath": {
+    "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyWithPath": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyWithPathRequest"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyWithPathRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyWithPathResponse"
+        "target": "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyWithPathResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -23593,7 +23593,7 @@
         "smithy.api#documentation": "connect PATCH requests to proxy of Service"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyWithPathRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -23625,7 +23625,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyWithPathResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -23640,13 +23640,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyWithPath": {
+    "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyWithPath": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyWithPathRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyWithPathResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26047,7 +26047,7 @@
         "smithy.api#documentation": "delete a Node"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNodeProxyRequest": {
+    "com.kubernetes.core#GetConnectCoreV1NodeProxyRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -26070,7 +26070,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNodeProxyResponse": {
+    "com.kubernetes.core#GetConnectCoreV1NodeProxyResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -26085,13 +26085,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNodeProxy": {
+    "com.kubernetes.core#GetConnectCoreV1NodeProxy": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNodeProxyRequest"
+        "target": "com.kubernetes.core#GetConnectCoreV1NodeProxyRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNodeProxyResponse"
+        "target": "com.kubernetes.core#GetConnectCoreV1NodeProxyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26267,7 +26267,7 @@
         "smithy.api#documentation": "connect PATCH requests to proxy of Node"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyRequest": {
+    "com.kubernetes.core#DeleteConnectCoreV1NodeProxyRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -26290,7 +26290,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyResponse": {
+    "com.kubernetes.core#DeleteConnectCoreV1NodeProxyResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -26305,13 +26305,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNodeProxy": {
+    "com.kubernetes.core#DeleteConnectCoreV1NodeProxy": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyRequest"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NodeProxyRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyResponse"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NodeProxyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26322,7 +26322,7 @@
         "smithy.api#documentation": "connect DELETE requests to proxy of Node"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNodeProxyWithPathRequest": {
+    "com.kubernetes.core#GetConnectCoreV1NodeProxyWithPathRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -26346,7 +26346,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNodeProxyWithPathResponse": {
+    "com.kubernetes.core#GetConnectCoreV1NodeProxyWithPathResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -26361,13 +26361,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1GetNodeProxyWithPath": {
+    "com.kubernetes.core#GetConnectCoreV1NodeProxyWithPath": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNodeProxyWithPathRequest"
+        "target": "com.kubernetes.core#GetConnectCoreV1NodeProxyWithPathRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1GetNodeProxyWithPathResponse"
+        "target": "com.kubernetes.core#GetConnectCoreV1NodeProxyWithPathResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26546,7 +26546,7 @@
         "smithy.api#documentation": "connect PATCH requests to proxy of Node"
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyWithPathRequest": {
+    "com.kubernetes.core#DeleteConnectCoreV1NodeProxyWithPathRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -26570,7 +26570,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyWithPathResponse": {
+    "com.kubernetes.core#DeleteConnectCoreV1NodeProxyWithPathResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -26585,13 +26585,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyWithPath": {
+    "com.kubernetes.core#DeleteConnectCoreV1NodeProxyWithPath": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyWithPathRequest"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NodeProxyWithPathRequest"
       },
       "output": {
-        "target": "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyWithPathResponse"
+        "target": "com.kubernetes.core#DeleteConnectCoreV1NodeProxyWithPathResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -29560,7 +29560,7 @@
         "smithy.api#documentation": "list or watch objects of kind Service"
       }
     },
-    "com.kubernetes.core#WatchCoreV1ConfigMapListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1ConfigMapForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -29673,10 +29673,10 @@
         "smithy.api#documentation": "Event represents a single event to a watched resource."
       }
     },
-    "com.kubernetes.core#WatchCoreV1ConfigMapListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1ConfigMapForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1ConfigMapListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1ConfigMapForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -29690,7 +29690,7 @@
         "smithy.api#documentation": "watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1EndpointsListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1EndpointForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -29782,10 +29782,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1EndpointsListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1EndpointForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1EndpointsListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1EndpointForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -29799,7 +29799,7 @@
         "smithy.api#documentation": "watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1EventListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1EventForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -29891,10 +29891,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1EventListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1EventForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1EventListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1EventForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -29908,7 +29908,7 @@
         "smithy.api#documentation": "watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1LimitRangeListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1LimitRangeForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -30000,10 +30000,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1LimitRangeListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1LimitRangeForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1LimitRangeListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1LimitRangeForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -30017,7 +30017,7 @@
         "smithy.api#documentation": "watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespaceListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespaceRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -30109,10 +30109,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespaceList": {
+    "com.kubernetes.core#ListWatchCoreV1Namespace": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespaceListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespaceRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -30126,7 +30126,7 @@
         "smithy.api#documentation": "watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedConfigMapListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedConfigMapRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -30226,10 +30226,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedConfigMapList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedConfigMap": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedConfigMapListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedConfigMapRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -30368,7 +30368,7 @@
         "smithy.api#documentation": "watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedEndpointsListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedEndpointsRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -30468,10 +30468,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedEndpointsList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedEndpointsListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedEndpointsRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -30610,7 +30610,7 @@
         "smithy.api#documentation": "watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedEventListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedEventRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -30710,10 +30710,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedEventList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedEvent": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedEventListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedEventRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -30852,7 +30852,7 @@
         "smithy.api#documentation": "watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedLimitRangeListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedLimitRangeRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -30952,10 +30952,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedLimitRangeList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedLimitRange": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedLimitRangeListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedLimitRangeRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -31094,7 +31094,7 @@
         "smithy.api#documentation": "watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedPersistentVolumeClaimListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedPersistentVolumeClaimRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -31194,10 +31194,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedPersistentVolumeClaimList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedPersistentVolumeClaim": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedPersistentVolumeClaimListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedPersistentVolumeClaimRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -31336,7 +31336,7 @@
         "smithy.api#documentation": "watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedPodListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedPodRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -31436,10 +31436,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedPodList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedPod": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedPodListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedPodRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -31578,7 +31578,7 @@
         "smithy.api#documentation": "watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedPodTemplateListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedPodTemplateRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -31678,10 +31678,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedPodTemplateList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedPodTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedPodTemplateListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedPodTemplateRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -31820,7 +31820,7 @@
         "smithy.api#documentation": "watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedReplicationControllerListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedReplicationControllerRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -31920,10 +31920,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedReplicationControllerList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedReplicationController": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedReplicationControllerListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedReplicationControllerRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -32062,7 +32062,7 @@
         "smithy.api#documentation": "watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedResourceQuotaListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedResourceQuotaRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -32162,10 +32162,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedResourceQuotaList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedResourceQuota": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedResourceQuotaListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedResourceQuotaRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -32304,7 +32304,7 @@
         "smithy.api#documentation": "watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedSecretListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedSecretRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -32404,10 +32404,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedSecretList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedSecret": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedSecretListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedSecretRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -32546,7 +32546,7 @@
         "smithy.api#documentation": "watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedServiceAccountListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedServiceAccountRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -32646,10 +32646,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedServiceAccountList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedServiceAccount": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedServiceAccountListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedServiceAccountRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -32788,7 +32788,7 @@
         "smithy.api#documentation": "watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedServiceListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedServiceRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -32888,10 +32888,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NamespacedServiceList": {
+    "com.kubernetes.core#ListWatchCoreV1NamespacedService": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NamespacedServiceListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NamespacedServiceRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -33147,7 +33147,7 @@
         "smithy.api#documentation": "watch changes to an object of kind Namespace. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1NodeListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1NodeRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -33239,10 +33239,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1NodeList": {
+    "com.kubernetes.core#ListWatchCoreV1Node": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1NodeListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1NodeRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -33373,7 +33373,7 @@
         "smithy.api#documentation": "watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1PersistentVolumeClaimForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -33465,10 +33465,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1PersistentVolumeClaimListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1PersistentVolumeClaimForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1PersistentVolumeClaimForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -33482,7 +33482,7 @@
         "smithy.api#documentation": "watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1PersistentVolumeListRequest": {
+    "com.kubernetes.core#ListWatchCoreV1PersistentVolumeRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -33574,10 +33574,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1PersistentVolumeList": {
+    "com.kubernetes.core#ListWatchCoreV1PersistentVolume": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1PersistentVolumeListRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1PersistentVolumeRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -33708,7 +33708,7 @@
         "smithy.api#documentation": "watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchCoreV1PodListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1PodForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -33800,10 +33800,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1PodListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1PodForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1PodListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1PodForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -33817,7 +33817,7 @@
         "smithy.api#documentation": "watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1PodTemplateListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1PodTemplateForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -33909,10 +33909,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1PodTemplateListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1PodTemplateForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1PodTemplateListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1PodTemplateForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -33926,7 +33926,7 @@
         "smithy.api#documentation": "watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1ReplicationControllerListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1ReplicationControllerForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -34018,10 +34018,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1ReplicationControllerListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1ReplicationControllerForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1ReplicationControllerListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1ReplicationControllerForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -34035,7 +34035,7 @@
         "smithy.api#documentation": "watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1ResourceQuotaListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1ResourceQuotaForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -34127,10 +34127,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1ResourceQuotaListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1ResourceQuotaForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1ResourceQuotaListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1ResourceQuotaForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -34144,7 +34144,7 @@
         "smithy.api#documentation": "watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1SecretListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1SecretForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -34236,10 +34236,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1SecretListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1SecretForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1SecretListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1SecretForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -34253,7 +34253,7 @@
         "smithy.api#documentation": "watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1ServiceAccountListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1ServiceAccountForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -34345,10 +34345,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1ServiceAccountListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1ServiceAccountForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1ServiceAccountListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1ServiceAccountForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -34362,7 +34362,7 @@
         "smithy.api#documentation": "watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchCoreV1ServiceListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchCoreV1ServiceForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -34454,10 +34454,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchCoreV1ServiceListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchCoreV1ServiceForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchCoreV1ServiceListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchCoreV1ServiceForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -34593,7 +34593,7 @@
         "smithy.api#documentation": "groups is a list of APIGroup."
       }
     },
-    "com.kubernetes.core#GetAPIVersions": {
+    "com.kubernetes.core#GetApiVersions": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -34610,7 +34610,7 @@
         "smithy.api#documentation": "get available API versions"
       }
     },
-    "com.kubernetes.core#GetLifecycleAPIGroup": {
+    "com.kubernetes.core#GetLifecycleApiGroup": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -34627,7 +34627,7 @@
         "smithy.api#documentation": "get information of a group"
       }
     },
-    "com.kubernetes.core#GetLifecycleV1alpha1APIResources": {
+    "com.kubernetes.core#GetLifecycleV1alpha1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -35713,7 +35713,7 @@
         "smithy.api#documentation": "delete collection of EvictionRequest"
       }
     },
-    "com.kubernetes.core#ReadLifecycleV1alpha1NamespacedEvictionRequestRequest": {
+    "com.kubernetes.core#RequestReadLifecycleV1alpha1NamespacedEvictionRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -35744,10 +35744,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ReadLifecycleV1alpha1NamespacedEvictionRequest": {
+    "com.kubernetes.core#RequestReadLifecycleV1alpha1NamespacedEviction": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ReadLifecycleV1alpha1NamespacedEvictionRequestRequest"
+        "target": "com.kubernetes.core#RequestReadLifecycleV1alpha1NamespacedEvictionRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApiLifecycleV1alpha1EvictionRequest"
@@ -35761,7 +35761,7 @@
         "smithy.api#documentation": "read the specified EvictionRequest"
       }
     },
-    "com.kubernetes.core#ReplaceLifecycleV1alpha1NamespacedEvictionRequestRequest": {
+    "com.kubernetes.core#RequestReplaceLifecycleV1alpha1NamespacedEvictionRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -35844,10 +35844,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ReplaceLifecycleV1alpha1NamespacedEvictionRequest": {
+    "com.kubernetes.core#RequestReplaceLifecycleV1alpha1NamespacedEviction": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ReplaceLifecycleV1alpha1NamespacedEvictionRequestRequest"
+        "target": "com.kubernetes.core#RequestReplaceLifecycleV1alpha1NamespacedEvictionRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApiLifecycleV1alpha1EvictionRequest"
@@ -36047,7 +36047,7 @@
         "smithy.api#documentation": "delete an EvictionRequest"
       }
     },
-    "com.kubernetes.core#ReadLifecycleV1alpha1NamespacedEvictionRequestStatusRequest": {
+    "com.kubernetes.core#RequestReadLifecycleV1alpha1NamespacedEvictionStatusRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -36078,10 +36078,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ReadLifecycleV1alpha1NamespacedEvictionRequestStatus": {
+    "com.kubernetes.core#RequestReadLifecycleV1alpha1NamespacedEvictionStatus": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ReadLifecycleV1alpha1NamespacedEvictionRequestStatusRequest"
+        "target": "com.kubernetes.core#RequestReadLifecycleV1alpha1NamespacedEvictionStatusRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApiLifecycleV1alpha1EvictionRequest"
@@ -36095,7 +36095,7 @@
         "smithy.api#documentation": "read status of the specified EvictionRequest"
       }
     },
-    "com.kubernetes.core#ReplaceLifecycleV1alpha1NamespacedEvictionRequestStatusRequest": {
+    "com.kubernetes.core#RequestReplaceLifecycleV1alpha1NamespacedEvictionStatusRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -36178,10 +36178,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#ReplaceLifecycleV1alpha1NamespacedEvictionRequestStatus": {
+    "com.kubernetes.core#RequestReplaceLifecycleV1alpha1NamespacedEvictionStatus": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#ReplaceLifecycleV1alpha1NamespacedEvictionRequestStatusRequest"
+        "target": "com.kubernetes.core#RequestReplaceLifecycleV1alpha1NamespacedEvictionStatusRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApiLifecycleV1alpha1EvictionRequest"
@@ -37312,7 +37312,7 @@
         "smithy.api#documentation": "watch individual changes to a list of EvictionRequest. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchLifecycleV1alpha1EvictionListForAllNamespacesRequest": {
+    "com.kubernetes.core#ListWatchLifecycleV1alpha1EvictionForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -37404,10 +37404,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchLifecycleV1alpha1EvictionListForAllNamespaces": {
+    "com.kubernetes.core#ListWatchLifecycleV1alpha1EvictionForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchLifecycleV1alpha1EvictionListForAllNamespacesRequest"
+        "target": "com.kubernetes.core#ListWatchLifecycleV1alpha1EvictionForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -37538,7 +37538,7 @@
         "smithy.api#documentation": "watch individual changes to a list of EvictionRequest. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEvictionRequestRequest": {
+    "com.kubernetes.core#RequestWatchLifecycleV1alpha1NamespacedEvictionRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -37646,10 +37646,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEvictionRequest": {
+    "com.kubernetes.core#RequestWatchLifecycleV1alpha1NamespacedEviction": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEvictionRequestRequest"
+        "target": "com.kubernetes.core#RequestWatchLifecycleV1alpha1NamespacedEvictionRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -37663,7 +37663,7 @@
         "smithy.api#documentation": "watch changes to an object of kind EvictionRequest. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEvictionListRequest": {
+    "com.kubernetes.core#ListWatchLifecycleV1alpha1NamespacedEvictionRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -37763,10 +37763,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEvictionList": {
+    "com.kubernetes.core#ListWatchLifecycleV1alpha1NamespacedEviction": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEvictionListRequest"
+        "target": "com.kubernetes.core#ListWatchLifecycleV1alpha1NamespacedEvictionRequest"
       },
       "output": {
         "target": "com.kubernetes.core#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -37905,7 +37905,7 @@
         "smithy.api#documentation": "watch changes to an object of kind Eviction. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.core#LogFileListHandler": {
+    "com.kubernetes.core#ListLogFileHandler": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -37953,7 +37953,7 @@
         }
       }
     },
-    "com.kubernetes.core#GetServiceAccountIssuerOpenIDKeysetResponse": {
+    "com.kubernetes.core#GetServiceAccountIssuerOpenIdKeysetResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -37968,13 +37968,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.kubernetes.core#GetServiceAccountIssuerOpenIDKeyset": {
+    "com.kubernetes.core#GetServiceAccountIssuerOpenIdKeyset": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.kubernetes.core#GetServiceAccountIssuerOpenIDKeysetResponse"
+        "target": "com.kubernetes.core#GetServiceAccountIssuerOpenIdKeysetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -38134,13 +38134,13 @@
       "version": "unversioned",
       "operations": [
         {
-          "target": "com.kubernetes.core#GetServiceAccountIssuerOpenIDConfiguration"
+          "target": "com.kubernetes.core#GetServiceAccountIssuerOpenIdConfiguration"
         },
         {
-          "target": "com.kubernetes.core#GetCoreAPIVersions"
+          "target": "com.kubernetes.core#GetCoreApiVersions"
         },
         {
-          "target": "com.kubernetes.core#GetCoreV1APIResources"
+          "target": "com.kubernetes.core#GetCoreV1ApiResources"
         },
         {
           "target": "com.kubernetes.core#ListCoreV1ComponentStatus"
@@ -38305,7 +38305,7 @@
           "target": "com.kubernetes.core#DeleteCoreV1NamespacedPod"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodAttach"
+          "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodAttach"
         },
         {
           "target": "com.kubernetes.core#ConnectCoreV1PostNamespacedPodAttach"
@@ -38329,19 +38329,19 @@
           "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodExec"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1PostNamespacedPodExec"
+          "target": "com.kubernetes.core#ExecConnectCoreV1PostNamespacedPod"
         },
         {
           "target": "com.kubernetes.core#ReadCoreV1NamespacedPodLog"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodPortforward"
+          "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodPortforward"
         },
         {
           "target": "com.kubernetes.core#ConnectCoreV1PostNamespacedPodPortforward"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxy"
+          "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxy"
         },
         {
           "target": "com.kubernetes.core#ConnectCoreV1PostNamespacedPodProxy"
@@ -38353,10 +38353,10 @@
           "target": "com.kubernetes.core#ConnectCoreV1PatchNamespacedPodProxy"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxy"
+          "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxy"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedPodProxyWithPath"
+          "target": "com.kubernetes.core#GetConnectCoreV1NamespacedPodProxyWithPath"
         },
         {
           "target": "com.kubernetes.core#ConnectCoreV1PostNamespacedPodProxyWithPath"
@@ -38368,7 +38368,7 @@
           "target": "com.kubernetes.core#ConnectCoreV1PatchNamespacedPodProxyWithPath"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedPodProxyWithPath"
+          "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedPodProxyWithPath"
         },
         {
           "target": "com.kubernetes.core#ReadCoreV1NamespacedPodResize"
@@ -38545,7 +38545,7 @@
           "target": "com.kubernetes.core#DeleteCoreV1NamespacedService"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxy"
+          "target": "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxy"
         },
         {
           "target": "com.kubernetes.core#ConnectCoreV1PostNamespacedServiceProxy"
@@ -38557,10 +38557,10 @@
           "target": "com.kubernetes.core#ConnectCoreV1PatchNamespacedServiceProxy"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxy"
+          "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxy"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1GetNamespacedServiceProxyWithPath"
+          "target": "com.kubernetes.core#GetConnectCoreV1NamespacedServiceProxyWithPath"
         },
         {
           "target": "com.kubernetes.core#ConnectCoreV1PostNamespacedServiceProxyWithPath"
@@ -38572,7 +38572,7 @@
           "target": "com.kubernetes.core#ConnectCoreV1PatchNamespacedServiceProxyWithPath"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1DeleteNamespacedServiceProxyWithPath"
+          "target": "com.kubernetes.core#DeleteConnectCoreV1NamespacedServiceProxyWithPath"
         },
         {
           "target": "com.kubernetes.core#ReadCoreV1NamespacedServiceStatus"
@@ -38629,7 +38629,7 @@
           "target": "com.kubernetes.core#DeleteCoreV1Node"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1GetNodeProxy"
+          "target": "com.kubernetes.core#GetConnectCoreV1NodeProxy"
         },
         {
           "target": "com.kubernetes.core#ConnectCoreV1PostNodeProxy"
@@ -38641,10 +38641,10 @@
           "target": "com.kubernetes.core#ConnectCoreV1PatchNodeProxy"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1DeleteNodeProxy"
+          "target": "com.kubernetes.core#DeleteConnectCoreV1NodeProxy"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1GetNodeProxyWithPath"
+          "target": "com.kubernetes.core#GetConnectCoreV1NodeProxyWithPath"
         },
         {
           "target": "com.kubernetes.core#ConnectCoreV1PostNodeProxyWithPath"
@@ -38656,7 +38656,7 @@
           "target": "com.kubernetes.core#ConnectCoreV1PatchNodeProxyWithPath"
         },
         {
-          "target": "com.kubernetes.core#ConnectCoreV1DeleteNodeProxyWithPath"
+          "target": "com.kubernetes.core#DeleteConnectCoreV1NodeProxyWithPath"
         },
         {
           "target": "com.kubernetes.core#ReadCoreV1NodeStatus"
@@ -38722,88 +38722,88 @@
           "target": "com.kubernetes.core#ListCoreV1ServiceForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1ConfigMapListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1ConfigMapForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1EndpointsListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1EndpointForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1EventListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1EventForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1LimitRangeListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1LimitRangeForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespaceList"
+          "target": "com.kubernetes.core#ListWatchCoreV1Namespace"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedConfigMapList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedConfigMap"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedConfigMap"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedEndpointsList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedEndpoints"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedEndpoints"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedEventList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedEvent"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedEvent"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedLimitRangeList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedLimitRange"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedLimitRange"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedPersistentVolumeClaimList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedPersistentVolumeClaim"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedPersistentVolumeClaim"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedPodList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedPod"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedPod"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedPodTemplateList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedPodTemplate"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedPodTemplate"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedReplicationControllerList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedReplicationController"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedReplicationController"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedResourceQuotaList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedResourceQuota"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedResourceQuota"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedSecretList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedSecret"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedSecret"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedServiceAccountList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedServiceAccount"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedServiceAccount"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NamespacedServiceList"
+          "target": "com.kubernetes.core#ListWatchCoreV1NamespacedService"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1NamespacedService"
@@ -38812,49 +38812,49 @@
           "target": "com.kubernetes.core#WatchCoreV1Namespace"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1NodeList"
+          "target": "com.kubernetes.core#ListWatchCoreV1Node"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1Node"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1PersistentVolumeClaimListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1PersistentVolumeClaimForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1PersistentVolumeList"
+          "target": "com.kubernetes.core#ListWatchCoreV1PersistentVolume"
         },
         {
           "target": "com.kubernetes.core#WatchCoreV1PersistentVolume"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1PodListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1PodForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1PodTemplateListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1PodTemplateForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1ReplicationControllerListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1ReplicationControllerForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1ResourceQuotaListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1ResourceQuotaForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1SecretListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1SecretForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1ServiceAccountListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1ServiceAccountForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchCoreV1ServiceListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchCoreV1ServiceForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#GetAPIVersions"
+          "target": "com.kubernetes.core#GetApiVersions"
         },
         {
-          "target": "com.kubernetes.core#GetLifecycleAPIGroup"
+          "target": "com.kubernetes.core#GetLifecycleApiGroup"
         },
         {
-          "target": "com.kubernetes.core#GetLifecycleV1alpha1APIResources"
+          "target": "com.kubernetes.core#GetLifecycleV1alpha1ApiResources"
         },
         {
           "target": "com.kubernetes.core#ListLifecycleV1alpha1EvictionRequestForAllNamespaces"
@@ -38872,10 +38872,10 @@
           "target": "com.kubernetes.core#DeleteLifecycleV1alpha1CollectionNamespacedEvictionRequest"
         },
         {
-          "target": "com.kubernetes.core#ReadLifecycleV1alpha1NamespacedEvictionRequest"
+          "target": "com.kubernetes.core#RequestReadLifecycleV1alpha1NamespacedEviction"
         },
         {
-          "target": "com.kubernetes.core#ReplaceLifecycleV1alpha1NamespacedEvictionRequest"
+          "target": "com.kubernetes.core#RequestReplaceLifecycleV1alpha1NamespacedEviction"
         },
         {
           "target": "com.kubernetes.core#PatchLifecycleV1alpha1NamespacedEvictionRequest"
@@ -38884,10 +38884,10 @@
           "target": "com.kubernetes.core#DeleteLifecycleV1alpha1NamespacedEvictionRequest"
         },
         {
-          "target": "com.kubernetes.core#ReadLifecycleV1alpha1NamespacedEvictionRequestStatus"
+          "target": "com.kubernetes.core#RequestReadLifecycleV1alpha1NamespacedEvictionStatus"
         },
         {
-          "target": "com.kubernetes.core#ReplaceLifecycleV1alpha1NamespacedEvictionRequestStatus"
+          "target": "com.kubernetes.core#RequestReplaceLifecycleV1alpha1NamespacedEvictionStatus"
         },
         {
           "target": "com.kubernetes.core#PatchLifecycleV1alpha1NamespacedEvictionRequestStatus"
@@ -38926,28 +38926,28 @@
           "target": "com.kubernetes.core#WatchLifecycleV1alpha1EvictionRequestListForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.core#WatchLifecycleV1alpha1EvictionListForAllNamespaces"
+          "target": "com.kubernetes.core#ListWatchLifecycleV1alpha1EvictionForAllNamespaces"
         },
         {
           "target": "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEvictionRequestList"
         },
         {
-          "target": "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEvictionRequest"
+          "target": "com.kubernetes.core#RequestWatchLifecycleV1alpha1NamespacedEviction"
         },
         {
-          "target": "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEvictionList"
+          "target": "com.kubernetes.core#ListWatchLifecycleV1alpha1NamespacedEviction"
         },
         {
           "target": "com.kubernetes.core#WatchLifecycleV1alpha1NamespacedEviction"
         },
         {
-          "target": "com.kubernetes.core#LogFileListHandler"
+          "target": "com.kubernetes.core#ListLogFileHandler"
         },
         {
           "target": "com.kubernetes.core#LogFileHandler"
         },
         {
-          "target": "com.kubernetes.core#GetServiceAccountIssuerOpenIDKeyset"
+          "target": "com.kubernetes.core#GetServiceAccountIssuerOpenIdKeyset"
         },
         {
           "target": "com.kubernetes.core#GetCodeVersion"

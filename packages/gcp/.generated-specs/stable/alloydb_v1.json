@@ -9849,7 +9849,7 @@
         "smithy.api#documentation": "Imports data to the cluster. Imperative only."
       }
     },
-    "com.gcp.alloydb_v1#RestoreFromCloudSQLProjectsLocationsClustersRequest": {
+    "com.gcp.alloydb_v1#RestoreFromCloudSqlProjectsLocationsClustersRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -9869,10 +9869,10 @@
         }
       }
     },
-    "com.gcp.alloydb_v1#RestoreFromCloudSQLProjectsLocationsClusters": {
+    "com.gcp.alloydb_v1#RestoreFromCloudSqlProjectsLocationsClusters": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.alloydb_v1#RestoreFromCloudSQLProjectsLocationsClustersRequest"
+        "target": "com.gcp.alloydb_v1#RestoreFromCloudSqlProjectsLocationsClustersRequest"
       },
       "output": {
         "target": "com.gcp.alloydb_v1#Operation"

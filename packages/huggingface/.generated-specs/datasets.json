@@ -6077,7 +6077,7 @@
         "smithy.api#documentation": "Export access report\n\nExport a report of all access requests for a gated repository"
       }
     },
-    "com.huggingface.datasets#CancelAccessRequestRequest": {
+    "com.huggingface.datasets#RequestCancelAccessRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -6099,10 +6099,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.huggingface.datasets#CancelAccessRequest": {
+    "com.huggingface.datasets#RequestCancelAccess": {
       "type": "operation",
       "input": {
-        "target": "com.huggingface.datasets#CancelAccessRequestRequest"
+        "target": "com.huggingface.datasets#RequestCancelAccessRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6681,7 +6681,7 @@
       },
       "traits": {}
     },
-    "com.huggingface.datasets#HandleAccessRequestRequest": {
+    "com.huggingface.datasets#RequestHandleAccessRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -6724,10 +6724,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.huggingface.datasets#HandleAccessRequest": {
+    "com.huggingface.datasets#RequestHandleAccess": {
       "type": "operation",
       "input": {
-        "target": "com.huggingface.datasets#HandleAccessRequestRequest"
+        "target": "com.huggingface.datasets#RequestHandleAccessRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7061,13 +7061,13 @@
           "target": "com.huggingface.datasets#ExportAccessReport"
         },
         {
-          "target": "com.huggingface.datasets#CancelAccessRequest"
+          "target": "com.huggingface.datasets#RequestCancelAccess"
         },
         {
           "target": "com.huggingface.datasets#ListAccessRequests"
         },
         {
-          "target": "com.huggingface.datasets#HandleAccessRequest"
+          "target": "com.huggingface.datasets#RequestHandleAccess"
         },
         {
           "target": "com.huggingface.datasets#BatchHandleAccessRequests"

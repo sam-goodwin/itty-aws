@@ -2643,13 +2643,13 @@ export const ResolvePullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResolvePullRequestCommentsRequest",
 }) as any as S.Schema<ResolvePullRequestCommentsRequest>;
 
-export interface ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
+export interface RequestResolveProjectLocationRepositoryPullRequestPullCommentRequest {
   /** Required. The pull request in which to resolve the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
   parent: string;
   /** Request body */
   body?: ResolvePullRequestCommentsRequest;
 }
-export const ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
+export const RequestResolveProjectLocationRepositoryPullRequestPullCommentRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2663,8 +2663,47 @@ export const ResolveProjectsLocationsRepositoriesPullRequestsPullRequestComments
     ),
   ).annotate({
     identifier:
-      "ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
+      "RequestResolveProjectLocationRepositoryPullRequestPullCommentRequest",
+  }) as any as S.Schema<RequestResolveProjectLocationRepositoryPullRequestPullCommentRequest>;
+
+/** The request to unresolve multiple pull request comments. */
+export interface UnresolvePullRequestCommentsRequest {
+  /** Optional. If set, at least one comment in a thread is required, rest of the comments in the same thread will be automatically updated to unresolved. If unset, all comments in the same thread need be present. */
+  autoFill?: boolean;
+  /** Required. The names of the pull request comments to unresolve. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}/pullRequestComments/{comment_id}` Only comments from the same threads are allowed in the same request. */
+  names?: StringList;
+}
+export const UnresolvePullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoFill: S.optional(S.Boolean),
+    names: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "UnresolvePullRequestCommentsRequest",
+}) as any as S.Schema<UnresolvePullRequestCommentsRequest>;
+
+export interface RequestUnresolveProjectLocationRepositoryPullRequestPullCommentRequest {
+  /** Required. The pull request in which to resolve the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
+  parent: string;
+  /** Request body */
+  body?: UnresolvePullRequestCommentsRequest;
+}
+export const RequestUnresolveProjectLocationRepositoryPullRequestPullCommentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(UnresolvePullRequestCommentsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/pullRequestComments:unresolve",
+        baseUrl: "https://securesourcemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "RequestUnresolveProjectLocationRepositoryPullRequestPullCommentRequest",
+  }) as any as S.Schema<RequestUnresolveProjectLocationRepositoryPullRequestPullCommentRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -2795,45 +2834,6 @@ export const TestIamPermissionsProjectsLocationsRepositoriesRequest =
   ).annotate({
     identifier: "TestIamPermissionsProjectsLocationsRepositoriesRequest",
   }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
-
-/** The request to unresolve multiple pull request comments. */
-export interface UnresolvePullRequestCommentsRequest {
-  /** Optional. If set, at least one comment in a thread is required, rest of the comments in the same thread will be automatically updated to unresolved. If unset, all comments in the same thread need be present. */
-  autoFill?: boolean;
-  /** Required. The names of the pull request comments to unresolve. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}/pullRequestComments/{comment_id}` Only comments from the same threads are allowed in the same request. */
-  names?: StringList;
-}
-export const UnresolvePullRequestCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoFill: S.optional(S.Boolean),
-    names: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UnresolvePullRequestCommentsRequest",
-}) as any as S.Schema<UnresolvePullRequestCommentsRequest>;
-
-export interface UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
-  /** Required. The pull request in which to resolve the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
-  parent: string;
-  /** Request body */
-  body?: UnresolvePullRequestCommentsRequest;
-}
-export const UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(UnresolvePullRequestCommentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/pullRequestComments:unresolve",
-        baseUrl: "https://securesourcemanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-  }) as any as S.Schema<UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
 export type BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
   | NotFound
@@ -3967,21 +3967,40 @@ export const patchProjectsLocationsRepositoriesPullRequestsPullRequestComments: 
   retry: Retry.Retry,
 }));
 
-export type ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
+export type RequestResolveProjectLocationRepositoryPullRequestPullCommentError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Resolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be resolved. */
-export const resolveProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
-  ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
+export const requestResolveProjectLocationRepositoryPullRequestPullComment: API.OperationMethod<
+  RequestResolveProjectLocationRepositoryPullRequestPullCommentRequest,
   Operation,
-  ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError,
+  RequestResolveProjectLocationRepositoryPullRequestPullCommentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
+  input: RequestResolveProjectLocationRepositoryPullRequestPullCommentRequest,
+  output: Operation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestUnresolveProjectLocationRepositoryPullRequestPullCommentError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Unresolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be unresolved. */
+export const requestUnresolveProjectLocationRepositoryPullRequestPullComment: API.OperationMethod<
+  RequestUnresolveProjectLocationRepositoryPullRequestPullCommentRequest,
+  Operation,
+  RequestUnresolveProjectLocationRepositoryPullRequestPullCommentError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestUnresolveProjectLocationRepositoryPullRequestPullCommentRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4063,27 +4082,6 @@ export const testIamPermissionsProjectsLocationsRepositories: API.OperationMetho
 > = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsRepositoriesRequest,
   output: TestIamPermissionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Unresolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be unresolved. */
-export const unresolveProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
-  UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
-  Operation,
-  UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
-  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

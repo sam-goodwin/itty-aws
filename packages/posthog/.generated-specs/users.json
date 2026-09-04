@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.users#UsersListRequest": {
+    "com.posthog.users#ListUsersRequest": {
       "type": "structure",
       "members": {
         "email": {
@@ -4725,10 +4725,10 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersList": {
+    "com.posthog.users#ListUsers": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersListRequest"
+        "target": "com.posthog.users#ListUsersRequest"
       },
       "output": {
         "target": "com.posthog.users#PaginatedUserListOutput"
@@ -4749,7 +4749,7 @@
         }
       }
     },
-    "com.posthog.users#UsersSignalAutonomyRetrieveRequest": {
+    "com.posthog.users#SignalUserAutonomyRetrieveRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -4894,10 +4894,10 @@
         "smithy.api#documentation": "Minimum report priority that triggers a Slack notification. P0 is highest. Null means notify on every priority (and reports without a priority judgment).\n\n* `P0` - P0\n* `P1` - P1\n* `P2` - P2\n* `P3` - P3\n* `P4` - P4"
       }
     },
-    "com.posthog.users#UsersSignalAutonomyRetrieve": {
+    "com.posthog.users#SignalUserAutonomyRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersSignalAutonomyRetrieveRequest"
+        "target": "com.posthog.users#SignalUserAutonomyRetrieveRequest"
       },
       "output": {
         "target": "com.posthog.users#SignalUserAutonomyConfig"
@@ -5008,7 +5008,7 @@
         "smithy.api#documentation": "Per-user signal autonomy config (singleton keyed by user).\n\nGET    /api/users/<id>/signal_autonomy/ → current config (or 404)\nPOST   /api/users/<id>/signal_autonomy/ → create or update\nDELETE /api/users/<id>/signal_autonomy/ → remove (opt out)"
       }
     },
-    "com.posthog.users#UsersSignalAutonomyDestroyRequest": {
+    "com.posthog.users#SignalUserAutonomyDestroyRequest": {
       "type": "structure",
       "members": {
         "user_id": {
@@ -5023,10 +5023,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersSignalAutonomyDestroy": {
+    "com.posthog.users#SignalUserAutonomyDestroy": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersSignalAutonomyDestroyRequest"
+        "target": "com.posthog.users#SignalUserAutonomyDestroyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5136,7 +5136,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersUpdateRequest": {
+    "com.posthog.users#UpdateUserRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -5259,10 +5259,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersUpdate": {
+    "com.posthog.users#UpdateUser": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersUpdateRequest"
+        "target": "com.posthog.users#UpdateUserRequest"
       },
       "output": {
         "target": "com.posthog.users#UserOutput"
@@ -5335,7 +5335,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersPartialUpdateRequest": {
+    "com.posthog.users#UpdateUserPartialRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -5458,10 +5458,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersPartialUpdate": {
+    "com.posthog.users#UpdateUserPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersPartialUpdateRequest"
+        "target": "com.posthog.users#UpdateUserPartialRequest"
       },
       "output": {
         "target": "com.posthog.users#UserOutput"
@@ -5525,7 +5525,7 @@
         }
       }
     },
-    "com.posthog.users#UsersCredentialsReviewCompleteCreateRequest": {
+    "com.posthog.users#CreateUserCredentialReviewCompleteRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -5540,10 +5540,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersCredentialsReviewCompleteCreate": {
+    "com.posthog.users#CreateUserCredentialReviewComplete": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersCredentialsReviewCompleteCreateRequest"
+        "target": "com.posthog.users#CreateUserCredentialReviewCompleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5697,7 +5697,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersHedgehogConfigPartialUpdateRequest": {
+    "com.posthog.users#UpdateUserHedgehogConfigPartialRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -5820,10 +5820,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersHedgehogConfigPartialUpdate": {
+    "com.posthog.users#UpdateUserHedgehogConfigPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersHedgehogConfigPartialUpdateRequest"
+        "target": "com.posthog.users#UpdateUserHedgehogConfigPartialRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5865,7 +5865,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersIntegrationsListRequest": {
+    "com.posthog.users#ListUserIntegrationsRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -6076,10 +6076,10 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersIntegrationsList": {
+    "com.posthog.users#ListUserIntegrations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersIntegrationsListRequest"
+        "target": "com.posthog.users#ListUserIntegrationsRequest"
       },
       "output": {
         "target": "com.posthog.users#PaginatedUserGitHubIntegrationListResponseList"
@@ -6382,7 +6382,7 @@
         "smithy.api#documentation": "List repositories for a personal GitHub installation\n\nList repositories accessible to a specific GitHub installation (paginated, cached)."
       }
     },
-    "com.posthog.users#UsersIntegrationsGithubReposRefreshCreateRequest": {
+    "com.posthog.users#CreateUserIntegrationGithubReposRefreshRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -6431,10 +6431,10 @@
         "smithy.api#documentation": "The refreshed repository cache."
       }
     },
-    "com.posthog.users#UsersIntegrationsGithubReposRefreshCreate": {
+    "com.posthog.users#CreateUserIntegrationGithubReposRefresh": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersIntegrationsGithubReposRefreshCreateRequest"
+        "target": "com.posthog.users#CreateUserIntegrationGithubReposRefreshRequest"
       },
       "output": {
         "target": "com.posthog.users#GitHubReposRefreshResponse"
@@ -6636,7 +6636,7 @@
         "smithy.api#documentation": "Dismiss a GitHub install-approval request\n\nDelete one of the requesting user's install-approval requests, whatever its status.\n\nUser-facing bookkeeping only: a later connect attempt records a fresh row."
       }
     },
-    "com.posthog.users#UsersIntegrationsGithubPrepareCallbackCreateRequest": {
+    "com.posthog.users#CreateUserIntegrationGithubPrepareCallbackRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -6658,10 +6658,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersIntegrationsGithubPrepareCallbackCreate": {
+    "com.posthog.users#CreateUserIntegrationGithubPrepareCallback": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersIntegrationsGithubPrepareCallbackCreateRequest"
+        "target": "com.posthog.users#CreateUserIntegrationGithubPrepareCallbackRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6933,7 +6933,7 @@
         "smithy.api#documentation": "Start Slack identity link from settings\n\nMint a Sign-in-with-Slack invite URL initiated from settings, without\nSlack-DM context. The returned URL takes the user through PostHog login\n(already satisfied here), then to Slack OAuth, then back to our callback\nwhich writes the ``UserIntegration`` row.\n\nWithout body params, falls back to the user's ``current_team`` and that\nteam's first Slack ``Integration`` — works when there's exactly one\nlinkable workspace. With ``team_id`` + ``slack_team_id``, links against\nthe exact pair (what the frontend uses when a picker is shown).\n\nRefuses if the target team has no matching Slack workspace, if the\nfeature flag is off for the workspace, or if the user is already linked\nto it."
       }
     },
-    "com.posthog.users#UsersLoginSessionsListRequest": {
+    "com.posthog.users#ListUserLoginSessionsRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -7025,7 +7025,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersLoginSessionsListResponse": {
+    "com.posthog.users#ListUserLoginSessionsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -7040,13 +7040,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.users#UsersLoginSessionsList": {
+    "com.posthog.users#ListUserLoginSessions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersLoginSessionsListRequest"
+        "target": "com.posthog.users#ListUserLoginSessionsRequest"
       },
       "output": {
-        "target": "com.posthog.users#UsersLoginSessionsListResponse"
+        "target": "com.posthog.users#ListUserLoginSessionsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7096,7 +7096,7 @@
         "smithy.api#documentation": "Revoke a single login session belonging to the current user. Self-only.\n\nRequires recent auth (TimeSensitiveActionPermission) so a stolen cookie can't weaponize\nrevocation, and is blocked while impersonating via ImpersonationBlockedPathsMiddleware."
       }
     },
-    "com.posthog.users#UsersLoginSessionsRevokeOthersCreateRequest": {
+    "com.posthog.users#CreateUserLoginSessionRevokeOtherRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -7124,10 +7124,10 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersLoginSessionsRevokeOthersCreate": {
+    "com.posthog.users#CreateUserLoginSessionRevokeOther": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersLoginSessionsRevokeOthersCreateRequest"
+        "target": "com.posthog.users#CreateUserLoginSessionRevokeOtherRequest"
       },
       "output": {
         "target": "com.posthog.users#RevokeOtherSessionsResponse"
@@ -7161,7 +7161,7 @@
         "smithy.api#documentation": "* `later` - Later\n* `other` - Other"
       }
     },
-    "com.posthog.users#UsersOnboardingSkipCreateRequest": {
+    "com.posthog.users#CreateUserOnboardingSkipRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -7189,10 +7189,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersOnboardingSkipCreate": {
+    "com.posthog.users#CreateUserOnboardingSkip": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersOnboardingSkipCreateRequest"
+        "target": "com.posthog.users#CreateUserOnboardingSkipRequest"
       },
       "output": {
         "target": "com.posthog.users#UserOutput"
@@ -7232,7 +7232,7 @@
         "smithy.api#documentation": "* `ios` - iOS\n* `android` - Android\n* `web` - Web"
       }
     },
-    "com.posthog.users#UsersPushTokensCreateRequest": {
+    "com.posthog.users#CreateUserPushTokenRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -7295,10 +7295,10 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersPushTokensCreate": {
+    "com.posthog.users#CreateUserPushToken": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersPushTokensCreateRequest"
+        "target": "com.posthog.users#CreateUserPushTokenRequest"
       },
       "output": {
         "target": "com.posthog.users#UserPushTokenItem"
@@ -7312,7 +7312,7 @@
         "smithy.api#documentation": "Register a push notification token\n\nIdempotent upsert: if the (user, token) pair already exists, `platform` and `last_seen_at` are refreshed. Otherwise a new row is created."
       }
     },
-    "com.posthog.users#UsersPushTokensUnregisterCreateRequest": {
+    "com.posthog.users#CreateUserPushTokenUnregisterRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -7334,10 +7334,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersPushTokensUnregisterCreate": {
+    "com.posthog.users#CreateUserPushTokenUnregister": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersPushTokensUnregisterCreateRequest"
+        "target": "com.posthog.users#CreateUserPushTokenUnregisterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7399,7 +7399,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersScenePersonalisationCreateRequest": {
+    "com.posthog.users#CreateUserScenePersonalisationRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -7522,10 +7522,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersScenePersonalisationCreate": {
+    "com.posthog.users#CreateUserScenePersonalisation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersScenePersonalisationCreateRequest"
+        "target": "com.posthog.users#CreateUserScenePersonalisationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7636,7 +7636,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersTwoFactorBackupCodesCreateRequest": {
+    "com.posthog.users#CreateUserTwoFactorBackupCodeRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -7759,10 +7759,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersTwoFactorBackupCodesCreate": {
+    "com.posthog.users#CreateUserTwoFactorBackupCode": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersTwoFactorBackupCodesCreateRequest"
+        "target": "com.posthog.users#CreateUserTwoFactorBackupCodeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7986,7 +7986,7 @@
         "smithy.api#documentation": "Disable 2FA and remove all related devices"
       }
     },
-    "com.posthog.users#UsersTwoFactorStartSetupRetrieveRequest": {
+    "com.posthog.users#StartUserTwoFactorSetupRetrieveRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -8001,10 +8001,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersTwoFactorStartSetupRetrieve": {
+    "com.posthog.users#StartUserTwoFactorSetupRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersTwoFactorStartSetupRetrieveRequest"
+        "target": "com.posthog.users#StartUserTwoFactorSetupRetrieveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8113,7 +8113,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersTwoFactorValidateCreateRequest": {
+    "com.posthog.users#CreateUserTwoFactorValidateRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -8236,10 +8236,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersTwoFactorValidateCreate": {
+    "com.posthog.users#CreateUserTwoFactorValidate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersTwoFactorValidateCreateRequest"
+        "target": "com.posthog.users#CreateUserTwoFactorValidateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8311,7 +8311,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersValidate2faCreateRequest": {
+    "com.posthog.users#CreateUserValidate2faRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -8434,10 +8434,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#UsersValidate2faCreate": {
+    "com.posthog.users#CreateUserValidate2fa": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.users#UsersValidate2faCreateRequest"
+        "target": "com.posthog.users#CreateUserValidate2faRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8932,31 +8932,31 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.users#UsersList"
+          "target": "com.posthog.users#ListUsers"
         },
         {
-          "target": "com.posthog.users#UsersSignalAutonomyRetrieve"
+          "target": "com.posthog.users#SignalUserAutonomyRetrieve"
         },
         {
           "target": "com.posthog.users#UsersSignalAutonomyCreate"
         },
         {
-          "target": "com.posthog.users#UsersSignalAutonomyDestroy"
+          "target": "com.posthog.users#SignalUserAutonomyDestroy"
         },
         {
           "target": "com.posthog.users#UsersRetrieve"
         },
         {
-          "target": "com.posthog.users#UsersUpdate"
+          "target": "com.posthog.users#UpdateUser"
         },
         {
-          "target": "com.posthog.users#UsersPartialUpdate"
+          "target": "com.posthog.users#UpdateUserPartial"
         },
         {
           "target": "com.posthog.users#UsersDestroy"
         },
         {
-          "target": "com.posthog.users#UsersCredentialsReviewCompleteCreate"
+          "target": "com.posthog.users#CreateUserCredentialReviewComplete"
         },
         {
           "target": "com.posthog.users#UsersGithubLoginRetrieve"
@@ -8965,10 +8965,10 @@
           "target": "com.posthog.users#UsersHedgehogConfigRetrieve"
         },
         {
-          "target": "com.posthog.users#UsersHedgehogConfigPartialUpdate"
+          "target": "com.posthog.users#UpdateUserHedgehogConfigPartial"
         },
         {
-          "target": "com.posthog.users#UsersIntegrationsList"
+          "target": "com.posthog.users#ListUserIntegrations"
         },
         {
           "target": "com.posthog.users#UsersIntegrationsGithubDestroy"
@@ -8980,7 +8980,7 @@
           "target": "com.posthog.users#UsersIntegrationsGithubReposRetrieve"
         },
         {
-          "target": "com.posthog.users#UsersIntegrationsGithubReposRefreshCreate"
+          "target": "com.posthog.users#CreateUserIntegrationGithubReposRefresh"
         },
         {
           "target": "com.posthog.users#UsersIntegrationsGithubInstallRequestsRetrieve"
@@ -8989,7 +8989,7 @@
           "target": "com.posthog.users#UsersIntegrationsGithubInstallRequestsDestroy"
         },
         {
-          "target": "com.posthog.users#UsersIntegrationsGithubPrepareCallbackCreate"
+          "target": "com.posthog.users#CreateUserIntegrationGithubPrepareCallback"
         },
         {
           "target": "com.posthog.users#UsersIntegrationsGithubStartCreate"
@@ -9004,46 +9004,46 @@
           "target": "com.posthog.users#UsersIntegrationsSlackStartCreate"
         },
         {
-          "target": "com.posthog.users#UsersLoginSessionsList"
+          "target": "com.posthog.users#ListUserLoginSessions"
         },
         {
           "target": "com.posthog.users#UsersLoginSessionsDestroy"
         },
         {
-          "target": "com.posthog.users#UsersLoginSessionsRevokeOthersCreate"
+          "target": "com.posthog.users#CreateUserLoginSessionRevokeOther"
         },
         {
-          "target": "com.posthog.users#UsersOnboardingSkipCreate"
+          "target": "com.posthog.users#CreateUserOnboardingSkip"
         },
         {
-          "target": "com.posthog.users#UsersPushTokensCreate"
+          "target": "com.posthog.users#CreateUserPushToken"
         },
         {
-          "target": "com.posthog.users#UsersPushTokensUnregisterCreate"
+          "target": "com.posthog.users#CreateUserPushTokenUnregister"
         },
         {
-          "target": "com.posthog.users#UsersScenePersonalisationCreate"
+          "target": "com.posthog.users#CreateUserScenePersonalisation"
         },
         {
           "target": "com.posthog.users#UsersStart2faSetupRetrieve"
         },
         {
-          "target": "com.posthog.users#UsersTwoFactorBackupCodesCreate"
+          "target": "com.posthog.users#CreateUserTwoFactorBackupCode"
         },
         {
           "target": "com.posthog.users#UsersTwoFactorDisableCreate"
         },
         {
-          "target": "com.posthog.users#UsersTwoFactorStartSetupRetrieve"
+          "target": "com.posthog.users#StartUserTwoFactorSetupRetrieve"
         },
         {
           "target": "com.posthog.users#UsersTwoFactorStatusRetrieve"
         },
         {
-          "target": "com.posthog.users#UsersTwoFactorValidateCreate"
+          "target": "com.posthog.users#CreateUserTwoFactorValidate"
         },
         {
-          "target": "com.posthog.users#UsersValidate2faCreate"
+          "target": "com.posthog.users#CreateUserValidate2fa"
         },
         {
           "target": "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdate"

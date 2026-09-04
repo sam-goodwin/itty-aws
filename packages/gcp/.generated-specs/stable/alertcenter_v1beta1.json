@@ -382,7 +382,7 @@
         "smithy.api#documentation": "Detector provided by Google."
       }
     },
-    "com.gcp.alertcenter_v1beta1#BatchDeleteAlertsRequest": {
+    "com.gcp.alertcenter_v1beta1#DeleteBatchAlertRequest": {
       "type": "structure",
       "members": {
         "alertId": {
@@ -1088,7 +1088,7 @@
         "target": "com.gcp.alertcenter_v1beta1#Entity"
       }
     },
-    "com.gcp.alertcenter_v1beta1#BatchDeleteAlertsResponse": {
+    "com.gcp.alertcenter_v1beta1#DeleteBatchAlertResponse": {
       "type": "structure",
       "members": {
         "failedAlertStatus": {
@@ -3718,7 +3718,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.gcp.alertcenter_v1beta1#BatchDeleteAlertsRequest",
+          "target": "com.gcp.alertcenter_v1beta1#DeleteBatchAlertRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -3726,13 +3726,13 @@
         }
       }
     },
-    "com.gcp.alertcenter_v1beta1#BatchDeleteAlerts": {
+    "com.gcp.alertcenter_v1beta1#DeleteBatchAlert": {
       "type": "operation",
       "input": {
         "target": "com.gcp.alertcenter_v1beta1#BatchDeleteAlertsRequest_"
       },
       "output": {
-        "target": "com.gcp.alertcenter_v1beta1#BatchDeleteAlertsResponse"
+        "target": "com.gcp.alertcenter_v1beta1#DeleteBatchAlertResponse"
       },
       "errors": [
         {

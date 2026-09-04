@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.keyvault#VaultsList": {
+    "com.azure.keyvault#ListVaults": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsListRequest"
+        "target": "com.azure.keyvault#ListVaultsRequest"
       },
       "output": {
         "target": "com.azure.keyvault#ResourceListResult"
@@ -231,7 +231,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.keyvault#VaultsListRequest": {
+    "com.azure.keyvault#ListVaultsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -274,13 +274,13 @@
       },
       "traits": {}
     },
-    "com.azure.keyvault#SecretsUpdate": {
+    "com.azure.keyvault#UpdateSecret": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#SecretsUpdateRequest"
+        "target": "com.azure.keyvault#UpdateSecretRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#SecretsUpdateResponse"
+        "target": "com.azure.keyvault#UpdateSecretResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -293,7 +293,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#SecretsUpdateResponse": {
+    "com.azure.keyvault#UpdateSecretResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -432,7 +432,7 @@
         "smithy.api#documentation": "The object attributes managed by the KeyVault service."
       }
     },
-    "com.azure.keyvault#SecretsUpdateRequest": {
+    "com.azure.keyvault#UpdateSecretRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -721,13 +721,13 @@
         "smithy.api#documentation": "The tags that will be assigned to the secret."
       }
     },
-    "com.azure.keyvault#SecretsGet": {
+    "com.azure.keyvault#GetSecret": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#SecretsGetRequest"
+        "target": "com.azure.keyvault#GetSecretRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#SecretsGetResponse"
+        "target": "com.azure.keyvault#GetSecretResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -740,7 +740,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#SecretsGetResponse": {
+    "com.azure.keyvault#GetSecretResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -803,7 +803,7 @@
         "smithy.api#documentation": "Tags assigned to the key vault resource."
       }
     },
-    "com.azure.keyvault#SecretsGetRequest": {
+    "com.azure.keyvault#GetSecretRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -843,10 +843,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#SecretsList": {
+    "com.azure.keyvault#ListSecrets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#SecretsListRequest"
+        "target": "com.azure.keyvault#ListSecretsRequest"
       },
       "output": {
         "target": "com.azure.keyvault#SecretListResult"
@@ -955,7 +955,7 @@
         "smithy.api#documentation": "Tags assigned to the key vault resource."
       }
     },
-    "com.azure.keyvault#SecretsListRequest": {
+    "com.azure.keyvault#ListSecretsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -994,10 +994,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#PrivateLinkResourcesListByVault": {
+    "com.azure.keyvault#ListPrivateLinkResourceByVault": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#PrivateLinkResourcesListByVaultRequest"
+        "target": "com.azure.keyvault#ListPrivateLinkResourceByVaultRequest"
       },
       "output": {
         "target": "com.azure.keyvault#PrivateLinkResourceListResult"
@@ -1142,7 +1142,7 @@
         "smithy.api#documentation": "Required member names of private link resource."
       }
     },
-    "com.azure.keyvault#PrivateLinkResourcesListByVaultRequest": {
+    "com.azure.keyvault#ListPrivateLinkResourceByVaultRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1174,13 +1174,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#PrivateEndpointConnectionsDelete": {
+    "com.azure.keyvault#DeletePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#PrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.keyvault#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#PrivateEndpointConnectionsDeleteResponse"
+        "target": "com.azure.keyvault#DeletePrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1193,7 +1193,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#PrivateEndpointConnectionsDeleteResponse": {
+    "com.azure.keyvault#DeletePrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1417,7 +1417,7 @@
         "smithy.api#documentation": "Private endpoint object properties."
       }
     },
-    "com.azure.keyvault#PrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.keyvault#DeletePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1623,13 +1623,13 @@
         "smithy.api#documentation": "Private endpoint object properties."
       }
     },
-    "com.azure.keyvault#PrivateEndpointConnectionsGet": {
+    "com.azure.keyvault#GetPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#PrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.keyvault#GetPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#PrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.keyvault#GetPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1642,7 +1642,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#PrivateEndpointConnectionsGetResponse": {
+    "com.azure.keyvault#GetPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1710,7 +1710,7 @@
         "smithy.api#documentation": "Tags assigned to the key vault resource."
       }
     },
-    "com.azure.keyvault#PrivateEndpointConnectionsGetRequest": {
+    "com.azure.keyvault#GetPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1750,10 +1750,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#PrivateEndpointConnectionsListByResource": {
+    "com.azure.keyvault#ListPrivateEndpointConnectionByResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#PrivateEndpointConnectionsListByResourceRequest"
+        "target": "com.azure.keyvault#ListPrivateEndpointConnectionByResourceRequest"
       },
       "output": {
         "target": "com.azure.keyvault#PrivateEndpointConnectionListResult"
@@ -1867,7 +1867,7 @@
         "smithy.api#documentation": "Tags assigned to the key vault resource."
       }
     },
-    "com.azure.keyvault#PrivateEndpointConnectionsListByResourceRequest": {
+    "com.azure.keyvault#ListPrivateEndpointConnectionByResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1899,13 +1899,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#KeysGetVersion": {
+    "com.azure.keyvault#GetKeyVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#KeysGetVersionRequest"
+        "target": "com.azure.keyvault#GetKeyVersionRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#KeysGetVersionResponse"
+        "target": "com.azure.keyvault#GetKeyVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1918,7 +1918,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#KeysGetVersionResponse": {
+    "com.azure.keyvault#GetKeyVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2386,7 +2386,7 @@
         "smithy.api#documentation": "The deletion recovery level currently in effect for the object. If it contains 'Purgeable', then the object can be permanently deleted by a privileged user; otherwise, only the system can purge the object at the end of the retention interval."
       }
     },
-    "com.azure.keyvault#KeysGetVersionRequest": {
+    "com.azure.keyvault#GetKeyVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2434,10 +2434,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#KeysListVersions": {
+    "com.azure.keyvault#ListKeyVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#KeysListVersionsRequest"
+        "target": "com.azure.keyvault#ListKeyVersionsRequest"
       },
       "output": {
         "target": "com.azure.keyvault#KeyListResult"
@@ -2546,7 +2546,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.keyvault#KeysListVersionsRequest": {
+    "com.azure.keyvault#ListKeyVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2586,13 +2586,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#KeysCreateIfNotExist": {
+    "com.azure.keyvault#CreateKeyIfNotExist": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#KeysCreateIfNotExistRequest"
+        "target": "com.azure.keyvault#CreateKeyIfNotExistRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#KeysCreateIfNotExistResponse"
+        "target": "com.azure.keyvault#CreateKeyIfNotExistResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2605,7 +2605,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#KeysCreateIfNotExistResponse": {
+    "com.azure.keyvault#CreateKeyIfNotExistResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2668,7 +2668,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.keyvault#KeysCreateIfNotExistRequest": {
+    "com.azure.keyvault#CreateKeyIfNotExistRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2858,13 +2858,13 @@
         "smithy.api#documentation": "The tags that will be assigned to the key."
       }
     },
-    "com.azure.keyvault#KeysGet": {
+    "com.azure.keyvault#GetKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#KeysGetRequest"
+        "target": "com.azure.keyvault#GetKeyRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#KeysGetResponse"
+        "target": "com.azure.keyvault#GetKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2877,7 +2877,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#KeysGetResponse": {
+    "com.azure.keyvault#GetKeyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2940,7 +2940,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.keyvault#KeysGetRequest": {
+    "com.azure.keyvault#GetKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2980,10 +2980,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#KeysList": {
+    "com.azure.keyvault#ListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#KeysListRequest"
+        "target": "com.azure.keyvault#ListKeysRequest"
       },
       "output": {
         "target": "com.azure.keyvault#KeyListResult"
@@ -2999,7 +2999,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#KeysListRequest": {
+    "com.azure.keyvault#ListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3031,10 +3031,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#VaultsUpdateAccessPolicy": {
+    "com.azure.keyvault#UpdateVaultAccessPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsUpdateAccessPolicyRequest"
+        "target": "com.azure.keyvault#UpdateVaultAccessPolicyRequest"
       },
       "output": {
         "target": "com.azure.keyvault#VaultAccessPolicyParameters"
@@ -3612,7 +3612,7 @@
       },
       "traits": {}
     },
-    "com.azure.keyvault#VaultsUpdateAccessPolicyRequest": {
+    "com.azure.keyvault#UpdateVaultAccessPolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3683,10 +3683,10 @@
       },
       "traits": {}
     },
-    "com.azure.keyvault#VaultsDelete": {
+    "com.azure.keyvault#DeleteVault": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsDeleteRequest"
+        "target": "com.azure.keyvault#DeleteVaultRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3702,7 +3702,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#VaultsDeleteRequest": {
+    "com.azure.keyvault#DeleteVaultRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3734,13 +3734,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#VaultsUpdate": {
+    "com.azure.keyvault#UpdateVault": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsUpdateRequest"
+        "target": "com.azure.keyvault#UpdateVaultRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#VaultsUpdateResponse"
+        "target": "com.azure.keyvault#UpdateVaultResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3753,7 +3753,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#VaultsUpdateResponse": {
+    "com.azure.keyvault#UpdateVaultResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4194,7 +4194,7 @@
         "smithy.api#documentation": "SKU family name"
       }
     },
-    "com.azure.keyvault#VaultsUpdateRequest": {
+    "com.azure.keyvault#UpdateVaultRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4600,13 +4600,13 @@
         "smithy.api#documentation": "The tags that will be assigned to the key vault."
       }
     },
-    "com.azure.keyvault#VaultsGet": {
+    "com.azure.keyvault#GetVault": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsGetRequest"
+        "target": "com.azure.keyvault#GetVaultRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#VaultsGetResponse"
+        "target": "com.azure.keyvault#GetVaultResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4619,7 +4619,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#VaultsGetResponse": {
+    "com.azure.keyvault#GetVaultResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4682,7 +4682,7 @@
         "smithy.api#documentation": "Tags assigned to the key vault resource."
       }
     },
-    "com.azure.keyvault#VaultsGetRequest": {
+    "com.azure.keyvault#GetVaultRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4714,10 +4714,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#VaultsListByResourceGroup": {
+    "com.azure.keyvault#ListVaultByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsListByResourceGroupRequest"
+        "target": "com.azure.keyvault#ListVaultByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.keyvault#VaultListResult"
@@ -4826,7 +4826,7 @@
         "smithy.api#documentation": "Tags assigned to the key vault resource."
       }
     },
-    "com.azure.keyvault#VaultsListByResourceGroupRequest": {
+    "com.azure.keyvault#ListVaultByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4857,10 +4857,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#MHSMRegionsListByResource": {
+    "com.azure.keyvault#ListMhsmRegionByResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#MHSMRegionsListByResourceRequest"
+        "target": "com.azure.keyvault#ListMhsmRegionByResourceRequest"
       },
       "output": {
         "target": "com.azure.keyvault#MHSMRegionsListResult"
@@ -4976,7 +4976,7 @@
         "smithy.api#documentation": "The current provisioning state."
       }
     },
-    "com.azure.keyvault#MHSMRegionsListByResourceRequest": {
+    "com.azure.keyvault#ListMhsmRegionByResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5008,10 +5008,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#MHSMPrivateLinkResourcesListByMHSMResource": {
+    "com.azure.keyvault#ListMhsmPrivateLinkResourceByMhsmResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#MHSMPrivateLinkResourcesListByMHSMResourceRequest"
+        "target": "com.azure.keyvault#ListMhsmPrivateLinkResourceByMhsmResourceRequest"
       },
       "output": {
         "target": "com.azure.keyvault#MHSMPrivateLinkResourceListResult"
@@ -5342,7 +5342,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.keyvault#MHSMPrivateLinkResourcesListByMHSMResourceRequest": {
+    "com.azure.keyvault#ListMhsmPrivateLinkResourceByMhsmResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5374,13 +5374,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#MHSMPrivateEndpointConnectionsDelete": {
+    "com.azure.keyvault#DeleteMhsmPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.keyvault#DeleteMhsmPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsDeleteResponse"
+        "target": "com.azure.keyvault#DeleteMhsmPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5393,7 +5393,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#MHSMPrivateEndpointConnectionsDeleteResponse": {
+    "com.azure.keyvault#DeleteMhsmPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5568,7 +5568,7 @@
         "smithy.api#documentation": "Private endpoint object properties."
       }
     },
-    "com.azure.keyvault#MHSMPrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.keyvault#DeleteMhsmPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5887,13 +5887,13 @@
         "smithy.api#documentation": "Private endpoint object properties."
       }
     },
-    "com.azure.keyvault#MHSMPrivateEndpointConnectionsGet": {
+    "com.azure.keyvault#GetMhsmPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.keyvault#GetMhsmPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.keyvault#GetMhsmPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5906,7 +5906,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#MHSMPrivateEndpointConnectionsGetResponse": {
+    "com.azure.keyvault#GetMhsmPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6015,7 +6015,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.keyvault#MHSMPrivateEndpointConnectionsGetRequest": {
+    "com.azure.keyvault#GetMhsmPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6055,10 +6055,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#MHSMPrivateEndpointConnectionsListByResource": {
+    "com.azure.keyvault#ListMhsmPrivateEndpointConnectionByResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsListByResourceRequest"
+        "target": "com.azure.keyvault#ListMhsmPrivateEndpointConnectionByResourceRequest"
       },
       "output": {
         "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsListResult"
@@ -6213,7 +6213,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.keyvault#MHSMPrivateEndpointConnectionsListByResourceRequest": {
+    "com.azure.keyvault#ListMhsmPrivateEndpointConnectionByResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6245,13 +6245,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysGetVersion": {
+    "com.azure.keyvault#GetManagedHsmKeyVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmKeysGetVersionRequest"
+        "target": "com.azure.keyvault#GetManagedHsmKeyVersionRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#ManagedHsmKeysGetVersionResponse"
+        "target": "com.azure.keyvault#GetManagedHsmKeyVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6264,7 +6264,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysGetVersionResponse": {
+    "com.azure.keyvault#GetManagedHsmKeyVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6554,7 +6554,7 @@
         "smithy.api#documentation": "The object attributes managed by the Azure Key Vault service."
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysGetVersionRequest": {
+    "com.azure.keyvault#GetManagedHsmKeyVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6602,10 +6602,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysListVersions": {
+    "com.azure.keyvault#ListManagedHsmKeyVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmKeysListVersionsRequest"
+        "target": "com.azure.keyvault#ListManagedHsmKeyVersionsRequest"
       },
       "output": {
         "target": "com.azure.keyvault#ManagedHsmKeyListResult"
@@ -6708,7 +6708,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysListVersionsRequest": {
+    "com.azure.keyvault#ListManagedHsmKeyVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6748,13 +6748,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysCreateIfNotExist": {
+    "com.azure.keyvault#CreateManagedHsmKeyIfNotExist": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmKeysCreateIfNotExistRequest"
+        "target": "com.azure.keyvault#CreateManagedHsmKeyIfNotExistRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#ManagedHsmKeysCreateIfNotExistResponse"
+        "target": "com.azure.keyvault#CreateManagedHsmKeyIfNotExistResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6767,7 +6767,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysCreateIfNotExistResponse": {
+    "com.azure.keyvault#CreateManagedHsmKeyIfNotExistResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6824,7 +6824,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysCreateIfNotExistRequest": {
+    "com.azure.keyvault#CreateManagedHsmKeyIfNotExistRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7014,13 +7014,13 @@
         "smithy.api#documentation": "The tags that will be assigned to the key."
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysGet": {
+    "com.azure.keyvault#GetManagedHsmKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmKeysGetRequest"
+        "target": "com.azure.keyvault#GetManagedHsmKeyRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#ManagedHsmKeysGetResponse"
+        "target": "com.azure.keyvault#GetManagedHsmKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7033,7 +7033,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysGetResponse": {
+    "com.azure.keyvault#GetManagedHsmKeyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7090,7 +7090,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysGetRequest": {
+    "com.azure.keyvault#GetManagedHsmKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7130,10 +7130,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysList": {
+    "com.azure.keyvault#ListManagedHsmKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmKeysListRequest"
+        "target": "com.azure.keyvault#ListManagedHsmKeysRequest"
       },
       "output": {
         "target": "com.azure.keyvault#ManagedHsmKeyListResult"
@@ -7149,7 +7149,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#ManagedHsmKeysListRequest": {
+    "com.azure.keyvault#ListManagedHsmKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7181,10 +7181,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmsDelete": {
+    "com.azure.keyvault#DeleteManagedHsm": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmsDeleteRequest"
+        "target": "com.azure.keyvault#DeleteManagedHsmRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7200,7 +7200,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#ManagedHsmsDeleteRequest": {
+    "com.azure.keyvault#DeleteManagedHsmRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7232,13 +7232,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmsUpdate": {
+    "com.azure.keyvault#UpdateManagedHsm": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmsUpdateRequest"
+        "target": "com.azure.keyvault#UpdateManagedHsmRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#ManagedHsmsUpdateResponse"
+        "target": "com.azure.keyvault#UpdateManagedHsmResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7251,7 +7251,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#ManagedHsmsUpdateResponse": {
+    "com.azure.keyvault#UpdateManagedHsmResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7743,7 +7743,7 @@
         "smithy.api#documentation": "Array of initial administrators object ids for this managed hsm pool."
       }
     },
-    "com.azure.keyvault#ManagedHsmsUpdateRequest": {
+    "com.azure.keyvault#UpdateManagedHsmRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8167,13 +8167,13 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.keyvault#ManagedHsmsGet": {
+    "com.azure.keyvault#GetManagedHsm": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmsGetRequest"
+        "target": "com.azure.keyvault#GetManagedHsmRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#ManagedHsmsGetResponse"
+        "target": "com.azure.keyvault#GetManagedHsmResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8186,7 +8186,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#ManagedHsmsGetResponse": {
+    "com.azure.keyvault#GetManagedHsmResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8289,7 +8289,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.keyvault#ManagedHsmsGetRequest": {
+    "com.azure.keyvault#GetManagedHsmRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8321,10 +8321,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmsListByResourceGroup": {
+    "com.azure.keyvault#ListManagedHsmByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmsListByResourceGroupRequest"
+        "target": "com.azure.keyvault#ListManagedHsmByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.keyvault#ManagedHsmListResult"
@@ -8473,7 +8473,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.keyvault#ManagedHsmsListByResourceGroupRequest": {
+    "com.azure.keyvault#ListManagedHsmByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8504,10 +8504,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#VaultsListBySubscription": {
+    "com.azure.keyvault#ListVaultBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsListBySubscriptionRequest"
+        "target": "com.azure.keyvault#ListVaultBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.keyvault#VaultListResult"
@@ -8523,7 +8523,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#VaultsListBySubscriptionRequest": {
+    "com.azure.keyvault#ListVaultBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8546,10 +8546,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmsListBySubscription": {
+    "com.azure.keyvault#ListManagedHsmBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmsListBySubscriptionRequest"
+        "target": "com.azure.keyvault#ListManagedHsmBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.keyvault#ManagedHsmListResult"
@@ -8565,7 +8565,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#ManagedHsmsListBySubscriptionRequest": {
+    "com.azure.keyvault#ListManagedHsmBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8639,13 +8639,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#VaultsGetDeleted": {
+    "com.azure.keyvault#GetVaultDeleted": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsGetDeletedRequest"
+        "target": "com.azure.keyvault#GetVaultDeletedRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#VaultsGetDeletedResponse"
+        "target": "com.azure.keyvault#GetVaultDeletedResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8658,7 +8658,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#VaultsGetDeletedResponse": {
+    "com.azure.keyvault#GetVaultDeletedResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8752,7 +8752,7 @@
         "smithy.api#documentation": "Tags of the original vault."
       }
     },
-    "com.azure.keyvault#VaultsGetDeletedRequest": {
+    "com.azure.keyvault#GetVaultDeletedRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8835,13 +8835,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmsGetDeleted": {
+    "com.azure.keyvault#GetManagedHsmDeleted": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmsGetDeletedRequest"
+        "target": "com.azure.keyvault#GetManagedHsmDeletedRequest"
       },
       "output": {
-        "target": "com.azure.keyvault#ManagedHsmsGetDeletedResponse"
+        "target": "com.azure.keyvault#GetManagedHsmDeletedResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8854,7 +8854,7 @@
         "com.distilled.openapi#apiVersion": "2026-02-01"
       }
     },
-    "com.azure.keyvault#ManagedHsmsGetDeletedResponse": {
+    "com.azure.keyvault#GetManagedHsmDeletedResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8948,7 +8948,7 @@
         "smithy.api#documentation": "Tags of the original managed HSM."
       }
     },
-    "com.azure.keyvault#ManagedHsmsGetDeletedRequest": {
+    "com.azure.keyvault#GetManagedHsmDeletedRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8980,10 +8980,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#VaultsListDeleted": {
+    "com.azure.keyvault#ListVaultDeleted": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsListDeletedRequest"
+        "target": "com.azure.keyvault#ListVaultDeletedRequest"
       },
       "output": {
         "target": "com.azure.keyvault#DeletedVaultListResult"
@@ -9067,7 +9067,7 @@
         "smithy.api#documentation": "Deleted vault information with extended details."
       }
     },
-    "com.azure.keyvault#VaultsListDeletedRequest": {
+    "com.azure.keyvault#ListVaultDeletedRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9083,10 +9083,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#ManagedHsmsListDeleted": {
+    "com.azure.keyvault#ListManagedHsmDeleted": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmsListDeletedRequest"
+        "target": "com.azure.keyvault#ListManagedHsmDeletedRequest"
       },
       "output": {
         "target": "com.azure.keyvault#DeletedManagedHsmListResult"
@@ -9170,7 +9170,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.keyvault#ManagedHsmsListDeletedRequest": {
+    "com.azure.keyvault#ListManagedHsmDeletedRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9186,10 +9186,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#VaultsCheckNameAvailability": {
+    "com.azure.keyvault#CheckVaultNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#VaultsCheckNameAvailabilityRequest"
+        "target": "com.azure.keyvault#CheckVaultNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.keyvault#CheckNameAvailabilityResult"
@@ -9251,7 +9251,7 @@
         "smithy.api#documentation": "The reason that a vault name could not be used. The Reason element is only returned if NameAvailable is false."
       }
     },
-    "com.azure.keyvault#VaultsCheckNameAvailabilityRequest": {
+    "com.azure.keyvault#CheckVaultNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9295,10 +9295,10 @@
         "smithy.api#documentation": "The type of resource, Microsoft.KeyVault/vaults"
       }
     },
-    "com.azure.keyvault#ManagedHsmsCheckMhsmNameAvailability": {
+    "com.azure.keyvault#CheckManagedHsmMhsmNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.keyvault#ManagedHsmsCheckMhsmNameAvailabilityRequest"
+        "target": "com.azure.keyvault#CheckManagedHsmMhsmNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.keyvault#CheckMhsmNameAvailabilityResult"
@@ -9340,7 +9340,7 @@
         "smithy.api#documentation": "The CheckMhsmNameAvailability operation response."
       }
     },
-    "com.azure.keyvault#ManagedHsmsCheckMhsmNameAvailabilityRequest": {
+    "com.azure.keyvault#CheckManagedHsmMhsmNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9363,7 +9363,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.keyvault#OperationsList": {
+    "com.azure.keyvault#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -9692,148 +9692,148 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.keyvault#VaultsList"
+          "target": "com.azure.keyvault#ListVaults"
         },
         {
-          "target": "com.azure.keyvault#SecretsUpdate"
+          "target": "com.azure.keyvault#UpdateSecret"
         },
         {
           "target": "com.azure.keyvault#SecretsCreateOrUpdate"
         },
         {
-          "target": "com.azure.keyvault#SecretsGet"
+          "target": "com.azure.keyvault#GetSecret"
         },
         {
-          "target": "com.azure.keyvault#SecretsList"
+          "target": "com.azure.keyvault#ListSecrets"
         },
         {
-          "target": "com.azure.keyvault#PrivateLinkResourcesListByVault"
+          "target": "com.azure.keyvault#ListPrivateLinkResourceByVault"
         },
         {
-          "target": "com.azure.keyvault#PrivateEndpointConnectionsDelete"
+          "target": "com.azure.keyvault#DeletePrivateEndpointConnection"
         },
         {
           "target": "com.azure.keyvault#PrivateEndpointConnectionsPut"
         },
         {
-          "target": "com.azure.keyvault#PrivateEndpointConnectionsGet"
+          "target": "com.azure.keyvault#GetPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.keyvault#PrivateEndpointConnectionsListByResource"
+          "target": "com.azure.keyvault#ListPrivateEndpointConnectionByResource"
         },
         {
-          "target": "com.azure.keyvault#KeysGetVersion"
+          "target": "com.azure.keyvault#GetKeyVersion"
         },
         {
-          "target": "com.azure.keyvault#KeysListVersions"
+          "target": "com.azure.keyvault#ListKeyVersions"
         },
         {
-          "target": "com.azure.keyvault#KeysCreateIfNotExist"
+          "target": "com.azure.keyvault#CreateKeyIfNotExist"
         },
         {
-          "target": "com.azure.keyvault#KeysGet"
+          "target": "com.azure.keyvault#GetKey"
         },
         {
-          "target": "com.azure.keyvault#KeysList"
+          "target": "com.azure.keyvault#ListKeys"
         },
         {
-          "target": "com.azure.keyvault#VaultsUpdateAccessPolicy"
+          "target": "com.azure.keyvault#UpdateVaultAccessPolicy"
         },
         {
-          "target": "com.azure.keyvault#VaultsDelete"
+          "target": "com.azure.keyvault#DeleteVault"
         },
         {
-          "target": "com.azure.keyvault#VaultsUpdate"
+          "target": "com.azure.keyvault#UpdateVault"
         },
         {
           "target": "com.azure.keyvault#VaultsCreateOrUpdate"
         },
         {
-          "target": "com.azure.keyvault#VaultsGet"
+          "target": "com.azure.keyvault#GetVault"
         },
         {
-          "target": "com.azure.keyvault#VaultsListByResourceGroup"
+          "target": "com.azure.keyvault#ListVaultByResourceGroup"
         },
         {
-          "target": "com.azure.keyvault#MHSMRegionsListByResource"
+          "target": "com.azure.keyvault#ListMhsmRegionByResource"
         },
         {
-          "target": "com.azure.keyvault#MHSMPrivateLinkResourcesListByMHSMResource"
+          "target": "com.azure.keyvault#ListMhsmPrivateLinkResourceByMhsmResource"
         },
         {
-          "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsDelete"
+          "target": "com.azure.keyvault#DeleteMhsmPrivateEndpointConnection"
         },
         {
           "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsPut"
         },
         {
-          "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsGet"
+          "target": "com.azure.keyvault#GetMhsmPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsListByResource"
+          "target": "com.azure.keyvault#ListMhsmPrivateEndpointConnectionByResource"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmKeysGetVersion"
+          "target": "com.azure.keyvault#GetManagedHsmKeyVersion"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmKeysListVersions"
+          "target": "com.azure.keyvault#ListManagedHsmKeyVersions"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmKeysCreateIfNotExist"
+          "target": "com.azure.keyvault#CreateManagedHsmKeyIfNotExist"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmKeysGet"
+          "target": "com.azure.keyvault#GetManagedHsmKey"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmKeysList"
+          "target": "com.azure.keyvault#ListManagedHsmKeys"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmsDelete"
+          "target": "com.azure.keyvault#DeleteManagedHsm"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmsUpdate"
+          "target": "com.azure.keyvault#UpdateManagedHsm"
         },
         {
           "target": "com.azure.keyvault#ManagedHsmsCreateOrUpdate"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmsGet"
+          "target": "com.azure.keyvault#GetManagedHsm"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmsListByResourceGroup"
+          "target": "com.azure.keyvault#ListManagedHsmByResourceGroup"
         },
         {
-          "target": "com.azure.keyvault#VaultsListBySubscription"
+          "target": "com.azure.keyvault#ListVaultBySubscription"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmsListBySubscription"
+          "target": "com.azure.keyvault#ListManagedHsmBySubscription"
         },
         {
           "target": "com.azure.keyvault#VaultsPurgeDeleted"
         },
         {
-          "target": "com.azure.keyvault#VaultsGetDeleted"
+          "target": "com.azure.keyvault#GetVaultDeleted"
         },
         {
           "target": "com.azure.keyvault#ManagedHsmsPurgeDeleted"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmsGetDeleted"
+          "target": "com.azure.keyvault#GetManagedHsmDeleted"
         },
         {
-          "target": "com.azure.keyvault#VaultsListDeleted"
+          "target": "com.azure.keyvault#ListVaultDeleted"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmsListDeleted"
+          "target": "com.azure.keyvault#ListManagedHsmDeleted"
         },
         {
-          "target": "com.azure.keyvault#VaultsCheckNameAvailability"
+          "target": "com.azure.keyvault#CheckVaultNameAvailability"
         },
         {
-          "target": "com.azure.keyvault#ManagedHsmsCheckMhsmNameAvailability"
+          "target": "com.azure.keyvault#CheckManagedHsmMhsmNameAvailability"
         },
         {
-          "target": "com.azure.keyvault#OperationsList"
+          "target": "com.azure.keyvault#ListOperations"
         }
       ],
       "traits": {

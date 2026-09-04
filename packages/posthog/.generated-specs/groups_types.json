@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.groups_types#GroupsTypesListRequest": {
+    "com.posthog.groups_types#ListGroupTypesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -89,7 +89,7 @@
       },
       "traits": {}
     },
-    "com.posthog.groups_types#GroupsTypesListResponse": {
+    "com.posthog.groups_types#ListGroupTypesResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -104,13 +104,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.groups_types#GroupsTypesList": {
+    "com.posthog.groups_types#ListGroupTypes": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.groups_types#GroupsTypesListRequest"
+        "target": "com.posthog.groups_types#ListGroupTypesRequest"
       },
       "output": {
-        "target": "com.posthog.groups_types#GroupsTypesListResponse"
+        "target": "com.posthog.groups_types#ListGroupTypesResponse"
       },
       "errors": [
         {
@@ -175,7 +175,7 @@
         }
       }
     },
-    "com.posthog.groups_types#GroupsTypesMetricsListRequest": {
+    "com.posthog.groups_types#ListGroupTypeMetricsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -367,10 +367,10 @@
       },
       "traits": {}
     },
-    "com.posthog.groups_types#GroupsTypesMetricsList": {
+    "com.posthog.groups_types#ListGroupTypeMetrics": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.groups_types#GroupsTypesMetricsListRequest"
+        "target": "com.posthog.groups_types#ListGroupTypeMetricsRequest"
       },
       "output": {
         "target": "com.posthog.groups_types#PaginatedGroupUsageMetricList"
@@ -406,7 +406,7 @@
         "smithy.api#documentation": "Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.\n\n**Events** (default, when `source` is missing or `\"events\"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.\n\n**Data warehouse** (`source: \"data_warehouse\"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported."
       }
     },
-    "com.posthog.groups_types#GroupsTypesMetricsCreateRequest": {
+    "com.posthog.groups_types#CreateGroupTypeMetricRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -472,10 +472,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.groups_types#GroupsTypesMetricsCreate": {
+    "com.posthog.groups_types#CreateGroupTypeMetric": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.groups_types#GroupsTypesMetricsCreateRequest"
+        "target": "com.posthog.groups_types#CreateGroupTypeMetricRequest"
       },
       "output": {
         "target": "com.posthog.groups_types#GroupUsageMetric"
@@ -566,7 +566,7 @@
         "smithy.api#documentation": "Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.\n\n**Events** (default, when `source` is missing or `\"events\"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.\n\n**Data warehouse** (`source: \"data_warehouse\"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported."
       }
     },
-    "com.posthog.groups_types#GroupsTypesMetricsUpdateRequest": {
+    "com.posthog.groups_types#UpdateGroupTypeMetricRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -640,10 +640,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.groups_types#GroupsTypesMetricsUpdate": {
+    "com.posthog.groups_types#UpdateGroupTypeMetric": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.groups_types#GroupsTypesMetricsUpdateRequest"
+        "target": "com.posthog.groups_types#UpdateGroupTypeMetricRequest"
       },
       "output": {
         "target": "com.posthog.groups_types#GroupUsageMetric"
@@ -679,7 +679,7 @@
         "smithy.api#documentation": "Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.\n\n**Events** (default, when `source` is missing or `\"events\"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.\n\n**Data warehouse** (`source: \"data_warehouse\"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported."
       }
     },
-    "com.posthog.groups_types#GroupsTypesMetricsPartialUpdateRequest": {
+    "com.posthog.groups_types#UpdateGroupTypeMetricPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -753,10 +753,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.groups_types#GroupsTypesMetricsPartialUpdate": {
+    "com.posthog.groups_types#UpdateGroupTypeMetricPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.groups_types#GroupsTypesMetricsPartialUpdateRequest"
+        "target": "com.posthog.groups_types#UpdateGroupTypeMetricPartialRequest"
       },
       "output": {
         "target": "com.posthog.groups_types#GroupUsageMetric"
@@ -1119,25 +1119,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.groups_types#GroupsTypesList"
+          "target": "com.posthog.groups_types#ListGroupTypes"
         },
         {
           "target": "com.posthog.groups_types#GroupsTypesDestroy"
         },
         {
-          "target": "com.posthog.groups_types#GroupsTypesMetricsList"
+          "target": "com.posthog.groups_types#ListGroupTypeMetrics"
         },
         {
-          "target": "com.posthog.groups_types#GroupsTypesMetricsCreate"
+          "target": "com.posthog.groups_types#CreateGroupTypeMetric"
         },
         {
           "target": "com.posthog.groups_types#GroupsTypesMetricsRetrieve"
         },
         {
-          "target": "com.posthog.groups_types#GroupsTypesMetricsUpdate"
+          "target": "com.posthog.groups_types#UpdateGroupTypeMetric"
         },
         {
-          "target": "com.posthog.groups_types#GroupsTypesMetricsPartialUpdate"
+          "target": "com.posthog.groups_types#UpdateGroupTypeMetricPartial"
         },
         {
           "target": "com.posthog.groups_types#GroupsTypesMetricsDestroy"

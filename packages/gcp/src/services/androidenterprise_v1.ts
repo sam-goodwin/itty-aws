@@ -65,31 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface AcknowledgeNotificationSetEnterprisesRequest {
-  /** The notification set ID as returned by Enterprises.PullNotificationSet. This must be provided. */
-  notificationSetId?: string;
-}
-export const AcknowledgeNotificationSetEnterprisesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      notificationSetId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidenterprise/v1/enterprises/acknowledgeNotificationSet",
-        baseUrl: "https://androidenterprise.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AcknowledgeNotificationSetEnterprisesRequest",
-  }) as any as S.Schema<AcknowledgeNotificationSetEnterprisesRequest>;
-
-export interface AcknowledgeNotificationSetEnterprisesResponse {}
-export const AcknowledgeNotificationSetEnterprisesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AcknowledgeNotificationSetEnterprisesResponse",
-  }) as any as S.Schema<AcknowledgeNotificationSetEnterprisesResponse>;
-
 /** Information on an approval URL. */
 export interface ApprovalUrlInfo {
   /** A URL that displays a product's permissions and that can also be used to approve the product with the Products.approve call. */
@@ -3327,17 +3302,163 @@ export const WebAppsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsListResponse",
 }) as any as S.Schema<WebAppsListResponse>;
 
+export interface RevokeDeviceAccessUsersRequest {
+  /** The ID of the enterprise. */
+  enterpriseId: string;
+  /** The ID of the user. */
+  userId: string;
+}
+export const RevokeDeviceAccessUsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enterpriseId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/deviceAccess",
+      baseUrl: "https://androidenterprise.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RevokeDeviceAccessUsersRequest",
+}) as any as S.Schema<RevokeDeviceAccessUsersRequest>;
+
+export interface RevokeDeviceAccessUsersResponse {}
+export const RevokeDeviceAccessUsersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RevokeDeviceAccessUsersResponse",
+}) as any as S.Schema<RevokeDeviceAccessUsersResponse>;
+
+export interface SendTestPushNotificationEnterprisesRequest {
+  /** The ID of the enterprise. */
+  enterpriseId: string;
+}
+export const SendTestPushNotificationEnterprisesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enterpriseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "androidenterprise/v1/enterprises/{enterpriseId}/sendTestPushNotification",
+        baseUrl: "https://androidenterprise.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SendTestPushNotificationEnterprisesRequest",
+  }) as any as S.Schema<SendTestPushNotificationEnterprisesRequest>;
+
+export interface EnterprisesSendTestPushNotificationResponse {
+  /** The name of the Cloud Pub/Sub topic to which notifications for this enterprise's enrolled account will be sent. */
+  topicName?: string;
+  /** The message ID of the test push notification that was sent. */
+  messageId?: string;
+}
+export const EnterprisesSendTestPushNotificationResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      topicName: S.optional(S.String),
+      messageId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnterprisesSendTestPushNotificationResponse",
+  }) as any as S.Schema<EnterprisesSendTestPushNotificationResponse>;
+
+/** A service account that can be used to authenticate as the enterprise to API calls that require such authentication. */
+export interface EnterpriseAccount {
+  /** The email address of the service account. */
+  accountEmail?: string;
+}
+export const EnterpriseAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountEmail: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EnterpriseAccount",
+}) as any as S.Schema<EnterpriseAccount>;
+
+export interface SetAccountEnterprisesRequest {
+  /** The ID of the enterprise. */
+  enterpriseId: string;
+  /** Request body */
+  body?: EnterpriseAccount;
+}
+export const SetAccountEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enterpriseId: S.String.pipe(T.Label()),
+    body: S.optional(EnterpriseAccount.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "androidenterprise/v1/enterprises/{enterpriseId}/account",
+      baseUrl: "https://androidenterprise.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetAccountEnterprisesRequest",
+}) as any as S.Schema<SetAccountEnterprisesRequest>;
+
+export interface SetAcknowledgeNotificationEnterpriseRequest {
+  /** The notification set ID as returned by Enterprises.PullNotificationSet. This must be provided. */
+  notificationSetId?: string;
+}
+export const SetAcknowledgeNotificationEnterpriseRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      notificationSetId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "androidenterprise/v1/enterprises/acknowledgeNotificationSet",
+        baseUrl: "https://androidenterprise.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetAcknowledgeNotificationEnterpriseRequest",
+  }) as any as S.Schema<SetAcknowledgeNotificationEnterpriseRequest>;
+
+export interface SetAcknowledgeNotificationEnterpriseResponse {}
+export const SetAcknowledgeNotificationEnterpriseResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "SetAcknowledgeNotificationEnterpriseResponse",
+  }) as any as S.Schema<SetAcknowledgeNotificationEnterpriseResponse>;
+
+export interface SetAvailableProductSetUsersRequest {
+  /** The ID of the enterprise. */
+  enterpriseId: string;
+  /** The ID of the user. */
+  userId: string;
+  /** Request body */
+  body?: ProductSet;
+}
+export const SetAvailableProductSetUsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enterpriseId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+    body: S.optional(ProductSet.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet",
+      baseUrl: "https://androidenterprise.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetAvailableProductSetUsersRequest",
+}) as any as S.Schema<SetAvailableProductSetUsersRequest>;
+
 export type PullNotificationSetEnterprisesRequestModeEnum =
   | "waitForNotifications"
   | "returnImmediately";
 export const PullNotificationSetEnterprisesRequestModeEnum =
   /*@__PURE__*/ S.String;
 
-export interface PullNotificationSetEnterprisesRequest {
+export interface SetPullNotificationEnterpriseRequest {
   /** The request mode for pulling notifications. Specifying waitForNotifications will cause the request to block and wait until one or more notifications are present, or return an empty notification list if no notifications are present after some time. Specifying returnImmediately will cause the request to immediately return the pending notifications, or an empty list if no notifications are present. If omitted, defaults to waitForNotifications. */
   requestMode?: PullNotificationSetEnterprisesRequestModeEnum | (string & {});
 }
-export const PullNotificationSetEnterprisesRequest = /*@__PURE__*/ S.suspend(
+export const SetPullNotificationEnterpriseRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       requestMode: S.optional(
@@ -3351,8 +3472,8 @@ export const PullNotificationSetEnterprisesRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "PullNotificationSetEnterprisesRequest",
-}) as any as S.Schema<PullNotificationSetEnterprisesRequest>;
+  identifier: "SetPullNotificationEnterpriseRequest",
+}) as any as S.Schema<SetPullNotificationEnterpriseRequest>;
 
 export type InstallFailureEventFailureReasonEnum = "unknown" | "timeout";
 export const InstallFailureEventFailureReasonEnum = /*@__PURE__*/ S.String;
@@ -3615,127 +3736,6 @@ export const NotificationSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotificationSet",
 }) as any as S.Schema<NotificationSet>;
-
-export interface RevokeDeviceAccessUsersRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
-  /** The ID of the user. */
-  userId: string;
-}
-export const RevokeDeviceAccessUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/deviceAccess",
-      baseUrl: "https://androidenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "RevokeDeviceAccessUsersRequest",
-}) as any as S.Schema<RevokeDeviceAccessUsersRequest>;
-
-export interface RevokeDeviceAccessUsersResponse {}
-export const RevokeDeviceAccessUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeDeviceAccessUsersResponse",
-}) as any as S.Schema<RevokeDeviceAccessUsersResponse>;
-
-export interface SendTestPushNotificationEnterprisesRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
-}
-export const SendTestPushNotificationEnterprisesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enterpriseId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidenterprise/v1/enterprises/{enterpriseId}/sendTestPushNotification",
-        baseUrl: "https://androidenterprise.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SendTestPushNotificationEnterprisesRequest",
-  }) as any as S.Schema<SendTestPushNotificationEnterprisesRequest>;
-
-export interface EnterprisesSendTestPushNotificationResponse {
-  /** The name of the Cloud Pub/Sub topic to which notifications for this enterprise's enrolled account will be sent. */
-  topicName?: string;
-  /** The message ID of the test push notification that was sent. */
-  messageId?: string;
-}
-export const EnterprisesSendTestPushNotificationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      topicName: S.optional(S.String),
-      messageId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EnterprisesSendTestPushNotificationResponse",
-  }) as any as S.Schema<EnterprisesSendTestPushNotificationResponse>;
-
-/** A service account that can be used to authenticate as the enterprise to API calls that require such authentication. */
-export interface EnterpriseAccount {
-  /** The email address of the service account. */
-  accountEmail?: string;
-}
-export const EnterpriseAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountEmail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnterpriseAccount",
-}) as any as S.Schema<EnterpriseAccount>;
-
-export interface SetAccountEnterprisesRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
-  /** Request body */
-  body?: EnterpriseAccount;
-}
-export const SetAccountEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
-    body: S.optional(EnterpriseAccount.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "androidenterprise/v1/enterprises/{enterpriseId}/account",
-      baseUrl: "https://androidenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SetAccountEnterprisesRequest",
-}) as any as S.Schema<SetAccountEnterprisesRequest>;
-
-export interface SetAvailableProductSetUsersRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
-  /** The ID of the user. */
-  userId: string;
-  /** Request body */
-  body?: ProductSet;
-}
-export const SetAvailableProductSetUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Label()),
-    body: S.optional(ProductSet.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet",
-      baseUrl: "https://androidenterprise.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "SetAvailableProductSetUsersRequest",
-}) as any as S.Schema<SetAvailableProductSetUsersRequest>;
 
 export interface SetStateDevicesRequest {
   /** The ID of the device. */
@@ -4085,26 +4085,6 @@ export const UpdateWebappsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWebappsRequest",
 }) as any as S.Schema<UpdateWebappsRequest>;
-
-export type AcknowledgeNotificationSetEnterprisesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Acknowledges notifications that were received from Enterprises.PullNotificationSet to prevent subsequent calls from returning the same notifications. */
-export const acknowledgeNotificationSetEnterprises: API.OperationMethod<
-  AcknowledgeNotificationSetEnterprisesRequest,
-  AcknowledgeNotificationSetEnterprisesResponse,
-  AcknowledgeNotificationSetEnterprisesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AcknowledgeNotificationSetEnterprisesRequest,
-  output: AcknowledgeNotificationSetEnterprisesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
 
 export type ApproveProductsError =
   | NotFound
@@ -5120,26 +5100,6 @@ export const listWebapps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PullNotificationSetEnterprisesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Pulls and returns a notification set for the enterprises associated with the service account authenticated for the request. The notification set may be empty if no notification are pending. A notification set returned needs to be acknowledged within 20 seconds by calling Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not acknowledged within the 20 seconds will eventually be included again in the response to another PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if any are pending. If no notifications are present, an empty notification list is returned. Subsequent requests may return more notifications once they become available. */
-export const pullNotificationSetEnterprises: API.OperationMethod<
-  PullNotificationSetEnterprisesRequest,
-  NotificationSet,
-  PullNotificationSetEnterprisesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PullNotificationSetEnterprisesRequest,
-  output: NotificationSet,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RevokeDeviceAccessUsersError =
   | NotFound
   | Forbidden
@@ -5200,6 +5160,26 @@ export const setAccountEnterprises: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type SetAcknowledgeNotificationEnterpriseError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Acknowledges notifications that were received from Enterprises.PullNotificationSet to prevent subsequent calls from returning the same notifications. */
+export const setAcknowledgeNotificationEnterprise: API.OperationMethod<
+  SetAcknowledgeNotificationEnterpriseRequest,
+  SetAcknowledgeNotificationEnterpriseResponse,
+  SetAcknowledgeNotificationEnterpriseError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetAcknowledgeNotificationEnterpriseRequest,
+  output: SetAcknowledgeNotificationEnterpriseResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type SetAvailableProductSetUsersError =
   | NotFound
   | Forbidden
@@ -5215,6 +5195,26 @@ export const setAvailableProductSetUsers: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SetAvailableProductSetUsersRequest,
   output: ProductSet,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetPullNotificationEnterpriseError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Pulls and returns a notification set for the enterprises associated with the service account authenticated for the request. The notification set may be empty if no notification are pending. A notification set returned needs to be acknowledged within 20 seconds by calling Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not acknowledged within the 20 seconds will eventually be included again in the response to another PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if any are pending. If no notifications are present, an empty notification list is returned. Subsequent requests may return more notifications once they become available. */
+export const setPullNotificationEnterprise: API.OperationMethod<
+  SetPullNotificationEnterpriseRequest,
+  NotificationSet,
+  SetPullNotificationEnterpriseError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetPullNotificationEnterpriseRequest,
+  output: NotificationSet,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

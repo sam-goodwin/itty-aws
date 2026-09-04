@@ -10707,7 +10707,7 @@
         "smithy.api#documentation": "Restores a backup of a Cloud SQL instance. Using this operation might cause your instance to restart."
       }
     },
-    "com.gcp.sqladmin_v1#PointInTimeRestoreInstancesRequest": {
+    "com.gcp.sqladmin_v1#RestorePointInTimeInstanceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -10727,10 +10727,10 @@
         }
       }
     },
-    "com.gcp.sqladmin_v1#PointInTimeRestoreInstances": {
+    "com.gcp.sqladmin_v1#RestorePointInTimeInstance": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.sqladmin_v1#PointInTimeRestoreInstancesRequest"
+        "target": "com.gcp.sqladmin_v1#RestorePointInTimeInstanceRequest"
       },
       "output": {
         "target": "com.gcp.sqladmin_v1#Operation"
@@ -10931,7 +10931,7 @@
         "smithy.api#documentation": "Rotates the server certificate version to one previously added with the addServerCertificate method. For instances not using Certificate Authority Service (CAS) server CA, use RotateServerCa instead."
       }
     },
-    "com.gcp.sqladmin_v1#PreCheckMajorVersionUpgradeInstancesRequest": {
+    "com.gcp.sqladmin_v1#CheckPreMajorVersionUpgradeInstanceRequest": {
       "type": "structure",
       "members": {
         "project": {
@@ -10959,10 +10959,10 @@
         }
       }
     },
-    "com.gcp.sqladmin_v1#PreCheckMajorVersionUpgradeInstances": {
+    "com.gcp.sqladmin_v1#CheckPreMajorVersionUpgradeInstance": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.sqladmin_v1#PreCheckMajorVersionUpgradeInstancesRequest"
+        "target": "com.gcp.sqladmin_v1#CheckPreMajorVersionUpgradeInstanceRequest"
       },
       "output": {
         "target": "com.gcp.sqladmin_v1#Operation"

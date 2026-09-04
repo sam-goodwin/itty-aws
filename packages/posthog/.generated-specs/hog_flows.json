@@ -41,7 +41,7 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_flows#HogFlowsListRequest": {
+    "com.posthog.hog_flows#ListHogFlowsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -418,10 +418,10 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_flows#HogFlowsList": {
+    "com.posthog.hog_flows#ListHogFlows": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsListRequest"
+        "target": "com.posthog.hog_flows#ListHogFlowsRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#PaginatedHogFlowMinimalList"
@@ -1078,7 +1078,7 @@
         "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
       }
     },
-    "com.posthog.hog_flows#HogFlowsCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1431,10 +1431,10 @@
         "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred."
       }
     },
-    "com.posthog.hog_flows#HogFlowsCreate": {
+    "com.posthog.hog_flows#CreateHogFlow": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlow"
@@ -1545,7 +1545,7 @@
         "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
       }
     },
-    "com.posthog.hog_flows#HogFlowsUpdateRequest": {
+    "com.posthog.hog_flows#UpdateHogFlowRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1633,10 +1633,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsUpdate": {
+    "com.posthog.hog_flows#UpdateHogFlow": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsUpdateRequest"
+        "target": "com.posthog.hog_flows#UpdateHogFlowRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlow"
@@ -1699,7 +1699,7 @@
         "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
       }
     },
-    "com.posthog.hog_flows#HogFlowsPartialUpdateRequest": {
+    "com.posthog.hog_flows#UpdateHogFlowPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1787,10 +1787,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsPartialUpdate": {
+    "com.posthog.hog_flows#UpdateHogFlowPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsPartialUpdateRequest"
+        "target": "com.posthog.hog_flows#UpdateHogFlowPartialRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlow"
@@ -1982,7 +1982,7 @@
         "smithy.api#documentation": "Ordered design edits applied atomically to this step's email design - the same operations as the email template patch. The result is re-rendered to HTML server-side, so the sent email always matches the patched design."
       }
     },
-    "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdateRequest": {
+    "com.posthog.hog_flows#UpdateHogFlowActionEmailPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2032,10 +2032,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdate": {
+    "com.posthog.hog_flows#UpdateHogFlowActionEmailPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdateRequest"
+        "target": "com.posthog.hog_flows#UpdateHogFlowActionEmailPartialRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlow"
@@ -2318,7 +2318,7 @@
         }
       }
     },
-    "com.posthog.hog_flows#HogFlowsBatchJobsListRequest": {
+    "com.posthog.hog_flows#ListHogFlowBatchJobsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2449,7 +2449,7 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_flows#HogFlowsBatchJobsListResponse": {
+    "com.posthog.hog_flows#ListHogFlowBatchJobsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2464,13 +2464,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsBatchJobsList": {
+    "com.posthog.hog_flows#ListHogFlowBatchJobs": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsBatchJobsListRequest"
+        "target": "com.posthog.hog_flows#ListHogFlowBatchJobsRequest"
       },
       "output": {
-        "target": "com.posthog.hog_flows#HogFlowsBatchJobsListResponse"
+        "target": "com.posthog.hog_flows#ListHogFlowBatchJobsResponse"
       },
       "errors": [
         {
@@ -2488,7 +2488,7 @@
         }
       }
     },
-    "com.posthog.hog_flows#HogFlowsBatchJobsCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowBatchJobRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2531,10 +2531,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsBatchJobsCreate": {
+    "com.posthog.hog_flows#CreateHogFlowBatchJob": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsBatchJobsCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowBatchJobRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlowBatchJob"
@@ -2558,7 +2558,7 @@
         }
       }
     },
-    "com.posthog.hog_flows#HogFlowsBatchJobsCancelCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowBatchJobCancelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2626,10 +2626,10 @@
         "smithy.api#documentation": "Response from the batch job cancel endpoint. Stopping is asynchronous: this call flags the\nrun's audience fan-out and its in-flight child runs, and the workflow workers terminate\nthem shortly after. Messages already sent are not recalled."
       }
     },
-    "com.posthog.hog_flows#HogFlowsBatchJobsCancelCreate": {
+    "com.posthog.hog_flows#CreateHogFlowBatchJobCancel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsBatchJobsCancelCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowBatchJobCancelRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlowBatchJobCancelResponse"
@@ -2643,7 +2643,7 @@
         "smithy.api#documentation": "Stop a batch run: no more of its audience is enrolled, and every run of it\nstill in flight is canceled.\n\nStopping is asynchronous: runs are flagged here, then terminated by the\nworkflow workers. Steps that already executed, like sent messages, are not\nundone. Already-finished batch runs are left untouched."
       }
     },
-    "com.posthog.hog_flows#HogFlowsDiscardDraftCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowDiscardDraftRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2667,10 +2667,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsDiscardDraftCreate": {
+    "com.posthog.hog_flows#CreateHogFlowDiscardDraft": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsDiscardDraftCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowDiscardDraftRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlow"
@@ -2788,7 +2788,7 @@
         "smithy.api#documentation": "Ordered graph edits applied atomically to a draft workflow: the stored graph is read, the ops are applied in order, the result is fully validated, and it's saved only if valid — otherwise the workflow is unchanged. Reference nodes/edges by id so you never resend the whole graph. The full updated workflow is returned."
       }
     },
-    "com.posthog.hog_flows#HogFlowsGraphPartialUpdateRequest": {
+    "com.posthog.hog_flows#UpdateHogFlowGraphPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2824,10 +2824,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsGraphPartialUpdate": {
+    "com.posthog.hog_flows#UpdateHogFlowGraphPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsGraphPartialUpdateRequest"
+        "target": "com.posthog.hog_flows#UpdateHogFlowGraphPartialRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlow"
@@ -3384,7 +3384,7 @@
         "smithy.api#documentation": "Test trigger payload, typically {event, person, groups}."
       }
     },
-    "com.posthog.hog_flows#HogFlowsInvocationsCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowInvocationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3438,10 +3438,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsInvocationsCreate": {
+    "com.posthog.hog_flows#CreateHogFlowInvocation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsInvocationsCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowInvocationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3474,7 +3474,7 @@
         "smithy.api#documentation": "Cancel these specific invocations. Capped at 10000 per request. Invocations that already finished are skipped rather than failing the request."
       }
     },
-    "com.posthog.hog_flows#HogFlowsInvocationsCancelCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowInvocationCancelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3539,10 +3539,10 @@
         "smithy.api#documentation": "Response from the cancel endpoint. Cancellation is asynchronous: this call flags runs, and\nthe workflow workers terminate them shortly after (immediately for parked runs, at the next\nstep boundary for runs mid-execution). A run stays 'running' in listings until that happens."
       }
     },
-    "com.posthog.hog_flows#HogFlowsInvocationsCancelCreate": {
+    "com.posthog.hog_flows#CreateHogFlowInvocationCancel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsInvocationsCancelCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowInvocationCancelRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogInvocationCancelResponse"
@@ -3997,7 +3997,7 @@
         }
       }
     },
-    "com.posthog.hog_flows#HogFlowsPublishCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowPublishRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4276,10 +4276,10 @@
         "smithy.api#documentation": "Schedules overriding variables the draft removes."
       }
     },
-    "com.posthog.hog_flows#HogFlowsPublishCreate": {
+    "com.posthog.hog_flows#CreateHogFlowPublish": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsPublishCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowPublishRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlowPublishResponse"
@@ -4409,7 +4409,7 @@
         "smithy.api#documentation": "Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned."
       }
     },
-    "com.posthog.hog_flows#HogFlowsRerunCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowRerunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4469,10 +4469,10 @@
         "smithy.api#documentation": "Response from the rerun endpoint. The endpoint only enqueues a wrapper\njob onto the cyclotron `rerun` queue — the actual ClickHouse paging and\nre-enqueue work happens asynchronously in the `cdp-rerun-worker` service.\nUse `rerun_job_id` to look up progress on the wrapper job later."
       }
     },
-    "com.posthog.hog_flows#HogFlowsRerunCreate": {
+    "com.posthog.hog_flows#CreateHogFlowRerun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsRerunCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowRerunRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogInvocationRerunResponse"
@@ -4491,7 +4491,7 @@
         "smithy.api#documentation": "Rerun past invocations of this hog flow from their stored payloads.\n\nSame shape and semantics as the hog function rerun endpoint —\nproxies through to the CDP worker, which reads matching rows from\nClickHouse, rehydrates from `invocation_globals`, and re-enqueues\nonto cyclotron with `is_retry=1`.\n\nBecause rerun replays historical event/person/group data, it requires\n`person:read` and `group:read` on top of `hog_flow:write`."
       }
     },
-    "com.posthog.hog_flows#HogFlowsRevisionsListRequest": {
+    "com.posthog.hog_flows#ListHogFlowRevisionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4592,10 +4592,10 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_flows#HogFlowsRevisionsList": {
+    "com.posthog.hog_flows#ListHogFlowRevisions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsRevisionsListRequest"
+        "target": "com.posthog.hog_flows#ListHogFlowRevisionsRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#PaginatedHogFlowRevisionBasicList"
@@ -4750,7 +4750,7 @@
         }
       }
     },
-    "com.posthog.hog_flows#HogFlowsSchedulesListRequest": {
+    "com.posthog.hog_flows#ListHogFlowSchedulesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4781,7 +4781,7 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_flows#HogFlowsSchedulesListResponse": {
+    "com.posthog.hog_flows#ListHogFlowSchedulesResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -4796,13 +4796,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsSchedulesList": {
+    "com.posthog.hog_flows#ListHogFlowSchedules": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsSchedulesListRequest"
+        "target": "com.posthog.hog_flows#ListHogFlowSchedulesRequest"
       },
       "output": {
-        "target": "com.posthog.hog_flows#HogFlowsSchedulesListResponse"
+        "target": "com.posthog.hog_flows#ListHogFlowSchedulesResponse"
       },
       "errors": [
         {
@@ -4823,7 +4823,7 @@
         }
       }
     },
-    "com.posthog.hog_flows#HogFlowsSchedulesCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowScheduleRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4871,10 +4871,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsSchedulesCreate": {
+    "com.posthog.hog_flows#CreateHogFlowSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsSchedulesCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowScheduleRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlowSchedule"
@@ -4898,7 +4898,7 @@
         }
       }
     },
-    "com.posthog.hog_flows#HogFlowsSchedulesPartialUpdateRequest": {
+    "com.posthog.hog_flows#UpdateHogFlowSchedulePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4953,10 +4953,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.hog_flows#HogFlowsSchedulesPartialUpdate": {
+    "com.posthog.hog_flows#UpdateHogFlowSchedulePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsSchedulesPartialUpdateRequest"
+        "target": "com.posthog.hog_flows#UpdateHogFlowSchedulePartialRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#HogFlowSchedule"
@@ -5746,7 +5746,7 @@
         "smithy.api#documentation": "* `email` - email"
       }
     },
-    "com.posthog.hog_flows#HogFlowsUserBlastRadiusCreateRequest": {
+    "com.posthog.hog_flows#CreateHogFlowUserBlastRadiusRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5819,10 +5819,10 @@
       },
       "traits": {}
     },
-    "com.posthog.hog_flows#HogFlowsUserBlastRadiusCreate": {
+    "com.posthog.hog_flows#CreateHogFlowUserBlastRadius": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.hog_flows#HogFlowsUserBlastRadiusCreateRequest"
+        "target": "com.posthog.hog_flows#CreateHogFlowUserBlastRadiusRequest"
       },
       "output": {
         "target": "com.posthog.hog_flows#BlastRadius"
@@ -5890,25 +5890,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.hog_flows#HogFlowsList"
+          "target": "com.posthog.hog_flows#ListHogFlows"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlow"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsRetrieve"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsUpdate"
+          "target": "com.posthog.hog_flows#UpdateHogFlow"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsPartialUpdate"
+          "target": "com.posthog.hog_flows#UpdateHogFlowPartial"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsDestroy"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdate"
+          "target": "com.posthog.hog_flows#UpdateHogFlowActionEmailPartial"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsAssetsRetrieve"
@@ -5917,19 +5917,19 @@
           "target": "com.posthog.hog_flows#HogFlowsAssetContentRetrieve"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsBatchJobsList"
+          "target": "com.posthog.hog_flows#ListHogFlowBatchJobs"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsBatchJobsCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlowBatchJob"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsBatchJobsCancelCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlowBatchJobCancel"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsDiscardDraftCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlowDiscardDraft"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsGraphPartialUpdate"
+          "target": "com.posthog.hog_flows#UpdateHogFlowGraphPartial"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsInvocationResultsRetrieve"
@@ -5941,10 +5941,10 @@
           "target": "com.posthog.hog_flows#HogFlowsInvocationResultsCountRetrieve"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsInvocationsCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlowInvocation"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsInvocationsCancelCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlowInvocationCancel"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsLogsRetrieve"
@@ -5956,13 +5956,13 @@
           "target": "com.posthog.hog_flows#HogFlowsMetricsTotalsRetrieve"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsPublishCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlowPublish"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsRerunCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlowRerun"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsRevisionsList"
+          "target": "com.posthog.hog_flows#ListHogFlowRevisions"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsRevisionsRetrieve"
@@ -5971,13 +5971,13 @@
           "target": "com.posthog.hog_flows#HogFlowsRevisionsRestoreCreate"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsSchedulesList"
+          "target": "com.posthog.hog_flows#ListHogFlowSchedules"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsSchedulesCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlowSchedule"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsSchedulesPartialUpdate"
+          "target": "com.posthog.hog_flows#UpdateHogFlowSchedulePartial"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsSchedulesDestroy"
@@ -5995,7 +5995,7 @@
           "target": "com.posthog.hog_flows#HogFlowsReputationRetrieve"
         },
         {
-          "target": "com.posthog.hog_flows#HogFlowsUserBlastRadiusCreate"
+          "target": "com.posthog.hog_flows#CreateHogFlowUserBlastRadius"
         }
       ],
       "traits": {

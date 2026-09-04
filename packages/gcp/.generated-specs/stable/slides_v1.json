@@ -7731,7 +7731,7 @@
         "smithy.api#documentation": "Gets the latest version of the specified presentation."
       }
     },
-    "com.gcp.slides_v1#BatchUpdatePresentationsRequest": {
+    "com.gcp.slides_v1#UpdateBatchPresentationRequest": {
       "type": "structure",
       "members": {
         "presentationId": {
@@ -7777,10 +7777,10 @@
         ]
       }
     },
-    "com.gcp.slides_v1#BatchUpdatePresentations": {
+    "com.gcp.slides_v1#UpdateBatchPresentation": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.slides_v1#BatchUpdatePresentationsRequest"
+        "target": "com.gcp.slides_v1#UpdateBatchPresentationRequest"
       },
       "output": {
         "target": "com.gcp.slides_v1#BatchUpdatePresentationResponse"

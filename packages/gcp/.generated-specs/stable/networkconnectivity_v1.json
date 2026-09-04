@@ -7766,7 +7766,7 @@
         "smithy.api#documentation": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."
       }
     },
-    "com.gcp.networkconnectivity_v1#RejectSpokeUpdateProjectsLocationsGlobalHubsRequest": {
+    "com.gcp.networkconnectivity_v1#UpdateRejectSpokeProjectLocationGlobalHubRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -7786,10 +7786,10 @@
         }
       }
     },
-    "com.gcp.networkconnectivity_v1#RejectSpokeUpdateProjectsLocationsGlobalHubs": {
+    "com.gcp.networkconnectivity_v1#UpdateRejectSpokeProjectLocationGlobalHub": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.networkconnectivity_v1#RejectSpokeUpdateProjectsLocationsGlobalHubsRequest"
+        "target": "com.gcp.networkconnectivity_v1#UpdateRejectSpokeProjectLocationGlobalHubRequest"
       },
       "output": {
         "target": "com.gcp.networkconnectivity_v1#GoogleLongrunningOperation"
@@ -7866,7 +7866,7 @@
         "smithy.api#documentation": "Accepts a proposal to attach a Network Connectivity Center spoke to a hub."
       }
     },
-    "com.gcp.networkconnectivity_v1#AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest": {
+    "com.gcp.networkconnectivity_v1#UpdateAcceptSpokeProjectLocationGlobalHubRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -7886,10 +7886,10 @@
         }
       }
     },
-    "com.gcp.networkconnectivity_v1#AcceptSpokeUpdateProjectsLocationsGlobalHubs": {
+    "com.gcp.networkconnectivity_v1#UpdateAcceptSpokeProjectLocationGlobalHub": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.networkconnectivity_v1#AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest"
+        "target": "com.gcp.networkconnectivity_v1#UpdateAcceptSpokeProjectLocationGlobalHubRequest"
       },
       "output": {
         "target": "com.gcp.networkconnectivity_v1#GoogleLongrunningOperation"

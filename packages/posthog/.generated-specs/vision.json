@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.vision#VisionActionsListRequest": {
+    "com.posthog.vision#ListVisionActionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -733,10 +733,10 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionActionsList": {
+    "com.posthog.vision#ListVisionActions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionActionsListRequest"
+        "target": "com.posthog.vision#ListVisionActionsRequest"
       },
       "output": {
         "target": "com.posthog.vision#PaginatedVisionActionList"
@@ -759,7 +759,7 @@
         "smithy.api#documentation": "List of delivery destinations the synthesized summary is sent to."
       }
     },
-    "com.posthog.vision#VisionActionsCreateRequest": {
+    "com.posthog.vision#CreateVisionActionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -843,10 +843,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionActionsCreate": {
+    "com.posthog.vision#CreateVisionAction": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionActionsCreateRequest"
+        "target": "com.posthog.vision#CreateVisionActionRequest"
       },
       "output": {
         "target": "com.posthog.vision#VisionAction"
@@ -910,7 +910,7 @@
         "smithy.api#documentation": "List of delivery destinations the synthesized summary is sent to."
       }
     },
-    "com.posthog.vision#VisionActionsPartialUpdateRequest": {
+    "com.posthog.vision#UpdateVisionActionPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1000,10 +1000,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionActionsPartialUpdate": {
+    "com.posthog.vision#UpdateVisionActionPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionActionsPartialUpdateRequest"
+        "target": "com.posthog.vision#UpdateVisionActionPartialRequest"
       },
       "output": {
         "target": "com.posthog.vision#VisionAction"
@@ -1058,7 +1058,7 @@
         "smithy.api#documentation": "CRUD for Replay Vision actions — scheduled \"and then…\" automations over a scanner's observations."
       }
     },
-    "com.posthog.vision#VisionActionsRunCreateRequest": {
+    "com.posthog.vision#CreateVisionActionRunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1082,10 +1082,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionActionsRunCreate": {
+    "com.posthog.vision#CreateVisionActionRun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionActionsRunCreateRequest"
+        "target": "com.posthog.vision#CreateVisionActionRunRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1099,7 +1099,7 @@
         "smithy.api#documentation": "Run this summary now, without waiting for its schedule — synthesizes a group summary over the\nobservations since the last summary (or the last 24h). The recurring schedule is untouched: the\nengine advances next_run_at only at scheduled claim time, never in the run itself."
       }
     },
-    "com.posthog.vision#VisionActionsRunsListRequest": {
+    "com.posthog.vision#ListVisionActionRunsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1268,10 +1268,10 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionActionsRunsList": {
+    "com.posthog.vision#ListVisionActionRuns": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionActionsRunsListRequest"
+        "target": "com.posthog.vision#ListVisionActionRunsRequest"
       },
       "output": {
         "target": "com.posthog.vision#PaginatedVisionActionRunListList"
@@ -1471,7 +1471,7 @@
         "smithy.api#documentation": "Read-only run history for a single vision action (nested under /vision/actions/{action_id}/runs/)."
       }
     },
-    "com.posthog.vision#VisionAlertsListRequest": {
+    "com.posthog.vision#ListVisionAlertsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1891,10 +1891,10 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionAlertsList": {
+    "com.posthog.vision#ListVisionAlerts": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionAlertsListRequest"
+        "target": "com.posthog.vision#ListVisionAlertsRequest"
       },
       "output": {
         "target": "com.posthog.vision#PaginatedVisionAlertConfigurationList"
@@ -1907,7 +1907,7 @@
         }
       }
     },
-    "com.posthog.vision#VisionAlertsCreateRequest": {
+    "com.posthog.vision#CreateVisionAlertRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2018,10 +2018,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionAlertsCreate": {
+    "com.posthog.vision#CreateVisionAlert": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionAlertsCreateRequest"
+        "target": "com.posthog.vision#CreateVisionAlertRequest"
       },
       "output": {
         "target": "com.posthog.vision#VisionAlertConfiguration"
@@ -2074,7 +2074,7 @@
         }
       }
     },
-    "com.posthog.vision#VisionAlertsUpdateRequest": {
+    "com.posthog.vision#UpdateVisionAlertRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2193,10 +2193,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionAlertsUpdate": {
+    "com.posthog.vision#UpdateVisionAlert": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionAlertsUpdateRequest"
+        "target": "com.posthog.vision#UpdateVisionAlertRequest"
       },
       "output": {
         "target": "com.posthog.vision#VisionAlertConfiguration"
@@ -2209,7 +2209,7 @@
         }
       }
     },
-    "com.posthog.vision#VisionAlertsPartialUpdateRequest": {
+    "com.posthog.vision#UpdateVisionAlertPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2326,10 +2326,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionAlertsPartialUpdate": {
+    "com.posthog.vision#UpdateVisionAlertPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionAlertsPartialUpdateRequest"
+        "target": "com.posthog.vision#UpdateVisionAlertPartialRequest"
       },
       "output": {
         "target": "com.posthog.vision#VisionAlertConfiguration"
@@ -2402,7 +2402,7 @@
         "smithy.api#documentation": "* `slack` - slack\n* `webhook` - webhook"
       }
     },
-    "com.posthog.vision#VisionAlertsDestinationsCreateRequest": {
+    "com.posthog.vision#CreateVisionAlertDestinationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2479,10 +2479,10 @@
         "smithy.api#documentation": "HogFunctions backing the created destination, one per event kind."
       }
     },
-    "com.posthog.vision#VisionAlertsDestinationsCreate": {
+    "com.posthog.vision#CreateVisionAlertDestination": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionAlertsDestinationsCreateRequest"
+        "target": "com.posthog.vision#CreateVisionAlertDestinationRequest"
       },
       "output": {
         "target": "com.posthog.vision#VisionAlertDestinationResponse"
@@ -2601,7 +2601,7 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionAlertsEventsListRequest": {
+    "com.posthog.vision#ListVisionAlertEventsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2789,10 +2789,10 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionAlertsEventsList": {
+    "com.posthog.vision#ListVisionAlertEvents": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionAlertsEventsListRequest"
+        "target": "com.posthog.vision#ListVisionAlertEventsRequest"
       },
       "output": {
         "target": "com.posthog.vision#PaginatedVisionAlertEventList"
@@ -2806,7 +2806,7 @@
         "smithy.api#documentation": "Paginated event history for this alert, newest first. Quiet no-op check rows (no state change, no error) are filtered out. Optional `?kind=...` narrows to one kind."
       }
     },
-    "com.posthog.vision#VisionAlertsResetCreateRequest": {
+    "com.posthog.vision#CreateVisionAlertResetRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2830,10 +2830,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionAlertsResetCreate": {
+    "com.posthog.vision#CreateVisionAlertReset": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionAlertsResetCreateRequest"
+        "target": "com.posthog.vision#CreateVisionAlertResetRequest"
       },
       "output": {
         "target": "com.posthog.vision#VisionAlertConfiguration"
@@ -2973,7 +2973,7 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionObservationsListRequest": {
+    "com.posthog.vision#ListVisionObservationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3428,10 +3428,10 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionObservationsList": {
+    "com.posthog.vision#ListVisionObservations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionObservationsListRequest"
+        "target": "com.posthog.vision#ListVisionObservationsRequest"
       },
       "output": {
         "target": "com.posthog.vision#PaginatedReplayObservationList"
@@ -3759,7 +3759,7 @@
         "smithy.api#documentation": "Create a PostHog Task from this observation's finding so it can be triaged and fixed. Title and description are derived from the scanner and its result. Record-only: this does not start the coding agent. Idempotent per observation: once a task exists, repeat calls return its id with a 200 instead of creating a duplicate."
       }
     },
-    "com.posthog.vision#VisionObservationsLabelCreateRequest": {
+    "com.posthog.vision#CreateVisionObservationLabelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3796,10 +3796,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionObservationsLabelCreate": {
+    "com.posthog.vision#CreateVisionObservationLabel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionObservationsLabelCreateRequest"
+        "target": "com.posthog.vision#CreateVisionObservationLabelRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayObservationLabel"
@@ -3854,7 +3854,7 @@
         "smithy.api#documentation": "Remove the observation's shared label. Requires editor access to the scanner."
       }
     },
-    "com.posthog.vision#VisionObservationsRetryCreateRequest": {
+    "com.posthog.vision#CreateVisionObservationRetryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3878,10 +3878,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionObservationsRetryCreate": {
+    "com.posthog.vision#CreateVisionObservationRetry": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionObservationsRetryCreateRequest"
+        "target": "com.posthog.vision#CreateVisionObservationRetryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4251,7 +4251,7 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionScannersListRequest": {
+    "com.posthog.vision#ListVisionScannersRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4784,10 +4784,10 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionScannersList": {
+    "com.posthog.vision#ListVisionScanners": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersListRequest"
+        "target": "com.posthog.vision#ListVisionScannersRequest"
       },
       "output": {
         "target": "com.posthog.vision#PaginatedReplayScannerList"
@@ -4810,7 +4810,7 @@
         "smithy.api#documentation": "Organizational tags for this scanner. Distinct from a classifier's categories in scanner_config. Tags cannot contain commas."
       }
     },
-    "com.posthog.vision#VisionScannersCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4916,10 +4916,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersCreate": {
+    "com.posthog.vision#CreateVisionScanner": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayScanner"
@@ -4983,7 +4983,7 @@
         "smithy.api#documentation": "Organizational tags for this scanner. Distinct from a classifier's categories in scanner_config. Tags cannot contain commas."
       }
     },
-    "com.posthog.vision#VisionScannersPartialUpdateRequest": {
+    "com.posthog.vision#UpdateVisionScannerPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5093,10 +5093,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersPartialUpdate": {
+    "com.posthog.vision#UpdateVisionScannerPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersPartialUpdateRequest"
+        "target": "com.posthog.vision#UpdateVisionScannerPartialRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayScanner"
@@ -5151,7 +5151,7 @@
         "smithy.api#documentation": "CRUD for Replay Vision scanners."
       }
     },
-    "com.posthog.vision#VisionScannersAffectedCohortCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerAffectedCohortRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5238,10 +5238,10 @@
         "smithy.api#documentation": "The static cohort created from the scanner's affected users."
       }
     },
-    "com.posthog.vision#VisionScannersAffectedCohortCreate": {
+    "com.posthog.vision#CreateVisionScannerAffectedCohort": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersAffectedCohortCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerAffectedCohortRequest"
       },
       "output": {
         "target": "com.posthog.vision#AffectedCohortResponse"
@@ -5264,7 +5264,7 @@
         "smithy.api#documentation": "Session recording IDs to scan on demand, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch. Already-running sessions are a no-op."
       }
     },
-    "com.posthog.vision#VisionScannersBulkObserveCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerBulkObserveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5295,10 +5295,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersBulkObserveCreate": {
+    "com.posthog.vision#CreateVisionScannerBulkObserve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersBulkObserveCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerBulkObserveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5312,7 +5312,7 @@
         "smithy.api#documentation": "Apply this scanner to many sessions on demand. Starts as many as fit under the in-flight\ncaps and monthly credit quota, reporting the rest as skipped rather than failing the batch."
       }
     },
-    "com.posthog.vision#VisionScannersDuplicateCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerDuplicateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5336,10 +5336,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersDuplicateCreate": {
+    "com.posthog.vision#CreateVisionScannerDuplicate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersDuplicateCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerDuplicateRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayScanner"
@@ -5458,7 +5458,7 @@
         "smithy.api#documentation": "Affected sessions and users for this scanner over the trailing window."
       }
     },
-    "com.posthog.vision#VisionScannersObserveCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerObserveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5504,10 +5504,10 @@
         "smithy.api#documentation": "200 from POST /vision/scanners/{id}/observe/ - nothing started, the answer already exists."
       }
     },
-    "com.posthog.vision#VisionScannersObserveCreate": {
+    "com.posthog.vision#CreateVisionScannerObserve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersObserveCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerObserveRequest"
       },
       "output": {
         "target": "com.posthog.vision#ObserveAlreadyScanned"
@@ -5598,7 +5598,7 @@
         "smithy.api#documentation": "What self-driving did with this scanner's signals: reports contributed to and PRs opened."
       }
     },
-    "com.posthog.vision#VisionScannersBackfillsListRequest": {
+    "com.posthog.vision#ListVisionScannerBackfillsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5812,10 +5812,10 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionScannersBackfillsList": {
+    "com.posthog.vision#ListVisionScannerBackfills": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersBackfillsListRequest"
+        "target": "com.posthog.vision#ListVisionScannerBackfillsRequest"
       },
       "output": {
         "target": "com.posthog.vision#PaginatedReplayScannerBackfillList"
@@ -5829,7 +5829,7 @@
         "smithy.api#documentation": "Historical backfills of a scanner over a closed time window (nested under a scanner)."
       }
     },
-    "com.posthog.vision#VisionScannersBackfillsCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerBackfillRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5866,10 +5866,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersBackfillsCreate": {
+    "com.posthog.vision#CreateVisionScannerBackfill": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersBackfillsCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerBackfillRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayScannerBackfill"
@@ -5931,7 +5931,7 @@
         "smithy.api#documentation": "Historical backfills of a scanner over a closed time window (nested under a scanner)."
       }
     },
-    "com.posthog.vision#VisionScannersBackfillsCancelCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerBackfillCancelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5962,10 +5962,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersBackfillsCancelCreate": {
+    "com.posthog.vision#CreateVisionScannerBackfillCancel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersBackfillsCancelCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerBackfillCancelRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayScannerBackfill"
@@ -5979,7 +5979,7 @@
         "smithy.api#documentation": "Stop an active backfill; already-dispatched observations finish, nothing new dispatches."
       }
     },
-    "com.posthog.vision#VisionScannersBackfillsResumeCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerBackfillResumeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6010,10 +6010,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersBackfillsResumeCreate": {
+    "com.posthog.vision#CreateVisionScannerBackfillResume": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersBackfillsResumeCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerBackfillResumeRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayScannerBackfill"
@@ -6027,7 +6027,7 @@
         "smithy.api#documentation": "Restart a backfill that paused when the monthly quota ran out."
       }
     },
-    "com.posthog.vision#VisionScannersBackfillsEstimateCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerBackfillEstimateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6113,10 +6113,10 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionScannersBackfillsEstimateCreate": {
+    "com.posthog.vision#CreateVisionScannerBackfillEstimate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersBackfillsEstimateCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerBackfillEstimateRequest"
       },
       "output": {
         "target": "com.posthog.vision#BackfillEstimateResponse"
@@ -6256,7 +6256,7 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionScannersObservationsListRequest": {
+    "com.posthog.vision#ListVisionScannerObservationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6384,10 +6384,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersObservationsList": {
+    "com.posthog.vision#ListVisionScannerObservations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersObservationsListRequest"
+        "target": "com.posthog.vision#ListVisionScannerObservationsRequest"
       },
       "output": {
         "target": "com.posthog.vision#PaginatedReplayObservationList"
@@ -6714,7 +6714,7 @@
         "smithy.api#documentation": "Create a PostHog Task from this observation's finding so it can be triaged and fixed. Title and description are derived from the scanner and its result. Record-only: this does not start the coding agent. Idempotent per observation: once a task exists, repeat calls return its id with a 200 instead of creating a duplicate."
       }
     },
-    "com.posthog.vision#VisionScannersObservationsLabelCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerObservationLabelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6758,10 +6758,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersObservationsLabelCreate": {
+    "com.posthog.vision#CreateVisionScannerObservationLabel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersObservationsLabelCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerObservationLabelRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayObservationLabel"
@@ -6823,7 +6823,7 @@
         "smithy.api#documentation": "Remove the observation's shared label. Requires editor access to the scanner."
       }
     },
-    "com.posthog.vision#VisionScannersObservationsRetryCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerObservationRetryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6854,10 +6854,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersObservationsRetryCreate": {
+    "com.posthog.vision#CreateVisionScannerObservationRetry": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersObservationsRetryCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerObservationRetryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7642,7 +7642,7 @@
         "smithy.api#documentation": "Aggregate counts and per-scanner-type distributions over the filtered observation set. Same filters as the list endpoint apply."
       }
     },
-    "com.posthog.vision#VisionScannersPromptSuggestionsListRequest": {
+    "com.posthog.vision#ListVisionScannerPromptSuggestionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8038,10 +8038,10 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionScannersPromptSuggestionsList": {
+    "com.posthog.vision#ListVisionScannerPromptSuggestions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersPromptSuggestionsListRequest"
+        "target": "com.posthog.vision#ListVisionScannerPromptSuggestionsRequest"
       },
       "output": {
         "target": "com.posthog.vision#PaginatedReplayScannerPromptSuggestionList"
@@ -8055,7 +8055,7 @@
         "smithy.api#documentation": "AI prompt-rewrite suggestions for a scanner, generated from the team's thumbs up/down ratings."
       }
     },
-    "com.posthog.vision#VisionScannersPromptSuggestionsApplyCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerPromptSuggestionApplyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8092,10 +8092,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersPromptSuggestionsApplyCreate": {
+    "com.posthog.vision#CreateVisionScannerPromptSuggestionApply": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersPromptSuggestionsApplyCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerPromptSuggestionApplyRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayScannerPromptSuggestion"
@@ -8109,7 +8109,7 @@
         "smithy.api#documentation": "Apply this suggestion: write a config to the scanner (the prompt plus any type-specific config such as classifier tags or the monitor allow_inconclusive flag), bumping the scanner version, and mark the suggestion applied. Pass `config` to apply an edited subset of the recommendation; omit it to apply the full suggested config. Only the current pending suggestion can be applied. Requires session recording edit access."
       }
     },
-    "com.posthog.vision#VisionScannersPromptSuggestionsDismissCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerPromptSuggestionDismissRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8140,10 +8140,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersPromptSuggestionsDismissCreate": {
+    "com.posthog.vision#CreateVisionScannerPromptSuggestionDismiss": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersPromptSuggestionsDismissCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerPromptSuggestionDismissRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayScannerPromptSuggestion"
@@ -8157,7 +8157,7 @@
         "smithy.api#documentation": "Dismiss this suggestion without applying it. Only the current pending suggestion can be dismissed. Requires editor access to the scanner."
       }
     },
-    "com.posthog.vision#VisionScannersPromptSuggestionsEvaluateCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerPromptSuggestionEvaluateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8200,10 +8200,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersPromptSuggestionsEvaluateCreate": {
+    "com.posthog.vision#CreateVisionScannerPromptSuggestionEvaluate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersPromptSuggestionsEvaluateCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerPromptSuggestionEvaluateRequest"
       },
       "output": {
         "target": "com.posthog.vision#ReplayScannerPromptSuggestion"
@@ -8332,7 +8332,7 @@
         "smithy.api#documentation": "Generate a fresh prompt suggestion from the team's current ratings. The previous pending suggestion becomes history (superseded). Requires at least one rated observation and editor access to the scanner."
       }
     },
-    "com.posthog.vision#VisionScannersScoutReportsListRequest": {
+    "com.posthog.vision#ListVisionScannerScoutReportsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8490,7 +8490,7 @@
       },
       "traits": {}
     },
-    "com.posthog.vision#VisionScannersScoutReportsListResponse": {
+    "com.posthog.vision#ListVisionScannerScoutReportsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -8505,13 +8505,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.vision#VisionScannersScoutReportsList": {
+    "com.posthog.vision#ListVisionScannerScoutReports": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersScoutReportsListRequest"
+        "target": "com.posthog.vision#ListVisionScannerScoutReportsRequest"
       },
       "output": {
-        "target": "com.posthog.vision#VisionScannersScoutReportsListResponse"
+        "target": "com.posthog.vision#ListVisionScannerScoutReportsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8755,7 +8755,7 @@
         "smithy.api#documentation": "MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run."
       }
     },
-    "com.posthog.vision#VisionScannersScoutsCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerScoutRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9123,10 +9123,10 @@
         "smithy.api#documentation": "Free-form labels for grouping the fleet, e.g. `[\"revenue\", \"on-call\"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter."
       }
     },
-    "com.posthog.vision#VisionScannersScoutsCreate": {
+    "com.posthog.vision#CreateVisionScannerScout": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersScoutsCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerScoutRequest"
       },
       "output": {
         "target": "com.posthog.vision#ScannerScoutCreateResponse"
@@ -9202,7 +9202,7 @@
         "smithy.api#documentation": "Distinct creators across the team's scanners — feeds the `Created by` filter dropdown."
       }
     },
-    "com.posthog.vision#VisionScannersDraftCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerDraftRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9321,10 +9321,10 @@
         "smithy.api#documentation": "An AI-drafted scanner configuration, ready to seed the creation wizard. Nothing is persisted."
       }
     },
-    "com.posthog.vision#VisionScannersDraftCreate": {
+    "com.posthog.vision#CreateVisionScannerDraft": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersDraftCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerDraftRequest"
       },
       "output": {
         "target": "com.posthog.vision#DraftScannerResponse"
@@ -9346,7 +9346,7 @@
         "smithy.api#documentation": "Draft a full scanner configuration from a natural-language goal, for the goal-based creation flow."
       }
     },
-    "com.posthog.vision#VisionScannersEstimateCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerEstimateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9464,10 +9464,10 @@
         "smithy.api#documentation": "Forward-looking volume and credit-cost estimate for a proposed scanner."
       }
     },
-    "com.posthog.vision#VisionScannersEstimateCreate": {
+    "com.posthog.vision#CreateVisionScannerEstimate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersEstimateCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerEstimateRequest"
       },
       "output": {
         "target": "com.posthog.vision#EstimateResponse"
@@ -9490,7 +9490,7 @@
         "smithy.api#documentation": "Session recording IDs to scan, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch."
       }
     },
-    "com.posthog.vision#VisionScannersInlineScanCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerInlineScanRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9538,10 +9538,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.vision#VisionScannersInlineScanCreate": {
+    "com.posthog.vision#CreateVisionScannerInlineScan": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersInlineScanCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerInlineScanRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9680,7 +9680,7 @@
         "smithy.api#documentation": "The categories already configured, so suggestions never duplicate one the user has."
       }
     },
-    "com.posthog.vision#VisionScannersSuggestTagsCreateRequest": {
+    "com.posthog.vision#CreateVisionScannerSuggestTagRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9807,10 +9807,10 @@
         "smithy.api#documentation": "Suggested tags to add, most relevant first. May be empty when the evidence is too thin."
       }
     },
-    "com.posthog.vision#VisionScannersSuggestTagsCreate": {
+    "com.posthog.vision#CreateVisionScannerSuggestTag": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.vision#VisionScannersSuggestTagsCreateRequest"
+        "target": "com.posthog.vision#CreateVisionScannerSuggestTagRequest"
       },
       "output": {
         "target": "com.posthog.vision#SuggestTagsResponse"
@@ -9868,61 +9868,61 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.vision#VisionActionsList"
+          "target": "com.posthog.vision#ListVisionActions"
         },
         {
-          "target": "com.posthog.vision#VisionActionsCreate"
+          "target": "com.posthog.vision#CreateVisionAction"
         },
         {
           "target": "com.posthog.vision#VisionActionsRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionActionsPartialUpdate"
+          "target": "com.posthog.vision#UpdateVisionActionPartial"
         },
         {
           "target": "com.posthog.vision#VisionActionsDestroy"
         },
         {
-          "target": "com.posthog.vision#VisionActionsRunCreate"
+          "target": "com.posthog.vision#CreateVisionActionRun"
         },
         {
-          "target": "com.posthog.vision#VisionActionsRunsList"
+          "target": "com.posthog.vision#ListVisionActionRuns"
         },
         {
           "target": "com.posthog.vision#VisionActionsRunsRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionAlertsList"
+          "target": "com.posthog.vision#ListVisionAlerts"
         },
         {
-          "target": "com.posthog.vision#VisionAlertsCreate"
+          "target": "com.posthog.vision#CreateVisionAlert"
         },
         {
           "target": "com.posthog.vision#VisionAlertsRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionAlertsUpdate"
+          "target": "com.posthog.vision#UpdateVisionAlert"
         },
         {
-          "target": "com.posthog.vision#VisionAlertsPartialUpdate"
+          "target": "com.posthog.vision#UpdateVisionAlertPartial"
         },
         {
           "target": "com.posthog.vision#VisionAlertsDestroy"
         },
         {
-          "target": "com.posthog.vision#VisionAlertsDestinationsCreate"
+          "target": "com.posthog.vision#CreateVisionAlertDestination"
         },
         {
           "target": "com.posthog.vision#VisionAlertsDestinationsDeleteCreate"
         },
         {
-          "target": "com.posthog.vision#VisionAlertsEventsList"
+          "target": "com.posthog.vision#ListVisionAlertEvents"
         },
         {
-          "target": "com.posthog.vision#VisionAlertsResetCreate"
+          "target": "com.posthog.vision#CreateVisionAlertReset"
         },
         {
-          "target": "com.posthog.vision#VisionObservationsList"
+          "target": "com.posthog.vision#ListVisionObservations"
         },
         {
           "target": "com.posthog.vision#VisionObservationsRetrieve"
@@ -9931,13 +9931,13 @@
           "target": "com.posthog.vision#VisionObservationsCreateTaskCreate"
         },
         {
-          "target": "com.posthog.vision#VisionObservationsLabelCreate"
+          "target": "com.posthog.vision#CreateVisionObservationLabel"
         },
         {
           "target": "com.posthog.vision#VisionObservationsLabelDestroy"
         },
         {
-          "target": "com.posthog.vision#VisionObservationsRetryCreate"
+          "target": "com.posthog.vision#CreateVisionObservationRetry"
         },
         {
           "target": "com.posthog.vision#VisionObservationsSearchRetrieve"
@@ -9946,58 +9946,58 @@
           "target": "com.posthog.vision#EnvironmentVisionQuotaRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersList"
+          "target": "com.posthog.vision#ListVisionScanners"
         },
         {
-          "target": "com.posthog.vision#VisionScannersCreate"
+          "target": "com.posthog.vision#CreateVisionScanner"
         },
         {
           "target": "com.posthog.vision#VisionScannersRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersPartialUpdate"
+          "target": "com.posthog.vision#UpdateVisionScannerPartial"
         },
         {
           "target": "com.posthog.vision#VisionScannersDestroy"
         },
         {
-          "target": "com.posthog.vision#VisionScannersAffectedCohortCreate"
+          "target": "com.posthog.vision#CreateVisionScannerAffectedCohort"
         },
         {
-          "target": "com.posthog.vision#VisionScannersBulkObserveCreate"
+          "target": "com.posthog.vision#CreateVisionScannerBulkObserve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersDuplicateCreate"
+          "target": "com.posthog.vision#CreateVisionScannerDuplicate"
         },
         {
           "target": "com.posthog.vision#VisionScannersImpactRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersObserveCreate"
+          "target": "com.posthog.vision#CreateVisionScannerObserve"
         },
         {
           "target": "com.posthog.vision#VisionScannersSelfDrivingStatsRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersBackfillsList"
+          "target": "com.posthog.vision#ListVisionScannerBackfills"
         },
         {
-          "target": "com.posthog.vision#VisionScannersBackfillsCreate"
+          "target": "com.posthog.vision#CreateVisionScannerBackfill"
         },
         {
           "target": "com.posthog.vision#VisionScannersBackfillsRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersBackfillsCancelCreate"
+          "target": "com.posthog.vision#CreateVisionScannerBackfillCancel"
         },
         {
-          "target": "com.posthog.vision#VisionScannersBackfillsResumeCreate"
+          "target": "com.posthog.vision#CreateVisionScannerBackfillResume"
         },
         {
-          "target": "com.posthog.vision#VisionScannersBackfillsEstimateCreate"
+          "target": "com.posthog.vision#CreateVisionScannerBackfillEstimate"
         },
         {
-          "target": "com.posthog.vision#VisionScannersObservationsList"
+          "target": "com.posthog.vision#ListVisionScannerObservations"
         },
         {
           "target": "com.posthog.vision#VisionScannersObservationsRetrieve"
@@ -10006,28 +10006,28 @@
           "target": "com.posthog.vision#VisionScannersObservationsCreateTaskCreate"
         },
         {
-          "target": "com.posthog.vision#VisionScannersObservationsLabelCreate"
+          "target": "com.posthog.vision#CreateVisionScannerObservationLabel"
         },
         {
           "target": "com.posthog.vision#VisionScannersObservationsLabelDestroy"
         },
         {
-          "target": "com.posthog.vision#VisionScannersObservationsRetryCreate"
+          "target": "com.posthog.vision#CreateVisionScannerObservationRetry"
         },
         {
           "target": "com.posthog.vision#VisionScannersObservationsStatsRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersPromptSuggestionsList"
+          "target": "com.posthog.vision#ListVisionScannerPromptSuggestions"
         },
         {
-          "target": "com.posthog.vision#VisionScannersPromptSuggestionsApplyCreate"
+          "target": "com.posthog.vision#CreateVisionScannerPromptSuggestionApply"
         },
         {
-          "target": "com.posthog.vision#VisionScannersPromptSuggestionsDismissCreate"
+          "target": "com.posthog.vision#CreateVisionScannerPromptSuggestionDismiss"
         },
         {
-          "target": "com.posthog.vision#VisionScannersPromptSuggestionsEvaluateCreate"
+          "target": "com.posthog.vision#CreateVisionScannerPromptSuggestionEvaluate"
         },
         {
           "target": "com.posthog.vision#VisionScannersPromptSuggestionsCurrentRetrieve"
@@ -10036,31 +10036,31 @@
           "target": "com.posthog.vision#VisionScannersPromptSuggestionsGenerateCreate"
         },
         {
-          "target": "com.posthog.vision#VisionScannersScoutReportsList"
+          "target": "com.posthog.vision#ListVisionScannerScoutReports"
         },
         {
           "target": "com.posthog.vision#VisionScannersScoutReportsRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersScoutsCreate"
+          "target": "com.posthog.vision#CreateVisionScannerScout"
         },
         {
           "target": "com.posthog.vision#VisionScannersCreatorsRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersDraftCreate"
+          "target": "com.posthog.vision#CreateVisionScannerDraft"
         },
         {
-          "target": "com.posthog.vision#VisionScannersEstimateCreate"
+          "target": "com.posthog.vision#CreateVisionScannerEstimate"
         },
         {
-          "target": "com.posthog.vision#VisionScannersInlineScanCreate"
+          "target": "com.posthog.vision#CreateVisionScannerInlineScan"
         },
         {
           "target": "com.posthog.vision#VisionScannersStatsRetrieve"
         },
         {
-          "target": "com.posthog.vision#VisionScannersSuggestTagsCreate"
+          "target": "com.posthog.vision#CreateVisionScannerSuggestTag"
         }
       ],
       "traits": {

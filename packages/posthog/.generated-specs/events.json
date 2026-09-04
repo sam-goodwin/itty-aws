@@ -520,7 +520,7 @@
       },
       "traits": {}
     },
-    "com.posthog.events#EventsListRequest": {
+    "com.posthog.events#ListEventsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -768,10 +768,10 @@
       },
       "traits": {}
     },
-    "com.posthog.events#EventsList": {
+    "com.posthog.events#ListEvents": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.events#EventsListRequest"
+        "target": "com.posthog.events#ListEventsRequest"
       },
       "output": {
         "target": "com.posthog.events#PaginatedClickhouseEventList"
@@ -1013,7 +1013,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.events#EventsList"
+          "target": "com.posthog.events#ListEvents"
         },
         {
           "target": "com.posthog.events#EventsRetrieve"

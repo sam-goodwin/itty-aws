@@ -15016,7 +15016,7 @@
         "smithy.api#documentation": "Gets details of the specified conversation."
       }
     },
-    "com.gcp.ces_v1beta#BatchDeleteProjectsLocationsAppsConversationsRequest": {
+    "com.gcp.ces_v1beta#DeleteBatchProjectLocationAppConversationRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -15036,10 +15036,10 @@
         }
       }
     },
-    "com.gcp.ces_v1beta#BatchDeleteProjectsLocationsAppsConversations": {
+    "com.gcp.ces_v1beta#DeleteBatchProjectLocationAppConversation": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.ces_v1beta#BatchDeleteProjectsLocationsAppsConversationsRequest"
+        "target": "com.gcp.ces_v1beta#DeleteBatchProjectLocationAppConversationRequest"
       },
       "output": {
         "target": "com.gcp.ces_v1beta#Operation"

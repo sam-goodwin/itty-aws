@@ -3620,7 +3620,7 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2#BatchDeleteLabelsPermissionsRequest": {
+    "com.gcp.drivelabels_v2#DeleteBatchLabelPermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3640,10 +3640,10 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2#BatchDeleteLabelsPermissions": {
+    "com.gcp.drivelabels_v2#DeleteBatchLabelPermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.drivelabels_v2#BatchDeleteLabelsPermissionsRequest"
+        "target": "com.gcp.drivelabels_v2#DeleteBatchLabelPermissionRequest"
       },
       "output": {
         "target": "com.gcp.drivelabels_v2#GoogleProtobufEmpty"
@@ -3782,7 +3782,7 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2#BatchUpdateLabelsPermissionsRequest": {
+    "com.gcp.drivelabels_v2#UpdateBatchLabelPermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3802,10 +3802,10 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2#BatchUpdateLabelsPermissions": {
+    "com.gcp.drivelabels_v2#UpdateBatchLabelPermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.drivelabels_v2#BatchUpdateLabelsPermissionsRequest"
+        "target": "com.gcp.drivelabels_v2#UpdateBatchLabelPermissionRequest"
       },
       "output": {
         "target": "com.gcp.drivelabels_v2#GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse"
@@ -3946,7 +3946,7 @@
         "smithy.api#documentation": "Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing."
       }
     },
-    "com.gcp.drivelabels_v2#BatchUpdateLabelsRevisionsPermissionsRequest": {
+    "com.gcp.drivelabels_v2#UpdateBatchLabelRevisionPermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3966,10 +3966,10 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2#BatchUpdateLabelsRevisionsPermissions": {
+    "com.gcp.drivelabels_v2#UpdateBatchLabelRevisionPermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.drivelabels_v2#BatchUpdateLabelsRevisionsPermissionsRequest"
+        "target": "com.gcp.drivelabels_v2#UpdateBatchLabelRevisionPermissionRequest"
       },
       "output": {
         "target": "com.gcp.drivelabels_v2#GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse"
@@ -4165,7 +4165,7 @@
         "smithy.api#documentation": "Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing."
       }
     },
-    "com.gcp.drivelabels_v2#BatchDeleteLabelsRevisionsPermissionsRequest": {
+    "com.gcp.drivelabels_v2#DeleteBatchLabelRevisionPermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4185,10 +4185,10 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2#BatchDeleteLabelsRevisionsPermissions": {
+    "com.gcp.drivelabels_v2#DeleteBatchLabelRevisionPermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.drivelabels_v2#BatchDeleteLabelsRevisionsPermissionsRequest"
+        "target": "com.gcp.drivelabels_v2#DeleteBatchLabelRevisionPermissionRequest"
       },
       "output": {
         "target": "com.gcp.drivelabels_v2#GoogleProtobufEmpty"

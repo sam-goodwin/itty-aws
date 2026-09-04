@@ -39,27 +39,77 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface DashboardTemplatesCopyBetweenProjectsCreateRequest {
+export type DashboardTemplatesCreateRequestTagsList = Array<string>;
+export const DashboardTemplatesCreateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DashboardTemplatesCreateRequestTagsList>;
+
+/** * `team` - Only team * `organization` - Organization * `global` - Global * `feature_flag` - Feature Flag */
+export type DashboardTemplateScopeEnum =
+  | "team"
+  | "organization"
+  | "global"
+  | "feature_flag";
+export const DashboardTemplateScopeEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+export type DashboardTemplatesCreateRequestScope =
+  | DashboardTemplateScopeEnum
+  | BlankEnum;
+export const DashboardTemplatesCreateRequestScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesCreateRequestScope>;
+
+export type DashboardTemplatesCreateRequestAvailabilityContextsList =
+  Array<string>;
+export const DashboardTemplatesCreateRequestAvailabilityContextsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DashboardTemplatesCreateRequestAvailabilityContextsList>;
+
+export interface CreateDashboardTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** UUID of a team-scoped template in the same organization. Global and feature-flag templates cannot be copied with this endpoint. */
-  source_template_id?: string;
+  template_name?: string | null;
+  dashboard_description?: string | null;
+  dashboard_filters?: unknown;
+  tags?: DashboardTemplatesCreateRequestTagsList | null;
+  tiles?: unknown;
+  variables?: unknown;
+  deleted?: boolean | null;
+  image_url?: string | null;
+  scope?: DashboardTemplatesCreateRequestScope | null;
+  availability_contexts?: DashboardTemplatesCreateRequestAvailabilityContextsList | null;
+  /** Manually curated; used to highlight templates in the UI. */
+  is_featured?: boolean;
 }
-export const DashboardTemplatesCopyBetweenProjectsCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      source_template_id: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/dashboard_templates/copy_between_projects/",
-        code: 200,
-      }),
+export const CreateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    template_name: S.optional(S.NullOr(S.String)),
+    dashboard_description: S.optional(S.NullOr(S.String)),
+    dashboard_filters: S.optional(S.Unknown),
+    tags: S.optional(S.NullOr(DashboardTemplatesCreateRequestTagsList)),
+    tiles: S.optional(S.Unknown),
+    variables: S.optional(S.Unknown),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    image_url: S.optional(S.NullOr(S.String)),
+    scope: S.optional(S.NullOr(DashboardTemplatesCreateRequestScope)),
+    availability_contexts: S.optional(
+      S.NullOr(DashboardTemplatesCreateRequestAvailabilityContextsList),
     ),
-  ).annotate({
-    identifier: "DashboardTemplatesCopyBetweenProjectsCreateRequest",
-  }) as any as S.Schema<DashboardTemplatesCopyBetweenProjectsCreateRequest>;
+    is_featured: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/dashboard_templates/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateDashboardTemplateRequest",
+}) as any as S.Schema<CreateDashboardTemplateRequest>;
 
 export type DashboardTemplateTagsList = Array<string>;
 export const DashboardTemplateTagsList = /*@__PURE__*/ S.Array(
@@ -84,9 +134,6 @@ export type RoleAtOrganizationEnum =
   | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "";
-export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
 export const UserBasicRoleAtOrganization =
@@ -116,14 +163,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-/** * `team` - Only team * `organization` - Organization * `global` - Global * `feature_flag` - Feature Flag */
-export type DashboardTemplateScopeEnum =
-  | "team"
-  | "organization"
-  | "global"
-  | "feature_flag";
-export const DashboardTemplateScopeEnum = /*@__PURE__*/ S.String;
 
 export type DashboardTemplateScope = DashboardTemplateScopeEnum | BlankEnum;
 export const DashboardTemplateScope =
@@ -203,66 +242,27 @@ export const DashboardTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardTemplate",
 }) as any as S.Schema<DashboardTemplate>;
 
-export type DashboardTemplatesCreateRequestTagsList = Array<string>;
-export const DashboardTemplatesCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardTemplatesCreateRequestTagsList>;
-
-export type DashboardTemplatesCreateRequestScope =
-  | DashboardTemplateScopeEnum
-  | BlankEnum;
-export const DashboardTemplatesCreateRequestScope =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesCreateRequestScope>;
-
-export type DashboardTemplatesCreateRequestAvailabilityContextsList =
-  Array<string>;
-export const DashboardTemplatesCreateRequestAvailabilityContextsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardTemplatesCreateRequestAvailabilityContextsList>;
-
-export interface DashboardTemplatesCreateRequest {
+export interface CreateDashboardTemplateCopyBetweenProjectRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  template_name?: string | null;
-  dashboard_description?: string | null;
-  dashboard_filters?: unknown;
-  tags?: DashboardTemplatesCreateRequestTagsList | null;
-  tiles?: unknown;
-  variables?: unknown;
-  deleted?: boolean | null;
-  image_url?: string | null;
-  scope?: DashboardTemplatesCreateRequestScope | null;
-  availability_contexts?: DashboardTemplatesCreateRequestAvailabilityContextsList | null;
-  /** Manually curated; used to highlight templates in the UI. */
-  is_featured?: boolean;
+  /** UUID of a team-scoped template in the same organization. Global and feature-flag templates cannot be copied with this endpoint. */
+  source_template_id?: string;
 }
-export const DashboardTemplatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    template_name: S.optional(S.NullOr(S.String)),
-    dashboard_description: S.optional(S.NullOr(S.String)),
-    dashboard_filters: S.optional(S.Unknown),
-    tags: S.optional(S.NullOr(DashboardTemplatesCreateRequestTagsList)),
-    tiles: S.optional(S.Unknown),
-    variables: S.optional(S.Unknown),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    image_url: S.optional(S.NullOr(S.String)),
-    scope: S.optional(S.NullOr(DashboardTemplatesCreateRequestScope)),
-    availability_contexts: S.optional(
-      S.NullOr(DashboardTemplatesCreateRequestAvailabilityContextsList),
+export const CreateDashboardTemplateCopyBetweenProjectRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      source_template_id: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/dashboard_templates/copy_between_projects/",
+        code: 200,
+      }),
     ),
-    is_featured: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/dashboard_templates/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DashboardTemplatesCreateRequest",
-}) as any as S.Schema<DashboardTemplatesCreateRequest>;
+  ).annotate({
+    identifier: "CreateDashboardTemplateCopyBetweenProjectRequest",
+  }) as any as S.Schema<CreateDashboardTemplateCopyBetweenProjectRequest>;
 
 export interface DashboardTemplatesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -292,6 +292,27 @@ export const DashboardTemplatesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardTemplatesDestroyResponse",
 }) as any as S.Schema<DashboardTemplatesDestroyResponse>;
 
+export interface DashboardTemplatesRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this dashboard template. */
+  id: string;
+}
+export const DashboardTemplatesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/dashboard_templates/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DashboardTemplatesRetrieveRequest",
+}) as any as S.Schema<DashboardTemplatesRetrieveRequest>;
+
 export type DashboardTemplatesListRequestOrdering =
   | "-created_at"
   | "-template_name"
@@ -306,7 +327,7 @@ export type DashboardTemplatesListRequestScope =
   | "team";
 export const DashboardTemplatesListRequestScope = /*@__PURE__*/ S.String;
 
-export interface DashboardTemplatesListRequest {
+export interface ListDashboardTemplatesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Omit for all templates. When set, filter by featured flag; parsed with str_to_bool (same as other API query booleans). */
@@ -322,7 +343,7 @@ export interface DashboardTemplatesListRequest {
   /** Optional. Full-text search across template name, tags, and description, ranked by relevance. Use it to find templates for a topic (e.g. `retention`, `revenue`, `product analytics`). */
   search?: string;
 }
-export const DashboardTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDashboardTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     is_featured: S.optional(S.Boolean.pipe(T.Query())),
@@ -339,8 +360,8 @@ export const DashboardTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DashboardTemplatesListRequest",
-}) as any as S.Schema<DashboardTemplatesListRequest>;
+  identifier: "ListDashboardTemplatesRequest",
+}) as any as S.Schema<ListDashboardTemplatesRequest>;
 
 export type PaginatedDashboardTemplateListResultsList =
   Array<DashboardTemplate>;
@@ -365,6 +386,70 @@ export const PaginatedDashboardTemplateList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedDashboardTemplateList",
 }) as any as S.Schema<PaginatedDashboardTemplateList>;
 
+export type DashboardTemplatesUpdateRequestTagsList = Array<string>;
+export const DashboardTemplatesUpdateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DashboardTemplatesUpdateRequestTagsList>;
+
+export type DashboardTemplatesUpdateRequestScope =
+  | DashboardTemplateScopeEnum
+  | BlankEnum;
+export const DashboardTemplatesUpdateRequestScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesUpdateRequestScope>;
+
+export type DashboardTemplatesUpdateRequestAvailabilityContextsList =
+  Array<string>;
+export const DashboardTemplatesUpdateRequestAvailabilityContextsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DashboardTemplatesUpdateRequestAvailabilityContextsList>;
+
+export interface UpdateDashboardTemplateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this dashboard template. */
+  id: string;
+  template_name?: string | null;
+  dashboard_description?: string | null;
+  dashboard_filters?: unknown;
+  tags?: DashboardTemplatesUpdateRequestTagsList | null;
+  tiles?: unknown;
+  variables?: unknown;
+  deleted?: boolean | null;
+  image_url?: string | null;
+  scope?: DashboardTemplatesUpdateRequestScope | null;
+  availability_contexts?: DashboardTemplatesUpdateRequestAvailabilityContextsList | null;
+  /** Manually curated; used to highlight templates in the UI. */
+  is_featured?: boolean;
+}
+export const UpdateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    template_name: S.optional(S.NullOr(S.String)),
+    dashboard_description: S.optional(S.NullOr(S.String)),
+    dashboard_filters: S.optional(S.Unknown),
+    tags: S.optional(S.NullOr(DashboardTemplatesUpdateRequestTagsList)),
+    tiles: S.optional(S.Unknown),
+    variables: S.optional(S.Unknown),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    image_url: S.optional(S.NullOr(S.String)),
+    scope: S.optional(S.NullOr(DashboardTemplatesUpdateRequestScope)),
+    availability_contexts: S.optional(
+      S.NullOr(DashboardTemplatesUpdateRequestAvailabilityContextsList),
+    ),
+    is_featured: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/projects/{project_id}/dashboard_templates/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateDashboardTemplateRequest",
+}) as any as S.Schema<UpdateDashboardTemplateRequest>;
+
 export type DashboardTemplatesPartialUpdateRequestTagsList = Array<string>;
 export const DashboardTemplatesPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
@@ -384,7 +469,7 @@ export const DashboardTemplatesPartialUpdateRequestAvailabilityContextsList =
     S.String,
   ) as any as S.Schema<DashboardTemplatesPartialUpdateRequestAvailabilityContextsList>;
 
-export interface DashboardTemplatesPartialUpdateRequest {
+export interface UpdateDashboardTemplatePartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this dashboard template. */
@@ -402,7 +487,7 @@ export interface DashboardTemplatesPartialUpdateRequest {
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
 }
-export const DashboardTemplatesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
+export const UpdateDashboardTemplatePartialRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -432,125 +517,40 @@ export const DashboardTemplatesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "DashboardTemplatesPartialUpdateRequest",
-}) as any as S.Schema<DashboardTemplatesPartialUpdateRequest>;
+  identifier: "UpdateDashboardTemplatePartialRequest",
+}) as any as S.Schema<UpdateDashboardTemplatePartialRequest>;
 
-export interface DashboardTemplatesRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this dashboard template. */
-  id: string;
-}
-export const DashboardTemplatesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/dashboard_templates/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DashboardTemplatesRetrieveRequest",
-}) as any as S.Schema<DashboardTemplatesRetrieveRequest>;
-
-export type DashboardTemplatesUpdateRequestTagsList = Array<string>;
-export const DashboardTemplatesUpdateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardTemplatesUpdateRequestTagsList>;
-
-export type DashboardTemplatesUpdateRequestScope =
-  | DashboardTemplateScopeEnum
-  | BlankEnum;
-export const DashboardTemplatesUpdateRequestScope =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesUpdateRequestScope>;
-
-export type DashboardTemplatesUpdateRequestAvailabilityContextsList =
-  Array<string>;
-export const DashboardTemplatesUpdateRequestAvailabilityContextsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DashboardTemplatesUpdateRequestAvailabilityContextsList>;
-
-export interface DashboardTemplatesUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this dashboard template. */
-  id: string;
-  template_name?: string | null;
-  dashboard_description?: string | null;
-  dashboard_filters?: unknown;
-  tags?: DashboardTemplatesUpdateRequestTagsList | null;
-  tiles?: unknown;
-  variables?: unknown;
-  deleted?: boolean | null;
-  image_url?: string | null;
-  scope?: DashboardTemplatesUpdateRequestScope | null;
-  availability_contexts?: DashboardTemplatesUpdateRequestAvailabilityContextsList | null;
-  /** Manually curated; used to highlight templates in the UI. */
-  is_featured?: boolean;
-}
-export const DashboardTemplatesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    template_name: S.optional(S.NullOr(S.String)),
-    dashboard_description: S.optional(S.NullOr(S.String)),
-    dashboard_filters: S.optional(S.Unknown),
-    tags: S.optional(S.NullOr(DashboardTemplatesUpdateRequestTagsList)),
-    tiles: S.optional(S.Unknown),
-    variables: S.optional(S.Unknown),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    image_url: S.optional(S.NullOr(S.String)),
-    scope: S.optional(S.NullOr(DashboardTemplatesUpdateRequestScope)),
-    availability_contexts: S.optional(
-      S.NullOr(DashboardTemplatesUpdateRequestAvailabilityContextsList),
-    ),
-    is_featured: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/projects/{project_id}/dashboard_templates/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DashboardTemplatesUpdateRequest",
-}) as any as S.Schema<DashboardTemplatesUpdateRequest>;
-
-export type DashboardTemplatesCopyBetweenProjectsCreateError =
+export type CreateDashboardTemplateError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Copy a team template to this project Creates a new team-scoped template in the **target** project (URL) from a **team-scoped** source template in the same organization. Global and feature-flag templates return 400. Cross-organization or inaccessible sources return 404. Source and destination projects must differ (400 if equal). Conflicting `template_name` values on the destination are auto-suffixed with `(copy)`, `(copy 2)`, … */
-export const dashboardTemplatesCopyBetweenProjectsCreate: API.OperationMethod<
-  DashboardTemplatesCopyBetweenProjectsCreateRequest,
+export const createDashboardTemplate: API.OperationMethod<
+  CreateDashboardTemplateRequest,
   DashboardTemplate,
-  DashboardTemplatesCopyBetweenProjectsCreateError,
+  CreateDashboardTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardTemplatesCopyBetweenProjectsCreateRequest,
+  input: CreateDashboardTemplateRequest,
   output: DashboardTemplate,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
 
-export type DashboardTemplatesCreateError =
+export type CreateDashboardTemplateCopyBetweenProjectError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const dashboardTemplatesCreate: API.OperationMethod<
-  DashboardTemplatesCreateRequest,
+/** Copy a team template to this project Creates a new team-scoped template in the **target** project (URL) from a **team-scoped** source template in the same organization. Global and feature-flag templates return 400. Cross-organization or inaccessible sources return 404. Source and destination projects must differ (400 if equal). Conflicting `template_name` values on the destination are auto-suffixed with `(copy)`, `(copy 2)`, … */
+export const createDashboardTemplateCopyBetweenProject: API.OperationMethod<
+  CreateDashboardTemplateCopyBetweenProjectRequest,
   DashboardTemplate,
-  DashboardTemplatesCreateError,
+  CreateDashboardTemplateCopyBetweenProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardTemplatesCreateRequest,
+  input: CreateDashboardTemplateCopyBetweenProjectRequest,
   output: DashboardTemplate,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
@@ -575,42 +575,6 @@ export const dashboardTemplatesDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DashboardTemplatesListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const dashboardTemplatesList: API.OperationMethod<
-  DashboardTemplatesListRequest,
-  PaginatedDashboardTemplateList,
-  DashboardTemplatesListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DashboardTemplatesListRequest,
-  output: PaginatedDashboardTemplateList,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DashboardTemplatesPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-export const dashboardTemplatesPartialUpdate: API.OperationMethod<
-  DashboardTemplatesPartialUpdateRequest,
-  DashboardTemplate,
-  DashboardTemplatesPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DashboardTemplatesPartialUpdateRequest,
-  output: DashboardTemplate,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DashboardTemplatesRetrieveError =
   | Forbidden
   | NotFound
@@ -628,18 +592,54 @@ export const dashboardTemplatesRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DashboardTemplatesUpdateError =
+export type ListDashboardTemplatesError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-export const dashboardTemplatesUpdate: API.OperationMethod<
-  DashboardTemplatesUpdateRequest,
-  DashboardTemplate,
-  DashboardTemplatesUpdateError,
+export const listDashboardTemplates: API.OperationMethod<
+  ListDashboardTemplatesRequest,
+  PaginatedDashboardTemplateList,
+  ListDashboardTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DashboardTemplatesUpdateRequest,
+  input: ListDashboardTemplatesRequest,
+  output: PaginatedDashboardTemplateList,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateDashboardTemplateError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const updateDashboardTemplate: API.OperationMethod<
+  UpdateDashboardTemplateRequest,
+  DashboardTemplate,
+  UpdateDashboardTemplateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDashboardTemplateRequest,
+  output: DashboardTemplate,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateDashboardTemplatePartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const updateDashboardTemplatePartial: API.OperationMethod<
+  UpdateDashboardTemplatePartialRequest,
+  DashboardTemplate,
+  UpdateDashboardTemplatePartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDashboardTemplatePartialRequest,
   output: DashboardTemplate,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,

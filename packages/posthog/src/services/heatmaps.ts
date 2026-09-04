@@ -152,7 +152,7 @@ export const HeatmapEventsResponse = /*@__PURE__*/ S.suspend(() =>
 export type HeatmapsListRequestAggregation = "unique_visitors" | "total_count";
 export const HeatmapsListRequestAggregation = /*@__PURE__*/ S.String;
 
-export interface HeatmapsListRequest {
+export interface ListHeatmapsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** How to aggregate counts: 'total_count' (every interaction, default) or 'unique_visitors' (distinct people). * `unique_visitors` - unique_visitors * `total_count` - total_count */
@@ -182,7 +182,7 @@ export interface HeatmapsListRequest {
   /** Only include interactions captured at a viewport at least this wide, in CSS pixels. Use with viewport_width_max to isolate a device class (e.g. 360-768 for mobile). */
   viewport_width_min?: number;
 }
-export const HeatmapsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListHeatmapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     aggregation: S.optional(HeatmapsListRequestAggregation.pipe(T.Query())),
@@ -206,8 +206,8 @@ export const HeatmapsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HeatmapsListRequest",
-}) as any as S.Schema<HeatmapsListRequest>;
+  identifier: "ListHeatmapsRequest",
+}) as any as S.Schema<ListHeatmapsRequest>;
 
 export interface HeatmapResponseItem {
   count?: number;
@@ -274,12 +274,12 @@ export const HeatmapsListResponseBodyList = /*@__PURE__*/ S.Array(
   HeatmapsResponse,
 ) as any as S.Schema<HeatmapsListResponseBodyList>;
 
-export type HeatmapsListResponse = HeatmapsListResponseBodyList;
-export const HeatmapsListResponse = /*@__PURE__*/ S.suspend(() =>
+export type ListHeatmapsResponse = HeatmapsListResponseBodyList;
+export const ListHeatmapsResponse = /*@__PURE__*/ S.suspend(() =>
   HeatmapsListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "HeatmapsListResponse",
-}) as any as S.Schema<HeatmapsListResponse>;
+  identifier: "ListHeatmapsResponse",
+}) as any as S.Schema<ListHeatmapsResponse>;
 
 export type HeatmapsEventsRetrieveError = Forbidden | NotFound | PosthogOpError;
 /** Drill into the individual session interactions behind one or more heatmap coordinates. Pass the 'points' you want to inspect (from the heatmaps list response) to get the underlying per-session events, so you can jump to the session recordings that produced a hotspot. */
@@ -296,20 +296,20 @@ export const heatmapsEventsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HeatmapsListError =
+export type ListHeatmapsError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
 /** Aggregated heatmap interactions for a page. For type 'click'/'rageclick'/'mousemove' each result is a point with relative x, absolute client-y, and a count. For type 'scrolldepth' the response is scroll-depth buckets instead (cumulative reach down the page). */
-export const heatmapsList: API.OperationMethod<
-  HeatmapsListRequest,
-  HeatmapsListResponse,
-  HeatmapsListError,
+export const listHeatmaps: API.OperationMethod<
+  ListHeatmapsRequest,
+  ListHeatmapsResponse,
+  ListHeatmapsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HeatmapsListRequest,
-  output: HeatmapsListResponse,
+  input: ListHeatmapsRequest,
+  output: ListHeatmapsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

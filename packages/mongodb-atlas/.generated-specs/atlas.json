@@ -62918,7 +62918,7 @@
         "smithy.api#documentation": "Return One Restore Job for One Cluster\n\nReturns one cloud backup restore job for one cluster from the specified project."
       }
     },
-    "com.mongodbatlas.api#CancelGroupClusterBackupRestoreJobRequest": {
+    "com.mongodbatlas.api#RestoreCancelGroupClusterBackupJobRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -62964,10 +62964,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.mongodbatlas.api#CancelGroupClusterBackupRestoreJob": {
+    "com.mongodbatlas.api#RestoreCancelGroupClusterBackupJob": {
       "type": "operation",
       "input": {
-        "target": "com.mongodbatlas.api#CancelGroupClusterBackupRestoreJobRequest"
+        "target": "com.mongodbatlas.api#RestoreCancelGroupClusterBackupJobRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -152604,7 +152604,7 @@
           "target": "com.mongodbatlas.api#GetGroupClusterBackupRestoreJob"
         },
         {
-          "target": "com.mongodbatlas.api#CancelGroupClusterBackupRestoreJob"
+          "target": "com.mongodbatlas.api#RestoreCancelGroupClusterBackupJob"
         },
         {
           "target": "com.mongodbatlas.api#GetGroupClusterBackupSchedule"

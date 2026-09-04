@@ -12449,7 +12449,7 @@
         "smithy.api#documentation": "Rotates the server certificate version to one previously added with the addServerCertificate method. For instances not using Certificate Authority Service (CAS) server CA, use RotateServerCa instead."
       }
     },
-    "com.gcp.sqladmin_v1beta4#PreCheckMajorVersionUpgradeInstancesRequest": {
+    "com.gcp.sqladmin_v1beta4#CheckPreMajorVersionUpgradeInstanceRequest": {
       "type": "structure",
       "members": {
         "project": {
@@ -12477,10 +12477,10 @@
         }
       }
     },
-    "com.gcp.sqladmin_v1beta4#PreCheckMajorVersionUpgradeInstances": {
+    "com.gcp.sqladmin_v1beta4#CheckPreMajorVersionUpgradeInstance": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.sqladmin_v1beta4#PreCheckMajorVersionUpgradeInstancesRequest"
+        "target": "com.gcp.sqladmin_v1beta4#CheckPreMajorVersionUpgradeInstanceRequest"
       },
       "output": {
         "target": "com.gcp.sqladmin_v1beta4#Operation"
@@ -14041,7 +14041,7 @@
         "smithy.api#documentation": "Promotes the read replica instance to be an independent Cloud SQL primary instance. Using this operation might cause your instance to restart."
       }
     },
-    "com.gcp.sqladmin_v1beta4#PointInTimeRestoreInstancesRequest": {
+    "com.gcp.sqladmin_v1beta4#RestorePointInTimeInstanceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -14061,10 +14061,10 @@
         }
       }
     },
-    "com.gcp.sqladmin_v1beta4#PointInTimeRestoreInstances": {
+    "com.gcp.sqladmin_v1beta4#RestorePointInTimeInstance": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.sqladmin_v1beta4#PointInTimeRestoreInstancesRequest"
+        "target": "com.gcp.sqladmin_v1beta4#RestorePointInTimeInstanceRequest"
       },
       "output": {
         "target": "com.gcp.sqladmin_v1beta4#Operation"

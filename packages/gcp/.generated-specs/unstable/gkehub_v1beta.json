@@ -11052,7 +11052,7 @@
         "smithy.api#documentation": "Returns the details of a Membership RBACRoleBinding."
       }
     },
-    "com.gcp.gkehub_v1beta#GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest": {
+    "com.gcp.gkehub_v1beta#GenerateMembershipRbacRoleBindingYamlProjectsLocationsMembershipsRbacrolebindingsRequest": {
       "type": "structure",
       "members": {
         "rbacrolebindingId": {
@@ -11079,10 +11079,10 @@
         }
       }
     },
-    "com.gcp.gkehub_v1beta#GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindings": {
+    "com.gcp.gkehub_v1beta#GenerateMembershipRbacRoleBindingYamlProjectsLocationsMembershipsRbacrolebindings": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.gkehub_v1beta#GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest"
+        "target": "com.gcp.gkehub_v1beta#GenerateMembershipRbacRoleBindingYamlProjectsLocationsMembershipsRbacrolebindingsRequest"
       },
       "output": {
         "target": "com.gcp.gkehub_v1beta#GenerateMembershipRBACRoleBindingYAMLResponse"

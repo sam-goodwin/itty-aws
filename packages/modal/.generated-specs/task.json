@@ -119,7 +119,7 @@
         }
       }
     },
-    "com.modal.task#TaskGetCommandRouterAccessRequest": {
+    "com.modal.task#GetTaskCommandRouterAccessRequest": {
       "type": "structure",
       "members": {
         "taskId": {
@@ -130,7 +130,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.task#TaskGetCommandRouterAccessResponse": {
+    "com.modal.task#GetTaskCommandRouterAccessResponse": {
       "type": "structure",
       "members": {
         "jwt": {
@@ -144,13 +144,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.task#TaskGetCommandRouterAccess": {
+    "com.modal.task#GetTaskCommandRouterAccess": {
       "type": "operation",
       "input": {
-        "target": "com.modal.task#TaskGetCommandRouterAccessRequest"
+        "target": "com.modal.task#GetTaskCommandRouterAccessRequest"
       },
       "output": {
-        "target": "com.modal.task#TaskGetCommandRouterAccessResponse"
+        "target": "com.modal.task#GetTaskCommandRouterAccessResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -160,7 +160,7 @@
         }
       }
     },
-    "com.modal.task#TaskGetInfoRequest": {
+    "com.modal.task#GetTaskInfoRequest": {
       "type": "structure",
       "members": {
         "taskId": {
@@ -446,7 +446,7 @@
         }
       }
     },
-    "com.modal.task#TaskGetInfoResponse": {
+    "com.modal.task#GetTaskInfoResponse": {
       "type": "structure",
       "members": {
         "appId": {
@@ -460,13 +460,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.task#TaskGetInfo": {
+    "com.modal.task#GetTaskInfo": {
       "type": "operation",
       "input": {
-        "target": "com.modal.task#TaskGetInfoRequest"
+        "target": "com.modal.task#GetTaskInfoRequest"
       },
       "output": {
-        "target": "com.modal.task#TaskGetInfoResponse"
+        "target": "com.modal.task#GetTaskInfoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -476,7 +476,7 @@
         }
       }
     },
-    "com.modal.task#TaskListRequest": {
+    "com.modal.task#ListTaskRequest": {
       "type": "structure",
       "members": {
         "environmentName": {
@@ -516,7 +516,7 @@
         "target": "com.modal.task#TaskStats"
       }
     },
-    "com.modal.task#TaskListResponse": {
+    "com.modal.task#ListTaskResponse": {
       "type": "structure",
       "members": {
         "tasks": {
@@ -527,13 +527,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.task#TaskList": {
+    "com.modal.task#ListTask": {
       "type": "operation",
       "input": {
-        "target": "com.modal.task#TaskListRequest"
+        "target": "com.modal.task#ListTaskRequest"
       },
       "output": {
-        "target": "com.modal.task#TaskListResponse"
+        "target": "com.modal.task#ListTaskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -581,13 +581,13 @@
           "target": "com.modal.task#TaskCurrentInputs"
         },
         {
-          "target": "com.modal.task#TaskGetCommandRouterAccess"
+          "target": "com.modal.task#GetTaskCommandRouterAccess"
         },
         {
-          "target": "com.modal.task#TaskGetInfo"
+          "target": "com.modal.task#GetTaskInfo"
         },
         {
-          "target": "com.modal.task#TaskList"
+          "target": "com.modal.task#ListTask"
         },
         {
           "target": "com.modal.task#TaskResult"

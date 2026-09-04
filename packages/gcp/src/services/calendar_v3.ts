@@ -1290,27 +1290,6 @@ export const InsertAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsertAclRequest",
 }) as any as S.Schema<InsertAclRequest>;
 
-export interface InsertCalendarListRequest {
-  /** Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False. */
-  colorRgbFormat?: boolean;
-  /** Request body */
-  body?: CalendarListEntry;
-}
-export const InsertCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(CalendarListEntry.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "users/me/calendarList",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "InsertCalendarListRequest",
-}) as any as S.Schema<InsertCalendarListRequest>;
-
 export interface InsertCalendarsRequest {
   /** Request body */
   body?: Calendar;
@@ -1683,6 +1662,27 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEventsRequest",
 }) as any as S.Schema<ListEventsRequest>;
 
+export interface ListInsertCalendarRequest {
+  /** Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False. */
+  colorRgbFormat?: boolean;
+  /** Request body */
+  body?: CalendarListEntry;
+}
+export const ListInsertCalendarRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(CalendarListEntry.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "users/me/calendarList",
+      baseUrl: "https://www.googleapis.com/calendar/v3/",
+    }),
+  ),
+).annotate({
+  identifier: "ListInsertCalendarRequest",
+}) as any as S.Schema<ListInsertCalendarRequest>;
+
 export interface ListSettingsRequest {
   /** Token specifying which result page to return. Optional. */
   pageToken?: string;
@@ -1733,6 +1733,92 @@ export const Settings = /*@__PURE__*/ S.suspend(() =>
     items: SettingList,
   }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
+
+export type WatchCalendarListMinAccessRoleEnum =
+  | "freeBusyReader"
+  | "owner"
+  | "reader"
+  | "writer"
+  | "writerWithoutPrivateAccess";
+export const WatchCalendarListMinAccessRoleEnum = /*@__PURE__*/ S.String;
+
+export interface Channel {
+  /** Additional parameters controlling delivery channel behavior. Optional. */
+  params?: StringMap;
+  /** Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional. */
+  expiration?: string;
+  /** A version-specific identifier for the watched resource. */
+  resourceUri?: string;
+  /** The address where notifications are delivered for this channel. */
+  address?: string;
+  /** Identifies this as a notification channel used to watch for changes to a resource, which is "api#channel". */
+  kind?: string;
+  /** An arbitrary string delivered to the target address with each notification delivered over this channel. Optional. */
+  token?: string;
+  /** An opaque ID that identifies the resource being watched on this channel. Stable across different API versions. */
+  resourceId?: string;
+  /** A UUID or similar unique string that identifies this channel. */
+  id?: string;
+  /** A Boolean value to indicate whether payload is wanted. Optional. */
+  payload?: boolean;
+  /** The type of delivery mechanism used for this channel. Valid values are "web_hook" (or "webhook"). Both values refer to a channel where Http requests are used to deliver messages. */
+  type?: string;
+}
+export const Channel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    params: S.optional(StringMap),
+    expiration: S.optional(S.String),
+    resourceUri: S.optional(S.String),
+    address: S.optional(S.String),
+    kind: S.optional(S.String),
+    token: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    id: S.optional(S.String),
+    payload: S.optional(S.Boolean),
+    type: S.optional(S.String),
+  }),
+).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
+
+export interface ListWatchCalendarRequest {
+  /** Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional. */
+  maxResults?: number;
+  /** Whether to include deleted calendar list entries in the result. Optional. The default is False. */
+  showDeleted?: boolean;
+  /** Whether to show hidden entries. Optional. The default is False. */
+  showHidden?: boolean;
+  /** The minimum access role for the user in the returned entries. Optional. The default is no restriction. */
+  minAccessRole?: WatchCalendarListMinAccessRoleEnum | (string & {});
+  /** Whether to show only entries for calendars from the organization. This parameter is only applicable to Google Workspace users. Optional. The default is False. */
+  showOwnOrganizationOnly?: boolean;
+  /** Token specifying which result page to return. Optional. */
+  pageToken?: string;
+  /** Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. If only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All entries deleted and hidden since the previous list request will always be in the result set and it is not allowed to set showDeleted neither showHidden to False. To ensure client state consistency minAccessRole and showOwnOrganizationOnly query parameters cannot be specified together with nextSyncToken. If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken. Learn more about incremental synchronization. Optional. The default is to return all entries. */
+  syncToken?: string;
+  /** Request body */
+  body?: Channel;
+}
+export const ListWatchCalendarRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    showHidden: S.optional(S.Boolean.pipe(T.Query())),
+    minAccessRole: S.optional(
+      WatchCalendarListMinAccessRoleEnum.pipe(T.Query()),
+    ),
+    showOwnOrganizationOnly: S.optional(S.Boolean.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    syncToken: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Channel.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "users/me/calendarList/watch",
+      baseUrl: "https://www.googleapis.com/calendar/v3/",
+    }),
+  ),
+).annotate({
+  identifier: "ListWatchCalendarRequest",
+}) as any as S.Schema<ListWatchCalendarRequest>;
 
 export type MoveEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const MoveEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
@@ -2081,43 +2167,6 @@ export const QuickAddEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QuickAddEventsRequest",
 }) as any as S.Schema<QuickAddEventsRequest>;
 
-export interface Channel {
-  /** Additional parameters controlling delivery channel behavior. Optional. */
-  params?: StringMap;
-  /** Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional. */
-  expiration?: string;
-  /** A version-specific identifier for the watched resource. */
-  resourceUri?: string;
-  /** The address where notifications are delivered for this channel. */
-  address?: string;
-  /** Identifies this as a notification channel used to watch for changes to a resource, which is "api#channel". */
-  kind?: string;
-  /** An arbitrary string delivered to the target address with each notification delivered over this channel. Optional. */
-  token?: string;
-  /** An opaque ID that identifies the resource being watched on this channel. Stable across different API versions. */
-  resourceId?: string;
-  /** A UUID or similar unique string that identifies this channel. */
-  id?: string;
-  /** A Boolean value to indicate whether payload is wanted. Optional. */
-  payload?: boolean;
-  /** The type of delivery mechanism used for this channel. Valid values are "web_hook" (or "webhook"). Both values refer to a channel where Http requests are used to deliver messages. */
-  type?: string;
-}
-export const Channel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    params: S.optional(StringMap),
-    expiration: S.optional(S.String),
-    resourceUri: S.optional(S.String),
-    address: S.optional(S.String),
-    kind: S.optional(S.String),
-    token: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    id: S.optional(S.String),
-    payload: S.optional(S.Boolean),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
-
 export interface StopChannelsRequest {
   /** Request body */
   body?: Channel;
@@ -2326,55 +2375,6 @@ export const WatchAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WatchAclRequest",
 }) as any as S.Schema<WatchAclRequest>;
-
-export type WatchCalendarListMinAccessRoleEnum =
-  | "freeBusyReader"
-  | "owner"
-  | "reader"
-  | "writer"
-  | "writerWithoutPrivateAccess";
-export const WatchCalendarListMinAccessRoleEnum = /*@__PURE__*/ S.String;
-
-export interface WatchCalendarListRequest {
-  /** Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional. */
-  maxResults?: number;
-  /** Whether to include deleted calendar list entries in the result. Optional. The default is False. */
-  showDeleted?: boolean;
-  /** Whether to show hidden entries. Optional. The default is False. */
-  showHidden?: boolean;
-  /** The minimum access role for the user in the returned entries. Optional. The default is no restriction. */
-  minAccessRole?: WatchCalendarListMinAccessRoleEnum | (string & {});
-  /** Whether to show only entries for calendars from the organization. This parameter is only applicable to Google Workspace users. Optional. The default is False. */
-  showOwnOrganizationOnly?: boolean;
-  /** Token specifying which result page to return. Optional. */
-  pageToken?: string;
-  /** Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. If only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All entries deleted and hidden since the previous list request will always be in the result set and it is not allowed to set showDeleted neither showHidden to False. To ensure client state consistency minAccessRole and showOwnOrganizationOnly query parameters cannot be specified together with nextSyncToken. If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken. Learn more about incremental synchronization. Optional. The default is to return all entries. */
-  syncToken?: string;
-  /** Request body */
-  body?: Channel;
-}
-export const WatchCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    showHidden: S.optional(S.Boolean.pipe(T.Query())),
-    minAccessRole: S.optional(
-      WatchCalendarListMinAccessRoleEnum.pipe(T.Query()),
-    ),
-    showOwnOrganizationOnly: S.optional(S.Boolean.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    syncToken: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Channel.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "users/me/calendarList/watch",
-      baseUrl: "https://www.googleapis.com/calendar/v3/",
-    }),
-  ),
-).annotate({
-  identifier: "WatchCalendarListRequest",
-}) as any as S.Schema<WatchCalendarListRequest>;
 
 export type WatchEventsEventTypesEnum =
   | "birthday"
@@ -2727,26 +2727,6 @@ export const insertAcl: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCalendarListError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Inserts an existing calendar into the user's calendar list. */
-export const insertCalendarList: API.OperationMethod<
-  InsertCalendarListRequest,
-  CalendarListEntry,
-  InsertCalendarListError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsertCalendarListRequest,
-  output: CalendarListEntry,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type InsertCalendarsError =
   | NotFound
   | Forbidden
@@ -2871,6 +2851,26 @@ export const listEvents: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
+export type ListInsertCalendarError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Inserts an existing calendar into the user's calendar list. */
+export const listInsertCalendar: API.OperationMethod<
+  ListInsertCalendarRequest,
+  CalendarListEntry,
+  ListInsertCalendarError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListInsertCalendarRequest,
+  output: CalendarListEntry,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListSettingsError = NotFound | Forbidden | GcpOpError;
 /** Returns all user settings for the authenticated user. */
 export const listSettings: API.PaginatedOperationMethod<
@@ -2891,6 +2891,26 @@ export const listSettings: API.PaginatedOperationMethod<
     items: "items",
   } as const,
 })) as any;
+
+export type ListWatchCalendarError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Watch for changes to CalendarList resources. */
+export const listWatchCalendar: API.OperationMethod<
+  ListWatchCalendarRequest,
+  Channel,
+  ListWatchCalendarError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWatchCalendarRequest,
+  output: Channel,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
 
 export type MoveEventsError =
   | NotFound
@@ -3166,26 +3186,6 @@ export const watchAcl: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: WatchAclRequest,
-  output: Channel,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WatchCalendarListError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Watch for changes to CalendarList resources. */
-export const watchCalendarList: API.OperationMethod<
-  WatchCalendarListRequest,
-  Channel,
-  WatchCalendarListError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WatchCalendarListRequest,
   output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
