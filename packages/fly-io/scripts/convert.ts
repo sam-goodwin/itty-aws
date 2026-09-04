@@ -90,7 +90,6 @@ await runOpenApiConvert({
       name: "machines",
       specPath: "specs/spec-mirror-fly-io/specs/openapi.json",
       preprocess: (spec) => {
-        let staleOps = 0;
         const badPatches: string[] = [];
         for (const { file, parsed } of machinesPatches) {
           const label = path.relative(patchesRoot, file);
@@ -100,9 +99,8 @@ await runOpenApiConvert({
             } catch (e) {
               const msg = e instanceof Error ? e.message : String(e);
               if (isStaleTargetError(msg)) {
-                staleOps++;
-                console.warn(
-                  `   ⚠️  stale: machines/${label} [${patchOp.op} ${patchOp.path}]`,
+                badPatches.push(
+                  `${label} [${patchOp.op} ${patchOp.path}]: stale target (${msg})`,
                 );
               } else {
                 badPatches.push(
@@ -115,13 +113,12 @@ await runOpenApiConvert({
         if (badPatches.length) {
           for (const b of badPatches) console.error(`❌ bad patch: ${b}`);
           throw new Error(
-            `${badPatches.length} malformed patch operation(s) — fix or remove them`,
+            `${badPatches.length} machines patch operation(s) failed — JSON pointers must match spec-mirror paths (/v1/…)`,
           );
         }
         if (machinesPatches.length > 0) {
           console.log(
-            `   applied ${machinesPatches.length} OpenAPI patch file(s) (flat + patches/machines)` +
-              (staleOps ? `, ${staleOps} stale op(s) skipped` : ""),
+            `   applied ${machinesPatches.length} OpenAPI patch file(s) (flat + patches/machines)`,
           );
         }
       },
