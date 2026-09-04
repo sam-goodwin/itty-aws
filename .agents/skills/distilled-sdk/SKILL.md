@@ -246,10 +246,10 @@ segment, which is why every package's declared path is
 A path that reads through some other layout resolves to a file the mirror
 does not have, and `resolveSpecPath` says so rather than failing later.
 
-Two packages are not wired to it. `aws` resolves its models directory inside
-`runGeneratorCli` rather than at the call site. `cloudflare` takes its spec
-root as a `--specs` flag and its mirror is `blocked` — see the stack README —
-so it is the one package still reading a stale in-repo snapshot.
+`aws` convert reads the spec-mirror Smithy models, applies `patches/{sdkId}.json`,
+and writes `.generated-specs/<sdkId>.json`. generate compiles those. `cloudflare`
+takes its spec root as a `--specs` flag and its mirror is `blocked` — see the
+stack README — so it is the one package still reading a stale in-repo snapshot.
 
 `fly-io` is the one package that reads more than its mirror: `specs/sprites`,
 `specs/mpg` and `specs/addons` are small hand-maintained documents committed
