@@ -1,0 +1,2112 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.digitalocean.reservedips#ReservedIPsListRequest": {
+      "type": "structure",
+      "members": {
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "per_page",
+            "smithy.api#documentation": "Number of items returned per page"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Which 'page' of paginated results to return."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIp": {
+      "type": "structure",
+      "members": {
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The public IP address of the reserved IP. It also serves as its identifier."
+          }
+        },
+        "region": {
+          "target": "com.digitalocean.reservedips#ReservedIpRegion"
+        },
+        "droplet": {
+          "target": "com.digitalocean.reservedips#ReservedIpDroplet",
+          "traits": {
+            "smithy.api#documentation": "The Droplet that the reserved IP has been assigned to. When you query a reserved IP, if it is assigned to a Droplet, the entire Droplet object will be returned. If it is not assigned, the value will be null.<br><br>Requires `droplet:read` scope."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value indicating whether or not the reserved IP has pending actions preventing new ones from being submitted."
+          }
+        },
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The UUID of the project to which the reserved IP currently belongs.<br><br>Requires `project:read` scope."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIpRegionFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "This attribute is set to an array which contains features available in this region"
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIpRegionSizesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIpRegion": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the region.  This will be a full name that is used in the control panel and other interfaces.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable string that is used as a unique identifier for each region.",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.digitalocean.reservedips#ReservedIpRegionFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "This attribute is set to an array which contains features available in this region",
+            "smithy.api#required": {}
+          }
+        },
+        "available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This is a boolean value that represents whether new Droplets can be created in this region.",
+            "smithy.api#required": {}
+          }
+        },
+        "sizes": {
+          "target": "com.digitalocean.reservedips#ReservedIpRegionSizesList",
+          "traits": {
+            "smithy.api#documentation": "This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#Droplet": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name set for the Droplet instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "memory": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Memory of the Droplet in megabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "vcpus": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of virtual CPUs.",
+            "smithy.api#required": {}
+          }
+        },
+        "disk": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size of the Droplet's disk in gigabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "disk_info": {
+          "target": "com.digitalocean.reservedips#DropletDiskInfoList",
+          "traits": {
+            "smithy.api#documentation": "An array of objects containing information about the disks available to the Droplet."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value indicating whether the Droplet has been locked, preventing actions by users.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.digitalocean.reservedips#DropletStatus",
+          "traits": {
+            "smithy.api#documentation": "A status string indicating the state of the Droplet instance. This may be \"new\", \"active\", \"off\", or \"archive\".",
+            "smithy.api#required": {}
+          }
+        },
+        "kernel": {
+          "target": "com.digitalocean.reservedips#Kernel",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the Droplet was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.digitalocean.reservedips#DropletFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "An array of features enabled on this Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "backup_ids": {
+          "target": "com.digitalocean.reservedips#DropletBackupIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array of backup IDs of any backups that have been taken of the Droplet instance.  Droplet backups are enabled at the time of the instance creation.<br>Requires `image:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "next_backup_window": {
+          "target": "com.digitalocean.reservedips#DropletNextBackupWindow",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "snapshot_ids": {
+          "target": "com.digitalocean.reservedips#DropletSnapshotIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array of snapshot IDs of any snapshots created from the Droplet instance.<br>Requires `image:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "image": {
+          "target": "com.digitalocean.reservedips#DropletImage",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "volume_ids": {
+          "target": "com.digitalocean.reservedips#DropletVolumeIdsList",
+          "traits": {
+            "smithy.api#documentation": "A flat array including the unique identifier for each Block Storage volume attached to the Droplet.<br>Requires `block_storage:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "com.digitalocean.reservedips#Size",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique slug identifier for the size of this Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "networks": {
+          "target": "com.digitalocean.reservedips#DropletNetworks",
+          "traits": {
+            "smithy.api#documentation": "The details of the network that are configured for the Droplet instance.  This is an object that contains keys for IPv4 and IPv6.  The value of each of these is an array that contains objects describing an individual IP resource allocated to the Droplet.  These will define attributes like the IP address, netmask, and gateway of the specific network depending on the type of network it is.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "com.digitalocean.reservedips#Region",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.digitalocean.reservedips#DropletTagsList",
+          "traits": {
+            "smithy.api#documentation": "An array of Tags the Droplet has been tagged with.<br>Requires `tag:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "vpc_uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string specifying the UUID of the VPC to which the Droplet is assigned.<br>Requires `vpc:read` scope."
+          }
+        },
+        "gpu_info": {
+          "target": "com.digitalocean.reservedips#GpuInfo"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#DiskInfo": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.reservedips#DiskInfoType",
+          "traits": {
+            "smithy.api#documentation": "The type of disk. All Droplets contain a `local` or `boot` disk. Additionally, GPU Droplets can also have a `scratch` disk for non-persistent data."
+          }
+        },
+        "size": {
+          "target": "com.digitalocean.reservedips#DiskInfoSize"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#DiskInfoType": {
+      "type": "enum",
+      "members": {
+        "LOCAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "local"
+          }
+        },
+        "BOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boot"
+          }
+        },
+        "SCRATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scratch"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of disk. All Droplets contain a `local` or `boot` disk. Additionally, GPU Droplets can also have a `scratch` disk for non-persistent data."
+      }
+    },
+    "com.digitalocean.reservedips#DiskInfoSize": {
+      "type": "structure",
+      "members": {
+        "amount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of space allocated to the disk."
+          }
+        },
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unit of measure for the disk size."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#DropletDiskInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#DiskInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of objects containing information about the disks available to the Droplet."
+      }
+    },
+    "com.digitalocean.reservedips#DropletStatus": {
+      "type": "enum",
+      "members": {
+        "NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "new"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "ARCHIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A status string indicating the state of the Droplet instance. This may be \"new\", \"active\", \"off\", or \"archive\"."
+      }
+    },
+    "com.digitalocean.reservedips#Kernel": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique number used to identify and reference a specific kernel."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the kernel. This is shown in the web UI and is generally a descriptive title for the kernel in question."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A standard kernel version string representing the version, patch, and release information."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "**Note**: All Droplets created after March 2017 use internal kernels by default.\nThese Droplets will have this attribute set to `null`.\n\nThe current [kernel](https://docs.digitalocean.com/products/droplets/how-to/kernel/)\nfor Droplets with externally managed kernels. This will initially be set to\nthe kernel of the base image when the Droplet is created.\n"
+      }
+    },
+    "com.digitalocean.reservedips#DropletFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of features enabled on this Droplet."
+      }
+    },
+    "com.digitalocean.reservedips#DropletBackupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of backup IDs of any backups that have been taken of the Droplet instance.  Droplet backups are enabled at the time of the instance creation.<br>Requires `image:read` scope."
+      }
+    },
+    "com.digitalocean.reservedips#DropletNextBackupWindow": {
+      "type": "structure",
+      "members": {
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format specifying the start of the Droplet's backup window."
+          }
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format specifying the end of the Droplet's backup window."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#DropletSnapshotIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of snapshot IDs of any snapshots created from the Droplet instance.<br>Requires `image:read` scope."
+      }
+    },
+    "com.digitalocean.reservedips#DropletImageType": {
+      "type": "enum",
+      "members": {
+        "BASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "base"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        },
+        "BACKUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backup"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the kind of image. It may be one of `base`, `snapshot`, `backup`, `custom`, or `admin`. Respectively, this specifies whether an image is a DigitalOcean base OS image, user-generated Droplet snapshot, automatically created Droplet backup, user-provided virtual machine image, or an image used for DigitalOcean managed resources (e.g. DOKS worker nodes)."
+      }
+    },
+    "com.digitalocean.reservedips#Distribution": {
+      "type": "enum",
+      "members": {
+        "ARCH_LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Arch Linux"
+          }
+        },
+        "CENTOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CentOS"
+          }
+        },
+        "COREOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CoreOS"
+          }
+        },
+        "DEBIAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Debian"
+          }
+        },
+        "FEDORA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fedora"
+          }
+        },
+        "FEDORA_ATOMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fedora Atomic"
+          }
+        },
+        "FREEBSD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FreeBSD"
+          }
+        },
+        "GENTOO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Gentoo"
+          }
+        },
+        "OPENSUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openSUSE"
+          }
+        },
+        "RANCHEROS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RancherOS"
+          }
+        },
+        "ROCKY_LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Rocky Linux"
+          }
+        },
+        "UBUNTU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ubuntu"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of a custom image's distribution. Currently, the valid values are  `Arch Linux`, `CentOS`, `CoreOS`, `Debian`, `Fedora`, `Fedora Atomic`,  `FreeBSD`, `Gentoo`, `openSUSE`, `RancherOS`, `Rocky Linux`, `Ubuntu`, and `Unknown`.  Any other value will be accepted but ignored, and `Unknown` will be used in its place."
+      }
+    },
+    "com.digitalocean.reservedips#RegionsArray": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#RegionSlug"
+      },
+      "traits": {
+        "smithy.api#documentation": "This attribute is an array of the regions that the image is available in. The regions are represented by their identifying slug values."
+      }
+    },
+    "com.digitalocean.reservedips#RegionSlug": {
+      "type": "enum",
+      "members": {
+        "AMS1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ams1"
+          }
+        },
+        "AMS2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ams2"
+          }
+        },
+        "AMS3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ams3"
+          }
+        },
+        "BLR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blr1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "LON1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lon1"
+          }
+        },
+        "NYC1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nyc1"
+          }
+        },
+        "NYC2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nyc2"
+          }
+        },
+        "NYC3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nyc3"
+          }
+        },
+        "SFO1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SFO2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo2"
+          }
+        },
+        "SFO3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo3"
+          }
+        },
+        "SGP1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sgp1"
+          }
+        },
+        "TOR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tor1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The slug identifier for the region where the resource will initially be  available."
+      }
+    },
+    "com.digitalocean.reservedips#TagsArray": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A flat array of tag names as strings to be applied to the resource. Tag names may be for either existing or new tags. <br><br>Requires `tag:create` scope."
+      }
+    },
+    "com.digitalocean.reservedips#DropletImageStatus": {
+      "type": "enum",
+      "members": {
+        "NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEW"
+          }
+        },
+        "AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "available"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "RETIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "retired"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A status string indicating the state of a custom image. This may be `NEW`,\n `available`, `pending`, `deleted`, or `retired`."
+      }
+    },
+    "com.digitalocean.reservedips#DropletImage": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique number that can be used to identify and reference a specific image."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.digitalocean.reservedips#DropletImageType",
+          "traits": {
+            "smithy.api#documentation": "Describes the kind of image. It may be one of `base`, `snapshot`, `backup`, `custom`, or `admin`. Respectively, this specifies whether an image is a DigitalOcean base OS image, user-generated Droplet snapshot, automatically created Droplet backup, user-provided virtual machine image, or an image used for DigitalOcean managed resources (e.g. DOKS worker nodes)."
+          }
+        },
+        "distribution": {
+          "target": "com.digitalocean.reservedips#Distribution"
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A uniquely identifying string that is associated with each of the DigitalOcean-provided public images. These can be used to reference a public image as an alternative to the numeric id.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "public": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This is a boolean value that indicates whether the image in question is public or not. An image that is public is available to all accounts. A non-public image is only accessible from your account."
+          }
+        },
+        "regions": {
+          "target": "com.digitalocean.reservedips#RegionsArray"
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the image was created."
+          }
+        },
+        "min_disk_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum disk size in GB required for a Droplet to use this image.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "size_gigabytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The size of the image in gigabytes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "tags": {
+          "target": "com.digitalocean.reservedips#TagsArray",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.digitalocean.reservedips#DropletImageStatus",
+          "traits": {
+            "smithy.api#documentation": "A status string indicating the state of a custom image. This may be `NEW`,\n `available`, `pending`, `deleted`, or `retired`."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string containing information about errors that may occur when importing\n a custom image."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#DropletVolumeIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A flat array including the unique identifier for each Block Storage volume attached to the Droplet.<br>Requires `block_storage:read` scope."
+      }
+    },
+    "com.digitalocean.reservedips#Size": {
+      "type": "structure",
+      "members": {
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable string that is used to uniquely identify each size.",
+            "smithy.api#required": {}
+          }
+        },
+        "memory": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of RAM allocated to Droplets created of this size. The value is represented in megabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "vcpus": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of CPUs allocated to Droplets of this size.",
+            "smithy.api#required": {}
+          }
+        },
+        "disk": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of disk space set aside for Droplets of this size. The value is represented in gigabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "transfer": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "price_monthly": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "This attribute describes the monthly cost of this Droplet size if the Droplet is kept for an entire month. The value is measured in US dollars.",
+            "smithy.api#required": {}
+          }
+        },
+        "price_hourly": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "This describes the price of the Droplet size as measured hourly. The value is measured in US dollars.",
+            "smithy.api#required": {}
+          }
+        },
+        "regions": {
+          "target": "com.digitalocean.reservedips#SizeRegionsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the region slugs where this size is available for Droplet creates.",
+            "smithy.api#required": {}
+          }
+        },
+        "available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This is a boolean value that represents whether new Droplets can be created with this size.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string describing the class of Droplets created from this size. For example: Basic, General Purpose, CPU-Optimized, Memory-Optimized, or Storage-Optimized.",
+            "smithy.api#required": {}
+          }
+        },
+        "disk_info": {
+          "target": "com.digitalocean.reservedips#SizeDiskInfoList",
+          "traits": {
+            "smithy.api#documentation": "An array of objects containing information about the disks available to Droplets created with this size."
+          }
+        },
+        "gpu_info": {
+          "target": "com.digitalocean.reservedips#GpuInfo"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#SizeRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the region slugs where this size is available for Droplet creates."
+      }
+    },
+    "com.digitalocean.reservedips#SizeDiskInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#DiskInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of objects containing information about the disks available to Droplets created with this size."
+      }
+    },
+    "com.digitalocean.reservedips#GpuInfo": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of GPUs allocated to the Droplet."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The model of the GPU."
+          }
+        },
+        "vram": {
+          "target": "com.digitalocean.reservedips#GpuInfoVram"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing information about the GPU capabilities of Droplets created with this size."
+      }
+    },
+    "com.digitalocean.reservedips#GpuInfoVram": {
+      "type": "structure",
+      "members": {
+        "amount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of VRAM allocated to the GPU."
+          }
+        },
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unit of measure for the VRAM."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#NetworkV4": {
+      "type": "structure",
+      "members": {
+        "ip_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the IPv4 network interface."
+          }
+        },
+        "netmask": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The netmask of the IPv4 network interface."
+          }
+        },
+        "gateway": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The gateway of the specified IPv4 network interface.\n\nFor private interfaces, a gateway is not provided. This is denoted by\nreturning `nil` as its value.\n"
+          }
+        },
+        "type": {
+          "target": "com.digitalocean.reservedips#NetworkV4Type",
+          "traits": {
+            "smithy.api#documentation": "The type of the IPv4 network interface."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#NetworkV4Type": {
+      "type": "enum",
+      "members": {
+        "PUBLIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "public"
+          }
+        },
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "private"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the IPv4 network interface."
+      }
+    },
+    "com.digitalocean.reservedips#DropletNetworksV4List": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#NetworkV4"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#NetworkV6": {
+      "type": "structure",
+      "members": {
+        "ip_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the IPv6 network interface."
+          }
+        },
+        "netmask": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The netmask of the IPv6 network interface."
+          }
+        },
+        "gateway": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The gateway of the specified IPv6 network interface."
+          }
+        },
+        "type": {
+          "target": "com.digitalocean.reservedips#NetworkV6Type",
+          "traits": {
+            "smithy.api#documentation": "The type of the IPv6 network interface.\n\n**Note**: IPv6 private  networking is not currently supported.\n"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#NetworkV6Type": {
+      "type": "enum",
+      "members": {
+        "PUBLIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "public"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the IPv6 network interface.\n\n**Note**: IPv6 private  networking is not currently supported.\n"
+      }
+    },
+    "com.digitalocean.reservedips#DropletNetworksV6List": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#NetworkV6"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#DropletNetworks": {
+      "type": "structure",
+      "members": {
+        "v4": {
+          "target": "com.digitalocean.reservedips#DropletNetworksV4List"
+        },
+        "v6": {
+          "target": "com.digitalocean.reservedips#DropletNetworksV6List"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The details of the network that are configured for the Droplet instance.  This is an object that contains keys for IPv4 and IPv6.  The value of each of these is an array that contains objects describing an individual IP resource allocated to the Droplet.  These will define attributes like the IP address, netmask, and gateway of the specific network depending on the type of network it is."
+      }
+    },
+    "com.digitalocean.reservedips#Region": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the region.  This will be a full name that is used in the control panel and other interfaces.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable string that is used as a unique identifier for each region.",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.digitalocean.reservedips#RegionFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "This attribute is set to an array which contains features available in this region",
+            "smithy.api#required": {}
+          }
+        },
+        "available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This is a boolean value that represents whether new Droplets can be created in this region.",
+            "smithy.api#required": {}
+          }
+        },
+        "sizes": {
+          "target": "com.digitalocean.reservedips#RegionSizesList",
+          "traits": {
+            "smithy.api#documentation": "This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#RegionFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "This attribute is set to an array which contains features available in this region"
+      }
+    },
+    "com.digitalocean.reservedips#RegionSizesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view."
+      }
+    },
+    "com.digitalocean.reservedips#DropletTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of Tags the Droplet has been tagged with.<br>Requires `tag:read` scope."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIpDroplet": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Document"
+        },
+        "Droplet": {
+          "target": "com.digitalocean.reservedips#Droplet"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Droplet that the reserved IP has been assigned to. When you query a reserved IP, if it is assigned to a Droplet, the entire Droplet object will be returned. If it is not assigned, the value will be null.<br><br>Requires `droplet:read` scope."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsListResponseReservedIpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#ReservedIp"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#PageLinks": {
+      "type": "structure",
+      "members": {
+        "pages": {
+          "target": "com.digitalocean.reservedips#PageLinksPages"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ForwardLinks": {
+      "type": "structure",
+      "members": {
+        "last": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the last page of the results."
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the next page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#BackwardLinks": {
+      "type": "structure",
+      "members": {
+        "first": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the first page of the results."
+          }
+        },
+        "prev": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the previous page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#PageLinksPages": {
+      "type": "union",
+      "members": {
+        "ForwardLinks": {
+          "target": "com.digitalocean.reservedips#ForwardLinks"
+        },
+        "BackwardLinks": {
+          "target": "com.digitalocean.reservedips#BackwardLinks"
+        },
+        "Case2": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsListResponseMeta": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of objects returned by the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsListResponse": {
+      "type": "structure",
+      "members": {
+        "reserved_ips": {
+          "target": "com.digitalocean.reservedips#ReservedIPsListResponseReservedIpsList"
+        },
+        "links": {
+          "target": "com.digitalocean.reservedips#PageLinks"
+        },
+        "meta": {
+          "target": "com.digitalocean.reservedips#ReservedIPsListResponseMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.reservedips#ReservedIPsListRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.reservedips#ReservedIPsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/reserved_ips",
+          "code": 200
+        },
+        "smithy.api#documentation": "List All Reserved IPs\n\nTo list all of the reserved IPs available on your account, send a GET request to `/v2/reserved_ips`."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIpCreate": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.digitalocean.reservedips#ReservedIpCreateCase0"
+        },
+        "Case1": {
+          "target": "com.digitalocean.reservedips#ReservedIpCreateCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIpCreateCase0": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Droplet that the reserved IP will be assigned to.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIpCreateCase1": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug identifier for the region the reserved IP will be reserved to.",
+            "smithy.api#required": {}
+          }
+        },
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The UUID of the project to which the reserved IP will be assigned."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.digitalocean.reservedips#ReservedIpCreate",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.reservedips#ActionLink": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+          }
+        },
+        "rel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string specifying the type of the related action."
+          }
+        },
+        "href": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL that can be used to access the action."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The linked actions can be used to check the status of a Droplet's create event."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreateResponseLinksDropletsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#ActionLink"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreateResponseLinksActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#ActionLink"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreateResponseLinks": {
+      "type": "structure",
+      "members": {
+        "droplets": {
+          "target": "com.digitalocean.reservedips#ReservedIPsCreateResponseLinksDropletsList"
+        },
+        "actions": {
+          "target": "com.digitalocean.reservedips#ReservedIPsCreateResponseLinksActionsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "reserved_ip": {
+          "target": "com.digitalocean.reservedips#ReservedIp"
+        },
+        "links": {
+          "target": "com.digitalocean.reservedips#ReservedIPsCreateResponseLinks"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.reservedips#ReservedIPsCreateRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.reservedips#ReservedIPsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/reserved_ips",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a New Reserved IP\n\nOn creation, a reserved IP must be either assigned to a Droplet or reserved to a region.\n* To create a new reserved IP assigned to a Droplet, send a POST\n  request to `/v2/reserved_ips` with the `droplet_id` attribute.\n\n* To create a new reserved IP reserved to a region, send a POST request to\n  `/v2/reserved_ips` with the `region` attribute."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsGetRequest": {
+      "type": "structure",
+      "members": {
+        "reserved_ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A reserved IP address."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsGetResponse": {
+      "type": "structure",
+      "members": {
+        "reserved_ip": {
+          "target": "com.digitalocean.reservedips#ReservedIp"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.reservedips#ReservedIPsGetRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.reservedips#ReservedIPsGetResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.reservedips#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/reserved_ips/{reserved_ip}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve an Existing Reserved IP\n\nTo show information about a reserved IP, send a GET request to `/v2/reserved_ips/$RESERVED_IP_ADDR`."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "reserved_ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A reserved IP address."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.reservedips#ReservedIPsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.reservedips#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/reserved_ips/{reserved_ip}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a Reserved IP\n\nTo delete a reserved IP and remove it from your account, send a DELETE request\nto `/v2/reserved_ips/$RESERVED_IP_ADDR`.\n\nA successful request will receive a 204 status code with no body in response.\nThis indicates that the request was processed successfully."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsListRequest": {
+      "type": "structure",
+      "members": {
+        "reserved_ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A reserved IP address."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.reservedips#Action": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+          }
+        },
+        "status": {
+          "target": "com.digitalocean.reservedips#ActionStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\"."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the type of action that the object represents. For example, this could be \"transfer\" to represent the state of an image transfer action."
+          }
+        },
+        "started_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the action was initiated."
+          }
+        },
+        "completed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the action was completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resource_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the resource that the action is associated with.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resource_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of resource that the action is associated with."
+          }
+        },
+        "region": {
+          "target": "com.digitalocean.reservedips#Region"
+        },
+        "region_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable string that is used as a unique identifier for each region.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ActionStatus": {
+      "type": "enum",
+      "members": {
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in-progress"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\"."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsListResponseActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#Action"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsListResponseMeta": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of objects returned by the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsListResponse": {
+      "type": "structure",
+      "members": {
+        "actions": {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsListResponseActionsList"
+        },
+        "links": {
+          "target": "com.digitalocean.reservedips#PageLinks"
+        },
+        "meta": {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsListResponseMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.reservedips#ReservedIPsActionsListRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.reservedips#ReservedIPsActionsListResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.reservedips#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/reserved_ips/{reserved_ip}/actions",
+          "code": 200
+        },
+        "smithy.api#documentation": "List All Actions for a Reserved IP\n\nTo retrieve all actions that have been executed on a reserved IP, send a GET request to `/v2/reserved_ips/$RESERVED_IP/actions`."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIpActionUnassign": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.reservedips#ReservedIpActionUnassignType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the reserved IP.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIpActionUnassignType": {
+      "type": "enum",
+      "members": {
+        "ASSIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "assign"
+          }
+        },
+        "UNASSIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unassign"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the reserved IP."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIpActionAssign": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.reservedips#ReservedIpActionAssignType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the reserved IP.",
+            "smithy.api#required": {}
+          }
+        },
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Droplet that the reserved IP will be assigned to.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIpActionAssignType": {
+      "type": "enum",
+      "members": {
+        "ASSIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "assign"
+          }
+        },
+        "UNASSIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unassign"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the reserved IP."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsPostRequestBody": {
+      "type": "union",
+      "members": {
+        "ReservedIpActionUnassign": {
+          "target": "com.digitalocean.reservedips#ReservedIpActionUnassign"
+        },
+        "ReservedIpActionAssign": {
+          "target": "com.digitalocean.reservedips#ReservedIpActionAssign"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsPostRequest": {
+      "type": "structure",
+      "members": {
+        "reserved_ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A reserved IP address."
+          }
+        },
+        "body": {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsPostRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsPostResponseActionStatus": {
+      "type": "enum",
+      "members": {
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in-progress"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\"."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsPostResponseAction": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+          }
+        },
+        "status": {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsPostResponseActionStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\"."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the type of action that the object represents. For example, this could be \"transfer\" to represent the state of an image transfer action."
+          }
+        },
+        "started_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the action was initiated."
+          }
+        },
+        "completed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the action was completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resource_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the resource that the action is associated with.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resource_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of resource that the action is associated with."
+          }
+        },
+        "region": {
+          "target": "com.digitalocean.reservedips#Region"
+        },
+        "region_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable string that is used as a unique identifier for each region.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The UUID of the project to which the reserved IP currently belongs."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsPostResponse": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsPostResponseAction"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsPost": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.reservedips#ReservedIPsActionsPostRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.reservedips#ReservedIPsActionsPostResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.reservedips#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/reserved_ips/{reserved_ip}/actions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Initiate a Reserved IP Action\n\nTo initiate an action on a reserved IP send a POST request to\n`/v2/reserved_ips/$RESERVED_IP/actions`. In the JSON body to the request,\nset the `type` attribute to on of the supported action types:"
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsGetRequest": {
+      "type": "structure",
+      "members": {
+        "reserved_ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A reserved IP address."
+          }
+        },
+        "action_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsGetResponseActionStatus": {
+      "type": "enum",
+      "members": {
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in-progress"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\"."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsGetResponseAction": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+          }
+        },
+        "status": {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsGetResponseActionStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\"."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the type of action that the object represents. For example, this could be \"transfer\" to represent the state of an image transfer action."
+          }
+        },
+        "started_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the action was initiated."
+          }
+        },
+        "completed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the action was completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resource_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the resource that the action is associated with.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resource_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of resource that the action is associated with."
+          }
+        },
+        "region": {
+          "target": "com.digitalocean.reservedips#Region"
+        },
+        "region_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable string that is used as a unique identifier for each region.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The UUID of the project to which the reserved IP currently belongs."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsGetResponse": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsGetResponseAction"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsActionsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.reservedips#ReservedIPsActionsGetRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.reservedips#ReservedIPsActionsGetResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.reservedips#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/reserved_ips/{reserved_ip}/actions/{action_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve an Existing Reserved IP Action\n\nTo retrieve the status of a reserved IP action, send a GET request to `/v2/reserved_ips/$RESERVED_IP/actions/$ACTION_ID`."
+      }
+    },
+    "com.digitalocean.reservedips#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.digitalocean.reservedips#DigitalOceanReservedIps": {
+      "type": "service",
+      "version": "2.0",
+      "operations": [
+        {
+          "target": "com.digitalocean.reservedips#ReservedIPsList"
+        },
+        {
+          "target": "com.digitalocean.reservedips#ReservedIPsCreate"
+        },
+        {
+          "target": "com.digitalocean.reservedips#ReservedIPsGet"
+        },
+        {
+          "target": "com.digitalocean.reservedips#ReservedIPsDelete"
+        },
+        {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsList"
+        },
+        {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsPost"
+        },
+        {
+          "target": "com.digitalocean.reservedips#ReservedIPsActionsGet"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "DigitalOcean API"
+      }
+    }
+  }
+}

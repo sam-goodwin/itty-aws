@@ -1,0 +1,443 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.digitalocean.sshkeys#SshKeysListRequest": {
+      "type": "structure",
+      "members": {
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "per_page",
+            "smithy.api#documentation": "Number of items returned per page"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Which 'page' of paginated results to return."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeys": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fingerprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "public_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entire public key string that was uploaded. Embedded into the root user's `authorized_keys` file if you include this key during Droplet creation.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.sshkeys#SshKeysListResponseSshKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.sshkeys#SshKeys"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.sshkeys#PageLinks": {
+      "type": "structure",
+      "members": {
+        "pages": {
+          "target": "com.digitalocean.sshkeys#PageLinksPages"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.sshkeys#ForwardLinks": {
+      "type": "structure",
+      "members": {
+        "last": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the last page of the results."
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the next page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.sshkeys#BackwardLinks": {
+      "type": "structure",
+      "members": {
+        "first": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the first page of the results."
+          }
+        },
+        "prev": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the previous page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.sshkeys#PageLinksPages": {
+      "type": "union",
+      "members": {
+        "ForwardLinks": {
+          "target": "com.digitalocean.sshkeys#ForwardLinks"
+        },
+        "BackwardLinks": {
+          "target": "com.digitalocean.sshkeys#BackwardLinks"
+        },
+        "Case2": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.sshkeys#SshKeysListResponseMeta": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of objects returned by the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.sshkeys#SshKeysListResponse": {
+      "type": "structure",
+      "members": {
+        "ssh_keys": {
+          "target": "com.digitalocean.sshkeys#SshKeysListResponseSshKeysList"
+        },
+        "links": {
+          "target": "com.digitalocean.sshkeys#PageLinks"
+        },
+        "meta": {
+          "target": "com.digitalocean.sshkeys#SshKeysListResponseMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysList": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.sshkeys#SshKeysListRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.sshkeys#SshKeysListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/account/keys",
+          "code": 200
+        },
+        "smithy.api#documentation": "List All SSH Keys\n\nTo list all of the keys in your account, send a GET request to `/v2/account/keys`. The response will be a JSON object with a key set to `ssh_keys`. The value of this will be an array of ssh_key objects, each of which contains the standard ssh_key attributes."
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysCreateRequest": {
+      "type": "structure",
+      "members": {
+        "public_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entire public key string that was uploaded. Embedded into the root user's `authorized_keys` file if you include this key during Droplet creation.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysCreateResponse": {
+      "type": "structure",
+      "members": {
+        "ssh_key": {
+          "target": "com.digitalocean.sshkeys#SshKeys",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.sshkeys#SshKeysCreateRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.sshkeys#SshKeysCreateResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.sshkeys#UnprocessableEntity"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/account/keys",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a New SSH Key\n\nTo add a new SSH public key to your DigitalOcean account, send a POST request to `/v2/account/keys`. Set the `name` attribute to the name you wish to use and the `public_key` attribute to the full public key you are adding."
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysGetRequest": {
+      "type": "structure",
+      "members": {
+        "ssh_key_identifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Either the ID or the fingerprint of an existing SSH key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysGetResponse": {
+      "type": "structure",
+      "members": {
+        "ssh_key": {
+          "target": "com.digitalocean.sshkeys#SshKeys",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.sshkeys#SshKeysGetRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.sshkeys#SshKeysGetResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.sshkeys#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/account/keys/{ssh_key_identifier}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve an Existing SSH Key\n\nTo get information about a key, send a GET request to `/v2/account/keys/$KEY_ID` or `/v2/account/keys/$KEY_FINGERPRINT`.\nThe response will be a JSON object with the key `ssh_key` and value an ssh_key object which contains the standard ssh_key attributes."
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "ssh_key_identifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Either the ID or the fingerprint of an existing SSH key."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "ssh_key": {
+          "target": "com.digitalocean.sshkeys#SshKeys",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.sshkeys#SshKeysUpdateRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.sshkeys#SshKeysUpdateResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.sshkeys#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v2/account/keys/{ssh_key_identifier}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update an SSH Key's Name\n\nTo update the name of an SSH key, send a PUT request to either `/v2/account/keys/$SSH_KEY_ID` or `/v2/account/keys/$SSH_KEY_FINGERPRINT`. Set the `name` attribute to the new name you want to use."
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "ssh_key_identifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Either the ID or the fingerprint of an existing SSH key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.sshkeys#SshKeysDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.sshkeys#SshKeysDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.sshkeys#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/account/keys/{ssh_key_identifier}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete an SSH Key\n\nTo destroy a public SSH key that you have in your account, send a DELETE request to `/v2/account/keys/$KEY_ID` or `/v2/account/keys/$KEY_FINGERPRINT`.\nA 204 status will be returned, indicating that the action was successful and that the response body is empty."
+      }
+    },
+    "com.digitalocean.sshkeys#UnprocessableEntity": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 422,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 422
+          }
+        ]
+      }
+    },
+    "com.digitalocean.sshkeys#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.digitalocean.sshkeys#DigitalOceanSshKeys": {
+      "type": "service",
+      "version": "2.0",
+      "operations": [
+        {
+          "target": "com.digitalocean.sshkeys#SshKeysList"
+        },
+        {
+          "target": "com.digitalocean.sshkeys#SshKeysCreate"
+        },
+        {
+          "target": "com.digitalocean.sshkeys#SshKeysGet"
+        },
+        {
+          "target": "com.digitalocean.sshkeys#SshKeysUpdate"
+        },
+        {
+          "target": "com.digitalocean.sshkeys#SshKeysDelete"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "DigitalOcean API"
+      }
+    }
+  }
+}

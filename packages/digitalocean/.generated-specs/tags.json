@@ -1,0 +1,700 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.digitalocean.tags#TagsListRequest": {
+      "type": "structure",
+      "members": {
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "per_page",
+            "smithy.api#documentation": "Number of items returned per page"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Which 'page' of paginated results to return."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.tags#Tags": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores.\nThere is a limit of 255 characters per tag.\n\n**Note:** Tag names are case stable, which means the capitalization you use when you first create a tag is canonical.\n\nWhen working with tags in the API, you must use the tag's canonical capitalization. For example, if you create a tag named \"PROD\", the URL to add that tag to a resource would be `https://api.digitalocean.com/v2/tags/PROD/resources` (not `/v2/tags/prod/resources`).\n\nTagged resources in the control panel will always display the canonical capitalization. For example, if you create a tag named \"PROD\", you can tag resources in the control panel by entering \"prod\". The tag will still display with its canonical capitalization, \"PROD\".\n"
+          }
+        },
+        "resources": {
+          "target": "com.digitalocean.tags#TagsResources",
+          "traits": {
+            "smithy.api#documentation": "An embedded object containing key value pairs of resource type and resource statistics.\nIt also includes a count of the total number of resources tagged with the current tag as well as a `last_tagged_uri` attribute set to the last resource tagged with the current tag.\n\nThis will only include resources that you are authorized to see. For example, to see tagged Droplets, include the `droplet:read` scope.\n"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A tag is a label that can be applied to a resource (currently Droplets, Images, Volumes, Volume Snapshots, and Database clusters) in order to better organize or facilitate the lookups and actions on it.\nTags have two attributes: a user defined `name` attribute and an embedded `resources` attribute with information about resources that have been tagged."
+      }
+    },
+    "com.digitalocean.tags#TagsResourcesDroplets": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of tagged objects for this type of resource."
+          }
+        },
+        "last_tagged_uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI for the last tagged object for this type of resource."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#TagsResourcesImgages": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of tagged objects for this type of resource."
+          }
+        },
+        "last_tagged_uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI for the last tagged object for this type of resource."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#TagsResourcesVolumes": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of tagged objects for this type of resource."
+          }
+        },
+        "last_tagged_uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI for the last tagged object for this type of resource."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#TagsResourcesVolumeSnapshots": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of tagged objects for this type of resource."
+          }
+        },
+        "last_tagged_uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI for the last tagged object for this type of resource."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#TagsResourcesDatabases": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of tagged objects for this type of resource."
+          }
+        },
+        "last_tagged_uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI for the last tagged object for this type of resource."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#TagsResources": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of tagged objects for this type of resource."
+          }
+        },
+        "last_tagged_uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI for the last tagged object for this type of resource."
+          }
+        },
+        "droplets": {
+          "target": "com.digitalocean.tags#TagsResourcesDroplets"
+        },
+        "imgages": {
+          "target": "com.digitalocean.tags#TagsResourcesImgages"
+        },
+        "volumes": {
+          "target": "com.digitalocean.tags#TagsResourcesVolumes"
+        },
+        "volume_snapshots": {
+          "target": "com.digitalocean.tags#TagsResourcesVolumeSnapshots"
+        },
+        "databases": {
+          "target": "com.digitalocean.tags#TagsResourcesDatabases"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An embedded object containing key value pairs of resource type and resource statistics.\nIt also includes a count of the total number of resources tagged with the current tag as well as a `last_tagged_uri` attribute set to the last resource tagged with the current tag.\n\nThis will only include resources that you are authorized to see. For example, to see tagged Droplets, include the `droplet:read` scope.\n"
+      }
+    },
+    "com.digitalocean.tags#TagsListResponseTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.tags#Tags"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#PageLinks": {
+      "type": "structure",
+      "members": {
+        "pages": {
+          "target": "com.digitalocean.tags#PageLinksPages"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#ForwardLinks": {
+      "type": "structure",
+      "members": {
+        "last": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the last page of the results."
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the next page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#BackwardLinks": {
+      "type": "structure",
+      "members": {
+        "first": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the first page of the results."
+          }
+        },
+        "prev": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the previous page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#PageLinksPages": {
+      "type": "union",
+      "members": {
+        "ForwardLinks": {
+          "target": "com.digitalocean.tags#ForwardLinks"
+        },
+        "BackwardLinks": {
+          "target": "com.digitalocean.tags#BackwardLinks"
+        },
+        "Case2": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#TagsListResponseMeta": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of objects returned by the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#TagsListResponse": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.digitalocean.tags#TagsListResponseTagsList"
+        },
+        "links": {
+          "target": "com.digitalocean.tags#PageLinks"
+        },
+        "meta": {
+          "target": "com.digitalocean.tags#TagsListResponseMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.tags#TagsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.tags#TagsListRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.tags#TagsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/tags",
+          "code": 200
+        },
+        "smithy.api#documentation": "List All Tags\n\nTo list all of your tags, you can send a GET request to `/v2/tags`.\n\nThis endpoint will only return tagged resources that you are authorized to see\n(e.g. Droplets will only be returned if you have `droplet:read`)."
+      }
+    },
+    "com.digitalocean.tags#TagsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores.\nThere is a limit of 255 characters per tag.\n\n**Note:** Tag names are case stable, which means the capitalization you use when you first create a tag is canonical.\n\nWhen working with tags in the API, you must use the tag's canonical capitalization. For example, if you create a tag named \"PROD\", the URL to add that tag to a resource would be `https://api.digitalocean.com/v2/tags/PROD/resources` (not `/v2/tags/prod/resources`).\n\nTagged resources in the control panel will always display the canonical capitalization. For example, if you create a tag named \"PROD\", you can tag resources in the control panel by entering \"prod\". The tag will still display with its canonical capitalization, \"PROD\".\n"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.tags#TagsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "tag": {
+          "target": "com.digitalocean.tags#Tags"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.tags#TagsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.tags#TagsCreateRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.tags#TagsCreateResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.tags#BadRequest"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/tags",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a New Tag\n\nTo create a tag you can send a POST request to `/v2/tags` with a `name` attribute."
+      }
+    },
+    "com.digitalocean.tags#TagsGetRequest": {
+      "type": "structure",
+      "members": {
+        "tag_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.tags#TagsGetResponse": {
+      "type": "structure",
+      "members": {
+        "tag": {
+          "target": "com.digitalocean.tags#Tags"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.tags#TagsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.tags#TagsGetRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.tags#TagsGetResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.tags#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/tags/{tag_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve a Tag\n\nTo retrieve an individual tag, you can send a `GET` request to\n`/v2/tags/$TAG_NAME`.\n\nThis endpoint will only return tagged resources that you are authorized to see.\nFor example, to see tagged Droplets, include the `droplet:read` scope."
+      }
+    },
+    "com.digitalocean.tags#TagsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "tag_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.tags#TagsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.tags#TagsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.tags#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/tags/{tag_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a Tag\n\nA tag can be deleted by sending a `DELETE` request to `/v2/tags/$TAG_NAME`. Deleting a tag also untags all the resources that have previously been tagged by the Tag"
+      }
+    },
+    "com.digitalocean.tags#TagsAssignResourcesRequestResourcesItemResourceType": {
+      "type": "enum",
+      "members": {
+        "DROPLET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "droplet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        },
+        "VOLUME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "volume"
+          }
+        },
+        "VOLUME_SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "volume_snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the resource."
+      }
+    },
+    "com.digitalocean.tags#TagsAssignResourcesRequestResourcesItem": {
+      "type": "structure",
+      "members": {
+        "resource_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of a resource."
+          }
+        },
+        "resource_type": {
+          "target": "com.digitalocean.tags#TagsAssignResourcesRequestResourcesItemResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#TagsAssignResourcesRequestResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.tags#TagsAssignResourcesRequestResourcesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of objects containing resource_id and resource_type \nattributes.\n\nThis response will only include resources that you are authorized to see.\nFor example, to see Droplets, include the `droplet:read` scope.\n"
+      }
+    },
+    "com.digitalocean.tags#TagsAssignResourcesRequest": {
+      "type": "structure",
+      "members": {
+        "tag_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
+          }
+        },
+        "resources": {
+          "target": "com.digitalocean.tags#TagsAssignResourcesRequestResourcesList",
+          "traits": {
+            "smithy.api#documentation": "An array of objects containing resource_id and resource_type \nattributes.\n\nThis response will only include resources that you are authorized to see.\nFor example, to see Droplets, include the `droplet:read` scope.\n",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.tags#TagsAssignResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.tags#TagsAssignResourcesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.tags#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/tags/{tag_id}/resources",
+          "code": 200
+        },
+        "smithy.api#documentation": "Tag a Resource\n\nResources can be tagged by sending a POST request to\n`/v2/tags/$TAG_NAME/resources` with an array of json objects containing\n`resource_id` and `resource_type` attributes.\n\nCurrently only tagging of Droplets, Databases, Images, Volumes, and Volume\nSnapshots is supported. `resource_type` is expected to be the string `droplet`,\n`database`, `image`, `volume` or `volume_snapshot`. `resource_id` is expected\nto be the ID of the resource as a string.\n\nIn order to tag a resource, you must have both `tag:create` and `<resource type>:update` scopes. For example, \nto tag a Droplet, you must have `tag:create` and `droplet:update`."
+      }
+    },
+    "com.digitalocean.tags#TagsUnassignResourcesRequestResourcesItemResourceType": {
+      "type": "enum",
+      "members": {
+        "DROPLET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "droplet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        },
+        "VOLUME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "volume"
+          }
+        },
+        "VOLUME_SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "volume_snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the resource."
+      }
+    },
+    "com.digitalocean.tags#TagsUnassignResourcesRequestResourcesItem": {
+      "type": "structure",
+      "members": {
+        "resource_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of a resource."
+          }
+        },
+        "resource_type": {
+          "target": "com.digitalocean.tags#TagsUnassignResourcesRequestResourcesItemResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.tags#TagsUnassignResourcesRequestResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.tags#TagsUnassignResourcesRequestResourcesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of objects containing resource_id and resource_type \nattributes.\n\nThis response will only include resources that you are authorized to see.\nFor example, to see Droplets, include the `droplet:read` scope.\n"
+      }
+    },
+    "com.digitalocean.tags#TagsUnassignResourcesRequest": {
+      "type": "structure",
+      "members": {
+        "tag_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
+          }
+        },
+        "resources": {
+          "target": "com.digitalocean.tags#TagsUnassignResourcesRequestResourcesList",
+          "traits": {
+            "smithy.api#documentation": "An array of objects containing resource_id and resource_type \nattributes.\n\nThis response will only include resources that you are authorized to see.\nFor example, to see Droplets, include the `droplet:read` scope.\n",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.tags#TagsUnassignResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.tags#TagsUnassignResourcesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.tags#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/tags/{tag_id}/resources",
+          "code": 200
+        },
+        "smithy.api#documentation": "Untag a Resource\n\nResources can be untagged by sending a DELETE request to\n`/v2/tags/$TAG_NAME/resources` with an array of json objects containing\n`resource_id` and `resource_type` attributes.\n\nCurrently only untagging of Droplets, Databases, Images, Volumes, and Volume\nSnapshots is supported. `resource_type` is expected to be the string `droplet`,\n`database`, `image`, `volume` or `volume_snapshot`. `resource_id` is expected\nto be the ID of the resource as a string.\n\nIn order to untag a resource, you must have both `tag:delete` and `<resource type>:update` scopes. For example, \nto untag a Droplet, you must have `tag:delete` and `droplet:update`."
+      }
+    },
+    "com.digitalocean.tags#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.digitalocean.tags#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.digitalocean.tags#DigitalOceanTags": {
+      "type": "service",
+      "version": "2.0",
+      "operations": [
+        {
+          "target": "com.digitalocean.tags#TagsList"
+        },
+        {
+          "target": "com.digitalocean.tags#TagsCreate"
+        },
+        {
+          "target": "com.digitalocean.tags#TagsGet"
+        },
+        {
+          "target": "com.digitalocean.tags#TagsDelete"
+        },
+        {
+          "target": "com.digitalocean.tags#TagsAssignResources"
+        },
+        {
+          "target": "com.digitalocean.tags#TagsUnassignResources"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "DigitalOcean API"
+      }
+    }
+  }
+}
