@@ -12333,7 +12333,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query me {\n  me {\n    agreedFairUse\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    email\n    featureFlags\n    flags\n    githubProviderId\n    githubUsername\n    has2FA\n    hasPasskeys\n    id\n    isAdmin\n    isConductor\n    isVerified\n    lastLogin\n    name\n    platformFeatureFlags\n    profile {\n      bio\n      isPublic\n      website\n    }\n    registrationStatus\n    riskLevel\n    termsAgreedOn\n    username\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaces {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n  }\n}",
+          "query": "query me {\n  me {\n    agreedFairUse\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    email\n    featureFlags\n    flags\n    githubProviderId\n    githubUsername\n    has2FA\n    hasPasskeys\n    id\n    isAdmin\n    isConductor\n    isVerified\n    lastLogin\n    name\n    profile {\n      bio\n      isPublic\n      website\n    }\n    registrationStatus\n    riskLevel\n    termsAgreedOn\n    username\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaces {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n  }\n}",
           "operationName": "me",
           "type": "query"
         }
@@ -13212,12 +13212,6 @@
           "traits": {
             "smithy.api#required": {},
             "com.railway.graphql#nullable": {}
-          }
-        },
-        "platformFeatureFlags": {
-          "target": "com.railway.api#MeResponsePlatformFeatureFlagsList",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "profile": {
@@ -31303,7 +31297,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation accessGroupMemberAdd($input: AccessGroupMemberInput!) {\n  accessGroupMemberAdd(input: $input) {\n    accessGroup {\n      createdAt\n      id\n      name\n      role\n      source\n      updatedAt\n      workspaceId\n    }\n    accessGroupId\n    createdAt\n    id\n    updatedAt\n    user {\n      agreedFairUse\n      avatar\n      banReason\n      createdAt\n      email\n      featureFlags\n      flags\n      githubProviderId\n      githubUsername\n      has2FA\n      hasPasskeys\n      id\n      isAdmin\n      isConductor\n      isVerified\n      lastLogin\n      name\n      platformFeatureFlags\n      registrationStatus\n      riskLevel\n      termsAgreedOn\n      username\n    }\n    userId\n  }\n}",
+          "query": "mutation accessGroupMemberAdd($input: AccessGroupMemberInput!) {\n  accessGroupMemberAdd(input: $input) {\n    accessGroup {\n      createdAt\n      id\n      name\n      role\n      source\n      updatedAt\n      workspaceId\n    }\n    accessGroupId\n    createdAt\n    id\n    updatedAt\n    user {\n      agreedFairUse\n      avatar\n      banReason\n      createdAt\n      email\n      featureFlags\n      flags\n      githubProviderId\n      githubUsername\n      has2FA\n      hasPasskeys\n      id\n      isAdmin\n      isConductor\n      isVerified\n      lastLogin\n      name\n      registrationStatus\n      riskLevel\n      termsAgreedOn\n      username\n    }\n    userId\n  }\n}",
           "operationName": "accessGroupMemberAdd",
           "type": "mutation"
         }
@@ -31482,12 +31476,6 @@
           "traits": {
             "smithy.api#required": {},
             "com.railway.graphql#nullable": {}
-          }
-        },
-        "platformFeatureFlags": {
-          "target": "com.railway.api#AccessGroupMemberAddResponseUserPlatformFeatureFlagsList",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "registrationStatus": {
@@ -56099,7 +56087,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation userTermsUpdate {\n  userTermsUpdate {\n    agreedFairUse\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    email\n    featureFlags\n    flags\n    githubProviderId\n    githubUsername\n    has2FA\n    hasPasskeys\n    id\n    isAdmin\n    isConductor\n    isVerified\n    lastLogin\n    name\n    platformFeatureFlags\n    profile {\n      bio\n      isPublic\n      website\n    }\n    registrationStatus\n    riskLevel\n    termsAgreedOn\n    username\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaces {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n  }\n}",
+          "query": "mutation userTermsUpdate {\n  userTermsUpdate {\n    agreedFairUse\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    email\n    featureFlags\n    flags\n    githubProviderId\n    githubUsername\n    has2FA\n    hasPasskeys\n    id\n    isAdmin\n    isConductor\n    isVerified\n    lastLogin\n    name\n    profile {\n      bio\n      isPublic\n      website\n    }\n    registrationStatus\n    riskLevel\n    termsAgreedOn\n    username\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaces {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n  }\n}",
           "operationName": "userTermsUpdate",
           "type": "mutation"
         }
@@ -56600,12 +56588,6 @@
           "traits": {
             "smithy.api#required": {},
             "com.railway.graphql#nullable": {}
-          }
-        },
-        "platformFeatureFlags": {
-          "target": "com.railway.api#UserTermsUpdateResponsePlatformFeatureFlagsList",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "profile": {
@@ -59029,7 +59011,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation workspacePolicyDeploySourceAllowlistAdd($sourceId: String!, $sourceType: WorkspacePolicyDeploySourceType!, $workspaceId: String!) {\n  workspacePolicyDeploySourceAllowlistAdd(sourceId: $sourceId, sourceType: $sourceType, workspaceId: $workspaceId) {\n    addedBy {\n      agreedFairUse\n      avatar\n      banReason\n      createdAt\n      email\n      featureFlags\n      flags\n      githubProviderId\n      githubUsername\n      has2FA\n      hasPasskeys\n      id\n      isAdmin\n      isConductor\n      isVerified\n      lastLogin\n      name\n      platformFeatureFlags\n      registrationStatus\n      riskLevel\n      termsAgreedOn\n      username\n    }\n    createdAt\n    id\n    sourceIcon\n    sourceId\n    sourceName\n    sourceType\n  }\n}",
+          "query": "mutation workspacePolicyDeploySourceAllowlistAdd($sourceId: String!, $sourceType: WorkspacePolicyDeploySourceType!, $workspaceId: String!) {\n  workspacePolicyDeploySourceAllowlistAdd(sourceId: $sourceId, sourceType: $sourceType, workspaceId: $workspaceId) {\n    addedBy {\n      agreedFairUse\n      avatar\n      banReason\n      createdAt\n      email\n      featureFlags\n      flags\n      githubProviderId\n      githubUsername\n      has2FA\n      hasPasskeys\n      id\n      isAdmin\n      isConductor\n      isVerified\n      lastLogin\n      name\n      registrationStatus\n      riskLevel\n      termsAgreedOn\n      username\n    }\n    createdAt\n    id\n    sourceIcon\n    sourceId\n    sourceName\n    sourceType\n  }\n}",
           "operationName": "workspacePolicyDeploySourceAllowlistAdd",
           "type": "mutation"
         }
@@ -59161,12 +59143,6 @@
           "traits": {
             "smithy.api#required": {},
             "com.railway.graphql#nullable": {}
-          }
-        },
-        "platformFeatureFlags": {
-          "target": "com.railway.api#WorkspacePolicyDeploySourceAllowlistAddResponseAddedByPlatformFeatureFlagsList",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "registrationStatus": {
